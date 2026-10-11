@@ -60,7 +60,7 @@ Estado (11 oct 2026): propiedad **verificada** y `sitemap-index.xml` **enviado**
 
 Bing también alimenta a DuckDuckGo, Ecosia, Yahoo y la búsqueda de varios asistentes de IA.
 
-Estado (11 oct 2026): sitio **importado desde Search Console**, con `sitemap-index.xml` enviado y rastreado sin errores.
+Estado (11 oct 2026): sitio **importado desde Search Console**, con `sitemap-index.xml` enviado y rastreado sin errores. Las 26 URL se enviaron a mano en *URL Submission* (cupo: 100 al día).
 
 1. Entra en https://www.bing.com/webmasters e **importa el sitio desde Google Search Console** (no hace falta otra verificación).
 2. Si prefieres verificar aparte, usa la variable `PUBLIC_BING_SITE_VERIFICATION`.
