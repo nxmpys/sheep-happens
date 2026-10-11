@@ -1,9 +1,11 @@
 ---
+import Icon from '../ui/Icon.astro';
 import Logo from '../ui/Logo.astro';
 import { href } from '../../i18n/locale';
 import { FOOTER_NAV, type Locale } from '../../i18n/routes';
 import { NAV_LABELS, t } from '../../i18n/ui';
 import { currentVersion as current } from '../../lib/data';
+import { SUPPORT_URL } from '../../lib/support';
 
 interface Props {
   locale: Locale;
@@ -20,6 +22,10 @@ const { locale } = Astro.props;
         <p class="footer-name">Sheep Happens</p>
         <p class="footer-tagline">{t(locale, 'site.tagline')}</p>
         <p class="footer-version">{current.label[locale]}</p>
+        <a class="footer-support" href={SUPPORT_URL} target="_blank" rel="noopener noreferrer">
+          <Icon name="coffee" size={16} />
+          {t(locale, 'support.short')}
+        </a>
       </div>
     </div>
     <nav aria-label={t(locale, 'nav.footer')}>
@@ -67,6 +73,14 @@ const { locale } = Astro.props;
   .footer-version {
     font-size: var(--step--1);
     color: var(--text-muted);
+  }
+  .footer-support {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: 44px;
+    font-size: var(--step--1);
+    font-weight: 600;
   }
   .footer-links {
     display: flex;

@@ -153,6 +153,11 @@ const es = {
   'footer.disclaimer':
     'Sheep Happens es una guía de fans sin relación con Blizzard Entertainment. World of Warcraft es una marca de Blizzard Entertainment, Inc.',
   'footer.license': 'Iconos e ilustraciones propios.',
+  'support.title': '¿Te ha servido la guía?',
+  'support.body':
+    'Sheep Happens es gratis, no tiene anuncios y se revisa cada semana con fuentes. Si quieres ayudar a que siga así, puedes invitarme a un café.',
+  'support.cta': 'Invítame a un café en Ko-fi',
+  'support.short': 'Invítame a un café',
   'notFound.title': 'Página no encontrada',
   'notFound.body': 'Esta oveja se ha escapado. Prueba con el buscador o vuelve al inicio.',
 } as const;
@@ -272,6 +277,11 @@ const en: Record<UiKey, string> = {
   'footer.disclaimer':
     'Sheep Happens is a fan-made guide not affiliated with Blizzard Entertainment. World of Warcraft is a trademark of Blizzard Entertainment, Inc.',
   'footer.license': 'Original icons and artwork.',
+  'support.title': 'Found the guide useful?',
+  'support.body':
+    'Sheep Happens is free, ad-free and reviewed every week against its sources. If you want to help keep it that way, you can buy me a coffee.',
+  'support.cta': 'Buy me a coffee on Ko-fi',
+  'support.short': 'Buy me a coffee',
   'notFound.title': 'Page not found',
   'notFound.body': 'This sheep wandered off. Try the search or head back home.',
 };
