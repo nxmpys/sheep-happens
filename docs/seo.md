@@ -47,16 +47,20 @@ Objetivo: aparecer cuando alguien busque **«guía mago wow forever»**, «talen
 
 ### 1. Google Search Console (gratis, 10 minutos)
 
+Estado (11 oct 2026): propiedad **verificada** y `sitemap-index.xml` **enviado**. Solo falta el paso 6.
+
 1. Entra en https://search.google.com/search-console y añade una propiedad de tipo **Prefijo de URL**: `https://sheep-happens.pages.dev/`.
-2. Elige la verificación por **etiqueta HTML**. Copia solo el código del atributo `content`.
-3. En Cloudflare Pages, añade la variable `PUBLIC_GOOGLE_SITE_VERIFICATION` con ese código y vuelve a desplegar (*Deployments → Retry deployment*).
-4. Pulsa **Verificar** en Search Console.
-5. En **Sitemaps**, envía `sitemap-index.xml`.
-6. En **Inspección de URLs**, solicita la indexación de `/es/`, `/es/guia/`, `/es/cambios/` y de las tres ramas.
+2. Verificación usada: **archivo HTML** `public/googlefdba108afcc31ea5.html`. **No lo borres**: si desaparece, Google retira la verificación. (Alternativa: etiqueta HTML con la variable `PUBLIC_GOOGLE_SITE_VERIFICATION` en Cloudflare y un nuevo despliegue).
+3. Pulsa **Verificar** en Search Console.
+4. En **Sitemaps**, envía `sitemap-index.xml`.
+5. Espera: Google lee el sitemap por su cuenta en días.
+6. En **Inspección de URLs**, solicita la indexación de `/es/`, `/es/guia/`, `/es/cambios/` y de las tres ramas. Hay un **cupo diario** pequeño: si sale «Quota Exceeded», vuelve a intentarlo al día siguiente.
 
 ### 2. Bing Webmaster Tools (gratis, 5 minutos)
 
 Bing también alimenta a DuckDuckGo, Ecosia, Yahoo y la búsqueda de varios asistentes de IA.
+
+Estado (11 oct 2026): sitio **importado desde Search Console**, con `sitemap-index.xml` enviado y rastreado sin errores.
 
 1. Entra en https://www.bing.com/webmasters e **importa el sitio desde Google Search Console** (no hace falta otra verificación).
 2. Si prefieres verificar aparte, usa la variable `PUBLIC_BING_SITE_VERIFICATION`.
