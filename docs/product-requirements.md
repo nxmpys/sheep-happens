@@ -58,7 +58,7 @@ Que un jugador de Mago en Forever pueda **aprender** la clase de forma progresiv
 | RNF-06 | URLs estables | Sin prefijos de versión ni de expansión; slugs localizados y definidos en un único registro |
 | RNF-07 | Transparencia | Ningún contenido de ejemplo se presenta como verificado; la fecha de revisión es manual y nunca automática |
 | RNF-08 | Mejora progresiva | Todo el contenido es legible sin JavaScript |
-| RNF-09 | Privacidad | Sin analítica ni incrustaciones de terceros en v1 |
+| RNF-09 | Privacidad | Sin cookies ni incrustaciones de terceros. Única analítica: Cloudflare Web Analytics (sin cookies ni datos personales; añadida el 11 oct 2026 a petición del autor) |
 | RNF-10 | Despliegue | Cualquier hosting estático; CI con validación, pruebas, compilación y comprobación de enlaces |
 
 ## 5. Mapa del sitio (v1)

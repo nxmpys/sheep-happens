@@ -80,7 +80,21 @@ En Search Console → **Rendimiento**: consultas, impresiones y CTR por página.
 - Si una página tiene muchas impresiones y pocos clics, mejora su `seoTitle` y su `description`.
 - Si aparecen consultas que no cubrimos (p. ej., «mejor raza mago forever»), valora una sección nueva **cuando haya datos fiables**.
 
-Si quieres estadísticas de visitas sin cookies, Cloudflare Web Analytics es gratuito. Para activarlo, añade a la CSP de `public/_headers` `https://static.cloudflareinsights.com` en `script-src` y `https://cloudflareinsights.com` en `connect-src`; si no, el script quedará bloqueado.
+### 5. Visitas: Cloudflare Web Analytics
+
+Gratis y sin cookies (no necesita aviso de cookies): visitas, páginas vistas, páginas más vistas, de dónde llegan (referencias), países, dispositivos y Core Web Vitals.
+
+- **Activar (una vez):** Cloudflare → *Workers & Pages* → `sheep-happens` → *Metrics* → *Web Analytics* → **Enable**. Cloudflare inserta el script en el **siguiente despliegue** (haz *Retry deployment* o cualquier push).
+- **Consultar:** Cloudflare → *Analytics & Logs* → *Web Analytics* → `sheep-happens.pages.dev`.
+- La CSP de `public/_headers` ya permite `https://static.cloudflareinsights.com` (`script-src`) y `https://cloudflareinsights.com` (`connect-src`). Si la quitas, el script quedará bloqueado.
+- Las cifras son aproximadas: no cuentan visitas con bloqueadores de anuncios ni las bloqueadas por LaLiga.
+
+| Pregunta | Dónde mirar |
+|---|---|
+| ¿Cuánta gente entra y qué páginas lee? | Cloudflare Web Analytics |
+| ¿De dónde vienen (Discord, Reddit, Google…)? | Cloudflare Web Analytics → *Referers* |
+| ¿Qué buscan en Google para llegar? | Search Console → *Rendimiento* |
+| ¿Y en Bing/DuckDuckGo? | Bing Webmaster Tools → *Search Performance* |
 
 ## Riesgo conocido: bloqueos de LaLiga en España
 

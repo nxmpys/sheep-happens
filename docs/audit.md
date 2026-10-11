@@ -18,7 +18,7 @@ Comparación entre lo implementado y los patrones observados en Wings Is Up (WIU
 | Menú móvil con fondo oscurecido | **Mejorado** | Escape cierra el menú y devuelve el foco; `aria-expanded`; submenú accesible por teclado |
 | Copiar cadena de talentos | **Descartado** | Formato de importación de Forever no verificado |
 | Imagen del árbol completo | **Descartado** | Sin datos completos fiables; las imágenes envejecen sin aviso |
-| Twitch, Discord y Patreon incrustados | **Descartado** | Rendimiento y privacidad (no hay analítica ni incrustaciones de terceros) |
+| Twitch, Discord y Patreon incrustados | **Descartado** | Rendimiento y privacidad (sin incrustaciones de terceros; la única analítica es Cloudflare Web Analytics, sin cookies) |
 | URLs con prefijo de expansión (`/tww-*`) | **Descartado** | Slugs estables y localizados desde un registro único |
 
 **Añadido respecto a WIU:** índice de la página con resaltado de la sección visible, buscador por secciones (Ctrl/⌘+K o `/`), cabecera de verificación por página (fecha, versión y estado), fuentes por afirmación, estados vacíos explícitos, tema claro/oscuro, ES/EN y calculadora de crítico.
