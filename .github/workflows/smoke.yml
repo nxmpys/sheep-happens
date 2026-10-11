@@ -1,0 +1,66 @@
+# Checks the live site from GitHub's servers: after every push (once Cloudflare has
+# deployed that commit) and every morning. Fails if a key page, header or SEO file
+# is missing, so a broken deploy shows up as a red run.
+name: Production smoke test
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '30 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    env:
+      SITE: https://sheep-happens.pages.dev
+    steps:
+      - name: Wait until this commit is live
+        if: github.event_name == 'push'
+        run: |
+          for i in $(seq 1 40); do
+            live=$(curl -fsS "$SITE/build.json?nocache=$(date +%s)" | jq -r .commit || true)
+            echo "attempt $i: live commit = ${live:-none}"
+            if [ "$live" = "$GITHUB_SHA" ]; then exit 0; fi
+            sleep 15
+          done
+          echo "::error::Commit $GITHUB_SHA was not live after 10 minutes (check the Cloudflare build)"
+          exit 1
+
+      - name: Key URLs respond
+        run: |
+          fail=0
+          check() {
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$SITE$1")
+            echo "$code $1"
+            if [ "$code" != "$2" ]; then echo "::error::$1 returned $code (expected $2)"; fail=1; fi
+          }
+          check / 200
+          check /es/ 200
+          check /en/ 200
+          check /es/guia/ 200
+          check /es/cambios/ 200
+          check /es/talentos/escarcha/ 200
+          check /en/talents/fire/ 200
+          check /es/novedades/rss.xml 200
+          check /sitemap-index.xml 200
+          check /robots.txt 200
+          check /og/es-home.png 200
+          check /pagefind/pagefind.js 200
+          check /no-existe/ 404
+          exit $fail
+
+      - name: Headers and SEO
+        run: |
+          set -e
+          headers=$(curl -sI "$SITE/es/")
+          echo "$headers" | grep -qi '^content-security-policy:' || { echo "::error::Missing Content-Security-Policy"; exit 1; }
+          echo "$headers" | grep -qi '^strict-transport-security:' || { echo "::error::Missing HSTS"; exit 1; }
+          curl -s "$SITE/es/" | grep -q "<link rel=\"canonical\" href=\"$SITE/es/\"" || { echo "::error::Wrong canonical on /es/"; exit 1; }
+          curl -s "$SITE/sitemap-0.xml" | grep -q "$SITE/es/talentos/escarcha/" || { echo "::error::Sitemap is missing pages"; exit 1; }
+          curl -s "$SITE/robots.txt" | grep -q "Sitemap: $SITE/sitemap-index.xml" || { echo "::error::robots.txt has no sitemap"; exit 1; }
+          echo "Headers, canonical, sitemap and robots.txt look right."

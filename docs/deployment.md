@@ -78,6 +78,17 @@ Para cambios grandes, trabaja en una rama: Cloudflare crea una vista previa en `
 | `.nvmrc` | Versión de Node para Cloudflare |
 | `.github/workflows/ci.yml` | Comprobaciones en cada push y pull request |
 | `.github/workflows/weekly-sources.yml` | Informe semanal de fuentes (issue) |
+| `.github/workflows/smoke.yml` | Tras cada despliegue y cada mañana, comprueba la web publicada desde GitHub: páginas clave, 404, cabeceras, canónica, sitemap y robots |
+| `src/pages/build.json.ts` | Publica `/build.json` con el commit desplegado (lo usa la prueba de humo) |
+
+## Si la web no carga desde España
+
+Los fines de semana con partidos de fútbol, varios operadores españoles bloquean rangos de IP de Cloudflare por orden judicial de LaLiga, entre ellos los de `*.pages.dev`. La web sigue en línea para el resto del mundo y para Google, pero no carga desde esas conexiones mientras dura el bloqueo. Para comprobarlo:
+
+- Revisa la ejecución más reciente de **Production smoke test** en la pestaña *Actions* de GitHub (se hace desde fuera de España).
+- Prueba con los datos móviles de otro operador o con una VPN.
+
+No se puede evitar sin salir de Cloudflare. Un dominio propio en Cloudflare usa las mismas IP. Ver `docs/seo.md` para el impacto.
 
 ## Dominio propio (opcional, de pago)
 

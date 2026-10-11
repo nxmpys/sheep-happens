@@ -18,6 +18,9 @@
 /og/*
   Cache-Control: public, max-age=86400
 
+/build.json
+  Cache-Control: no-store
+
 # Preview deployments (branches and commits) must never be indexed.
 https://:version.:project.pages.dev/*
   X-Robots-Tag: noindex

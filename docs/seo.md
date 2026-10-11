@@ -78,6 +78,10 @@ En Search Console → **Rendimiento**: consultas, impresiones y CTR por página.
 
 Si quieres estadísticas de visitas sin cookies, Cloudflare Web Analytics es gratuito. Para activarlo, añade a la CSP de `public/_headers` `https://static.cloudflareinsights.com` en `script-src` y `https://cloudflareinsights.com` en `connect-src`; si no, el script quedará bloqueado.
 
+## Riesgo conocido: bloqueos de LaLiga en España
+
+Durante los partidos de LaLiga, algunos operadores españoles bloquean IP de Cloudflare, también las de `pages.dev`. Googlebot no se ve afectado (rastrea desde fuera de España), pero algunos lectores españoles no podrán abrir la web durante esas horas. Si el bloqueo se volviera frecuente y afectara a muchas visitas, la alternativa sería un espejo en otro proveedor. Antes de hacerlo, mide el impacto en Search Console.
+
 ## Lo que no hacemos (a propósito)
 
 - **Repetir palabras clave** ni crear páginas vacías para posicionar: Google lo penaliza y no ayuda a nadie.
