@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Validate, test, build and check links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # history is needed to compare data with the previous commit
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Every fact changed since the base must carry a new "updated" date (and a changelog entry).
+      - name: Data changes are documented
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            npm run --silent data:diff -- --base "origin/${{ github.base_ref }}"
+          else
+            npm run --silent data:diff -- --base "${{ github.event.before }}"
+          fi
+      # validate → changelog → typecheck → unit tests → build (+ Pagefind index) → internal links
+      - run: npm run check

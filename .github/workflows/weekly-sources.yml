@@ -1,0 +1,44 @@
+# Every Monday, reads the watched sources (src/data/watchlist.json) and opens an
+# issue with the report: new official posts, the Mage section of new beta notes,
+# new client builds and community news. Free on GitHub Actions.
+name: Weekly source review
+
+on:
+  schedule:
+    - cron: '0 7 * * 1' # Mondays 07:00 UTC
+  workflow_dispatch:
+    inputs:
+      since:
+        description: 'Start date (YYYY-MM-DD). Defaults to 7 days ago.'
+        required: false
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build the report
+        run: |
+          if [ -n "${{ inputs.since }}" ]; then
+            npm run --silent watch -- --since "${{ inputs.since }}" --out report.md
+          else
+            npm run --silent watch -- --out report.md
+          fi
+      - name: Open the review issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create "revisión semanal" --color 7a3fd1 --description "Revisión semanal de fuentes" 2>/dev/null || true
+          gh issue create \
+            --title "Revisión semanal de fuentes — $(date -u +%Y-%m-%d)" \
+            --label "revisión semanal" \
+            --body-file report.md

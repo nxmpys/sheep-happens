@@ -1,0 +1,132 @@
+---
+/** The Mage toolkit grouped by what each spell is for. */
+import Icon from '../ui/Icon.astro';
+import type { IconName } from '../ui/icons';
+import StatusBadge from './StatusBadge.astro';
+import { getLocale, href } from '../../i18n/locale';
+import { abilities, getChange } from '../../lib/data';
+import { displayName, localName } from '../../lib/names';
+import { ROLES, type Role } from '../../lib/schemas';
+
+const locale = getLocale(Astro);
+const roleLabels: Record<Role, { es: string; en: string }> = {
+  damage: { es: 'Daño', en: 'Damage' },
+  control: { es: 'Control', en: 'Control' },
+  defense: { es: 'Defensa y escape', en: 'Defense and escape' },
+  mana: { es: 'Maná', en: 'Mana' },
+  utility: { es: 'Utilidad', en: 'Utility' },
+};
+const levelLabel = locale === 'es' ? 'Nivel' : 'Level';
+const changedLabel = locale === 'es' ? 'En Forever' : 'In Forever';
+const changesHref = href('changes', locale);
+---
+
+<div class="ability-groups">
+  {
+    ROLES.map((role) => {
+      const list = abilities.filter((a) => a.role === role);
+      return (
+        <section class="ability-group" aria-labelledby={`role-${role}`}>
+          <h3 id={`role-${role}`}>{roleLabels[role][locale]}</h3>
+          <ul class="abilities">
+            {list.map((ability) => {
+              const school = (['arcane', 'fire', 'frost', 'frostfire'] as const).find((s) => s === ability.school);
+              return (
+                <li class:list={['ability', school && school !== 'frostfire' ? `school-${school}` : 'school-baseline']}>
+                  <p class="ability__name">
+                    {school && <Icon name={school satisfies IconName} size={18} />}
+                    {displayName(ability, locale).primary}
+                    {displayName(ability, locale).secondary && ' '}
+                    {displayName(ability, locale).secondary && (
+                      <span class="ability__en" lang="en">
+                        {displayName(ability, locale).secondary}
+                      </span>
+                    )}
+                  </p>
+                  <p class="ability__summary">{ability.summary[locale]}</p>
+                  <p class="ability__meta">
+                    {ability.level && (
+                      <span class="chip">
+                        {levelLabel} {ability.level}
+                      </span>
+                    )}
+                    <StatusBadge status={ability.status} />
+                    {ability.changeIds.length > 0 && (
+                      <a href={`${changesHref}#change-${ability.changeIds[0]}`} class="ability__changed">
+                        {changedLabel}: {ability.changeIds.map((id) => localName(getChange(id), locale)).join(', ')}
+                      </a>
+                    )}
+                  </p>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      );
+    })
+  }
+</div>
+
+<style>
+  .ability-groups {
+    display: grid;
+    gap: var(--space-6);
+  }
+  .ability-group h3 {
+    margin: 0 0 var(--space-3);
+    font-size: var(--step-1);
+  }
+  .abilities {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+    gap: var(--space-3);
+  }
+  .ability {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: 0;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--school);
+    border-radius: var(--radius-sm);
+    background: var(--surface-1);
+  }
+  .ability + .ability {
+    margin-top: 0;
+  }
+  .ability__name {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 700;
+  }
+  .ability__name :global(svg) {
+    color: var(--school);
+  }
+  .ability__en {
+    font-weight: 500;
+    font-size: var(--step--1);
+    color: var(--text-subtle);
+  }
+  .ability__summary {
+    font-size: 0.95em;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .ability__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: auto;
+    font-size: var(--step--1);
+  }
+  .ability__changed {
+    font-size: 0.8125rem;
+  }
+</style>

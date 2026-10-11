@@ -1,0 +1,176 @@
+[
+  {
+    "id": "blizzard-tracker-us",
+    "name": "Blizzard Tracker (US forums)",
+    "publisher": "Blizzard Entertainment",
+    "url": "https://us.forums.blizzard.com/en/wow/groups/blizzard-tracker/posts",
+    "kind": "official",
+    "lang": "en",
+    "type": "rss",
+    "endpoint": "https://us.forums.blizzard.com/en/wow/groups/blizzard-tracker/posts.rss",
+    "match": "Forever",
+    "priority": "high",
+    "focus": {
+      "es": "Todos los mensajes oficiales de Blizzard: notas de desarrollo, problemas conocidos, mantenimientos, noticias y pódcast de Forever.",
+      "en": "Every official Blizzard post: development notes, known issues, maintenance, news and the Forever podcast."
+    },
+    "verified": "2026-10-11"
+  },
+  {
+    "id": "forever-dev-notes",
+    "name": "WoW Forever Beta Development Notes",
+    "publisher": "Blizzard Entertainment",
+    "url": "https://us.forums.blizzard.com/en/wow/t/2360696",
+    "kind": "official",
+    "lang": "en",
+    "type": "discourse-topic",
+    "endpoint": "https://us.forums.blizzard.com/en/wow/t/2360696.json",
+    "match": "^Mage$",
+    "priority": "high",
+    "focus": {
+      "es": "Lista de cambios de cada build de la beta. El vigilante extrae la sección «Mage» de cada mensaje nuevo o editado.",
+      "en": "Change log for every beta build. The watcher extracts the “Mage” section of every new or edited post."
+    },
+    "verified": "2026-10-11",
+    "notes": {
+      "es": "Hilo de la beta. Tras el lanzamiento, las notas de parche se publicarán como noticias (aparecerán en el Blizzard Tracker).",
+      "en": "Beta thread. After launch, patch notes will be published as news (they will show up in the Blizzard Tracker)."
+    }
+  },
+  {
+    "id": "forever-known-issues",
+    "name": "WoW Forever Beta Known Issues",
+    "publisher": "Blizzard Entertainment",
+    "url": "https://us.forums.blizzard.com/en/wow/t/2352687",
+    "kind": "official",
+    "lang": "en",
+    "type": "discourse-topic",
+    "endpoint": "https://us.forums.blizzard.com/en/wow/t/2352687.json",
+    "match": "\\b(Mages?|Arcane|Frostfire|Frostbolt|Fireball|Pyroblast|Polymorph|Ice Lance|Fingers of Frost|Heating Up|Ignite|Comprehension)\\b",
+    "priority": "normal",
+    "focus": {
+      "es": "Errores conocidos de cada build. Evita documentar como cambio lo que es un fallo pendiente de arreglo.",
+      "en": "Known bugs in each build. Prevents documenting a pending bug as a design change."
+    },
+    "verified": "2026-10-11"
+  },
+  {
+    "id": "blizzard-tracker-eu-es",
+    "name": "Blizzard Tracker (foros europeos en español)",
+    "publisher": "Blizzard Entertainment",
+    "url": "https://eu.forums.blizzard.com/es/wow/groups/blizzard-tracker/posts",
+    "kind": "official",
+    "lang": "es",
+    "type": "rss",
+    "endpoint": "https://eu.forums.blizzard.com/es/wow/groups/blizzard-tracker/posts.rss",
+    "match": "Forever",
+    "priority": "high",
+    "focus": {
+      "es": "Traducciones oficiales de las noticias: de aquí salen los nombres en español de hechizos y talentos.",
+      "en": "Official translations of the news: the source for Spanish spell and talent names."
+    },
+    "verified": "2026-10-11"
+  },
+  {
+    "id": "wago-builds",
+    "name": "wago.tools builds",
+    "publisher": "wago.tools",
+    "url": "https://wago.tools/builds",
+    "kind": "tool",
+    "lang": "en",
+    "type": "wago-builds",
+    "endpoint": "https://wago.tools/builds",
+    "match": "Forever",
+    "priority": "normal",
+    "focus": {
+      "es": "Detecta builds nuevas del cliente de Forever (p. ej., 1.60.1.70338). Una build nueva suele traer notas de desarrollo.",
+      "en": "Detects new Forever client builds (e.g. 1.60.1.70338). A new build usually comes with development notes."
+    },
+    "verified": "2026-10-11"
+  },
+  {
+    "id": "wowhead-news",
+    "name": "Wowhead News",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever",
+    "kind": "press",
+    "lang": "en",
+    "type": "rss",
+    "endpoint": "https://www.wowhead.com/news/rss/all",
+    "match": "Forever",
+    "priority": "normal",
+    "focus": {
+      "es": "Noticias y cambios extraídos de cada build (tooltips), además de declaraciones de los desarrolladores en pódcast y redes.",
+      "en": "News and datamined tooltip changes for every build, plus developer statements from podcasts and social media."
+    },
+    "verified": "2026-10-11",
+    "notes": {
+      "es": "Los cambios extraídos de la build son indicios: confírmalos con las notas oficiales antes de marcarlos como «Oficial».",
+      "en": "Datamined changes are hints: confirm them with the official notes before marking them “Official”."
+    }
+  },
+  {
+    "id": "warcrafttavern-forever",
+    "name": "Warcraft Tavern — WoW Forever",
+    "publisher": "Warcraft Tavern",
+    "url": "https://www.warcrafttavern.com/forever/",
+    "kind": "community",
+    "lang": "en",
+    "type": "rss",
+    "endpoint": "https://www.warcrafttavern.com/forever/feed/",
+    "match": "Mage|Class|Talent|Patch|Beta|Development",
+    "priority": "normal",
+    "focus": {
+      "es": "Resúmenes de noticias y guías de la comunidad, útiles para contrastar.",
+      "en": "News summaries and community guides, useful for cross-checking."
+    },
+    "verified": "2026-10-11"
+  },
+  {
+    "id": "forever-beta-forum",
+    "name": "WoW: Forever Beta Discussion",
+    "publisher": "Blizzard Entertainment forums",
+    "url": "https://us.forums.blizzard.com/en/wow/c/in-development/wow-forever-beta-discussion/349",
+    "kind": "community",
+    "lang": "en",
+    "type": "rss",
+    "endpoint": "https://us.forums.blizzard.com/en/wow/c/349.rss",
+    "match": "\\b(Mages?|Arcane|Frost|Fire|Frostfire|Polymorph)\\b",
+    "priority": "low",
+    "focus": {
+      "es": "Opiniones y errores que reportan los jugadores. Sirve para detectar temas, no como fuente de datos.",
+      "en": "Player feedback and bug reports. Useful to spot topics, not as a data source."
+    },
+    "verified": "2026-10-11"
+  },
+  {
+    "id": "icyveins-forever",
+    "name": "Icy Veins — WoW Forever news",
+    "publisher": "Icy Veins",
+    "url": "https://www.icy-veins.com/wow-forever/news",
+    "kind": "community",
+    "lang": "en",
+    "type": "manual",
+    "priority": "normal",
+    "focus": {
+      "es": "Noticias y guías de clase. Bloquea las peticiones automáticas: revisar a mano.",
+      "en": "News and class guides. Blocks automated requests: check by hand."
+    },
+    "verified": "2026-10-11"
+  },
+  {
+    "id": "wowhead-forever-db",
+    "name": "Wowhead — WoW Forever database",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever",
+    "kind": "tool",
+    "lang": "en",
+    "type": "manual",
+    "priority": "low",
+    "focus": {
+      "es": "Tooltips y valores de hechizos extraídos del cliente. Solo para publicar cifras, siempre como dato extraído y no oficial.",
+      "en": "Spell tooltips and values extracted from the client. Only for publishing numbers, always as datamined, not official."
+    },
+    "verified": "2026-10-11"
+  }
+]

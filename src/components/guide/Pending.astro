@@ -1,0 +1,82 @@
+---
+/**
+ * Explicit empty state for content we cannot document yet.
+ * Never replace this with placeholder text: say what is missing and why.
+ */
+import Icon from '../ui/Icon.astro';
+import { getLocale } from '../../i18n/locale';
+import { t } from '../../i18n/ui';
+
+interface Props {
+  title?: string;
+  why: string;
+  next?: string;
+}
+
+const { title, why, next } = Astro.props;
+const locale = getLocale(Astro);
+---
+
+<section class="pending" aria-label={title ?? t(locale, 'pending.title')}>
+  <p class="pending__title">
+    <Icon name="pending" size={20} />
+    {title ?? t(locale, 'pending.title')}
+  </p>
+  <dl>
+    <dt>{t(locale, 'pending.why')}</dt>
+    <dd>{why}</dd>
+    {
+      next && (
+        <>
+          <dt>{t(locale, 'pending.next')}</dt>
+          <dd>{next}</dd>
+        </>
+      )
+    }
+  </dl>
+  <slot />
+</section>
+
+<style>
+  .pending {
+    padding: var(--space-4) var(--space-5);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius);
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 10px,
+      color-mix(in srgb, var(--surface-3) 35%, transparent) 10px,
+      color-mix(in srgb, var(--surface-3) 35%, transparent) 20px
+    );
+  }
+  .pending__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 700;
+    color: var(--status-pending);
+  }
+  dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: var(--space-1) var(--space-4);
+    margin: var(--space-3) 0 0;
+    font-size: var(--step--1);
+  }
+  dt {
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  dd {
+    margin: 0;
+  }
+  @media (max-width: 520px) {
+    dl {
+      grid-template-columns: 1fr;
+    }
+    dd + dt {
+      margin-top: var(--space-2);
+    }
+  }
+</style>

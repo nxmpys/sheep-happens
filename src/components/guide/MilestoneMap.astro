@@ -1,0 +1,102 @@
+---
+import Icon from '../ui/Icon.astro';
+import SourceRefs from './SourceRefs.astro';
+import StatusBadge from './StatusBadge.astro';
+import { getLocale } from '../../i18n/locale';
+import { t } from '../../i18n/ui';
+import { milestonesForTree } from '../../lib/data';
+import { displayName } from '../../lib/names';
+
+interface Props {
+  tree: 'arcane' | 'fire' | 'frost';
+}
+
+const { tree } = Astro.props;
+const locale = getLocale(Astro);
+const slots = milestonesForTree(tree);
+---
+
+<ol id="milestones" class={`milestones school-${tree}`} aria-label={t(locale, 'milestones.title')}>
+  {
+    slots.map((slot) => (
+      <li class:list={['milestone', { 'milestone--pending': slot.status === 'pending' }]}>
+        <span class="milestone__points" data-pagefind-ignore>{t(locale, 'milestones.points', { points: slot.points })}</span>
+        <span class="milestone__name">
+          {slot.name ? (
+            slot.changeId ? (
+              <a href={`#change-${slot.changeId}`}>{displayName({ name: slot.name, nameEs: slot.nameEs }, locale).primary}</a>
+            ) : (
+              displayName({ name: slot.name, nameEs: slot.nameEs }, locale).primary
+            )
+          ) : (
+            t(locale, 'milestones.unknown')
+          )}
+        </span>
+        <StatusBadge status={slot.status} />
+        {slot.note && <p class="milestone__note">{slot.note[locale]}</p>}
+        <SourceRefs ids={slot.sources} />
+        <Icon name={tree} size={18} class="milestone__sigil" />
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .milestones {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.25rem), 1fr));
+    gap: var(--space-3);
+    counter-reset: none;
+  }
+  .milestone {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin: 0;
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .milestone + .milestone {
+    margin-top: 0;
+  }
+  .milestone--pending {
+    border-style: dashed;
+    background: transparent;
+  }
+  .milestone__points {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--school);
+  }
+  .milestone__name {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .milestone--pending .milestone__name {
+    color: var(--text-subtle);
+  }
+  .milestone__note {
+    margin: 0;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .milestone :global(.milestone__sigil) {
+    position: absolute;
+    top: var(--space-3);
+    right: var(--space-3);
+    color: var(--school);
+    opacity: 0.6;
+  }
+</style>

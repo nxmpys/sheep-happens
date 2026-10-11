@@ -1,0 +1,79 @@
+---
+pageId: leveling
+locale: en
+title: Leveling a Mage in WoW Forever
+seoTitle: How to level a Mage in WoW Forever (1-60)
+description: What is already known about leveling a Mage from 1 to 60 in WoW Forever, key levels, the changes to farming and downranking, and what still needs testing.
+gameVersion: forever-beta-2026-10
+published: 2026-10-11
+reviewed: 2026-10-11
+reviewedBy: Sheep Happens
+status: published
+verification: reported
+summary:
+  - Talents start at level 10; Frostfire Bolt and dual specialization arrive at level 40 (Blizzard is considering moving the latter earlier).
+  - Forever deliberately curbs the Classic Mage's mass farming and the downranking trick.
+  - The beta only goes up to level 30, so there is no tested leveling route yet.
+sources: [blizzard-deep-dive-mage, blizzard-dev-notes, wowhead-dual-spec-podcast, wiki-mage-abilities-classic, lfcarry-beta, warcrafttavern-legacy]
+tags: [leveling, levels, farming, downranking]
+---
+
+## What we already know
+
+<FactList ids={['talents-start', 'dual-spec', 'beta', 'legacy']} />
+
+## Key levels
+
+Baseline ability levels are the Classic ones: Forever may change them. Only rows marked “Official” are confirmed for Forever.
+
+| Level | What you get | Status |
+| --- | --- | --- |
+| 1 | Fireball, Frost Armor, Arcane Intellect | <Status status="classic" /> |
+| 4–6 | Frostbolt and Conjure Water at level 4; Fire Blast and Conjure Food at level 6 | <Status status="classic" /> |
+| 8 | Polymorph, Arcane Missiles | <Status status="classic" /> |
+| 10 | Frost Nova and **your first talent point** | <Status status="verified" /> (talents) |
+| 20 | Blink, Evocation, Mana Shield, Blizzard, Fire Ward; teleports to Stormwind, Ironforge, Orgrimmar and Undercity | <Status status="classic" /> |
+| 24 | Counterspell | <Status status="classic" /> |
+| 26 | Cone of Cold | <Status status="classic" /> |
+| 30 | Ice Armor; teleports to Darnassus and Thunder Bluff | <Status status="classic" /> |
+| 34 | Mage Armor | <Status status="classic" /> |
+| 40 | **Frostfire Bolt** and **dual specialization**; portals to the first four capitals (Darnassus and Thunder Bluff at level 50) | <Status status="verified" /> (Frostfire Bolt, dual spec) |
+
+## Changes that affect leveling
+
+### Less mass farming
+
+In Classic, Frost Mages leveled and farmed by dragging large packs and finishing them with Blizzard and Cone of Cold. Forever deliberately reins that in: <Status status="verified" />
+
+- **Cone of Cold** lasts less.
+- **Improved Blizzard** slows by at most 40% (was 65%).
+- **Permafrost** extends Chill effects by a percentage rather than fixed seconds, so it no longer over-extends Improved Blizzard.
+
+Blizzard explains the goal: making it harder for people chasing fast gold and experience to pull huge packs with repetitive, low-risk mechanics, which disrupted the economy. <Status status="verified" /> AoE farming does not disappear, but it should be riskier and probably less profitable. <Status status="analysis" />
+
+### Downranking pays off less
+
+Since the 1 October build, ranks far below your level **get less from your spell damage** and have a **lower chance to trigger class abilities and talents**. The official example: Rank 1 Frostbolt at level 60 has a 0% chance to trigger Frostbite. <Status status="verified" />
+
+On 8 October the low ranks of Frostbolt, Fireball and Arcane Missiles were also rebalanced so every new rank is always an upgrade. <Status status="verified" /> Downranking to save mana is still possible, but it loses much of its appeal. <Status status="analysis" />
+
+### Chaining mobs as Fire
+
+**Wake of Fire** greatly raises your next Fire Blast's crit chance for 30 s after every non-trivial kill. Blizzard extended that window with leveling in mind, because Mages need to restore mana between fights. <Status status="verified" />
+
+### Scrolls to decipher
+
+With **Comprehension** you can read scrolls dropped by creatures. They have been rebalanced and can no longer be used while moving; Blizzard has not detailed the rewards. <Status status="verified" />
+
+## Which tree should I level with?
+
+<Pending
+  why="The beta is capped at level 30 and the new talents have no published numbers. Recommending a tree would be a guess."
+  next="From launch we will compare the three trees (time per kill, downtime and risk) and publish the results with their version."
+>
+  Meanwhile, these are the factors we will look at: <Status status="analysis" />
+
+  - **Frost**: more control and safety; Ice Lance comes early (11-point milestone).
+  - **Fire**: Wake of Fire and Heating Up reward chaining kills and crits.
+  - **Arcane**: Missile Barrage also triggers from Fireball and Frostbolt, so it fits a mixed build.
+</Pending>

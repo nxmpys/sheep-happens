@@ -1,0 +1,10 @@
+---
+/** Replaces Markdown tables so they scroll inside their own box on small screens. */
+import { getLocale } from '../../i18n/locale';
+
+const label = getLocale(Astro) === 'es' ? 'Tabla desplazable' : 'Scrollable table';
+---
+
+<div class="table-wrap" tabindex="0" role="region" aria-label={label}>
+  <table {...Astro.props}><slot /></table>
+</div>

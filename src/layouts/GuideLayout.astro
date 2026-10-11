@@ -1,0 +1,222 @@
+---
+import type { MarkdownHeading } from 'astro';
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
+import PageMeta from '../components/layout/PageMeta.astro';
+import PrevNext from '../components/layout/PrevNext.astro';
+import Toc from '../components/layout/Toc.astro';
+import SourceRefs from '../components/guide/SourceRefs.astro';
+import Icon from '../components/ui/Icon.astro';
+import '../styles/prose.css';
+import { href } from '../i18n/locale';
+import { ROUTES, breadcrumbTrail, type Locale, type PageId } from '../i18n/routes';
+import { NAV_LABELS, t } from '../i18n/ui';
+import type { PageFrontmatter } from '../lib/schemas';
+import { articleJsonLd, breadcrumbJsonLd, lastModified } from '../lib/seo';
+
+interface Props {
+  locale: Locale;
+  pageId: PageId;
+  data: PageFrontmatter;
+  headings: MarkdownHeading[];
+}
+
+const { locale, pageId, data, headings } = Astro.props;
+const spec = ROUTES[pageId].spec;
+const trail = breadcrumbTrail(pageId);
+const section = NAV_LABELS[locale][trail[1] ?? pageId];
+const strings = {
+  copyLabel: t(locale, 'heading.copyLink'),
+  copied: t(locale, 'toast.copied'),
+  copyFailed: t(locale, 'toast.copyFailed'),
+};
+const site = Astro.site ?? new URL('https://sheep-happens.pages.dev');
+const absolute = (path: string) => new URL(path, site).href;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const image = `${base}og/${locale}-${pageId}.png`;
+const modified = lastModified(pageId, data.reviewed);
+const jsonLd = [
+  articleJsonLd({
+    locale,
+    url: absolute(href(pageId, locale)),
+    homeUrl: absolute(href('home', locale)),
+    title: data.title,
+    description: data.description,
+    published: data.published,
+    modified,
+    image: absolute(image),
+  }),
+  breadcrumbJsonLd(trail.map((id) => ({ name: NAV_LABELS[locale][id], url: absolute(href(id, locale)) }))),
+];
+const tocHeadings = data.sources.length > 0
+  ? [...headings, { depth: 2, slug: 'page-sources', text: locale === 'es' ? 'Fuentes de esta página' : 'Sources for this page' }]
+  : headings;
+---
+
+<BaseLayout
+  locale={locale}
+  pageId={pageId}
+  title={data.title}
+  seoTitle={data.seoTitle}
+  description={data.description}
+  section={section}
+  image={image}
+  jsonLd={jsonLd}
+  modified={modified}
+>
+  <div class:list={['container', 'guide', spec && `school-${spec}`]}>
+    <div class="guide__main">
+      <header class="guide__header">
+        <Breadcrumbs locale={locale} pageId={pageId} />
+        {
+          spec && (
+            <p class="guide__kicker">
+              <Icon name={spec} size={18} />
+              {NAV_LABELS[locale].talents}
+            </p>
+          )
+        }
+        <h1 data-pagefind-meta="title">{data.title}</h1>
+        <p class="guide__lead">{data.description}</p>
+        <PageMeta locale={locale} data={data} />
+      </header>
+
+      <div class="guide__toc-inline">
+        <Toc headings={tocHeadings} locale={locale} variant="inline" />
+      </div>
+
+      <article class="prose" data-pagefind-body data-heading-anchors={JSON.stringify(strings)}>
+        {
+          data.summary && data.summary.length > 0 && (
+            <section class="summary" aria-labelledby="summary-title">
+              <p class="summary__title" id="summary-title">
+                {t(locale, 'summary.title')}
+              </p>
+              <ul>
+                {data.summary.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+        <slot />
+        {
+          data.sources.length > 0 && (
+            <section class="page-sources" aria-labelledby="page-sources">
+              <h2 id="page-sources">{locale === 'es' ? 'Fuentes de esta página' : 'Sources for this page'}</h2>
+              <SourceRefs ids={data.sources} />
+            </section>
+          )
+        }
+      </article>
+
+      <PrevNext locale={locale} pageId={pageId} />
+    </div>
+
+    <aside class="guide__aside" data-pagefind-ignore>
+      <Toc headings={tocHeadings} locale={locale} variant="sidebar" />
+    </aside>
+  </div>
+</BaseLayout>
+
+<script>
+  import { copyText } from '../scripts/clipboard';
+  import { showToast } from '../scripts/toast';
+
+  const article = document.querySelector<HTMLElement>('[data-heading-anchors]');
+  if (article) {
+    const strings: Record<string, string> = JSON.parse(article.dataset.headingAnchors ?? '{}');
+    for (const heading of article.querySelectorAll<HTMLHeadingElement>(':scope > h2[id], :scope > h3[id]')) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'heading-anchor';
+      button.textContent = '#';
+      button.setAttribute('aria-label', (strings['copyLabel'] ?? '').replace('{title}', heading.textContent?.trim() ?? ''));
+      button.addEventListener('click', async () => {
+        const url = `${location.origin}${location.pathname}${location.search}#${heading.id}`;
+        history.replaceState(null, '', `#${heading.id}`);
+        const ok = await copyText(url);
+        showToast(ok ? strings['copied']! : strings['copyFailed']!);
+      });
+      heading.append(button);
+    }
+  }
+</script>
+
+<style>
+  .guide {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-7);
+    padding-top: var(--space-5);
+  }
+  .guide__main {
+    min-width: 0;
+  }
+  .guide__header {
+    display: grid;
+    gap: var(--space-3);
+    max-width: var(--content-max);
+    padding-bottom: var(--space-5);
+    margin-bottom: var(--space-5);
+    border-bottom: 1px solid var(--border);
+  }
+  .guide__kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--school, var(--accent));
+  }
+  h1 {
+    font-size: var(--step-4);
+  }
+  .guide__lead {
+    font-size: var(--step-1);
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .guide__toc-inline {
+    max-width: var(--content-max);
+    margin-bottom: var(--space-5);
+  }
+  .guide__aside {
+    display: none;
+  }
+  .summary {
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--school, var(--accent));
+    background: var(--surface-1);
+  }
+  .summary__title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--school, var(--accent));
+  }
+  .summary ul {
+    margin-top: var(--space-2);
+  }
+  .page-sources {
+    margin-top: var(--space-8);
+  }
+
+  @media (min-width: 1180px) {
+    .guide {
+      grid-template-columns: minmax(0, 1fr) 15rem;
+    }
+    .guide__aside {
+      display: block;
+    }
+    .guide__toc-inline {
+      display: none;
+    }
+  }
+</style>

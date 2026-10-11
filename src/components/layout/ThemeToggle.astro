@@ -1,0 +1,68 @@
+---
+import Icon from '../ui/Icon.astro';
+import type { Locale } from '../../i18n/routes';
+import { t } from '../../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<button
+  type="button"
+  class="icon-button theme-toggle"
+  data-theme-toggle
+  data-label-light={t(locale, 'theme.light')}
+  data-label-dark={t(locale, 'theme.dark')}
+  aria-label={t(locale, 'theme.toggle')}
+>
+  <Icon name="sun" size={20} class="theme-toggle__sun" />
+  <Icon name="moon" size={20} class="theme-toggle__moon" />
+</button>
+
+<script>
+  const KEY = 'sh-theme';
+  const button = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+
+  function effectiveTheme(): 'light' | 'dark' {
+    const chosen = document.documentElement.dataset.theme;
+    if (chosen === 'light' || chosen === 'dark') return chosen;
+    return matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  }
+
+  function sync() {
+    if (!button) return;
+    const next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+    // The label says what the button will do.
+    button.setAttribute('aria-label', (next === 'light' ? button.dataset.labelLight : button.dataset.labelDark) ?? '');
+    button.dataset.current = effectiveTheme();
+  }
+
+  button?.addEventListener('click', () => {
+    const next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem(KEY, next);
+    } catch {
+      /* private mode: the choice lasts for this page only */
+    }
+    sync();
+  });
+
+  matchMedia('(prefers-color-scheme: light)').addEventListener('change', sync);
+  sync();
+</script>
+
+<style>
+  .theme-toggle :global(.theme-toggle__moon) {
+    display: none;
+  }
+  .theme-toggle[data-current='light'] :global(.theme-toggle__sun) {
+    display: none;
+  }
+  .theme-toggle[data-current='light'] :global(.theme-toggle__moon) {
+    display: inline-block;
+  }
+</style>

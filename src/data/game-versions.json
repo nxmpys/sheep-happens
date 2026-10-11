@@ -1,0 +1,15 @@
+[
+  {
+    "id": "forever-beta-2026-10",
+    "label": {
+      "es": "Forever · beta (octubre de 2026)",
+      "en": "Forever · beta (October 2026)"
+    },
+    "stage": "beta",
+    "since": "2026-09-17",
+    "notes": {
+      "es": "Beta cerrada con nivel máximo 30 desde el 1 de octubre. Lanzamiento previsto el 4 de noviembre de 2026.",
+      "en": "Closed beta, level cap 30 since 1 October. Launch planned for 4 November 2026."
+    }
+  }
+]

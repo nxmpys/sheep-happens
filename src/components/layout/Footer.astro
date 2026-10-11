@@ -1,0 +1,91 @@
+---
+import Logo from '../ui/Logo.astro';
+import { href } from '../../i18n/locale';
+import { FOOTER_NAV, type Locale } from '../../i18n/routes';
+import { NAV_LABELS, t } from '../../i18n/ui';
+import { currentVersion as current } from '../../lib/data';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<footer class="site-footer" data-pagefind-ignore>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <Logo size={30} />
+      <div>
+        <p class="footer-name">Sheep Happens</p>
+        <p class="footer-tagline">{t(locale, 'site.tagline')}</p>
+        <p class="footer-version">{current.label[locale]}</p>
+      </div>
+    </div>
+    <nav aria-label={t(locale, 'nav.footer')}>
+      <ul class="footer-links">
+        {
+          FOOTER_NAV.map((id) => (
+            <li>
+              <a href={href(id, locale)}>{NAV_LABELS[locale][id]}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <p class="footer-legal">
+      {t(locale, 'footer.disclaimer')}
+      {' '}
+      {t(locale, 'footer.license')}
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: var(--space-8);
+    border-top: 1px solid var(--border);
+    background: var(--surface-1);
+  }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-5);
+    padding-block: var(--space-6);
+  }
+  .footer-brand {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+  .footer-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-1);
+  }
+  .footer-tagline,
+  .footer-version {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .footer-legal {
+    grid-column: 1 / -1;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border);
+    font-size: 0.8125rem;
+    color: var(--text-subtle);
+  }
+  @media (max-width: 640px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

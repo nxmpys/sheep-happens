@@ -1,0 +1,171 @@
+[
+  {
+    "id": "arcane-11",
+    "tree": "arcane",
+    "points": 11,
+    "name": "Arcane Blast",
+    "nameEs": "Explosión Arcana",
+    "changeId": "arcane-blast",
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ]
+  },
+  {
+    "id": "arcane-16",
+    "tree": "arcane",
+    "points": 16,
+    "name": "Missile Barrage",
+    "nameEs": "Tromba de misiles",
+    "changeId": "missile-barrage",
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ]
+  },
+  {
+    "id": "arcane-21",
+    "tree": "arcane",
+    "points": 21,
+    "name": "Presence of Mind",
+    "nameEs": "Presencia mental",
+    "status": "classic",
+    "note": {
+      "es": "En Classic, fila 5. Forever lo menciona (Poder Arcano ahora lo requiere), pero no confirma su fila.",
+      "en": "Tier 5 in Classic. Forever mentions it (Arcane Power now requires it) but does not confirm its row."
+    },
+    "sources": [
+      "wiki-presence-of-mind",
+      "blizzard-deep-dive-mage"
+    ]
+  },
+  {
+    "id": "arcane-31",
+    "tree": "arcane",
+    "points": 31,
+    "name": "Arcane Power",
+    "nameEs": "Poder Arcano",
+    "changeId": "arcane-power",
+    "status": "classic",
+    "note": {
+      "es": "En Classic, fila 7. Forever solo cambia su requisito (ahora Presencia mental).",
+      "en": "Tier 7 in Classic. Forever only changes its prerequisite (now Presence of Mind)."
+    },
+    "sources": [
+      "wiki-arcane-power-classic",
+      "blizzard-deep-dive-mage"
+    ]
+  },
+  {
+    "id": "fire-11",
+    "tree": "fire",
+    "points": 11,
+    "name": "Pyroblast",
+    "nameEs": "Piroexplosión",
+    "status": "classic",
+    "note": {
+      "es": "En Classic, fila 3 (6 s de lanzamiento). Forever no anuncia cambios, pero Calentamiento lo usa como requisito.",
+      "en": "Tier 3 in Classic (6 s cast). Forever announces no change, but Heating Up uses it as a prerequisite."
+    },
+    "sources": [
+      "wiki-pyroblast",
+      "blizzard-deep-dive-mage"
+    ]
+  },
+  {
+    "id": "fire-16",
+    "tree": "fire",
+    "points": 16,
+    "status": "pending",
+    "note": {
+      "es": "Blizzard no ha dicho qué talento ocupa el nuevo talento decisivo de 16 puntos de Fuego. Calentamiento está en la fila 4, pero no se describe como talento decisivo.",
+      "en": "Blizzard has not said which talent fills Fire's new 16-point milestone. Heating Up sits in row 4 but is not described as a milestone talent."
+    },
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ]
+  },
+  {
+    "id": "fire-21",
+    "tree": "fire",
+    "points": 21,
+    "name": "Blast Wave",
+    "nameEs": "Ola explosiva",
+    "changeId": "blast-wave",
+    "status": "classic",
+    "note": {
+      "es": "En Classic, fila 5. Forever solo elimina su requisito de Piroexplosión.",
+      "en": "Tier 5 in Classic. Forever only removes its Pyroblast prerequisite."
+    },
+    "sources": [
+      "wiki-blast-wave",
+      "blizzard-deep-dive-mage"
+    ]
+  },
+  {
+    "id": "fire-31",
+    "tree": "fire",
+    "points": 31,
+    "name": "Combustion",
+    "status": "classic",
+    "note": {
+      "es": "En Classic, fila 7. Las notas de la beta confirman que sigue teniendo 3 cargas, como en Classic.",
+      "en": "Tier 7 in Classic. The beta notes confirm it still has 3 charges, as in Classic."
+    },
+    "sources": [
+      "wiki-combustion",
+      "blizzard-dev-notes"
+    ],
+    "updated": "2026-10-11"
+  },
+  {
+    "id": "frost-11",
+    "tree": "frost",
+    "points": 11,
+    "name": "Ice Lance",
+    "nameEs": "Lanza de hielo",
+    "changeId": "ice-lance",
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ]
+  },
+  {
+    "id": "frost-16",
+    "tree": "frost",
+    "points": 16,
+    "name": "Ice Block",
+    "nameEs": "Bloqueo de hielo",
+    "changeId": "ice-block",
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ]
+  },
+  {
+    "id": "frost-21",
+    "tree": "frost",
+    "points": 21,
+    "name": "Cold Snap",
+    "nameEs": "Mordedura helada",
+    "changeId": "cold-snap",
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ]
+  },
+  {
+    "id": "frost-31",
+    "tree": "frost",
+    "points": 31,
+    "name": "Ice Barrier",
+    "status": "classic",
+    "note": {
+      "es": "En Classic, fila 7 y requiere Bloqueo de hielo. Como Bloqueo de hielo cambia de fila en Forever, su requisito podría cambiar.",
+      "en": "Tier 7 in Classic and requires Ice Block. Since Ice Block moves rows in Forever, the prerequisite may change."
+    },
+    "sources": [
+      "wiki-ice-barrier"
+    ]
+  }
+]

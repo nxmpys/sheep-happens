@@ -1,0 +1,141 @@
+---
+import SourceRefs from './SourceRefs.astro';
+import { getLocale, href } from '../../i18n/locale';
+import { NAV_LABELS, formatDate, t, type UiKey } from '../../i18n/ui';
+import { sortedChangelog } from '../../lib/data';
+import { resolveRef } from '../../lib/refs';
+
+interface Props {
+  limit?: number;
+  headingLevel?: 'h2' | 'h3';
+}
+
+const { limit, headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
+const locale = getLocale(Astro);
+const entries = sortedChangelog().slice(0, limit);
+---
+
+<ol class="log">
+  {
+    entries.map((entry) => (
+      <li class="log__entry">
+        <p class="log__meta">
+          <time datetime={entry.date}>{formatDate(locale, new Date(`${entry.date}T00:00:00Z`))}</time>
+          <span class:list={['chip', `log__type--${entry.type}`]}>{t(locale, `updates.type.${entry.type}` as UiKey)}</span>
+          {entry.build && (
+            <span class="chip">
+              {t(locale, 'updates.build')} {entry.build}
+            </span>
+          )}
+        </p>
+        <Heading class="log__title" id={`update-${entry.id}`}>
+          {entry.title[locale]}
+        </Heading>
+        <p class="log__body">{entry.body[locale]}</p>
+        {entry.refs.length > 0 && (
+          <p class="log__refs">
+            <span class="log__refs-label">{t(locale, 'updates.refs')}:</span>
+            {entry.refs.map((reference) => {
+              const ref = resolveRef(reference, locale);
+              return ref.href ? (
+                <a class="chip log__ref" href={ref.href}>
+                  {ref.label}
+                </a>
+              ) : (
+                <span class="chip log__ref">{ref.label}</span>
+              );
+            })}
+          </p>
+        )}
+        {(entry.pages.length > 0 || entry.sources.length > 0) && (
+          <p class="log__links">
+            {entry.pages.map((page) => (
+              <a href={href(page, locale)}>{NAV_LABELS[locale][page]}</a>
+            ))}
+            {entry.sources.length > 0 && <SourceRefs ids={entry.sources} />}
+          </p>
+        )}
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .log {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-left: 2px solid var(--border);
+  }
+  .log__entry {
+    position: relative;
+    margin: 0;
+    padding: 0 0 var(--space-5) var(--space-5);
+  }
+  .log__entry + .log__entry {
+    margin-top: 0;
+  }
+  .log__entry::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 0.45em;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: var(--bg);
+  }
+  .log__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--step--1);
+    color: var(--text-subtle);
+  }
+  .log__title {
+    margin: var(--space-1) 0 0;
+    font-size: var(--step-1);
+  }
+  .log__title::before {
+    display: none;
+  }
+  .log__body {
+    margin-top: var(--space-1);
+    color: var(--text-muted);
+  }
+  .log__refs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+    margin-top: var(--space-2);
+    font-size: var(--step--1);
+  }
+  .log__refs-label {
+    color: var(--text-subtle);
+    margin-right: var(--space-1);
+  }
+  a.log__ref {
+    color: var(--link);
+    text-decoration: none;
+  }
+  a.log__ref:hover {
+    border-color: var(--accent);
+  }
+  .log__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+    margin-top: var(--space-2);
+    font-size: var(--step--1);
+  }
+  .log__type--game {
+    color: var(--status-reported);
+  }
+  .log__type--guide {
+    color: var(--status-analysis);
+  }
+</style>

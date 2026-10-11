@@ -1,0 +1,388 @@
+---
+import Icon from '../ui/Icon.astro';
+import Logo from '../ui/Logo.astro';
+import LangSwitch from './LangSwitch.astro';
+import ThemeToggle from './ThemeToggle.astro';
+import { href } from '../../i18n/locale';
+import { PRIMARY_NAV, ROUTES, breadcrumbTrail, type Locale, type PageId } from '../../i18n/routes';
+import { NAV_LABELS, NAV_SHORT, t } from '../../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  pageId: PageId | undefined;
+}
+
+const { locale, pageId } = Astro.props;
+const trail = pageId ? breadcrumbTrail(pageId) : [];
+const labels = NAV_LABELS[locale];
+const isCurrent = (id: PageId) => id === pageId;
+const inSection = (id: PageId) => trail.includes(id) && id !== pageId;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href={href('home', locale)} aria-label={`${t(locale, 'site.name')} — ${labels.home}`}>
+      <Logo size={34} />
+      <span class="brand__name">Sheep Happens</span>
+    </a>
+
+    <nav class="primary-nav" id="primary-nav" aria-label={t(locale, 'nav.primary')} data-nav>
+      <ul class="nav-list">
+        {
+          PRIMARY_NAV.map((item) => (
+            <li class:list={['nav-item', { 'has-sub': item.children }]}>
+              <a
+                href={href(item.id, locale)}
+                class:list={['nav-link', { 'is-section': inSection(item.id) }]}
+                aria-current={isCurrent(item.id) ? 'page' : undefined}
+              >
+                {NAV_SHORT[locale][item.id] ?? labels[item.id]}
+              </a>
+              {item.children && (
+                <>
+                  <button
+                    type="button"
+                    class="sub-toggle"
+                    aria-expanded="false"
+                    aria-controls={`sub-${item.id}`}
+                    data-sub-toggle
+                  >
+                    <Icon name="chevronDown" size={16} />
+                    <span class="visually-hidden">{t(locale, 'nav.submenu', { label: labels[item.id] })}</span>
+                  </button>
+                  <ul class="submenu" id={`sub-${item.id}`}>
+                    {item.children.map((child) => (
+                      <li>
+                        <a
+                          href={href(child, locale)}
+                          class={`submenu-link school-${ROUTES[child].spec ?? 'baseline'}`}
+                          aria-current={isCurrent(child) ? 'page' : undefined}
+                        >
+                          <Icon name={ROUTES[child].spec ?? 'arcane'} size={18} />
+                          {labels[child]}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button type="button" class="search-trigger" data-search-open aria-haspopup="dialog">
+        <Icon name="search" size={18} />
+        <span class="search-trigger__label">{t(locale, 'search.open')}</span>
+        <kbd class="search-trigger__kbd" aria-hidden="true">/</kbd>
+      </button>
+      <LangSwitch locale={locale} pageId={pageId} />
+      <ThemeToggle locale={locale} />
+      <button
+        type="button"
+        class="icon-button menu-toggle"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        data-menu-toggle
+        data-label-open={t(locale, 'nav.menu')}
+        data-label-close={t(locale, 'nav.closeMenu')}
+      >
+        <Icon name="menu" size={22} class="menu-toggle__open" />
+        <Icon name="close" size={22} class="menu-toggle__close" />
+        <span class="visually-hidden" data-menu-label>{t(locale, 'nav.menu')}</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const nav = document.querySelector<HTMLElement>('[data-nav]');
+  const menuButton = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const subToggles = [...document.querySelectorAll<HTMLButtonElement>('[data-sub-toggle]')];
+
+  function setMenu(open: boolean, { restoreFocus = false } = {}) {
+    if (!menuButton || !nav) return;
+    menuButton.setAttribute('aria-expanded', String(open));
+    nav.dataset.open = String(open);
+    const label = menuButton.querySelector('[data-menu-label]');
+    if (label) label.textContent = (open ? menuButton.dataset.labelClose : menuButton.dataset.labelOpen) ?? '';
+    if (!open && restoreFocus) menuButton.focus();
+  }
+
+  function setSub(toggle: HTMLButtonElement, open: boolean) {
+    toggle.setAttribute('aria-expanded', String(open));
+  }
+
+  menuButton?.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+
+  for (const toggle of subToggles) {
+    toggle.addEventListener('click', () => setSub(toggle, toggle.getAttribute('aria-expanded') !== 'true'));
+    toggle.parentElement?.addEventListener('focusout', (event) => {
+      const next = (event as FocusEvent).relatedTarget as Node | null;
+      if (!next || !toggle.parentElement?.contains(next)) setSub(toggle, false);
+    });
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    const openSub = subToggles.find((t) => t.getAttribute('aria-expanded') === 'true');
+    if (openSub) {
+      setSub(openSub, false);
+      openSub.focus();
+      return;
+    }
+    if (menuButton?.getAttribute('aria-expanded') === 'true') setMenu(false, { restoreFocus: true });
+  });
+
+  document.addEventListener('click', (event) => {
+    const target = event.target as Node;
+    if (header && !header.contains(target)) {
+      setMenu(false);
+      subToggles.forEach((t) => setSub(t, false));
+    }
+  });
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    height: var(--header-h);
+    border-bottom: 1px solid var(--border);
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    height: 100%;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--text);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .brand__name {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  .primary-nav {
+    flex: 1;
+    min-width: 0;
+  }
+  .header-actions,
+  .brand {
+    flex-shrink: 0;
+  }
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 var(--space-3);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    font-weight: 550;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-link:hover {
+    color: var(--text);
+    background: var(--surface-2);
+  }
+  .nav-link[aria-current='page'],
+  .nav-link.is-section {
+    color: var(--text);
+    box-shadow: inset 0 -2px 0 var(--accent);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+  .has-sub .nav-link {
+    padding-right: var(--space-1);
+  }
+  .sub-toggle {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 32px;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+  .sub-toggle:hover {
+    background: var(--surface-2);
+    color: var(--text);
+  }
+  .sub-toggle[aria-expanded='true'] :global(svg) {
+    transform: rotate(180deg);
+  }
+  .submenu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    min-width: 12rem;
+    margin: 0;
+    padding: var(--space-2);
+    list-style: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+    box-shadow: var(--shadow);
+  }
+  .sub-toggle[aria-expanded='true'] + .submenu {
+    display: block;
+  }
+  .submenu-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 40px;
+    padding: 0 var(--space-3);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 550;
+  }
+  .submenu-link :global(svg) {
+    color: var(--school);
+  }
+  .submenu-link:hover,
+  .submenu-link[aria-current='page'] {
+    background: var(--school-soft);
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin-left: auto;
+  }
+  .search-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 40px;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    background: var(--surface-1);
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    cursor: pointer;
+  }
+  .search-trigger:hover {
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .menu-toggle {
+    display: none;
+  }
+  .menu-toggle :global(.menu-toggle__close) {
+    display: none;
+  }
+  .menu-toggle[aria-expanded='true'] :global(.menu-toggle__open) {
+    display: none;
+  }
+  .menu-toggle[aria-expanded='true'] :global(.menu-toggle__close) {
+    display: inline-block;
+  }
+
+  @media (max-width: 1200px) {
+    .menu-toggle {
+      display: inline-grid;
+    }
+    .primary-nav {
+      display: none;
+      position: absolute;
+      top: var(--header-h);
+      left: 0;
+      right: 0;
+      max-height: calc(100vh - var(--header-h));
+      overflow-y: auto;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      box-shadow: var(--shadow);
+    }
+    .primary-nav[data-open='true'] {
+      display: block;
+    }
+    .nav-list {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: var(--space-2) var(--gutter) var(--space-4);
+    }
+    .nav-item {
+      flex-wrap: wrap;
+    }
+    .nav-link {
+      flex: 1;
+      min-height: 48px;
+      font-size: var(--step-0);
+    }
+    .nav-link[aria-current='page'],
+    .nav-link.is-section {
+      box-shadow: inset 3px 0 0 var(--accent);
+      border-radius: 0;
+    }
+    .sub-toggle {
+      display: none;
+    }
+    .submenu {
+      display: block;
+      position: static;
+      width: 100%;
+      border: 0;
+      box-shadow: none;
+      background: transparent;
+      padding: 0 0 var(--space-2) var(--space-5);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .search-trigger {
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+    }
+    .search-trigger__label,
+    .search-trigger__kbd {
+      display: none;
+    }
+    .brand__name {
+      font-size: 1.05rem;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .brand__name {
+      display: none;
+    }
+  }
+</style>

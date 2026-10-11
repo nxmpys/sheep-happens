@@ -1,0 +1,102 @@
+---
+import Icon from '../ui/Icon.astro';
+import { getLocale } from '../../i18n/locale';
+import { formatDate } from '../../i18n/ui';
+import { sources } from '../../lib/data';
+import { SOURCE_KINDS, type SourceKind } from '../../lib/schemas';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const kindLabels: Record<SourceKind, { es: string; en: string }> = {
+  official: { es: 'Oficiales (Blizzard)', en: 'Official (Blizzard)' },
+  press: { es: 'Prensa', en: 'Press' },
+  community: { es: 'Comunidad', en: 'Community' },
+  tool: { es: 'Calculadoras con datos de la beta', en: 'Calculators built from beta data' },
+  'classic-reference': { es: 'Referencia de Classic', en: 'Classic reference' },
+};
+const groups = SOURCE_KINDS.map((kind) => ({ kind, list: sources.filter((s) => s.kind === kind) })).filter(
+  (g) => g.list.length > 0,
+);
+const accessed = es ? 'Consultada' : 'Accessed';
+const published = es ? 'Publicada' : 'Published';
+---
+
+{
+  groups.map((group) => (
+    <section class="source-group" aria-labelledby={`sources-${group.kind}`}>
+      <h3 id={`sources-${group.kind}`}>{kindLabels[group.kind][locale]}</h3>
+      <ul class="source-list">
+        {group.list.map((source) => (
+          <li class="source" id={`source-${source.id}`}>
+            <a href={source.url} target="_blank" rel="noopener noreferrer" class="source__title">
+              {source.title}
+              <Icon name="external" size={14} />
+              <span class="visually-hidden">{es ? '(se abre en una pestaña nueva)' : '(opens in a new tab)'}</span>
+            </a>
+            <p class="source__meta">
+              <span>{source.publisher}</span>
+              {source.published && (
+                <span>
+                  {published}: {source.published}
+                </span>
+              )}
+              <span>
+                {accessed}: <time datetime={source.accessed}>{formatDate(locale, new Date(`${source.accessed}T00:00:00Z`))}</time>
+              </span>
+              <code>{source.id}</code>
+            </p>
+            {source.notes && <p class="source__notes">{source.notes[locale]}</p>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))
+}
+
+<style>
+  .source-group + .source-group {
+    margin-top: var(--space-6);
+  }
+  .source-group h3 {
+    margin: 0 0 var(--space-3);
+    font-size: var(--step-1);
+  }
+  .source-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .source {
+    margin: 0;
+    padding: var(--space-3) var(--space-4);
+  }
+  .source + .source {
+    margin-top: 0;
+    border-top: 1px solid var(--border);
+  }
+  .source__title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    font-weight: 650;
+  }
+  .source__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+    margin-top: var(--space-1);
+    font-size: var(--step--1);
+    color: var(--text-subtle);
+  }
+  .source__meta code {
+    font-size: 0.75rem;
+  }
+  .source__notes {
+    margin-top: var(--space-1);
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+</style>

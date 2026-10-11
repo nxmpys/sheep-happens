@@ -1,0 +1,91 @@
+---
+/** The sources we check every week (src/data/watchlist.json). */
+import Icon from '../ui/Icon.astro';
+import { getLocale } from '../../i18n/locale';
+import { formatDate, t, type UiKey } from '../../i18n/ui';
+import { watchlist } from '../../lib/data';
+
+const locale = getLocale(Astro);
+const order = { high: 0, normal: 1, low: 2 } as const;
+const list = [...watchlist].sort((a, b) => order[a.priority] - order[b.priority]);
+const kindLabel: Record<string, { es: string; en: string }> = {
+  official: { es: 'Oficial', en: 'Official' },
+  press: { es: 'Prensa', en: 'Press' },
+  community: { es: 'Comunidad', en: 'Community' },
+  tool: { es: 'Datos extraídos', en: 'Datamined' },
+  'classic-reference': { es: 'Classic', en: 'Classic' },
+};
+const newTab = locale === 'es' ? '(se abre en una pestaña nueva)' : '(opens in a new tab)';
+---
+
+<ul class="watch">
+  {
+    list.map((watch) => (
+      <li class:list={['watch__item', `watch__item--${watch.priority}`]}>
+        <p class="watch__head">
+          <a href={watch.url} target="_blank" rel="noopener noreferrer" class="watch__name">
+            {watch.name}
+            <Icon name="external" size={14} />
+            <span class="visually-hidden">{newTab}</span>
+          </a>
+          <span class="chip">{kindLabel[watch.kind]?.[locale] ?? watch.kind}</span>
+          <span class="chip">{t(locale, watch.type === 'manual' ? 'watch.manual' : 'watch.auto')}</span>
+          <span class="chip">{t(locale, `watch.priority.${watch.priority}` as UiKey)}</span>
+        </p>
+        <p class="watch__focus">{watch.focus[locale]}</p>
+        {watch.notes && <p class="watch__notes">{watch.notes[locale]}</p>}
+        <p class="watch__meta">
+          {watch.publisher} · {watch.lang.toUpperCase()} ·{' '}
+          {t(locale, 'watch.verified', { date: formatDate(locale, new Date(`${watch.verified}T00:00:00Z`)) })}
+        </p>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .watch {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
+  .watch__item {
+    margin: 0;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface-1);
+  }
+  .watch__item + .watch__item {
+    margin-top: 0;
+  }
+  .watch__item--high {
+    border-left-color: var(--status-verified);
+  }
+  .watch__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1) var(--space-2);
+  }
+  .watch__name {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    font-weight: 700;
+    margin-right: var(--space-1);
+  }
+  .watch__focus {
+    margin-top: var(--space-1);
+    color: var(--text-muted);
+  }
+  .watch__notes,
+  .watch__meta {
+    margin-top: var(--space-1);
+    font-size: var(--step--1);
+    color: var(--text-subtle);
+  }
+</style>

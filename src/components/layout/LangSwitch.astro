@@ -1,0 +1,59 @@
+---
+import { href, otherLocale } from '../../i18n/locale';
+import type { Locale, PageId } from '../../i18n/routes';
+import { t } from '../../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  pageId: PageId | undefined;
+}
+
+const { locale, pageId } = Astro.props;
+const target = otherLocale(locale);
+const label = target === 'en' ? 'English version of this page' : 'Versión en español de esta página';
+---
+
+<a
+  class="lang-switch"
+  href={href(pageId ?? 'home', target)}
+  hreflang={target}
+  lang={target}
+  title={label}
+  data-lang-switch
+>
+  <span class="visually-hidden">{t(locale, 'lang.current')}. </span>
+  <span aria-hidden="true">{target.toUpperCase()}</span>
+  <span class="visually-hidden">{label}</span>
+</a>
+
+<script>
+  // Keep the current hash and filters when switching language (anchors and
+  // query parameters are language-neutral by design).
+  document.querySelectorAll<HTMLAnchorElement>('[data-lang-switch]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const url = new URL(link.href);
+      url.search = location.search;
+      url.hash = location.hash;
+      link.href = url.toString();
+    });
+  });
+</script>
+
+<style>
+  .lang-switch {
+    display: inline-grid;
+    place-items: center;
+    min-width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+  }
+  .lang-switch:hover {
+    background: var(--surface-2);
+    color: var(--text);
+  }
+</style>

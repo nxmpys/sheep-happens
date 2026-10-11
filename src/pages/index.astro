@@ -1,0 +1,47 @@
+---
+/**
+ * Language chooser at the site root. Redirects to the reader's language
+ * (Spanish by default) and offers both links when JavaScript is off.
+ */
+import '../styles/base.css';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const es = `${base}es/`;
+const en = `${base}en/`;
+const site = Astro.site ?? new URL('https://sheep-happens.pages.dev');
+// The root only redirects; search engines should index the Spanish home instead.
+const canonical = new URL(es, site).href;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sheep Happens — Guía de Mago / Mage guide · WoW: Forever</title>
+    <meta name="description" content="Guía interactiva de Mago para World of Warcraft: Forever. Interactive Mage guide for World of Warcraft: Forever." />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="es" href={new URL(es, site).href} />
+    <link rel="alternate" hreflang="en" href={new URL(en, site).href} />
+    <link rel="alternate" hreflang="x-default" href={canonical} />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <script is:inline define:vars={{ es, en }}>
+      var langs = navigator.languages || [navigator.language || 'es'];
+      var preferred = 'es';
+      for (var i = 0; i < langs.length; i++) {
+        var code = String(langs[i]).toLowerCase();
+        if (code.indexOf('es') === 0) { preferred = 'es'; break; }
+        if (code.indexOf('en') === 0) { preferred = 'en'; break; }
+      }
+      location.replace(preferred === 'en' ? en : es);
+    </script>
+    <noscript><meta http-equiv="refresh" content={`0; url=${es}`} /></noscript>
+  </head>
+  <body>
+    <main class="container" style="padding-block: 4rem;">
+      <h1>Sheep Happens</h1>
+      <p><a href={es} hreflang="es" lang="es">Guía de Mago en español</a></p>
+      <p><a href={en} hreflang="en" lang="en">Mage guide in English</a></p>
+    </main>
+  </body>
+</html>

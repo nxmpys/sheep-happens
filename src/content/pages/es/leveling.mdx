@@ -1,0 +1,79 @@
+---
+pageId: leveling
+locale: es
+title: Subir de nivel con el Mago en Forever
+seoTitle: Cómo subir de nivel un Mago en WoW Forever (1-60)
+description: Lo que ya se sabe para subir un Mago del 1 al 60 en WoW Forever, niveles clave, cambios que afectan al farmeo y a bajar de rango, y qué falta por comprobar.
+gameVersion: forever-beta-2026-10
+published: 2026-10-11
+reviewed: 2026-10-11
+reviewedBy: Sheep Happens
+status: published
+verification: reported
+summary:
+  - Los talentos empiezan a nivel 10; Descarga de Pirofrío y la doble especialización llegan a nivel 40 (Blizzard estudia adelantar la segunda).
+  - Forever frena a propósito el farmeo masivo del Mago de Classic y el truco de bajar de rango.
+  - La beta solo permite llegar al nivel 30, así que aún no hay una ruta de nivelación probada.
+sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, wowhead-dual-spec-podcast, wiki-mage-abilities-classic, lfcarry-beta, warcrafttavern-legacy]
+tags: [nivelación, subir de nivel, farmeo, bajar de rango, niveles]
+---
+
+## Lo que ya sabemos
+
+<FactList ids={['talents-start', 'dual-spec', 'beta', 'legacy']} />
+
+## Niveles clave
+
+Los niveles de las habilidades base son los de Classic: Forever podría cambiarlos. Solo los marcados como «Oficial» están confirmados para Forever.
+
+| Nivel | Qué consigues | Estado |
+| --- | --- | --- |
+| 1 | Bola de Fuego (Fireball), Frost Armor, Arcane Intellect | <Status status="classic" /> |
+| 4–6 | Descarga de Escarcha (Frostbolt) y Conjure Water a nivel 4; Explosión de Fuego (Fire Blast) y Conjure Food a nivel 6 | <Status status="classic" /> |
+| 8 | Polimorfia (Polymorph), Misiles Arcanos (Arcane Missiles) | <Status status="classic" /> |
+| 10 | Nova de Escarcha (Frost Nova) y **tu primer punto de talento** | <Status status="verified" /> (talentos) |
+| 20 | Blink, Evocation, Escudo de maná (Mana Shield), Ventisca (Blizzard), Fire Ward; teletransportes a Ventormenta, Forjaz, Orgrimmar y Entrañas | <Status status="classic" /> |
+| 24 | Contrahechizo (Counterspell) | <Status status="classic" /> |
+| 26 | Cono de frío (Cone of Cold) | <Status status="classic" /> |
+| 30 | Ice Armor; teletransportes a Darnassus y Cima del Trueno | <Status status="classic" /> |
+| 34 | Armadura de mago (Mage Armor) | <Status status="classic" /> |
+| 40 | **Descarga de Pirofrío** (Frostfire Bolt) y **doble especialización**; portales a las primeras cuatro capitales (Darnassus y Cima del Trueno, a nivel 50) | <Status status="verified" /> (Descarga de Pirofrío y doble especialización) |
+
+## Cambios que afectan a la nivelación
+
+### Menos farmeo masivo
+
+En Classic, el Mago de Escarcha subía de nivel y farmeaba arrastrando grandes grupos de enemigos y rematándolos con Ventisca y Cono de frío. Forever lo frena a propósito: <Status status="verified" />
+
+- **Cono de frío** dura menos.
+- **Ventisca mejorada** (Improved Blizzard) ralentiza como máximo un 40 % (antes un 65 %).
+- **Escarcha permanente** (Permafrost) alarga los efectos de enfriamiento en porcentaje, no en segundos fijos, para no estirar demasiado Ventisca mejorada.
+
+Blizzard explica que busca dificultar que quienes quieren oro y experiencia rápidos atraigan a grandes grupos de criaturas con mecánicas repetitivas y de poco riesgo, algo que perturbaba la economía. <Status status="verified" /> El farmeo en área no desaparece, pero será más arriesgado y probablemente menos rentable. <Status status="analysis" />
+
+### Bajar de rango sale menos a cuenta
+
+Desde la build del 1 de octubre, los rangos muy inferiores a tu nivel **aprovechan menos tu daño de hechizos** y tienen **menos probabilidad de activar habilidades y talentos de clase**. El ejemplo oficial: Descarga de Escarcha de rango 1 a nivel 60 tiene un 0 % de probabilidad de activar Frostbite. <Status status="verified" />
+
+Además, el 8 de octubre se reajustaron los rangos bajos de Descarga de Escarcha, Bola de Fuego y Misiles Arcanos para que cada rango nuevo sea siempre una mejora. <Status status="verified" /> Bajar de rango para ahorrar maná sigue siendo posible, pero pierde gran parte de su atractivo. <Status status="analysis" />
+
+### Encadenar enemigos con Fuego
+
+**Estela de Fuego** (Wake of Fire) aumenta mucho el crítico de tu siguiente Explosión de Fuego durante 30 s tras cada muerte que no sea trivial. Blizzard alargó esa duración pensando precisamente en la nivelación, porque el Mago tiene que recuperar maná entre combates. <Status status="verified" />
+
+### Pergaminos para descifrar
+
+Con **Comprensión** (Comprehension) puedes leer los pergaminos que sueltan las criaturas. Se han reequilibrado y ya no se pueden usar en movimiento; Blizzard no ha detallado qué recompensas dan. <Status status="verified" />
+
+## ¿Qué rama elijo para subir?
+
+<Pending
+  why="La beta está limitada al nivel 30 y no hay valores numéricos de los talentos nuevos. Recomendar una rama sería una suposición."
+  next="Compararemos las tres ramas a partir del lanzamiento (tiempo por enemigo, descansos y riesgo) y publicaremos los resultados con su versión."
+>
+  Mientras tanto, estos son los factores que tendremos en cuenta: <Status status="analysis" />
+
+  - **Escarcha**: más control y seguridad; Lanza de hielo llega pronto (talento decisivo de 11).
+  - **Fuego**: Estela de Fuego y Calentamiento recompensan encadenar enemigos y críticos.
+  - **Arcano**: Tromba de misiles se activa también con Bola de Fuego y Descarga de Escarcha, así que encaja en una build mixta.
+</Pending>

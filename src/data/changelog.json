@@ -1,0 +1,224 @@
+[
+  {
+    "id": "2026-10-11-weekly-1",
+    "date": "2026-10-11",
+    "type": "guide",
+    "title": {
+      "es": "Primera revisión semanal: notas de desarrollo y nombres en español",
+      "en": "First weekly review: development notes and Spanish names"
+    },
+    "body": {
+      "es": "Incorporados los cambios de Mago de las notas oficiales de las builds del 24 de septiembre, 1 de octubre y 8 de octubre; los nombres oficiales en español de hechizos y talentos; el posible adelanto de la doble especialización y la versión del cliente.",
+      "en": "Added the Mage changes from the official notes for the 24 September, 1 October and 8 October builds; the official Spanish spell and talent names; the possible earlier dual spec and the client version."
+    },
+    "pages": [
+      "changes",
+      "talents-fire",
+      "talents-frost",
+      "leveling"
+    ],
+    "sources": [
+      "blizzard-dev-notes",
+      "blizzard-deep-dive-mage-es",
+      "wowhead-dual-spec-podcast"
+    ],
+    "refs": [
+      "change:wake-of-fire",
+      "change:heating-up",
+      "change:ignite",
+      "change:comprehension",
+      "change:improved-scorch",
+      "change:winters-chill",
+      "change:frostfire-bolt",
+      "change:cone-of-cold",
+      "change:improved-blizzard",
+      "change:arcane-blast",
+      "change:arcane-missiles",
+      "change:spell-ranks",
+      "fact:dual-spec",
+      "fact:client-version",
+      "milestone:fire-31"
+    ]
+  },
+  {
+    "id": "2026-10-11-site-maintenance",
+    "date": "2026-10-11",
+    "type": "site",
+    "title": {
+      "es": "Fuentes vigiladas cada semana y RSS de novedades",
+      "en": "Weekly watched sources and an updates RSS feed"
+    },
+    "body": {
+      "es": "La página de fuentes muestra dónde vigilamos las novedades cada semana. Puedes seguir este historial por RSS.",
+      "en": "The sources page now lists where we watch for news every week. You can follow this history by RSS."
+    },
+    "pages": [
+      "sources",
+      "updates"
+    ],
+    "sources": [],
+    "refs": []
+  },
+  {
+    "id": "2026-10-10-dual-spec",
+    "date": "2026-10-10",
+    "type": "game",
+    "title": {
+      "es": "Blizzard estudia adelantar la doble especialización",
+      "en": "Blizzard considers an earlier dual spec"
+    },
+    "body": {
+      "es": "En el pódcast oficial (ep. 3), Josh Greenfield dijo que está «actualmente» a nivel 40 y que debaten cuál es el nivel adecuado; mencionó el 30.",
+      "en": "On the official podcast (ep. 3), Josh Greenfield said it is “currently” level 40 and that they are discussing the right level; he mentioned 30."
+    },
+    "pages": [
+      "talents",
+      "leveling"
+    ],
+    "sources": [
+      "wowhead-dual-spec-podcast"
+    ],
+    "refs": [
+      "fact:dual-spec"
+    ]
+  },
+  {
+    "id": "2026-10-08-build",
+    "date": "2026-10-08",
+    "type": "game",
+    "title": {
+      "es": "Build del 8 de octubre: rangos bajos de Descarga de Escarcha, Bola de Fuego y Misiles Arcanos",
+      "en": "8 October build: low ranks of Frostbolt, Fireball and Arcane Missiles"
+    },
+    "body": {
+      "es": "Se reajustan los rangos 1 a 5 de Descarga de Escarcha y Bola de Fuego y 1 a 3 de Misiles Arcanos para que cada rango nuevo sea una mejora. Corregido: Impacto podía activarse con el daño periódico de Flamestrike.",
+      "en": "Ranks 1–5 of Frostbolt and Fireball and 1–3 of Arcane Missiles are rebalanced so every new rank is an upgrade. Fixed: Impact could trigger from Flamestrike periodic damage."
+    },
+    "pages": [
+      "changes"
+    ],
+    "sources": [
+      "blizzard-dev-notes"
+    ],
+    "refs": [
+      "change:spell-ranks",
+      "change:arcane-missiles",
+      "change:impact"
+    ]
+  },
+  {
+    "id": "2026-10-01-build",
+    "date": "2026-10-01",
+    "type": "game",
+    "title": {
+      "es": "Build del 1 de octubre: Calentamiento, Combustion y rangos bajos",
+      "en": "1 October build: Heating Up, Combustion and low ranks"
+    },
+    "body": {
+      "es": "Hot Streak pasa a llamarse Heating Up (Calentamiento). Combustion vuelve a 3 cargas, como en Classic (en la beta tenía 4). Chamuscar mejorado y Escalofrío del invierno ya no hacen una tirada de resistencia extra. Los pergaminos de Comprensión se reequilibran y no se pueden usar en movimiento. Los rangos muy bajos aprovechan menos el daño de hechizos y activan menos los talentos.",
+      "en": "Hot Streak is renamed Heating Up. Combustion returns to 3 charges, as in Classic (it had 4 in the beta). Improved Scorch and Winter’s Chill no longer make an extra resist roll. Comprehension scrolls are rebalanced and cannot be used while moving. Very low ranks get less spell damage and trigger talents less."
+    },
+    "pages": [
+      "changes",
+      "talents-fire",
+      "leveling"
+    ],
+    "sources": [
+      "blizzard-dev-notes"
+    ],
+    "refs": [
+      "change:heating-up",
+      "change:improved-scorch",
+      "change:winters-chill",
+      "change:comprehension",
+      "change:spell-ranks",
+      "milestone:fire-31"
+    ]
+  },
+  {
+    "id": "2026-09-24-build",
+    "date": "2026-09-24",
+    "type": "game",
+    "title": {
+      "es": "Primera actualización de la beta: Estela de Fuego, Ignición y Misiles Arcanos",
+      "en": "First beta update: Wake of Fire, Ignite and Arcane Missiles"
+    },
+    "body": {
+      "es": "Misiles Arcanos solo comprueba la línea de visión al empezar a canalizar. Estela de Fuego pasa de 20 a 30 s y el futuro Calentamiento de 15 a 20 s. Ignición ya no se beneficia dos veces de los modificadores de daño.",
+      "en": "Arcane Missiles only checks line of sight when the channel starts. Wake of Fire goes from 20 to 30 s and the future Heating Up from 15 to 20 s. Ignite no longer double dips on damage modifiers."
+    },
+    "pages": [
+      "changes",
+      "talents-fire"
+    ],
+    "sources": [
+      "blizzard-dev-notes"
+    ],
+    "refs": [
+      "change:arcane-missiles",
+      "change:wake-of-fire",
+      "change:heating-up",
+      "change:ignite"
+    ]
+  },
+  {
+    "id": "2026-10-11-launch",
+    "date": "2026-10-11",
+    "type": "site",
+    "title": {
+      "es": "Primera versión de Sheep Happens",
+      "en": "First version of Sheep Happens"
+    },
+    "body": {
+      "es": "Guía de clase, explorador de cambios de Forever, páginas de Arcano, Fuego y Escarcha, nivelación, combate y calculadora de crítico. Todo basado en la beta de octubre de 2026.",
+      "en": "Class guide, Forever change explorer, Arcane, Fire and Frost pages, leveling, combat and a crit calculator. All based on the October 2026 beta."
+    },
+    "pages": [
+      "guide",
+      "changes",
+      "talents",
+      "leveling",
+      "combat",
+      "tools"
+    ]
+  },
+  {
+    "id": "2026-10-deep-dive",
+    "date": "2026-10-07",
+    "type": "game",
+    "title": {
+      "es": "Blizzard publica el deep dive del Mago",
+      "en": "Blizzard publishes the Mage deep dive"
+    },
+    "body": {
+      "es": "Descarga de Pirofrío, Lanza de hielo, Dedos de Escarcha, Calentamiento, la nueva Explosión Arcana y Tromba de misiles, entre más de 40 cambios. La versión en español llegó el 8 de octubre.",
+      "en": "Frostfire Bolt, Ice Lance, Fingers of Frost, Heating Up, the new Arcane Blast and Missile Barrage, among 40+ changes. The Spanish version followed on 8 October."
+    },
+    "pages": [
+      "changes"
+    ],
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "blizzard-deep-dive-mage-es"
+    ]
+  },
+  {
+    "id": "2026-10-01-cap-30",
+    "date": "2026-10-01",
+    "type": "game",
+    "title": {
+      "es": "La beta sube al nivel 30",
+      "en": "Beta level cap raised to 30"
+    },
+    "body": {
+      "es": "El contenido de los niveles 31 a 60 no se puede probar hasta el lanzamiento.",
+      "en": "Content for levels 31–60 cannot be tested until launch."
+    },
+    "pages": [
+      "leveling"
+    ],
+    "sources": [
+      "lfcarry-beta"
+    ]
+  }
+]

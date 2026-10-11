@@ -1,0 +1,41 @@
+---
+pageId: tools
+locale: es
+title: Herramientas para el Mago en Forever
+seoTitle: Calculadora de críticos del Mago para WoW Forever
+description: Calcula el crítico de Bola de Fuego, Descarga de Escarcha y Descarga de Pirofrío según Fragmentos de hielo e Ignición, validado con el ejemplo oficial de Blizzard.
+gameVersion: forever-beta-2026-10
+published: 2026-10-11
+reviewed: 2026-10-11
+reviewedBy: Sheep Happens
+status: published
+verification: classic
+summary:
+  - Compara cuánto pega un crítico de Bola de Fuego, Descarga de Escarcha y Descarga de Pirofrío con tus talentos.
+  - Reproduce el ejemplo oficial de Blizzard (280 % con ambos talentos al máximo).
+  - Los rangos intermedios usan los valores de Classic.
+sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, wiki-ice-shards-classic, wiki-ignite-classic]
+tags: [herramientas, calculadora, crítico, descarga de pirofrío, ignición, fragmentos de hielo]
+---
+
+## Multiplicador de crítico
+
+Mueve los rangos de **Fragmentos de hielo** (Ice Shards, Escarcha) e **Ignición** (Ignite, Fuego) para ver cuánto daño hace un crítico de cada hechizo en relación con un golpe normal.
+
+<CritCalculator />
+
+## Cómo se calcula
+
+- Un crítico de hechizo hace un **150 %** de daño (+50 %). <Status status="classic" />
+- **Fragmentos de hielo** aumenta esa bonificación un 20 % por rango en los hechizos de **Escarcha**: con 5/5, el crítico pasa al **200 %**. <Status status="classic" />
+- **Ignición** quema un 8 % por rango del daño del crítico durante 4 s en los hechizos de **Fuego**: con 5/5, el **40 %**. <Status status="classic" />
+- **Descarga de Pirofrío** (Frostfire Bolt) cuenta como Fuego **y** Escarcha, así que recibe ambos efectos: 200 % + 40 % de 200 % = **280 %**. Es exactamente el ejemplo que da Blizzard. <Status status="verified" />
+
+No incluye otros modificadores (por ejemplo, la probabilidad de crítico o la resistencia del objetivo): compara solo **cuánto pega un crítico**, no cuántos críticos harás.
+
+## Próximas herramientas
+
+<Pending
+  why="Una calculadora de talentos útil necesita el árbol completo de Forever con sus valores, y Blizzard solo ha publicado los cambios."
+  next="Cuando el árbol sea estable tras el lanzamiento, añadiremos un planificador con enlaces para compartir builds."
+/>

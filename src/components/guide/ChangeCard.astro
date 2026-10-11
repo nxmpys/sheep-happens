@@ -1,0 +1,256 @@
+---
+import Icon from '../ui/Icon.astro';
+import SourceRefs from './SourceRefs.astro';
+import StatusBadge from './StatusBadge.astro';
+import { getLocale, href } from '../../i18n/locale';
+import { formatDate, t, type UiKey } from '../../i18n/ui';
+import { changelogFor } from '../../lib/data';
+import { displayName } from '../../lib/names';
+import type { Change } from '../../lib/schemas';
+
+interface Props {
+  change: Change;
+  /** Heading level inside the page outline. */
+  level?: 'h2' | 'h3' | 'h4';
+  showTree?: boolean;
+  class?: string;
+}
+
+const { change, level = 'h3', showTree = true, class: className } = Astro.props;
+const locale = getLocale(Astro);
+const Heading = level;
+const name = displayName(change, locale);
+const formerly = locale === 'es' && change.formerlyEs ? change.formerlyEs : change.formerly;
+// Link the "updated" chip to the changelog entry that documents this record.
+const updateEntry = change.updated
+  ? changelogFor(`change:${change.id}`).find((e) => e.date === change.updated)
+  : undefined;
+const searchText = [
+  change.name,
+  change.nameEs,
+  change.formerly,
+  change.formerlyEs,
+  change.summary[locale],
+  ...change.details.map((d) => d[locale]),
+]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<article
+  class:list={['change', `school-${change.tree}`, className]}
+  data-change
+  data-tree={change.tree}
+  data-kinds={change.kinds.join(' ')}
+  data-search={searchText}
+  aria-labelledby={`change-${change.id}`}
+>
+  <header class="change__header">
+    <Heading id={`change-${change.id}`} class="change__name">
+      <Icon name={change.tree} size={22} class="change__sigil" />
+      <span>{name.primary}</span>
+      {name.secondary && (
+        <>
+          {' '}
+          <span class="change__en" lang="en">
+            {name.secondary}
+          </span>
+        </>
+      )}
+    </Heading>
+    {
+      formerly && (
+        <p class="change__formerly">
+          {t(locale, 'changes.formerly')}: {formerly}
+        </p>
+      )
+    }
+    <ul class="change__tags" aria-label={t(locale, 'changes.kind')} data-pagefind-ignore>
+      {showTree && <li class="chip change__tree">{t(locale, `tree.${change.tree}` as UiKey)}</li>}
+      {change.kinds.map((kind) => <li class:list={['chip', `kind--${kind}`]}>{t(locale, `kind.${kind}` as UiKey)}</li>)}
+      {change.milestone && <li class="chip chip--milestone">{t(locale, 'changes.milestone', { points: change.milestone })}</li>}
+      {
+        change.row && (
+          <li class="chip">
+            {t(locale, 'changes.row')} {change.previousRow ? `${change.previousRow} → ${change.row}` : change.row}
+          </li>
+        )
+      }
+      {change.learnLevel && <li class="chip">{locale === 'es' ? `Nivel ${change.learnLevel}` : `Level ${change.learnLevel}`}</li>}
+    </ul>
+  </header>
+
+  <p class="change__summary">{change.summary[locale]}</p>
+
+  {
+    change.details.length > 0 && (
+      <ul class="change__details">
+        {change.details.map((detail) => (
+          <li>{detail[locale]}</li>
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    change.notes.length > 0 && (
+      <div class="change__notes">
+        <p class="change__notes-title">{t(locale, 'changes.whatItMeans')}</p>
+        <ul>
+          {change.notes.map((note) => (
+            <li>
+              <StatusBadge status={note.status} compact />
+              <span>{note.text[locale]}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  <footer class="change__footer">
+    <StatusBadge status={change.status} />
+    {
+      change.updated && (
+        <a
+          class="change__updated"
+          href={updateEntry ? href('updates', locale, `update-${updateEntry.id}`) : href('updates', locale)}
+        >
+          <Icon name="calendar" size={14} />
+          {t(locale, 'changes.updated', { date: formatDate(locale, new Date(`${change.updated}T00:00:00Z`)) })}
+        </a>
+      )
+    }
+    <SourceRefs ids={change.sources} />
+  </footer>
+</article>
+
+<style>
+  .change {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    min-width: 0;
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--school);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+    scroll-margin-top: calc(var(--header-h) + var(--space-4));
+  }
+  .change[hidden] {
+    display: none;
+  }
+  .change__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .change__name {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 var(--space-2);
+    font-size: var(--step-1);
+    margin: 0;
+  }
+  .change__name::before {
+    display: none;
+  }
+  .change__en {
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    font-weight: 500;
+    color: var(--text-subtle);
+  }
+  .change__updated {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--status-reported);
+  }
+  .change :global(.change__sigil) {
+    color: var(--school);
+  }
+  .change__formerly {
+    margin: 0;
+    font-size: var(--step--1);
+    color: var(--text-subtle);
+    font-style: italic;
+  }
+  .change__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .change__tags li {
+    margin: 0;
+  }
+  .change__tree {
+    color: var(--school);
+    border-color: color-mix(in srgb, var(--school) 40%, transparent);
+    background: var(--school-soft);
+  }
+  .kind--new {
+    color: var(--status-verified);
+    border-color: color-mix(in srgb, var(--status-verified) 40%, transparent);
+  }
+  .chip--milestone {
+    color: var(--baseline);
+    border-color: color-mix(in srgb, var(--baseline) 45%, transparent);
+  }
+  .change__summary {
+    margin: 0;
+  }
+  .change__details {
+    margin: 0;
+    padding-left: 1.2em;
+    color: var(--text-muted);
+    font-size: 0.95em;
+  }
+  .change__details li + li {
+    margin-top: var(--space-1);
+  }
+  .change__notes {
+    padding: var(--space-3);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    font-size: 0.95em;
+  }
+  .change__notes-title {
+    margin: 0 0 var(--space-2);
+    font-size: var(--step--1);
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .change__notes ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .change__notes li {
+    display: flex;
+    gap: var(--space-2);
+    align-items: flex-start;
+    margin: 0;
+  }
+  .change__notes li + li {
+    margin-top: var(--space-2);
+  }
+  .change__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
+    margin-top: auto;
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border);
+  }
+</style>

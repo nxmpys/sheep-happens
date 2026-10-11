@@ -1,0 +1,111 @@
+---
+/** Review date, game version and verification status, shown on every guide page. */
+import Icon from '../ui/Icon.astro';
+import StatusBadge from '../guide/StatusBadge.astro';
+import { href } from '../../i18n/locale';
+import type { Locale } from '../../i18n/routes';
+import { formatDate, t } from '../../i18n/ui';
+import { getVersion } from '../../lib/data';
+import type { PageFrontmatter } from '../../lib/schemas';
+
+interface Props {
+  locale: Locale;
+  data: PageFrontmatter;
+}
+
+const { locale, data } = Astro.props;
+const version = getVersion(data.gameVersion);
+---
+
+<div class="meta">
+  <dl class="meta__list">
+    <div>
+      <dt>{t(locale, 'meta.reviewed')}</dt>
+      <dd>
+        <Icon name="calendar" size={16} />
+        <time datetime={data.reviewed.toISOString().slice(0, 10)}>{formatDate(locale, data.reviewed)}</time>
+        <span class="meta__by">{t(locale, 'meta.by')} {data.reviewedBy}</span>
+      </dd>
+    </div>
+    <div>
+      <dt>{t(locale, 'meta.version')}</dt>
+      <dd>{version.label[locale]}</dd>
+    </div>
+    <div>
+      <dt>{t(locale, 'meta.verification')}</dt>
+      <dd>
+        <StatusBadge status={data.verification} />
+      </dd>
+    </div>
+    {
+      data.sources.length > 0 && (
+        <div>
+          <dt>{t(locale, 'meta.sources')}</dt>
+          <dd>
+            <a href="#page-sources">{data.sources.length}</a>
+          </dd>
+        </div>
+      )
+    }
+  </dl>
+  {
+    version.stage === 'beta' && (
+      <p class="meta__beta">
+        <Icon name="warning" size={18} />
+        <span>
+          {t(locale, 'meta.betaWarning')} <a href={href('sources', locale)}>{t(locale, 'meta.howWeVerify')}</a>
+        </span>
+      </p>
+    )
+  }
+</div>
+
+<style>
+  .meta {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .meta__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+    margin: 0;
+    font-size: var(--step--1);
+  }
+  .meta__list > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  dt {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-subtle);
+  }
+  dd {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin: 0;
+    color: var(--text);
+  }
+  .meta__by {
+    color: var(--text-subtle);
+  }
+  .meta__beta {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    background: var(--warning-soft);
+    color: var(--text);
+    font-size: var(--step--1);
+  }
+  .meta__beta :global(svg) {
+    color: var(--warning);
+    margin-top: 0.15em;
+  }
+</style>

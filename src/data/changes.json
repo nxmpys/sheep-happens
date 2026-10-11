@@ -1,0 +1,1170 @@
+[
+  {
+    "id": "frostfire-bolt",
+    "name": "Frostfire Bolt",
+    "tree": "baseline",
+    "category": "ability",
+    "kinds": [
+      "new"
+    ],
+    "learnLevel": 40,
+    "summary": {
+      "es": "Nuevo hechizo base que se aprende a nivel 40. Cuenta a la vez como Fuego y como Escarcha: lanzamiento de 3 s, golpe inicial fuerte (como Bola de Fuego) y un efecto de daño periódico con ralentización.",
+      "en": "New baseline spell learned at level 40. Counts as both Fire and Frost: 3 s cast, a large upfront hit (like Fireball) and a damage-over-time debuff with a movement slow."
+    },
+    "details": [
+      {
+        "es": "Usa la mayor de tus bonificaciones de daño de Fuego o Escarcha y la menor resistencia del objetivo entre Fuego y Escarcha.",
+        "en": "Uses the higher of your Fire or Frost spell damage bonus and the lower of the target's Fire or Frost resistance."
+      },
+      {
+        "es": "Ejemplo oficial: con Ignición y Fragmentos de hielo, un crítico hace un 200 % de daño, más un 40 % de eso como Ignición: 280 % en total.",
+        "en": "Official example: with Ignite and Ice Shards a critical strike deals 200%, plus 40% of that as Ignite: 280% in total."
+      },
+      {
+        "es": "Según Blizzard, la mayoría de los talentos que afectan a Fuego o a Escarcha también le benefician.",
+        "en": "According to Blizzard, most talents that affect either Fire or Frost also benefit it."
+      }
+    ],
+    "notes": [
+      {
+        "status": "analysis",
+        "text": {
+          "es": "Al beneficiarse de talentos de ambas ramas, es la pieza central de las builds híbridas Fuego/Escarcha. Puedes calcular el multiplicador en Herramientas.",
+          "en": "Because it benefits from talents in both trees, it is the centrepiece of hybrid Fire/Frost builds. Work out the multiplier under Tools."
+        }
+      },
+      {
+        "status": "analysis",
+        "text": {
+          "es": "Contra enemigos que resisten mucho una de las dos escuelas (p. ej., elementales de fuego), debería rendir mejor que Bola de Fuego o Descarga de Escarcha.",
+          "en": "Against enemies that strongly resist one of the two schools (e.g. fire elementals) it should outperform Fireball or Frostbolt."
+        }
+      }
+    ],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "warcrafttavern-mage-deep-dive",
+      "blizzard-deep-dive-mage-es"
+    ],
+    "nameEs": "Descarga de Pirofrío",
+    "updated": "2026-10-11"
+  },
+  {
+    "id": "comprehension",
+    "name": "Comprehension (Comprehend Scroll)",
+    "tree": "baseline",
+    "category": "system",
+    "kinds": [
+      "new"
+    ],
+    "summary": {
+      "es": "Nueva habilidad menor exclusiva del Mago para leer y descifrar los pergaminos que sueltan las criaturas. Se usa con Comprender pergamino, en la pestaña General del libro de hechizos.",
+      "en": "New Mage-only minor tradeskill to read and decipher scrolls dropped by creatures. Used through Comprehend Scroll in the General tab of the spellbook."
+    },
+    "details": [
+      {
+        "es": "Blizzard no ha detallado las recompensas: las deja para que los jugadores las descubran.",
+        "en": "Blizzard has not detailed the rewards and leaves them for players to discover."
+      },
+      {
+        "es": "Los pergaminos recibieron otro ajuste de equilibrio y ya no se pueden usar en movimiento (build del 1 de octubre).",
+        "en": "Scrolls received another balance pass and can no longer be cast while moving (1 October build)."
+      }
+    ],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "blizzard-dev-notes"
+    ],
+    "nameEs": "Comprensión (Comprender pergamino)",
+    "updated": "2026-10-11"
+  },
+  {
+    "id": "cone-of-cold",
+    "name": "Cone of Cold",
+    "tree": "baseline",
+    "category": "ability",
+    "kinds": [
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Duración reducida, como parte de los cambios contra el «kiteo» y el farmeo masivo.",
+      "en": "Duration reduced as part of the changes against kiting and mass farming."
+    },
+    "details": [
+      {
+        "es": "Blizzard explica que busca dificultar que quienes quieren oro y experiencia rápidos atraigan a grandes grupos de criaturas con mecánicas repetitivas y de poco riesgo.",
+        "en": "Blizzard explains it aims to make it harder for people chasing fast gold and experience to pull huge packs of creatures with repetitive, low-risk mechanics."
+      }
+    ],
+    "notes": [
+      {
+        "status": "analysis",
+        "text": {
+          "es": "Junto al cambio de Ventisca mejorada, el farmeo de grupos grandes al estilo Classic será menos eficaz.",
+          "en": "Together with the Improved Blizzard change, Classic-style large-pack farming will be less effective."
+        }
+      }
+    ],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "warcrafttavern-mage-deep-dive",
+      "blizzard-deep-dive-mage-es"
+    ],
+    "nameEs": "Cono de frío",
+    "updated": "2026-10-11"
+  },
+  {
+    "id": "mage-armor",
+    "name": "Mage Armor",
+    "tree": "baseline",
+    "category": "ability",
+    "kinds": [
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Aumenta la regeneración de maná procedente del Espíritu que concede.",
+      "en": "Increased Spirit-based mana regeneration."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Armadura de mago"
+  },
+  {
+    "id": "arcane-missiles",
+    "name": "Arcane Missiles",
+    "nameEs": "Misiles Arcanos",
+    "tree": "baseline",
+    "category": "ability",
+    "kinds": [
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Comprueba la línea de visión una sola vez, al empezar la canalización: si el objetivo sale de tu vista durante el canal, los misiles siguen saliendo.",
+      "en": "Checks line of sight only once, at the start of the channel: if the target moves out of sight during the channel, the missiles keep firing."
+    },
+    "details": [
+      {
+        "es": "Sus rangos 1 a 3 se reajustaron el 8 de octubre para que cada rango nuevo sea siempre una mejora.",
+        "en": "Ranks 1–3 were rebalanced on 8 October so every new rank is always an upgrade."
+      }
+    ],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-dev-notes"
+    ],
+    "updated": "2026-10-11"
+  },
+  {
+    "id": "spell-ranks",
+    "name": "Spell ranks (downranking)",
+    "nameEs": "Rangos de hechizos (bajar de rango)",
+    "tree": "baseline",
+    "category": "system",
+    "kinds": [
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Los rangos muy inferiores a tu nivel reciben menos bonificación de daño de hechizos y tienen menos probabilidad de activar habilidades y talentos de clase.",
+      "en": "Ranks far below your level get less benefit from spell damage and a lower chance to trigger class abilities and talents."
+    },
+    "details": [
+      {
+        "es": "Ejemplo oficial: Descarga de Escarcha de rango 1 a nivel 60 tiene un 0 % de probabilidad de activar Frostbite. Hay que elegir entre una ralentización rápida y barata o un hechizo que pueda activar el talento.",
+        "en": "Official example: Rank 1 Frostbolt at level 60 has a 0% chance to trigger Frostbite. You choose between a cheap, quick slow and a spell that can trigger the talent."
+      },
+      {
+        "es": "El 8 de octubre se reajustaron los rangos bajos de Descarga de Escarcha y Bola de Fuego (1 a 5) y de Misiles Arcanos (1 a 3) para que cada rango nuevo sea siempre una mejora.",
+        "en": "On 8 October the low ranks of Frostbolt and Fireball (1–5) and Arcane Missiles (1–3) were rebalanced so every new rank is always an upgrade."
+      }
+    ],
+    "notes": [
+      {
+        "status": "analysis",
+        "text": {
+          "es": "Bajar de rango para ahorrar maná sigue siendo posible, pero pierde gran parte de su atractivo, sobre todo para Fuego y Escarcha, que dependen de efectos que se activan.",
+          "en": "Downranking to save mana is still possible but loses much of its appeal, especially for Fire and Frost, which rely on procs."
+        }
+      }
+    ],
+    "status": "verified",
+    "sources": [
+      "blizzard-dev-notes",
+      "blizzard-deep-dive-mage"
+    ],
+    "updated": "2026-10-11"
+  },
+  {
+    "id": "magic-attunement",
+    "name": "Magic Attunement",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "baseline"
+    ],
+    "summary": {
+      "es": "Deja de ser un talento de Arcano y pasa a formar parte de la clase base.",
+      "en": "No longer an Arcane talent; it is now part of the baseline class."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "zockify-mage"
+    ],
+    "nameEs": "Armonización mágica"
+  },
+  {
+    "id": "wand-specialization",
+    "name": "Wand Specialization",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Ahora cuesta 2 puntos para el mismo efecto.",
+      "en": "Now costs 2 points for the same effect."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Especialización en varitas"
+  },
+  {
+    "id": "arcane-focus",
+    "name": "Arcane Focus",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "redesigned"
+    ],
+    "summary": {
+      "es": "Rediseñado: aumenta la probabilidad de acierto de los hechizos Arcanos.",
+      "en": "Redesigned: increases your chance to hit with Arcane spells."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Enfoque Arcano"
+  },
+  {
+    "id": "improved-channeling",
+    "name": "Improved Channeling",
+    "formerly": "Improved Arcane Missiles",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "renamed",
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Antes Misiles Arcanos mejorados. Además protege a Explosión Arcana de las interrupciones por recibir daño.",
+      "en": "Formerly Improved Arcane Missiles. Now also protects Arcane Blast from damage-based interruption."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Canalización mejorada",
+    "formerlyEs": "Misiles Arcanos mejorados"
+  },
+  {
+    "id": "arcane-subtlety",
+    "name": "Arcane Subtlety",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "moved",
+      "adjusted"
+    ],
+    "previousRow": 1,
+    "row": 2,
+    "summary": {
+      "es": "Pasa de la fila 1 a la 2. Su efecto de ignorar resistencias es algo más fuerte y su reducción de amenaza, algo más débil.",
+      "en": "Moved from row 1 to row 2. Its resistance-ignoring effect is slightly stronger and its threat reduction slightly weaker."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Sutileza Arcana"
+  },
+  {
+    "id": "magic-absorption",
+    "name": "Magic Absorption",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Su efecto tiene ahora un tiempo de reutilización de 1 s.",
+      "en": "Its effect now has a 1 s cooldown."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Absorción mágica"
+  },
+  {
+    "id": "arcane-concentration",
+    "name": "Arcane Concentration",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Se activa con menos frecuencia al lanzar hechizos de un rango muy inferior.",
+      "en": "Lower trigger chance when casting spells of a significantly lower rank."
+    },
+    "details": [],
+    "notes": [
+      {
+        "status": "analysis",
+        "text": {
+          "es": "Penaliza el truco clásico de usar rangos bajos para provocar efectos gratis sin gastar maná.",
+          "en": "Penalises the classic trick of using low ranks to fish for free procs cheaply."
+        }
+      }
+    ],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Concentración Arcana"
+  },
+  {
+    "id": "arcane-resilience",
+    "name": "Arcane Resilience",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "moved",
+      "adjusted"
+    ],
+    "previousRow": 3,
+    "row": 2,
+    "summary": {
+      "es": "Pasa de la fila 3 a la 2, deja de ser un talento decisivo y ahora cuesta 2 puntos para el mismo efecto.",
+      "en": "Moved from row 3 to row 2, no longer a milestone talent, and now costs 2 points for the same effect."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Recuperación Arcana"
+  },
+  {
+    "id": "arcane-geometry",
+    "name": "Arcane Geometry",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "new"
+    ],
+    "row": 3,
+    "summary": {
+      "es": "Nuevo talento de la fila 3: aumenta el alcance de los hechizos Arcanos.",
+      "en": "New row 3 talent: increases the range of Arcane spells."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "zockify-mage"
+    ],
+    "nameEs": "Geometría Arcana"
+  },
+  {
+    "id": "arcane-impact",
+    "name": "Arcane Impact",
+    "formerly": "Improved Arcane Explosion",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "renamed",
+      "redesigned"
+    ],
+    "summary": {
+      "es": "Antes Deflagración Arcana mejorada. Ahora aumenta la probabilidad de crítico de todos los hechizos Arcanos.",
+      "en": "Formerly Improved Arcane Explosion. Now increases the critical strike chance of all Arcane spells."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Impacto Arcano",
+    "formerlyEs": "Deflagración Arcana mejorada"
+  },
+  {
+    "id": "arcane-blast",
+    "name": "Arcane Blast",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "new"
+    ],
+    "row": 3,
+    "milestone": 11,
+    "summary": {
+      "es": "Nuevo talento decisivo de 11 puntos (versión nueva del hechizo). Lanzamiento de 2,5 s con daño inmediato. Aumenta el daño de tus otros hechizos de Mago y su propio coste de maná.",
+      "en": "New 11-point milestone talent (a new version of the spell). 2.5 s cast with immediate damage. Increases the damage of your other Mage spells and its own mana cost."
+    },
+    "details": [
+      {
+        "es": "Se acumula hasta 4 veces y dura 8 s o hasta que lanzas otro hechizo.",
+        "en": "Stacks up to 4 times and lasts 8 s or until another spell is cast."
+      }
+    ],
+    "notes": [
+      {
+        "status": "verified",
+        "text": {
+          "es": "Blizzard lo plantea así: las versiones antiguas invitaban a lanzar solo Explosión Arcana; esta quiere que, tras acumular cargas, uses otros hechizos de tu arsenal. El coste de maná creciente limita cuánto puedes encadenar.",
+          "en": "Blizzard frames it like this: older versions encouraged casting only Arcane Blast; this one wants you to use other spells after building stacks. The rising mana cost limits how far you can chain it."
+        }
+      },
+      {
+        "status": "pending",
+        "text": {
+          "es": "No hay valores oficiales de daño, coste ni bonificación por acumulación.",
+          "en": "No official values for damage, cost or per-stack bonus yet."
+        }
+      }
+    ],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "warcrafttavern-mage-deep-dive"
+    ],
+    "nameEs": "Explosión Arcana",
+    "updated": "2026-10-11"
+  },
+  {
+    "id": "arcane-shielding",
+    "name": "Arcane Shielding",
+    "formerly": "Improved Mana Shield",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "renamed",
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Antes Escudo de maná mejorado. Mejora más la eficiencia de maná de Escudo de maná y además aumenta las resistencias que otorga Armadura de mago.",
+      "en": "Formerly Improved Mana Shield. Improves Mana Shield's mana cost reduction further and also increases the resistances granted by Mage Armor."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Protección Arcana",
+    "formerlyEs": "Escudo de maná mejorado"
+  },
+  {
+    "id": "improved-counterspell",
+    "name": "Improved Counterspell",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "redesigned"
+    ],
+    "summary": {
+      "es": "Con 1 punto, Contrahechizo silencia siempre, aunque durante menos tiempo, en lugar de tener un 50 % de probabilidad de silenciar.",
+      "en": "At 1 point, Counterspell always applies a shorter Silence instead of a 50% chance to Silence."
+    },
+    "details": [],
+    "notes": [
+      {
+        "status": "analysis",
+        "text": {
+          "es": "Hace el control fiable, sin depender del azar: más valioso en PvP y en mazmorras con lanzadores peligrosos.",
+          "en": "Makes the control reliable rather than random: more valuable in PvP and in dungeons with dangerous casters."
+        }
+      }
+    ],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Contrahechizo mejorado"
+  },
+  {
+    "id": "arcane-meditation",
+    "name": "Arcane Meditation",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "adjusted",
+      "prerequisite"
+    ],
+    "summary": {
+      "es": "Aumenta la regeneración de maná por Espíritu mientras lanzas hechizos. Ahora requiere Concentración Arcana.",
+      "en": "Increased Spirit mana regeneration while casting. Now requires Arcane Concentration."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Meditación Arcana"
+  },
+  {
+    "id": "missile-barrage",
+    "name": "Missile Barrage",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "new"
+    ],
+    "row": 4,
+    "milestone": 16,
+    "summary": {
+      "es": "Nuevo talento decisivo de 16 puntos. Explosión Arcana, Bola de Fuego, Descarga de Escarcha y Descarga de Pirofrío pueden hacer que tu siguiente uso de Misiles Arcanos se canalice el doble de rápido y no cueste maná.",
+      "en": "New 16-point milestone talent. Arcane Blast, Fireball, Frostbolt and Frostfire Bolt have a chance to make your next Arcane Missiles channel twice as fast and cost no mana."
+    },
+    "details": [
+      {
+        "es": "La probabilidad se duplica con Explosión Arcana.",
+        "en": "The chance is doubled for Arcane Blast."
+      }
+    ],
+    "notes": [
+      {
+        "status": "analysis",
+        "text": {
+          "es": "Funciona con hechizos de las tres escuelas, así que encaja tanto en builds puramente Arcanas como en híbridas.",
+          "en": "It triggers from spells of all three schools, so it fits both pure Arcane and hybrid builds."
+        }
+      }
+    ],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "warcrafttavern-mage-deep-dive"
+    ],
+    "nameEs": "Tromba de misiles"
+  },
+  {
+    "id": "arcane-mind",
+    "name": "Arcane Mind",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "redesigned",
+      "prerequisite"
+    ],
+    "summary": {
+      "es": "Rediseñado: aumenta el Intelecto en lugar del maná máximo y además el daño crítico de los hechizos Arcanos. Ya no requiere Recuperación Arcana.",
+      "en": "Redesigned: increases Intellect instead of maximum mana, and also Arcane spell critical strike damage. No longer requires Arcane Resilience."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Mente Arcana"
+  },
+  {
+    "id": "arcane-instability",
+    "name": "Arcane Instability",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "prerequisite"
+    ],
+    "summary": {
+      "es": "Ya no requiere Presencia mental.",
+      "en": "No longer requires Presence of Mind."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Inestabilidad Arcana"
+  },
+  {
+    "id": "arcane-power",
+    "name": "Arcane Power",
+    "tree": "arcane",
+    "category": "talent",
+    "kinds": [
+      "prerequisite"
+    ],
+    "summary": {
+      "es": "Ahora requiere Presencia mental.",
+      "en": "Now requires Presence of Mind."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Poder Arcano"
+  },
+  {
+    "id": "wake-of-fire",
+    "name": "Wake of Fire",
+    "formerly": "Improved Fire Blast",
+    "tree": "fire",
+    "category": "talent",
+    "kinds": [
+      "renamed",
+      "moved",
+      "redesigned"
+    ],
+    "previousRow": 2,
+    "row": 1,
+    "summary": {
+      "es": "Antes Explosión de Fuego mejorada. Pasa de la fila 2 a la 1 y reduce más el tiempo de reutilización de Explosión de Fuego. Cada muerte que no sea trivial aumenta mucho la probabilidad de crítico de tu siguiente Explosión de Fuego.",
+      "en": "Formerly Improved Fire Blast. Moved from row 2 to row 1 and reduces Fire Blast's cooldown further. Each non-trivial kill greatly increases the critical strike chance of your next Fire Blast."
+    },
+    "details": [
+      {
+        "es": "Su efecto dura 30 s (en la beta pasó de 20 a 30 s el 24 de septiembre). Según los desarrolladores, costaba aprovecharlo al subir de nivel porque el Mago tiene que recuperar maná entre combates.",
+        "en": "Its buff lasts 30 s (raised from 20 s in the beta on 24 September). According to the developers it was hard to use while leveling, because Mages need to restore mana between fights."
+      }
+    ],
+    "notes": [
+      {
+        "status": "analysis",
+        "text": {
+          "es": "Premia encadenar enemigos al subir de nivel: la Explosión de Fuego casi garantizada tras una muerte sirve para rematar o abrir el siguiente combate.",
+          "en": "Rewards chaining mobs while leveling: the near-guaranteed Fire Blast after a kill finishes or opens the next fight."
+        }
+      }
+    ],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "blizzard-dev-notes"
+    ],
+    "nameEs": "Estela de Fuego",
+    "formerlyEs": "Explosión de Fuego mejorada",
+    "updated": "2026-10-11"
+  },
+  {
+    "id": "incineration",
+    "name": "Incineration",
+    "formerly": "Incinerate",
+    "tree": "fire",
+    "category": "talent",
+    "kinds": [
+      "renamed",
+      "moved",
+      "adjusted"
+    ],
+    "previousRow": 3,
+    "row": 1,
+    "summary": {
+      "es": "Antes Incinerar. Pasa de la fila 3 a la 1. Además de Explosión de Fuego y Chamuscar, aumenta la probabilidad de crítico de Lanza de hielo y Explosión Arcana.",
+      "en": "Formerly Incinerate. Moved from row 3 to row 1. Besides Fire Blast and Scorch, it now also increases the critical strike chance of Ice Lance and Arcane Blast."
+    },
+    "details": [],
+    "notes": [
+      {
+        "status": "analysis",
+        "text": {
+          "es": "Es un talento barato y temprano que potencia hechizos de las otras dos ramas: un claro guiño a las builds mixtas.",
+          "en": "A cheap, early talent that boosts spells from the other two trees: a clear nod to mixed builds."
+        }
+      }
+    ],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Incineración",
+    "formerlyEs": "Incinerar"
+  },
+  {
+    "id": "improved-fireball",
+    "name": "Improved Fireball",
+    "tree": "fire",
+    "category": "talent",
+    "kinds": [
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Ahora también reduce el tiempo de lanzamiento de Descarga de Pirofrío.",
+      "en": "Now also reduces the cast time of Frostfire Bolt."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Bola de Fuego mejorada"
+  },
+  {
+    "id": "ignite",
+    "name": "Ignite",
+    "tree": "fire",
+    "category": "talent",
+    "kinds": [
+      "redesigned"
+    ],
+    "summary": {
+      "es": "Cada Mago aplica su propio efecto de Ignición en lugar de compartir uno. Ya no se pierde daño cuando varios críticos caen muy seguidos.",
+      "en": "Each Mage now applies their own Ignite instead of sharing one. Damage is no longer lost when critical strikes land close together."
+    },
+    "details": [
+      {
+        "es": "Ya no se beneficia dos veces de los modificadores de daño en porcentaje (build del 24 de septiembre).",
+        "en": "No longer double dips on percentage damage modifiers (24 September build)."
+      }
+    ],
+    "notes": [
+      {
+        "status": "analysis",
+        "text": {
+          "es": "Varios magos de Fuego en el mismo grupo ya no se estorban entre sí con Ignición.",
+          "en": "Several Fire Mages in the same group no longer get in each other's way with Ignite."
+        }
+      }
+    ],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "blizzard-dev-notes"
+    ],
+    "nameEs": "Ignición",
+    "updated": "2026-10-11"
+  },
+  {
+    "id": "impact",
+    "name": "Impact",
+    "tree": "fire",
+    "category": "talent",
+    "kinds": [
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Lanzar hechizos de rango bajo reduce su probabilidad de activarse.",
+      "en": "Casting low-rank spells lowers its trigger chance."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Impacto"
+  },
+  {
+    "id": "burning-soul",
+    "name": "Burning Soul",
+    "tree": "fire",
+    "category": "talent",
+    "kinds": [
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Ahora cuesta 3 puntos para el mismo efecto.",
+      "en": "Now costs 3 points for the same effect."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Alma ardiente"
+  },
+  {
+    "id": "improved-scorch",
+    "name": "Improved Scorch",
+    "tree": "fire",
+    "category": "talent",
+    "kinds": [
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Su efecto negativo solo beneficia al Mago que lo aplica.",
+      "en": "Its debuff now only benefits the casting Mage."
+    },
+    "details": [
+      {
+        "es": "Su vulnerabilidad al Fuego ya no hace una segunda tirada de resistencia (build del 1 de octubre).",
+        "en": "Its Fire Vulnerability no longer makes a second resist roll (1 October build)."
+      }
+    ],
+    "notes": [
+      {
+        "status": "analysis",
+        "text": {
+          "es": "Un solo Mago ya no puede mantener la vulnerabilidad al Fuego para todo el grupo.",
+          "en": "A single Mage can no longer maintain Fire vulnerability for the whole group."
+        }
+      }
+    ],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "blizzard-dev-notes"
+    ],
+    "nameEs": "Chamuscar mejorado",
+    "updated": "2026-10-11"
+  },
+  {
+    "id": "heating-up",
+    "name": "Heating Up",
+    "tree": "fire",
+    "category": "talent",
+    "kinds": [
+      "new",
+      "prerequisite"
+    ],
+    "row": 4,
+    "summary": {
+      "es": "Nuevo talento de la fila 4 que requiere Piroexplosión. Los críticos no periódicos de Bola de Fuego, Descarga de Pirofrío, Explosión de Fuego y Chamuscar reducen un 25 % el tiempo de lanzamiento de tu siguiente Piroexplosión, acumulable hasta 3 veces.",
+      "en": "New row 4 talent that requires Pyroblast. Non-periodic critical strikes from Fireball, Frostfire Bolt, Fire Blast and Scorch reduce your next Pyroblast's cast time by 25%, stacking up to 3 times."
+    },
+    "details": [
+      {
+        "es": "Con 3 acumulaciones, Piroexplosión se lanza en 1,5 s.",
+        "en": "At 3 stacks, Pyroblast casts in 1.5 s."
+      },
+      {
+        "es": "El efecto dura 20 s (en la beta pasó de 15 a 20 s el 24 de septiembre).",
+        "en": "The buff lasts 20 s (raised from 15 s in the beta on 24 September)."
+      },
+      {
+        "es": "Hasta el 1 de octubre se llamaba Hot Streak («Buena racha») en la beta; Blizzard lo renombró porque ya no depende de encadenar críticos.",
+        "en": "It was called Hot Streak in the beta until 1 October; Blizzard renamed it because it no longer depends on a streak of crits."
+      }
+    ],
+    "notes": [
+      {
+        "status": "analysis",
+        "text": {
+          "es": "Convierte Piroexplosión de abridor lento en remate de ventana de críticos: acumula con tus hechizos de relleno y lánzalo con 3 cargas.",
+          "en": "Turns Pyroblast from a slow opener into a crit-window payoff: build stacks with your fillers and cast it at 3."
+        }
+      }
+    ],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "warcrafttavern-mage-deep-dive",
+      "blizzard-dev-notes"
+    ],
+    "nameEs": "Calentamiento",
+    "updated": "2026-10-11"
+  },
+  {
+    "id": "blast-wave",
+    "name": "Blast Wave",
+    "tree": "fire",
+    "category": "talent",
+    "kinds": [
+      "prerequisite"
+    ],
+    "summary": {
+      "es": "Ya no requiere Piroexplosión.",
+      "en": "No longer requires Pyroblast."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Ola explosiva"
+  },
+  {
+    "id": "elemental-precision",
+    "name": "Elemental Precision",
+    "tree": "frost",
+    "category": "talent",
+    "kinds": [
+      "redesigned"
+    ],
+    "summary": {
+      "es": "Ahora aumenta la probabilidad de acierto de los hechizos de Fuego y Escarcha, en lugar de reducir la probabilidad de que el objetivo los resista.",
+      "en": "Now increases your chance to hit with Fire and Frost spells instead of reducing the target's chance to resist them."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Enfoque elemental"
+  },
+  {
+    "id": "permafrost",
+    "name": "Permafrost",
+    "tree": "frost",
+    "category": "talent",
+    "kinds": [
+      "redesigned"
+    ],
+    "summary": {
+      "es": "Aumenta la duración de los efectos de enfriamiento un 11/22/33 % en lugar de 1/2/3 s fijos, para no alargar en exceso Ventisca mejorada.",
+      "en": "Increases Chill durations by 11/22/33% instead of a flat 1/2/3 s, so it no longer over-extends Improved Blizzard."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Escarcha permanente"
+  },
+  {
+    "id": "frost-channeling",
+    "name": "Frost Channeling",
+    "tree": "frost",
+    "category": "talent",
+    "kinds": [
+      "moved"
+    ],
+    "previousRow": 4,
+    "row": 3,
+    "summary": {
+      "es": "Pasa de la fila 4 a la 3.",
+      "en": "Moved from row 4 to row 3."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Canalización de Escarcha"
+  },
+  {
+    "id": "ice-lance",
+    "name": "Ice Lance",
+    "tree": "frost",
+    "category": "talent",
+    "kinds": [
+      "new"
+    ],
+    "row": 3,
+    "milestone": 11,
+    "summary": {
+      "es": "Nuevo talento decisivo de 11 puntos. Instantáneo y de poco daño, pero hace un 300 % más contra objetivos congelados (o tratados como congelados gracias a Dedos de Escarcha).",
+      "en": "New 11-point milestone talent. Instant cast with low damage, increased by 300% against Frozen targets (or targets treated as Frozen by Fingers of Frost)."
+    },
+    "details": [],
+    "notes": [
+      {
+        "status": "analysis",
+        "text": {
+          "es": "Solo merece la pena sobre un objetivo congelado: después de Nova de Escarcha o con cargas de Dedos de Escarcha. Fuera de eso, es un hechizo de movimiento.",
+          "en": "Only worth it on a Frozen target: after Frost Nova or with Fingers of Frost charges. Otherwise it is a movement filler."
+        }
+      }
+    ],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "warcrafttavern-mage-deep-dive"
+    ],
+    "nameEs": "Lanza de hielo"
+  },
+  {
+    "id": "improved-blizzard",
+    "name": "Improved Blizzard",
+    "tree": "frost",
+    "category": "talent",
+    "kinds": [
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Ralentiza menos: el máximo pasa del 65 % al 40 %.",
+      "en": "Slows less: the maximum goes from 65% to 40%."
+    },
+    "details": [
+      {
+        "es": "Según Blizzard, reduce el poder del farmeo en área de los magos de Escarcha, que se usaba para conseguir oro y experiencia rápidos y perturbaba la economía.",
+        "en": "According to Blizzard, it reduces the power of Frost Mage AoE farming, which was used for fast gold and experience and disrupted the economy."
+      }
+    ],
+    "notes": [
+      {
+        "status": "analysis",
+        "text": {
+          "es": "Junto con Cono de frío, debilita el farmeo masivo con «kiteo» típico de Classic.",
+          "en": "Together with Cone of Cold, it weakens the classic kite-and-farm AoE grinding."
+        }
+      }
+    ],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "blizzard-deep-dive-mage-es"
+    ],
+    "nameEs": "Ventisca mejorada",
+    "updated": "2026-10-11"
+  },
+  {
+    "id": "ice-block",
+    "name": "Ice Block",
+    "tree": "frost",
+    "category": "talent",
+    "kinds": [
+      "moved"
+    ],
+    "previousRow": 5,
+    "row": 4,
+    "milestone": 16,
+    "summary": {
+      "es": "Pasa de la fila 5 a la 4 y se convierte en el talento decisivo de 16 puntos.",
+      "en": "Moved from row 5 to row 4 and is now the 16-point milestone talent."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Bloqueo de hielo"
+  },
+  {
+    "id": "shatter",
+    "name": "Shatter",
+    "tree": "frost",
+    "category": "talent",
+    "kinds": [
+      "prerequisite"
+    ],
+    "summary": {
+      "es": "Ya no requiere Nova de Escarcha mejorada.",
+      "en": "No longer requires Improved Frost Nova."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Trizar"
+  },
+  {
+    "id": "cold-snap",
+    "name": "Cold Snap",
+    "tree": "frost",
+    "category": "talent",
+    "kinds": [
+      "moved",
+      "adjusted"
+    ],
+    "previousRow": 3,
+    "row": 5,
+    "milestone": 21,
+    "summary": {
+      "es": "Pasa de la fila 3 a la 5, se convierte en el talento decisivo de 21 puntos y su tiempo de reutilización sube de 5 a 10 minutos.",
+      "en": "Moved from row 3 to row 5, becomes the 21-point milestone talent, and its cooldown rises from 5 to 10 minutes."
+    },
+    "details": [],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Mordedura helada"
+  },
+  {
+    "id": "fingers-of-frost",
+    "name": "Fingers of Frost",
+    "tree": "frost",
+    "category": "talent",
+    "kinds": [
+      "new",
+      "prerequisite"
+    ],
+    "row": 5,
+    "summary": {
+      "es": "Nuevo talento de la fila 5. Tus efectos de enfriamiento pueden otorgar 1/2 cargas de Dedos de Escarcha. Cada carga hace que tus hechizos traten al objetivo como si estuviera congelado.",
+      "en": "New row 5 talent. Your Chill effects have a chance to grant 1/2 charges of Fingers of Frost. Each charge makes your spells treat the target as if it were Frozen."
+    },
+    "details": [
+      {
+        "es": "El texto oficial lo describe como «Requisito previo de Lanza de hielo» («Pre-requisite of Ice Lance»). Como Lanza de hielo es un talento decisivo de 11 puntos (fila 3), lo más probable es que Dedos de Escarcha requiera Lanza de hielo y no al revés. Pendiente de confirmar.",
+        "en": "The official text calls it “Pre-requisite of Ice Lance”. Since Ice Lance is an 11-point milestone (row 3), Fingers of Frost most likely requires Ice Lance rather than the reverse. Awaiting confirmation."
+      }
+    ],
+    "notes": [
+      {
+        "status": "analysis",
+        "text": {
+          "es": "Es lo que hace jugable Lanza de hielo fuera de Nova de Escarcha: aplica enfriamiento con Descarga de Escarcha y gasta las cargas en Lanza de hielo.",
+          "en": "This is what makes Ice Lance playable outside Frost Nova: apply Chill with Frostbolt and spend charges on Ice Lance."
+        }
+      }
+    ],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ],
+    "nameEs": "Dedos de Escarcha"
+  },
+  {
+    "id": "winters-chill",
+    "name": "Winter's Chill",
+    "tree": "frost",
+    "category": "talent",
+    "kinds": [
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Solo beneficia al Mago que lo aplica, y el aumento de probabilidad de crítico se aplica únicamente a Descarga de Escarcha e Lanza de hielo.",
+      "en": "Only benefits the casting Mage, and its critical strike chance increase now applies only to Frostbolt and Ice Lance."
+    },
+    "details": [
+      {
+        "es": "Su aplicación ya no puede resistirse por separado: basta con que el hechizo original impacte (build del 1 de octubre).",
+        "en": "Its application no longer rolls a separate resist: the original spell hitting is enough (1 October build)."
+      }
+    ],
+    "notes": [],
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "blizzard-dev-notes"
+    ],
+    "nameEs": "Escalofrío del invierno",
+    "updated": "2026-10-11"
+  }
+]

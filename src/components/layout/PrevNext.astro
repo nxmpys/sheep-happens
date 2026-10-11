@@ -1,0 +1,90 @@
+---
+import Icon from '../ui/Icon.astro';
+import { href } from '../../i18n/locale';
+import { neighbours, type Locale, type PageId } from '../../i18n/routes';
+import { NAV_LABELS, t } from '../../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  pageId: PageId;
+}
+
+const { locale, pageId } = Astro.props;
+const { prev, next } = neighbours(pageId);
+---
+
+{
+  (prev || next) && (
+    <nav class="pager" aria-label={t(locale, 'nav.pager')} data-pagefind-ignore>
+      {prev ? (
+        <a class="pager__link pager__link--prev" href={href(prev, locale)} rel="prev">
+          <span class="pager__dir">
+            <Icon name="arrowLeft" size={16} />
+            {t(locale, 'nav.prev')}
+          </span>
+          <span class="pager__title">{NAV_LABELS[locale][prev]}</span>
+        </a>
+      ) : (
+        <span />
+      )}
+      {next && (
+        <a class="pager__link pager__link--next" href={href(next, locale)} rel="next">
+          <span class="pager__dir">
+            {t(locale, 'nav.next')}
+            <Icon name="arrowRight" size={16} />
+          </span>
+          <span class="pager__title">{NAV_LABELS[locale][next]}</span>
+        </a>
+      )}
+    </nav>
+  )
+}
+
+<style>
+  .pager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+  }
+  .pager__link {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+    color: var(--text);
+    text-decoration: none;
+  }
+  .pager__link:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+  .pager__link--next {
+    grid-column: 2;
+    text-align: right;
+    align-items: flex-end;
+  }
+  .pager__dir {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--step--1);
+    color: var(--text-subtle);
+  }
+  .pager__title {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+  }
+  @media (max-width: 520px) {
+    .pager {
+      grid-template-columns: 1fr;
+    }
+    .pager__link--next {
+      grid-column: 1;
+    }
+  }
+</style>

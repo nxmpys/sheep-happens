@@ -1,0 +1,333 @@
+---
+/**
+ * Filterable list of every Forever change.
+ * Without JavaScript all cards are shown and the filter form stays hidden.
+ */
+import ChangeCard from './ChangeCard.astro';
+import Icon from '../ui/Icon.astro';
+import { getLocale } from '../../i18n/locale';
+import { t, type UiKey } from '../../i18n/ui';
+import { changes } from '../../lib/data';
+import { CHANGE_KINDS, TREES } from '../../lib/schemas';
+
+const locale = getLocale(Astro);
+const total = changes.length;
+const treeCounts = Object.fromEntries(TREES.map((tree) => [tree, changes.filter((c) => c.tree === tree).length]));
+const kinds = CHANGE_KINDS.filter((kind) => changes.some((c) => c.kinds.includes(kind)));
+const strings = {
+  count: t(locale, 'changes.count'),
+  copied: t(locale, 'toast.copied'),
+  copyFailed: t(locale, 'toast.copyFailed'),
+};
+---
+
+<change-explorer data-strings={JSON.stringify(strings)}>
+  <form class="filters" aria-label={t(locale, 'changes.filters')} hidden data-filters data-pagefind-ignore>
+    <fieldset class="filters__group">
+      <legend>{t(locale, 'changes.tree')}</legend>
+      <div class="segmented">
+        <label>
+          <input type="radio" name="tree" value="all" checked />
+          <span>{t(locale, 'changes.all')} <small>{total}</small></span>
+        </label>
+        {
+          TREES.map((tree) => (
+            <label class={`school-${tree}`}>
+              <input type="radio" name="tree" value={tree} />
+              <span>
+                <Icon name={tree} size={16} />
+                {t(locale, `tree.${tree}` as UiKey)} <small>{treeCounts[tree]}</small>
+              </span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <fieldset class="filters__group">
+      <legend>{t(locale, 'changes.kind')}</legend>
+      <div class="segmented segmented--wrap">
+        <label>
+          <input type="radio" name="kind" value="all" checked />
+          <span>{t(locale, 'changes.allKinds')}</span>
+        </label>
+        {
+          kinds.map((kind) => (
+            <label>
+              <input type="radio" name="kind" value={kind} />
+              <span>{t(locale, `kind.${kind}` as UiKey)}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <div class="filters__row">
+      <label class="filters__search">
+        <span class="filters__search-label">{t(locale, 'changes.search')}</span>
+        <span class="filters__search-box">
+          <Icon name="search" size={18} />
+          <input type="search" name="q" autocomplete="off" placeholder={t(locale, 'changes.searchPlaceholder')} />
+        </span>
+      </label>
+      <div class="filters__actions">
+        <button type="button" class="button" data-reset>
+          <Icon name="reset" size={16} />
+          {t(locale, 'changes.reset')}
+        </button>
+        <button type="button" class="button" data-share>
+          <Icon name="link" size={16} />
+          {t(locale, 'changes.share')}
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <p class="results-count" role="status" aria-live="polite" data-count data-pagefind-ignore>
+    {t(locale, 'changes.count', { shown: total, total })}
+  </p>
+
+  <div class="grid" data-list>
+    {changes.map((change) => <ChangeCard change={change} />)}
+  </div>
+
+  <div class="empty" hidden data-empty>
+    <p>{t(locale, 'changes.empty')}</p>
+    <button type="button" class="button button--primary" data-reset>{t(locale, 'changes.reset')}</button>
+  </div>
+</change-explorer>
+
+<script>
+  import { EMPTY_FILTERS, isFiltered, matchesChange, parseFilterState, serializeFilterState, type ChangeFilterState } from '../../lib/filters';
+  import { copyText } from '../../scripts/clipboard';
+  import { showToast } from '../../scripts/toast';
+
+  class ChangeExplorer extends HTMLElement {
+    private form!: HTMLFormElement;
+    private cards: HTMLElement[] = [];
+    private strings: Record<string, string> = {};
+
+    connectedCallback() {
+      this.form = this.querySelector<HTMLFormElement>('[data-filters]')!;
+      this.cards = [...this.querySelectorAll<HTMLElement>('[data-change]')];
+      this.strings = JSON.parse(this.dataset.strings ?? '{}');
+      this.form.hidden = false;
+
+      this.applyState(parseFilterState(location.search), { updateUrl: false });
+
+      this.form.addEventListener('change', () => this.applyState(this.readForm()));
+      this.form.addEventListener('input', (event) => {
+        if ((event.target as HTMLElement).matches('input[type="search"]')) this.applyState(this.readForm());
+      });
+      this.form.addEventListener('submit', (event) => event.preventDefault());
+      this.querySelectorAll('[data-reset]').forEach((button) =>
+        button.addEventListener('click', () => {
+          this.applyState(EMPTY_FILTERS);
+          this.form.querySelector<HTMLInputElement>('input[name="tree"][value="all"]')?.focus();
+        }),
+      );
+      this.querySelector('[data-share]')?.addEventListener('click', async () => {
+        const ok = await copyText(location.href);
+        showToast(ok ? this.strings['copied']! : this.strings['copyFailed']!);
+      });
+      window.addEventListener('popstate', () => this.applyState(parseFilterState(location.search), { updateUrl: false }));
+    }
+
+    private readForm(): ChangeFilterState {
+      const data = new FormData(this.form);
+      return parseFilterState(
+        serializeFilterState({
+          tree: (data.get('tree') as ChangeFilterState['tree']) ?? 'all',
+          kind: (data.get('kind') as ChangeFilterState['kind']) ?? 'all',
+          query: String(data.get('q') ?? ''),
+        }),
+      );
+    }
+
+    private writeForm(state: ChangeFilterState) {
+      const tree = this.form.querySelector<HTMLInputElement>(`input[name="tree"][value="${state.tree}"]`);
+      const kind = this.form.querySelector<HTMLInputElement>(`input[name="kind"][value="${state.kind}"]`);
+      if (tree) tree.checked = true;
+      if (kind) kind.checked = true;
+      const search = this.form.querySelector<HTMLInputElement>('input[name="q"]')!;
+      if (search.value !== state.query) search.value = state.query;
+    }
+
+    private applyState(state: ChangeFilterState, { updateUrl = true } = {}) {
+      this.writeForm(state);
+      let shown = 0;
+      for (const card of this.cards) {
+        const visible = matchesChange(
+          { tree: card.dataset.tree ?? '', kinds: (card.dataset.kinds ?? '').split(' '), text: card.dataset.search ?? '' },
+          state,
+        );
+        card.hidden = !visible;
+        if (visible) shown++;
+      }
+      this.querySelector<HTMLElement>('[data-count]')!.textContent = (this.strings['count'] ?? '')
+        .replace('{shown}', String(shown))
+        .replace('{total}', String(this.cards.length));
+      this.querySelector<HTMLElement>('[data-empty]')!.hidden = shown > 0;
+      this.querySelectorAll<HTMLButtonElement>('[data-reset]').forEach((b) => (b.disabled = !isFiltered(state)));
+
+      if (updateUrl) {
+        const url = `${location.pathname}${serializeFilterState(state)}`;
+        history.replaceState(null, '', url);
+      }
+    }
+  }
+
+  customElements.define('change-explorer', ChangeExplorer);
+</script>
+
+<style>
+  change-explorer {
+    display: block;
+  }
+  .filters {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+  }
+  .filters[hidden] {
+    display: none;
+  }
+  .filters__group {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+  legend,
+  .filters__search-label {
+    display: block;
+    margin-bottom: var(--space-2);
+    font-size: var(--step--1);
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+  .segmented {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .segmented label {
+    position: relative;
+    cursor: pointer;
+  }
+  .segmented input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  .segmented span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    min-height: 40px;
+    padding: 0 0.85em;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface-1);
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+  .segmented small {
+    font-weight: 500;
+    color: var(--text-subtle);
+  }
+  .segmented label:hover span {
+    background: var(--surface-2);
+    color: var(--text);
+  }
+  .segmented [class^='school-'] span :global(svg) {
+    color: var(--school);
+  }
+  .segmented input:checked + span {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+  .segmented input:checked + span small,
+  .segmented input:checked + span :global(svg) {
+    color: inherit;
+  }
+  .segmented input:focus-visible + span {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .filters__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--space-3);
+  }
+  .filters__search {
+    flex: 1 1 16rem;
+  }
+  .filters__search-box {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+    color: var(--text-subtle);
+  }
+  .filters__search-box:focus-within {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .filters__search-box input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-size: var(--step-0);
+    outline: none;
+  }
+  .filters__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .filters__actions button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .results-count {
+    margin: var(--space-4) 0 var(--space-3);
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+    gap: var(--space-4);
+    align-items: start;
+  }
+  .empty {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius);
+    text-align: left;
+  }
+  .empty[hidden] {
+    display: none;
+  }
+</style>

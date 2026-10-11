@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <style>
+    .w{fill:#1b1830}.a{fill:#6b3fd6}.s{fill:#b58a1f}.e{fill:#f6f4fb}
+    @media (prefers-color-scheme: dark){.w{fill:#ecebf4}.a{fill:#a98bff}.s{fill:#e5c97f}.e{fill:#0e0d16}}
+  </style>
+  <g class="a"><rect x="12.2" y="26" width="2.8" height="8" rx="1.4"/><rect x="23.6" y="26" width="2.8" height="8" rx="1.4"/></g>
+  <g class="w"><circle cx="12" cy="19" r="6.4"/><circle cx="19" cy="14.5" r="6.4"/><circle cx="26" cy="19" r="6.4"/><circle cx="15.5" cy="24" r="5.8"/><circle cx="22.5" cy="24" r="5.8"/></g>
+  <g class="a"><ellipse cx="31.5" cy="20.5" rx="4.6" ry="5.6"/><ellipse cx="28.6" cy="15.6" rx="2.6" ry="1.3" transform="rotate(-25 28.6 15.6)"/></g>
+  <circle class="e" cx="32.9" cy="19.4" r="1"/>
+  <path class="s" d="M7 1.5l1.3 4.2L12.5 7 8.3 8.3 7 12.5 5.7 8.3 1.5 7l4.2-1.3z"/>
+</svg>

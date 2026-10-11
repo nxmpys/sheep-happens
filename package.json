@@ -1,0 +1,43 @@
+{
+  "name": "sheep-happens",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Guía interactiva de Mago para World of Warcraft: Forever (ES/EN).",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "astro": "astro",
+    "typecheck": "astro check",
+    "validate": "tsx scripts/validate-content.ts",
+    "data:diff": "tsx scripts/check-data-changes.ts",
+    "changelog": "tsx scripts/changelog-md.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "links": "tsx scripts/check-links.ts",
+    "watch": "tsx scripts/watch-sources.ts",
+    "og": "tsx scripts/og-images.ts",
+    "check": "npm run validate && npm run data:diff && npm run changelog -- --check && npm run typecheck && npm run test && npm run build && npm run links"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^8.0.3",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource/spectral": "^5.3.0",
+    "astro": "^7.3.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@resvg/resvg-js": "^2.6.2",
+    "pagefind": "^1.5.2",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.3",
+    "yaml": "^2.9.1"
+  }
+}

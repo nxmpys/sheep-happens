@@ -1,0 +1,54 @@
+---
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  variant?: 'info' | 'tip' | 'warning';
+  title?: string;
+}
+
+const { variant = 'info', title } = Astro.props;
+const icon = variant === 'warning' ? 'warning' : variant === 'tip' ? 'analysis' : 'info';
+---
+
+<aside class:list={['callout', `callout--${variant}`]}>
+  <Icon name={icon} size={20} class="callout__icon" />
+  <div class="callout__body">
+    {title && <p class="callout__title">{title}</p>}
+    <slot />
+  </div>
+</aside>
+
+<style>
+  .callout {
+    display: flex;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--callout-color);
+    background: var(--surface-1);
+  }
+  .callout--info {
+    --callout-color: var(--status-reported);
+  }
+  .callout--tip {
+    --callout-color: var(--status-analysis);
+  }
+  .callout--warning {
+    --callout-color: var(--warning);
+    background: var(--warning-soft);
+  }
+  .callout :global(.callout__icon) {
+    color: var(--callout-color);
+    margin-top: 0.2em;
+  }
+  .callout__body {
+    min-width: 0;
+  }
+  .callout__body > :global(* + *) {
+    margin-top: var(--space-2);
+  }
+  .callout__title {
+    font-weight: 700;
+  }
+</style>

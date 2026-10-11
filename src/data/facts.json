@@ -1,0 +1,191 @@
+[
+  {
+    "id": "official-product",
+    "label": {
+      "es": "Qué es",
+      "en": "What it is"
+    },
+    "value": {
+      "es": "Juego oficial de Blizzard basado en el WoW original (vanilla), con contenido nuevo en todos los rangos de nivel.",
+      "en": "Official Blizzard game based on original (vanilla) WoW, with new content at every level range."
+    },
+    "status": "reported",
+    "sources": [
+      "lfcarry-beta",
+      "wowforever-level-cap"
+    ]
+  },
+  {
+    "id": "launch",
+    "label": {
+      "es": "Lanzamiento",
+      "en": "Launch"
+    },
+    "value": {
+      "es": "4 de noviembre de 2026, 15:00 PST (23:00 UTC).",
+      "en": "4 November 2026, 3:00 PM PST (23:00 UTC)."
+    },
+    "status": "reported",
+    "sources": [
+      "lfcarry-beta"
+    ]
+  },
+  {
+    "id": "beta",
+    "label": {
+      "es": "Beta",
+      "en": "Beta"
+    },
+    "value": {
+      "es": "Del 17 de septiembre al 21-22 de octubre de 2026. Nivel máximo 30 desde el 1 de octubre.",
+      "en": "17 September to 21–22 October 2026. Level cap 30 since 1 October."
+    },
+    "status": "reported",
+    "sources": [
+      "lfcarry-beta",
+      "icyveins-beta-cap"
+    ]
+  },
+  {
+    "id": "level-cap",
+    "label": {
+      "es": "Nivel máximo",
+      "en": "Level cap"
+    },
+    "value": {
+      "es": "60, «en el futuro previsible».",
+      "en": "60, “for the foreseeable future”."
+    },
+    "status": "reported",
+    "sources": [
+      "wowforever-level-cap",
+      "lfcarry-beta"
+    ]
+  },
+  {
+    "id": "client-version",
+    "label": {
+      "es": "Versión del cliente",
+      "en": "Client version"
+    },
+    "value": {
+      "es": "Parche 1.60.1 (build 70338 de la beta, 10 de octubre de 2026).",
+      "en": "Patch 1.60.1 (beta build 70338, 10 October 2026)."
+    },
+    "status": "reported",
+    "sources": [
+      "warcraft-wiki-forever",
+      "wago-tools-builds"
+    ],
+    "updated": "2026-10-11"
+  },
+  {
+    "id": "specs",
+    "label": {
+      "es": "Ramas",
+      "en": "Trees"
+    },
+    "value": {
+      "es": "Arcano, Fuego y Escarcha. Las tres son de daño a distancia.",
+      "en": "Arcane, Fire and Frost. All three are ranged damage."
+    },
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "warcrafttavern-classes"
+    ]
+  },
+  {
+    "id": "talents-start",
+    "label": {
+      "es": "Talentos",
+      "en": "Talents"
+    },
+    "value": {
+      "es": "Desde el nivel 10. Talentos de hito de 1 punto con 11, 21 y 31 puntos, más un nuevo hito de 16.",
+      "en": "From level 10. One-point milestone talents at 11, 21 and 31 points, plus a new 16-point milestone."
+    },
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ]
+  },
+  {
+    "id": "talent-points",
+    "label": {
+      "es": "Puntos a nivel 60",
+      "en": "Points at level 60"
+    },
+    "value": {
+      "es": "51, si se mantiene 1 punto por nivel desde el 10 como en Classic.",
+      "en": "51, if it keeps one point per level from 10 as in Classic."
+    },
+    "status": "analysis",
+    "sources": [
+      "seemeta-talents"
+    ]
+  },
+  {
+    "id": "respec",
+    "label": {
+      "es": "Cambiar talentos",
+      "en": "Respec"
+    },
+    "value": {
+      "es": "En el instructor de clase de una capital (también los talentos de Legado).",
+      "en": "At a class trainer in a major city (Legacy talents too)."
+    },
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage"
+    ]
+  },
+  {
+    "id": "dual-spec",
+    "label": {
+      "es": "Doble especialización",
+      "en": "Dual specialization"
+    },
+    "value": {
+      "es": "A partir del nivel 40 por ahora. Blizzard estudia adelantarla (se mencionó el nivel 30). Coste sin publicar.",
+      "en": "From level 40 for now. Blizzard is considering an earlier level (level 30 was mentioned). Cost not published."
+    },
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "wowhead-dual-spec-podcast"
+    ],
+    "updated": "2026-10-11"
+  },
+  {
+    "id": "races",
+    "label": {
+      "es": "Razas de Mago",
+      "en": "Mage races"
+    },
+    "value": {
+      "es": "Humano, Gnomo, Skyborne (nueva), Orco (nuevo), No-muerto y Trol.",
+      "en": "Human, Gnome, Skyborne (new), Orc (new), Undead and Troll."
+    },
+    "status": "reported",
+    "sources": [
+      "warcrafttavern-classes",
+      "zockify-mage"
+    ]
+  },
+  {
+    "id": "legacy",
+    "label": {
+      "es": "Sistema de Legado",
+      "en": "Legacy system"
+    },
+    "value": {
+      "es": "Puntos a nivel de cuenta que cada personaje gasta en tres árboles (Profesiones, Aventura, Recursos). Máximo de 16 en el lanzamiento. No modifica tus talentos de clase.",
+      "en": "Account-wide points each character spends in three trees (Professions, Adventure, Resourcefulness). Capped at 16 at launch. Does not modify your class talents."
+    },
+    "status": "reported",
+    "sources": [
+      "warcrafttavern-legacy"
+    ]
+  }
+]

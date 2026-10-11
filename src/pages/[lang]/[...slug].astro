@@ -1,0 +1,35 @@
+---
+import { getCollection, render } from 'astro:content';
+import { mdxComponents } from '../../components/mdx';
+import GuideLayout from '../../layouts/GuideLayout.astro';
+import HomeLayout from '../../layouts/HomeLayout.astro';
+import { ROUTES } from '../../i18n/routes';
+
+export async function getStaticPaths() {
+  // Drafts are never routed: they stay in the repository until reviewed.
+  const entries = await getCollection('pages', (entry) => entry.data.status === 'published');
+  return entries.map((entry) => {
+    const slug = ROUTES[entry.data.pageId].slug[entry.data.locale];
+    return {
+      params: { lang: entry.data.locale, slug: slug || undefined },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const { pageId, locale } = entry.data;
+---
+
+{
+  pageId === 'home' ? (
+    <HomeLayout locale={locale} data={entry.data}>
+      <Content components={mdxComponents} />
+    </HomeLayout>
+  ) : (
+    <GuideLayout locale={locale} pageId={pageId} data={entry.data} headings={headings}>
+      <Content components={mdxComponents} />
+    </GuideLayout>
+  )
+}

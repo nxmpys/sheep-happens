@@ -1,0 +1,110 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource/spectral/600.css';
+import '@fontsource/spectral/700.css';
+import '../styles/base.css';
+import Footer from '../components/layout/Footer.astro';
+import Header from '../components/layout/Header.astro';
+import SearchDialog from '../components/layout/SearchDialog.astro';
+import Toast from '../components/layout/Toast.astro';
+import { href, otherLocale } from '../i18n/locale';
+import type { Locale, PageId } from '../i18n/routes';
+import { t } from '../i18n/ui';
+import { SITE_NAME } from '../lib/seo';
+
+interface Props {
+  locale: Locale;
+  pageId: PageId | undefined;
+  title: string;
+  /** Shorter, keyword-first title for search results. Defaults to title. */
+  seoTitle?: string | undefined;
+  description: string;
+  /** Pagefind "section" label shown in search results. */
+  section?: string | undefined;
+  noindex?: boolean;
+  /** Absolute or root-relative URL of the social preview image. */
+  image?: string | undefined;
+  /** schema.org objects rendered as JSON-LD. */
+  jsonLd?: object[];
+  modified?: Date | undefined;
+}
+
+const { locale, pageId, title, seoTitle, description, section, noindex = false, image, jsonLd = [], modified } = Astro.props;
+const fullTitle = `${seoTitle ?? title} | ${SITE_NAME}`;
+const site = Astro.site ?? new URL('https://sheep-happens.pages.dev');
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const absolute = (path: string) => new URL(path, site).href;
+const canonical = pageId ? absolute(href(pageId, locale)) : undefined;
+const alternate = pageId ? absolute(href(pageId, otherLocale(locale))) : undefined;
+const xDefault = pageId ? absolute(href(pageId, 'es')) : undefined;
+const ogImage = absolute(image ?? `${base}og/${locale}-home.png`);
+const ogLocale = { es: 'es_ES', en: 'en_GB' } as const;
+const googleVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    {canonical && <link rel="alternate" hreflang={locale} href={canonical} />}
+    {alternate && <link rel="alternate" hreflang={otherLocale(locale)} href={alternate} />}
+    {xDefault && <link rel="alternate" hreflang="x-default" href={xDefault} />}
+    <link rel="alternate" type="application/rss+xml" title={t(locale, 'updates.rssTitle')} href={absolute(`${href('updates', locale)}rss.xml`)} />
+    <link rel="sitemap" href={absolute(`${base}sitemap-index.xml`)} />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} />
+    <meta name="theme-color" content="#0e0d16" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f6f4fb" media="(prefers-color-scheme: light)" />
+
+    <meta property="og:type" content={pageId === 'home' ? 'website' : 'article'} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={seoTitle ?? title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content={ogLocale[locale]} />
+    <meta property="og:locale:alternate" content={ogLocale[otherLocale(locale)]} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+    {modified && <meta property="article:modified_time" content={modified.toISOString().slice(0, 10)} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={seoTitle ?? title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    {googleVerification && <meta name="google-site-verification" content={googleVerification} />}
+    {bingVerification && <meta name="msvalidate.01" content={bingVerification} />}
+    <meta name="generator" content={Astro.generator} />
+    {jsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
+    <script is:inline>
+      // Apply the saved theme before first paint to avoid a flash.
+      try {
+        var saved = localStorage.getItem('sh-theme');
+        if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+      } catch (e) {}
+    </script>
+  </head>
+  <body id="top" data-pagefind-meta={section ? `section:${section}` : undefined}>
+    <a class="skip-link" href="#main">{t(locale, 'skip.toContent')}</a>
+    <Header locale={locale} pageId={pageId} />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+    <SearchDialog locale={locale} />
+    <Toast />
+  </body>
+</html>
+
+<style>
+  main:focus {
+    outline: none;
+  }
+</style>

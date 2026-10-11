@@ -1,0 +1,41 @@
+---
+pageId: tools
+locale: en
+title: Mage tools for WoW Forever
+seoTitle: WoW Forever Mage crit calculator (Frostfire Bolt)
+description: Crit multiplier calculator for Fireball, Frostbolt and Frostfire Bolt based on your Ice Shards and Ignite ranks, validated against Blizzard's official example.
+gameVersion: forever-beta-2026-10
+published: 2026-10-11
+reviewed: 2026-10-11
+reviewedBy: Sheep Happens
+status: published
+verification: classic
+summary:
+  - Compare how hard a Fireball, Frostbolt and Frostfire Bolt crit hits with your talents.
+  - Reproduces Blizzard's official example (280% with both talents maxed).
+  - Intermediate ranks use the Classic values.
+sources: [blizzard-deep-dive-mage, wiki-ice-shards-classic, wiki-ignite-classic]
+tags: [tools, calculator, crit, frostfire bolt, ignite, ice shards]
+---
+
+## Crit multiplier
+
+Move the **Ice Shards** (Frost) and **Ignite** (Fire) ranks to see how much damage a crit of each spell deals compared with a normal hit.
+
+<CritCalculator />
+
+## How it is calculated
+
+- A spell crit deals **150%** damage (+50%). <Status status="classic" />
+- **Ice Shards** raises that bonus by 20% per rank for **Frost** spells: at 5/5 the crit becomes **200%**. <Status status="classic" />
+- **Ignite** burns for 8% per rank of the crit's damage over 4 s for **Fire** spells: **40%** at 5/5. <Status status="classic" />
+- **Frostfire Bolt** counts as Fire **and** Frost, so it gets both: 200% + 40% of 200% = **280%**. That is exactly Blizzard's example. <Status status="verified" />
+
+Other modifiers (crit chance, target resistance) are not included: this compares **how hard a crit hits**, not how many crits you will land.
+
+## Upcoming tools
+
+<Pending
+  why="A useful talent calculator needs Forever's full tree with values, and Blizzard has only published the changes."
+  next="Once the tree is stable after launch we will add a planner with shareable build links."
+/>

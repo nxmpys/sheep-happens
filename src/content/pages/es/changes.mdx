@@ -1,0 +1,40 @@
+---
+pageId: changes
+locale: es
+title: Todos los cambios del Mago en Forever
+seoTitle: Cambios del Mago en WoW Forever, talentos nuevos y ajustes
+description: Explorador filtrable de los cambios oficiales del Mago en WoW Forever, por rama y tipo, con su explicación, fuente, estado de verificación y fecha de actualización.
+gameVersion: forever-beta-2026-10
+published: 2026-10-11
+reviewed: 2026-10-11
+reviewedBy: Sheep Happens
+status: published
+verification: verified
+summary:
+  - Filtra por rama (Base, Arcano, Fuego, Escarcha) y por tipo de cambio, o busca por nombre en español o en inglés.
+  - Los filtros se guardan en la URL, así que puedes compartir exactamente lo que estás viendo.
+  - Cada ficha distingue el cambio oficial de nuestra interpretación («Qué significa») y muestra cuándo se actualizó.
+sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, warcrafttavern-mage-deep-dive, zockify-mage]
+tags: [cambios, talentos, novedades, explorador]
+---
+
+## Cómo usar el explorador
+
+- **Rama:** «Base» son los cambios que afectan a todos los Magos (hechizos, armaduras y sistemas). Arcano, Fuego y Escarcha son los talentos de cada árbol.
+- **Tipo:** *Nuevo*, *Rediseñado* (hace algo distinto), *Renombrado*, *Movido* (cambia de fila), *Ajustado* (mismo efecto, distintos valores o coste), *Requisito* (cambia lo que hay que tener antes) y *Ahora base* (deja de ser talento).
+- **Texto:** busca por nombre, en español o en inglés, o por concepto (*crítico*, *maná*, *ralentización*…).
+
+Usamos los nombres oficiales en español que publica Blizzard y mostramos el inglés al lado. Las fichas con la marca **Actualizado** cambiaron tras una revisión semanal; el enlace lleva a la entrada del historial que lo explica.
+
+<Callout variant="warning" title="Información de beta">
+  Blizzard advierte de que las habilidades y los talentos pueden seguir cambiando durante la beta. Casi ningún cambio publicado incluye valores numéricos (daño, coste, probabilidad).
+</Callout>
+
+## Explorador de cambios
+
+<ChangeExplorer />
+
+## Discrepancias conocidas
+
+- **Dedos de Escarcha y Lanza de hielo:** el texto oficial describe Dedos de Escarcha como «Requisito previo de Lanza de hielo» (en inglés, «Pre-requisite of Ice Lance»), pero Lanza de hielo es un talento decisivo de 11 puntos (fila 3) y Dedos de Escarcha está en la fila 5. Lo coherente es que Dedos de Escarcha **requiera** Lanza de hielo. Lo marcaremos como confirmado cuando se pueda comprobar en el juego.
+- **Armonización mágica** (Magic Attunement): algunas webs la dan por «eliminada». Según Blizzard, **pasa a ser una habilidad base**.

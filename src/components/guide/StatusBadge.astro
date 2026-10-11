@@ -1,0 +1,63 @@
+---
+import Icon from '../ui/Icon.astro';
+import { getLocale } from '../../i18n/locale';
+import { t, type UiKey } from '../../i18n/ui';
+import type { Status } from '../../lib/schemas';
+
+interface Props {
+  status: Status;
+  /** Show only the icon and a visually hidden label (for dense lists). */
+  compact?: boolean;
+}
+
+const { status, compact = false } = Astro.props;
+const locale = getLocale(Astro);
+const label = t(locale, `status.${status}` as UiKey);
+const description = t(locale, `status.${status}.desc` as UiKey);
+---
+
+<span class:list={['status', `status--${status}`, { 'status--compact': compact }]} title={description} data-pagefind-ignore>
+  <Icon name={status} size={15} strokeWidth={2} />
+  {compact ? <span class="visually-hidden">{label}</span> : <span class="status__label">{label}</span>}
+  <span class="visually-hidden">: {description}</span>
+</span>
+
+<style>
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    padding: 0.1em 0.55em 0.1em 0.4em;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--status-color) 45%, transparent);
+    background: color-mix(in srgb, var(--status-color) 12%, transparent);
+    color: var(--status-color);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.5;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: help;
+  }
+  .status--compact {
+    padding: 0.2em;
+  }
+  .status--verified {
+    --status-color: var(--status-verified);
+  }
+  .status--reported {
+    --status-color: var(--status-reported);
+  }
+  .status--classic {
+    --status-color: var(--status-classic);
+  }
+  .status--analysis {
+    --status-color: var(--status-analysis);
+  }
+  .status--tested {
+    --status-color: var(--status-tested);
+  }
+  .status--pending {
+    --status-color: var(--status-pending);
+  }
+</style>

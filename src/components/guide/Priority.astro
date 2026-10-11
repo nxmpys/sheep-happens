@@ -1,0 +1,81 @@
+---
+/**
+ * A conditional priority list. Write the steps as a Markdown ordered list
+ * inside the component; each step should say WHEN, not just WHAT.
+ */
+import StatusBadge from './StatusBadge.astro';
+import type { Status } from '../../lib/schemas';
+
+interface Props {
+  title: string;
+  status: Status;
+  school?: 'arcane' | 'fire' | 'frost' | 'baseline';
+}
+
+const { title, status, school = 'baseline' } = Astro.props;
+---
+
+<section class={`priority school-${school}`} aria-label={title}>
+  <header class="priority__header">
+    <p class="priority__title">{title}</p>
+    <StatusBadge status={status} />
+  </header>
+  <div class="priority__steps">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .priority {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+    overflow: hidden;
+  }
+  .priority__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border);
+    background: var(--school-soft);
+  }
+  .priority__title {
+    font-weight: 700;
+  }
+  .priority__steps :global(ol) {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-2) var(--space-4) var(--space-4);
+    counter-reset: step;
+  }
+  .priority__steps :global(ol > li) {
+    position: relative;
+    margin: 0;
+    padding: var(--space-3) 0 var(--space-3) 2.75rem;
+    counter-increment: step;
+  }
+  .priority__steps :global(ol > li + li) {
+    border-top: 1px dashed var(--border);
+  }
+  .priority__steps :global(ol > li::before) {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: var(--space-3);
+    display: grid;
+    place-items: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 50%;
+    border: 2px solid var(--school);
+    color: var(--school);
+    font-weight: 800;
+    font-size: var(--step--1);
+  }
+  .priority__steps :global(p) {
+    margin: 0;
+  }
+</style>

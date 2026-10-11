@@ -1,0 +1,450 @@
+[
+  {
+    "id": "fireball",
+    "name": "Fireball",
+    "nameEs": "Bola de Fuego",
+    "school": "fire",
+    "role": "damage",
+    "level": 1,
+    "summary": {
+      "es": "Proyectil de Fuego a un objetivo. Tu primer hechizo de daño.",
+      "en": "Single-target Fire projectile. Your first damage spell."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic",
+      "blizzard-deep-dive-mage-es"
+    ],
+    "changeIds": [
+      "spell-ranks"
+    ]
+  },
+  {
+    "id": "frostbolt",
+    "name": "Frostbolt",
+    "nameEs": "Descarga de Escarcha",
+    "school": "frost",
+    "role": "damage",
+    "level": 4,
+    "summary": {
+      "es": "Daño de Escarcha a un objetivo que además lo ralentiza (efecto de Escalofrío).",
+      "en": "Single-target Frost damage that also slows the target (a Chill effect)."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic",
+      "blizzard-deep-dive-mage-es"
+    ],
+    "changeIds": [
+      "spell-ranks"
+    ]
+  },
+  {
+    "id": "fire-blast",
+    "name": "Fire Blast",
+    "nameEs": "Explosión de Fuego",
+    "school": "fire",
+    "role": "damage",
+    "level": 6,
+    "changeIds": [
+      "wake-of-fire",
+      "incineration"
+    ],
+    "summary": {
+      "es": "Daño de Fuego instantáneo con tiempo de reutilización. Ideal para rematar en movimiento.",
+      "en": "Instant Fire damage on a cooldown. Ideal for finishing targets on the move."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic",
+      "blizzard-deep-dive-mage-es"
+    ]
+  },
+  {
+    "id": "arcane-missiles",
+    "name": "Arcane Missiles",
+    "nameEs": "Misiles Arcanos",
+    "school": "arcane",
+    "role": "damage",
+    "level": 8,
+    "changeIds": [
+      "arcane-missiles",
+      "improved-channeling",
+      "missile-barrage"
+    ],
+    "summary": {
+      "es": "Ráfaga canalizada de misiles Arcanos contra un objetivo.",
+      "en": "Channeled barrage of Arcane missiles at one target."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic",
+      "blizzard-deep-dive-mage-es"
+    ]
+  },
+  {
+    "id": "arcane-explosion",
+    "name": "Arcane Explosion",
+    "nameEs": "Deflagración Arcana",
+    "school": "arcane",
+    "role": "damage",
+    "level": 14,
+    "summary": {
+      "es": "Daño Arcano a todos los enemigos a tu alrededor.",
+      "en": "Arcane damage to all nearby enemies."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic",
+      "blizzard-deep-dive-mage-es"
+    ]
+  },
+  {
+    "id": "flamestrike",
+    "name": "Flamestrike",
+    "school": "fire",
+    "role": "damage",
+    "level": 16,
+    "summary": {
+      "es": "Daño de Fuego en área sobre un punto del suelo, con quemadura posterior.",
+      "en": "Area Fire damage on a ground location, with a lingering burn."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic"
+    ]
+  },
+  {
+    "id": "blizzard",
+    "name": "Blizzard",
+    "nameEs": "Ventisca",
+    "school": "frost",
+    "role": "damage",
+    "level": 20,
+    "changeIds": [
+      "improved-blizzard",
+      "permafrost"
+    ],
+    "summary": {
+      "es": "Daño de Escarcha canalizado en área; con talentos, ralentiza.",
+      "en": "Channeled area Frost damage; slows with talents."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic",
+      "blizzard-deep-dive-mage-es"
+    ]
+  },
+  {
+    "id": "scorch",
+    "name": "Scorch",
+    "nameEs": "Chamuscar",
+    "school": "fire",
+    "role": "damage",
+    "level": 22,
+    "changeIds": [
+      "improved-scorch",
+      "incineration"
+    ],
+    "summary": {
+      "es": "Daño de Fuego de lanzamiento corto; con talentos, hace al objetivo vulnerable al Fuego.",
+      "en": "Short-cast Fire damage; with talents it makes the target vulnerable to Fire."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic",
+      "blizzard-deep-dive-mage-es"
+    ]
+  },
+  {
+    "id": "frostfire-bolt",
+    "name": "Frostfire Bolt",
+    "nameEs": "Descarga de Pirofrío",
+    "school": "frostfire",
+    "role": "damage",
+    "level": 40,
+    "changeIds": [
+      "frostfire-bolt"
+    ],
+    "summary": {
+      "es": "Nuevo en Forever. Cuenta como Fuego y como Escarcha a la vez y aprovecha talentos de ambas ramas.",
+      "en": "New in Forever. Counts as both Fire and Frost and benefits from talents in both trees."
+    },
+    "status": "verified",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "blizzard-deep-dive-mage-es"
+    ]
+  },
+  {
+    "id": "polymorph",
+    "name": "Polymorph",
+    "nameEs": "Polimorfia",
+    "school": "arcane",
+    "role": "control",
+    "level": 8,
+    "summary": {
+      "es": "Convierte a un enemigo en una oveja inofensiva durante un tiempo. Cualquier daño rompe el efecto. (Sí: de ahí el nombre de esta guía).",
+      "en": "Turns an enemy into a harmless sheep for a while. Any damage breaks it. (Yes: that is where this guide's name comes from.)"
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic",
+      "blizzard-deep-dive-mage-es"
+    ]
+  },
+  {
+    "id": "frost-nova",
+    "name": "Frost Nova",
+    "nameEs": "Nova de Escarcha",
+    "school": "frost",
+    "role": "control",
+    "level": 10,
+    "changeIds": [
+      "ice-lance",
+      "shatter"
+    ],
+    "summary": {
+      "es": "Congela en el sitio a los enemigos cercanos. En Forever, además, prepara Lanza de hielo.",
+      "en": "Roots nearby enemies in place. In Forever it also sets up Ice Lance."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic",
+      "blizzard-deep-dive-mage-es"
+    ]
+  },
+  {
+    "id": "counterspell",
+    "name": "Counterspell",
+    "nameEs": "Contrahechizo",
+    "school": "arcane",
+    "role": "control",
+    "level": 24,
+    "changeIds": [
+      "improved-counterspell"
+    ],
+    "summary": {
+      "es": "Interrumpe un lanzamiento enemigo y bloquea esa escuela de magia durante un tiempo.",
+      "en": "Interrupts an enemy cast and locks out that school of magic for a while."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic",
+      "blizzard-deep-dive-mage-es"
+    ]
+  },
+  {
+    "id": "cone-of-cold",
+    "name": "Cone of Cold",
+    "nameEs": "Cono de frío",
+    "school": "frost",
+    "role": "control",
+    "level": 26,
+    "changeIds": [
+      "cone-of-cold"
+    ],
+    "summary": {
+      "es": "Daño de Escarcha en cono frente a ti que ralentiza. En Forever su duración es menor.",
+      "en": "Frost damage in a cone in front of you that slows. Its duration is shorter in Forever."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic",
+      "blizzard-deep-dive-mage",
+      "blizzard-deep-dive-mage-es"
+    ]
+  },
+  {
+    "id": "blink",
+    "name": "Blink",
+    "school": "arcane",
+    "role": "defense",
+    "level": 20,
+    "summary": {
+      "es": "Teletransporte corto hacia delante. Tu herramienta principal para escapar.",
+      "en": "Short forward teleport. Your main escape tool."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic"
+    ]
+  },
+  {
+    "id": "mana-shield",
+    "name": "Mana Shield",
+    "nameEs": "Escudo de maná",
+    "school": "arcane",
+    "role": "defense",
+    "level": 20,
+    "changeIds": [
+      "arcane-shielding"
+    ],
+    "summary": {
+      "es": "Absorbe daño gastando maná en lugar de vida.",
+      "en": "Absorbs damage by spending mana instead of health."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic",
+      "blizzard-deep-dive-mage-es"
+    ]
+  },
+  {
+    "id": "frost-armor",
+    "name": "Frost Armor / Ice Armor",
+    "school": "frost",
+    "role": "defense",
+    "level": 1,
+    "summary": {
+      "es": "Armadura que aumenta tu armadura y puede ralentizar a quien te golpea cuerpo a cuerpo. Ice Armor (nivel 30) es la versión mejorada.",
+      "en": "Armor buff that raises your armor and can slow melee attackers. Ice Armor (level 30) is the upgraded version."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic"
+    ]
+  },
+  {
+    "id": "fire-frost-ward",
+    "name": "Fire Ward / Frost Ward",
+    "school": "mixed",
+    "role": "defense",
+    "level": 20,
+    "summary": {
+      "es": "Escudos que absorben daño de Fuego (nivel 20) o de Escarcha (nivel 22).",
+      "en": "Shields that absorb Fire (level 20) or Frost (level 22) damage."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic"
+    ]
+  },
+  {
+    "id": "evocation",
+    "name": "Evocation",
+    "school": "arcane",
+    "role": "mana",
+    "level": 20,
+    "summary": {
+      "es": "Canalización que te devuelve maná rápidamente. Tiempo de reutilización largo.",
+      "en": "Channel that quickly restores your mana. Long cooldown."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic"
+    ]
+  },
+  {
+    "id": "mage-armor",
+    "name": "Mage Armor",
+    "nameEs": "Armadura de mago",
+    "school": "arcane",
+    "role": "mana",
+    "level": 34,
+    "changeIds": [
+      "mage-armor",
+      "arcane-shielding"
+    ],
+    "summary": {
+      "es": "Armadura que mejora la regeneración de maná y las resistencias. En Forever regenera más maná.",
+      "en": "Armor that improves mana regeneration and resistances. Regenerates more mana in Forever."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic",
+      "blizzard-deep-dive-mage",
+      "blizzard-deep-dive-mage-es"
+    ]
+  },
+  {
+    "id": "conjure-mana-gem",
+    "name": "Conjure Mana Agate",
+    "school": "arcane",
+    "role": "mana",
+    "level": 28,
+    "summary": {
+      "es": "Crea una gema que restaura maná al usarla.",
+      "en": "Creates a gem that restores mana when used."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic"
+    ]
+  },
+  {
+    "id": "arcane-intellect",
+    "name": "Arcane Intellect",
+    "school": "arcane",
+    "role": "utility",
+    "level": 1,
+    "summary": {
+      "es": "Aumenta el Intelecto de un aliado. Lánzalo a tu grupo.",
+      "en": "Increases an ally's Intellect. Cast it on your group."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic"
+    ]
+  },
+  {
+    "id": "conjure-food-water",
+    "name": "Conjure Water / Conjure Food",
+    "school": "arcane",
+    "role": "utility",
+    "level": 4,
+    "summary": {
+      "es": "Crea agua (nivel 4) y comida (nivel 6) para ti y tu grupo: menos tiempo y oro en descansos.",
+      "en": "Creates water (level 4) and food (level 6) for you and your group: less downtime and gold spent."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic"
+    ]
+  },
+  {
+    "id": "slow-fall",
+    "name": "Slow Fall",
+    "school": "arcane",
+    "role": "utility",
+    "level": 12,
+    "summary": {
+      "es": "Reduce la velocidad de caída y evita el daño por caída.",
+      "en": "Slows your fall and prevents falling damage."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic"
+    ]
+  },
+  {
+    "id": "remove-lesser-curse",
+    "name": "Remove Lesser Curse",
+    "school": "arcane",
+    "role": "utility",
+    "level": 18,
+    "summary": {
+      "es": "Elimina una maldición de un aliado. Es la disipación del Mago.",
+      "en": "Removes a curse from an ally. The Mage's dispel."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic"
+    ]
+  },
+  {
+    "id": "teleport-portal",
+    "name": "Teleport / Portal",
+    "school": "none",
+    "role": "utility",
+    "level": 20,
+    "summary": {
+      "es": "Teletransporte a capitales (niveles 20/30) y portales para el grupo (niveles 40/50), según la ciudad.",
+      "en": "Teleports to capital cities (levels 20/30) and group portals (levels 40/50), depending on the city."
+    },
+    "status": "classic",
+    "sources": [
+      "wiki-mage-abilities-classic"
+    ]
+  }
+]

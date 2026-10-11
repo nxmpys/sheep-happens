@@ -1,0 +1,93 @@
+---
+pageId: combat
+locale: en
+title: Mage combat in WoW Forever, priorities by tree
+seoTitle: WoW Forever Mage rotation, priorities by tree
+description: Conditional Frost, Fire and Arcane priorities for WoW Forever built from the official mechanics, plus control and survival, with no made-up rotations.
+gameVersion: forever-beta-2026-10
+published: 2026-10-11
+reviewed: 2026-10-11
+reviewedBy: Sheep Happens
+status: published
+verification: analysis
+summary:
+  - These are conditional priorities (“if X happens, do Y”), not fixed sequences.
+  - They come from the official mechanics, but nobody has measured them in game yet.
+  - Frost freezes and shatters with Ice Lance; Fire turns crits into fast Pyroblasts; Arcane stacks Arcane Blast and cashes it in.
+sources: [blizzard-deep-dive-mage, blizzard-dev-notes, wiki-pyroblast, wiki-mage-abilities-classic]
+tags: [combat, rotation, priorities, control, survival]
+---
+
+## How to read these priorities
+
+Each list goes top to bottom: **use the first thing whose condition is met**. They are not fixed rotations, because Forever's mechanics depend on what happens in the fight (freezes, crits, charges).
+
+<Callout variant="warning" title="Untested analysis">
+  These lists are our reading of the mechanics Blizzard has published. Without numbers or access to levels 31–60 we cannot promise they are optimal. We will mark them “Tested in game” once they are.
+</Callout>
+
+## Frost: single target
+
+<Priority title="Frost · single target" status="analysis" school="frost">
+
+1. **Ice Lance** if the target is **Frozen** (after Frost Nova) or you have **Fingers of Frost** charges: 300% more damage.
+2. **Frostbolt** as your main spell. It slows (a Chill effect), which can grant Fingers of Frost charges. Use a high rank: low ranks do not trigger your talents.
+3. **Frostfire Bolt** (level 40+) if the target strongly resists Frost.
+4. Unfrozen **Ice Lance** or **Fire Blast** only while moving: both are instant.
+
+</Priority>
+
+## Fire: single target
+
+<Priority title="Fire · single target" status="analysis" school="fire">
+
+1. **Pyroblast** at **3 Heating Up stacks**: it casts in 1.5 s. The stacks last 20 s.
+2. **Fire Blast** when available, especially right after a kill (Wake of Fire greatly raises its crit chance for 30 s). Its crits also add Heating Up stacks.
+3. **Fireball** or **Frostfire Bolt** as filler: their crits build Heating Up.
+4. **Scorch** when you need a short cast. With Improved Scorch, remember its effect only helps you.
+
+</Priority>
+
+## Arcane: single target
+
+<Priority title="Arcane · single target" status="analysis" school="arcane">
+
+1. **Arcane Missiles** when **Missile Barrage** is active: twice as fast and no mana cost.
+2. **Arcane Blast** to build stacks (up to 4, for 8 s) while your mana allows it: each stack makes the next one more expensive.
+3. Another strong spell to **cash in** the Arcane Blast bonus before it expires. This is what Blizzard intends with the redesign.
+4. **Presence of Mind** and **Arcane Power** as damage cooldowns (Arcane Power now requires Presence of Mind).
+
+</Priority>
+
+## Multiple targets
+
+The Mage's AoE tools are still **Blizzard**, **Arcane Explosion**, **Flamestrike**, **Cone of Cold** and the **Blast Wave** talent. <Status status="classic" />
+
+In Forever, **Cone of Cold lasts less** and **Improved Blizzard slows less**. <Status status="verified" /> Be more careful when dragging large packs. <Status status="analysis" />
+
+<Pending
+  why="Without damage numbers or tests on large packs, we cannot rank the AoE options."
+  next="We will test farming routes and multi-target pulls after launch."
+/>
+
+## Control and survival
+
+<Priority title="If an enemy reaches you" status="analysis" school="frost">
+
+1. **Frost Nova** to root it in place. As Frost, use the opening for **Ice Lance**.
+2. **Blink** away.
+3. **Polymorph** a second enemy to take it out of the fight.
+4. **Ice Block** as a last resort: it is now Frost's 16-point milestone.
+5. **Cold Snap** resets your Frost cooldowns, but its cooldown rises to 10 minutes: save it for emergencies.
+
+</Priority>
+
+- **Counterspell** with 1 point in **Improved Counterspell** always silences (previously 50% of the time). <Status status="verified" />
+- **Mana Shield** absorbs damage with your mana; **Arcane Shielding** makes it more efficient and improves Mage Armor resistances. <Status status="verified" />
+
+## Openers
+
+<Pending
+  why="Openers depend on damage values and effect durations that are not known yet."
+  next="We will document them per tree once they can be measured in game."
+/>

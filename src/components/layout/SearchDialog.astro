@@ -1,0 +1,306 @@
+---
+/**
+ * Site search powered by Pagefind (static index built after `astro build`).
+ * Results point at the exact section (heading anchor), not just the page.
+ * Pagefind picks the index for the page language from <html lang>.
+ */
+import Icon from '../ui/Icon.astro';
+import type { Locale } from '../../i18n/routes';
+import { t } from '../../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const strings = {
+  empty: t(locale, 'search.empty'),
+  results: t(locale, 'search.results'),
+  result: t(locale, 'search.result'),
+  unavailable: t(locale, 'search.unavailable'),
+  loading: t(locale, 'search.loading'),
+  hint: t(locale, 'search.hint'),
+};
+---
+
+<dialog class="search" id="search-dialog" aria-labelledby="search-title" data-strings={JSON.stringify(strings)}>
+  <div class="search__panel">
+    <form class="search__form" role="search" method="dialog" data-search-form>
+      <h2 id="search-title" class="visually-hidden">{t(locale, 'search.label')}</h2>
+      <label class="search__field">
+        <Icon name="search" size={20} />
+        <span class="visually-hidden">{t(locale, 'search.label')}</span>
+        <input
+          type="search"
+          name="q"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder={t(locale, 'search.placeholder')}
+          aria-controls="search-results"
+          aria-describedby="search-status"
+          data-search-input
+        />
+      </label>
+      <button type="button" class="icon-button" data-search-close>
+        <Icon name="close" size={20} />
+        <span class="visually-hidden">{t(locale, 'search.close')}</span>
+      </button>
+    </form>
+    <p class="search__status" id="search-status" role="status" aria-live="polite" data-search-status>
+      {strings.hint}
+    </p>
+    <ul class="search__results" id="search-results" data-search-results></ul>
+  </div>
+</dialog>
+
+<script>
+  interface SubResult {
+    title: string;
+    url: string;
+    excerpt: string;
+  }
+  interface ResultData {
+    url: string;
+    excerpt: string;
+    meta: { title?: string; section?: string };
+    sub_results?: SubResult[];
+  }
+  interface Pagefind {
+    options: (o: Record<string, unknown>) => Promise<void>;
+    init: () => Promise<void>;
+    debouncedSearch: (q: string, opts?: unknown, ms?: number) => Promise<{ results: { data: () => Promise<ResultData> }[] } | null>;
+  }
+
+  const dialog = document.querySelector<HTMLDialogElement>('#search-dialog')!;
+  const input = dialog.querySelector<HTMLInputElement>('[data-search-input]')!;
+  const list = dialog.querySelector<HTMLUListElement>('[data-search-results]')!;
+  const status = dialog.querySelector<HTMLElement>('[data-search-status]')!;
+  const strings: Record<string, string> = JSON.parse(dialog.dataset.strings ?? '{}');
+  const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+  let pagefind: Pagefind | null | undefined;
+  let opener: HTMLElement | null = null;
+
+  async function loadPagefind(): Promise<Pagefind | null> {
+    if (pagefind !== undefined) return pagefind;
+    try {
+      const url = `${base}pagefind/pagefind.js`;
+      pagefind = (await import(/* @vite-ignore */ url)) as Pagefind;
+      await pagefind.options({ baseUrl: base, excerptLength: 22 });
+      await pagefind.init();
+    } catch {
+      pagefind = null;
+    }
+    return pagefind;
+  }
+
+  function open() {
+    opener = document.activeElement as HTMLElement | null;
+    dialog.showModal();
+    input.focus();
+    input.select();
+    void loadPagefind();
+  }
+
+  function close() {
+    dialog.close();
+  }
+
+  dialog.addEventListener('close', () => opener?.focus());
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) close();
+  });
+  dialog.querySelector('[data-search-close]')?.addEventListener('click', close);
+  document.querySelectorAll('[data-search-open]').forEach((b) => b.addEventListener('click', open));
+
+  document.addEventListener('keydown', (event) => {
+    const target = event.target as HTMLElement;
+    const typing = target.closest('input, textarea, select, [contenteditable="true"]');
+    if ((event.key === 'k' || event.key === 'K') && (event.ctrlKey || event.metaKey)) {
+      event.preventDefault();
+      dialog.open ? close() : open();
+    } else if (event.key === '/' && !typing && !dialog.open) {
+      event.preventDefault();
+      open();
+    }
+  });
+
+  function escapeHtml(text: string): string {
+    return text.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+  }
+
+  function render(results: ResultData[], query: string) {
+    if (results.length === 0) {
+      list.innerHTML = '';
+      status.textContent = (strings['empty'] ?? '').replace('{query}', query);
+      return;
+    }
+    status.textContent =
+      results.length === 1 ? (strings['result'] ?? '') : (strings['results'] ?? '').replace('{count}', String(results.length));
+    list.innerHTML = results
+      .map((r) => {
+        const subs = (r.sub_results ?? [])
+          .filter((s) => s.url !== r.url)
+          .slice(0, 3)
+          .map(
+            (s) =>
+              `<li><a class="search__sub" href="${escapeHtml(s.url)}"><span class="search__sub-title">${escapeHtml(s.title)}</span><span class="search__excerpt">${s.excerpt}</span></a></li>`,
+          )
+          .join('');
+        const section = r.meta.section ? `<span class="search__section">${escapeHtml(r.meta.section)}</span>` : '';
+        return `<li class="search__result"><a class="search__page" href="${escapeHtml(r.url)}">${section}<span class="search__title">${escapeHtml(
+          r.meta.title ?? r.url,
+        )}</span><span class="search__excerpt">${r.excerpt}</span></a>${subs ? `<ul class="search__subs">${subs}</ul>` : ''}</li>`;
+      })
+      .join('');
+  }
+
+  input.addEventListener('input', async () => {
+    const query = input.value.trim();
+    if (!query) {
+      list.innerHTML = '';
+      status.textContent = strings['hint'] ?? '';
+      return;
+    }
+    status.textContent = strings['loading'] ?? '';
+    const engine = await loadPagefind();
+    if (!engine) {
+      status.textContent = strings['unavailable'] ?? '';
+      return;
+    }
+    const search = await engine.debouncedSearch(query, {}, 180);
+    if (search === null) return; // superseded by a newer keystroke
+    const data = await Promise.all(search.results.slice(0, 8).map((r) => r.data()));
+    if (input.value.trim() === query) render(data, query);
+  });
+
+  // Arrow keys move between the input and the result links.
+  dialog.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+    const links = [...list.querySelectorAll<HTMLAnchorElement>('a')];
+    if (links.length === 0) return;
+    const index = links.indexOf(document.activeElement as HTMLAnchorElement);
+    event.preventDefault();
+    if (event.key === 'ArrowDown') links[Math.min(index + 1, links.length - 1)]?.focus();
+    else if (index <= 0) input.focus();
+    else links[index - 1]?.focus();
+  });
+
+  // Close the dialog when a same-page anchor is followed.
+  list.addEventListener('click', (event) => {
+    if ((event.target as HTMLElement).closest('a')) close();
+  });
+</script>
+
+<style>
+  .search {
+    width: min(42rem, calc(100vw - 2rem));
+    max-height: min(40rem, calc(100vh - 4rem));
+    margin: 8vh auto auto;
+    padding: 0;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+    color: var(--text);
+    box-shadow: var(--shadow);
+  }
+  .search::backdrop {
+    background: rgb(5 4 12 / 0.6);
+    backdrop-filter: blur(2px);
+  }
+  .search__panel {
+    display: flex;
+    flex-direction: column;
+    max-height: inherit;
+  }
+  .search__form {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    border-bottom: 1px solid var(--border);
+  }
+  .search__field {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0 var(--space-2);
+    color: var(--text-subtle);
+  }
+  .search__field input {
+    flex: 1;
+    min-width: 0;
+    min-height: 44px;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-size: var(--step-1);
+    outline: none;
+  }
+  .search__field input::-webkit-search-cancel-button {
+    appearance: none;
+  }
+  .search__field:focus-within {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+  .search__status {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--step--1);
+    color: var(--text-subtle);
+  }
+  .search__results {
+    list-style: none;
+    margin: 0;
+    padding: 0 var(--space-3) var(--space-3);
+    overflow-y: auto;
+  }
+  .search__results :global(.search__result + .search__result) {
+    margin-top: var(--space-2);
+  }
+  .search__results :global(a) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15em;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    text-decoration: none;
+  }
+  .search__results :global(a:hover),
+  .search__results :global(a:focus-visible) {
+    background: var(--surface-2);
+  }
+  .search__results :global(.search__section) {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .search__results :global(.search__title) {
+    font-weight: 700;
+  }
+  .search__results :global(.search__excerpt) {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .search__results :global(mark) {
+    background: color-mix(in srgb, var(--accent) 30%, transparent);
+    color: var(--text);
+    border-radius: 2px;
+  }
+  .search__results :global(.search__subs) {
+    list-style: none;
+    margin: 0 0 0 var(--space-4);
+    padding: 0 0 0 var(--space-2);
+    border-left: 2px solid var(--border);
+  }
+  .search__results :global(.search__sub-title) {
+    font-weight: 600;
+    font-size: var(--step--1);
+  }
+</style>

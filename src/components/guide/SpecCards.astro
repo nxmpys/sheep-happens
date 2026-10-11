@@ -1,0 +1,154 @@
+---
+import Icon from '../ui/Icon.astro';
+import StatusBadge from './StatusBadge.astro';
+import { getLocale, href } from '../../i18n/locale';
+import { NAV_LABELS, t } from '../../i18n/ui';
+import { changesForTree, milestonesForTree } from '../../lib/data';
+import { localName } from '../../lib/names';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+
+/** Paraphrased from Blizzard's deep dive (see sources). */
+const identity = {
+  arcane: {
+    es: 'Potencia al resto de tu arsenal: prepara y refuerza el siguiente hechizo.',
+    en: 'Amplifies the rest of your toolkit: set up and empower the next cast.',
+  },
+  fire: {
+    es: 'Premia los críticos y el buen momento para lanzar.',
+    en: 'Rewards critical strikes and good timing.',
+  },
+  frost: {
+    es: 'Control por capas, ahora con nuevas interacciones con el resto de la clase.',
+    en: 'Layered control, now with new links to the rest of the class.',
+  },
+} as const;
+
+const specs = (['arcane', 'fire', 'frost'] as const).map((tree) => ({
+  tree,
+  pageId: `talents-${tree}` as const,
+  newTalents: changesForTree(tree).filter((c) => c.kinds.includes('new')).map((c) => localName(c, locale)),
+  milestones: milestonesForTree(tree),
+}));
+---
+
+<ul class="specs">
+  {
+    specs.map((spec) => (
+      <li class={`spec school-${spec.tree}`}>
+        <a class="spec__link" href={href(spec.pageId, locale)}>
+          <span class="spec__icon">
+            <Icon name={spec.tree} size={30} strokeWidth={1.5} />
+          </span>
+          <span class="spec__name">{NAV_LABELS[locale][spec.pageId]}</span>
+        </a>
+        <p class="spec__identity">
+          {identity[spec.tree][locale]} <StatusBadge status="verified" compact />
+        </p>
+        <p class="spec__label">{es ? 'Nuevo en Forever' : 'New in Forever'}</p>
+        <ul class="spec__tags">
+          {spec.newTalents.map((name) => (
+            <li class="chip">{name}</li>
+          ))}
+        </ul>
+        <p class="spec__label">{es ? 'Talentos decisivos (11 · 16 · 21 · 31)' : 'Milestones (11 · 16 · 21 · 31)'}</p>
+        <p class="spec__milestones">
+          {spec.milestones.map((m) => (m.name ? localName({ name: m.name, nameEs: m.nameEs }, locale) : t(locale, 'milestones.unknown').toLowerCase())).join(' → ')}
+        </p>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .specs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    gap: var(--space-4);
+  }
+  .spec {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: 0;
+    padding: var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(160deg, var(--school-soft), var(--surface-1) 55%);
+  }
+  .spec + .spec {
+    margin-top: 0;
+  }
+  .spec:hover {
+    border-color: var(--school);
+  }
+  .spec__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--text);
+    text-decoration: none;
+  }
+  /* The whole card is clickable through the main link. */
+  .spec__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+  .spec__link:focus-visible {
+    outline: none;
+  }
+  .spec:has(.spec__link:focus-visible) {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .spec__icon {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--school) 50%, transparent);
+    color: var(--school);
+    background: var(--surface-1);
+  }
+  .spec__name {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+  }
+  .spec__identity {
+    color: var(--text-muted);
+    position: relative;
+    z-index: 1;
+  }
+  .spec__label {
+    margin-top: var(--space-2);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--school);
+  }
+  .spec__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .spec__tags li {
+    margin: 0;
+  }
+  .spec__milestones {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+</style>

@@ -1,0 +1,178 @@
+---
+/**
+ * "On this page" index. Rendered twice by GuideLayout: a sticky sidebar on wide
+ * screens and a collapsible block above the content on narrow ones.
+ * The script highlights the section currently in view (aria-current="location").
+ */
+import type { MarkdownHeading } from 'astro';
+import Icon from '../ui/Icon.astro';
+import type { Locale } from '../../i18n/routes';
+import { t } from '../../i18n/ui';
+
+interface Props {
+  headings: MarkdownHeading[];
+  locale: Locale;
+  variant: 'sidebar' | 'inline';
+}
+
+const { headings, locale, variant } = Astro.props;
+const items = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const title = t(locale, 'toc.title');
+---
+
+{
+  items.length > 1 &&
+    (variant === 'sidebar' ? (
+      <nav class="toc toc--sidebar" aria-label={title} data-toc>
+        <p class="toc__title">{title}</p>
+        <ol>
+          {items.map((h) => (
+            <li class={`toc__item toc__item--d${h.depth}`}>
+              <a href={`#${h.slug}`} data-toc-link={h.slug}>
+                {h.text}
+              </a>
+            </li>
+          ))}
+        </ol>
+        <a class="toc__top" href="#top">
+          {t(locale, 'toc.backToTop')}
+        </a>
+      </nav>
+    ) : (
+      <details class="toc toc--inline">
+        <summary>
+          <Icon name="menu" size={18} />
+          {title}
+          <Icon name="chevronDown" size={18} class="toc__chevron" />
+        </summary>
+        <nav aria-label={title} data-toc>
+          <ol>
+            {items.map((h) => (
+              <li class={`toc__item toc__item--d${h.depth}`}>
+                <a href={`#${h.slug}`} data-toc-link={h.slug}>
+                  {h.text}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      </details>
+    ))
+}
+
+<script>
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]')];
+  const ids = [...new Set(links.map((a) => a.dataset.tocLink!))];
+  const headings = ids.map((id) => document.getElementById(id)).filter((h): h is HTMLElement => h !== null);
+
+  function setCurrent(id: string | undefined) {
+    for (const link of links) {
+      if (link.dataset.tocLink === id) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    }
+  }
+
+  if (headings.length > 0 && 'IntersectionObserver' in window) {
+    const visible = new Map<string, boolean>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) visible.set(entry.target.id, entry.isIntersecting);
+        // The current section is the last heading above the reading line.
+        const line = window.innerHeight * 0.3;
+        let current: string | undefined;
+        for (const h of headings) {
+          if (h.getBoundingClientRect().top <= line) current = h.id;
+        }
+        setCurrent(current ?? headings[0]?.id);
+      },
+      { rootMargin: '0px 0px -60% 0px', threshold: [0, 1] },
+    );
+    headings.forEach((h) => observer.observe(h));
+  }
+
+  // Close the mobile index after choosing a section.
+  document.querySelectorAll<HTMLDetailsElement>('details.toc--inline').forEach((details) => {
+    details.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement).closest('a')) details.open = false;
+    });
+  });
+</script>
+
+<style>
+  .toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .toc__title {
+    margin-bottom: var(--space-2);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-subtle);
+  }
+  .toc__item a {
+    display: block;
+    padding: 0.3rem 0.75rem;
+    border-left: 2px solid var(--border);
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    line-height: 1.4;
+    text-decoration: none;
+  }
+  .toc__item--d3 a {
+    padding-left: 1.5rem;
+    font-size: 0.8125rem;
+  }
+  .toc__item a:hover {
+    color: var(--text);
+    border-left-color: var(--border-strong);
+  }
+  .toc__item a[aria-current='location'] {
+    color: var(--text);
+    font-weight: 650;
+    border-left-color: var(--accent);
+  }
+  .toc--sidebar {
+    position: sticky;
+    top: calc(var(--header-h) + var(--space-5));
+    max-height: calc(100vh - var(--header-h) - var(--space-7));
+    overflow-y: auto;
+    padding-bottom: var(--space-4);
+  }
+  .toc__top {
+    display: inline-block;
+    margin-top: var(--space-3);
+    padding-left: 0.75rem;
+    font-size: var(--step--1);
+  }
+  .toc--inline {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .toc--inline summary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 48px;
+    padding: 0 var(--space-4);
+    font-weight: 650;
+    cursor: pointer;
+    list-style: none;
+  }
+  .toc--inline summary::-webkit-details-marker {
+    display: none;
+  }
+  .toc--inline :global(.toc__chevron) {
+    margin-left: auto;
+    transition: transform 0.15s;
+  }
+  .toc--inline[open] :global(.toc__chevron) {
+    transform: rotate(180deg);
+  }
+  .toc--inline nav {
+    padding: 0 var(--space-3) var(--space-3);
+  }
+</style>

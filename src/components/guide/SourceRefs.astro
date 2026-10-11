@@ -1,0 +1,68 @@
+---
+import Icon from '../ui/Icon.astro';
+import { getLocale } from '../../i18n/locale';
+import { t } from '../../i18n/ui';
+import { getSource } from '../../lib/data';
+
+interface Props {
+  ids: readonly string[];
+}
+
+const { ids } = Astro.props;
+const locale = getLocale(Astro);
+const list = ids.map(getSource);
+// Disambiguate when several sources share a publisher (e.g. two wiki pages).
+const repeated = new Set(list.map((s) => s.publisher).filter((p, i, all) => all.indexOf(p) !== i));
+const newTab = locale === 'es' ? '(se abre en una pestaña nueva)' : '(opens in a new tab)';
+---
+
+{
+  list.length > 0 && (
+    <span class="source-refs" data-pagefind-ignore>
+      <span class="source-refs__label">{t(locale, 'changes.source')}:</span>
+      <span class="source-refs__list">
+        {list.map((source) => (
+          <a href={source.url} title={`${source.publisher}: ${source.title}`} target="_blank" rel="noopener noreferrer">
+            {repeated.has(source.publisher) ? source.title : source.publisher}
+            <Icon name="external" size={13} />
+            <span class="visually-hidden">
+              {source.publisher}: {source.title} {newTab}
+            </span>
+          </a>
+        ))}
+      </span>
+    </span>
+  )
+}
+
+<style>
+  .source-refs {
+    display: inline;
+    font-size: 0.8125rem;
+    color: var(--text-subtle);
+  }
+  .source-refs__label {
+    margin-right: 0.35em;
+  }
+  .source-refs__list {
+    display: inline;
+  }
+  .source-refs a {
+    color: var(--text-muted);
+    overflow-wrap: anywhere;
+  }
+  .source-refs a + a::before {
+    content: '·';
+    display: inline-block;
+    margin: 0 0.45em;
+    color: var(--text-subtle);
+    text-decoration: none;
+  }
+  .source-refs :global(svg) {
+    margin-left: 0.15em;
+    vertical-align: -0.1em;
+  }
+  .source-refs a:hover {
+    color: var(--link-hover);
+  }
+</style>

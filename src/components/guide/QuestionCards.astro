@@ -1,0 +1,152 @@
+---
+/** Task-oriented entry points for the home page. */
+import Icon from '../ui/Icon.astro';
+import type { IconName } from '../ui/icons';
+import StatusBadge from './StatusBadge.astro';
+import { getLocale, href } from '../../i18n/locale';
+import type { PageId } from '../../i18n/routes';
+import type { Status } from '../../lib/schemas';
+
+const locale = getLocale(Astro);
+
+interface Question {
+  page: PageId;
+  hash?: string;
+  icon: IconName;
+  q: { es: string; en: string };
+  a: { es: string; en: string };
+  status?: Status;
+}
+
+const questions: Question[] = [
+  {
+    page: 'guide',
+    icon: 'book',
+    q: { es: '¿Cómo empiezo a jugar Mago?', en: 'How do I start playing Mage?' },
+    a: { es: 'Fundamentos, herramientas por función y qué cambia respecto a Classic.', en: 'Basics, tools by purpose, and what differs from Classic.' },
+  },
+  {
+    page: 'changes',
+    icon: 'filter',
+    q: { es: '¿Qué cambia en Forever?', en: 'What changes in Forever?' },
+    a: { es: 'Más de 40 cambios oficiales, filtrables por rama y tipo.', en: '40+ official changes, filterable by tree and type.' },
+  },
+  {
+    page: 'talents',
+    icon: 'arcane',
+    q: { es: '¿Qué rama elijo?', en: 'Which tree should I pick?' },
+    a: { es: 'Identidad de Arcano, Fuego y Escarcha, hitos y talentos nuevos.', en: 'Arcane, Fire and Frost identity, milestones and new talents.' },
+  },
+  {
+    page: 'leveling',
+    icon: 'calendar',
+    q: { es: '¿Cómo subo de nivel?', en: 'How do I level up?' },
+    a: { es: 'Lo que ya sabemos del 1 al 60 y lo que falta por probar.', en: 'What we know about 1–60 and what still needs testing.' },
+  },
+  {
+    page: 'combat',
+    icon: 'fire',
+    q: { es: '¿Qué pulso y cuándo?', en: 'What do I press, and when?' },
+    a: { es: 'Prioridades condicionales por rama, basadas en mecánicas oficiales.', en: 'Conditional priorities per tree, based on official mechanics.' },
+    status: 'analysis',
+  },
+  {
+    page: 'gear',
+    icon: 'frost',
+    q: { es: '¿Qué equipo y estadísticas me interesan?', en: 'Which gear and stats matter?' },
+    a: { es: 'Pendiente hasta el lanzamiento; lo que ya cambia en golpe y maná.', en: 'Pending until launch; what already changes for hit and mana.' },
+    status: 'pending',
+  },
+];
+---
+
+<ul class="questions">
+  {
+    questions.map((item) => (
+      <li class="question">
+        <span class="question__icon">
+          <Icon name={item.icon} size={22} />
+        </span>
+        <a class="question__link" href={href(item.page, locale, item.hash)}>
+          {item.q[locale]}
+        </a>
+        <p class="question__answer">{item.a[locale]}</p>
+        {item.status && <StatusBadge status={item.status} />}
+        <Icon name="arrowRight" size={18} class="question__arrow" />
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .questions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+    gap: var(--space-3);
+  }
+  .question {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr auto;
+    column-gap: var(--space-3);
+    row-gap: var(--space-1);
+    align-items: start;
+    margin: 0;
+    padding: var(--space-4) var(--space-6) var(--space-4) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .question:hover {
+    border-color: var(--border-strong);
+    background: var(--surface-2);
+  }
+  .question:has(.question__link:focus-visible) {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .question__icon {
+    grid-row: 1 / span 3;
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    color: var(--accent);
+  }
+  .question__link {
+    font-weight: 700;
+    font-size: var(--step-0);
+    color: var(--text);
+    text-decoration: none;
+  }
+  .question__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+  .question__link:focus-visible {
+    outline: none;
+  }
+  .question__answer {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .question :global(.status) {
+    justify-self: start;
+    margin-top: var(--space-1);
+  }
+  .question :global(.question__arrow) {
+    position: absolute;
+    right: var(--space-4);
+    top: var(--space-4);
+    color: var(--text-subtle);
+  }
+</style>

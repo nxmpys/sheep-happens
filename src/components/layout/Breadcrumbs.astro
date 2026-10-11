@@ -1,0 +1,61 @@
+---
+import Icon from '../ui/Icon.astro';
+import { href } from '../../i18n/locale';
+import { breadcrumbTrail, type Locale, type PageId } from '../../i18n/routes';
+import { NAV_LABELS, t } from '../../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  pageId: PageId;
+}
+
+const { locale, pageId } = Astro.props;
+const trail = breadcrumbTrail(pageId);
+---
+
+{
+  trail.length > 1 && (
+    <nav class="breadcrumbs" aria-label={t(locale, 'nav.breadcrumbs')} data-pagefind-ignore>
+      <ol>
+        {trail.map((id, index) => (
+          <li>
+            {index === trail.length - 1 ? (
+              <span aria-current="page">{NAV_LABELS[locale][id]}</span>
+            ) : (
+              <>
+                <a href={href(id, locale)}>{NAV_LABELS[locale][id]}</a>
+                <Icon name="chevronRight" size={14} />
+              </>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}
+
+<style>
+  .breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: var(--step--1);
+  }
+  .breadcrumbs li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    color: var(--text-subtle);
+  }
+  .breadcrumbs a {
+    color: var(--text-muted);
+  }
+  [aria-current='page'] {
+    color: var(--text);
+    font-weight: 600;
+  }
+</style>

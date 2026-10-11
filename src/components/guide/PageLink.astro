@@ -1,0 +1,22 @@
+---
+/**
+ * Internal link by page id, so MDX never hardcodes a localized slug or base path:
+ *   <PageLink to="changes" query="tree=frost&kind=new">nuevos talentos de Escarcha</PageLink>
+ */
+import { getLocale, href } from '../../i18n/locale';
+import type { PageId } from '../../i18n/routes';
+
+interface Props {
+  to: PageId;
+  hash?: string;
+  /** Raw query string without "?" (language-neutral filter ids). */
+  query?: string;
+}
+
+const { to, hash, query } = Astro.props;
+const locale = getLocale(Astro);
+const base = href(to, locale);
+const url = `${base}${query ? `?${query}` : ''}${hash ? `#${hash}` : ''}`;
+---
+
+<a href={url}><slot /></a>

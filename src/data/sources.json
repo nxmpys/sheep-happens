@@ -1,0 +1,266 @@
+[
+  {
+    "id": "blizzard-deep-dive-mage",
+    "title": "World of Warcraft: Forever Class Deep Dives — Mage & Shaman",
+    "publisher": "Blizzard Entertainment",
+    "url": "https://news.blizzard.com/en-us/article/24302097/",
+    "kind": "official",
+    "published": "2026-10-07",
+    "accessed": "2026-10-11",
+    "notes": {
+      "es": "Fuente principal de todos los cambios del Mago. Advierte que las habilidades y los talentos pueden cambiar durante la beta. Casi sin valores numéricos.",
+      "en": "Primary source for every Mage change. Warns that abilities and talents may keep changing during the beta. Almost no numeric values."
+    }
+  },
+  {
+    "id": "blizzard-dev-notes",
+    "title": "WoW Forever Beta Development Notes",
+    "publisher": "Blizzard Entertainment",
+    "url": "https://us.forums.blizzard.com/en/wow/t/2360696",
+    "kind": "official",
+    "published": "2026-09-24",
+    "accessed": "2026-10-11",
+    "notes": {
+      "es": "Notas oficiales de cada build de la beta (24 sep, 1 oct y 8 oct de 2026). Es la fuente principal para las actualizaciones semanales.",
+      "en": "Official notes for every beta build (24 Sep, 1 Oct and 8 Oct 2026). The main source for weekly updates."
+    }
+  },
+  {
+    "id": "blizzard-deep-dive-mage-es",
+    "title": "World of Warcraft: Forever: Repaso a fondo de las clases mago y chamán",
+    "publisher": "Blizzard Entertainment",
+    "url": "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
+    "kind": "official",
+    "published": "2026-10-07",
+    "accessed": "2026-10-11",
+    "notes": {
+      "es": "Versión oficial en español del deep dive: fuente de los nombres en español de hechizos y talentos.",
+      "en": "Official Spanish version of the deep dive: the source for Spanish spell and talent names."
+    }
+  },
+  {
+    "id": "warcrafttavern-mage-deep-dive",
+    "title": "Scrolls & Totems: Mage & Shaman Deep Dive for WoW Forever",
+    "publisher": "Warcraft Tavern",
+    "url": "https://www.warcrafttavern.com/forever/news/scrolls-totems-mage-shaman-deep-dive-for-wow-forever/",
+    "kind": "community",
+    "published": "2026-10-07",
+    "accessed": "2026-10-11",
+    "notes": {
+      "es": "Resumen del deep dive oficial; coincide con el original.",
+      "en": "Summary of the official deep dive; matches the original."
+    }
+  },
+  {
+    "id": "massivelyop-class-series",
+    "title": "World of Warcraft: Forever's class series continues with the Hunter, Mage and Paladin",
+    "publisher": "Massively Overpowered",
+    "url": "https://massivelyop.com/2026/10/05/world-of-warcraft-forevers-class-series-continues-with-the-hunter-mage-and-paladin/",
+    "kind": "press",
+    "published": "2026-10-05",
+    "accessed": "2026-10-11"
+  },
+  {
+    "id": "warcrafttavern-classes",
+    "title": "Classes, Specializations & Roles",
+    "publisher": "Warcraft Tavern",
+    "url": "https://www.warcrafttavern.com/forever/guides/classes/",
+    "kind": "community",
+    "accessed": "2026-10-11",
+    "notes": {
+      "es": "Lista de razas por clase y roles. Sin fecha de actualización visible.",
+      "en": "Races per class and roles. No visible update date."
+    }
+  },
+  {
+    "id": "zockify-mage",
+    "title": "WoW Forever Mage",
+    "publisher": "Zockify",
+    "url": "https://www.zockify.com/forever/mage/",
+    "kind": "community",
+    "published": "2026-09-15",
+    "accessed": "2026-10-11",
+    "notes": {
+      "es": "Parte de la información procede de la demo jugable de la BlizzCon 2026; anterior al deep dive oficial.",
+      "en": "Part of the information comes from the BlizzCon 2026 playable demo; predates the official deep dive."
+    }
+  },
+  {
+    "id": "lfcarry-beta",
+    "title": "WoW Forever Beta: dates, level caps and access",
+    "publisher": "LFCarry",
+    "url": "https://lfcarry.com/guides/wow-forever-beta",
+    "kind": "press",
+    "published": "2026-10-10",
+    "accessed": "2026-10-11",
+    "notes": {
+      "es": "Web comercial. Cita la cuenta @Warcraft_Official y los foros de Blizzard para las fechas y el límite de nivel de la beta.",
+      "en": "Commercial site. Cites @Warcraft_Official and the Blizzard forums for beta dates and level caps."
+    }
+  },
+  {
+    "id": "icyveins-beta-cap",
+    "title": "The WoW Forever Beta Starts at Level 20, Level 30 After “Couple of Weeks”",
+    "publisher": "Icy Veins",
+    "url": "https://www.icy-veins.com/wow/news/the-wow-forever-beta-starts-at-level-20-level-30-after-couple-of-weeks/",
+    "kind": "community",
+    "accessed": "2026-10-11"
+  },
+  {
+    "id": "wowforever-level-cap",
+    "title": "WoW Forever Level Cap — 60 “for the Foreseeable Future”",
+    "publisher": "wowforever.co",
+    "url": "https://wowforever.co/level-cap/",
+    "kind": "community",
+    "accessed": "2026-10-11"
+  },
+  {
+    "id": "warcrafttavern-legacy",
+    "title": "Legacy System Overview",
+    "publisher": "Warcraft Tavern",
+    "url": "https://www.warcrafttavern.com/forever/guides/legacy/",
+    "kind": "community",
+    "accessed": "2026-10-11",
+    "notes": {
+      "es": "Detalles del sistema de Legado según la beta; pueden cambiar en el lanzamiento.",
+      "en": "Legacy system details as seen in the beta; may change at launch."
+    }
+  },
+  {
+    "id": "wiki-mage-abilities-classic",
+    "title": "Mage abilities (Classic)",
+    "publisher": "Warcraft Wiki",
+    "url": "https://warcraft.wiki.gg/wiki/Mage_abilities_(Classic)",
+    "kind": "classic-reference",
+    "accessed": "2026-10-11",
+    "notes": {
+      "es": "Niveles de aprendizaje y escuelas en Classic. Forever puede cambiarlos: pendiente de comprobar en el juego.",
+      "en": "Classic learn levels and schools. Forever may change them: not yet checked in game."
+    }
+  },
+  {
+    "id": "wiki-ice-shards-classic",
+    "title": "Ice Shards (Classic)",
+    "publisher": "Warcraft Wiki",
+    "url": "https://warcraft.wiki.gg/wiki/Ice_Shards_(Classic)",
+    "kind": "classic-reference",
+    "accessed": "2026-10-11",
+    "notes": {
+      "es": "Classic: 5 rangos, +20/40/60/80/100 % a la bonificación de daño crítico de Escarcha.",
+      "en": "Classic: 5 ranks, +20/40/60/80/100% Frost critical strike damage bonus."
+    }
+  },
+  {
+    "id": "wiki-ignite-classic",
+    "title": "Ignite (Classic)",
+    "publisher": "Warcraft Wiki",
+    "url": "https://warcraft.wiki.gg/wiki/Ignite_(Classic)",
+    "kind": "classic-reference",
+    "accessed": "2026-10-11",
+    "notes": {
+      "es": "Classic: 5 rangos, quema un 8/16/24/32/40 % adicional del daño del hechizo en 4 s.",
+      "en": "Classic: 5 ranks, burns for an extra 8/16/24/32/40% of the spell's damage over 4 s."
+    }
+  },
+  {
+    "id": "wiki-presence-of-mind",
+    "title": "Presence of Mind",
+    "publisher": "Warcraft Wiki",
+    "url": "https://warcraft.wiki.gg/wiki/Presence_of_Mind",
+    "kind": "classic-reference",
+    "accessed": "2026-10-11"
+  },
+  {
+    "id": "wiki-arcane-power-classic",
+    "title": "Arcane Power (Classic)",
+    "publisher": "Warcraft Wiki",
+    "url": "https://warcraft.wiki.gg/wiki/Arcane_Power_(Classic)",
+    "kind": "classic-reference",
+    "accessed": "2026-10-11"
+  },
+  {
+    "id": "wiki-pyroblast",
+    "title": "Pyroblast",
+    "publisher": "Warcraft Wiki",
+    "url": "https://warcraft.wiki.gg/wiki/Pyroblast",
+    "kind": "classic-reference",
+    "accessed": "2026-10-11",
+    "notes": {
+      "es": "Classic: talento de la fila 3 de Fuego, 6 s de lanzamiento.",
+      "en": "Classic: Fire tier 3 talent, 6 s cast."
+    }
+  },
+  {
+    "id": "wiki-blast-wave",
+    "title": "Blast Wave",
+    "publisher": "Warcraft Wiki",
+    "url": "https://warcraft.wiki.gg/wiki/Blast_Wave",
+    "kind": "classic-reference",
+    "accessed": "2026-10-11"
+  },
+  {
+    "id": "wiki-combustion",
+    "title": "Combustion",
+    "publisher": "Warcraft Wiki",
+    "url": "https://warcraft.wiki.gg/wiki/Combustion",
+    "kind": "classic-reference",
+    "accessed": "2026-10-11"
+  },
+  {
+    "id": "wiki-ice-barrier",
+    "title": "Ice Barrier",
+    "publisher": "Warcraft Wiki",
+    "url": "https://warcraft.wiki.gg/wiki/Ice_Barrier",
+    "kind": "classic-reference",
+    "accessed": "2026-10-11"
+  },
+  {
+    "id": "seemeta-talents",
+    "title": "WoW Forever Talent Calculator",
+    "publisher": "Seemeta",
+    "url": "https://seemeta.com/en/wow-forever/talent-calculator",
+    "kind": "tool",
+    "accessed": "2026-10-11",
+    "notes": {
+      "es": "Calculadora con datos extraídos de la beta. Solo se usa como indicio (51 puntos de talento).",
+      "en": "Calculator built from beta data. Used only as a hint (51 talent points)."
+    }
+  },
+  {
+    "id": "wowhead-dual-spec-podcast",
+    "title": "Blizzard Teases Possible Change to Unlock Level of Dual Spec in WoW: Forever",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/news=383320/blizzard-teases-possible-change-to-unlock-level-of-dual-spec-in-wow-forever",
+    "kind": "press",
+    "published": "2026-10-10",
+    "accessed": "2026-10-11",
+    "notes": {
+      "es": "Transcribe a Josh Greenfield en el pódcast oficial de WoW: Forever (ep. 3): la doble especialización está «actualmente» a nivel 40 y estudian adelantarla.",
+      "en": "Transcribes Josh Greenfield on the official WoW: Forever podcast (ep. 3): dual spec is “currently” level 40 and they are discussing an earlier level."
+    }
+  },
+  {
+    "id": "wago-tools-builds",
+    "title": "wago.tools — builds",
+    "publisher": "wago.tools",
+    "url": "https://wago.tools/builds",
+    "kind": "tool",
+    "accessed": "2026-10-11",
+    "notes": {
+      "es": "Lista de builds del cliente (ForeverBeta 1.60.1.70338 el 10 oct de 2026).",
+      "en": "Client build list (ForeverBeta 1.60.1.70338 on 10 Oct 2026)."
+    }
+  },
+  {
+    "id": "warcraft-wiki-forever",
+    "title": "World of Warcraft: Forever",
+    "publisher": "Warcraft Wiki",
+    "url": "https://warcraft.wiki.gg/wiki/World_of_Warcraft:_Forever",
+    "kind": "community",
+    "accessed": "2026-10-11",
+    "notes": {
+      "es": "Las páginas «Patch 1.60» y «Patch 1.60.1» de la wiki redirigen a este artículo.",
+      "en": "The wiki pages “Patch 1.60” and “Patch 1.60.1” redirect to this article."
+    }
+  }
+]

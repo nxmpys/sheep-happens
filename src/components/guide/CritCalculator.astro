@@ -1,0 +1,266 @@
+---
+/**
+ * Compares the critical strike multiplier of Fireball, Frostbolt and
+ * Frostfire Bolt for any Ice Shards / Ignite ranks. Logic: src/lib/crit.ts.
+ * The table is rendered at build time with both talents at 5/5, so the
+ * result is readable without JavaScript.
+ */
+import Icon from '../ui/Icon.astro';
+import StatusBadge from './StatusBadge.astro';
+import SourceRefs from './SourceRefs.astro';
+import { getLocale } from '../../i18n/locale';
+import { critMultiplier, formatPercent, MAX_RANK, type CritSchool } from '../../lib/crit';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const spells: { school: CritSchool; name: string; label: string; icon: 'fire' | 'frost' | 'frostfire' }[] = [
+  { school: 'fire', name: 'Fireball', label: es ? 'Fuego' : 'Fire', icon: 'fire' },
+  { school: 'frost', name: 'Frostbolt', label: es ? 'Escarcha' : 'Frost', icon: 'frost' },
+  { school: 'frostfire', name: 'Frostfire Bolt', label: es ? 'Fuego y Escarcha' : 'Fire and Frost', icon: 'frostfire' },
+];
+const initial = { iceShards: MAX_RANK, ignite: MAX_RANK };
+const scale = critMultiplier({ school: 'frostfire', iceShards: MAX_RANK, ignite: MAX_RANK }).total;
+const rows = spells.map((spell) => ({ ...spell, result: critMultiplier({ school: spell.school, ...initial }) }));
+const text = {
+  talents: es ? 'Rangos de talento' : 'Talent ranks',
+  iceShards: es ? 'Ice Shards (Escarcha)' : 'Ice Shards (Frost)',
+  ignite: es ? 'Ignite (Fuego)' : 'Ignite (Fire)',
+  spell: es ? 'Hechizo' : 'Spell',
+  school: es ? 'Escuela' : 'School',
+  hit: es ? 'Golpe crítico' : 'Critical hit',
+  igniteCol: es ? 'Ignite (4 s)' : 'Ignite (4 s)',
+  total: es ? 'Total' : 'Total',
+  caption: es
+    ? 'Daño de un crítico como porcentaje de un golpe normal del mismo hechizo. Barra: golpe crítico (violeta) + Ignite (naranja).'
+    : 'Damage of a critical strike as a percentage of a normal hit of the same spell. Bar: critical hit (violet) + Ignite (orange).',
+  na: es ? 'no aplica' : 'n/a',
+};
+---
+
+<crit-calculator data-locale={locale} data-scale={scale} data-pagefind-ignore>
+  <form class="calc" onsubmit="return false">
+    <fieldset class="calc__ranks">
+      <legend>{text.talents}</legend>
+      <label class="range school-frost">
+        <span class="range__label">
+          <Icon name="frost" size={16} />
+          {text.iceShards}
+        </span>
+        <input type="range" name="iceShards" min="0" max={MAX_RANK} step="1" value={initial.iceShards} />
+        <output name="iceShardsOut">{initial.iceShards}/{MAX_RANK}</output>
+      </label>
+      <label class="range school-fire">
+        <span class="range__label">
+          <Icon name="fire" size={16} />
+          {text.ignite}
+        </span>
+        <input type="range" name="ignite" min="0" max={MAX_RANK} step="1" value={initial.ignite} />
+        <output name="igniteOut">{initial.ignite}/{MAX_RANK}</output>
+      </label>
+    </fieldset>
+
+    <div class="calc__table">
+      <table>
+        <caption>{text.caption}</caption>
+        <thead>
+          <tr>
+            <th scope="col">{text.spell}</th>
+            <th scope="col">{text.hit}</th>
+            <th scope="col">{text.igniteCol}</th>
+            <th scope="col">{text.total}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            rows.map((row) => (
+              <tr data-school={row.school}>
+                <th scope="row">
+                  <span class="spell">
+                    <Icon name={row.icon} size={18} />
+                    <span>
+                      {row.name}
+                      <small>{row.label}</small>
+                    </span>
+                  </span>
+                </th>
+                <td data-hit>{formatPercent(row.result.hit, locale)}</td>
+                <td data-ignite>{row.result.usesIgnite ? formatPercent(row.result.ignite, locale) : text.na}</td>
+                <td data-total>
+                  <strong>{formatPercent(row.result.total, locale)}</strong>
+                  <span class="bar" aria-hidden="true">
+                    <span class="bar__hit" style={`width:${(row.result.hit / scale) * 100}%`} data-bar-hit />
+                    <span class="bar__ignite" style={`width:${(row.result.ignite / scale) * 100}%`} data-bar-ignite />
+                  </span>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </form>
+  <p class="calc__sources">
+    <StatusBadge status="classic" />
+    <SourceRefs ids={['blizzard-deep-dive-mage', 'wiki-ice-shards-classic', 'wiki-ignite-classic']} />
+  </p>
+</crit-calculator>
+
+<script>
+  import { critMultiplier, formatPercent, MAX_RANK, type CritSchool } from '../../lib/crit';
+
+  class CritCalculator extends HTMLElement {
+    connectedCallback() {
+      const form = this.querySelector('form')!;
+      const locale = this.dataset.locale === 'en' ? 'en' : 'es';
+      const scale = Number(this.dataset.scale) || 2.8;
+      const update = () => {
+        const iceShards = Number((form.elements.namedItem('iceShards') as HTMLInputElement).value);
+        const ignite = Number((form.elements.namedItem('ignite') as HTMLInputElement).value);
+        (form.elements.namedItem('iceShardsOut') as HTMLOutputElement).value = `${iceShards}/${MAX_RANK}`;
+        (form.elements.namedItem('igniteOut') as HTMLOutputElement).value = `${ignite}/${MAX_RANK}`;
+        for (const row of this.querySelectorAll<HTMLTableRowElement>('tr[data-school]')) {
+          const result = critMultiplier({ school: row.dataset.school as CritSchool, iceShards, ignite });
+          row.querySelector('[data-hit]')!.textContent = formatPercent(result.hit, locale);
+          if (result.usesIgnite) row.querySelector('[data-ignite]')!.textContent = formatPercent(result.ignite, locale);
+          row.querySelector('[data-total] strong')!.textContent = formatPercent(result.total, locale);
+          row.querySelector<HTMLElement>('[data-bar-hit]')!.style.width = `${(result.hit / scale) * 100}%`;
+          row.querySelector<HTMLElement>('[data-bar-ignite]')!.style.width = `${(result.ignite / scale) * 100}%`;
+        }
+      };
+      form.addEventListener('input', update);
+      update();
+    }
+  }
+
+  customElements.define('crit-calculator', CritCalculator);
+</script>
+
+<style>
+  crit-calculator {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+    padding: var(--space-5);
+  }
+  .calc {
+    display: grid;
+    gap: var(--space-5);
+  }
+  .calc__ranks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  legend {
+    margin-bottom: var(--space-3);
+    font-weight: 700;
+    color: var(--text-muted);
+    font-size: var(--step--1);
+  }
+  .range {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-2) var(--space-3);
+    align-items: center;
+  }
+  .range__label {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 600;
+  }
+  .range__label :global(svg) {
+    color: var(--school);
+  }
+  .range input {
+    width: 100%;
+    min-height: 44px;
+    accent-color: var(--school);
+  }
+  .range output {
+    min-width: 3ch;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    color: var(--school);
+  }
+  .calc__table {
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+  }
+  caption {
+    caption-side: bottom;
+    padding-top: var(--space-3);
+    text-align: left;
+    font-size: var(--step--1);
+    color: var(--text-subtle);
+  }
+  th,
+  td {
+    padding: var(--space-3);
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: middle;
+  }
+  thead th {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  tbody th {
+    font-weight: 600;
+  }
+  .spell {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  .spell small {
+    display: block;
+    font-weight: 400;
+    color: var(--text-subtle);
+  }
+  tr[data-school='fire'] .spell :global(svg) {
+    color: var(--fire);
+  }
+  tr[data-school='frost'] .spell :global(svg) {
+    color: var(--frost);
+  }
+  tr[data-school='frostfire'] .spell :global(svg) {
+    color: var(--arcane);
+  }
+  td[data-total] strong {
+    display: block;
+    font-size: var(--step-1);
+  }
+  .bar {
+    display: flex;
+    width: 100%;
+    min-width: 6rem;
+    height: 8px;
+    margin-top: var(--space-1);
+    border-radius: 4px;
+    background: var(--surface-3);
+    overflow: hidden;
+  }
+  .bar__hit {
+    background: var(--accent);
+  }
+  .bar__ignite {
+    background: var(--fire);
+  }
+  .calc__sources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-3);
+    align-items: center;
+    margin-top: var(--space-4);
+  }
+</style>
