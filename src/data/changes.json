@@ -781,13 +781,20 @@
       "es": "Lanzar hechizos de rango bajo reduce su probabilidad de activarse.",
       "en": "Casting low-rank spells lowers its trigger chance."
     },
-    "details": [],
+    "details": [
+      {
+        "es": "El 8 de octubre se corrigió un error: Impacto podía activarse con el daño periódico de Flamestrike.",
+        "en": "On 8 October a bug was fixed: Impact could trigger from Flamestrike's periodic damage."
+      }
+    ],
     "notes": [],
     "status": "verified",
     "sources": [
-      "blizzard-deep-dive-mage"
+      "blizzard-deep-dive-mage",
+      "blizzard-dev-notes"
     ],
-    "nameEs": "Impacto"
+    "nameEs": "Impacto",
+    "updated": "2026-10-12"
   },
   {
     "id": "burning-soul",
