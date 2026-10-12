@@ -9,6 +9,7 @@ Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay q
 3. Lo que ya tenemos, pero hay que revisar a medida que avance el juego.
 4. Builds: lo que más buscará la gente tras el lanzamiento.
 5. Razas: cuál elegir según para qué juegues.
+6. Mejoras de la experiencia: ideas para que la web sea más útil para aprender, consultar e informarse.
 
 ## Cómo usar este documento
 
@@ -179,3 +180,66 @@ Bloqueado ahora porque las raciales de Forever no son definitivas: se esperan ca
 ### Puntos de partida (Classic, sin publicar)
 
 En Classic se suelen recomendar Gnome (Escape Artist e Intelecto) y Human (Spirit) en Alianza, y Undead (Will of the Forsaken, para PvP) y Troll (Berserking, para PvE) en Horda. **Solo sirve para saber qué comprobar:** no se publica como dato de Forever hasta verlo en el juego o en una fuente oficial.
+
+## 6. Mejoras de la experiencia
+
+Ideas para enriquecer la web para quien viene a ver guías, aprender o informarse sobre el Mago. Lista recogida el 2026-10-12. Cada idea indica cuándo se puede hacer:
+
+- **Ya**: con lo que hay hoy.
+- **Casi ya**: se puede escribir con referencias de Classic, marcadas como tales.
+- **Con datos**: necesita datos del lanzamiento.
+- **Con juego**: necesita grabar o probar en el juego.
+
+Al hacer una idea, márcala y anota dónde está.
+
+### Encontrar rápido lo que busco
+
+- [ ] **Inicio orientado a tareas** (con datos): accesos directos arriba a «Build de leveo», «Build de farmeo AoE», «Qué raza elijo» y «Qué ha cambiado esta semana»; la explicación en profundidad, debajo.
+- [ ] **Builds con filtros** por uso y rama (con datos). Ver la sección 4.
+- [ ] **Razas** (con datos). Ver la sección 5.
+- [ ] **Caja «Lo esencial»** al principio de cada página, uniforme en todas (ya).
+- [ ] **Buscador más visible** (ya): atajo de teclado a la vista y sugerencias («Lanza de hielo», «leveo», «golpe»).
+
+### Aprender jugando
+
+- [ ] **Guía «Mi primer Mago» del 1 al 20** (casi ya): qué entrenar en cada nivel, cuándo beber, Nova de Escarcha y Blink, y errores típicos.
+- [ ] **Planificador de talentos interactivo** (con datos): puntos con clic, requisitos y enlace para compartir. Necesita el árbol completo de Forever.
+- [ ] **Orden de puntos por nivel** en las builds de leveo, del 10 al 60 (con datos).
+- [ ] **Prioridades en formato «de bolsillo»** (ya): versión compacta de Combate para tener abierta en el móvil mientras juegas.
+- [ ] **Glosario** (ya): bajar de rango, hito, proc, kitear, Trizar…, con tooltip al pasar por encima del término en cualquier página.
+- [ ] **Tooltips de hechizos** (ya): escuela, nivel y cambios en Forever al pasar por encima, con los datos de `abilities.json` y `changes.json`.
+
+### Herramientas
+
+- [ ] **Calculadora de golpe** contra enemigos de cada nivel, con los talentos de acierto (con datos).
+- [ ] **Comparador de ramas para leveo**: tiempo por enemigo, descansos y riesgo (con datos).
+- [ ] **Equipo por tramo de nivel**, con filtros por espacio y por cómo se consigue (con datos).
+- [ ] **Planificador de portales y teletransportes**: destinos por nivel y componentes (casi ya).
+- [ ] **Calculadora de crítico ampliada** con la probabilidad de crítico, para estimar el daño medio (con datos).
+
+### Mantenerse informado
+
+- [ ] **«Qué ha cambiado para el Mago esta semana»** en el inicio, a partir de cada revisión de fuentes (ya).
+- [ ] **Avisos de lo que te interesa** (ya): RSS por rama, o una marca de «nuevo desde tu última visita» guardada en el navegador.
+- [ ] **Diferencias entre parches**: antes y después por talento (tras el lanzamiento).
+- [ ] **Aviso de build desactualizada** si se comprobó en un parche anterior al actual (con datos).
+
+### Comodidad y confianza
+
+- [ ] **Vista compacta o «de juego»**: menos texto y solo listas y tablas (ya).
+- [ ] **Iconos e imágenes de hechizos** (antes, revisar los derechos de los recursos de Blizzard).
+- [ ] **Vídeos o GIF cortos de mecánicas**, por ejemplo Nova de Escarcha y Lanza de hielo, o las cargas de Calentamiento (con juego).
+- [ ] **Botón «¿Algo está mal?» en cada ficha**, que abra una issue o un formulario sencillo (ya).
+- [ ] **Fecha y parche visibles en cada build y en cada tabla**, no solo en la cabecera de la página (ya).
+
+### Comunidad y difusión
+
+- [ ] **Imagen para compartir cada build** en Discord o Reddit, con enlace a la web (con datos).
+- [ ] **Preguntas frecuentes reales**, recogidas de Reddit, Discord y los foros (ya).
+- [ ] **Contenido largo en español**: hay poca competencia y es la mayor ventaja para los buscadores (ya).
+
+### Orden propuesto
+
+1. **Antes del lanzamiento (4 de noviembre de 2026):** glosario y tooltips de hechizos, «Mi primer Mago» del 1 al 20, resumen semanal en el inicio y botón «¿Algo está mal?».
+2. **Semana del lanzamiento:** inicio orientado a tareas, Builds (leveo y farmeo AoE) y Razas.
+3. **Después:** planificador de talentos, equipo, calculadora de golpe y contenido de nivel 60.
