@@ -10,7 +10,7 @@ Coste: 0 €. Cloudflare Pages (plan gratuito) ofrece ancho de banda ilimitado, 
 push a main ──► GitHub ──► Cloudflare Pages ejecuta `npm run check` ──► publica dist/
                   │                (si algo falla, NO publica)
                   ├── CI (Actions): mismas comprobaciones + datos documentados
-                  └── Revisión semanal (Actions): issue con las novedades de las fuentes
+                  └── Revisión de fuentes (Actions, miércoles y viernes): issue con las novedades
 ```
 
 ## Pasos (una sola vez)
@@ -77,7 +77,7 @@ Para cambios grandes, trabaja en una rama: Cloudflare crea una vista previa en `
 | `public/_headers` | Cabeceras de seguridad (CSP, HSTS…), caché de recursos y `noindex` para vistas previas |
 | `.nvmrc` | Versión de Node para Cloudflare |
 | `.github/workflows/ci.yml` | Comprobaciones en cada push y pull request |
-| `.github/workflows/weekly-sources.yml` | Informe semanal de fuentes (issue) |
+| `.github/workflows/weekly-sources.yml` | Informe de fuentes de los miércoles y viernes (issue) |
 | `.github/workflows/smoke.yml` | Tras cada despliegue y cada mañana, comprueba la web publicada desde GitHub: páginas clave, 404, cabeceras, canónica, sitemap y robots |
 | `src/pages/build.json.ts` | Publica `/build.json` con el commit desplegado (lo usa la prueba de humo) |
 

@@ -1,15 +1,20 @@
-# Every Monday, reads the watched sources (src/data/watchlist.json) and opens an
+# Twice a week, reads the watched sources (src/data/watchlist.json) and opens an
 # issue with the report: new official posts, the Mage section of new beta notes,
 # new client builds and community news. Free on GitHub Actions.
-name: Weekly source review
+#
+# Days follow Blizzard's rhythm (see docs/maintenance.md):
+# - Wednesday: after the US maintenance on Tuesday, on the EU weekly reset day.
+# - Friday: after Thursday's beta notes and known issues (posted ~21:30-23:00 UTC).
+# Each report covers the gap since the previous one (Wed: since Friday; Fri: since Wednesday).
+name: Source review
 
 on:
   schedule:
-    - cron: '0 7 * * 1' # Mondays 07:00 UTC
+    - cron: '0 6 * * 3,5' # Wednesdays and Fridays 06:00 UTC
   workflow_dispatch:
     inputs:
       since:
-        description: 'Start date (YYYY-MM-DD). Defaults to 7 days ago.'
+        description: 'Start date (YYYY-MM-DD). Defaults to the previous scheduled run (7 days ago on other weekdays).'
         required: false
 
 permissions:
@@ -27,18 +32,24 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Build the report
+        env:
+          SINCE: ${{ inputs.since }}
         run: |
-          if [ -n "${{ inputs.since }}" ]; then
-            npm run --silent watch -- --since "${{ inputs.since }}" --out report.md
-          else
-            npm run --silent watch -- --out report.md
+          if [ -z "$SINCE" ]; then
+            case "$(date -u +%u)" in
+              3) days=5 ;; # Wednesday → since Friday
+              5) days=2 ;; # Friday → since Wednesday
+              *) days=7 ;;
+            esac
+            SINCE=$(date -u -d "$days days ago" +%Y-%m-%d)
           fi
+          npm run --silent watch -- --since "$SINCE" --out report.md
       - name: Open the review issue
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh label create "revisión semanal" --color 7a3fd1 --description "Revisión semanal de fuentes" 2>/dev/null || true
+          gh label create "revisión semanal" --color 7a3fd1 --description "Revisión de fuentes" 2>/dev/null || true
           gh issue create \
-            --title "Revisión semanal de fuentes — $(date -u +%Y-%m-%d)" \
+            --title "Revisión de fuentes — $(date -u +%Y-%m-%d)" \
             --label "revisión semanal" \
             --body-file report.md

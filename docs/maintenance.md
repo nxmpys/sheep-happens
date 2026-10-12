@@ -1,6 +1,6 @@
-# Mantenimiento semanal
+# Mantenimiento y revisión de fuentes
 
-> Objetivo: que actualizar la guía sea una rutina de 20 a 40 minutos a la semana, siempre con las mismas fuentes, y que cada dato modificado quede registrado en el historial.
+> Objetivo: que la guía se actualice dos veces por semana, siempre con las mismas fuentes y de la forma más automática posible, y que cada dato modificado quede registrado en el historial.
 
 ## 1. De dónde sale la información
 
@@ -21,9 +21,17 @@ No hay que buscar fuentes nuevas cada semana. La lista fija está en **`src/data
 
 **Tras el lanzamiento (4 nov 2026):** el hilo de notas de la beta dejará de actualizarse. Las notas de parche aparecerán en el Blizzard Tracker; cuando exista un hilo o una página estable de notas de parche, añádela a `watchlist.json` con `type: "discourse-topic"` o `"rss"`.
 
-## 2. El informe semanal
+## 2. El informe de fuentes (miércoles y viernes)
 
-Cada **lunes a las 07:00 UTC**, GitHub Actions (`.github/workflows/weekly-sources.yml`) ejecuta el vigilante y abre una *issue* con la etiqueta «revisión semanal». También se puede lanzar a mano:
+Cada **miércoles y viernes a las 06:00 UTC** (08:00 en la España peninsular en horario de verano, 07:00 en invierno), GitHub Actions (`.github/workflows/weekly-sources.yml`) ejecuta el vigilante y abre una *issue* «Revisión de fuentes — fecha» con la etiqueta «revisión semanal». Cada informe cubre el hueco desde el anterior: el del miércoles, desde el viernes; el del viernes, desde el miércoles.
+
+Por qué esos días (observado en la beta, septiembre-octubre de 2026):
+
+- **Jueves, de 21:30 a 23:00 UTC:** Blizzard publica las notas de desarrollo y los errores conocidos de cada build (24 sep, 1 oct y 8 oct). El informe del **viernes** los recoge a la mañana siguiente.
+- **Miércoles y jueves por la tarde (UTC):** artículos, análisis de clases y pódcast. Los recoge el del viernes.
+- **Tras el lanzamiento:** el mantenimiento semanal de EE. UU. es el martes y el miércoles es el día del reinicio semanal en Europa. El informe del **miércoles** recoge las notas de parche y los hotfixes del lunes y el martes.
+
+Si Blizzard cambia de ritmo, basta con cambiar el `cron` del flujo de trabajo (y los días que cubre cada informe). También se puede lanzar a mano:
 
 ```bash
 npm run watch
@@ -35,9 +43,11 @@ npm run watch -- --since 2026-10-04 --out informe.md
 
 El informe tiene una casilla por novedad. Las notas de desarrollo llegan ya filtradas: solo la sección del Mago de cada mensaje nuevo o editado.
 
-## 3. Rutina (cada semana)
+## 3. Rutina (en cada informe)
 
-1. **Abre la issue de la semana** (o ejecuta `npm run watch`).
+La hace el agente automático (sección 7) o una persona, con los mismos pasos:
+
+1. **Abre la issue del informe** (o ejecuta `npm run watch`).
 2. **Clasifica cada novedad:**
    - ¿Afecta al Mago? Si no, márcala y sigue.
    - ¿Es oficial (Blizzard), comunidad o datos extraídos? Eso decide el `status` (ver `docs/content-sources.md`).
@@ -52,7 +62,8 @@ El informe tiene una casilla por novedad. Las notas de desarrollo llegan ya filt
    - Una entrada `type: "guide"` con la fecha de hoy que reúna todo lo actualizado en la revisión (`refs` de todos los registros con `updated` de hoy).
    - Si conoces la build, añade `"build": "1.60.1.70338"`.
 5. **Revisa la prosa** de las páginas afectadas (`src/content/pages/{es,en}/*.mdx`). Si has revisado una página completa contra sus fuentes, actualiza su `reviewed`.
-6. **Regenera** el historial del repositorio y comprueba:
+6. **Revisa la hoja de ruta** ([content-roadmap.md](content-roadmap.md)): marca lo que se haya resuelto, añade lo nuevo que falte o haya que vigilar y actualiza su fecha de revisión. Hazlo también cada vez que cambies datos o páginas fuera de una revisión de fuentes.
+7. **Regenera** el historial del repositorio y comprueba:
 
    ```bash
    npm run changelog
@@ -62,8 +73,8 @@ El informe tiene una casilla por novedad. Las notas de desarrollo llegan ya filt
    npm run check
    ```
 
-7. **Publica:** commit (`content: revisión semanal AAAA-MM-DD`) y push a `main`. Cloudflare Pages despliega solo si `npm run check` pasa.
-8. **Cierra la issue** enlazando el commit.
+8. **Publica:** commit (`content: revisión de fuentes AAAA-MM-DD`) y push a `main`. Cloudflare Pages despliega solo si `npm run check` pasa.
+9. **Cierra la issue** enlazando el commit.
 
 ## 4. Qué garantiza que el historial no se quede atrás
 
@@ -85,4 +96,40 @@ Corregir una errata en el texto en español **no** obliga a añadir una entrada 
 
 ## 6. Revisión del lanzamiento
 
-Tras el 4 de noviembre de 2026, sigue la lista de `docs/content-validation.md` (sección «Lista de revisión tras el lanzamiento») y crea la versión `forever-launch` en `src/data/game-versions.json`.
+Tras el 4 de noviembre de 2026, sigue la lista de `docs/content-validation.md` (sección «Lista de revisión tras el lanzamiento») y crea la versión `forever-launch` en `src/data/game-versions.json`. La sección 2 de [content-roadmap.md](content-roadmap.md) enumera todo lo que hay que quitar o reescribir para que no quede nada de la beta.
+
+## 7. Revisión automática (agente en la nube)
+
+Una tarea programada de Claude Code se ejecuta en la nube cada **miércoles y viernes a las 07:00 UTC**, una hora después del informe. Hace la rutina de la sección 3 y deja el resultado en un *pull request*. **No publica nada:** la web solo cambia cuando fusionas el PR. Sus instrucciones remiten a esta sección, así que para cambiar su comportamiento basta con editar este documento. La tarea se gestiona en <https://claude.ai/code/routines>.
+
+### Qué hace
+
+1. Busca las issues abiertas con la etiqueta «revisión semanal», de la más antigua a la más reciente.
+2. Clasifica cada novedad en: **ya incorporada**, **no afecta al Mago**, **incorporada ahora** o **necesita tu decisión**. Si el informe no basta, lee la fuente original.
+3. Para lo que hay que incorporar, sigue los pasos 2 a 7 de la sección 3 (datos, historial, texto en los dos idiomas, hoja de ruta y `npm run check`).
+4. Abre **un solo PR** desde la rama `revision/AAAA-MM-DD`, con el título `content: revisión de fuentes AAAA-MM-DD`. La descripción incluye:
+   - **Qué cambia en la web**: como mucho 5 puntos, en español claro. Es lo único que hace falta leer;
+   - **Necesita tu decisión**, si hay algo;
+   - la clasificación de cada novedad;
+   - `Closes #N` por cada issue procesada, para que se cierren al fusionar.
+5. Si no hay nada que cambiar en la guía, el PR solo actualiza la fecha de revisión de la hoja de ruta, para que las issues se cierren igualmente.
+6. Si `npm run check` falla y no sabe arreglarlo, abre el PR como borrador y explica el error.
+
+### Lo que puede hacer solo
+
+- Registrar en los datos los cambios oficiales de Blizzard (`verified`) y de la comunidad (`reported`), con sus fuentes, su `updated` y su entrada en el historial.
+- Corregir el texto de las páginas afectadas, en los dos idiomas.
+- Actualizar la hoja de ruta.
+
+### Lo que nunca hace (lo deja en «Necesita tu decisión»)
+
+- Publicar como oficiales cifras extraídas del cliente o de calculadoras, inventar valores o usar datos de Retail o de Classic como si fueran de Forever.
+- Documentar un error conocido como si fuera un cambio de diseño.
+- Resolver una discrepancia abierta o borrar una sección sin una fuente oficial.
+- Cambiar la fecha `reviewed` de una página: eso queda para una revisión completa hecha por una persona.
+- Tocar el diseño, el código de la web (más allá de datos y textos), las dependencias o los flujos de trabajo.
+- Hacer push a `main` o fusionar su propio PR.
+
+### Qué te queda a ti
+
+Leer «Qué cambia en la web» y «Necesita tu decisión», y fusionar el PR: uno o dos minutos por informe. Si el agente falla, la issue sigue abierta y se puede hacer a mano con la sección 3.

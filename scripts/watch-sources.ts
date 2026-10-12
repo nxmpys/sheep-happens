@@ -83,7 +83,7 @@ const results = await Promise.all(sorted.map(section));
 const total = results.reduce((sum, r) => sum + r.found, 0);
 
 const report = [
-  `# Revisión semanal de fuentes — ${day(new Date())}`,
+  `# Revisión de fuentes — ${day(new Date())}`,
   '',
   `Novedades desde el **${day(since)}**: ${total}.`,
   '',
@@ -92,7 +92,8 @@ const report = [
   '1. Lee cada novedad y decide si afecta a la guía del Mago (ver `docs/maintenance.md`).',
   '2. Actualiza los datos (`src/data/*.json`) con su `status`, sus `sources` y la fecha en `updated`.',
   '3. Añade una entrada en `src/data/changelog.json` con `refs` a los datos que has cambiado.',
-  '4. Ejecuta `npm run check` y publica.',
+  '4. Revisa `docs/content-roadmap.md`: marca lo resuelto y añade lo nuevo.',
+  '5. Ejecuta `npm run check` y publica.',
   '',
   '## Fuentes',
   '',

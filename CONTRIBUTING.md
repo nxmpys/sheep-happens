@@ -88,9 +88,13 @@ Cuando cambie la versión de referencia (por ejemplo, el lanzamiento del 4 de no
 
 Añade una entrada en `src/data/changelog.json` cuando un cambio sea relevante para el lector (contenido nuevo, una corrección importante o un anuncio de Blizzard). `type`: `site`, `guide` o `game`.
 
-## Revisión semanal
+## Revisión de fuentes
 
-Ver [`docs/maintenance.md`](docs/maintenance.md): fuentes fijas, informe automático de los lunes y pasos para actualizar.
+Ver [`docs/maintenance.md`](docs/maintenance.md): fuentes fijas, informe automático de los miércoles y viernes, pasos para actualizar y reglas del agente que propone los cambios.
+
+## Hoja de ruta del contenido
+
+[`docs/content-roadmap.md`](docs/content-roadmap.md) recoge lo que aún no existe, lo que es de la beta y hay que quitar al lanzar, lo que hay que vigilar con el tiempo y el plan de builds. Revísala **cada vez que cambies datos o páginas**: marca lo resuelto, añade lo nuevo y actualiza su fecha de revisión.
 
 ## Antes de publicar
 

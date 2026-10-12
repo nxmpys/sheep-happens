@@ -50,7 +50,7 @@ docs/                           Análisis, requisitos, plan, versión del juego,
 
 ## Editar contenido
 
-- **Rutina semanal:** [`docs/maintenance.md`](docs/maintenance.md). Cada lunes se abre una issue con las novedades de las fuentes vigiladas.
+- **Revisión de fuentes:** [`docs/maintenance.md`](docs/maintenance.md). Cada miércoles y viernes se abre una issue con las novedades de las fuentes vigiladas, y un agente automático propone los cambios en un PR.
 - **Cómo editar:** [`CONTRIBUTING.md`](CONTRIBUTING.md). Explica cómo añadir un cambio, una fuente o una página, y cómo funcionan los borradores, las fechas y el historial.
 - **Historial:** [`CHANGELOG.md`](CHANGELOG.md), generado a partir de los datos.
 
@@ -63,7 +63,7 @@ Ver [`docs/deployment.md`](docs/deployment.md) (Cloudflare Pages, paso a paso) y
 - [Análisis de la referencia](docs/reference-analysis.md) · [Mapa de navegación](docs/reference-navigation.md) · [Patrones UX](docs/ux-patterns.md)
 - [Requisitos](docs/product-requirements.md) · [Plan de implementación](docs/implementation-plan.md) · [Auditoría final](docs/audit.md)
 - [Versión del juego](docs/game-version.md) · [Fuentes](docs/content-sources.md) · [Validación del contenido](docs/content-validation.md)
-- [Mantenimiento semanal](docs/maintenance.md) · [Despliegue](docs/deployment.md) · [SEO](docs/seo.md)
+- [Mantenimiento y revisión de fuentes](docs/maintenance.md) · [Hoja de ruta del contenido](docs/content-roadmap.md) · [Despliegue](docs/deployment.md) · [SEO](docs/seo.md)
 
 ## Aviso legal
 

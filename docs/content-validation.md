@@ -58,3 +58,4 @@
 3. Crear la versión de juego `forever-launch` en `game-versions.json` y apuntar las páginas revisadas a ella.
 4. Comprobar en el juego los niveles de aprendizaje y las interacciones clave (Ice Lance contra objetivos congelados, Heating Up, apilamiento de Arcane Blast) → `tested`.
 5. Desbloquear las secciones pendientes a medida que haya datos.
+6. Quitar o reescribir todo lo que sea de la beta, según la sección 2 de [content-roadmap.md](content-roadmap.md).
