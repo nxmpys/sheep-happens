@@ -1,0 +1,154 @@
+---
+/**
+ * Days, hours, minutes and seconds left until launch, plus the launch time in
+ * Madrid for Spanish readers. The Madrid time is rendered at build time; the
+ * countdown only appears once JavaScript runs.
+ */
+import { getLocale } from '../../i18n/locale';
+
+interface Props {
+  /** Launch instant in UTC ("2026-11-04T23:00:00Z"). */
+  at: string;
+}
+
+const { at } = Astro.props;
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const launch = new Date(at);
+const dateLocale = es ? 'es-ES' : 'en-GB';
+const madridDay = new Intl.DateTimeFormat(dateLocale, {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  timeZone: 'Europe/Madrid',
+}).format(launch);
+const madridTime = new Intl.DateTimeFormat(dateLocale, {
+  hour: '2-digit',
+  minute: '2-digit',
+  hourCycle: 'h23',
+  timeZone: 'Europe/Madrid',
+  timeZoneName: 'short',
+}).format(launch);
+const units = [
+  { id: 'days', label: es ? 'días' : 'days' },
+  { id: 'hours', label: es ? 'horas' : 'hours' },
+  { id: 'minutes', label: 'min' },
+  { id: 'seconds', label: es ? 'seg' : 'sec' },
+];
+---
+
+<launch-countdown class="countdown" data-at={at} data-pagefind-ignore>
+  <div class="countdown__live" data-live hidden>
+    <p class="countdown__label">{es ? 'Lanzamiento en' : 'Launch in'}</p>
+    <p class="countdown__timer" role="timer">
+      {
+        units.map((unit) => (
+          <span class="countdown__unit">
+            <strong data-unit={unit.id}>–</strong>
+            <small>{unit.label}</small>
+          </span>
+        ))
+      }
+    </p>
+  </div>
+  <p class="countdown__done" data-done hidden>{es ? '¡Ya es la hora del lanzamiento!' : "It's launch time!"}</p>
+  <p class="countdown__madrid">
+    {es ? 'Hora de Madrid: ' : 'Madrid time: '}<time datetime={at}>{madridDay}{es ? ', a las' : ' at'} <span>{madridTime}</span></time>
+  </p>
+</launch-countdown>
+
+<script>
+  class LaunchCountdown extends HTMLElement {
+    private timeout = 0;
+
+    connectedCallback() {
+      const at = Date.parse(this.dataset.at ?? '');
+      if (Number.isNaN(at)) return;
+      const live = this.querySelector<HTMLElement>('[data-live]')!;
+      const done = this.querySelector<HTMLElement>('[data-done]')!;
+      const field = (id: string) => this.querySelector<HTMLElement>(`[data-unit="${id}"]`)!;
+      const fields = { days: field('days'), hours: field('hours'), minutes: field('minutes'), seconds: field('seconds') };
+      const pad = (n: number) => String(n).padStart(2, '0');
+
+      const tick = () => {
+        const left = at - Date.now();
+        if (left <= 0) {
+          live.hidden = true;
+          done.hidden = false;
+          return;
+        }
+        const total = Math.floor(left / 1000);
+        fields.days.textContent = String(Math.floor(total / 86400));
+        fields.hours.textContent = pad(Math.floor(total / 3600) % 24);
+        fields.minutes.textContent = pad(Math.floor(total / 60) % 60);
+        fields.seconds.textContent = pad(total % 60);
+        live.hidden = false;
+        // Wake up exactly when the next second ticks over.
+        this.timeout = window.setTimeout(tick, left % 1000 || 1000);
+      };
+      tick();
+    }
+
+    disconnectedCallback() {
+      clearTimeout(this.timeout);
+    }
+  }
+
+  customElements.define('launch-countdown', LaunchCountdown);
+</script>
+
+<style>
+  .countdown {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+    font-size: var(--step--1);
+  }
+  .countdown__live {
+    display: grid;
+    gap: var(--space-1);
+  }
+  .countdown__live[hidden],
+  .countdown__done[hidden] {
+    display: none;
+  }
+  .countdown__label {
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+  .countdown__timer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-2);
+  }
+  .countdown__unit {
+    display: grid;
+    justify-items: center;
+  }
+  .countdown__unit strong {
+    font-size: var(--step-2);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+  }
+  .countdown__unit small {
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+  }
+  .countdown__done {
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .countdown__madrid {
+    color: var(--text-muted);
+  }
+  .countdown__madrid time {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .countdown__madrid time span {
+    white-space: nowrap;
+  }
+</style>

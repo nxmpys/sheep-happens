@@ -139,6 +139,8 @@ export const gameVersionSchema = z
     stage: z.enum(['beta', 'launch', 'patch']),
     since: isoDate,
     notes: localized.optional(),
+    /** Planned launch instant in UTC ("2026-11-04T23:00:00Z"); the home page counts down to it. */
+    launchAt: z.iso.datetime().optional(),
   })
   .strict();
 export type GameVersion = z.infer<typeof gameVersionSchema>;
