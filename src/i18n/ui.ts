@@ -311,3 +311,23 @@ export function formatDate(locale: Locale, date: Date): string {
     timeZone: 'UTC',
   }).format(date);
 }
+
+/** Formats an instant in Spain's time zone (CET/CEST): "5 de noviembre de 2026, 00:00 CET". */
+export function formatSpainTime(locale: Locale, date: Date): string {
+  const day = new Intl.DateTimeFormat(DATE_LOCALES[locale], {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'Europe/Madrid',
+  }).format(date);
+  const time = new Intl.DateTimeFormat(DATE_LOCALES[locale], {
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+    timeZone: 'Europe/Madrid',
+    timeZoneName: 'short',
+  })
+    .format(date)
+    .replace(' ', ' '); // keep "00:00 CET" on one line
+  return `${day}, ${time}`;
+}

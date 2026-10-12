@@ -6,7 +6,7 @@ import LaunchCountdown from '../components/guide/LaunchCountdown.astro';
 import StatusBadge from '../components/guide/StatusBadge.astro';
 import { href } from '../i18n/locale';
 import type { Locale } from '../i18n/routes';
-import { formatDate, t } from '../i18n/ui';
+import { formatDate, formatSpainTime, t } from '../i18n/ui';
 import { currentVersion, getFact } from '../lib/data';
 import { href as pageHref } from '../i18n/locale';
 import { lastModified, websiteJsonLd } from '../lib/seo';
@@ -20,6 +20,7 @@ interface Props {
 const { locale, data } = Astro.props;
 const es = locale === 'es';
 const statusFacts = ['launch', 'beta', 'level-cap'].map(getFact);
+const { launchAt } = currentVersion;
 const site = Astro.site ?? new URL('https://sheep-happens.pages.dev');
 const homeUrl = new URL(pageHref('home', locale), site).href;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
@@ -67,7 +68,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           {es ? 'Estado de la información' : 'Information status'}
         </p>
         <p class="status-card__version">{currentVersion.label[locale]}</p>
-        {currentVersion.launchAt && <LaunchCountdown at={currentVersion.launchAt} />}
+        {launchAt && <LaunchCountdown at={launchAt} />}
         <dl>
           {
             statusFacts.map((fact) => (
@@ -75,7 +76,12 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
                 <dt>
                   {fact.label[locale]} <StatusBadge status={fact.status} compact />
                 </dt>
-                <dd>{fact.value[locale]}</dd>
+                <dd>
+                  {fact.value[locale]}
+                  {fact.id === 'launch' && launchAt && (
+                    <time class="status-card__spain" datetime={launchAt}>{formatSpainTime(locale, new Date(launchAt))}.</time>
+                  )}
+                </dd>
               </div>
             ))
           }
@@ -171,6 +177,9 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   }
   .status-card dd {
     margin: 0;
+  }
+  .status-card__spain {
+    display: block;
   }
   .status-card__reviewed {
     display: flex;

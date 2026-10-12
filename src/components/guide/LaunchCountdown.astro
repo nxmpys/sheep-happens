@@ -1,8 +1,7 @@
 ---
 /**
- * Days, hours, minutes and seconds left until launch, plus the launch time in
- * Madrid for Spanish readers. The Madrid time is rendered at build time; the
- * countdown only appears once JavaScript runs.
+ * Days, hours, minutes and seconds left until launch. Rendered hidden: it only
+ * appears once JavaScript runs.
  */
 import { getLocale } from '../../i18n/locale';
 
@@ -12,23 +11,7 @@ interface Props {
 }
 
 const { at } = Astro.props;
-const locale = getLocale(Astro);
-const es = locale === 'es';
-const launch = new Date(at);
-const dateLocale = es ? 'es-ES' : 'en-GB';
-const madridDay = new Intl.DateTimeFormat(dateLocale, {
-  weekday: 'long',
-  day: 'numeric',
-  month: 'long',
-  timeZone: 'Europe/Madrid',
-}).format(launch);
-const madridTime = new Intl.DateTimeFormat(dateLocale, {
-  hour: '2-digit',
-  minute: '2-digit',
-  hourCycle: 'h23',
-  timeZone: 'Europe/Madrid',
-  timeZoneName: 'short',
-}).format(launch);
+const es = getLocale(Astro) === 'es';
 const units = [
   { id: 'days', label: es ? 'días' : 'days' },
   { id: 'hours', label: es ? 'horas' : 'hours' },
@@ -37,8 +20,8 @@ const units = [
 ];
 ---
 
-<launch-countdown class="countdown" data-at={at} data-pagefind-ignore>
-  <div class="countdown__live" data-live hidden>
+<launch-countdown class="countdown" data-at={at} data-pagefind-ignore hidden>
+  <div class="countdown__live" data-live>
     <p class="countdown__label">{es ? 'Lanzamiento en' : 'Launch in'}</p>
     <p class="countdown__timer" role="timer">
       {
@@ -52,9 +35,6 @@ const units = [
     </p>
   </div>
   <p class="countdown__done" data-done hidden>{es ? '¡Ya es la hora del lanzamiento!' : "It's launch time!"}</p>
-  <p class="countdown__madrid">
-    {es ? 'Hora de Madrid: ' : 'Madrid time: '}<time datetime={at}>{madridDay}{es ? ', a las' : ' at'} <span>{madridTime}</span></time>
-  </p>
 </launch-countdown>
 
 <script>
@@ -64,6 +44,7 @@ const units = [
     connectedCallback() {
       const at = Date.parse(this.dataset.at ?? '');
       if (Number.isNaN(at)) return;
+      this.hidden = false;
       const live = this.querySelector<HTMLElement>('[data-live]')!;
       const done = this.querySelector<HTMLElement>('[data-done]')!;
       const field = (id: string) => this.querySelector<HTMLElement>(`[data-unit="${id}"]`)!;
@@ -82,7 +63,6 @@ const units = [
         fields.hours.textContent = pad(Math.floor(total / 3600) % 24);
         fields.minutes.textContent = pad(Math.floor(total / 60) % 60);
         fields.seconds.textContent = pad(total % 60);
-        live.hidden = false;
         // Wake up exactly when the next second ticks over.
         this.timeout = window.setTimeout(tick, left % 1000 || 1000);
       };
@@ -110,6 +90,7 @@ const units = [
     display: grid;
     gap: var(--space-1);
   }
+  .countdown[hidden],
   .countdown__live[hidden],
   .countdown__done[hidden] {
     display: none;
@@ -140,15 +121,5 @@ const units = [
   .countdown__done {
     font-weight: 700;
     color: var(--accent);
-  }
-  .countdown__madrid {
-    color: var(--text-muted);
-  }
-  .countdown__madrid time {
-    color: var(--text);
-    font-weight: 600;
-  }
-  .countdown__madrid time span {
-    white-space: nowrap;
   }
 </style>
