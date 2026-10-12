@@ -113,7 +113,7 @@ Comprobar en el juego y marcar como «Oficial» o «Probado en juego», o correg
 
 Forma parte de cada revisión de fuentes ([maintenance.md](maintenance.md)):
 
-- [ ] **Semana del 12 de octubre de 2026:** comprobar si llegan los cambios de raciales anunciados y anotarlos en la sección 1.
+- [ ] **Semana del 12 de octubre de 2026:** comprobar si llegan los cambios de raciales anunciados y anotarlos en la sección 1. Revisión del 12 de octubre: todavía no hay cambios de raciales publicados en las fuentes de Blizzard; solo el aviso de Wowhead, que no se ha podido abrir.
 - Las fichas de cambios, los mapas de talentos decisivos y la tabla de builds híbridas de Talentos.
 - Las raciales y la recomendación de razas (sección 5), cuando existan.
 - La versión del cliente (`client-version`).

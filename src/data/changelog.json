@@ -1,5 +1,27 @@
 [
   {
+    "id": "2026-10-12-weekly-1",
+    "date": "2026-10-12",
+    "type": "guide",
+    "title": {
+      "es": "Revisión de fuentes del 12 de octubre: Impacto y Flamestrike",
+      "en": "12 October source review: Impact and Flamestrike"
+    },
+    "body": {
+      "es": "La ficha de Impacto recoge ahora el arreglo del 8 de octubre: ya no se activa con el daño periódico de Flamestrike.",
+      "en": "The Impact entry now records the 8 October fix: it no longer triggers from Flamestrike's periodic damage."
+    },
+    "pages": [
+      "changes",
+      "talents-fire"
+    ],
+    "sources": [
+      "blizzard-dev-notes"
+    ],
+    "refs": [
+      "change:impact"
+    ]
+  }, {
     "id": "2026-10-11-weekly-1",
     "date": "2026-10-11",
     "type": "guide",

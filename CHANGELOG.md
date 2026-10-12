@@ -4,6 +4,15 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-10-12
+
+### [Guía] Revisión de fuentes del 12 de octubre: Impacto y Flamestrike
+
+La ficha de Impacto recoge ahora el arreglo del 8 de octubre: ya no se activa con el daño periódico de Flamestrike.
+
+- **Datos afectados:** Impacto
+- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+
 ## 2026-10-11
 
 ### [Guía] Primera revisión semanal: notas de desarrollo y nombres en español
