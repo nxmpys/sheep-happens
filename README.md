@@ -25,6 +25,7 @@ Sitio estático con interactividad selectiva: builds filtrables por uso y rama (
 | `npm run changelog` | Regenera `CHANGELOG.md` a partir de `src/data/changelog.json` |
 | `npm run watch` | Informe de novedades de las fuentes vigiladas (últimos 7 días) |
 | `npm run og` | Regenera las imágenes sociales de `public/og/` (tras cambiar un título) y `favicon.ico` + `apple-touch-icon.png` a partir de `public/favicon.svg` |
+| `npm run indexnow` | Tras un despliegue, avisa a Bing, Yandex y otros buscadores (IndexNow) de las URL del sitemap, o solo de las que le pases |
 | `npm run typecheck` | Comprobación de tipos (`astro check`) |
 | `npm test` | Pruebas unitarias (filtros, rutas, calculadora, datos, contraste WCAG, enlaces) |
 | `npm run links` | Comprueba los enlaces internos y las anclas de `dist/` (`-- --external` también comprueba las fuentes externas) |
