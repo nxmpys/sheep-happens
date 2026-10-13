@@ -105,13 +105,13 @@ Elegido el 13 de octubre de 2026. `.app` obliga a usar HTTPS (HSTS precargado), 
 
 ### Seguridad y renovación del dominio
 
-Estado a 13 oct 2026. El dominio caduca el **13 oct 2027**; Cloudflare lo renueva solo si la renovación automática está activa y la tarjeta es válida.
+Estado a 13 oct 2026: todo hecho. El dominio caduca el **13 oct 2027** y Cloudflare lo renueva solo; si cambias de tarjeta, actualízala en Cloudflare.
 
 | Tarea | Estado | Dónde |
 |---|---|---|
-| Renovación automática | Comprobar | *Domain Registration* → *Manage Domains* → `sheephappens.app` → *Auto renew* activado |
-| DNSSEC | **Pendiente**: la zona está firmada, pero el registro no tiene el DS | `sheephappens.app` → *DNS* → *Settings* → *DNSSEC* → *Enable DNSSEC*. Con el registrador de Cloudflare, el DS se añade solo |
-| Correo falso con el dominio | **Pendiente**: no hay SPF ni DMARC, así que cualquiera puede enviar correo como `@sheephappens.app` | *DNS* → *Records*: `TXT` en `sheephappens.app` con `v=spf1 -all`, y `TXT` en `_dmarc` con `v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s` |
+| Renovación automática | **Hecho** (13 oct) | *Domain Registration* → *Manage Domains* → `sheephappens.app` → *Auto renew* activado |
+| DNSSEC | **Hecho** (13 oct): DS publicado en `.app` (clave 2371, algoritmo 13) y respuestas validadas | `sheephappens.app` → *DNS* → *Settings* → *DNSSEC*. Con el registrador de Cloudflare, el DS se añade solo |
+| Correo falso con el dominio | **Hecho** (13 oct): el dominio no envía correo y los servidores rechazan el que finja venir de `@sheephappens.app` | *DNS* → *Records*: `TXT` en `sheephappens.app` con `v=spf1 -all`, y `TXT` en `_dmarc` con `v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s` |
 
 Si algún día quieres una dirección de contacto (`hola@sheephappens.app`), usa *Email Routing* de Cloudflare: crea sus propios MX y SPF, que sustituyen al `v=spf1 -all`.
 
