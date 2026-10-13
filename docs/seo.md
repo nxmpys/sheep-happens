@@ -19,7 +19,9 @@ Objetivo: aparecer cuando alguien busque **«guía mago wow forever»**, «talen
 | Canónicas | `canonical` absoluta en cada página; la raíz `/` apunta a `/es/` |
 | Sitemap | `sitemap-index.xml` con `lastmod` real (revisión o historial) y alternativas de idioma; sin la página 404 ni la raíz |
 | robots.txt | Permite todo y declara el sitemap |
-| Datos estructurados | JSON-LD `WebSite` (portada), `Article` (fechas de publicación y modificación, sobre el videojuego) y `BreadcrumbList` |
+| Datos estructurados | JSON-LD `WebSite` (portada), `Article` (fechas de publicación y modificación, sobre el videojuego) y `BreadcrumbList`. Una sola `Organization` (`#organization`, con logo) como autora y editora; los artículos enlazan con el `WebSite` de la raíz (`#website`) |
+| Favicon | `favicon.svg`, `favicon.ico` (16, 32 y 48 px: Google pide múltiplos de 48) y `apple-touch-icon.png`; los dos últimos se generan desde el SVG con `npm run og` |
+| Aviso a buscadores | Sitemap en Google y Bing, e IndexNow (`npm run indexnow`) para Bing, Yandex y otros |
 | Redes sociales | Imagen 1200×630 por página e idioma (`public/og/`), Open Graph y Twitter Card |
 | Palabras clave | Nombres **oficiales en español** (Lanza de hielo, Descarga de Pirofrío…) junto al inglés: cubre ambas búsquedas |
 | Preguntas frecuentes | Bloque en la portada con respuestas reales (lanzamiento, razas, hechizos nuevos, doble especialización) |
@@ -47,9 +49,23 @@ Objetivo: aparecer cuando alguien busque **«guía mago wow forever»**, «talen
 
 ### 1. Google Search Console (gratis, 10 minutos)
 
-Estado (11 oct 2026): propiedad **verificada** y `sitemap-index.xml` **enviado**. Solo falta el paso 6.
+Estado (13 oct 2026), propiedad **`https://sheephappens.app/`** (prefijo de URL):
 
-1. Entra en https://search.google.com/search-console y añade una propiedad de tipo **Prefijo de URL**: `https://sheep-happens.pages.dev/`.
+- `sitemap-index.xml` enviado y leído sin errores: 33 páginas descubiertas.
+- **Ya indexadas:** `/`, `/es/builds/` y `/es/builds/duelos-nivel-30/`.
+- **Indexación solicitada** el 13 oct: `/` (para que recoja el favicon y los datos estructurados nuevos), `/es/`, `/en/`, `/es/talentos/escarcha/`, `/es/razas/` y `/es/guia/`. El cupo diario se agotó en la 7.ª petición.
+- **Pendientes de solicitar**, una tanda al día y en este orden: `/es/cambios/`, `/es/talentos/`, `/es/talentos/fuego/`, `/es/talentos/arcano/`, `/es/nivelacion/`, `/es/combate/`, `/es/equipo/` y después las páginas en inglés. Antes de pedirla, inspecciona la URL: si ya dice «URL is on Google», no gastes cupo.
+- La propiedad antigua `https://sheep-happens.pages.dev/` se mantiene para seguir el traspaso de una dirección a otra.
+
+Notas:
+
+- El cupo de «Solicitar indexación» es pequeño (6 peticiones el 13 oct; en `pages.dev`, ninguna el 11 y el 12). Si sale «Quota Exceeded», vuelve al día siguiente; el sitemap sigue funcionando sin ello.
+- Con una URL que Google aún no conoce, «Request indexing» hace antes una prueba en directo (alrededor de un minuto) y después confirma con «Indexing requested».
+- El enlace directo `…/search-console/inspect?…&id=<url>` da 404: inspecciona las URL desde la barra de búsqueda de Search Console.
+
+Pasos (ya hechos para las dos direcciones):
+
+1. Entra en https://search.google.com/search-console y añade una propiedad de tipo **Prefijo de URL**: `https://sheephappens.app/`.
 2. Verificación usada: **archivo HTML** `public/googlefdba108afcc31ea5.html`. **No lo borres**: si desaparece, Google retira la verificación. (Alternativa: etiqueta HTML con la variable `PUBLIC_GOOGLE_SITE_VERIFICATION` en Cloudflare y un nuevo despliegue).
 3. Pulsa **Verificar** en Search Console.
 4. En **Sitemaps**, envía `sitemap-index.xml`.
@@ -60,11 +76,16 @@ Estado (11 oct 2026): propiedad **verificada** y `sitemap-index.xml` **enviado**
 
 Bing también alimenta a DuckDuckGo, Ecosia, Yahoo y la búsqueda de varios asistentes de IA.
 
-Estado (11 oct 2026): sitio **importado desde Search Console**, con `sitemap-index.xml` enviado y rastreado sin errores. Las 26 URL se enviaron a mano en *URL Submission* (cupo: 100 al día).
+Estado:
+
+- `sheep-happens.pages.dev` (11 oct 2026): sitio **importado desde Search Console**, con `sitemap-index.xml` enviado y rastreado sin errores. Las 26 URL se enviaron a mano en *URL Submission* (cupo: 100 al día).
+- `sheephappens.app` (13 oct 2026): las 33 URL del sitemap se enviaron por **IndexNow** (aceptadas). **Falta** añadir el sitio en Bing Webmaster Tools para ver sus datos: impórtalo desde Search Console, ahora que la propiedad de Google existe.
 
 1. Entra en https://www.bing.com/webmasters e **importa el sitio desde Google Search Console** (no hace falta otra verificación).
 2. Si prefieres verificar aparte, usa la variable `PUBLIC_BING_SITE_VERIFICATION`.
 3. Envía el sitemap.
+
+**IndexNow** (sin iniciar sesión): `npm run indexnow` avisa a Bing, Yandex, Seznam, Naver y Yep de todas las URL del sitemap. Con argumentos (`npm run indexnow -- https://sheephappens.app/es/cambios/`) solo avisa de esas URL. Ejecútalo **después** de que el despliegue esté en línea, con las páginas que cambian en cada revisión de fuentes. La clave es pública a propósito (`public/<clave>.txt`).
 
 ### 3. Conseguir enlaces y visitas (lo que más ayuda)
 
@@ -85,7 +106,8 @@ En Search Console → **Rendimiento**: consultas, impresiones y CTR por página.
 Gratis y sin cookies (no necesita aviso de cookies): visitas, páginas vistas, páginas más vistas, de dónde llegan (referencias), países, dispositivos y Core Web Vitals.
 
 - **Activar (una vez):** Cloudflare → *Workers & Pages* → `sheep-happens` → *Metrics* → *Web Analytics* → **Enable**. Cloudflare inserta el script en el **siguiente despliegue** (haz *Retry deployment* o cualquier push).
-- **Consultar:** Cloudflare → *Analytics & Logs* → *Web Analytics* → `sheep-happens.pages.dev`.
+- **Consultar:** Cloudflare → *Analytics & Logs* → *Web Analytics* → `sheep-happens.pages.dev +1`. El «+1» es `sheephappens.app`: las dos direcciones envían los datos a ese sitio, con el mismo script de Pages. Para ver solo el dominio propio, filtra por **Host**.
+- La tarjeta `sheephappens.app` (*Automatic setup*) se creó al añadir el dominio a Cloudflare y se queda en 0, porque las páginas ya llevan el script de Pages. No aporta nada: se puede borrar.
 - La CSP de `public/_headers` ya permite `https://static.cloudflareinsights.com` (`script-src`) y `https://cloudflareinsights.com` (`connect-src`). Si la quitas, el script quedará bloqueado.
 - Las cifras son aproximadas: no cuentan visitas con bloqueadores de anuncios ni las bloqueadas por LaLiga.
 
