@@ -16,8 +16,8 @@ Objetivo: aparecer cuando alguien busque **«guía mago wow forever»**, «talen
 | Títulos | `seoTitle` por página con la palabra clave al principio (≤ 60 caracteres + «\| Sheep Happens») |
 | Descripciones | `description` única por página, de 50 a 170 caracteres (validada) |
 | Idiomas | `hreflang` es/en/x-default en cada página y en el sitemap; `lang` correcto; URLs localizadas (`/es/talentos/escarcha/`) |
-| Canónicas | `canonical` absoluta en cada página; la raíz `/` apunta a `/es/` |
-| Sitemap | `sitemap-index.xml` con `lastmod` real (revisión o historial) y alternativas de idioma; sin la página 404 ni la raíz |
+| Canónicas | `canonical` absoluta en cada página, que apunta a sí misma. También la raíz `/` (portada para elegir idioma): Google toma de ella el nombre del sitio |
+| Sitemap | `sitemap-index.xml` con `lastmod` real (revisión o historial) y alternativas de idioma; incluye la raíz `/`, pero no la 404 ni los borradores |
 | robots.txt | Permite todo y declara el sitemap |
 | Datos estructurados | JSON-LD `WebSite` (portada), `Article` (fechas de publicación y modificación, sobre el videojuego) y `BreadcrumbList`. Una sola `Organization` (`#organization`, con logo) como autora y editora; los artículos enlazan con el `WebSite` de la raíz (`#website`) |
 | Favicon | `favicon.svg`, `favicon.ico` (16, 32 y 48 px: Google pide múltiplos de 48) y `apple-touch-icon.png`; los dos últimos se generan desde el SVG con `npm run og` |
