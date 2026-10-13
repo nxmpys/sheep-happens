@@ -37,7 +37,8 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const absolute = (path: string) => new URL(path, site).href;
 const canonical = pageId ? absolute(href(pageId, locale)) : undefined;
 const alternate = pageId ? absolute(href(pageId, otherLocale(locale))) : undefined;
-const xDefault = pageId ? absolute(href(pageId, 'es')) : undefined;
+// The root page is the language chooser, so it is the x-default for the home pages.
+const xDefault = pageId === 'home' ? absolute(base) : pageId ? absolute(href(pageId, 'es')) : undefined;
 const ogImage = absolute(image ?? `${base}og/${locale}-home.png`);
 const ogLocale = { es: 'es_ES', en: 'en_GB' } as const;
 const googleVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;

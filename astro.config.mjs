@@ -29,11 +29,18 @@ function sitemapIndex() {
         lastmod: lastModified(frontmatter.pageId, reviewed).toISOString(),
         links: [
           ...LOCALES.map((lang) => ({ lang, url: new URL(pathFor(frontmatter.pageId, lang, { base }), site).href })),
-          { lang: 'x-default', url: new URL(pathFor(frontmatter.pageId, 'es', { base }), site).href },
+          {
+            lang: 'x-default',
+            // The root language chooser is the x-default for the home pages.
+            url: new URL(frontmatter.pageId === 'home' ? base : pathFor(frontmatter.pageId, 'es', { base }), site).href,
+          },
         ],
       });
     }
   }
+  // The root page: language chooser and home of the site for search engines.
+  const home = index.get(pathFor('home', 'es', { base }));
+  if (home) index.set(base, { lastmod: home.lastmod, links: home.links });
   return index;
 }
 const pages = sitemapIndex();

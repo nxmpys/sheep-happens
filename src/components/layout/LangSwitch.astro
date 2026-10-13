@@ -35,6 +35,10 @@ const label = target === 'en' ? 'English version of this page' : 'Versión en es
       url.search = location.search;
       url.hash = location.hash;
       link.href = url.toString();
+      // The root page sends returning readers to the language they last picked.
+      try {
+        localStorage.setItem('sh-lang', link.hreflang);
+      } catch {}
     });
   });
 </script>

@@ -8,7 +8,6 @@ import { href } from '../i18n/locale';
 import type { Locale } from '../i18n/routes';
 import { formatDate, formatSpainTime, t } from '../i18n/ui';
 import { currentVersion, getFact } from '../lib/data';
-import { href as pageHref } from '../i18n/locale';
 import { lastModified, websiteJsonLd } from '../lib/seo';
 import type { PageFrontmatter } from '../lib/schemas';
 
@@ -22,7 +21,7 @@ const es = locale === 'es';
 const statusFacts = ['launch', 'beta', 'level-cap'].map(getFact);
 const { launchAt } = currentVersion;
 const site = Astro.site ?? new URL('https://sheep-happens.pages.dev');
-const homeUrl = new URL(pageHref('home', locale), site).href;
+const siteUrl = new URL(import.meta.env.BASE_URL, site).href;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
@@ -33,7 +32,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   seoTitle={data.seoTitle}
   description={data.description}
   image={`${base}og/${locale}-home.png`}
-  jsonLd={[websiteJsonLd(locale, homeUrl, data.description)]}
+  jsonLd={[websiteJsonLd(locale, siteUrl, data.description)]}
   modified={lastModified('home', data.reviewed)}
 >
   <div class="container home" data-pagefind-body>

@@ -61,6 +61,9 @@ jobs:
           echo "$headers" | grep -qi '^content-security-policy:' || { echo "::error::Missing Content-Security-Policy"; exit 1; }
           echo "$headers" | grep -qi '^strict-transport-security:' || { echo "::error::Missing HSTS"; exit 1; }
           curl -s "$SITE/es/" | grep -q "<link rel=\"canonical\" href=\"$SITE/es/\"" || { echo "::error::Wrong canonical on /es/"; exit 1; }
+          root=$(curl -s "$SITE/")
+          echo "$root" | grep -q "<link rel=\"canonical\" href=\"$SITE/\"" || { echo "::error::The root page must be canonical to itself (site name in Google)"; exit 1; }
+          echo "$root" | grep -q '"@type":"WebSite"' || { echo "::error::The root page has no WebSite structured data"; exit 1; }
           curl -s "$SITE/sitemap-0.xml" | grep -q "$SITE/es/talentos/escarcha/" || { echo "::error::Sitemap is missing pages"; exit 1; }
           curl -s "$SITE/robots.txt" | grep -q "Sitemap: $SITE/sitemap-index.xml" || { echo "::error::robots.txt has no sitemap"; exit 1; }
           echo "Headers, canonical, sitemap and robots.txt look right."

@@ -1,16 +1,59 @@
 ---
 /**
- * Language chooser at the site root. Redirects to the reader's language
- * (Spanish by default) and offers both links when JavaScript is off.
+ * Site root: the home of Sheep Happens for search engines and the language
+ * chooser for readers (x-default in hreflang). Google takes the site name shown
+ * in results ("Sheep Happens", not the host's name) from this page, so it must
+ * be indexable, canonical to itself and carry the WebSite structured data.
+ *
+ * It does not redirect on its own: a forced redirect would hide this page from
+ * search engines. It highlights the reader's language, and readers who already
+ * picked one here go straight to it on their next visit.
  */
+import '@fontsource-variable/inter';
+import '@fontsource/spectral/600.css';
+import '@fontsource/spectral/700.css';
 import '../styles/base.css';
+import Icon from '../components/ui/Icon.astro';
+import Logo from '../components/ui/Logo.astro';
+import { href } from '../i18n/locale';
+import { SITE_NAME, websiteJsonLd } from '../lib/seo';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-const es = `${base}es/`;
-const en = `${base}en/`;
 const site = Astro.site ?? new URL('https://sheep-happens.pages.dev');
-// The root only redirects; search engines should index the Spanish home instead.
-const canonical = new URL(es, site).href;
+const siteUrl = new URL(base, site).href;
+const absolute = (path: string) => new URL(path, site).href;
+const title = `${SITE_NAME}: guía de Mago para WoW Forever · Mage guide`;
+const description =
+  'Guía en profundidad del Mago para World of Warcraft: Forever: builds, razas y talentos. In-depth Mage guide for World of Warcraft: Forever.';
+const image = absolute(`${base}og/es-home.png`);
+const jsonLd = websiteJsonLd('all', siteUrl, description);
+
+const languages = [
+  {
+    code: 'es',
+    name: 'Español',
+    tagline: 'Guía en profundidad del Mago para WoW Forever',
+    cta: 'Entrar en español',
+    links: [
+      { label: 'Builds', href: href('builds', 'es') },
+      { label: 'Razas', href: href('races', 'es') },
+      { label: 'Talentos', href: href('talents', 'es') },
+      { label: 'Guía de clase', href: href('guide', 'es') },
+    ],
+  },
+  {
+    code: 'en',
+    name: 'English',
+    tagline: 'In-depth Mage guide for WoW Forever',
+    cta: 'Enter in English',
+    links: [
+      { label: 'Builds', href: href('builds', 'en') },
+      { label: 'Races', href: href('races', 'en') },
+      { label: 'Talents', href: href('talents', 'en') },
+      { label: 'Class guide', href: href('guide', 'en') },
+    ],
+  },
+] as const;
 ---
 
 <!doctype html>
@@ -18,30 +61,155 @@ const canonical = new URL(es, site).href;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sheep Happens — Guía de Mago / Mage guide · WoW: Forever</title>
-    <meta name="description" content="Guía en profundidad del Mago para World of Warcraft: Forever. In-depth Mage guide for World of Warcraft: Forever." />
-    <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="es" href={new URL(es, site).href} />
-    <link rel="alternate" hreflang="en" href={new URL(en, site).href} />
-    <link rel="alternate" hreflang="x-default" href={canonical} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href={siteUrl} />
+    <link rel="alternate" hreflang="es" href={absolute(href('home', 'es'))} />
+    <link rel="alternate" hreflang="en" href={absolute(href('home', 'en'))} />
+    <link rel="alternate" hreflang="x-default" href={siteUrl} />
     <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
-    <script is:inline define:vars={{ es, en }}>
-      var langs = navigator.languages || [navigator.language || 'es'];
-      var preferred = 'es';
-      for (var i = 0; i < langs.length; i++) {
-        var code = String(langs[i]).toLowerCase();
-        if (code.indexOf('es') === 0) { preferred = 'es'; break; }
-        if (code.indexOf('en') === 0) { preferred = 'en'; break; }
-      }
-      location.replace(preferred === 'en' ? en : es);
+    <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} />
+    <meta name="theme-color" content="#0e0d16" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f6f4fb" media="(prefers-color-scheme: light)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script is:inline define:vars={{ es: href('home', 'es'), en: href('home', 'en') }}>
+      // Readers who already chose a language here go straight to it.
+      try {
+        var saved = localStorage.getItem('sh-lang');
+        if (saved === 'es' || saved === 'en') location.replace(saved === 'en' ? en : es);
+        var theme = localStorage.getItem('sh-theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+      } catch (e) {}
     </script>
-    <noscript><meta http-equiv="refresh" content={`0; url=${es}`} /></noscript>
   </head>
   <body>
-    <main class="container" style="padding-block: 4rem;">
-      <h1>Sheep Happens</h1>
-      <p><a href={es} hreflang="es" lang="es">Guía de Mago en español</a></p>
-      <p><a href={en} hreflang="en" lang="en">Mage guide in English</a></p>
+    <main class="root">
+      <header class="root__brand">
+        <Logo size={64} />
+        <h1>{SITE_NAME}</h1>
+        <p class="root__lead">World of Warcraft: Forever · Mago / Mage</p>
+      </header>
+
+      <div class="root__choices">
+        {
+          languages.map((lang) => (
+            <section class="choice" lang={lang.code} data-lang={lang.code} aria-labelledby={`choice-${lang.code}`}>
+              <h2 id={`choice-${lang.code}`}>{lang.name}</h2>
+              <p>{lang.tagline}</p>
+              <a class="button button--primary choice__cta" href={href('home', lang.code)} hreflang={lang.code} data-choose={lang.code}>
+                {lang.cta}
+                <Icon name="arrowRight" size={18} />
+              </a>
+              <ul class="choice__links">
+                {lang.links.map((link) => (
+                  <li>
+                    <a href={link.href} hreflang={lang.code} data-choose={lang.code}>
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
+        }
+      </div>
     </main>
+
+    <script>
+      // Highlight the reader's browser language and remember the choice.
+      const langs = navigator.languages?.length ? navigator.languages : [navigator.language || 'es'];
+      const preferred = langs.map((l) => l.toLowerCase().slice(0, 2)).find((l) => l === 'es' || l === 'en') ?? 'es';
+      document.querySelector<HTMLElement>(`[data-lang="${preferred}"]`)?.classList.add('choice--preferred');
+      for (const link of document.querySelectorAll<HTMLAnchorElement>('[data-choose]')) {
+        link.addEventListener('click', () => {
+          try {
+            localStorage.setItem('sh-lang', link.dataset.choose!);
+          } catch {}
+        });
+      }
+    </script>
+
+    <style>
+      .root {
+        display: grid;
+        align-content: center;
+        gap: var(--space-7);
+        width: min(100% - 2 * var(--gutter, 16px), 52rem);
+        min-height: 100vh;
+        margin-inline: auto;
+        padding-block: var(--space-7);
+      }
+      .root__brand {
+        display: grid;
+        justify-items: center;
+        gap: var(--space-2);
+        text-align: center;
+      }
+      .root__brand h1 {
+        margin: 0;
+        font-size: var(--step-4);
+      }
+      .root__lead {
+        margin: 0;
+        font-size: var(--step--1);
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+      .root__choices {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+        gap: var(--space-4);
+      }
+      .choice {
+        display: grid;
+        align-content: start;
+        gap: var(--space-3);
+        padding: var(--space-5);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--surface-1);
+      }
+      .choice--preferred {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 1px var(--accent), var(--shadow);
+      }
+      .choice h2 {
+        margin: 0;
+        font-size: var(--step-2);
+      }
+      .choice p {
+        margin: 0;
+        color: var(--text-muted);
+      }
+      .choice__cta {
+        justify-self: start;
+      }
+      .choice__links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-1) var(--space-4);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: var(--step--1);
+      }
+    </style>
   </body>
 </html>

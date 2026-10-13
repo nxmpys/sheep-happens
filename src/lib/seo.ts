@@ -31,16 +31,21 @@ interface ArticleInput {
   image: string;
 }
 
-export function websiteJsonLd(locale: Locale, homeUrl: string, description: string) {
+/**
+ * schema.org WebSite. Google reads the site name ("Sheep Happens" instead of the
+ * host's name) from the home page at the root of the domain, so `url` and `@id`
+ * always point at the root, also on the language home pages.
+ */
+export function websiteJsonLd(locale: Locale | 'all', siteUrl: string, description: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': `${homeUrl}#website`,
+    '@id': `${siteUrl}#website`,
     name: SITE_NAME,
-    alternateName: locale === 'es' ? 'Guía de Mago para WoW Forever' : 'WoW Forever Mage guide',
-    url: homeUrl,
+    alternateName: ['Sheep Happens Mage Guide', 'Guía de Mago Sheep Happens'],
+    url: siteUrl,
     description,
-    inLanguage: IN_LANGUAGE[locale],
+    inLanguage: locale === 'all' ? Object.values(IN_LANGUAGE) : IN_LANGUAGE[locale],
   };
 }
 
