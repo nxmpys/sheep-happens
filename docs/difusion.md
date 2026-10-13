@@ -27,13 +27,13 @@ Cuándo: ahora (para que Google descubra el sitio) y, sobre todo, **la semana de
 >
 > Algunas cosas que quizá no sabías: Descarga de Pirofrío (nivel 40) aprovecha los talentos de Fuego y de Escarcha a la vez; Estela de Fuego ya dura 30 s; y bajar de rango apenas compensa, porque los rangos bajos casi no activan talentos.
 >
-> https://sheep-happens.pages.dev/es/
+> https://sheephappens.app/es/
 >
 > Lo que aún no se sabe (builds de nivel 60, estadísticas) aparece como pendiente hasta que se pueda probar. Si veis algún error o una fuente mejor, decídmelo.
 
 ## Mensaje para Discord (corto)
 
-> Guía de Mago para WoW Forever en español, actualizada con las notas oficiales de la beta: explorador de los más de 40 cambios del Mago por rama, nombres oficiales en español y fuente en cada dato. https://sheep-happens.pages.dev/es/cambios/
+> Guía de Mago para WoW Forever en español, actualizada con las notas oficiales de la beta: explorador de los más de 40 cambios del Mago por rama, nombres oficiales en español y fuente en cada dato. https://sheephappens.app/es/cambios/
 
 ## Message for English communities
 
@@ -41,7 +41,7 @@ Cuándo: ahora (para que Google descubra el sitio) y, sobre todo, **la semana de
 
 > I built a free, ad-free Mage guide for Forever that is updated weekly from the official beta development notes:
 >
-> - A filterable explorer of all 40+ Mage changes by tree and type (e.g. new Frost talents: https://sheep-happens.pages.dev/en/changes/?tree=frost&kind=new).
+> - A filterable explorer of all 40+ Mage changes by tree and type (e.g. new Frost talents: https://sheephappens.app/en/changes/?tree=frost&kind=new).
 > - Arcane, Fire and Frost pages with the 11/16/21/31-point milestones.
 > - Every fact is marked Official, Community, Classic reference or Analysis, with its source.
 >
@@ -53,11 +53,11 @@ Cuándo: ahora (para que Google descubra el sitio) y, sobre todo, **la semana de
 
 | Qué | ES | EN |
 |---|---|---|
-| Portada | https://sheep-happens.pages.dev/es/ | https://sheep-happens.pages.dev/en/ |
-| Todos los cambios | https://sheep-happens.pages.dev/es/cambios/ | https://sheep-happens.pages.dev/en/changes/ |
-| Novedades de Escarcha | https://sheep-happens.pages.dev/es/cambios/?tree=frost&kind=new | https://sheep-happens.pages.dev/en/changes/?tree=frost&kind=new |
-| Mago de Escarcha | https://sheep-happens.pages.dev/es/talentos/escarcha/ | https://sheep-happens.pages.dev/en/talents/frost/ |
-| Calculadora de crítico | https://sheep-happens.pages.dev/es/herramientas/ | https://sheep-happens.pages.dev/en/tools/ |
-| Historial (RSS) | https://sheep-happens.pages.dev/es/novedades/rss.xml | https://sheep-happens.pages.dev/en/updates/rss.xml |
+| Portada | https://sheephappens.app/es/ | https://sheephappens.app/en/ |
+| Todos los cambios | https://sheephappens.app/es/cambios/ | https://sheephappens.app/en/changes/ |
+| Novedades de Escarcha | https://sheephappens.app/es/cambios/?tree=frost&kind=new | https://sheephappens.app/en/changes/?tree=frost&kind=new |
+| Mago de Escarcha | https://sheephappens.app/es/talentos/escarcha/ | https://sheephappens.app/en/talents/frost/ |
+| Calculadora de crítico | https://sheephappens.app/es/herramientas/ | https://sheephappens.app/en/tools/ |
+| Historial (RSS) | https://sheephappens.app/es/novedades/rss.xml | https://sheephappens.app/en/updates/rss.xml |
 
-Si Cloudflare asigna otro subdominio, sustituye `sheep-happens.pages.dev` en todos los enlaces.
+Usa siempre el dominio propio (`sheephappens.app`); `sheep-happens.pages.dev` redirige a él.

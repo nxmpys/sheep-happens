@@ -18,7 +18,7 @@ export const GET: APIRoute = async ({ params, site }) => {
   return rss({
     title: t(locale, 'updates.rssTitle'),
     description: t(locale, 'updates.rssDescription'),
-    site: site ?? 'https://sheep-happens.pages.dev',
+    site: site ?? 'https://sheephappens.app',
     customData: `<language>${locale === 'es' ? 'es-es' : 'en-gb'}</language>`,
     items: sortedChangelog().map((entry) => ({
       title: entry.title[locale],

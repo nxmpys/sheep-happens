@@ -1,5 +1,21 @@
 [
   {
+    "id": "2026-10-13-domain",
+    "date": "2026-10-13",
+    "type": "site",
+    "title": {
+      "es": "Nuevo dominio: sheephappens.app",
+      "en": "New domain: sheephappens.app"
+    },
+    "body": {
+      "es": "La guía se mueve a https://sheephappens.app. La dirección anterior (sheep-happens.pages.dev) redirige a la nueva, así que los enlaces antiguos siguen funcionando.",
+      "en": "The guide moves to https://sheephappens.app. The old address (sheep-happens.pages.dev) redirects to the new one, so old links keep working."
+    },
+    "pages": [],
+    "sources": [],
+    "refs": []
+  },
+  {
     "id": "2026-10-13-builds-races",
     "date": "2026-10-13",
     "type": "site",

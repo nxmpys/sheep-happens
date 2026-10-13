@@ -13,7 +13,7 @@ import { watchlist } from '../src/lib/data';
 import type { Watch } from '../src/lib/schemas';
 import { extractSection, filterItems, parseDiscourseTopic, parseFeed, parseWagoBuilds } from '../src/lib/watch';
 
-const USER_AGENT = 'SheepHappensWatcher/1.0 (+https://sheep-happens.pages.dev; weekly source check)';
+const USER_AGENT = 'SheepHappensWatcher/1.0 (+https://sheephappens.app; source check)';
 
 function arg(name: string): string | undefined {
   const index = process.argv.indexOf(`--${name}`);

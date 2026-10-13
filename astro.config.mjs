@@ -9,7 +9,7 @@ import { lastModified } from './src/lib/seo.ts';
 
 // Production URL (Cloudflare Pages). Override with SITE_URL for another host
 // or a custom domain, and BASE_PATH if the site lives under a sub-path.
-const site = process.env.SITE_URL || 'https://sheep-happens.pages.dev';
+const site = process.env.SITE_URL || 'https://sheephappens.app';
 const base = process.env.BASE_PATH || '/';
 
 /**

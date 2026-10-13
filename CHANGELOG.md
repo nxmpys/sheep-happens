@@ -6,6 +6,10 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ## 2026-10-13
 
+### [Web] Nuevo dominio: sheephappens.app
+
+La guía se mueve a https://sheephappens.app. La dirección anterior (sheep-happens.pages.dev) redirige a la nueva, así que los enlaces antiguos siguen funcionando.
+
 ### [Web] Builds, razas y fichas de hechizos al pasar el ratón
 
 Nueva página de Builds con filtros por uso y rama, vista de calculadora y enlace a la calculadora de Wowhead. Primera build: Escarcha para duelos a nivel 30 con el perk de Legado Talented (26 puntos), con una guía en profundidad para el torneo Forever Open. Nueva página de Razas con las raciales de las seis razas de Mago y qué aporta cada una. Los nombres de hechizos en negrita muestran su ficha al pasar el ratón o al tocarlos. El dato del sistema de Legado se corrige: el perk Talented adelanta los puntos de talento de clase.

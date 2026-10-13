@@ -17,7 +17,7 @@ jobs:
   smoke:
     runs-on: ubuntu-latest
     env:
-      SITE: https://sheep-happens.pages.dev
+      SITE: https://sheephappens.app
     steps:
       - name: Wait until this commit is live
         if: github.event_name == 'push'

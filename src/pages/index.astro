@@ -19,7 +19,7 @@ import { href } from '../i18n/locale';
 import { SITE_NAME, websiteJsonLd } from '../lib/seo';
 
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
-const site = Astro.site ?? new URL('https://sheep-happens.pages.dev');
+const site = Astro.site ?? new URL('https://sheephappens.app');
 const siteUrl = new URL(base, site).href;
 const absolute = (path: string) => new URL(path, site).href;
 const title = `${SITE_NAME}: guía de Mago para WoW Forever · Mage guide`;

@@ -5,7 +5,7 @@ Sitio estático con interactividad selectiva: builds filtrables por uso y rama (
 
 > Estado del juego en la última revisión (2026-10-11): **beta** (cliente 1.60.1). El lanzamiento está previsto para el 4 de noviembre de 2026. Ver [`docs/game-version.md`](docs/game-version.md).
 >
-> Producción: **https://sheep-happens.pages.dev** (Cloudflare Pages, gratis). Ver [`docs/deployment.md`](docs/deployment.md).
+> Producción: **https://sheephappens.app** (Cloudflare Pages; `sheep-happens.pages.dev` redirige aquí). Ver [`docs/deployment.md`](docs/deployment.md).
 
 ## Requisitos
 

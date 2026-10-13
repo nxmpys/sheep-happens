@@ -1,6 +1,6 @@
 # Publicación en Cloudflare Pages (gratis)
 
-URL de producción prevista: **https://sheep-happens.pages.dev**
+URL de producción: **https://sheephappens.app** (dominio propio, comprado en Cloudflare). La dirección original `https://sheep-happens.pages.dev` redirige a él con un 301.
 
 Coste: 0 €. Cloudflare Pages (plan gratuito) ofrece ancho de banda ilimitado, HTTPS, CDN global y 500 compilaciones al mes. GitHub (repositorio y Actions) también es gratuito para repositorios públicos.
 
@@ -55,7 +55,7 @@ push a main ──► GitHub ──► Cloudflare Pages ejecuta `npm run check` 
 
 ### 3. Comprobación tras publicar
 
-- `https://sheep-happens.pages.dev/` redirige a `/es/` o `/en/` según el idioma del navegador.
+- `https://sheephappens.app/` muestra la portada para elegir idioma (es la página principal para Google: lleva el nombre del sitio). Quien ya eligió idioma va directo a él.
 - Pulsa `/` y busca «Lanza de hielo»: aparecen resultados por sección.
 - `/es/cambios/?tree=frost&kind=new` muestra 2 cambios.
 - `/sitemap-index.xml`, `/robots.txt` y `/es/novedades/rss.xml` responden.
@@ -90,6 +90,13 @@ Los fines de semana con partidos de fútbol, varios operadores españoles bloque
 
 No se puede evitar sin salir de Cloudflare. Un dominio propio en Cloudflare usa las mismas IP. Ver `docs/seo.md` para el impacto.
 
-## Dominio propio (opcional, de pago)
+## Dominio propio: sheephappens.app
 
-Si algún día compras un dominio (unos 10 €/año), añádelo en *Custom domains* del proyecto. Después cambia `SITE_URL`. La URL `pages.dev` seguirá funcionando; las etiquetas `canonical` indican a los buscadores qué dirección es la principal.
+Elegido el 13 de octubre de 2026. `.app` obliga a usar HTTPS (HSTS precargado), algo que la web ya cumple.
+
+1. **Comprar** `sheephappens.app` en Cloudflare → *Domain Registration* → *Register Domains*. Al comprarlo en Cloudflare, sus DNS ya quedan en la cuenta.
+2. **Conectar** el dominio al proyecto: *Workers & Pages* → `sheep-happens` → *Custom domains* → *Set up a custom domain* → `sheephappens.app`. Cloudflare crea el registro DNS y el certificado (unos minutos).
+3. **Opcional:** añadir también `www.sheephappens.app` como dominio personalizado y redirigirlo al dominio sin `www`.
+4. **Redirigir `pages.dev`:** *Bulk Redirects* (en la cuenta, *Rules* → *Redirect Rules* → *Bulk Redirects*): una lista con `sheep-happens.pages.dev` → `https://sheephappens.app`, código 301, conservando ruta y parámetros (*Preserve path suffix* y *Preserve query string*), y una regla que la active. Así no se pierde lo ya indexado ni los enlaces compartidos.
+5. **Publicar** el código con la nueva URL (`SITE_URL` por defecto en `astro.config.mjs`, imágenes sociales y prueba de humo). Si en el proyecto de Cloudflare existe la variable `SITE_URL` con la URL antigua, cámbiala o bórrala.
+6. **Buscadores:** añadir en Search Console una propiedad de tipo **Dominio** (`sheephappens.app`), que se verifica con un registro TXT en los DNS de Cloudflare, y enviar `https://sheephappens.app/sitemap-index.xml`; lo mismo en Bing. La propiedad antigua de `pages.dev` se mantiene para seguir las redirecciones: la herramienta «Cambio de dirección» no admite subdominios de `pages.dev`, así que el traspaso depende de los 301.

@@ -31,7 +31,7 @@ for (const file of fontFiles) {
 const ACCENT = { arcane: '#cfa6ff', fire: '#ffa266', frost: '#86d3ff', default: '#a98bff' } as const;
 const KICKER: Record<Locale, string> = { es: 'GUÍA DE MAGO · WOW: FOREVER', en: 'MAGE GUIDE · WOW: FOREVER' };
 const FOOTER: Record<Locale, string> = { es: 'Información con fuentes y estado de verificación', en: 'Sourced information with verification status' };
-const HOST = 'sheep-happens.pages.dev';
+const HOST = 'sheephappens.app';
 
 function escapeXml(text: string): string {
   return text.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' })[c]!);
