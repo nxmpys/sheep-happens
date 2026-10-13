@@ -1,0 +1,85 @@
+---
+/**
+ * One question and its answer, as a box inside <Faq>. The left edge takes the
+ * colour of the answer's status, which the badge also states in words.
+ */
+import StatusBadge from './StatusBadge.astro';
+import type { Status } from '../../lib/schemas';
+
+interface Props {
+  q: string;
+  status?: Status;
+}
+
+const { q, status } = Astro.props;
+// Same anchor a Markdown heading would get (github-slugger), so old links keep working.
+const id = q
+  .toLowerCase()
+  .replace(/[^\p{L}\p{N}\s-]/gu, '')
+  .replace(/ /g, '-');
+---
+
+<section class:list={['faq-item', status && `faq-item--${status}`]} aria-labelledby={id}>
+  <h3 id={id} class="faq-item__q">{q}</h3>
+  <div class="faq-item__a">
+    <slot />
+  </div>
+  {
+    status && (
+      <p class="faq-item__status">
+        <StatusBadge status={status} />
+      </p>
+    )
+  }
+</section>
+
+<style>
+  .faq-item {
+    --status-color: var(--border-strong);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-5);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--status-color);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .faq-item--verified {
+    --status-color: var(--status-verified);
+  }
+  .faq-item--reported {
+    --status-color: var(--status-reported);
+  }
+  .faq-item--classic {
+    --status-color: var(--status-classic);
+  }
+  .faq-item--analysis {
+    --status-color: var(--status-analysis);
+  }
+  .faq-item--tested {
+    --status-color: var(--status-tested);
+  }
+  .faq-item--pending {
+    --status-color: var(--status-pending);
+  }
+  .faq-item__q {
+    margin: 0;
+    font-size: var(--step-1);
+    scroll-margin-top: calc(var(--header-h) + var(--space-4));
+  }
+  .faq-item__a {
+    flex: 1;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+  .faq-item__a > :global(* + *) {
+    margin-top: var(--space-2);
+  }
+  .faq-item__a > :global(*) {
+    margin-bottom: 0;
+  }
+  .faq-item__status {
+    margin: var(--space-2) 0 0;
+  }
+</style>

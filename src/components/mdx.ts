@@ -10,6 +10,10 @@ import ChangeExplorer from './guide/ChangeExplorer.astro';
 import ChangelogList from './guide/ChangelogList.astro';
 import CritCalculator from './guide/CritCalculator.astro';
 import FactList from './guide/FactList.astro';
+import Faq from './guide/Faq.astro';
+import FaqItem from './guide/FaqItem.astro';
+import Highlight from './guide/Highlight.astro';
+import Highlights from './guide/Highlights.astro';
 import MilestoneMap from './guide/MilestoneMap.astro';
 import PageLink from './guide/PageLink.astro';
 import Pending from './guide/Pending.astro';
@@ -38,6 +42,10 @@ export const mdxComponents = {
   ChangelogList,
   CritCalculator,
   FactList,
+  Faq,
+  FaqItem,
+  Highlight,
+  Highlights,
   MilestoneMap,
   PageLink,
   Pending,

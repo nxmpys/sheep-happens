@@ -1,0 +1,133 @@
+---
+/**
+ * One headline change, as a card inside <Highlights>. The text stays in MDX,
+ * so bold spell names keep their tooltips; `featured` spans two columns.
+ */
+import Icon from '../ui/Icon.astro';
+import { getLocale, href } from '../../i18n/locale';
+import type { PageId } from '../../i18n/routes';
+
+interface Props {
+  school: 'arcane' | 'fire' | 'frost' | 'frostfire';
+  /** Short line above the text, e.g. "Escarcha · talentos nuevos". */
+  label: string;
+  to: PageId;
+  hash?: string;
+  /** Raw query string without "?" (language-neutral filter ids). */
+  query?: string;
+  /** Link text at the bottom of the card. */
+  cta: string;
+  featured?: boolean;
+}
+
+const { school, label, to, hash, query, cta, featured = false } = Astro.props;
+const locale = getLocale(Astro);
+const url = `${href(to, locale)}${query ? `?${query}` : ''}${hash ? `#${hash}` : ''}`;
+---
+
+<li class:list={['highlight', `school-${school === 'frostfire' ? 'baseline' : school}`, { 'highlight--frostfire': school === 'frostfire', 'highlight--featured': featured }]}>
+  <p class="highlight__label">
+    <span class="highlight__icon">
+      <Icon name={school} size={featured ? 26 : 20} strokeWidth={1.6} />
+    </span>
+    {label}
+  </p>
+  <div class="highlight__body">
+    <slot />
+  </div>
+  <a class="highlight__link" href={url}>
+    {cta}
+    <Icon name="arrowRight" size={16} />
+  </a>
+</li>
+
+<style>
+  .highlight {
+    --bar: var(--school);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin: 0;
+    padding: var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(160deg, var(--school-soft), var(--surface-1) 60%);
+  }
+  .highlight::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: var(--bar);
+  }
+  /* Fire and Frost at once: both schools blend. */
+  .highlight--frostfire {
+    --bar: linear-gradient(90deg, var(--fire), var(--frost));
+    background: linear-gradient(160deg, var(--fire-soft), var(--surface-1) 45%, var(--frost-soft));
+  }
+  /* Two columns only when the grid has at least two (see Highlights.astro). */
+  @container highlights (min-width: 41rem) {
+    .highlight--featured {
+      grid-column: span 2;
+    }
+    .highlight--featured .highlight__body {
+      font-size: var(--step-1);
+    }
+  }
+  .highlight__label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--school);
+  }
+  .highlight__icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--school) 45%, transparent);
+    background: var(--surface-1);
+  }
+  .highlight--featured .highlight__icon {
+    width: 3rem;
+    height: 3rem;
+  }
+  .highlight--frostfire .highlight__icon {
+    color: var(--fire);
+    border-color: color-mix(in srgb, var(--fire) 45%, transparent);
+  }
+  .highlight__body {
+    flex: 1;
+    line-height: 1.55;
+  }
+  .highlight__body > :global(*) {
+    margin: 0;
+  }
+  .highlight__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    align-self: flex-start;
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+  .highlight__link :global(.icon) {
+    transition: transform 0.15s ease;
+  }
+  .highlight__link:hover :global(.icon) {
+    transform: translateX(3px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .highlight__link :global(.icon) {
+      transition: none;
+    }
+  }
+</style>

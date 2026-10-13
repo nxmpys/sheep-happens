@@ -49,6 +49,16 @@ describe('validatePages', () => {
     expect(errors).not.toMatch(/"launch"/);
   });
 
+  it('checks page ids on <Highlight> and statuses on <FaqItem>', () => {
+    const body =
+      '<Highlights>\n<Highlight school="frost" label="x" to="nowhere" cta="x">x</Highlight>\n</Highlights>\n<FaqItem q="x" status="maybe">x</FaqItem>';
+    const files = [...complete.filter((f) => f.path !== 'es/home.mdx'), page('es', 'home', body)];
+    const errors = validatePages(files, dataset, today).errors.join('\n');
+    expect(errors).toMatch(/<Highlight to="nowhere"> is not a page id/);
+    expect(errors).toMatch(/unknown status "maybe"/);
+    expect(errors).not.toMatch(/unknown component/);
+  });
+
   it('rejects future review dates and mismatched folders', () => {
     const future = page('es', 'guide').content.replace('reviewed: 2026-10-11', 'reviewed: 2026-12-01');
     const files = [...complete.filter((f) => f.path !== 'es/guide.mdx'), { path: 'en/guide.mdx', content: future }];

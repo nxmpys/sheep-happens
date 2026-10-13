@@ -1,7 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import Icon from '../components/ui/Icon.astro';
-import Logo from '../components/ui/Logo.astro';
 import LaunchCountdown from '../components/guide/LaunchCountdown.astro';
 import StatusBadge from '../components/guide/StatusBadge.astro';
 import { href } from '../i18n/locale';
@@ -18,7 +17,7 @@ interface Props {
 
 const { locale, data } = Astro.props;
 const es = locale === 'es';
-const statusFacts = ['launch', 'beta', 'level-cap'].map(getFact);
+const statusFacts = ['launch', 'beta'].map(getFact);
 const { launchAt } = currentVersion;
 const site = Astro.site ?? new URL('https://sheephappens.app');
 const siteUrl = new URL(import.meta.env.BASE_URL, site).href;
@@ -38,10 +37,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   <div class="container home" data-pagefind-body>
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__intro">
-        <p class="hero__kicker">
-          <Logo size={26} />
-          World of Warcraft: Forever · {es ? 'Mago' : 'Mage'}
-        </p>
         <h1 id="hero-title" data-pagefind-meta="title">{data.title}</h1>
         <p class="hero__lead">{data.description}</p>
         <div class="hero__actions">
@@ -117,16 +112,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   .hero__intro {
     display: grid;
     gap: var(--space-4);
-  }
-  .hero__kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--step--1);
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-muted);
   }
   h1 {
     font-size: var(--step-4);

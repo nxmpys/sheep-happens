@@ -1,0 +1,25 @@
+---
+/**
+ * Card grid for the headline changes on the home page. Holds <Highlight> cards:
+ *   <Highlights>
+ *     <Highlight school="frost" label="Escarcha · talentos nuevos" to="changes" query="tree=frost" cta="Ver">…</Highlight>
+ *   </Highlights>
+ */
+---
+
+<ul class="highlights" role="list">
+  <slot />
+</ul>
+
+<style>
+  .highlights {
+    container: highlights / inline-size;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    /* 20rem cards: two columns from 41rem, three from 62rem. */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: var(--space-4);
+  }
+</style>

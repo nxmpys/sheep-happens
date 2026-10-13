@@ -1,0 +1,20 @@
+---
+/**
+ * Frequently asked questions as a grid of boxes. Holds <FaqItem> cards:
+ *   <Faq>
+ *     <FaqItem q="¿Hay doble especialización?" status="verified">Sí, a nivel 40…</FaqItem>
+ *   </Faq>
+ */
+---
+
+<div class="faq">
+  <slot />
+</div>
+
+<style>
+  .faq {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+    gap: var(--space-4);
+  }
+</style>

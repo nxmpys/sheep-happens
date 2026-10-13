@@ -29,6 +29,10 @@ export const MDX_COMPONENTS = [
   'ChangelogList',
   'CritCalculator',
   'FactList',
+  'Faq',
+  'FaqItem',
+  'Highlight',
+  'Highlights',
   'MilestoneMap',
   'PageLink',
   'Pending',
@@ -104,11 +108,11 @@ export function validatePages(
         errors.push(`${where}: unknown component <${component}> (register it in src/components/mdx.ts)`);
       }
     }
-    for (const [, status] of body.matchAll(/<(?:Status|Priority)[^>]*\bstatus="([^"]+)"/g)) {
+    for (const [, status] of body.matchAll(/<(?:Status|Priority|FaqItem)[^>]*\bstatus="([^"]+)"/g)) {
       if (!(STATUSES as readonly string[]).includes(status!)) errors.push(`${where}: unknown status "${status}"`);
     }
-    for (const [, target] of body.matchAll(/<PageLink[^>]*\bto="([^"]+)"/g)) {
-      if (!(PAGE_IDS as readonly string[]).includes(target!)) errors.push(`${where}: <PageLink to="${target}"> is not a page id`);
+    for (const [, component, target] of body.matchAll(/<(PageLink|Highlight)\b[^>]*\bto="([^"]+)"/g)) {
+      if (!(PAGE_IDS as readonly string[]).includes(target!)) errors.push(`${where}: <${component} to="${target}"> is not a page id`);
     }
     for (const [, list] of body.matchAll(/<FactList[^>]*\bids=\{\[([^\]]*)\]\}/g)) {
       for (const [, id] of list!.matchAll(/'([^']+)'/g)) {
