@@ -23,7 +23,7 @@ No hay que buscar fuentes nuevas cada semana. La lista fija está en **`src/data
 
 ## 2. El informe de fuentes (miércoles y viernes)
 
-Cada **miércoles y viernes a las 06:00 UTC** (08:00 en la España peninsular en horario de verano, 07:00 en invierno), GitHub Actions (`.github/workflows/weekly-sources.yml`) ejecuta el vigilante y abre una *issue* «Revisión de fuentes — fecha» con la etiqueta «revisión semanal». Cada informe cubre el hueco desde el anterior: el del miércoles, desde el viernes; el del viernes, desde el miércoles.
+Cada **miércoles y viernes a las 05:17 UTC** (07:17 en la España peninsular en horario de verano, 06:17 en invierno; GitHub retrasa más las tareas programadas a la hora en punto), GitHub Actions (`.github/workflows/weekly-sources.yml`) ejecuta el vigilante y abre una *issue* «Revisión de fuentes — fecha» con la etiqueta «revisión semanal». Cada informe cubre el hueco desde el anterior: el del miércoles, desde el viernes; el del viernes, desde el miércoles.
 
 Por qué esos días (observado en la beta, septiembre-octubre de 2026):
 
@@ -100,7 +100,7 @@ Tras el 4 de noviembre de 2026, sigue la lista de `docs/content-validation.md` (
 
 ## 7. Revisión automática (agente en la nube)
 
-Una tarea programada de Claude Code se ejecuta en la nube cada **miércoles y viernes a las 07:00 UTC**, una hora después del informe. Hace la rutina de la sección 3 y deja el resultado en un *pull request*. **No publica nada:** la web solo cambia cuando fusionas el PR. Sus instrucciones remiten a esta sección, así que para cambiar su comportamiento basta con editar este documento. La tarea se gestiona en <https://claude.ai/code/routines>.
+Una tarea programada de Claude Code se ejecuta en la nube cada **miércoles y viernes a las 07:00 UTC**, casi dos horas después del informe, para que la *issue* ya exista aunque GitHub se retrase. Hace la rutina de la sección 3 y deja el resultado en un *pull request*. **No publica nada:** la web solo cambia cuando fusionas el PR. Sus instrucciones remiten a esta sección, así que para cambiar su comportamiento basta con editar este documento. La tarea se gestiona en <https://claude.ai/code/routines>.
 
 ### Qué hace
 

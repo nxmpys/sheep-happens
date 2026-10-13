@@ -54,6 +54,13 @@ jobs:
           check /no-existe/ 404
           exit $fail
 
+      # The original address keeps old links and indexed pages working (Bulk Redirect in Cloudflare).
+      - name: The old pages.dev address redirects here
+        run: |
+          got=$(curl -s -o /dev/null -w '%{http_code} %{redirect_url}' "https://sheep-happens.pages.dev/es/cambios/?tree=frost")
+          echo "$got"
+          [ "$got" = "301 $SITE/es/cambios/?tree=frost" ] || { echo "::error::sheep-happens.pages.dev must answer 301 to $SITE, keeping path and query"; exit 1; }
+
       - name: Headers and SEO
         run: |
           set -e

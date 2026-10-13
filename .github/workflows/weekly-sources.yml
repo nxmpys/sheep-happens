@@ -10,7 +10,7 @@ name: Source review
 
 on:
   schedule:
-    - cron: '0 6 * * 3,5' # Wednesdays and Fridays 06:00 UTC
+    - cron: '17 5 * * 3,5' # Wednesdays and Fridays 05:17 UTC (off the hour: GitHub delays on-the-hour runs)
   workflow_dispatch:
     inputs:
       since:
@@ -25,8 +25,8 @@ jobs:
   watch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
