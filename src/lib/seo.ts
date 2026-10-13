@@ -23,12 +23,27 @@ const IN_LANGUAGE: Record<Locale, string> = { es: 'es-ES', en: 'en-GB' };
 interface ArticleInput {
   locale: Locale;
   url: string;
-  homeUrl: string;
+  /** Root of the site (`https://sheephappens.app/`), where the WebSite node lives. */
+  siteUrl: string;
   title: string;
   description: string;
   published: Date;
   modified: Date;
   image: string;
+}
+
+/**
+ * The site as publisher and author. Same `@id` on every page so Google merges
+ * the nodes; the logo (≥ 112 px, square) is the touch icon.
+ */
+function organization(siteUrl: string) {
+  return {
+    '@type': 'Organization',
+    '@id': `${siteUrl}#organization`,
+    name: SITE_NAME,
+    url: siteUrl,
+    logo: `${siteUrl}apple-touch-icon.png`,
+  };
 }
 
 /**
@@ -46,11 +61,12 @@ export function websiteJsonLd(locale: Locale | 'all', siteUrl: string, descripti
     url: siteUrl,
     description,
     inLanguage: locale === 'all' ? Object.values(IN_LANGUAGE) : IN_LANGUAGE[locale],
+    publisher: organization(siteUrl),
   };
 }
 
 export function articleJsonLd(input: ArticleInput) {
-  const organization = { '@type': 'Organization', name: SITE_NAME, url: input.homeUrl };
+  const publisher = organization(input.siteUrl);
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -62,9 +78,9 @@ export function articleJsonLd(input: ArticleInput) {
     datePublished: input.published.toISOString().slice(0, 10),
     dateModified: input.modified.toISOString().slice(0, 10),
     image: input.image,
-    author: organization,
-    publisher: organization,
-    isPartOf: { '@id': `${input.homeUrl}#website` },
+    author: publisher,
+    publisher,
+    isPartOf: { '@id': `${input.siteUrl}#website` },
     about: {
       '@type': 'VideoGame',
       name: 'World of Warcraft: Forever',

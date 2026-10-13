@@ -40,7 +40,7 @@ const jsonLd = [
   articleJsonLd({
     locale,
     url: absolute(href(pageId, locale)),
-    homeUrl: absolute(href('home', locale)),
+    siteUrl: absolute(base),
     title: data.title,
     description: data.description,
     published: data.published,
