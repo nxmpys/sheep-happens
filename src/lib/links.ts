@@ -14,6 +14,11 @@ export function collectLinks(html: string): string[] {
   return [...html.matchAll(/\s(?:href|src)="([^"]*)"/g)].map((m) => decodeEntities(m[1]!)).filter(Boolean);
 }
 
+/** Every <link> of an RSS feed: the channel and each item. */
+export function collectFeedLinks(xml: string): string[] {
+  return [...xml.matchAll(/<link>([^<]+)<\/link>/g)].map((m) => decodeEntities(m[1]!.trim()));
+}
+
 export function collectIds(html: string): Set<string> {
   return new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((m) => decodeEntities(m[1]!)));
 }

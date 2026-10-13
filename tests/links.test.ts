@@ -1,11 +1,17 @@
 import { describe, expect, it } from 'vitest';
-import { collectIds, collectLinks, resolveInternal } from '../src/lib/links';
+import { collectFeedLinks, collectIds, collectLinks, resolveInternal } from '../src/lib/links';
 
 describe('collectLinks / collectIds', () => {
   it('extracts and decodes attribute values', () => {
     const html = '<a href="/es/cambios/?tree=frost&amp;kind=new">x</a><img src="/a.png"><h2 id="fuentes">F</h2>';
     expect(collectLinks(html)).toEqual(['/es/cambios/?tree=frost&kind=new', '/a.png']);
     expect(collectIds(html).has('fuentes')).toBe(true);
+  });
+
+  it('extracts the channel and item links of an RSS feed', () => {
+    const xml =
+      '<rss><channel><link>https://site.test/</link><item><link>https://site.test/es/novedades/#update-a</link></item></channel></rss>';
+    expect(collectFeedLinks(xml)).toEqual(['https://site.test/', 'https://site.test/es/novedades/#update-a']);
   });
 });
 
