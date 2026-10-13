@@ -82,7 +82,7 @@ describe('MDX component registry', () => {
     const source = readFileSync(new URL('../src/components/mdx.ts', import.meta.url), 'utf8');
     const registered = [...source.matchAll(/^\s{2}(?:(\w+): \w+|(\w+)),$/gm)]
       .map((m) => m[1] ?? m[2])
-      .filter((name) => name !== 'table');
+      .filter((name) => /^[A-Z]/.test(name!)); // lowercase keys override HTML elements
     expect([...registered].sort()).toEqual([...MDX_COMPONENTS].sort());
   });
 });

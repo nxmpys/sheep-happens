@@ -1,0 +1,137 @@
+---
+/**
+ * One talent tree laid out like the in-game calculator (7 rows × 4 columns),
+ * with the points of a build. Read-only: the Wowhead link on the build card
+ * opens the same build in an editable calculator.
+ */
+import Icon from '../ui/Icon.astro';
+import SpellRef from './SpellRef.astro';
+import { tb } from '../../i18n/builds';
+import { getLocale } from '../../i18n/locale';
+import { t, type UiKey } from '../../i18n/ui';
+import { milestones, talents } from '../../lib/data';
+import type { SpecTree } from '../../lib/schemas';
+import { treeTalents, type Points } from '../../lib/talents';
+
+interface Props {
+  tree: SpecTree;
+  points: Points;
+}
+
+const { tree, points } = Astro.props;
+const locale = getLocale(Astro);
+const list = treeTalents(talents, tree);
+const spent = list.reduce((sum, talent) => sum + (points[talent.id] ?? 0), 0);
+// Only confirmed milestones get the marker (milestones.json), not every 1-point talent.
+const milestoneNames = new Set(milestones.filter((m) => m.tree === tree && m.status !== 'pending' && m.name).map((m) => m.name));
+const treeLabel = t(locale, `tree.${tree}` as UiKey);
+---
+
+<figure class={`talent-tree school-${tree}`}>
+  <figcaption class="talent-tree__title">
+    <Icon name={tree} size={18} />
+    {treeLabel} <span class="talent-tree__spent">{spent}</span>
+  </figcaption>
+  <ol class="talent-tree__grid" aria-label={`${treeLabel}: ${spent}`}>
+    {
+      list.map((talent) => {
+        const rank = points[talent.id] ?? 0;
+        const label = locale === 'es' && talent.nameEs ? talent.nameEs : talent.name;
+        return (
+          <li
+            class:list={['talent', { 'talent--spent': rank > 0, 'talent--full': rank === talent.maxRank, 'talent--milestone': milestoneNames.has(talent.name) }]}
+            style={`grid-row: ${talent.row}; grid-column: ${talent.col};`}
+          >
+            <span class="visually-hidden">{tb(locale, 'build.row', { row: talent.row })}: </span>
+            <span class="talent__name">
+              <SpellRef name={talent.name} label={label} />
+            </span>
+            <span class="talent__rank">
+              {rank}/{talent.maxRank}
+              {rank === 0 && <span class="visually-hidden"> ({tb(locale, 'build.unspent')})</span>}
+            </span>
+            {milestoneNames.has(talent.name) && <span class="visually-hidden">, {tb(locale, 'build.milestone')}</span>}
+          </li>
+        );
+      })
+    }
+  </ol>
+</figure>
+
+<style>
+  .talent-tree {
+    margin: 0;
+    min-width: 0;
+  }
+  .talent-tree__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    font-weight: 700;
+    color: var(--school);
+  }
+  .talent-tree__spent {
+    margin-left: auto;
+    padding: 0 0.55em;
+    border-radius: 999px;
+    background: var(--school-soft);
+    font-variant-numeric: tabular-nums;
+  }
+  .talent-tree__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: minmax(3.4rem, auto);
+    gap: 6px;
+    margin: 0;
+    padding: var(--space-2);
+    list-style: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+  }
+  .talent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2px;
+    min-width: 0;
+    padding: 5px 6px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface-1);
+    color: var(--text-subtle);
+    font-size: 0.75rem;
+    line-height: 1.25;
+  }
+  .talent__name {
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+  .talent__rank {
+    align-self: flex-end;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .talent--spent {
+    border-color: color-mix(in srgb, var(--school) 55%, transparent);
+    background: var(--school-soft);
+    color: var(--text);
+  }
+  .talent--spent .talent__rank {
+    color: var(--school);
+  }
+  .talent--milestone {
+    box-shadow: inset 0 0 0 1px var(--baseline);
+  }
+  .talent--milestone .talent__name::before {
+    content: '★ ';
+    color: var(--baseline);
+  }
+  @media (max-width: 420px) {
+    .talent {
+      font-size: 0.6875rem;
+      padding: 4px;
+    }
+  }
+</style>

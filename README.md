@@ -1,7 +1,7 @@
 # Sheep Happens
 
-Guía interactiva y bilingüe (ES/EN) del **Mago** para **World of Warcraft: Forever**.
-Sitio estático con interactividad selectiva: explorador de cambios filtrable, explorador de talentos por rama, buscador por secciones y calculadora de crítico. Cada dato muestra su fuente y su estado de verificación.
+Guía en profundidad y bilingüe (ES/EN) del **Mago** para **World of Warcraft: Forever**.
+Sitio estático con interactividad selectiva: builds filtrables por uso y rama (con vista de calculadora y enlace a Wowhead), razas con sus raciales, fichas de hechizos al pasar el ratón, explorador de cambios filtrable, explorador de talentos por rama, buscador por secciones y calculadora de crítico. Cada dato muestra su fuente y su estado de verificación.
 
 > Estado del juego en la última revisión (2026-10-11): **beta** (cliente 1.60.1). El lanzamiento está previsto para el 4 de noviembre de 2026. Ver [`docs/game-version.md`](docs/game-version.md).
 >

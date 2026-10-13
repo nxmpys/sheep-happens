@@ -1,0 +1,180 @@
+---
+/**
+ * The Mage races of one faction with their racials: effect, value for a Mage
+ * (our analysis) and why. Effects come from races.json with their own status.
+ */
+import Icon from '../ui/Icon.astro';
+import SourceRefs from './SourceRefs.astro';
+import StatusBadge from './StatusBadge.astro';
+import { FACTION_LABELS, VALUE_LABELS, tb } from '../../i18n/builds';
+import { getLocale } from '../../i18n/locale';
+import { races } from '../../lib/data';
+
+interface Props {
+  faction: 'alliance' | 'horde';
+}
+
+const { faction } = Astro.props;
+const locale = getLocale(Astro);
+const list = races.filter((race) => race.faction === faction);
+---
+
+<div class="races">
+  {
+    list.map((race) => (
+      <article class={`race race--${race.faction}`} id={`race-${race.id}`} aria-labelledby={`race-${race.id}-title`}>
+        <header class="race__header">
+          <h3 class="race__name" id={`race-${race.id}-title`}>
+            <Icon name="users" size={20} />
+            {race.name[locale]}
+          </h3>
+          <ul class="race__tags" data-pagefind-ignore>
+            <li class="chip">{FACTION_LABELS[locale][race.faction]}</li>
+            {race.newForMage && <li class="chip chip--new">{tb(locale, 'race.new')}</li>}
+            <li>
+              <StatusBadge status={race.status} />
+            </li>
+          </ul>
+          {race.access && <p class="race__access">{race.access[locale]}</p>}
+        </header>
+        <ul class="racials" aria-label={tb(locale, 'race.racials')}>
+          {race.racials.map((racial) => (
+            <li class={`racial racial--${racial.value}`}>
+              <p class="racial__head">
+                <span class="racial__name" lang="en">{racial.name}</span>
+                <span class="chip">{tb(locale, racial.kind === 'active' ? 'race.active' : 'race.passive')}</span>
+                <span class="racial__value">
+                  {tb(locale, 'race.value')}: <strong>{VALUE_LABELS[locale][racial.value]}</strong>
+                </span>
+              </p>
+              <p class="racial__effect">{racial.effect[locale]}</p>
+              <p class="racial__why">{racial.why[locale]}</p>
+            </li>
+          ))}
+        </ul>
+        <div class="race__sources">
+          <SourceRefs ids={race.sources} />
+        </div>
+      </article>
+    ))
+  }
+</div>
+
+<style>
+  .races {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: var(--space-4);
+    align-items: start;
+  }
+  .race {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--faction);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+    scroll-margin-top: calc(var(--header-h) + var(--space-4));
+  }
+  .race--alliance {
+    --faction: var(--frost);
+  }
+  .race--horde {
+    --faction: var(--fire);
+  }
+  .race__header {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .race__name {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    font-size: var(--step-2);
+  }
+  .race__name :global(svg) {
+    color: var(--faction);
+  }
+  .race__tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .chip--new {
+    border-color: var(--baseline);
+    color: var(--baseline);
+    font-weight: 600;
+  }
+  .race__access {
+    margin: 0;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .racials {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .racial {
+    padding: var(--space-3);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--value-color);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+  }
+  .racial--high {
+    --value-color: var(--status-verified);
+  }
+  .racial--medium {
+    --value-color: var(--status-reported);
+  }
+  .racial--low {
+    --value-color: var(--status-pending);
+  }
+  .racial--none {
+    --value-color: var(--border-strong);
+  }
+  .racial p {
+    margin: 0;
+  }
+  .racial__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1) var(--space-2);
+  }
+  .racial__name {
+    font-weight: 700;
+  }
+  .racial__value {
+    margin-left: auto;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .racial__value strong {
+    color: var(--value-color);
+  }
+  .racial--none .racial__value strong {
+    color: var(--text-muted);
+  }
+  .racial__effect {
+    margin-top: var(--space-1) !important;
+    font-size: var(--step--1);
+  }
+  .racial__why {
+    margin-top: var(--space-1) !important;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .race__sources {
+    font-size: var(--step--1);
+  }
+</style>

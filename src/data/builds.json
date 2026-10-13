@@ -1,0 +1,101 @@
+[
+  {
+    "id": "frost-duels-30-legacy",
+    "name": {
+      "es": "Escarcha para duelos a nivel 30 con Legado (26 puntos)",
+      "en": "Level 30 Frost duel build with Legacy (26 points)"
+    },
+    "uses": [
+      "duels",
+      "pvp"
+    ],
+    "spec": "frost",
+    "level": 30,
+    "legacyTalented": 5,
+    "points": {
+      "improved-frostbolt": 5,
+      "ice-shards": 5,
+      "permafrost": 3,
+      "improved-frost-nova": 2,
+      "frostbite": 3,
+      "ice-lance": 1,
+      "ice-block": 1,
+      "shatter": 3,
+      "cold-snap": 1,
+      "fingers-of-frost": 2
+    },
+    "keyTalents": [
+      "ice-lance",
+      "fingers-of-frost",
+      "cold-snap",
+      "ice-block",
+      "frostbite"
+    ],
+    "summary": {
+      "es": "La build para el torneo: con el perk de Legado Talented 5/5 tienes 26 puntos a nivel 30, los suficientes para llevar a la vez Dedos de Escarcha y Mordedura helada.",
+      "en": "The tournament build: with the Talented Legacy perk at 5/5 you have 26 points at level 30, enough to take both Fingers of Frost and Cold Snap."
+    },
+    "playstyle": [
+      {
+        "es": "Abre con Descarga de Escarcha desde la máxima distancia: ralentiza y puede activar Frostbite o Dedos de Escarcha.",
+        "en": "Open with Frostbolt from max range: it slows and can trigger Frostbite or Fingers of Frost."
+      },
+      {
+        "es": "Cuando el rival quede congelado (Nova de Escarcha o Frostbite) o tengas Dedos de Escarcha, gasta Lanza de hielo: hace un 300 % más contra objetivos congelados.",
+        "en": "When the target is frozen (Frost Nova or Frostbite) or you have Fingers of Frost, spend Ice Lance: it deals 300% more damage to frozen targets."
+      },
+      {
+        "es": "Contra cuerpo a cuerpo: Nova de Escarcha, aléjate andando y vuelve a lanzar Descarga de Escarcha. Guarda Blink para su segunda aproximación.",
+        "en": "Against melee: Frost Nova, walk away and go back to Frostbolt. Save Blink for their second approach."
+      },
+      {
+        "es": "Contra lanzadores: guarda Contrahechizo para su hechizo clave (curación, miedo o Polimorfia) y usa columnas y esquinas para cortar la línea de visión.",
+        "en": "Against casters: save Counterspell for their key spell (a heal, a fear or Polymorph) and use pillars and corners to break line of sight."
+      },
+      {
+        "es": "Mordedura helada tras gastar Bloqueo de hielo y Nova de Escarcha te da una segunda ronda de defensas, pero tarda 10 minutos: guárdala para el duelo que decida la serie.",
+        "en": "Cold Snap after spending Ice Block and Frost Nova gives you a second round of defenses, but it takes 10 minutes: save it for the duel that decides the series."
+      }
+    ],
+    "strengths": [
+      {
+        "es": "Dedos de Escarcha en todos los duelos y Mordedura helada para la pelea decisiva.",
+        "en": "Fingers of Frost in every duel and Cold Snap for the deciding fight."
+      },
+      {
+        "es": "Escarcha permanente alarga las ralentizaciones: más tiempo para lanzar contra cuerpo a cuerpo.",
+        "en": "Permafrost makes your slows last longer: more casting time against melee."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Necesita 10 de tus 16 puntos de Legado en el árbol Aventura (Well Rested 5/5 y Talented 5/5).",
+        "en": "Needs 10 of your 16 Legacy points in the Adventure tree (Well Rested 5/5 and Talented 5/5)."
+      },
+      {
+        "es": "Mordedura helada solo cuenta una vez por serie, porque los enfriamientos no se reinician entre duelos.",
+        "en": "Cold Snap only counts once per series, because cooldowns do not reset between duels."
+      }
+    ],
+    "items": [
+      {
+        "es": "Pociones de curación y de maná, y vendas de Primeros auxilios: el torneo permite los consumibles salvo los de su lista de prohibidos.",
+        "en": "Healing and mana potions, and First Aid bandages: the tournament allows consumables except those on its ban list."
+      },
+      {
+        "es": "Una varita para rematar sin gastar maná.",
+        "en": "A wand to finish targets without spending mana."
+      }
+    ],
+    "page": "builds-duel-30",
+    "status": "analysis",
+    "gameVersion": "forever-beta-2026-10",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "wowhead-forever-talent-calc",
+      "forever-open-rules",
+      "conquestcapped-legacy"
+    ],
+    "updated": "2026-10-13"
+  }
+]

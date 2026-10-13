@@ -1,0 +1,294 @@
+---
+/**
+ * One build: what it is for, its talents (calculator view and Wowhead link),
+ * how to play it and what to bring. The card's id is the build id, so
+ * /builds/#frost-duels-30-legacy links straight to it.
+ */
+import Icon from '../ui/Icon.astro';
+import SpellRef from './SpellRef.astro';
+import StatusBadge from './StatusBadge.astro';
+import TalentTree from './TalentTree.astro';
+import { SPEC_LABELS, USE_LABELS, tb } from '../../i18n/builds';
+import { getLocale, href } from '../../i18n/locale';
+import { getBuild, getTalent, getVersion, talents } from '../../lib/data';
+import { distributionLabel, pointsAtLevel, spentTalents, totalPoints, wowheadBuildUrl } from '../../lib/talents';
+
+interface Props {
+  id: string;
+  /** Heading level inside the page outline. */
+  level?: 'h2' | 'h3';
+  /** Show the talents and playstyle expanded (for the build's own guide page). */
+  open?: boolean;
+  /** Hide the link to the guide page (when the card is on that page). */
+  hideGuideLink?: boolean;
+}
+
+const { id, level = 'h3', open = false, hideGuideLink = false } = Astro.props;
+const locale = getLocale(Astro);
+const build = getBuild(id);
+const Heading = level;
+const Sub = level === 'h2' ? 'h3' : 'h4';
+const icon = build.spec === 'hybrid' ? 'frostfire' : build.spec;
+const school = build.spec === 'hybrid' ? 'baseline' : build.spec;
+const trees = spentTalents(build.points, talents).map((group) => group.tree);
+const version = getVersion(build.gameVersion);
+const shareUrl = href('builds', locale, build.id);
+const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' : 'Link copied', failed: locale === 'es' ? 'No se pudo copiar. Copia la URL de la barra de direcciones.' : 'Could not copy. Copy the URL from the address bar instead.' });
+---
+
+<article
+  class={`build school-${school}`}
+  id={build.id}
+  data-build
+  data-uses={build.uses.join(' ')}
+  data-spec={build.spec}
+  aria-labelledby={`${build.id}-title`}
+>
+  <header class="build__header">
+    <Heading class="build__name" id={`${build.id}-title`}>
+      <Icon name={icon} size={22} class="build__sigil" />
+      <span>{build.name[locale]}</span>
+    </Heading>
+    <ul class="build__tags" data-pagefind-ignore>
+      {build.uses.map((use) => <li class="chip build__use">{USE_LABELS[locale][use]}</li>)}
+      <li class="chip">{SPEC_LABELS[locale][build.spec]}</li>
+      <li class="chip">{tb(locale, 'build.level', { level: build.level })} · {tb(locale, 'build.totalPoints', { points: totalPoints(build.points) })}</li>
+      {
+        build.legacyTalented > 0 && (
+          <li class="chip build__legacy" title={tb(locale, 'build.legacyHint', { extra: pointsAtLevel(build.level, build.legacyTalented) - pointsAtLevel(build.level) })}>
+            {tb(locale, 'build.legacy', { rank: build.legacyTalented })}
+          </li>
+        )
+      }
+      <li class="chip build__points" title={tb(locale, 'build.points')}>
+        <span class="visually-hidden">{tb(locale, 'build.points')}: </span>{distributionLabel(build.points, talents)}
+      </li>
+    </ul>
+  </header>
+
+  <p class="build__summary">{build.summary[locale]}</p>
+
+  {
+    build.keyTalents.length > 0 && (
+      <p class="build__key">
+        <span class="build__label">{tb(locale, 'build.keyTalents')}:</span>{' '}
+        {build.keyTalents.map((key, i) => {
+          const talent = getTalent(key);
+          return (
+            <>
+              {i > 0 && ' · '}
+              <SpellRef name={talent.name} label={locale === 'es' && talent.nameEs ? talent.nameEs : talent.name} />
+            </>
+          );
+        })}
+      </p>
+    )
+  }
+
+  <div class="build__meta">
+    <StatusBadge status={build.status} />
+    <span class="build__version">{tb(locale, 'build.version')}: {version.label[locale]}</span>
+  </div>
+
+  <div class="build__actions" data-pagefind-ignore>
+    <a class="button button--primary" href={wowheadBuildUrl(build.points, talents)} target="_blank" rel="noopener noreferrer">
+      <Icon name="external" size={16} />
+      {tb(locale, 'build.wowhead')}
+      <span class="visually-hidden"> ({tb(locale, 'build.wowheadHint')})</span>
+    </a>
+    {
+      build.page && !hideGuideLink && (
+        <a class="button" href={href(build.page, locale)}>
+          <Icon name="book" size={16} />
+          {tb(locale, 'build.guide')}
+        </a>
+      )
+    }
+    <button type="button" class="button" data-copy-link={shareUrl} data-strings={copyStrings}>
+      <Icon name="link" size={16} />
+      {tb(locale, 'build.copy')}
+    </button>
+  </div>
+
+  <details class="build__details" open={open}>
+    <summary>{tb(locale, 'build.details')}</summary>
+    <div class="build__body">
+      <section>
+        <Sub>{tb(locale, 'build.talents')}</Sub>
+        <div class="build__trees">
+          {trees.map((tree) => <TalentTree tree={tree} points={build.points} />)}
+        </div>
+      </section>
+      <section>
+        <Sub>{tb(locale, 'build.playstyle')}</Sub>
+        <ol>
+          {build.playstyle.map((step) => <li>{step[locale]}</li>)}
+        </ol>
+      </section>
+      {
+        (build.strengths.length > 0 || build.weaknesses.length > 0) && (
+          <div class="build__pros">
+            {build.strengths.length > 0 && (
+              <section>
+                <Sub>{tb(locale, 'build.strengths')}</Sub>
+                <ul>
+                  {build.strengths.map((item) => <li>{item[locale]}</li>)}
+                </ul>
+              </section>
+            )}
+            {build.weaknesses.length > 0 && (
+              <section>
+                <Sub>{tb(locale, 'build.weaknesses')}</Sub>
+                <ul>
+                  {build.weaknesses.map((item) => <li>{item[locale]}</li>)}
+                </ul>
+              </section>
+            )}
+          </div>
+        )
+      }
+      {
+        build.items.length > 0 && (
+          <section>
+            <Sub>{tb(locale, 'build.items')}</Sub>
+            <ul>
+              {build.items.map((item) => <li>{item[locale]}</li>)}
+            </ul>
+          </section>
+        )
+      }
+    </div>
+  </details>
+</article>
+
+<script>
+  import { copyText } from '../../scripts/clipboard';
+  import { showToast } from '../../scripts/toast';
+
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy-link]')) {
+    button.addEventListener('click', async () => {
+      const strings: Record<string, string> = JSON.parse(button.dataset.strings ?? '{}');
+      const ok = await copyText(new URL(button.dataset.copyLink!, location.origin).href);
+      showToast(ok ? strings['copied']! : strings['failed']!);
+    });
+  }
+</script>
+
+<style>
+  .build {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    min-width: 0;
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--school);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+    scroll-margin-top: calc(var(--header-h) + var(--space-4));
+  }
+  .build:target {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--school) 45%, transparent);
+  }
+  .build[hidden] {
+    display: none;
+  }
+  .build__header {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .build__name {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin: 0;
+    font-size: var(--step-2);
+  }
+  :global(.build__sigil) {
+    flex-shrink: 0;
+    margin-top: 0.2em;
+    color: var(--school);
+  }
+  .build__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .build__use {
+    background: var(--school-soft);
+    border-color: color-mix(in srgb, var(--school) 45%, transparent);
+    color: var(--text);
+    font-weight: 600;
+  }
+  .build__legacy {
+    border-color: var(--baseline);
+    color: var(--baseline);
+    font-weight: 600;
+  }
+  .build__points {
+    font-variant-numeric: tabular-nums;
+  }
+  .build__summary {
+    margin: 0;
+  }
+  .build__key {
+    margin: 0;
+    font-size: var(--step--1);
+  }
+  .build__label {
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+  .build__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .build__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .build__details {
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-3);
+  }
+  .build__details summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--link);
+  }
+  .build__body {
+    display: grid;
+    gap: var(--space-4);
+    margin-top: var(--space-3);
+  }
+  .build__body :is(h3, h4) {
+    margin: 0 0 var(--space-2);
+    font-size: var(--step-0);
+  }
+  .build__body ol,
+  .build__body ul {
+    margin: 0;
+    padding-left: 1.25em;
+  }
+  .build__body li + li {
+    margin-top: var(--space-1);
+  }
+  .build__trees {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: var(--space-4);
+  }
+  .build__pros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: var(--space-4);
+  }
+</style>

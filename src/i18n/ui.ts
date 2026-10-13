@@ -4,6 +4,9 @@ import type { Locale, PageId } from './routes';
 export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
   es: {
     home: 'Inicio',
+    builds: 'Builds',
+    'builds-duel-30': 'Duelos a nivel 30',
+    races: 'Razas',
     guide: 'Guía de clase',
     changes: 'Cambios en Forever',
     talents: 'Talentos',
@@ -19,6 +22,9 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
   },
   en: {
     home: 'Home',
+    builds: 'Builds',
+    'builds-duel-30': 'Level 30 duels',
+    races: 'Races',
     guide: 'Class guide',
     changes: 'Forever changes',
     talents: 'Talents',
@@ -42,7 +48,7 @@ export const NAV_SHORT: Record<Locale, Partial<Record<PageId, string>>> = {
 
 const es = {
   'site.name': 'Sheep Happens',
-  'site.tagline': 'Guía interactiva de Mago para World of Warcraft: Forever',
+  'site.tagline': 'Guía en profundidad del Mago para World of Warcraft: Forever',
   'skip.toContent': 'Saltar al contenido',
   'nav.primary': 'Navegación principal',
   'nav.menu': 'Menú',
@@ -166,7 +172,7 @@ export type UiKey = keyof typeof es;
 
 const en: Record<UiKey, string> = {
   'site.name': 'Sheep Happens',
-  'site.tagline': 'An interactive Mage guide for World of Warcraft: Forever',
+  'site.tagline': 'An in-depth Mage guide for World of Warcraft: Forever',
   'skip.toContent': 'Skip to content',
   'nav.primary': 'Main navigation',
   'nav.menu': 'Menu',

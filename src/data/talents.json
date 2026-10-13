@@ -1,0 +1,586 @@
+[
+  {
+    "id": "wand-specialization",
+    "name": "Wand Specialization",
+    "nameEs": "Especialización en varitas",
+    "tree": "arcane",
+    "row": 1,
+    "col": 1,
+    "maxRank": 2,
+    "changeId": "wand-specialization",
+    "spell": 6057
+  },
+  {
+    "id": "arcane-focus",
+    "name": "Arcane Focus",
+    "nameEs": "Enfoque Arcano",
+    "tree": "arcane",
+    "row": 1,
+    "col": 2,
+    "maxRank": 5,
+    "changeId": "arcane-focus",
+    "spell": 11222
+  },
+  {
+    "id": "improved-channeling",
+    "name": "Improved Channeling",
+    "nameEs": "Canalización mejorada",
+    "tree": "arcane",
+    "row": 1,
+    "col": 3,
+    "maxRank": 5,
+    "changeId": "improved-channeling",
+    "spell": 11237
+  },
+  {
+    "id": "arcane-subtlety",
+    "name": "Arcane Subtlety",
+    "nameEs": "Sutileza Arcana",
+    "tree": "arcane",
+    "row": 2,
+    "col": 1,
+    "maxRank": 2,
+    "changeId": "arcane-subtlety",
+    "spell": 11210
+  },
+  {
+    "id": "magic-absorption",
+    "name": "Magic Absorption",
+    "nameEs": "Absorción mágica",
+    "tree": "arcane",
+    "row": 2,
+    "col": 2,
+    "maxRank": 2,
+    "changeId": "magic-absorption",
+    "spell": 29441
+  },
+  {
+    "id": "arcane-concentration",
+    "name": "Arcane Concentration",
+    "nameEs": "Concentración Arcana",
+    "tree": "arcane",
+    "row": 2,
+    "col": 3,
+    "maxRank": 5,
+    "changeId": "arcane-concentration",
+    "spell": 11213
+  },
+  {
+    "id": "arcane-resilience",
+    "name": "Arcane Resilience",
+    "nameEs": "Recuperación Arcana",
+    "tree": "arcane",
+    "row": 2,
+    "col": 4,
+    "maxRank": 2,
+    "changeId": "arcane-resilience",
+    "spell": 28574
+  },
+  {
+    "id": "arcane-geometry",
+    "name": "Arcane Geometry",
+    "nameEs": "Geometría Arcana",
+    "tree": "arcane",
+    "row": 3,
+    "col": 1,
+    "maxRank": 2,
+    "changeId": "arcane-geometry",
+    "spell": 11247
+  },
+  {
+    "id": "arcane-impact",
+    "name": "Arcane Impact",
+    "nameEs": "Impacto Arcano",
+    "tree": "arcane",
+    "row": 3,
+    "col": 2,
+    "maxRank": 3,
+    "changeId": "arcane-impact",
+    "spell": 11242
+  },
+  {
+    "id": "arcane-blast",
+    "name": "Arcane Blast",
+    "nameEs": "Explosión Arcana",
+    "tree": "arcane",
+    "row": 3,
+    "col": 4,
+    "maxRank": 1,
+    "changeId": "arcane-blast",
+    "spell": 400574
+  },
+  {
+    "id": "arcane-shielding",
+    "name": "Arcane Shielding",
+    "nameEs": "Protección Arcana",
+    "tree": "arcane",
+    "row": 4,
+    "col": 1,
+    "maxRank": 2,
+    "changeId": "arcane-shielding",
+    "spell": 11252
+  },
+  {
+    "id": "improved-counterspell",
+    "name": "Improved Counterspell",
+    "nameEs": "Contrahechizo mejorado",
+    "tree": "arcane",
+    "row": 4,
+    "col": 2,
+    "maxRank": 2,
+    "changeId": "improved-counterspell",
+    "spell": 11255
+  },
+  {
+    "id": "arcane-meditation",
+    "name": "Arcane Meditation",
+    "nameEs": "Meditación Arcana",
+    "tree": "arcane",
+    "row": 4,
+    "col": 3,
+    "maxRank": 3,
+    "requires": {
+      "talent": "arcane-concentration",
+      "points": 5
+    },
+    "changeId": "arcane-meditation",
+    "spell": 18462
+  },
+  {
+    "id": "missile-barrage",
+    "name": "Missile Barrage",
+    "nameEs": "Tromba de misiles",
+    "tree": "arcane",
+    "row": 4,
+    "col": 4,
+    "maxRank": 1,
+    "changeId": "missile-barrage",
+    "spell": 400588
+  },
+  {
+    "id": "presence-of-mind",
+    "name": "Presence of Mind",
+    "nameEs": "Presencia mental",
+    "tree": "arcane",
+    "row": 5,
+    "col": 2,
+    "maxRank": 1,
+    "spell": 12043
+  },
+  {
+    "id": "arcane-mind",
+    "name": "Arcane Mind",
+    "nameEs": "Mente Arcana",
+    "tree": "arcane",
+    "row": 5,
+    "col": 3,
+    "maxRank": 5,
+    "changeId": "arcane-mind",
+    "spell": 11232
+  },
+  {
+    "id": "arcane-instability",
+    "name": "Arcane Instability",
+    "nameEs": "Inestabilidad Arcana",
+    "tree": "arcane",
+    "row": 6,
+    "col": 3,
+    "maxRank": 3,
+    "changeId": "arcane-instability",
+    "spell": 15058
+  },
+  {
+    "id": "arcane-power",
+    "name": "Arcane Power",
+    "nameEs": "Poder Arcano",
+    "tree": "arcane",
+    "row": 7,
+    "col": 2,
+    "maxRank": 1,
+    "requires": {
+      "talent": "presence-of-mind",
+      "points": 1
+    },
+    "changeId": "arcane-power",
+    "spell": 12042
+  },
+  {
+    "id": "wake-of-fire",
+    "name": "Wake of Fire",
+    "nameEs": "Estela de Fuego",
+    "tree": "fire",
+    "row": 1,
+    "col": 1,
+    "maxRank": 2,
+    "changeId": "wake-of-fire",
+    "spell": 11078
+  },
+  {
+    "id": "incineration",
+    "name": "Incineration",
+    "nameEs": "Incineración",
+    "tree": "fire",
+    "row": 1,
+    "col": 2,
+    "maxRank": 3,
+    "changeId": "incineration",
+    "spell": 18459
+  },
+  {
+    "id": "improved-fireball",
+    "name": "Improved Fireball",
+    "nameEs": "Bola de Fuego mejorada",
+    "tree": "fire",
+    "row": 1,
+    "col": 3,
+    "maxRank": 5,
+    "changeId": "improved-fireball",
+    "spell": 11069
+  },
+  {
+    "id": "ignite",
+    "name": "Ignite",
+    "nameEs": "Ignición",
+    "tree": "fire",
+    "row": 2,
+    "col": 1,
+    "maxRank": 5,
+    "changeId": "ignite",
+    "spell": 11119
+  },
+  {
+    "id": "flame-throwing",
+    "name": "Flame Throwing",
+    "tree": "fire",
+    "row": 2,
+    "col": 2,
+    "maxRank": 2,
+    "spell": 11100
+  },
+  {
+    "id": "impact",
+    "name": "Impact",
+    "nameEs": "Impacto",
+    "tree": "fire",
+    "row": 2,
+    "col": 3,
+    "maxRank": 3,
+    "changeId": "impact",
+    "spell": 11103
+  },
+  {
+    "id": "burning-soul",
+    "name": "Burning Soul",
+    "nameEs": "Alma ardiente",
+    "tree": "fire",
+    "row": 3,
+    "col": 1,
+    "maxRank": 3,
+    "changeId": "burning-soul",
+    "spell": 11083
+  },
+  {
+    "id": "improved-flamestrike",
+    "name": "Improved Flamestrike",
+    "tree": "fire",
+    "row": 3,
+    "col": 2,
+    "maxRank": 3,
+    "spell": 11108
+  },
+  {
+    "id": "pyroblast",
+    "name": "Pyroblast",
+    "nameEs": "Piroexplosión",
+    "tree": "fire",
+    "row": 3,
+    "col": 3,
+    "maxRank": 1,
+    "spell": 11366
+  },
+  {
+    "id": "improved-scorch",
+    "name": "Improved Scorch",
+    "nameEs": "Chamuscar mejorado",
+    "tree": "fire",
+    "row": 4,
+    "col": 1,
+    "maxRank": 3,
+    "changeId": "improved-scorch",
+    "spell": 11095
+  },
+  {
+    "id": "improved-fire-ward",
+    "name": "Improved Fire Ward",
+    "tree": "fire",
+    "row": 4,
+    "col": 2,
+    "maxRank": 2,
+    "spell": 11094
+  },
+  {
+    "id": "heating-up",
+    "name": "Heating Up",
+    "nameEs": "Calentamiento",
+    "tree": "fire",
+    "row": 4,
+    "col": 3,
+    "maxRank": 1,
+    "requires": {
+      "talent": "pyroblast",
+      "points": 1
+    },
+    "changeId": "heating-up",
+    "spell": 400624
+  },
+  {
+    "id": "master-of-elements",
+    "name": "Master of Elements",
+    "tree": "fire",
+    "row": 4,
+    "col": 4,
+    "maxRank": 3,
+    "spell": 29074
+  },
+  {
+    "id": "critical-mass",
+    "name": "Critical Mass",
+    "tree": "fire",
+    "row": 5,
+    "col": 2,
+    "maxRank": 3,
+    "spell": 11115
+  },
+  {
+    "id": "blast-wave",
+    "name": "Blast Wave",
+    "nameEs": "Ola explosiva",
+    "tree": "fire",
+    "row": 5,
+    "col": 3,
+    "maxRank": 1,
+    "changeId": "blast-wave",
+    "spell": 11113
+  },
+  {
+    "id": "fire-power",
+    "name": "Fire Power",
+    "tree": "fire",
+    "row": 6,
+    "col": 3,
+    "maxRank": 5,
+    "spell": 11124
+  },
+  {
+    "id": "combustion",
+    "name": "Combustion",
+    "tree": "fire",
+    "row": 7,
+    "col": 2,
+    "maxRank": 1,
+    "requires": {
+      "talent": "critical-mass",
+      "points": 3
+    },
+    "spell": 11129
+  },
+  {
+    "id": "frost-warding",
+    "name": "Frost Warding",
+    "tree": "frost",
+    "row": 1,
+    "col": 1,
+    "maxRank": 2,
+    "spell": 11189
+  },
+  {
+    "id": "improved-frostbolt",
+    "name": "Improved Frostbolt",
+    "tree": "frost",
+    "row": 1,
+    "col": 2,
+    "maxRank": 5,
+    "spell": 11070
+  },
+  {
+    "id": "elemental-precision",
+    "name": "Elemental Precision",
+    "nameEs": "Enfoque elemental",
+    "tree": "frost",
+    "row": 1,
+    "col": 3,
+    "maxRank": 5,
+    "changeId": "elemental-precision",
+    "spell": 29438
+  },
+  {
+    "id": "ice-shards",
+    "name": "Ice Shards",
+    "tree": "frost",
+    "row": 2,
+    "col": 1,
+    "maxRank": 5,
+    "spell": 11207
+  },
+  {
+    "id": "permafrost",
+    "name": "Permafrost",
+    "nameEs": "Escarcha permanente",
+    "tree": "frost",
+    "row": 2,
+    "col": 2,
+    "maxRank": 3,
+    "changeId": "permafrost",
+    "spell": 11175
+  },
+  {
+    "id": "improved-frost-nova",
+    "name": "Improved Frost Nova",
+    "tree": "frost",
+    "row": 2,
+    "col": 3,
+    "maxRank": 2,
+    "spell": 11165
+  },
+  {
+    "id": "frostbite",
+    "name": "Frostbite",
+    "tree": "frost",
+    "row": 2,
+    "col": 4,
+    "maxRank": 3,
+    "spell": 11071
+  },
+  {
+    "id": "piercing-ice",
+    "name": "Piercing Ice",
+    "tree": "frost",
+    "row": 3,
+    "col": 1,
+    "maxRank": 3,
+    "spell": 11151
+  },
+  {
+    "id": "frost-channeling",
+    "name": "Frost Channeling",
+    "nameEs": "Canalización de Escarcha",
+    "tree": "frost",
+    "row": 3,
+    "col": 2,
+    "maxRank": 3,
+    "changeId": "frost-channeling",
+    "spell": 11160
+  },
+  {
+    "id": "ice-lance",
+    "name": "Ice Lance",
+    "nameEs": "Lanza de hielo",
+    "tree": "frost",
+    "row": 3,
+    "col": 3,
+    "maxRank": 1,
+    "changeId": "ice-lance",
+    "spell": 1312002
+  },
+  {
+    "id": "improved-blizzard",
+    "name": "Improved Blizzard",
+    "nameEs": "Ventisca mejorada",
+    "tree": "frost",
+    "row": 3,
+    "col": 4,
+    "maxRank": 3,
+    "changeId": "improved-blizzard",
+    "spell": 11185
+  },
+  {
+    "id": "arctic-reach",
+    "name": "Arctic Reach",
+    "tree": "frost",
+    "row": 4,
+    "col": 1,
+    "maxRank": 2,
+    "spell": 16757
+  },
+  {
+    "id": "ice-block",
+    "name": "Ice Block",
+    "nameEs": "Bloqueo de hielo",
+    "tree": "frost",
+    "row": 4,
+    "col": 2,
+    "maxRank": 1,
+    "changeId": "ice-block",
+    "spell": 11958
+  },
+  {
+    "id": "shatter",
+    "name": "Shatter",
+    "nameEs": "Trizar",
+    "tree": "frost",
+    "row": 4,
+    "col": 4,
+    "maxRank": 3,
+    "changeId": "shatter",
+    "spell": 11170
+  },
+  {
+    "id": "improved-cone-of-cold",
+    "name": "Improved Cone of Cold",
+    "tree": "frost",
+    "row": 5,
+    "col": 1,
+    "maxRank": 3,
+    "spell": 11190
+  },
+  {
+    "id": "cold-snap",
+    "name": "Cold Snap",
+    "nameEs": "Mordedura helada",
+    "tree": "frost",
+    "row": 5,
+    "col": 2,
+    "maxRank": 1,
+    "changeId": "cold-snap",
+    "spell": 12472
+  },
+  {
+    "id": "fingers-of-frost",
+    "name": "Fingers of Frost",
+    "nameEs": "Dedos de Escarcha",
+    "tree": "frost",
+    "row": 5,
+    "col": 3,
+    "maxRank": 2,
+    "requires": {
+      "talent": "ice-lance",
+      "points": 1
+    },
+    "changeId": "fingers-of-frost",
+    "spell": 400647
+  },
+  {
+    "id": "winters-chill",
+    "name": "Winter's Chill",
+    "nameEs": "Escalofrío del invierno",
+    "tree": "frost",
+    "row": 6,
+    "col": 3,
+    "maxRank": 5,
+    "changeId": "winters-chill",
+    "spell": 11180
+  },
+  {
+    "id": "ice-barrier",
+    "name": "Ice Barrier",
+    "tree": "frost",
+    "row": 7,
+    "col": 2,
+    "maxRank": 1,
+    "requires": {
+      "talent": "cold-snap",
+      "points": 1
+    },
+    "spell": 11426
+  }
+]

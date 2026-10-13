@@ -1,0 +1,355 @@
+---
+/**
+ * One shared tooltip for every spell name on the page (.spell-ref).
+ * Shows on hover, on keyboard focus and on tap; Escape closes it. The data is
+ * fetched from /{lang}/spells.json the first time a tooltip is needed.
+ */
+import { href } from '../../i18n/locale';
+import type { Locale } from '../../i18n/routes';
+import { t, type UiKey } from '../../i18n/ui';
+import { STATUSES } from '../../lib/schemas';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const config = {
+  data: `${base}${locale}/spells.json`,
+  changes: href('changes', locale),
+  strings: {
+    forever: locale === 'es' ? 'En Forever' : 'In Forever',
+    more: locale === 'es' ? 'Ver la ficha completa' : 'See the full card',
+    loading: locale === 'es' ? 'Cargando…' : 'Loading…',
+    error: locale === 'es' ? 'No se pudo cargar la ficha.' : 'Could not load the card.',
+    status: Object.fromEntries(STATUSES.map((s) => [s, t(locale, `status.${s}` as UiKey)])),
+  },
+};
+---
+
+<spell-tooltip data-config={JSON.stringify(config)}></spell-tooltip>
+
+<script>
+  interface TooltipChange {
+    id: string;
+    summary: string;
+    kinds: string[];
+    status: string;
+  }
+  interface SpellTooltipData {
+    key: string;
+    name: string;
+    english?: string;
+    school: string;
+    facts: string[];
+    summary?: string;
+    status: string;
+    changes: TooltipChange[];
+    changeAnchor?: string;
+  }
+  interface Config {
+    data: string;
+    changes: string;
+    strings: {
+      forever: string;
+      more: string;
+      loading: string;
+      error: string;
+      status: Record<string, string>;
+    };
+  }
+
+  const SHOW_DELAY = 120;
+  const HIDE_DELAY = 220;
+  const GUTTER = 12;
+
+  class SpellTooltipElement extends HTMLElement {
+    private config!: Config;
+    private tip!: HTMLDivElement;
+    private data: Promise<Record<string, SpellTooltipData> | null> | undefined;
+    private current: HTMLElement | null = null;
+    private showTimer: number | undefined;
+    private hideTimer: number | undefined;
+
+    connectedCallback() {
+      const triggers = [...document.querySelectorAll<HTMLElement>('.spell-ref[data-spell]')];
+      if (triggers.length === 0) return;
+      this.config = JSON.parse(this.dataset.config ?? '{}');
+
+      // Keyboard users reach each spell once: the first mention on the page.
+      const seen = new Set<string>();
+      for (const trigger of triggers) {
+        const key = trigger.dataset.spell!;
+        if (!seen.has(key)) {
+          trigger.tabIndex = 0;
+          seen.add(key);
+        }
+      }
+
+      this.tip = document.createElement('div');
+      this.tip.id = 'spell-tip';
+      this.tip.className = 'spell-tip';
+      this.tip.setAttribute('role', 'tooltip');
+      this.tip.hidden = true;
+      document.body.append(this.tip);
+
+      document.addEventListener('pointerover', (event) => {
+        if ((event as PointerEvent).pointerType === 'touch') return;
+        const trigger = (event.target as Element).closest<HTMLElement>('.spell-ref[data-spell]');
+        if (trigger) this.schedule(trigger);
+        else if (this.tip.contains(event.target as Node)) window.clearTimeout(this.hideTimer);
+      });
+      document.addEventListener('pointerout', (event) => {
+        if ((event as PointerEvent).pointerType === 'touch') return;
+        const from = (event.target as Element).closest('.spell-ref[data-spell], .spell-tip');
+        const to = (event as PointerEvent).relatedTarget as Element | null;
+        if (from && !(to && (to.closest('.spell-tip') || to.closest('.spell-ref') === this.current))) this.scheduleHide();
+      });
+      document.addEventListener('focusin', (event) => {
+        const trigger = (event.target as Element).closest<HTMLElement>('.spell-ref[data-spell]');
+        if (trigger) this.show(trigger);
+      });
+      document.addEventListener('focusout', (event) => {
+        const to = (event as FocusEvent).relatedTarget as Element | null;
+        if (this.current && !(to && this.tip.contains(to))) this.scheduleHide();
+      });
+      document.addEventListener('click', (event) => {
+        const trigger = (event.target as Element).closest<HTMLElement>('.spell-ref[data-spell]');
+        if (trigger) {
+          // Tap toggles (touch screens have no hover).
+          if (this.current === trigger && !this.tip.hidden) this.hide();
+          else this.show(trigger);
+        } else if (!this.tip.contains(event.target as Node)) {
+          this.hide();
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !this.tip.hidden) {
+          const trigger = this.current;
+          this.hide();
+          trigger?.focus();
+        }
+        if ((event.key === 'Enter' || event.key === ' ') && (event.target as Element).matches?.('.spell-ref[data-spell]')) {
+          event.preventDefault();
+          this.show(event.target as HTMLElement);
+        }
+      });
+      window.addEventListener('scroll', () => this.reposition(), { passive: true });
+      window.addEventListener('resize', () => this.hide());
+    }
+
+    private load() {
+      this.data ??= fetch(this.config.data)
+        .then((response) => (response.ok ? response.json() : null))
+        .catch(() => null);
+      return this.data;
+    }
+
+    private schedule(trigger: HTMLElement) {
+      window.clearTimeout(this.hideTimer);
+      window.clearTimeout(this.showTimer);
+      this.load();
+      this.showTimer = window.setTimeout(() => this.show(trigger), SHOW_DELAY);
+    }
+
+    private scheduleHide() {
+      window.clearTimeout(this.showTimer);
+      window.clearTimeout(this.hideTimer);
+      this.hideTimer = window.setTimeout(() => this.hide(), HIDE_DELAY);
+    }
+
+    private async show(trigger: HTMLElement) {
+      window.clearTimeout(this.hideTimer);
+      if (this.current && this.current !== trigger) this.current.removeAttribute('aria-describedby');
+      this.current = trigger;
+      trigger.setAttribute('aria-describedby', 'spell-tip');
+      this.render(null, this.config.strings.loading);
+      this.tip.hidden = false;
+      this.reposition();
+      const data = await this.load();
+      if (this.current !== trigger) return;
+      const entry = data?.[trigger.dataset.spell!];
+      this.render(entry ?? null, entry ? '' : this.config.strings.error);
+      this.reposition();
+    }
+
+    private hide() {
+      window.clearTimeout(this.showTimer);
+      this.tip.hidden = true;
+      this.current?.removeAttribute('aria-describedby');
+      this.current = null;
+    }
+
+    private el<K extends keyof HTMLElementTagNameMap>(tag: K, className: string, text?: string): HTMLElementTagNameMap[K] {
+      const node = document.createElement(tag);
+      node.className = className;
+      if (text !== undefined) node.textContent = text;
+      return node;
+    }
+
+    private render(entry: SpellTooltipData | null, message: string) {
+      const { strings } = this.config;
+      this.tip.replaceChildren();
+      if (!entry) {
+        this.tip.className = 'spell-tip';
+        this.tip.append(this.el('p', 'spell-tip__message', message));
+        return;
+      }
+      this.tip.className = `spell-tip school-${entry.school === 'frostfire' ? 'fire' : entry.school}`;
+      const title = this.el('p', 'spell-tip__name', entry.name);
+      if (entry.english) {
+        const english = this.el('span', 'spell-tip__en', entry.english);
+        english.lang = 'en';
+        title.append(' ', english);
+      }
+      this.tip.append(title, this.el('p', 'spell-tip__facts', entry.facts.join(' · ')));
+      if (entry.summary) this.tip.append(this.el('p', 'spell-tip__summary', entry.summary));
+      if (entry.changes.length > 0) {
+        this.tip.append(this.el('p', 'spell-tip__label', strings.forever));
+        if (entry.changes.length === 1) {
+          this.tip.append(this.el('p', 'spell-tip__change', entry.changes[0]!.summary));
+        } else {
+          const list = this.el('ul', 'spell-tip__changes');
+          for (const change of entry.changes) list.append(this.el('li', '', change.summary));
+          this.tip.append(list);
+        }
+      }
+      const footer = this.el('p', 'spell-tip__footer');
+      footer.append(this.el('span', `spell-tip__status spell-tip__status--${entry.status}`, strings.status[entry.status] ?? entry.status));
+      if (entry.changeAnchor) {
+        const link = this.el('a', 'spell-tip__more', strings.more);
+        link.href = `${this.config.changes}#${entry.changeAnchor}`;
+        footer.append(link);
+      }
+      this.tip.append(footer);
+    }
+
+    private reposition() {
+      if (!this.current || this.tip.hidden) return;
+      const rect = this.current.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > window.innerHeight) {
+        this.hide();
+        return;
+      }
+      const tip = this.tip.getBoundingClientRect();
+      const maxLeft = window.innerWidth - tip.width - GUTTER;
+      const left = Math.max(GUTTER, Math.min(rect.left, maxLeft));
+      const below = rect.bottom + 8;
+      const top = below + tip.height > window.innerHeight - GUTTER && rect.top - tip.height - 8 > GUTTER ? rect.top - tip.height - 8 : below;
+      this.tip.style.left = `${left}px`;
+      this.tip.style.top = `${top}px`;
+    }
+  }
+
+  customElements.define('spell-tooltip', SpellTooltipElement);
+</script>
+
+<style is:global>
+  .spell-ref {
+    text-decoration: underline dotted color-mix(in srgb, var(--school, var(--accent)) 70%, transparent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.2em;
+    cursor: help;
+    border-radius: 3px;
+  }
+  .spell-ref:hover {
+    text-decoration-style: solid;
+  }
+  .spell-ref:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .spell-tip {
+    position: fixed;
+    z-index: 60;
+    width: min(22rem, calc(100vw - 24px));
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border-strong);
+    border-top: 3px solid var(--school, var(--accent));
+    border-radius: var(--radius);
+    background: var(--surface-1);
+    box-shadow: var(--shadow);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    font-weight: 400;
+    line-height: 1.45;
+    text-align: left;
+  }
+  .spell-tip[hidden] {
+    display: none;
+  }
+  .spell-tip p {
+    margin: 0;
+  }
+  .spell-tip > * + * {
+    margin-top: var(--space-2);
+  }
+  .spell-tip > .spell-tip__label + * {
+    margin-top: var(--space-1);
+  }
+  .spell-tip__name {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 700;
+    color: var(--school, var(--text));
+  }
+  .spell-tip__en {
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+  .spell-tip__facts {
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .spell-tip__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--school, var(--accent));
+  }
+  .spell-tip__changes {
+    margin: var(--space-1) 0 0;
+    padding-left: 1.1em;
+  }
+  .spell-tip__changes li + li {
+    margin-top: var(--space-1);
+  }
+  .spell-tip__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--border);
+  }
+  .spell-tip__status {
+    font-weight: 700;
+    color: var(--status-color, var(--text-muted));
+  }
+  .spell-tip__status--verified { --status-color: var(--status-verified); }
+  .spell-tip__status--reported { --status-color: var(--status-reported); }
+  .spell-tip__status--classic { --status-color: var(--status-classic); }
+  .spell-tip__status--analysis { --status-color: var(--status-analysis); }
+  .spell-tip__status--tested { --status-color: var(--status-tested); }
+  .spell-tip__status--pending { --status-color: var(--status-pending); }
+  .spell-tip__message {
+    color: var(--text-muted);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .spell-tip {
+      animation: spell-tip-in 120ms ease-out;
+    }
+    @keyframes spell-tip-in {
+      from {
+        opacity: 0;
+        transform: translateY(-2px);
+      }
+    }
+  }
+</style>

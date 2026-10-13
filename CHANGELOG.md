@@ -4,6 +4,15 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-10-13
+
+### [Web] Builds, razas y fichas de hechizos al pasar el ratón
+
+Nueva página de Builds con filtros por uso y rama, vista de calculadora y enlace a la calculadora de Wowhead. Primera build: Escarcha para duelos a nivel 30 con el perk de Legado Talented (26 puntos), con una guía en profundidad para el torneo Forever Open. Nueva página de Razas con las raciales de las seis razas de Mago y qué aporta cada una. Los nombres de hechizos en negrita muestran su ficha al pasar el ratón o al tocarlos. El dato del sistema de Legado se corrige: el perk Talented adelanta los puntos de talento de clase.
+
+- **Datos afectados:** build:frost-duels-30-legacy, race:human, race:gnome, race:skyborne, race:orc, race:undead, race:troll, Mage Forever Talent Calculator, WoW Forever Racials Guide: 2 Active and 2 Passive per Race, Changes to Racials Likely Coming Next Week in WoW: Forever, WoW Forever — Forever Open Duel Tournament Overview: Rules & Prizes, Sistema de Legado, WoW Forever Legacy Points Guide - Challenges, Perks & Rewards, The Best Way to Spend Your Legacy Points in WoW Forever, 16 Legacy Points Now Available for Testing on WoW: Forever Beta
+- **Fuentes:** [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead), [WoW Forever Racials Guide: 2 Active and 2 Passive per Race](https://lfcarry.com/guides/wow-forever-racials) (LFCarry), [WoW Forever — Forever Open Duel Tournament Overview: Rules & Prizes](https://conquestcapped.com/guides/wow-forever/wow-forever-open-duel-tournament/) (Conquest Capped), [WoW Forever Legacy Points Guide - Challenges, Perks & Rewards](https://conquestcapped.com/guides/wow-forever/wow-forever-legacy-points/) (Conquest Capped), [The Best Way to Spend Your Legacy Points in WoW Forever](https://www.method.gg/wow-forever/the-best-way-to-spend-your-legacy-points-in-wow-forever-best-legacy-talent-builds) (Method)
+
 ## 2026-10-12
 
 ### [Guía] Revisión de fuentes del 12 de octubre: Impacto y Flamestrike

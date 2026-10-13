@@ -1,5 +1,51 @@
 [
   {
+    "id": "2026-10-13-builds-races",
+    "date": "2026-10-13",
+    "type": "site",
+    "title": {
+      "es": "Builds, razas y fichas de hechizos al pasar el ratón",
+      "en": "Builds, races and spell cards on hover"
+    },
+    "body": {
+      "es": "Nueva página de Builds con filtros por uso y rama, vista de calculadora y enlace a la calculadora de Wowhead. Primera build: Escarcha para duelos a nivel 30 con el perk de Legado Talented (26 puntos), con una guía en profundidad para el torneo Forever Open. Nueva página de Razas con las raciales de las seis razas de Mago y qué aporta cada una. Los nombres de hechizos en negrita muestran su ficha al pasar el ratón o al tocarlos. El dato del sistema de Legado se corrige: el perk Talented adelanta los puntos de talento de clase.",
+      "en": "New Builds page with filters by use and tree, a calculator view and a link to the Wowhead calculator. First build: Frost for level 30 duels with the Talented Legacy perk (26 points), with an in-depth guide for the Forever Open tournament. New Races page with the racials of all six Mage races and what each one brings. Bold spell names show their card on hover or tap. The Legacy system fact is corrected: the Talented perk gives class talent points earlier."
+    },
+    "pages": [
+      "builds",
+      "builds-duel-30",
+      "races",
+      "home",
+      "talents",
+      "tools",
+      "leveling"
+    ],
+    "sources": [
+      "wowhead-forever-talent-calc",
+      "lfcarry-racials",
+      "forever-open-rules",
+      "conquestcapped-legacy",
+      "method-legacy"
+    ],
+    "refs": [
+      "build:frost-duels-30-legacy",
+      "race:human",
+      "race:gnome",
+      "race:skyborne",
+      "race:orc",
+      "race:undead",
+      "race:troll",
+      "source:wowhead-forever-talent-calc",
+      "source:lfcarry-racials",
+      "source:wowhead-racials-review",
+      "source:forever-open-rules",
+      "fact:legacy",
+      "source:conquestcapped-legacy",
+      "source:method-legacy",
+      "source:wowhead-legacy-beta"
+    ]
+  },
+  {
     "id": "2026-10-12-weekly-1",
     "date": "2026-10-12",
     "type": "guide",
@@ -21,7 +67,8 @@
     "refs": [
       "change:impact"
     ]
-  }, {
+  },
+  {
     "id": "2026-10-11-weekly-1",
     "date": "2026-10-11",
     "type": "guide",

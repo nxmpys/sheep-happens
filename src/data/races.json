@@ -1,0 +1,440 @@
+[
+  {
+    "id": "human",
+    "name": {
+      "es": "Humano",
+      "en": "Human"
+    },
+    "faction": "alliance",
+    "racials": [
+      {
+        "id": "will-to-survive",
+        "name": "Will to Survive",
+        "kind": "active",
+        "effect": {
+          "es": "Elimina al instante todos los efectos de aturdimiento. 3 min de reutilización.",
+          "en": "Instantly removes all stun effects. 3 min cooldown."
+        },
+        "value": "high",
+        "why": {
+          "es": "Salir de un aturdimiento salva el duelo contra pícaros, guerreros y paladines.",
+          "en": "Breaking a stun wins duels against Rogues, Warriors and Paladins."
+        }
+      },
+      {
+        "id": "perception",
+        "name": "Perception",
+        "kind": "active",
+        "effect": {
+          "es": "Aumenta mucho la detección de sigilo durante 20 s. 3 min de reutilización.",
+          "en": "Greatly increases stealth detection for 20 sec. 3 min cooldown."
+        },
+        "value": "medium",
+        "why": {
+          "es": "Útil en JcJ para ver venir a pícaros y druidas.",
+          "en": "Useful in PvP to spot Rogues and Druids coming."
+        }
+      },
+      {
+        "id": "the-human-spirit",
+        "name": "The Human Spirit",
+        "kind": "passive",
+        "effect": {
+          "es": "Espíritu aumentado un 5 %.",
+          "en": "Spirit increased by 5%."
+        },
+        "value": "medium",
+        "why": {
+          "es": "El Espíritu regenera maná, y en Forever Armadura de mago y Meditación Arcana lo aprovechan más.",
+          "en": "Spirit regenerates mana, and in Forever Mage Armor and Arcane Meditation make better use of it."
+        }
+      },
+      {
+        "id": "sword-specialization",
+        "name": "Sword Specialization",
+        "kind": "passive",
+        "effect": {
+          "es": "Un 2 % más de probabilidad de crítico con hechizos y ataques mientras llevas una espada.",
+          "en": "2% more critical strike chance with spells and attacks while wielding a sword."
+        },
+        "value": "medium",
+        "why": {
+          "es": "El Mago puede llevar espadas de una mano. Vale mucho si hay buenas espadas para lanzadores en tu tramo de nivel.",
+          "en": "Mages can wield one-handed swords. Strong if there are good caster swords at your level."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "lfcarry-racials",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-13"
+  },
+  {
+    "id": "gnome",
+    "name": {
+      "es": "Gnomo",
+      "en": "Gnome"
+    },
+    "faction": "alliance",
+    "racials": [
+      {
+        "id": "eureka",
+        "name": "Eureka!",
+        "kind": "active",
+        "effect": {
+          "es": "Tus 3 siguientes habilidades de daño cuestan un 10 % menos de maná y hacen un 10 % más de daño. 2 min de reutilización.",
+          "en": "Your next 3 damaging abilities cost 10% less mana and deal 10% more damage. 2 min cooldown."
+        },
+        "value": "high",
+        "why": {
+          "es": "Un pequeño estallido de daño cada 2 minutos, útil en cualquier situación.",
+          "en": "A small damage burst every 2 minutes, useful everywhere."
+        }
+      },
+      {
+        "id": "escape-artist",
+        "name": "Escape Artist",
+        "kind": "active",
+        "effect": {
+          "es": "Te libra de cualquier efecto que reduzca el movimiento y te da inmunidad a ellos durante 3 s. 2 min de reutilización.",
+          "en": "Escapes any movement-impairing effect and grants immunity to them for 3 sec. 2 min cooldown."
+        },
+        "value": "high",
+        "why": {
+          "es": "Romper un enraizamiento o una ralentización es vital para un Mago, que vive de la distancia.",
+          "en": "Breaking a root or snare is vital for a Mage, who lives on distance."
+        }
+      },
+      {
+        "id": "expansive-mind",
+        "name": "Expansive Mind",
+        "kind": "passive",
+        "effect": {
+          "es": "Maná máximo aumentado un 5 %.",
+          "en": "Maximum mana increased by 5%."
+        },
+        "value": "medium",
+        "why": {
+          "es": "Más maná es más tiempo lanzando antes de beber.",
+          "en": "More mana means longer casting before you drink."
+        }
+      },
+      {
+        "id": "engineering-specialization",
+        "name": "Engineering Specialization",
+        "kind": "passive",
+        "effect": {
+          "es": "Los artilugios de ingeniería fallan un 20 % menos.",
+          "en": "Engineering devices fail 20% less often."
+        },
+        "value": "low",
+        "why": {
+          "es": "Solo importa si eres ingeniero.",
+          "en": "Only matters if you are an engineer."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "lfcarry-racials",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-13"
+  },
+  {
+    "id": "skyborne",
+    "name": {
+      "es": "Cielonato (Skyborne)",
+      "en": "Skyborne (High Order)"
+    },
+    "faction": "alliance",
+    "newForMage": true,
+    "access": {
+      "es": "Raza nueva de Forever. Requiere el paquete Skyborne Heroic o superior, y solo los Cielonatos de la Alta Orden (Alianza) pueden ser Magos.",
+      "en": "New Forever race. Requires the Skyborne Heroic Pack or higher, and only High Order Skyborne (Alliance) can be Mages."
+    },
+    "racials": [
+      {
+        "id": "read-ley-line",
+        "name": "Read Ley Line",
+        "kind": "active",
+        "effect": {
+          "es": "Lanzamiento de 2 s: duplica tu regeneración de salud y maná durante 15 s, o 15 min si encuentras una línea ley cercana. 2 min de reutilización.",
+          "en": "2 sec cast: doubles your health and mana regeneration for 15 sec, or 15 min if a ley line is nearby. 2 min cooldown."
+        },
+        "value": "high",
+        "why": {
+          "es": "Si se mantiene así, reduce mucho los descansos al subir de nivel.",
+          "en": "If it stays like this, it cuts leveling downtime a lot."
+        }
+      },
+      {
+        "id": "wind-blessed",
+        "name": "Wind Blessed",
+        "kind": "passive",
+        "effect": {
+          "es": "Celeridad de lanzamiento y ataque aumentada un 1 %.",
+          "en": "Spellcasting and attack haste increased by 1%."
+        },
+        "value": "medium",
+        "why": {
+          "es": "Un poco más de daño, siempre activo.",
+          "en": "A little extra damage, always on."
+        }
+      },
+      {
+        "id": "walk-on-air",
+        "name": "Walk on Air",
+        "kind": "active",
+        "effect": {
+          "es": "Planeas hacia abajo controlando la dirección durante 10 s. 2 min de reutilización.",
+          "en": "Glide downward while controlling your direction for 10 sec. 2 min cooldown."
+        },
+        "value": "low",
+        "why": {
+          "es": "Comodidad de viaje; el Mago ya tiene Caída lenta (Slow Fall).",
+          "en": "Travel convenience; Mages already have Slow Fall."
+        }
+      },
+      {
+        "id": "elemental-insight",
+        "name": "Elemental Insight",
+        "kind": "passive",
+        "effect": {
+          "es": "Daño contra elementales aumentado un 5 %.",
+          "en": "Damage against Elementals increased by 5%."
+        },
+        "value": "low",
+        "why": {
+          "es": "Solo contra elementales.",
+          "en": "Only against Elementals."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "lfcarry-racials",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-13"
+  },
+  {
+    "id": "orc",
+    "name": {
+      "es": "Orco",
+      "en": "Orc"
+    },
+    "faction": "horde",
+    "newForMage": true,
+    "racials": [
+      {
+        "id": "blood-fury",
+        "name": "Blood Fury",
+        "kind": "active",
+        "effect": {
+          "es": "Poder de ataque y poder con hechizos aumentados un 10 % durante 15 s. 2 min de reutilización.",
+          "en": "Attack Power and Spell Power increased by 10% for 15 sec. 2 min cooldown."
+        },
+        "value": "medium",
+        "why": {
+          "es": "Escala con tu poder con hechizos: poco a nivel bajo, mucho a nivel 60 con buen equipo.",
+          "en": "Scales with your spell power: small at low level, strong at 60 with good gear."
+        }
+      },
+      {
+        "id": "shatter-curse",
+        "name": "Shatter Curse",
+        "kind": "active",
+        "effect": {
+          "es": "Elimina las maldiciones, da inmunidad a ellas y reduce un 15 % el daño mágico recibido durante 8 s. 3 min de reutilización.",
+          "en": "Removes and grants immunity to curses, and reduces magic damage taken by 15% for 8 sec. 3 min cooldown."
+        },
+        "value": "high",
+        "why": {
+          "es": "Muy fuerte en JcJ contra brujos, magos y chamanes.",
+          "en": "Very strong in PvP against Warlocks, Mages and Shamans."
+        }
+      },
+      {
+        "id": "hardiness",
+        "name": "Hardiness",
+        "kind": "passive",
+        "effect": {
+          "es": "Los aturdimientos que recibes duran un 20 % menos.",
+          "en": "Stun effects on you last 20% less."
+        },
+        "value": "medium",
+        "why": {
+          "es": "Ayuda contra pícaros y guerreros.",
+          "en": "Helps against Rogues and Warriors."
+        }
+      },
+      {
+        "id": "axe-specialization",
+        "name": "Axe Specialization",
+        "kind": "passive",
+        "effect": {
+          "es": "Un 1 % más de probabilidad de crítico mientras llevas un hacha.",
+          "en": "1% more critical strike chance while wielding an axe."
+        },
+        "value": "none",
+        "why": {
+          "es": "El Mago de Classic no puede llevar hachas; salvo que Forever lo cambie, no aporta nada.",
+          "en": "Classic Mages cannot use axes; unless Forever changes that, it does nothing."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "lfcarry-racials",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-13"
+  },
+  {
+    "id": "undead",
+    "name": {
+      "es": "No-muerto",
+      "en": "Undead"
+    },
+    "faction": "horde",
+    "racials": [
+      {
+        "id": "will-of-the-forsaken",
+        "name": "Will of the Forsaken",
+        "kind": "active",
+        "effect": {
+          "es": "Elimina al instante los efectos de hechizo de control mental, miedo y sueño. 2 min de reutilización. Ya no da inmunidad después.",
+          "en": "Instantly removes Charm, Fear and Sleep effects. 2 min cooldown. No longer grants immunity afterwards."
+        },
+        "value": "high",
+        "why": {
+          "es": "La mejor racial de JcJ contra brujos, sacerdotes y guerreros, que dependen del miedo.",
+          "en": "The best PvP racial against Warlocks, Priests and Warriors, who rely on fear."
+        }
+      },
+      {
+        "id": "cannibalize",
+        "name": "Cannibalize",
+        "kind": "active",
+        "effect": {
+          "es": "Recuperas un 7 % de salud y de maná cada 2 s durante 10 s junto al cadáver de un humanoide o no-muerto. Se cancela al moverte o recibir daño. 2 min de reutilización.",
+          "en": "Regenerate 7% of health and mana every 2 sec for 10 sec next to a Humanoid or Undead corpse. Cancelled by moving or taking damage. 2 min cooldown."
+        },
+        "value": "medium",
+        "why": {
+          "es": "Ahorra descansos al subir de nivel contra humanoides.",
+          "en": "Saves downtime while leveling against Humanoids."
+        }
+      },
+      {
+        "id": "touch-of-the-grave",
+        "name": "Touch of the Grave",
+        "kind": "passive",
+        "effect": {
+          "es": "Tus hechizos y ataques pueden drenar salud del objetivo, hasta un 5 % de tu salud máxima. La descripción indica un 5 % de probabilidad; algunas guías dan un 10 % para lanzadores.",
+          "en": "Your spells and attacks can drain health from the target, up to 5% of your maximum health. The tooltip says a 5% chance; some guides list 10% for casters."
+        },
+        "value": "low",
+        "why": {
+          "es": "Algo de curación gratuita, pero poco fiable.",
+          "en": "Some free healing, but unreliable."
+        }
+      },
+      {
+        "id": "underwater-breathing",
+        "name": "Underwater Breathing",
+        "kind": "passive",
+        "effect": {
+          "es": "Aguantas la respiración bajo el agua un 300 % más.",
+          "en": "Underwater breath lasts 300% longer."
+        },
+        "value": "none",
+        "why": {
+          "es": "Comodidad, sin efecto en combate.",
+          "en": "Convenience, no combat effect."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "lfcarry-racials",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-13"
+  },
+  {
+    "id": "troll",
+    "name": {
+      "es": "Trol",
+      "en": "Troll"
+    },
+    "faction": "horde",
+    "racials": [
+      {
+        "id": "berserking",
+        "name": "Berserking",
+        "kind": "active",
+        "effect": {
+          "es": "Velocidad de lanzamiento y de ataque aumentada un 10 % durante 10 s. 3 min de reutilización.",
+          "en": "Spellcasting and attack speed increased by 10% for 10 sec. 3 min cooldown."
+        },
+        "value": "high",
+        "why": {
+          "es": "Estallido de daño para mazmorras, bandas y JcJ.",
+          "en": "A damage burst for dungeons, raids and PvP."
+        }
+      },
+      {
+        "id": "beast-slaying",
+        "name": "Beast Slaying",
+        "kind": "passive",
+        "effect": {
+          "es": "Daño contra bestias aumentado un 5 %.",
+          "en": "Damage against Beasts increased by 5%."
+        },
+        "value": "medium",
+        "why": {
+          "es": "Al subir de nivel te enfrentas a muchas bestias.",
+          "en": "You fight a lot of Beasts while leveling."
+        }
+      },
+      {
+        "id": "rapid-regeneration",
+        "name": "Rapid Regeneration",
+        "kind": "active",
+        "effect": {
+          "es": "Canalizas 6 s para recuperar un 50 % de tu salud máxima. Se cancela al moverte, actuar o recibir daño. 3 min de reutilización.",
+          "en": "Channel for 6 sec to regenerate 50% of your maximum health. Cancelled by moving, acting or taking damage. 3 min cooldown."
+        },
+        "value": "low",
+        "why": {
+          "es": "Solo fuera de combate, y no recupera maná.",
+          "en": "Out of combat only, and it does not restore mana."
+        }
+      },
+      {
+        "id": "regeneration",
+        "name": "Regeneration",
+        "kind": "passive",
+        "effect": {
+          "es": "Regeneración de salud aumentada un 10 %, y un 10 % continúa en combate.",
+          "en": "Health regeneration increased by 10%, and 10% continues in combat."
+        },
+        "value": "low",
+        "why": {
+          "es": "Efecto pequeño para un Mago.",
+          "en": "Small effect for a Mage."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "lfcarry-racials",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-13"
+  }
+]

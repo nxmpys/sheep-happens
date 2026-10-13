@@ -6,33 +6,43 @@
  */
 import { z } from 'astro/zod';
 import rawAbilities from '../data/abilities.json';
+import rawBuilds from '../data/builds.json';
 import rawChangelog from '../data/changelog.json';
 import rawChanges from '../data/changes.json';
 import rawFacts from '../data/facts.json';
 import rawVersions from '../data/game-versions.json';
 import rawMilestones from '../data/milestones.json';
+import rawRaces from '../data/races.json';
 import rawSources from '../data/sources.json';
+import rawTalents from '../data/talents.json';
 import rawWatchlist from '../data/watchlist.json';
 import {
   abilitySchema,
+  buildSchema,
   changeSchema,
   changelogSchema,
   factSchema,
   gameVersionSchema,
   milestoneSchema,
+  raceSchema,
   sourceSchema,
+  talentSchema,
   watchSchema,
   type Ability,
+  type Build,
   type Change,
   type ChangelogEntry,
   type Fact,
   type GameVersion,
   type Milestone,
+  type Race,
   type Source,
   type Status,
+  type Talent,
   type Tree,
   type Watch,
 } from './schemas';
+import { validateBuild } from './talents';
 
 function parseList<T extends z.ZodType>(file: string, schema: T, raw: unknown): z.output<T>[] {
   const result = z.array(schema).safeParse(raw);
@@ -51,6 +61,9 @@ export interface Dataset {
   versions: GameVersion[];
   changelog: ChangelogEntry[];
   watchlist: Watch[];
+  talents: Talent[];
+  builds: Build[];
+  races: Race[];
 }
 
 export function parseDataset(raw: Record<keyof Dataset, unknown>): Dataset {
@@ -63,6 +76,9 @@ export function parseDataset(raw: Record<keyof Dataset, unknown>): Dataset {
     versions: parseList('game-versions.json', gameVersionSchema, raw.versions),
     changelog: parseList('changelog.json', changelogSchema, raw.changelog),
     watchlist: parseList('watchlist.json', watchSchema, raw.watchlist),
+    talents: parseList('talents.json', talentSchema, raw.talents),
+    builds: parseList('builds.json', buildSchema, raw.builds),
+    races: parseList('races.json', raceSchema, raw.races),
   };
 }
 
@@ -89,6 +105,9 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
     ['game-versions.json', data.versions],
     ['changelog.json', data.changelog],
     ['watchlist.json', data.watchlist],
+    ['talents.json', data.talents],
+    ['builds.json', data.builds],
+    ['races.json', data.races],
   ];
   for (const [file, list] of lists) {
     for (const dup of duplicates(list.map((item) => item.id))) problems.push(`${file}: duplicate id "${dup}"`);
@@ -99,6 +118,8 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
     ...data.milestones.map((m) => ['milestones.json', m] as [string, Milestone]),
     ...data.abilities.map((a) => ['abilities.json', a] as [string, Ability]),
     ...data.facts.map((f) => ['facts.json', f] as [string, Fact]),
+    ...data.builds.map((b) => ['builds.json', b] as [string, Build]),
+    ...data.races.map((r) => ['races.json', r] as [string, Race]),
   ];
   for (const [file, claim] of claims) {
     const kinds = new Set<string>();
@@ -133,6 +154,8 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
     ...data.abilities.map((r) => [`ability:${r.id}`, r] as const),
     ...data.facts.map((r) => [`fact:${r.id}`, r] as const),
     ...data.sources.map((r) => [`source:${r.id}`, {}] as const),
+    ...data.builds.map((r) => [`build:${r.id}`, r] as const),
+    ...data.races.map((r) => [`race:${r.id}`, r] as const),
   ]);
   const refDates = new Map<string, Set<string>>();
   for (const entry of data.changelog) {
@@ -173,6 +196,37 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
   for (const version of data.versions) {
     if (new Date(`${version.since}T00:00:00Z`) > today) problems.push(`game-versions.json: "${version.id}" starts in the future`);
   }
+
+  // Talent trees: one talent per cell, prerequisites in the same tree, known change links.
+  const talentById = new Map(data.talents.map((t) => [t.id, t]));
+  const cells = new Set<string>();
+  for (const talent of data.talents) {
+    const cell = `${talent.tree}:${talent.row}:${talent.col}`;
+    if (cells.has(cell)) problems.push(`talents.json: two talents share ${cell}`);
+    cells.add(cell);
+    if (talent.changeId && !changeIds.has(talent.changeId)) problems.push(`talents.json: "${talent.id}" links unknown change "${talent.changeId}"`);
+    if (talent.requires) {
+      const required = talentById.get(talent.requires.talent);
+      if (!required) problems.push(`talents.json: "${talent.id}" requires unknown talent "${talent.requires.talent}"`);
+      else if (required.tree !== talent.tree || required.row >= talent.row) {
+        problems.push(`talents.json: "${talent.id}" requires "${required.id}", which is not above it in the same tree`);
+      } else if (talent.requires.points > required.maxRank) {
+        problems.push(`talents.json: "${talent.id}" requires more points than "${required.id}" has`);
+      }
+    }
+  }
+
+  // Builds must be possible in game and point at known versions and pages.
+  for (const build of data.builds) {
+    for (const problem of validateBuild(build.points, build.level, data.talents, build.legacyTalented)) problems.push(`builds.json: "${build.id}": ${problem}`);
+    for (const key of build.keyTalents) {
+      if (!build.points[key]) problems.push(`builds.json: "${build.id}" highlights "${key}" without points in it`);
+    }
+    if (!data.versions.some((v) => v.id === build.gameVersion)) problems.push(`builds.json: "${build.id}" uses unknown gameVersion "${build.gameVersion}"`);
+  }
+  for (const race of data.races) {
+    for (const dup of duplicates(race.racials.map((r) => r.id))) problems.push(`races.json: "${race.id}" lists racial "${dup}" twice`);
+  }
   return problems;
 }
 
@@ -185,6 +239,9 @@ export const dataset: Dataset = parseDataset({
   versions: rawVersions,
   changelog: rawChangelog,
   watchlist: rawWatchlist,
+  talents: rawTalents,
+  builds: rawBuilds,
+  races: rawRaces,
 });
 
 const integrity = checkIntegrity(dataset);
@@ -192,7 +249,7 @@ if (integrity.length > 0) {
   throw new Error(`Content integrity problems:\n- ${integrity.join('\n- ')}`);
 }
 
-export const { sources, changes, milestones, abilities, facts, versions, changelog, watchlist } = dataset;
+export const { sources, changes, milestones, abilities, facts, versions, changelog, watchlist, talents, builds, races } = dataset;
 
 const sourceIndex = new Map(sources.map((s) => [s.id, s]));
 const versionIndex = new Map(versions.map((v) => [v.id, v]));
@@ -223,3 +280,9 @@ export const changelogFor = (reference: string) =>
 
 /** Newest first. */
 export const sortedChangelog = () => [...changelog].sort((a, b) => b.date.localeCompare(a.date));
+
+const talentIndex = new Map(talents.map((t) => [t.id, t]));
+const buildIndex = new Map(builds.map((b) => [b.id, b]));
+
+export const getTalent = (key: string) => lookup(talentIndex, 'talent', key);
+export const getBuild = (key: string) => lookup(buildIndex, 'build', key);

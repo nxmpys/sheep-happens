@@ -22,6 +22,8 @@ export interface PageReport {
 /** Components registered in src/components/mdx.ts (kept in sync by a unit test). */
 export const MDX_COMPONENTS = [
   'AbilityGrid',
+  'BuildCard',
+  'BuildExplorer',
   'Callout',
   'ChangeExplorer',
   'ChangelogList',
@@ -32,6 +34,7 @@ export const MDX_COMPONENTS = [
   'Pending',
   'Priority',
   'QuestionCards',
+  'RaceCards',
   'SourceRefs',
   'SourcesTable',
   'SpecCards',
@@ -111,6 +114,9 @@ export function validatePages(
       for (const [, id] of list!.matchAll(/'([^']+)'/g)) {
         if (!factIds.has(id!)) errors.push(`${where}: unknown fact "${id}"`);
       }
+    }
+    for (const [, id] of body.matchAll(/<BuildCard[^>]*\bid="([^"]+)"/g)) {
+      if (!data.builds.some((b) => b.id === id)) errors.push(`${where}: unknown build "${id}"`);
     }
     for (const [, list] of body.matchAll(/<SourceRefs[^>]*\bids=\{\[([^\]]*)\]\}/g)) {
       for (const [, id] of list!.matchAll(/'([^']+)'/g)) {

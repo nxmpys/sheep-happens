@@ -12,6 +12,9 @@ export const DEFAULT_LOCALE: Locale = 'es';
 
 export const PAGE_IDS = [
   'home',
+  'builds',
+  'builds-duel-30',
+  'races',
   'guide',
   'changes',
   'talents',
@@ -36,10 +39,23 @@ export interface RouteDef {
   parent?: PageId;
   /** Talent tree this page belongs to, if any. */
   spec?: Spec;
+  /**
+   * Page tied to a passing event (e.g. the level 30 beta duel tournament).
+   * It will be retired: see docs/content-roadmap.md for how to remove it.
+   */
+  temporary?: true;
 }
 
 export const ROUTES: Record<PageId, RouteDef> = {
   home: { id: 'home', slug: { es: '', en: '' } },
+  builds: { id: 'builds', slug: { es: 'builds', en: 'builds' }, parent: 'home' },
+  'builds-duel-30': {
+    id: 'builds-duel-30',
+    slug: { es: 'builds/duelos-nivel-30', en: 'builds/duels-level-30' },
+    parent: 'builds',
+    temporary: true,
+  },
+  races: { id: 'races', slug: { es: 'razas', en: 'races' }, parent: 'home' },
   guide: { id: 'guide', slug: { es: 'guia', en: 'guide' }, parent: 'home' },
   changes: { id: 'changes', slug: { es: 'cambios', en: 'changes' }, parent: 'home' },
   talents: { id: 'talents', slug: { es: 'talentos', en: 'talents' }, parent: 'home' },
@@ -72,6 +88,7 @@ export const ROUTES: Record<PageId, RouteDef> = {
 /** The guided reading order used for the previous/next links. */
 export const LEARNING_PATH: readonly PageId[] = [
   'guide',
+  'races',
   'changes',
   'talents',
   'talents-arcane',
@@ -87,14 +104,16 @@ export interface NavItem {
   children?: PageId[];
 }
 
-/** Primary navigation, in display order. */
+/**
+ * Primary navigation, in display order. What most visitors want (builds,
+ * talents, races) comes first; the learning pages sit under the class guide.
+ */
 export const PRIMARY_NAV: readonly NavItem[] = [
-  { id: 'guide' },
-  { id: 'changes' },
+  { id: 'builds', children: ['builds-duel-30'] },
   { id: 'talents', children: ['talents-arcane', 'talents-fire', 'talents-frost'] },
-  { id: 'leveling' },
-  { id: 'combat' },
-  { id: 'gear' },
+  { id: 'races' },
+  { id: 'guide', children: ['leveling', 'combat', 'gear'] },
+  { id: 'changes' },
   { id: 'tools' },
 ];
 

@@ -24,7 +24,8 @@ function walk(dir: string): string[] {
 // Importing ../src/lib/data already validated the JSON files (it throws on problems).
 console.log(
   `✓ Data: ${dataset.sources.length} sources, ${dataset.changes.length} changes, ${dataset.milestones.length} milestones, ` +
-    `${dataset.abilities.length} abilities, ${dataset.facts.length} facts, ${dataset.changelog.length} changelog entries`,
+    `${dataset.abilities.length} abilities, ${dataset.facts.length} facts, ${dataset.changelog.length} changelog entries, ` +
+    `${dataset.talents.length} talents, ${dataset.builds.length} builds, ${dataset.races.length} races`,
 );
 
 const files: PageFile[] = walk(pagesDir).map((full) => ({

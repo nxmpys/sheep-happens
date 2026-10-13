@@ -41,7 +41,9 @@ describe('route registry', () => {
 
   it('never puts a version or season in a slug', () => {
     for (const id of PAGE_IDS) {
-      for (const locale of LOCALES) expect(ROUTES[id].slug[locale]).not.toMatch(/\d|beta|season|temporada/);
+      // Temporary event pages may name a level ("duelos-nivel-30"), never a version.
+      const pattern = ROUTES[id].temporary ? /beta|season|temporada/ : /\d|beta|season|temporada/;
+      for (const locale of LOCALES) expect(ROUTES[id].slug[locale]).not.toMatch(pattern);
     }
   });
 

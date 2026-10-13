@@ -1,0 +1,30 @@
+---
+/**
+ * A spell or talent name with its tooltip, for components that render names
+ * from data (build cards, talent lists). MDX pages get the same behaviour from
+ * bold text through SpellStrong.astro.
+ */
+import { getLocale } from '../../i18n/locale';
+import { spellIndexFor } from '../../lib/spell-index';
+import { findSpell } from '../../lib/spells';
+
+interface Props {
+  /** Name to look up (Spanish or English). */
+  name: string;
+  /** Visible text. Defaults to the name. */
+  label?: string;
+}
+
+const { name, label = name } = Astro.props;
+const spell = findSpell(spellIndexFor(getLocale(Astro)), name);
+---
+
+{
+  spell ? (
+    <span class={`spell-ref school-${spell.school === 'frostfire' ? 'fire' : spell.school}`} data-spell={spell.key}>
+      {label}
+    </span>
+  ) : (
+    label
+  )
+}

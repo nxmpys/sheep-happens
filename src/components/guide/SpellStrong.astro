@@ -1,0 +1,30 @@
+---
+/**
+ * Replaces <strong> in MDX pages. When the bold text is the name of a spell or
+ * talent the guide documents («**Lanza de hielo**»), it becomes a tooltip
+ * trigger (see layout/SpellTooltip.astro); any other bold text renders as usual.
+ */
+import { getLocale } from '../../i18n/locale';
+import { spellIndexFor } from '../../lib/spell-index';
+import { findSpell } from '../../lib/spells';
+
+const locale = getLocale(Astro);
+const html = Astro.slots.has('default') ? await Astro.slots.render('default') : '';
+const text = html
+  .replace(/<[^>]+>/g, '')
+  .replace(/&#x27;|&#39;/g, "'")
+  .replace(/&quot;/g, '"')
+  .replace(/&amp;/g, '&')
+  .trim();
+const spell = text.length > 2 && text.length < 60 ? findSpell(spellIndexFor(locale), text) : undefined;
+---
+
+{
+  spell ? (
+    <strong>
+      <span class={`spell-ref school-${spell.school === 'frostfire' ? 'fire' : spell.school}`} data-spell={spell.key} set:html={html} />
+    </strong>
+  ) : (
+    <strong set:html={html} />
+  )
+}

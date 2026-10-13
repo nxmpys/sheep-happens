@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-10-12 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
+> Creado: 2026-10-12 · Revisión: 2026-10-13 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -25,12 +25,12 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 
 ### Talentos y builds
 
-- [ ] Árbol completo de Forever con sus valores. Blizzard solo ha publicado los cambios; sin el árbol no hay builds ni planificador.
-- [ ] Talento decisivo de 16 puntos de Fuego (`fire-16` en `src/data/milestones.json`).
+- [ ] Árbol completo de Forever con valores **oficiales**. La posición de cada talento ya está en `src/data/talents.json` (sacada de la calculadora de Wowhead, datos del cliente de la beta); las cifras siguen sin confirmar.
+- [ ] Talento decisivo de 16 puntos de Fuego (`fire-16` en `src/data/milestones.json`). Pista: en la calculadora de Wowhead, Calentamiento es el único talento de 1 punto de la fila 4 de Fuego. Falta una fuente oficial.
 - [ ] Filas de Piroexplosión, Ola explosiva, Combustión, Presencia mental y Poder Arcano (ahora son «Referencia Classic» en `milestones.json`).
-- [ ] Requisito entre Dedos de Escarcha y Lanza de hielo (discrepancia abierta en `content-validation.md`).
+- [ ] Requisito entre Dedos de Escarcha y Lanza de hielo (discrepancia abierta en `content-validation.md`). Pista: la calculadora de Wowhead confirma la lectura coherente (Dedos de Escarcha requiere Lanza de hielo). Falta comprobarlo en el juego.
 - [ ] Builds probadas: leveo, farmeo AoE, mazmorras, banda, PvP y duelos (ver la sección 4).
-- [ ] Calculadora de talentos de Forever (de Wowhead u otra web) o formato para compartir builds.
+- [x] Calculadora de talentos de Forever: la de Wowhead, con enlaces generados desde `src/lib/talents.ts` (`wowheadBuildUrl`) (hecho el 2026-10-13).
 
 ### Valores numéricos
 
@@ -57,8 +57,9 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 
 ### Razas
 
-- [ ] Habilidades raciales de Forever de las seis razas de Mago (Humano, Gnomo, Skyborne, Orco, No-muerto y Trol). Wowhead anticipó el 8 de octubre de 2026 cambios en las raciales para la semana siguiente («Changes to Racials Likely Coming Next Week»).
-- [ ] Raciales de Skyborne (raza nueva) y del Orco Mago (nuevo en Forever): no hay referencia de Classic que sirva.
+- [x] Habilidades raciales de las seis razas de Mago, según los datos de la beta: `src/data/races.json`, página Razas (2026-10-13). Siguen como «Comunidad» hasta tener fuente oficial o probarlas.
+- [ ] Cambios de raciales anunciados para la semana del 13 de octubre de 2026 (Orco y Trol sobre todo, y las raciales de armas).
+- [ ] Nombres oficiales en español de las raciales de Forever.
 
 ## 2. Lo que es de la beta: quitar o reescribir al lanzar
 
@@ -88,6 +89,16 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [ ] Arcano, Fuego y Escarcha: secciones «Lo que falta por saber».
 - [ ] Fuentes y Cambios: borrar la discrepancia «Fin de la beta» y resolver «Nivel de la doble especialización» y «Requisito de Dedos de Escarcha».
 - [ ] Error de la beta con Misiles Arcanos (recibir daño dispara un misil con el daño completo): comprobar si sigue.
+
+### Página temporal de duelos a nivel 30
+
+La página «Duelos a nivel 30» (`builds-duel-30`) y sus dos builds son de la beta y del torneo Forever Open (17 y 18 de octubre de 2026). Para retirarla, tras la beta:
+
+- [ ] Quitar `builds-duel-30` de `PAGE_IDS`, `ROUTES` y del submenú de Builds en `src/i18n/routes.ts`, y su etiqueta en `src/i18n/ui.ts`.
+- [ ] Borrar `src/content/pages/{es,en}/builds-duel-30.mdx` y `public/og/{es,en}-builds-duel-30.png`.
+- [ ] Quitar las builds `frost-duels-30-*` de `src/data/builds.json` (o sustituirlas por las de nivel 60) y explicarlo en el historial.
+- [ ] Redirigir `/es/builds/duelos-nivel-30/` y `/en/builds/duels-level-30/` a la página de Builds con un archivo `public/_redirects` (301), para no romper enlaces compartidos.
+- [ ] Quitar el aviso del torneo del inicio (`home.mdx`), la mención en la tarjeta de Builds del inicio (`QuestionCards.astro`), en Talentos y en el aviso «Builds de la beta» de Builds.
 
 ### Documentos internos
 
@@ -139,16 +150,17 @@ Bloqueado ahora por el tope de nivel 30 de la beta y por la falta de valores de 
 
 ### Cómo debería ser
 
-- [ ] Una página propia «Builds», la primera del menú y del inicio, separada de la explicación de Talentos.
-- [ ] Filtro por uso arriba, como en el explorador de cambios (los filtros se guardan en la URL).
-- [ ] Una tarjeta por build con:
+- [x] Una página propia «Builds», la primera del menú y del inicio, separada de la explicación de Talentos (hecho el 2026-10-13).
+- [x] Filtro por uso y por rama arriba, como en el explorador de cambios (los filtros se guardan en la URL) (hecho el 2026-10-13).
+- [x] Una tarjeta por build (hecho el 2026-10-13), con los datos en `src/data/builds.json`:
   - para qué sirve: Leveo, Farmeo AoE, Mazmorras, Banda, PvP o Duelos;
   - rama o ramas y tramo de nivel;
-  - el reparto de puntos, en imagen o con enlace a una calculadora;
-  - «Cómo se juega» en 3 a 5 líneas, con enlace a la prioridad de Combate;
+  - el reparto de puntos, la vista de calculadora y el enlace a Wowhead;
+  - «Cómo se juega» en 3 a 5 pasos, puntos fuertes y débiles, y guía en profundidad si la hay;
   - los objetos clave, si hacen falta;
   - estado de verificación y parche en que se comprobó.
 - [ ] Builds de leveo con el orden de puntos por tramos (10-20, 20-40 y 40-60): a nivel 40 llegan Descarga de Pirofrío y la doble especialización, y la build cambia.
+- [ ] En las builds por debajo del nivel 60, indicar si usan el perk de Legado Talented (`legacyTalented` en `builds.json`): adelanta hasta 5 puntos de talento y cambia el orden de puntos por nivel.
 
 ### Orden de publicación
 
@@ -158,28 +170,29 @@ Bloqueado ahora por el tope de nivel 30 de la beta y por la falta de valores de 
 
 ### Opción antes del lanzamiento
 
-Con acceso a la beta se puede probar ya una build de leveo del 10 al 30: a nivel 30 hay 21 puntos, suficientes para llegar al talento decisivo de 21 de una rama. Si el juego muestra las descripciones de todo el árbol, como en Classic, también se pueden leer algunos valores. Sería información de beta (marcada así y revisada al lanzar), pero la build de leveo estaría lista el primer día.
+Con acceso a la beta se puede probar ya una build de leveo del 10 al 30: a nivel 30 hay 26 puntos con el perk de Legado Talented (21 sin él), suficientes para llegar al talento decisivo de 21 de una rama. Si el juego muestra las descripciones de todo el árbol, como en Classic, también se pueden leer algunos valores. Sería información de beta (marcada así y revisada al lanzar), pero la build de leveo estaría lista el primer día.
 
 ## 5. Razas: cuál elegir según para qué juegues
 
 «¿Qué raza hago?» es de las primeras preguntas al crear un personaje. La respuesta depende de para qué juegues, así que no basta con una «mejor raza»: hay que explicar el porqué y en qué situación.
 
-Bloqueado ahora porque las raciales de Forever no son definitivas: se esperan cambios y Skyborne y el Orco Mago son nuevos.
+Publicada el 2026-10-13 con las raciales de la beta. Hay que revisarla con cada cambio de raciales y tras el lanzamiento.
 
 ### Cómo debería ser
 
-- [ ] Una sección o página «Razas», enlazada desde el inicio (pregunta «¿Qué raza elijo?») y desde Builds.
-- [ ] Una recomendación por situación: leveo, mazmorras y banda (PvE), PvP y duelos, y farmeo.
-- [ ] Para cada raza:
+- [x] Una página «Razas», enlazada desde el menú, el inicio (pregunta «¿Qué raza elijo?») y la guía de duelos (hecho el 2026-10-13).
+- [x] Una recomendación por situación: leveo, mazmorras y banda, JcJ y duelos, y farmeo en área (hecho el 2026-10-13).
+- [x] Para cada raza (hecho el 2026-10-13):
   - facción (Alianza u Horda);
   - raciales que importan al Mago y por qué;
   - en qué situación destaca y en cuál no aporta;
   - estado de verificación y parche en que se comprobó.
-- [ ] Una tabla comparativa corta arriba para quien solo quiera la respuesta, y la explicación debajo.
+- [x] Una tabla comparativa corta arriba para quien solo quiera la respuesta, y la explicación debajo (hecho el 2026-10-13).
 
-### Puntos de partida (Classic, sin publicar)
+### Pendiente
 
-En Classic se suelen recomendar Gnome (Escape Artist e Intelecto) y Human (Spirit) en Alianza, y Undead (Will of the Forsaken, para PvP) y Troll (Berserking, para PvE) en Horda. **Solo sirve para saber qué comprobar:** no se publica como dato de Forever hasta verlo en el juego o en una fuente oficial.
+- [ ] Pasar las raciales a «Oficial» (si Blizzard publica la lista) o a «Probado en juego».
+- [ ] Revisar las recomendaciones tras los cambios de raciales de la semana del 13 de octubre.
 
 ## 6. Mejoras de la experiencia
 
@@ -195,19 +208,19 @@ Al hacer una idea, márcala y anota dónde está.
 ### Encontrar rápido lo que busco
 
 - [ ] **Inicio orientado a tareas** (con datos): accesos directos arriba a «Build de leveo», «Build de farmeo AoE», «Qué raza elijo» y «Qué ha cambiado esta semana»; la explicación en profundidad, debajo.
-- [ ] **Builds con filtros** por uso y rama (con datos). Ver la sección 4.
-- [ ] **Razas** (con datos). Ver la sección 5.
+- [x] **Builds con filtros** por uso y rama (hecho el 2026-10-13). Ver la sección 4.
+- [x] **Razas** (hecho el 2026-10-13). Ver la sección 5.
 - [ ] **Caja «Lo esencial»** al principio de cada página, uniforme en todas (ya).
 - [ ] **Buscador más visible** (ya): atajo de teclado a la vista y sugerencias («Lanza de hielo», «leveo», «golpe»).
 
 ### Aprender jugando
 
 - [ ] **Guía «Mi primer Mago» del 1 al 20** (casi ya): qué entrenar en cada nivel, cuándo beber, Nova de Escarcha y Blink, y errores típicos.
-- [ ] **Planificador de talentos interactivo** (con datos): puntos con clic, requisitos y enlace para compartir. Necesita el árbol completo de Forever.
+- [ ] **Planificador de talentos en profundidad** (con datos): puntos con clic, requisitos y enlace para compartir, con cada talento explicado. De momento, cada build tiene su vista de calculadora y enlace a Wowhead (2026-10-13); el planificador propio espera a los valores definitivos.
 - [ ] **Orden de puntos por nivel** en las builds de leveo, del 10 al 60 (con datos).
 - [ ] **Prioridades en formato «de bolsillo»** (ya): versión compacta de Combate para tener abierta en el móvil mientras juegas.
 - [ ] **Glosario** (ya): bajar de rango, hito, proc, kitear, Trizar…, con tooltip al pasar por encima del término en cualquier página.
-- [ ] **Tooltips de hechizos** (ya): escuela, nivel y cambios en Forever al pasar por encima, con los datos de `abilities.json` y `changes.json`.
+- [x] **Tooltips de hechizos** (hecho el 2026-10-13): los nombres en negrita de las páginas y los talentos de las builds muestran escuela o rama, nivel o fila y cambios en Forever (`src/lib/spells.ts`). Sin coste de maná: no hay cifras oficiales.
 
 ### Herramientas
 

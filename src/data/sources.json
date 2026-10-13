@@ -262,5 +262,87 @@
       "es": "Las páginas «Patch 1.60» y «Patch 1.60.1» de la wiki redirigen a este artículo.",
       "en": "The wiki pages “Patch 1.60” and “Patch 1.60.1” redirect to this article."
     }
+  },
+  {
+    "id": "wowhead-forever-talent-calc",
+    "title": "Mage Forever Talent Calculator",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/talent-calc/mage",
+    "kind": "tool",
+    "accessed": "2026-10-13",
+    "notes": {
+      "es": "Árbol de talentos y descripciones extraídos del cliente de la beta. Lo usamos para la posición de cada talento y para los enlaces de las builds; sus cifras son una pista, no un dato confirmado.",
+      "en": "Talent trees and tooltips data-mined from the beta client. We use it for talent positions and build links; its numbers are a hint, not a confirmed fact."
+    }
+  },
+  {
+    "id": "lfcarry-racials",
+    "title": "WoW Forever Racials Guide: 2 Active and 2 Passive per Race",
+    "publisher": "LFCarry",
+    "url": "https://lfcarry.com/guides/wow-forever-racials",
+    "kind": "press",
+    "accessed": "2026-10-13",
+    "notes": {
+      "es": "Web comercial. Recoge las raciales de cada raza y cita las publicaciones y builds de la beta de Blizzard.",
+      "en": "Commercial site. Lists every race's racials and cites Blizzard's posts and beta builds."
+    }
+  },
+  {
+    "id": "wowhead-racials-review",
+    "title": "Changes to Racials Likely Coming Next Week in WoW: Forever",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/news=383311/changes-to-racials-likely-coming-next-week-in-wow-forever",
+    "kind": "press",
+    "published": "2026-10-08",
+    "accessed": "2026-10-13",
+    "notes": {
+      "es": "Resume el pódcast oficial: Blizzard cree que las raciales activas de Orco y Trol pueden ser algo fuertes y que podría haber cambios desde la semana del 13 de octubre.",
+      "en": "Summarizes the official podcast: Blizzard thinks the Orc and Troll active racials may be a little too strong, with changes possible from the week of 13 October."
+    }
+  },
+  {
+    "id": "forever-open-rules",
+    "title": "WoW Forever — Forever Open Duel Tournament Overview: Rules & Prizes",
+    "publisher": "Conquest Capped",
+    "url": "https://conquestcapped.com/guides/wow-forever/wow-forever-open-duel-tournament/",
+    "kind": "community",
+    "accessed": "2026-10-13",
+    "notes": {
+      "es": "Torneo de la comunidad (no de Blizzard): duelos 1 contra 1 a nivel 30, solo Horda, clasificatorias el 17 y final el 18 de octubre de 2026.",
+      "en": "Community tournament (not run by Blizzard): 1v1 duels at level 30, Horde only, qualifiers on 17 and finals on 18 October 2026."
+    }
+  },
+  {
+    "id": "conquestcapped-legacy",
+    "title": "WoW Forever Legacy Points Guide - Challenges, Perks & Rewards",
+    "publisher": "Conquest Capped",
+    "url": "https://conquestcapped.com/guides/wow-forever/wow-forever-legacy-points/",
+    "kind": "community",
+    "accessed": "2026-10-13",
+    "notes": {
+      "es": "Detalla el perk Talented del Legado: adelanta el primer punto de talento de clase del nivel 10 al 5, sin cambiar el máximo de 51.",
+      "en": "Details the Talented Legacy perk: it moves the first class talent point from level 10 to level 5, without changing the 51-point maximum."
+    }
+  },
+  {
+    "id": "method-legacy",
+    "title": "The Best Way to Spend Your Legacy Points in WoW Forever",
+    "publisher": "Method",
+    "url": "https://www.method.gg/wow-forever/the-best-way-to-spend-your-legacy-points-in-wow-forever-best-legacy-talent-builds",
+    "kind": "community",
+    "accessed": "2026-10-13",
+    "notes": {
+      "es": "Talented requiere Well Rested 5/5 (árbol Aventura): 10 puntos de Legado en total. No tiene efecto a nivel 60.",
+      "en": "Talented requires Well Rested 5/5 (Adventure tree): 10 Legacy points in total. It has no effect at level 60."
+    }
+  },
+  {
+    "id": "wowhead-legacy-beta",
+    "title": "16 Legacy Points Now Available for Testing on WoW: Forever Beta",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/news=383335/16-legacy-points-now-available-for-testing-on-wow-forever-beta",
+    "kind": "press",
+    "published": "2026-10-08",
+    "accessed": "2026-10-13"
   }
 ]

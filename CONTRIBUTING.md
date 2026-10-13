@@ -52,11 +52,24 @@ El validador rechaza, por ejemplo, un `verified` sin fuente oficial o un `report
 1. Añádela a `src/data/sources.json` con `kind` y `accessed` (fecha en que la leíste).
 2. Refiérete a ella por su `id` desde los datos o desde el `sources:` de una página.
 
+### Añadir o actualizar una build
+
+1. Añádela a `src/data/builds.json`: `id`, `name`, `uses` (`leveling`, `aoe`, `dungeons`, `raid`, `pvp`, `duels`), `spec`, `level`, `points` (id del talento → rango), `keyTalents`, `summary`, `playstyle` y, si hacen falta, `strengths`, `weaknesses` e `items`.
+2. Los ids de talento son los de `src/data/talents.json` (árbol de Forever según la calculadora de Wowhead). `npm run validate` comprueba que la build se pueda hacer en el juego: rangos, puntos por fila, requisitos y puntos del nivel.
+3. El enlace a la calculadora de Wowhead y la vista de calculadora se generan solos. No hace falta copiar ninguna URL.
+4. `status: "analysis"` mientras no se haya probado en el juego; `"tested"` cuando sí. Pon `gameVersion`, `sources` y `updated`, y añade una entrada al historial con `refs: ["build:<id>"]`.
+5. Si la build merece una guía en profundidad, crea la página (ver «Añadir una página nueva») y enlázala con `page`. Dentro de una página, `<BuildCard id="…" />` muestra la tarjeta.
+
+### Actualizar las raciales
+
+Las raciales viven en `src/data/races.json`: efecto (`effect`), valor para el Mago (`value`, nuestro análisis) y por qué (`why`). Si cambia un efecto o un valor, actualiza `updated` y añade una entrada al historial con `refs: ["race:<id>"]`.
+
 ### Editar una página
 
 - Edita el MDX de **los dos idiomas**. Los componentes disponibles están en `src/components/mdx.ts`: `<Status status="verified" />`, `<Pending why="…" next="…" />`, `<Callout>`, `<Priority>`, `<PageLink to="changes" query="tree=frost">…</PageLink>`, `<FactList ids={['launch']} />`, etc.
 - Para enlazar páginas internas usa siempre `<PageLink to="…">` (respeta el idioma, los slugs y la ruta base).
 - Si no hay información fiable, usa `<Pending>`. **No rellenes con texto genérico.**
+- Los nombres de hechizos y talentos en **negrita** muestran su ficha al pasar el ratón si están en `abilities.json`, `changes.json` o `talents.json`. Escribe el nombre exacto (oficial en español o en inglés) para que se reconozca.
 
 ### Añadir una página nueva
 

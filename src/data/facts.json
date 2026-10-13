@@ -180,12 +180,15 @@
       "en": "Legacy system"
     },
     "value": {
-      "es": "Puntos a nivel de cuenta que cada personaje gasta en tres árboles (Profesiones, Aventura, Recursos). Máximo de 16 en el lanzamiento. No modifica tus talentos de clase.",
-      "en": "Account-wide points each character spends in three trees (Professions, Adventure, Resourcefulness). Capped at 16 at launch. Does not modify your class talents."
+      "es": "Puntos a nivel de cuenta que cada personaje gasta en tres árboles (Profesiones, Aventura, Recursos). Máximo de 16 en el lanzamiento. No da puntos de talento de clase extra, pero el perk Talented adelanta el primero hasta el nivel 5 (el máximo sigue en 51).",
+      "en": "Account-wide points each character spends in three trees (Professions, Adventure, Resourcefulness). Capped at 16 at launch. It gives no extra class talent points, but the Talented perk moves the first one as early as level 5 (the maximum stays at 51)."
     },
     "status": "reported",
     "sources": [
-      "warcrafttavern-legacy"
-    ]
+      "warcrafttavern-legacy",
+      "conquestcapped-legacy",
+      "method-legacy"
+    ],
+    "updated": "2026-10-13"
   }
 ]

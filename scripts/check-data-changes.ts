@@ -19,6 +19,8 @@ const FILES: [string, string][] = [
   ['milestones.json', 'milestone'],
   ['abilities.json', 'ability'],
   ['facts.json', 'fact'],
+  ['builds.json', 'build'],
+  ['races.json', 'race'],
 ];
 
 function previousVersion(file: string): unknown[] | undefined {

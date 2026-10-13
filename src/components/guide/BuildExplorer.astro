@@ -1,0 +1,320 @@
+---
+/**
+ * Every build, filterable by use and tree. Uses without a build yet show a
+ * "pending" card that says what will come and when, so the page already
+ * answers "is there a leveling build?" honestly.
+ * Without JavaScript all cards are shown and the filters stay hidden.
+ */
+import BuildCard from './BuildCard.astro';
+import Icon from '../ui/Icon.astro';
+import { SPEC_LABELS, USE_LABELS, USE_PENDING, tb } from '../../i18n/builds';
+import { getLocale } from '../../i18n/locale';
+import { builds } from '../../lib/data';
+import { BUILD_SPECS, BUILD_USES } from '../../lib/schemas';
+
+const locale = getLocale(Astro);
+const total = builds.length;
+const useCounts = Object.fromEntries(BUILD_USES.map((use) => [use, builds.filter((b) => b.uses.includes(use)).length]));
+const pendingUses = BUILD_USES.filter((use) => useCounts[use] === 0);
+const strings = {
+  count: tb(locale, 'builds.count'),
+  copied: locale === 'es' ? 'Enlace copiado' : 'Link copied',
+  copyFailed: locale === 'es' ? 'No se pudo copiar. Copia la URL de la barra de direcciones.' : 'Could not copy. Copy the URL from the address bar instead.',
+};
+---
+
+<build-explorer data-strings={JSON.stringify(strings)}>
+  <form class="filters" aria-label={tb(locale, 'builds.filters')} hidden data-filters data-pagefind-ignore>
+    <fieldset class="filters__group">
+      <legend>{tb(locale, 'builds.use')}</legend>
+      <div class="segmented">
+        <label>
+          <input type="radio" name="use" value="all" checked />
+          <span>{tb(locale, 'builds.all')} <small>{total}</small></span>
+        </label>
+        {
+          BUILD_USES.map((use) => (
+            <label>
+              <input type="radio" name="use" value={use} />
+              <span>
+                {USE_LABELS[locale][use]} <small>{useCounts[use]}</small>
+              </span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+    <fieldset class="filters__group">
+      <legend>{tb(locale, 'builds.spec')}</legend>
+      <div class="segmented">
+        <label>
+          <input type="radio" name="spec" value="all" checked />
+          <span>{tb(locale, 'builds.all')}</span>
+        </label>
+        {
+          BUILD_SPECS.map((spec) => (
+            <label class={`school-${spec === 'hybrid' ? 'baseline' : spec}`}>
+              <input type="radio" name="spec" value={spec} />
+              <span>
+                <Icon name={spec === 'hybrid' ? 'frostfire' : spec} size={16} />
+                {SPEC_LABELS[locale][spec]}
+              </span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+    <div class="filters__actions">
+      <button type="button" class="button" data-reset>
+        <Icon name="reset" size={16} />
+        {tb(locale, 'builds.reset')}
+      </button>
+      <button type="button" class="button" data-share>
+        <Icon name="link" size={16} />
+        {tb(locale, 'builds.share')}
+      </button>
+    </div>
+  </form>
+
+  <p class="results-count" role="status" aria-live="polite" data-count data-pagefind-ignore>
+    {tb(locale, 'builds.count', { shown: total, total })}
+  </p>
+
+  <div class="build-list" data-list>
+    {builds.map((build) => <BuildCard id={build.id} />)}
+    {
+      pendingUses.map((use) => (
+        <article class="build-pending" data-build data-pending data-uses={use} data-spec="any">
+          <p class="build-pending__title">
+            <Icon name="pending" size={20} />
+            {tb(locale, 'builds.pendingTitle', { use: USE_LABELS[locale][use] })}
+          </p>
+          <p>{USE_PENDING[locale][use]}</p>
+        </article>
+      ))
+    }
+  </div>
+
+  <div class="build-empty" hidden data-empty>
+    <p>{tb(locale, 'builds.empty')}</p>
+    <button type="button" class="button button--primary" data-reset>{tb(locale, 'builds.reset')}</button>
+  </div>
+</build-explorer>
+
+<script>
+  import {
+    EMPTY_BUILD_FILTERS,
+    isBuildFiltered,
+    matchesBuild,
+    parseBuildFilters,
+    serializeBuildFilters,
+    type BuildFilterState,
+  } from '../../lib/build-filters';
+  import { copyText } from '../../scripts/clipboard';
+  import { showToast } from '../../scripts/toast';
+
+  class BuildExplorer extends HTMLElement {
+    private form!: HTMLFormElement;
+    private cards: HTMLElement[] = [];
+    private strings: Record<string, string> = {};
+
+    connectedCallback() {
+      this.form = this.querySelector<HTMLFormElement>('[data-filters]')!;
+      this.cards = [...this.querySelectorAll<HTMLElement>('[data-build]')];
+      this.strings = JSON.parse(this.dataset.strings ?? '{}');
+      this.form.hidden = false;
+
+      this.applyState(parseBuildFilters(location.search), { updateUrl: false });
+      this.form.addEventListener('change', () => this.applyState(this.readForm()));
+      this.form.addEventListener('submit', (event) => event.preventDefault());
+      this.querySelectorAll('[data-reset]').forEach((button) =>
+        button.addEventListener('click', () => {
+          this.applyState(EMPTY_BUILD_FILTERS);
+          this.form.querySelector<HTMLInputElement>('input[name="use"][value="all"]')?.focus();
+        }),
+      );
+      this.querySelector('[data-share]')?.addEventListener('click', async () => {
+        const ok = await copyText(location.href);
+        showToast(ok ? this.strings['copied']! : this.strings['copyFailed']!);
+      });
+      window.addEventListener('popstate', () => this.applyState(parseBuildFilters(location.search), { updateUrl: false }));
+    }
+
+    private readForm(): BuildFilterState {
+      const data = new FormData(this.form);
+      return parseBuildFilters(
+        serializeBuildFilters({
+          use: (data.get('use') as BuildFilterState['use']) ?? 'all',
+          spec: (data.get('spec') as BuildFilterState['spec']) ?? 'all',
+        }),
+      );
+    }
+
+    private applyState(state: BuildFilterState, { updateUrl = true } = {}) {
+      for (const name of ['use', 'spec'] as const) {
+        const input = this.form.querySelector<HTMLInputElement>(`input[name="${name}"][value="${state[name]}"]`);
+        if (input) input.checked = true;
+      }
+      let shown = 0;
+      let real = 0;
+      let visibleCards = 0;
+      for (const card of this.cards) {
+        const pending = card.hasAttribute('data-pending');
+        // Pending cards stand for every tree, so a tree filter never hides them.
+        const spec = pending ? (state.spec === 'all' ? 'any' : state.spec) : (card.dataset.spec ?? '');
+        const visible = matchesBuild({ uses: (card.dataset.uses ?? '').split(' '), spec }, state);
+        card.hidden = !visible;
+        if (visible) visibleCards++;
+        if (!pending) {
+          real++;
+          if (visible) shown++;
+        }
+      }
+      this.querySelector<HTMLElement>('[data-count]')!.textContent = (this.strings['count'] ?? '')
+        .replace('{shown}', String(shown))
+        .replace('{total}', String(real));
+      this.querySelector<HTMLElement>('[data-empty]')!.hidden = visibleCards > 0;
+      this.form.querySelector<HTMLButtonElement>('[data-reset]')!.disabled = !isBuildFiltered(state);
+      if (updateUrl) history.replaceState(null, '', `${location.pathname}${serializeBuildFilters(state)}${location.hash}`);
+    }
+  }
+
+  customElements.define('build-explorer', BuildExplorer);
+</script>
+
+<style>
+  build-explorer {
+    display: block;
+  }
+  .filters {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+  }
+  .filters[hidden] {
+    display: none;
+  }
+  .filters__group {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+  legend {
+    display: block;
+    margin-bottom: var(--space-2);
+    font-size: var(--step--1);
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+  .segmented {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .segmented label {
+    position: relative;
+    cursor: pointer;
+  }
+  .segmented input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  .segmented span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    min-height: 40px;
+    padding: 0 0.85em;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface-1);
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+  .segmented small {
+    font-weight: 500;
+    color: var(--text-subtle);
+  }
+  .segmented label:hover span {
+    background: var(--surface-2);
+    color: var(--text);
+  }
+  .segmented [class^='school-'] span :global(svg) {
+    color: var(--school);
+  }
+  .segmented input:checked + span {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--accent-contrast);
+  }
+  .segmented input:checked + span small,
+  .segmented input:checked + span :global(svg) {
+    color: inherit;
+  }
+  .segmented input:focus-visible + span {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .filters__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .filters__actions .button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .results-count {
+    margin: var(--space-4) 0 var(--space-3);
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .build-list {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .build-empty {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-lg);
+  }
+  .build-empty[hidden] {
+    display: none;
+  }
+  .build-empty p {
+    margin: 0;
+  }
+  .build-pending {
+    padding: var(--space-3) var(--space-5);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-lg);
+    color: var(--text-muted);
+  }
+  .build-pending[hidden] {
+    display: none;
+  }
+  .build-pending p {
+    margin: 0;
+  }
+  .build-pending__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-1) !important;
+    font-weight: 700;
+    color: var(--status-pending);
+  }
+</style>

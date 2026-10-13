@@ -1,6 +1,7 @@
 ---
 import Icon from '../ui/Icon.astro';
 import Logo from '../ui/Logo.astro';
+import type { IconName } from '../ui/icons';
 import LangSwitch from './LangSwitch.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import { href } from '../../i18n/locale';
@@ -16,7 +17,18 @@ const { locale, pageId } = Astro.props;
 const trail = pageId ? breadcrumbTrail(pageId) : [];
 const labels = NAV_LABELS[locale];
 const isCurrent = (id: PageId) => id === pageId;
-const inSection = (id: PageId) => trail.includes(id) && id !== pageId;
+// A nav item is highlighted when the current page lives under it, in the URL
+// hierarchy (breadcrumbs) or in its submenu.
+const inSection = (id: PageId, children: readonly PageId[] = []) =>
+  id !== pageId && (trail.includes(id) || (pageId !== undefined && children.includes(pageId)));
+/** Submenu icons for pages that are not a talent tree. */
+const SUBMENU_ICONS: Partial<Record<PageId, IconName>> = {
+  'builds-duel-30': 'swords',
+  leveling: 'map',
+  combat: 'fire',
+  gear: 'shield',
+};
+const submenuIcon = (id: PageId): IconName => ROUTES[id].spec ?? SUBMENU_ICONS[id] ?? 'book';
 ---
 
 <header class="site-header">
@@ -33,7 +45,7 @@ const inSection = (id: PageId) => trail.includes(id) && id !== pageId;
             <li class:list={['nav-item', { 'has-sub': item.children }]}>
               <a
                 href={href(item.id, locale)}
-                class:list={['nav-link', { 'is-section': inSection(item.id) }]}
+                class:list={['nav-link', { 'is-section': inSection(item.id, item.children) }]}
                 aria-current={isCurrent(item.id) ? 'page' : undefined}
               >
                 {NAV_SHORT[locale][item.id] ?? labels[item.id]}
@@ -58,7 +70,7 @@ const inSection = (id: PageId) => trail.includes(id) && id !== pageId;
                           class={`submenu-link school-${ROUTES[child].spec ?? 'baseline'}`}
                           aria-current={isCurrent(child) ? 'page' : undefined}
                         >
-                          <Icon name={ROUTES[child].spec ?? 'arcane'} size={18} />
+                          <Icon name={submenuIcon(child)} size={18} />
                           {labels[child]}
                         </a>
                       </li>

@@ -2,7 +2,7 @@
   "name": "sheep-happens",
   "version": "0.1.0",
   "private": true,
-  "description": "Guía interactiva de Mago para World of Warcraft: Forever (ES/EN).",
+  "description": "Guía en profundidad del Mago para World of Warcraft: Forever (ES/EN).",
   "type": "module",
   "engines": {
     "node": ">=22.12.0"

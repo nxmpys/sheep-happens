@@ -12,10 +12,15 @@ export const FACT_FIELDS: Record<string, string[]> = {
   'milestones.json': ['name', 'changeId', 'note.en', 'status', 'sources'],
   'abilities.json': ['name', 'school', 'role', 'level', 'changeIds', 'summary.en', 'status', 'sources'],
   'facts.json': ['value.en', 'status', 'sources'],
+  'builds.json': ['uses', 'spec', 'level', 'legacyTalented', 'points', 'summary.en', 'status', 'gameVersion', 'sources'],
+  'races.json': ['racials.facts', 'status', 'sources'],
 };
 
 function pick(record: Json, field: string): unknown {
   if (field === 'details.en') return ((record['details'] as Json[] | undefined) ?? []).map((d) => d['en']);
+  if (field === 'racials.facts') {
+    return ((record['racials'] as Json[] | undefined) ?? []).map((r) => [r['id'], r['kind'], (r['effect'] as Json | undefined)?.['en'], r['value']]);
+  }
   if (field === 'notes.facts') {
     return ((record['notes'] as Json[] | undefined) ?? []).map((n) => [n['status'], (n['text'] as Json | undefined)?.['en']]);
   }
