@@ -59,6 +59,7 @@ const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
     {xDefault && <link rel="alternate" hreflang="x-default" href={xDefault} />}
     <link rel="alternate" type="application/rss+xml" title={t(locale, 'updates.rssTitle')} href={absolute(`${href('updates', locale)}rss.xml`)} />
     <link rel="sitemap" href={absolute(`${base}sitemap-index.xml`)} />
+    <link rel="icon" href={`${base}favicon.ico`} sizes="16x16 32x32 48x48" />
     <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
     <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} />
     <meta name="theme-color" content="#0e0d16" media="(prefers-color-scheme: dark)" />

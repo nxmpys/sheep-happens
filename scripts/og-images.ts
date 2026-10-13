@@ -2,8 +2,9 @@
  * npm run og
  *
  * Generates the social preview images (1200×630 PNG) for every page and locale
- * in public/og/, plus public/apple-touch-icon.png. Run it after changing a page
- * title and commit the results: the build does not regenerate them.
+ * in public/og/, plus public/favicon.ico and public/apple-touch-icon.png (both
+ * from public/favicon.svg). Run it after changing a page title or the favicon
+ * and commit the results: the build does not regenerate them.
  *
  * Fonts: Georgia and Segoe UI from the system (Windows by default). Point
  * OG_FONT_DIR at another folder with georgiab.ttf, segoeui.ttf and seguisb.ttf
@@ -122,7 +123,30 @@ for (const locale of LOCALES) {
   }
 }
 
-const icon = `<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 40 40">
-  <rect width="40" height="40" fill="#0e0d16"/><g transform="translate(2.5 3) scale(0.88)">${SHEEP}</g></svg>`;
-writeFileSync(join(root, 'public', 'apple-touch-icon.png'), render(icon, 180));
-console.log(`✓ ${count} social images in public/og/ and public/apple-touch-icon.png`);
+/** Packs PNG images into an .ico file (PNG entries, supported everywhere since Windows Vista). */
+function ico(pngs: { size: number; data: Buffer }[]): Buffer {
+  const header = Buffer.alloc(6 + 16 * pngs.length);
+  header.writeUInt16LE(1, 2);
+  header.writeUInt16LE(pngs.length, 4);
+  let offset = header.length;
+  pngs.forEach(({ size, data }, i) => {
+    const entry = 6 + 16 * i;
+    header.writeUInt8(size % 256, entry);
+    header.writeUInt8(size % 256, entry + 1);
+    header.writeUInt16LE(1, entry + 4);
+    header.writeUInt16LE(32, entry + 6);
+    header.writeUInt32LE(data.length, entry + 8);
+    header.writeUInt32LE(offset, entry + 12);
+    offset += data.length;
+  });
+  return Buffer.concat([header, ...pngs.map((p) => p.data)]);
+}
+
+// public/favicon.svg is the source of the raster icons. Google wants square
+// multiples of 48 px, so favicon.ico carries 48 px besides 16 and 32.
+const favicon = readFileSync(join(root, 'public', 'favicon.svg'), 'utf8');
+writeFileSync(join(root, 'public', 'favicon.ico'), ico([16, 32, 48].map((size) => ({ size, data: render(favicon, size) }))));
+// The touch icon must be opaque and full-bleed: iOS rounds the corners itself.
+const touch = favicon.replace(/(<svg[^>]*>)/, '$1<rect width="48" height="48" fill="#0e0d16"/>');
+writeFileSync(join(root, 'public', 'apple-touch-icon.png'), render(touch, 180));
+console.log(`✓ ${count} social images in public/og/, plus public/favicon.ico and public/apple-touch-icon.png`);

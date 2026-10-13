@@ -24,7 +24,7 @@ Sitio estático con interactividad selectiva: builds filtrables por uso y rama (
 | `npm run data:diff` | Falla si cambiaste un dato sin poner su fecha `updated` (compara con el último commit) |
 | `npm run changelog` | Regenera `CHANGELOG.md` a partir de `src/data/changelog.json` |
 | `npm run watch` | Informe de novedades de las fuentes vigiladas (últimos 7 días) |
-| `npm run og` | Regenera las imágenes sociales de `public/og/` (tras cambiar un título) |
+| `npm run og` | Regenera las imágenes sociales de `public/og/` (tras cambiar un título) y `favicon.ico` + `apple-touch-icon.png` a partir de `public/favicon.svg` |
 | `npm run typecheck` | Comprobación de tipos (`astro check`) |
 | `npm test` | Pruebas unitarias (filtros, rutas, calculadora, datos, contraste WCAG, enlaces) |
 | `npm run links` | Comprueba los enlaces internos y las anclas de `dist/` (`-- --external` también comprueba las fuentes externas) |
