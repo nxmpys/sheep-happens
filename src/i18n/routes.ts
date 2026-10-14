@@ -15,6 +15,7 @@ export const PAGE_IDS = [
   'builds',
   'builds-duel-30',
   'races',
+  'professions',
   'guide',
   'changes',
   'talents',
@@ -56,6 +57,7 @@ export const ROUTES: Record<PageId, RouteDef> = {
     temporary: true,
   },
   races: { id: 'races', slug: { es: 'razas', en: 'races' }, parent: 'home' },
+  professions: { id: 'professions', slug: { es: 'profesiones', en: 'professions' }, parent: 'home' },
   guide: { id: 'guide', slug: { es: 'guia', en: 'guide' }, parent: 'home' },
   changes: { id: 'changes', slug: { es: 'cambios', en: 'changes' }, parent: 'home' },
   talents: { id: 'talents', slug: { es: 'talentos', en: 'talents' }, parent: 'home' },
@@ -89,6 +91,7 @@ export const ROUTES: Record<PageId, RouteDef> = {
 export const LEARNING_PATH: readonly PageId[] = [
   'guide',
   'races',
+  'professions',
   'changes',
   'talents',
   'talents-arcane',
@@ -109,9 +112,11 @@ export interface NavItem {
  * talents, races) comes first; the learning pages sit under the class guide.
  */
 export const PRIMARY_NAV: readonly NavItem[] = [
-  { id: 'builds', children: ['builds-duel-30'] },
+  // The leveling guide is also listed under Builds: that is where players look for a leveling build.
+  { id: 'builds', children: ['leveling', 'builds-duel-30'] },
   { id: 'talents', children: ['talents-arcane', 'talents-fire', 'talents-frost'] },
   { id: 'races' },
+  { id: 'professions' },
   { id: 'guide', children: ['leveling', 'combat', 'gear'] },
   { id: 'changes' },
   { id: 'tools' },

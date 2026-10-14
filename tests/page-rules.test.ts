@@ -49,6 +49,16 @@ describe('validatePages', () => {
     expect(errors).not.toMatch(/"launch"/);
   });
 
+  it('checks the builds offered by <BuildPicker>', () => {
+    const ok = "<BuildPicker ids={['frost-leveling-solo', 'frost-leveling-aoe']} recommended=\"frost-leveling-aoe\" />";
+    const bad = "<BuildPicker ids={['frost-leveling-solo', 'frost-leveling-nope']} recommended=\"frost-duels-30-legacy\" />";
+    const withBody = (body: string) => [...complete.filter((f) => f.path !== 'es/leveling.mdx'), page('es', 'leveling', body)];
+    expect(validatePages(withBody(ok), dataset, today).errors).toEqual([]);
+    const errors = validatePages(withBody(bad), dataset, today).errors.join('\n');
+    expect(errors).toMatch(/unknown build "frost-leveling-nope"/);
+    expect(errors).toMatch(/recommends "frost-duels-30-legacy", which it does not list/);
+  });
+
   it('checks page ids on <Highlight> and statuses on <FaqItem>', () => {
     const body =
       '<Highlights>\n<Highlight school="frost" label="x" to="nowhere" cta="x">x</Highlight>\n</Highlights>\n<FaqItem q="x" status="maybe">x</FaqItem>';

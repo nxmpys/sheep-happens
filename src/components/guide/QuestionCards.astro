@@ -23,7 +23,14 @@ const questions: Question[] = [
     page: 'builds',
     icon: 'layers',
     q: { es: '¿Qué build uso?', en: 'Which build should I use?' },
-    a: { es: 'Builds por uso y rama, con calculadora y explicación. Ya hay de duelos a nivel 30.', en: 'Builds by use and tree, with a calculator link and an explanation. Level 30 duel builds are up.' },
+    a: { es: 'Builds por uso y rama, con calculadora y explicación. Ya hay de leveo del 1 al 30 y de duelos a nivel 30.', en: 'Builds by use and tree, with a calculator link and an explanation. Leveling builds from 1 to 30 and level 30 duel builds are up.' },
+    status: 'analysis',
+  },
+  {
+    page: 'leveling',
+    icon: 'map',
+    q: { es: '¿Con qué build subo de nivel?', en: 'Which build should I level with?' },
+    a: { es: 'Guía de leveo del 1 al 30 (BETA): en solitario, en mazmorras y en área, con el orden de puntos.', en: 'Leveling guide from 1 to 30 (BETA): solo, dungeons and AoE, with the point order.' },
     status: 'analysis',
   },
   {
@@ -31,6 +38,13 @@ const questions: Question[] = [
     icon: 'users',
     q: { es: '¿Qué raza elijo?', en: 'Which race should I pick?' },
     a: { es: 'La mejor raza según juegues leveo, mazmorras o JcJ, y por qué.', en: 'The best race for leveling, dungeons or PvP, and why.' },
+  },
+  {
+    page: 'professions',
+    icon: 'hammer',
+    q: { es: '¿Qué profesiones elijo?', en: 'Which professions should I pick?' },
+    a: { es: 'Las dos mejores según tu objetivo (PvE, JcJ, leveo u oro) y qué aporta cada una al Mago.', en: 'The best two for your goal (PvE, PvP, leveling or gold) and what each one gives a Mage.' },
+    status: 'analysis',
   },
   {
     page: 'guide',
@@ -49,12 +63,6 @@ const questions: Question[] = [
     icon: 'arcane',
     q: { es: '¿Qué rama elijo?', en: 'Which tree should I pick?' },
     a: { es: 'Identidad de Arcano, Fuego y Escarcha, hitos y talentos nuevos.', en: 'Arcane, Fire and Frost identity, milestones and new talents.' },
-  },
-  {
-    page: 'leveling',
-    icon: 'calendar',
-    q: { es: '¿Cómo subo de nivel?', en: 'How do I level up?' },
-    a: { es: 'Lo que ya sabemos del 1 al 60 y lo que falta por probar.', en: 'What we know about 1–60 and what still needs testing.' },
   },
   {
     page: 'combat',

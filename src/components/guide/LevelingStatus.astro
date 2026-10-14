@@ -1,0 +1,124 @@
+---
+/**
+ * Status of the leveling guide: which level ranges are published and which
+ * come next. Derived from the leveling builds (src/lib/leveling.ts), so it
+ * changes by itself when the builds are extended to level 60.
+ */
+import Icon from '../ui/Icon.astro';
+import type { IconName } from '../ui/icons';
+import { tb } from '../../i18n/builds';
+import { getLocale } from '../../i18n/locale';
+import { builds } from '../../lib/data';
+import { LEVELING_STAGES, levelingStatus, type StageState } from '../../lib/leveling';
+
+const locale = getLocale(Astro);
+const status = levelingStatus(builds);
+const last = LEVELING_STAGES.at(-1)!.to;
+const ICONS: Record<StageState, IconName> = { published: 'verified', next: 'classic', planned: 'pending' };
+const stages = [
+  ...status.stages.map((stage) => ({
+    label: tb(locale, 'leveling.stage', { from: stage.from, to: stage.to }),
+    state: stage.state,
+  })),
+  { label: tb(locale, 'leveling.stageFinal', { to: last }), state: status.complete ? ('published' as const) : ('planned' as const) },
+];
+---
+
+<section class:list={['leveling-status', { 'is-beta': !status.complete }]} aria-labelledby="leveling-status-title" data-pagefind-ignore>
+  <p class="leveling-status__title" id="leveling-status-title">
+    {!status.complete && <span class="leveling-status__badge">{tb(locale, 'leveling.beta')}</span>}
+    <span>
+      {status.complete ? tb(locale, 'leveling.complete', { level: last }) : tb(locale, 'leveling.covers', { level: status.coverage })}
+    </span>
+  </p>
+  <ol class="stages" aria-label={tb(locale, 'leveling.title')}>
+    {
+      stages.map((stage) => (
+        <li class={`stage stage--${stage.state}`}>
+          <Icon name={ICONS[stage.state]} size={18} class="stage__icon" />
+          <span class="stage__label">{stage.label}</span>
+          <span class="stage__state">{tb(locale, `leveling.state.${stage.state}` as const)}</span>
+        </li>
+      ))
+    }
+  </ol>
+  {!status.complete && <p class="leveling-status__note">{tb(locale, 'leveling.note')}</p>}
+</section>
+
+<style>
+  .leveling-status {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .leveling-status__title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    font-weight: 700;
+  }
+  .leveling-status__badge {
+    padding: 0.05em 0.6em;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    font-size: var(--step--1);
+    letter-spacing: 0.06em;
+  }
+  .stages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .stage {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: var(--space-2);
+    align-items: center;
+    margin: 0;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+  }
+  .stage :global(.stage__icon) {
+    grid-row: span 2;
+    color: var(--stage-color);
+  }
+  .stage__label {
+    font-weight: 600;
+    font-size: var(--step--1);
+  }
+  .stage__state {
+    font-size: 0.8125rem;
+    color: var(--stage-color);
+    font-weight: 600;
+  }
+  .stage--published {
+    --stage-color: var(--status-verified);
+    border-color: color-mix(in srgb, var(--status-verified) 45%, transparent);
+  }
+  .stage--next {
+    --stage-color: var(--accent);
+    border-style: dashed;
+    border-color: var(--accent);
+  }
+  .stage--planned {
+    --stage-color: var(--text-subtle);
+    border-style: dashed;
+  }
+  .leveling-status__note {
+    margin: 0;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+</style>

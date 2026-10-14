@@ -12,6 +12,8 @@ import rawChanges from '../data/changes.json';
 import rawFacts from '../data/facts.json';
 import rawVersions from '../data/game-versions.json';
 import rawMilestones from '../data/milestones.json';
+import rawPicks from '../data/profession-picks.json';
+import rawProfessions from '../data/professions.json';
 import rawRaces from '../data/races.json';
 import rawSources from '../data/sources.json';
 import rawTalents from '../data/talents.json';
@@ -24,6 +26,8 @@ import {
   factSchema,
   gameVersionSchema,
   milestoneSchema,
+  professionPickSchema,
+  professionSchema,
   raceSchema,
   sourceSchema,
   talentSchema,
@@ -35,6 +39,8 @@ import {
   type Fact,
   type GameVersion,
   type Milestone,
+  type Profession,
+  type ProfessionPick,
   type Race,
   type Source,
   type Status,
@@ -42,7 +48,7 @@ import {
   type Tree,
   type Watch,
 } from './schemas';
-import { validateBuild } from './talents';
+import { validateBuild, validateOrder } from './talents';
 
 function parseList<T extends z.ZodType>(file: string, schema: T, raw: unknown): z.output<T>[] {
   const result = z.array(schema).safeParse(raw);
@@ -64,6 +70,8 @@ export interface Dataset {
   talents: Talent[];
   builds: Build[];
   races: Race[];
+  professions: Profession[];
+  picks: ProfessionPick[];
 }
 
 export function parseDataset(raw: Record<keyof Dataset, unknown>): Dataset {
@@ -79,6 +87,8 @@ export function parseDataset(raw: Record<keyof Dataset, unknown>): Dataset {
     talents: parseList('talents.json', talentSchema, raw.talents),
     builds: parseList('builds.json', buildSchema, raw.builds),
     races: parseList('races.json', raceSchema, raw.races),
+    professions: parseList('professions.json', professionSchema, raw.professions),
+    picks: parseList('profession-picks.json', professionPickSchema, raw.picks),
   };
 }
 
@@ -108,6 +118,8 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
     ['talents.json', data.talents],
     ['builds.json', data.builds],
     ['races.json', data.races],
+    ['professions.json', data.professions],
+    ['profession-picks.json', data.picks],
   ];
   for (const [file, list] of lists) {
     for (const dup of duplicates(list.map((item) => item.id))) problems.push(`${file}: duplicate id "${dup}"`);
@@ -120,6 +132,8 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
     ...data.facts.map((f) => ['facts.json', f] as [string, Fact]),
     ...data.builds.map((b) => ['builds.json', b] as [string, Build]),
     ...data.races.map((r) => ['races.json', r] as [string, Race]),
+    ...data.professions.map((p) => ['professions.json', p] as [string, Profession]),
+    ...data.picks.map((p) => ['profession-picks.json', p] as [string, ProfessionPick]),
   ];
   for (const [file, claim] of claims) {
     const kinds = new Set<string>();
@@ -156,6 +170,8 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
     ...data.sources.map((r) => [`source:${r.id}`, {}] as const),
     ...data.builds.map((r) => [`build:${r.id}`, r] as const),
     ...data.races.map((r) => [`race:${r.id}`, r] as const),
+    ...data.professions.map((r) => [`profession:${r.id}`, r] as const),
+    ...data.picks.map((r) => [`pick:${r.id}`, r] as const),
   ]);
   const refDates = new Map<string, Set<string>>();
   for (const entry of data.changelog) {
@@ -222,10 +238,42 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
     for (const key of build.keyTalents) {
       if (!build.points[key]) problems.push(`builds.json: "${build.id}" highlights "${key}" without points in it`);
     }
+    if (build.order) {
+      for (const problem of validateOrder(build.order, build.points, build.level, data.talents, build.legacyTalented)) {
+        problems.push(`builds.json: "${build.id}" order: ${problem}`);
+      }
+      for (const note of build.orderNotes) {
+        if (note.point > build.order.length) problems.push(`builds.json: "${build.id}" has a note for point ${note.point}, beyond its order`);
+      }
+    }
+    if (build.fromLevel !== undefined && build.fromLevel > build.level) {
+      problems.push(`builds.json: "${build.id}" starts at level ${build.fromLevel}, above its level ${build.level}`);
+    }
     if (!data.versions.some((v) => v.id === build.gameVersion)) problems.push(`builds.json: "${build.id}" uses unknown gameVersion "${build.gameVersion}"`);
   }
   for (const race of data.races) {
     for (const dup of duplicates(race.racials.map((r) => r.id))) problems.push(`races.json: "${race.id}" lists racial "${dup}" twice`);
+  }
+
+  // Professions: pairs and picks name known primary professions, never twice.
+  const professionById = new Map(data.professions.map((p) => [p.id, p]));
+  const checkPair = (where: string, ids: string[]) => {
+    for (const dup of duplicates(ids)) problems.push(`${where} names "${dup}" twice`);
+    for (const id of ids) {
+      const profession = professionById.get(id);
+      if (!profession) problems.push(`${where} names unknown profession "${id}"`);
+      else if (profession.kind === 'secondary') problems.push(`${where} names "${id}", a secondary profession that takes no slot`);
+    }
+  };
+  for (const profession of data.professions) {
+    if (profession.pair) {
+      checkPair(`professions.json: "${profession.id}" pair`, profession.pair.with);
+      if (profession.pair.with.includes(profession.id)) problems.push(`professions.json: "${profession.id}" pairs with itself`);
+    }
+  }
+  for (const pick of data.picks) {
+    checkPair(`profession-picks.json: "${pick.id}"`, pick.professions);
+    if (pick.alternative) checkPair(`profession-picks.json: "${pick.id}" alternative`, pick.alternative.professions);
   }
   return problems;
 }
@@ -242,6 +290,8 @@ export const dataset: Dataset = parseDataset({
   talents: rawTalents,
   builds: rawBuilds,
   races: rawRaces,
+  professions: rawProfessions,
+  picks: rawPicks,
 });
 
 const integrity = checkIntegrity(dataset);
@@ -249,7 +299,8 @@ if (integrity.length > 0) {
   throw new Error(`Content integrity problems:\n- ${integrity.join('\n- ')}`);
 }
 
-export const { sources, changes, milestones, abilities, facts, versions, changelog, watchlist, talents, builds, races } = dataset;
+export const { sources, changes, milestones, abilities, facts, versions, changelog, watchlist, talents, builds, races, professions, picks } =
+  dataset;
 
 const sourceIndex = new Map(sources.map((s) => [s.id, s]));
 const versionIndex = new Map(versions.map((v) => [v.id, v]));
@@ -286,3 +337,7 @@ const buildIndex = new Map(builds.map((b) => [b.id, b]));
 
 export const getTalent = (key: string) => lookup(talentIndex, 'talent', key);
 export const getBuild = (key: string) => lookup(buildIndex, 'build', key);
+
+const professionIndex = new Map(professions.map((p) => [p.id, p]));
+
+export const getProfession = (key: string) => lookup(professionIndex, 'profession', key);

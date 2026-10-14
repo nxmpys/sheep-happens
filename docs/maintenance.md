@@ -121,6 +121,7 @@ Una tarea programada de Claude Code se ejecuta en la nube cada **miércoles y vi
 - Corregir el texto de las páginas afectadas, en los dos idiomas.
 - Actualizar la hoja de ruta.
 - Actualizar las raciales (`races.json`) con cambios oficiales o de la comunidad, con su `updated` y su entrada en el historial.
+- Actualizar los datos de las profesiones (`professions.json`) si cambia un objeto, una receta o un objeto de campamento, con su `updated` y su entrada en el historial. Cambiar una valoración o una recomendación (`profession-picks.json`) va siempre a «Necesita tu decisión».
 - Si un cambio afecta a una build (`builds.json`), ajustarla solo si la corrección es evidente (por ejemplo, un talento que cambia de fila) y anotarlo en «Necesita tu decisión»; nunca crear builds nuevas.
 
 ### Lo que nunca hace (lo deja en «Necesita tu decisión»)

@@ -1,0 +1,291 @@
+---
+/**
+ * Build picker for the leveling guide: one card per build (goal, who it is for,
+ * levels, one strength and one weakness) that opens the build below, with its
+ * talents and point order. Without JavaScript the cards are jump links and every
+ * build is shown one after another, so the page stays complete for readers and
+ * search engines; with it they become tabs. The URL hash is the build id, so
+ * /leveling/#frost-leveling-dungeons opens that build.
+ */
+import BuildCard from './BuildCard.astro';
+import Icon from '../ui/Icon.astro';
+import { tb } from '../../i18n/builds';
+import { getLocale } from '../../i18n/locale';
+import { builds, getBuild } from '../../lib/data';
+import { levelingStatus } from '../../lib/leveling';
+
+interface Props {
+  /** Builds to offer, in display order. */
+  ids: string[];
+  /** Build selected when the page opens without a hash. Defaults to the first one. */
+  recommended?: string;
+}
+
+const { ids, recommended = ids[0] } = Astro.props;
+const locale = getLocale(Astro);
+const list = ids.map((id) => getBuild(id));
+const beta = !levelingStatus(builds).complete;
+---
+
+<build-picker data-default={recommended}>
+  <p class="picker__hint" data-pagefind-ignore>{tb(locale, 'picker.hint')}</p>
+  <div class="picker" data-tabs aria-label={tb(locale, 'picker.label')}>
+    {
+      list.map((build) => {
+        const school = build.spec === 'hybrid' ? 'baseline' : build.spec;
+        const upside = build.upside ?? build.strengths[0];
+        const downside = build.downside ?? build.weaknesses[0];
+        return (
+          <a class={`pick school-${school}`} href={`#${build.id}`} id={`pick-${build.id}`} data-tab={build.id}>
+            <span class="pick__top">
+              <Icon name={build.spec === 'hybrid' ? 'frostfire' : build.spec} size={20} class="pick__icon" />
+              <span class="pick__name" id={`pick-${build.id}-name`}>
+                {build.name[locale]}
+              </span>
+              <Icon name="verified" size={20} class="pick__check" />
+            </span>
+            <span class="pick__chips" data-pagefind-ignore>
+              {beta && <span class="chip pick__beta">{tb(locale, 'leveling.beta')}</span>}
+              <span class="chip">{tb(locale, 'build.levels', { from: build.fromLevel ?? 1, to: build.level })}</span>
+              {build.id === recommended && <span class="chip pick__recommended">{tb(locale, 'picker.recommended')}</span>}
+            </span>
+            <span class="pick__facts" id={`pick-${build.id}-desc`}>
+              {build.goal && (
+                <span class="pick__goal">
+                  <span class="pick__label">{tb(locale, 'picker.goal')}:</span> {build.goal[locale]}
+                </span>
+              )}
+              {build.profile && (
+                <span>
+                  <span class="pick__label">{tb(locale, 'picker.profile')}:</span> {build.profile[locale]}
+                </span>
+              )}
+              {upside && (
+                <span class="pick__pro">
+                  <span class="pick__label">{tb(locale, 'picker.pro')}:</span> {upside[locale]}
+                </span>
+              )}
+              {downside && (
+                <span class="pick__con">
+                  <span class="pick__label">{tb(locale, 'picker.con')}:</span> {downside[locale]}
+                </span>
+              )}
+            </span>
+          </a>
+        );
+      })
+    }
+  </div>
+
+  {
+    list.map((build) => (
+      <div class="picker__panel" id={`panel-${build.id}`} data-panel={build.id}>
+        <BuildCard id={build.id} level="h3" open hideGuideLink />
+      </div>
+    ))
+  }
+</build-picker>
+
+<script>
+  class BuildPicker extends HTMLElement {
+    private tabs: HTMLAnchorElement[] = [];
+    private panels: HTMLElement[] = [];
+
+    connectedCallback() {
+      this.tabs = [...this.querySelectorAll<HTMLAnchorElement>('[data-tab]')];
+      this.panels = [...this.querySelectorAll<HTMLElement>('[data-panel]')];
+      this.querySelector('[data-tabs]')?.setAttribute('role', 'tablist');
+      for (const tab of this.tabs) {
+        const id = tab.dataset.tab!;
+        tab.setAttribute('role', 'tab');
+        tab.setAttribute('aria-controls', `panel-${id}`);
+        tab.setAttribute('aria-labelledby', `pick-${id}-name`);
+        tab.setAttribute('aria-describedby', `pick-${id}-desc`);
+        tab.addEventListener('click', (event) => {
+          event.preventDefault();
+          this.select(id, { updateUrl: true, reveal: true });
+        });
+        tab.addEventListener('keydown', (event) => this.onKey(event, tab));
+      }
+      for (const panel of this.panels) {
+        panel.setAttribute('role', 'tabpanel');
+        panel.setAttribute('aria-labelledby', `pick-${panel.dataset.panel}-name`);
+      }
+      this.classList.add('is-enhanced');
+
+      const fromHash = this.buildFromHash();
+      this.select(fromHash ?? this.dataset.default ?? this.tabs[0]!.dataset.tab!, {});
+      // The browser jumped to the hash before the other builds were hidden.
+      if (fromHash) this.scrollToHash();
+      window.addEventListener('hashchange', () => {
+        const id = this.buildFromHash();
+        if (id) {
+          this.select(id, {});
+          this.scrollToHash();
+        }
+      });
+    }
+
+    /** The build whose panel contains the element named by the URL hash, if any. */
+    private buildFromHash(): string | undefined {
+      const hash = decodeURIComponent(location.hash.slice(1));
+      if (!hash) return undefined;
+      const panel = document.getElementById(hash)?.closest<HTMLElement>('[data-panel]');
+      return panel && this.contains(panel) ? panel.dataset.panel : undefined;
+    }
+
+    private scrollToHash() {
+      document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView({ block: 'start' });
+    }
+
+    private onKey(event: KeyboardEvent, tab: HTMLAnchorElement) {
+      const index = this.tabs.indexOf(tab);
+      const last = this.tabs.length - 1;
+      const target =
+        event.key === 'ArrowRight' || event.key === 'ArrowDown'
+          ? index === last ? 0 : index + 1
+          : event.key === 'ArrowLeft' || event.key === 'ArrowUp'
+            ? index === 0 ? last : index - 1
+            : event.key === 'Home'
+              ? 0
+              : event.key === 'End'
+                ? last
+                : undefined;
+      if (target === undefined) return;
+      event.preventDefault();
+      const next = this.tabs[target]!;
+      this.select(next.dataset.tab!, { updateUrl: true });
+      next.focus();
+    }
+
+    private select(id: string, { updateUrl = false, reveal = false }: { updateUrl?: boolean; reveal?: boolean }) {
+      for (const tab of this.tabs) {
+        const selected = tab.dataset.tab === id;
+        tab.setAttribute('aria-selected', String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+      }
+      for (const panel of this.panels) panel.hidden = panel.dataset.panel !== id;
+      if (updateUrl) history.replaceState(null, '', `${location.pathname}${location.search}#${id}`);
+      if (reveal) {
+        // On narrow screens the build opens far below the cards: bring it into view.
+        const panel = this.panels.find((p) => p.dataset.panel === id);
+        if (panel && panel.getBoundingClientRect().top > window.innerHeight * 0.75) {
+          const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          panel.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+        }
+      }
+    }
+  }
+
+  customElements.define('build-picker', BuildPicker);
+</script>
+
+<style>
+  build-picker {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .picker__hint {
+    margin: 0;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .picker {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+    gap: var(--space-3);
+  }
+  .pick {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-width: 0;
+    padding: var(--space-3) var(--space-4) var(--space-4);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--school);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+    color: var(--text);
+    text-decoration: none;
+  }
+  .pick:hover {
+    border-color: var(--border-strong);
+    border-top-color: var(--school);
+    background: var(--surface-2);
+    color: var(--text);
+  }
+  .pick:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .pick[aria-selected='true'] {
+    border-color: var(--school);
+    background: var(--school-soft);
+    box-shadow: 0 0 0 1px var(--school);
+  }
+  .pick__top {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  .pick :global(.pick__icon) {
+    flex-shrink: 0;
+    margin-top: 0.15em;
+    color: var(--school);
+  }
+  .pick__name {
+    flex: 1;
+    font-weight: 700;
+    font-size: var(--step-0);
+    line-height: 1.3;
+  }
+  .pick :global(.pick__check) {
+    display: none;
+    flex-shrink: 0;
+    color: var(--school);
+  }
+  .pick[aria-selected='true'] :global(.pick__check) {
+    display: block;
+  }
+  .pick__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+  .pick__beta {
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .pick__recommended {
+    border-color: var(--status-verified);
+    color: var(--status-verified);
+    font-weight: 600;
+  }
+  .pick__facts {
+    display: grid;
+    gap: var(--space-1);
+    font-size: var(--step--1);
+    line-height: 1.45;
+    color: var(--text-muted);
+  }
+  .pick__goal {
+    color: var(--text);
+  }
+  .pick__label {
+    font-weight: 700;
+    color: var(--text);
+  }
+  .picker__panel[hidden] {
+    display: none;
+  }
+  .picker__panel {
+    min-width: 0;
+  }
+  /* Without JavaScript every build is shown in turn: keep them apart. */
+  build-picker:not(.is-enhanced) .picker__panel + .picker__panel {
+    margin-top: var(--space-4);
+  }
+</style>

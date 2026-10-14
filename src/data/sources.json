@@ -344,5 +344,216 @@
     "kind": "press",
     "published": "2026-10-08",
     "accessed": "2026-10-13"
+  },
+  {
+    "id": "blizzard-forever-deep-dive-recap",
+    "title": "World of Warcraft: Forever Deep Dive Panel Recap",
+    "publisher": "Blizzard Entertainment",
+    "url": "https://worldofwarcraft.blizzard.com/en-us/news/24303313",
+    "kind": "official",
+    "published": "2026-09-13",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Profesiones: más de 600 recetas nuevas, comida con bonificación de experiencia, campamentos con tres objetos por profesión (el primero a 20 de habilidad) cuyas mejoras no se acumulan con las de clase, y planos que sueltan jefes de mazmorra. Legado: Bountiful Harvest y Reagent Economy.",
+      "en": "Professions: 600+ new recipes, food with an experience bonus, camps with three objects per profession (the first at skill 20) whose buffs do not stack with class buffs, and blueprints dropped by dungeon bosses. Legacy: Bountiful Harvest and Reagent Economy."
+    }
+  },
+  {
+    "id": "wowhead-forever-professions-db",
+    "title": "Forever profession spells, recipes and items",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/spells/professions",
+    "kind": "tool",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Base de datos extraída del cliente de la beta (1.60.1): recetas de cada profesión, qué es nuevo en Forever y las fichas de los objetos (ligado, nivel, estadísticas, requisitos). Las cifras pueden cambiar antes del lanzamiento.",
+      "en": "Database mined from the beta client (1.60.1): each profession's recipes, what is new in Forever and item tooltips (binding, level, stats, requirements). Numbers may change before launch."
+    }
+  },
+  {
+    "id": "warcrafttavern-professions",
+    "title": "Professions Overview",
+    "publisher": "Warcraft Tavern",
+    "url": "https://www.warcrafttavern.com/forever/guides/professions/",
+    "kind": "community",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Nueve profesiones principales y tres secundarias, dos principales por personaje, sin Joyería, y los objetos de campamento de cada profesión con la mejora de clase que sustituyen.",
+      "en": "Nine primary and three secondary professions, two primary professions per character, no Jewelcrafting, and each profession's camp objects with the class buff they replace."
+    }
+  },
+  {
+    "id": "warcrafttavern-camping-objects",
+    "title": "Camping Objects & Buffs",
+    "publisher": "Warcraft Tavern",
+    "url": "https://www.warcrafttavern.com/forever/guides/camping-objects-buffs/",
+    "kind": "community",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Los tres objetos de campamento de cada profesión (20, 140 y 300 de habilidad), qué hace cada uno y con qué mejora de clase no se acumula.",
+      "en": "Each profession's three camp objects (skill 20, 140 and 300), what each does and which class buff it does not stack with."
+    }
+  },
+  {
+    "id": "method-camping",
+    "title": "Camping In WoW Forever: How It All Works & All Profession Buffs",
+    "publisher": "Method",
+    "url": "https://www.method.gg/wow-forever/camping-in-wow-forever-how-it-all-works-all-profession-buffs",
+    "kind": "community",
+    "published": "2026-10-07",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Cada jugador solo puede poner un objeto en una hoguera; las mejoras de campamento no se acumulan con las de clase.",
+      "en": "Each player can place only one object at a campfire; camp buffs do not stack with class buffs."
+    }
+  },
+  {
+    "id": "zockify-professions",
+    "title": "WoW Forever Professions: All Changes, Bonuses & New Recipes",
+    "publisher": "Zockify",
+    "url": "https://www.zockify.com/forever/professions/",
+    "kind": "community",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Sin profesiones nuevas (la Investigación del Mago aparece en la ventana de profesiones) y un máximo de dos principales más las tres secundarias. Las bonificaciones pasivas tipo Mixology no aparecen en los datos de la beta.",
+      "en": "No new professions (Mage Research shows in the professions window) and at most two primary plus all three secondary professions. Passive bonuses such as Mixology are not in the beta data."
+    }
+  },
+  {
+    "id": "warcrafttavern-mage-guide",
+    "title": "WoW Forever Mage Guide: Talent Builds, Races, Research & Changes",
+    "publisher": "Warcraft Tavern",
+    "url": "https://www.warcrafttavern.com/forever/guides/mage/",
+    "kind": "community",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Recomienda Sastrería y Encantamiento para el Mago; Ingeniería por sus consumibles para PvE y JcJ, y Alquimia para ganar oro.",
+      "en": "Recommends Tailoring and Enchanting for Mages; Engineering for its PvE and PvP consumables, and Alchemy to make gold."
+    }
+  },
+  {
+    "id": "method-mage-leveling",
+    "title": "WoW Forever Mage Leveling Guide & Talents",
+    "publisher": "Method",
+    "url": "https://www.method.gg/wow-forever/wow-forever-mage-leveling-guide-and-talents",
+    "kind": "community",
+    "published": "2026-10-09",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Para subir de nivel: Sastrería (equipo ligado con poder con hechizos desde el nivel 10) y Encantamiento (varitas y armas ligadas); Cocina da comida con experiencia y Primeros auxilios saca de apuros.",
+      "en": "For leveling: Tailoring (bound gear with spell power from level 10) and Enchanting (bound wands and weapons); Cooking gives experience food and First Aid gets you out of trouble."
+    }
+  },
+  {
+    "id": "warcrafttavern-tailoring",
+    "title": "Tailoring Overview: Cloth, Patterns & Bonuses",
+    "publisher": "Warcraft Tavern",
+    "url": "https://www.warcrafttavern.com/forever/guides/tailoring/",
+    "kind": "community",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Equipo por escuela de magia con el Favor de mercader, patrones que caen en mazmorras de nivel bajo y bolsas de componentes para el nuevo hueco de bolsa.",
+      "en": "Gear by school of magic for Merchant's Favor, patterns that drop in low-level dungeons and reagent bags for the new bag slot."
+    }
+  },
+  {
+    "id": "warcrafttavern-enchanting",
+    "title": "Enchanting Overview: Disenchanting, Formulas & Bonuses",
+    "publisher": "Warcraft Tavern",
+    "url": "https://www.warcrafttavern.com/forever/guides/enchanting/",
+    "kind": "community",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Varitas con poder con hechizos desde el nivel 5, bastones y orbes nuevos, encantamientos de collar y la sinergia con Sastrería al desencantar.",
+      "en": "Wands with spell power from level 5, new staves and orbs, necklace enchants and the synergy with Tailoring through disenchanting."
+    }
+  },
+  {
+    "id": "icyveins-forever-frost",
+    "title": "World of Warcraft: Forever Frost Mage Guide",
+    "publisher": "Icy Veins",
+    "url": "https://www.icy-veins.com/wow-forever/frost-mage-ranged-dps-pve-guide",
+    "kind": "community",
+    "published": "2026-10-01",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Build de Escarcha de nivel 30 (21 puntos y extras con Talented), prioridades con Frostbite y Dedos de Escarcha, y consejos de leveo (varitas, misiones de mazmorra, regla de los 5 segundos). Teoría para la beta.",
+      "en": "Level 30 Frost build (21 points plus Talented extras), priorities with Frostbite and Fingers of Frost, and leveling tips (wands, dungeon quests, five-second rule). Beta theorycraft."
+    }
+  },
+  {
+    "id": "mobalytics-mage-leveling",
+    "title": "Mage Leveling Guide (Level 1-30) - WoW Forever",
+    "publisher": "Mobalytics",
+    "url": "https://mobalytics.gg/wow-forever/classes/mage-leveling-guide",
+    "kind": "community",
+    "published": "2026-10-13",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Recomienda Escarcha para subir y una build 0/0/21 con Dedos de Escarcha a nivel 30. Guía en curso para la beta.",
+      "en": "Recommends Frost for leveling and a 0/0/21 build with Fingers of Frost at level 30. Work in progress for the beta."
+    }
+  },
+  {
+    "id": "mobalytics-frost",
+    "title": "Frost Mage Guide - Talents, Rotations, Races & More - WoW Forever",
+    "publisher": "Mobalytics",
+    "url": "https://mobalytics.gg/wow-forever/classes/frost-mage-guide",
+    "kind": "community",
+    "published": "2026-10-09",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Build de nivel 30 con Bloqueo de hielo, consejos para mazmorras y la valoración de que el farmeo en área es más difícil pero viable con práctica, sin datos que lo respalden.",
+      "en": "Level 30 build with Ice Block, dungeon tips and the view that AoE farming is harder but viable with practice, without data to back it."
+    }
+  },
+  {
+    "id": "wowforeverbuilds-mage-leveling",
+    "title": "WoW Forever Mage Leveling 1–30: Frost Build & Talents",
+    "publisher": "WoW Forever Builds",
+    "url": "https://wowforeverbuilds.com/guide/beta-20-frost-mage-leveling",
+    "kind": "community",
+    "published": "2026-10-10",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Orden de puntos de Escarcha del 10 al 30, marcado como teoría sin probar. Su guía de farmeo en área usa el 65 % de ralentización de Ventisca mejorada de Classic, no el 40 % de Forever, así que no la seguimos.",
+      "en": "Frost point order from 10 to 30, marked as untested theorycraft. Its AoE guide uses Classic's 65% Improved Blizzard slow, not Forever's 40%, so we do not follow it."
+    }
+  },
+  {
+    "id": "icyveins-dungeon-xp",
+    "title": "WoW Forever Cuts Dungeon Kill XP but Makes Dungeon Quests More Rewarding",
+    "publisher": "Icy Veins",
+    "url": "https://www.icy-veins.com/wow/news/wow-forever-cuts-dungeon-kill-xp-but-makes-dungeon-quests-more-rewarding/",
+    "kind": "community",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Cita a Kris Zierhut (diseñador principal de Forever) en una entrevista: mucha menos experiencia por matar en mazmorras y mucha más por sus misiones, para que repetir la misma mazmorra no sea lo óptimo.",
+      "en": "Quotes Kris Zierhut (Forever principal designer) in an interview: much less experience from dungeon kills and much more from dungeon quests, so repeating the same dungeon is not optimal."
+    }
+  },
+  {
+    "id": "icyveins-classic-frost-leveling",
+    "title": "WoW Classic Single-Target Frost Mage Leveling Talent Build from 1 to 60",
+    "publisher": "Icy Veins",
+    "url": "https://www.icy-veins.com/wow-classic/single-target-frost-mage-leveling-talent-build-from-1-to-60",
+    "kind": "classic-reference",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Orden de talentos y hechizos por nivel de Classic Era. Útil para comparar, no describe Forever.",
+      "en": "Classic Era talent and spell order by level. Useful for comparison; it does not describe Forever."
+    }
+  },
+  {
+    "id": "icyveins-classic-aoe-leveling",
+    "title": "WoW Classic AoE Grinding Frost Mage Leveling Talent Build from 1 to 60",
+    "publisher": "Icy Veins",
+    "url": "https://icy-veins.com/wow-classic/aoe-grinding-frost-mage-leveling-talent-build-from-1-to-60",
+    "kind": "classic-reference",
+    "accessed": "2026-10-14",
+    "notes": {
+      "es": "Farmeo en área en Classic Era: talentos imprescindibles, técnica y primeras zonas a partir del nivel 22. Se basa en la ralentización de Classic, que Forever ha reducido.",
+      "en": "AoE grinding in Classic Era: essential talents, technique and first spots from level 22. It relies on Classic's slow, which Forever reduced."
+    }
   }
 ]

@@ -1,0 +1,263 @@
+[
+  {
+    "id": "overall",
+    "goal": {
+      "es": "Mejor combinación general",
+      "en": "Best overall"
+    },
+    "professions": [
+      "tailoring",
+      "enchanting"
+    ],
+    "why": {
+      "es": "Es la única pareja que te da equipo propio, ligado y con daño de hechizos en casi todos los huecos desde el nivel 10: la armadura con Sastrería y el bastón u orbe, la varita y un abalorio con Encantamiento.",
+      "en": "It is the only pair that gives you your own bound gear with spell damage in almost every slot from level 10: armor from Tailoring, and the staff or orb, wand and a trinket from Enchanting."
+    },
+    "advantage": {
+      "es": "El mayor aumento de daño mientras subes y en mazmorras, sin depender del botín.",
+      "en": "The biggest damage boost while leveling and in dungeons, without relying on loot."
+    },
+    "sacrifice": {
+      "es": "Da poco oro al principio y te obliga a reunir Favor de mercader para las recetas.",
+      "en": "It earns little gold early and makes you gather Merchant’s Favor for the recipes."
+    },
+    "profile": {
+      "es": "Quien quiere el Mago más fuerte posible y juega sobre todo PvE.",
+      "en": "Players who want the strongest possible Mage and mostly play PvE."
+    },
+    "alternative": {
+      "professions": [
+        "tailoring",
+        "alchemy"
+      ],
+      "when": {
+        "es": "Si prefieres consumibles y oro a las armas ligadas, o vas a hacer bandas cada semana.",
+        "en": "If you prefer consumables and gold to bound weapons, or you will raid every week."
+      }
+    },
+    "status": "analysis",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "warcrafttavern-mage-guide",
+      "method-mage-leveling"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "leveling",
+    "goal": {
+      "es": "Subir de nivel",
+      "en": "Leveling"
+    },
+    "professions": [
+      "tailoring",
+      "enchanting"
+    ],
+    "why": {
+      "es": "La misma pareja que la general, porque casi todo su valor exclusivo está entre los niveles 10 y 55: justo lo que dura la subida.",
+      "en": "The same pair as the overall pick, because almost all of its exclusive value sits between levels 10 and 55: exactly the leveling range."
+    },
+    "advantage": {
+      "es": "Subes con equipo de tu escuela desde el nivel 10 y un bastón de +34 de daño a nivel 25.",
+      "en": "You level with gear for your school from level 10 and a +34 damage staff at level 25."
+    },
+    "sacrifice": {
+      "es": "Menos oro mientras subes.",
+      "en": "Less gold while leveling."
+    },
+    "profile": {
+      "es": "Quien quiere subir rápido y puede esperar para ganar oro.",
+      "en": "Players who want to level fast and can wait to make gold."
+    },
+    "alternative": {
+      "professions": [
+        "tailoring",
+        "skinning"
+      ],
+      "when": {
+        "es": "Si necesitas oro mientras subes: Desuello no te desvía del camino y su Camp Chair da crítico al grupo.",
+        "en": "If you need gold while leveling: Skinning keeps you on your route and its Camp Chair gives the group crit."
+      }
+    },
+    "status": "analysis",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "method-mage-leveling",
+      "warcrafttavern-camping-objects"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "pve",
+    "goal": {
+      "es": "Mazmorras y bandas a nivel 60",
+      "en": "Level 60 dungeons and raids"
+    },
+    "professions": [
+      "tailoring",
+      "alchemy"
+    ],
+    "why": {
+      "es": "A nivel 60 lo exclusivo de Encantamiento pierde peso. Sastrería conserva la Robe of the Archmage, y Alquimia abarata frascos, elixires y pociones de maná y añade el Alchemist’s Stone.",
+      "en": "At level 60 Enchanting’s exclusive items matter less. Tailoring keeps Robe of the Archmage, and Alchemy makes flasks, elixirs and mana potions cheaper and adds Alchemist’s Stone."
+    },
+    "advantage": {
+      "es": "Consumibles de banda a precio de coste y un 20 % más de efecto en tus pociones.",
+      "en": "Raid consumables at cost and 20% more effect from your potions."
+    },
+    "sacrifice": {
+      "es": "Si subiste con Encantamiento, cambiar supone empezar Alquimia desde cero.",
+      "en": "If you leveled with Enchanting, switching means starting Alchemy from scratch."
+    },
+    "profile": {
+      "es": "Quien hará bandas cada semana a nivel 60.",
+      "en": "Players who will raid every week at level 60."
+    },
+    "alternative": {
+      "professions": [
+        "tailoring",
+        "engineering"
+      ],
+      "when": {
+        "es": "Si tu banda usa explosivos o también haces JcJ: gafas con daño de hechizos y cargas de zapador, a cambio de comprar los consumibles.",
+        "en": "If your raid uses explosives or you also do PvP: spell damage goggles and sapper charges, at the cost of buying your consumables."
+      }
+    },
+    "status": "analysis",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "warcrafttavern-mage-guide"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "pvp",
+    "goal": {
+      "es": "JcJ (PvP)",
+      "en": "PvP"
+    },
+    "professions": [
+      "engineering",
+      "tailoring"
+    ],
+    "why": {
+      "es": "Ingeniería da el control y los escapes que deciden un duelo; Sastrería, el equipo con Aguante para llegar a 60 y la Robe of the Archmage.",
+      "en": "Engineering gives the control and escapes that decide a duel; Tailoring, the Stamina gear to reach 60 and Robe of the Archmage."
+    },
+    "advantage": {
+      "es": "Herramientas que nadie más puede usar: carga de zapador, red, botas cohete y reflectores.",
+      "en": "Tools nobody else can use: sapper charge, net, rocket boots and reflectors."
+    },
+    "sacrifice": {
+      "es": "Ingeniería es cara y aporta poco mientras subes.",
+      "en": "Engineering is expensive and adds little while leveling."
+    },
+    "profile": {
+      "es": "Quien jugará duelos, campos de batalla o JcJ de mundo a nivel 60.",
+      "en": "Players who will duel, run battlegrounds or play world PvP at level 60."
+    },
+    "alternative": {
+      "professions": [
+        "engineering",
+        "alchemy"
+      ],
+      "when": {
+        "es": "Si ya tienes equipo y juegas mucho JcJ: Free Action Potion y Limited Invulnerability Potion a precio de coste, y el Alchemist’s Stone.",
+        "en": "If you already have gear and play a lot of PvP: Free Action Potion and Limited Invulnerability Potion at cost, plus Alchemist’s Stone."
+      }
+    },
+    "status": "analysis",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "warcrafttavern-mage-guide"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "gold",
+    "goal": {
+      "es": "Farmeo y oro",
+      "en": "Farming and gold"
+    },
+    "professions": [
+      "herbalism",
+      "mining"
+    ],
+    "why": {
+      "es": "Dos profesiones de recolección no cuestan nada, producen desde el nivel 1 y cubren los dos tipos de nodo en el mismo recorrido. En Forever el farmeo masivo de enemigos es más difícil, así que recolectar es un ingreso más estable.",
+      "en": "Two gathering professions cost nothing, pay from level 1 and cover both node types on the same route. In Forever mass farming of enemies is harder, so gathering is a steadier income."
+    },
+    "advantage": {
+      "es": "Oro constante sin invertir.",
+      "en": "Steady gold with no investment."
+    },
+    "sacrifice": {
+      "es": "Ninguna ventaja de combate y, según la comunidad, ningún punto de Legado por subir de habilidad.",
+      "en": "No combat edge and, according to the community, no Legacy points for skill milestones."
+    },
+    "profile": {
+      "es": "Quien quiere oro para la montura, la subasta o un segundo personaje.",
+      "en": "Players who want gold for a mount, the Auction House or an alt."
+    },
+    "alternative": {
+      "professions": [
+        "herbalism",
+        "alchemy"
+      ],
+      "when": {
+        "es": "Más beneficio por hierba vendiendo consumibles y transmutaciones a nivel 60, si te compensa el tiempo de fabricar y vender.",
+        "en": "More profit per herb by selling consumables and transmutes at level 60, if crafting and selling is worth your time."
+      }
+    },
+    "status": "analysis",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "warcrafttavern-legacy",
+      "warcrafttavern-mage-guide"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "casual",
+    "goal": {
+      "es": "Casual o sin decidir",
+      "en": "Casual or undecided"
+    },
+    "professions": [
+      "tailoring",
+      "herbalism"
+    ],
+    "why": {
+      "es": "Sastrería se sube con la tela que ya recoges y te da equipo; Herboristería da oro sin gastar nada. Juntas cubren lo básico sin exigir mucho tiempo.",
+      "en": "Tailoring levels with the cloth you already loot and gives you gear; Herbalism earns gold without spending anything. Together they cover the basics without much time."
+    },
+    "advantage": {
+      "es": "Equipo y oro con poco esfuerzo, y una profesión fácil de cambiar cuando sepas qué te gusta.",
+      "en": "Gear and gold with little effort, and a profession that is easy to swap once you know what you like."
+    },
+    "sacrifice": {
+      "es": "Renuncias a las armas ligadas de Encantamiento y a las herramientas de JcJ.",
+      "en": "You give up Enchanting’s bound weapons and the PvP tools."
+    },
+    "profile": {
+      "es": "Quien juega pocas horas o aún no sabe qué contenido le gustará.",
+      "en": "Players with little time, or who do not know yet which content they will enjoy."
+    },
+    "alternative": {
+      "professions": [
+        "tailoring",
+        "skinning"
+      ],
+      "when": {
+        "es": "Si subes matando muchas bestias: no te desvías del camino y el Camp Chair ayuda al grupo.",
+        "en": "If you level by killing lots of beasts: no detours, and the Camp Chair helps the group."
+      }
+    },
+    "status": "analysis",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "warcrafttavern-camping-objects"
+    ],
+    "updated": "2026-10-14"
+  }
+]

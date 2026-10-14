@@ -49,6 +49,24 @@
 | `warcrafttavern-legacy` | [Warcraft Tavern — Legacy System Overview](https://www.warcrafttavern.com/forever/guides/legacy/) | community | Sistema de Legado (16 puntos en el lanzamiento, árboles) | Detalles de beta |
 | `seemeta-talents` | [Seemeta — WoW Forever Talent Calculator](https://seemeta.com/en/wow-forever/talent-calculator) | tool | 51 puntos (1 por nivel desde el 10); cita "1.60.1 beta" | Datos extraídos de la beta, no oficiales |
 
+### Guía de leveo (consultadas el 2026-10-14)
+
+| ID | Fuente | Tipo | Qué respalda | Limitaciones |
+|---|---|---|---|---|
+| `wowhead-forever-talent-calc` | [Wowhead — Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) | tool | Descripción de cada rango de talento y lista del instructor (niveles de los hechizos y rangos) | Datos del cliente de la beta, no oficiales; su aviso de «datos de la BlizzCon» está desfasado |
+| `icyveins-forever-frost` | [Icy Veins — Forever Frost Mage Guide](https://www.icy-veins.com/wow-forever/frost-mage-ranged-dps-pve-guide) | community | Build de nivel 30, extras con Talented, prioridades, consejos de leveo | Teoría para la beta (1 oct) |
+| `mobalytics-mage-leveling` | [Mobalytics — Mage Leveling Guide (1-30)](https://mobalytics.gg/wow-forever/classes/mage-leveling-guide) | community | Escarcha como rama de leveo; build 0/0/21 | Guía en curso |
+| `mobalytics-frost` | [Mobalytics — Frost Mage Guide](https://mobalytics.gg/wow-forever/classes/frost-mage-guide) | community | Build con Bloqueo de hielo; mazmorras; área «viable con práctica» | Sin datos que respalden lo del área |
+| `method-mage-leveling` | [Method — Mage Leveling Guide](https://www.method.gg/wow-forever/wow-forever-mage-leveling-guide-and-talents) | community | Escarcha para subir; hechizos por nivel | No se cargó su orden de talentos |
+| `wowforeverbuilds-mage-leveling` | [WoW Forever Builds — Frost 1-30](https://wowforeverbuilds.com/guide/beta-20-frost-mage-leveling) | community | Orden de puntos alternativo | Teoría sin probar; su guía de área usa valores de Classic (descartada) |
+| `icyveins-dungeon-xp` | [Icy Veins — Dungeon kill XP cut, quests more rewarding](https://www.icy-veins.com/wow/news/wow-forever-cuts-dungeon-kill-xp-but-makes-dungeon-quests-more-rewarding/) | community | Intención de diseño de la experiencia de mazmorras (entrevista a Kris Zierhut) | Cita una entrevista que no hemos leído |
+| `icyveins-classic-frost-leveling` | [Icy Veins — Classic Single-Target Frost Leveling](https://www.icy-veins.com/wow-classic/single-target-frost-mage-leveling-talent-build-from-1-to-60) | classic-reference | Comparación con el orden de Classic | No describe Forever |
+| `icyveins-classic-aoe-leveling` | [Icy Veins — Classic AoE Grinding Frost](https://icy-veins.com/wow-classic/aoe-grinding-frost-mage-leveling-talent-build-from-1-to-60) | classic-reference | Desde cuándo y cómo se farmeaba en área en Classic | Se basa en ralentizaciones que Forever ha reducido |
+
+### Guía de profesiones (consultadas el 2026-10-14)
+
+Las doce fuentes de la página de Profesiones (una oficial de Blizzard, la base de datos de Forever de Wowhead y guías de la comunidad), qué respalda cada una y lo que queda por verificar están en [professions-research.md](professions-research.md). Ninguna es una fuente de Classic.
+
 ## 4. Fuentes descartadas
 
 - **Wowhead Classic, Icy Veins Classic y guías de Classic Era o SoD:** son útiles como referencia de Classic, pero no describen Forever. Solo se usarían con `kind: classic-reference`.

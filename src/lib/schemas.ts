@@ -37,9 +37,11 @@ const sourceIds = z.array(id).min(1, 'every claim needs at least one source');
 const updated = isoDate.optional();
 
 /** Kinds of records a changelog entry can point at, as "kind:id". */
-export const REF_KINDS = ['change', 'milestone', 'ability', 'fact', 'source', 'build', 'race'] as const;
+export const REF_KINDS = ['change', 'milestone', 'ability', 'fact', 'source', 'build', 'race', 'profession', 'pick'] as const;
 export type RefKind = (typeof REF_KINDS)[number];
-const ref = z.string().regex(/^(change|milestone|ability|fact|source|build|race):[a-z0-9]+(?:-[a-z0-9]+)*$/, 'use "kind:id", e.g. "change:ice-lance"');
+const ref = z
+  .string()
+  .regex(/^(change|milestone|ability|fact|source|build|race|profession|pick):[a-z0-9]+(?:-[a-z0-9]+)*$/, 'use "kind:id", e.g. "change:ice-lance"');
 
 export const sourceSchema = z
   .object({
@@ -213,6 +215,27 @@ export const buildSchema = z
     legacyTalented: z.number().int().min(0).max(5).default(0),
     /** Talent id → rank. Validated against talents.json (ranks, rows, prerequisites). */
     points: z.record(id, z.number().int().min(1).max(5)),
+    /**
+     * Leveling builds: talent points in the order you spend them, one talent id per
+     * point. Point n arrives at level 9 + n (4 + n with Talented 5/5). The first
+     * points up to the build's level must add up to `points`; the rest, up to five,
+     * are the extra points of players with Talented. To extend a build to a higher
+     * level, raise `level`, append points here and update `points`.
+     */
+    order: z.array(id).max(51).optional(),
+    /** Why key points of `order` go where they go, by point number (1 = first point). */
+    orderNotes: z
+      .array(z.object({ point: z.number().int().min(1).max(51), text: localized }).strict())
+      .default([]),
+    /** First level the build is meant for (e.g. 22 for an AoE build). Defaults to 1. */
+    fromLevel: z.number().int().min(1).max(60).optional(),
+    /** Main goal in a few words, shown on the build picker. */
+    goal: localized.optional(),
+    /** Who should pick it, shown on the build picker. */
+    profile: localized.optional(),
+    /** Its main upside and downside in a few words, for the build picker. */
+    upside: localized.optional(),
+    downside: localized.optional(),
     /** Talents to highlight on the card (must have points). */
     keyTalents: z.array(id).max(5).default([]),
     /** One or two sentences: what the build does and when to pick it. */
@@ -231,7 +254,8 @@ export const buildSchema = z
     sources: sourceIds,
     updated,
   })
-  .strict();
+  .strict()
+  .refine((b) => b.orderNotes.length === 0 || b.order !== undefined, { message: 'orderNotes need an order' });
 export type Build = z.infer<typeof buildSchema>;
 
 export const racialSchema = z
@@ -264,6 +288,84 @@ export const raceSchema = z
   })
   .strict();
 export type Race = z.infer<typeof raceSchema>;
+
+/** Our rating of how much something helps a Mage (racials use the same scale). */
+export const RATINGS = ['high', 'medium', 'low', 'none'] as const;
+export type Rating = (typeof RATINGS)[number];
+const rating = z.enum(RATINGS);
+
+/** Two primary professions per character; every secondary one can be learned. */
+export const PROFESSION_KINDS = ['crafting', 'gathering', 'secondary'] as const;
+/** What a profession mostly gives a Mage: combat power, gold or convenience. */
+export const PROFESSION_EDGES = ['combat', 'economy', 'utility'] as const;
+
+export const professionSchema = z
+  .object({
+    id,
+    name: localized,
+    kind: z.enum(PROFESSION_KINDS),
+    edge: z.enum(PROFESSION_EDGES),
+    /** Primary professions: our rating per activity, with the reasons in the text fields. */
+    ratings: z
+      .object({ pve: rating, pvp: rating, leveling: rating, economy: rating, overall: rating })
+      .strict()
+      .optional(),
+    /** Secondary professions: how much to invest in it compared with other activities. */
+    priority: z.enum(['high', 'medium', 'low']).optional(),
+    /** Main benefit and main limitation, one line each (comparison table). */
+    benefit: localized,
+    limitation: localized,
+    /** One or two sentences: what it gives a Mage. */
+    summary: localized,
+    pros: z.array(localized).default([]),
+    cons: z.array(localized).default([]),
+    pve: localized,
+    pvp: localized,
+    /** Leveling and gold, when relevant. */
+    levelingEconomy: localized.optional(),
+    /** Best second primary profession and why. */
+    pair: z.object({ with: z.array(id).min(1).max(2), why: localized }).strict().optional(),
+    verdict: localized,
+    /** Items that back the analysis, with their Wowhead Forever id (names stay in English). */
+    items: z
+      .array(z.object({ name: z.string().min(1), wowhead: z.number().int().positive(), note: localized }).strict())
+      .default([]),
+    /** Reliability of the facts (effects, items); the ratings are always our analysis. */
+    status: z.enum(STATUSES),
+    sources: sourceIds,
+    updated,
+  })
+  .strict()
+  .refine((p) => (p.kind === 'secondary') === (p.priority !== undefined), {
+    message: 'secondary professions need a priority, and only they have one',
+  })
+  .refine((p) => p.kind === 'secondary' || (p.ratings !== undefined && p.pair !== undefined && p.pros.length > 0 && p.cons.length > 0), {
+    message: 'primary professions need ratings, pros, cons and a pair',
+  })
+  .refine((p) => p.kind !== 'secondary' || (p.ratings === undefined && p.pair === undefined), {
+    message: 'secondary professions do not take a primary slot: no ratings or pair',
+  });
+export type Profession = z.infer<typeof professionSchema>;
+
+/** A recommended pair of primary professions for one goal (overall, PvP, gold…). */
+export const professionPickSchema = z
+  .object({
+    id,
+    goal: localized,
+    professions: z.array(id).min(1).max(2),
+    why: localized,
+    advantage: localized,
+    sacrifice: localized,
+    /** The kind of player it suits. */
+    profile: localized,
+    /** A reasonable alternative and the situation that justifies it. */
+    alternative: z.object({ professions: z.array(id).min(1).max(2), when: localized }).strict().optional(),
+    status: z.enum(STATUSES),
+    sources: sourceIds,
+    updated,
+  })
+  .strict();
+export type ProfessionPick = z.infer<typeof professionPickSchema>;
 
 export const WATCH_TYPES = ['rss', 'discourse-topic', 'wago-builds', 'manual'] as const;
 

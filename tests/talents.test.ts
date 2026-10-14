@@ -2,11 +2,15 @@ import { describe, expect, it } from 'vitest';
 import { builds, checkIntegrity, dataset, talents, type Dataset } from '../src/lib/data';
 import {
   distributionLabel,
+  levelForPoint,
+  orderSteps,
   pointsAtLevel,
   pointsByTree,
+  pointsFromOrder,
   spentTalents,
   treeTalents,
   validateBuild,
+  validateOrder,
   wowheadBuildUrl,
   WOWHEAD_CALC,
 } from '../src/lib/talents';
@@ -82,6 +86,61 @@ describe('validateBuild', () => {
     const data: Dataset = structuredClone(dataset);
     data.builds[0]!.points = { ...data.builds[0]!.points, 'ice-barrier': 1 };
     expect(checkIntegrity(data).join('\n')).toMatch(/ice-barrier/);
+  });
+});
+
+describe('point orders', () => {
+  const solo = builds.find((b) => b.id === 'frost-leveling-solo')!;
+
+  it('gives each point its level, with and without Talented', () => {
+    expect(levelForPoint(1)).toBe(10);
+    expect(levelForPoint(21)).toBe(30);
+    expect(levelForPoint(1, 5)).toBe(5);
+    expect(levelForPoint(26, 5)).toBe(30);
+  });
+
+  it('adds up a prefix of the order into a build', () => {
+    expect(pointsFromOrder(['improved-frostbolt', 'improved-frostbolt', 'frostbite'])).toEqual({ 'improved-frostbolt': 2, frostbite: 1 });
+    expect(pointsFromOrder(['improved-frostbolt', 'frostbite'], 1)).toEqual({ 'improved-frostbolt': 1 });
+  });
+
+  it('accepts every shipped order and matches it to the build at its level', () => {
+    for (const build of builds.filter((b) => b.order)) {
+      expect(validateOrder(build.order!, build.points, build.level, talents, build.legacyTalented)).toEqual([]);
+      expect(pointsFromOrder(build.order!, pointsAtLevel(build.level, build.legacyTalented))).toEqual(build.points);
+    }
+  });
+
+  it('rejects a point spent before its row opens', () => {
+    const order = ['ice-lance', ...solo.order!.filter((_, i) => i !== 10)];
+    expect(validateOrder(order, solo.points, 30, talents).join()).toMatch(/point 1 \(ice-lance\): .*needs 10 points above it/);
+  });
+
+  it('rejects an order that does not reach the build or goes past Talented', () => {
+    expect(validateOrder(solo.order!.slice(0, 20), solo.points, 30, talents).join()).toMatch(/order has 20 points, but level 30 gives 21/);
+    expect(validateOrder([...solo.order!, 'arctic-reach'], solo.points, 30, talents).join()).toMatch(/even Talented 5\/5 gives 26/);
+    const swapped = [...solo.order!];
+    [swapped[20], swapped[22]] = [swapped[22]!, swapped[20]!];
+    expect(validateOrder(swapped, solo.points, 30, talents).join()).toMatch(/the first 21 points give/);
+  });
+
+  it('groups runs and keeps the Talented points apart', () => {
+    const steps = orderSteps(solo.order!, talents, 21);
+    expect(steps[0]).toMatchObject({ from: 1, to: 5, fromRank: 1, toRank: 5 });
+    expect(steps[0]!.talent.id).toBe('improved-frostbolt');
+    const fingers = steps.filter((s) => s.talent.id === 'fingers-of-frost');
+    expect(fingers.map((s) => [s.from, s.to, s.toRank])).toEqual([
+      [21, 21, 1],
+      [22, 22, 2],
+    ]);
+    expect(orderSteps(solo.order!, talents).filter((s) => s.talent.id === 'fingers-of-frost')).toHaveLength(1);
+  });
+
+  it('is enforced by the dataset integrity check', () => {
+    const data: Dataset = structuredClone(dataset);
+    const build = data.builds.find((b) => b.id === 'frost-leveling-solo')!;
+    build.order = build.order!.slice(0, 20);
+    expect(checkIntegrity(data).join('\n')).toMatch(/"frost-leveling-solo" order: order has 20 points/);
   });
 });
 

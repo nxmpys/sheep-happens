@@ -10,6 +10,7 @@ Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay q
 4. Builds: lo que más buscará la gente tras el lanzamiento.
 5. Razas: cuál elegir según para qué juegues.
 6. Mejoras de la experiencia: ideas para que la web sea más útil para aprender, consultar e informarse.
+7. Profesiones: qué revisar en la guía de profesiones.
 
 ## Cómo usar este documento
 
@@ -38,7 +39,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 
 ### Contenido de los niveles 31 a 60
 
-- [ ] Qué rama sube mejor de nivel (aviso pendiente en Nivelación).
+- [x] Qué rama sube mejor de nivel del 1 al 30: Escarcha, en la guía de leveo (`leveling`, 2026-10-14). Falta del 31 al 60, sobre todo Fuego con Descarga de Pirofrío.
 - [ ] Orden de los hechizos de área (Ventisca, Cono de frío, Deflagración Arcana, Flamestrike) y aperturas por rama (avisos pendientes en Combate).
 - [ ] Prioridad de estadísticas por rama y actividad, y cuánto golpe hace falta (Equipo).
 - [ ] Equipo por tramo de nivel, equipo antes de bandas y mejor equipo posible.
@@ -81,7 +82,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [ ] Inicio: preguntas frecuentes «¿Cuándo sale WoW Forever?» (fin de la beta y tope de 30) y «¿Cuál es la mejor rama para subir de nivel?».
 - [ ] Inicio: tarjeta de Equipo con «Pendiente hasta el lanzamiento» (`src/components/guide/QuestionCards.astro`).
 - [ ] Guía: «Forever sigue en beta» y «las notas de la beta añaden más cada semana».
-- [ ] Nivelación: resumen («la beta solo permite llegar al nivel 30»), el dato `beta` de la lista de datos, el aviso pendiente de qué rama elegir y la descripción SEO («qué falta por comprobar»).
+- [ ] Leveo: la guía es una BETA del 1 al 30 (aviso `LevelingStatus`, resumen, título, `seoTitle` y descripción con «1 a 30» y «BETA»). Al lanzar, revisar las tres builds y los valores sacados de la beta (Ventisca de rango 1 a 320 de maná, Cono de frío 40 % durante 6 s, probabilidades de Frostbite y Dedos de Escarcha) y las misiones de mazmorra. El aviso BETA solo desaparece cuando las builds lleguen al 60 (ver la sección 4).
 - [ ] Talentos: «nadie ha podido probarlas por encima del nivel 30» y el aviso pendiente de builds.
 - [ ] Combate: aviso «Análisis sin probar… sin acceso a los niveles 31 a 60».
 - [ ] Cambios: aviso «Información de beta».
@@ -117,7 +118,7 @@ La página «Duelos a nivel 30» (`builds-duel-30`) y sus dos builds son de la b
 Comprobar en el juego y marcar como «Oficial» o «Probado en juego», o corregir:
 
 - [ ] Datos de «Comunidad»: fecha de lanzamiento, razas, 51 puntos de talento y Legado.
-- [ ] Datos de «Referencia Classic»: tabla de niveles de Nivelación, cuadrícula de habilidades de la Guía y filas de los talentos decisivos.
+- [ ] Datos de «Referencia Classic» y de la beta: tabla de hechizos por nivel de Leveo (hoy «Comunidad», de la lista del instructor de la beta), cuadrícula de habilidades de la Guía y filas de los talentos decisivos.
 - [ ] Valores de los rangos intermedios de la calculadora de crítico (Fragmentos de hielo e Ignición).
 - [ ] Prioridades de Combate y análisis de las páginas de rama: de «Análisis» a «Probado en juego».
 
@@ -146,7 +147,7 @@ Forever añade contenido en todos los rangos de nivel:
 
 Muchos lectores no querrán leer la teoría: buscarán una build que funcione y cómo jugarla. Al principio, **builds de leveo y de farmeo AoE**; cuando la gente llegue a 60, de mazmorras, banda, PvP y duelos. El contenido en profundidad se queda para quien quiera entender el Mago.
 
-Bloqueado ahora por el tope de nivel 30 de la beta y por la falta de valores de los talentos.
+Del 1 al 30 ya está publicado como BETA (2026-10-14). Del 31 al 60 sigue bloqueado por el tope de nivel 30 de la beta y por la falta de valores oficiales de los talentos.
 
 ### Cómo debería ser
 
@@ -159,18 +160,21 @@ Bloqueado ahora por el tope de nivel 30 de la beta y por la falta de valores de 
   - «Cómo se juega» en 3 a 5 pasos, puntos fuertes y débiles, y guía en profundidad si la hay;
   - los objetos clave, si hacen falta;
   - estado de verificación y parche en que se comprobó.
-- [ ] Builds de leveo con el orden de puntos por tramos (10-20, 20-40 y 40-60): a nivel 40 llegan Descarga de Pirofrío y la doble especialización, y la build cambia.
-- [ ] En las builds por debajo del nivel 60, indicar si usan el perk de Legado Talented (`legacyTalented` en `builds.json`): adelanta hasta 5 puntos de talento y cambia el orden de puntos por nivel.
+- [x] Builds de leveo con el orden de puntos nivel a nivel (campo `order` en `builds.json`, tabla `TalentOrder` en cada tarjeta) y la columna «Con Talented»: los puntos extra del perk de Legado van al final del orden (hecho del 1 al 30 el 2026-10-14).
+- [x] Guía de leveo en la misma URL de Nivelación (`/es/nivelacion/`, `/en/leveling/`), con selector de builds (`BuildPicker`) y aviso de estado (`LevelingStatus`) (2026-10-14): en solitario (recomendada), mazmorras y área (experimental, desde el 22).
+- [ ] **Ampliar el leveo al 60**, sin crear páginas nuevas: en cada build de `leveling`, subir `level` a 60, añadir los puntos 22 a 51 a `order` (más notas en `orderNotes`) y actualizar `points`. A nivel 40 llegan Descarga de Pirofrío y la doble especialización: valorar una build híbrida o de Fuego para el 31-60. El aviso BETA y las etapas se actualizan solos (`src/lib/leveling.ts`) cuando **todas** las builds de leveo llegan al 60.
+- [ ] Probar en el juego las tres builds de leveo (sobre todo la de área, que es experimental) y pasarlas a `tested` o corregirlas.
+- [ ] Si una build necesita otro orden con Talented (no solo los mismos puntos antes), hoy no se puede expresar: habría que añadir un segundo orden.
 
 ### Orden de publicación
 
-1. [ ] Leveo y farmeo AoE (el día del lanzamiento o lo antes posible).
+1. [ ] Leveo y farmeo AoE: del 1 al 30 publicado como BETA el 2026-10-14; del 31 al 60, el día del lanzamiento o lo antes posible.
 2. [ ] Mazmorras.
 3. [ ] Banda, PvP y duelos (cuando haya gente a nivel 60).
 
 ### Opción antes del lanzamiento
 
-Con acceso a la beta se puede probar ya una build de leveo del 10 al 30: a nivel 30 hay 26 puntos con el perk de Legado Talented (21 sin él), suficientes para llegar al talento decisivo de 21 de una rama. Si el juego muestra las descripciones de todo el árbol, como en Classic, también se pueden leer algunos valores. Sería información de beta (marcada así y revisada al lanzar), pero la build de leveo estaría lista el primer día.
+Hecho en parte el 2026-10-14: las builds del 1 al 30 están razonadas con los valores de la calculadora de Wowhead (datos de la beta), pero sin probar en el servidor. Con acceso a la beta se puede probar ya una build de leveo del 10 al 30: a nivel 30 hay 26 puntos con el perk de Legado Talented (21 sin él), suficientes para llegar al talento decisivo de 21 de una rama. Si el juego muestra las descripciones de todo el árbol, como en Classic, también se pueden leer algunos valores. Sería información de beta (marcada así y revisada al lanzar), pero la build de leveo estaría lista el primer día.
 
 ## 5. Razas: cuál elegir según para qué juegues
 
@@ -217,7 +221,7 @@ Al hacer una idea, márcala y anota dónde está.
 
 - [ ] **Guía «Mi primer Mago» del 1 al 20** (casi ya): qué entrenar en cada nivel, cuándo beber, Nova de Escarcha y Blink, y errores típicos.
 - [ ] **Planificador de talentos en profundidad** (con datos): puntos con clic, requisitos y enlace para compartir, con cada talento explicado. De momento, cada build tiene su vista de calculadora y enlace a Wowhead (2026-10-13); el planificador propio espera a los valores definitivos.
-- [ ] **Orden de puntos por nivel** en las builds de leveo, del 10 al 60 (con datos).
+- [ ] **Orden de puntos por nivel** en las builds de leveo, del 10 al 60 (con datos). Del 10 al 30, hecho el 2026-10-14 (tabla «Orden de puntos» de cada build).
 - [ ] **Prioridades en formato «de bolsillo»** (ya): versión compacta de Combate para tener abierta en el móvil mientras juegas.
 - [ ] **Glosario** (ya): bajar de rango, hito, proc, kitear, Trizar…, con tooltip al pasar por encima del término en cualquier página.
 - [x] **Tooltips de hechizos** (hecho el 2026-10-13): los nombres en negrita de las páginas y los talentos de las builds muestran escuela o rama, nivel o fila y cambios en Forever (`src/lib/spells.ts`). Sin coste de maná: no hay cifras oficiales.
@@ -256,3 +260,16 @@ Al hacer una idea, márcala y anota dónde está.
 1. **Antes del lanzamiento (4 de noviembre de 2026):** glosario y tooltips de hechizos, «Mi primer Mago» del 1 al 20, resumen semanal en el inicio y botón «¿Algo está mal?».
 2. **Semana del lanzamiento:** inicio orientado a tareas, Builds (leveo y farmeo AoE) y Razas.
 3. **Después:** planificador de talentos, equipo, calculadora de golpe y contenido de nivel 60.
+
+## 7. Profesiones: cuáles elegir
+
+Publicada el 2026-10-14 con los datos de la beta: recomendaciones por objetivo, comparativa de las nueve profesiones principales, análisis de cada una, objetos de campamento y profesiones secundarias (`src/data/professions.json`, `src/data/profession-picks.json`). Notas de la investigación y lista de lo que falta por verificar: [professions-research.md](professions-research.md).
+
+### Pendiente
+
+- [ ] Tras el lanzamiento, revisar en el juego los objetos citados (nivel, estadísticas, ligado) y pasar a «Probado en juego» lo que se compruebe.
+- [ ] Confirmar si los campamentos se pueden montar en mazmorras y bandas, el valor de cada mejora por nivel y la regla de un objeto por jugador.
+- [ ] Averiguar de dónde salen las recetas sin fuente en la beta (explosivos EZ-Thro, Frozen Heart of the Mountain, Brilliant Wand, equipo de Sastrería de nivel 40-50).
+- [ ] Con las primeras bandas: revisar la recomendación de PvE a nivel 60 (Sastrería + Alquimia) según cuánto aguanten la Robe of the Archmage y los objetos de Encantamiento.
+- [ ] Si Blizzard publica los puntos de Legado por profesión o los perks del árbol de Profesiones, pasar esos datos a «Oficial».
+- [ ] Enlazar la página desde Equipo («Encantamientos y consumibles») cuando esa sección deje de estar pendiente.

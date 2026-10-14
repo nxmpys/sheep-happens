@@ -59,10 +59,19 @@ El validador rechaza, por ejemplo, un `verified` sin fuente oficial o un `report
 3. El enlace a la calculadora de Wowhead y la vista de calculadora se generan solos. No hace falta copiar ninguna URL.
 4. `status: "analysis"` mientras no se haya probado en el juego; `"tested"` cuando sí. Pon `gameVersion`, `sources` y `updated`, y añade una entrada al historial con `refs: ["build:<id>"]`.
 5. Si la build merece una guía en profundidad, crea la página (ver «Añadir una página nueva») y enlázala con `page`. Dentro de una página, `<BuildCard id="…" />` muestra la tarjeta.
+6. **Builds de leveo:** añade `order`, un id de talento por punto en el orden en que se gastan (el punto 1 llega a nivel 10, o a nivel 5 con Talented 5/5). Los primeros puntos hasta el `level` de la build deben sumar exactamente `points`; los siguientes, hasta cinco, son los puntos extra de quien tiene el perk de Legado Talented. `npm run validate` comprueba cada paso del orden (filas, rangos y requisitos en el momento de gastar el punto). Explica los puntos clave en `orderNotes` (`point` es el número de punto) y rellena `fromLevel`, `goal`, `profile`, `upside` y `downside` para el selector de la guía de leveo (`<BuildPicker ids={[…]} recommended="…" />`).
+7. **Ampliar el leveo a un nivel más alto** (por ejemplo, del 30 al 60): en la misma build, sube `level`, añade los puntos nuevos a `order` y actualiza `points`. No crees builds ni páginas nuevas: la URL y los enlaces se mantienen. El aviso BETA y las etapas de la guía (`<LevelingStatus />`) cambian solos cuando todas las builds de leveo llegan al último nivel de cada etapa (`src/lib/leveling.ts`).
 
 ### Actualizar las raciales
 
 Las raciales viven en `src/data/races.json`: efecto (`effect`), valor para el Mago (`value`, nuestro análisis) y por qué (`why`). Si cambia un efecto o un valor, actualiza `updated` y añade una entrada al historial con `refs: ["race:<id>"]`.
+
+### Actualizar las profesiones
+
+- El análisis de cada profesión vive en `src/data/professions.json`: valoraciones (`ratings`, solo las principales; las secundarias llevan `priority`), beneficio y limitación de la tabla, ventajas, inconvenientes, PvE y JcJ, mejor pareja (`pair`), veredicto y los objetos que lo respaldan (`items`, con su id de la base de datos de Forever de Wowhead).
+- Las recomendaciones por objetivo («Mejor combinación general», «JcJ (PvP)»…) viven en `src/data/profession-picks.json`.
+- En la página, cada `<ProfessionDetail id="…" />` va justo debajo de un `### <nombre>` con el nombre exacto de la profesión en ese idioma: las tarjetas y la tabla enlazan a ese encabezado, y `npm run validate` lo comprueba.
+- Si cambia un dato, una valoración o una recomendación, actualiza `updated` y añade una entrada al historial con `refs: ["profession:<id>"]` o `refs: ["pick:<id>"]`. Las notas de la investigación están en [`docs/professions-research.md`](docs/professions-research.md).
 
 ### Editar una página
 

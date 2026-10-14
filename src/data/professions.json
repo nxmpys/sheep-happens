@@ -1,0 +1,1309 @@
+[
+  {
+    "id": "tailoring",
+    "name": {
+      "es": "Sastrería",
+      "en": "Tailoring"
+    },
+    "kind": "crafting",
+    "edge": "combat",
+    "ratings": {
+      "pve": "high",
+      "pvp": "medium",
+      "leveling": "high",
+      "economy": "medium",
+      "overall": "high"
+    },
+    "benefit": {
+      "es": "Piezas de tela ligadas con daño de hechizos de tu escuela, del nivel 10 al 50.",
+      "en": "Bound cloth pieces with spell damage for your school, from level 10 to 50."
+    },
+    "limitation": {
+      "es": "Casi todo es equipo de leveo: a nivel 60 su ventaja exclusiva se reduce a pocas piezas.",
+      "en": "Most of it is leveling gear: at level 60 its exclusive edge shrinks to a few pieces."
+    },
+    "summary": {
+      "es": "La profesión que más poder da a un Mago mientras sube. En Forever fabrica decenas de piezas de tela ligadas al recoger, con daño de Fuego, Escarcha o Arcano, que solo puede llevar quien las cose.",
+      "en": "The profession that gives a Mage the most power while leveling. In Forever it crafts dozens of bind-on-pickup cloth pieces with Fire, Frost or Arcane damage that only the tailor can wear."
+    },
+    "pros": [
+      {
+        "es": "Equipo propio del nivel 10 al 50 en casi todos los huecos de tela: Novice Arcanist’s Sash (nivel 10, +4 de daño y sanación), Filigreed Silky Gown (nivel 15, +9 de daño de Escarcha) o Frothing Sandals (nivel 50, +20 de daño de Escarcha). Al ser ligado al recoger, nadie te lo puede vender.",
+        "en": "Your own gear from level 10 to 50 in almost every cloth slot: Novice Arcanist’s Sash (level 10, +4 damage and healing), Filigreed Silky Gown (level 15, +9 Frost damage) or Frothing Sandals (level 50, +20 Frost damage). Since it binds on pickup, nobody can sell it to you."
+      },
+      {
+        "es": "Hay una familia por escuela: Flame y Fiery para Fuego, Silky y Frothing para Escarcha, Pearly y Golden para Arcano. Descarga de Pirofrío usa la mejor bonificación entre Fuego y Escarcha, así que desde el nivel 40 le sirven las dos.",
+        "en": "There is one family per school: Flame and Fiery for Fire, Silky and Frothing for Frost, Pearly and Golden for Arcane. Frostfire Bolt uses the better of your Fire and Frost bonuses, so from level 40 both families help it."
+      },
+      {
+        "es": "No necesitas una profesión de recolección: la tela cae de los humanoides que matas al subir.",
+        "en": "You need no gathering profession: cloth drops from the humanoids you kill while leveling."
+      },
+      {
+        "es": "A nivel 60 conserva la Robe of the Archmage, solo para Magos y ligada al recoger: +40 de daño y sanación, +1 % de crítico y una restauración de maná cada 5 minutos.",
+        "en": "At level 60 it keeps Robe of the Archmage, Mage-only and bind on pickup: +40 damage and healing, +1% crit and a mana restore every 5 minutes."
+      },
+      {
+        "es": "Vende bolsas a todo el servidor, también las nuevas bolsas de componentes.",
+        "en": "It sells bags to the whole server, including the new reagent bags."
+      }
+    ],
+    "cons": [
+      {
+        "es": "Casi todos los patrones ligados se compran con Favor de mercader: hay que rellenar cajas de suministros y entregarlas en el depósito de tu facción.",
+        "en": "Most bound patterns cost Merchant’s Favor: you have to fill supply crates and turn them in at your faction’s depot."
+      },
+      {
+        "es": "Cada pieza mejora una sola escuela: si cambias de rama antes del nivel 40, las piezas de la anterior pierden valor.",
+        "en": "Each piece boosts a single school: if you switch trees before level 40, the old school’s pieces lose value."
+      },
+      {
+        "es": "Lo que fabricas para ti no se puede vender, así que da menos oro que una profesión de recolección mientras subes.",
+        "en": "What you craft for yourself cannot be sold, so it earns less gold than a gathering profession while leveling."
+      },
+      {
+        "es": "A nivel 60 el botín de mazmorras y bandas sustituirá casi todas las piezas; aún no sabemos cuánto aguantan.",
+        "en": "At level 60 dungeon and raid loot will replace most pieces; we do not know yet how long they last."
+      }
+    ],
+    "pve": {
+      "es": "Alta mientras subes y en las mazmorras de nivel bajo y medio: es daño de hechizos que no depende de la suerte con el botín. En bandas su aporte se reduce a la Robe of the Archmage y a lo que llegue con el lanzamiento.",
+      "en": "High while leveling and in low and mid-level dungeons: it is spell damage that does not depend on loot luck. In raids its contribution shrinks to Robe of the Archmage and whatever arrives at launch."
+    },
+    "pvp": {
+      "es": "Indirecta: las piezas llevan Aguante e Intelecto, pero no hay ninguna herramienta de JcJ. Te ayuda a llegar bien equipado a 60; en el combate, Ingeniería aporta más.",
+      "en": "Indirect: the pieces carry Stamina and Intellect, but there are no PvP tools. It helps you reach 60 well geared; in combat, Engineering does more."
+    },
+    "levelingEconomy": {
+      "es": "Para subir, la mejor de todas para un Mago. En economía es media: las bolsas se venden siempre, el equipo ligado no.",
+      "en": "For leveling, the best of all for a Mage. Economy is average: bags always sell, bound gear does not."
+    },
+    "pair": {
+      "with": [
+        "enchanting"
+      ],
+      "why": {
+        "es": "Desencantas las piezas que te sobran para subir Encantamiento casi gratis, y Encantamiento añade los bastones, orbes y varitas ligados que Sastrería no hace.",
+        "en": "You disenchant the pieces you outgrow to level Enchanting almost for free, and Enchanting adds the bound staves, orbs and wands Tailoring does not make."
+      }
+    },
+    "verdict": {
+      "es": "Merece la pena para casi cualquier Mago que vaya a subir de nivel, sobre todo si es tu primer personaje. Solo la dejaría fuera si quieres oro desde el primer día o ya tienes tu equipo de nivel 60.",
+      "en": "Worth it for almost any Mage who is going to level, especially a first character. Only skip it if you want gold from day one or already have your level 60 gear."
+    },
+    "items": [
+      {
+        "name": "Novice Arcanist’s Sash",
+        "wowhead": 253885,
+        "note": {
+          "es": "Nivel 10. La enseña el instructor.",
+          "en": "Level 10. Taught by the trainer."
+        }
+      },
+      {
+        "name": "Filigreed Silky Gown",
+        "wowhead": 253903,
+        "note": {
+          "es": "Nivel 15, +9 de daño de Escarcha. Patrón de mazmorra.",
+          "en": "Level 15, +9 Frost damage. Dungeon pattern."
+        }
+      },
+      {
+        "name": "Frothing Sandals",
+        "wowhead": 254109,
+        "note": {
+          "es": "Nivel 50, +20 de daño de Escarcha. Favor de mercader.",
+          "en": "Level 50, +20 Frost damage. Merchant’s Favor."
+        }
+      },
+      {
+        "name": "Robe of the Archmage",
+        "wowhead": 14152,
+        "note": {
+          "es": "Nivel 57, solo Magos.",
+          "en": "Level 57, Mage only."
+        }
+      },
+      {
+        "name": "Linen Reagent Bag",
+        "wowhead": 253664,
+        "note": {
+          "es": "Bolsa de componentes; se puede vender.",
+          "en": "Reagent bag; it can be sold."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "warcrafttavern-tailoring",
+      "method-mage-leveling",
+      "warcrafttavern-mage-guide",
+      "blizzard-deep-dive-mage"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "enchanting",
+    "name": {
+      "es": "Encantamiento",
+      "en": "Enchanting"
+    },
+    "kind": "crafting",
+    "edge": "combat",
+    "ratings": {
+      "pve": "medium",
+      "pvp": "low",
+      "leveling": "high",
+      "economy": "medium",
+      "overall": "high"
+    },
+    "benefit": {
+      "es": "Bastones, orbes, una varita y un abalorio ligados con mucho daño de hechizos.",
+      "en": "Bound staves, orbs, a wand and a trinket with a lot of spell damage."
+    },
+    "limitation": {
+      "es": "Los encantamientos de equipo te los puede poner cualquier encantador: lo exclusivo son los objetos ligados.",
+      "en": "Any enchanter can apply gear enchants for you: only the bound items are exclusive."
+    },
+    "summary": {
+      "es": "El mejor complemento de Sastrería. En Forever fabrica armas ligadas para lanzadores (bastones, orbes de mano izquierda y una varita) y un abalorio de Escarcha, además de varitas y aceites que se pueden vender.",
+      "en": "Tailoring’s best partner. In Forever it crafts bound caster weapons (staves, off-hand orbs and a wand) and a Frost trinket, plus wands and oils you can sell."
+    },
+    "pros": [
+      {
+        "es": "Armas ligadas muy fuertes para su nivel: Glimmering Staff (nivel 25, +11 de Intelecto y +34 de daño y sanación) y Radiant Staff (nivel 45, +19 de Intelecto y +56). Si prefieres arma y mano izquierda, Orb of Mystic Insight (nivel 25) y Truesilver Conduit (nivel 45).",
+        "en": "Very strong bound weapons for their level: Glimmering Staff (level 25, +11 Intellect and +34 damage and healing) and Radiant Staff (level 45, +19 Intellect and +56). If you prefer a weapon and off-hand, Orb of Mystic Insight (level 25) and Truesilver Conduit (level 45)."
+      },
+      {
+        "es": "Para Escarcha, Frozen Heart of the Mountain (nivel 50): +0,9 % de golpe y, al usarlo, +29 de daño de Escarcha durante 15 s, el doble en zonas nevadas.",
+        "en": "For Frost, Frozen Heart of the Mountain (level 50): +0.9% hit and, on use, +29 Frost damage for 15 sec, doubled in snowy areas."
+      },
+      {
+        "es": "Varitas desde el nivel 5, que en Forever llevan daño de hechizos, y Brilliant Wand, una varita de Fuego ligada de nivel 55.",
+        "en": "Wands from level 5, which carry spell damage in Forever, and Brilliant Wand, a bound level 55 Fire wand."
+      },
+      {
+        "es": "Desencantar convierte el equipo verde que te sobra en materiales, y con Sastrería tienes una fuente constante.",
+        "en": "Disenchanting turns spare green gear into materials, and Tailoring gives you a steady supply."
+      }
+    ],
+    "cons": [
+      {
+        "es": "Los encantamientos de equipo, incluido el nuevo de collar con daño de hechizos, no son exclusivos: cualquier encantador te los pone.",
+        "en": "Gear enchants, including the new spell damage necklace enchant, are not exclusive: any enchanter can apply them."
+      },
+      {
+        "es": "Las armas ligadas se compran con Favor de mercader, y muchas recetas piden materiales de otras profesiones, como las varillas rúnicas de Herrería o los tintes de Alquimia.",
+        "en": "The bound weapons cost Merchant’s Favor, and many recipes need materials from other professions, such as Blacksmithing runed rods or Alchemy dyes."
+      },
+      {
+        "es": "Al principio cuesta oro y da poco hasta que vendes encantamientos o aceites.",
+        "en": "Early on it costs gold and earns little until you sell enchants or oils."
+      },
+      {
+        "es": "Lo más fuerte es de nivel 25 a 55: en bandas lo sustituirá el botín.",
+        "en": "Its strongest items are level 25 to 55: in raids, loot will replace them."
+      }
+    ],
+    "pve": {
+      "es": "Alta en mazmorras mientras subes (bastón u orbe, abalorio y varita), por eso la valoramos como media en conjunto: en bandas lo que queda son los encantamientos, que cualquiera te puede poner.",
+      "en": "High in dungeons while leveling (staff or orb, trinket and wand), which is why we rate it medium overall: in raids what remains are the enchants, which anyone can apply."
+    },
+    "pvp": {
+      "es": "Baja: no tiene nada pensado para JcJ, aunque el golpe del abalorio y su ráfaga de Escarcha también sirven en duelos.",
+      "en": "Low: nothing is made for PvP, although the trinket’s hit and Frost burst also help in duels."
+    },
+    "levelingEconomy": {
+      "es": "Para subir, casi tan buena como Sastrería si consigues las recetas a tiempo. En economía es media: Wizard Oil, varitas y encantamientos se venden, pero tarda en dar beneficio.",
+      "en": "For leveling, nearly as good as Tailoring if you get the recipes in time. Economy is average: Wizard Oil, wands and enchants sell, but it takes a while to turn a profit."
+    },
+    "pair": {
+      "with": [
+        "tailoring"
+      ],
+      "why": {
+        "es": "Sastrería le da equipo para desencantar y cubre la armadura; Encantamiento cubre el arma, la mano izquierda, la varita y un abalorio.",
+        "en": "Tailoring supplies gear to disenchant and covers armor; Enchanting covers the weapon, off-hand, wand and a trinket."
+      }
+    },
+    "verdict": {
+      "es": "Para quien quiere subir su Mago lo más fuerte posible y no le importa invertir oro al principio. Para oro rápido o para JcJ hay mejores opciones.",
+      "en": "For players who want their Mage as strong as possible while leveling and do not mind spending gold early. For quick gold or PvP there are better options."
+    },
+    "items": [
+      {
+        "name": "Glimmering Staff",
+        "wowhead": 249392,
+        "note": {
+          "es": "Nivel 25, +34 de daño y sanación.",
+          "en": "Level 25, +34 damage and healing."
+        }
+      },
+      {
+        "name": "Radiant Staff",
+        "wowhead": 249453,
+        "note": {
+          "es": "Nivel 45, +56 de daño y sanación.",
+          "en": "Level 45, +56 damage and healing."
+        }
+      },
+      {
+        "name": "Orb of Mystic Insight",
+        "wowhead": 249394,
+        "note": {
+          "es": "Mano izquierda de nivel 25.",
+          "en": "Level 25 off-hand."
+        }
+      },
+      {
+        "name": "Frozen Heart of the Mountain",
+        "wowhead": 249469,
+        "note": {
+          "es": "Abalorio de nivel 50 para Escarcha.",
+          "en": "Level 50 Frost trinket."
+        }
+      },
+      {
+        "name": "Brilliant Wand",
+        "wowhead": 249385,
+        "note": {
+          "es": "Varita de Fuego de nivel 55.",
+          "en": "Level 55 Fire wand."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "warcrafttavern-enchanting",
+      "method-mage-leveling",
+      "warcrafttavern-mage-guide"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "engineering",
+    "name": {
+      "es": "Ingeniería",
+      "en": "Engineering"
+    },
+    "kind": "crafting",
+    "edge": "combat",
+    "ratings": {
+      "pve": "medium",
+      "pvp": "high",
+      "leveling": "low",
+      "economy": "low",
+      "overall": "medium"
+    },
+    "benefit": {
+      "es": "Artefactos y explosivos que deciden peleas JcJ: carga de zapador, red, botas cohete, reflectores.",
+      "en": "Gadgets and explosives that decide PvP fights: sapper charge, net, rocket boots, reflectors."
+    },
+    "limitation": {
+      "es": "Cara y lenta de subir, y en Forever cualquiera puede usar las granadas EZ-Thro.",
+      "en": "Expensive and slow to level, and in Forever anyone can use EZ-Thro grenades."
+    },
+    "summary": {
+      "es": "La profesión del JcJ: añade aturdimientos, inmovilizaciones, escapes y daño en área que el Mago no tiene. Forever reparte parte de ese poder con explosivos que puede usar cualquiera, pero lo mejor sigue siendo exclusivo.",
+      "en": "The PvP profession: it adds stuns, roots, escapes and area damage a Mage does not have. Forever shares part of that power through explosives anyone can use, but the best tools stay exclusive."
+    },
+    "pros": [
+      {
+        "es": "Herramientas que solo puede usar un ingeniero: Goblin Sapper Charge (450-750 de daño de Fuego a tu alrededor), Gnomish Net-o-Matic Projector (red de 10 s), Gnomish Rocket Boots, los reflectores de Fuego, Escarcha y Sombras y Gnomish Mind Control Cap.",
+        "en": "Tools only an engineer can use: Goblin Sapper Charge (450–750 Fire damage around you), Gnomish Net-o-Matic Projector (10 sec net), Gnomish Rocket Boots, the Fire, Frost and Shadow reflectors and Gnomish Mind Control Cap."
+      },
+      {
+        "es": "Novedades de Forever ligadas al recoger: Gnomish Poultryizer (convierte al objetivo en pollo 15 s) y Emergency Field Cloak (invisibilidad, 3 cargas).",
+        "en": "Forever additions that bind on pickup: Gnomish Poultryizer (turns the target into a chicken for 15 sec) and Emergency Field Cloak (invisibility, 3 charges)."
+      },
+      {
+        "es": "Para PvE, gafas que solo lleva un ingeniero, como Spellpower Goggles Xtreme Plus (+27 de daño y sanación), y explosivos para grupos de enemigos.",
+        "en": "For PvE, goggles only an engineer can wear, such as Spellpower Goggles Xtreme Plus (+27 damage and healing), and explosives for packs."
+      },
+      {
+        "es": "Utilidad: el Reagent Bot del campamento vende componentes, y hay robots de reparación y transportes a Gadgetzan, Everlook y Mount Hyjal.",
+        "en": "Utility: the camp Reagent Bot sells reagents, plus repair bots and transporters to Gadgetzan, Everlook and Mount Hyjal."
+      }
+    ],
+    "cons": [
+      {
+        "es": "Forever añade granadas y bombas EZ-Thro y SAF-T que no piden Ingeniería: EZ-Thro Thorium Grenade hace el mismo daño y el mismo aturdimiento que la Thorium Grenade. Si un ingeniero te las vende, la diferencia se reduce.",
+        "en": "Forever adds EZ-Thro and SAF-T grenades and bombs that do not require Engineering: EZ-Thro Thorium Grenade deals the same damage and stun as Thorium Grenade. If an engineer sells you some, the gap narrows."
+      },
+      {
+        "es": "Muchos artefactos pueden fallar (la red puede atraparte a ti, las botas pueden explotar) y casi todos tienen reutilizaciones largas.",
+        "en": "Many gadgets can backfire (the net may catch you, the boots may explode) and most have long cooldowns."
+      },
+      {
+        "es": "Pide mucho mineral y piedra: sin Minería, dependes de la casa de subastas.",
+        "en": "It needs lots of ore and stone: without Mining, you depend on the Auction House."
+      },
+      {
+        "es": "Mientras subes aporta poco: lo importante llega entre 200 y 300 de habilidad.",
+        "en": "It adds little while leveling: the important items arrive between 200 and 300 skill."
+      }
+    ],
+    "pve": {
+      "es": "Media: gafas con daño de hechizos y explosivos para grupos de enemigos. Todavía no sabemos si las bandas de Forever premiarán los explosivos como en Classic.",
+      "en": "Medium: spell damage goggles and explosives for packs. We do not know yet whether Forever raids will reward explosives as Classic did."
+    },
+    "pvp": {
+      "es": "La mejor: más control, más escapes y daño en área extra. En duelos, campos de batalla y JcJ de mundo compensa lo que cuesta.",
+      "en": "The best: more control, more escapes and extra area damage. In duels, battlegrounds and world PvP it is worth what it costs."
+    },
+    "levelingEconomy": {
+      "es": "Para subir, de las peores: es cara y sus objetos de nivel bajo apenas ayudan. En economía, baja: puede vender explosivos EZ-Thro y otros artefactos, pero no es una fuente de oro fiable.",
+      "en": "For leveling, one of the worst: it is expensive and its low-level items barely help. Economy is low: it can sell EZ-Thro explosives and other gadgets, but it is not a reliable gold source."
+    },
+    "pair": {
+      "with": [
+        "tailoring",
+        "mining"
+      ],
+      "why": {
+        "es": "Con Sastrería llegas a 60 bien equipado y conservas la Robe of the Archmage; con Minería no compras materiales mientras la subes.",
+        "en": "With Tailoring you reach 60 well geared and keep Robe of the Archmage; with Mining you do not buy materials while leveling it."
+      }
+    },
+    "verdict": {
+      "es": "Imprescindible si tu prioridad es el JcJ a nivel 60. Para subir o ganar oro elige otra y apréndela más adelante.",
+      "en": "A must if your priority is level 60 PvP. For leveling or gold, pick something else and learn it later."
+    },
+    "items": [
+      {
+        "name": "Goblin Sapper Charge",
+        "wowhead": 10646,
+        "note": {
+          "es": "Requiere Ingeniería 205.",
+          "en": "Requires Engineering 205."
+        }
+      },
+      {
+        "name": "Gnomish Net-o-Matic Projector",
+        "wowhead": 10720,
+        "note": {
+          "es": "Requiere Ingeniería 210.",
+          "en": "Requires Engineering 210."
+        }
+      },
+      {
+        "name": "Gnomish Poultryizer",
+        "wowhead": 260824,
+        "note": {
+          "es": "Nuevo en Forever, ligado, nivel 60.",
+          "en": "New in Forever, bound, level 60."
+        }
+      },
+      {
+        "name": "Spellpower Goggles Xtreme Plus",
+        "wowhead": 15999,
+        "note": {
+          "es": "Requiere Ingeniería 270.",
+          "en": "Requires Engineering 270."
+        }
+      },
+      {
+        "name": "EZ-Thro Thorium Grenade",
+        "wowhead": 260816,
+        "note": {
+          "es": "Nueva; no pide Ingeniería para usarla.",
+          "en": "New; no Engineering needed to use it."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "warcrafttavern-mage-guide",
+      "warcrafttavern-camping-objects"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "alchemy",
+    "name": {
+      "es": "Alquimia",
+      "en": "Alchemy"
+    },
+    "kind": "crafting",
+    "edge": "economy",
+    "ratings": {
+      "pve": "medium",
+      "pvp": "medium",
+      "leveling": "medium",
+      "economy": "high",
+      "overall": "medium"
+    },
+    "benefit": {
+      "es": "Pociones de maná, elixires y frascos a precio de coste, y el Alchemist’s Stone.",
+      "en": "Mana potions, elixirs and flasks at cost, plus Alchemist’s Stone."
+    },
+    "limitation": {
+      "es": "Casi todo lo que hace se puede comprar: su ventaja es el ahorro y el oro.",
+      "en": "Almost everything it makes can be bought: its edge is savings and gold."
+    },
+    "summary": {
+      "es": "La profesión de los consumibles: no da equipo, pero abarata todo lo que un Mago bebe en mazmorras, bandas y JcJ, y es de las que más oro mueven. En Forever pierde las pociones de sanación normales, que pasan a Primeros auxilios.",
+      "en": "The consumables profession: no gear, but it makes everything a Mage drinks in dungeons, raids and PvP cheaper, and it is one of the biggest gold makers. In Forever it loses the regular healing potions, which move to First Aid."
+    },
+    "pros": [
+      {
+        "es": "Consumibles nuevos para lanzadores desde el nivel 5: Minor Arcane Elixir (+5 de daño de hechizos), elixires Mageblood (maná cada 5 s) y pociones Spellblasting (de +7 a +47 de daño de hechizos durante 30 s).",
+        "en": "New caster consumables from level 5: Minor Arcane Elixir (+5 spell damage), Mageblood elixirs (mana every 5 sec) and Spellblasting potions (+7 to +47 spell damage for 30 sec)."
+      },
+      {
+        "es": "A nivel 60, Greater Arcane Elixir, Flask of Supreme Power (+150 de daño de hechizos) y pociones de maná y de protección: el mayor gasto de un Mago en bandas, a precio de coste.",
+        "en": "At level 60, Greater Arcane Elixir, Flask of Supreme Power (+150 spell damage) and mana and protection potions: a Mage’s biggest raid expense, at cost."
+      },
+      {
+        "es": "Alchemist’s Stone, solo para alquimistas (abalorio ligado, 275 de habilidad): +20 % al efecto de las pociones de maná y de sanación.",
+        "en": "Alchemist’s Stone, alchemists only (bound trinket, skill 275): +20% to the effect of mana and healing potions."
+      },
+      {
+        "es": "Los consumibles y las transmutaciones se venden siempre: es de las profesiones más rentables.",
+        "en": "Consumables and transmutes always sell: it is one of the most profitable professions."
+      },
+      {
+        "es": "Su objeto de campamento, el Mana Well, regenera maná: justo lo que limita a un Mago.",
+        "en": "Its camp object, the Mana Well, restores mana: exactly what limits a Mage."
+      }
+    ],
+    "cons": [
+      {
+        "es": "En Forever las pociones de sanación normales las hace Primeros auxilios. Alquimia hace las Discolored, que curan al instante pero te devuelven el 75 % como daño con el tiempo.",
+        "en": "In Forever regular healing potions come from First Aid. Alchemy makes Discolored ones, which heal instantly but deal 75% back to you over time."
+      },
+      {
+        "es": "Salvo el Alchemist’s Stone, no da ninguna ventaja de combate que no puedas comprar.",
+        "en": "Apart from Alchemist’s Stone, it gives no combat edge you cannot buy."
+      },
+      {
+        "es": "Sin Herboristería dependes de la subasta para las hierbas.",
+        "en": "Without Herbalism you depend on the Auction House for herbs."
+      }
+    ],
+    "pve": {
+      "es": "Media: no sube tu techo de daño más allá de lo que puedes comprar, pero abarata mucho cada banda. Si haces bandas cada semana, pasa a alta.",
+      "en": "Medium: it does not raise your damage ceiling beyond what you can buy, but it makes every raid much cheaper. If you raid every week, it becomes high."
+    },
+    "pvp": {
+      "es": "Media: Free Action Potion, Limited Invulnerability Potion, Swiftness Potion y Restorative Potion a precio de coste, y el Alchemist’s Stone para las pociones.",
+      "en": "Medium: Free Action Potion, Limited Invulnerability Potion, Swiftness Potion and Restorative Potion at cost, plus Alchemist’s Stone for potions."
+    },
+    "levelingEconomy": {
+      "es": "Para subir ayuda algo (pociones de maná y elixires baratos), menos que el equipo de Sastrería. En economía es de las mejores, sobre todo con Herboristería.",
+      "en": "For leveling it helps a bit (cheap mana potions and elixirs), less than Tailoring gear. Economy is among the best, especially with Herbalism."
+    },
+    "pair": {
+      "with": [
+        "herbalism",
+        "tailoring"
+      ],
+      "why": {
+        "es": "Con Herboristería no compras hierbas y ganas oro desde el nivel 1; con Sastrería tienes equipo para subir y consumibles para el 60.",
+        "en": "With Herbalism you never buy herbs and earn gold from level 1; with Tailoring you get leveling gear and consumables for 60."
+      }
+    },
+    "verdict": {
+      "es": "Para quien vaya a hacer bandas cada semana o quiera ganar oro con poco riesgo. Para subir no es la mejor: puedes aprenderla al llegar a 60, cuando los consumibles cuentan de verdad.",
+      "en": "For players who will raid every week or want low-risk gold. For leveling it is not the best: you can learn it at 60, when consumables really matter."
+    },
+    "items": [
+      {
+        "name": "Alchemist’s Stone",
+        "wowhead": 13503,
+        "note": {
+          "es": "Requiere Alquimia 275.",
+          "en": "Requires Alchemy 275."
+        }
+      },
+      {
+        "name": "Major Spellblasting Potion",
+        "wowhead": 250937,
+        "note": {
+          "es": "Nueva: +47 de daño de hechizos 30 s.",
+          "en": "New: +47 spell damage for 30 sec."
+        }
+      },
+      {
+        "name": "Flask of Supreme Power",
+        "wowhead": 13512,
+        "note": {
+          "es": "+150 de daño de hechizos 2 h.",
+          "en": "+150 spell damage for 2 hrs."
+        }
+      },
+      {
+        "name": "Discolored Healing Potion",
+        "wowhead": 247240,
+        "note": {
+          "es": "La poción de sanación que le queda a Alquimia.",
+          "en": "The healing potion Alchemy keeps."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "warcrafttavern-mage-guide",
+      "warcrafttavern-camping-objects",
+      "blizzard-forever-deep-dive-recap"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "herbalism",
+    "name": {
+      "es": "Herboristería",
+      "en": "Herbalism"
+    },
+    "kind": "gathering",
+    "edge": "economy",
+    "ratings": {
+      "pve": "none",
+      "pvp": "none",
+      "leveling": "low",
+      "economy": "high",
+      "overall": "medium"
+    },
+    "benefit": {
+      "es": "Oro desde el nivel 1, sin inversión, y las hierbas de Alquimia.",
+      "en": "Gold from level 1, no investment, and herbs for Alchemy."
+    },
+    "limitation": {
+      "es": "Ninguna ventaja en combate, y su objeto de campamento no le sirve a un Mago.",
+      "en": "No combat edge, and its camp object is useless to a Mage."
+    },
+    "summary": {
+      "es": "Economía pura: no da nada en combate, pero produce oro desde el principio y abastece a Alquimia.",
+      "en": "Pure economy: nothing in combat, but gold from the start and herbs for Alchemy."
+    },
+    "pros": [
+      {
+        "es": "Ganas oro desde el primer nivel sin gastar nada, recogiendo por el camino.",
+        "en": "You earn gold from level 1 without spending anything, picking herbs along the way."
+      },
+      {
+        "es": "Abastece a Alquimia: juntas son la forma más barata de tener consumibles.",
+        "en": "It supplies Alchemy: together they are the cheapest way to get consumables."
+      },
+      {
+        "es": "Objetos de campamento nuevos: el Greenhouse cultiva hierbas a partir de semillas y el Seed Hybridizer las multiplica o las convierte en otras más raras.",
+        "en": "New camp objects: the Greenhouse grows herbs from seeds and the Seed Hybridizer multiplies them or turns them into rarer ones."
+      },
+      {
+        "es": "El perk de Legado Bountiful Harvest te da más materiales escasos al recolectar.",
+        "en": "The Bountiful Harvest Legacy perk gives you more scarce materials when gathering."
+      }
+    ],
+    "cons": [
+      {
+        "es": "No tiene ninguna bonificación pasiva de combate en los datos de la beta.",
+        "en": "It has no passive combat bonus in the beta data."
+      },
+      {
+        "es": "Su objeto de campamento, el Incense Candle, da Intelecto y no se acumula con Intelecto Arcano: a un Mago no le aporta nada.",
+        "en": "Its camp object, the Incense Candle, gives Intellect and does not stack with Arcane Intellect: it gives a Mage nothing."
+      },
+      {
+        "es": "Según las guías de la comunidad, las profesiones de recolección no dan puntos de Legado al subir de habilidad, a diferencia de las de fabricación.",
+        "en": "According to community guides, gathering professions grant no Legacy points for skill milestones, unlike crafting ones."
+      }
+    ],
+    "pve": {
+      "es": "Nula. Su valor en mazmorras y bandas es indirecto: hierbas para tus pociones y frascos.",
+      "en": "None. Its value in dungeons and raids is indirect: herbs for your potions and flasks."
+    },
+    "pvp": {
+      "es": "Nula.",
+      "en": "None."
+    },
+    "levelingEconomy": {
+      "es": "No te hace matar más rápido, pero paga la subasta y la montura. En Forever Blizzard ha puesto más difícil el farmeo masivo de enemigos, así que recolectar es un ingreso más estable para un Mago.",
+      "en": "It does not make you kill faster, but it pays for the Auction House and your mount. In Forever Blizzard made mass farming of enemies harder, so gathering is a steadier income for a Mage."
+    },
+    "pair": {
+      "with": [
+        "alchemy",
+        "mining"
+      ],
+      "why": {
+        "es": "Con Alquimia conviertes tus hierbas en consumibles; con Minería, si solo quieres oro, recoges los dos tipos de nodo en el mismo recorrido.",
+        "en": "With Alchemy you turn your herbs into consumables; with Mining, if you only want gold, you gather both node types on the same route."
+      }
+    },
+    "verdict": {
+      "es": "Para quien quiere oro sin complicaciones, o como segunda profesión de un jugador casual. Para optimizar el combate, no.",
+      "en": "For players who want gold without hassle, or as a casual player’s second profession. Not for optimizing combat."
+    },
+    "items": [
+      {
+        "name": "Incense Candle",
+        "wowhead": 279962,
+        "note": {
+          "es": "Intelecto; no se acumula con Intelecto Arcano.",
+          "en": "Intellect; does not stack with Arcane Intellect."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "warcrafttavern-camping-objects",
+      "warcrafttavern-legacy",
+      "blizzard-forever-deep-dive-recap",
+      "blizzard-deep-dive-mage"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "mining",
+    "name": {
+      "es": "Minería",
+      "en": "Mining"
+    },
+    "kind": "gathering",
+    "edge": "economy",
+    "ratings": {
+      "pve": "none",
+      "pvp": "none",
+      "leveling": "low",
+      "economy": "high",
+      "overall": "medium"
+    },
+    "benefit": {
+      "es": "Oro desde el nivel 1 y el mineral que necesita Ingeniería.",
+      "en": "Gold from level 1 and the ore Engineering needs."
+    },
+    "limitation": {
+      "es": "Nada de combate, y su objeto de campamento da poder de ataque, inútil para un Mago.",
+      "en": "Nothing for combat, and its camp object gives attack power, useless to a Mage."
+    },
+    "summary": {
+      "es": "Como Herboristería, economía pura: tiene sentido para ganar oro o para pagar los materiales de Ingeniería.",
+      "en": "Like Herbalism, pure economy: it makes sense for gold or to pay for Engineering materials."
+    },
+    "pros": [
+      {
+        "es": "El mineral y la piedra se venden siempre, porque Ingeniería y Herrería consumen mucho.",
+        "en": "Ore and stone always sell, because Engineering and Blacksmithing use a lot of them."
+      },
+      {
+        "es": "Con Ingeniería te ahorras la parte más cara de subirla.",
+        "en": "With Engineering it saves you the most expensive part of leveling it."
+      },
+      {
+        "es": "Nuevo Rock Garden de campamento: hace aparecer poco a poco un nodo de mineral común.",
+        "en": "New camp Rock Garden: it slowly spawns a common ore node."
+      }
+    ],
+    "cons": [
+      {
+        "es": "No tiene ninguna bonificación de combate en los datos de la beta.",
+        "en": "It has no combat bonus in the beta data."
+      },
+      {
+        "es": "Su Lodestone da poder de ataque cuerpo a cuerpo (como Bendición de poderío), que a un Mago no le sirve.",
+        "en": "Its Lodestone gives melee attack power (like Blessing of Might), which is useless to a Mage."
+      },
+      {
+        "es": "Como las demás de recolección, no da puntos de Legado al subir de habilidad, según las guías de la comunidad.",
+        "en": "Like the other gathering professions, it grants no Legacy points for skill milestones, according to community guides."
+      }
+    ],
+    "pve": {
+      "es": "Nula. Solo indirecta si abastece a tu Ingeniería.",
+      "en": "None. Only indirect if it supplies your Engineering."
+    },
+    "pvp": {
+      "es": "Nula.",
+      "en": "None."
+    },
+    "levelingEconomy": {
+      "es": "Para subir, igual que Herboristería: oro, no velocidad. En economía es alta, y junto a Herboristería cubres los dos tipos de nodo.",
+      "en": "For leveling, same as Herbalism: gold, not speed. Economy is high, and with Herbalism you cover both node types."
+    },
+    "pair": {
+      "with": [
+        "engineering",
+        "herbalism"
+      ],
+      "why": {
+        "es": "Con Ingeniería, para no comprar materiales; con Herboristería, para sacar el máximo oro.",
+        "en": "With Engineering, so you never buy materials; with Herbalism, for the most gold."
+      }
+    },
+    "verdict": {
+      "es": "Elígela si vas a ser ingeniero o solo quieres oro. Si no, Herboristería (para Alquimia) o Desuello (cuyo objeto de campamento sí ayuda al Mago) encajan mejor.",
+      "en": "Pick it if you will be an engineer or only want gold. Otherwise Herbalism (for Alchemy) or Skinning (whose camp object does help a Mage) fit better."
+    },
+    "items": [
+      {
+        "name": "Lodestone",
+        "wowhead": 279960,
+        "note": {
+          "es": "Poder de ataque cuerpo a cuerpo.",
+          "en": "Melee attack power."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "warcrafttavern-camping-objects",
+      "warcrafttavern-legacy"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "skinning",
+    "name": {
+      "es": "Desuello",
+      "en": "Skinning"
+    },
+    "kind": "gathering",
+    "edge": "economy",
+    "ratings": {
+      "pve": "low",
+      "pvp": "none",
+      "leveling": "medium",
+      "economy": "medium",
+      "overall": "medium"
+    },
+    "benefit": {
+      "es": "Oro de las bestias que ya matas y un objeto de campamento con +2 % de crítico.",
+      "en": "Gold from the beasts you already kill and a camp object with +2% crit."
+    },
+    "limitation": {
+      "es": "Solo funciona con bestias, y el cuero solo lo usa Peletería.",
+      "en": "It only works on beasts, and only Leatherworking uses leather."
+    },
+    "summary": {
+      "es": "La recolección más cómoda para subir: despellejas lo que matas, sin desviarte. Y su Camp Chair es el único objeto de campamento de recolección que ayuda a un Mago.",
+      "en": "The most convenient gathering profession for leveling: you skin what you kill, without detours. And its Camp Chair is the only gathering camp object that helps a Mage."
+    },
+    "pros": [
+      {
+        "es": "No te desvía: despellejas las bestias que matas al hacer misiones.",
+        "en": "No detours: you skin the beasts you kill while questing."
+      },
+      {
+        "es": "Camp Chair: +2 % de probabilidad de crítico con hechizos y ataques para ti y quien se siente cerca, que no se acumula con Aura de lechúcico.",
+        "en": "Camp Chair: +2% critical strike chance with spells and attacks for you and anyone sitting nearby; it does not stack with Moonkin Aura."
+      },
+      {
+        "es": "El Field Guide del campamento (140 de habilidad) marca las bestias cercanas en el minimapa.",
+        "en": "The camp Field Guide (skill 140) tracks nearby beasts on the minimap."
+      }
+    ],
+    "cons": [
+      {
+        "es": "Fuera del campamento no da ninguna ventaja de combate.",
+        "en": "Outside the camp it gives no combat edge."
+      },
+      {
+        "es": "Solo Peletería usa el cuero, y un Mago no la aprovecha.",
+        "en": "Only Leatherworking uses leather, and a Mage gets little from it."
+      },
+      {
+        "es": "Como las demás de recolección, no da puntos de Legado al subir de habilidad, según las guías de la comunidad.",
+        "en": "Like the other gathering professions, it grants no Legacy points for skill milestones, according to community guides."
+      }
+    ],
+    "pve": {
+      "es": "Baja: el Camp Chair ayuda a todo el grupo, pero solo mientras dura la mejora del campamento y si no hay un Druida con Aura de lechúcico.",
+      "en": "Low: the Camp Chair helps the whole group, but only while the camp buff lasts and if no Druid brings Moonkin Aura."
+    },
+    "pvp": {
+      "es": "Nula.",
+      "en": "None."
+    },
+    "levelingEconomy": {
+      "es": "Para subir es la recolección más cómoda; en economía, media.",
+      "en": "For leveling it is the most convenient gathering profession; economy is average."
+    },
+    "pair": {
+      "with": [
+        "tailoring",
+        "herbalism"
+      ],
+      "why": {
+        "es": "Con Sastrería tienes equipo propio y algo de oro sin salir de tu ruta; con Herboristería, dos fuentes de oro para un perfil de farmeo.",
+        "en": "With Tailoring you get your own gear and some gold without leaving your route; with Herbalism, two gold sources for a farming profile."
+      }
+    },
+    "verdict": {
+      "es": "Buena segunda profesión para subir si no quieres complicarte con Encantamiento. A nivel 60 aporta poco.",
+      "en": "A good second profession for leveling if you do not want the hassle of Enchanting. At level 60 it adds little."
+    },
+    "items": [
+      {
+        "name": "Camp Chair",
+        "wowhead": 279979,
+        "note": {
+          "es": "+2 % de crítico con hechizos y ataques.",
+          "en": "+2% crit with spells and attacks."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "warcrafttavern-camping-objects",
+      "warcrafttavern-legacy"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "leatherworking",
+    "name": {
+      "es": "Peletería",
+      "en": "Leatherworking"
+    },
+    "kind": "crafting",
+    "edge": "economy",
+    "ratings": {
+      "pve": "none",
+      "pvp": "none",
+      "leveling": "low",
+      "economy": "medium",
+      "overall": "low"
+    },
+    "benefit": {
+      "es": "La Camp Tent, que da experiencia descansada, y capas para lanzadores que se pueden vender.",
+      "en": "The Camp Tent, which gives rested experience, and caster cloaks you can sell."
+    },
+    "limitation": {
+      "es": "El Mago no lleva cuero: casi nada de lo que fabrica es para él.",
+      "en": "Mages do not wear leather: almost nothing it makes is for them."
+    },
+    "summary": {
+      "es": "Poco útil para un Mago: fabrica armadura de cuero y malla que no puede llevar, y lo poco que le sirve se puede comprar.",
+      "en": "Of little use to a Mage: it makes leather and mail armor a Mage cannot wear, and the little that helps can be bought."
+    },
+    "pros": [
+      {
+        "es": "Camp Tent: sube tu experiencia descansada hasta el 5 % de un nivel, una vez por hora, si tenías menos.",
+        "en": "Camp Tent: raises your rested experience to 5% of a level, once per hour, if you had less."
+      },
+      {
+        "es": "Algunas capas para lanzadores, como Frost Leather Cloak (+11 de daño de Escarcha a nivel 31), y bolsas de componentes de cuero.",
+        "en": "Some caster cloaks, such as Frost Leather Cloak (+11 Frost damage at level 31), and leather reagent bags."
+      },
+      {
+        "es": "Como toda profesión de fabricación, da puntos de Legado al subir de habilidad, según las guías de la comunidad.",
+        "en": "Like every crafting profession, it grants Legacy points for skill milestones, according to community guides."
+      }
+    ],
+    "cons": [
+      {
+        "es": "Las capas se ligan al equiparse: cualquiera te las puede vender.",
+        "en": "The cloaks bind on equip: anyone can sell them to you."
+      },
+      {
+        "es": "Necesita cuero: Desuello o la subasta.",
+        "en": "It needs leather: Skinning or the Auction House."
+      },
+      {
+        "es": "Ni bonificación de combate ni herramientas de JcJ para un Mago.",
+        "en": "No combat bonus and no PvP tools for a Mage."
+      }
+    ],
+    "pve": {
+      "es": "Nula: lo que te sirve se puede comprar.",
+      "en": "None: what helps you can be bought."
+    },
+    "pvp": {
+      "es": "Nula.",
+      "en": "None."
+    },
+    "levelingEconomy": {
+      "es": "Para subir, solo la Camp Tent. En economía, media: vende armadura a otras clases.",
+      "en": "For leveling, only the Camp Tent. Economy is average: it sells armor to other classes."
+    },
+    "pair": {
+      "with": [
+        "skinning"
+      ],
+      "why": {
+        "es": "Si aun así la eliges, con Desuello no compras el cuero.",
+        "en": "If you pick it anyway, Skinning means you never buy leather."
+      }
+    },
+    "verdict": {
+      "es": "No la recomendamos para un Mago, salvo que quieras fabricar para otro personaje de tu cuenta.",
+      "en": "We do not recommend it for a Mage, unless you want to craft for another character on your account."
+    },
+    "items": [
+      {
+        "name": "Camp Tent",
+        "wowhead": 279978,
+        "note": {
+          "es": "Experiencia descansada hasta el 5 % de un nivel.",
+          "en": "Rested experience up to 5% of a level."
+        }
+      },
+      {
+        "name": "Frost Leather Cloak",
+        "wowhead": 7377,
+        "note": {
+          "es": "Se liga al equiparse.",
+          "en": "Binds on equip."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "warcrafttavern-camping-objects",
+      "warcrafttavern-legacy"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "blacksmithing",
+    "name": {
+      "es": "Herrería",
+      "en": "Blacksmithing"
+    },
+    "kind": "crafting",
+    "edge": "economy",
+    "ratings": {
+      "pve": "none",
+      "pvp": "none",
+      "leveling": "none",
+      "economy": "medium",
+      "overall": "low"
+    },
+    "benefit": {
+      "es": "Armas para lanzadores que se pueden vender y las varillas de los encantadores.",
+      "en": "Caster weapons you can sell and the rods enchanters need."
+    },
+    "limitation": {
+      "es": "El Mago no lleva malla ni placas, y su objeto de campamento es para cuerpo a cuerpo.",
+      "en": "Mages do not wear mail or plate, and its camp object is for melee."
+    },
+    "summary": {
+      "es": "La menos útil para un Mago: casi todo lo que fabrica es para guerreros y paladines, y lo que le sirve se puede comprar.",
+      "en": "The least useful for a Mage: almost everything it makes is for Warriors and Paladins, and what helps a Mage can be bought."
+    },
+    "pros": [
+      {
+        "es": "Algunas armas para lanzadores, como Searing Golden Blade (daga, +39 de daño de Fuego a nivel 34) o Sageblade (espada de nivel 59).",
+        "en": "Some caster weapons, such as Searing Golden Blade (dagger, +39 Fire damage at level 34) or Sageblade (level 59 sword)."
+      },
+      {
+        "es": "Fabrica las varillas rúnicas que necesita cualquier encantador.",
+        "en": "It makes the runed rods every enchanter needs."
+      },
+      {
+        "es": "Se vende bien a las clases de armadura pesada.",
+        "en": "It sells well to heavy-armor classes."
+      }
+    ],
+    "cons": [
+      {
+        "es": "Sus armas para lanzadores se ligan al equiparse: cualquiera te las vende.",
+        "en": "Its caster weapons bind on equip: anyone can sell them to you."
+      },
+      {
+        "es": "Su Sharpening Wheel da una mejora física de cuerpo a cuerpo (no se acumula con Tótem de fuerza de la tierra): inútil para un Mago.",
+        "en": "Its Sharpening Wheel gives a physical melee buff (it does not stack with Strength of Earth Totem): useless to a Mage."
+      },
+      {
+        "es": "Pide mucho mineral: casi obliga a llevar Minería.",
+        "en": "It needs lots of ore: it almost forces Mining."
+      }
+    ],
+    "pve": {
+      "es": "Nula.",
+      "en": "None."
+    },
+    "pvp": {
+      "es": "Nula.",
+      "en": "None."
+    },
+    "levelingEconomy": {
+      "es": "Para subir, nada. En economía, media, sobre todo con Minería.",
+      "en": "For leveling, nothing. Economy is average, especially with Mining."
+    },
+    "pair": {
+      "with": [
+        "mining"
+      ],
+      "why": {
+        "es": "Si la quieres para vender o equipar a otro personaje, Minería te da el mineral.",
+        "en": "If you want it to sell or to gear another character, Mining gives you the ore."
+      }
+    },
+    "verdict": {
+      "es": "Solo tiene sentido si el Mago es un personaje secundario y quieres fabricar para otro de tu cuenta.",
+      "en": "It only makes sense if the Mage is an alt and you want to craft for another character on your account."
+    },
+    "items": [
+      {
+        "name": "Searing Golden Blade",
+        "wowhead": 12260,
+        "note": {
+          "es": "Se liga al equiparse.",
+          "en": "Binds on equip."
+        }
+      },
+      {
+        "name": "Sageblade",
+        "wowhead": 22383,
+        "note": {
+          "es": "Se liga al equiparse.",
+          "en": "Binds on equip."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "warcrafttavern-camping-objects",
+      "blizzard-forever-deep-dive-recap"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "cooking",
+    "name": {
+      "es": "Cocina",
+      "en": "Cooking"
+    },
+    "kind": "secondary",
+    "edge": "utility",
+    "priority": "high",
+    "benefit": {
+      "es": "Comida con +5 % de experiencia y estadísticas, y la hoguera del campamento.",
+      "en": "Food with +5% experience and stats, and the camp campfire."
+    },
+    "limitation": {
+      "es": "La mejora dura 15 minutos y hay que comer sentado al menos 10 s.",
+      "en": "The buff lasts 15 minutes and you must eat seated for at least 10 sec."
+    },
+    "summary": {
+      "es": "En Forever deja de ser un pasatiempo y acelera la subida: casi toda la comida da +5 % de experiencia por muerte y una estadística, y el cocinero monta la hoguera donde van los objetos de campamento.",
+      "en": "In Forever it stops being a pastime and speeds up leveling: almost every dish gives +5% experience from kills and a stat, and the cook builds the campfire that holds the camp objects."
+    },
+    "pros": [
+      {
+        "es": "Bien alimentado: tras comer sentado 10 s, +5 % de experiencia por muerte durante 15 min, además de la estadística del plato, como Smoked Sagefish (+4 de daño de hechizos) o Briny Seafood Stew (+14).",
+        "en": "Well Fed: after eating seated for 10 sec, +5% experience from kills for 15 min, plus the dish’s stat, such as Smoked Sagefish (+4 spell damage) or Briny Seafood Stew (+14)."
+      },
+      {
+        "es": "La hoguera del campamento crece con la habilidad: 3 objetos con la básica, 5 con la Journeyman Campfire y 10 con la Expert Campfire.",
+        "en": "The camp campfire grows with skill: 3 objects with the basic one, 5 with the Journeyman Campfire and 10 with the Expert Campfire."
+      }
+    ],
+    "cons": [
+      {
+        "es": "Hay que parar a comer cada 15 minutos para no perder la experiencia extra.",
+        "en": "You have to stop and eat every 15 minutes to keep the extra experience."
+      }
+    ],
+    "pve": {
+      "es": "Comida con daño de hechizos o Espíritu para mazmorras.",
+      "en": "Food with spell damage or Spirit for dungeons."
+    },
+    "pvp": {
+      "es": "Poca: una mejora de estadísticas más.",
+      "en": "Little: one more stat buff."
+    },
+    "levelingEconomy": {
+      "es": "Para subir es de lo mejor que puedes hacer fuera del combate. Pesca y la carne de las bestias la abastecen.",
+      "en": "For leveling it is one of the best things you can do outside combat. Fishing and beast meat supply it."
+    },
+    "verdict": {
+      "es": "Súbela desde el principio: es la secundaria que más acelera el leveo.",
+      "en": "Level it from the start: it is the secondary profession that speeds up leveling the most."
+    },
+    "items": [
+      {
+        "name": "Smoked Sagefish",
+        "wowhead": 21072,
+        "note": {
+          "es": "Nivel 10, +4 de daño de hechizos.",
+          "en": "Level 10, +4 spell damage."
+        }
+      },
+      {
+        "name": "Briny Seafood Stew",
+        "wowhead": 274971,
+        "note": {
+          "es": "Nueva; nivel 25, +14 de daño de hechizos.",
+          "en": "New; level 25, +14 spell damage."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "blizzard-forever-deep-dive-recap",
+      "warcrafttavern-camping-objects",
+      "method-mage-leveling"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "first-aid",
+    "name": {
+      "es": "Primeros auxilios",
+      "en": "First Aid"
+    },
+    "kind": "secondary",
+    "edge": "combat",
+    "priority": "high",
+    "benefit": {
+      "es": "Vendas y, en Forever, también las pociones de sanación.",
+      "en": "Bandages and, in Forever, healing potions too."
+    },
+    "limitation": {
+      "es": "Gasta la misma tela que Sastrería.",
+      "en": "It uses the same cloth as Tailoring."
+    },
+    "summary": {
+      "es": "Más importante que en Classic: además de las vendas, en Forever hace las pociones de sanación que antes eran de Alquimia.",
+      "en": "More important than in Classic: besides bandages, in Forever it makes the healing potions that used to belong to Alchemy."
+    },
+    "pros": [
+      {
+        "es": "Vendas para recuperarte sin gastar maná: un Mago puede vendarse tras inmovilizar a un enemigo con Nova de Escarcha o convertirlo con Polimorfia.",
+        "en": "Bandages to recover without spending mana: a Mage can bandage after rooting an enemy with Frost Nova or turning it with Polymorph."
+      },
+      {
+        "es": "Pociones de sanación (de Minor a Major), antídotos, cataplasmas contra enfermedades y torniquetes contra sangrados.",
+        "en": "Healing potions (Minor to Major), anti-venoms, poultices against diseases and tourniquets against bleeds."
+      },
+      {
+        "es": "First Aid Kit de campamento: Aguante para ti y quien se siente cerca, como Palabra de poder: entereza.",
+        "en": "Camp First Aid Kit: Stamina for you and anyone sitting nearby, like Power Word: Fortitude."
+      }
+    ],
+    "cons": [
+      {
+        "es": "Compite con Sastrería por la tela.",
+        "en": "It competes with Tailoring for cloth."
+      }
+    ],
+    "pve": {
+      "es": "Sanación extra en mazmorras sin depender del sanador.",
+      "en": "Extra healing in dungeons without relying on the healer."
+    },
+    "pvp": {
+      "es": "Las pociones de sanación cuentan en JcJ, y en Forever salen de esta profesión.",
+      "en": "Healing potions matter in PvP, and in Forever they come from this profession."
+    },
+    "levelingEconomy": {
+      "es": "Para subir, menos descansos. Las pociones de sanación se venden.",
+      "en": "For leveling, less downtime. Healing potions sell."
+    },
+    "verdict": {
+      "es": "Súbela siempre: es barata y en Forever es la fuente de las pociones de sanación.",
+      "en": "Always level it: it is cheap and in Forever it is where healing potions come from."
+    },
+    "items": [
+      {
+        "name": "Major Healing Potion",
+        "wowhead": 13446,
+        "note": {
+          "es": "En Forever la hace Primeros auxilios.",
+          "en": "Made with First Aid in Forever."
+        }
+      },
+      {
+        "name": "Runecloth Bandage",
+        "wowhead": 14529,
+        "note": {
+          "es": "Cura 1360 en 8 s.",
+          "en": "Heals 1360 over 8 sec."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "warcrafttavern-camping-objects",
+      "method-mage-leveling"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "fishing",
+    "name": {
+      "es": "Pesca",
+      "en": "Fishing"
+    },
+    "kind": "secondary",
+    "edge": "utility",
+    "priority": "medium",
+    "benefit": {
+      "es": "El Fish Bowl de campamento: +8 % a todas las estadísticas.",
+      "en": "The camp Fish Bowl: +8% to all stats."
+    },
+    "limitation": {
+      "es": "Lleva tiempo y por sí sola no da nada en combate.",
+      "en": "It takes time and gives nothing in combat on its own."
+    },
+    "summary": {
+      "es": "La secundaria más lenta, con un detalle valioso: su objeto de campamento da un 8 % de estadísticas, como una Bendición de reyes algo más débil, y cualquier Mago puede llevarlo.",
+      "en": "The slowest secondary profession, with one valuable detail: its camp object gives 8% stats, like a slightly weaker Blessing of Kings, and any Mage can carry it."
+    },
+    "pros": [
+      {
+        "es": "Fish Bowl (20 de habilidad): +8 % a todas las estadísticas para ti y quien se siente cerca; no se acumula con Bendición de reyes.",
+        "en": "Fish Bowl (skill 20): +8% to all stats for you and anyone sitting nearby; it does not stack with Blessing of Kings."
+      },
+      {
+        "es": "Pescado para Cocina.",
+        "en": "Fish for Cooking."
+      },
+      {
+        "es": "Cajas con tela y equipo para desencantar, según la comunidad.",
+        "en": "Crates with cloth and gear to disenchant, according to the community."
+      }
+    ],
+    "cons": [
+      {
+        "es": "Subirla exige mucho tiempo quieto.",
+        "en": "Leveling it takes a lot of standing still."
+      }
+    ],
+    "pve": {
+      "es": "Indirecta: comida y el Fish Bowl si el grupo no tiene Paladín.",
+      "en": "Indirect: food and the Fish Bowl if the group has no Paladin."
+    },
+    "pvp": {
+      "es": "Nula.",
+      "en": "None."
+    },
+    "levelingEconomy": {
+      "es": "Abastece a Cocina, y el pescado se vende.",
+      "en": "It supplies Cooking, and fish sells."
+    },
+    "verdict": {
+      "es": "Llega al menos a 20 de habilidad para el Fish Bowl; el resto, cuando tengas ratos muertos.",
+      "en": "Reach at least skill 20 for the Fish Bowl; the rest, whenever you have spare time."
+    },
+    "items": [
+      {
+        "name": "Fish Bowl",
+        "wowhead": 279967,
+        "note": {
+          "es": "+8 % a todas las estadísticas.",
+          "en": "+8% to all stats."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-professions-db",
+      "warcrafttavern-camping-objects",
+      "warcrafttavern-tailoring"
+    ],
+    "updated": "2026-10-14"
+  }
+]

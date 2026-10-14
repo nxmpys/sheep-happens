@@ -12,12 +12,20 @@ export const FACT_FIELDS: Record<string, string[]> = {
   'milestones.json': ['name', 'changeId', 'note.en', 'status', 'sources'],
   'abilities.json': ['name', 'school', 'role', 'level', 'changeIds', 'summary.en', 'status', 'sources'],
   'facts.json': ['value.en', 'status', 'sources'],
-  'builds.json': ['uses', 'spec', 'level', 'legacyTalented', 'points', 'summary.en', 'status', 'gameVersion', 'sources'],
+  'builds.json': ['uses', 'spec', 'level', 'fromLevel', 'legacyTalented', 'points', 'order', 'summary.en', 'status', 'gameVersion', 'sources'],
   'races.json': ['racials.facts', 'status', 'sources'],
+  'professions.json': ['kind', 'edge', 'ratings', 'priority', 'benefit.en', 'limitation.en', 'summary.en', 'pros.en', 'cons.en', 'pair.with', 'verdict.en', 'items.facts', 'status', 'sources'],
+  'profession-picks.json': ['professions', 'alternative.professions', 'why.en', 'status', 'sources'],
 };
 
+/** Fields holding a list of localized texts: compare their English versions. */
+const LOCALIZED_LISTS = new Set(['details.en', 'pros.en', 'cons.en']);
+
 function pick(record: Json, field: string): unknown {
-  if (field === 'details.en') return ((record['details'] as Json[] | undefined) ?? []).map((d) => d['en']);
+  if (LOCALIZED_LISTS.has(field)) return ((record[field.split('.')[0]!] as Json[] | undefined) ?? []).map((d) => d['en']);
+  if (field === 'items.facts') {
+    return ((record['items'] as Json[] | undefined) ?? []).map((i) => [i['name'], i['wowhead'], (i['note'] as Json | undefined)?.['en']]);
+  }
   if (field === 'racials.facts') {
     return ((record['racials'] as Json[] | undefined) ?? []).map((r) => [r['id'], r['kind'], (r['effect'] as Json | undefined)?.['en'], r['value']]);
   }

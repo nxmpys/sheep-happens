@@ -41,7 +41,7 @@ Objetivo: aparecer cuando alguien busque **«guía mago wow forever»**, «talen
 | `/es/talentos/arcano/` | mago arcano wow forever, explosión arcana forever |
 | `/es/talentos/fuego/` | mago fuego wow forever, calentamiento piroexplosión |
 | `/es/talentos/escarcha/` | mago escarcha wow forever, lanza de hielo forever |
-| `/es/nivelacion/` | subir de nivel mago wow forever |
+| `/es/nivelacion/` | guía de leveo mago wow forever, build de leveo mago, talentos de leveo 1-30, subir de nivel mago wow forever (en inglés, `/en/leveling/`: wow forever mage leveling guide, mage leveling build, leveling talents 1-30) |
 | `/es/combate/` | rotación mago wow forever |
 | `/es/equipo/` | equipo mago wow forever, estadísticas mago forever |
 

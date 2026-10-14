@@ -1,0 +1,64 @@
+---
+/**
+ * Our rating of how much something helps a Mage (Alto, Medio, Bajo, Nulo),
+ * always shown as a word and a dot, never colour alone.
+ */
+import { VALUE_LABELS } from '../../i18n/builds';
+import { getLocale } from '../../i18n/locale';
+import type { Rating } from '../../lib/schemas';
+
+interface Props {
+  value: Rating;
+  /** Visually hidden context read before the value, e.g. "PvP". */
+  label?: string;
+}
+
+const { value, label } = Astro.props;
+const locale = getLocale(Astro);
+---
+
+<span class={`rating rating--${value}`}>
+  {label && <span class="visually-hidden">{label}: </span>}
+  {VALUE_LABELS[locale][value]}
+</span>
+
+<style>
+  .rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    padding: 0.1em 0.6em;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--rating-color) 45%, transparent);
+    background: color-mix(in srgb, var(--rating-color) 12%, transparent);
+    color: var(--rating-color);
+    font-size: 0.8125rem;
+    font-weight: 650;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+  .rating::before {
+    content: '';
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .rating--high {
+    --rating-color: var(--status-verified);
+  }
+  .rating--medium {
+    --rating-color: var(--status-reported);
+  }
+  .rating--low {
+    --rating-color: var(--status-pending);
+  }
+  .rating--none {
+    --rating-color: var(--text-subtle);
+    background: transparent;
+  }
+  .rating--none::before {
+    background: transparent;
+    box-shadow: inset 0 0 0 1.5px currentColor;
+  }
+</style>

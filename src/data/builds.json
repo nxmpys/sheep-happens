@@ -1,5 +1,641 @@
 [
   {
+    "id": "frost-leveling-solo",
+    "name": {
+      "es": "Escarcha para leveo en solitario",
+      "en": "Frost solo leveling"
+    },
+    "uses": [
+      "leveling"
+    ],
+    "spec": "frost",
+    "level": 30,
+    "fromLevel": 1,
+    "points": {
+      "improved-frostbolt": 5,
+      "ice-shards": 5,
+      "frostbite": 3,
+      "piercing-ice": 3,
+      "ice-lance": 1,
+      "shatter": 3,
+      "fingers-of-frost": 1
+    },
+    "order": [
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "frostbite",
+      "frostbite",
+      "frostbite",
+      "ice-shards",
+      "ice-shards",
+      "ice-lance",
+      "piercing-ice",
+      "piercing-ice",
+      "piercing-ice",
+      "ice-shards",
+      "shatter",
+      "shatter",
+      "shatter",
+      "ice-shards",
+      "ice-shards",
+      "fingers-of-frost",
+      "fingers-of-frost",
+      "frost-channeling",
+      "frost-channeling",
+      "frost-channeling",
+      "ice-block"
+    ],
+    "orderNotes": [
+      {
+        "point": 1,
+        "text": {
+          "es": "Descarga de Escarcha es tu hechizo principal: con 5/5 se lanza 0,5 s más rápido (el rango 5, de nivel 26, pasa de 3 s a 2,5 s).",
+          "en": "Frostbolt is your main spell: at 5/5 it casts 0.5 s faster (rank 5, from level 26, goes from 3 s to 2.5 s)."
+        }
+      },
+      {
+        "point": 6,
+        "text": {
+          "es": "Frostbite da a tus enfriamientos un 15 % (3/3) de probabilidad de congelar 5 s: tiempo para alejarte y, desde el 20, Lanza de hielo potenciada.",
+          "en": "Frostbite gives your Chill effects a 15% (3/3) chance to freeze for 5 s: time to step away and, from level 20, an empowered Ice Lance."
+        }
+      },
+      {
+        "point": 9,
+        "text": {
+          "es": "Ice Shards aumenta el daño de tus críticos de Escarcha. Aquí sirve sobre todo para llegar a los 10 puntos que abren la fila 3.",
+          "en": "Ice Shards raises the damage of your Frost critical strikes. Here it mainly gets you to the 10 points that open row 3."
+        }
+      },
+      {
+        "point": 11,
+        "text": {
+          "es": "Lanza de hielo, el talento decisivo de 11 puntos: instantánea y un 300 % más de daño contra objetivos congelados.",
+          "en": "Ice Lance, the 11-point milestone: instant, and 300% more damage against frozen targets."
+        }
+      },
+      {
+        "point": 12,
+        "text": {
+          "es": "Piercing Ice: un 6 % más de daño de Escarcha con 3/3, siempre activo.",
+          "en": "Piercing Ice: 6% more Frost damage at 3/3, always on."
+        }
+      },
+      {
+        "point": 16,
+        "text": {
+          "es": "Trizar: +50 % de probabilidad de crítico contra objetivos congelados con 3/3. Con Ice Shards, la Lanza de hielo tras una congelación suele ser un crítico enorme.",
+          "en": "Shatter: +50% critical strike chance against frozen targets at 3/3. With Ice Shards, an Ice Lance after a freeze is usually a huge crit."
+        }
+      },
+      {
+        "point": 21,
+        "text": {
+          "es": "Dedos de Escarcha a nivel 30: cada enfriamiento tiene un 15 % de probabilidad de que tu siguiente hechizo trate al objetivo como congelado, sin necesidad de congelarlo.",
+          "en": "Fingers of Frost at level 30: each Chill has a 15% chance to make your next spell treat the target as frozen, without freezing it."
+        }
+      },
+      {
+        "point": 22,
+        "text": {
+          "es": "Solo con Talented: la segunda carga de Dedos de Escarcha deja gastar dos hechizos potenciados por cada activación.",
+          "en": "Talented only: the second Fingers of Frost charge lets you spend two empowered spells per proc."
+        }
+      },
+      {
+        "point": 23,
+        "text": {
+          "es": "Solo con Talented: Canalización de Escarcha, un 15 % menos de maná en tus hechizos de Escarcha con 3/3. Menos tiempo bebiendo.",
+          "en": "Talented only: Frost Channeling, 15% less mana on your Frost spells at 3/3. Less time drinking."
+        }
+      },
+      {
+        "point": 26,
+        "text": {
+          "es": "Solo con Talented: Bloqueo de hielo, 10 s de inmunidad cuando un combate se tuerce.",
+          "en": "Talented only: Ice Block, 10 s of immunity when a fight goes wrong."
+        }
+      }
+    ],
+    "goal": {
+      "es": "Subir con misiones sin riesgos",
+      "en": "Level through quests safely"
+    },
+    "profile": {
+      "es": "La mayoría: subes con misiones, casi siempre solo.",
+      "en": "Most players: you level through quests, mostly alone."
+    },
+    "upside": {
+      "es": "La más segura y la más fácil de jugar.",
+      "en": "The safest and the easiest to play."
+    },
+    "downside": {
+      "es": "Floja contra varios enemigos a la vez.",
+      "en": "Weak against several enemies at once."
+    },
+    "keyTalents": [
+      "improved-frostbolt",
+      "frostbite",
+      "ice-lance",
+      "shatter",
+      "fingers-of-frost"
+    ],
+    "summary": {
+      "es": "La build de referencia para subir del 1 al 30: Descarga de Escarcha ralentiza y puede congelar, y Lanza de hielo castiga a los enemigos congelados. Matas un enemigo tras otro con poco riesgo.",
+      "en": "The go-to build from 1 to 30: Frostbolt slows and can freeze, and Ice Lance punishes frozen targets. You kill one enemy after another with little risk."
+    },
+    "playstyle": [
+      {
+        "es": "Abre con Descarga de Escarcha a máxima distancia y sigue lanzándola mientras el enemigo se acerca ralentizado.",
+        "en": "Open with Frostbolt from max range and keep casting it while the slowed enemy walks in."
+      },
+      {
+        "es": "Si queda congelado (por Frostbite o Nova de Escarcha), lanza Lanza de hielo: hace un 300 % más contra objetivos congelados.",
+        "en": "If it gets frozen (by Frostbite or Frost Nova), cast Ice Lance: it deals 300% more to frozen targets."
+      },
+      {
+        "es": "Si llega a tu lado: Nova de Escarcha, aléjate unos pasos y sigue con Lanza de hielo o Descarga de Escarcha.",
+        "en": "If it reaches you: Frost Nova, walk a few steps away and continue with Ice Lance or Frostbolt."
+      },
+      {
+        "es": "Remata con Explosión de Fuego o con la varita para no gastar maná.",
+        "en": "Finish with Fire Blast or your wand to save mana."
+      },
+      {
+        "es": "Con Dedos de Escarcha (nivel 30), gasta cada carga en Lanza de hielo aunque el enemigo no esté congelado.",
+        "en": "With Fingers of Frost (level 30), spend each charge on Ice Lance even if the target is not frozen."
+      }
+    ],
+    "strengths": [
+      {
+        "es": "La más segura: ralentizas siempre y congelas a menudo, así que pocos enemigos llegan a golpearte.",
+        "en": "The safest: you always slow and often freeze, so few enemies get to hit you."
+      },
+      {
+        "es": "Fácil de aprender: cada punto mejora algo que ya usas, sin botones nuevos salvo Lanza de hielo.",
+        "en": "Easy to learn: each point improves something you already use, with no new buttons except Ice Lance."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Pensada para un enemigo cada vez: con tres o más a la vez dependes de Nova de Escarcha y de alejarte.",
+        "en": "Made for one enemy at a time: against three or more you rely on Frost Nova and on walking away."
+      },
+      {
+        "es": "Gasta bastante maná: hay que beber entre combates. Canalización de Escarcha solo entra con los puntos extra de Talented.",
+        "en": "It spends a lot of mana: you drink between fights. Frost Channeling only fits with the extra Talented points."
+      }
+    ],
+    "items": [
+      {
+        "es": "Una varita cuanto antes: Lesser Magic Wand (nivel 5) y Greater Magic Wand (nivel 13), de Encantamiento o de la casa de subastas.",
+        "en": "A wand as soon as possible: Lesser Magic Wand (level 5) and Greater Magic Wand (level 13), from Enchanting or the Auction House."
+      },
+      {
+        "es": "Agua y comida conjuradas; desde el nivel 28, gema de maná (Conjure Mana Agate) para los combates largos.",
+        "en": "Conjured water and food; from level 28, a mana gem (Conjure Mana Agate) for long fights."
+      }
+    ],
+    "page": "leveling",
+    "status": "analysis",
+    "gameVersion": "forever-beta-2026-10",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "wowhead-forever-talent-calc",
+      "icyveins-forever-frost",
+      "mobalytics-mage-leveling",
+      "method-mage-leveling"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "frost-leveling-dungeons",
+    "name": {
+      "es": "Escarcha para leveo en mazmorras",
+      "en": "Frost dungeon leveling"
+    },
+    "uses": [
+      "leveling",
+      "dungeons"
+    ],
+    "spec": "frost",
+    "level": 30,
+    "fromLevel": 10,
+    "points": {
+      "improved-frostbolt": 5,
+      "elemental-precision": 3,
+      "ice-shards": 5,
+      "frost-channeling": 3,
+      "piercing-ice": 3,
+      "ice-lance": 1,
+      "ice-block": 1
+    },
+    "order": [
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "elemental-precision",
+      "elemental-precision",
+      "elemental-precision",
+      "ice-shards",
+      "ice-shards",
+      "frost-channeling",
+      "frost-channeling",
+      "frost-channeling",
+      "piercing-ice",
+      "piercing-ice",
+      "piercing-ice",
+      "ice-shards",
+      "ice-shards",
+      "ice-shards",
+      "ice-lance",
+      "ice-block",
+      "fingers-of-frost",
+      "fingers-of-frost",
+      "shatter",
+      "shatter",
+      "shatter"
+    ],
+    "orderNotes": [
+      {
+        "point": 1,
+        "text": {
+          "es": "Igual que en solitario: en grupo, Descarga de Escarcha sigue siendo tu hechizo contra el objetivo del tanque.",
+          "en": "Same as solo: in a group, Frostbolt is still your spell against the tank's target."
+        }
+      },
+      {
+        "point": 6,
+        "text": {
+          "es": "Enfoque elemental: +3 % de golpe con Fuego y Escarcha. En mazmorras luchas contra élites y jefes de más nivel, que esquivan más tus hechizos.",
+          "en": "Elemental Precision: +3% hit with Fire and Frost. In dungeons you fight elites and bosses above your level, who avoid more of your spells."
+        }
+      },
+      {
+        "point": 9,
+        "text": {
+          "es": "Para abrir la fila 3. Ice Shards también aumenta el daño de los críticos de Ventisca.",
+          "en": "To open row 3. Ice Shards also raises the damage of Blizzard critical strikes."
+        }
+      },
+      {
+        "point": 11,
+        "text": {
+          "es": "Canalización de Escarcha a nivel 20, con Ventisca: con 3/3, tus hechizos de Escarcha cuestan un 15 % menos y generan un 30 % menos de amenaza.",
+          "en": "Frost Channeling at level 20, with Blizzard: at 3/3 your Frost spells cost 15% less and cause 30% less threat."
+        }
+      },
+      {
+        "point": 14,
+        "text": {
+          "es": "Piercing Ice: +6 % de daño de Escarcha, también con Ventisca y Cono de frío.",
+          "en": "Piercing Ice: +6% Frost damage, Blizzard and Cone of Cold included."
+        }
+      },
+      {
+        "point": 20,
+        "text": {
+          "es": "Lanza de hielo: daño instantáneo mientras te mueves y contra los enemigos que congele Nova de Escarcha.",
+          "en": "Ice Lance: instant damage while moving and against enemies frozen by Frost Nova."
+        }
+      },
+      {
+        "point": 21,
+        "text": {
+          "es": "Bloqueo de hielo: si un grupo de enemigos se te echa encima, 10 s de inmunidad para que el tanque los recupere.",
+          "en": "Ice Block: if a pack turns on you, 10 s of immunity for the tank to take them back."
+        }
+      },
+      {
+        "point": 22,
+        "text": {
+          "es": "Solo con Talented: Dedos de Escarcha 2/2. Las cargas tratan al objetivo como congelado sin congelarlo, algo útil en grupo, donde los golpes de tus compañeros rompen las congelaciones.",
+          "en": "Talented only: Fingers of Frost 2/2. Charges treat the target as frozen without freezing it, which helps in groups, where your allies' hits break freezes."
+        }
+      },
+      {
+        "point": 24,
+        "text": {
+          "es": "Solo con Talented: Trizar 3/3, para que esas cargas acaben en críticos.",
+          "en": "Talented only: Shatter 3/3, so those charges turn into critical strikes."
+        }
+      }
+    ],
+    "goal": {
+      "es": "Rendir en grupo",
+      "en": "Perform in groups"
+    },
+    "profile": {
+      "es": "Quien sube sobre todo en mazmorras, con un grupo fijo o con amigos.",
+      "en": "Players who level mostly in dungeons, with a regular group or friends."
+    },
+    "upside": {
+      "es": "Menos amenaza y menos maná con Ventisca.",
+      "en": "Less threat and less mana with Blizzard."
+    },
+    "downside": {
+      "es": "Peor para misiones, y cambiarla exige ir al instructor.",
+      "en": "Worse for questing, and switching means a trip to the trainer."
+    },
+    "keyTalents": [
+      "elemental-precision",
+      "frost-channeling",
+      "piercing-ice",
+      "ice-shards",
+      "ice-block"
+    ],
+    "summary": {
+      "es": "Cambia control por lo que importa en grupo: más golpe contra élites y jefes, y menos amenaza y menos maná con Ventisca y Descarga de Escarcha. Solo compensa si vas a hacer varias mazmorras seguidas.",
+      "en": "Trades control for what matters in a group: more hit against elites and bosses, and less threat and mana with Blizzard and Frostbolt. Only worth it if you will run several dungeons in a row."
+    },
+    "playstyle": [
+      {
+        "es": "Deja que el tanque golpee primero y espera 2 o 3 segundos antes de tu primer hechizo.",
+        "en": "Let the tank hit first and wait 2 or 3 seconds before your first spell."
+      },
+      {
+        "es": "Contra un enemigo: Descarga de Escarcha sobre el objetivo del tanque o sobre el que marque el grupo.",
+        "en": "Against one enemy: Frostbolt on the tank's target or the one the group marks."
+      },
+      {
+        "es": "Contra un grupo: Ventisca cuando el tanque los tenga juntos y sujetos. No uses Nova de Escarcha junto al tanque: los enemigos congelados atacan a quien tengan más cerca.",
+        "en": "Against a pack: Blizzard once the tank has them together and held. Do not Frost Nova next to the tank: frozen enemies attack whoever is closest."
+      },
+      {
+        "es": "Polimorfia sobre el enemigo que te pidan (suele ser un lanzador) antes de empezar.",
+        "en": "Polymorph the enemy you are asked to (usually a caster) before the pull."
+      },
+      {
+        "es": "Si un enemigo va a por ti, no huyas lejos: acércate al tanque para que lo recupere. Si no puede, Bloqueo de hielo.",
+        "en": "If an enemy comes for you, do not run far: move to the tank so they can take it back. If they cannot, Ice Block."
+      }
+    ],
+    "strengths": [
+      {
+        "es": "Menos amenaza: puedes usar Ventisca en grupos sin quitarle tantos enemigos al tanque.",
+        "en": "Less threat: you can Blizzard packs without pulling as many enemies off the tank."
+      },
+      {
+        "es": "Más golpe y menos maná: aguantas más combates seguidos sin pararte a beber.",
+        "en": "More hit and less mana: you last more fights in a row without stopping to drink."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Peor que la de solitario para misiones: sin Frostbite ni Trizar congelas poco y matas más despacio cuando vas solo.",
+        "en": "Worse than the solo build for questing: without Frostbite or Shatter you rarely freeze and kill slower on your own."
+      },
+      {
+        "es": "Cambiar de talentos solo se puede en el instructor de clase de una capital: no compensa para una mazmorra suelta.",
+        "en": "You can only change talents at a class trainer in a capital: not worth it for a single dungeon."
+      }
+    ],
+    "items": [
+      {
+        "es": "Agua y comida conjuradas para todo el grupo: es tu mejor aportación fuera del combate.",
+        "en": "Conjured water and food for the whole group: your best contribution between fights."
+      },
+      {
+        "es": "Una varita para rematar y para los jefes cuando vayas justo de maná.",
+        "en": "A wand to finish enemies and for bosses when you are low on mana."
+      }
+    ],
+    "page": "leveling",
+    "status": "analysis",
+    "gameVersion": "forever-beta-2026-10",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "blizzard-dev-notes",
+      "wowhead-forever-talent-calc",
+      "icyveins-forever-frost",
+      "mobalytics-frost"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
+    "id": "frost-leveling-aoe",
+    "name": {
+      "es": "Escarcha para farmeo en área (experimental)",
+      "en": "Frost AoE farming (experimental)"
+    },
+    "uses": [
+      "leveling",
+      "aoe"
+    ],
+    "spec": "frost",
+    "level": 30,
+    "fromLevel": 22,
+    "points": {
+      "improved-frostbolt": 5,
+      "elemental-precision": 3,
+      "permafrost": 3,
+      "improved-frost-nova": 2,
+      "improved-blizzard": 3,
+      "frost-channeling": 2,
+      "ice-block": 1,
+      "arctic-reach": 2
+    },
+    "order": [
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "permafrost",
+      "permafrost",
+      "permafrost",
+      "improved-frost-nova",
+      "improved-frost-nova",
+      "improved-blizzard",
+      "improved-blizzard",
+      "improved-blizzard",
+      "elemental-precision",
+      "elemental-precision",
+      "elemental-precision",
+      "ice-block",
+      "arctic-reach",
+      "arctic-reach",
+      "frost-channeling",
+      "frost-channeling",
+      "cold-snap",
+      "frost-channeling",
+      "piercing-ice",
+      "piercing-ice",
+      "piercing-ice"
+    ],
+    "orderNotes": [
+      {
+        "point": 1,
+        "text": {
+          "es": "Hasta el nivel 22 haces misiones, así que empiezas igual que la build en solitario.",
+          "en": "You quest until level 22, so you start like the solo build."
+        }
+      },
+      {
+        "point": 6,
+        "text": {
+          "es": "Escarcha permanente: tus enfriamientos duran un 33 % más y frenan un 10 % más. También mejora la ralentización de Descarga de Escarcha mientras haces misiones.",
+          "en": "Permafrost: your Chill effects last 33% longer and slow 10% more. It also improves Frostbolt's slow while you quest."
+        }
+      },
+      {
+        "point": 9,
+        "text": {
+          "es": "Nova de Escarcha mejorada: Nova de Escarcha cada 21 s en lugar de 25. Es tu herramienta para volver a sujetar al grupo.",
+          "en": "Improved Frost Nova: Frost Nova every 21 s instead of 25. It is how you pin the pack down again."
+        }
+      },
+      {
+        "point": 11,
+        "text": {
+          "es": "Ventisca mejorada 3/3 al llegar al 22: sin ella, Ventisca no ralentiza. Con Escarcha permanente frena un 50 % durante 2 s, y cada golpe de Ventisca lo renueva.",
+          "en": "Improved Blizzard 3/3 by level 22: without it, Blizzard does not slow. With Permafrost it slows by 50% for 2 s, refreshed by each Blizzard tick."
+        }
+      },
+      {
+        "point": 14,
+        "text": {
+          "es": "Enfoque elemental: +3 % de golpe. Una Nova de Escarcha resistida en mitad de un grupo es la forma más habitual de morir.",
+          "en": "Elemental Precision: +3% hit. A resisted Frost Nova in the middle of a pack is the most common way to die."
+        }
+      },
+      {
+        "point": 17,
+        "text": {
+          "es": "Bloqueo de hielo: tu salida de emergencia si el grupo te alcanza sin Nova de Escarcha ni Blink.",
+          "en": "Ice Block: your emergency exit if the pack reaches you with Frost Nova and Blink down."
+        }
+      },
+      {
+        "point": 18,
+        "text": {
+          "es": "Arctic Reach: +20 % de radio para Nova de Escarcha y Cono de frío, y más alcance para Ventisca.",
+          "en": "Arctic Reach: +20% radius for Frost Nova and Cone of Cold, and more Blizzard range."
+        }
+      },
+      {
+        "point": 20,
+        "text": {
+          "es": "Canalización de Escarcha: la Ventisca de rango 1 cuesta 320 de maná en la beta; con 2/3, un 10 % menos.",
+          "en": "Frost Channeling: rank 1 Blizzard costs 320 mana in the beta; 10% less at 2/3."
+        }
+      },
+      {
+        "point": 22,
+        "text": {
+          "es": "Solo con Talented: Mordedura helada reinicia Nova de Escarcha y Bloqueo de hielo una vez cada 10 minutos. Una segunda oportunidad cuando el grupo se tuerce.",
+          "en": "Talented only: Cold Snap resets Frost Nova and Ice Block once every 10 minutes. A second chance when a pull goes wrong."
+        }
+      },
+      {
+        "point": 24,
+        "text": {
+          "es": "Solo con Talented: Piercing Ice, +6 % de daño de Escarcha.",
+          "en": "Talented only: Piercing Ice, +6% Frost damage."
+        }
+      }
+    ],
+    "goal": {
+      "es": "Matar grupos de enemigos con Ventisca",
+      "en": "Kill packs of enemies with Blizzard"
+    },
+    "profile": {
+      "es": "Jugadores con experiencia que dominan Nova de Escarcha y Blink.",
+      "en": "Experienced players who master Frost Nova and Blink."
+    },
+    "upside": {
+      "es": "Potencialmente la más rápida, si la zona acompaña.",
+      "en": "Potentially the fastest, in the right spot."
+    },
+    "downside": {
+      "es": "La más arriesgada: Forever recortó sus ralentizaciones.",
+      "en": "The riskiest: Forever cut the slows it relies on."
+    },
+    "keyTalents": [
+      "improved-blizzard",
+      "permafrost",
+      "improved-frost-nova",
+      "elemental-precision",
+      "arctic-reach"
+    ],
+    "summary": {
+      "es": "Reúne varios enemigos cuerpo a cuerpo, congélalos y mátalos con Ventisca. Puede ser más rápida que las misiones desde el nivel 22, pero Forever ha recortado justo las ralentizaciones en las que se basaba: es la más arriesgada y nadie ha demostrado todavía que compense.",
+      "en": "Gather several melee enemies, freeze them and kill them with Blizzard. It can beat questing from level 22, but Forever cut exactly the slows it relied on: it is the riskiest build and nobody has shown yet that it pays off."
+    },
+    "playstyle": [
+      {
+        "es": "Hasta el nivel 22, haz misiones: estos primeros puntos también te sirven contra un solo enemigo.",
+        "en": "Quest until level 22: these first points also help against a single enemy."
+      },
+      {
+        "es": "Elige enemigos cuerpo a cuerpo sin miedos, derribos ni ataques a distancia, y empieza con grupos de 2 a 4.",
+        "en": "Pick melee enemies without fears, knockbacks or ranged attacks, and start with packs of 2 to 4."
+      },
+      {
+        "es": "Con Escudo de maná puesto, llévalos detrás de ti, lanza Nova de Escarcha, aléjate hasta el límite de alcance y canaliza Ventisca.",
+        "en": "With Mana Shield up, lead them behind you, cast Frost Nova, walk to max range and channel Blizzard."
+      },
+      {
+        "es": "Cuando se suelten, otra Nova de Escarcha o Cono de frío (nivel 26) y otra Ventisca. Remata con Deflagración Arcana.",
+        "en": "When they break free, another Frost Nova or Cone of Cold (level 26) and another Blizzard. Finish with Arcane Explosion."
+      },
+      {
+        "es": "Si algo falla, Blink y aléjate; Bloqueo de hielo como último recurso. Bebe después de cada grupo.",
+        "en": "If anything goes wrong, Blink away; Ice Block as a last resort. Drink after every pack."
+      }
+    ],
+    "strengths": [
+      {
+        "es": "Mata varios enemigos a la vez: si la zona acompaña, es la forma potencialmente más rápida de subir.",
+        "en": "Kills several enemies at once: in the right area it is potentially the fastest way to level."
+      },
+      {
+        "es": "Escarcha permanente y Nova de Escarcha mejorada también te ayudan en las misiones antes del 22.",
+        "en": "Permafrost and Improved Frost Nova also help you quest before level 22."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Ventisca mejorada ralentiza como máximo un 40 % (65 % en Classic) y Cono de frío dura menos: los enemigos salen antes de la Ventisca y te alcanzan antes.",
+        "en": "Improved Blizzard slows by 40% at most (65% in Classic) and Cone of Cold lasts less: enemies leave Blizzard and reach you sooner."
+      },
+      {
+        "es": "Una Nova de Escarcha resistida o un enemigo de más suele acabar en muerte, y depende de la zona, de los demás jugadores y de tu maná.",
+        "en": "A resisted Frost Nova or one enemy too many usually means death, and it depends on the area, other players and your mana."
+      }
+    ],
+    "items": [
+      {
+        "es": "Mucha agua conjurada y vendas de Primeros auxilios: acabarás cada grupo sin maná y con algún golpe.",
+        "en": "Plenty of conjured water and First Aid bandages: you will end every pack out of mana and with a few hits taken."
+      },
+      {
+        "es": "Equipo con Aguante (Stamina): recibirás golpes al reunir a los enemigos.",
+        "en": "Gear with Stamina: you will take hits while gathering enemies."
+      },
+      {
+        "es": "Desde el nivel 28, Ventisca de rango 2 y gema de maná (Conjure Mana Agate).",
+        "en": "From level 28, rank 2 Blizzard and a mana gem (Conjure Mana Agate)."
+      }
+    ],
+    "page": "leveling",
+    "status": "analysis",
+    "gameVersion": "forever-beta-2026-10",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "blizzard-dev-notes",
+      "wowhead-forever-talent-calc",
+      "mobalytics-frost",
+      "icyveins-classic-aoe-leveling"
+    ],
+    "updated": "2026-10-14"
+  },
+  {
     "id": "frost-duels-30-legacy",
     "name": {
       "es": "Escarcha para duelos a nivel 30 con Legado (26 puntos)",

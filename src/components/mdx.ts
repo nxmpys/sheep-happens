@@ -5,6 +5,7 @@
 import AbilityGrid from './guide/AbilityGrid.astro';
 import BuildCard from './guide/BuildCard.astro';
 import BuildExplorer from './guide/BuildExplorer.astro';
+import BuildPicker from './guide/BuildPicker.astro';
 import Callout from './guide/Callout.astro';
 import ChangeExplorer from './guide/ChangeExplorer.astro';
 import ChangelogList from './guide/ChangelogList.astro';
@@ -14,10 +15,14 @@ import Faq from './guide/Faq.astro';
 import FaqItem from './guide/FaqItem.astro';
 import Highlight from './guide/Highlight.astro';
 import Highlights from './guide/Highlights.astro';
+import LevelingStatus from './guide/LevelingStatus.astro';
 import MilestoneMap from './guide/MilestoneMap.astro';
 import PageLink from './guide/PageLink.astro';
 import Pending from './guide/Pending.astro';
 import Priority from './guide/Priority.astro';
+import ProfessionDetail from './guide/ProfessionDetail.astro';
+import ProfessionPicks from './guide/ProfessionPicks.astro';
+import ProfessionTable from './guide/ProfessionTable.astro';
 import QuestionCards from './guide/QuestionCards.astro';
 import RaceCards from './guide/RaceCards.astro';
 import SourceRefs from './guide/SourceRefs.astro';
@@ -37,6 +42,7 @@ export const mdxComponents = {
   AbilityGrid,
   BuildCard,
   BuildExplorer,
+  BuildPicker,
   Callout,
   ChangeExplorer,
   ChangelogList,
@@ -46,10 +52,14 @@ export const mdxComponents = {
   FaqItem,
   Highlight,
   Highlights,
+  LevelingStatus,
   MilestoneMap,
   PageLink,
   Pending,
   Priority,
+  ProfessionDetail,
+  ProfessionPicks,
+  ProfessionTable,
   QuestionCards,
   RaceCards,
   SourceRefs,

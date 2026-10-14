@@ -24,6 +24,7 @@ export const MDX_COMPONENTS = [
   'AbilityGrid',
   'BuildCard',
   'BuildExplorer',
+  'BuildPicker',
   'Callout',
   'ChangeExplorer',
   'ChangelogList',
@@ -33,10 +34,14 @@ export const MDX_COMPONENTS = [
   'FaqItem',
   'Highlight',
   'Highlights',
+  'LevelingStatus',
   'MilestoneMap',
   'PageLink',
   'Pending',
   'Priority',
+  'ProfessionDetail',
+  'ProfessionPicks',
+  'ProfessionTable',
   'QuestionCards',
   'RaceCards',
   'SourceRefs',
@@ -121,6 +126,33 @@ export function validatePages(
     }
     for (const [, id] of body.matchAll(/<BuildCard[^>]*\bid="([^"]+)"/g)) {
       if (!data.builds.some((b) => b.id === id)) errors.push(`${where}: unknown build "${id}"`);
+    }
+    for (const [, list, recommended] of body.matchAll(/<BuildPicker[^>]*\bids=\{\[([^\]]*)\]\}(?:[^>]*\brecommended="([^"]+)")?/g)) {
+      const ids = [...list!.matchAll(/'([^']+)'/g)].map((m) => m[1]!);
+      for (const id of ids) if (!data.builds.some((b) => b.id === id)) errors.push(`${where}: unknown build "${id}"`);
+      if (recommended && !ids.includes(recommended)) errors.push(`${where}: <BuildPicker> recommends "${recommended}", which it does not list`);
+    }
+    // Each <ProfessionDetail> sits right under a heading with the profession's name:
+    // the picks and the comparison table link to that heading's anchor.
+    const detailed = new Set<string>();
+    for (const match of body.matchAll(/<ProfessionDetail[^>]*\bid="([^"]+)"/g)) {
+      const id = match[1]!;
+      const profession = data.professions.find((p) => p.id === id);
+      if (!profession) {
+        errors.push(`${where}: unknown profession "${id}"`);
+        continue;
+      }
+      if (detailed.has(id)) errors.push(`${where}: <ProfessionDetail id="${id}"> appears twice`);
+      detailed.add(id);
+      const heading = [...body.slice(0, match.index).matchAll(/^#{2,4} (.+)$/gm)].at(-1)?.[1]?.trim();
+      if (heading !== profession.name[fm.locale]) {
+        errors.push(`${where}: <ProfessionDetail id="${id}"> needs the heading "### ${profession.name[fm.locale]}" right above it`);
+      }
+    }
+    if (/<Profession(?:Picks|Table)\b/.test(body)) {
+      for (const profession of data.professions) {
+        if (!detailed.has(profession.id)) errors.push(`${where}: links to "${profession.id}" but has no <ProfessionDetail id="${profession.id}">`);
+      }
     }
     for (const [, list] of body.matchAll(/<SourceRefs[^>]*\bids=\{\[([^\]]*)\]\}/g)) {
       for (const [, id] of list!.matchAll(/'([^']+)'/g)) {

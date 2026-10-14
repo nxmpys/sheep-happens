@@ -24,6 +24,10 @@
 - [ ] Razas de Mago: Humano, Gnomo, Skyborne, Orco, No-muerto, Trol.
 - [ ] 51 puntos de talento a nivel 60.
 - [ ] Sistema de Legado: 16 puntos gastables en el lanzamiento; el talento "Reagent Economy" elimina los componentes de vendedor.
+- [ ] Legado: los puntos se ganan con desafíos de cuenta (por ejemplo, nivel 25, 45 y 60 con cada clase), así que el primer personaje del lanzamiento no tendrá Talented (Warcraft Tavern). Talented: primer punto a nivel 9 con 1 rango y a nivel 5 con 5.
+- [ ] Valores de talentos y hechizos usados en la guía de leveo (calculadora de Wowhead, datos de la beta 2026-10-14): Improved Frostbolt −0,1 s por rango; Frostbite 5/10/15 %, congela 5 s; Ice Shards +20 % de bonificación de crítico por rango; Piercing Ice +2 % por rango; Canalización de Escarcha −5 % de maná y −10 % de amenaza por rango; Trizar +17/33/50 % de crítico contra congelados; Dedos de Escarcha 15 %, 1/2 cargas, 15 s; Ventisca mejorada 15/25/40 % durante 1,5 s; Escarcha permanente +11/22/33 % de duración y −3/7/10 % de velocidad; Nova de Escarcha 25 s de reutilización y hasta 8 s de congelación; Cono de frío 40 % durante 6 s; Ventisca de rango 1, 320 de maná; Lanza de hielo de rango 1, 28-32 de daño.
+- [ ] Niveles de los hechizos del 1 al 30 según la lista del instructor de la beta (calculadora de Wowhead), coincidentes con Method y con Classic. Lanza de hielo de rango 2 se entrena a nivel 28.
+- [ ] Experiencia de mazmorras: mucha menos por matar y mucha más por las misiones (entrevista a Kris Zierhut, vía Icy Veins). Los ajustes del 1 y el 8 de octubre sí están en las notas oficiales.
 
 ## Discrepancias abiertas
 
@@ -36,13 +40,15 @@
 | Requisito de Fingers of Frost | Texto oficial: «Pre-requisite of Ice Lance» | Ice Lance es hito de 11 (fila 3) y Fingers of Frost está en la fila 5: no puede ser requisito de Ice Lance | Se muestra la redacción oficial y la lectura coherente («FoF requiere Ice Lance»), marcada como pendiente |
 | Versión de cliente | "1.60.1 beta" (Seemeta) | "build 69913" (Guildorder, antigua) | Resuelto: se publica «1.60.1, build 70338» como dato de la comunidad (wago.tools + Warcraft Wiki) |
 | Nivel de la doble especialización | Deep dive: nivel 40 | Pódcast: «currently 40», estudian adelantarlo | Se muestra «40 por ahora» con el aviso |
+| Ventisca mejorada en las guías de área | Oficial y calculadora: ralentiza como máximo un 40 % | WoW Forever Builds (guía de área 22-60): 65 %, el valor de Classic | Se usa el 40 %. No seguimos esa guía para la build de área |
+| Build de leveo de Escarcha a nivel 30 | Icy Veins: Enfoque elemental 2 y Ventisca mejorada 1; Mobalytics (Escarcha): Enfoque elemental 2 y Bloqueo de hielo | Mobalytics (leveo): Frostbite 2 y Ventisca mejorada 1; WoW Forever Builds: Enfoque elemental 5 y Canalización de Escarcha, sin Improved Frostbolt | Núcleo común (Improved Frostbolt, Frostbite, Ice Shards, Lanza de hielo, Trizar, Dedos de Escarcha) + Piercing Ice 3/3. Comparativa en la guía de leveo |
 
 ## Pendiente (no publicar como hecho)
 
 - [ ] Valores numéricos: daño, coste y probabilidad de Arcane Blast, Ice Lance, Frostfire Bolt, Missile Barrage, Heating Up, Fingers of Frost.
   - Un extracto de Zockify menciona "95 to 104 Arcane damage" para Arcane Blast, pero la página consultada no lo muestra → **no se usa**.
 - [ ] Niveles en los que se aprenden las habilidades base (salvo Frostfire Bolt, 40).
-- [ ] Builds de nivelación probadas y builds de nivel 60.
+- [ ] Builds de nivelación probadas en el servidor (las del 1 al 30 están razonadas, no probadas; la de área es experimental) y builds de nivel 60.
 - [ ] Prioridad de estadísticas y valor del índice de golpe con los nuevos Arcane Focus y Elemental Precision.
 - [ ] Equipo, consumibles, encantamientos, profesiones.
 - [ ] Mazmorras, raids y PvP de Forever.

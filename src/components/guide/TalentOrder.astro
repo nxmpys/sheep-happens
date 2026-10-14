@@ -1,0 +1,178 @@
+---
+/**
+ * The point order of a leveling build as a table: the level of each point,
+ * the same level with the Legacy perk Talented 5/5, the talent and rank reached,
+ * and why the key points go there. Consecutive points in the same talent are
+ * grouped ("10–14 · Improved Frostbolt 5/5"); the extra Talented points get
+ * their own rows at the end.
+ */
+import SpellRef from './SpellRef.astro';
+import { tb } from '../../i18n/builds';
+import { getLocale } from '../../i18n/locale';
+import { talents } from '../../lib/data';
+import type { Build } from '../../lib/schemas';
+import { levelForPoint, orderSteps, pointsAtLevel } from '../../lib/talents';
+
+interface Props {
+  build: Build;
+}
+
+const { build } = Astro.props;
+const locale = getLocale(Astro);
+const order = build.order ?? [];
+const base = pointsAtLevel(build.level, build.legacyTalented);
+const steps = orderSteps(order, talents, base);
+const showTalented = build.legacyTalented < 5;
+const span = (from: number, to: number) => (from === to ? String(from) : `${from}–${to}`);
+const notesFor = (from: number, to: number) => build.orderNotes.filter((n) => n.point >= from && n.point <= to);
+const intro =
+  order.length > base
+    ? tb(locale, 'build.orderIntro', { points: base, level: build.level, talented: order.length })
+    : tb(locale, 'build.orderIntroNoExtra', { points: base, level: build.level });
+const columns = showTalented ? 3 : 2;
+---
+
+<div class="talent-order">
+  <p class="talent-order__intro">{intro}</p>
+  <div class="table-wrap" tabindex="0" role="region" aria-label={tb(locale, 'build.orderCaption', { name: build.name[locale] })}>
+    <table>
+      <caption class="visually-hidden">{tb(locale, 'build.orderCaption', { name: build.name[locale] })}</caption>
+      <thead>
+        <tr>
+          <th scope="col">{tb(locale, 'build.orderLevel')}</th>
+          {showTalented && <th scope="col">{tb(locale, 'build.orderTalented')}</th>}
+          <th scope="col">{tb(locale, 'build.orderTalent')}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          steps.map((step) => {
+            const extra = step.from > base;
+            const label = locale === 'es' && step.talent.nameEs ? step.talent.nameEs : step.talent.name;
+            return (
+              <>
+                {extra && step.from === base + 1 && (
+                  <tr class="talent-order__divider">
+                    <th scope="colgroup" colspan={columns}>
+                      {tb(locale, 'build.orderExtraHeading')}
+                    </th>
+                  </tr>
+                )}
+                <tr class:list={[`school-${step.talent.tree}`, { 'is-extra': extra }]}>
+                  <th scope="row" class="talent-order__level">
+                    {extra ? (
+                      <span class="talent-order__only">{tb(locale, 'build.orderExtra')}</span>
+                    ) : (
+                      span(levelForPoint(step.from, build.legacyTalented), levelForPoint(step.to, build.legacyTalented))
+                    )}
+                  </th>
+                  {showTalented && <td class="talent-order__level">{span(levelForPoint(step.from, 5), levelForPoint(step.to, 5))}</td>}
+                  <td>
+                    <span class="talent-order__talent">
+                      <SpellRef name={step.talent.name} label={label} />{' '}
+                      <span class="talent-order__rank">
+                        {step.toRank}/{step.talent.maxRank}
+                      </span>
+                    </span>
+                    {notesFor(step.from, step.to).map((note) => (
+                      <span class="talent-order__note">{note.text[locale]}</span>
+                    ))}
+                  </td>
+                </tr>
+              </>
+            );
+          })
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+  .talent-order {
+    display: grid;
+    gap: var(--space-3);
+    min-width: 0;
+  }
+  .talent-order__intro {
+    margin: 0;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--step--1);
+  }
+  th,
+  td {
+    padding: var(--space-2) var(--space-3);
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border);
+  }
+  thead th {
+    background: var(--surface-2);
+    color: var(--text-muted);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+  tbody tr:not(.talent-order__divider) > :first-child {
+    border-left: 3px solid var(--school);
+  }
+  .talent-order__level {
+    width: 1%;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+  }
+  td.talent-order__level {
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+  .talent-order__talent {
+    font-weight: 600;
+  }
+  .talent-order__rank {
+    margin-left: 0.15em;
+    color: var(--school);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .talent-order__note {
+    display: block;
+    margin-top: var(--space-1);
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+  .talent-order__divider th {
+    background: var(--baseline-soft);
+    color: var(--baseline);
+    font-weight: 700;
+  }
+  .is-extra {
+    background: color-mix(in srgb, var(--baseline-soft) 45%, transparent);
+  }
+  .talent-order__only {
+    font-weight: 600;
+    color: var(--baseline);
+    white-space: normal;
+  }
+  @media (max-width: 520px) {
+    th,
+    td {
+      padding: var(--space-2);
+    }
+    thead th {
+      white-space: normal;
+    }
+  }
+</style>

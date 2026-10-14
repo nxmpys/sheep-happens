@@ -1,7 +1,7 @@
 # Sheep Happens
 
 Guía en profundidad y bilingüe (ES/EN) del **Mago** para **World of Warcraft: Forever**.
-Sitio estático con interactividad selectiva: builds filtrables por uso y rama (con vista de calculadora y enlace a Wowhead), razas con sus raciales, fichas de hechizos al pasar el ratón, explorador de cambios filtrable, explorador de talentos por rama, buscador por secciones y calculadora de crítico. Cada dato muestra su fuente y su estado de verificación.
+Sitio estático con interactividad selectiva: builds filtrables por uso y rama (con vista de calculadora y enlace a Wowhead), guía de leveo con selector de builds y orden de puntos nivel a nivel, razas con sus raciales, profesiones recomendadas según el objetivo, fichas de hechizos al pasar el ratón, explorador de cambios filtrable, explorador de talentos por rama, buscador por secciones y calculadora de crítico. Cada dato muestra su fuente y su estado de verificación.
 
 > Estado del juego en la última revisión (2026-10-11): **beta** (cliente 1.60.1). El lanzamiento está previsto para el 4 de noviembre de 2026. Ver [`docs/game-version.md`](docs/game-version.md).
 >
@@ -63,7 +63,7 @@ Ver [`docs/deployment.md`](docs/deployment.md) (Cloudflare Pages, paso a paso) y
 
 - [Análisis de la referencia](docs/reference-analysis.md) · [Mapa de navegación](docs/reference-navigation.md) · [Patrones UX](docs/ux-patterns.md)
 - [Requisitos](docs/product-requirements.md) · [Plan de implementación](docs/implementation-plan.md) · [Auditoría final](docs/audit.md)
-- [Versión del juego](docs/game-version.md) · [Fuentes](docs/content-sources.md) · [Validación del contenido](docs/content-validation.md)
+- [Versión del juego](docs/game-version.md) · [Fuentes](docs/content-sources.md) · [Validación del contenido](docs/content-validation.md) · [Investigación de profesiones](docs/professions-research.md)
 - [Mantenimiento y revisión de fuentes](docs/maintenance.md) · [Hoja de ruta del contenido](docs/content-roadmap.md) · [Despliegue](docs/deployment.md) · [SEO](docs/seo.md)
 
 ## Aviso legal
