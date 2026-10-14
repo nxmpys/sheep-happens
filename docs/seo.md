@@ -20,7 +20,7 @@ Objetivo: aparecer cuando alguien busque **«guía mago wow forever»**, «talen
 | Sitemap | `sitemap-index.xml` con `lastmod` real (revisión o historial) y alternativas de idioma; incluye la raíz `/`, pero no la 404 ni los borradores |
 | robots.txt | Permite todo y declara el sitemap |
 | Datos estructurados | JSON-LD `WebSite` (portada), `Article` (fechas de publicación y modificación, sobre el videojuego) y `BreadcrumbList`. Una sola `Organization` (`#organization`, con logo) como autora y editora; los artículos enlazan con el `WebSite` de la raíz (`#website`) |
-| Favicon | `favicon.svg`, `favicon.ico` (16, 32 y 48 px: Google pide múltiplos de 48) y `apple-touch-icon.png`; los dos últimos se generan desde el SVG con `npm run og` |
+| Favicon | La oveja del logo sobre una baldosa oscura, legible en resultados claros y oscuros: `favicon.svg`, `favicon.ico` (16, 32 y 48 px: Google pide múltiplos de 48) y `apple-touch-icon.png`; los dos últimos se generan desde el SVG con `npm run og` |
 | Aviso a buscadores | Sitemap en Google y Bing, e IndexNow (`npm run indexnow`) para Bing, Yandex y otros |
 | Redes sociales | Imagen 1200×630 por página e idioma (`public/og/`), Open Graph y Twitter Card |
 | Palabras clave | Nombres **oficiales en español** (Lanza de hielo, Descarga de Pirofrío…) junto al inglés: cubre ambas búsquedas |
@@ -49,17 +49,18 @@ Objetivo: aparecer cuando alguien busque **«guía mago wow forever»**, «talen
 
 ### 1. Google Search Console (gratis, 10 minutos)
 
-Estado (13 oct 2026), propiedad **`https://sheephappens.app/`** (prefijo de URL):
+Estado (14 oct 2026), propiedad **`https://sheephappens.app/`** (prefijo de URL):
 
 - `sitemap-index.xml` enviado y leído sin errores: 33 páginas descubiertas.
-- **Ya indexadas:** `/`, `/es/builds/` y `/es/builds/duelos-nivel-30/`.
-- **Indexación solicitada** el 13 oct: `/` (para que recoja el favicon y los datos estructurados nuevos), `/es/`, `/en/`, `/es/talentos/escarcha/`, `/es/razas/` y `/es/guia/`. El cupo diario se agotó en la 7.ª petición.
-- **Pendientes de solicitar**, una tanda al día y en este orden: `/es/cambios/`, `/es/talentos/`, `/es/talentos/fuego/`, `/es/talentos/arcano/`, `/es/nivelacion/`, `/es/combate/`, `/es/equipo/` y después las páginas en inglés. Antes de pedirla, inspecciona la URL: si ya dice «URL is on Google», no gastes cupo.
-- La propiedad antigua `https://sheep-happens.pages.dev/` se mantiene para seguir el traspaso de una dirección a otra.
+- **Ya indexadas** («URL is on Google»): `/`, `/es/`, `/en/`, `/es/guia/`, `/es/builds/`, `/es/builds/duelos-nivel-30/` y `/es/razas/`. Último rastreo de la portada: 13 oct, 20:56.
+- **Cambio de dirección** iniciado el 14 oct desde la propiedad antigua (*Ajustes* → *Cambio de dirección*): `sheep-happens.pages.dev` → `sheephappens.app`, con la validación superada (301 en la portada y las dos propiedades verificadas). Google traslada los resultados poco a poco durante unos 180 días. Mientras tanto, en las búsquedas pueden seguir saliendo URL de `pages.dev`: redirigen bien, así que no hay que hacer nada más. No canceles el traslado ni quites la redirección.
+- **Favicon:** el 14 oct pasó a ser la oveja del logo. Google lo actualiza cuando vuelve a rastrear la portada, y puede tardar días o semanas. Solicitar la indexación de `/` dio «Quota Exceeded» el 14 oct: reinténtalo otro día.
+- **Pendientes de solicitar**, una tanda al día y en este orden: `/`, `/es/cambios/`, `/es/talentos/`, `/es/talentos/fuego/`, `/es/talentos/arcano/`, `/es/nivelacion/`, `/es/combate/`, `/es/equipo/` y después las páginas en inglés. Antes de pedirla, inspecciona la URL: si ya dice «URL is on Google», no gastes cupo.
+- La propiedad antigua `https://sheep-happens.pages.dev/` se mantiene: el traslado necesita que siga verificada.
 
 Notas:
 
-- El cupo de «Solicitar indexación» es pequeño (6 peticiones el 13 oct; en `pages.dev`, ninguna el 11 y el 12). Si sale «Quota Exceeded», vuelve al día siguiente; el sitemap sigue funcionando sin ello.
+- El cupo de «Solicitar indexación» es pequeño (6 peticiones el 13 oct por la tarde; ninguna el 11, el 12 ni el 14 por la mañana). Si sale «Quota Exceeded», vuelve más tarde o al día siguiente; el sitemap sigue funcionando sin ello.
 - Con una URL que Google aún no conoce, «Request indexing» hace antes una prueba en directo (alrededor de un minuto) y después confirma con «Indexing requested».
 - El enlace directo `…/search-console/inspect?…&id=<url>` da 404: inspecciona las URL desde la barra de búsqueda de Search Console.
 
