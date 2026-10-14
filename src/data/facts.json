@@ -69,15 +69,15 @@
       "en": "Client version"
     },
     "value": {
-      "es": "Parche 1.60.1 (build 70338 de la beta, 10 de octubre de 2026).",
-      "en": "Patch 1.60.1 (beta build 70338, 10 October 2026)."
+      "es": "Parche 1.60.1 (build 70374 de la beta, 13 de octubre de 2026).",
+      "en": "Patch 1.60.1 (beta build 70374, 13 October 2026)."
     },
     "status": "reported",
     "sources": [
       "warcraft-wiki-forever",
       "wago-tools-builds"
     ],
-    "updated": "2026-10-11"
+    "updated": "2026-10-14"
   },
   {
     "id": "specs",

@@ -4,6 +4,15 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-10-14
+
+### [Guía] Revisión de fuentes del 14 de octubre: versión del cliente
+
+La versión del cliente pasa a la build 70374 del 13 de octubre. No hay cambios nuevos del Mago en las fuentes oficiales de esta revisión.
+
+- **Datos afectados:** Versión del cliente, wago.tools — builds
+- **Fuentes:** [wago.tools — builds](https://wago.tools/builds) (wago.tools)
+
 ## 2026-10-13
 
 ### [Web] Nuevo dominio: sheephappens.app
