@@ -4,6 +4,7 @@
  */
 import AbilityGrid from './guide/AbilityGrid.astro';
 import AddonDetail from './guide/AddonDetail.astro';
+import AddonLink from './guide/AddonLink.astro';
 import BuildCard from './guide/BuildCard.astro';
 import BuildExplorer from './guide/BuildExplorer.astro';
 import BuildPicker from './guide/BuildPicker.astro';
@@ -42,6 +43,7 @@ export const mdxComponents = {
   strong: SpellStrong,
   AbilityGrid,
   AddonDetail,
+  AddonLink,
   BuildCard,
   BuildExplorer,
   BuildPicker,

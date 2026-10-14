@@ -1,0 +1,44 @@
+---
+/**
+ * An addon's name in running text, linked to its official download page once that
+ * page is public (src/data/addons.json):
+ *   <AddonLink id="mageprocs" /> es nuestro addon de alertas de procs…
+ * On CurseForge, the page's Download button installs it with the CurseForge app
+ * or downloads the file, so we link the page rather than an app-only protocol.
+ */
+import Icon from '../ui/Icon.astro';
+import { getLocale } from '../../i18n/locale';
+import { ta } from '../../i18n/addons';
+import { getAddon } from '../../lib/data';
+
+interface Props {
+  id: string;
+}
+
+const addon = getAddon(Astro.props.id);
+const locale = getLocale(Astro);
+const title = ta(locale, 'link.download', { name: addon.name, host: addon.host });
+---
+
+<strong class="addon-link">
+  {
+    addon.listing === 'live' ? (
+      <a href={addon.url} title={title} target="_blank" rel="noopener noreferrer">
+        {addon.name}
+        <Icon name="external" size={14} />
+        <span class="visually-hidden">
+          ({addon.host}) {ta(locale, 'newTab')}
+        </span>
+      </a>
+    ) : (
+      addon.name
+    )
+  }
+</strong>
+
+<style>
+  .addon-link :global(svg) {
+    margin-left: 0.15em;
+    vertical-align: -0.1em;
+  }
+</style>

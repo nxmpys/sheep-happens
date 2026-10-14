@@ -23,6 +23,7 @@ export interface PageReport {
 export const MDX_COMPONENTS = [
   'AbilityGrid',
   'AddonDetail',
+  'AddonLink',
   'BuildCard',
   'BuildExplorer',
   'BuildPicker',
@@ -155,8 +156,8 @@ export function validatePages(
         if (!detailed.has(profession.id)) errors.push(`${where}: links to "${profession.id}" but has no <ProfessionDetail id="${profession.id}">`);
       }
     }
-    for (const [, id] of body.matchAll(/<AddonDetail\b[^>]*\bid="([^"]+)"/g)) {
-      if (!data.addons.some((a) => a.id === id)) errors.push(`${where}: <AddonDetail> names unknown addon "${id}"`);
+    for (const [, component, id] of body.matchAll(/<(AddonDetail|AddonLink)\b[^>]*\bid="([^"]+)"/g)) {
+      if (!data.addons.some((a) => a.id === id)) errors.push(`${where}: <${component}> names unknown addon "${id}"`);
     }
     for (const [, part] of body.matchAll(/<AddonDetail\b[^>]*\bpart="([^"]+)"/g)) {
       if (!['gallery', 'procs', 'install', 'limits'].includes(part!)) errors.push(`${where}: <AddonDetail part="${part}"> is not a known part`);
