@@ -245,10 +245,10 @@
     "publisher": "wago.tools",
     "url": "https://wago.tools/builds",
     "kind": "tool",
-    "accessed": "2026-10-11",
+    "accessed": "2026-10-14",
     "notes": {
-      "es": "Lista de builds del cliente (ForeverBeta 1.60.1.70338 el 10 oct de 2026).",
-      "en": "Client build list (ForeverBeta 1.60.1.70338 on 10 Oct 2026)."
+      "es": "Lista de builds del cliente (ForeverBeta 1.60.1.70374 el 13 oct de 2026).",
+      "en": "Client build list (ForeverBeta 1.60.1.70374 on 13 Oct 2026)."
     }
   },
   {

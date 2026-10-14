@@ -1,5 +1,28 @@
 [
   {
+    "id": "2026-10-14-weekly-1",
+    "date": "2026-10-14",
+    "type": "guide",
+    "title": {
+      "es": "Revisión de fuentes del 14 de octubre: versión del cliente",
+      "en": "14 October source review: client version"
+    },
+    "body": {
+      "es": "La versión del cliente pasa a la build 70374 del 13 de octubre. No hay cambios nuevos del Mago en las fuentes oficiales de esta revisión.",
+      "en": "The client version moves to the 13 October build 70374. The official sources in this review contain no new Mage changes."
+    },
+    "pages": [
+      "guide"
+    ],
+    "sources": [
+      "wago-tools-builds"
+    ],
+    "refs": [
+      "fact:client-version",
+      "source:wago-tools-builds"
+    ]
+  },
+  {
     "id": "2026-10-13-domain",
     "date": "2026-10-13",
     "type": "site",

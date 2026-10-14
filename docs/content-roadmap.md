@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-10-13 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
+> Creado: 2026-10-12 · Revisión: 2026-10-14 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -125,7 +125,7 @@ Comprobar en el juego y marcar como «Oficial» o «Probado en juego», o correg
 
 Forma parte de cada revisión de fuentes ([maintenance.md](maintenance.md)):
 
-- [ ] **Semana del 12 de octubre de 2026:** comprobar si llegan los cambios de raciales anunciados y anotarlos en la sección 1. Revisión del 12 de octubre: todavía no hay cambios de raciales publicados en las fuentes de Blizzard; solo el aviso de Wowhead, que no se ha podido abrir.
+- [ ] **Semana del 12 de octubre de 2026:** comprobar si llegan los cambios de raciales anunciados y anotarlos en la sección 1. Revisión del 12 de octubre: todavía no hay cambios de raciales publicados en las fuentes de Blizzard; solo el aviso de Wowhead, que no se ha podido abrir. Revisión del 14 de octubre: tampoco hay cambios de raciales en las fuentes de Blizzard; Wowhead sigue devolviendo 403.
 - Las fichas de cambios, los mapas de talentos decisivos y la tabla de builds híbridas de Talentos.
 - Las raciales y la recomendación de razas (sección 5), cuando existan.
 - La versión del cliente (`client-version`).
