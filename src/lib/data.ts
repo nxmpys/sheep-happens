@@ -6,6 +6,7 @@
  */
 import { z } from 'astro/zod';
 import rawAbilities from '../data/abilities.json';
+import rawAddons from '../data/addons.json';
 import rawBuilds from '../data/builds.json';
 import rawChangelog from '../data/changelog.json';
 import rawChanges from '../data/changes.json';
@@ -20,6 +21,7 @@ import rawTalents from '../data/talents.json';
 import rawWatchlist from '../data/watchlist.json';
 import {
   abilitySchema,
+  addonSchema,
   buildSchema,
   changeSchema,
   changelogSchema,
@@ -33,6 +35,7 @@ import {
   talentSchema,
   watchSchema,
   type Ability,
+  type Addon,
   type Build,
   type Change,
   type ChangelogEntry,
@@ -72,6 +75,7 @@ export interface Dataset {
   races: Race[];
   professions: Profession[];
   picks: ProfessionPick[];
+  addons: Addon[];
 }
 
 export function parseDataset(raw: Record<keyof Dataset, unknown>): Dataset {
@@ -89,6 +93,7 @@ export function parseDataset(raw: Record<keyof Dataset, unknown>): Dataset {
     races: parseList('races.json', raceSchema, raw.races),
     professions: parseList('professions.json', professionSchema, raw.professions),
     picks: parseList('profession-picks.json', professionPickSchema, raw.picks),
+    addons: parseList('addons.json', addonSchema, raw.addons),
   };
 }
 
@@ -120,6 +125,7 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
     ['races.json', data.races],
     ['professions.json', data.professions],
     ['profession-picks.json', data.picks],
+    ['addons.json', data.addons],
   ];
   for (const [file, list] of lists) {
     for (const dup of duplicates(list.map((item) => item.id))) problems.push(`${file}: duplicate id "${dup}"`);
@@ -275,6 +281,13 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
     checkPair(`profession-picks.json: "${pick.id}"`, pick.professions);
     if (pick.alternative) checkPair(`profession-picks.json: "${pick.id}" alternative`, pick.alternative.professions);
   }
+
+  for (const addon of data.addons) {
+    if (new Date(`${addon.checked}T00:00:00Z`) > today) problems.push(`addons.json: "${addon.id}" checked date is in the future`);
+    for (const shot of addon.screenshots) {
+      if (!shot.src.startsWith(`/addons/${addon.id}/`)) problems.push(`addons.json: "${addon.id}" screenshot ${shot.src} is outside /addons/${addon.id}/`);
+    }
+  }
   return problems;
 }
 
@@ -292,6 +305,7 @@ export const dataset: Dataset = parseDataset({
   races: rawRaces,
   professions: rawProfessions,
   picks: rawPicks,
+  addons: rawAddons,
 });
 
 const integrity = checkIntegrity(dataset);
@@ -299,7 +313,7 @@ if (integrity.length > 0) {
   throw new Error(`Content integrity problems:\n- ${integrity.join('\n- ')}`);
 }
 
-export const { sources, changes, milestones, abilities, facts, versions, changelog, watchlist, talents, builds, races, professions, picks } =
+export const { sources, changes, milestones, abilities, facts, versions, changelog, watchlist, talents, builds, races, professions, picks, addons } =
   dataset;
 
 const sourceIndex = new Map(sources.map((s) => [s.id, s]));
@@ -341,3 +355,7 @@ export const getBuild = (key: string) => lookup(buildIndex, 'build', key);
 const professionIndex = new Map(professions.map((p) => [p.id, p]));
 
 export const getProfession = (key: string) => lookup(professionIndex, 'profession', key);
+
+const addonIndex = new Map(addons.map((a) => [a.id, a]));
+
+export const getAddon = (key: string) => lookup(addonIndex, 'addon', key);

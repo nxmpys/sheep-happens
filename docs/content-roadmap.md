@@ -11,6 +11,7 @@ Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay q
 5. Razas: cuál elegir según para qué juegues.
 6. Mejoras de la experiencia: ideas para que la web sea más útil para aprender, consultar e informarse.
 7. Profesiones: qué revisar en la guía de profesiones.
+8. Addons: mantener al día MageProcs y la página de addons.
 
 ## Cómo usar este documento
 
@@ -273,3 +274,14 @@ Publicada el 2026-10-14 con los datos de la beta: recomendaciones por objetivo, 
 - [ ] Con las primeras bandas: revisar la recomendación de PvE a nivel 60 (Sastrería + Alquimia) según cuánto aguanten la Robe of the Archmage y los objetos de Encantamiento.
 - [ ] Si Blizzard publica los puntos de Legado por profesión o los perks del árbol de Profesiones, pasar esos datos a «Oficial».
 - [ ] Enlazar la página desde Equipo («Encantamientos y consumibles») cuando esa sección deje de estar pendiente.
+
+## 8. Addons para el Mago
+
+Publicada el 2026-10-14 (`/es/addons/`, `/en/addons/`, dentro de Herramientas) con **MageProcs 1.60.1**, el addon de alertas de procs de Sheep Happens, publicado como Release en <https://www.curseforge.com/wow/addons/mageprocs>. La página es corta a propósito: un párrafo, las 6 imágenes de su ficha de CurseForge (`arcane_flare/publication/screenshots/*.png`, en WebP en `public/addons/mageprocs/`), los procs, la instalación con los comandos y los límites. Los datos están en `src/data/addons.json`; las fuentes, el código y la documentación del addon (proyecto local `arcane_flare`).
+
+### Pendiente
+
+- [x] **Ficha de CurseForge pública** (2026-10-14): abre sin sesión, MageProcs 1.60.1 para Forever; `listing` es `"live"`.
+- [ ] **Con cada versión nueva del addon**: actualizar `version`, `game` (versión e interfaz del `.toc`), procs, comandos y límites según su changelog, y `checked`. Si cambian las imágenes de CurseForge, volver a convertirlas.
+- [ ] **Cuando se confirmen procs en el juego** con Magos de nivel alto: quitar el primer límite de `limitations`.
+- [ ] **Addons nuevos**: solo si aportan algo concreto al Mago en Forever y se han revisado. Cada uno con descripción, procs o funciones, instalación, límites y enlace oficial; `origin: "third-party"` y su autor si no es nuestro.

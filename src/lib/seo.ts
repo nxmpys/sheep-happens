@@ -4,6 +4,7 @@
  */
 import type { Locale, PageId } from '../i18n/routes';
 import { changelog } from './data';
+import type { Addon } from './schemas';
 
 export const SITE_NAME = 'Sheep Happens';
 
@@ -99,5 +100,34 @@ export function breadcrumbJsonLd(items: { name: string; url: string }[]) {
       name: item.name,
       item: item.url,
     })),
+  };
+}
+
+/**
+ * schema.org SoftwareApplication for an addon on the addons page. No ratings or
+ * download counts: only what addons.json states. The download page is linked
+ * only once it is public.
+ */
+export function addonJsonLd(
+  addon: Addon,
+  locale: Locale,
+  urls: { pageUrl: string; siteUrl: string; asset: (path: string) => string },
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: addon.name,
+    description: addon.summary[locale],
+    applicationCategory: 'GameApplication',
+    applicationSubCategory: 'World of Warcraft addon',
+    softwareVersion: addon.version,
+    inLanguage: addon.languages.map((l) => IN_LANGUAGE[l]),
+    isAccessibleForFree: true,
+    image: urls.asset(addon.icon),
+    screenshot: addon.screenshots.map((shot) => urls.asset(shot.src)),
+    url: urls.pageUrl,
+    ...(addon.listing === 'live' ? { downloadUrl: addon.url } : {}),
+    ...(addon.origin === 'own' ? { author: { '@id': `${urls.siteUrl}#organization` } } : { author: { '@type': 'Person', name: addon.author } }),
+    about: { '@type': 'VideoGame', name: 'World of Warcraft: Forever' },
   };
 }

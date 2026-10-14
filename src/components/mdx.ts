@@ -3,6 +3,7 @@
  * Editors write <ChangeExplorer />, <Pending why="…" />, etc. directly.
  */
 import AbilityGrid from './guide/AbilityGrid.astro';
+import AddonDetail from './guide/AddonDetail.astro';
 import BuildCard from './guide/BuildCard.astro';
 import BuildExplorer from './guide/BuildExplorer.astro';
 import BuildPicker from './guide/BuildPicker.astro';
@@ -40,6 +41,7 @@ export const mdxComponents = {
   // Bold spell names become tooltip triggers (see SpellStrong.astro).
   strong: SpellStrong,
   AbilityGrid,
+  AddonDetail,
   BuildCard,
   BuildExplorer,
   BuildPicker,

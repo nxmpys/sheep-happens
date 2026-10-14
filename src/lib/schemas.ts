@@ -367,6 +367,75 @@ export const professionPickSchema = z
   .strict();
 export type ProfessionPick = z.infer<typeof professionPickSchema>;
 
+/** Our own tools are told apart from third-party addons everywhere they appear. */
+export const ADDON_ORIGINS = ['own', 'third-party'] as const;
+export const ADDON_RELEASES = ['alpha', 'beta', 'release'] as const;
+/** Whether the download page can be opened by anyone (a new CurseForge project waits for approval). */
+export const ADDON_LISTINGS = ['live', 'pending'] as const;
+
+/**
+ * An addon recommended for Mages (src/data/addons.json). Facts that change with each
+ * release (version, status, links, captures, features, limits) live here; the page
+ * prose explains them. Every claim must match the addon's own documentation or code.
+ */
+export const addonSchema = z
+  .object({
+    id,
+    name: z.string().min(1),
+    origin: z.enum(ADDON_ORIGINS),
+    author: z.string().min(1),
+    /** Two or three sentences: what it does and for whom (structured data). */
+    summary: localized,
+    /** Official download page (the only place it is distributed). */
+    url: z.url(),
+    host: z.string().min(1),
+    listing: z.enum(ADDON_LISTINGS),
+    /** Addon version as published, e.g. "1.60.1". */
+    version: z.string().regex(/^\d+(?:\.\d+)*(?:-\d+)?$/),
+    release: z.enum(ADDON_RELEASES),
+    /** Game client the release targets: version and interface number from the .toc. */
+    game: z.object({ version: z.string().regex(/^\d+\.\d+\.\d+$/), interface: z.number().int().positive() }).strict(),
+    languages: z.array(z.enum(['en', 'es'])).min(1),
+    /** Square icon under public/, e.g. "/addons/mageprocs/icon.webp". */
+    icon: z.string().regex(/^\/[\w/.-]+\.(?:webp|png)$/),
+    /** The addon's own published images (in-game captures, framed or not), never mock-ups. */
+    screenshots: z
+      .array(
+        z
+          .object({
+            src: z.string().regex(/^\/[\w/.-]+\.(?:webp|png|jpg)$/),
+            width: z.number().int().positive(),
+            height: z.number().int().positive(),
+            alt: localized,
+            caption: localized,
+          })
+          .strict(),
+      )
+      .default([]),
+    /** Proc alerts, for proc trackers. */
+    procs: z
+      .array(
+        z
+          .object({
+            name: localized,
+            spec: z.enum(SPECS),
+            what: localized,
+            /** Enabled on a fresh install. */
+            on: z.boolean(),
+          })
+          .strict(),
+      )
+      .default([]),
+    /** Slash commands, as typed in the chat. */
+    commands: z.array(z.object({ command: z.string().regex(/^\//), what: localized }).strict()).default([]),
+    install: z.array(localized).min(1),
+    limitations: z.array(localized).default([]),
+    /** Last date the record was checked against the addon's code and page. */
+    checked: isoDate,
+  })
+  .strict();
+export type Addon = z.infer<typeof addonSchema>;
+
 export const WATCH_TYPES = ['rss', 'discourse-topic', 'wago-builds', 'manual'] as const;
 
 /**

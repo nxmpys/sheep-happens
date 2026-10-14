@@ -27,6 +27,10 @@ Nueva página de Profesiones: qué dos profesiones principales elegir según tu 
 - **Datos afectados:** profession:tailoring, profession:enchanting, profession:engineering, profession:alchemy, profession:herbalism, profession:mining, profession:skinning, profession:leatherworking, profession:blacksmithing, profession:cooking, profession:first-aid, profession:fishing, pick:overall, pick:leveling, pick:pve, pick:pvp, pick:gold, pick:casual, World of Warcraft: Forever Deep Dive Panel Recap, Forever profession spells, recipes and items, Professions Overview, Camping Objects & Buffs, Camping In WoW Forever: How It All Works & All Profession Buffs, WoW Forever Professions: All Changes, Bonuses & New Recipes, WoW Forever Mage Guide: Talent Builds, Races, Research & Changes, WoW Forever Mage Leveling Guide & Talents, Tailoring Overview: Cloth, Patterns & Bonuses, Enchanting Overview: Disenchanting, Formulas & Bonuses
 - **Fuentes:** [World of Warcraft: Forever Deep Dive Panel Recap](https://worldofwarcraft.blizzard.com/en-us/news/24303313) (Blizzard Entertainment), [Forever profession spells, recipes and items](https://www.wowhead.com/forever/spells/professions) (Wowhead), [Professions Overview](https://www.warcrafttavern.com/forever/guides/professions/) (Warcraft Tavern), [Camping Objects & Buffs](https://www.warcrafttavern.com/forever/guides/camping-objects-buffs/) (Warcraft Tavern), [WoW Forever Mage Leveling Guide & Talents](https://www.method.gg/wow-forever/wow-forever-mage-leveling-guide-and-talents) (Method)
 
+### [Web] Nueva sección: addons para el Mago, con MageProcs
+
+Nueva página de Addons, dentro de Herramientas. Presenta MageProcs, el addon de alertas de procs de Sheep Happens para WoW Forever: qué procs avisa, capturas del juego, cómo instalarlo, sus comandos y sus límites. Por ahora es el único addon de la sección.
+
 ## 2026-10-13
 
 ### [Web] Nuevo dominio: sheephappens.app

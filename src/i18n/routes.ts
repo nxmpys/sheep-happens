@@ -26,6 +26,7 @@ export const PAGE_IDS = [
   'combat',
   'gear',
   'tools',
+  'addons',
   'sources',
   'updates',
 ] as const;
@@ -83,6 +84,7 @@ export const ROUTES: Record<PageId, RouteDef> = {
   combat: { id: 'combat', slug: { es: 'combate', en: 'combat' }, parent: 'home' },
   gear: { id: 'gear', slug: { es: 'equipo', en: 'gear' }, parent: 'home' },
   tools: { id: 'tools', slug: { es: 'herramientas', en: 'tools' }, parent: 'home' },
+  addons: { id: 'addons', slug: { es: 'addons', en: 'addons' }, parent: 'tools' },
   sources: { id: 'sources', slug: { es: 'fuentes', en: 'sources' }, parent: 'home' },
   updates: { id: 'updates', slug: { es: 'novedades', en: 'updates' }, parent: 'home' },
 };
@@ -119,7 +121,7 @@ export const PRIMARY_NAV: readonly NavItem[] = [
   { id: 'professions' },
   { id: 'guide', children: ['leveling', 'combat', 'gear'] },
   { id: 'changes' },
-  { id: 'tools' },
+  { id: 'tools', children: ['addons'] },
 ];
 
 export const FOOTER_NAV: readonly PageId[] = ['sources', 'updates', 'tools'];

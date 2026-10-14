@@ -426,5 +426,22 @@
       "source:warcrafttavern-tailoring",
       "source:warcrafttavern-enchanting"
     ]
+  },
+  {
+    "id": "2026-10-14-addons",
+    "date": "2026-10-14",
+    "type": "site",
+    "title": {
+      "es": "Nueva sección: addons para el Mago, con MageProcs",
+      "en": "New section: Mage addons, with MageProcs"
+    },
+    "body": {
+      "es": "Nueva página de Addons, dentro de Herramientas. Presenta MageProcs, el addon de alertas de procs de Sheep Happens para WoW Forever: qué procs avisa, capturas del juego, cómo instalarlo, sus comandos y sus límites. Por ahora es el único addon de la sección.",
+      "en": "New Addons page, under Tools. It presents MageProcs, the Sheep Happens proc alert addon for WoW Forever: which procs it alerts you to, in-game screenshots, how to install it, its commands and its limits. For now it is the only addon in the section."
+    },
+    "pages": [
+      "addons",
+      "tools"
+    ]
   }
 ]

@@ -1,0 +1,221 @@
+---
+/**
+ * One part of an addon's presentation, placed under its heading in the MDX page
+ * (headings stay in Markdown so they show in the page index):
+ *   ## Procs que avisa
+ *   <AddonDetail id="mageprocs" part="procs" />
+ * Parts: gallery (its published images, plus the addon's structured data for
+ * search engines), procs (one line per proc), install (steps, download link and
+ * commands) and limits. Data: src/data/addons.json.
+ */
+import Icon from '../ui/Icon.astro';
+import { getLocale } from '../../i18n/locale';
+import { SPEC_LABELS, ta } from '../../i18n/addons';
+import { getAddon } from '../../lib/data';
+import { addonJsonLd } from '../../lib/seo';
+
+interface Props {
+  id: string;
+  part: 'gallery' | 'procs' | 'install' | 'limits';
+}
+
+const { id, part } = Astro.props;
+const locale = getLocale(Astro);
+const addon = getAddon(id);
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const asset = (path: string) => `${base}${path.replace(/^\//, '')}`;
+const site = Astro.site ?? new URL('https://sheephappens.app');
+const jsonLd =
+  part === 'gallery'
+    ? addonJsonLd(addon, locale, {
+        pageUrl: new URL(Astro.url.pathname, site).href,
+        siteUrl: new URL(base, site).href,
+        asset: (path) => new URL(asset(path), site).href,
+      })
+    : undefined;
+const live = addon.listing === 'live';
+---
+
+{
+  part === 'gallery' && (
+    <div class="addon-gallery" role="group" aria-label={ta(locale, 'gallery.title')}>
+      {addon.screenshots.map((shot, index) => (
+        <figure>
+          <a href={asset(shot.src)} target="_blank" rel="noopener">
+            <img
+              src={asset(shot.src)}
+              width={shot.width}
+              height={shot.height}
+              alt={shot.alt[locale]}
+              loading={index === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+            />
+            <span class="visually-hidden">{ta(locale, 'newTab')}</span>
+          </a>
+          <figcaption>{shot.caption[locale]}</figcaption>
+        </figure>
+      ))}
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    </div>
+  )
+}
+
+{
+  part === 'procs' && (
+    <ul class="addon-procs" aria-label={ta(locale, 'procs.caption', { name: addon.name })}>
+      {addon.procs.map((proc) => (
+        <li class={`school-${proc.spec}`}>
+          <Icon name={proc.spec} size={18} />
+          <span>
+            <span class="addon-procs__name">{proc.name[locale]}</span>
+            {locale === 'es' && proc.name.es !== proc.name.en && (
+              <span class="addon-procs__en" lang="en">
+                {' '}({proc.name.en})
+              </span>
+            )}
+            <span class="visually-hidden"> · {SPEC_LABELS[locale][proc.spec]}</span>
+            {proc.on && <span class="chip addon-procs__on">{ta(locale, 'procs.on')}</span>}
+            <span class="addon-procs__what">{proc.what[locale]}</span>
+          </span>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+{
+  part === 'install' && (
+    <div class="addon-install">
+      <ol class="addon-install__steps" aria-label={ta(locale, 'install.steps')}>
+        {addon.install.map((step) => (
+          <li>{step[locale]}</li>
+        ))}
+      </ol>
+      {live && (
+        <p>
+          <a href={addon.url} target="_blank" rel="noopener noreferrer">
+            {ta(locale, 'link.download', { name: addon.name, host: addon.host })}
+            <Icon name="external" size={13} />
+            <span class="visually-hidden">{ta(locale, 'newTab')}</span>
+          </a>
+        </p>
+      )}
+      {addon.commands.length > 0 && (
+        <div class="table-wrap" tabindex="0" role="region" aria-label={ta(locale, 'install.commands')}>
+          <table>
+            <caption class="visually-hidden">{ta(locale, 'install.commands')}</caption>
+            <thead>
+              <tr>
+                <th scope="col">{ta(locale, 'install.command')}</th>
+                <th scope="col">{ta(locale, 'install.what')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {addon.commands.map((command) => (
+                <tr>
+                  <td>
+                    <code>{command.command}</code>
+                  </td>
+                  <td>{command.what[locale]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  )
+}
+
+{
+  part === 'limits' && addon.limitations.length > 0 && (
+    <ul>
+      {addon.limitations.map((item) => (
+        <li>{item[locale]}</li>
+      ))}
+    </ul>
+  )
+}
+
+<style>
+  .addon-gallery {
+    display: grid;
+    gap: var(--space-5);
+  }
+  .addon-gallery figure {
+    margin: 0;
+  }
+  .addon-gallery a {
+    display: block;
+  }
+  .addon-gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #0e0d16;
+  }
+  .addon-gallery figcaption {
+    margin-top: var(--space-2);
+    color: var(--text-muted);
+    font-size: var(--step--1);
+  }
+
+  .addon-procs {
+    display: grid;
+    gap: var(--space-2);
+    padding: 0;
+    list-style: none;
+  }
+  .addon-procs li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin: 0;
+  }
+  .addon-procs li > :global(svg) {
+    flex: none;
+    margin-top: 0.25em;
+    color: var(--school);
+  }
+  .addon-procs__name {
+    font-weight: 700;
+  }
+  .addon-procs__en {
+    color: var(--text-subtle);
+    font-size: var(--step--1);
+  }
+  .addon-procs__on {
+    margin-left: var(--space-2);
+    border-color: var(--status-verified);
+    color: var(--text);
+    font-weight: 600;
+  }
+  .addon-procs__what {
+    display: block;
+    color: var(--text-muted);
+    font-size: var(--step--1);
+  }
+
+  .addon-install {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+  .addon-install p,
+  .addon-install__steps {
+    margin: 0;
+  }
+  .addon-install__steps {
+    /* Folder paths such as Interface\AddOns have no spaces to break at. */
+    overflow-wrap: anywhere;
+  }
+  .addon-install a :global(svg) {
+    margin-left: 0.15em;
+    vertical-align: -0.1em;
+  }
+  .addon-install code {
+    white-space: nowrap;
+  }
+</style>

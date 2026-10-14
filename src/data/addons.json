@@ -1,0 +1,170 @@
+[
+  {
+    "id": "mageprocs",
+    "name": "MageProcs",
+    "origin": "own",
+    "author": "Sheep Happens",
+    "summary": {
+      "es": "MageProcs muestra una alerta grande y clara en pantalla cuando salta uno de tus procs de Mago, y la quita en cuanto lo gastas. Fuera de combate te recuerda si te falta Intelecto Arcano o comida y agua conjuradas. Está hecho para WoW Forever y solo avisa: no lanza hechizos ni automatiza nada.",
+      "en": "MageProcs puts a big, clear alert on screen when one of your Mage procs is ready, and clears it as soon as you spend it. Out of combat it reminds you when you are missing Arcane Intellect or conjured food and water. It is made for WoW Forever and only alerts: it never casts or automates anything."
+    },
+    "url": "https://www.curseforge.com/wow/addons/mageprocs",
+    "host": "CurseForge",
+    "listing": "live",
+    "version": "1.60.1",
+    "release": "release",
+    "game": { "version": "1.60.1", "interface": 16001 },
+    "languages": ["es", "en"],
+    "icon": "/addons/mageprocs/icon.webp",
+    "screenshots": [
+      {
+        "src": "/addons/mageprocs/01-in-combat.webp",
+        "width": 1600,
+        "height": 900,
+        "alt": {
+          "es": "MageProcs en combate: la alerta de Calentamiento con dos arcos de fuego alrededor del icono de Piroexplosión, 3 acumulaciones y 29 segundos restantes, con notas en inglés.",
+          "en": "MageProcs in combat: the Heating Up alert with two fire arcs around the Pyroblast icon, 3 stacks and 29 seconds left, with notes."
+        },
+        "caption": {
+          "es": "En combate: la alerta aparece en el centro, con acumulaciones y tiempo restante.",
+          "en": "In combat: the alert shows in the middle, with stacks and time left."
+        }
+      },
+      {
+        "src": "/addons/mageprocs/02-options.webp",
+        "width": 1600,
+        "height": 900,
+        "alt": {
+          "es": "Ventana de opciones de MageProcs (/mp) con la lista de procs y recordatorios, los ajustes generales y los comandos, con notas en inglés.",
+          "en": "MageProcs options window (/mp) with the proc and reminder list, the general settings and the commands, with notes."
+        },
+        "caption": {
+          "es": "/mp abre la ventana de opciones: todos los procs en un sitio.",
+          "en": "/mp opens the options window: every proc in one place."
+        }
+      },
+      {
+        "src": "/addons/mageprocs/03-styles.webp",
+        "width": 1600,
+        "height": 900,
+        "alt": {
+          "es": "Pestaña de estilos de MageProcs con la vista previa en vivo y la galería de estilos, con notas en inglés.",
+          "en": "MageProcs Style tab with the live preview and the style gallery, with notes."
+        },
+        "caption": {
+          "es": "24 estilos y temas de Arcano, Fuego y Escarcha, con vista previa en vivo.",
+          "en": "24 styles and Arcane, Fire and Frost themes, with a live preview."
+        }
+      },
+      {
+        "src": "/addons/mageprocs/04-placing.webp",
+        "width": 1600,
+        "height": 900,
+        "alt": {
+          "es": "Modo de colocación de MageProcs (/mp move): cuadrícula sobre la pantalla con las alertas y el recordatorio enmarcados, con notas en inglés.",
+          "en": "MageProcs placing mode (/mp move): a grid over the screen with the alerts and the reminder framed, with notes."
+        },
+        "caption": {
+          "es": "/mp move: arrastra las alertas sobre una cuadrícula y cambia su tamaño con la rueda.",
+          "en": "/mp move: drag the alerts over a grid and resize them with the wheel."
+        }
+      },
+      {
+        "src": "/addons/mageprocs/05-appearance.webp",
+        "width": 1600,
+        "height": 900,
+        "alt": {
+          "es": "Pestaña de visualización de MageProcs con las opciones de icono, nombre, tiempo restante, acumulaciones y brillo en los bordes, con notas en inglés.",
+          "en": "MageProcs Display tab with the icon, name, time left, stacks and screen-edge glow options, with notes."
+        },
+        "caption": {
+          "es": "Cada proc elige qué muestra y desde cuántas acumulaciones aparece.",
+          "en": "Each proc picks what it shows and from how many stacks it appears."
+        }
+      },
+      {
+        "src": "/addons/mageprocs/06-reminder.webp",
+        "width": 1600,
+        "height": 900,
+        "alt": {
+          "es": "Recordatorio fuera de combate de MageProcs: las líneas «Arcane Intellect» y «Conjure Water» con sus iconos, con notas en inglés.",
+          "en": "MageProcs out-of-combat reminder: the Arcane Intellect and Conjure Water lines with their icons, with notes."
+        },
+        "caption": {
+          "es": "Fuera de combate te recuerda Intelecto Arcano y la comida y el agua conjuradas.",
+          "en": "Out of combat it reminds you of Arcane Intellect and conjured food and water."
+        }
+      }
+    ],
+    "procs": [
+      {
+        "name": { "es": "Calentamiento", "en": "Heating Up" },
+        "spec": "fire",
+        "what": { "es": "Piroexplosión más rápida, hasta 3 acumulaciones.", "en": "Faster Pyroblast, up to 3 stacks." },
+        "on": true
+      },
+      {
+        "name": { "es": "Estela de Fuego", "en": "Wake of Fire" },
+        "spec": "fire",
+        "what": { "es": "Más crítico para Explosión de Fuego tras una muerte.", "en": "More crit for Fire Blast after a kill." },
+        "on": false
+      },
+      {
+        "name": { "es": "Libre lanzamiento", "en": "Clearcasting" },
+        "spec": "arcane",
+        "what": { "es": "Tu próximo hechizo de daño no cuesta maná.", "en": "Your next damage spell costs no mana." },
+        "on": false
+      },
+      {
+        "name": { "es": "Tromba de misiles", "en": "Missile Barrage" },
+        "spec": "arcane",
+        "what": { "es": "Misiles Arcanos el doble de rápido y gratis.", "en": "Arcane Missiles twice as fast and free." },
+        "on": false
+      },
+      {
+        "name": { "es": "Presencia mental", "en": "Presence of Mind" },
+        "spec": "arcane",
+        "what": { "es": "Tu próximo hechizo con tiempo de lanzamiento es instantáneo.", "en": "Your next cast-time spell is instant." },
+        "on": false
+      },
+      {
+        "name": { "es": "Dedos de Escarcha", "en": "Fingers of Frost" },
+        "spec": "frost",
+        "what": { "es": "El objetivo cuenta como congelado: momento de Lanza de hielo.", "en": "The target counts as frozen: time for Ice Lance." },
+        "on": false
+      }
+    ],
+    "commands": [
+      { "command": "/mp", "what": { "es": "Abre las opciones (también /mageprocs).", "en": "Opens the options (also /mageprocs)." } },
+      { "command": "/mp test", "what": { "es": "Prueba las alertas activadas.", "en": "Previews the enabled alerts." } },
+      { "command": "/mp move", "what": { "es": "Coloca las alertas sobre una cuadrícula.", "en": "Places the alerts over a grid." } },
+      { "command": "/mp reset", "what": { "es": "Vuelve a los lugares y tamaños por defecto.", "en": "Back to the default places and sizes." } },
+      { "command": "/mp status", "what": { "es": "Qué puede leer de cada proc; inclúyelo si informas de un fallo.", "en": "What it can read for each proc; include it in bug reports." } }
+    ],
+    "install": [
+      {
+        "es": "Instálalo con la app de CurseForge (World of Warcraft, versión WoW Forever) o descomprime el archivo en la carpeta Interface\\AddOns de tu instalación de WoW Forever.",
+        "en": "Install it with the CurseForge app (World of Warcraft, WoW Forever flavor) or extract the file into the Interface\\AddOns folder of your WoW Forever install."
+      },
+      {
+        "es": "Escribe /mp en el juego. Calentamiento viene activado; activa los procs que usen tus talentos.",
+        "en": "Type /mp in game. Heating Up is on from the start; turn on the procs your talents use."
+      }
+    ],
+    "limitations": [
+      {
+        "es": "La mayoría de los procs llega con talentos de nivel alto y aún no se ha confirmado en el juego: si los usas, tus comentarios en CurseForge ayudan.",
+        "en": "Most procs come from high-level talents and have not been confirmed in game yet: if you use them, your feedback on CurseForge helps."
+      },
+      {
+        "es": "Dedos de Escarcha solo se ve si el juego muestra su propia alerta, y con Libre lanzamiento activo no distingue Tromba de misiles.",
+        "en": "Fingers of Frost only shows if the game shows its own alert, and while Clearcasting is up it cannot tell Missile Barrage apart."
+      },
+      {
+        "es": "No incluye Combustión, Poder Arcano ni efectos sobre el objetivo.",
+        "en": "It leaves out Combustion, Arcane Power and effects on the target."
+      }
+    ],
+    "checked": "2026-10-14"
+  }
+]

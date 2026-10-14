@@ -27,6 +27,7 @@ const SUBMENU_ICONS: Partial<Record<PageId, IconName>> = {
   leveling: 'map',
   combat: 'fire',
   gear: 'shield',
+  addons: 'layers',
 };
 const submenuIcon = (id: PageId): IconName => ROUTES[id].spec ?? SUBMENU_ICONS[id] ?? 'book';
 ---
