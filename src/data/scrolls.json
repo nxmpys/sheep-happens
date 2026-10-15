@@ -1,0 +1,187 @@
+[
+  {
+    "id": "flow-loot",
+    "part": "flow",
+    "icon": "scroll",
+    "title": { "es": "Consigues un pergamino", "en": "You loot a scroll" },
+    "text": { "es": "Lo sueltan las criaturas del mundo, sin descifrar.", "en": "Creatures all over the world drop them, untranslated." },
+    "status": "verified",
+    "sources": ["blizzard-deep-dive-mage"]
+  },
+  {
+    "id": "flow-stop",
+    "part": "flow",
+    "icon": "stop",
+    "title": { "es": "Te paras", "en": "You stand still" },
+    "text": { "es": "5 s de lanzamiento, sin coste de maná.", "en": "A 5 s cast with no mana cost." },
+    "status": "analysis",
+    "sources": ["wowhead-forever-comprehension"]
+  },
+  {
+    "id": "flow-cast",
+    "part": "flow",
+    "icon": "cast",
+    "title": { "es": "Lanzas Comprender pergamino", "en": "You cast Comprehend Scroll" },
+    "text": { "es": "Está en la pestaña General del libro de hechizos.", "en": "It is in the General tab of the spellbook." },
+    "status": "verified",
+    "sources": ["blizzard-deep-dive-mage", "blizzard-deep-dive-mage-es"]
+  },
+  {
+    "id": "flow-reward",
+    "part": "flow",
+    "icon": "reward",
+    "title": { "es": "Te quedas un pergamino útil", "en": "You keep a useful scroll" },
+    "text": { "es": "Mejoras para el bastón, un familiar, maná y más.", "en": "Staff imbues, a familiar, mana and more." },
+    "status": "reported",
+    "sources": ["warcrafttavern-mage-guide", "wowhead-forever-comprehension"]
+  },
+  {
+    "id": "yes-still",
+    "part": "yes",
+    "icon": "stop",
+    "title": { "es": "Quieto", "en": "Standing still" },
+    "text": { "es": "Los pergaminos de Comprensión se usan sin moverte.", "en": "Comprehension scrolls are used without moving." },
+    "status": "verified",
+    "sources": ["blizzard-dev-notes"]
+  },
+  {
+    "id": "yes-level",
+    "part": "yes",
+    "icon": "level",
+    "title": { "es": "Desde el nivel 6", "en": "From level 6" },
+    "text": { "es": "Lo enseña el instructor de Mago.", "en": "The Mage trainer teaches it." },
+    "status": "reported",
+    "sources": ["warcrafttavern-mage-guide", "wowhead-forever-comprehension"]
+  },
+  {
+    "id": "yes-skill",
+    "part": "yes",
+    "icon": "skill",
+    "title": { "es": "Con la habilidad que pide", "en": "With the skill it asks for" },
+    "text": { "es": "Cada pergamino indica la Comprensión que necesita.", "en": "Each scroll states the Comprehension it needs." },
+    "status": "analysis",
+    "sources": ["wowhead-forever-comprehension"]
+  },
+  {
+    "id": "no-move",
+    "part": "no",
+    "icon": "move",
+    "title": { "es": "En movimiento", "en": "While moving" },
+    "text": { "es": "No se lanzan andando (build del 1 de octubre).", "en": "They cannot be cast while moving (1 October build)." },
+    "status": "verified",
+    "sources": ["blizzard-dev-notes"]
+  },
+  {
+    "id": "no-class",
+    "part": "no",
+    "icon": "mage",
+    "title": { "es": "Otras clases", "en": "Other classes" },
+    "text": { "es": "Es un oficio menor exclusivo del Mago.", "en": "It is a Mage-only minor tradeskill." },
+    "status": "verified",
+    "sources": ["blizzard-deep-dive-mage", "blizzard-deep-dive-mage-es"]
+  },
+  {
+    "id": "no-fail",
+    "part": "no",
+    "icon": "sheep",
+    "title": { "es": "Fallar la lectura", "en": "Failing the read" },
+    "text": { "es": "Te conviertes en oveja.", "en": "You turn into a sheep." },
+    "status": "reported",
+    "sources": ["warcrafttavern-mage-guide"]
+  },
+  {
+    "id": "tier-10",
+    "part": "tier",
+    "title": { "es": "Pergamino: KWYJIBO", "en": "Scroll: KWYJIBO" },
+    "text": { "es": "Pergaminos de nivel 10", "en": "Item level 10 scrolls" },
+    "tier": { "itemLevel": 10, "requires": 1, "greyAt": 30 },
+    "status": "analysis",
+    "sources": ["wowhead-forever-comprehension"]
+  },
+  {
+    "id": "tier-20",
+    "part": "tier",
+    "title": { "es": "Pergamino: WUBBA WUBBA", "en": "Scroll: WUBBA WUBBA" },
+    "text": { "es": "Pergaminos de nivel 20", "en": "Item level 20 scrolls" },
+    "tier": { "itemLevel": 20, "requires": 15, "greyAt": 75 },
+    "status": "analysis",
+    "sources": ["wowhead-forever-comprehension"]
+  },
+  {
+    "id": "tier-30",
+    "part": "tier",
+    "title": { "es": "Pergamino: COLEGA", "en": "Scroll: UPDOG" },
+    "text": { "es": "Pergaminos de nivel 30", "en": "Item level 30 scrolls" },
+    "tier": { "itemLevel": 30, "requires": 50, "greyAt": 200 },
+    "status": "analysis",
+    "sources": ["wowhead-forever-comprehension"]
+  },
+  {
+    "id": "tier-50",
+    "part": "tier",
+    "title": { "es": "Pergamino: DOÑA SÁM", "en": "Scroll: DOST OREM" },
+    "text": { "es": "Pergaminos de nivel 50", "en": "Item level 50 scrolls" },
+    "tier": { "itemLevel": 50, "requires": 175, "greyAt": 300 },
+    "status": "analysis",
+    "sources": ["wowhead-forever-comprehension"]
+  },
+  {
+    "id": "tip-boost",
+    "part": "tip",
+    "icon": "skill",
+    "title": { "es": "Guarda el Pergamino de Comprensión", "en": "Keep the Scroll of Comprehension" },
+    "text": { "es": "+15 de habilidad durante 1 hora, para leer uno que te queda grande.", "en": "+15 skill for 1 hour, to read one above your skill." },
+    "status": "analysis",
+    "sources": ["wowhead-forever-comprehension"]
+  },
+  {
+    "id": "tip-bags",
+    "part": "tip",
+    "icon": "bag",
+    "title": { "es": "Léelos en cada parada", "en": "Read them at every stop" },
+    "text": { "es": "Sin descifrar no se apilan; descifrados, de 5 en 5.", "en": "Untranslated they do not stack; deciphered, they stack to 5." },
+    "status": "analysis",
+    "sources": ["wowhead-forever-comprehension"]
+  },
+  {
+    "id": "tip-library",
+    "part": "tip",
+    "icon": "library",
+    "title": { "es": "Entrega libros al bibliotecario", "en": "Hand books in to the librarian" },
+    "text": { "es": "Aprendes Investigar: Estudiar en una biblioteca da un Montón de pergaminos cada hora (gasta una Pluma ligera).", "en": "You learn Research: Study in a library gives a Bundle of Scrolls every hour (uses a Light Feather)." },
+    "status": "reported",
+    "sources": ["warcrafttavern-mage-guide", "wowhead-library-books", "wowhead-forever-comprehension"]
+  },
+  {
+    "id": "unknown-rewards",
+    "part": "unknown",
+    "title": { "es": "Qué da cada pergamino", "en": "What each scroll gives" },
+    "text": { "es": "Blizzard las deja por descubrir; no hay lista completa.", "en": "Blizzard leaves them to be discovered; there is no full list." },
+    "status": "pending",
+    "sources": ["blizzard-deep-dive-mage"]
+  },
+  {
+    "id": "unknown-max",
+    "part": "unknown",
+    "title": { "es": "Máximo de la habilidad", "en": "Skill cap" },
+    "text": { "es": "Los datos de la beta llegan a 300, sin confirmar.", "en": "Beta data reaches 300, unconfirmed." },
+    "status": "pending",
+    "sources": ["wowhead-forever-comprehension"]
+  },
+  {
+    "id": "unknown-odds",
+    "part": "unknown",
+    "title": { "es": "Probabilidades", "en": "Chances" },
+    "text": { "es": "De fallar y de que caiga un pergamino.", "en": "To fail, and for a scroll to drop." },
+    "status": "pending",
+    "sources": ["warcrafttavern-mage-guide"]
+  },
+  {
+    "id": "unknown-trade",
+    "part": "unknown",
+    "title": { "es": "Comercio", "en": "Trading" },
+    "text": { "es": "En los datos de la beta no van ligados; sin probar.", "en": "Not bound in the beta data; untested." },
+    "status": "pending",
+    "sources": ["wowhead-forever-comprehension"]
+  }
+]

@@ -46,6 +46,7 @@ export const MDX_COMPONENTS = [
   'ProfessionTable',
   'QuestionCards',
   'RaceCards',
+  'ScrollGuide',
   'SourceRefs',
   'SourcesTable',
   'SpecCards',
@@ -161,6 +162,9 @@ export function validatePages(
     }
     for (const [, part] of body.matchAll(/<AddonDetail\b[^>]*\bpart="([^"]+)"/g)) {
       if (!['gallery', 'procs', 'install', 'limits'].includes(part!)) errors.push(`${where}: <AddonDetail part="${part}"> is not a known part`);
+    }
+    for (const [, part] of body.matchAll(/<ScrollGuide[^>]*part="([^"]+)"/g)) {
+      if (!['flow', 'spellbook', 'yesno', 'tiers', 'tips', 'unknown'].includes(part!)) errors.push(`${where}: <ScrollGuide part="${part}"> is not a known part`);
     }
     for (const [, list] of body.matchAll(/<SourceRefs[^>]*\bids=\{\[([^\]]*)\]\}/g)) {
       for (const [, id] of list!.matchAll(/'([^']+)'/g)) {

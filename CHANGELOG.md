@@ -4,6 +4,15 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-10-15
+
+### [Guía] Nueva guía rápida: pergaminos y Comprensión del Mago
+
+Nueva página de Pergaminos, dentro de la Guía de clase. Explica en 90 segundos y casi sin texto cómo se leen los pergaminos con Comprender pergamino: los pasos, dónde está en el libro de hechizos, qué conviene y qué no, la habilidad que pide cada tipo de pergamino según los datos de la beta, tres consejos para el leveo y lo que aún no se sabe, como la lista completa de recompensas.
+
+- **Datos afectados:** Comprehension - Skill - Forever, Collecting Library Books: Locations and Rewards - WoW Forever
+- **Fuentes:** [World of Warcraft: Forever: Repaso a fondo de las clases mago y chamán](https://worldofwarcraft.blizzard.com/es-es/news/24302097) (Blizzard Entertainment), [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [WoW Forever Mage Guide: Talent Builds, Races, Research & Changes](https://www.warcrafttavern.com/forever/guides/mage/) (Warcraft Tavern), [Collecting Library Books: Locations and Rewards - WoW Forever](https://www.wowhead.com/forever/guide/library-book-locations-and-rewards) (Wowhead), [Comprehension - Skill - Forever](https://www.wowhead.com/forever/skill=3012/comprehension) (Wowhead)
+
 ## 2026-10-14
 
 ### [Guía] Revisión de fuentes del 14 de octubre: versión del cliente

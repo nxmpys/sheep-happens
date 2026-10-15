@@ -1,0 +1,759 @@
+---
+/**
+ * One visual block of the scrolls page (Comprehension), placed under its heading in
+ * the MDX page so headings stay in Markdown and show in the page index:
+ *   ## Dónde está
+ *   <ScrollGuide part="spellbook" />
+ * Parts: flow (4 steps), spellbook (diagram plus the names of the mechanic), yesno
+ * (two columns), tiers (skill scale), tips and unknown (pending questions).
+ * Data: src/data/scrolls.json. No JavaScript: everything is in the HTML.
+ */
+import Icon from '../ui/Icon.astro';
+import SourceRefs from './SourceRefs.astro';
+import StatusBadge from './StatusBadge.astro';
+import { getLocale } from '../../i18n/locale';
+import { ts } from '../../i18n/scrolls';
+import { scrollsByPart } from '../../lib/data';
+import type { ScrollBlock } from '../../lib/schemas';
+
+interface Props {
+  part: 'flow' | 'spellbook' | 'yesno' | 'tiers' | 'tips' | 'unknown';
+}
+
+const { part } = Astro.props;
+const locale = getLocale(Astro);
+
+const blocks: ScrollBlock[] =
+  part === 'yesno'
+    ? [...scrollsByPart('yes'), ...scrollsByPart('no')]
+    : part === 'tiers'
+      ? scrollsByPart('tier')
+      : part === 'tips'
+        ? scrollsByPart('tip')
+        : part === 'unknown'
+          ? scrollsByPart('unknown')
+          : part === 'flow'
+            ? scrollsByPart('flow')
+            : scrollsByPart('flow').filter((b) => b.id === 'flow-cast');
+// The spellbook part also names the spell as the Spanish beta client shows it.
+const sources = [...new Set([...blocks.flatMap((b) => b.sources), ...(part === 'spellbook' ? ['wowhead-forever-comprehension'] : [])])];
+
+// Skill scale: from 0 to the highest point at which a scroll still gives skill.
+const tiers = scrollsByPart('tier');
+const scale = Math.max(...tiers.map((b) => b.tier!.greyAt));
+const pct = (value: number) => `${((value / scale) * 100).toFixed(2)}%`;
+const ticks = [0, 1, 2, 3].map((i) => Math.round((scale / 3) * i));
+
+const columns = [
+  { key: 'yes' as const, icon: 'verified' as const, items: scrollsByPart('yes') },
+  { key: 'no' as const, icon: 'close' as const, items: scrollsByPart('no') },
+];
+const tabs = ['general', 'arcane', 'fire', 'frost'] as const;
+---
+
+{
+  part === 'flow' && (
+    <ol class="sg-flow" aria-label={ts(locale, 'flow.label')}>
+      {blocks.map((block, index) => (
+        <li class="sg-flow__step">
+          <span class="sg-flow__badge" aria-hidden="true">
+            <Icon name={block.icon ?? 'scroll'} size={26} />
+            <span class="sg-flow__num">{index + 1}</span>
+          </span>
+          <span class="visually-hidden">{ts(locale, 'flow.step', { n: index + 1 })}: </span>
+          <span class="sg-flow__title">{block.title[locale]}</span>
+          <span class="sg-flow__text">{block.text[locale]}</span>
+          <StatusBadge status={block.status} compact />
+        </li>
+      ))}
+    </ol>
+  )
+}
+
+{
+  part === 'spellbook' && (
+    <figure class="sg-book">
+      <div class="sg-book__frame" role="img" aria-label={ts(locale, 'book.label')}>
+        <div class="sg-book__page">
+          <p class="sg-book__title">{ts(locale, 'book.title')}</p>
+          <div class="sg-book__grid">
+            {Array.from({ length: 5 }, (_, i) =>
+              i === 0 ? (
+                <span class="sg-book__slot sg-book__slot--on">
+                  <span class="sg-book__icon">
+                    <Icon name="scroll" size={22} />
+                  </span>
+                  <span class="sg-book__name">{ts(locale, 'book.spell')}</span>
+                  <span class="sg-book__marker">2</span>
+                </span>
+              ) : (
+                <span class="sg-book__slot">
+                  <span class="sg-book__icon" />
+                  <span class="sg-book__line" />
+                </span>
+              ),
+            )}
+          </div>
+        </div>
+        <ul class="sg-book__tabs">
+          {tabs.map((tab) => (
+            <li class:list={['sg-book__tab', `sg-book__tab--${tab}`, { 'sg-book__tab--on': tab === 'general' }]}>
+              <Icon name={tab === 'general' ? 'book' : tab} size={16} />
+              <span>{ts(locale, `book.tab.${tab}`)}</span>
+              {tab === 'general' && <span class="sg-book__marker">1</span>}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <figcaption>
+        <dl class="sg-names" aria-label={ts(locale, 'names.label')}>
+          <div>
+            <dt>{ts(locale, 'names.spell')}</dt>
+            <dd>{ts(locale, 'names.spell.desc')}</dd>
+          </div>
+          <div>
+            <dt>{ts(locale, 'names.skill')}</dt>
+            <dd>{ts(locale, 'names.skill.desc')}</dd>
+          </div>
+          <div>
+            <dt>{ts(locale, 'names.prof')}</dt>
+            <dd>{ts(locale, 'names.prof.desc')}</dd>
+          </div>
+        </dl>
+        <p class="sg-note">{ts(locale, 'book.note')}</p>
+      </figcaption>
+    </figure>
+  )
+}
+
+{
+  part === 'yesno' && (
+    <div class="sg-yesno">
+      {columns.map((column) => (
+        <section class={`sg-col sg-col--${column.key}`} aria-label={ts(locale, `${column.key}.label`)}>
+          <p class="sg-col__head" aria-hidden="true">
+            <Icon name={column.icon} size={20} strokeWidth={2.25} />
+            {ts(locale, `${column.key}.title`)}
+          </p>
+          <ul>
+            {column.items.map((block) => (
+              <li>
+                <Icon name={block.icon ?? 'scroll'} size={22} class="sg-col__icon" />
+                <span>
+                  <span class="sg-col__title">{block.title[locale]}</span>
+                  <span class="sg-col__text">{block.text[locale]}</span>
+                </span>
+                <StatusBadge status={block.status} compact />
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  )
+}
+
+{
+  part === 'tiers' && (
+    <figure class="sg-tiers">
+      <ol class="sg-tiers__list" aria-label={ts(locale, 'tiers.label')}>
+        {tiers.map((block) => (
+          <li class="sg-tier">
+            <span class="sg-tier__label">
+              <span class="sg-tier__kind">{block.text[locale]}</span>
+              <span class="sg-tier__example">{block.title[locale]}</span>
+            </span>
+            <span class="sg-tier__track" aria-hidden="true">
+              <span
+                class="sg-tier__bar"
+                style={`left: ${pct(block.tier!.requires)}; width: ${pct(block.tier!.greyAt - block.tier!.requires)}`}
+              />
+            </span>
+            <span class="sg-tier__values">
+              {ts(locale, 'tiers.requires', { n: block.tier!.requires })} · {ts(locale, 'tiers.grey', { n: block.tier!.greyAt })}
+            </span>
+          </li>
+        ))}
+      </ol>
+      <div class="sg-tiers__axis" aria-hidden="true">
+        <span class="sg-tiers__axis-label">{ts(locale, 'tiers.axis')}</span>
+        <span class="sg-tiers__ticks">
+          {ticks.map((tick) => (
+            <span style={`left: ${pct(tick)}`}>{tick}</span>
+          ))}
+        </span>
+      </div>
+      <figcaption class="sg-tiers__caption">
+        <StatusBadge status="analysis" />
+        <span class="sg-tiers__max">
+          {ts(locale, 'tiers.max')}: <StatusBadge status="pending" />
+        </span>
+      </figcaption>
+    </figure>
+  )
+}
+
+{
+  part === 'tips' && (
+    <ol class="sg-tips" aria-label={ts(locale, 'tips.label')}>
+      {blocks.map((block) => (
+        <li>
+          <Icon name={block.icon ?? 'scroll'} size={24} class="sg-tips__icon" />
+          <span class="sg-tips__title">{block.title[locale]}</span>
+          <span class="sg-tips__text">{block.text[locale]}</span>
+          <StatusBadge status={block.status} />
+        </li>
+      ))}
+    </ol>
+  )
+}
+
+{
+  part === 'unknown' && (
+    <ul class="sg-unknown" aria-label={ts(locale, 'unknown.label')}>
+      {blocks.map((block) => (
+        <li>
+          <StatusBadge status={block.status} />
+          <span>
+            <span class="sg-unknown__title">{block.title[locale]}</span>
+            <span class="sg-unknown__text">{block.text[locale]}</span>
+          </span>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+{
+  sources.length > 0 && (
+    <p class="sg-sources">
+      <SourceRefs ids={sources} />
+    </p>
+  )
+}
+
+<style>
+  /* Flow: four cards with an arrow between them; a column on narrow screens. */
+  .sg-flow {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sg-flow__step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin: 0;
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--arcane);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .sg-flow__step + .sg-flow__step {
+    margin-top: 0;
+  }
+  .sg-flow__step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 2.4rem;
+    right: calc(-1 * var(--space-5) + 0.35rem);
+    width: 0.6rem;
+    height: 0.6rem;
+    border-top: 2px solid var(--text-subtle);
+    border-right: 2px solid var(--text-subtle);
+    transform: rotate(45deg);
+  }
+  .sg-flow__badge {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--arcane-soft);
+    color: var(--arcane);
+  }
+  .sg-flow__step:last-child .sg-flow__badge {
+    background: color-mix(in srgb, var(--status-verified) 16%, transparent);
+    color: var(--status-verified);
+  }
+  .sg-flow__num {
+    position: absolute;
+    top: -0.3rem;
+    right: -0.45rem;
+    display: grid;
+    place-items: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .sg-flow__title {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .sg-flow__text {
+    flex: 1;
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    line-height: 1.5;
+  }
+  @media (max-width: 760px) {
+    .sg-flow {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+    .sg-flow__step {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      column-gap: var(--space-3);
+      row-gap: var(--space-1);
+      align-items: center;
+    }
+    .sg-flow__badge {
+      grid-row: span 2;
+    }
+    .sg-flow__title {
+      grid-column: 2;
+    }
+    .sg-flow__text {
+      grid-column: 2;
+      grid-row: 2;
+    }
+    .sg-flow__step > :global(.status) {
+      grid-column: 3;
+      grid-row: 1 / span 2;
+    }
+    .sg-flow__step:not(:last-child)::after {
+      top: auto;
+      right: auto;
+      bottom: calc(-1 * var(--space-4) + 0.1rem);
+      left: 2.15rem;
+      transform: rotate(135deg);
+    }
+  }
+
+  /* Spellbook diagram: a page of spell slots with tabs on its right edge. */
+  .sg-book {
+    margin: 0;
+    display: grid;
+    gap: var(--space-4);
+  }
+  .sg-book__frame {
+    display: flex;
+    max-width: 30rem;
+  }
+  .sg-book__page {
+    flex: 1;
+    min-width: 0;
+    padding: var(--space-4);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius) 0 var(--radius) var(--radius);
+    background: var(--surface-2);
+  }
+  .sg-book__title {
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .sg-book__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+  .sg-book__slot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+    padding: var(--space-1);
+    border-radius: var(--radius-sm);
+  }
+  .sg-book__icon {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface-3);
+  }
+  .sg-book__line {
+    flex: 1;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: var(--surface-3);
+  }
+  .sg-book__slot--on {
+    grid-column: 1 / -1;
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    background: var(--surface-1);
+  }
+  .sg-book__slot--on .sg-book__icon {
+    border-color: var(--accent);
+    background: var(--arcane-soft);
+    color: var(--arcane);
+  }
+  .sg-book__name {
+    min-width: 0;
+    font-size: var(--step--1);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .sg-book__tabs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sg-book__tab {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin: 0;
+    padding: var(--space-2) var(--space-2);
+    border: 1px solid var(--border);
+    border-left: 0;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background: var(--surface-1);
+    color: var(--text-subtle);
+    font-size: 0.75rem;
+  }
+  .sg-book__tab + .sg-book__tab {
+    margin-top: 0;
+  }
+  .sg-book__tab--arcane {
+    --school: var(--arcane);
+  }
+  .sg-book__tab--fire {
+    --school: var(--fire);
+  }
+  .sg-book__tab--frost {
+    --school: var(--frost);
+  }
+  .sg-book__tab :global(svg) {
+    color: var(--school, currentColor);
+  }
+  .sg-book__tab--on {
+    border-color: var(--accent);
+    background: var(--arcane-soft);
+    color: var(--text);
+    font-weight: 700;
+    outline: 2px solid var(--accent);
+    outline-offset: -1px;
+  }
+  .sg-book__marker {
+    position: absolute;
+    top: -0.55rem;
+    right: -0.55rem;
+    display: grid;
+    place-items: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+  .sg-names {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+  }
+  .sg-names > div {
+    display: grid;
+    grid-template-columns: minmax(8rem, 13rem) 1fr;
+    gap: var(--space-1) var(--space-4);
+  }
+  .sg-names dt {
+    font-weight: 700;
+    color: var(--text-muted);
+    font-size: var(--step--1);
+  }
+  .sg-names dd {
+    margin: 0;
+  }
+  .sg-note {
+    margin: var(--space-2) 0 0;
+    color: var(--text-subtle);
+    font-size: 0.8125rem;
+  }
+  @media (max-width: 560px) {
+    .sg-names > div {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Yes / No columns. */
+  .sg-yesno {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    gap: var(--space-4);
+  }
+  .sg-col {
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--col);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .sg-col--yes {
+    --col: var(--status-verified);
+  }
+  .sg-col--no {
+    --col: var(--fire);
+  }
+  .sg-col__head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0 0 var(--space-3);
+    color: var(--col);
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .sg-col ul {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sg-col li {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: var(--space-3);
+    align-items: start;
+    margin: 0;
+  }
+  .sg-col :global(.sg-col__icon) {
+    color: var(--col);
+    margin-top: 0.1em;
+  }
+  .sg-col__title {
+    display: block;
+    font-weight: 700;
+  }
+  .sg-col__text {
+    display: block;
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    line-height: 1.5;
+  }
+
+  /* Skill tiers: one bar per kind of scroll on a shared 0 to cap scale. */
+  .sg-tiers {
+    margin: 0;
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .sg-tiers__list {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sg-tier {
+    display: grid;
+    grid-template-columns: minmax(10rem, 14rem) 1fr;
+    gap: var(--space-1) var(--space-4);
+    align-items: center;
+    margin: 0;
+  }
+  .sg-tier + .sg-tier {
+    margin-top: 0;
+  }
+  .sg-tier__label {
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+  }
+  .sg-tier__kind {
+    font-weight: 700;
+  }
+  .sg-tier__example {
+    color: var(--text-subtle);
+    font-size: 0.8125rem;
+  }
+  .sg-tier__track {
+    position: relative;
+    height: 0.9rem;
+    border-radius: 999px;
+    background: var(--surface-3);
+  }
+  .sg-tier__bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--status-verified), var(--arcane));
+  }
+  .sg-tier__values {
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+  }
+  .sg-tiers__axis {
+    display: grid;
+    grid-template-columns: minmax(10rem, 14rem) 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-3);
+    padding-top: var(--space-2);
+    border-top: 1px dashed var(--border-strong);
+    color: var(--text-subtle);
+    font-size: 0.75rem;
+  }
+  .sg-tiers__ticks {
+    position: relative;
+    height: 1.2em;
+  }
+  .sg-tiers__ticks span {
+    position: absolute;
+    transform: translateX(-50%);
+  }
+  .sg-tiers__ticks span:first-child {
+    transform: none;
+  }
+  .sg-tiers__ticks span:last-child {
+    transform: translateX(-100%);
+  }
+  .sg-tiers__caption {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+  }
+  .sg-tiers__max {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  @media (max-width: 560px) {
+    .sg-tier,
+    .sg-tiers__axis {
+      grid-template-columns: 1fr;
+      gap: var(--space-1);
+    }
+    .sg-tier__label {
+      grid-row: auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0 var(--space-2);
+      align-items: baseline;
+    }
+    .sg-tiers__axis-label {
+      display: none;
+    }
+  }
+
+  /* Tips and unknowns. */
+  .sg-tips {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sg-tips li {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin: 0;
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--status-analysis);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .sg-tips :global(.sg-tips__icon) {
+    color: var(--arcane);
+  }
+  .sg-tips__title {
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .sg-tips__text {
+    flex: 1;
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    line-height: 1.5;
+  }
+  .sg-unknown {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: var(--space-4);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius);
+    list-style: none;
+  }
+  .sg-unknown li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-3);
+    align-items: start;
+    margin: 0;
+  }
+  .sg-unknown__title {
+    font-weight: 700;
+  }
+  .sg-unknown__text {
+    display: block;
+    color: var(--text-muted);
+    font-size: var(--step--1);
+  }
+  @media (max-width: 420px) {
+    .sg-unknown li {
+      grid-template-columns: 1fr;
+      gap: var(--space-1);
+    }
+    .sg-unknown li > :global(.status) {
+      justify-self: start;
+    }
+  }
+  .sg-sources {
+    margin: var(--space-3) 0 0;
+  }
+
+  /* The prose rule leaves only a small gap under a heading; boxes need more air. */
+  .sg-flow,
+  .sg-book,
+  .sg-yesno,
+  .sg-tiers,
+  .sg-tips,
+  .sg-unknown {
+    margin-top: var(--space-5);
+  }
+  /* Same gap for the FAQ boxes, only on the page that uses this component. */
+  :global(.prose:has(.sg-flow) h2 + .faq) {
+    margin-top: var(--space-5);
+  }
+</style>

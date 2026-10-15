@@ -6,7 +6,7 @@
     "url": "https://news.blizzard.com/en-us/article/24302097/",
     "kind": "official",
     "published": "2026-10-07",
-    "accessed": "2026-10-11",
+    "accessed": "2026-10-15",
     "notes": {
       "es": "Fuente principal de todos los cambios del Mago. Advierte que las habilidades y los talentos pueden cambiar durante la beta. Casi sin valores numéricos.",
       "en": "Primary source for every Mage change. Warns that abilities and talents may keep changing during the beta. Almost no numeric values."
@@ -19,7 +19,7 @@
     "url": "https://us.forums.blizzard.com/en/wow/t/2360696",
     "kind": "official",
     "published": "2026-09-24",
-    "accessed": "2026-10-11",
+    "accessed": "2026-10-15",
     "notes": {
       "es": "Notas oficiales de cada build de la beta (24 sep, 1 oct y 8 oct de 2026). Es la fuente principal para las actualizaciones semanales.",
       "en": "Official notes for every beta build (24 Sep, 1 Oct and 8 Oct 2026). The main source for weekly updates."
@@ -32,7 +32,7 @@
     "url": "https://worldofwarcraft.blizzard.com/es-es/news/24302097",
     "kind": "official",
     "published": "2026-10-07",
-    "accessed": "2026-10-11",
+    "accessed": "2026-10-15",
     "notes": {
       "es": "Versión oficial en español del deep dive: fuente de los nombres en español de hechizos y talentos.",
       "en": "Official Spanish version of the deep dive: the source for Spanish spell and talent names."
@@ -425,7 +425,7 @@
     "publisher": "Warcraft Tavern",
     "url": "https://www.warcrafttavern.com/forever/guides/mage/",
     "kind": "community",
-    "accessed": "2026-10-14",
+    "accessed": "2026-10-15",
     "notes": {
       "es": "Recomienda Sastrería y Encantamiento para el Mago; Ingeniería por sus consumibles para PvE y JcJ, y Alquimia para ganar oro.",
       "en": "Recommends Tailoring and Enchanting for Mages; Engineering for its PvE and PvP consumables, and Alchemy to make gold."
@@ -554,6 +554,31 @@
     "notes": {
       "es": "Farmeo en área en Classic Era: talentos imprescindibles, técnica y primeras zonas a partir del nivel 22. Se basa en la ralentización de Classic, que Forever ha reducido.",
       "en": "AoE grinding in Classic Era: essential talents, technique and first spots from level 22. It relies on Classic's slow, which Forever reduced."
+    }
+  },
+  {
+    "id": "wowhead-forever-comprehension",
+    "title": "Comprehension - Skill - Forever",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/skill=3012/comprehension",
+    "kind": "tool",
+    "accessed": "2026-10-15",
+    "notes": {
+      "es": "Datos del cliente de la beta (1.60.1): los hechizos de Comprender pergamino (5 s de lanzamiento, sin coste, nivel 6), la habilidad que pide cada pergamino sin descifrar, quién los suelta y lo que trae el Montón de pergaminos. No dice qué da cada pergamino al descifrarlo.",
+      "en": "Beta client data (1.60.1): the Comprehend Scroll spells (5 s cast, no cost, level 6), the skill each untranslated scroll asks for, what drops them and what the Bundle of Scrolls holds. It does not say what each scroll gives when deciphered."
+    }
+  },
+  {
+    "id": "wowhead-library-books",
+    "title": "Collecting Library Books: Locations and Rewards - WoW Forever",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/guide/library-book-locations-and-rewards",
+    "kind": "community",
+    "published": "2026-10-05",
+    "accessed": "2026-10-15",
+    "notes": {
+      "es": "Libros que se entregan al bibliotecario y lo que gana el Mago: Estudiar en una biblioteca da un Montón de pergaminos. Dice que se reutiliza cada día; los datos del cliente y Warcraft Tavern dicen cada hora.",
+      "en": "Books handed in to the librarian and what Mages get: Studying in a library gives a Bundle of Scrolls. It says the cooldown is a day; client data and Warcraft Tavern say an hour."
     }
   }
 ]

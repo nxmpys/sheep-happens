@@ -467,6 +467,40 @@ export const watchSchema = z
   .refine((w) => w.type === 'manual' || w.endpoint !== undefined, { message: 'automatic watches need an endpoint' });
 export type Watch = z.infer<typeof watchSchema>;
 
+/** Blocks of the scrolls page (Comprehension), in the order the page shows them. */
+export const SCROLL_PARTS = ['flow', 'yes', 'no', 'tier', 'tip', 'unknown'] as const;
+export const SCROLL_ICONS = ['scroll', 'stop', 'cast', 'reward', 'move', 'mage', 'level', 'skill', 'sheep', 'bag', 'library'] as const;
+
+/**
+ * One claim on the scrolls page (src/data/scrolls.json): a step of the flow, a
+ * yes/no card, a skill tier, a tip or an open question. Unknowns are always pending.
+ */
+export const scrollSchema = z
+  .object({
+    id,
+    part: z.enum(SCROLL_PARTS),
+    icon: z.enum(SCROLL_ICONS).optional(),
+    title: localized,
+    text: localized,
+    /** Skill tiers only: what the untranslated scroll asks for and when it stops giving points. */
+    tier: z
+      .object({
+        itemLevel: z.number().int().min(1).max(60),
+        requires: z.number().int().min(1),
+        greyAt: z.number().int().min(1),
+      })
+      .strict()
+      .refine((t) => t.greyAt > t.requires, { message: 'greyAt must be above requires' })
+      .optional(),
+    status: z.enum(STATUSES),
+    sources: sourceIds,
+  })
+  .strict()
+  .refine((s) => (s.part === 'tier') === (s.tier !== undefined), { message: 'only tier blocks (and all of them) carry tier data' })
+  .refine((s) => s.part !== 'unknown' || s.status === 'pending', { message: 'unknown blocks must be pending' });
+export type ScrollBlock = z.infer<typeof scrollSchema>;
+export type ScrollPart = (typeof SCROLL_PARTS)[number];
+
 /** Frontmatter for every MDX page (validated by the content collection). */
 export const pageFrontmatter = z
   .object({

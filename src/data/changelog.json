@@ -1,5 +1,34 @@
 [
   {
+    "id": "2026-10-15-scrolls-guide",
+    "date": "2026-10-15",
+    "type": "guide",
+    "title": {
+      "es": "Nueva guía rápida: pergaminos y Comprensión del Mago",
+      "en": "New quick guide: Mage scrolls and Comprehension"
+    },
+    "body": {
+      "es": "Nueva página de Pergaminos, dentro de la Guía de clase. Explica en 90 segundos y casi sin texto cómo se leen los pergaminos con Comprender pergamino: los pasos, dónde está en el libro de hechizos, qué conviene y qué no, la habilidad que pide cada tipo de pergamino según los datos de la beta, tres consejos para el leveo y lo que aún no se sabe, como la lista completa de recompensas.",
+      "en": "New Scrolls page, under the Class guide. It explains in 90 seconds, with very little text, how to read scrolls with Comprehend Scroll: the steps, where it is in the spellbook, do and don't, the skill each kind of scroll needs according to beta data, three leveling tips and what is still unknown, such as the full list of rewards."
+    },
+    "pages": [
+      "scrolls",
+      "leveling",
+      "guide"
+    ],
+    "sources": [
+      "blizzard-deep-dive-mage-es",
+      "blizzard-dev-notes",
+      "warcrafttavern-mage-guide",
+      "wowhead-library-books",
+      "wowhead-forever-comprehension"
+    ],
+    "refs": [
+      "source:wowhead-forever-comprehension",
+      "source:wowhead-library-books"
+    ]
+  },
+  {
     "id": "2026-10-14-weekly-1",
     "date": "2026-10-14",
     "type": "guide",

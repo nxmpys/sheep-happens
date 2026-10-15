@@ -16,6 +16,7 @@ import rawMilestones from '../data/milestones.json';
 import rawPicks from '../data/profession-picks.json';
 import rawProfessions from '../data/professions.json';
 import rawRaces from '../data/races.json';
+import rawScrolls from '../data/scrolls.json';
 import rawSources from '../data/sources.json';
 import rawTalents from '../data/talents.json';
 import rawWatchlist from '../data/watchlist.json';
@@ -31,6 +32,7 @@ import {
   professionPickSchema,
   professionSchema,
   raceSchema,
+  scrollSchema,
   sourceSchema,
   talentSchema,
   watchSchema,
@@ -45,6 +47,7 @@ import {
   type Profession,
   type ProfessionPick,
   type Race,
+  type ScrollBlock,
   type Source,
   type Status,
   type Talent,
@@ -76,6 +79,7 @@ export interface Dataset {
   professions: Profession[];
   picks: ProfessionPick[];
   addons: Addon[];
+  scrolls: ScrollBlock[];
 }
 
 export function parseDataset(raw: Record<keyof Dataset, unknown>): Dataset {
@@ -94,6 +98,7 @@ export function parseDataset(raw: Record<keyof Dataset, unknown>): Dataset {
     professions: parseList('professions.json', professionSchema, raw.professions),
     picks: parseList('profession-picks.json', professionPickSchema, raw.picks),
     addons: parseList('addons.json', addonSchema, raw.addons),
+    scrolls: parseList('scrolls.json', scrollSchema, raw.scrolls),
   };
 }
 
@@ -126,6 +131,7 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
     ['professions.json', data.professions],
     ['profession-picks.json', data.picks],
     ['addons.json', data.addons],
+    ['scrolls.json', data.scrolls],
   ];
   for (const [file, list] of lists) {
     for (const dup of duplicates(list.map((item) => item.id))) problems.push(`${file}: duplicate id "${dup}"`);
@@ -140,6 +146,7 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
     ...data.races.map((r) => ['races.json', r] as [string, Race]),
     ...data.professions.map((p) => ['professions.json', p] as [string, Profession]),
     ...data.picks.map((p) => ['profession-picks.json', p] as [string, ProfessionPick]),
+    ...data.scrolls.map((s) => ['scrolls.json', s] as [string, ScrollBlock]),
   ];
   for (const [file, claim] of claims) {
     const kinds = new Set<string>();
@@ -306,6 +313,7 @@ export const dataset: Dataset = parseDataset({
   professions: rawProfessions,
   picks: rawPicks,
   addons: rawAddons,
+  scrolls: rawScrolls,
 });
 
 const integrity = checkIntegrity(dataset);
@@ -313,7 +321,7 @@ if (integrity.length > 0) {
   throw new Error(`Content integrity problems:\n- ${integrity.join('\n- ')}`);
 }
 
-export const { sources, changes, milestones, abilities, facts, versions, changelog, watchlist, talents, builds, races, professions, picks, addons } =
+export const { sources, changes, milestones, abilities, facts, versions, changelog, watchlist, talents, builds, races, professions, picks, addons, scrolls } =
   dataset;
 
 const sourceIndex = new Map(sources.map((s) => [s.id, s]));
@@ -359,3 +367,6 @@ export const getProfession = (key: string) => lookup(professionIndex, 'professio
 const addonIndex = new Map(addons.map((a) => [a.id, a]));
 
 export const getAddon = (key: string) => lookup(addonIndex, 'addon', key);
+
+/** Blocks of one part of the scrolls page, in file order. */
+export const scrollsByPart = (part: ScrollBlock['part']) => scrolls.filter((s) => s.part === part);

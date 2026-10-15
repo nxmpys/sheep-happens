@@ -27,6 +27,7 @@ import ProfessionPicks from './guide/ProfessionPicks.astro';
 import ProfessionTable from './guide/ProfessionTable.astro';
 import QuestionCards from './guide/QuestionCards.astro';
 import RaceCards from './guide/RaceCards.astro';
+import ScrollGuide from './guide/ScrollGuide.astro';
 import SourceRefs from './guide/SourceRefs.astro';
 import SourcesTable from './guide/SourcesTable.astro';
 import SpecCards from './guide/SpecCards.astro';
@@ -66,6 +67,7 @@ export const mdxComponents = {
   ProfessionTable,
   QuestionCards,
   RaceCards,
+  ScrollGuide,
   SourceRefs,
   SourcesTable,
   SpecCards,

@@ -67,6 +67,15 @@
 
 Las doce fuentes de la página de Profesiones (una oficial de Blizzard, la base de datos de Forever de Wowhead y guías de la comunidad), qué respalda cada una y lo que queda por verificar están en [professions-research.md](professions-research.md). Ninguna es una fuente de Classic.
 
+### Guía de pergaminos (consultadas el 2026-10-15)
+
+| ID | Fuente | Tipo | Qué respalda | Limitaciones |
+|---|---|---|---|---|
+| `wowhead-forever-comprehension` | [Wowhead — Comprehension (skill)](https://www.wowhead.com/forever/skill=3012/comprehension) | tool | Hechizos de Comprender pergamino (5 s, sin coste, nivel 6), habilidad que pide cada pergamino, criaturas que los sueltan, contenido del Montón de pergaminos, fichas de los pergaminos | Datos del cliente de la beta; no dice qué da cada pergamino al descifrarlo |
+| `wowhead-library-books` | [Wowhead — Library Book Locations and Rewards](https://www.wowhead.com/forever/guide/library-book-locations-and-rewards) | community | Libros para el bibliotecario; Estudiar da un Montón de pergaminos en una biblioteca | Dice «un día» de reutilización; los datos del cliente dicen 1 hora |
+
+También se releyeron `blizzard-deep-dive-mage` (y su versión en español), `blizzard-dev-notes` y `warcrafttavern-mage-guide`, que explica el fallo (te conviertes en oveja) y da ejemplos de recompensas.
+
 ## 4. Fuentes descartadas
 
 - **Wowhead Classic, Icy Veins Classic y guías de Classic Era o SoD:** son útiles como referencia de Classic, pero no describen Forever. Solo se usarían con `kind: classic-reference`.

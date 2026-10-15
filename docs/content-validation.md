@@ -27,6 +27,8 @@
 - [ ] Legado: los puntos se ganan con desafíos de cuenta (por ejemplo, nivel 25, 45 y 60 con cada clase), así que el primer personaje del lanzamiento no tendrá Talented (Warcraft Tavern). Talented: primer punto a nivel 9 con 1 rango y a nivel 5 con 5.
 - [ ] Valores de talentos y hechizos usados en la guía de leveo (calculadora de Wowhead, datos de la beta 2026-10-14): Improved Frostbolt −0,1 s por rango; Frostbite 5/10/15 %, congela 5 s; Ice Shards +20 % de bonificación de crítico por rango; Piercing Ice +2 % por rango; Canalización de Escarcha −5 % de maná y −10 % de amenaza por rango; Trizar +17/33/50 % de crítico contra congelados; Dedos de Escarcha 15 %, 1/2 cargas, 15 s; Ventisca mejorada 15/25/40 % durante 1,5 s; Escarcha permanente +11/22/33 % de duración y −3/7/10 % de velocidad; Nova de Escarcha 25 s de reutilización y hasta 8 s de congelación; Cono de frío 40 % durante 6 s; Ventisca de rango 1, 320 de maná; Lanza de hielo de rango 1, 28-32 de daño.
 - [ ] Niveles de los hechizos del 1 al 30 según la lista del instructor de la beta (calculadora de Wowhead), coincidentes con Method y con Classic. Lanza de hielo de rango 2 se entrena a nivel 28.
+- [ ] Comprensión, según Warcraft Tavern: se aprende a nivel 6 y, si fallas al descifrar, te conviertes en oveja. Investigar se gana entregando libros al bibliotecario y Estudiar da un Montón de pergaminos cada hora en una biblioteca.
+- [ ] Comprensión, datos del cliente de la beta (Wowhead, 2026-10-15): Comprender pergamino tarda 5 s y no cuesta maná; los pergaminos sin descifrar piden Comprensión 1, 15, 50 o 175 (niveles de objeto 10, 20, 30 y 50) y dejan de dar puntos en 30, 75, 200 y 300; el Pergamino de Comprensión da +15 durante 1 hora; Estudiar tiene 1 hora de reutilización y gasta una Pluma ligera. Se publican como «Análisis» en la página Pergaminos.
 - [ ] Experiencia de mazmorras: mucha menos por matar y mucha más por las misiones (entrevista a Kris Zierhut, vía Icy Veins). Los ajustes del 1 y el 8 de octubre sí están en las notas oficiales.
 
 ## Discrepancias abiertas
@@ -41,6 +43,8 @@
 | Versión de cliente | "1.60.1 beta" (Seemeta) | "build 69913" (Guildorder, antigua) | Resuelto: se publica «1.60.1, build 70338» como dato de la comunidad (wago.tools + Warcraft Wiki) |
 | Nivel de la doble especialización | Deep dive: nivel 40 | Pódcast: «currently 40», estudian adelantarlo | Se muestra «40 por ahora» con el aviso |
 | Ventisca mejorada en las guías de área | Oficial y calculadora: ralentiza como máximo un 40 % | WoW Forever Builds (guía de área 22-60): 65 %, el valor de Classic | Se usa el 40 %. No seguimos esa guía para la build de área |
+| Nombre en español de *Comprehend Scroll* | Artículo de Blizzard en español: «Comprender pergamino» | Cliente en español de la beta (Wowhead): «Entender pergamino» | Se usa el nombre oficial del artículo y se avisa del nombre del cliente en la página Pergaminos |
+| Reutilización de Estudiar (Montón de pergaminos) | Wowhead, guía de libros (5 oct): un día | Datos del cliente (Wowhead) y Warcraft Tavern: 1 hora | Se usa 1 hora (datos del cliente, más recientes) |
 | Build de leveo de Escarcha a nivel 30 | Icy Veins: Enfoque elemental 2 y Ventisca mejorada 1; Mobalytics (Escarcha): Enfoque elemental 2 y Bloqueo de hielo | Mobalytics (leveo): Frostbite 2 y Ventisca mejorada 1; WoW Forever Builds: Enfoque elemental 5 y Canalización de Escarcha, sin Improved Frostbolt | Núcleo común (Improved Frostbolt, Frostbite, Ice Shards, Lanza de hielo, Trizar, Dedos de Escarcha) + Piercing Ice 3/3. Comparativa en la guía de leveo |
 
 ## Pendiente (no publicar como hecho)
@@ -54,8 +58,9 @@
 - [ ] Mazmorras, raids y PvP de Forever.
 - [ ] Formato de importación o exportación de talentos.
 - [ ] Nombres oficiales en español de los hechizos **no** citados en el deep dive (Blink, Evocation, Flamestrike, Combustion, Ice Barrier…): se muestran en inglés.
+- [ ] Errores conocidos de la beta con Comprensión (Known Issues de las notas de desarrollo): el Pergamino de Pasaje liminal no funciona bien y algunos Magos que aprenden Investigar no pueden abrirlo. No se mencionan en la página Pergaminos; comprobar si siguen al lanzar.
 - [ ] Error conocido de la beta: recibir daño al canalizar Misiles Arcanos dispara un misil con el daño completo (Known Issues, 8 oct). No es un cambio de diseño.
-- [ ] Recompensas de Comprensión (Comprehend Scroll).
+- [ ] Recompensas de Comprensión (Comprehend Scroll): no hay una lista completa. Solo ejemplos de Warcraft Tavern (Pergamino de espíritu, de imbuir escarcha, de familiar rata) y el contenido del Montón de pergaminos de Estudiar (Wowhead). Tampoco se saben el máximo de la habilidad, la probabilidad de fallo o de botín, ni si se pueden comerciar.
 
 ## Lista de revisión tras el lanzamiento (4 nov 2026)
 

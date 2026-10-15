@@ -52,7 +52,8 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 
 - [ ] Niveles de aprendizaje: 24 de las 25 habilidades de `src/data/abilities.json` usan los de Classic (solo Descarga de Pirofrío a nivel 40 es oficial).
 - [ ] Coste de la doble especialización y nivel definitivo (40 o antes).
-- [ ] Recompensas de Comprensión.
+- [x] Cómo funciona Comprensión: pasos, dónde está Comprender pergamino, qué conviene y qué no, la habilidad que pide cada pergamino y consejos para el leveo, en la página Pergaminos (`scrolls`, 2026-10-15; datos en `src/data/scrolls.json`). Ejemplos de recompensas: imbuir el bastón, familiares, maná (Warcraft Tavern y Wowhead).
+- [ ] Recompensas de Comprensión: qué da cada pergamino, máximo de la habilidad, probabilidad de fallo y de botín, y si se pueden comerciar. Hoy son los bloques «Pendiente» de «Lo que aún no se sabe» en `scrolls`.
 - [ ] Partes del Legado que sirven al Mago (por ejemplo, Reagent Economy).
 - [ ] Nombres oficiales en español de los hechizos que no salen en el artículo de Blizzard sobre el Mago (Blink, Evocation, Flamestrike, Combustion, Ice Barrier…).
 - [ ] Modo Hardcore (llegará más adelante).
@@ -89,6 +90,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [ ] Cambios: aviso «Información de beta».
 - [ ] Equipo: aviso pendiente que cita el nivel 60 de la beta.
 - [ ] Arcano, Fuego y Escarcha: secciones «Lo que falta por saber».
+- [ ] Pergaminos: los bloques de «Análisis» salen de los datos del cliente de la beta (5 s de lanzamiento, habilidad que pide cada pergamino, Pergamino de Comprensión, apilamiento). Comprobarlos en el juego y pasarlos a «Probado en juego», y revisar el nombre del hechizo en el cliente en español («Entender pergamino» en la beta, «Comprender pergamino» en el artículo de Blizzard).
 - [ ] Fuentes y Cambios: borrar la discrepancia «Fin de la beta» y resolver «Nivel de la doble especialización» y «Requisito de Dedos de Escarcha».
 - [ ] Error de la beta con Misiles Arcanos (recibir daño dispara un misil con el daño completo): comprobar si sigue.
 
