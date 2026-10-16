@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { abilities, changes, milestones, spellText, talents } from '../src/lib/data';
 import { buildSpellIndex, findSpell } from '../src/lib/spells';
-import { looksEnglish, parseWowheadTooltip, tidyDescription } from '../src/lib/spell-text';
+import { fillRankValues, looksEnglish, parseWowheadTooltip, tidyDescription } from '../src/lib/spell-text';
 
 const es = buildSpellIndex({ abilities, changes, talents, milestones, spellText }, 'es');
 const en = buildSpellIndex({ abilities, changes, talents, milestones, spellText }, 'en');
@@ -54,6 +54,12 @@ describe('spell tooltips', () => {
     expect(frostbolt.more).toBe('guide');
   });
 
+  it('gives every talent and ability with a spell id its in-game text', () => {
+    const missing = Object.values(en.entries).filter((entry) => !entry.game && !entry.facts.includes('Forever system'));
+    expect(missing.map((entry) => entry.key)).toEqual(['ability-teleport-portal']);
+    expect(findSpell(en, 'Improved Frostbolt')?.game?.text).toContain('by 0.1/0.2/0.3/0.4/0.5 sec');
+  });
+
   it('falls back to our description when the game has no text', () => {
     const ranks = findSpell(en, 'Spell ranks')!;
     expect(ranks.game).toBeUndefined();
@@ -73,6 +79,12 @@ describe('in-game tooltip text', () => {
       meta: ['25 Mana', '30 yd range', '1.5 sec cast'],
       text: 'Launches a bolt of frost, causing 19 to 21 Frost damage.',
     });
+  });
+
+  it('fills in rank values that the tooltip rounds down to 0', () => {
+    expect(fillRankValues('a 0% chance, up to 10 times', ['20', '40'])).toBe('a 20/40% chance, up to 10 times');
+    expect(fillRankValues('by 0 sec.', ['0.1', '0.2'])).toBe('by 0.1/0.2 sec.');
+    expect(fillRankValues('lasts 10 sec.', ['1'])).toBe('lasts 10 sec.');
   });
 
   it('drops talent-dependent notes in brackets', () => {

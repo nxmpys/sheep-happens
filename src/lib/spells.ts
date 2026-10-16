@@ -156,7 +156,7 @@ export function buildSpellIndex(
         ...localName(change, locale),
         school,
         facts,
-        ...describe(talent?.spell, change.summary[locale], change.status),
+        ...describe(talent?.spell ?? change.spell, change.summary[locale], change.status),
         href: link('changes', `change-${change.id}`),
         more: 'changes',
       },

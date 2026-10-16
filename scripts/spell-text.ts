@@ -10,8 +10,8 @@
  * It never edits other data files.
  */
 import { readFileSync, writeFileSync } from 'node:fs';
-import { abilities, talents } from '../src/lib/data';
-import { looksEnglish, parseWowheadTooltip, type SpellTextEntry } from '../src/lib/spell-text';
+import { abilities, changes, talents } from '../src/lib/data';
+import { fillRankValues, looksEnglish, parseWowheadTooltip, type SpellTextEntry } from '../src/lib/spell-text';
 
 const OUT = new URL('../src/data/spell-text.json', import.meta.url);
 const LOCALES = { en: '', es: '?locale=6' } as const;
@@ -22,7 +22,21 @@ async function fetchTooltip(id: number, query: string): Promise<{ name: string; 
   return (await res.json()) as { name: string; tooltip: string };
 }
 
-const ids = new Set<number>([...talents.map((t) => t.spell), ...abilities.flatMap((a) => (a.spell ? [a.spell] : []))]);
+/**
+ * Per-rank values the tooltip rounds down to 0 ("by 0 sec" for −99 ms), read from
+ * the "Trait … Rank N … Value" lines of the spell's Wowhead page (16 Oct 2026).
+ * Add a spell here when the script reports it as skipped.
+ */
+const RANK_VALUES: Record<number, string[]> = {
+  11070: ['0.1', '0.2', '0.3', '0.4', '0.5'], // Improved Frostbolt: −100 to −500 ms
+  11180: ['20', '40', '60', '80', '100'], // Winter's Chill: proc chance
+};
+
+const ids = new Set<number>([
+  ...talents.map((t) => t.spell),
+  ...abilities.flatMap((a) => (a.spell ? [a.spell] : [])),
+  ...changes.flatMap((c) => (c.spell ? [c.spell] : [])),
+]);
 const previous = JSON.parse(readFileSync(OUT, 'utf8')) as { spells: Record<string, SpellTextEntry> };
 const spells: Record<string, SpellTextEntry> = {};
 const failed: number[] = [];
@@ -32,6 +46,11 @@ for (const id of [...ids].sort((a, b) => a - b)) {
     const [en, es] = await Promise.all([fetchTooltip(id, LOCALES.en), fetchTooltip(id, LOCALES.es)]);
     const parsedEn = parseWowheadTooltip(en.tooltip);
     const parsedEs = parseWowheadTooltip(es.tooltip);
+    const ranks = RANK_VALUES[id];
+    if (ranks) {
+      parsedEn.text = fillRankValues(parsedEn.text, ranks);
+      parsedEs.text = fillRankValues(parsedEs.text, ranks);
+    }
     if (!parsedEn.text || !parsedEs.text) throw new Error(`spell ${id}: no description`);
     // Multi-rank talents whose per-rank value Wowhead leaves at 0 ("by 0 sec", "a 0% chance"):
     // better our own description than a wrong number.

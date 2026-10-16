@@ -76,6 +76,11 @@ export const changeSchema = z
     previousRow: z.number().int().min(1).max(7).optional(),
     milestone: z.literal(MILESTONE_POINTS).optional(),
     learnLevel: z.number().int().min(1).max(60).optional(),
+    /**
+     * Wowhead spell id for the in-game tooltip text, only for changes that are not
+     * a talent or a base ability (those take it from talents.json or abilities.json).
+     */
+    spell: z.number().int().positive().optional(),
     summary: localized,
     details: z.array(localized).default([]),
     notes: z.array(noteSchema).default([]),

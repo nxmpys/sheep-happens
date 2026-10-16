@@ -456,6 +456,19 @@
         "text": "Reduce 1 s el tiempo de lanzamiento de tus hechizos Bola de Fuego y Descarga de Pirofrío."
       }
     },
+    "11070": {
+      "en": {
+        "name": "Improved Frostbolt",
+        "meta": [],
+        "text": "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.1/0.2/0.3/0.4/0.5 sec."
+      },
+      "es": {
+        "name": "Descarga de Escarcha mejorada",
+        "meta": [],
+        "text": "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.1/0.2/0.3/0.4/0.5 sec.",
+        "lang": "en"
+      }
+    },
     "11071": {
       "en": {
         "name": "Frostbite",
@@ -686,6 +699,19 @@
         "name": "Escarcha permanente",
         "meta": [],
         "text": "Aumenta un 33% la duración de los efectos de escalofrío y reduce un 10% más la velocidad del objetivo."
+      }
+    },
+    "11180": {
+      "en": {
+        "name": "Winter's Chill",
+        "meta": [],
+        "text": "Gives your Frost damage spells a 20/40/60/80/100% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times."
+      },
+      "es": {
+        "name": "Escalofrío del invierno",
+        "meta": [],
+        "text": "Gives your Frost damage spells a 20/40/60/80/100% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
+        "lang": "en"
       }
     },
     "11185": {
@@ -977,6 +1003,18 @@
         "text": "Termina el tiempo de reutilización restante de todos tus otros hechizos de Escarcha."
       }
     },
+    "12606": {
+      "en": {
+        "name": "Magic Attunement",
+        "meta": [],
+        "text": "Increases the effect of your Amplify Magic and Dampen Magic spells by 50%."
+      },
+      "es": {
+        "name": "Armonización mágica",
+        "meta": [],
+        "text": "Aumenta en un 50% los efectos de tus hechizos de Amplificar magia y Empapar magia."
+      }
+    },
     "15058": {
       "en": {
         "name": "Arcane Instability",
@@ -1150,6 +1188,24 @@
           "Hechizo de 3 seg"
         ],
         "text": "Lanza una Descarga de Pirofrío contra el enemigo, lo que inflige 103 al 118 p. de daño de Pirofrío, reduce un 40% la velocidad de movimiento e inflige 27 p. más de daño de Pirofrío durante 9 s. Este hechizo se probará contra la más baja de las resistencias de Fuego o Escarcha del objetivo y cuenta como daño de Escarcha y Fuego al mismo tiempo."
+      }
+    },
+    "1296017": {
+      "en": {
+        "name": "Comprehend Scroll",
+        "meta": [
+          "5 yd range",
+          "Instant"
+        ],
+        "text": "Decipher an untranslated scroll."
+      },
+      "es": {
+        "name": "Entender pergamino",
+        "meta": [
+          "Alcance de 5 m",
+          "Instante"
+        ],
+        "text": "Descifra un pergamino sin traducir."
       }
     },
     "1312002": {

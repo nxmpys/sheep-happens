@@ -105,6 +105,7 @@
     "kinds": [
       "new"
     ],
+    "spell": 1296017,
     "summary": {
       "es": "Nueva habilidad menor exclusiva del Mago para leer y descifrar los pergaminos que sueltan las criaturas. Se usa con Comprender pergamino, en la pestaña General del libro de hechizos.",
       "en": "New Mage-only minor tradeskill to read and decipher scrolls dropped by creatures. Used through Comprehend Scroll in the General tab of the spellbook."
@@ -299,6 +300,7 @@
     "kinds": [
       "baseline"
     ],
+    "spell": 12606,
     "summary": {
       "es": "Deja de ser un talento de Arcano y pasa a formar parte de la clase base.",
       "en": "No longer an Arcane talent; it is now part of the baseline class."
