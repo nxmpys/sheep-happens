@@ -1,5 +1,24 @@
 [
   {
+    "id": "2026-10-16-addons",
+    "date": "2026-10-16",
+    "type": "site",
+    "title": {
+      "es": "Addons: MageProcs 1.2.0",
+      "en": "Addons: MageProcs 1.2.0"
+    },
+    "body": {
+      "es": "La página de Addons describe MageProcs 1.2.0: los procs que avisa, el contador opcional de Explosión Arcana, los perfiles, la instalación y sus límites.",
+      "en": "The Addons page describes MageProcs 1.2.0: the procs it alerts you to, the optional Arcane Blast tracker, profiles, installation and its limits."
+    },
+    "pages": [
+      "addons",
+      "tools"
+    ],
+    "sources": [],
+    "refs": []
+  },
+  {
     "id": "2026-10-16-weekly-1",
     "date": "2026-10-16",
     "type": "guide",

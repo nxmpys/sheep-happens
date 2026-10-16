@@ -6,6 +6,10 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ## 2026-10-16
 
+### [Web] Addons: MageProcs 1.2.0
+
+La página de Addons describe MageProcs 1.2.0: los procs que avisa, el contador opcional de Explosión Arcana, los perfiles, la instalación y sus límites.
+
 ### [Guía] Revisión de fuentes del 16 de octubre: cambios del Mago y raciales
 
 Incorporamos la build del 15 de octubre: fichas nuevas de Frost Blast, Cólera Arcana, Masa crítica, Poder de Fuego y varitas; Explosión Arcana, Tromba de misiles, Explosión de Fuego mejorada, Calentamiento, Lanza de hielo, Escalofrío del invierno y Cono de frío actualizados; el árbol de talentos y los talentos decisivos de Arcano, al día; y las raciales de las seis razas que pueden ser Mago. Las builds y las páginas de combate, leveo, farmeo AoE y talentos reflejan los cambios.

@@ -5,13 +5,13 @@
     "origin": "own",
     "author": "Sheep Happens",
     "summary": {
-      "es": "MageProcs muestra una alerta grande y clara en pantalla cuando salta uno de tus procs de Mago, y la quita en cuanto lo gastas. Fuera de combate te recuerda si te falta Intelecto Arcano o comida y agua conjuradas. Está hecho para WoW Forever y solo avisa: no lanza hechizos ni automatiza nada.",
-      "en": "MageProcs puts a big, clear alert on screen when one of your Mage procs is ready, and clears it as soon as you spend it. Out of combat it reminds you when you are missing Arcane Intellect or conjured food and water. It is made for WoW Forever and only alerts: it never casts or automates anything."
+      "es": "MageProcs muestra una alerta grande y clara en pantalla cuando salta uno de tus procs de Mago, y la quita en cuanto lo gastas. Fuera de combate te recuerda si te falta Intelecto Arcano o comida y agua conjuradas, y guarda tu configuración en perfiles. Está hecho para WoW Forever y solo avisa: no lanza hechizos ni automatiza nada.",
+      "en": "MageProcs puts a big, clear alert on screen when one of your Mage procs is ready, and clears it as soon as you spend it. Out of combat it reminds you when you are missing Arcane Intellect or conjured food and water, and it keeps your setup in profiles. It is made for WoW Forever and only alerts: it never casts or automates anything."
     },
     "url": "https://www.curseforge.com/wow/addons/mageprocs",
     "host": "CurseForge",
     "listing": "live",
-    "version": "1.60.1",
+    "version": "1.2.0",
     "release": "release",
     "game": { "version": "1.60.1", "interface": 16001 },
     "languages": ["es", "en"],
@@ -100,14 +100,8 @@
       {
         "name": { "es": "Calentamiento", "en": "Heating Up" },
         "spec": "fire",
-        "what": { "es": "Piroexplosión más rápida, hasta 3 acumulaciones.", "en": "Faster Pyroblast, up to 3 stacks." },
+        "what": { "es": "Piroexplosión más rápida, hasta 3 acumulaciones. Cada Explosión de Fuego suma una.", "en": "Faster Pyroblast, up to 3 stacks. Every Fire Blast adds one." },
         "on": true
-      },
-      {
-        "name": { "es": "Estela de Fuego", "en": "Wake of Fire" },
-        "spec": "fire",
-        "what": { "es": "Más crítico para Explosión de Fuego tras una muerte.", "en": "More crit for Fire Blast after a kill." },
-        "on": false
       },
       {
         "name": { "es": "Libre lanzamiento", "en": "Clearcasting" },
@@ -118,13 +112,19 @@
       {
         "name": { "es": "Tromba de misiles", "en": "Missile Barrage" },
         "spec": "arcane",
-        "what": { "es": "Misiles Arcanos el doble de rápido y gratis.", "en": "Arcane Missiles twice as fast and free." },
+        "what": { "es": "Misiles Arcanos el doble de rápido y gratis. Talento de la fila 1, al alcance de cualquier rama.", "en": "Arcane Missiles twice as fast and free. A row 1 talent, within reach of any tree." },
         "on": false
       },
       {
         "name": { "es": "Presencia mental", "en": "Presence of Mind" },
         "spec": "arcane",
         "what": { "es": "Tu próximo hechizo con tiempo de lanzamiento es instantáneo.", "en": "Your next cast-time spell is instant." },
+        "on": false
+      },
+      {
+        "name": { "es": "Contador de Explosión Arcana", "en": "Arcane Blast tracker" },
+        "spec": "arcane",
+        "what": { "es": "Cuenta tus cargas de daño con hechizos (hasta 4) y los 15 s desde la primera.", "en": "Counts your spell damage stacks (up to 4) and the 15 s from the first one." },
         "on": false
       },
       {
@@ -147,8 +147,8 @@
         "en": "Install it with the CurseForge app (World of Warcraft, WoW Forever flavor) or extract the file into the Interface\\AddOns folder of your WoW Forever install."
       },
       {
-        "es": "Escribe /mp en el juego. Calentamiento viene activado; activa los procs que usen tus talentos.",
-        "en": "Type /mp in game. Heating Up is on from the start; turn on the procs your talents use."
+        "es": "Escribe /mp en el juego. Calentamiento viene activado, y los procs de tus talentos se activan solos la primera vez que un personaje los tiene. Presencia mental y el contador de Explosión Arcana los activas tú.",
+        "en": "Type /mp in game. Heating Up is on from the start, and the procs of your talents turn on by themselves the first time a character has them. Presence of Mind and the Arcane Blast tracker are yours to switch on."
       }
     ],
     "limitations": [
@@ -161,10 +161,14 @@
         "en": "Fingers of Frost only shows if the game shows its own alert, and while Clearcasting is up it cannot tell Missile Barrage apart."
       },
       {
-        "es": "No incluye Combustión, Poder Arcano ni efectos sobre el objetivo.",
-        "en": "It leaves out Combustion, Arcane Power and effects on the target."
+        "es": "El contador de Explosión Arcana cuenta tus lanzamientos: en combate no puede ver el efecto en sí.",
+        "en": "The Arcane Blast tracker counts your casts: in combat it cannot see the effect itself."
+      },
+      {
+        "es": "No incluye Combustión, Poder Arcano ni efectos sobre el objetivo, como Impacto, Frostbite o Escalofrío del invierno.",
+        "en": "It leaves out Combustion, Arcane Power and effects on the target, such as Impact, Frostbite or Winter's Chill."
       }
     ],
-    "checked": "2026-10-14"
+    "checked": "2026-10-16"
   }
 ]

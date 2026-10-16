@@ -288,7 +288,9 @@ Publicada el 2026-10-14 (`/es/addons/`, `/en/addons/`, dentro de Herramientas) c
 ### Pendiente
 
 - [x] **Ficha de CurseForge pública** (2026-10-14): abre sin sesión, MageProcs 1.60.1 para Forever; `listing` es `"live"`.
-- [ ] **MageProcs y Estela de Fuego (15 oct):** Estela de Fuego desapareció (vuelve a ser Explosión de Fuego mejorada, sin bonificación al matar), así que su alerta ya no se activará. Revisar el addon en `arcane_flare` y, con la versión nueva, quitar Estela de Fuego de `addons.json`, Addons y Herramientas.
+- [x] **MageProcs y Estela de Fuego (15 oct):** MageProcs 1.2.0 quita la alerta de Estela de Fuego y añade el contador opcional de Explosión Arcana; `addons.json`, Addons y Herramientas lo describen (2026-10-16).
+- [ ] **Subir MageProcs 1.2.0 a CurseForge.** El 2026-10-16 CurseForge aún sirve la 1.1.0 (con Estela de Fuego), mientras la web describe la 1.2.0.
+- [ ] **Capturas nuevas de MageProcs.** Tres de las seis imágenes de la galería (02 opciones, 03 estilos y 05 visualización) muestran «Wake of Fire» en la lista de procs y «Version 1.60.1». Hay que hacerlas de nuevo en `arcane_flare/publication/screenshots/`, convertirlas a WebP en `public/addons/mageprocs/` y actualizarlas también en CurseForge.
 - [ ] **Con cada versión nueva del addon**: actualizar `version`, `game` (versión e interfaz del `.toc`), procs, comandos y límites según su changelog, y `checked`. Si cambian las imágenes de CurseForge, volver a convertirlas.
 - [ ] **Cuando se confirmen procs en el juego** con Magos de nivel alto: quitar el primer límite de `limitations`.
 - [ ] **Addons nuevos**: solo si aportan algo concreto al Mago en Forever y se han revisado. Cada uno con descripción, procs o funciones, instalación, límites y enlace oficial; `origin: "third-party"` y su autor si no es nuestro.
