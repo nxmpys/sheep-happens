@@ -1,6 +1,7 @@
 ---
 import type { MarkdownHeading } from 'astro';
 import BaseLayout from './BaseLayout.astro';
+import FeedbackBox from '../components/layout/FeedbackBox.astro';
 import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
 import PageMeta from '../components/layout/PageMeta.astro';
 import PrevNext from '../components/layout/PrevNext.astro';
@@ -111,6 +112,8 @@ const tocHeadings = data.sources.length > 0
           )
         }
       </article>
+
+      <FeedbackBox locale={locale} pageId={pageId} />
 
       <SupportBox locale={locale} />
 

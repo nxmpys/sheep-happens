@@ -1,0 +1,342 @@
+---
+import Icon from '../ui/Icon.astro';
+import { pathFor, type Locale, type PageId } from '../../i18n/routes';
+import { t } from '../../i18n/ui';
+import { FEEDBACK_ACTION, FEEDBACK_KINDS, FEEDBACK_MAX, FEEDBACK_MIN } from '../../lib/feedback';
+
+interface Props {
+  locale: Locale;
+  pageId: PageId;
+}
+
+const { locale, pageId } = Astro.props;
+// Cloudflare's always-pass test key in dev, so the form can be tried without an account.
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || (import.meta.env.DEV ? '1x00000000000000000000AA' : '');
+const limits = { min: FEEDBACK_MIN, max: FEEDBACK_MAX };
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const config = {
+  endpoint: `${base}api/feedback`,
+  page: pathFor(pageId, locale),
+  siteKey,
+  action: FEEDBACK_ACTION,
+  language: locale,
+  strings: {
+    submit: t(locale, 'feedback.submit'),
+    sending: t(locale, 'feedback.sending'),
+    sent: t(locale, 'feedback.sent'),
+    viewIssue: t(locale, 'feedback.viewIssue'),
+    verify: t(locale, 'feedback.error.verify'),
+    length: t(locale, 'feedback.error.length', limits),
+    unavailable: t(locale, 'feedback.error.unavailable'),
+    generic: t(locale, 'feedback.error.generic'),
+  },
+};
+---
+
+{
+  siteKey && (
+    <aside class="feedback" aria-labelledby="feedback-title" data-pagefind-ignore data-feedback={JSON.stringify(config)}>
+      <p class="feedback__title" id="feedback-title">
+        {t(locale, 'feedback.title')}
+      </p>
+      <p class="feedback__body">{t(locale, 'feedback.body')}</p>
+      <details class="feedback__details">
+        <summary class="button">
+          <Icon name="reported" size={18} />
+          {t(locale, 'feedback.open')}
+        </summary>
+        <form class="feedback__form" novalidate>
+          <fieldset class="feedback__kinds">
+            <legend>{t(locale, 'feedback.kind')}</legend>
+            {FEEDBACK_KINDS.map((kind, i) => (
+              <label>
+                <input type="radio" name="kind" value={kind} checked={i === 0} />
+                {t(locale, `feedback.kind.${kind}` as const)}
+              </label>
+            ))}
+          </fieldset>
+          <label class="feedback__field">
+            <span>{t(locale, 'feedback.message')}</span>
+            <textarea
+              name="message"
+              rows="5"
+              required
+              minlength={FEEDBACK_MIN}
+              maxlength={FEEDBACK_MAX}
+              aria-describedby="feedback-hint feedback-public"
+            />
+          </label>
+          <p class="feedback__hint" id="feedback-hint">
+            {t(locale, 'feedback.message.hint', limits)}
+          </p>
+          <p class="feedback__public" id="feedback-public">
+            <Icon name="info" size={16} />
+            {t(locale, 'feedback.public')}
+          </p>
+          {/* Honeypot: hidden from people and screen readers; bots tend to fill it in. */}
+          <div class="feedback__trap" aria-hidden="true">
+            <label>
+              Website <input type="text" name="website" tabindex="-1" autocomplete="off" />
+            </label>
+          </div>
+          <div class="feedback__captcha" />
+          <div class="feedback__actions">
+            <button class="button button--primary" type="submit">
+              {t(locale, 'feedback.submit')}
+            </button>
+            <p class="feedback__status" role="status" aria-live="polite" />
+          </div>
+        </form>
+      </details>
+    </aside>
+  )
+}
+
+<script>
+  interface FeedbackConfig {
+    endpoint: string;
+    page: string;
+    siteKey: string;
+    action: string;
+    language: string;
+    strings: Record<'submit' | 'sending' | 'sent' | 'viewIssue' | 'verify' | 'length' | 'unavailable' | 'generic', string>;
+  }
+  interface Turnstile {
+    render(el: HTMLElement, options: Record<string, unknown>): string;
+    getResponse(id: string): string | undefined;
+    reset(id: string): void;
+  }
+  type TurnstileWindow = Window & { turnstile?: Turnstile };
+
+  const TURNSTILE_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+  let loading: Promise<Turnstile> | undefined;
+
+  /** Loads Turnstile only when someone opens the form: no third-party script on normal page views. */
+  function loadTurnstile(): Promise<Turnstile> {
+    loading ??= new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = TURNSTILE_SRC;
+      script.async = true;
+      script.onload = () => {
+        const api = (window as TurnstileWindow).turnstile;
+        if (api) resolve(api);
+        else reject(new Error('turnstile'));
+      };
+      script.onerror = () => {
+        loading = undefined;
+        reject(new Error('turnstile'));
+      };
+      document.head.append(script);
+    });
+    return loading;
+  }
+
+  for (const box of document.querySelectorAll<HTMLElement>('[data-feedback]')) {
+    const config: FeedbackConfig = JSON.parse(box.dataset.feedback ?? '{}');
+    const details = box.querySelector('details')!;
+    const form = box.querySelector('form')!;
+    const message = form.querySelector('textarea')!;
+    const captcha = form.querySelector<HTMLElement>('.feedback__captcha')!;
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const status = form.querySelector<HTMLElement>('.feedback__status')!;
+    let turnstile: Turnstile | undefined;
+    let widget: string | undefined;
+
+    const say = (text: string, tone: 'info' | 'error' = 'info') => {
+      status.textContent = text;
+      status.dataset.tone = tone;
+    };
+
+    details.addEventListener('toggle', async () => {
+      if (!details.open || widget !== undefined) return;
+      try {
+        turnstile = await loadTurnstile();
+        widget = turnstile.render(captcha, {
+          sitekey: config.siteKey,
+          action: config.action,
+          language: config.language,
+          theme: 'auto',
+        });
+      } catch {
+        say(config.strings.unavailable, 'error');
+      }
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const text = message.value.trim();
+      if (text.length < message.minLength || text.length > message.maxLength) {
+        say(config.strings.length, 'error');
+        message.focus();
+        return;
+      }
+      const token = turnstile && widget !== undefined ? turnstile.getResponse(widget) : undefined;
+      if (!token) {
+        say(config.strings.verify, 'error');
+        return;
+      }
+      const data = new FormData(form);
+      submit.disabled = true;
+      say(config.strings.sending);
+      try {
+        const res = await fetch(config.endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            kind: data.get('kind'),
+            message: text,
+            page: config.page,
+            website: data.get('website'),
+            token,
+          }),
+        });
+        const result = (await res.json().catch(() => ({}))) as { ok?: boolean; url?: string; error?: string };
+        if (!res.ok || !result.ok) {
+          const known = result.error === 'verify' || result.error === 'length' || result.error === 'unavailable';
+          throw new Error(known ? result.error : 'generic');
+        }
+        form.reset();
+        say(config.strings.sent);
+        if (result.url) {
+          const link = document.createElement('a');
+          link.href = result.url;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.textContent = config.strings.viewIssue;
+          status.append(' ', link);
+        }
+      } catch (error) {
+        const key = (error instanceof Error ? error.message : 'generic') as keyof FeedbackConfig['strings'];
+        say(config.strings[key] ?? config.strings.generic, 'error');
+      } finally {
+        submit.disabled = false;
+        if (turnstile && widget !== undefined) turnstile.reset(widget);
+      }
+    });
+  }
+</script>
+
+<style>
+  .feedback {
+    display: grid;
+    gap: var(--space-2);
+    max-width: var(--content-max);
+    margin-top: var(--space-7);
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface-1);
+  }
+  .feedback__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-1);
+  }
+  .feedback__body {
+    color: var(--text-muted);
+  }
+  .feedback__details > summary {
+    width: fit-content;
+    margin-top: var(--space-2);
+    list-style: none;
+  }
+  .feedback__details > summary::-webkit-details-marker {
+    display: none;
+  }
+  .feedback__details[open] > summary {
+    background: var(--surface-2);
+  }
+  .feedback__form {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+  .feedback__kinds {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .feedback__kinds legend {
+    width: 100%;
+    margin-bottom: var(--space-2);
+    font-weight: 600;
+  }
+  .feedback__kinds label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    cursor: pointer;
+  }
+  .feedback__kinds input {
+    accent-color: var(--accent);
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+  .feedback__field {
+    display: grid;
+    gap: var(--space-2);
+    font-weight: 600;
+  }
+  .feedback__field textarea {
+    width: 100%;
+    min-height: 8rem;
+    padding: var(--space-3);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-strong);
+    background: var(--bg);
+    color: var(--text);
+    font: inherit;
+    font-weight: 400;
+    resize: vertical;
+  }
+  .feedback__hint,
+  .feedback__public {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .feedback__public {
+    display: flex;
+    gap: var(--space-2);
+    align-items: flex-start;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    background: var(--warning-soft);
+    color: var(--text);
+  }
+  .feedback__public :global(svg) {
+    flex: none;
+    margin-top: 0.15rem;
+    color: var(--warning);
+  }
+  .feedback__trap {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .feedback__captcha:empty {
+    display: none;
+  }
+  .feedback__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .feedback__actions button:disabled {
+    opacity: 0.6;
+    cursor: progress;
+  }
+  .feedback__status {
+    font-size: var(--step--1);
+  }
+  .feedback__status[data-tone='error'] {
+    color: var(--warning);
+    font-weight: 600;
+  }
+</style>

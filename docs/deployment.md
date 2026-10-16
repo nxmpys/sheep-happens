@@ -9,6 +9,7 @@ Coste: 0 €. Cloudflare Pages (plan gratuito) ofrece ancho de banda ilimitado, 
 ```
 push a main ──► GitHub ──► Cloudflare Pages ejecuta `npm run check` ──► publica dist/
                   │                (si algo falla, NO publica)
+                  │                + functions/ (POST /api/feedback → issue «feedback»)
                   ├── CI (Actions): mismas comprobaciones + datos documentados
                   └── Revisión de fuentes (Actions, miércoles y viernes): issue con las novedades
 ```
@@ -80,7 +81,42 @@ Para cambios grandes, trabaja en una rama: Cloudflare crea una vista previa en `
 | `.github/workflows/ci.yml` | Comprobaciones en cada push y pull request |
 | `.github/workflows/weekly-sources.yml` | Informe de fuentes de los miércoles y viernes (issue) |
 | `.github/workflows/smoke.yml` | Tras cada despliegue y cada mañana, comprueba la web publicada desde GitHub: páginas clave, 404, cabeceras, canónica, sitemap, robots y la redirección de `pages.dev` |
+| `functions/api/feedback.ts` | Formulario de comentarios: comprueba Turnstile y abre una issue `feedback` (ver abajo) |
 | `src/pages/build.json.ts` | Publica `/build.json` con el commit desplegado (lo usa la prueba de humo) |
+
+## Formulario de feedback
+
+Al final de cada página de la guía, el lector puede decir que un dato es incorrecto, que falta información o sugerir algo, sin cuenta. Lo envía a `POST /api/feedback`, una *Pages Function* (`functions/api/feedback.ts`; Cloudflare la publica sola junto a `dist/`, dentro del plan gratuito: 100 000 peticiones al día). La función:
+
+1. Comprueba que la petición viene de la propia web (cabecera `Origin`), el tamaño y un campo trampa para bots.
+2. Valida el tipo, la página (solo rutas reales de la guía) y la longitud (10 a 2000 caracteres) con `src/lib/feedback.ts`.
+3. Verifica el token de **Cloudflare Turnstile** (acción `feedback` y mismo dominio).
+4. Abre una issue en `nxmpys/sheep-happens` con la etiqueta `feedback`. No guarda nada más: ni IP, ni email, ni cookies.
+
+El widget de Turnstile solo se carga cuando alguien abre el formulario, así que las visitas normales no cargan nada de fuera. La CSP de `public/_headers` permite `https://challenges.cloudflare.com` en `script-src` y `frame-src`; si la quitas, el formulario deja de funcionar.
+
+Qué hace después la revisión automática con esas issues: [maintenance.md](maintenance.md), sección 7.
+
+### Puesta en marcha (una sola vez)
+
+Mientras falte algo de esto, el formulario **no aparece** en producción (en `npm run dev` sí, con la clave de prueba de Turnstile, pero no se puede enviar porque Astro no ejecuta la función).
+
+1. **Turnstile:** panel de Cloudflare → *Turnstile* → *Add widget*. Nombre `sheep-happens-feedback`; dominios `sheephappens.app` y `sheep-happens.pages.dev` (este último para las vistas previas); modo *Managed*. Copia la **clave del sitio** y la **clave secreta**.
+2. **Token de GitHub:** <https://github.com/settings/personal-access-tokens/new> (*fine-grained*). Propietario `nxmpys`, solo el repositorio `sheep-happens`, permiso **Issues: Read and write** y nada más. Ponle caducidad (por ejemplo, un año) y apunta la fecha para renovarlo.
+3. **Variables del proyecto:** *Workers & Pages* → `sheep-happens` → *Settings* → *Variables and secrets*, en **Production** (y en *Preview* si quieres probar en ramas):
+
+   | Nombre | Tipo | Valor |
+   |---|---|---|
+   | `PUBLIC_TURNSTILE_SITE_KEY` | Texto | Clave del sitio (se usa al compilar; es pública) |
+   | `TURNSTILE_SECRET_KEY` | Secreto | Clave secreta de Turnstile |
+   | `FEEDBACK_GITHUB_TOKEN` | Secreto | El token del paso 2 |
+
+4. **Vuelve a desplegar** (*Deployments* → *Retry deployment*, o cualquier push): la clave del sitio se lee al compilar.
+5. **Prueba:** envía un comentario desde una página y comprueba que aparece la issue con la etiqueta `feedback`. Ciérrala a mano.
+
+Si el token caduca o se revoca, el formulario responde «no se pudo enviar» y el error queda en *Deployments* → *Functions* → *Real-time logs*. Para retirarlo, borra `PUBLIC_TURNSTILE_SITE_KEY` y vuelve a desplegar.
+
+Si llega spam pese a Turnstile, añade una regla de *Rate limiting* gratuita en *Security* → *WAF* para la ruta `/api/feedback` (por ejemplo, 5 peticiones por minuto por IP).
 
 ## Si la web no carga desde España
 
