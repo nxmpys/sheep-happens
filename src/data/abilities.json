@@ -48,17 +48,19 @@
     "level": 6,
     "changeIds": [
       "wake-of-fire",
-      "incineration"
+      "incineration",
+      "heating-up"
     ],
     "summary": {
-      "es": "Daño de Fuego instantáneo con tiempo de reutilización. Ideal para rematar en movimiento.",
-      "en": "Instant Fire damage on a cooldown. Ideal for finishing targets on the move."
+      "es": "Daño de Fuego instantáneo con tiempo de reutilización. Ideal para rematar en movimiento; con Explosión de Fuego mejorada, también a más distancia.",
+      "en": "Instant Fire damage on a cooldown. Ideal for finishing targets on the move; with Improved Fire Blast, from further away too."
     },
     "status": "classic",
     "sources": [
       "wiki-mage-abilities-classic",
       "blizzard-deep-dive-mage-es"
-    ]
+    ],
+    "updated": "2026-10-16"
   },
   {
     "id": "arcane-missiles",
@@ -235,6 +237,26 @@
     ]
   },
   {
+    "id": "frost-blast",
+    "name": "Frost Blast",
+    "school": "frost",
+    "role": "control",
+    "level": 24,
+    "changeIds": [
+      "frost-blast",
+      "winters-chill"
+    ],
+    "summary": {
+      "es": "Nuevo en Forever. Lanzamiento de 1,5 s: poco daño de Escarcha y una ralentización del 40 %. Sustituye al truco de la Descarga de Escarcha de rango 1 para mantener a distancia a un enemigo.",
+      "en": "New in Forever. 1.5 s cast: light Frost damage and a 40% slow. It replaces the rank 1 Frostbolt trick for keeping an enemy at range."
+    },
+    "status": "verified",
+    "sources": [
+      "blizzard-dev-notes"
+    ],
+    "updated": "2026-10-16"
+  },
+  {
     "id": "cone-of-cold",
     "name": "Cone of Cold",
     "nameEs": "Cono de frío",
@@ -242,18 +264,21 @@
     "role": "control",
     "level": 26,
     "changeIds": [
-      "cone-of-cold"
+      "cone-of-cold",
+      "winters-chill"
     ],
     "summary": {
-      "es": "Daño de Escarcha en cono frente a ti que ralentiza. En Forever su duración es menor.",
-      "en": "Frost damage in a cone in front of you that slows. Its duration is shorter in Forever."
+      "es": "Daño de Escarcha en cono frente a ti que ralentiza. En Forever dura menos, salvo en los 4 primeros objetivos alcanzados, y Escalofrío del invierno aumenta su daño.",
+      "en": "Frost damage in a cone in front of you that slows. It lasts less in Forever, except on the first 4 targets hit, and Winter's Chill increases its damage."
     },
     "status": "classic",
     "sources": [
       "wiki-mage-abilities-classic",
       "blizzard-deep-dive-mage",
-      "blizzard-deep-dive-mage-es"
-    ]
+      "blizzard-deep-dive-mage-es",
+      "blizzard-dev-notes"
+    ],
+    "updated": "2026-10-16"
   },
   {
     "id": "blink",

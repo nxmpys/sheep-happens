@@ -4,7 +4,37 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-10-16
+
+### [Guía] Revisión de fuentes del 16 de octubre: cambios del Mago y raciales
+
+Incorporamos la build del 15 de octubre: fichas nuevas de Frost Blast, Cólera Arcana, Masa crítica, Poder de Fuego y varitas; Explosión Arcana, Tromba de misiles, Explosión de Fuego mejorada, Calentamiento, Lanza de hielo, Escalofrío del invierno y Cono de frío actualizados; el árbol de talentos y los talentos decisivos de Arcano, al día; y las raciales de las seis razas que pueden ser Mago. Las builds y las páginas de combate, leveo, farmeo AoE y talentos reflejan los cambios.
+
+- **Datos afectados:** Frost Blast, Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Masa crítica, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (bajar de rango), Varitas, Cólera Arcana, Frost Blast, Cono de frío, Explosión de Fuego, race:human, race:orc, race:undead, race:gnome, race:troll, race:skyborne, build:frost-leveling-solo, build:frost-duels-30-legacy, Arcane Missiles does not proc Barrage
+- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead), [Arcane Missiles does not proc Barrage](https://us.forums.blizzard.com/en/wow/t/arcane-missiles-does-not-proc-barrage/2384260) (WoW Forever Beta Discussion (Blizzard forums))
+
 ## 2026-10-15
+
+### [Juego] Build de la beta del 15 de octubre: grandes cambios del Mago
+
+Nuevo hechizo Frost Blast (nivel 24). Arcano: Explosión Arcana rediseñada (1,5 s, da daño con hechizos según tu Intelecto), Cólera Arcana es el nuevo talento decisivo de 16 puntos y Tromba de misiles baja a la fila 1 con 2 puntos. Fuego: Estela de Fuego vuelve a ser Explosión de Fuego mejorada (más alcance, sin bonificación al matar), Calentamiento gana cargas con cada Explosión de Fuego, Masa crítica pasa a 5 puntos y Poder de Fuego se rediseña con 3. Escarcha: Lanza de hielo baja al 200 % contra objetivos congelados, Escalofrío del invierno ahora potencia Cono de frío y Cono de frío ralentiza más a los 4 primeros objetivos. Además, Libre lanzamiento ya no tira por cada objetivo y las varitas exigen estar quieto 0,5 s.
+
+- **Datos afectados:** Frost Blast, Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Masa crítica, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (bajar de rango), Varitas, Cólera Arcana, Frost Blast, Cono de frío, Explosión de Fuego
+- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+
+### [Juego] Build de la beta del 15 de octubre: raciales
+
+Las especializaciones de arma desaparecen: el Humano gana Crueldad (Ruthless, +2 % de crítico) y el Orco, Salvajismo (Savage, +1 % de crítico). ¡Eureka! del Gnomo dura 8 s en vez de 3 usos, Wind Blessed del Cielonato sube al 3 % de celeridad, Toque de la tumba del No-muerto se activa más a menudo, Regeneración del Trol sube al 20 % y Shatter Curse del Orco protege menos.
+
+- **Datos afectados:** race:human, race:orc, race:undead, race:gnome, race:troll, race:skyborne
+- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+
+### [Guía] Nueva guía: farmeo en área (AoE) con el Mago
+
+Nueva página de Farmeo AoE, dentro de la Guía de clase. Explica qué ha cambiado respecto a Classic, las dos rotaciones de área que usan quienes han jugado la beta (la corta desde el nivel 14 y la de Ventisca desde el 22), por qué Concentración Arcana es el talento clave y por qué ya no conviene bajar de rango para activarla, las zonas de farmeo por nivel (con las arañas nuevas de Cima del Trueno) y cómo sobrevivir. La build de área de Escarcha ahora cuenta con una sola Ventisca por grupo.
+
+- **Datos afectados:** build:frost-leveling-aoe, WoW Forever Mage Leveling Guide: Best Spec, Talents & AoE Route, WoW Forever Mage AoE Leveling — Skywatcher Plateau Spider Farm, Arcane Concentration
+- **Fuentes:** [World of Warcraft: Forever Class Deep Dives — Mage & Shaman](https://news.blizzard.com/en-us/article/24302097/) (Blizzard Entertainment), [WoW Forever Mage Leveling Guide: Best Spec, Talents & AoE Route](https://conquestcapped.com/guides/wow-forever/wow-forever-mage-leveling/) (Conquest Capped), [WoW Forever Mage AoE Leveling — Skywatcher Plateau Spider Farm](https://forg.gg/en/forever/tips/mage-aoe-leveling) (forg.gg), [Arcane Concentration](https://warcraft.wiki.gg/wiki/Arcane_Concentration) (Warcraft Wiki)
 
 ### [Guía] Nueva guía rápida: pergaminos y Comprensión del Mago
 
@@ -68,7 +98,7 @@ La ficha de Impacto recoge ahora el arreglo del 8 de octubre: ya no se activa co
 
 Incorporados los cambios de Mago de las notas oficiales de las builds del 24 de septiembre, 1 de octubre y 8 de octubre; los nombres oficiales en español de hechizos y talentos; el posible adelanto de la doble especialización y la versión del cliente.
 
-- **Datos afectados:** Estela de Fuego, Calentamiento, Ignición, Comprensión (Comprender pergamino), Chamuscar mejorado, Escalofrío del invierno, Descarga de Pirofrío, Cono de frío, Ventisca mejorada, Explosión Arcana, Misiles Arcanos, Rangos de hechizos (bajar de rango), Doble especialización, Versión del cliente, Combustion
+- **Datos afectados:** Explosión de Fuego mejorada, Calentamiento, Ignición, Comprensión (Comprender pergamino), Chamuscar mejorado, Escalofrío del invierno, Descarga de Pirofrío, Cono de frío, Ventisca mejorada, Explosión Arcana, Misiles Arcanos, Rangos de hechizos (bajar de rango), Doble especialización, Versión del cliente, Combustion
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [World of Warcraft: Forever: Repaso a fondo de las clases mago y chamán](https://worldofwarcraft.blizzard.com/es-es/news/24302097) (Blizzard Entertainment), [Blizzard Teases Possible Change to Unlock Level of Dual Spec in WoW: Forever](https://www.wowhead.com/news=383320/blizzard-teases-possible-change-to-unlock-level-of-dual-spec-in-wow-forever) (Wowhead)
 
 ### [Web] Fuentes vigiladas cada semana y RSS de novedades
@@ -126,5 +156,5 @@ El contenido de los niveles 31 a 60 no se puede probar hasta el lanzamiento.
 
 Misiles Arcanos solo comprueba la línea de visión al empezar a canalizar. Estela de Fuego pasa de 20 a 30 s y el futuro Calentamiento de 15 a 20 s. Ignición ya no se beneficia dos veces de los modificadores de daño.
 
-- **Datos afectados:** Misiles Arcanos, Estela de Fuego, Calentamiento, Ignición
+- **Datos afectados:** Misiles Arcanos, Explosión de Fuego mejorada, Calentamiento, Ignición
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)

@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-10-14 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
+> Creado: 2026-10-12 · Revisión: 2026-10-16 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -28,7 +28,9 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 ### Talentos y builds
 
 - [ ] Árbol completo de Forever con valores **oficiales**. La posición de cada talento ya está en `src/data/talents.json` (sacada de la calculadora de Wowhead, datos del cliente de la beta); las cifras siguen sin confirmar.
-- [ ] Talento decisivo de 16 puntos de Fuego (`fire-16` en `src/data/milestones.json`). Pista: en la calculadora de Wowhead, Calentamiento es el único talento de 1 punto de la fila 4 de Fuego. Falta una fuente oficial.
+- [ ] Talento decisivo de 16 puntos de Fuego (`fire-16` en `src/data/milestones.json`). Pista: en la calculadora de Wowhead, Calentamiento es el único talento de 1 punto de la fila 4 de Fuego. Falta una fuente oficial. (El de Arcano quedó resuelto el 15 de octubre: Cólera Arcana; Tromba de misiles bajó a la fila 1.)
+- [ ] Escalofrío del invierno (15 oct): las notas oficiales dan dos descripciones distintas (+40 % de daño de Cono de frío por carga, o +5 % y un 7 % de tu daño con hechizos por carga). Confirmar cuál queda y corregir `change:winters-chill`.
+- [ ] Nombre oficial en español de **Frost Blast** (hechizo base de nivel 24, 15 oct): el cliente de la beta aún lo tiene en inglés. Cuando exista, añadir `nameEs` en `changes.json` y `abilities.json` y cambiar el texto de leveo, combate y Escarcha.
 - [ ] Filas de Piroexplosión, Ola explosiva, Combustión, Presencia mental y Poder Arcano (ahora son «Referencia Classic» en `milestones.json`).
 - [ ] Requisito entre Dedos de Escarcha y Lanza de hielo (discrepancia abierta en `content-validation.md`). Pista: la calculadora de Wowhead confirma la lectura coherente (Dedos de Escarcha requiere Lanza de hielo). Falta comprobarlo en el juego.
 - [ ] Builds probadas: leveo, farmeo AoE, mazmorras, banda, PvP y duelos (ver la sección 4).
@@ -36,7 +38,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 
 ### Valores numéricos
 
-- [ ] Daño, coste y probabilidad de Explosión Arcana (lo que aporta cada carga), Lanza de hielo, Descarga de Pirofrío, Tromba de misiles, Calentamiento, Dedos de Escarcha y Estela de Fuego.
+- [ ] Daño, coste y probabilidad de Explosión Arcana, Cólera Arcana, Lanza de hielo, Descarga de Pirofrío, Frost Blast, Tromba de misiles, Calentamiento y Dedos de Escarcha. Oficial desde el 15 oct: Explosión Arcana da un 15 % del Intelecto como daño con hechizos por carga; Cólera Arcana suma un 5 % del maná máximo; Lanza de hielo, +200 % contra congelados. Estela de Fuego ya no existe (vuelve a ser Explosión de Fuego mejorada).
 
 ### Contenido de los niveles 31 a 60
 
@@ -46,7 +48,8 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [ ] Equipo por tramo de nivel, equipo antes de bandas y mejor equipo posible.
 - [ ] Encantamientos, consumibles y profesiones.
 - [ ] Mazmorras, bandas y PvP nuevos de Forever.
-- [ ] Zonas y rutas de farmeo.
+- [x] Zonas y rutas de farmeo del 10 al 30: página Farmeo AoE (`aoe-farming`, 2026-10-15), con las dos rotaciones, Concentración Arcana y las arañas de Cima del Trueno. Del 30 al 60, las zonas son de Classic y están «Pendiente».
+- [ ] Farmeo AoE del 31 al 60: probar las zonas, comparar con las misiones (experiencia por hora) y ordenar las opciones de área (aviso pendiente en Combate y en `aoe-farming`).
 
 ### Sistemas
 
@@ -61,7 +64,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 ### Razas
 
 - [x] Habilidades raciales de las seis razas de Mago, según los datos de la beta: `src/data/races.json`, página Razas (2026-10-13). Siguen como «Comunidad» hasta tener fuente oficial o probarlas.
-- [ ] Cambios de raciales anunciados para la semana del 13 de octubre de 2026 (Orco y Trol sobre todo, y las raciales de armas).
+- [x] Cambios de raciales anunciados para la semana del 13 de octubre de 2026: llegaron con la build del 15 de octubre (Ruthless y Savage sustituyen a las raciales de armas; Eureka!, Wind Blessed, Read Ley Line, Shatter Curse, Blood Fury, Touch of the Grave y Regeneration cambian). Incorporados el 2026-10-16.
 - [ ] Nombres oficiales en español de las raciales de Forever.
 
 ## 2. Lo que es de la beta: quitar o reescribir al lanzar
@@ -88,6 +91,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [ ] Talentos: «nadie ha podido probarlas por encima del nivel 30» y el aviso pendiente de builds.
 - [ ] Combate: aviso «Análisis sin probar… sin acceso a los niveles 31 a 60».
 - [ ] Cambios: aviso «Información de beta».
+- [ ] Farmeo AoE: aviso «Información de beta», rotaciones y zonas sacadas de la beta (pasarlas a «Probado en juego» o corregirlas) y la tabla de zonas del 30 al 60 («Pendiente»).
 - [ ] Equipo: aviso pendiente que cita el nivel 60 de la beta.
 - [ ] Arcano, Fuego y Escarcha: secciones «Lo que falta por saber».
 - [ ] Pergaminos: los bloques de «Análisis» salen de los datos del cliente de la beta (5 s de lanzamiento, habilidad que pide cada pergamino, Pergamino de Comprensión, apilamiento). Comprobarlos en el juego y pasarlos a «Probado en juego», y revisar el nombre del hechizo en el cliente en español («Entender pergamino» en la beta, «Comprender pergamino» en el artículo de Blizzard).
@@ -129,7 +133,7 @@ Comprobar en el juego y marcar como «Oficial» o «Probado en juego», o correg
 
 Forma parte de cada revisión de fuentes ([maintenance.md](maintenance.md)):
 
-- [ ] **Semana del 12 de octubre de 2026:** comprobar si llegan los cambios de raciales anunciados y anotarlos en la sección 1. Revisión del 12 de octubre: todavía no hay cambios de raciales publicados en las fuentes de Blizzard; solo el aviso de Wowhead, que no se ha podido abrir. Revisión del 14 de octubre: tampoco hay cambios de raciales en las fuentes de Blizzard; Wowhead sigue devolviendo 403.
+- [x] **Semana del 12 de octubre de 2026:** comprobar si llegan los cambios de raciales anunciados y anotarlos en la sección 1. Llegaron en las notas de la build del 15 de octubre; incorporados en la revisión del 16 de octubre.
 - Las fichas de cambios, los mapas de talentos decisivos y la tabla de builds híbridas de Talentos.
 - Las raciales y la recomendación de razas (sección 5), cuando existan.
 - La versión del cliente (`client-version`).
@@ -199,7 +203,7 @@ Publicada el 2026-10-13 con las raciales de la beta. Hay que revisarla con cada 
 ### Pendiente
 
 - [ ] Pasar las raciales a «Oficial» (si Blizzard publica la lista) o a «Probado en juego».
-- [ ] Revisar las recomendaciones tras los cambios de raciales de la semana del 13 de octubre.
+- [ ] Revisar las recomendaciones tras los cambios de raciales del 15 de octubre. Hecho en parte el 2026-10-16 (valores de Ruthless, Savage, Wind Blessed, Shatter Curse y Touch of the Grave, y el motivo de «Mazmorras y bandas»); falta decidir si el Cielonato sube en la tabla de mazmorras y si el Orco baja en JcJ.
 
 ## 6. Mejoras de la experiencia
 
@@ -284,6 +288,7 @@ Publicada el 2026-10-14 (`/es/addons/`, `/en/addons/`, dentro de Herramientas) c
 ### Pendiente
 
 - [x] **Ficha de CurseForge pública** (2026-10-14): abre sin sesión, MageProcs 1.60.1 para Forever; `listing` es `"live"`.
+- [ ] **MageProcs y Estela de Fuego (15 oct):** Estela de Fuego desapareció (vuelve a ser Explosión de Fuego mejorada, sin bonificación al matar), así que su alerta ya no se activará. Revisar el addon en `arcane_flare` y, con la versión nueva, quitar Estela de Fuego de `addons.json`, Addons y Herramientas.
 - [ ] **Con cada versión nueva del addon**: actualizar `version`, `game` (versión e interfaz del `.toc`), procs, comandos y límites según su changelog, y `checked`. Si cambian las imágenes de CurseForge, volver a convertirlas.
 - [ ] **Cuando se confirmen procs en el juego** con Magos de nivel alto: quitar el primer límite de `limitations`.
 - [ ] **Addons nuevos**: solo si aportan algo concreto al Mago en Forever y se han revisado. Cada uno con descripción, procs o funciones, instalación, límites y enlace oficial; `origin: "third-party"` y su autor si no es nuestro.

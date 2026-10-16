@@ -13,7 +13,8 @@ verification: verified
 summary:
   - Frost keeps its control and gains a way to turn it into damage with Ice Lance (11-point milestone) and Fingers of Frost (row 5).
   - Ice Block becomes the 16-point milestone and Cold Snap the 21-point one, with a 10-minute cooldown.
-  - Improved Blizzard and Cone of Cold slow less or for less time, to curb mass farming.
+  - Improved Blizzard and Cone of Cold slow less or for less time, to curb mass farming; Cone of Cold keeps its power against 4 targets or fewer.
+  - "Winter's Chill no longer grants crit: it now sets up a stronger Cone of Cold."
 sources: [blizzard-deep-dive-mage, blizzard-dev-notes, wiki-ice-barrier, wiki-ice-shards-classic]
 tags: [frost, ice lance, fingers of frost, talents]
 ---
@@ -32,10 +33,10 @@ Frost **keeps its strength in control**: according to Blizzard, it offers combat
 
 ## How the pieces fit
 
-- **Freeze to shatter.** Ice Lance deals 300% more against Frozen targets. Frost Nova freezes; Fingers of Frost makes your spells treat the target as Frozen. <Status status="verified" />
-- **Frostbolt is the engine.** Fingers of Frost triggers from your Chill effects, and Frostbolt slows. Casting Frostbolt builds the charges you then spend on Ice Lance. <Status status="analysis" />
-- **Careful with downranking.** Blizzard's own example is Frost: Rank 1 Frostbolt at level 60 has a 0% chance to trigger Frostbite. Low ranks slow cheaply, but they do not trigger your talents. <Status status="verified" />
-- **Winter's Chill, just for you.** It now only benefits the Mage who applies it, only for Frostbolt and Ice Lance, and it can no longer be resisted separately. <Status status="verified" />
+- **Freeze to shatter.** Ice Lance deals 200% more against Frozen targets (300% until 15 October). Frost Nova freezes; Fingers of Frost makes your spells treat the target as Frozen. <Status status="verified" />
+- **Frostbolt is the engine.** Fingers of Frost triggers from your Chill effects, and Frostbolt slows. Casting Frostbolt builds the charges you then spend on Ice Lance. Since 15 October, Frostbite and Fingers of Frost also trigger from the Chill of Frost Armor and Ice Armor when you are hit in melee. <Status status="analysis" />
+- **Careful with downranking.** Blizzard's own example is Frost: Rank 1 Frostbolt at level 60 has a 0% chance to trigger Frostbite. For the cheap slow you now have Frost Blast (level 24): a 1.5 s cast that slows by 40% and is affected by every Frostbolt talent. <Status status="verified" />
+- **Winter's Chill sets up Cone of Cold.** Winter's Chill is redesigned: it no longer grants crit. Frostbolt, Frost Blast and Fingers of Frost-empowered Ice Lance apply up to 5 stacks, and your next Cone of Cold consumes them to deal more damage. It only benefits the Mage who applies it. <Status status="verified" /> Cone of Cold also slows the first 4 targets it hits by an extra 10% for 3 extra seconds. <Status status="verified" />
 - **Earlier defences, pricier Cold Snap.** Ice Block is now the 16-point milestone; Cold Snap needs 21 points and its cooldown rises to 10 minutes. <Status status="verified" />
 - **Easier Shatter.** It no longer requires Improved Frost Nova, which frees points. <Status status="verified" />
 

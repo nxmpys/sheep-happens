@@ -33,6 +33,17 @@
     "spell": 11237
   },
   {
+    "id": "missile-barrage",
+    "name": "Missile Barrage",
+    "nameEs": "Tromba de misiles",
+    "tree": "arcane",
+    "row": 1,
+    "col": 4,
+    "maxRank": 2,
+    "changeId": "missile-barrage",
+    "spell": 400588
+  },
+  {
     "id": "arcane-subtlety",
     "name": "Arcane Subtlety",
     "nameEs": "Sutileza Arcana",
@@ -147,15 +158,15 @@
     "spell": 18462
   },
   {
-    "id": "missile-barrage",
-    "name": "Missile Barrage",
-    "nameEs": "Tromba de misiles",
+    "id": "arcane-wrath",
+    "name": "Arcane Wrath",
+    "nameEs": "Cólera Arcana",
     "tree": "arcane",
     "row": 4,
     "col": 4,
     "maxRank": 1,
-    "changeId": "missile-barrage",
-    "spell": 400588
+    "changeId": "arcane-wrath",
+    "spell": 1326079
   },
   {
     "id": "presence-of-mind",
@@ -206,8 +217,8 @@
   },
   {
     "id": "wake-of-fire",
-    "name": "Wake of Fire",
-    "nameEs": "Estela de Fuego",
+    "name": "Improved Fire Blast",
+    "nameEs": "Explosión de Fuego mejorada",
     "tree": "fire",
     "row": 1,
     "col": 1,
@@ -345,10 +356,12 @@
   {
     "id": "critical-mass",
     "name": "Critical Mass",
+    "nameEs": "Masa crítica",
     "tree": "fire",
     "row": 5,
     "col": 2,
-    "maxRank": 3,
+    "maxRank": 5,
+    "changeId": "critical-mass",
     "spell": 11115
   },
   {
@@ -365,10 +378,12 @@
   {
     "id": "fire-power",
     "name": "Fire Power",
+    "nameEs": "Poder de Fuego",
     "tree": "fire",
     "row": 6,
     "col": 3,
-    "maxRank": 5,
+    "maxRank": 3,
+    "changeId": "fire-power",
     "spell": 11124
   },
   {

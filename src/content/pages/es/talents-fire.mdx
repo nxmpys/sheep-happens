@@ -3,7 +3,7 @@ pageId: talents-fire
 locale: es
 title: Mago de Fuego en Forever, talentos y cambios
 seoTitle: Mago de Fuego en WoW Forever, Calentamiento y talentos
-description: Identidad del Mago de Fuego en WoW Forever, Calentamiento, Estela de Fuego, la Ignición individual y cada talento que cambia respecto a Classic.
+description: Identidad del Mago de Fuego en WoW Forever, Calentamiento, Poder de Fuego, la Ignición individual y cada talento que cambia respecto a Classic.
 gameVersion: forever-beta-2026-10
 published: 2026-10-11
 reviewed: 2026-10-11
@@ -12,7 +12,8 @@ status: published
 verification: verified
 summary:
   - Fuego sigue premiando los críticos y el momento justo; su gran novedad es Calentamiento.
-  - Tres críticos seguidos dejan Piroexplosión en 1,5 s de lanzamiento.
+  - Tres cargas de Calentamiento dejan Piroexplosión en 1,5 s de lanzamiento; cada Explosión de Fuego da una carga extra.
+  - Masa crítica pasa a 5 puntos (10 % de crítico) y Poder de Fuego premia mantener varios efectos de Fuego en el objetivo.
   - Ignición pasa a ser individual por Mago y ya no pierde daño con críticos muy seguidos.
   - Aún no se sabe qué talento ocupa el nuevo talento decisivo de 16 puntos de Fuego.
 sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, wiki-pyroblast, wiki-blast-wave, wiki-combustion, wiki-ignite-classic]
@@ -33,15 +34,16 @@ Fuego **sigue premiando los críticos y el buen momento para lanzar**: según Bl
 
 ## Cómo encajan las piezas
 
-- **Críticos → Piroexplosión.** Con **Calentamiento** (Heating Up), cada crítico no periódico de **Bola de Fuego** (Fireball), **Descarga de Pirofrío** (Frostfire Bolt), **Explosión de Fuego** (Fire Blast) o **Chamuscar** (Scorch) reduce un 25 % el lanzamiento de tu siguiente **Piroexplosión** (Pyroblast), hasta 3 veces. Piroexplosión tarda 6 s en Classic; con 3 cargas queda en 1,5 s, tal como indica Blizzard. El efecto dura 20 s. <Status status="verified" />
-- **Más crítico, más Piroexplosión.** Todo lo que sube tu probabilidad de crítico acelera ese ciclo, así que el crítico debería ganar valor respecto a Classic. <Status status="analysis" />
-- **Rematar y abrir.** Con **Estela de Fuego** (Wake of Fire), tras matar a un enemigo que no sea trivial tu siguiente Explosión de Fuego tiene mucha más probabilidad de crítico durante 30 s. Blizzard alargó ese tiempo porque, al subir de nivel, el Mago tiene que recuperar maná entre combates. <Status status="verified" /> Ese crítico, a su vez, alimenta Calentamiento. <Status status="analysis" />
+- **Críticos → Piroexplosión.** Con **Calentamiento** (Heating Up), cada crítico no periódico de **Bola de Fuego** (Fireball), **Descarga de Pirofrío** (Frostfire Bolt), **Explosión de Fuego** (Fire Blast) o **Chamuscar** (Scorch) reduce un 25 % el lanzamiento de tu siguiente **Piroexplosión** (Pyroblast), hasta 3 veces. Piroexplosión tarda 6 s en Classic; con 3 cargas queda en 1,5 s, tal como indica Blizzard. El efecto dura 20 s. Desde el 15 de octubre, cada Explosión de Fuego da una carga extra (un crítico de Explosión de Fuego da 2) y las cargas no se gastan si lanzas Piroexplosión con **Presencia mental** (Presence of Mind). <Status status="verified" />
+- **Más crítico, más Piroexplosión.** Todo lo que sube tu probabilidad de crítico acelera ese ciclo, así que el crítico gana valor respecto a Classic. **Masa crítica** (Critical Mass) ahora admite 5 puntos, para un 10 % de crítico en total. <Status status="verified" />
+- **Varios fuegos a la vez.** **Poder de Fuego** (Fire Power) se rediseña con 3 puntos: tus hechizos de Fuego hacen un 1/2/3 % más por cada uno de tus efectos de Fuego en el objetivo (Ignición, Chamuscar mejorado, Bola de Fuego, Piroexplosión e Impacto), hasta un 12 % más. <Status status="verified" />
+- **Rematar desde lejos.** **Estela de Fuego** (Wake of Fire) vuelve a ser **Explosión de Fuego mejorada** (Improved Fire Blast): sigue en la fila 1 y reduce el tiempo de reutilización de Explosión de Fuego, pero ya no da crítico tras matar; a cambio, aumenta su alcance en 8/15 m. <Status status="verified" />
 - **La Ignición ya no se comparte.** Cada Mago tiene su propia **Ignición** (Ignite), que ya no pierde daño con críticos muy seguidos ni se beneficia dos veces de los modificadores de daño. Varios Magos de Fuego en el mismo grupo dejan de pisarse. <Status status="verified" />
 - **Efectos personales.** **Chamuscar mejorado** (Improved Scorch) solo beneficia al Mago que lo aplica: no esperes que otro Mago te mantenga la vulnerabilidad al Fuego. <Status status="verified" />
 
 ## Lo que falta por saber
 
 <Pending
-  why="Blizzard no ha dicho qué talento ocupa el nuevo talento decisivo de 16 puntos de Fuego ni ha publicado cuánto crítico da Estela de Fuego."
+  why="Blizzard no ha dicho qué talento ocupa el nuevo talento decisivo de 16 puntos de Fuego: en el árbol de la beta, la fila 4 no tiene ninguno marcado como tal."
   next="Lo comprobaremos en el árbol del juego en cuanto sea accesible y actualizaremos el mapa de talentos decisivos."
 />

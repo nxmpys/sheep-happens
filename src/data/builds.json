@@ -74,7 +74,7 @@
         "point": 11,
         "text": {
           "es": "Lanza de hielo, el talento decisivo de 11 puntos: instantánea y un 300 % más de daño contra objetivos congelados.",
-          "en": "Ice Lance, the 11-point milestone: instant, and 300% more damage against frozen targets."
+          "en": "Ice Lance, the 11-point milestone: instant, and 200% more damage against frozen targets."
         }
       },
       {
@@ -154,7 +154,7 @@
       },
       {
         "es": "Si queda congelado (por Frostbite o Nova de Escarcha), lanza Lanza de hielo: hace un 300 % más contra objetivos congelados.",
-        "en": "If it gets frozen (by Frostbite or Frost Nova), cast Ice Lance: it deals 300% more to frozen targets."
+        "en": "If it gets frozen (by Frostbite or Frost Nova), cast Ice Lance: it deals 200% more to frozen targets."
       },
       {
         "es": "Si llega a tu lado: Nova de Escarcha, aléjate unos pasos y sigue con Lanza de hielo o Descarga de Escarcha.",
@@ -209,7 +209,7 @@
       "mobalytics-mage-leveling",
       "method-mage-leveling"
     ],
-    "updated": "2026-10-14"
+    "updated": "2026-10-16"
   },
   {
     "id": "frost-leveling-dungeons",
@@ -581,8 +581,8 @@
         "en": "With Mana Shield up, lead them behind you, cast Frost Nova, walk to max range and channel Blizzard."
       },
       {
-        "es": "Cuando se suelten, otra Nova de Escarcha o Cono de frío (nivel 26) y otra Ventisca. Remata con Deflagración Arcana.",
-        "en": "When they break free, another Frost Nova or Cone of Cold (level 26) and another Blizzard. Finish with Arcane Explosion."
+        "es": "Cuenta con una Ventisca completa por grupo. Al terminar, Cono de frío (nivel 26) hasta que vuelva la Nova; después, otra Nova, Flamestrike sobre el grupo congelado y Deflagración Arcana para rematar.",
+        "en": "Count on one full Blizzard per pull. When it ends, Cone of Cold (level 26) until Frost Nova is back; then another Nova, Flamestrike on the frozen pack and Arcane Explosion to finish."
       },
       {
         "es": "Si algo falla, Blink y aléjate; Bloqueo de hielo como último recurso. Bebe después de cada grupo.",
@@ -631,9 +631,10 @@
       "blizzard-dev-notes",
       "wowhead-forever-talent-calc",
       "mobalytics-frost",
-      "icyveins-classic-aoe-leveling"
+      "icyveins-classic-aoe-leveling",
+      "conquestcapped-mage-leveling"
     ],
-    "updated": "2026-10-14"
+    "updated": "2026-10-15"
   },
   {
     "id": "frost-duels-30-legacy",
@@ -677,8 +678,8 @@
         "en": "Open with Frostbolt from max range: it slows and can trigger Frostbite or Fingers of Frost."
       },
       {
-        "es": "Cuando el rival quede congelado (Nova de Escarcha o Frostbite) o tengas Dedos de Escarcha, gasta Lanza de hielo: hace un 300 % más contra objetivos congelados.",
-        "en": "When the target is frozen (Frost Nova or Frostbite) or you have Fingers of Frost, spend Ice Lance: it deals 300% more damage to frozen targets."
+        "es": "Cuando el rival quede congelado (Nova de Escarcha o Frostbite) o tengas Dedos de Escarcha, gasta Lanza de hielo: hace un 200 % más contra objetivos congelados.",
+        "en": "When the target is frozen (Frost Nova or Frostbite) or you have Fingers of Frost, spend Ice Lance: it deals 200% more damage to frozen targets."
       },
       {
         "es": "Contra cuerpo a cuerpo: Nova de Escarcha, aléjate andando y vuelve a lanzar Descarga de Escarcha. Guarda Blink para su segunda aproximación.",
@@ -732,6 +733,6 @@
       "forever-open-rules",
       "conquestcapped-legacy"
     ],
-    "updated": "2026-10-13"
+    "updated": "2026-10-16"
   }
 ]

@@ -15,13 +15,14 @@
     "id": "arcane-16",
     "tree": "arcane",
     "points": 16,
-    "name": "Missile Barrage",
-    "nameEs": "Tromba de misiles",
-    "changeId": "missile-barrage",
+    "name": "Arcane Wrath",
+    "nameEs": "Cólera Arcana",
+    "changeId": "arcane-wrath",
     "status": "verified",
     "sources": [
-      "blizzard-deep-dive-mage"
-    ]
+      "blizzard-dev-notes"
+    ],
+    "updated": "2026-10-16"
   },
   {
     "id": "arcane-21",

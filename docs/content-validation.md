@@ -29,6 +29,7 @@
 - [ ] Niveles de los hechizos del 1 al 30 según la lista del instructor de la beta (calculadora de Wowhead), coincidentes con Method y con Classic. Lanza de hielo de rango 2 se entrena a nivel 28.
 - [ ] Comprensión, según Warcraft Tavern: se aprende a nivel 6 y, si fallas al descifrar, te conviertes en oveja. Investigar se gana entregando libros al bibliotecario y Estudiar da un Montón de pergaminos cada hora en una biblioteca.
 - [ ] Comprensión, datos del cliente de la beta (Wowhead, 2026-10-15): Comprender pergamino tarda 5 s y no cuesta maná; los pergaminos sin descifrar piden Comprensión 1, 15, 50 o 175 (niveles de objeto 10, 20, 30 y 50) y dejan de dar puntos en 30, 75, 200 y 300; el Pergamino de Comprensión da +15 durante 1 hora; Estudiar tiene 1 hora de reutilización y gasta una Pluma ligera. Se publican como «Análisis» en la página Pergaminos.
+- [ ] Farmeo AoE (Conquest Capped y forg.gg, 2026-10-15): rotación corta desde el nivel 14 para grupos de 3 a 7; una Ventisca completa por grupo con el maná de los niveles 22 a 30; arañas Gloomrise de Mulgore (27-29, Horda, desde el 23, ~1600 de experiencia por tirón a nivel 29); Toque de la tumba puede romper la Nova de Escarcha. Concentración Arcana: ¿una tirada por objetivo alcanzado en Forever? Se publican como «Comunidad» o «Análisis» en la página Farmeo AoE.
 - [ ] Experiencia de mazmorras: mucha menos por matar y mucha más por las misiones (entrevista a Kris Zierhut, vía Icy Veins). Los ajustes del 1 y el 8 de octubre sí están en las notas oficiales.
 
 ## Discrepancias abiertas

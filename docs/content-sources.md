@@ -76,6 +76,16 @@ Las doce fuentes de la página de Profesiones (una oficial de Blizzard, la base 
 
 También se releyeron `blizzard-deep-dive-mage` (y su versión en español), `blizzard-dev-notes` y `warcrafttavern-mage-guide`, que explica el fallo (te conviertes en oveja) y da ejemplos de recompensas.
 
+### Guía de farmeo AoE (consultadas el 2026-10-15)
+
+| ID | Fuente | Tipo | Qué respalda | Limitaciones |
+|---|---|---|---|---|
+| `conquestcapped-mage-leveling` | [Conquest Capped — WoW Forever Mage Leveling](https://conquestcapped.com/guides/wow-forever/wow-forever-mage-leveling/) | community | Rotación corta desde el nivel 14, rotación con Ventisca desde el 20, una Ventisca por grupo, zonas por nivel y consejos (Frostbite fuera, reiniciar si resisten la Nova, Toque de la tumba) | Dice que probó del 1 al 30 en la beta; las zonas del 30 al 60 son de Classic |
+| `forg-mage-aoe-spiders` | [forg.gg — Skywatcher Plateau Spider Farm](https://forg.gg/en/forever/tips/mage-aoe-leveling) | community | Zona nueva de arañas Gloomrise (27-29) al noroeste de Cima del Trueno, coordenadas, cinco misiones desde el 23, ~1600 de experiencia por tirón | Sin autor ni fecha; se basa en un vídeo de la beta del 4 de octubre |
+| `wiki-arcane-concentration` | [Warcraft Wiki — Arcane Concentration](https://warcraft.wiki.gg/wiki/Arcane_Concentration) | classic-reference | Texto de Classic: «después de que cualquier hechizo de daño alcance a un objetivo» | No dice expresamente que un hechizo de área tire una vez por objetivo |
+
+Un vídeo de un creador de contenido sobre el Mago en la beta (transcripción en [video-guia-mago-notas.md](video-guia-mago-notas.md)) coincide con la rotación corta y con la zona de las arañas. No se cita porque no tenemos su enlace.
+
 ## 4. Fuentes descartadas
 
 - **Wowhead Classic, Icy Veins Classic y guías de Classic Era o SoD:** son útiles como referencia de Classic, pero no describen Forever. Solo se usarían con `kind: classic-reference`.

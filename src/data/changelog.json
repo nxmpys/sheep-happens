@@ -1,5 +1,175 @@
 [
   {
+    "id": "2026-10-16-weekly-1",
+    "date": "2026-10-16",
+    "type": "guide",
+    "title": {
+      "es": "Revisión de fuentes del 16 de octubre: cambios del Mago y raciales",
+      "en": "16 October source review: Mage changes and racials"
+    },
+    "body": {
+      "es": "Incorporamos la build del 15 de octubre: fichas nuevas de Frost Blast, Cólera Arcana, Masa crítica, Poder de Fuego y varitas; Explosión Arcana, Tromba de misiles, Explosión de Fuego mejorada, Calentamiento, Lanza de hielo, Escalofrío del invierno y Cono de frío actualizados; el árbol de talentos y los talentos decisivos de Arcano, al día; y las raciales de las seis razas que pueden ser Mago. Las builds y las páginas de combate, leveo, farmeo AoE y talentos reflejan los cambios.",
+      "en": "We added the 15 October build: new entries for Frost Blast, Arcane Wrath, Critical Mass, Fire Power and wands; Arcane Blast, Missile Barrage, Improved Fire Blast, Heating Up, Ice Lance, Winter's Chill and Cone of Cold updated; the talent tree and Arcane milestones brought up to date; and the racials of the six races that can be Mages. The builds and the combat, leveling, AoE farming and talent pages reflect the changes."
+    },
+    "pages": [
+      "changes",
+      "talents",
+      "talents-arcane",
+      "talents-fire",
+      "talents-frost",
+      "races",
+      "builds",
+      "builds-duel-30",
+      "leveling",
+      "aoe-farming",
+      "combat",
+      "guide",
+      "home"
+    ],
+    "sources": [
+      "blizzard-dev-notes",
+      "wowhead-forever-talent-calc",
+      "forum-missile-barrage-proc"
+    ],
+    "refs": [
+      "change:frost-blast",
+      "change:arcane-blast",
+      "change:arcane-wrath",
+      "change:missile-barrage",
+      "change:arcane-concentration",
+      "change:wake-of-fire",
+      "change:heating-up",
+      "change:critical-mass",
+      "change:fire-power",
+      "change:ice-lance",
+      "change:winters-chill",
+      "change:cone-of-cold",
+      "change:fingers-of-frost",
+      "change:spell-ranks",
+      "change:wands",
+      "milestone:arcane-16",
+      "ability:frost-blast",
+      "ability:cone-of-cold",
+      "ability:fire-blast",
+      "race:human",
+      "race:orc",
+      "race:undead",
+      "race:gnome",
+      "race:troll",
+      "race:skyborne",
+      "build:frost-leveling-solo",
+      "build:frost-duels-30-legacy",
+      "source:forum-missile-barrage-proc"
+    ]
+  },
+  {
+    "id": "2026-10-15-mage-build",
+    "date": "2026-10-15",
+    "type": "game",
+    "title": {
+      "es": "Build de la beta del 15 de octubre: grandes cambios del Mago",
+      "en": "15 October beta build: major Mage changes"
+    },
+    "body": {
+      "es": "Nuevo hechizo Frost Blast (nivel 24). Arcano: Explosión Arcana rediseñada (1,5 s, da daño con hechizos según tu Intelecto), Cólera Arcana es el nuevo talento decisivo de 16 puntos y Tromba de misiles baja a la fila 1 con 2 puntos. Fuego: Estela de Fuego vuelve a ser Explosión de Fuego mejorada (más alcance, sin bonificación al matar), Calentamiento gana cargas con cada Explosión de Fuego, Masa crítica pasa a 5 puntos y Poder de Fuego se rediseña con 3. Escarcha: Lanza de hielo baja al 200 % contra objetivos congelados, Escalofrío del invierno ahora potencia Cono de frío y Cono de frío ralentiza más a los 4 primeros objetivos. Además, Libre lanzamiento ya no tira por cada objetivo y las varitas exigen estar quieto 0,5 s.",
+      "en": "New Frost Blast spell (level 24). Arcane: Arcane Blast redesigned (1.5 s, grants Spell Damage based on your Intellect), Arcane Wrath is the new 16-point milestone and Missile Barrage moves to row 1 with 2 points. Fire: Wake of Fire is Improved Fire Blast again (more range, no kill bonus), Heating Up gains charges from every Fire Blast, Critical Mass goes to 5 points and Fire Power is redesigned with 3. Frost: Ice Lance drops to 200% against Frozen targets, Winter's Chill now empowers Cone of Cold and Cone of Cold slows the first 4 targets more. Also, Clearcasting no longer rolls per target and wands require standing still for 0.5 s."
+    },
+    "pages": [
+      "changes",
+      "talents",
+      "talents-arcane",
+      "talents-fire",
+      "talents-frost",
+      "combat",
+      "leveling",
+      "aoe-farming"
+    ],
+    "sources": [
+      "blizzard-dev-notes"
+    ],
+    "refs": [
+      "change:frost-blast",
+      "change:arcane-blast",
+      "change:arcane-wrath",
+      "change:missile-barrage",
+      "change:arcane-concentration",
+      "change:wake-of-fire",
+      "change:heating-up",
+      "change:critical-mass",
+      "change:fire-power",
+      "change:ice-lance",
+      "change:winters-chill",
+      "change:cone-of-cold",
+      "change:fingers-of-frost",
+      "change:spell-ranks",
+      "change:wands",
+      "milestone:arcane-16",
+      "ability:frost-blast",
+      "ability:cone-of-cold",
+      "ability:fire-blast"
+    ]
+  },
+  {
+    "id": "2026-10-15-racials",
+    "date": "2026-10-15",
+    "type": "game",
+    "title": {
+      "es": "Build de la beta del 15 de octubre: raciales",
+      "en": "15 October beta build: racials"
+    },
+    "body": {
+      "es": "Las especializaciones de arma desaparecen: el Humano gana Crueldad (Ruthless, +2 % de crítico) y el Orco, Salvajismo (Savage, +1 % de crítico). ¡Eureka! del Gnomo dura 8 s en vez de 3 usos, Wind Blessed del Cielonato sube al 3 % de celeridad, Toque de la tumba del No-muerto se activa más a menudo, Regeneración del Trol sube al 20 % y Shatter Curse del Orco protege menos.",
+      "en": "Weapon specializations are gone: Humans get Ruthless (+2% crit) and Orcs Savage (+1% crit). The Gnome's Eureka! lasts 8 s instead of 3 uses, the Skyborne's Wind Blessed rises to 3% haste, the Undead's Touch of the Grave triggers more often, the Troll's Regeneration rises to 20% and the Orc's Shatter Curse protects less."
+    },
+    "pages": [
+      "races",
+      "builds-duel-30"
+    ],
+    "sources": [
+      "blizzard-dev-notes"
+    ],
+    "refs": [
+      "race:human",
+      "race:orc",
+      "race:undead",
+      "race:gnome",
+      "race:troll",
+      "race:skyborne"
+    ]
+  },
+  {
+    "id": "2026-10-15-aoe-farming-guide",
+    "date": "2026-10-15",
+    "type": "guide",
+    "title": {
+      "es": "Nueva guía: farmeo en área (AoE) con el Mago",
+      "en": "New guide: Mage AoE farming"
+    },
+    "body": {
+      "es": "Nueva página de Farmeo AoE, dentro de la Guía de clase. Explica qué ha cambiado respecto a Classic, las dos rotaciones de área que usan quienes han jugado la beta (la corta desde el nivel 14 y la de Ventisca desde el 22), por qué Concentración Arcana es el talento clave y por qué ya no conviene bajar de rango para activarla, las zonas de farmeo por nivel (con las arañas nuevas de Cima del Trueno) y cómo sobrevivir. La build de área de Escarcha ahora cuenta con una sola Ventisca por grupo.",
+      "en": "New AoE farming page, under the Class guide. It explains what changed from Classic, the two AoE rotations used by beta players (the short one from level 14 and the Blizzard one from 22), why Arcane Concentration is the key talent and why downranking to trigger it no longer pays, farming spots by level (including the new Thunder Bluff spiders) and how to survive. The Frost AoE build now counts on a single Blizzard per pull."
+    },
+    "pages": [
+      "aoe-farming",
+      "leveling",
+      "combat",
+      "guide",
+      "home"
+    ],
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "conquestcapped-mage-leveling",
+      "forg-mage-aoe-spiders",
+      "wiki-arcane-concentration"
+    ],
+    "refs": [
+      "build:frost-leveling-aoe",
+      "source:conquestcapped-mage-leveling",
+      "source:forg-mage-aoe-spiders",
+      "source:wiki-arcane-concentration"
+    ]
+  },
+  {
     "id": "2026-10-15-scrolls-guide",
     "date": "2026-10-15",
     "type": "guide",

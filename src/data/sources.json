@@ -19,10 +19,23 @@
     "url": "https://us.forums.blizzard.com/en/wow/t/2360696",
     "kind": "official",
     "published": "2026-09-24",
-    "accessed": "2026-10-15",
+    "accessed": "2026-10-16",
     "notes": {
-      "es": "Notas oficiales de cada build de la beta (24 sep, 1 oct y 8 oct de 2026). Es la fuente principal para las actualizaciones semanales.",
-      "en": "Official notes for every beta build (24 Sep, 1 Oct and 8 Oct 2026). The main source for weekly updates."
+      "es": "Notas oficiales de cada build de la beta (24 sep, 1, 8 y 15 oct de 2026). Es la fuente principal para las actualizaciones semanales.",
+      "en": "Official notes for every beta build (24 Sep, 1, 8 and 15 Oct 2026). The main source for weekly updates."
+    }
+  },
+  {
+    "id": "forum-missile-barrage-proc",
+    "title": "Arcane Missiles does not proc Barrage",
+    "publisher": "WoW Forever Beta Discussion (Blizzard forums)",
+    "url": "https://us.forums.blizzard.com/en/wow/t/arcane-missiles-does-not-proc-barrage/2384260",
+    "kind": "community",
+    "published": "2026-10-16",
+    "accessed": "2026-10-16",
+    "notes": {
+      "es": "Hilo de jugadores de la beta: tras la build del 15 de octubre, los impactos de Misiles Arcanos no activan Tromba de misiles.",
+      "en": "Beta players' thread: after the 15 October build, Arcane Missiles hits do not trigger Missile Barrage."
     }
   },
   {
@@ -269,7 +282,7 @@
     "publisher": "Wowhead",
     "url": "https://www.wowhead.com/forever/talent-calc/mage",
     "kind": "tool",
-    "accessed": "2026-10-13",
+    "accessed": "2026-10-16",
     "notes": {
       "es": "Árbol de talentos y descripciones extraídos del cliente de la beta. Lo usamos para la posición de cada talento y para los enlaces de las builds; sus cifras son una pista, no un dato confirmado.",
       "en": "Talent trees and tooltips data-mined from the beta client. We use it for talent positions and build links; its numbers are a hint, not a confirmed fact."
@@ -579,6 +592,43 @@
     "notes": {
       "es": "Libros que se entregan al bibliotecario y lo que gana el Mago: Estudiar en una biblioteca da un Montón de pergaminos. Dice que se reutiliza cada día; los datos del cliente y Warcraft Tavern dicen cada hora.",
       "en": "Books handed in to the librarian and what Mages get: Studying in a library gives a Bundle of Scrolls. It says the cooldown is a day; client data and Warcraft Tavern say an hour."
+    }
+  },
+  {
+    "id": "conquestcapped-mage-leveling",
+    "title": "WoW Forever Mage Leveling Guide: Best Spec, Talents & AoE Route",
+    "publisher": "Conquest Capped",
+    "url": "https://conquestcapped.com/guides/wow-forever/wow-forever-mage-leveling/",
+    "kind": "community",
+    "published": "2026-10-13",
+    "accessed": "2026-10-15",
+    "notes": {
+      "es": "Guía de leveo de Forever con dos rotaciones de área (desde el nivel 14 sin Ventisca y desde el 20 con ella), zonas de farmeo por nivel y consejos. Dice que probó del 1 al 30 en la beta; las zonas del 30 al 60 son de Classic y están sin probar.",
+      "en": "Forever leveling guide with two AoE rotations (from level 14 without Blizzard and from 20 with it), farming spots by level and tips. It says levels 1-30 were tested in the beta; spots from 30 to 60 come from Classic and are untested."
+    }
+  },
+  {
+    "id": "forg-mage-aoe-spiders",
+    "title": "WoW Forever Mage AoE Leveling — Skywatcher Plateau Spider Farm",
+    "publisher": "forg.gg",
+    "url": "https://forg.gg/en/forever/tips/mage-aoe-leveling",
+    "kind": "community",
+    "accessed": "2026-10-15",
+    "notes": {
+      "es": "Zona nueva de Forever al noroeste de Cima del Trueno (Mulgore): arañas Gloomrise de nivel 27 a 29, solo Horda, desde el nivel 23. Cita un vídeo de la beta del 4 de octubre (unos 1600 de experiencia por grupo). No da rotación ni cifras de maná.",
+      "en": "New Forever spot northwest of Thunder Bluff (Mulgore): level 27-29 Gloomrise spiders, Horde only, from level 23. It cites a beta video from 4 October (about 1,600 experience per pull). No rotation or mana numbers."
+    }
+  },
+  {
+    "id": "wiki-arcane-concentration",
+    "title": "Arcane Concentration",
+    "publisher": "Warcraft Wiki",
+    "url": "https://warcraft.wiki.gg/wiki/Arcane_Concentration",
+    "kind": "classic-reference",
+    "accessed": "2026-10-15",
+    "notes": {
+      "es": "Texto de Classic: un 2/4/6/8/10 % de probabilidad de Claridad mental «después de que cualquier hechizo de daño alcance a un objetivo». No dice expresamente si un hechizo de área tira una vez por objetivo.",
+      "en": "Classic text: a 2/4/6/8/10% chance to enter a Clearcasting state \"after any damage spell hits a target\". It does not say explicitly whether an AoE spell rolls once per target."
     }
   }
 ]

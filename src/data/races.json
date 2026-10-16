@@ -50,26 +50,27 @@
         }
       },
       {
-        "id": "sword-specialization",
-        "name": "Sword Specialization",
+        "id": "ruthless",
+        "name": "Ruthless",
         "kind": "passive",
         "effect": {
-          "es": "Un 2 % más de probabilidad de crítico con hechizos y ataques mientras llevas una espada.",
-          "en": "2% more critical strike chance with spells and attacks while wielding a sword."
+          "es": "Crueldad: un 2 % más de probabilidad de crítico con hechizos y ataques. Sustituye a Sword Specialization.",
+          "en": "2% more critical strike chance with spells and attacks. Replaces Sword Specialization."
         },
-        "value": "medium",
+        "value": "high",
         "why": {
-          "es": "El Mago puede llevar espadas de una mano. Vale mucho si hay buenas espadas para lanzadores en tu tramo de nivel.",
-          "en": "Mages can wield one-handed swords. Strong if there are good caster swords at your level."
+          "es": "Crítico siempre activo, sin depender de llevar una espada.",
+          "en": "Always-on crit, no longer tied to wielding a sword."
         }
       }
     ],
     "status": "reported",
     "sources": [
       "lfcarry-racials",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "blizzard-dev-notes"
     ],
-    "updated": "2026-10-13"
+    "updated": "2026-10-16"
   },
   {
     "id": "gnome",
@@ -84,13 +85,13 @@
         "name": "Eureka!",
         "kind": "active",
         "effect": {
-          "es": "Tus 3 siguientes habilidades de daño cuestan un 10 % menos de maná y hacen un 10 % más de daño. 2 min de reutilización.",
-          "en": "Your next 3 damaging abilities cost 10% less mana and deal 10% more damage. 2 min cooldown."
+          "es": "Durante 8 s tus habilidades de daño cuestan un 10 % menos de maná y hacen un 10 % más de daño. 2 min de reutilización.",
+          "en": "For 8 sec your damaging abilities cost 10% less mana and deal 10% more damage. 2 min cooldown."
         },
         "value": "high",
         "why": {
-          "es": "Un pequeño estallido de daño cada 2 minutos, útil en cualquier situación.",
-          "en": "A small damage burst every 2 minutes, useful everywhere."
+          "es": "Un estallido de daño cada 2 minutos. Ahora dura un tiempo en vez de 3 usos, así que rinde más con hechizos rápidos e instantáneos.",
+          "en": "A damage burst every 2 minutes. It now lasts a set time instead of 3 uses, so it pays off more with fast and instant spells."
         }
       },
       {
@@ -139,9 +140,10 @@
     "status": "reported",
     "sources": [
       "lfcarry-racials",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "blizzard-dev-notes"
     ],
-    "updated": "2026-10-13"
+    "updated": "2026-10-16"
   },
   {
     "id": "skyborne",
@@ -161,13 +163,13 @@
         "name": "Read Ley Line",
         "kind": "active",
         "effect": {
-          "es": "Lanzamiento de 2 s: duplica tu regeneración de salud y maná durante 15 s, o 15 min si encuentras una línea ley cercana. 2 min de reutilización.",
-          "en": "2 sec cast: doubles your health and mana regeneration for 15 sec, or 15 min if a ley line is nearby. 2 min cooldown."
+          "es": "Lanzamiento de 2 s, también en movimiento: duplica tu regeneración de salud y maná durante al menos 30 s, o 15 min si encuentras una línea ley cercana. 2 min de reutilización.",
+          "en": "2 sec cast, also while moving: doubles your health and mana regeneration for at least 30 sec, or 15 min if a ley line is nearby. 2 min cooldown."
         },
         "value": "high",
         "why": {
-          "es": "Si se mantiene así, reduce mucho los descansos al subir de nivel.",
-          "en": "If it stays like this, it cuts leveling downtime a lot."
+          "es": "Reduce mucho los descansos al subir de nivel, y desde el 15 de octubre hay más líneas ley en casi todas las zonas.",
+          "en": "Cuts leveling downtime a lot, and since 15 October there are more ley lines in most zones."
         }
       },
       {
@@ -175,13 +177,13 @@
         "name": "Wind Blessed",
         "kind": "passive",
         "effect": {
-          "es": "Celeridad de lanzamiento y ataque aumentada un 1 %.",
-          "en": "Spellcasting and attack haste increased by 1%."
+          "es": "Celeridad de lanzamiento y ataque aumentada un 3 %.",
+          "en": "Spellcasting and attack haste increased by 3%."
         },
-        "value": "medium",
+        "value": "high",
         "why": {
-          "es": "Un poco más de daño, siempre activo.",
-          "en": "A little extra damage, always on."
+          "es": "Lanzar un 3 % más rápido es más daño en cualquier situación, siempre activo.",
+          "en": "Casting 3% faster is more damage everywhere, always on."
         }
       },
       {
@@ -189,8 +191,8 @@
         "name": "Walk on Air",
         "kind": "active",
         "effect": {
-          "es": "Planeas hacia abajo controlando la dirección durante 10 s. 2 min de reutilización.",
-          "en": "Glide downward while controlling your direction for 10 sec. 2 min cooldown."
+          "es": "Planeas hacia abajo controlando la dirección durante 10 s. 90 s de reutilización.",
+          "en": "Glide downward while controlling your direction for 10 sec. 90 sec cooldown."
         },
         "value": "low",
         "why": {
@@ -216,9 +218,10 @@
     "status": "reported",
     "sources": [
       "lfcarry-racials",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "blizzard-dev-notes"
     ],
-    "updated": "2026-10-13"
+    "updated": "2026-10-16"
   },
   {
     "id": "orc",
@@ -234,8 +237,8 @@
         "name": "Blood Fury",
         "kind": "active",
         "effect": {
-          "es": "Poder de ataque y poder con hechizos aumentados un 10 % durante 15 s. 2 min de reutilización.",
-          "en": "Attack Power and Spell Power increased by 10% for 15 sec. 2 min cooldown."
+          "es": "Poder de ataque y poder con hechizos aumentados un 10 % durante 15 s. 3 min de reutilización.",
+          "en": "Attack Power and Spell Power increased by 10% for 15 sec. 3 min cooldown."
         },
         "value": "medium",
         "why": {
@@ -248,13 +251,13 @@
         "name": "Shatter Curse",
         "kind": "active",
         "effect": {
-          "es": "Elimina las maldiciones, da inmunidad a ellas y reduce un 15 % el daño mágico recibido durante 8 s. 3 min de reutilización.",
-          "en": "Removes and grants immunity to curses, and reduces magic damage taken by 15% for 8 sec. 3 min cooldown."
+          "es": "Disipa las maldiciones y los efectos de perdición (Banes) y reduce un 5 % el daño mágico recibido. 3 min de reutilización. Ya no da inmunidad a las maldiciones.",
+          "en": "Dispels Curses and Banes and reduces magic damage taken by 5%. 3 min cooldown. No longer grants immunity to curses."
         },
-        "value": "high",
+        "value": "medium",
         "why": {
-          "es": "Muy fuerte en JcJ contra brujos, magos y chamanes.",
-          "en": "Very strong in PvP against Warlocks, Mages and Shamans."
+          "es": "Sigue siendo útil en JcJ contra brujos, pero protege mucho menos que antes.",
+          "en": "Still useful in PvP against Warlocks, but it protects much less than before."
         }
       },
       {
@@ -272,26 +275,27 @@
         }
       },
       {
-        "id": "axe-specialization",
-        "name": "Axe Specialization",
+        "id": "savage",
+        "name": "Savage",
         "kind": "passive",
         "effect": {
-          "es": "Un 1 % más de probabilidad de crítico mientras llevas un hacha.",
-          "en": "1% more critical strike chance while wielding an axe."
+          "es": "Salvajismo: un 1 % más de probabilidad de crítico con hechizos y habilidades. Sustituye a Axe Specialization.",
+          "en": "1% more critical strike chance with spells and abilities. Replaces Axe Specialization."
         },
-        "value": "none",
+        "value": "medium",
         "why": {
-          "es": "El Mago de Classic no puede llevar hachas; salvo que Forever lo cambie, no aporta nada.",
-          "en": "Classic Mages cannot use axes; unless Forever changes that, it does nothing."
+          "es": "Un poco de crítico siempre activo; antes no aportaba nada al Mago, que no puede llevar hachas.",
+          "en": "A little always-on crit; before, it did nothing for Mages, who cannot use axes."
         }
       }
     ],
     "status": "reported",
     "sources": [
       "lfcarry-racials",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "blizzard-dev-notes"
     ],
-    "updated": "2026-10-13"
+    "updated": "2026-10-16"
   },
   {
     "id": "undead",
@@ -334,13 +338,13 @@
         "name": "Touch of the Grave",
         "kind": "passive",
         "effect": {
-          "es": "Tus hechizos y ataques pueden drenar salud del objetivo, hasta un 5 % de tu salud máxima. La descripción indica un 5 % de probabilidad; algunas guías dan un 10 % para lanzadores.",
-          "en": "Your spells and attacks can drain health from the target, up to 5% of your maximum health. The tooltip says a 5% chance; some guides list 10% for casters."
+          "es": "Toque de la tumba: tus hechizos tienen un 30 % de probabilidad de drenar salud del objetivo, hasta un 5 % de tu salud máxima, con 25 s de reutilización interna. Ya no escala con las bonificaciones de Sombra ni pierde fuerza con rangos bajos.",
+          "en": "Your spells have a 30% chance to drain health from the target, up to 5% of your maximum health, with a 25 sec internal cooldown. It no longer scales with Shadow bonuses or weakens with low-rank spells."
         },
-        "value": "low",
+        "value": "medium",
         "why": {
-          "es": "Algo de curación gratuita, pero poco fiable.",
-          "en": "Some free healing, but unreliable."
+          "es": "Ahora es una curación gratuita regular, más o menos cada 25 s de combate.",
+          "en": "Now a steady bit of free healing, roughly every 25 sec of combat."
         }
       },
       {
@@ -361,9 +365,10 @@
     "status": "reported",
     "sources": [
       "lfcarry-racials",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "blizzard-dev-notes"
     ],
-    "updated": "2026-10-13"
+    "updated": "2026-10-16"
   },
   {
     "id": "troll",
@@ -420,8 +425,8 @@
         "name": "Regeneration",
         "kind": "passive",
         "effect": {
-          "es": "Regeneración de salud aumentada un 10 %, y un 10 % continúa en combate.",
-          "en": "Health regeneration increased by 10%, and 10% continues in combat."
+          "es": "Regeneración de salud aumentada un 20 %, y un 20 % continúa en combate.",
+          "en": "Health regeneration increased by 20%, and 20% continues in combat."
         },
         "value": "low",
         "why": {
@@ -433,8 +438,9 @@
     "status": "reported",
     "sources": [
       "lfcarry-racials",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "blizzard-dev-notes"
     ],
-    "updated": "2026-10-13"
+    "updated": "2026-10-16"
   }
 ]

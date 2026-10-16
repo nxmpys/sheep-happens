@@ -19,7 +19,7 @@ const frost = (points: Record<string, number>) => points;
 
 describe('talent trees', () => {
   it('has the three Forever trees in calculator order', () => {
-    expect(treeTalents(talents, 'arcane')).toHaveLength(18);
+    expect(treeTalents(talents, 'arcane')).toHaveLength(19);
     expect(treeTalents(talents, 'fire')).toHaveLength(17);
     expect(treeTalents(talents, 'frost')).toHaveLength(19);
     expect(treeTalents(talents, 'frost').slice(0, 4).map((t) => t.id)).toEqual([
@@ -36,7 +36,9 @@ describe('talent trees', () => {
     expect(at('ice-block')).toMatchObject({ row: 4, maxRank: 1 });
     expect(at('cold-snap')).toMatchObject({ row: 5, maxRank: 1 });
     expect(at('arcane-blast')).toMatchObject({ row: 3, maxRank: 1 });
-    expect(at('missile-barrage')).toMatchObject({ row: 4, maxRank: 1 });
+    // 15 October build: Arcane Wrath took the 16-point milestone and Missile Barrage moved to row 1.
+    expect(at('arcane-wrath')).toMatchObject({ row: 4, maxRank: 1 });
+    expect(at('missile-barrage')).toMatchObject({ row: 1, maxRank: 2 });
   });
 
   it('gives one point per level from 10', () => {
