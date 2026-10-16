@@ -6,6 +6,7 @@
     "school": "fire",
     "role": "damage",
     "level": 1,
+    "spell": 133,
     "summary": {
       "es": "Proyectil de Fuego a un objetivo. Tu primer hechizo de daño.",
       "en": "Single-target Fire projectile. Your first damage spell."
@@ -26,6 +27,7 @@
     "school": "frost",
     "role": "damage",
     "level": 4,
+    "spell": 116,
     "summary": {
       "es": "Daño de Escarcha a un objetivo que además lo ralentiza (efecto de Escalofrío).",
       "en": "Single-target Frost damage that also slows the target (a Chill effect)."
@@ -51,6 +53,7 @@
       "incineration",
       "heating-up"
     ],
+    "spell": 2136,
     "summary": {
       "es": "Daño de Fuego instantáneo con tiempo de reutilización. Ideal para rematar en movimiento; con Explosión de Fuego mejorada, también a más distancia.",
       "en": "Instant Fire damage on a cooldown. Ideal for finishing targets on the move; with Improved Fire Blast, from further away too."
@@ -74,6 +77,7 @@
       "improved-channeling",
       "missile-barrage"
     ],
+    "spell": 5143,
     "summary": {
       "es": "Ráfaga canalizada de misiles Arcanos contra un objetivo.",
       "en": "Channeled barrage of Arcane missiles at one target."
@@ -91,6 +95,7 @@
     "school": "arcane",
     "role": "damage",
     "level": 14,
+    "spell": 1449,
     "summary": {
       "es": "Daño Arcano a todos los enemigos a tu alrededor.",
       "en": "Arcane damage to all nearby enemies."
@@ -107,6 +112,7 @@
     "school": "fire",
     "role": "damage",
     "level": 16,
+    "spell": 2120,
     "summary": {
       "es": "Daño de Fuego en área sobre un punto del suelo, con quemadura posterior.",
       "en": "Area Fire damage on a ground location, with a lingering burn."
@@ -127,6 +133,7 @@
       "improved-blizzard",
       "permafrost"
     ],
+    "spell": 10,
     "summary": {
       "es": "Daño de Escarcha canalizado en área; con talentos, ralentiza.",
       "en": "Channeled area Frost damage; slows with talents."
@@ -148,6 +155,7 @@
       "improved-scorch",
       "incineration"
     ],
+    "spell": 2948,
     "summary": {
       "es": "Daño de Fuego de lanzamiento corto; con talentos, hace al objetivo vulnerable al Fuego.",
       "en": "Short-cast Fire damage; with talents it makes the target vulnerable to Fire."
@@ -168,6 +176,7 @@
     "changeIds": [
       "frostfire-bolt"
     ],
+    "spell": 401502,
     "summary": {
       "es": "Nuevo en Forever. Cuenta como Fuego y como Escarcha a la vez y aprovecha talentos de ambas ramas.",
       "en": "New in Forever. Counts as both Fire and Frost and benefits from talents in both trees."
@@ -185,6 +194,7 @@
     "school": "arcane",
     "role": "control",
     "level": 8,
+    "spell": 118,
     "summary": {
       "es": "Convierte a un enemigo en una oveja inofensiva durante un tiempo. Cualquier daño rompe el efecto. (Sí: de ahí el nombre de esta guía).",
       "en": "Turns an enemy into a harmless sheep for a while. Any damage breaks it. (Yes: that is where this guide's name comes from.)"
@@ -206,6 +216,7 @@
       "ice-lance",
       "shatter"
     ],
+    "spell": 122,
     "summary": {
       "es": "Congela en el sitio a los enemigos cercanos. En Forever, además, prepara Lanza de hielo.",
       "en": "Roots nearby enemies in place. In Forever it also sets up Ice Lance."
@@ -226,6 +237,7 @@
     "changeIds": [
       "improved-counterspell"
     ],
+    "spell": 2139,
     "summary": {
       "es": "Interrumpe un lanzamiento enemigo y bloquea esa escuela de magia durante un tiempo.",
       "en": "Interrupts an enemy cast and locks out that school of magic for a while."
@@ -246,6 +258,7 @@
       "frost-blast",
       "winters-chill"
     ],
+    "spell": 1326053,
     "summary": {
       "es": "Nuevo en Forever. Lanzamiento de 1,5 s: poco daño de Escarcha y una ralentización del 40 %. Sustituye al truco de la Descarga de Escarcha de rango 1 para mantener a distancia a un enemigo.",
       "en": "New in Forever. 1.5 s cast: light Frost damage and a 40% slow. It replaces the rank 1 Frostbolt trick for keeping an enemy at range."
@@ -267,6 +280,7 @@
       "cone-of-cold",
       "winters-chill"
     ],
+    "spell": 120,
     "summary": {
       "es": "Daño de Escarcha en cono frente a ti que ralentiza. En Forever dura menos, salvo en los 4 primeros objetivos alcanzados, y Escalofrío del invierno aumenta su daño.",
       "en": "Frost damage in a cone in front of you that slows. It lasts less in Forever, except on the first 4 targets hit, and Winter's Chill increases its damage."
@@ -286,6 +300,7 @@
     "school": "arcane",
     "role": "defense",
     "level": 20,
+    "spell": 1953,
     "summary": {
       "es": "Teletransporte corto hacia delante. Tu herramienta principal para escapar.",
       "en": "Short forward teleport. Your main escape tool."
@@ -305,6 +320,7 @@
     "changeIds": [
       "arcane-shielding"
     ],
+    "spell": 1463,
     "summary": {
       "es": "Absorbe daño gastando maná en lugar de vida.",
       "en": "Absorbs damage by spending mana instead of health."
@@ -321,6 +337,7 @@
     "school": "frost",
     "role": "defense",
     "level": 1,
+    "spell": 168,
     "summary": {
       "es": "Armadura que aumenta tu armadura y puede ralentizar a quien te golpea cuerpo a cuerpo. Ice Armor (nivel 30) es la versión mejorada.",
       "en": "Armor buff that raises your armor and can slow melee attackers. Ice Armor (level 30) is the upgraded version."
@@ -336,6 +353,7 @@
     "school": "mixed",
     "role": "defense",
     "level": 20,
+    "spell": 543,
     "summary": {
       "es": "Escudos que absorben daño de Fuego (nivel 20) o de Escarcha (nivel 22).",
       "en": "Shields that absorb Fire (level 20) or Frost (level 22) damage."
@@ -351,6 +369,7 @@
     "school": "arcane",
     "role": "mana",
     "level": 20,
+    "spell": 12051,
     "summary": {
       "es": "Canalización que te devuelve maná rápidamente. Tiempo de reutilización largo.",
       "en": "Channel that quickly restores your mana. Long cooldown."
@@ -371,6 +390,7 @@
       "mage-armor",
       "arcane-shielding"
     ],
+    "spell": 6117,
     "summary": {
       "es": "Armadura que mejora la regeneración de maná y las resistencias. En Forever regenera más maná.",
       "en": "Armor that improves mana regeneration and resistances. Regenerates more mana in Forever."
@@ -388,6 +408,7 @@
     "school": "arcane",
     "role": "mana",
     "level": 28,
+    "spell": 759,
     "summary": {
       "es": "Crea una gema que restaura maná al usarla.",
       "en": "Creates a gem that restores mana when used."
@@ -403,6 +424,7 @@
     "school": "arcane",
     "role": "utility",
     "level": 1,
+    "spell": 1459,
     "summary": {
       "es": "Aumenta el Intelecto de un aliado. Lánzalo a tu grupo.",
       "en": "Increases an ally's Intellect. Cast it on your group."
@@ -418,6 +440,7 @@
     "school": "arcane",
     "role": "utility",
     "level": 4,
+    "spell": 5504,
     "summary": {
       "es": "Crea agua (nivel 4) y comida (nivel 6) para ti y tu grupo: menos tiempo y oro en descansos.",
       "en": "Creates water (level 4) and food (level 6) for you and your group: less downtime and gold spent."
@@ -433,6 +456,7 @@
     "school": "arcane",
     "role": "utility",
     "level": 12,
+    "spell": 130,
     "summary": {
       "es": "Reduce la velocidad de caída y evita el daño por caída.",
       "en": "Slows your fall and prevents falling damage."
@@ -448,6 +472,7 @@
     "school": "arcane",
     "role": "utility",
     "level": 18,
+    "spell": 475,
     "summary": {
       "es": "Elimina una maldición de un aliado. Es la disipación del Mago.",
       "en": "Removes a curse from an ally. The Mage's dispel."

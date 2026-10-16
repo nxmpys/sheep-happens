@@ -21,6 +21,7 @@
     "links": "tsx scripts/check-links.ts",
     "watch": "tsx scripts/watch-sources.ts",
     "og": "tsx scripts/og-images.ts",
+    "spells:text": "tsx scripts/spell-text.ts",
     "indexnow": "tsx scripts/indexnow.ts",
     "check": "npm run validate && npm run data:diff && npm run changelog -- --check && npm run typecheck && npm run test && npm run build && npm run links"
   },

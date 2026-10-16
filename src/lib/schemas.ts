@@ -121,6 +121,8 @@ export const abilitySchema = z
     role: z.enum(ROLES),
     level: z.number().int().min(1).max(60).optional(),
     changeIds: z.array(id).default([]),
+    /** Wowhead spell id of rank 1, for the in-game tooltip text (src/data/spell-text.json). */
+    spell: z.number().int().positive().optional(),
     summary: localized,
     status: z.enum(STATUSES),
     sources: sourceIds,
@@ -128,6 +130,17 @@ export const abilitySchema = z
   })
   .strict();
 export type Ability = z.infer<typeof abilitySchema>;
+
+const spellText = z
+  .object({ name: z.string().min(1), meta: z.array(z.string().min(1)), text: z.string().min(1), lang: z.literal('en').optional() })
+  .strict();
+/** In-game tooltip text by Wowhead spell id, written by scripts/spell-text.ts. */
+export const spellTextFileSchema = z
+  .object({
+    fetched: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    spells: z.record(z.string().regex(/^\d+$/), z.object({ en: spellText, es: spellText }).strict()),
+  })
+  .strict();
 
 export const factSchema = z
   .object({ id, label: localized, value: localized, status: z.enum(STATUSES), sources: sourceIds, updated })

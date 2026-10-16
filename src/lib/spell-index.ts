@@ -3,7 +3,7 @@
  * Kept apart from spells.ts so that module stays free of data imports (and testable).
  */
 import type { Locale } from '../i18n/routes';
-import { abilities, changes, milestones, talents } from './data';
+import { abilities, changes, milestones, spellText, talents } from './data';
 import { buildSpellIndex, type SpellIndex } from './spells';
 
 const cache = new Map<Locale, SpellIndex>();
@@ -11,7 +11,9 @@ const cache = new Map<Locale, SpellIndex>();
 export function spellIndexFor(locale: Locale): SpellIndex {
   let index = cache.get(locale);
   if (!index) {
-    index = buildSpellIndex({ abilities, changes, talents, milestones }, locale);
+    index = buildSpellIndex({ abilities, changes, talents, milestones, spellText }, locale, {
+      base: import.meta.env.BASE_URL,
+    });
     cache.set(locale, index);
   }
   return index;

@@ -1,0 +1,1219 @@
+{
+  "fetched": "2026-10-16",
+  "spells": {
+    "10": {
+      "en": {
+        "name": "Blizzard",
+        "meta": [
+          "320 Mana",
+          "30 yd range",
+          "Channeled (8 sec cast)"
+        ],
+        "text": "Ice shards pelt the target area doing 196 Frost damage over 8 sec."
+      },
+      "es": {
+        "name": "Ventisca",
+        "meta": [
+          "320 Maná",
+          "Alcance de 30 m",
+          "Canalizado (Hechizo de 8 seg)"
+        ],
+        "text": "Fragmentos de hielo acribillan la zona objetivo e infligen 196 p. de daño de Escarcha durante 8 s."
+      }
+    },
+    "116": {
+      "en": {
+        "name": "Frostbolt",
+        "meta": [
+          "25 Mana",
+          "30 yd range",
+          "1.5 sec cast"
+        ],
+        "text": "Launches a bolt of frost at the enemy, causing 19 to 21 Frost damage and slowing movement speed by 40% for 5 sec."
+      },
+      "es": {
+        "name": "Descarga de Escarcha",
+        "meta": [
+          "25 Maná",
+          "Alcance de 30 m",
+          "Hechizo de 1.5 seg"
+        ],
+        "text": "Lanza al enemigo una descarga de Escarcha que inflige de 19 a 21 p. de daño de Escarcha y reduce un 40% su velocidad de movimiento durante 5 s."
+      }
+    },
+    "118": {
+      "en": {
+        "name": "Polymorph",
+        "meta": [
+          "60 Mana",
+          "30 yd range",
+          "1.5 sec cast"
+        ],
+        "text": "Transforms the enemy into a sheep, forcing it to wander around for up to 20 sec. While wandering, the sheep cannot attack or cast spells but will regenerate very quickly. Any damage will transform the target back into its normal form. Only one target can be polymorphed at a time. Only works on Beasts, Humanoids and Critters."
+      },
+      "es": {
+        "name": "Polimorfia",
+        "meta": [
+          "60 Maná",
+          "Alcance de 30 m",
+          "Hechizo de 1.5 seg"
+        ],
+        "text": "Transforma al enemigo en oveja obligándolo a merodear hasta 20 s. Mientras merodea, la oveja no puede atacar ni lanzar hechizos, pero se regenera muy rápidamente. Si recibe daño volverá a su forma normal. Solo se puede aplicar polimorfia a 1 objetivo cada vez. Solo funciona con bestias, humanoides y bichos."
+      }
+    },
+    "120": {
+      "en": {
+        "name": "Cone of Cold",
+        "meta": [
+          "210 Mana",
+          "Instant",
+          "10 sec cooldown"
+        ],
+        "text": "Targets in a cone in front of the caster take 96 to 106 Frost damage and are slowed by 40% for 6 sec. The first 4 targets hit by this cone are slowed by an additional 10% for an additional 3 sec."
+      },
+      "es": {
+        "name": "Cono de frío",
+        "meta": [
+          "210 Maná",
+          "Instante",
+          "10 seg de reutilización"
+        ],
+        "text": "Targets in a cone in front of the caster take 96 to 106 Frost damage and are slowed by 40% for 6 s. The first 4 targets hit by this cone are slowed by an additional 10% for an additional 3 sec.",
+        "lang": "en"
+      }
+    },
+    "122": {
+      "en": {
+        "name": "Frost Nova",
+        "meta": [
+          "55 Mana",
+          "Instant",
+          "25 sec cooldown"
+        ],
+        "text": "Blasts enemies near the caster for 22 to 24 Frost damage and freezes them in place for up to 8 sec. Damage caused may interrupt the effect."
+      },
+      "es": {
+        "name": "Nova de Escarcha",
+        "meta": [
+          "55 Maná",
+          "Instante",
+          "25 seg de reutilización"
+        ],
+        "text": "Golpea a los enemigos situados cerca del taumaturgo, que reciben de 22 a 24 p. de daño de Escarcha y quedan congelados durante un máximo de 8 s. Cualquier daño infligido interrumpirá su efecto."
+      }
+    },
+    "130": {
+      "en": {
+        "name": "Slow Fall",
+        "meta": [
+          "40 Mana",
+          "Instant"
+        ],
+        "text": "Slows falling speed for 30 sec."
+      },
+      "es": {
+        "name": "Caída lenta",
+        "meta": [
+          "40 Maná",
+          "Instante"
+        ],
+        "text": "Ralentiza la velocidad de caída durante 30 s."
+      }
+    },
+    "133": {
+      "en": {
+        "name": "Fireball",
+        "meta": [
+          "30 Mana",
+          "35 yd range",
+          "1.5 sec cast"
+        ],
+        "text": "Hurls a fiery ball that causes 15 to 23 Fire damage and an additional 2 Fire damage over 4 sec."
+      },
+      "es": {
+        "name": "Bola de Fuego",
+        "meta": [
+          "30 Maná",
+          "Alcance de 35 m",
+          "Hechizo de 1.5 seg"
+        ],
+        "text": "Lanza una bola abrasadora que causa 15 al 23 p. de daño de Fuego y 2 p. de daño de Fuego extra durante 4 s."
+      }
+    },
+    "168": {
+      "en": {
+        "name": "Frost Armor",
+        "meta": [
+          "60 Mana",
+          "Instant"
+        ],
+        "text": "Increases Armor by 30. If an enemy strikes the caster, they may have their movement slowed by 30% and the time between their attacks increased by 25% for 5 sec. Only one type of Armor spell can be active on the Mage at any time. Lasts 30 min."
+      },
+      "es": {
+        "name": "Armadura de Escarcha",
+        "meta": [
+          "60 Maná",
+          "Instante"
+        ],
+        "text": "Aumenta la armadura 30 p. Si un enemigo golpea al taumaturgo, su movimiento puede verse ralentizado un 30% y el tiempo entre sus ataques aumentado un 25% durante 5 s. Un mago solo puede tener un tipo de hechizo de armadura activo a la vez. Dura 30 min."
+      }
+    },
+    "475": {
+      "en": {
+        "name": "Remove Lesser Curse",
+        "meta": [
+          "10% of base mana",
+          "30 yd range",
+          "Instant"
+        ],
+        "text": "Removes 1 Curse or Bane from a friendly target."
+      },
+      "es": {
+        "name": "Deshacer maldición inferior",
+        "meta": [
+          "10% del maná base",
+          "Alcance de 30 m",
+          "Instante"
+        ],
+        "text": "Elimina 1 maldición o terror de un objetivo amistoso."
+      }
+    },
+    "543": {
+      "en": {
+        "name": "Fire Ward",
+        "meta": [
+          "85 Mana",
+          "Instant",
+          "30 sec cooldown"
+        ],
+        "text": "Absorbs 162 Fire damage. Lasts 30 sec."
+      },
+      "es": {
+        "name": "Custodia de Fuego",
+        "meta": [
+          "85 Maná",
+          "Instante",
+          "30 seg de reutilización"
+        ],
+        "text": "Absorbe 162 p. de daño de Fuego. Dura 30 s."
+      }
+    },
+    "759": {
+      "en": {
+        "name": "Conjure Mana Agate",
+        "meta": [
+          "530 Mana",
+          "3 sec cast"
+        ],
+        "text": "Conjures a mana agate that can be used to instantly restore 375 to 425 mana.\nConjured items disappear if logged out for more than 15 minutes."
+      },
+      "es": {
+        "name": "Conjurar ágata de maná",
+        "meta": [
+          "530 Maná",
+          "Hechizo de 3 seg"
+        ],
+        "text": "Conjura una ágata de maná que se puede utilizar para recuperar al instante 375 al 425 p. de maná.\nLos objetos conjurados desaparecen si el jugador permanece desconectado durante más de 15 min."
+      }
+    },
+    "1449": {
+      "en": {
+        "name": "Arcane Explosion",
+        "meta": [
+          "75 Mana",
+          "Instant"
+        ],
+        "text": "Causes an explosion of arcane magic around the caster, causing 32 to 36 Arcane damage to all targets within 10 yards."
+      },
+      "es": {
+        "name": "Deflagración Arcana",
+        "meta": [
+          "75 Maná",
+          "Instante"
+        ],
+        "text": "Provoca una explosión de magia Arcana alrededor del taumaturgo, que causa 32 al 36 p. de daño Arcano a todos los objetivos en un radio de 10 metros."
+      }
+    },
+    "1459": {
+      "en": {
+        "name": "Arcane Intellect",
+        "meta": [
+          "60 Mana",
+          "30 yd range",
+          "Instant"
+        ],
+        "text": "Increases the target's Intellect by 2 for 1 hour."
+      },
+      "es": {
+        "name": "Intelecto Arcano",
+        "meta": [
+          "60 Maná",
+          "Alcance de 30 m",
+          "Instante"
+        ],
+        "text": "Aumenta el intelecto del objetivo en 2 p. durante 1 h."
+      }
+    },
+    "1463": {
+      "en": {
+        "name": "Mana Shield",
+        "meta": [
+          "40 Mana",
+          "Instant"
+        ],
+        "text": "Absorbs 120 physical damage, draining mana instead. Drains 2 mana per damage absorbed. Lasts 1 min."
+      },
+      "es": {
+        "name": "Escudo de maná",
+        "meta": [
+          "40 Maná",
+          "Instante"
+        ],
+        "text": "Amortigua 120 p. de daño físico, drenando a cambio el maná. Drena 2 p. de maná por daño amortiguado. Dura 1 min."
+      }
+    },
+    "1953": {
+      "en": {
+        "name": "Blink",
+        "meta": [
+          "35% of base mana",
+          "Instant",
+          "15 sec cooldown"
+        ],
+        "text": "Teleports the caster 20 yards forward, unless something is in the way. Also frees the caster from Stuns and Immobilizes."
+      },
+      "es": {
+        "name": "Traslación",
+        "meta": [
+          "35% del maná base",
+          "Instante",
+          "15 seg de reutilización"
+        ],
+        "text": "Teletransporta al taumaturgo 20 m hacia delante, a menos que haya algo en su camino. También libera al taumaturgo del aturdimiento y la inmovilidad."
+      }
+    },
+    "2120": {
+      "en": {
+        "name": "Flamestrike",
+        "meta": [
+          "195 Mana",
+          "30 yd range",
+          "3 sec cast"
+        ],
+        "text": "Calls down a pillar of fire, burning all enemies within the area for 55 to 71 Fire damage and an additional 44 Fire damage over 8 sec. Only one Flamestrike can be active per Mage at a time."
+      },
+      "es": {
+        "name": "Fogonazo",
+        "meta": [
+          "195 Maná",
+          "Alcance de 30 m",
+          "Hechizo de 3 seg"
+        ],
+        "text": "Invoca una columna de fuego que quema a todos los enemigos del área, lo que inflige 55 al 71 p. de daño de Fuego y 44 p. más de daño de Fuego durante 8 s. Un mago solo puede tener un Fogonazo activo a la vez."
+      }
+    },
+    "2136": {
+      "en": {
+        "name": "Fire Blast",
+        "meta": [
+          "40 Mana",
+          "20 yd range",
+          "Instant",
+          "8 sec cooldown"
+        ],
+        "text": "Blasts the enemy for 27 to 35 Fire damage."
+      },
+      "es": {
+        "name": "Explosión de Fuego",
+        "meta": [
+          "40 Maná",
+          "Alcance de 20 m",
+          "Instante",
+          "8 seg de reutilización"
+        ],
+        "text": "Carga contra el enemigo, causando 27 al 35 p. de daño de Fuego."
+      }
+    },
+    "2139": {
+      "en": {
+        "name": "Counterspell",
+        "meta": [
+          "100 Mana",
+          "30 yd range",
+          "Instant",
+          "30 sec cooldown"
+        ],
+        "text": "Counters the enemy's spellcast, preventing any spell from that school of magic from being cast for 10 sec. Generates a high amount of threat."
+      },
+      "es": {
+        "name": "Contrahechizo",
+        "meta": [
+          "100 Maná",
+          "Alcance de 30 m",
+          "Instante",
+          "30 seg de reutilización"
+        ],
+        "text": "Contrarresta el lanzamiento de hechizos del enemigo, evitando que lance hechizos de esa escuela de magia durante 10 s. Genera una gran cantidad de amenaza."
+      }
+    },
+    "2948": {
+      "en": {
+        "name": "Scorch",
+        "meta": [
+          "50 Mana",
+          "30 yd range",
+          "1.5 sec cast"
+        ],
+        "text": "Scorch the enemy for 38 to 46 Fire damage."
+      },
+      "es": {
+        "name": "Chamuscar",
+        "meta": [
+          "50 Maná",
+          "Alcance de 30 m",
+          "Hechizo de 1.5 seg"
+        ],
+        "text": "Chamusca al enemigo causándole 38 al 46 p. de daño de Fuego."
+      }
+    },
+    "5143": {
+      "en": {
+        "name": "Arcane Missiles",
+        "meta": [
+          "85 Mana",
+          "30 yd range",
+          "Channeled (3 sec cast)"
+        ],
+        "text": "Launches Arcane Missiles at the enemy, causing 25 Arcane damage each second for 3 sec."
+      },
+      "es": {
+        "name": "Misiles Arcanos",
+        "meta": [
+          "85 Maná",
+          "Alcance de 30 m",
+          "Canalizado (Hechizo de 3 seg)"
+        ],
+        "text": "Lanza misiles Arcanos contra el enemigo y le causa 25 p. de daño Arcano cada segundo durante 3 s."
+      }
+    },
+    "5504": {
+      "en": {
+        "name": "Conjure Water",
+        "meta": [
+          "60 Mana",
+          "3 sec cast"
+        ],
+        "text": "Conjures 20 bottles of water, providing the mage and his allies with something to drink.\nConjured items disappear if logged out for more than 15 minutes."
+      },
+      "es": {
+        "name": "Conjurar agua",
+        "meta": [
+          "60 Maná",
+          "Hechizo de 3 seg"
+        ],
+        "text": "Conjura 20 botellas de agua, proporcionándole al mago y a sus aliados algo para beber.\nLos objetos conjurados desaparecen si el jugador permanece desconectado durante más de 15 min."
+      }
+    },
+    "6057": {
+      "en": {
+        "name": "Wand Specialization",
+        "meta": [],
+        "text": "Increases your damage with Wands by 13%."
+      },
+      "es": {
+        "name": "Especialización en varitas",
+        "meta": [],
+        "text": "Aumenta el daño con varitas en 13%."
+      }
+    },
+    "6117": {
+      "en": {
+        "name": "Mage Armor",
+        "meta": [
+          "270 Mana",
+          "Instant"
+        ],
+        "text": "Increases your resistance to all magic by 5 and allows 50% of your mana regeneration to continue while casting. Only one type of Armor spell can be active on the Mage at any time. Lasts 30 min."
+      },
+      "es": {
+        "name": "Armadura de mago",
+        "meta": [
+          "270 Maná",
+          "Instante"
+        ],
+        "text": "Aumenta tu resistencia a toda la magia en 5 p. y permite un 50% de regeneración de tu maná mientras lo lanzas. Un mago solo puede tener un tipo de hechizo de armadura activo a la vez. Dura 30 min."
+      }
+    },
+    "11069": {
+      "en": {
+        "name": "Improved Fireball",
+        "meta": [],
+        "text": "Reduces the casting time of your Fireball and Frostfire Bolt spells by 1 sec."
+      },
+      "es": {
+        "name": "Bola de Fuego mejorada",
+        "meta": [],
+        "text": "Reduce 1 s el tiempo de lanzamiento de tus hechizos Bola de Fuego y Descarga de Pirofrío."
+      }
+    },
+    "11071": {
+      "en": {
+        "name": "Frostbite",
+        "meta": [],
+        "text": "Gives your Chill effects a 15% chance to Freeze the target for 5 sec."
+      },
+      "es": {
+        "name": "Mordiescarcha",
+        "meta": [],
+        "text": "Da a tus efectos de escalofrío un 15% de probabilidad de congelar al objetivo durante 5 s."
+      }
+    },
+    "11078": {
+      "en": {
+        "name": "Improved Fire Blast",
+        "meta": [],
+        "text": "Reduces the cooldown of your Fire Blast spell by 2 sec and increases its range by 15 yards."
+      },
+      "es": {
+        "name": "Improved Fire Blast",
+        "meta": [],
+        "text": "Reduces the cooldown of your Fire Blast spell by 2 sec and increases its range by 15 yards.",
+        "lang": "en"
+      }
+    },
+    "11083": {
+      "en": {
+        "name": "Burning Soul",
+        "meta": [],
+        "text": "Gives your Fire spells a 70% chance to not lose casting time when you take damage and reduces the threat caused by your Fire spells by 30%."
+      },
+      "es": {
+        "name": "Alma ardiente",
+        "meta": [],
+        "text": "Da a tus hechizos de Fuego un 70% de probabilidad de no perder tiempo de lanzamiento cuando sufres daños y reduce la amenaza causada por tus hechizos de Fuego en un 30%."
+      }
+    },
+    "11094": {
+      "en": {
+        "name": "Improved Fire Ward",
+        "meta": [],
+        "text": "Causes your Fire Ward to have a 20% chance to reflect Fire spells while active."
+      },
+      "es": {
+        "name": "Custodia de Fuego mejorada",
+        "meta": [],
+        "text": "Provoca que tu Custodia de Fuego tenga un 20% de probabilidad de reflejar hechizos de Fuego mientras permanece activa."
+      }
+    },
+    "11095": {
+      "en": {
+        "name": "Improved Scorch",
+        "meta": [],
+        "text": "Your Scorch spell has a 100% chance to cause your target to be vulnerable to Fire damage. This vulnerability increases all Fire damage you deal to your target by 3% and lasts 30 sec, stacking up to 5 times."
+      },
+      "es": {
+        "name": "Chamuscar mejorado",
+        "meta": [],
+        "text": "Tu hechizo Chamuscar tiene un 100% de probabilidad de volver al objetivo vulnerable al daño de Fuego, lo que aumenta un 3% todo el daño de Fuego que infliges al objetivo durante 30 s. Se acumula hasta 5 veces."
+      }
+    },
+    "11100": {
+      "en": {
+        "name": "Flame Throwing",
+        "meta": [],
+        "text": "Increases the range of your Fire spells by 6 yards."
+      },
+      "es": {
+        "name": "Lanzallamas",
+        "meta": [],
+        "text": "Aumenta en 6 metros el alcance de tus hechizos de Fuego."
+      }
+    },
+    "11103": {
+      "en": {
+        "name": "Impact",
+        "meta": [],
+        "text": "Gives your Fire spells a 10% chance to stun the target for 2 sec."
+      },
+      "es": {
+        "name": "Impacto",
+        "meta": [],
+        "text": "Da a tus hechizos de Fuego un 10% de probabilidad de aturdir al objetivo durante 2 s."
+      }
+    },
+    "11108": {
+      "en": {
+        "name": "Improved Flamestrike",
+        "meta": [],
+        "text": "Increases the critical strike chance of your Flamestrike spell by 15%."
+      },
+      "es": {
+        "name": "Fogonazo mejorado",
+        "meta": [],
+        "text": "Aumenta en un 15% la probabilidad de golpe crítico de tus hechizos de piroataque."
+      }
+    },
+    "11113": {
+      "en": {
+        "name": "Blast Wave",
+        "meta": [
+          "215 Mana",
+          "Instant",
+          "45 sec cooldown"
+        ],
+        "text": "A wave of flame radiates outward from the caster, damaging all enemies caught within the blast for 154 to 184 Fire damage, and Dazing them for 50% reduced movement speed for 6 sec."
+      },
+      "es": {
+        "name": "Ola explosiva",
+        "meta": [
+          "215 Maná",
+          "Instante",
+          "45 seg de reutilización"
+        ],
+        "text": "El taumaturgo lanza hacia delante una ola de llamas que inflige daño a todos los enemigos alcanzados por la explosión y les inflige 154 al 184 p. de daño de Fuego, además de atontarlos y reducir su velocidad de movimiento un 50% durante 6 s."
+      }
+    },
+    "11115": {
+      "en": {
+        "name": "Critical Mass",
+        "meta": [],
+        "text": "Increases the critical strike chance of your Fire spells by 2%."
+      },
+      "es": {
+        "name": "Masa crítica",
+        "meta": [],
+        "text": "Aumenta en un 2% la probabilidad de golpe crítico de tus hechizos de Fuego."
+      }
+    },
+    "11119": {
+      "en": {
+        "name": "Ignite",
+        "meta": [],
+        "text": "Your critical strikes from Fire damage spells cause the target to burn for an additional 40% of your spell's damage over 4 sec."
+      },
+      "es": {
+        "name": "Ignición",
+        "meta": [],
+        "text": "Los golpes críticos de tus hechizos de daño de Fuego hacen que el enemigo arda y reciba un 40% del daño de tu hechizo durante 4 s."
+      }
+    },
+    "11124": {
+      "en": {
+        "name": "Fire Power",
+        "meta": [],
+        "text": "Increases the damage done by your Fire spells by 3% per your Fire effects on the target, up to a maximum increase of 12%. Effects which mix multiple schools of magic do not qualify."
+      },
+      "es": {
+        "name": "Poder de Fuego",
+        "meta": [],
+        "text": "Increases the damage done by your Fire spells by 3% per your Fire effects on the target, up to a maximum increase of 12%. Effects which mix multiple schools of magic do not qualify.",
+        "lang": "en"
+      }
+    },
+    "11129": {
+      "en": {
+        "name": "Combustion",
+        "meta": [
+          "Instant",
+          "3 min cooldown"
+        ],
+        "text": "When activated, this spell causes each of your Fire damage spell hits to increase your critical strike chance with Fire damage spells by 10%. This effect lasts until you have caused 3 non-periodic critical strikes with Fire spells."
+      },
+      "es": {
+        "name": "Combustión",
+        "meta": [
+          "Instante",
+          "3 min de reutilización"
+        ],
+        "text": "Cuando se activa, este hechizo provoca que los golpes de tu hechizo de daño de Fuego aumenten un 10% la probabilidad de golpe crítico de los hechizos de daño de Fuego. Este efecto dura hasta que asestes 3 golpes críticos no periódicos con hechizos de Fuego."
+      }
+    },
+    "11151": {
+      "en": {
+        "name": "Piercing Ice",
+        "meta": [],
+        "text": "Increases the damage done by your Frost spells by 2%."
+      },
+      "es": {
+        "name": "Hielo penetrante",
+        "meta": [],
+        "text": "Aumenta en un 2% el daño causado con tus hechizos de Escarcha."
+      }
+    },
+    "11160": {
+      "en": {
+        "name": "Frost Channeling",
+        "meta": [],
+        "text": "Reduces the mana cost of your Frost spells by 15% and reduces the threat caused by your Frost spells by 30%."
+      },
+      "es": {
+        "name": "Canalización de Escarcha",
+        "meta": [],
+        "text": "Reduce el coste de maná de Hechizo de Escarcha en un 15% y reduce la amenaza causada por tu Hechizo de Escarcha en un 30%."
+      }
+    },
+    "11165": {
+      "en": {
+        "name": "Improved Frost Nova",
+        "meta": [],
+        "text": "Reduces the cooldown of your Frost Nova spell by 4 sec."
+      },
+      "es": {
+        "name": "Nova de Escarcha mejorada",
+        "meta": [],
+        "text": "Reduce el tiempo de regeneración de tu hechizo Nova de Escarcha en 4 s."
+      }
+    },
+    "11170": {
+      "en": {
+        "name": "Shatter",
+        "meta": [],
+        "text": "Increases the critical strike chance of all your spells against Frozen targets by 1%."
+      },
+      "es": {
+        "name": "Trizar",
+        "meta": [],
+        "text": "Aumenta un 1% la probabilidad de golpe crítico de todos tus hechizos contra objetivos congelados."
+      }
+    },
+    "11175": {
+      "en": {
+        "name": "Permafrost",
+        "meta": [],
+        "text": "Increases the duration of your Chill effects by 33% and reduces the target's speed by an additional 10%."
+      },
+      "es": {
+        "name": "Escarcha permanente",
+        "meta": [],
+        "text": "Aumenta un 33% la duración de los efectos de escalofrío y reduce un 10% más la velocidad del objetivo."
+      }
+    },
+    "11185": {
+      "en": {
+        "name": "Improved Blizzard",
+        "meta": [],
+        "text": "Adds a Chill effect to your Blizzard spell. This effect lowers the target's movement speed by 40% for 1.5 sec."
+      },
+      "es": {
+        "name": "Ventisca mejorada",
+        "meta": [],
+        "text": "Añade un efecto de escalofrío al hechizo Ventisca. Este efecto disminuye un 40% la velocidad de movimiento durante 1.5 s."
+      }
+    },
+    "11189": {
+      "en": {
+        "name": "Frost Warding",
+        "meta": [],
+        "text": "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by 15%. In addition, gives your Frost Ward a 10% chance to reflect Frost spells and effects while active."
+      },
+      "es": {
+        "name": "Custodia de Escarcha",
+        "meta": [],
+        "text": "Aumenta un 15% la armadura y la resistencia otorgadas por tus hechizos Armadura de Escarcha y Armadura de hielo. Además, otorga a Resguardo contra la Escarcha un 10% de probabilidad de reflejar los hechizos y efectos de Escarcha mientras está activo."
+      }
+    },
+    "11190": {
+      "en": {
+        "name": "Improved Cone of Cold",
+        "meta": [],
+        "text": "Increases the damage dealt by your Cone of Cold spell by 15%."
+      },
+      "es": {
+        "name": "Cono de frío mejorado",
+        "meta": [],
+        "text": "Aumenta en un 15% el daño causado con tu hechizo Cono de frío."
+      }
+    },
+    "11207": {
+      "en": {
+        "name": "Ice Shards",
+        "meta": [],
+        "text": "Increases the critical strike damage bonus of your Frost spells by 100%."
+      },
+      "es": {
+        "name": "Fragmentos de hielo",
+        "meta": [],
+        "text": "Aumenta en un 100% el daño extra de golpe crítico con tus hechizos de Escarcha."
+      }
+    },
+    "11210": {
+      "en": {
+        "name": "Arcane Subtlety",
+        "meta": [],
+        "text": "Reduces your target's resistance to all your spells by 15 and reduces the threat caused by your Arcane spells by 30%."
+      },
+      "es": {
+        "name": "Sutileza Arcana",
+        "meta": [],
+        "text": "Reduce la resistencia de tu objetivo a todos tus hechizos en 15 p. y reduce la amenaza causada por tus hechizos Arcanos en un 30%."
+      }
+    },
+    "11213": {
+      "en": {
+        "name": "Arcane Concentration",
+        "meta": [],
+        "text": "Gives you a 100% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of your next damage spell by 100%."
+      },
+      "es": {
+        "name": "Concentración Arcana",
+        "meta": [],
+        "text": "Te otorga un 100% de probabilidades de entrar en el estado Lanzamiento libre después de que cualquier hechizo de daño golpee al objetivo. Lanzamiento libre reduce un 100% el coste de maná de tu siguiente hechizo de daño."
+      }
+    },
+    "11222": {
+      "en": {
+        "name": "Arcane Focus",
+        "meta": [],
+        "text": "Improves your chance to hit with Arcane spells by 2%."
+      },
+      "es": {
+        "name": "Enfoque Arcano",
+        "meta": [],
+        "text": "Aumenta un 2% tu probabilidad de golpear con hechizos Arcanos."
+      }
+    },
+    "11232": {
+      "en": {
+        "name": "Arcane Mind",
+        "meta": [],
+        "text": "Increases your Intellect by 10% and increases the critical strike damage bonus of your Arcane spells by 100%."
+      },
+      "es": {
+        "name": "Mente Arcana",
+        "meta": [],
+        "text": "Aumenta un 10% tu intelecto y un 100% el bonus de daño crítico de tus hechizos Arcanos."
+      }
+    },
+    "11237": {
+      "en": {
+        "name": "Improved Channeling",
+        "meta": [],
+        "text": "Gives you a 20% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 14% chance while casting Arcane Blast or Arcane Wrath."
+      },
+      "es": {
+        "name": "Canalización mejorada",
+        "meta": [],
+        "text": "Gives you a 20% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 14% chance while casting Arcane Blast or Arcane Wrath.",
+        "lang": "en"
+      }
+    },
+    "11242": {
+      "en": {
+        "name": "Arcane Impact",
+        "meta": [],
+        "text": "Increases the critical strike chance of your Arcane spells by 6%."
+      },
+      "es": {
+        "name": "Impacto Arcano",
+        "meta": [],
+        "text": "Aumenta un 6% la probabilidad de golpe crítico de tus hechizos Arcanos."
+      }
+    },
+    "11247": {
+      "en": {
+        "name": "Arcane Geometry",
+        "meta": [],
+        "text": "Increases the range of your Arcane spells by 6 yards."
+      },
+      "es": {
+        "name": "Geometría Arcana",
+        "meta": [],
+        "text": "Aumenta 6 m el alcance de tus hechizos Arcanos."
+      }
+    },
+    "11252": {
+      "en": {
+        "name": "Arcane Shielding",
+        "meta": [],
+        "text": "Decreases the Mana lost per point of damage taken when your Mana Shield spell is active by 33% and increases the resistances granted by your Mage Armor spell by 50%."
+      },
+      "es": {
+        "name": "Protección Arcana",
+        "meta": [],
+        "text": "Reduce un 33% la pérdida de maná por punto de daño recibido cuando tu hechizo Escudo de maná está activo y aumenta un 50% las resistencias otorgadas por tu hechizo Armadura de mago."
+      }
+    },
+    "11255": {
+      "en": {
+        "name": "Improved Counterspell",
+        "meta": [],
+        "text": "Your Counterspell also Silences the target for 4 sec."
+      },
+      "es": {
+        "name": "Contrahechizo mejorado",
+        "meta": [],
+        "text": "Tu Contrahechizo también silenciará al objetivo durante 4 s."
+      }
+    },
+    "11366": {
+      "en": {
+        "name": "Pyroblast",
+        "meta": [
+          "125 Mana",
+          "35 yd range",
+          "6 sec cast"
+        ],
+        "text": "Hurls an immense fiery boulder that causes 101 to 131 Fire damage and an additional 44 Fire damage over 12 sec."
+      },
+      "es": {
+        "name": "Piroexplosión",
+        "meta": [
+          "125 Maná",
+          "Alcance de 35 m",
+          "Hechizo de 6 seg"
+        ],
+        "text": "Lanza una inmensa roca abrasadora que causa 101 al 131 p. de daño de Fuego y 44 p. de daño de Fuego extra durante 12 s."
+      }
+    },
+    "11426": {
+      "en": {
+        "name": "Ice Barrier",
+        "meta": [
+          "305 Mana",
+          "Instant",
+          "30 sec cooldown"
+        ],
+        "text": "Instantly shields you, absorbing 448 damage. Lasts 1 min. While the shield holds, your spellcasts will not be interrupted or delayed from taking damage."
+      },
+      "es": {
+        "name": "Barrera de hielo",
+        "meta": [
+          "305 Maná",
+          "Instante",
+          "30 seg de reutilización"
+        ],
+        "text": "Te protege instantáneamente con un escudo que absorbe 448 p. de daño. Dura 1 min. Mientras el escudo esté activo, los lanzamientos de hechizos no se interrumpirán ni retrasarán al recibir daño."
+      }
+    },
+    "11958": {
+      "en": {
+        "name": "Ice Block",
+        "meta": [
+          "15 Mana",
+          "Instant",
+          "5 min cooldown"
+        ],
+        "text": "You become encased in a block of ice, protecting you from all physical attacks and spells for 10 sec, but during that time you cannot attack, move, or cast spells."
+      },
+      "es": {
+        "name": "Bloqueo de hielo",
+        "meta": [
+          "15 Maná",
+          "Instante",
+          "5 min de reutilización"
+        ],
+        "text": "Te envuelve un bloque de hielo que te protege de todos los ataques físicos y hechizos durante 10 s, pero durante ese tiempo no puedes atacar, moverte ni usar hechizos."
+      }
+    },
+    "12042": {
+      "en": {
+        "name": "Arcane Power",
+        "meta": [
+          "Instant",
+          "3 min cooldown"
+        ],
+        "text": "For the next 15 sec, your spells deal 30% more damage while costing 30% more mana to cast."
+      },
+      "es": {
+        "name": "Poder Arcano",
+        "meta": [
+          "Instante",
+          "3 min de reutilización"
+        ],
+        "text": "Durante los siguientes 15 s, tus hechizos infligen un 30% más de daño y cuestan un 30% más de maná."
+      }
+    },
+    "12043": {
+      "en": {
+        "name": "Presence of Mind",
+        "meta": [
+          "Instant",
+          "3 min cooldown"
+        ],
+        "text": "When activated, your next Mage spell with a casting time less than 10 sec becomes an instant cast spell."
+      },
+      "es": {
+        "name": "Presencia mental",
+        "meta": [
+          "Instante",
+          "3 min de reutilización"
+        ],
+        "text": "Tu próximo hechizo de mago con un tiempo de lanzamiento inferior a 10 segundos se convertirá en un hechizo de lanzamiento instantáneo."
+      }
+    },
+    "12051": {
+      "en": {
+        "name": "Evocation",
+        "meta": [
+          "Channeled (8 sec cast)",
+          "8 min cooldown"
+        ],
+        "text": "While channeling this spell, your mana regeneration is active and increased by 1500%. Lasts 8 sec."
+      },
+      "es": {
+        "name": "Evocación",
+        "meta": [
+          "Canalizado (Hechizo de 8 seg)",
+          "8 min de reutilización"
+        ],
+        "text": "Mientras canalizas este hechizo se activa tu regeneración de maná y aumenta en un 1500%. Dura 8 s."
+      }
+    },
+    "12472": {
+      "en": {
+        "name": "Cold Snap",
+        "meta": [
+          "Instant",
+          "10 min cooldown"
+        ],
+        "text": "Finishes the remaining cooldown on all your other Frost spells."
+      },
+      "es": {
+        "name": "Mordedura helada",
+        "meta": [
+          "Instante",
+          "10 min de reutilización"
+        ],
+        "text": "Termina el tiempo de reutilización restante de todos tus otros hechizos de Escarcha."
+      }
+    },
+    "15058": {
+      "en": {
+        "name": "Arcane Instability",
+        "meta": [],
+        "text": "Increases the damage done by your spells by 1% and your critical strike chance by 1%."
+      },
+      "es": {
+        "name": "Inestabilidad Arcana",
+        "meta": [],
+        "text": "Aumenta el daño infligido con tus hechizos un 1% y tu probabilidad de golpe crítico un 1%."
+      }
+    },
+    "16757": {
+      "en": {
+        "name": "Arctic Reach",
+        "meta": [],
+        "text": "Increases the range of your Frostbolt, Frost Blast, and Blizzard spells and the radius of your Frost Nova and Cone of Cold spells by 10%."
+      },
+      "es": {
+        "name": "Alcance ártico",
+        "meta": [],
+        "text": "Increases the range of your Frostbolt, Frost Blast, and Blizzard spells and the radius of your Frost Nova and Cone of Cold spells by 10%.",
+        "lang": "en"
+      }
+    },
+    "18459": {
+      "en": {
+        "name": "Incineration",
+        "meta": [],
+        "text": "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast, and Scorch spells by 6%."
+      },
+      "es": {
+        "name": "Incineración",
+        "meta": [],
+        "text": "Aumenta un 6% la probabilidad de golpe crítico de tus hechizos Explosión de Fuego, Lanza de hielo, Explosión Arcana y Chamuscar."
+      }
+    },
+    "18462": {
+      "en": {
+        "name": "Arcane Meditation",
+        "meta": [],
+        "text": "Allows 50% of your Mana regeneration to continue while casting."
+      },
+      "es": {
+        "name": "Meditación Arcana",
+        "meta": [],
+        "text": "Permite que un 50% de la regeneración de maná continúe mientras lanzas hechizos."
+      }
+    },
+    "28574": {
+      "en": {
+        "name": "Arcane Resilience",
+        "meta": [],
+        "text": "Increases your Armor by an amount equal to 50% of your Intellect."
+      },
+      "es": {
+        "name": "Recuperación Arcana",
+        "meta": [],
+        "text": "Aumenta tu armadura un valor equivalente al 50% de tu intelecto."
+      }
+    },
+    "29074": {
+      "en": {
+        "name": "Master of Elements",
+        "meta": [],
+        "text": "Your Fire and Frost critical strikes will refund 10% of their base mana cost."
+      },
+      "es": {
+        "name": "Maestro de los elementos",
+        "meta": [],
+        "text": "Tus golpes críticos de Fuego y Escarcha te devolverán un 10% de su coste de maná base."
+      }
+    },
+    "29438": {
+      "en": {
+        "name": "Elemental Precision",
+        "meta": [],
+        "text": "Improves your chance to hit with Frost and Fire spells by 6%."
+      },
+      "es": {
+        "name": "Enfoque elemental",
+        "meta": [],
+        "text": "Aumenta un 6% tu probabilidad de golpear con hechizos de Escarcha y de Fuego."
+      }
+    },
+    "29441": {
+      "en": {
+        "name": "Magic Absorption",
+        "meta": [],
+        "text": "Increases all your resistances by 2 and causes all spells you fully resist to restore 1% of your total mana. Cannot trigger more often than 1 time per sec."
+      },
+      "es": {
+        "name": "Absorción mágica",
+        "meta": [],
+        "text": "Aumenta 2 p. todas tus resistencias y provoca que todos los hechizos que resistas por completo restauren el 1% del total de tu maná. No se puede activar más de una vez por segundo."
+      }
+    },
+    "400574": {
+      "en": {
+        "name": "Arcane Blast",
+        "meta": [
+          "15% of base mana",
+          "30 yd range",
+          "2.5 sec cast"
+        ],
+        "text": "Blasts the target with energy, dealing 57 to 65 Arcane damage. Each time you cast Arcane Blast, the damage of all your other spells is increased by 10% and the mana cost of Arcane Blast is increased by 175%. Effect stacks up to 4 times and lasts 8 sec or until any other damage spell is cast."
+      },
+      "es": {
+        "name": "Explosión Arcana",
+        "meta": [
+          "15% del maná base",
+          "Alcance de 30 m",
+          "Hechizo de 1.5 seg"
+        ],
+        "text": "Golpea al objetivo con energía e inflige 34 al 38 p. de daño Arcano. Cada vez que lances el hechizo Explosión Arcana, obtienes un 15% de tu intelecto como daño con hechizos y el coste de maná de Explosión Arcana aumenta un 175%. El efecto se acumula hasta 4 veces y dura 15 s desde el momento de la aplicación inicial."
+      }
+    },
+    "400588": {
+      "en": {
+        "name": "Missile Barrage",
+        "meta": [],
+        "text": "Gives your Arcane Blast spell a 40% chance, your Arcane Missile hits a 10% chance, and your Arcane Wrath, Fireball, Frostbolt, and Frostfire Bolt spells a 20% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec."
+      },
+      "es": {
+        "name": "Tromba de misiles",
+        "meta": [],
+        "text": "Gives your Arcane Blast spell a 40% chance, your Arcane Missile hits a 10% chance, and your Arcane Wrath, Fireball, Frostbolt, and Frostfire Bolt spells a 20% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec.",
+        "lang": "en"
+      }
+    },
+    "400624": {
+      "en": {
+        "name": "Heating Up",
+        "meta": [],
+        "text": "Non-periodic critical strikes with Fireball, Frostfire Bolt, Fire Blast, and Scorch reduce the cast time of your next Pyroblast cast within 20 sec by 25%, stacking up to 3 times. Fire Blast grants an additional stack every time it deals damage."
+      },
+      "es": {
+        "name": "Calentamiento",
+        "meta": [],
+        "text": "Non-periodic critical strikes with Fireball, Frostfire Bolt, Fire Blast, and Scorch reduce the cast time of your next Pyroblast cast within 20 s by 25%, stacking up to 3 times. Fire Blast grants an additional stack every time it deals damage.",
+        "lang": "en"
+      }
+    },
+    "400647": {
+      "en": {
+        "name": "Fingers of Frost",
+        "meta": [],
+        "text": "Gives your Chill effects a 15% chance to grant you the Fingers of Frost effect, which treats your next 2 spells cast as if the target were Frozen. Lasts 15 sec."
+      },
+      "es": {
+        "name": "Dedos de Escarcha",
+        "meta": [],
+        "text": "Da a tus efectos de enfriamiento un 15% de probabilidad de otorgarte el efecto de Dedos de Escarcha, que hace que tu(s) siguiente(s) 2 hechizos trate(n) al objetivo como si estuviese congelado. Dura 15 s."
+      }
+    },
+    "401502": {
+      "en": {
+        "name": "Frostfire Bolt",
+        "meta": [
+          "205 Mana",
+          "35 yd range",
+          "3 sec cast"
+        ],
+        "text": "Launches a bolt of frostfire at the enemy, causing 103 to 118 Frostfire damage, slowing movement speed by 40% and causing an additional 27 Frostfire damage over 9 sec. This spell will be checked against the lower of the target's Frost and Fire resists and counts as both Frost and Fire damage."
+      },
+      "es": {
+        "name": "Descarga de Pirofrío",
+        "meta": [
+          "205 Maná",
+          "Alcance de 35 m",
+          "Hechizo de 3 seg"
+        ],
+        "text": "Lanza una Descarga de Pirofrío contra el enemigo, lo que inflige 103 al 118 p. de daño de Pirofrío, reduce un 40% la velocidad de movimiento e inflige 27 p. más de daño de Pirofrío durante 9 s. Este hechizo se probará contra la más baja de las resistencias de Fuego o Escarcha del objetivo y cuenta como daño de Escarcha y Fuego al mismo tiempo."
+      }
+    },
+    "1312002": {
+      "en": {
+        "name": "Ice Lance",
+        "meta": [
+          "45 Mana",
+          "30 yd range",
+          "Instant"
+        ],
+        "text": "Deals 28 to 32 Frost damage to an enemy target. Deals 300% increased damage to Frozen targets."
+      },
+      "es": {
+        "name": "Lanza de hielo",
+        "meta": [
+          "45 Maná",
+          "Alcance de 30 m",
+          "Instante"
+        ],
+        "text": "Inflige 28 al 32 p. de daño de Escarcha a un objetivo enemigo. Inflige un 200% más de daño contra objetivos congelados."
+      }
+    },
+    "1326053": {
+      "en": {
+        "name": "Frost Blast",
+        "meta": [
+          "40 Mana",
+          "30 yd range",
+          "1.5 sec cast"
+        ],
+        "text": "Quickly launch a weak blast of frost at the enemy, causing 28 to 31 Frost damage and slowing movement speed by 40% for 9 sec."
+      },
+      "es": {
+        "name": "Frost Blast",
+        "meta": [
+          "40 Maná",
+          "Alcance de 30 m",
+          "Hechizo de 1.5 seg"
+        ],
+        "text": "Quickly launch a weak blast of frost at the enemy, causing 28 al 31 Frost damage and slowing movement speed by 40% for 9 s.",
+        "lang": "en"
+      }
+    },
+    "1326079": {
+      "en": {
+        "name": "Arcane Wrath",
+        "meta": [
+          "140 Mana",
+          "30 yd range",
+          "3.5 sec cast",
+          "6 sec cooldown"
+        ],
+        "text": "Launches a projectile of pure Arcane energy at the enemy target, causing 122 to 146 Arcane damage. This spell gains additional Spell Damage equal to 5% of your maximum Mana."
+      },
+      "es": {
+        "name": "Cólera Arcana",
+        "meta": [
+          "140 Maná",
+          "Alcance de 30 m",
+          "Hechizo de 3.5 seg",
+          "6 seg de reutilización"
+        ],
+        "text": "Lanza un proyectil de pura energía Arcana al objetivo enemigo, lo que inflige 122 al 146 p. de daño Arcano. Este hechizo obtiene daño con hechizos adicional equivalente al 5% de tu maná máximo."
+      }
+    }
+  }
+}

@@ -1,10 +1,11 @@
 ---
 /**
  * One shared tooltip for every spell name on the page (.spell-ref).
- * Shows on hover, on keyboard focus and on tap; Escape closes it. The data is
+ * Shows on hover, on keyboard focus and on tap; Escape closes it. It shows the
+ * in-game text of the spell; clicking the name with a mouse, or the tooltip
+ * itself, opens the page with everything the guide says about it. The data is
  * fetched from /{lang}/spells.json the first time a tooltip is needed.
  */
-import { href } from '../../i18n/locale';
 import type { Locale } from '../../i18n/routes';
 import { t, type UiKey } from '../../i18n/ui';
 import { STATUSES } from '../../lib/schemas';
@@ -17,10 +18,17 @@ const { locale } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const config = {
   data: `${base}${locale}/spells.json`,
-  changes: href('changes', locale),
   strings: {
-    forever: locale === 'es' ? 'En Forever' : 'In Forever',
-    more: locale === 'es' ? 'Ver la ficha completa' : 'See the full card',
+    more:
+      locale === 'es'
+        ? { changes: 'Ver cambios en Forever', guide: 'Ver en la guía', talents: 'Ver el árbol de talentos' }
+        : { changes: 'See Forever changes', guide: 'See in the guide', talents: 'See the talent tree' },
+    source: locale === 'es' ? 'Texto del juego' : 'In-game text',
+    sourceTitle:
+      locale === 'es'
+        ? 'Texto del cliente de Forever, tomado de la base de datos de Wowhead. Puede cambiar durante la beta.'
+        : 'Text from the Forever client, taken from the Wowhead database. It may change during the beta.',
+    untranslated: locale === 'es' ? 'El juego aún no tiene este texto en español.' : '',
     loading: locale === 'es' ? 'Cargando…' : 'Loading…',
     error: locale === 'es' ? 'No se pudo cargar la ficha.' : 'Could not load the card.',
     status: Object.fromEntries(STATUSES.map((s) => [s, t(locale, `status.${s}` as UiKey)])),
@@ -31,29 +39,26 @@ const config = {
 <spell-tooltip data-config={JSON.stringify(config)}></spell-tooltip>
 
 <script>
-  interface TooltipChange {
-    id: string;
-    summary: string;
-    kinds: string[];
-    status: string;
-  }
+  type More = 'changes' | 'guide' | 'talents';
   interface SpellTooltipData {
     key: string;
     name: string;
     english?: string;
     school: string;
     facts: string[];
+    game?: { meta: string[]; text: string; lang?: 'en' };
     summary?: string;
-    status: string;
-    changes: TooltipChange[];
-    changeAnchor?: string;
+    status?: string;
+    href: string;
+    more: More;
   }
   interface Config {
     data: string;
-    changes: string;
     strings: {
-      forever: string;
-      more: string;
+      more: Record<More, string>;
+      source: string;
+      sourceTitle: string;
+      untranslated: string;
       loading: string;
       error: string;
       status: Record<string, string>;
@@ -68,7 +73,9 @@ const config = {
     private config!: Config;
     private tip!: HTMLDivElement;
     private data: Promise<Record<string, SpellTooltipData> | null> | undefined;
+    private loaded: Record<string, SpellTooltipData> | null = null;
     private current: HTMLElement | null = null;
+    private entry: SpellTooltipData | null = null;
     private showTimer: number | undefined;
     private hideTimer: number | undefined;
 
@@ -93,6 +100,10 @@ const config = {
       this.tip.setAttribute('role', 'tooltip');
       this.tip.hidden = true;
       document.body.append(this.tip);
+      // The whole card opens the full information, not just its link.
+      this.tip.addEventListener('click', (event) => {
+        if (this.entry && !(event.target as Element).closest('a')) window.location.assign(this.entry.href);
+      });
 
       document.addEventListener('pointerover', (event) => {
         if ((event as PointerEvent).pointerType === 'touch') return;
@@ -116,6 +127,13 @@ const config = {
       });
       document.addEventListener('click', (event) => {
         const trigger = (event.target as Element).closest<HTMLElement>('.spell-ref[data-spell]');
+        // With a mouse the tooltip is already open on hover, so a click goes to the full information.
+        // Names inside links or controls keep their own click.
+        const target = trigger ? this.loaded?.[trigger.dataset.spell!] : undefined;
+        if (trigger && target && (event as PointerEvent).pointerType === 'mouse' && !trigger.closest('a, button, summary, label')) {
+          window.location.assign(target.href);
+          return;
+        }
         if (trigger) {
           // Tap toggles (touch screens have no hover).
           if (this.current === trigger && !this.tip.hidden) this.hide();
@@ -142,6 +160,7 @@ const config = {
     private load() {
       this.data ??= fetch(this.config.data)
         .then((response) => (response.ok ? response.json() : null))
+        .then((data: Record<string, SpellTooltipData> | null) => (this.loaded = data))
         .catch(() => null);
       return this.data;
     }
@@ -179,6 +198,7 @@ const config = {
       this.tip.hidden = true;
       this.current?.removeAttribute('aria-describedby');
       this.current = null;
+      this.entry = null;
     }
 
     private el<K extends keyof HTMLElementTagNameMap>(tag: K, className: string, text?: string): HTMLElementTagNameMap[K] {
@@ -190,13 +210,14 @@ const config = {
 
     private render(entry: SpellTooltipData | null, message: string) {
       const { strings } = this.config;
+      this.entry = entry;
       this.tip.replaceChildren();
       if (!entry) {
         this.tip.className = 'spell-tip';
         this.tip.append(this.el('p', 'spell-tip__message', message));
         return;
       }
-      this.tip.className = `spell-tip school-${entry.school === 'frostfire' ? 'fire' : entry.school}`;
+      this.tip.className = `spell-tip spell-tip--link school-${entry.school === 'frostfire' ? 'fire' : entry.school}`;
       const title = this.el('p', 'spell-tip__name', entry.name);
       if (entry.english) {
         const english = this.el('span', 'spell-tip__en', entry.english);
@@ -204,24 +225,27 @@ const config = {
         title.append(' ', english);
       }
       this.tip.append(title, this.el('p', 'spell-tip__facts', entry.facts.join(' · ')));
-      if (entry.summary) this.tip.append(this.el('p', 'spell-tip__summary', entry.summary));
-      if (entry.changes.length > 0) {
-        this.tip.append(this.el('p', 'spell-tip__label', strings.forever));
-        if (entry.changes.length === 1) {
-          this.tip.append(this.el('p', 'spell-tip__change', entry.changes[0]!.summary));
-        } else {
-          const list = this.el('ul', 'spell-tip__changes');
-          for (const change of entry.changes) list.append(this.el('li', '', change.summary));
-          this.tip.append(list);
+      const footer = this.el('p', 'spell-tip__footer');
+      if (entry.game) {
+        if (entry.game.meta.length > 0) this.tip.append(this.el('p', 'spell-tip__meta', entry.game.meta.join(' · ')));
+        for (const paragraph of entry.game.text.split('\n')) {
+          const text = this.el('p', 'spell-tip__text', paragraph);
+          if (entry.game.lang) text.lang = entry.game.lang;
+          this.tip.append(text);
+        }
+        if (entry.game.lang && strings.untranslated) this.tip.append(this.el('p', 'spell-tip__note', strings.untranslated));
+        const source = this.el('span', 'spell-tip__source', strings.source);
+        source.title = strings.sourceTitle;
+        footer.append(source);
+      } else {
+        if (entry.summary) this.tip.append(this.el('p', 'spell-tip__summary', entry.summary));
+        if (entry.status) {
+          footer.append(this.el('span', `spell-tip__status spell-tip__status--${entry.status}`, strings.status[entry.status] ?? entry.status));
         }
       }
-      const footer = this.el('p', 'spell-tip__footer');
-      footer.append(this.el('span', `spell-tip__status spell-tip__status--${entry.status}`, strings.status[entry.status] ?? entry.status));
-      if (entry.changeAnchor) {
-        const link = this.el('a', 'spell-tip__more', strings.more);
-        link.href = `${this.config.changes}#${entry.changeAnchor}`;
-        footer.append(link);
-      }
+      const link = this.el('a', 'spell-tip__more', strings.more[entry.more]);
+      link.href = entry.href;
+      footer.append(link);
       this.tip.append(footer);
     }
 
@@ -250,7 +274,7 @@ const config = {
     text-decoration: underline dotted color-mix(in srgb, var(--school, var(--accent)) 70%, transparent);
     text-decoration-thickness: 1.5px;
     text-underline-offset: 0.2em;
-    cursor: help;
+    cursor: pointer;
     border-radius: 3px;
   }
   .spell-ref:hover {
@@ -286,9 +310,6 @@ const config = {
   .spell-tip > * + * {
     margin-top: var(--space-2);
   }
-  .spell-tip > .spell-tip__label + * {
-    margin-top: var(--space-1);
-  }
   .spell-tip__name {
     font-family: var(--font-display);
     font-size: var(--step-1);
@@ -305,19 +326,23 @@ const config = {
     color: var(--text-muted);
     font-weight: 600;
   }
-  .spell-tip__label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--school, var(--accent));
+  .spell-tip--link {
+    cursor: pointer;
   }
-  .spell-tip__changes {
-    margin: var(--space-1) 0 0;
-    padding-left: 1.1em;
+  .spell-tip__meta {
+    color: var(--text-muted);
   }
-  .spell-tip__changes li + li {
+  .spell-tip > .spell-tip__text + .spell-tip__text {
     margin-top: var(--space-1);
+  }
+  .spell-tip__note {
+    font-style: italic;
+    color: var(--text-subtle);
+  }
+  .spell-tip__source {
+    color: var(--text-muted);
+    font-weight: 600;
+    cursor: help;
   }
   .spell-tip__footer {
     display: flex;

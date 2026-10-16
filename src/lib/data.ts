@@ -18,6 +18,7 @@ import rawProfessions from '../data/professions.json';
 import rawRaces from '../data/races.json';
 import rawScrolls from '../data/scrolls.json';
 import rawSources from '../data/sources.json';
+import rawSpellText from '../data/spell-text.json';
 import rawTalents from '../data/talents.json';
 import rawWatchlist from '../data/watchlist.json';
 import {
@@ -34,6 +35,7 @@ import {
   raceSchema,
   scrollSchema,
   sourceSchema,
+  spellTextFileSchema,
   talentSchema,
   watchSchema,
   type Ability,
@@ -334,6 +336,13 @@ function lookup<T>(index: Map<string, T>, kind: string, key: string): T {
   if (!value) throw new Error(`Unknown ${kind} "${key}"`);
   return value;
 }
+
+/** In-game tooltip text by Wowhead spell id (scripts/spell-text.ts). */
+export const spellText = (() => {
+  const result = spellTextFileSchema.safeParse(rawSpellText);
+  if (!result.success) throw new Error(`Invalid data in src/data/spell-text.json:\n${z.prettifyError(result.error)}`);
+  return result.data.spells;
+})();
 
 export const getSource = (key: string) => lookup(sourceIndex, 'source', key);
 export const getVersion = (key: string) => lookup(versionIndex, 'game version', key);

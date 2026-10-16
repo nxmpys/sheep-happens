@@ -63,7 +63,8 @@ La hace el agente automático (sección 7) o una persona, con los mismos pasos:
    - Si conoces la build, añade `"build": "1.60.1.70338"`.
 5. **Revisa la prosa** de las páginas afectadas (`src/content/pages/{es,en}/*.mdx`). Si has revisado una página completa contra sus fuentes, actualiza su `reviewed`.
 6. **Revisa la hoja de ruta** ([content-roadmap.md](content-roadmap.md)): marca lo que se haya resuelto, añade lo nuevo que falte o haya que vigilar y actualiza su fecha de revisión. Hazlo también cada vez que cambies datos o páginas fuera de una revisión de fuentes.
-7. **Regenera** el historial del repositorio y comprueba:
+7. **Si hay una build nueva**, actualiza el texto del juego que muestran los tooltips de hechizos (pasar el ratón por un nombre en negrita): `npm run spells:text` lo descarga de la base de datos de Wowhead Forever, en inglés y en español, a `src/data/spell-text.json`. Si un talento o una habilidad nueva tiene id de hechizo (`spell` en `talents.json` o `abilities.json`), también entra. El tooltip solo muestra ese texto; nuestras notas y los cambios de Forever quedan en la ficha enlazada. Si Wowhead no tiene el texto o deja valores a 0, el script lo omite y el tooltip usa nuestra descripción.
+8. **Regenera** el historial del repositorio y comprueba:
 
    ```bash
    npm run changelog
@@ -73,8 +74,8 @@ La hace el agente automático (sección 7) o una persona, con los mismos pasos:
    npm run check
    ```
 
-8. **Publica:** commit (`content: revisión de fuentes AAAA-MM-DD`) y push a `main`. Cloudflare Pages despliega solo si `npm run check` pasa.
-9. **Cierra la issue** enlazando el commit.
+9. **Publica:** commit (`content: revisión de fuentes AAAA-MM-DD`) y push a `main`. Cloudflare Pages despliega solo si `npm run check` pasa.
+10. **Cierra la issue** enlazando el commit.
 
 ## 4. Qué garantiza que el historial no se quede atrás
 
@@ -107,7 +108,7 @@ Una tarea programada de Claude Code se ejecuta en la nube cada **miércoles y vi
 
 1. Busca las issues abiertas con la etiqueta «revisión semanal» y las que tienen la etiqueta «feedback» (comentarios de lectores, ver más abajo), de la más antigua a la más reciente.
 2. Clasifica cada novedad en: **ya incorporada**, **no afecta al Mago**, **incorporada ahora** o **necesita tu decisión**. Si el informe no basta, lee la fuente original.
-3. Para lo que hay que incorporar, sigue los pasos 2 a 7 de la sección 3 (datos, historial, texto en los dos idiomas, hoja de ruta y `npm run check`).
+3. Para lo que hay que incorporar, sigue los pasos 2 a 8 de la sección 3 (datos, historial, texto en los dos idiomas, hoja de ruta y `npm run check`).
 4. Abre **un solo PR** desde la rama `revision/AAAA-MM-DD`, con el título `content: revisión de fuentes AAAA-MM-DD`. La descripción incluye:
    - **Qué cambia en la web**: como mucho 5 puntos, en español claro. Es lo único que hace falta leer;
    - **Necesita tu decisión**, si hay algo;
