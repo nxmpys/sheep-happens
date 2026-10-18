@@ -6,7 +6,7 @@ Comparación entre lo implementado y los patrones observados en Wings Is Up (WIU
 
 | Patrón de WIU | Decisión | Implementación en Sheep Happens |
 |---|---|---|
-| Tira de iconos → ficha | **Adaptado y mejorado** | `TalentExplorer`: botones con **nombre visible** (WIU solo mostraba iconos sin `alt`), patrón de pestañas ARIA con flechas, Inicio y Fin, el talento seleccionado en la URL (`#change-ice-lance`) y todas las fichas presentes en el HTML (funciona sin JS y lo indexa el buscador) |
+| Tira de iconos → ficha | **Adaptado y mejorado** | `TalentExplorer` (sustituido en oct 2026 por la lista compacta `ChangeSummaryList`; las fichas viven solo en Cambios): botones con **nombre visible** (WIU solo mostraba iconos sin `alt`), patrón de pestañas ARIA con flechas, Inicio y Fin, el talento seleccionado en la URL (`#change-ice-lance`) y todas las fichas presentes en el HTML (funciona sin JS y lo indexa el buscador) |
 | Cadena de prioridad clicable | **Adaptado** | `Priority`: listas condicionales («si pasa X, haz Y») con su estado de verificación. Sin valores inventados |
 | Valor del talento por contexto (M+/Raid) | **Aplazado** | No hay datos de Forever para valorar talentos por actividad. Se sustituye por el estado de verificación de cada afirmación |
 | Guía rápida frente a guía completa | **Adaptado** | Explorador de cambios (consulta rápida) + recorrido de aprendizaje con «En resumen» al principio de cada página |

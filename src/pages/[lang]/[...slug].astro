@@ -24,11 +24,11 @@ const { pageId, locale } = entry.data;
 
 {
   pageId === 'home' ? (
-    <HomeLayout locale={locale} data={entry.data}>
+    <HomeLayout locale={locale} data={entry.data} body={entry.body ?? ''}>
       <Content components={mdxComponents} />
     </HomeLayout>
   ) : (
-    <GuideLayout locale={locale} pageId={pageId} data={entry.data} headings={headings}>
+    <GuideLayout locale={locale} pageId={pageId} data={entry.data} headings={headings} body={entry.body ?? ''}>
       <Content components={mdxComponents} />
     </GuideLayout>
   )

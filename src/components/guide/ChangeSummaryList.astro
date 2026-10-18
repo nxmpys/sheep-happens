@@ -1,0 +1,115 @@
+---
+/**
+ * The talents Forever changes in one tree, compact: name, type of change and
+ * one line, with a link to the full card on the changes page (filtered by the
+ * tree). The full cards live only there (ChangeExplorer). Each item keeps the
+ * id the full card used to have on this page (#change-<id>), so old links and
+ * the milestone map still land on the talent.
+ */
+import Icon from '../ui/Icon.astro';
+import SpellRef from './SpellRef.astro';
+import { getLocale, href } from '../../i18n/locale';
+import { t, type UiKey } from '../../i18n/ui';
+import { changesForTree } from '../../lib/data';
+import { localName } from '../../lib/names';
+import { firstSentence } from '../../lib/text';
+
+interface Props {
+  tree: 'arcane' | 'fire' | 'frost';
+}
+
+const { tree } = Astro.props;
+const locale = getLocale(Astro);
+const list = changesForTree(tree).filter((c) => c.category === 'talent');
+const changesUrl = href('changes', locale);
+const full = locale === 'es' ? 'Ficha completa' : 'Full card';
+---
+
+<ul class={`change-list school-${tree}`}>
+  {
+    list.map((change) => (
+      <li class="change-item" id={`change-${change.id}`}>
+        <p class="change-item__head">
+          <span class="change-item__name">
+            {change.milestone && <Icon name={tree} size={14} />}
+            <SpellRef name={change.name} label={localName(change, locale)} />
+          </span>
+          <span class="change-item__kinds">
+            {change.kinds.map((kind) => (
+              <span class:list={['chip', `kind--${kind}`]}>{t(locale, `kind.${kind}` as UiKey)}</span>
+            ))}
+            {change.milestone && <span class="chip chip--milestone">{t(locale, 'changes.milestone', { points: change.milestone })}</span>}
+          </span>
+        </p>
+        <p class="change-item__line">
+          {firstSentence(change.summary[locale])}{' '}
+          <a href={`${changesUrl}?tree=${tree}#change-${change.id}`}>
+            {full}
+            <span class="visually-hidden">: {localName(change, locale)}</span>
+          </a>
+        </p>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .change-list {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .change-item {
+    margin: 0;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--school);
+    border-radius: var(--radius-sm);
+    background: var(--surface-1);
+    scroll-margin-top: calc(var(--header-h) + var(--space-4));
+  }
+  .change-item + .change-item {
+    margin-top: 0;
+  }
+  .change-item:target {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--school) 45%, transparent);
+  }
+  .change-item p {
+    margin: 0;
+  }
+  .change-item__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1) var(--space-3);
+  }
+  .change-item__name {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    font-weight: 700;
+  }
+  .change-item__name :global(svg) {
+    color: var(--school);
+  }
+  .change-item__kinds {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+  .change-item__line {
+    margin-top: var(--space-1) !important;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .kind--new {
+    color: var(--status-verified);
+    border-color: color-mix(in srgb, var(--status-verified) 40%, transparent);
+  }
+  .chip--milestone {
+    color: var(--baseline);
+    border-color: color-mix(in srgb, var(--baseline) 45%, transparent);
+  }
+</style>

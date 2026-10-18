@@ -21,9 +21,11 @@ interface Props {
   pageId: PageId;
   data: PageFrontmatter;
   headings: MarkdownHeading[];
+  /** MDX source, to date the page by the data it shows. */
+  body?: string;
 }
 
-const { locale, pageId, data, headings } = Astro.props;
+const { locale, pageId, data, headings, body = '' } = Astro.props;
 const spec = ROUTES[pageId].spec;
 const trail = breadcrumbTrail(pageId);
 const section = NAV_LABELS[locale][trail[1] ?? pageId];
@@ -36,7 +38,7 @@ const site = Astro.site ?? new URL('https://sheephappens.app');
 const absolute = (path: string) => new URL(path, site).href;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const image = `${base}og/${locale}-${pageId}.png`;
-const modified = lastModified(pageId, data.reviewed);
+const modified = lastModified(pageId, data.reviewed, body);
 const jsonLd = [
   articleJsonLd({
     locale,
@@ -80,7 +82,7 @@ const tocHeadings = data.sources.length > 0
         }
         <h1 data-pagefind-meta="title">{data.title}</h1>
         <p class="guide__lead">{data.description}</p>
-        <PageMeta locale={locale} data={data} />
+        <PageMeta locale={locale} data={data} modified={modified} />
       </header>
 
       <div class="guide__toc-inline">

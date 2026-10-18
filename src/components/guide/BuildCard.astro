@@ -1,8 +1,10 @@
 ---
 /**
- * One build: what it is for, its talents (calculator view and Wowhead link),
- * how to play it and what to bring. The card's id is the build id, so
- * /builds/#frost-duels-30-legacy links straight to it.
+ * One build, from builds.json. The full card (talents, point order, how to play
+ * it, what to bring) lives on a single page, the build's `page`; elsewhere the
+ * summary variant shows what it is for, its points and key talents, and links
+ * to that full card. Both use the build id as their id, so /builds/#<id> and
+ * /<page>/#<id> keep working.
  */
 import Icon from '../ui/Icon.astro';
 import SpellRef from './SpellRef.astro';
@@ -22,9 +24,12 @@ interface Props {
   open?: boolean;
   /** Hide the link to the guide page (when the card is on that page). */
   hideGuideLink?: boolean;
+  /** "summary": no talents or playstyle, and a link to the full card on the build's page. */
+  variant?: 'full' | 'summary';
 }
 
-const { id, level = 'h3', open = false, hideGuideLink = false } = Astro.props;
+const { id, level = 'h3', open = false, hideGuideLink = false, variant = 'full' } = Astro.props;
+const summary = variant === 'summary';
 const locale = getLocale(Astro);
 const build = getBuild(id);
 const Heading = level;
@@ -33,12 +38,14 @@ const icon = build.spec === 'hybrid' ? 'frostfire' : build.spec;
 const school = build.spec === 'hybrid' ? 'baseline' : build.spec;
 const trees = spentTalents(build.points, talents).map((group) => group.tree);
 const version = getVersion(build.gameVersion);
-const shareUrl = href('builds', locale, build.id);
+// Shared links point at the full card.
+const fullUrl = href(build.page ?? 'builds', locale, build.id);
+const shareUrl = fullUrl;
 const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' : 'Link copied', failed: locale === 'es' ? 'No se pudo copiar. Copia la URL de la barra de direcciones.' : 'Could not copy. Copy the URL from the address bar instead.' });
 ---
 
 <article
-  class={`build school-${school}`}
+  class:list={['build', `school-${school}`, { 'build--summary': summary }]}
   id={build.id}
   data-build
   data-uses={build.uses.join(' ')}
@@ -70,7 +77,7 @@ const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' 
     </ul>
   </header>
 
-  <p class="build__summary">{build.summary[locale]}</p>
+  {!summary && <p class="build__summary">{build.summary[locale]}</p>}
 
   {
     build.keyTalents.length > 0 && (
@@ -101,11 +108,19 @@ const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' 
       <span class="visually-hidden"> ({tb(locale, 'build.wowheadHint')})</span>
     </a>
     {
-      build.page && !hideGuideLink && (
-        <a class="button" href={href(build.page, locale, build.id)}>
+      summary ? (
+        <a class="button" href={fullUrl}>
           <Icon name="book" size={16} />
-          {tb(locale, 'build.guide')}
+          {tb(locale, 'build.full')}
         </a>
+      ) : (
+        build.page &&
+        !hideGuideLink && (
+          <a class="button" href={href(build.page, locale, build.id)}>
+            <Icon name="book" size={16} />
+            {tb(locale, 'build.guide')}
+          </a>
+        )
       )
     }
     <button type="button" class="button" data-copy-link={shareUrl} data-strings={copyStrings}>
@@ -114,6 +129,7 @@ const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' 
     </button>
   </div>
 
+  {!summary && (
   <details class="build__details" open={open}>
     <summary>{tb(locale, build.order ? 'build.detailsOrder' : 'build.details')}</summary>
     <div class="build__body">
@@ -171,6 +187,7 @@ const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' 
       }
     </div>
   </details>
+  )}
 </article>
 
 <script>

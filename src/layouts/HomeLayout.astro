@@ -13,9 +13,12 @@ import type { PageFrontmatter } from '../lib/schemas';
 interface Props {
   locale: Locale;
   data: PageFrontmatter;
+  /** MDX source, to date the page by the data it shows. */
+  body?: string;
 }
 
-const { locale, data } = Astro.props;
+const { locale, data, body = '' } = Astro.props;
+const modified = lastModified('home', data.reviewed, body);
 const es = locale === 'es';
 const statusFacts = ['launch', 'beta'].map(getFact);
 const { launchAt } = currentVersion;
@@ -32,7 +35,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   description={data.description}
   image={`${base}og/${locale}-home.png`}
   jsonLd={[websiteJsonLd(locale, siteUrl, data.description)]}
-  modified={lastModified('home', data.reviewed)}
+  modified={modified}
 >
   <div class="container home" data-pagefind-body>
     <section class="hero" aria-labelledby="hero-title">
@@ -85,7 +88,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           }
         </dl>
         <p class="status-card__reviewed">
-          {t(locale, 'meta.reviewed')}: <time datetime={data.reviewed.toISOString().slice(0, 10)}>{formatDate(locale, data.reviewed)}</time>
+          {t(locale, 'meta.reviewed')}: <time datetime={modified.toISOString().slice(0, 10)}>{formatDate(locale, modified)}</time>
         </p>
         <a href={href('sources', locale)}>{t(locale, 'meta.howWeVerify')}</a>
       </aside>

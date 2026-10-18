@@ -10,6 +10,7 @@ import BuildExplorer from './guide/BuildExplorer.astro';
 import BuildPicker from './guide/BuildPicker.astro';
 import Callout from './guide/Callout.astro';
 import ChangeExplorer from './guide/ChangeExplorer.astro';
+import ChangeSummaryList from './guide/ChangeSummaryList.astro';
 import ChangelogList from './guide/ChangelogList.astro';
 import CritCalculator from './guide/CritCalculator.astro';
 import FactList from './guide/FactList.astro';
@@ -34,7 +35,6 @@ import SpecCards from './guide/SpecCards.astro';
 import SpellStrong from './guide/SpellStrong.astro';
 import StatusBadge from './guide/StatusBadge.astro';
 import StatusLegend from './guide/StatusLegend.astro';
-import TalentExplorer from './guide/TalentExplorer.astro';
 import WatchList from './guide/WatchList.astro';
 import Table from './ui/Table.astro';
 
@@ -50,6 +50,7 @@ export const mdxComponents = {
   BuildPicker,
   Callout,
   ChangeExplorer,
+  ChangeSummaryList,
   ChangelogList,
   CritCalculator,
   FactList,
@@ -73,6 +74,5 @@ export const mdxComponents = {
   SpecCards,
   Status: StatusBadge,
   StatusLegend,
-  TalentExplorer,
   WatchList,
 };

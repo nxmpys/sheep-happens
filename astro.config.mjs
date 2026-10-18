@@ -26,7 +26,8 @@ function sitemapIndex() {
       if (frontmatter.status !== 'published') continue;
       const reviewed = new Date(`${frontmatter.reviewed}T00:00:00Z`);
       index.set(pathFor(frontmatter.pageId, locale, { base }), {
-        lastmod: lastModified(frontmatter.pageId, reviewed).toISOString(),
+        // Dated like the page itself: review, changelog and the data it shows.
+        lastmod: lastModified(frontmatter.pageId, reviewed, source.split(/^---\s*$/m).slice(2).join('---')).toISOString(),
         links: [
           ...LOCALES.map((lang) => ({ lang, url: new URL(pathFor(frontmatter.pageId, lang, { base }), site).href })),
           {

@@ -114,6 +114,7 @@ const strings = {
       this.form.hidden = false;
 
       this.applyState(parseFilterState(location.search), { updateUrl: false });
+      this.revealHash();
 
       this.form.addEventListener('change', () => this.applyState(this.readForm()));
       this.form.addEventListener('input', (event) => {
@@ -131,6 +132,19 @@ const strings = {
         showToast(ok ? this.strings['copied']! : this.strings['copyFailed']!);
       });
       window.addEventListener('popstate', () => this.applyState(parseFilterState(location.search), { updateUrl: false }));
+    }
+
+    /**
+     * Links such as /changes/?tree=frost#change-ice-lance: the browser jumped to
+     * the card before the filters hid the others, so jump again. A card hidden
+     * by the filters in the link is shown by clearing them.
+     */
+    private revealHash() {
+      const id = decodeURIComponent(location.hash.slice(1));
+      const target = id ? document.getElementById(id) : null;
+      if (!target || !this.contains(target)) return;
+      if (target.closest<HTMLElement>('[data-change]')?.hidden) this.applyState(EMPTY_FILTERS);
+      target.scrollIntoView({ block: 'start' });
     }
 
     private readForm(): ChangeFilterState {
@@ -171,7 +185,7 @@ const strings = {
       this.querySelectorAll<HTMLButtonElement>('[data-reset]').forEach((b) => (b.disabled = !isFiltered(state)));
 
       if (updateUrl) {
-        const url = `${location.pathname}${serializeFilterState(state)}`;
+        const url = `${location.pathname}${serializeFilterState(state)}${location.hash}`;
         history.replaceState(null, '', url);
       }
     }

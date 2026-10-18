@@ -3,21 +3,26 @@
  * Google uses Article dates, breadcrumbs and the WebSite name in results.
  */
 import type { Locale, PageId } from '../i18n/routes';
-import { changelog } from './data';
+import { dataset } from './data';
+import { latestDate, shownDataDates } from './page-dates';
 import type { Addon } from './schemas';
 
 export const SITE_NAME = 'Sheep Happens';
 
-/** Latest date a page changed: its manual review or a changelog entry that lists it. */
-export function lastModified(pageId: PageId, reviewed: Date): Date {
-  let latest = reviewed;
-  for (const entry of changelog) {
-    if (!entry.pages.includes(pageId)) continue;
-    const date = new Date(`${entry.date}T00:00:00Z`);
-    if (date > latest) latest = date;
-  }
-  return latest;
+/**
+ * Latest date a page changed, shown as its "Reviewed" date: its manual review,
+ * a changelog entry that lists it, or the last update of any record it shows
+ * (read from the data components in its MDX `body`). `extra` adds dates of data
+ * a layout shows outside the MDX (the home status card).
+ */
+export function lastModified(pageId: PageId, reviewed: Date, body = '', extra: readonly string[] = []): Date {
+  const listed = dataset.changelog.filter((entry) => entry.pages.includes(pageId)).map((entry) => entry.date);
+  const layout = pageId === 'home' ? HOME_FACTS.flatMap((id) => dataset.facts.find((f) => f.id === id)?.updated ?? []) : [];
+  return latestDate(reviewed, [...listed, ...shownDataDates(body, dataset), ...layout, ...extra]);
 }
+
+/** Facts the home page status card shows (HomeLayout.astro). */
+export const HOME_FACTS = ['launch', 'beta'] as const;
 
 const IN_LANGUAGE: Record<Locale, string> = { es: 'es-ES', en: 'en-GB' };
 

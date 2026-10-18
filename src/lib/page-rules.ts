@@ -29,6 +29,7 @@ export const MDX_COMPONENTS = [
   'BuildPicker',
   'Callout',
   'ChangeExplorer',
+  'ChangeSummaryList',
   'ChangelogList',
   'CritCalculator',
   'FactList',
@@ -52,7 +53,6 @@ export const MDX_COMPONENTS = [
   'SpecCards',
   'Status',
   'StatusLegend',
-  'TalentExplorer',
   'WatchList',
 ] as const;
 

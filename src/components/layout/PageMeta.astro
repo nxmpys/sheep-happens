@@ -11,9 +11,11 @@ import type { PageFrontmatter } from '../../lib/schemas';
 interface Props {
   locale: Locale;
   data: PageFrontmatter;
+  /** Latest of the page review and the last update of the data it shows (lib/seo.ts). */
+  modified: Date;
 }
 
-const { locale, data } = Astro.props;
+const { locale, data, modified } = Astro.props;
 const version = getVersion(data.gameVersion);
 ---
 
@@ -23,7 +25,7 @@ const version = getVersion(data.gameVersion);
       <dt>{t(locale, 'meta.reviewed')}</dt>
       <dd>
         <Icon name="calendar" size={16} />
-        <time datetime={data.reviewed.toISOString().slice(0, 10)}>{formatDate(locale, data.reviewed)}</time>
+        <time datetime={modified.toISOString().slice(0, 10)}>{formatDate(locale, modified)}</time>
         <span class="meta__by">{t(locale, 'meta.by')} {data.reviewedBy}</span>
       </dd>
     </div>

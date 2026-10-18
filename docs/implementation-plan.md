@@ -29,7 +29,7 @@ src/
   lib/                     Lógica pura con pruebas (filtros, calculadora, rutas, fechas)
   components/
     layout/                Header, Footer, Breadcrumbs, Toc, PageMeta, PrevNext, SearchDialog…
-    guide/                 StatusBadge, Callout, Pending, ChangeExplorer, TalentExplorer,
+    guide/                 StatusBadge, Callout, Pending, ChangeExplorer, ChangeSummaryList,
                            MilestoneMap, AbilityGrid, PriorityList, CritCalculator…
   layouts/                 BaseLayout, GuideLayout
   pages/                   index.astro (redirección por idioma), [lang]/[...slug].astro, 404.astro

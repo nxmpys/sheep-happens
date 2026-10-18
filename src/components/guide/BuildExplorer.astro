@@ -1,9 +1,12 @@
 ---
 /**
- * Every build, filterable by use and tree. Uses without a build yet show a
- * "pending" card that says what will come and when, so the page already
+ * Every build as a summary card that links to its full card (leveling builds on
+ * the leveling page, the duel build on its own page). Uses without a build yet
+ * show a "pending" card that says what will come and when, so the page already
  * answers "is there a leveling build?" honestly.
- * Without JavaScript all cards are shown and the filters stay hidden.
+ * The use and tree filters only appear from FILTER_THRESHOLD builds: with fewer,
+ * they hide almost nothing. Without JavaScript all cards are shown and the
+ * filters stay hidden.
  */
 import BuildCard from './BuildCard.astro';
 import Icon from '../ui/Icon.astro';
@@ -14,6 +17,8 @@ import { BUILD_SPECS, BUILD_USES } from '../../lib/schemas';
 
 const locale = getLocale(Astro);
 const total = builds.length;
+const FILTER_THRESHOLD = 6;
+const filterable = total >= FILTER_THRESHOLD;
 const useCounts = Object.fromEntries(BUILD_USES.map((use) => [use, builds.filter((b) => b.uses.includes(use)).length]));
 const pendingUses = BUILD_USES.filter((use) => useCounts[use] === 0);
 const strings = {
@@ -23,7 +28,8 @@ const strings = {
 };
 ---
 
-<build-explorer data-strings={JSON.stringify(strings)}>
+<build-explorer data-strings={JSON.stringify(strings)} data-filterable={filterable ? '' : undefined}>
+  {filterable && (
   <form class="filters" aria-label={tb(locale, 'builds.filters')} hidden data-filters data-pagefind-ignore>
     <fieldset class="filters__group">
       <legend>{tb(locale, 'builds.use')}</legend>
@@ -75,13 +81,16 @@ const strings = {
       </button>
     </div>
   </form>
+  )}
 
+  {filterable && (
   <p class="results-count" role="status" aria-live="polite" data-count data-pagefind-ignore>
     {tb(locale, 'builds.count', { shown: total, total })}
   </p>
+  )}
 
   <div class="build-list" data-list>
-    {builds.map((build) => <BuildCard id={build.id} />)}
+    {builds.map((build) => <BuildCard id={build.id} variant={build.page && build.page !== 'builds' ? 'summary' : 'full'} />)}
     {
       pendingUses.map((use) => (
         <article class="build-pending" data-build data-pending data-uses={use} data-spec="any">
@@ -119,6 +128,7 @@ const strings = {
     private strings: Record<string, string> = {};
 
     connectedCallback() {
+      if (!this.hasAttribute('data-filterable')) return;
       this.form = this.querySelector<HTMLFormElement>('[data-filters]')!;
       this.cards = [...this.querySelectorAll<HTMLElement>('[data-build]')];
       this.strings = JSON.parse(this.dataset.strings ?? '{}');
