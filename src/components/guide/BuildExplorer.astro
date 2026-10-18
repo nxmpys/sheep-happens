@@ -1,15 +1,13 @@
 ---
 /**
  * Every build as a summary card that links to its full card (leveling builds on
- * the leveling page). Below them, BuildCoverage shows for each use which trees
- * have a build and which are still pending for level 60, so the page answers
- * "is there an Arcane raid build?" honestly.
+ * the leveling page). Only builds that make sense for the content are listed:
+ * a use may have builds in one tree only, and that is fine.
  * The use and tree filters only appear from FILTER_THRESHOLD builds: with fewer,
- * they hide almost nothing. The use filter also narrows the coverage list.
- * Without JavaScript all cards are shown and the filters stay hidden.
+ * they hide almost nothing. Without JavaScript all cards are shown and the
+ * filters stay hidden.
  */
 import BuildCard from './BuildCard.astro';
-import BuildCoverage from './BuildCoverage.astro';
 import Icon from '../ui/Icon.astro';
 import { SPEC_LABELS, USE_LABELS, tb } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
@@ -98,7 +96,6 @@ const strings = {
     <button type="button" class="button button--primary" data-reset>{tb(locale, 'builds.reset')}</button>
   </div>
 
-  <BuildCoverage />
 </build-explorer>
 
 <script>
@@ -116,14 +113,12 @@ const strings = {
   class BuildExplorer extends HTMLElement {
     private form!: HTMLFormElement;
     private cards: HTMLElement[] = [];
-    private coverage: HTMLElement[] = [];
     private strings: Record<string, string> = {};
 
     connectedCallback() {
       if (!this.hasAttribute('data-filterable')) return;
       this.form = this.querySelector<HTMLFormElement>('[data-filters]')!;
       this.cards = [...this.querySelectorAll<HTMLElement>('[data-build]')];
-      this.coverage = [...this.querySelectorAll<HTMLElement>('[data-coverage-use]')];
       this.strings = JSON.parse(this.dataset.strings ?? '{}');
       this.form.hidden = false;
 
@@ -164,8 +159,6 @@ const strings = {
         card.hidden = !visible;
         if (visible) shown++;
       }
-      // The coverage list already shows every tree, so only the use filter applies.
-      for (const row of this.coverage) row.hidden = state.use !== 'all' && row.dataset.coverageUse !== state.use;
       this.querySelector<HTMLElement>('[data-count]')!.textContent = (this.strings['count'] ?? '')
         .replace('{shown}', String(shown))
         .replace('{total}', String(this.cards.length));

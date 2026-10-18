@@ -9,7 +9,7 @@ import {
 
 describe('build filters', () => {
   it('reads valid filters from the URL and ignores unknown values', () => {
-    expect(parseBuildFilters('?use=duels&spec=frost')).toEqual({ use: 'duels', spec: 'frost' });
+    expect(parseBuildFilters('?use=raid&spec=frost')).toEqual({ use: 'raid', spec: 'frost' });
     expect(parseBuildFilters('?use=tanking&spec=shadow')).toEqual(EMPTY_BUILD_FILTERS);
   });
 
@@ -20,8 +20,8 @@ describe('build filters', () => {
   });
 
   it('matches by use and tree', () => {
-    const build = { uses: ['duels', 'pvp'], spec: 'frost' };
-    expect(matchesBuild(build, { use: 'duels', spec: 'all' })).toBe(true);
+    const build = { uses: ['raid', 'pvp'], spec: 'frost' };
+    expect(matchesBuild(build, { use: 'raid', spec: 'all' })).toBe(true);
     expect(matchesBuild(build, { use: 'leveling', spec: 'all' })).toBe(false);
     expect(matchesBuild(build, { use: 'all', spec: 'fire' })).toBe(false);
     expect(matchesBuild(build, EMPTY_BUILD_FILTERS)).toBe(true);

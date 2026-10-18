@@ -6,33 +6,13 @@ import type { Locale } from './routes';
 import type { BuildSpec, BuildUse, Racial } from '../lib/schemas';
 
 export const USE_LABELS: Record<Locale, Record<BuildUse, string>> = {
-  es: { leveling: 'Leveo', aoe: 'Farmeo en área', dungeons: 'Mazmorras', raid: 'Banda', pvp: 'JcJ', duels: 'Duelos' },
-  en: { leveling: 'Leveling', aoe: 'AoE farming', dungeons: 'Dungeons', raid: 'Raid', pvp: 'PvP', duels: 'Duels' },
+  es: { leveling: 'Leveo', aoe: 'Farmeo en área', dungeons: 'Mazmorras', raid: 'Banda', pvp: 'JcJ' },
+  en: { leveling: 'Leveling', aoe: 'AoE farming', dungeons: 'Dungeons', raid: 'Raid', pvp: 'PvP' },
 };
 
 export const SPEC_LABELS: Record<Locale, Record<BuildSpec, string>> = {
   es: { arcane: 'Arcano', fire: 'Fuego', frost: 'Escarcha', hybrid: 'Híbrida' },
   en: { arcane: 'Arcane', fire: 'Fire', frost: 'Frost', hybrid: 'Hybrid' },
-};
-
-/** When the level 60 builds for each use will come; shown while a tree is still pending. */
-export const USE_PENDING: Record<Locale, Record<BuildUse, string>> = {
-  es: {
-    leveling: 'Llegarán con el lanzamiento (4 de noviembre): una build por rama, con el orden de puntos del 10 al 60.',
-    aoe: 'Tras el lanzamiento, cuando podamos probar los recorridos de farmeo con los cambios a Cono de frío y Ventisca mejorada.',
-    dungeons: 'Cuando haya mazmorras de nivel alto que probar tras el lanzamiento.',
-    raid: 'Cuando se abran las primeras bandas de nivel 60.',
-    pvp: 'Para campos de batalla y JcJ de mundo a nivel 60, tras el lanzamiento.',
-    duels: 'Para duelos a nivel 60, tras el lanzamiento.',
-  },
-  en: {
-    leveling: 'Coming at launch (4 November): one build per tree, with the point order from 10 to 60.',
-    aoe: 'After launch, once we can test farming routes with the Cone of Cold and Improved Blizzard changes.',
-    dungeons: 'Once there are high-level dungeons to test after launch.',
-    raid: 'Once the first level 60 raids open.',
-    pvp: 'For battlegrounds and world PvP at level 60, after launch.',
-    duels: 'For level 60 duels, after launch.',
-  },
 };
 
 export const FACTION_LABELS: Record<Locale, Record<'alliance' | 'horde', string>> = {
@@ -109,11 +89,6 @@ const es = {
   'build.viable': 'Viable',
   'build.roleHint.recommended': '{use}, nivel {level}: la build recomendada',
   'build.roleHint.viable': '{use}, nivel {level}: una alternativa viable, no la recomendada',
-  'coverage.title': 'Qué ramas tienen build',
-  'coverage.intro': 'Queremos al menos una build de nivel {level} en cada rama para cada uso, para que puedas jugar con tu rama favorita: una recomendada y las demás viables.',
-  'coverage.pending': 'pendiente para el {level}',
-  'coverage.partial': 'nivel {level}',
-  'coverage.hybrid': 'Híbrida',
   'race.racials': 'Raciales',
   'race.active': 'Activa',
   'race.passive': 'Pasiva',
@@ -187,11 +162,6 @@ const en: Record<BuildUiKey, string> = {
   'build.viable': 'Viable',
   'build.roleHint.recommended': '{use}, level {level}: the recommended build',
   'build.roleHint.viable': '{use}, level {level}: a viable alternative, not the recommended one',
-  'coverage.title': 'Which trees have a build',
-  'coverage.intro': 'We want at least one level {level} build in every tree for each use, so you can play your favourite tree: one recommended, the others viable.',
-  'coverage.pending': 'pending for level {level}',
-  'coverage.partial': 'level {level}',
-  'coverage.hybrid': 'Hybrid',
   'race.racials': 'Racials',
   'race.active': 'Active',
   'race.passive': 'Passive',

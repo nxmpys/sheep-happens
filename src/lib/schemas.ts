@@ -230,7 +230,7 @@ export const talentSchema = z
 export type Talent = z.infer<typeof talentSchema>;
 
 /** What a build is for. Language-neutral ids, also used in the builds page URL. */
-export const BUILD_USES = ['leveling', 'aoe', 'dungeons', 'raid', 'pvp', 'duels'] as const;
+export const BUILD_USES = ['leveling', 'aoe', 'dungeons', 'raid', 'pvp'] as const;
 export type BuildUse = (typeof BUILD_USES)[number];
 export const BUILD_SPECS = ['arcane', 'fire', 'frost', 'hybrid'] as const;
 export type BuildSpec = (typeof BUILD_SPECS)[number];

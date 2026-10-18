@@ -4,12 +4,12 @@
     "date": "2026-10-18",
     "type": "site",
     "title": {
-      "es": "Builds: qué ramas tienen build en cada uso",
-      "en": "Builds: which trees have a build for each use"
+      "es": "Builds: recomendada o viable, y sin duelos",
+      "en": "Builds: recommended or viable, and no duels"
     },
     "body": {
-      "es": "La página de Builds muestra, para cada uso (leveo, farmeo en área, mazmorras, banda, JcJ y duelos), qué ramas tienen ya build y cuáles están pendientes para el nivel 60. Queremos al menos una build por rama en cada uso, para que puedas jugar con tu rama favorita. Cada tarjeta dice además si es la recomendada para ese uso o una alternativa viable.",
-      "en": "The Builds page shows, for each use (leveling, AoE farming, dungeons, raid, PvP and duels), which trees already have a build and which are pending for level 60. We want at least one build per tree for every use, so you can play your favourite tree. Each card also says whether it is the recommended build for that use or a viable alternative."
+      "es": "Cada tarjeta de build dice si es la recomendada para su uso o una alternativa viable. Solo publicamos builds que tienen sentido para cada contenido, y nos centramos en el leveo; el uso «Duelos» desaparece de la página de Builds.",
+      "en": "Each build card says whether it is the recommended build for its use or a viable alternative. We only publish builds that make sense for the content, and we focus on leveling; the «Duels» use is gone from the Builds page."
     },
     "pages": [
       "builds"

@@ -6,9 +6,9 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ## 2026-10-18
 
-### [Web] Builds: qué ramas tienen build en cada uso
+### [Web] Builds: recomendada o viable, y sin duelos
 
-La página de Builds muestra, para cada uso (leveo, farmeo en área, mazmorras, banda, JcJ y duelos), qué ramas tienen ya build y cuáles están pendientes para el nivel 60. Queremos al menos una build por rama en cada uso, para que puedas jugar con tu rama favorita. Cada tarjeta dice además si es la recomendada para ese uso o una alternativa viable.
+Cada tarjeta de build dice si es la recomendada para su uso o una alternativa viable. Solo publicamos builds que tienen sentido para cada contenido, y nos centramos en el leveo; el uso «Duelos» desaparece de la página de Builds.
 
 ### [Web] Menú más simple: Aprende, Builds y Elige
 

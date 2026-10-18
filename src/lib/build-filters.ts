@@ -1,7 +1,7 @@
 /**
  * Filtering rules for the builds page. Pure functions shared by the client
  * script and the unit tests. URL parameters use language-neutral ids
- * (?use=duels&spec=frost) so a filtered link works in both locales.
+ * (?use=aoe&spec=frost) so a filtered link works in both locales.
  */
 import { BUILD_SPECS, BUILD_USES, type BuildSpec, type BuildUse } from './schemas';
 

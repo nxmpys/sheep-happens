@@ -65,7 +65,7 @@ import {
   type Watch,
 } from './schemas';
 import { nameEntry, spellNames } from './spell-names';
-import { recommendedConflicts } from './build-coverage';
+import { recommendedConflicts } from './build-roles';
 import { validateBuild, validateOrder } from './talents';
 
 function parseList<T extends z.ZodType>(file: string, schema: T, raw: unknown): z.output<T>[] {
