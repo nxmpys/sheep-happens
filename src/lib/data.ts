@@ -21,6 +21,8 @@ import rawSources from '../data/sources.json';
 import rawSpellText from '../data/spell-text.json';
 import rawTalents from '../data/talents.json';
 import rawWatchlist from '../data/watchlist.json';
+import rawLevelingSpells from '../data/leveling-spells.json';
+import rawNotices from '../data/notices.json';
 import {
   abilitySchema,
   addonSchema,
@@ -29,7 +31,9 @@ import {
   changelogSchema,
   factSchema,
   gameVersionSchema,
+  levelingSpellSchema,
   milestoneSchema,
+  noticeSchema,
   professionPickSchema,
   professionSchema,
   raceSchema,
@@ -57,7 +61,7 @@ import {
   type Tree,
   type Watch,
 } from './schemas';
-import { spellNames } from './spell-names';
+import { nameEntry, spellNames } from './spell-names';
 import { validateBuild, validateOrder } from './talents';
 
 function parseList<T extends z.ZodType>(file: string, schema: T, raw: unknown): z.output<T>[] {
@@ -339,7 +343,24 @@ export const dataset: Dataset = parseDataset({
   scrolls: rawScrolls,
 });
 
-const integrity = [...checkIntegrity(dataset), ...checkNames(dataset, spellNames)];
+/** Temporary banners; see noticeSchema. */
+export const notices = parseList('notices.json', noticeSchema, rawNotices);
+
+/** Notices still worth shipping: not ended at `now` (build time). */
+export const liveNotices = (now: Date = new Date()) => notices.filter((n) => Date.parse(n.end) > now.getTime());
+
+/** Spells learned while leveling, by level (leveling page table and level view). */
+export const levelingSpells = parseList('leveling-spells.json', levelingSpellSchema, rawLevelingSpells).sort((a, b) => a.level - b.level);
+
+const integrity = [
+  ...checkIntegrity(dataset),
+  ...checkNames(dataset, spellNames),
+  ...levelingSpells.flatMap((row) =>
+    [...row.spells, ...row.ranks.map((r) => r.spell)]
+      .filter((name) => !nameEntry(name))
+      .map((name) => `leveling-spells.json: level ${row.level} names "${name}", which is not in spell-names.json`),
+  ),
+];
 if (integrity.length > 0) {
   throw new Error(`Content integrity problems:\n- ${integrity.join('\n- ')}`);
 }

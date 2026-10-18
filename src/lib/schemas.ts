@@ -537,6 +537,43 @@ export const scrollSchema = z
 export type ScrollBlock = z.infer<typeof scrollSchema>;
 export type ScrollPart = (typeof SCROLL_PARTS)[number];
 
+/**
+ * Spells a Mage learns at a level while leveling (src/data/leveling-spells.json):
+ * new spells and new ranks of spells you already have, by English name. The
+ * leveling page's table and the level view read it.
+ */
+export const levelingSpellSchema = z
+  .object({
+    level: z.number().int().min(1).max(60),
+    spells: z.array(z.string().min(1)),
+    ranks: z.array(z.object({ spell: z.string().min(1), rank: z.number().int().min(2) }).strict()).default([]),
+    use: localized,
+  })
+  .strict();
+export type LevelingSpells = z.infer<typeof levelingSpellSchema>;
+
+/**
+ * A temporary banner (src/data/notices.json), e.g. an event this week. It is
+ * left out of the build once `end` has passed, and hidden in the browser
+ * outside start–end, because the static site may not be rebuilt in time.
+ * Times carry their offset ("2026-10-19T00:00:00+02:00" is midnight in Madrid).
+ */
+export const noticeSchema = z
+  .object({
+    id,
+    start: z.iso.datetime({ offset: true }),
+    end: z.iso.datetime({ offset: true }),
+    variant: z.enum(['info', 'tip', 'warning']),
+    title: localized,
+    /** Text before the link, the link and the text after it. */
+    before: localized,
+    link: z.object({ page: z.enum(PAGE_IDS), label: localized }).strict(),
+    after: localized,
+  })
+  .strict()
+  .refine((n) => Date.parse(n.start) < Date.parse(n.end), { message: 'a notice must start before it ends' });
+export type Notice = z.infer<typeof noticeSchema>;
+
 /** Frontmatter for every MDX page (validated by the content collection). */
 export const pageFrontmatter = z
   .object({

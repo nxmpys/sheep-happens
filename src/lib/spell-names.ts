@@ -14,6 +14,15 @@ export const spellNames: SpellName[] = (() => {
 })();
 
 const byEnglish = new Map(spellNames.map((n) => [n.en, n]));
+// Paired entries ("Frost Armor / Ice Armor") also answer for each half.
+for (const entry of spellNames) {
+  const en = entry.en.split(' / ');
+  const es = entry.es?.split(' / ') ?? [];
+  if (en.length < 2) continue;
+  en.forEach((part, i) => {
+    if (!byEnglish.has(part)) byEnglish.set(part, { ...entry, en: part, ...(es[i] ? { es: es[i] } : {}) });
+  });
+}
 
 /** Verified Spanish name of an English spell or talent name, if any. */
 export function spanishName(english: string): string | undefined {
@@ -27,5 +36,5 @@ export function nameEntry(english: string): SpellName | undefined {
 
 /** English → Spanish, for code that takes the dictionary as a plain map. */
 export const SPANISH_NAMES: Readonly<Record<string, string>> = Object.fromEntries(
-  spellNames.flatMap((n) => (n.es ? [[n.en, n.es]] : [])),
+  [...byEnglish.values()].flatMap((n) => (n.es ? [[n.en, n.es]] : [])),
 );

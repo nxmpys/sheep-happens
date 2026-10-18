@@ -15,6 +15,7 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
     'talents-fire': 'Fuego',
     'talents-frost': 'Escarcha',
     leveling: 'Leveo',
+    'level-view': 'Estoy a nivel X',
     'aoe-farming': 'Farmeo AoE',
     scrolls: 'Pergaminos',
     combat: 'Combate',
@@ -37,6 +38,7 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
     'talents-fire': 'Fire',
     'talents-frost': 'Frost',
     leveling: 'Leveling',
+    'level-view': "I'm level X",
     'aoe-farming': 'AoE farming',
     scrolls: 'Scrolls',
     combat: 'Combat',
@@ -383,6 +385,13 @@ export function formatShortDate(locale: Locale, date: Date): string {
     .format(date)
     .replace(/ de /g, ' ')
     .replace(/\.(?= )/, '');
+}
+
+/** Formats an instant in UTC: "4 de noviembre de 2026, 23:00 UTC". */
+export function formatUtcTime(locale: Locale, date: Date): string {
+  const day = new Intl.DateTimeFormat(DATE_LOCALES[locale], { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(date);
+  const time = new Intl.DateTimeFormat(DATE_LOCALES[locale], { hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone: 'UTC' }).format(date);
+  return `${day}, ${time} UTC`;
 }
 
 /** Formats an instant in Spain's time zone (CET/CEST): "5 de noviembre de 2026, 00:00 CET". */

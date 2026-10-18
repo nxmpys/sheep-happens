@@ -23,6 +23,7 @@ export const PAGE_IDS = [
   'talents-fire',
   'talents-frost',
   'leveling',
+  'level-view',
   'aoe-farming',
   'scrolls',
   'combat',
@@ -83,6 +84,7 @@ export const ROUTES: Record<PageId, RouteDef> = {
     spec: 'frost',
   },
   leveling: { id: 'leveling', slug: { es: 'nivelacion', en: 'leveling' }, parent: 'home' },
+  'level-view': { id: 'level-view', slug: { es: 'nivelacion/por-nivel', en: 'leveling/by-level' }, parent: 'leveling' },
   'aoe-farming': { id: 'aoe-farming', slug: { es: 'farmeo-aoe', en: 'aoe-farming' }, parent: 'guide' },
   scrolls: { id: 'scrolls', slug: { es: 'pergaminos', en: 'scrolls' }, parent: 'guide' },
   combat: { id: 'combat', slug: { es: 'combate', en: 'combat' }, parent: 'home' },
@@ -120,7 +122,7 @@ export interface NavGroup {
  */
 export const PRIMARY_NAV: readonly NavGroup[] = [
   { key: 'start', items: ['guide', 'races', 'talents'] },
-  { key: 'builds', page: 'builds', items: ['leveling', 'builds-duel-30'] },
+  { key: 'builds', page: 'builds', items: ['leveling', 'level-view', 'builds-duel-30'] },
   {
     key: 'reference',
     items: ['changes', { cluster: 'trees', ids: ['talents-arcane', 'talents-fire', 'talents-frost'] }, 'combat', 'aoe-farming', 'scrolls', 'professions', 'gear'],

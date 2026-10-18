@@ -1,0 +1,24 @@
+[
+  {
+    "id": "duel-tournament-30",
+    "start": "2026-10-13T00:00:00+02:00",
+    "end": "2026-10-19T00:00:00+02:00",
+    "variant": "tip",
+    "title": {
+      "es": "Torneo de duelos a nivel 30 (17 y 18 de octubre)",
+      "en": "Level 30 duel tournament (17–18 October)"
+    },
+    "before": {
+      "es": "¿Vas a jugar el Forever Open o duelos en la beta? Mira la",
+      "en": "Playing the Forever Open or dueling on the beta? See the"
+    },
+    "link": {
+      "page": "builds-duel-30",
+      "label": { "es": "build de Escarcha para duelos a nivel 30", "en": "Frost build for level 30 duels" }
+    },
+    "after": {
+      "es": ", con cómo se juega, los rivales y la mejor raza de la Horda.",
+      "en": ", with how to play it, matchups and the best Horde race."
+    }
+  }
+]

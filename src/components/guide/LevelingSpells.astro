@@ -1,0 +1,52 @@
+---
+/**
+ * «Key spells from 1 to 30» table of the leveling page, from
+ * src/data/leveling-spells.json (the level view reads the same data).
+ * Spanish names come from the name dictionary; each name has its tooltip.
+ */
+import SpellRef from './SpellRef.astro';
+import { getLocale } from '../../i18n/locale';
+import { levelingSpells } from '../../lib/data';
+import { localSpellName } from '../../lib/names';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const rankLabel = (spell: string, rank: number) =>
+  es ? `${localSpellName(spell, locale)} de rango ${rank}` : `rank ${rank} ${spell}`;
+---
+
+<div class="table-wrap" tabindex="0" role="region" aria-label={es ? 'Hechizos importantes del 1 al 30' : 'Key spells from 1 to 30'}>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">{es ? 'Nivel' : 'Level'}</th>
+        <th scope="col">{es ? 'Hechizo' : 'Spell'}</th>
+        <th scope="col">{es ? 'Para qué te sirve al subir' : 'What it does for you while leveling'}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        levelingSpells.map((row) => (
+          <tr>
+            <th scope="row">{row.level}</th>
+            <td>
+              {row.spells.map((spell, i) => (
+                <>
+                  {i > 0 && ', '}
+                  <SpellRef name={spell} label={localSpellName(spell, locale)} />
+                </>
+              ))}
+              {row.ranks.map((r) => (
+                <>
+                  {'; '}
+                  <SpellRef name={r.spell} label={rankLabel(r.spell, r.rank)} />
+                </>
+              ))}
+            </td>
+            <td>{row.use[locale]}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

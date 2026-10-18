@@ -8,8 +8,8 @@
       "en": "Fix: Ice Lance deals 200% more in the leveling builds"
     },
     "body": {
-      "es": "La versión en español de la build de leveo en solitario aún decía que Lanza de hielo hace un 300 % más contra objetivos congelados, en el orden de puntos y en «Cómo se juega». Desde la build del 15 de octubre es un 200 %. El texto del juego que muestran los tooltips de Lanza de hielo y Explosión Arcana también está al día.",
-      "en": "The Spanish version of the solo leveling build still said Ice Lance deals 300% more to frozen targets, in the point order and in “How to play”. Since the 15 October build it is 200%. The in-game text shown in the Ice Lance and Arcane Blast tooltips is up to date too."
+      "es": "La versión en español de la build de leveo en solitario aún daba la bonificación de Lanza de hielo contra objetivos congelados anterior a la build del 15 de octubre, en el orden de puntos y en «Cómo se juega». Ahora dice lo correcto: un 200 % más. El texto del juego que muestran los tooltips de Lanza de hielo y Explosión Arcana también está al día.",
+      "en": "The Spanish version of the solo leveling build still gave Ice Lance’s bonus against frozen targets from before the 15 October build, in the point order and in “How to play”. It now says the right figure: 200% more. The in-game text shown in the Ice Lance and Arcane Blast tooltips is up to date too."
     },
     "pages": [
       "builds",

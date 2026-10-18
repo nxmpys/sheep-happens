@@ -8,7 +8,7 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ### [Guía] Corrección: Lanza de hielo hace un 200 % más en las builds de leveo
 
-La versión en español de la build de leveo en solitario aún decía que Lanza de hielo hace un 300 % más contra objetivos congelados, en el orden de puntos y en «Cómo se juega». Desde la build del 15 de octubre es un 200 %. El texto del juego que muestran los tooltips de Lanza de hielo y Explosión Arcana también está al día.
+La versión en español de la build de leveo en solitario aún daba la bonificación de Lanza de hielo contra objetivos congelados anterior a la build del 15 de octubre, en el orden de puntos y en «Cómo se juega». Ahora dice lo correcto: un 200 % más. El texto del juego que muestran los tooltips de Lanza de hielo y Explosión Arcana también está al día.
 
 - **Datos afectados:** build:frost-leveling-solo, Lanza de hielo
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)

@@ -19,8 +19,11 @@ import Faq from './guide/Faq.astro';
 import FaqItem from './guide/FaqItem.astro';
 import Highlight from './guide/Highlight.astro';
 import Highlights from './guide/Highlights.astro';
+import LevelView from './guide/LevelView.astro';
+import LevelingSpells from './guide/LevelingSpells.astro';
 import LevelingStatus from './guide/LevelingStatus.astro';
 import MilestoneMap from './guide/MilestoneMap.astro';
+import Notices from './guide/Notices.astro';
 import PageLink from './guide/PageLink.astro';
 import Pending from './guide/Pending.astro';
 import Priority from './guide/Priority.astro';
@@ -60,8 +63,11 @@ export const mdxComponents = {
   FaqItem,
   Highlight,
   Highlights,
+  LevelView,
+  LevelingSpells,
   LevelingStatus,
   MilestoneMap,
+  Notices,
   PageLink,
   Pending,
   Priority,

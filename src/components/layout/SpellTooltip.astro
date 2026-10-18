@@ -1,6 +1,9 @@
 ---
 /**
  * One shared tooltip for every spell name on the page (.spell-ref).
+ * Bold names and names rendered from data are triggers from the server; plain
+ * names in the guide text become triggers here, from /{lang}/spell-names.json
+ * (first mention of each spell per section, so the text stays readable).
  * Shows on hover, on keyboard focus and on tap; Escape closes it. It shows the
  * in-game text of the spell; clicking the name with a mouse, or the tooltip
  * itself, opens the page with everything the guide says about it. The data is
@@ -18,6 +21,7 @@ const { locale } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const config = {
   data: `${base}${locale}/spells.json`,
+  names: `${base}${locale}/spell-names.json`,
   strings: {
     more:
       locale === 'es'
@@ -54,6 +58,7 @@ const config = {
   }
   interface Config {
     data: string;
+    names: string;
     strings: {
       more: Record<More, string>;
       source: string;
@@ -63,6 +68,58 @@ const config = {
       error: string;
       status: Record<string, string>;
     };
+  }
+
+  /** Text that never gets an automatic trigger. */
+  const NO_LINK = 'a, strong, b, code, pre, h1, h2, h3, h4, h5, h6, summary, button, label, select, .spell-ref, .status, [data-no-spell-links]';
+
+  /**
+   * Wraps the first plain mention of each known spell, per h2 section, in
+   * the guide text (.prose) with a tooltip trigger.
+   */
+  function linkPlainNames(list: [string, string, string][]) {
+    const root = document.querySelector('.prose') ?? document.querySelector('.home__content');
+    if (!root || list.length === 0) return;
+    const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const byName = new Map(list.map(([name, key, school]) => [name, { key, school }]));
+    // Whole words only; "Shatter Curse" is a racial, not Shatter.
+    const pattern = new RegExp(`(?<![\\p{L}\\p{N}])(${list.map(([name]) => escape(name)).join('|')})(?![\\p{L}\\p{N}])(?! Curse)`, 'gu');
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT);
+    const texts: Text[] = [];
+    const sections = new Map<Text, number>();
+    let section = 0;
+    for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        if ((node as Element).tagName === 'H2') section++;
+        continue;
+      }
+      const parent = node.parentElement;
+      if (!parent || parent.closest(NO_LINK) || !node.nodeValue?.trim()) continue;
+      texts.push(node as Text);
+      sections.set(node as Text, section);
+    }
+    const seen = new Set<string>();
+    for (const text of texts) {
+      const value = text.nodeValue ?? '';
+      const parts: (string | HTMLElement)[] = [];
+      let last = 0;
+      for (const match of value.matchAll(pattern)) {
+        const info = byName.get(match[0]);
+        const id = `${sections.get(text)}:${info?.key}`;
+        if (!info || seen.has(id)) continue;
+        seen.add(id);
+        parts.push(value.slice(last, match.index));
+        const span = document.createElement('span');
+        span.className = `spell-ref school-${info.school}`;
+        span.dataset.spell = info.key;
+        span.textContent = match[0];
+        parts.push(span);
+        last = match.index! + match[0].length;
+      }
+      if (parts.length === 0) continue;
+      parts.push(value.slice(last));
+      text.replaceWith(...parts);
+    }
   }
 
   const SHOW_DELAY = 120;
@@ -79,10 +136,16 @@ const config = {
     private showTimer: number | undefined;
     private hideTimer: number | undefined;
 
-    connectedCallback() {
+    async connectedCallback() {
+      this.config = JSON.parse(this.dataset.config ?? '{}');
+      if (document.querySelector('.prose, .home__content')) {
+        try {
+          const response = await fetch(this.config.names);
+          if (response.ok) linkPlainNames(await response.json());
+        } catch {}
+      }
       const triggers = [...document.querySelectorAll<HTMLElement>('.spell-ref[data-spell]')];
       if (triggers.length === 0) return;
-      this.config = JSON.parse(this.dataset.config ?? '{}');
 
       // Keyboard users reach each spell once: the first mention on the page.
       const seen = new Set<string>();
@@ -237,11 +300,11 @@ const config = {
         const source = this.el('span', 'spell-tip__source', strings.source);
         source.title = strings.sourceTitle;
         footer.append(source);
-      } else {
-        if (entry.summary) this.tip.append(this.el('p', 'spell-tip__summary', entry.summary));
-        if (entry.status) {
-          footer.append(this.el('span', `spell-tip__status spell-tip__status--${entry.status}`, strings.status[entry.status] ?? entry.status));
-        }
+      } else if (entry.summary) {
+        this.tip.append(this.el('p', 'spell-tip__summary', entry.summary));
+      }
+      if (entry.status) {
+        footer.append(this.el('span', `spell-tip__status spell-tip__status--${entry.status}`, strings.status[entry.status] ?? entry.status));
       }
       const link = this.el('a', 'spell-tip__more', strings.more[entry.more]);
       link.href = entry.href;

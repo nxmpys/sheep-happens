@@ -1,0 +1,14 @@
+[
+  { "level": 1, "spells": ["Fireball", "Frost Armor", "Arcane Intellect"], "ranks": [], "use": { "es": "Tu primer daño y tus dos bufos permanentes", "en": "Your first damage and your two permanent buffs" } },
+  { "level": 4, "spells": ["Frostbolt", "Conjure Water"], "ranks": [], "use": { "es": "Tu hechizo principal hasta el 60; agua gratis", "en": "Your main spell up to 60; free water" } },
+  { "level": 6, "spells": ["Fire Blast", "Conjure Food"], "ranks": [], "use": { "es": "Remate instantáneo; comida gratis", "en": "Instant finisher; free food" } },
+  { "level": 8, "spells": ["Polymorph", "Arcane Missiles"], "ranks": [], "use": { "es": "Controlar a un segundo enemigo", "en": "Control a second enemy" } },
+  { "level": 10, "spells": ["Frost Nova"], "ranks": [], "use": { "es": "Congelar a quien llega a tu lado; primer punto de talento", "en": "Freeze whoever reaches you; first talent point" } },
+  { "level": 14, "spells": ["Arcane Explosion"], "ranks": [], "use": { "es": "Primer hechizo de área, caro en maná", "en": "First AoE spell, expensive in mana" } },
+  { "level": 16, "spells": ["Flamestrike"], "ranks": [], "use": { "es": "Área sobre un punto del suelo, útil en grupo", "en": "Ground-targeted AoE, useful in groups" } },
+  { "level": 20, "spells": ["Blink", "Blizzard", "Evocation", "Mana Shield", "Fire Ward"], "ranks": [], "use": { "es": "Escapar, área, maná y defensa; Lanza de hielo como talento", "en": "Escape, AoE, mana and defense; Ice Lance as a talent" } },
+  { "level": 24, "spells": ["Counterspell", "Frost Blast"], "ranks": [], "use": { "es": "Cortar a los lanzadores; ralentizar barato", "en": "Stop casters; cheap slow" } },
+  { "level": 26, "spells": ["Cone of Cold"], "ranks": [{ "spell": "Frostbolt", "rank": 5 }], "use": { "es": "Área y ralentización frente a ti", "en": "AoE and a slow in front of you" } },
+  { "level": 28, "spells": ["Conjure Mana Agate"], "ranks": [{ "spell": "Blizzard", "rank": 2 }], "use": { "es": "Maná en combate; más daño en área", "en": "Mana in combat; more AoE damage" } },
+  { "level": 30, "spells": ["Ice Armor"], "ranks": [], "use": { "es": "Armadura mejorada", "en": "Better armor" } }
+]

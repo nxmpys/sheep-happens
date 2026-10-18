@@ -18,13 +18,26 @@ interface Question {
   status?: Status;
 }
 
+// In the order a new player needs them: how to start, race, tree, leveling
+// (and the level view), what to press, builds, changes, professions, gear.
 const questions: Question[] = [
   {
-    page: 'builds',
-    icon: 'layers',
-    q: { es: '¿Qué build uso?', en: 'Which build should I use?' },
-    a: { es: 'Builds por uso y rama, con calculadora y explicación. Ya hay de leveo del 1 al 30 y de duelos a nivel 30.', en: 'Builds by use and tree, with a calculator link and an explanation. Leveling builds from 1 to 30 and level 30 duel builds are up.' },
-    status: 'analysis',
+    page: 'guide',
+    icon: 'book',
+    q: { es: '¿Cómo empiezo a jugar Mago?', en: 'How do I start playing Mage?' },
+    a: { es: 'Fundamentos, herramientas por función y qué cambia respecto a Classic.', en: 'Basics, tools by purpose, and what differs from Classic.' },
+  },
+  {
+    page: 'races',
+    icon: 'users',
+    q: { es: '¿Qué raza elijo?', en: 'Which race should I pick?' },
+    a: { es: 'La mejor raza según juegues leveo, mazmorras o JcJ, y por qué.', en: 'The best race for leveling, dungeons or PvP, and why.' },
+  },
+  {
+    page: 'talents',
+    icon: 'arcane',
+    q: { es: '¿Qué rama elijo?', en: 'Which tree should I pick?' },
+    a: { es: 'Identidad de Arcano, Fuego y Escarcha, hitos y talentos nuevos.', en: 'Arcane, Fire and Frost identity, milestones and new talents.' },
   },
   {
     page: 'leveling',
@@ -34,23 +47,25 @@ const questions: Question[] = [
     status: 'analysis',
   },
   {
-    page: 'races',
-    icon: 'users',
-    q: { es: '¿Qué raza elijo?', en: 'Which race should I pick?' },
-    a: { es: 'La mejor raza según juegues leveo, mazmorras o JcJ, y por qué.', en: 'The best race for leveling, dungeons or PvP, and why.' },
-  },
-  {
-    page: 'professions',
-    icon: 'hammer',
-    q: { es: '¿Qué profesiones elijo?', en: 'Which professions should I pick?' },
-    a: { es: 'Las dos mejores según tu objetivo (PvE, JcJ, leveo u oro) y qué aporta cada una al Mago.', en: 'The best two for your goal (PvE, PvP, leveling or gold) and what each one gives a Mage.' },
+    page: 'level-view',
+    icon: 'level',
+    q: { es: 'Estoy a nivel X: ¿qué toca ahora?', en: "I'm level X: what now?" },
+    a: { es: 'Tu nivel y tu build de leveo: hechizos que aprendes, el punto de talento que toca y lo que llega después.', en: 'Your level and your leveling build: spells you learn, the talent point that comes and what is next.' },
     status: 'analysis',
   },
   {
-    page: 'guide',
-    icon: 'book',
-    q: { es: '¿Cómo empiezo a jugar Mago?', en: 'How do I start playing Mage?' },
-    a: { es: 'Fundamentos, herramientas por función y qué cambia respecto a Classic.', en: 'Basics, tools by purpose, and what differs from Classic.' },
+    page: 'combat',
+    icon: 'fire',
+    q: { es: '¿Qué pulso y cuándo?', en: 'What do I press, and when?' },
+    a: { es: 'Prioridades condicionales por rama, basadas en mecánicas oficiales.', en: 'Conditional priorities per tree, based on official mechanics.' },
+    status: 'analysis',
+  },
+  {
+    page: 'builds',
+    icon: 'layers',
+    q: { es: '¿Qué build uso?', en: 'Which build should I use?' },
+    a: { es: 'Builds por uso y rama, con calculadora y explicación. Ya hay de leveo del 1 al 30 y de duelos a nivel 30.', en: 'Builds by use and tree, with a calculator link and an explanation. Leveling builds from 1 to 30 and level 30 duel builds are up.' },
+    status: 'analysis',
   },
   {
     page: 'changes',
@@ -59,16 +74,10 @@ const questions: Question[] = [
     a: { es: 'Más de 40 cambios oficiales, filtrables por rama y tipo.', en: '40+ official changes, filterable by tree and type.' },
   },
   {
-    page: 'talents',
-    icon: 'arcane',
-    q: { es: '¿Qué rama elijo?', en: 'Which tree should I pick?' },
-    a: { es: 'Identidad de Arcano, Fuego y Escarcha, hitos y talentos nuevos.', en: 'Arcane, Fire and Frost identity, milestones and new talents.' },
-  },
-  {
-    page: 'combat',
-    icon: 'fire',
-    q: { es: '¿Qué pulso y cuándo?', en: 'What do I press, and when?' },
-    a: { es: 'Prioridades condicionales por rama, basadas en mecánicas oficiales.', en: 'Conditional priorities per tree, based on official mechanics.' },
+    page: 'professions',
+    icon: 'hammer',
+    q: { es: '¿Qué profesiones elijo?', en: 'Which professions should I pick?' },
+    a: { es: 'Las dos mejores según tu objetivo (PvE, JcJ, leveo u oro) y qué aporta cada una al Mago.', en: 'The best two for your goal (PvE, PvP, leveling or gold) and what each one gives a Mage.' },
     status: 'analysis',
   },
   {

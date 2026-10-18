@@ -1,0 +1,48 @@
+---
+/**
+ * Temporary banners from src/data/notices.json. Ended notices are left out of
+ * the build; the script also hides any notice outside its start–end window,
+ * since the static site may not be rebuilt right when one expires. Without
+ * JavaScript a notice shows until the next build after it ends.
+ */
+import Callout from './Callout.astro';
+import { getLocale, href } from '../../i18n/locale';
+import { liveNotices } from '../../lib/data';
+
+const locale = getLocale(Astro);
+const list = liveNotices();
+---
+
+{
+  list.map((notice) => (
+    <div class="notice" data-notice data-start={notice.start} data-end={notice.end}>
+      <Callout variant={notice.variant} title={notice.title[locale]}>
+        <p>
+          {notice.before[locale]} <a href={href(notice.link.page, locale)}>{notice.link.label[locale]}</a>
+          {notice.after[locale]}
+        </p>
+      </Callout>
+    </div>
+  ))
+}
+
+{
+  list.length > 0 && (
+    <script is:inline>
+      (function () {
+        var now = Date.now();
+        document.querySelectorAll('[data-notice]').forEach(function (el) {
+          var start = Date.parse(el.getAttribute('data-start'));
+          var end = Date.parse(el.getAttribute('data-end'));
+          if (now < start || now >= end) el.hidden = true;
+        });
+      })();
+    </script>
+  )
+}
+
+<style>
+  .notice[hidden] {
+    display: none;
+  }
+</style>

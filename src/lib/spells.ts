@@ -30,7 +30,7 @@ export interface SpellTooltip {
   game?: Omit<SpellText, 'name'>;
   /** Our own description, only when there is no game text. */
   summary?: string;
-  /** Verification status of `summary`. */
+  /** Verification status of what the guide says about it (our description or its Forever change). */
   status?: Status;
   /** Page with the full information, and what kind of page it is. */
   href: string;
@@ -104,7 +104,7 @@ export function buildSpellIndex(
     const text = spell ? data.spellText?.[spell]?.[locale] : undefined;
     if (!text) return { summary, status };
     const { name: _name, ...game } = text;
-    return { game };
+    return { game, status };
   };
   // Milestone slots confirmed for a talent, by English name (milestones.json).
   const milestonePoints = new Map(
@@ -202,4 +202,30 @@ export function buildSpellIndex(
 export function findSpell(index: SpellIndex, text: string): SpellTooltip | undefined {
   const key = index.names.get(normalize(text));
   return key ? index.entries[key] : undefined;
+}
+
+/** Visible names that must not become tooltips on their own (Blizzard the company, generic words). */
+const AMBIGUOUS_NAMES = new Set(['Blizzard', 'Portal', 'Teleport', 'Teletransporte', 'Wands', 'Varitas', 'Impact', 'Impacto']);
+
+/**
+ * Names the page script turns into tooltip triggers when they appear as plain
+ * text: the visible spell and talent names of the locale (Spanish and English
+ * on Spanish pages), longest first so "Improved Frostbolt" wins over
+ * "Frostbolt". Each entry is [name, tooltip key, school class].
+ */
+export function autoLinkNames(
+  index: SpellIndex,
+  records: readonly { name: string }[],
+  locale: Locale,
+  names: Readonly<Record<string, string>> = {},
+): [string, string, string][] {
+  const english = records.map((r) => r.name);
+  const visible = locale === 'es' ? [...english.map((n) => names[n] ?? n), ...english] : english;
+  const out = new Map<string, [string, string, string]>();
+  for (const name of visible.flatMap((n) => n.split(' / ')).map((n) => n.replace(/\s*\(.*\)$/, '').trim())) {
+    if (name.length <= 3 || AMBIGUOUS_NAMES.has(name) || out.has(name)) continue;
+    const spell = findSpell(index, name);
+    if (spell) out.set(name, [name, spell.key, spell.school === 'frostfire' ? 'fire' : spell.school]);
+  }
+  return [...out.values()].sort((a, b) => b[0].length - a[0].length);
 }
