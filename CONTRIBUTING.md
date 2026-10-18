@@ -96,8 +96,16 @@ Las raciales viven en `src/data/races.json`: efecto (`effect`), valor para el Ma
 ## La fecha de revisión (`reviewed`)
 
 - Cámbiala **solo** cuando hayas revisado el contenido de la página contra sus fuentes. Editar una errata no es una revisión.
-- No se rellena automáticamente a propósito: la cabecera de la página le dice al lector cuándo se comprobó por última vez.
+- No se rellena automáticamente a propósito. La fecha «Revisado» que ve el lector es la más reciente entre `reviewed`, las entradas del historial que listan la página y la última actualización (`updated`) de cualquier dato que la página muestra con sus componentes (`src/lib/page-dates.ts`). Así una página nunca dice ser más antigua que las fichas que enseña.
 - `reviewedBy` es quien hizo esa revisión.
+
+## Avisos temporales
+
+Los banners de eventos (como el torneo de duelos) van en `src/data/notices.json` con `start` y `end` con su zona horaria (`2026-10-19T00:00:00+02:00` es medianoche en Madrid). El build deja fuera los avisos caducados y el navegador oculta los que están fuera de su ventana, porque la web estática puede no recompilarse a tiempo. En la página, `<Notices />`.
+
+## Menú y orden de lectura
+
+El menú (`PRIMARY_NAV` en `src/i18n/routes.ts`) es también el orden de «Anterior / Siguiente»: no hay una segunda lista que mantener. Una página nueva entra en el menú una sola vez.
 
 ## Versión del juego
 

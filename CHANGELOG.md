@@ -6,6 +6,10 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ## 2026-10-18
 
+### [Web] Web más clara: menú nuevo, vista «Estoy a nivel X» y nombres en español
+
+Menú por recorrido (Empezar, Builds, Referencia), cada build y cada ficha de cambio en un solo sitio, etiquetas de verificación cortas con su explicación al pasar el ratón o tocar, un interruptor «Tengo Talented 5/5» para todas las tablas de puntos, filtro por facción en Razas y la nueva vista «Estoy a nivel X». Los nombres de hechizos y talentos salen de un diccionario único, con el nombre del cliente en español cuando está verificado.
+
 ### [Guía] Corrección: Lanza de hielo hace un 200 % más en las builds de leveo
 
 La versión en español de la build de leveo en solitario aún daba la bonificación de Lanza de hielo contra objetivos congelados anterior a la build del 15 de octubre, en el orden de puntos y en «Cómo se juega». Ahora dice lo correcto: un 200 % más. El texto del juego que muestran los tooltips de Lanza de hielo y Explosión Arcana también está al día.

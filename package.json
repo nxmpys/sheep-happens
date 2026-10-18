@@ -23,7 +23,8 @@
     "og": "tsx scripts/og-images.ts",
     "spells:text": "tsx scripts/spell-text.ts",
     "indexnow": "tsx scripts/indexnow.ts",
-    "check": "npm run validate && npm run data:diff && npm run changelog -- --check && npm run typecheck && npm run test && npm run build && npm run links"
+    "check": "npm run validate && npm run data:diff && npm run changelog -- --check && npm run typecheck && npm run test && npm run build && npm run links && npm run output",
+    "output": "tsx scripts/check-output.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^8.0.3",

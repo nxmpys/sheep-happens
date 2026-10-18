@@ -1,5 +1,23 @@
 [
   {
+    "id": "2026-10-18-ux",
+    "date": "2026-10-18",
+    "type": "site",
+    "title": {
+      "es": "Web más clara: menú nuevo, vista «Estoy a nivel X» y nombres en español",
+      "en": "A clearer site: new menu, “I’m level X” view and Spanish names"
+    },
+    "body": {
+      "es": "Menú por recorrido (Empezar, Builds, Referencia), cada build y cada ficha de cambio en un solo sitio, etiquetas de verificación cortas con su explicación al pasar el ratón o tocar, un interruptor «Tengo Talented 5/5» para todas las tablas de puntos, filtro por facción en Razas y la nueva vista «Estoy a nivel X». Los nombres de hechizos y talentos salen de un diccionario único, con el nombre del cliente en español cuando está verificado.",
+      "en": "A menu that follows a new player (Start, Builds, Reference), each build and change card in one place, short verification labels explained on hover or tap, an “I have Talented 5/5” switch for every point table, a faction filter on Races and the new “I’m level X” view. Spell and talent names come from a single dictionary."
+    },
+    "pages": [
+      "level-view"
+    ],
+    "sources": [],
+    "refs": []
+  },
+  {
     "id": "2026-10-18-ice-lance-builds",
     "date": "2026-10-18",
     "type": "guide",
