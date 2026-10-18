@@ -88,46 +88,58 @@ export const ROUTES: Record<PageId, RouteDef> = {
   combat: { id: 'combat', slug: { es: 'combate', en: 'combat' }, parent: 'home' },
   gear: { id: 'gear', slug: { es: 'equipo', en: 'gear' }, parent: 'home' },
   tools: { id: 'tools', slug: { es: 'herramientas', en: 'tools' }, parent: 'home' },
-  addons: { id: 'addons', slug: { es: 'addons', en: 'addons' }, parent: 'tools' },
+  addons: { id: 'addons', slug: { es: 'addons', en: 'addons' }, parent: 'home' },
   sources: { id: 'sources', slug: { es: 'fuentes', en: 'sources' }, parent: 'home' },
   updates: { id: 'updates', slug: { es: 'novedades', en: 'updates' }, parent: 'home' },
 };
 
-/** The guided reading order used for the previous/next links. */
-export const LEARNING_PATH: readonly PageId[] = [
-  'guide',
-  'races',
-  'professions',
-  'changes',
-  'talents',
-  'talents-arcane',
-  'talents-fire',
-  'talents-frost',
-  'leveling',
-  'aoe-farming',
-  'combat',
-  'gear',
-];
+/** A labelled set of pages inside a menu group, e.g. the three talent trees under Reference. */
+export interface NavCluster {
+  cluster: 'trees';
+  ids: PageId[];
+}
+export type NavEntry = PageId | NavCluster;
 
-export interface NavItem {
-  id: PageId;
-  children?: PageId[];
+/**
+ * One item of the primary navigation. A group with `page` links to that page
+ * and opens its submenu from a separate button; a group without one is only a
+ * submenu ("Start", "Reference"). An item with `page` and no `items` is a
+ * direct link.
+ */
+export interface NavGroup {
+  key: 'start' | 'builds' | 'reference' | 'tools' | 'addons';
+  page?: PageId;
+  items?: NavEntry[];
 }
 
 /**
- * Primary navigation, in display order. What most visitors want (builds,
- * talents, races) comes first; the learning pages sit under the class guide.
+ * Primary navigation, in display order, following a new player's path: start
+ * (class guide, race, tree), builds, then reference pages. Every page appears
+ * once. The previous/next links follow the same order (READING_ORDER), so the
+ * two can never diverge.
  */
-export const PRIMARY_NAV: readonly NavItem[] = [
-  // The leveling guide is also listed under Builds: that is where players look for a leveling build.
-  { id: 'builds', children: ['leveling', 'builds-duel-30'] },
-  { id: 'talents', children: ['talents-arcane', 'talents-fire', 'talents-frost'] },
-  { id: 'races' },
-  { id: 'professions' },
-  { id: 'guide', children: ['leveling', 'aoe-farming', 'scrolls', 'combat', 'gear'] },
-  { id: 'changes' },
-  { id: 'tools', children: ['addons'] },
+export const PRIMARY_NAV: readonly NavGroup[] = [
+  { key: 'start', items: ['guide', 'races', 'talents'] },
+  { key: 'builds', page: 'builds', items: ['leveling', 'builds-duel-30'] },
+  {
+    key: 'reference',
+    items: ['changes', { cluster: 'trees', ids: ['talents-arcane', 'talents-fire', 'talents-frost'] }, 'combat', 'aoe-farming', 'scrolls', 'professions', 'gear'],
+  },
+  // The crit calculator has content of its own, so Tools stays a direct link next to Addons.
+  { key: 'tools', page: 'tools' },
+  { key: 'addons', page: 'addons' },
 ];
+
+/** Pages of the primary navigation in menu order, groups first and then their items. */
+export function navPages(nav: readonly NavGroup[] = PRIMARY_NAV): PageId[] {
+  return nav.flatMap((group) => [
+    ...(group.page ? [group.page] : []),
+    ...(group.items ?? []).flatMap((entry) => (typeof entry === 'string' ? [entry] : entry.ids)),
+  ]);
+}
+
+/** The guided reading order used for the previous/next links: the menu, top to bottom. */
+export const READING_ORDER: readonly PageId[] = navPages();
 
 export const FOOTER_NAV: readonly PageId[] = ['sources', 'updates', 'tools'];
 
@@ -168,9 +180,9 @@ export function breadcrumbTrail(id: PageId): PageId[] {
 }
 
 export function neighbours(id: PageId): { prev?: PageId; next?: PageId } {
-  const index = LEARNING_PATH.indexOf(id);
+  const index = READING_ORDER.indexOf(id);
   if (index === -1) return {};
-  const prev = LEARNING_PATH[index - 1];
-  const next = LEARNING_PATH[index + 1];
+  const prev = READING_ORDER[index - 1];
+  const next = READING_ORDER[index + 1];
   return { ...(prev ? { prev } : {}), ...(next ? { next } : {}) };
 }

@@ -9,7 +9,7 @@ Coste: 0 €. Cloudflare Pages (plan gratuito) ofrece ancho de banda ilimitado, 
 ```
 push a main ──► GitHub ──► Cloudflare Pages ejecuta `npm run check` ──► publica dist/
                   │                (si algo falla, NO publica)
-                  │                + functions/ (POST /api/feedback → issue «feedback»)
+                  │                + functions/ (POST /api/feedback → issue «feedback»; GET / → idioma)
                   ├── CI (Actions): mismas comprobaciones + datos documentados
                   └── Revisión de fuentes (Actions, miércoles y viernes): issue con las novedades
 ```
@@ -56,7 +56,7 @@ push a main ──► GitHub ──► Cloudflare Pages ejecuta `npm run check` 
 
 ### 3. Comprobación tras publicar
 
-- `https://sheephappens.app/` muestra la portada para elegir idioma (es la página principal para Google: lleva el nombre del sitio). Quien ya eligió idioma va directo a él.
+- `https://sheephappens.app/` redirige (302) a `/es/` o `/en/` según la cookie `sh-lang` (la guarda el selector de idioma) o, si no hay, según `Accept-Language` (`functions/index.ts`). Sin `Accept-Language` (los rastreadores no lo envían) se sirve la página raíz, indexable y con el nombre del sitio: compruébalo con `curl -sI https://sheephappens.app/` (200) y `curl -sI -H 'Accept-Language: en' https://sheephappens.app/` (302 a `/en/`).
 - Pulsa `/` y busca «Lanza de hielo»: aparecen resultados por sección.
 - `/es/cambios/?tree=frost&kind=new` muestra 2 cambios.
 - `/sitemap-index.xml`, `/robots.txt` y `/es/novedades/rss.xml` responden.

@@ -10,7 +10,7 @@ Comparación entre lo implementado y los patrones observados en Wings Is Up (WIU
 | Cadena de prioridad clicable | **Adaptado** | `Priority`: listas condicionales («si pasa X, haz Y») con su estado de verificación. Sin valores inventados |
 | Valor del talento por contexto (M+/Raid) | **Aplazado** | No hay datos de Forever para valorar talentos por actividad. Se sustituye por el estado de verificación de cada afirmación |
 | Guía rápida frente a guía completa | **Adaptado** | Explorador de cambios (consulta rápida) + recorrido de aprendizaje con «En resumen» al principio de cada página |
-| «Next: …» al final de la página | **Adaptado** | `PrevNext` siguiendo `LEARNING_PATH` |
+| «Next: …» al final de la página | **Adaptado** | `PrevNext` siguiendo `READING_ORDER`, generado desde el menú principal (`PRIMARY_NAV`) |
 | Enlace copiable a una sección | **Adaptado y mejorado** | Botón `#` accesible en cada `h2`/`h3`, aviso anunciado por lectores de pantalla (`aria-live`) |
 | Selector con estado en la URL (mazmorras) | **Adaptado** | Filtros del explorador en la URL (`?tree=frost&kind=new&q=…`), restaurables, compartibles e independientes del idioma |
 | Etiquetas de valor por color | **Mejorado** | Insignias de estado con icono + palabra + color (nunca solo color) |

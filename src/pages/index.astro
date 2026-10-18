@@ -5,9 +5,11 @@
  * in results ("Sheep Happens", not the host's name) from this page, so it must
  * be indexable, canonical to itself and carry the WebSite structured data.
  *
- * It does not redirect on its own: a forced redirect would hide this page from
- * search engines. It highlights the reader's language, and readers who already
- * picked one here go straight to it on their next visit.
+ * Readers never stay here: on Cloudflare Pages, functions/index.ts redirects
+ * them to their language (saved choice, then Accept-Language). Requests without
+ * a language (search engine crawlers) get this page, so it stays indexable.
+ * Without that function, readers who picked a language before go straight to
+ * it; everyone else sees the two visible links, which also work without JS.
  */
 import '@fontsource-variable/inter';
 import '@fontsource/spectral/600.css';
@@ -92,9 +94,10 @@ const languages = [
     <meta name="twitter:image" content={image} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <script is:inline define:vars={{ es: href('home', 'es'), en: href('home', 'en') }}>
-      // Readers who already chose a language here go straight to it.
+      // Readers who already chose a language go straight to it (cookie or localStorage).
       try {
-        var saved = localStorage.getItem('sh-lang');
+        var cookie = /(?:^|;\s*)sh-lang=(es|en)/.exec(document.cookie);
+        var saved = cookie ? cookie[1] : localStorage.getItem('sh-lang');
         if (saved === 'es' || saved === 'en') location.replace(saved === 'en' ? en : es);
         var theme = localStorage.getItem('sh-theme');
         if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
@@ -135,16 +138,13 @@ const languages = [
     </main>
 
     <script>
+      import { saveLanguage } from '../scripts/lang';
       // Highlight the reader's browser language and remember the choice.
       const langs = navigator.languages?.length ? navigator.languages : [navigator.language || 'es'];
       const preferred = langs.map((l) => l.toLowerCase().slice(0, 2)).find((l) => l === 'es' || l === 'en') ?? 'es';
       document.querySelector<HTMLElement>(`[data-lang="${preferred}"]`)?.classList.add('choice--preferred');
       for (const link of document.querySelectorAll<HTMLAnchorElement>('[data-choose]')) {
-        link.addEventListener('click', () => {
-          try {
-            localStorage.setItem('sh-lang', link.dataset.choose!);
-          } catch {}
-        });
+        link.addEventListener('click', () => saveLanguage(link.dataset.choose!));
       }
     </script>
 

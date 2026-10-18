@@ -48,10 +48,16 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
   },
 };
 
-/** Compact labels for the header, where space is tight. Falls back to NAV_LABELS. */
-export const NAV_SHORT: Record<Locale, Partial<Record<PageId, string>>> = {
-  es: { guide: 'Guía', changes: 'Cambios' },
-  en: { guide: 'Guide', changes: 'Changes' },
+/** Labels of the primary navigation groups and clusters (routes.ts PRIMARY_NAV). */
+export const NAV_GROUP_LABELS: Record<Locale, Record<'start' | 'builds' | 'reference' | 'tools' | 'addons' | 'trees', string>> = {
+  es: { start: 'Empezar', builds: 'Builds', reference: 'Referencia', tools: 'Herramientas', addons: 'Addons', trees: 'Talentos' },
+  en: { start: 'Start', builds: 'Builds', reference: 'Reference', tools: 'Tools', addons: 'Addons', trees: 'Talents' },
+};
+
+/** Labels a page takes inside the menu, where its group gives context. Falls back to NAV_LABELS. */
+export const NAV_MENU_LABELS: Record<Locale, Partial<Record<PageId, string>>> = {
+  es: { talents: 'Elegir rama (Talentos)', changes: 'Cambios', 'talents-arcane': 'Arcano', 'talents-fire': 'Fuego', 'talents-frost': 'Escarcha' },
+  en: { talents: 'Choose a tree (Talents)', changes: 'Changes', 'talents-arcane': 'Arcane', 'talents-fire': 'Fire', 'talents-frost': 'Frost' },
 };
 
 const es = {
@@ -63,6 +69,7 @@ const es = {
   'nav.closeMenu': 'Cerrar menú',
   'nav.breadcrumbs': 'Ruta de navegación',
   'nav.submenu': 'Submenú de {label}',
+  'nav.afterLaunch': 'tras el lanzamiento',
   'nav.prev': 'Anterior',
   'nav.next': 'Siguiente',
   'nav.pager': 'Recorrido de la guía',
@@ -203,6 +210,7 @@ const en: Record<UiKey, string> = {
   'nav.closeMenu': 'Close menu',
   'nav.breadcrumbs': 'Breadcrumb',
   'nav.submenu': '{label} submenu',
+  'nav.afterLaunch': 'after launch',
   'nav.prev': 'Previous',
   'nav.next': 'Next',
   'nav.pager': 'Guide path',

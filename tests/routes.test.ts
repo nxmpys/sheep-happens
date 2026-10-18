@@ -1,10 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import {
-  LEARNING_PATH,
   LOCALES,
   PAGE_IDS,
+  PRIMARY_NAV,
+  READING_ORDER,
   ROUTES,
   breadcrumbTrail,
+  navPages,
   neighbours,
   pageIdForSlug,
   pathFor,
@@ -51,10 +53,17 @@ describe('route registry', () => {
     expect(breadcrumbTrail('talents-fire')).toEqual(['home', 'talents', 'talents-fire']);
   });
 
-  it('links the learning path both ways', () => {
-    expect(neighbours(LEARNING_PATH[0]!)).toEqual({ next: LEARNING_PATH[1] });
+  it('links the reading order both ways, in menu order', () => {
+    expect(READING_ORDER).toEqual(navPages(PRIMARY_NAV));
+    expect(neighbours(READING_ORDER[0]!)).toEqual({ next: READING_ORDER[1] });
     expect(neighbours('talents-fire')).toEqual({ prev: 'talents-arcane', next: 'talents-frost' });
     expect(neighbours('sources')).toEqual({});
+  });
+
+  it('lists every page at most once in the menu', () => {
+    const pages = navPages();
+    expect(new Set(pages).size).toBe(pages.length);
+    expect(pages.filter((id) => id === 'leveling')).toHaveLength(1);
   });
 });
 
