@@ -3,22 +3,39 @@ import SourceRefs from './SourceRefs.astro';
 import { getLocale, href } from '../../i18n/locale';
 import { NAV_LABELS, formatDate, t, type UiKey } from '../../i18n/ui';
 import { sortedChangelog } from '../../lib/data';
-import { resolveRef } from '../../lib/refs';
+import { resolveRefs } from '../../lib/refs';
+import { firstSentence } from '../../lib/text';
 
 interface Props {
   limit?: number;
   headingLevel?: 'h2' | 'h3';
+  /**
+   * Headline, date, type and one line only, each linking to the full entry on
+   * the updates page (home page). The full detail stays there.
+   */
+  compact?: boolean;
 }
 
-const { limit, headingLevel = 'h3' } = Astro.props;
+const { limit, headingLevel = 'h3', compact = false } = Astro.props;
 const Heading = headingLevel;
 const locale = getLocale(Astro);
 const entries = sortedChangelog().slice(0, limit);
 ---
 
-<ol class="log">
+<ol class:list={['log', { 'log--compact': compact }]}>
   {
-    entries.map((entry) => (
+    entries.map((entry) => compact ? (
+      <li class="log__entry">
+        <p class="log__meta">
+          <time datetime={entry.date}>{formatDate(locale, new Date(`${entry.date}T00:00:00Z`))}</time>
+          <span class:list={['chip', `log__type--${entry.type}`]}>{t(locale, `updates.type.${entry.type}` as UiKey)}</span>
+        </p>
+        <Heading class="log__title">
+          <a href={href('updates', locale, `update-${entry.id}`)}>{entry.title[locale]}</a>
+        </Heading>
+        <p class="log__body">{firstSentence(entry.body[locale])}</p>
+      </li>
+    ) : (
       <li class="log__entry">
         <p class="log__meta">
           <time datetime={entry.date}>{formatDate(locale, new Date(`${entry.date}T00:00:00Z`))}</time>
@@ -33,11 +50,10 @@ const entries = sortedChangelog().slice(0, limit);
           {entry.title[locale]}
         </Heading>
         <p class="log__body">{entry.body[locale]}</p>
-        {entry.refs.length > 0 && (
+        {resolveRefs(entry.refs, locale).length > 0 && (
           <p class="log__refs">
             <span class="log__refs-label">{t(locale, 'updates.refs')}:</span>
-            {entry.refs.map((reference) => {
-              const ref = resolveRef(reference, locale);
+            {resolveRefs(entry.refs, locale).map((ref) => {
               return ref.href ? (
                 <a class="chip log__ref" href={ref.href}>
                   {ref.label}
@@ -101,6 +117,17 @@ const entries = sortedChangelog().slice(0, limit);
   }
   .log__title::before {
     display: none;
+  }
+  .log--compact .log__entry {
+    padding-bottom: var(--space-4);
+  }
+  .log--compact .log__title a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  .log--compact .log__title a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
   }
   .log__body {
     margin-top: var(--space-1);

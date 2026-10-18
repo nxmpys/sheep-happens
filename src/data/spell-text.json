@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-10-16",
+  "fetched": "2026-10-18",
   "spells": {
     "10": {
       "en": {
@@ -1118,9 +1118,9 @@
         "meta": [
           "15% of base mana",
           "30 yd range",
-          "2.5 sec cast"
+          "1.5 sec cast"
         ],
-        "text": "Blasts the target with energy, dealing 57 to 65 Arcane damage. Each time you cast Arcane Blast, the damage of all your other spells is increased by 10% and the mana cost of Arcane Blast is increased by 175%. Effect stacks up to 4 times and lasts 8 sec or until any other damage spell is cast."
+        "text": "Blasts the target with energy, dealing 34 to 38 Arcane damage. Each time you cast Arcane Blast, you gain 15% of your Intellect as Spell Damage and the mana cost of Arcane Blast is increased by 175%. Effect stacks up to 4 times and lasts 15 sec from time of initial application."
       },
       "es": {
         "name": "Explosión Arcana",
@@ -1216,7 +1216,7 @@
           "30 yd range",
           "Instant"
         ],
-        "text": "Deals 28 to 32 Frost damage to an enemy target. Deals 300% increased damage to Frozen targets."
+        "text": "Deals 28 to 32 Frost damage to an enemy target. Deals 200% increased damage to Frozen targets."
       },
       "es": {
         "name": "Lanza de hielo",

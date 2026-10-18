@@ -73,7 +73,7 @@
       {
         "point": 11,
         "text": {
-          "es": "Lanza de hielo, el talento decisivo de 11 puntos: instantánea y un 300 % más de daño contra objetivos congelados.",
+          "es": "Lanza de hielo, el talento decisivo de 11 puntos: instantánea y un 200 % más de daño contra objetivos congelados.",
           "en": "Ice Lance, the 11-point milestone: instant, and 200% more damage against frozen targets."
         }
       },
@@ -153,7 +153,7 @@
         "en": "Open with Frostbolt from max range and keep casting it while the slowed enemy walks in."
       },
       {
-        "es": "Si queda congelado (por Frostbite o Nova de Escarcha), lanza Lanza de hielo: hace un 300 % más contra objetivos congelados.",
+        "es": "Si queda congelado (por Frostbite o Nova de Escarcha), lanza Lanza de hielo: hace un 200 % más contra objetivos congelados.",
         "en": "If it gets frozen (by Frostbite or Frost Nova), cast Ice Lance: it deals 200% more to frozen targets."
       },
       {
@@ -209,7 +209,7 @@
       "mobalytics-mage-leveling",
       "method-mage-leveling"
     ],
-    "updated": "2026-10-16"
+    "updated": "2026-10-18"
   },
   {
     "id": "frost-leveling-dungeons",

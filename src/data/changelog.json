@@ -1,5 +1,29 @@
 [
   {
+    "id": "2026-10-18-ice-lance-builds",
+    "date": "2026-10-18",
+    "type": "guide",
+    "title": {
+      "es": "Corrección: Lanza de hielo hace un 200 % más en las builds de leveo",
+      "en": "Fix: Ice Lance deals 200% more in the leveling builds"
+    },
+    "body": {
+      "es": "La versión en español de la build de leveo en solitario aún decía que Lanza de hielo hace un 300 % más contra objetivos congelados, en el orden de puntos y en «Cómo se juega». Desde la build del 15 de octubre es un 200 %. El texto del juego que muestran los tooltips de Lanza de hielo y Explosión Arcana también está al día.",
+      "en": "The Spanish version of the solo leveling build still said Ice Lance deals 300% more to frozen targets, in the point order and in “How to play”. Since the 15 October build it is 200%. The in-game text shown in the Ice Lance and Arcane Blast tooltips is up to date too."
+    },
+    "pages": [
+      "builds",
+      "leveling"
+    ],
+    "sources": [
+      "blizzard-dev-notes"
+    ],
+    "refs": [
+      "build:frost-leveling-solo",
+      "change:ice-lance"
+    ]
+  },
+  {
     "id": "2026-10-16-addons",
     "date": "2026-10-16",
     "type": "site",
