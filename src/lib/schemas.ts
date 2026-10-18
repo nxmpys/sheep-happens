@@ -299,7 +299,7 @@ export const buildSchema = z
   .strict()
   .refine((b) => b.orderNotes.length === 0 || b.order !== undefined, { message: 'orderNotes need an order' })
   .refine((b) => b.recommendedFor.every((use) => b.uses.includes(use)), { message: 'recommendedFor must list uses from `uses`' });
-export type Build =z.infer<typeof buildSchema>;
+export type Build = z.infer<typeof buildSchema>;
 
 export const racialSchema = z
   .object({
