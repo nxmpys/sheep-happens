@@ -5,6 +5,10 @@
       "es": "Forever · beta (octubre de 2026)",
       "en": "Forever · beta (October 2026)"
     },
+    "short": {
+      "es": "Beta oct 2026",
+      "en": "Beta Oct 2026"
+    },
     "stage": "beta",
     "since": "2026-09-17",
     "launchAt": "2026-11-04T23:00:00Z",

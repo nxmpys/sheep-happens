@@ -1,0 +1,188 @@
+---
+/**
+ * One shared tooltip for every verification label on the page (.status).
+ * Opens on hover, on keyboard focus and on tap; Escape or a tap elsewhere
+ * closes it. Keyboard users reach the first label of each kind (the rest are
+ * the same explanation). The browser title stays as the no-JS fallback and is
+ * removed here so the two never show at once.
+ */
+import type { Locale } from '../../i18n/routes';
+import { href } from '../../i18n/locale';
+import { t, type UiKey } from '../../i18n/ui';
+import { STATUSES } from '../../lib/schemas';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const config = {
+  more: t(locale, 'meta.howWeVerify'),
+  href: href('sources', locale),
+  statuses: Object.fromEntries(
+    STATUSES.map((s) => [s, { label: t(locale, `status.${s}` as UiKey), desc: t(locale, `status.${s}.desc` as UiKey) }]),
+  ),
+};
+---
+
+<status-tooltip data-config={JSON.stringify(config)}></status-tooltip>
+
+<script>
+  interface Config {
+    more: string;
+    href: string;
+    statuses: Record<string, { label: string; desc: string }>;
+  }
+
+  const GUTTER = 12;
+
+  class StatusTooltipElement extends HTMLElement {
+    private config!: Config;
+    private tip!: HTMLDivElement;
+    private current: HTMLElement | null = null;
+    private hideTimer: number | undefined;
+
+    connectedCallback() {
+      const badges = [...document.querySelectorAll<HTMLElement>('.status[data-status]')];
+      if (badges.length === 0) return;
+      this.config = JSON.parse(this.dataset.config ?? '{}');
+      const seen = new Set<string>();
+      for (const badge of badges) {
+        badge.removeAttribute('title');
+        const status = badge.dataset.status!;
+        if (!seen.has(status)) {
+          badge.tabIndex = 0;
+          seen.add(status);
+        }
+      }
+
+      this.tip = document.createElement('div');
+      this.tip.id = 'status-tip';
+      this.tip.className = 'status-tip';
+      this.tip.setAttribute('role', 'tooltip');
+      this.tip.hidden = true;
+      document.body.append(this.tip);
+
+      const badgeOf = (target: EventTarget | null) => (target as Element | null)?.closest?.<HTMLElement>('.status[data-status]') ?? null;
+      document.addEventListener('pointerover', (event) => {
+        if ((event as PointerEvent).pointerType === 'touch') return;
+        const badge = badgeOf(event.target);
+        if (badge) this.show(badge);
+        else if (this.tip.contains(event.target as Node)) window.clearTimeout(this.hideTimer);
+      });
+      document.addEventListener('pointerout', (event) => {
+        if ((event as PointerEvent).pointerType === 'touch') return;
+        const from = (event.target as Element).closest?.('.status[data-status], .status-tip');
+        const to = (event as PointerEvent).relatedTarget as Element | null;
+        if (from && !(to && (to.closest('.status-tip') || badgeOf(to) === this.current))) this.scheduleHide();
+      });
+      document.addEventListener('focusin', (event) => {
+        const badge = badgeOf(event.target);
+        if (badge) this.show(badge);
+      });
+      document.addEventListener('focusout', (event) => {
+        const to = (event as FocusEvent).relatedTarget as Element | null;
+        if (this.current && !(to && this.tip.contains(to))) this.scheduleHide();
+      });
+      document.addEventListener('click', (event) => {
+        const badge = badgeOf(event.target);
+        if (badge) {
+          if (this.current === badge && !this.tip.hidden) this.hide();
+          else this.show(badge);
+        } else if (!this.tip.contains(event.target as Node)) {
+          this.hide();
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !this.tip.hidden) {
+          const badge = this.current;
+          this.hide();
+          badge?.focus();
+        }
+      });
+      window.addEventListener('scroll', () => this.place(), { passive: true });
+      window.addEventListener('resize', () => this.hide());
+    }
+
+    private show(badge: HTMLElement) {
+      window.clearTimeout(this.hideTimer);
+      const entry = this.config.statuses[badge.dataset.status!];
+      if (!entry) return;
+      if (this.current && this.current !== badge) this.current.removeAttribute('aria-describedby');
+      this.current = badge;
+      badge.setAttribute('aria-describedby', 'status-tip');
+      this.tip.className = `status-tip status-tip--${badge.dataset.status}`;
+      const title = document.createElement('strong');
+      title.textContent = entry.label;
+      const text = document.createElement('span');
+      text.textContent = ` ${entry.desc} `;
+      const link = document.createElement('a');
+      link.href = this.config.href;
+      link.textContent = this.config.more;
+      this.tip.replaceChildren(title, text, link);
+      this.tip.hidden = false;
+      this.place();
+    }
+
+    private scheduleHide() {
+      window.clearTimeout(this.hideTimer);
+      this.hideTimer = window.setTimeout(() => this.hide(), 200);
+    }
+
+    private hide() {
+      this.tip.hidden = true;
+      this.current?.removeAttribute('aria-describedby');
+      this.current = null;
+    }
+
+    private place() {
+      if (!this.current || this.tip.hidden) return;
+      const rect = this.current.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > window.innerHeight) {
+        this.hide();
+        return;
+      }
+      const tip = this.tip.getBoundingClientRect();
+      const left = Math.max(GUTTER, Math.min(rect.left, window.innerWidth - tip.width - GUTTER));
+      const below = rect.bottom + 6;
+      const top = below + tip.height > window.innerHeight - GUTTER && rect.top - tip.height - 6 > GUTTER ? rect.top - tip.height - 6 : below;
+      this.tip.style.left = `${left}px`;
+      this.tip.style.top = `${top}px`;
+    }
+  }
+
+  customElements.define('status-tooltip', StatusTooltipElement);
+</script>
+
+<style is:global>
+  .status-tip {
+    position: fixed;
+    z-index: 61;
+    width: min(18rem, calc(100vw - 24px));
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--border-strong);
+    border-left: 3px solid var(--tip-color, var(--accent));
+    border-radius: var(--radius-sm);
+    background: var(--surface-1);
+    box-shadow: var(--shadow);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    font-weight: 400;
+    line-height: 1.45;
+    text-align: left;
+    white-space: normal;
+  }
+  .status-tip[hidden] {
+    display: none;
+  }
+  .status-tip strong {
+    color: var(--tip-color, var(--text));
+  }
+  .status-tip--verified { --tip-color: var(--status-verified); }
+  .status-tip--reported { --tip-color: var(--status-reported); }
+  .status-tip--classic { --tip-color: var(--status-classic); }
+  .status-tip--analysis { --tip-color: var(--status-analysis); }
+  .status-tip--tested { --tip-color: var(--status-tested); }
+  .status-tip--pending { --tip-color: var(--status-pending); }
+</style>

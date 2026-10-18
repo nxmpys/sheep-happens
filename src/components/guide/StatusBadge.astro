@@ -1,4 +1,11 @@
 ---
+/**
+ * Short verification label (Oficial, Comunidad, Ref. Classic, Análisis,
+ * Probado, Pendiente). Its explanation is not repeated in the reading flow: it
+ * shows in a tooltip on hover, focus and tap (layout/StatusTooltip.astro) and
+ * in the page legend (PageMeta). Without JavaScript the browser shows it as
+ * the element's title.
+ */
 import Icon from '../ui/Icon.astro';
 import { getLocale } from '../../i18n/locale';
 import { t, type UiKey } from '../../i18n/ui';
@@ -16,10 +23,9 @@ const label = t(locale, `status.${status}` as UiKey);
 const description = t(locale, `status.${status}.desc` as UiKey);
 ---
 
-<span class:list={['status', `status--${status}`, { 'status--compact': compact }]} title={description} data-pagefind-ignore>
+<span class:list={['status', `status--${status}`, { 'status--compact': compact }]} title={description} data-status={status} data-pagefind-ignore>
   <Icon name={status} size={15} strokeWidth={2} />
   {compact ? <span class="visually-hidden">{label}</span> : <span class="status__label">{label}</span>}
-  <span class="visually-hidden">: {description}</span>
 </span>
 
 <style>
@@ -38,6 +44,10 @@ const description = t(locale, `status.${status}.desc` as UiKey);
     white-space: nowrap;
     vertical-align: middle;
     cursor: help;
+  }
+  .status:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
   }
   .status--compact {
     padding: 0.2em;

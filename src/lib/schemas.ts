@@ -156,6 +156,8 @@ export const gameVersionSchema = z
   .object({
     id,
     label: localized,
+    /** A few words for the compact page header ("Beta oct 2026"). */
+    short: localized,
     stage: z.enum(['beta', 'launch', 'patch']),
     since: isoDate,
     notes: localized.optional(),

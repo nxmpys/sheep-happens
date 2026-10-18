@@ -14,6 +14,7 @@ import StatusBadge from './StatusBadge.astro';
 import { getLocale } from '../../i18n/locale';
 import { EDGE_LABELS, KIND_LABELS, PRIORITY_LABELS, tp, type ProfessionUiKey } from '../../i18n/professions';
 import { getProfession } from '../../lib/data';
+import { ownSourceIds, sharedProfessionSources } from '../../lib/page-sources';
 import { professionAnchor, wowheadItemUrl } from '../../lib/professions';
 
 interface Props {
@@ -152,7 +153,9 @@ const or = locale === 'es' ? ' o ' : ' or ';
 
   <p class="profession__meta">
     <StatusBadge status={profession.status} />
-    <SourceRefs ids={profession.sources} />
+    {ownSourceIds(profession.sources, sharedProfessionSources).length > 0 && (
+      <SourceRefs ids={ownSourceIds(profession.sources, sharedProfessionSources)} />
+    )}
   </p>
 </div>
 

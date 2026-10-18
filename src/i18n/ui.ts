@@ -106,12 +106,17 @@ const es = {
   'meta.by': 'por',
   'meta.betaWarning': 'Forever está en beta: la información puede cambiar antes del lanzamiento.',
   'meta.howWeVerify': 'Cómo verificamos',
+  'meta.betaShort': 'Puede cambiar',
+  'meta.sourcesCount': '{count} fuentes',
+  'meta.sourceCount': '1 fuente',
+  'meta.legend': '¿Qué significan las etiquetas?',
+  'meta.legendIntro': 'Cada dato lleva una etiqueta que dice de dónde sale y cuánto puedes fiarte de él. Pasa el ratón, enfoca o toca una etiqueta para ver su explicación.',
   'summary.title': 'En resumen',
   'status.verified': 'Oficial',
   'status.reported': 'Comunidad',
-  'status.classic': 'Referencia Classic',
+  'status.classic': 'Ref. Classic',
   'status.analysis': 'Análisis',
-  'status.tested': 'Probado en juego',
+  'status.tested': 'Probado',
   'status.pending': 'Pendiente',
   'status.verified.desc': 'Publicado por Blizzard en una fuente que hemos leído.',
   'status.reported.desc': 'Publicado por la comunidad o la prensa; no hemos leído el original oficial.',
@@ -247,12 +252,17 @@ const en: Record<UiKey, string> = {
   'meta.by': 'by',
   'meta.betaWarning': 'Forever is in beta: details may change before launch.',
   'meta.howWeVerify': 'How we verify',
+  'meta.betaShort': 'May change',
+  'meta.sourcesCount': '{count} sources',
+  'meta.sourceCount': '1 source',
+  'meta.legend': 'What do the labels mean?',
+  'meta.legendIntro': 'Every claim carries a label saying where it comes from and how far you can trust it. Hover, focus or tap a label to see what it means.',
   'summary.title': 'In short',
   'status.verified': 'Official',
   'status.reported': 'Community',
-  'status.classic': 'Classic reference',
+  'status.classic': 'Classic ref.',
   'status.analysis': 'Analysis',
-  'status.tested': 'Tested in game',
+  'status.tested': 'Tested',
   'status.pending': 'Pending',
   'status.verified.desc': 'Published by Blizzard in a source we have read.',
   'status.reported.desc': 'Published by the community or press; we have not read the official original.',
@@ -364,6 +374,15 @@ export function formatDate(locale: Locale, date: Date): string {
     year: 'numeric',
     timeZone: 'UTC',
   }).format(date);
+}
+
+/** Short calendar date for compact lines: "16 oct 2026", "16 Oct 2026". */
+export function formatShortDate(locale: Locale, date: Date): string {
+  // Some ICU versions write "16 oct. 2026" or "16 de oct de 2026": keep it short and plain.
+  return new Intl.DateTimeFormat(DATE_LOCALES[locale], { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+    .format(date)
+    .replace(/ de /g, ' ')
+    .replace(/\.(?= )/, '');
 }
 
 /** Formats an instant in Spain's time zone (CET/CEST): "5 de noviembre de 2026, 00:00 CET". */

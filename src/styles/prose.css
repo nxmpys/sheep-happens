@@ -133,3 +133,32 @@
     opacity: 0.7;
   }
 }
+
+/* Collapsible block for secondary content (e.g. "How to read these builds"). */
+.prose details.disclosure {
+  margin-top: var(--space-6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-1);
+}
+.prose details.disclosure > summary {
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 600;
+}
+.prose details.disclosure[open] > summary {
+  border-bottom: 1px solid var(--border);
+}
+.prose details.disclosure > :not(summary) {
+  margin-inline: var(--space-4);
+}
+.prose details.disclosure > :last-child {
+  margin-bottom: var(--space-4);
+}
+.prose .disclosure__title {
+  margin-top: var(--space-5);
+  font-weight: 700;
+  scroll-margin-top: calc(var(--header-h) + var(--space-4));
+}

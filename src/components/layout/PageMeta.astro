@@ -1,10 +1,16 @@
 ---
-/** Review date, game version and verification status, shown on every guide page. */
+/**
+ * One line of page metadata under the title: «Revisado 16 oct 2026 · Beta oct
+ * 2026 · [Análisis] · 3 fuentes · [Puede cambiar]», then a collapsible legend
+ * that explains every verification label once per page and links to the
+ * sources page («Cómo verificamos»).
+ */
 import Icon from '../ui/Icon.astro';
 import StatusBadge from '../guide/StatusBadge.astro';
+import StatusLegend from '../guide/StatusLegend.astro';
 import { href } from '../../i18n/locale';
 import type { Locale } from '../../i18n/routes';
-import { formatDate, t } from '../../i18n/ui';
+import { formatShortDate, t } from '../../i18n/ui';
 import { getVersion } from '../../lib/data';
 import type { PageFrontmatter } from '../../lib/schemas';
 
@@ -13,51 +19,59 @@ interface Props {
   data: PageFrontmatter;
   /** Latest of the page review and the last update of the data it shows (lib/seo.ts). */
   modified: Date;
+  /** Number of sources listed at the end of the page. */
+  sourceCount: number;
+  /** Show the label legend (pages whose content already has one leave it out). */
+  legend?: boolean;
 }
 
-const { locale, data, modified } = Astro.props;
+const { locale, data, modified, sourceCount, legend = true } = Astro.props;
 const version = getVersion(data.gameVersion);
 ---
 
 <div class="meta">
-  <dl class="meta__list">
-    <div>
-      <dt>{t(locale, 'meta.reviewed')}</dt>
-      <dd>
-        <Icon name="calendar" size={16} />
-        <time datetime={modified.toISOString().slice(0, 10)}>{formatDate(locale, modified)}</time>
-        <span class="meta__by">{t(locale, 'meta.by')} {data.reviewedBy}</span>
-      </dd>
-    </div>
-    <div>
-      <dt>{t(locale, 'meta.version')}</dt>
-      <dd>{version.label[locale]}</dd>
-    </div>
-    <div>
-      <dt>{t(locale, 'meta.verification')}</dt>
-      <dd>
-        <StatusBadge status={data.verification} />
-      </dd>
-    </div>
+  <p class="meta__line">
+    <span class="meta__item">
+      <Icon name="calendar" size={15} />
+      {t(locale, 'meta.reviewed')} <time datetime={modified.toISOString().slice(0, 10)}>{formatShortDate(locale, modified)}</time>
+    </span>
+    <span class="meta__sep" aria-hidden="true">·</span>
+    <span class="meta__item">{version.short[locale]}</span>
+    <span class="meta__sep" aria-hidden="true">·</span>
+    <span class="meta__item">
+      <span class="visually-hidden">{t(locale, 'meta.verification')}: </span>
+      <StatusBadge status={data.verification} />
+    </span>
     {
-      data.sources.length > 0 && (
-        <div>
-          <dt>{t(locale, 'meta.sources')}</dt>
-          <dd>
-            <a href="#page-sources">{data.sources.length}</a>
-          </dd>
-        </div>
+      sourceCount > 0 && (
+        <>
+          <span class="meta__sep" aria-hidden="true">·</span>
+          <a class="meta__item" href="#page-sources">
+            {sourceCount === 1 ? t(locale, 'meta.sourceCount') : t(locale, 'meta.sourcesCount', { count: sourceCount })}
+          </a>
+        </>
       )
     }
-  </dl>
+    {
+      version.stage === 'beta' && (
+        <a class="meta__beta" href={href('sources', locale)} title={t(locale, 'meta.betaWarning')}>
+          <Icon name="warning" size={14} />
+          {t(locale, 'meta.betaShort')}
+          <span class="visually-hidden">: {t(locale, 'meta.betaWarning')} {t(locale, 'meta.howWeVerify')}</span>
+        </a>
+      )
+    }
+  </p>
   {
-    version.stage === 'beta' && (
-      <p class="meta__beta">
-        <Icon name="warning" size={18} />
-        <span>
-          {t(locale, 'meta.betaWarning')} <a href={href('sources', locale)}>{t(locale, 'meta.howWeVerify')}</a>
-        </span>
-      </p>
+    legend && (
+      <details class="meta__legend" data-pagefind-ignore>
+        <summary>{t(locale, 'meta.legend')}</summary>
+        <p class="meta__legend-intro">{t(locale, 'meta.legendIntro')}</p>
+        <StatusLegend />
+        <p class="meta__legend-more">
+          <a href={href('sources', locale)}>{t(locale, 'meta.howWeVerify')}</a>
+        </p>
+      </details>
     )
   }
 </div>
@@ -65,49 +79,66 @@ const version = getVersion(data.gameVersion);
 <style>
   .meta {
     display: grid;
-    gap: var(--space-3);
+    gap: var(--space-2);
   }
-  .meta__list {
+  .meta__line {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-2) var(--space-5);
+    align-items: center;
+    gap: var(--space-1) var(--space-2);
     margin: 0;
     font-size: var(--step--1);
+    color: var(--text-muted);
   }
-  .meta__list > div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
+  .meta__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
   }
-  dt {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+  .meta__item :global(svg) {
     color: var(--text-subtle);
   }
-  dd {
-    display: flex;
-    align-items: center;
-    gap: var(--space-1);
-    margin: 0;
-    color: var(--text);
-  }
-  .meta__by {
+  .meta__sep {
     color: var(--text-subtle);
   }
   .meta__beta {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-2);
-    padding: var(--space-2) var(--space-3);
-    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    padding: 0 0.5em;
+    border-radius: 999px;
     background: var(--warning-soft);
     color: var(--text);
-    font-size: var(--step--1);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
   }
   .meta__beta :global(svg) {
     color: var(--warning);
-    margin-top: 0.15em;
+  }
+  .meta__beta:hover {
+    text-decoration: underline;
+  }
+  .meta__legend {
+    font-size: var(--step--1);
+  }
+  .meta__legend summary {
+    width: fit-content;
+    cursor: pointer;
+    color: var(--link);
+    font-weight: 600;
+  }
+  .meta__legend[open] {
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .meta__legend-intro {
+    margin: var(--space-2) 0 var(--space-3);
+    color: var(--text-muted);
+  }
+  .meta__legend-more {
+    margin: var(--space-3) 0 0;
   }
 </style>

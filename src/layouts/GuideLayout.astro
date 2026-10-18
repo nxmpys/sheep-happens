@@ -14,6 +14,7 @@ import { href } from '../i18n/locale';
 import { ROUTES, breadcrumbTrail, type Locale, type PageId } from '../i18n/routes';
 import { NAV_LABELS, t } from '../i18n/ui';
 import type { PageFrontmatter } from '../lib/schemas';
+import { pageSourceIds } from '../lib/page-sources';
 import { articleJsonLd, breadcrumbJsonLd, lastModified } from '../lib/seo';
 
 interface Props {
@@ -52,7 +53,8 @@ const jsonLd = [
   }),
   breadcrumbJsonLd(trail.map((id) => ({ name: NAV_LABELS[locale][id], url: absolute(href(id, locale)) }))),
 ];
-const tocHeadings = data.sources.length > 0
+const sources = pageSourceIds(data.sources, body);
+const tocHeadings = sources.length > 0
   ? [...headings, { depth: 2, slug: 'page-sources', text: locale === 'es' ? 'Fuentes de esta página' : 'Sources for this page' }]
   : headings;
 ---
@@ -82,7 +84,7 @@ const tocHeadings = data.sources.length > 0
         }
         <h1 data-pagefind-meta="title">{data.title}</h1>
         <p class="guide__lead">{data.description}</p>
-        <PageMeta locale={locale} data={data} modified={modified} />
+        <PageMeta locale={locale} data={data} modified={modified} sourceCount={sources.length} legend={!body.includes('<StatusLegend')} />
       </header>
 
       <div class="guide__toc-inline">
@@ -106,10 +108,10 @@ const tocHeadings = data.sources.length > 0
         }
         <slot />
         {
-          data.sources.length > 0 && (
+          sources.length > 0 && (
             <section class="page-sources" aria-labelledby="page-sources">
               <h2 id="page-sources">{locale === 'es' ? 'Fuentes de esta página' : 'Sources for this page'}</h2>
-              <SourceRefs ids={data.sources} />
+              <SourceRefs ids={sources} />
             </section>
           )
         }
@@ -131,6 +133,19 @@ const tocHeadings = data.sources.length > 0
 <script>
   import { copyText } from '../scripts/clipboard';
   import { showToast } from '../scripts/toast';
+
+  // Links to an anchor inside a closed <details> (e.g. #cómo-leer-una-build) open it.
+  const openHashTarget = () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const target = id ? document.getElementById(id) : null;
+    const details = target?.closest('details');
+    if (target && details && !details.open) {
+      details.open = true;
+      target.scrollIntoView({ block: 'start' });
+    }
+  };
+  openHashTarget();
+  window.addEventListener('hashchange', openHashTarget);
 
   const article = document.querySelector<HTMLElement>('[data-heading-anchors]');
   if (article) {

@@ -2,6 +2,8 @@
 /**
  * The Mage races of one faction with their racials: effect, value for a Mage
  * (our analysis) and why. Effects come from races.json with their own status.
+ * Sources every race shares go to the page's source list (lib/page-sources.ts);
+ * a card only names the ones that are its own.
  */
 import Icon from '../ui/Icon.astro';
 import SourceRefs from './SourceRefs.astro';
@@ -9,6 +11,7 @@ import StatusBadge from './StatusBadge.astro';
 import { FACTION_LABELS, VALUE_LABELS, tb } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
 import { races } from '../../lib/data';
+import { ownSourceIds, sharedRaceSources } from '../../lib/page-sources';
 
 interface Props {
   faction: 'alliance' | 'horde';
@@ -52,9 +55,11 @@ const list = races.filter((race) => race.faction === faction);
             </li>
           ))}
         </ul>
-        <div class="race__sources">
-          <SourceRefs ids={race.sources} />
-        </div>
+        {ownSourceIds(race.sources, sharedRaceSources).length > 0 && (
+          <div class="race__sources">
+            <SourceRefs ids={ownSourceIds(race.sources, sharedRaceSources)} />
+          </div>
+        )}
       </article>
     ))
   }

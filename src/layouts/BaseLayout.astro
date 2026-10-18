@@ -7,6 +7,7 @@ import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
 import SearchDialog from '../components/layout/SearchDialog.astro';
 import SpellTooltip from '../components/layout/SpellTooltip.astro';
+import StatusTooltip from '../components/layout/StatusTooltip.astro';
 import Toast from '../components/layout/Toast.astro';
 import { href, otherLocale } from '../i18n/locale';
 import type { Locale, PageId } from '../i18n/routes';
@@ -104,6 +105,7 @@ const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
     <SearchDialog locale={locale} />
     <Toast />
     <SpellTooltip locale={locale} />
+    <StatusTooltip locale={locale} />
   </body>
 </html>
 
