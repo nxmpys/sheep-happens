@@ -1,8 +1,13 @@
 ---
 /**
  * "On this page" index. Rendered twice by GuideLayout: a sticky sidebar on wide
- * screens and a collapsible block above the content on narrow ones.
+ * screens and, on narrow ones, a collapsible block above the content.
  * The script highlights the section currently in view (aria-current="location").
+ *
+ * Long pages can group their headings (frontmatter `tocGroups`): each group is
+ * a collapsible block, and the one holding the current section opens by itself.
+ * On narrow screens such pages get a floating «En esta página» button instead
+ * of the block above the content, so the index is always one tap away.
  */
 import type { MarkdownHeading } from 'astro';
 import Icon from '../ui/Icon.astro';
@@ -13,16 +18,95 @@ interface Props {
   headings: MarkdownHeading[];
   locale: Locale;
   variant: 'sidebar' | 'inline';
+  groups?: { title: string; start: string }[] | undefined;
 }
 
-const { headings, locale, variant } = Astro.props;
+const { headings, locale, variant, groups } = Astro.props;
 const items = headings.filter((h) => h.depth === 2 || h.depth === 3);
 const title = t(locale, 'toc.title');
+
+// Split the headings at each group's first heading. A missing start fails the build.
+const grouped = groups?.length
+  ? groups.map((group, index) => {
+      const from = items.findIndex((h) => h.slug === group.start);
+      if (from === -1) throw new Error(`tocGroups: no heading with id "${group.start}"`);
+      const next = groups[index + 1];
+      const to = next ? items.findIndex((h) => h.slug === next.start) : items.length;
+      return { title: group.title, items: items.slice(from, to) };
+    })
+  : undefined;
+const leading = grouped && groups ? items.slice(0, items.findIndex((h) => h.slug === groups[0]!.start)) : [];
 ---
 
 {
   items.length > 1 &&
-    (variant === 'sidebar' ? (
+    (grouped ? (
+      <nav class:list={['toc', variant === 'sidebar' ? 'toc--sidebar' : 'toc--fab-wrap']} aria-label={title} data-toc data-pagefind-ignore>
+        {variant === 'sidebar' ? (
+          <>
+            <p class="toc__title">{title}</p>
+            <ol class="toc__groups">
+              {leading.map((h) => (
+                <li class={`toc__item toc__item--d${h.depth}`}>
+                  <a href={`#${h.slug}`} data-toc-link={h.slug}>
+                    {h.text}
+                  </a>
+                </li>
+              ))}
+              {grouped.map((group) => (
+                <li>
+                  <details class="toc__group" data-toc-group>
+                    <summary>{group.title}</summary>
+                    <ol>
+                      {group.items.map((h) => (
+                        <li class={`toc__item toc__item--d${h.depth}`}>
+                          <a href={`#${h.slug}`} data-toc-link={h.slug}>
+                            {h.text}
+                          </a>
+                        </li>
+                      ))}
+                    </ol>
+                  </details>
+                </li>
+              ))}
+            </ol>
+            <a class="toc__top" href="#top">
+              {t(locale, 'toc.backToTop')}
+            </a>
+          </>
+        ) : (
+          <details class="toc--fab" data-toc-fab>
+            <summary>
+              <Icon name="menu" size={18} />
+              {title}
+            </summary>
+            <div class="toc__panel">
+              <ol class="toc__groups">
+                {grouped.map((group) => (
+                  <li>
+                    <details class="toc__group" data-toc-group>
+                      <summary>{group.title}</summary>
+                      <ol>
+                        {group.items.map((h) => (
+                          <li class={`toc__item toc__item--d${h.depth}`}>
+                            <a href={`#${h.slug}`} data-toc-link={h.slug}>
+                              {h.text}
+                            </a>
+                          </li>
+                        ))}
+                      </ol>
+                    </details>
+                  </li>
+                ))}
+              </ol>
+              <a class="toc__top" href="#top">
+                {t(locale, 'toc.backToTop')}
+              </a>
+            </div>
+          </details>
+        )}
+      </nav>
+    ) : variant === 'sidebar' ? (
       <nav class="toc toc--sidebar" aria-label={title} data-toc>
         <p class="toc__title">{title}</p>
         <ol>
@@ -67,16 +151,18 @@ const title = t(locale, 'toc.title');
 
   function setCurrent(id: string | undefined) {
     for (const link of links) {
-      if (link.dataset.tocLink === id) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
+      if (link.dataset.tocLink === id) {
+        link.setAttribute('aria-current', 'location');
+        // Grouped index: open the group that holds the current section.
+        const group = link.closest<HTMLDetailsElement>('details[data-toc-group]');
+        if (group && !group.open) group.open = true;
+      } else link.removeAttribute('aria-current');
     }
   }
 
   if (headings.length > 0 && 'IntersectionObserver' in window) {
-    const visible = new Map<string, boolean>();
     const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) visible.set(entry.target.id, entry.isIntersecting);
+      () => {
         // The current section is the last heading above the reading line.
         const line = window.innerHeight * 0.3;
         let current: string | undefined;
@@ -91,10 +177,19 @@ const title = t(locale, 'toc.title');
   }
 
   // Close the mobile index after choosing a section.
-  document.querySelectorAll<HTMLDetailsElement>('details.toc--inline').forEach((details) => {
+  document.querySelectorAll<HTMLDetailsElement>('details.toc--inline, details[data-toc-fab]').forEach((details) => {
     details.addEventListener('click', (event) => {
       if ((event.target as HTMLElement).closest('a')) details.open = false;
     });
+  });
+  // Escape closes the floating index and returns focus to its button.
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    const fab = document.querySelector<HTMLDetailsElement>('details[data-toc-fab][open]');
+    if (fab) {
+      fab.open = false;
+      fab.querySelector('summary')?.focus();
+    }
   });
 </script>
 
@@ -133,6 +228,16 @@ const title = t(locale, 'toc.title');
     color: var(--text);
     font-weight: 650;
     border-left-color: var(--accent);
+  }
+  .toc__group > summary {
+    padding: 0.35rem 0.25rem;
+    cursor: pointer;
+    font-size: var(--step--1);
+    font-weight: 650;
+    color: var(--text);
+  }
+  .toc__group > ol {
+    margin-bottom: var(--space-2);
   }
   .toc--sidebar {
     position: sticky;
@@ -174,5 +279,43 @@ const title = t(locale, 'toc.title');
   }
   .toc--inline nav {
     padding: 0 var(--space-3) var(--space-3);
+  }
+  /* Floating index button (narrow screens, grouped pages). */
+  .toc--fab {
+    position: fixed;
+    right: var(--space-4);
+    bottom: var(--space-4);
+    z-index: 30;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    gap: var(--space-2);
+  }
+  .toc--fab > summary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 48px;
+    padding: 0 var(--space-4);
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    background: var(--surface-1);
+    box-shadow: var(--shadow);
+    font-weight: 650;
+    cursor: pointer;
+    list-style: none;
+  }
+  .toc--fab > summary::-webkit-details-marker {
+    display: none;
+  }
+  .toc__panel {
+    width: min(20rem, calc(100vw - 2 * var(--space-4)));
+    max-height: 65vh;
+    overflow-y: auto;
+    padding: var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+    box-shadow: var(--shadow);
   }
 </style>

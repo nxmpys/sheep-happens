@@ -541,6 +541,11 @@ export const pageFrontmatter = z
     summary: z.array(z.string().min(1)).max(5).optional(),
     sources: z.array(id).default([]),
     tags: z.array(z.string()).default([]),
+    /**
+     * Groups for a long page index: each starts at the heading whose id is
+     * `start` and runs to the next group. Shown as collapsible blocks.
+     */
+    tocGroups: z.array(z.object({ title: z.string().min(1), start: z.string().min(1) }).strict()).optional(),
   })
   .strict();
 export type PageFrontmatter = z.infer<typeof pageFrontmatter>;

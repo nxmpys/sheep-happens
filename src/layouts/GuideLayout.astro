@@ -88,7 +88,7 @@ const tocHeadings = sources.length > 0
       </header>
 
       <div class="guide__toc-inline">
-        <Toc headings={tocHeadings} locale={locale} variant="inline" />
+        <Toc headings={tocHeadings} locale={locale} variant="inline" groups={data.tocGroups} />
       </div>
 
       <article class="prose" data-pagefind-body data-heading-anchors={JSON.stringify(strings)}>
@@ -125,7 +125,7 @@ const tocHeadings = sources.length > 0
     </div>
 
     <aside class="guide__aside" data-pagefind-ignore>
-      <Toc headings={tocHeadings} locale={locale} variant="sidebar" />
+      <Toc headings={tocHeadings} locale={locale} variant="sidebar" groups={data.tocGroups} />
     </aside>
   </div>
 </BaseLayout>

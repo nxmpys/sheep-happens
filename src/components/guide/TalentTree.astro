@@ -1,8 +1,8 @@
 ---
 /**
- * One talent tree laid out like the in-game calculator (7 rows × 4 columns),
- * with the points of a build. Read-only: the Wowhead link on the build card
- * opens the same build in an editable calculator.
+ * The talents of a build in one tree: only those with points, grouped by row
+ * (top to bottom, left to right), with their rank. The full tree, empty talents
+ * included, is one click away in the Wowhead calculator linked from the card.
  */
 import Icon from '../ui/Icon.astro';
 import SpellRef from './SpellRef.astro';
@@ -20,8 +20,12 @@ interface Props {
 
 const { tree, points } = Astro.props;
 const locale = getLocale(Astro);
-const list = treeTalents(talents, tree);
-const spent = list.reduce((sum, talent) => sum + (points[talent.id] ?? 0), 0);
+const spentList = treeTalents(talents, tree).filter((talent) => (points[talent.id] ?? 0) > 0);
+const spent = spentList.reduce((sum, talent) => sum + points[talent.id]!, 0);
+const rows = [...new Set(spentList.map((talent) => talent.row))].map((row) => ({
+  row,
+  talents: spentList.filter((talent) => talent.row === row),
+}));
 // Only confirmed milestones get the marker (milestones.json), not every 1-point talent.
 const milestoneNames = new Set(milestones.filter((m) => m.tree === tree && m.status !== 'pending' && m.name).map((m) => m.name));
 const treeLabel = t(locale, `tree.${tree}` as UiKey);
@@ -32,28 +36,36 @@ const treeLabel = t(locale, `tree.${tree}` as UiKey);
     <Icon name={tree} size={18} />
     {treeLabel} <span class="talent-tree__spent">{spent}</span>
   </figcaption>
-  <ol class="talent-tree__grid" aria-label={`${treeLabel}: ${spent}`}>
+  <ol class="talent-tree__rows">
     {
-      list.map((talent) => {
-        const rank = points[talent.id] ?? 0;
-        const label = locale === 'es' && talent.nameEs ? talent.nameEs : talent.name;
-        return (
-          <li
-            class:list={['talent', { 'talent--spent': rank > 0, 'talent--full': rank === talent.maxRank, 'talent--milestone': milestoneNames.has(talent.name) }]}
-            style={`grid-row: ${talent.row}; grid-column: ${talent.col};`}
-          >
-            <span class="visually-hidden">{tb(locale, 'build.row', { row: talent.row })}: </span>
-            <span class="talent__name">
-              <SpellRef name={talent.name} label={label} />
-            </span>
-            <span class="talent__rank">
-              {rank}/{talent.maxRank}
-              {rank === 0 && <span class="visually-hidden"> ({tb(locale, 'build.unspent')})</span>}
-            </span>
-            {milestoneNames.has(talent.name) && <span class="visually-hidden">, {tb(locale, 'build.milestone')}</span>}
-          </li>
-        );
-      })
+      rows.map(({ row, talents: rowTalents }) => (
+        <li class="talent-row">
+          <span class="talent-row__label">{tb(locale, 'build.row', { row })}</span>
+          <ul class="talent-row__list">
+            {rowTalents.map((talent) => {
+              const rank = points[talent.id]!;
+              const label = locale === 'es' && talent.nameEs ? talent.nameEs : talent.name;
+              const milestone = milestoneNames.has(talent.name);
+              return (
+                <li class:list={['talent', { 'talent--full': rank === talent.maxRank, 'talent--milestone': milestone }]}>
+                  <span class="talent__name">
+                    {milestone && (
+                      <span class="talent__star" aria-hidden="true">
+                        ★
+                      </span>
+                    )}
+                    <SpellRef name={talent.name} label={label} />
+                  </span>
+                  <span class="talent__rank">
+                    {rank}/{talent.maxRank}
+                  </span>
+                  {milestone && <span class="visually-hidden">, {tb(locale, 'build.milestone')}</span>}
+                </li>
+              );
+            })}
+          </ul>
+        </li>
+      ))
     }
   </ol>
 </figure>
@@ -78,60 +90,67 @@ const treeLabel = t(locale, `tree.${tree}` as UiKey);
     background: var(--school-soft);
     font-variant-numeric: tabular-nums;
   }
-  .talent-tree__grid {
+  .talent-tree__rows {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-auto-rows: minmax(3.4rem, auto);
-    gap: 6px;
+    gap: 0;
     margin: 0;
-    padding: var(--space-2);
+    padding: 0;
     list-style: none;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     background: var(--surface-2);
   }
-  .talent {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 2px;
-    min-width: 0;
-    padding: 5px 6px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: var(--surface-1);
-    color: var(--text-subtle);
-    font-size: 0.75rem;
-    line-height: 1.25;
+  .talent-row {
+    display: grid;
+    grid-template-columns: 3.75rem 1fr;
+    align-items: start;
+    gap: var(--space-2);
+    margin: 0;
+    padding: var(--space-2) var(--space-3);
   }
-  .talent__name {
-    overflow-wrap: anywhere;
-    hyphens: auto;
+  .talent-row + .talent-row {
+    margin-top: 0;
+    border-top: 1px solid var(--border);
+  }
+  .talent-row__label {
+    padding-top: 0.3em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-subtle);
+    white-space: nowrap;
+  }
+  .talent-row__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .talent {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4em;
+    margin: 0;
+    padding: 0.2em 0.6em;
+    border: 1px solid color-mix(in srgb, var(--school) 55%, transparent);
+    border-radius: var(--radius-sm);
+    background: var(--school-soft);
+    font-size: var(--step--1);
+    line-height: 1.35;
+  }
+  .talent + .talent {
+    margin-top: 0;
+  }
+  .talent__star {
+    color: var(--baseline);
   }
   .talent__rank {
-    align-self: flex-end;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
-  }
-  .talent--spent {
-    border-color: color-mix(in srgb, var(--school) 55%, transparent);
-    background: var(--school-soft);
-    color: var(--text);
-  }
-  .talent--spent .talent__rank {
     color: var(--school);
   }
   .talent--milestone {
     box-shadow: inset 0 0 0 1px var(--baseline);
-  }
-  .talent--milestone .talent__name::before {
-    content: '★ ';
-    color: var(--baseline);
-  }
-  @media (max-width: 420px) {
-    .talent {
-      font-size: 0.6875rem;
-      padding: 4px;
-    }
   }
 </style>

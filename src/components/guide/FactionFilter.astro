@@ -1,0 +1,144 @@
+---
+/**
+ * All / Alliance / Horde switch for the races page. It hides the other
+ * faction's race cards (and the heading above them) and its column in the
+ * comparison tables (columns headed «Alianza» / «Horda»). The choice is saved.
+ * Without JavaScript the switch stays hidden and everything is shown.
+ */
+import { FACTION_LABELS } from '../../i18n/builds';
+import { getLocale } from '../../i18n/locale';
+
+const locale = getLocale(Astro);
+const labels = FACTION_LABELS[locale];
+const options = [
+  { value: 'all', label: locale === 'es' ? 'Todas' : 'All' },
+  { value: 'alliance', label: labels.alliance },
+  { value: 'horde', label: labels.horde },
+];
+---
+
+<faction-filter data-labels={JSON.stringify(labels)} hidden data-pagefind-ignore>
+  <fieldset class="faction">
+    <legend>{locale === 'es' ? 'Mostrar razas de' : 'Show races from'}</legend>
+    <div class="faction__options">
+      {
+        options.map((option) => (
+          <label>
+            <input type="radio" name="faction" value={option.value} checked={option.value === 'all'} />
+            <span>{option.label}</span>
+          </label>
+        ))
+      }
+    </div>
+  </fieldset>
+</faction-filter>
+
+<script>
+  type Faction = 'all' | 'alliance' | 'horde';
+  const KEY = 'sh-faction';
+
+  class FactionFilter extends HTMLElement {
+    connectedCallback() {
+      this.hidden = false;
+      const labels: Record<'alliance' | 'horde', string> = JSON.parse(this.dataset.labels ?? '{}');
+      let saved: Faction = 'all';
+      try {
+        const value = localStorage.getItem(KEY);
+        if (value === 'alliance' || value === 'horde') saved = value;
+      } catch {}
+      const apply = (faction: Faction) => {
+        for (const input of this.querySelectorAll<HTMLInputElement>('input[name="faction"]')) input.checked = input.value === faction;
+        // Race cards and the heading right above each faction's cards.
+        for (const group of document.querySelectorAll<HTMLElement>('[data-faction]')) {
+          const hide = faction !== 'all' && group.dataset.faction !== faction;
+          group.hidden = hide;
+          const heading = group.previousElementSibling;
+          if (heading?.matches('h2, h3')) (heading as HTMLElement).hidden = hide;
+        }
+        // Table columns headed with a faction name.
+        for (const table of document.querySelectorAll<HTMLTableElement>('.prose table')) {
+          const headers = [...table.querySelectorAll('thead th')];
+          headers.forEach((th, index) => {
+            const text = th.textContent?.trim();
+            const column = text === labels.alliance ? 'alliance' : text === labels.horde ? 'horde' : undefined;
+            if (!column) return;
+            const hide = faction !== 'all' && column !== faction;
+            for (const row of table.rows) {
+              const cell = row.cells[index];
+              if (cell) cell.hidden = hide;
+            }
+          });
+        }
+      };
+      apply(saved);
+      this.addEventListener('change', (event) => {
+        const value = (event.target as HTMLInputElement).value as Faction;
+        try {
+          if (value === 'all') localStorage.removeItem(KEY);
+          else localStorage.setItem(KEY, value);
+        } catch {}
+        apply(value);
+      });
+    }
+  }
+
+  customElements.define('faction-filter', FactionFilter);
+</script>
+
+<style>
+  faction-filter {
+    display: block;
+    margin: var(--space-3) 0;
+  }
+  faction-filter[hidden] {
+    display: none;
+  }
+  .faction {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  legend {
+    margin-bottom: var(--space-2);
+    font-size: var(--step--1);
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+  .faction__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  label {
+    position: relative;
+    cursor: pointer;
+  }
+  input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  label span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 1em;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    background: var(--surface-1);
+    color: var(--text-muted);
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+  input:checked + span {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--accent-contrast);
+  }
+  input:focus-visible + span {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+</style>

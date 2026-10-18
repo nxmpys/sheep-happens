@@ -22,7 +22,7 @@ const locale = getLocale(Astro);
 const list = races.filter((race) => race.faction === faction);
 ---
 
-<div class="races">
+<div class="races" data-faction={faction}>
   {
     list.map((race) => (
       <article class={`race race--${race.faction}`} id={`race-${race.id}`} aria-labelledby={`race-${race.id}-title`}>
@@ -66,6 +66,9 @@ const list = races.filter((race) => race.faction === faction);
 </div>
 
 <style>
+  .races[hidden] {
+    display: none;
+  }
   .races {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));

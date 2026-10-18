@@ -33,6 +33,7 @@ export const MDX_COMPONENTS = [
   'ChangelogList',
   'CritCalculator',
   'FactList',
+  'FactionFilter',
   'Faq',
   'FaqItem',
   'Highlight',

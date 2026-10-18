@@ -1,12 +1,16 @@
 ---
 /**
- * The point order of a leveling build as a table: the level of each point,
- * the same level with the Legacy perk Talented 5/5, the talent and rank reached,
- * and why the key points go there. Consecutive points in the same talent are
- * grouped ("10–14 · Improved Frostbolt 5/5"); the extra Talented points get
- * their own rows at the end.
+ * The point order of a leveling build as a table: the level of each point, the
+ * talent and rank reached, and why the key points go there. Consecutive points
+ * in the same talent are grouped ("10–14 · Improved Frostbolt 5/5").
+ *
+ * One level column. The "I have Talented 5/5" switch (TalentedToggle, saved for
+ * the whole site) swaps it to the levels with Talented and shows the extra
+ * "Talented only" rows. Without JavaScript the table shows the levels without
+ * Talented, which is what a first character at launch has.
  */
 import SpellRef from './SpellRef.astro';
+import TalentedToggle from './TalentedToggle.astro';
 import { tb } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
 import { talents } from '../../lib/data';
@@ -22,25 +26,28 @@ const locale = getLocale(Astro);
 const order = build.order ?? [];
 const base = pointsAtLevel(build.level, build.legacyTalented);
 const steps = orderSteps(order, talents, base);
-const showTalented = build.legacyTalented < 5;
+// A build that already assumes Talented shows its own levels, with no switch.
+const switchable = build.legacyTalented === 0;
 const span = (from: number, to: number) => (from === to ? String(from) : `${from}–${to}`);
 const notesFor = (from: number, to: number) => build.orderNotes.filter((n) => n.point >= from && n.point <= to);
 const intro =
   order.length > base
     ? tb(locale, 'build.orderIntro', { points: base, level: build.level, talented: order.length })
     : tb(locale, 'build.orderIntroNoExtra', { points: base, level: build.level });
-const columns = showTalented ? 3 : 2;
 ---
 
 <div class="talent-order">
   <p class="talent-order__intro">{intro}</p>
+  {switchable && <TalentedToggle />}
   <div class="table-wrap" tabindex="0" role="region" aria-label={tb(locale, 'build.orderCaption', { name: build.name[locale] })}>
     <table>
       <caption class="visually-hidden">{tb(locale, 'build.orderCaption', { name: build.name[locale] })}</caption>
       <thead>
         <tr>
-          <th scope="col">{tb(locale, 'build.orderLevel')}</th>
-          {showTalented && <th scope="col">{tb(locale, 'build.orderTalented')}</th>}
+          <th scope="col">
+            {tb(locale, 'build.orderLevel')}
+            {switchable && <span class="lv-talented"> ({tb(locale, 'build.orderWithTalented')})</span>}
+          </th>
           <th scope="col">{tb(locale, 'build.orderTalent')}</th>
         </tr>
       </thead>
@@ -52,21 +59,24 @@ const columns = showTalented ? 3 : 2;
             return (
               <>
                 {extra && step.from === base + 1 && (
-                  <tr class="talent-order__divider">
-                    <th scope="colgroup" colspan={columns}>
+                  <tr class="talent-order__divider is-extra">
+                    <th scope="colgroup" colspan="2">
                       {tb(locale, 'build.orderExtraHeading')}
                     </th>
                   </tr>
                 )}
                 <tr class:list={[`school-${step.talent.tree}`, { 'is-extra': extra }]}>
                   <th scope="row" class="talent-order__level">
-                    {extra ? (
-                      <span class="talent-order__only">{tb(locale, 'build.orderExtra')}</span>
+                    {switchable ? (
+                      <>
+                        {!extra && <span class="lv-base">{span(levelForPoint(step.from), levelForPoint(step.to))}</span>}
+                        <span class="lv-talented">{span(levelForPoint(step.from, 5), levelForPoint(step.to, 5))}</span>
+                      </>
                     ) : (
                       span(levelForPoint(step.from, build.legacyTalented), levelForPoint(step.to, build.legacyTalented))
                     )}
+                    {extra && <span class="talent-order__only">{tb(locale, 'build.orderExtra')}</span>}
                   </th>
-                  {showTalented && <td class="talent-order__level">{span(levelForPoint(step.from, 5), levelForPoint(step.to, 5))}</td>}
                   <td>
                     <span class="talent-order__talent">
                       <SpellRef name={step.talent.name} label={label} />{' '}
@@ -134,10 +144,6 @@ const columns = showTalented ? 3 : 2;
     font-variant-numeric: tabular-nums;
     font-weight: 700;
   }
-  td.talent-order__level {
-    font-weight: 500;
-    color: var(--text-muted);
-  }
   .talent-order__talent {
     font-weight: 600;
   }
@@ -162,9 +168,25 @@ const columns = showTalented ? 3 : 2;
     background: color-mix(in srgb, var(--baseline-soft) 45%, transparent);
   }
   .talent-order__only {
+    display: block;
+    font-size: 0.75rem;
     font-weight: 600;
     color: var(--baseline);
     white-space: normal;
+  }
+  /* Without the switch on: levels without Talented, no extra rows. */
+  .lv-talented,
+  .is-extra {
+    display: none;
+  }
+  :global(html[data-talented]) .lv-talented {
+    display: inline;
+  }
+  :global(html[data-talented]) .lv-base {
+    display: none;
+  }
+  :global(html[data-talented]) .is-extra {
+    display: table-row;
   }
   @media (max-width: 520px) {
     th,
