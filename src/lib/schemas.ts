@@ -325,6 +325,22 @@ export const raceSchema = z
   .strict();
 export type Race = z.infer<typeof raceSchema>;
 
+/**
+ * Our race recommendation for one situation (src/data/race-picks.json): the
+ * best races per faction and why. Shown on the races page and on the
+ * «Elige» hub. It is analysis, like the racial values.
+ */
+export const racePickSchema = z
+  .object({
+    id,
+    situation: localized,
+    alliance: z.array(id).min(1),
+    horde: z.array(id).min(1),
+    why: localized,
+  })
+  .strict();
+export type RacePick = z.infer<typeof racePickSchema>;
+
 /** Our rating of how much something helps a Mage (racials use the same scale). */
 export const RATINGS = ['high', 'medium', 'low', 'none'] as const;
 export type Rating = (typeof RATINGS)[number];

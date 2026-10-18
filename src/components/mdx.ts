@@ -19,6 +19,7 @@ import Faq from './guide/Faq.astro';
 import FaqItem from './guide/FaqItem.astro';
 import Highlight from './guide/Highlight.astro';
 import Highlights from './guide/Highlights.astro';
+import HubCards from './guide/HubCards.astro';
 import LevelView from './guide/LevelView.astro';
 import LevelingSpells from './guide/LevelingSpells.astro';
 import LevelingStatus from './guide/LevelingStatus.astro';
@@ -28,10 +29,12 @@ import PageLink from './guide/PageLink.astro';
 import Pending from './guide/Pending.astro';
 import Priority from './guide/Priority.astro';
 import ProfessionDetail from './guide/ProfessionDetail.astro';
+import ProfessionPairs from './guide/ProfessionPairs.astro';
 import ProfessionPicks from './guide/ProfessionPicks.astro';
 import ProfessionTable from './guide/ProfessionTable.astro';
 import QuestionCards from './guide/QuestionCards.astro';
 import RaceCards from './guide/RaceCards.astro';
+import RacePicks from './guide/RacePicks.astro';
 import ScrollGuide from './guide/ScrollGuide.astro';
 import SourceRefs from './guide/SourceRefs.astro';
 import SourcesTable from './guide/SourcesTable.astro';
@@ -63,6 +66,7 @@ export const mdxComponents = {
   FaqItem,
   Highlight,
   Highlights,
+  HubCards,
   LevelView,
   LevelingSpells,
   LevelingStatus,
@@ -72,10 +76,12 @@ export const mdxComponents = {
   Pending,
   Priority,
   ProfessionDetail,
+  ProfessionPairs,
   ProfessionPicks,
   ProfessionTable,
   QuestionCards,
   RaceCards,
+  RacePicks,
   ScrollGuide,
   SourceRefs,
   SourcesTable,

@@ -50,7 +50,7 @@ describe('route registry', () => {
   });
 
   it('builds breadcrumbs from the root', () => {
-    expect(breadcrumbTrail('talents-fire')).toEqual(['home', 'talents', 'talents-fire']);
+    expect(breadcrumbTrail('talents-fire')).toEqual(['home', 'learn', 'talents', 'talents-fire']);
   });
 
   it('links the reading order both ways, in menu order', () => {

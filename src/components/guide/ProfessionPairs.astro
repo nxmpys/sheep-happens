@@ -1,0 +1,45 @@
+---
+/**
+ * The professions answer at a glance, for the «Elige» hub: goal → the pair to
+ * take. Same data as the professions page cards (profession-picks.json), which
+ * keep the reasons; each row links to its card there.
+ */
+import { getLocale, href } from '../../i18n/locale';
+import { getProfession, picks } from '../../lib/data';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+---
+
+<div class="table-wrap" tabindex="0" role="region" aria-label={es ? 'Profesiones por objetivo' : 'Professions by goal'}>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">{es ? 'Si quieres' : 'If you want'}</th>
+        <th scope="col">{es ? 'Elige' : 'Pick'}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        picks.map((pick) => (
+          <tr>
+            <th scope="row">
+              <a href={href('professions', locale, `pick-${pick.id}`)}>{pick.goal[locale]}</a>
+            </th>
+            <td>{pick.professions.map((id) => getProfession(id).name[locale]).join(' + ')}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+<p class="pairs__more">
+  <a href={href('professions', locale)}>{es ? 'Por qué, y qué aporta cada profesión al Mago' : 'Why, and what each profession gives a Mage'}</a>
+</p>
+
+<style>
+  .pairs__more {
+    margin-top: var(--space-2);
+    font-size: var(--step--1);
+  }
+</style>

@@ -12,8 +12,9 @@ export const DEFAULT_LOCALE: Locale = 'es';
 
 export const PAGE_IDS = [
   'home',
+  'learn',
   'builds',
-  'builds-duel-30',
+  'choose',
   'races',
   'professions',
   'guide',
@@ -53,18 +54,14 @@ export interface RouteDef {
 
 export const ROUTES: Record<PageId, RouteDef> = {
   home: { id: 'home', slug: { es: '', en: '' } },
+  learn: { id: 'learn', slug: { es: 'aprende', en: 'learn' }, parent: 'home' },
   builds: { id: 'builds', slug: { es: 'builds', en: 'builds' }, parent: 'home' },
-  'builds-duel-30': {
-    id: 'builds-duel-30',
-    slug: { es: 'builds/duelos-nivel-30', en: 'builds/duels-level-30' },
-    parent: 'builds',
-    temporary: true,
-  },
-  races: { id: 'races', slug: { es: 'razas', en: 'races' }, parent: 'home' },
-  professions: { id: 'professions', slug: { es: 'profesiones', en: 'professions' }, parent: 'home' },
-  guide: { id: 'guide', slug: { es: 'guia', en: 'guide' }, parent: 'home' },
+  choose: { id: 'choose', slug: { es: 'elige', en: 'choose' }, parent: 'home' },
+  races: { id: 'races', slug: { es: 'razas', en: 'races' }, parent: 'choose' },
+  professions: { id: 'professions', slug: { es: 'profesiones', en: 'professions' }, parent: 'choose' },
+  guide: { id: 'guide', slug: { es: 'guia', en: 'guide' }, parent: 'learn' },
   changes: { id: 'changes', slug: { es: 'cambios', en: 'changes' }, parent: 'home' },
-  talents: { id: 'talents', slug: { es: 'talentos', en: 'talents' }, parent: 'home' },
+  talents: { id: 'talents', slug: { es: 'talentos', en: 'talents' }, parent: 'learn' },
   'talents-arcane': {
     id: 'talents-arcane',
     slug: { es: 'talentos/arcano', en: 'talents/arcane' },
@@ -83,61 +80,46 @@ export const ROUTES: Record<PageId, RouteDef> = {
     parent: 'talents',
     spec: 'frost',
   },
-  leveling: { id: 'leveling', slug: { es: 'nivelacion', en: 'leveling' }, parent: 'home' },
+  leveling: { id: 'leveling', slug: { es: 'nivelacion', en: 'leveling' }, parent: 'builds' },
   'level-view': { id: 'level-view', slug: { es: 'nivelacion/por-nivel', en: 'leveling/by-level' }, parent: 'leveling' },
-  'aoe-farming': { id: 'aoe-farming', slug: { es: 'farmeo-aoe', en: 'aoe-farming' }, parent: 'guide' },
-  scrolls: { id: 'scrolls', slug: { es: 'pergaminos', en: 'scrolls' }, parent: 'guide' },
-  combat: { id: 'combat', slug: { es: 'combate', en: 'combat' }, parent: 'home' },
-  gear: { id: 'gear', slug: { es: 'equipo', en: 'gear' }, parent: 'home' },
+  'aoe-farming': { id: 'aoe-farming', slug: { es: 'farmeo-aoe', en: 'aoe-farming' }, parent: 'builds' },
+  scrolls: { id: 'scrolls', slug: { es: 'pergaminos', en: 'scrolls' }, parent: 'builds' },
+  combat: { id: 'combat', slug: { es: 'combate', en: 'combat' }, parent: 'learn' },
+  gear: { id: 'gear', slug: { es: 'equipo', en: 'gear' }, parent: 'learn' },
   tools: { id: 'tools', slug: { es: 'herramientas', en: 'tools' }, parent: 'home' },
   addons: { id: 'addons', slug: { es: 'addons', en: 'addons' }, parent: 'home' },
   sources: { id: 'sources', slug: { es: 'fuentes', en: 'sources' }, parent: 'home' },
   updates: { id: 'updates', slug: { es: 'novedades', en: 'updates' }, parent: 'home' },
 };
 
-/** A labelled set of pages inside a menu group, e.g. the three talent trees under Reference. */
-export interface NavCluster {
-  cluster: 'trees';
-  ids: PageId[];
-}
-export type NavEntry = PageId | NavCluster;
-
 /**
- * One item of the primary navigation. A group with `page` links to that page
- * and opens its submenu from a separate button; a group without one is only a
- * submenu ("Start", "Reference"). An item with `page` and no `items` is a
- * direct link.
+ * One entry of the primary navigation: a hub page and the pages it leads to.
+ * The menu shows only the hubs (no dropdowns); each hub page lists its
+ * `items` as cards (HubCards), and the previous/next links walk hubs and
+ * items in this order (READING_ORDER), so the three never diverge.
  */
 export interface NavGroup {
-  key: 'start' | 'builds' | 'reference' | 'tools' | 'addons';
-  page?: PageId;
-  items?: NavEntry[];
+  key: 'learn' | 'builds' | 'choose' | 'changes' | 'tools' | 'addons';
+  page: PageId;
+  items?: PageId[];
 }
 
 /**
- * Primary navigation, in display order, following a new player's path: start
- * (class guide, race, tree), builds, then reference pages. Every page appears
- * once. The previous/next links follow the same order (READING_ORDER), so the
- * two can never diverge.
+ * Six entries: learning the class from zero, builds to copy, race and
+ * professions to pick, Forever's changes, and the tools.
  */
 export const PRIMARY_NAV: readonly NavGroup[] = [
-  { key: 'start', items: ['guide', 'races', 'talents'] },
-  { key: 'builds', page: 'builds', items: ['leveling', 'level-view', 'builds-duel-30'] },
-  {
-    key: 'reference',
-    items: ['changes', { cluster: 'trees', ids: ['talents-arcane', 'talents-fire', 'talents-frost'] }, 'combat', 'aoe-farming', 'scrolls', 'professions', 'gear'],
-  },
-  // The crit calculator has content of its own, so Tools stays a direct link next to Addons.
+  { key: 'learn', page: 'learn', items: ['guide', 'talents', 'talents-arcane', 'talents-fire', 'talents-frost', 'combat', 'gear'] },
+  { key: 'builds', page: 'builds', items: ['leveling', 'level-view', 'aoe-farming', 'scrolls'] },
+  { key: 'choose', page: 'choose', items: ['races', 'professions'] },
+  { key: 'changes', page: 'changes' },
   { key: 'tools', page: 'tools' },
   { key: 'addons', page: 'addons' },
 ];
 
 /** Pages of the primary navigation in menu order, groups first and then their items. */
 export function navPages(nav: readonly NavGroup[] = PRIMARY_NAV): PageId[] {
-  return nav.flatMap((group) => [
-    ...(group.page ? [group.page] : []),
-    ...(group.items ?? []).flatMap((entry) => (typeof entry === 'string' ? [entry] : entry.ids)),
-  ]);
+  return nav.flatMap((group) => [group.page, ...(group.items ?? [])]);
 }
 
 /** The guided reading order used for the previous/next links: the menu, top to bottom. */

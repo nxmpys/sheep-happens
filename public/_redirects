@@ -1,0 +1,7 @@
+# Cloudflare Pages redirects (https://developers.cloudflare.com/pages/configuration/redirects/)
+
+# The level 30 duel page (beta tournament, 17-18 Oct 2026) was retired on 18 Oct 2026.
+/es/builds/duelos-nivel-30/ /es/builds/ 301
+/es/builds/duelos-nivel-30 /es/builds/ 301
+/en/builds/duels-level-30/ /en/builds/ 301
+/en/builds/duels-level-30 /en/builds/ 301

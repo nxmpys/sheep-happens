@@ -55,16 +55,29 @@ describe('talent trees', () => {
   });
 });
 
+
+/** A 26-point Frost build that needs Talented 5/5 at level 30 (the former level 30 duel build). */
+const TALENTED_POINTS = {
+  'improved-frostbolt': 5,
+  'ice-shards': 5,
+  permafrost: 3,
+  'improved-frost-nova': 2,
+  frostbite: 3,
+  'ice-lance': 1,
+  'ice-block': 1,
+  shatter: 3,
+  'cold-snap': 1,
+  'fingers-of-frost': 2,
+};
+
 describe('validateBuild', () => {
   it('accepts every shipped build', () => {
     for (const build of builds) expect(validateBuild(build.points, build.level, talents, build.legacyTalented)).toEqual([]);
   });
 
   it('counts the Talented points a build declares', () => {
-    const legacy = builds.find((b) => b.id === 'frost-duels-30-legacy')!;
-    expect(legacy.legacyTalented).toBe(5);
-    expect(validateBuild(legacy.points, 30, talents).join()).toMatch(/26 points spent, but level 30 gives 21/);
-    expect(validateBuild(legacy.points, 30, talents, 5)).toEqual([]);
+    expect(validateBuild(TALENTED_POINTS, 30, talents).join()).toMatch(/26 points spent, but level 30 gives 21/);
+    expect(validateBuild(TALENTED_POINTS, 30, talents, 5)).toEqual([]);
   });
 
   it('rejects ranks above the maximum', () => {
@@ -161,7 +174,7 @@ describe('Wowhead links', () => {
 });
 
 describe('build summaries', () => {
-  const build = builds.find((b) => b.id === 'frost-duels-30-legacy')!;
+  const build = { points: TALENTED_POINTS };
 
   it('splits points per tree', () => {
     expect(pointsByTree(build.points, talents)).toEqual({ arcane: 0, fire: 0, frost: 26 });

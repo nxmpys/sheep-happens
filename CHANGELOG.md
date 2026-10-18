@@ -6,6 +6,10 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ## 2026-10-18
 
+### [Web] Menú más simple: Aprende, Builds y Elige
+
+El menú tiene seis entradas sin desplegables. Aprende es el camino para empezar desde cero, Builds reúne las builds listas para copiar (con el enlace de Wowhead) y las guías de leveo, y Elige da la mejor raza y la pareja de profesiones en una sola página. La página de duelos a nivel 30, pensada para el torneo de la beta del 17 y 18 de octubre, se retira: su dirección lleva a Builds.
+
 ### [Web] Web más clara: menú nuevo, vista «Estoy a nivel X» y nombres en español
 
 Menú por recorrido (Empezar, Builds, Referencia), cada build y cada ficha de cambio en un solo sitio, etiquetas de verificación cortas con su explicación al pasar el ratón o tocar, un interruptor «Tengo Talented 5/5» para todas las tablas de puntos, filtro por facción en Razas y la nueva vista «Estoy a nivel X». Los nombres de hechizos y talentos salen de un diccionario único, con el nombre del cliente en español cuando está verificado.
@@ -27,7 +31,7 @@ La página de Addons describe MageProcs 1.2.0: los procs que avisa, el contador 
 
 Incorporamos la build del 15 de octubre: fichas nuevas de Frost Blast, Cólera Arcana, Masa crítica, Poder de Fuego y varitas; Explosión Arcana, Tromba de misiles, Explosión de Fuego mejorada, Calentamiento, Lanza de hielo, Escalofrío del invierno y Cono de frío actualizados; el árbol de talentos y los talentos decisivos de Arcano, al día; y las raciales de las seis razas que pueden ser Mago. Las builds y las páginas de combate, leveo, farmeo AoE y talentos reflejan los cambios.
 
-- **Datos afectados:** Frost Blast, Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Masa crítica, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (bajar de rango), Varitas, Cólera Arcana, Frost Blast, Cono de frío, Explosión de Fuego, race:human, race:orc, race:undead, race:gnome, race:troll, race:skyborne, build:frost-leveling-solo, build:frost-duels-30-legacy, Arcane Missiles does not proc Barrage
+- **Datos afectados:** Frost Blast, Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Masa crítica, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (bajar de rango), Varitas, Cólera Arcana, Frost Blast, Cono de frío, Explosión de Fuego, race:human, race:orc, race:undead, race:gnome, race:troll, race:skyborne, build:frost-leveling-solo, Arcane Missiles does not proc Barrage
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead), [Arcane Missiles does not proc Barrage](https://us.forums.blizzard.com/en/wow/t/arcane-missiles-does-not-proc-barrage/2384260) (WoW Forever Beta Discussion (Blizzard forums))
 
 ## 2026-10-15
@@ -97,7 +101,7 @@ La guía se mueve a https://sheephappens.app. La dirección anterior (sheep-happ
 
 Nueva página de Builds con filtros por uso y rama, vista de calculadora y enlace a la calculadora de Wowhead. Primera build: Escarcha para duelos a nivel 30 con el perk de Legado Talented (26 puntos), con una guía en profundidad para el torneo Forever Open. Nueva página de Razas con las raciales de las seis razas de Mago y qué aporta cada una. Los nombres de hechizos en negrita muestran su ficha al pasar el ratón o al tocarlos. El dato del sistema de Legado se corrige: el perk Talented adelanta los puntos de talento de clase.
 
-- **Datos afectados:** build:frost-duels-30-legacy, race:human, race:gnome, race:skyborne, race:orc, race:undead, race:troll, Mage Forever Talent Calculator, WoW Forever Racials Guide: 2 Active and 2 Passive per Race, Changes to Racials Likely Coming Next Week in WoW: Forever, WoW Forever — Forever Open Duel Tournament Overview: Rules & Prizes, Sistema de Legado, WoW Forever Legacy Points Guide - Challenges, Perks & Rewards, The Best Way to Spend Your Legacy Points in WoW Forever, 16 Legacy Points Now Available for Testing on WoW: Forever Beta
+- **Datos afectados:** race:human, race:gnome, race:skyborne, race:orc, race:undead, race:troll, Mage Forever Talent Calculator, WoW Forever Racials Guide: 2 Active and 2 Passive per Race, Changes to Racials Likely Coming Next Week in WoW: Forever, WoW Forever — Forever Open Duel Tournament Overview: Rules & Prizes, Sistema de Legado, WoW Forever Legacy Points Guide - Challenges, Perks & Rewards, The Best Way to Spend Your Legacy Points in WoW Forever, 16 Legacy Points Now Available for Testing on WoW: Forever Beta
 - **Fuentes:** [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead), [WoW Forever Racials Guide: 2 Active and 2 Passive per Race](https://lfcarry.com/guides/wow-forever-racials) (LFCarry), [WoW Forever — Forever Open Duel Tournament Overview: Rules & Prizes](https://conquestcapped.com/guides/wow-forever/wow-forever-open-duel-tournament/) (Conquest Capped), [WoW Forever Legacy Points Guide - Challenges, Perks & Rewards](https://conquestcapped.com/guides/wow-forever/wow-forever-legacy-points/) (Conquest Capped), [The Best Way to Spend Your Legacy Points in WoW Forever](https://www.method.gg/wow-forever/the-best-way-to-spend-your-legacy-points-in-wow-forever-best-legacy-talent-builds) (Method)
 
 ## 2026-10-12

@@ -1,13 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
 import Icon from '../ui/Icon.astro';
 import Logo from '../ui/Logo.astro';
-import type { IconName } from '../ui/icons';
 import LangSwitch from './LangSwitch.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import { href } from '../../i18n/locale';
-import { PRIMARY_NAV, ROUTES, breadcrumbTrail, navPages, type Locale, type NavGroup, type PageId } from '../../i18n/routes';
-import { NAV_GROUP_LABELS, NAV_LABELS, NAV_MENU_LABELS, t } from '../../i18n/ui';
+import { PRIMARY_NAV, breadcrumbTrail, navPages, type Locale, type NavGroup, type PageId } from '../../i18n/routes';
+import { NAV_GROUP_LABELS, NAV_LABELS, t } from '../../i18n/ui';
 
 interface Props {
   locale: Locale;
@@ -17,38 +15,12 @@ interface Props {
 const { locale, pageId } = Astro.props;
 const trail = pageId ? breadcrumbTrail(pageId) : [];
 const labels = NAV_LABELS[locale];
-const menuLabel = (id: PageId) => NAV_MENU_LABELS[locale][id] ?? labels[id];
-const isCurrent = (id: PageId) => id === pageId;
-// The group highlighted for the current page: the one that lists it or, for a
-// page outside the menu, the first one that lists an ancestor (breadcrumbs).
-// Not on the group's own page, where aria-current already marks the link.
+// Six direct links, no dropdowns: each hub page leads to its own pages.
+// The entry is highlighted on its hub and on every page under it.
 const currentGroup =
   PRIMARY_NAV.find((group) => pageId !== undefined && navPages([group]).includes(pageId)) ??
-  PRIMARY_NAV.find((group) => navPages([group]).some((id) => id !== 'home' && trail.includes(id)));
+  PRIMARY_NAV.find((group) => trail.includes(group.page));
 const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.page;
-// Pages whose information is still "pending" (gear before launch) are marked and dimmed.
-const pending = new Set(
-  (await getCollection('pages', (entry) => entry.data.locale === locale && entry.data.verification === 'pending')).map(
-    (entry) => entry.data.pageId,
-  ),
-);
-/** Submenu icons for pages that are not a talent tree. */
-const SUBMENU_ICONS: Partial<Record<PageId, IconName>> = {
-  'builds-duel-30': 'swords',
-  leveling: 'map',
-  'level-view': 'level',
-  'aoe-farming': 'aoe',
-  scrolls: 'scroll',
-  combat: 'fire',
-  gear: 'shield',
-  addons: 'layers',
-  guide: 'book',
-  races: 'users',
-  talents: 'layers',
-  changes: 'classic',
-  professions: 'scroll',
-};
-const submenuIcon = (id: PageId): IconName => ROUTES[id].spec ?? SUBMENU_ICONS[id] ?? 'book';
 ---
 
 <header class="site-header">
@@ -61,80 +33,17 @@ const submenuIcon = (id: PageId): IconName => ROUTES[id].spec ?? SUBMENU_ICONS[i
     <nav class="primary-nav" id="primary-nav" aria-label={t(locale, 'nav.primary')} data-nav>
       <ul class="nav-list">
         {
-          PRIMARY_NAV.map((group) => {
-            const label = NAV_GROUP_LABELS[locale][group.key];
-            const subId = `sub-${group.key}`;
-            return (
-              <li class:list={['nav-item', { 'has-sub': group.items }]}>
-                {group.page ? (
-                  <a
-                    href={href(group.page, locale)}
-                    class:list={['nav-link', { 'is-section': inGroup(group) }]}
-                    aria-current={isCurrent(group.page) ? 'page' : undefined}
-                  >
-                    {label}
-                  </a>
-                ) : (
-                  <button
-                    type="button"
-                    class:list={['nav-link', 'nav-group', { 'is-section': inGroup(group) }]}
-                    aria-expanded="false"
-                    aria-controls={subId}
-                    data-sub-toggle
-                  >
-                    {label}
-                    <Icon name="chevronDown" size={16} class="nav-group__chevron" />
-                  </button>
-                )}
-                {group.items && group.page && (
-                  <button type="button" class="sub-toggle" aria-expanded="false" aria-controls={subId} data-sub-toggle>
-                    <Icon name="chevronDown" size={16} />
-                    <span class="visually-hidden">{t(locale, 'nav.submenu', { label })}</span>
-                  </button>
-                )}
-                {group.items && (
-                  <ul class="submenu" id={subId}>
-                    {group.items.map((entry) =>
-                      typeof entry === 'string' ? (
-                        <li>
-                          <a
-                            href={href(entry, locale)}
-                            class:list={['submenu-link', `school-${ROUTES[entry].spec ?? 'baseline'}`, { 'is-pending': pending.has(entry) }]}
-                            aria-current={isCurrent(entry) ? 'page' : undefined}
-                          >
-                            <Icon name={submenuIcon(entry)} size={18} />
-                            <span>{menuLabel(entry)}</span>
-                            {pending.has(entry) && ' '}
-                            {pending.has(entry) && <span class="submenu-badge">{t(locale, 'nav.afterLaunch')}</span>}
-                          </a>
-                        </li>
-                      ) : (
-                        <li class="submenu-cluster">
-                          <span class="submenu-cluster__label" id={`${subId}-${entry.cluster}`}>
-                            {NAV_GROUP_LABELS[locale][entry.cluster]}
-                          </span>
-                          <ul aria-labelledby={`${subId}-${entry.cluster}`}>
-                            {entry.ids.map((id) => (
-                              <li>
-                                <a
-                                  href={href(id, locale)}
-                                  class={`submenu-link submenu-link--compact school-${ROUTES[id].spec ?? 'baseline'}`}
-                                  aria-current={isCurrent(id) ? 'page' : undefined}
-                                >
-                                  <Icon name={submenuIcon(id)} size={16} />
-                                  {menuLabel(id)}
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </li>
-                      ),
-                    )}
-                  </ul>
-                )}
-              </li>
-            );
-          })
+          PRIMARY_NAV.map((group) => (
+            <li class="nav-item">
+              <a
+                href={href(group.page, locale)}
+                class:list={['nav-link', { 'is-section': inGroup(group) }]}
+                aria-current={pageId === group.page ? 'page' : undefined}
+              >
+                {NAV_GROUP_LABELS[locale][group.key]}
+              </a>
+            </li>
+          ))
         }
       </ul>
     </nav>
@@ -168,7 +77,6 @@ const submenuIcon = (id: PageId): IconName => ROUTES[id].spec ?? SUBMENU_ICONS[i
   const header = document.querySelector<HTMLElement>('.site-header');
   const nav = document.querySelector<HTMLElement>('[data-nav]');
   const menuButton = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
-  const subToggles = [...document.querySelectorAll<HTMLButtonElement>('[data-sub-toggle]')];
 
   function setMenu(open: boolean, { restoreFocus = false } = {}) {
     if (!menuButton || !nav) return;
@@ -179,42 +87,14 @@ const submenuIcon = (id: PageId): IconName => ROUTES[id].spec ?? SUBMENU_ICONS[i
     if (!open && restoreFocus) menuButton.focus();
   }
 
-  function setSub(toggle: HTMLButtonElement, open: boolean) {
-    toggle.setAttribute('aria-expanded', String(open));
-  }
-
   menuButton?.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
 
-  for (const toggle of subToggles) {
-    toggle.addEventListener('click', () => {
-      const open = toggle.getAttribute('aria-expanded') !== 'true';
-      // One submenu at a time.
-      if (open) subToggles.filter((other) => other !== toggle).forEach((other) => setSub(other, false));
-      setSub(toggle, open);
-    });
-    toggle.parentElement?.addEventListener('focusout', (event) => {
-      const next = (event as FocusEvent).relatedTarget as Node | null;
-      if (!next || !toggle.parentElement?.contains(next)) setSub(toggle, false);
-    });
-  }
-
   document.addEventListener('keydown', (event) => {
-    if (event.key !== 'Escape') return;
-    const openSub = subToggles.find((t) => t.getAttribute('aria-expanded') === 'true');
-    if (openSub) {
-      setSub(openSub, false);
-      openSub.focus();
-      return;
-    }
-    if (menuButton?.getAttribute('aria-expanded') === 'true') setMenu(false, { restoreFocus: true });
+    if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') setMenu(false, { restoreFocus: true });
   });
 
   document.addEventListener('click', (event) => {
-    const target = event.target as Node;
-    if (header && !header.contains(target)) {
-      setMenu(false);
-      subToggles.forEach((t) => setSub(t, false));
-    }
+    if (header && !header.contains(event.target as Node)) setMenu(false);
   });
 </script>
 
@@ -265,7 +145,6 @@ const submenuIcon = (id: PageId): IconName => ROUTES[id].spec ?? SUBMENU_ICONS[i
     padding: 0;
   }
   .nav-item {
-    position: relative;
     display: flex;
     align-items: center;
   }
@@ -290,109 +169,6 @@ const submenuIcon = (id: PageId): IconName => ROUTES[id].spec ?? SUBMENU_ICONS[i
     color: var(--text);
     box-shadow: inset 0 -2px 0 var(--accent);
     border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-  }
-  .has-sub .nav-link {
-    padding-right: var(--space-1);
-  }
-  .sub-toggle {
-    display: grid;
-    place-items: center;
-    width: 28px;
-    height: 32px;
-    border: 0;
-    border-radius: var(--radius-sm);
-    background: transparent;
-    color: var(--text-muted);
-    cursor: pointer;
-  }
-  .sub-toggle:hover {
-    background: var(--surface-2);
-    color: var(--text);
-  }
-  .sub-toggle[aria-expanded='true'] :global(svg),
-  .nav-group[aria-expanded='true'] :global(.nav-group__chevron) {
-    transform: rotate(180deg);
-  }
-  .nav-group {
-    gap: 0.2em;
-    border: 0;
-    background: transparent;
-    font: inherit;
-    font-size: 0.9375rem;
-    font-weight: 550;
-    cursor: pointer;
-  }
-  .submenu {
-    display: none;
-    position: absolute;
-    top: calc(100% + 6px);
-    left: 0;
-    min-width: 15rem;
-    margin: 0;
-    padding: var(--space-2);
-    list-style: none;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--surface-1);
-    box-shadow: var(--shadow);
-  }
-  .sub-toggle[aria-expanded='true'] + .submenu,
-  .nav-group[aria-expanded='true'] + .submenu {
-    display: block;
-  }
-  .submenu-link.is-pending {
-    opacity: 0.65;
-  }
-  .submenu-badge {
-    margin-left: auto;
-    padding: 0 0.5em;
-    border: 1px dashed var(--border-strong);
-    border-radius: 999px;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    white-space: nowrap;
-  }
-  .submenu-cluster {
-    padding: var(--space-1) var(--space-3);
-  }
-  .submenu-cluster__label {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-subtle);
-  }
-  .submenu-cluster ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 var(--space-1);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .submenu-link--compact {
-    min-height: 36px;
-    padding: 0 var(--space-2);
-  }
-  .submenu-link {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    min-height: 40px;
-    padding: 0 var(--space-3);
-    border-radius: var(--radius-sm);
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 550;
-  }
-  .submenu-link :global(svg) {
-    color: var(--school);
-  }
-  .submenu-link:hover,
-  .submenu-link[aria-current='page'] {
-    background: var(--school-soft);
   }
   .header-actions {
     display: flex;
@@ -430,7 +206,7 @@ const submenuIcon = (id: PageId): IconName => ROUTES[id].spec ?? SUBMENU_ICONS[i
     display: inline-block;
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1000px) {
     .menu-toggle {
       display: inline-grid;
     }
@@ -455,9 +231,6 @@ const submenuIcon = (id: PageId): IconName => ROUTES[id].spec ?? SUBMENU_ICONS[i
       gap: 0;
       padding: var(--space-2) var(--gutter) var(--space-4);
     }
-    .nav-item {
-      flex-wrap: wrap;
-    }
     .nav-link {
       flex: 1;
       min-height: 48px;
@@ -467,31 +240,6 @@ const submenuIcon = (id: PageId): IconName => ROUTES[id].spec ?? SUBMENU_ICONS[i
     .nav-link.is-section {
       box-shadow: inset 3px 0 0 var(--accent);
       border-radius: 0;
-    }
-    .sub-toggle {
-      display: none;
-    }
-    /* In the mobile menu every group is open: its name is a heading, not a toggle. */
-    .nav-group {
-      pointer-events: none;
-      min-height: 36px;
-      color: var(--text-subtle);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-    .nav-group :global(.nav-group__chevron) {
-      display: none;
-    }
-    .submenu {
-      display: block;
-      position: static;
-      width: 100%;
-      border: 0;
-      box-shadow: none;
-      background: transparent;
-      padding: 0 0 var(--space-2) var(--space-5);
     }
   }
 

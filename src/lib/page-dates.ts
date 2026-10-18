@@ -76,6 +76,7 @@ export function shownDataDates(body: string, data: DateSource): string[] {
         add(data.professions);
         break;
       case 'ProfessionPicks':
+      case 'ProfessionPairs':
         add(data.picks);
         break;
       case 'ChangelogList':

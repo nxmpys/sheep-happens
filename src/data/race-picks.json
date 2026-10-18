@@ -1,0 +1,76 @@
+[
+  {
+    "id": "leveling",
+    "situation": {
+      "es": "Subir de nivel",
+      "en": "Leveling"
+    },
+    "alliance": [
+      "skyborne",
+      "gnome"
+    ],
+    "horde": [
+      "undead",
+      "troll"
+    ],
+    "why": {
+      "es": "Menos descansos: Read Ley Line y Cannibalize recuperan maná, Expansive Mind da más maná y Beast Slaying hace más daño a las bestias.",
+      "en": "Less downtime: Read Ley Line and Cannibalize restore mana, Expansive Mind adds mana and Beast Slaying hits Beasts harder."
+    }
+  },
+  {
+    "id": "dungeons",
+    "situation": {
+      "es": "Mazmorras y bandas",
+      "en": "Dungeons and raids"
+    },
+    "alliance": [
+      "gnome",
+      "human"
+    ],
+    "horde": [
+      "troll",
+      "orc"
+    ],
+    "why": {
+      "es": "Estallidos de daño (Eureka!, Berserking, Blood Fury) y crítico siempre activo: Ruthless (Crueldad, +2 %) del Humano y Savage (Salvajismo, +1 %) del Orco. El Cielonato, con un 3 % de celeridad, se queda muy cerca.",
+      "en": "Damage bursts (Eureka!, Berserking, Blood Fury) and always-on crit: the Human's Ruthless (+2%) and the Orc's Savage (+1%). Skyborne, with 3% haste, is very close."
+    }
+  },
+  {
+    "id": "pvp",
+    "situation": {
+      "es": "JcJ y duelos",
+      "en": "PvP and duels"
+    },
+    "alliance": [
+      "gnome",
+      "human"
+    ],
+    "horde": [
+      "undead",
+      "orc"
+    ],
+    "why": {
+      "es": "Salir del control: Escape Artist, Will to Survive, Will of the Forsaken, Hardiness y Shatter Curse.",
+      "en": "Breaking control: Escape Artist, Will to Survive, Will of the Forsaken, Hardiness and Shatter Curse."
+    }
+  },
+  {
+    "id": "aoe",
+    "situation": {
+      "es": "Farmeo en área",
+      "en": "AoE farming"
+    },
+    "alliance": [
+      "gnome"
+    ],
+    "horde": [
+      "undead"
+    ],
+    "why": {
+      "es": "Escape Artist libra de enraizamientos y ralentizaciones al arrastrar grupos, y Cannibalize acorta las pausas.",
+      "en": "Escape Artist breaks roots and slows while you kite packs, and Cannibalize shortens breaks."
+    }
+  }
+]

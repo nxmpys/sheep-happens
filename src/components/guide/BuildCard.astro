@@ -108,6 +108,10 @@ const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' 
       {tb(locale, 'build.wowhead')}
       <span class="visually-hidden"> ({tb(locale, 'build.wowheadHint')})</span>
     </a>
+    <button type="button" class="button" data-copy-link={wowheadBuildUrl(build.points, talents)} data-strings={copyStrings}>
+      <Icon name="copy" size={16} />
+      {tb(locale, 'build.copyWowhead')}
+    </button>
     {
       summary ? (
         <a class="button" href={fullUrl}>

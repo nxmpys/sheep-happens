@@ -43,21 +43,21 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
         <h1 id="hero-title" data-pagefind-meta="title">{data.title}</h1>
         <p class="hero__lead">{data.description}</p>
         <div class="hero__actions">
-          <a class="button button--primary" href={href('level-view', locale)}>
+          <a class="button button--primary" href={href('learn', locale)}>
+            <Icon name="book" size={18} />
+            {es ? 'Soy nuevo: aprende' : "I'm new: learn"}
+          </a>
+          <a class="button button--primary" href={href('builds', locale)}>
+            <Icon name="layers" size={18} />
+            {es ? 'Ya sé jugar: builds' : 'I know the class: builds'}
+          </a>
+          <a class="button" href={href('choose', locale)}>
+            <Icon name="users" size={18} />
+            {es ? 'Raza y profesiones' : 'Race and professions'}
+          </a>
+          <a class="button" href={href('level-view', locale)}>
             <Icon name="level" size={18} />
             {es ? 'Estoy a nivel…' : "I'm level…"}
-          </a>
-          <a class="button" href={href('builds', locale)}>
-            <Icon name="layers" size={18} />
-            {es ? 'Ver las builds' : 'See the builds'}
-          </a>
-          <a class="button" href={href('guide', locale)}>
-            <Icon name="book" size={18} />
-            {es ? 'Empezar la guía' : 'Start the guide'}
-          </a>
-          <a class="button" href={href('races', locale)}>
-            <Icon name="users" size={18} />
-            {es ? 'Elegir raza' : 'Pick a race'}
           </a>
         </div>
       </div>

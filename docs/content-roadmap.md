@@ -100,13 +100,13 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 
 ### Página temporal de duelos a nivel 30
 
-La página «Duelos a nivel 30» (`builds-duel-30`) y sus dos builds son de la beta y del torneo Forever Open (17 y 18 de octubre de 2026). Para retirarla, tras la beta:
+La página «Duelos a nivel 30» (`builds-duel-30`) y sus dos builds son de la beta y del torneo Forever Open (17 y 18 de octubre de 2026). Para retirarla, tras la beta: **Retirada el 18 de octubre de 2026** (ver abajo).
 
-- [ ] Quitar `builds-duel-30` de `PAGE_IDS`, `ROUTES` y del submenú de Builds en `src/i18n/routes.ts`, y su etiqueta en `src/i18n/ui.ts`.
-- [ ] Borrar `src/content/pages/{es,en}/builds-duel-30.mdx` y `public/og/{es,en}-builds-duel-30.png`.
-- [ ] Quitar las builds `frost-duels-30-*` de `src/data/builds.json` (o sustituirlas por las de nivel 60) y explicarlo en el historial.
-- [ ] Redirigir `/es/builds/duelos-nivel-30/` y `/en/builds/duels-level-30/` a la página de Builds con un archivo `public/_redirects` (301), para no romper enlaces compartidos.
-- [ ] Quitar el aviso del torneo del inicio (`home.mdx`), la mención en la tarjeta de Builds del inicio (`QuestionCards.astro`), en Talentos y en el aviso «Builds de la beta» de Builds.
+- [x] Quitar `builds-duel-30` de `PAGE_IDS`, `ROUTES` y del submenú de Builds en `src/i18n/routes.ts`, y su etiqueta en `src/i18n/ui.ts`.
+- [x] Borrar `src/content/pages/{es,en}/builds-duel-30.mdx` y `public/og/{es,en}-builds-duel-30.png`.
+- [x] Quitar las builds `frost-duels-30-*` de `src/data/builds.json` (o sustituirlas por las de nivel 60) y explicarlo en el historial.
+- [x] Redirigir `/es/builds/duelos-nivel-30/` y `/en/builds/duels-level-30/` a la página de Builds con un archivo `public/_redirects` (301), para no romper enlaces compartidos.
+- [x] Quitar el aviso del torneo del inicio (`home.mdx`), la mención en la tarjeta de Builds del inicio (`QuestionCards.astro`), en Talentos y en el aviso «Builds de la beta» de Builds.
 
 ### Documentos internos
 

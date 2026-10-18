@@ -1,5 +1,25 @@
 [
   {
+    "id": "2026-10-18-menu",
+    "date": "2026-10-18",
+    "type": "site",
+    "title": {
+      "es": "Menú más simple: Aprende, Builds y Elige",
+      "en": "A simpler menu: Learn, Builds and Choose"
+    },
+    "body": {
+      "es": "El menú tiene seis entradas sin desplegables. Aprende es el camino para empezar desde cero, Builds reúne las builds listas para copiar (con el enlace de Wowhead) y las guías de leveo, y Elige da la mejor raza y la pareja de profesiones en una sola página. La página de duelos a nivel 30, pensada para el torneo de la beta del 17 y 18 de octubre, se retira: su dirección lleva a Builds.",
+      "en": "The menu has six entries and no dropdowns. Learn is the path to start from zero, Builds gathers the builds ready to copy (with the Wowhead link) and the leveling guides, and Choose gives the best race and professions on one page. The level 30 duel page, made for the 17–18 October beta tournament, is retired: its address leads to Builds."
+    },
+    "pages": [
+      "learn",
+      "choose",
+      "builds"
+    ],
+    "sources": [],
+    "refs": []
+  },
+  {
     "id": "2026-10-18-ux",
     "date": "2026-10-18",
     "type": "site",
@@ -80,7 +100,6 @@
       "talents-frost",
       "races",
       "builds",
-      "builds-duel-30",
       "leveling",
       "aoe-farming",
       "combat",
@@ -119,7 +138,6 @@
       "race:troll",
       "race:skyborne",
       "build:frost-leveling-solo",
-      "build:frost-duels-30-legacy",
       "source:forum-missile-barrage-proc"
     ]
   },
@@ -183,8 +201,7 @@
       "en": "Weapon specializations are gone: Humans get Ruthless (+2% crit) and Orcs Savage (+1% crit). The Gnome's Eureka! lasts 8 s instead of 3 uses, the Skyborne's Wind Blessed rises to 3% haste, the Undead's Touch of the Grave triggers more often, the Troll's Regeneration rises to 20% and the Orc's Shatter Curse protects less."
     },
     "pages": [
-      "races",
-      "builds-duel-30"
+      "races"
     ],
     "sources": [
       "blizzard-dev-notes"
@@ -356,7 +373,6 @@
     },
     "pages": [
       "builds",
-      "builds-duel-30",
       "races",
       "home",
       "talents",
@@ -371,7 +387,6 @@
       "method-legacy"
     ],
     "refs": [
-      "build:frost-duels-30-legacy",
       "race:human",
       "race:gnome",
       "race:skyborne",

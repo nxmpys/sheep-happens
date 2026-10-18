@@ -23,6 +23,7 @@ import rawTalents from '../data/talents.json';
 import rawWatchlist from '../data/watchlist.json';
 import rawLevelingSpells from '../data/leveling-spells.json';
 import rawNotices from '../data/notices.json';
+import rawRacePicks from '../data/race-picks.json';
 import {
   abilitySchema,
   addonSchema,
@@ -34,6 +35,7 @@ import {
   levelingSpellSchema,
   milestoneSchema,
   noticeSchema,
+  racePickSchema,
   professionPickSchema,
   professionSchema,
   raceSchema,
@@ -50,6 +52,7 @@ import {
   type Fact,
   type GameVersion,
   type Milestone,
+  type Notice,
   type Profession,
   type ProfessionPick,
   type Race,
@@ -343,11 +346,14 @@ export const dataset: Dataset = parseDataset({
   scrolls: rawScrolls,
 });
 
+/** Best races per situation and faction (races page and «Elige» hub). */
+export const racePicks = parseList('race-picks.json', racePickSchema, rawRacePicks);
+
 /** Temporary banners; see noticeSchema. */
 export const notices = parseList('notices.json', noticeSchema, rawNotices);
 
 /** Notices still worth shipping: not ended at `now` (build time). */
-export const liveNotices = (now: Date = new Date()) => notices.filter((n) => Date.parse(n.end) > now.getTime());
+export const liveNotices = (now: Date = new Date(), list: readonly Notice[] = notices) => list.filter((n) => Date.parse(n.end) > now.getTime());
 
 /** Spells learned while leveling, by level (leveling page table and level view). */
 export const levelingSpells = parseList('leveling-spells.json', levelingSpellSchema, rawLevelingSpells).sort((a, b) => a.level - b.level);
@@ -355,6 +361,13 @@ export const levelingSpells = parseList('leveling-spells.json', levelingSpellSch
 const integrity = [
   ...checkIntegrity(dataset),
   ...checkNames(dataset, spellNames),
+  ...racePicks.flatMap((pick) =>
+    (['alliance', 'horde'] as const).flatMap((faction) =>
+      pick[faction]
+        .filter((id) => dataset.races.find((r) => r.id === id)?.faction !== faction)
+        .map((id) => `race-picks.json: "${pick.id}" lists "${id}" under ${faction}, but it is not a race of that faction`),
+    ),
+  ),
   ...levelingSpells.flatMap((row) =>
     [...row.spells, ...row.ranks.map((r) => r.spell)]
       .filter((name) => !nameEntry(name))

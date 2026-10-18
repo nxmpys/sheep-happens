@@ -1,0 +1,199 @@
+---
+/**
+ * The pages a menu entry leads to (PRIMARY_NAV items in routes.ts), as cards
+ * with their title and description. `numbered` turns them into steps, for the
+ * «Aprende» path; the three talent trees share one step. Pages whose
+ * information is still pending (gear before launch) are dimmed and marked.
+ */
+import { getCollection } from 'astro:content';
+import Icon from '../ui/Icon.astro';
+import type { IconName } from '../ui/icons';
+import { getLocale, href } from '../../i18n/locale';
+import { PRIMARY_NAV, ROUTES, type NavGroup, type PageId } from '../../i18n/routes';
+import { NAV_LABELS, t } from '../../i18n/ui';
+
+interface Props {
+  group: NavGroup['key'];
+  numbered?: boolean;
+}
+
+const { group, numbered = false } = Astro.props;
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const items = PRIMARY_NAV.find((g) => g.key === group)?.items ?? [];
+const entries = new Map(
+  (await getCollection('pages', (e) => e.data.locale === locale && e.data.status === 'published')).map((e) => [e.data.pageId, e.data]),
+);
+const ICONS: Partial<Record<PageId, IconName>> = {
+  guide: 'book',
+  talents: 'layers',
+  combat: 'cast',
+  gear: 'shield',
+  leveling: 'map',
+  'level-view': 'level',
+  'aoe-farming': 'aoe',
+  scrolls: 'scroll',
+  races: 'users',
+  professions: 'hammer',
+};
+// Consecutive talent tree pages become one card with three links.
+type Card = { id: PageId } | { trees: PageId[] };
+const cards: Card[] = [];
+for (const id of items) {
+  const last = cards.at(-1);
+  if (ROUTES[id].spec && last && 'trees' in last) last.trees.push(id);
+  else cards.push(ROUTES[id].spec ? { trees: [id] } : { id });
+}
+---
+
+<ol class:list={['hub', { 'hub--numbered': numbered }]}>
+  {
+    cards.map((card, index) =>
+      'id' in card ? (
+        <li class:list={['hub__card', { 'is-pending': entries.get(card.id)?.verification === 'pending' }]}>
+          {numbered && <span class="hub__step" aria-hidden="true">{index + 1}</span>}
+          <Icon name={ICONS[card.id] ?? 'book'} size={22} class="hub__icon" />
+          <span class="hub__text">
+            <a class="hub__link" href={href(card.id, locale)}>
+              {NAV_LABELS[locale][card.id]}
+            </a>
+            {entries.get(card.id)?.verification === 'pending' && <span class="hub__badge">{t(locale, 'nav.afterLaunch')}</span>}
+            <span class="hub__desc">{entries.get(card.id)?.description}</span>
+          </span>
+        </li>
+      ) : (
+        <li class="hub__card">
+          {numbered && <span class="hub__step" aria-hidden="true">{index + 1}</span>}
+          <Icon name="arcane" size={22} class="hub__icon" />
+          <span class="hub__text">
+            <span class="hub__title">{es ? 'Tu rama' : 'Your tree'}</span>
+            <span class="hub__trees">
+              {card.trees.map((id) => (
+                <a class={`hub__tree school-${ROUTES[id].spec}`} href={href(id, locale)}>
+                  <Icon name={ROUTES[id].spec!} size={16} />
+                  {NAV_LABELS[locale][id]}
+                </a>
+              ))}
+            </span>
+            <span class="hub__desc">
+              {es ? 'Qué hace cada rama, sus talentos decisivos y lo que cambia en Forever.' : 'What each tree does, its milestone talents and what Forever changes.'}
+            </span>
+          </span>
+        </li>
+      ),
+    )
+  }
+</ol>
+
+<style>
+  .hub {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    gap: var(--space-3);
+    margin: var(--space-4) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .hub__card {
+    position: relative;
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    margin: 0;
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+  }
+  .hub__card + .hub__card {
+    margin-top: 0;
+  }
+  .hub__card:hover {
+    border-color: var(--accent);
+  }
+  .hub__card.is-pending {
+    opacity: 0.7;
+    border-style: dashed;
+  }
+  .hub__step {
+    position: absolute;
+    top: calc(-1 * var(--space-2));
+    left: calc(-1 * var(--space-2));
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    font-size: 0.8125rem;
+    font-weight: 700;
+  }
+  .hub :global(.hub__icon) {
+    flex-shrink: 0;
+    margin-top: 0.1em;
+    color: var(--accent);
+  }
+  .hub__text {
+    display: grid;
+    gap: var(--space-1);
+    min-width: 0;
+  }
+  .hub__link,
+  .hub__title {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: none;
+  }
+  /* The whole card is the link (the trees card has three links instead). */
+  .hub__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+  }
+  .hub__link:focus-visible {
+    outline: none;
+  }
+  .hub__card:has(.hub__link:focus-visible) {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .hub__badge {
+    width: fit-content;
+    padding: 0 0.5em;
+    border: 1px dashed var(--border-strong);
+    border-radius: 999px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .hub__desc {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+  .hub__trees {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .hub__tree {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    min-height: 36px;
+    padding: 0 0.75em;
+    border: 1px solid color-mix(in srgb, var(--school) 50%, transparent);
+    border-radius: 999px;
+    background: var(--school-soft);
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .hub__tree :global(svg) {
+    color: var(--school);
+  }
+</style>

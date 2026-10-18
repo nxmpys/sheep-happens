@@ -4,8 +4,9 @@ import type { Locale, PageId } from './routes';
 export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
   es: {
     home: 'Inicio',
+    learn: 'Aprende',
     builds: 'Builds',
-    'builds-duel-30': 'Duelos a nivel 30',
+    choose: 'Elige raza y profesiones',
     races: 'Razas',
     professions: 'Profesiones',
     guide: 'Guía de clase',
@@ -27,8 +28,9 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
   },
   en: {
     home: 'Home',
+    learn: 'Learn',
     builds: 'Builds',
-    'builds-duel-30': 'Level 30 duels',
+    choose: 'Pick race and professions',
     races: 'Races',
     professions: 'Professions',
     guide: 'Class guide',
@@ -50,16 +52,10 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
   },
 };
 
-/** Labels of the primary navigation groups and clusters (routes.ts PRIMARY_NAV). */
-export const NAV_GROUP_LABELS: Record<Locale, Record<'start' | 'builds' | 'reference' | 'tools' | 'addons' | 'trees', string>> = {
-  es: { start: 'Empezar', builds: 'Builds', reference: 'Referencia', tools: 'Herramientas', addons: 'Addons', trees: 'Talentos' },
-  en: { start: 'Start', builds: 'Builds', reference: 'Reference', tools: 'Tools', addons: 'Addons', trees: 'Talents' },
-};
-
-/** Labels a page takes inside the menu, where its group gives context. Falls back to NAV_LABELS. */
-export const NAV_MENU_LABELS: Record<Locale, Partial<Record<PageId, string>>> = {
-  es: { talents: 'Elegir rama (Talentos)', changes: 'Cambios', 'talents-arcane': 'Arcano', 'talents-fire': 'Fuego', 'talents-frost': 'Escarcha' },
-  en: { talents: 'Choose a tree (Talents)', changes: 'Changes', 'talents-arcane': 'Arcane', 'talents-fire': 'Fire', 'talents-frost': 'Frost' },
+/** Labels of the primary navigation entries (routes.ts PRIMARY_NAV). */
+export const NAV_GROUP_LABELS: Record<Locale, Record<'learn' | 'builds' | 'choose' | 'changes' | 'tools' | 'addons', string>> = {
+  es: { learn: 'Aprende', builds: 'Builds', choose: 'Elige', changes: 'Cambios', tools: 'Herramientas', addons: 'Addons' },
+  en: { learn: 'Learn', builds: 'Builds', choose: 'Choose', changes: 'Changes', tools: 'Tools', addons: 'Addons' },
 };
 
 const es = {
@@ -70,7 +66,6 @@ const es = {
   'nav.menu': 'Menú',
   'nav.closeMenu': 'Cerrar menú',
   'nav.breadcrumbs': 'Ruta de navegación',
-  'nav.submenu': 'Submenú de {label}',
   'nav.afterLaunch': 'tras el lanzamiento',
   'nav.prev': 'Anterior',
   'nav.next': 'Siguiente',
@@ -216,7 +211,6 @@ const en: Record<UiKey, string> = {
   'nav.menu': 'Menu',
   'nav.closeMenu': 'Close menu',
   'nav.breadcrumbs': 'Breadcrumb',
-  'nav.submenu': '{label} submenu',
   'nav.afterLaunch': 'after launch',
   'nav.prev': 'Previous',
   'nav.next': 'Next',
