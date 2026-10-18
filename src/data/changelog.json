@@ -375,11 +375,11 @@
     "date": "2026-10-12",
     "type": "guide",
     "title": {
-      "es": "Revisión de fuentes del 12 de octubre: Impacto y Flamestrike",
+      "es": "Revisión de fuentes del 12 de octubre: Impacto y Fogonazo",
       "en": "12 October source review: Impact and Flamestrike"
     },
     "body": {
-      "es": "La ficha de Impacto recoge ahora el arreglo del 8 de octubre: ya no se activa con el daño periódico de Flamestrike.",
+      "es": "La ficha de Impacto recoge ahora el arreglo del 8 de octubre: ya no se activa con el daño periódico de Fogonazo.",
       "en": "The Impact entry now records the 8 October fix: it no longer triggers from Flamestrike's periodic damage."
     },
     "pages": [
@@ -485,7 +485,7 @@
       "en": "8 October build: low ranks of Frostbolt, Fireball and Arcane Missiles"
     },
     "body": {
-      "es": "Se reajustan los rangos 1 a 5 de Descarga de Escarcha y Bola de Fuego y 1 a 3 de Misiles Arcanos para que cada rango nuevo sea una mejora. Corregido: Impacto podía activarse con el daño periódico de Flamestrike.",
+      "es": "Se reajustan los rangos 1 a 5 de Descarga de Escarcha y Bola de Fuego y 1 a 3 de Misiles Arcanos para que cada rango nuevo sea una mejora. Corregido: Impacto podía activarse con el daño periódico de Fogonazo.",
       "en": "Ranks 1–5 of Frostbolt and Fireball and 1–3 of Arcane Missiles are rebalanced so every new rank is an upgrade. Fixed: Impact could trigger from Flamestrike periodic damage."
     },
     "pages": [
@@ -505,11 +505,11 @@
     "date": "2026-10-01",
     "type": "game",
     "title": {
-      "es": "Build del 1 de octubre: Calentamiento, Combustion y rangos bajos",
+      "es": "Build del 1 de octubre: Calentamiento, Combustión y rangos bajos",
       "en": "1 October build: Heating Up, Combustion and low ranks"
     },
     "body": {
-      "es": "Hot Streak pasa a llamarse Heating Up (Calentamiento). Combustion vuelve a 3 cargas, como en Classic (en la beta tenía 4). Chamuscar mejorado y Escalofrío del invierno ya no hacen una tirada de resistencia extra. Los pergaminos de Comprensión se reequilibran y no se pueden usar en movimiento. Los rangos muy bajos aprovechan menos el daño de hechizos y activan menos los talentos.",
+      "es": "Hot Streak pasa a llamarse Heating Up (Calentamiento). Combustión vuelve a 3 cargas, como en Classic (en la beta tenía 4). Chamuscar mejorado y Escalofrío del invierno ya no hacen una tirada de resistencia extra. Los pergaminos de Comprensión se reequilibran y no se pueden usar en movimiento. Los rangos muy bajos aprovechan menos el daño de hechizos y activan menos los talentos.",
       "en": "Hot Streak is renamed Heating Up. Combustion returns to 3 charges, as in Classic (it had 4 in the beta). Improved Scorch and Winter’s Chill no longer make an extra resist roll. Comprehension scrolls are rebalanced and cannot be used while moving. Very low ranks get less spell damage and trigger talents less."
     },
     "pages": [

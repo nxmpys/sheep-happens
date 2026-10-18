@@ -63,12 +63,9 @@ export type Note = z.infer<typeof noteSchema>;
 export const changeSchema = z
   .object({
     id,
+    /** English name; the Spanish one comes from spell-names.json. */
     name: z.string().min(1),
-    /** Official Spanish name, only once Blizzard publishes it. */
-    nameEs: z.string().min(1).optional(),
     formerly: z.string().min(1).optional(),
-    /** Official Spanish name of the former talent. */
-    formerlyEs: z.string().min(1).optional(),
     tree: z.enum(TREES),
     category: z.enum(['ability', 'talent', 'system']),
     kinds: z.array(z.enum(CHANGE_KINDS)).min(1),
@@ -103,7 +100,6 @@ export const milestoneSchema = z
     tree: z.enum(['arcane', 'fire', 'frost']),
     points: z.literal(MILESTONE_POINTS),
     name: z.string().min(1).optional(),
-    nameEs: z.string().min(1).optional(),
     changeId: id.optional(),
     note: localized.optional(),
     status: z.enum(STATUSES),
@@ -119,9 +115,8 @@ export type Milestone = z.infer<typeof milestoneSchema>;
 export const abilitySchema = z
   .object({
     id,
+    /** English name; the Spanish one comes from spell-names.json. */
     name: z.string().min(1),
-    /** Official Spanish name, only once Blizzard publishes it. */
-    nameEs: z.string().min(1).optional(),
     school: z.enum(SCHOOLS),
     role: z.enum(ROLES),
     level: z.number().int().min(1).max(60).optional(),
@@ -135,6 +130,28 @@ export const abilitySchema = z
   })
   .strict();
 export type Ability = z.infer<typeof abilitySchema>;
+
+/** Where a Spanish spell name comes from. */
+export const NAME_SOURCES = ['official', 'client', 'guide'] as const;
+
+/**
+ * One entry of the spell and talent name dictionary (src/data/spell-names.json),
+ * the only place Spanish names live. `es` is missing while there is no verified
+ * Spanish name: pages then use the English one.
+ * - official: published by Blizzard in Spanish for Forever.
+ * - client: the Forever client in Spanish (Wowhead Forever, locale es).
+ * - guide: our translation of a system that is not a spell (e.g. "Wands").
+ */
+export const spellNameSchema = z
+  .object({
+    id,
+    en: z.string().min(1),
+    es: z.string().min(1).optional(),
+    source: z.enum(NAME_SOURCES).optional(),
+  })
+  .strict()
+  .refine((n) => (n.es === undefined) === (n.source === undefined), { message: 'a Spanish name needs its source, and only then' });
+export type SpellName = z.infer<typeof spellNameSchema>;
 
 const spellText = z
   .object({ name: z.string().min(1), meta: z.array(z.string().min(1)), text: z.string().min(1), lang: z.literal('en').optional() })
@@ -195,9 +212,8 @@ export type SpecTree = (typeof SPECS)[number];
 export const talentSchema = z
   .object({
     id,
+    /** English name; the Spanish one comes from spell-names.json. */
     name: z.string().min(1),
-    /** Official Spanish name, only once Blizzard publishes it. */
-    nameEs: z.string().min(1).optional(),
     tree: z.enum(SPECS),
     /** 1–7, top to bottom. Row n needs 5 × (n − 1) points spent in the tree. */
     row: z.number().int().min(1).max(7),

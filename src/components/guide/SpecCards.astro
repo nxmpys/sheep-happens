@@ -54,7 +54,7 @@ const specs = (['arcane', 'fire', 'frost'] as const).map((tree) => ({
         </ul>
         <p class="spec__label">{es ? 'Talentos decisivos (11 · 16 · 21 · 31)' : 'Milestones (11 · 16 · 21 · 31)'}</p>
         <p class="spec__milestones">
-          {spec.milestones.map((m) => (m.name ? localName({ name: m.name, nameEs: m.nameEs }, locale) : t(locale, 'milestones.unknown').toLowerCase())).join(' → ')}
+          {spec.milestones.map((m) => (m.name ? localName({ name: m.name }, locale) : t(locale, 'milestones.unknown').toLowerCase())).join(' → ')}
         </p>
       </li>
     ))

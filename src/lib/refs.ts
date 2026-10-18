@@ -26,7 +26,7 @@ export function resolveRef(reference: string, locale: Locale): ResolvedRef | und
       const milestone = milestones.find((m) => m.id === id);
       if (!milestone) break;
       const label = milestone.name
-        ? localName({ name: milestone.name, nameEs: milestone.nameEs }, locale)
+        ? localName({ name: milestone.name }, locale)
         : `${milestone.points} ${locale === 'es' ? 'puntos' : 'points'}`;
       return { label, href: href(`talents-${milestone.tree}`, locale, 'milestones') };
     }

@@ -5,7 +5,8 @@ import StatusBadge from './StatusBadge.astro';
 import { getLocale, href } from '../../i18n/locale';
 import { formatDate, t, type UiKey } from '../../i18n/ui';
 import { changelogFor } from '../../lib/data';
-import { displayName } from '../../lib/names';
+import { displayName, localSpellName } from '../../lib/names';
+import { spanishName } from '../../lib/spell-names';
 import type { Change } from '../../lib/schemas';
 
 interface Props {
@@ -20,16 +21,16 @@ const { change, level = 'h3', showTree = true, class: className } = Astro.props;
 const locale = getLocale(Astro);
 const Heading = level;
 const name = displayName(change, locale);
-const formerly = locale === 'es' && change.formerlyEs ? change.formerlyEs : change.formerly;
+const formerly = change.formerly ? localSpellName(change.formerly, locale) : undefined;
 // Link the "updated" chip to the changelog entry that documents this record.
 const updateEntry = change.updated
   ? changelogFor(`change:${change.id}`).find((e) => e.date === change.updated)
   : undefined;
 const searchText = [
   change.name,
-  change.nameEs,
+  spanishName(change.name),
   change.formerly,
-  change.formerlyEs,
+  change.formerly ? spanishName(change.formerly) : undefined,
   change.summary[locale],
   ...change.details.map((d) => d[locale]),
 ]

@@ -196,7 +196,7 @@
         },
         "value": "low",
         "why": {
-          "es": "Comodidad de viaje; el Mago ya tiene Caída lenta (Slow Fall).",
+          "es": "Comodidad de viaje; el Mago ya tiene Caída lenta.",
           "en": "Travel convenience; Mages already have Slow Fall."
         }
       },

@@ -14,6 +14,7 @@ import TalentedToggle from './TalentedToggle.astro';
 import { tb } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
 import { talents } from '../../lib/data';
+import { localName } from '../../lib/names';
 import type { Build } from '../../lib/schemas';
 import { levelForPoint, orderSteps, pointsAtLevel } from '../../lib/talents';
 
@@ -55,7 +56,7 @@ const intro =
         {
           steps.map((step) => {
             const extra = step.from > base;
-            const label = locale === 'es' && step.talent.nameEs ? step.talent.nameEs : step.talent.name;
+            const label = localName(step.talent, locale);
             return (
               <>
                 {extra && step.from === base + 1 && (

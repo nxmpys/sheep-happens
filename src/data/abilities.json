@@ -2,7 +2,6 @@
   {
     "id": "fireball",
     "name": "Fireball",
-    "nameEs": "Bola de Fuego",
     "school": "fire",
     "role": "damage",
     "level": 1,
@@ -23,7 +22,6 @@
   {
     "id": "frostbolt",
     "name": "Frostbolt",
-    "nameEs": "Descarga de Escarcha",
     "school": "frost",
     "role": "damage",
     "level": 4,
@@ -44,7 +42,6 @@
   {
     "id": "fire-blast",
     "name": "Fire Blast",
-    "nameEs": "Explosión de Fuego",
     "school": "fire",
     "role": "damage",
     "level": 6,
@@ -68,7 +65,6 @@
   {
     "id": "arcane-missiles",
     "name": "Arcane Missiles",
-    "nameEs": "Misiles Arcanos",
     "school": "arcane",
     "role": "damage",
     "level": 8,
@@ -91,7 +87,6 @@
   {
     "id": "arcane-explosion",
     "name": "Arcane Explosion",
-    "nameEs": "Deflagración Arcana",
     "school": "arcane",
     "role": "damage",
     "level": 14,
@@ -125,7 +120,6 @@
   {
     "id": "blizzard",
     "name": "Blizzard",
-    "nameEs": "Ventisca",
     "school": "frost",
     "role": "damage",
     "level": 20,
@@ -147,7 +141,6 @@
   {
     "id": "scorch",
     "name": "Scorch",
-    "nameEs": "Chamuscar",
     "school": "fire",
     "role": "damage",
     "level": 22,
@@ -169,7 +162,6 @@
   {
     "id": "frostfire-bolt",
     "name": "Frostfire Bolt",
-    "nameEs": "Descarga de Pirofrío",
     "school": "frostfire",
     "role": "damage",
     "level": 40,
@@ -190,7 +182,6 @@
   {
     "id": "polymorph",
     "name": "Polymorph",
-    "nameEs": "Polimorfia",
     "school": "arcane",
     "role": "control",
     "level": 8,
@@ -208,7 +199,6 @@
   {
     "id": "frost-nova",
     "name": "Frost Nova",
-    "nameEs": "Nova de Escarcha",
     "school": "frost",
     "role": "control",
     "level": 10,
@@ -230,7 +220,6 @@
   {
     "id": "counterspell",
     "name": "Counterspell",
-    "nameEs": "Contrahechizo",
     "school": "arcane",
     "role": "control",
     "level": 24,
@@ -272,7 +261,6 @@
   {
     "id": "cone-of-cold",
     "name": "Cone of Cold",
-    "nameEs": "Cono de frío",
     "school": "frost",
     "role": "control",
     "level": 26,
@@ -313,7 +301,6 @@
   {
     "id": "mana-shield",
     "name": "Mana Shield",
-    "nameEs": "Escudo de maná",
     "school": "arcane",
     "role": "defense",
     "level": 20,
@@ -339,7 +326,7 @@
     "level": 1,
     "spell": 168,
     "summary": {
-      "es": "Armadura que aumenta tu armadura y puede ralentizar a quien te golpea cuerpo a cuerpo. Ice Armor (nivel 30) es la versión mejorada.",
+      "es": "Armadura que aumenta tu armadura y puede ralentizar a quien te golpea cuerpo a cuerpo. Armadura de hielo (nivel 30) es la versión mejorada.",
       "en": "Armor buff that raises your armor and can slow melee attackers. Ice Armor (level 30) is the upgraded version."
     },
     "status": "classic",
@@ -382,7 +369,6 @@
   {
     "id": "mage-armor",
     "name": "Mage Armor",
-    "nameEs": "Armadura de mago",
     "school": "arcane",
     "role": "mana",
     "level": 34,

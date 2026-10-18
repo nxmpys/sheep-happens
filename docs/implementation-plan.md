@@ -44,7 +44,7 @@ docs/                      Este y los demás documentos
 
 **Página (MDX):** `pageId`, `locale`, `title`, `description`, `category`, `spec?`, `gameVersion`, `published`, `reviewed`, `reviewedBy`, `status` (`draft` | `published`), `verification` (estado global de la página), `sources[]`, `tags[]`.
 
-**Cambio (JSON):** `id`, `name` (inglés oficial, más `nameEs?` cuando se confirme), `tree` (`baseline` | `arcane` | `fire` | `frost`), `category`, `kinds[]` (`new` | `redesigned` | `renamed` | `moved` | `adjusted` | `prerequisite` | `baseline`), `row?`, `previousRow?`, `milestone?`, `learnLevel?`, `formerly?`, `summary{es,en}`, `details[]`, `notes[]{status,text}`, `status`, `sources[]`.
+**Cambio (JSON):** `id`, `name` (inglés oficial; el español vive en `spell-names.json`), `tree` (`baseline` | `arcane` | `fire` | `frost`), `category`, `kinds[]` (`new` | `redesigned` | `renamed` | `moved` | `adjusted` | `prerequisite` | `baseline`), `row?`, `previousRow?`, `milestone?`, `learnLevel?`, `formerly?`, `summary{es,en}`, `details[]`, `notes[]{status,text}`, `status`, `sources[]`.
 
 **Otros datos:** `milestones.json` (hitos 11/16/21/31 por rama), `abilities.json` (kit por función), `facts.json` (datos clave reutilizables), `game-versions.json`, `changelog.json`.
 

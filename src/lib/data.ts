@@ -51,11 +51,13 @@ import {
   type Race,
   type ScrollBlock,
   type Source,
+  type SpellName,
   type Status,
   type Talent,
   type Tree,
   type Watch,
 } from './schemas';
+import { spellNames } from './spell-names';
 import { validateBuild, validateOrder } from './talents';
 
 function parseList<T extends z.ZodType>(file: string, schema: T, raw: unknown): z.output<T>[] {
@@ -300,6 +302,25 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
   return problems;
 }
 
+/**
+ * Every spell, talent and former talent name in the data must be in the name
+ * dictionary (spell-names.json), once, so Spanish pages never fall back silently.
+ */
+export function checkNames(data: Pick<Dataset, 'abilities' | 'changes' | 'talents' | 'milestones'>, names: readonly SpellName[]): string[] {
+  const problems: string[] = [];
+  for (const dup of duplicates(names.map((n) => n.en))) problems.push(`spell-names.json: "${dup}" is listed twice`);
+  for (const dup of duplicates(names.map((n) => n.id))) problems.push(`spell-names.json: duplicate id "${dup}"`);
+  const known = new Set(names.map((n) => n.en));
+  const used = [
+    ...data.abilities.map((a) => a.name),
+    ...data.talents.map((t) => t.name),
+    ...data.changes.flatMap((c) => [c.name, ...(c.formerly ? [c.formerly] : [])]),
+    ...data.milestones.flatMap((m) => (m.name ? [m.name] : [])),
+  ];
+  for (const name of new Set(used)) if (!known.has(name)) problems.push(`spell-names.json: no entry for "${name}"`);
+  return problems;
+}
+
 export const dataset: Dataset = parseDataset({
   sources: rawSources,
   changes: rawChanges,
@@ -318,7 +339,7 @@ export const dataset: Dataset = parseDataset({
   scrolls: rawScrolls,
 });
 
-const integrity = checkIntegrity(dataset);
+const integrity = [...checkIntegrity(dataset), ...checkNames(dataset, spellNames)];
 if (integrity.length > 0) {
   throw new Error(`Content integrity problems:\n- ${integrity.join('\n- ')}`);
 }

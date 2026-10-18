@@ -98,9 +98,9 @@ Nueva página de Builds con filtros por uso y rama, vista de calculadora y enlac
 
 ## 2026-10-12
 
-### [Guía] Revisión de fuentes del 12 de octubre: Impacto y Flamestrike
+### [Guía] Revisión de fuentes del 12 de octubre: Impacto y Fogonazo
 
-La ficha de Impacto recoge ahora el arreglo del 8 de octubre: ya no se activa con el daño periódico de Flamestrike.
+La ficha de Impacto recoge ahora el arreglo del 8 de octubre: ya no se activa con el daño periódico de Fogonazo.
 
 - **Datos afectados:** Impacto
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
@@ -111,7 +111,7 @@ La ficha de Impacto recoge ahora el arreglo del 8 de octubre: ya no se activa co
 
 Incorporados los cambios de Mago de las notas oficiales de las builds del 24 de septiembre, 1 de octubre y 8 de octubre; los nombres oficiales en español de hechizos y talentos; el posible adelanto de la doble especialización y la versión del cliente.
 
-- **Datos afectados:** Explosión de Fuego mejorada, Calentamiento, Ignición, Comprensión (Comprender pergamino), Chamuscar mejorado, Escalofrío del invierno, Descarga de Pirofrío, Cono de frío, Ventisca mejorada, Explosión Arcana, Misiles Arcanos, Rangos de hechizos (bajar de rango), Doble especialización, Versión del cliente, Combustion
+- **Datos afectados:** Explosión de Fuego mejorada, Calentamiento, Ignición, Comprensión (Comprender pergamino), Chamuscar mejorado, Escalofrío del invierno, Descarga de Pirofrío, Cono de frío, Ventisca mejorada, Explosión Arcana, Misiles Arcanos, Rangos de hechizos (bajar de rango), Doble especialización, Versión del cliente, Combustión
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [World of Warcraft: Forever: Repaso a fondo de las clases mago y chamán](https://worldofwarcraft.blizzard.com/es-es/news/24302097) (Blizzard Entertainment), [Blizzard Teases Possible Change to Unlock Level of Dual Spec in WoW: Forever](https://www.wowhead.com/news=383320/blizzard-teases-possible-change-to-unlock-level-of-dual-spec-in-wow-forever) (Wowhead)
 
 ### [Web] Fuentes vigiladas cada semana y RSS de novedades
@@ -135,7 +135,7 @@ En el pódcast oficial (ep. 3), Josh Greenfield dijo que está «actualmente» a
 
 ### [Juego] Build del 8 de octubre: rangos bajos de Descarga de Escarcha, Bola de Fuego y Misiles Arcanos
 
-Se reajustan los rangos 1 a 5 de Descarga de Escarcha y Bola de Fuego y 1 a 3 de Misiles Arcanos para que cada rango nuevo sea una mejora. Corregido: Impacto podía activarse con el daño periódico de Flamestrike.
+Se reajustan los rangos 1 a 5 de Descarga de Escarcha y Bola de Fuego y 1 a 3 de Misiles Arcanos para que cada rango nuevo sea una mejora. Corregido: Impacto podía activarse con el daño periódico de Fogonazo.
 
 - **Datos afectados:** Rangos de hechizos (bajar de rango), Misiles Arcanos, Impacto
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
@@ -150,11 +150,11 @@ Descarga de Pirofrío, Lanza de hielo, Dedos de Escarcha, Calentamiento, la nuev
 
 ## 2026-10-01
 
-### [Juego] Build del 1 de octubre: Calentamiento, Combustion y rangos bajos
+### [Juego] Build del 1 de octubre: Calentamiento, Combustión y rangos bajos
 
-Hot Streak pasa a llamarse Heating Up (Calentamiento). Combustion vuelve a 3 cargas, como en Classic (en la beta tenía 4). Chamuscar mejorado y Escalofrío del invierno ya no hacen una tirada de resistencia extra. Los pergaminos de Comprensión se reequilibran y no se pueden usar en movimiento. Los rangos muy bajos aprovechan menos el daño de hechizos y activan menos los talentos.
+Hot Streak pasa a llamarse Heating Up (Calentamiento). Combustión vuelve a 3 cargas, como en Classic (en la beta tenía 4). Chamuscar mejorado y Escalofrío del invierno ya no hacen una tirada de resistencia extra. Los pergaminos de Comprensión se reequilibran y no se pueden usar en movimiento. Los rangos muy bajos aprovechan menos el daño de hechizos y activan menos los talentos.
 
-- **Datos afectados:** Calentamiento, Chamuscar mejorado, Escalofrío del invierno, Comprensión (Comprender pergamino), Rangos de hechizos (bajar de rango), Combustion
+- **Datos afectados:** Calentamiento, Chamuscar mejorado, Escalofrío del invierno, Comprensión (Comprender pergamino), Rangos de hechizos (bajar de rango), Combustión
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
 
 ### [Juego] La beta sube al nivel 30

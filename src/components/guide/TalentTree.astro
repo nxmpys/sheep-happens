@@ -10,6 +10,7 @@ import { tb } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
 import { t, type UiKey } from '../../i18n/ui';
 import { milestones, talents } from '../../lib/data';
+import { localName } from '../../lib/names';
 import type { SpecTree } from '../../lib/schemas';
 import { treeTalents, type Points } from '../../lib/talents';
 
@@ -44,7 +45,7 @@ const treeLabel = t(locale, `tree.${tree}` as UiKey);
           <ul class="talent-row__list">
             {rowTalents.map((talent) => {
               const rank = points[talent.id]!;
-              const label = locale === 'es' && talent.nameEs ? talent.nameEs : talent.name;
+              const label = localName(talent, locale);
               const milestone = milestoneNames.has(talent.name);
               return (
                 <li class:list={['talent', { 'talent--full': rank === talent.maxRank, 'talent--milestone': milestone }]}>

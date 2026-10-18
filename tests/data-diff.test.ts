@@ -4,7 +4,6 @@ import { diffRecords } from '../src/lib/data-diff';
 const base = {
   id: 'ice-lance',
   name: 'Ice Lance',
-  nameEs: 'Lanza de hielo',
   summary: { es: 'Texto', en: 'Text' },
   details: [],
   notes: [],
@@ -14,7 +13,7 @@ const base = {
 
 describe('diffRecords', () => {
   it('accepts unchanged data and Spanish-only edits', () => {
-    const after = { ...base, summary: { es: 'Texto corregido', en: 'Text' }, nameEs: 'Lanza de Hielo' };
+    const after = { ...base, summary: { es: 'Texto corregido', en: 'Text' } };
     expect(diffRecords('changes.json', 'change', [base], [after])).toEqual([]);
   });
 

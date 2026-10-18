@@ -58,7 +58,7 @@ Comparación entre lo implementado y los patrones observados en Wings Is Up (WIU
 ## 3. Limitaciones conocidas
 
 1. **Forever está en beta** y limitado al nivel 30: no hay builds, prioridades de estadísticas, equipo, PvE ni PvP verificados. La web lo indica en cada sección afectada.
-2. **Nombres en español** de hechizos y talentos: se muestran en inglés hasta que Blizzard publique la localización (campo `nameEs` preparado).
+2. **Nombres en español** de hechizos y talentos: diccionario único en `src/data/spell-names.json` (oficial de Blizzard o del cliente de Forever en español); sin nombre verificado, en inglés.
 3. **Iconos de hechizos:** se usan iconos propios por escuela, no los de Blizzard (licencia incierta).
 4. **Revisión humana pendiente:** el contenido inicial se compiló a partir de las fuentes citadas el 2026-10-11; conviene que la persona responsable lo revise y ponga su nombre en `reviewedBy`.
 5. La verificación visual de escritorio a más de 750 px se hizo midiendo el diseño (cajas y desbordamientos), no con capturas a tamaño completo, por las limitaciones del panel del navegador.

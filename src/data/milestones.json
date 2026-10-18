@@ -4,7 +4,6 @@
     "tree": "arcane",
     "points": 11,
     "name": "Arcane Blast",
-    "nameEs": "Explosión Arcana",
     "changeId": "arcane-blast",
     "status": "verified",
     "sources": [
@@ -16,7 +15,6 @@
     "tree": "arcane",
     "points": 16,
     "name": "Arcane Wrath",
-    "nameEs": "Cólera Arcana",
     "changeId": "arcane-wrath",
     "status": "verified",
     "sources": [
@@ -29,7 +27,6 @@
     "tree": "arcane",
     "points": 21,
     "name": "Presence of Mind",
-    "nameEs": "Presencia mental",
     "status": "classic",
     "note": {
       "es": "En Classic, fila 5. Forever lo menciona (Poder Arcano ahora lo requiere), pero no confirma su fila.",
@@ -45,7 +42,6 @@
     "tree": "arcane",
     "points": 31,
     "name": "Arcane Power",
-    "nameEs": "Poder Arcano",
     "changeId": "arcane-power",
     "status": "classic",
     "note": {
@@ -62,7 +58,6 @@
     "tree": "fire",
     "points": 11,
     "name": "Pyroblast",
-    "nameEs": "Piroexplosión",
     "status": "classic",
     "note": {
       "es": "En Classic, fila 3 (6 s de lanzamiento). Forever no anuncia cambios, pero Calentamiento lo usa como requisito.",
@@ -91,7 +86,6 @@
     "tree": "fire",
     "points": 21,
     "name": "Blast Wave",
-    "nameEs": "Ola explosiva",
     "changeId": "blast-wave",
     "status": "classic",
     "note": {
@@ -124,7 +118,6 @@
     "tree": "frost",
     "points": 11,
     "name": "Ice Lance",
-    "nameEs": "Lanza de hielo",
     "changeId": "ice-lance",
     "status": "verified",
     "sources": [
@@ -136,7 +129,6 @@
     "tree": "frost",
     "points": 16,
     "name": "Ice Block",
-    "nameEs": "Bloqueo de hielo",
     "changeId": "ice-block",
     "status": "verified",
     "sources": [
@@ -148,7 +140,6 @@
     "tree": "frost",
     "points": 21,
     "name": "Cold Snap",
-    "nameEs": "Mordedura helada",
     "changeId": "cold-snap",
     "status": "verified",
     "sources": [

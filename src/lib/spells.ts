@@ -63,8 +63,10 @@ function nameVariants(name: string | undefined): string[] {
   return [...new Set(parts.map((p) => p.trim()).filter((p) => p.length > 2))];
 }
 
-function localName(record: { name: string; nameEs?: string | undefined }, locale: Locale) {
-  if (locale === 'es' && record.nameEs && record.nameEs !== record.name) return { name: record.nameEs, english: record.name };
+/** Spanish name from the dictionary (English → Spanish), with the English one as a hint. */
+function localName(record: { name: string }, locale: Locale, names: Readonly<Record<string, string>>) {
+  const es = locale === 'es' ? names[record.name] : undefined;
+  if (es && es !== record.name) return { name: es, english: record.name };
   return { name: record.name };
 }
 
@@ -75,11 +77,14 @@ export function buildSpellIndex(
     talents: readonly Talent[];
     milestones?: readonly Milestone[];
     spellText?: Readonly<Record<string, SpellTextEntry>>;
+    /** English → Spanish names (spell-names.json). */
+    names?: Readonly<Record<string, string>>;
   },
   locale: Locale,
   opts: { base?: string } = {},
 ): SpellIndex {
   const es = locale === 'es';
+  const spanish = data.names ?? {};
   const entries: Record<string, SpellTooltip> = {};
   const names = new Map<string, string>();
   const changeById = new Map(data.changes.map((c) => [c.id, c]));
@@ -129,7 +134,7 @@ export function buildSpellIndex(
       `ability-${ability.id}`,
       {
         key: `ability-${ability.id}`,
-        ...localName(ability, locale),
+        ...localName(ability, locale, spanish),
         school,
         facts,
         ...describe(ability.spell, ability.summary[locale], ability.status),
@@ -137,7 +142,7 @@ export function buildSpellIndex(
           ? { href: link('changes', `change-${own.id}`), more: 'changes' as const }
           : { href: link('guide', `role-${ability.role}`), more: 'guide' as const }),
       },
-      ability.nameEs,
+      spanish[ability.name],
       ability.name,
     );
   }
@@ -153,14 +158,14 @@ export function buildSpellIndex(
       `change-${change.id}`,
       {
         key: `change-${change.id}`,
-        ...localName(change, locale),
+        ...localName(change, locale, spanish),
         school,
         facts,
         ...describe(talent?.spell ?? change.spell, change.summary[locale], change.status),
         href: link('changes', `change-${change.id}`),
         more: 'changes',
       },
-      change.nameEs,
+      spanish[change.name],
       change.name,
     );
   }
@@ -172,7 +177,7 @@ export function buildSpellIndex(
       `talent-${talent.id}`,
       {
         key: `talent-${talent.id}`,
-        ...localName(talent, locale),
+        ...localName(talent, locale, spanish),
         school: talent.tree,
         facts: talentFacts(talent),
         ...describe(
@@ -185,7 +190,7 @@ export function buildSpellIndex(
         href: link(`talents-${talent.tree}`),
         more: 'talents',
       },
-      talent.nameEs,
+      spanish[talent.name],
       talent.name,
     );
   }

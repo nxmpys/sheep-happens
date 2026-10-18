@@ -2,7 +2,6 @@
   {
     "id": "wand-specialization",
     "name": "Wand Specialization",
-    "nameEs": "Especialización en varitas",
     "tree": "arcane",
     "row": 1,
     "col": 1,
@@ -13,7 +12,6 @@
   {
     "id": "arcane-focus",
     "name": "Arcane Focus",
-    "nameEs": "Enfoque Arcano",
     "tree": "arcane",
     "row": 1,
     "col": 2,
@@ -24,7 +22,6 @@
   {
     "id": "improved-channeling",
     "name": "Improved Channeling",
-    "nameEs": "Canalización mejorada",
     "tree": "arcane",
     "row": 1,
     "col": 3,
@@ -35,7 +32,6 @@
   {
     "id": "missile-barrage",
     "name": "Missile Barrage",
-    "nameEs": "Tromba de misiles",
     "tree": "arcane",
     "row": 1,
     "col": 4,
@@ -46,7 +42,6 @@
   {
     "id": "arcane-subtlety",
     "name": "Arcane Subtlety",
-    "nameEs": "Sutileza Arcana",
     "tree": "arcane",
     "row": 2,
     "col": 1,
@@ -57,7 +52,6 @@
   {
     "id": "magic-absorption",
     "name": "Magic Absorption",
-    "nameEs": "Absorción mágica",
     "tree": "arcane",
     "row": 2,
     "col": 2,
@@ -68,7 +62,6 @@
   {
     "id": "arcane-concentration",
     "name": "Arcane Concentration",
-    "nameEs": "Concentración Arcana",
     "tree": "arcane",
     "row": 2,
     "col": 3,
@@ -79,7 +72,6 @@
   {
     "id": "arcane-resilience",
     "name": "Arcane Resilience",
-    "nameEs": "Recuperación Arcana",
     "tree": "arcane",
     "row": 2,
     "col": 4,
@@ -90,7 +82,6 @@
   {
     "id": "arcane-geometry",
     "name": "Arcane Geometry",
-    "nameEs": "Geometría Arcana",
     "tree": "arcane",
     "row": 3,
     "col": 1,
@@ -101,7 +92,6 @@
   {
     "id": "arcane-impact",
     "name": "Arcane Impact",
-    "nameEs": "Impacto Arcano",
     "tree": "arcane",
     "row": 3,
     "col": 2,
@@ -112,7 +102,6 @@
   {
     "id": "arcane-blast",
     "name": "Arcane Blast",
-    "nameEs": "Explosión Arcana",
     "tree": "arcane",
     "row": 3,
     "col": 4,
@@ -123,7 +112,6 @@
   {
     "id": "arcane-shielding",
     "name": "Arcane Shielding",
-    "nameEs": "Protección Arcana",
     "tree": "arcane",
     "row": 4,
     "col": 1,
@@ -134,7 +122,6 @@
   {
     "id": "improved-counterspell",
     "name": "Improved Counterspell",
-    "nameEs": "Contrahechizo mejorado",
     "tree": "arcane",
     "row": 4,
     "col": 2,
@@ -145,7 +132,6 @@
   {
     "id": "arcane-meditation",
     "name": "Arcane Meditation",
-    "nameEs": "Meditación Arcana",
     "tree": "arcane",
     "row": 4,
     "col": 3,
@@ -160,7 +146,6 @@
   {
     "id": "arcane-wrath",
     "name": "Arcane Wrath",
-    "nameEs": "Cólera Arcana",
     "tree": "arcane",
     "row": 4,
     "col": 4,
@@ -171,7 +156,6 @@
   {
     "id": "presence-of-mind",
     "name": "Presence of Mind",
-    "nameEs": "Presencia mental",
     "tree": "arcane",
     "row": 5,
     "col": 2,
@@ -181,7 +165,6 @@
   {
     "id": "arcane-mind",
     "name": "Arcane Mind",
-    "nameEs": "Mente Arcana",
     "tree": "arcane",
     "row": 5,
     "col": 3,
@@ -192,7 +175,6 @@
   {
     "id": "arcane-instability",
     "name": "Arcane Instability",
-    "nameEs": "Inestabilidad Arcana",
     "tree": "arcane",
     "row": 6,
     "col": 3,
@@ -203,7 +185,6 @@
   {
     "id": "arcane-power",
     "name": "Arcane Power",
-    "nameEs": "Poder Arcano",
     "tree": "arcane",
     "row": 7,
     "col": 2,
@@ -218,7 +199,6 @@
   {
     "id": "wake-of-fire",
     "name": "Improved Fire Blast",
-    "nameEs": "Explosión de Fuego mejorada",
     "tree": "fire",
     "row": 1,
     "col": 1,
@@ -229,7 +209,6 @@
   {
     "id": "incineration",
     "name": "Incineration",
-    "nameEs": "Incineración",
     "tree": "fire",
     "row": 1,
     "col": 2,
@@ -240,7 +219,6 @@
   {
     "id": "improved-fireball",
     "name": "Improved Fireball",
-    "nameEs": "Bola de Fuego mejorada",
     "tree": "fire",
     "row": 1,
     "col": 3,
@@ -251,7 +229,6 @@
   {
     "id": "ignite",
     "name": "Ignite",
-    "nameEs": "Ignición",
     "tree": "fire",
     "row": 2,
     "col": 1,
@@ -271,7 +248,6 @@
   {
     "id": "impact",
     "name": "Impact",
-    "nameEs": "Impacto",
     "tree": "fire",
     "row": 2,
     "col": 3,
@@ -282,7 +258,6 @@
   {
     "id": "burning-soul",
     "name": "Burning Soul",
-    "nameEs": "Alma ardiente",
     "tree": "fire",
     "row": 3,
     "col": 1,
@@ -302,7 +277,6 @@
   {
     "id": "pyroblast",
     "name": "Pyroblast",
-    "nameEs": "Piroexplosión",
     "tree": "fire",
     "row": 3,
     "col": 3,
@@ -312,7 +286,6 @@
   {
     "id": "improved-scorch",
     "name": "Improved Scorch",
-    "nameEs": "Chamuscar mejorado",
     "tree": "fire",
     "row": 4,
     "col": 1,
@@ -332,7 +305,6 @@
   {
     "id": "heating-up",
     "name": "Heating Up",
-    "nameEs": "Calentamiento",
     "tree": "fire",
     "row": 4,
     "col": 3,
@@ -356,7 +328,6 @@
   {
     "id": "critical-mass",
     "name": "Critical Mass",
-    "nameEs": "Masa crítica",
     "tree": "fire",
     "row": 5,
     "col": 2,
@@ -367,7 +338,6 @@
   {
     "id": "blast-wave",
     "name": "Blast Wave",
-    "nameEs": "Ola explosiva",
     "tree": "fire",
     "row": 5,
     "col": 3,
@@ -378,7 +348,6 @@
   {
     "id": "fire-power",
     "name": "Fire Power",
-    "nameEs": "Poder de Fuego",
     "tree": "fire",
     "row": 6,
     "col": 3,
@@ -420,7 +389,6 @@
   {
     "id": "elemental-precision",
     "name": "Elemental Precision",
-    "nameEs": "Enfoque elemental",
     "tree": "frost",
     "row": 1,
     "col": 3,
@@ -440,7 +408,6 @@
   {
     "id": "permafrost",
     "name": "Permafrost",
-    "nameEs": "Escarcha permanente",
     "tree": "frost",
     "row": 2,
     "col": 2,
@@ -478,7 +445,6 @@
   {
     "id": "frost-channeling",
     "name": "Frost Channeling",
-    "nameEs": "Canalización de Escarcha",
     "tree": "frost",
     "row": 3,
     "col": 2,
@@ -489,7 +455,6 @@
   {
     "id": "ice-lance",
     "name": "Ice Lance",
-    "nameEs": "Lanza de hielo",
     "tree": "frost",
     "row": 3,
     "col": 3,
@@ -500,7 +465,6 @@
   {
     "id": "improved-blizzard",
     "name": "Improved Blizzard",
-    "nameEs": "Ventisca mejorada",
     "tree": "frost",
     "row": 3,
     "col": 4,
@@ -520,7 +484,6 @@
   {
     "id": "ice-block",
     "name": "Ice Block",
-    "nameEs": "Bloqueo de hielo",
     "tree": "frost",
     "row": 4,
     "col": 2,
@@ -531,7 +494,6 @@
   {
     "id": "shatter",
     "name": "Shatter",
-    "nameEs": "Trizar",
     "tree": "frost",
     "row": 4,
     "col": 4,
@@ -551,7 +513,6 @@
   {
     "id": "cold-snap",
     "name": "Cold Snap",
-    "nameEs": "Mordedura helada",
     "tree": "frost",
     "row": 5,
     "col": 2,
@@ -562,7 +523,6 @@
   {
     "id": "fingers-of-frost",
     "name": "Fingers of Frost",
-    "nameEs": "Dedos de Escarcha",
     "tree": "frost",
     "row": 5,
     "col": 3,
@@ -577,7 +537,6 @@
   {
     "id": "winters-chill",
     "name": "Winter's Chill",
-    "nameEs": "Escalofrío del invierno",
     "tree": "frost",
     "row": 6,
     "col": 3,

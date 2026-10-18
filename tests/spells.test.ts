@@ -1,10 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { abilities, changes, milestones, spellText, talents } from '../src/lib/data';
+import { SPANISH_NAMES as names } from '../src/lib/spell-names';
 import { buildSpellIndex, findSpell } from '../src/lib/spells';
 import { fillRankValues, looksEnglish, parseWowheadTooltip, tidyDescription } from '../src/lib/spell-text';
 
-const es = buildSpellIndex({ abilities, changes, talents, milestones, spellText }, 'es');
-const en = buildSpellIndex({ abilities, changes, talents, milestones, spellText }, 'en');
+const es = buildSpellIndex({ abilities, changes, talents, milestones, spellText, names }, 'es');
+const en = buildSpellIndex({ abilities, changes, talents, milestones, spellText, names }, 'en');
 
 describe('spell tooltips', () => {
   it('finds spells by their Spanish or English name, ignoring case and accents', () => {

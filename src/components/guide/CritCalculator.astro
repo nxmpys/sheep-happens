@@ -8,8 +8,10 @@
 import Icon from '../ui/Icon.astro';
 import StatusBadge from './StatusBadge.astro';
 import SourceRefs from './SourceRefs.astro';
+import SpellRef from './SpellRef.astro';
 import { getLocale } from '../../i18n/locale';
 import { critMultiplier, formatPercent, MAX_RANK, type CritSchool } from '../../lib/crit';
+import { localSpellName } from '../../lib/names';
 
 const locale = getLocale(Astro);
 const es = locale === 'es';
@@ -23,15 +25,15 @@ const scale = critMultiplier({ school: 'frostfire', iceShards: MAX_RANK, ignite:
 const rows = spells.map((spell) => ({ ...spell, result: critMultiplier({ school: spell.school, ...initial }) }));
 const text = {
   talents: es ? 'Rangos de talento' : 'Talent ranks',
-  iceShards: es ? 'Ice Shards (Escarcha)' : 'Ice Shards (Frost)',
-  ignite: es ? 'Ignite (Fuego)' : 'Ignite (Fire)',
+  iceShards: es ? 'Fragmentos de hielo (Escarcha)' : 'Ice Shards (Frost)',
+  ignite: es ? 'Ignición (Fuego)' : 'Ignite (Fire)',
   spell: es ? 'Hechizo' : 'Spell',
   school: es ? 'Escuela' : 'School',
   hit: es ? 'Golpe crítico' : 'Critical hit',
-  igniteCol: es ? 'Ignite (4 s)' : 'Ignite (4 s)',
+  igniteCol: es ? 'Ignición (4 s)' : 'Ignite (4 s)',
   total: es ? 'Total' : 'Total',
   caption: es
-    ? 'Daño de un crítico como porcentaje de un golpe normal del mismo hechizo. Barra: golpe crítico (violeta) + Ignite (naranja).'
+    ? 'Daño de un crítico como porcentaje de un golpe normal del mismo hechizo. Barra: golpe crítico (violeta) + Ignición (naranja).'
     : 'Damage of a critical strike as a percentage of a normal hit of the same spell. Bar: critical hit (violet) + Ignite (orange).',
   na: es ? 'no aplica' : 'n/a',
 };
@@ -78,7 +80,7 @@ const text = {
                   <span class="spell">
                     <Icon name={row.icon} size={18} />
                     <span>
-                      {row.name}
+                      <SpellRef name={row.name} label={localSpellName(row.name, locale)} />
                       <small>{row.label}</small>
                     </span>
                   </span>

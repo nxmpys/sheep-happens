@@ -4,6 +4,7 @@
  */
 import type { Locale } from '../i18n/routes';
 import { abilities, changes, milestones, spellText, talents } from './data';
+import { SPANISH_NAMES } from './spell-names';
 import { buildSpellIndex, type SpellIndex } from './spells';
 
 const cache = new Map<Locale, SpellIndex>();
@@ -11,7 +12,7 @@ const cache = new Map<Locale, SpellIndex>();
 export function spellIndexFor(locale: Locale): SpellIndex {
   let index = cache.get(locale);
   if (!index) {
-    index = buildSpellIndex({ abilities, changes, talents, milestones, spellText }, locale, {
+    index = buildSpellIndex({ abilities, changes, talents, milestones, spellText, names: SPANISH_NAMES }, locale, {
       base: import.meta.env.BASE_URL,
     });
     cache.set(locale, index);

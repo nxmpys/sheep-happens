@@ -24,9 +24,9 @@ const slots = milestonesForTree(tree);
         <span class="milestone__name">
           {slot.name ? (
             slot.changeId ? (
-              <a href={`#change-${slot.changeId}`}>{displayName({ name: slot.name, nameEs: slot.nameEs }, locale).primary}</a>
+              <a href={`#change-${slot.changeId}`}>{displayName({ name: slot.name }, locale).primary}</a>
             ) : (
-              displayName({ name: slot.name, nameEs: slot.nameEs }, locale).primary
+              displayName({ name: slot.name }, locale).primary
             )
           ) : (
             t(locale, 'milestones.unknown')

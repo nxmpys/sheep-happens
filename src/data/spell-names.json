@@ -1,0 +1,534 @@
+[
+  {
+    "id": "arcane-blast",
+    "en": "Arcane Blast",
+    "es": "Explosión Arcana",
+    "source": "official"
+  },
+  {
+    "id": "arcane-concentration",
+    "en": "Arcane Concentration",
+    "es": "Concentración Arcana",
+    "source": "official"
+  },
+  {
+    "id": "arcane-explosion",
+    "en": "Arcane Explosion",
+    "es": "Deflagración Arcana",
+    "source": "official"
+  },
+  {
+    "id": "arcane-focus",
+    "en": "Arcane Focus",
+    "es": "Enfoque Arcano",
+    "source": "official"
+  },
+  {
+    "id": "arcane-geometry",
+    "en": "Arcane Geometry",
+    "es": "Geometría Arcana",
+    "source": "official"
+  },
+  {
+    "id": "arcane-impact",
+    "en": "Arcane Impact",
+    "es": "Impacto Arcano",
+    "source": "official"
+  },
+  {
+    "id": "arcane-instability",
+    "en": "Arcane Instability",
+    "es": "Inestabilidad Arcana",
+    "source": "official"
+  },
+  {
+    "id": "arcane-intellect",
+    "en": "Arcane Intellect",
+    "es": "Intelecto Arcano",
+    "source": "client"
+  },
+  {
+    "id": "arcane-meditation",
+    "en": "Arcane Meditation",
+    "es": "Meditación Arcana",
+    "source": "official"
+  },
+  {
+    "id": "arcane-mind",
+    "en": "Arcane Mind",
+    "es": "Mente Arcana",
+    "source": "official"
+  },
+  {
+    "id": "arcane-missiles",
+    "en": "Arcane Missiles",
+    "es": "Misiles Arcanos",
+    "source": "official"
+  },
+  {
+    "id": "arcane-power",
+    "en": "Arcane Power",
+    "es": "Poder Arcano",
+    "source": "official"
+  },
+  {
+    "id": "arcane-resilience",
+    "en": "Arcane Resilience",
+    "es": "Recuperación Arcana",
+    "source": "official"
+  },
+  {
+    "id": "arcane-shielding",
+    "en": "Arcane Shielding",
+    "es": "Protección Arcana",
+    "source": "official"
+  },
+  {
+    "id": "arcane-subtlety",
+    "en": "Arcane Subtlety",
+    "es": "Sutileza Arcana",
+    "source": "official"
+  },
+  {
+    "id": "arcane-wrath",
+    "en": "Arcane Wrath",
+    "es": "Cólera Arcana",
+    "source": "official"
+  },
+  {
+    "id": "arctic-reach",
+    "en": "Arctic Reach",
+    "es": "Alcance ártico",
+    "source": "client"
+  },
+  {
+    "id": "blast-wave",
+    "en": "Blast Wave",
+    "es": "Ola explosiva",
+    "source": "official"
+  },
+  {
+    "id": "blink",
+    "en": "Blink",
+    "es": "Traslación",
+    "source": "client"
+  },
+  {
+    "id": "blizzard",
+    "en": "Blizzard",
+    "es": "Ventisca",
+    "source": "official"
+  },
+  {
+    "id": "burning-soul",
+    "en": "Burning Soul",
+    "es": "Alma ardiente",
+    "source": "official"
+  },
+  {
+    "id": "cold-snap",
+    "en": "Cold Snap",
+    "es": "Mordedura helada",
+    "source": "official"
+  },
+  {
+    "id": "combustion",
+    "en": "Combustion",
+    "es": "Combustión",
+    "source": "client"
+  },
+  {
+    "id": "comprehension-comprehend-scroll",
+    "en": "Comprehension (Comprehend Scroll)",
+    "es": "Comprensión (Comprender pergamino)",
+    "source": "official"
+  },
+  {
+    "id": "cone-of-cold",
+    "en": "Cone of Cold",
+    "es": "Cono de frío",
+    "source": "official"
+  },
+  {
+    "id": "conjure-mana-agate",
+    "en": "Conjure Mana Agate",
+    "es": "Conjurar ágata de maná",
+    "source": "client"
+  },
+  {
+    "id": "conjure-water-conjure-food",
+    "en": "Conjure Water / Conjure Food",
+    "es": "Conjurar agua / Conjurar comida",
+    "source": "client"
+  },
+  {
+    "id": "counterspell",
+    "en": "Counterspell",
+    "es": "Contrahechizo",
+    "source": "official"
+  },
+  {
+    "id": "critical-mass",
+    "en": "Critical Mass",
+    "es": "Masa crítica",
+    "source": "official"
+  },
+  {
+    "id": "elemental-precision",
+    "en": "Elemental Precision",
+    "es": "Enfoque elemental",
+    "source": "official"
+  },
+  {
+    "id": "evocation",
+    "en": "Evocation",
+    "es": "Evocación",
+    "source": "client"
+  },
+  {
+    "id": "fingers-of-frost",
+    "en": "Fingers of Frost",
+    "es": "Dedos de Escarcha",
+    "source": "official"
+  },
+  {
+    "id": "fire-blast",
+    "en": "Fire Blast",
+    "es": "Explosión de Fuego",
+    "source": "official"
+  },
+  {
+    "id": "fire-power",
+    "en": "Fire Power",
+    "es": "Poder de Fuego",
+    "source": "official"
+  },
+  {
+    "id": "fire-ward-frost-ward",
+    "en": "Fire Ward / Frost Ward",
+    "es": "Custodia de Fuego / Custodia de Escarcha",
+    "source": "client"
+  },
+  {
+    "id": "fireball",
+    "en": "Fireball",
+    "es": "Bola de Fuego",
+    "source": "official"
+  },
+  {
+    "id": "flame-throwing",
+    "en": "Flame Throwing",
+    "es": "Lanzallamas",
+    "source": "client"
+  },
+  {
+    "id": "flamestrike",
+    "en": "Flamestrike",
+    "es": "Fogonazo",
+    "source": "client"
+  },
+  {
+    "id": "frost-armor-ice-armor",
+    "en": "Frost Armor / Ice Armor",
+    "es": "Armadura de Escarcha / Armadura de hielo",
+    "source": "client"
+  },
+  {
+    "id": "frost-blast",
+    "en": "Frost Blast"
+  },
+  {
+    "id": "frost-channeling",
+    "en": "Frost Channeling",
+    "es": "Canalización de Escarcha",
+    "source": "official"
+  },
+  {
+    "id": "frost-nova",
+    "en": "Frost Nova",
+    "es": "Nova de Escarcha",
+    "source": "official"
+  },
+  {
+    "id": "frost-warding",
+    "en": "Frost Warding",
+    "es": "Custodia de Escarcha",
+    "source": "client"
+  },
+  {
+    "id": "frostbite",
+    "en": "Frostbite",
+    "es": "Mordiescarcha",
+    "source": "client"
+  },
+  {
+    "id": "frostbolt",
+    "en": "Frostbolt",
+    "es": "Descarga de Escarcha",
+    "source": "official"
+  },
+  {
+    "id": "frostfire-bolt",
+    "en": "Frostfire Bolt",
+    "es": "Descarga de Pirofrío",
+    "source": "official"
+  },
+  {
+    "id": "heating-up",
+    "en": "Heating Up",
+    "es": "Calentamiento",
+    "source": "official"
+  },
+  {
+    "id": "ice-barrier",
+    "en": "Ice Barrier",
+    "es": "Barrera de hielo",
+    "source": "client"
+  },
+  {
+    "id": "ice-block",
+    "en": "Ice Block",
+    "es": "Bloqueo de hielo",
+    "source": "official"
+  },
+  {
+    "id": "ice-lance",
+    "en": "Ice Lance",
+    "es": "Lanza de hielo",
+    "source": "official"
+  },
+  {
+    "id": "ice-shards",
+    "en": "Ice Shards",
+    "es": "Fragmentos de hielo",
+    "source": "client"
+  },
+  {
+    "id": "ignite",
+    "en": "Ignite",
+    "es": "Ignición",
+    "source": "official"
+  },
+  {
+    "id": "impact",
+    "en": "Impact",
+    "es": "Impacto",
+    "source": "official"
+  },
+  {
+    "id": "improved-arcane-explosion",
+    "en": "Improved Arcane Explosion",
+    "es": "Deflagración Arcana mejorada",
+    "source": "official"
+  },
+  {
+    "id": "improved-arcane-missiles",
+    "en": "Improved Arcane Missiles",
+    "es": "Misiles Arcanos mejorados",
+    "source": "official"
+  },
+  {
+    "id": "improved-blizzard",
+    "en": "Improved Blizzard",
+    "es": "Ventisca mejorada",
+    "source": "official"
+  },
+  {
+    "id": "improved-channeling",
+    "en": "Improved Channeling",
+    "es": "Canalización mejorada",
+    "source": "official"
+  },
+  {
+    "id": "improved-cone-of-cold",
+    "en": "Improved Cone of Cold",
+    "es": "Cono de frío mejorado",
+    "source": "client"
+  },
+  {
+    "id": "improved-counterspell",
+    "en": "Improved Counterspell",
+    "es": "Contrahechizo mejorado",
+    "source": "official"
+  },
+  {
+    "id": "improved-fire-blast",
+    "en": "Improved Fire Blast",
+    "es": "Explosión de Fuego mejorada",
+    "source": "official"
+  },
+  {
+    "id": "improved-fire-ward",
+    "en": "Improved Fire Ward",
+    "es": "Custodia de Fuego mejorada",
+    "source": "client"
+  },
+  {
+    "id": "improved-fireball",
+    "en": "Improved Fireball",
+    "es": "Bola de Fuego mejorada",
+    "source": "official"
+  },
+  {
+    "id": "improved-flamestrike",
+    "en": "Improved Flamestrike",
+    "es": "Fogonazo mejorado",
+    "source": "client"
+  },
+  {
+    "id": "improved-frost-nova",
+    "en": "Improved Frost Nova",
+    "es": "Nova de Escarcha mejorada",
+    "source": "client"
+  },
+  {
+    "id": "improved-frostbolt",
+    "en": "Improved Frostbolt",
+    "es": "Descarga de Escarcha mejorada",
+    "source": "client"
+  },
+  {
+    "id": "improved-mana-shield",
+    "en": "Improved Mana Shield",
+    "es": "Escudo de maná mejorado",
+    "source": "official"
+  },
+  {
+    "id": "improved-scorch",
+    "en": "Improved Scorch",
+    "es": "Chamuscar mejorado",
+    "source": "official"
+  },
+  {
+    "id": "incinerate",
+    "en": "Incinerate",
+    "es": "Incinerar",
+    "source": "official"
+  },
+  {
+    "id": "incineration",
+    "en": "Incineration",
+    "es": "Incineración",
+    "source": "official"
+  },
+  {
+    "id": "mage-armor",
+    "en": "Mage Armor",
+    "es": "Armadura de mago",
+    "source": "official"
+  },
+  {
+    "id": "magic-absorption",
+    "en": "Magic Absorption",
+    "es": "Absorción mágica",
+    "source": "official"
+  },
+  {
+    "id": "magic-attunement",
+    "en": "Magic Attunement",
+    "es": "Armonización mágica",
+    "source": "official"
+  },
+  {
+    "id": "mana-shield",
+    "en": "Mana Shield",
+    "es": "Escudo de maná",
+    "source": "official"
+  },
+  {
+    "id": "master-of-elements",
+    "en": "Master of Elements",
+    "es": "Maestro de los elementos",
+    "source": "client"
+  },
+  {
+    "id": "missile-barrage",
+    "en": "Missile Barrage",
+    "es": "Tromba de misiles",
+    "source": "official"
+  },
+  {
+    "id": "permafrost",
+    "en": "Permafrost",
+    "es": "Escarcha permanente",
+    "source": "official"
+  },
+  {
+    "id": "piercing-ice",
+    "en": "Piercing Ice",
+    "es": "Hielo penetrante",
+    "source": "client"
+  },
+  {
+    "id": "polymorph",
+    "en": "Polymorph",
+    "es": "Polimorfia",
+    "source": "official"
+  },
+  {
+    "id": "presence-of-mind",
+    "en": "Presence of Mind",
+    "es": "Presencia mental",
+    "source": "official"
+  },
+  {
+    "id": "pyroblast",
+    "en": "Pyroblast",
+    "es": "Piroexplosión",
+    "source": "official"
+  },
+  {
+    "id": "remove-lesser-curse",
+    "en": "Remove Lesser Curse",
+    "es": "Deshacer maldición inferior",
+    "source": "client"
+  },
+  {
+    "id": "scorch",
+    "en": "Scorch",
+    "es": "Chamuscar",
+    "source": "official"
+  },
+  {
+    "id": "shatter",
+    "en": "Shatter",
+    "es": "Trizar",
+    "source": "official"
+  },
+  {
+    "id": "slow-fall",
+    "en": "Slow Fall",
+    "es": "Caída lenta",
+    "source": "client"
+  },
+  {
+    "id": "spell-ranks-downranking",
+    "en": "Spell ranks (downranking)",
+    "es": "Rangos de hechizos (bajar de rango)",
+    "source": "guide"
+  },
+  {
+    "id": "teleport-portal",
+    "en": "Teleport / Portal",
+    "es": "Teletransporte / Portal",
+    "source": "client"
+  },
+  {
+    "id": "wand-specialization",
+    "en": "Wand Specialization",
+    "es": "Especialización en varitas",
+    "source": "official"
+  },
+  {
+    "id": "wands",
+    "en": "Wands",
+    "es": "Varitas",
+    "source": "guide"
+  },
+  {
+    "id": "winters-chill",
+    "en": "Winter's Chill",
+    "es": "Escalofrío del invierno",
+    "source": "official"
+  }
+]

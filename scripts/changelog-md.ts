@@ -23,7 +23,7 @@ function label(reference: string): string {
     }
     case 'milestone': {
       const m = find(milestones);
-      return m?.name ? localName({ name: m.name, nameEs: m.nameEs }, 'es') : reference;
+      return m?.name ? localName({ name: m.name }, 'es') : reference;
     }
     case 'ability': {
       const a = find(abilities);
