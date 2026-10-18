@@ -3,12 +3,15 @@
  *
  * 1. Parses every data file (src/data/*.json) and checks cross-file integrity.
  * 2. Checks every MDX page: frontmatter, references, components, coverage.
- * Exits with code 1 on any error. Warnings (drafts, TODOs) do not fail.
+ * 3. Warns about uses and trees without a level 60 build (docs/content-roadmap.md, section 4).
+ * Exits with code 1 on any error. Warnings (drafts, TODOs, build gaps) do not fail.
  */
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { coverageGaps } from '../src/lib/build-coverage';
 import { dataset } from '../src/lib/data';
+import { MAX_LEVEL } from '../src/lib/talents';
 import { validatePages, type PageFile } from '../src/lib/page-rules';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
@@ -28,6 +31,11 @@ console.log(
     `${dataset.talents.length} talents, ${dataset.builds.length} builds, ${dataset.races.length} races, ` +
     `${dataset.professions.length} professions, ${dataset.picks.length} profession picks`,
 );
+
+// Goal: at least one level 60 build per use and tree. Not an error: the gaps fill in after launch.
+for (const gap of coverageGaps(dataset.builds, MAX_LEVEL)) {
+  console.warn(`⚠ builds.json: no level ${MAX_LEVEL} build for ${gap.use} in ${gap.trees.join(', ')}`);
+}
 
 const files: PageFile[] = walk(pagesDir).map((full) => ({
   path: relative(pagesDir, full).replaceAll('\\', '/'),

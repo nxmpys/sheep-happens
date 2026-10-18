@@ -4,7 +4,8 @@
  * it, what to bring) lives on a single page, the build's `page`; elsewhere the
  * summary variant shows what it is for, its points and key talents, and links
  * to that full card. Both use the build id as their id, so /builds/#<id> and
- * /<page>/#<id> keep working.
+ * /<page>/#<id> keep working. Each use chip says whether the build is the
+ * recommended one for that use at its level or a viable alternative.
  */
 import Icon from '../ui/Icon.astro';
 import SpellRef from './SpellRef.astro';
@@ -13,6 +14,7 @@ import TalentOrder from './TalentOrder.astro';
 import TalentTree from './TalentTree.astro';
 import { SPEC_LABELS, USE_LABELS, tb } from '../../i18n/builds';
 import { getLocale, href } from '../../i18n/locale';
+import { buildRole } from '../../lib/build-coverage';
 import { getBuild, getTalent, getVersion, talents } from '../../lib/data';
 import { localName } from '../../lib/names';
 import { distributionLabel, pointsAtLevel, spentTalents, totalPoints, wowheadBuildUrl } from '../../lib/talents';
@@ -59,7 +61,19 @@ const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' 
       <span>{build.name[locale]}</span>
     </Heading>
     <ul class="build__tags" data-pagefind-ignore>
-      {build.uses.map((use) => <li class="chip build__use">{USE_LABELS[locale][use]}</li>)}
+      {
+        build.uses.map((use) => {
+          const role = buildRole(build, use);
+          return (
+            <li
+              class:list={['chip', 'build__use', `build__use--${role}`]}
+              title={tb(locale, `build.roleHint.${role}`, { use: USE_LABELS[locale][use], level: build.level })}
+            >
+              {USE_LABELS[locale][use]} · <span class="build__role">{tb(locale, `build.${role}`)}</span>
+            </li>
+          );
+        })
+      }
       <li class="chip">{SPEC_LABELS[locale][build.spec]}</li>
       <li class="chip">
         {build.order ? tb(locale, 'build.levels', { from: build.fromLevel ?? 1, to: build.level }) : tb(locale, 'build.level', { level: build.level })} ·{' '}
@@ -256,6 +270,17 @@ const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' 
     border-color: color-mix(in srgb, var(--school) 45%, transparent);
     color: var(--text);
     font-weight: 600;
+  }
+  .build__role {
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+  .build__use--recommended {
+    border-color: var(--school);
+  }
+  .build__use--recommended .build__role {
+    font-weight: 700;
+    color: var(--text);
   }
   .build__legacy {
     border-color: var(--baseline);

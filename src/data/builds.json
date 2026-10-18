@@ -8,6 +8,9 @@
     "uses": [
       "leveling"
     ],
+    "recommendedFor": [
+      "leveling"
+    ],
     "spec": "frost",
     "level": 30,
     "fromLevel": 1,

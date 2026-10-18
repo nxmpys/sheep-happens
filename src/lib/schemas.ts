@@ -240,6 +240,12 @@ export const buildSchema = z
     id,
     name: localized,
     uses: z.array(z.enum(BUILD_USES)).min(1),
+    /**
+     * Uses (from `uses`) for which this is the recommended build at its `level`.
+     * In every other use it is shown as «viable». At most one recommended build
+     * per use and level.
+     */
+    recommendedFor: z.array(z.enum(BUILD_USES)).default([]),
     spec: z.enum(BUILD_SPECS),
     /** Character level the build is made for; points available = level − 9 (+ Talented). */
     level: z.number().int().min(10).max(60),
@@ -291,8 +297,9 @@ export const buildSchema = z
     updated,
   })
   .strict()
-  .refine((b) => b.orderNotes.length === 0 || b.order !== undefined, { message: 'orderNotes need an order' });
-export type Build = z.infer<typeof buildSchema>;
+  .refine((b) => b.orderNotes.length === 0 || b.order !== undefined, { message: 'orderNotes need an order' })
+  .refine((b) => b.recommendedFor.every((use) => b.uses.includes(use)), { message: 'recommendedFor must list uses from `uses`' });
+export type Build =z.infer<typeof buildSchema>;
 
 export const racialSchema = z
   .object({

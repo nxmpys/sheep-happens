@@ -65,6 +65,7 @@ import {
   type Watch,
 } from './schemas';
 import { nameEntry, spellNames } from './spell-names';
+import { recommendedConflicts } from './build-coverage';
 import { validateBuild, validateOrder } from './talents';
 
 function parseList<T extends z.ZodType>(file: string, schema: T, raw: unknown): z.output<T>[] {
@@ -275,6 +276,8 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
     }
     if (!data.versions.some((v) => v.id === build.gameVersion)) problems.push(`builds.json: "${build.id}" uses unknown gameVersion "${build.gameVersion}"`);
   }
+  // One recommended build per use and level; the rest are shown as «viable».
+  for (const problem of recommendedConflicts(data.builds)) problems.push(`builds.json: ${problem}`);
   for (const race of data.races) {
     for (const dup of duplicates(race.racials.map((r) => r.id))) problems.push(`races.json: "${race.id}" lists racial "${dup}" twice`);
   }

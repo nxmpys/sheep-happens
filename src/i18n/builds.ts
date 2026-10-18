@@ -15,7 +15,7 @@ export const SPEC_LABELS: Record<Locale, Record<BuildSpec, string>> = {
   en: { arcane: 'Arcane', fire: 'Fire', frost: 'Frost', hybrid: 'Hybrid' },
 };
 
-/** What we will publish for a use that has no build yet, and when. */
+/** When the level 60 builds for each use will come; shown while a tree is still pending. */
 export const USE_PENDING: Record<Locale, Record<BuildUse, string>> = {
   es: {
     leveling: 'Llegarán con el lanzamiento (4 de noviembre): una build por rama, con el orden de puntos del 10 al 60.',
@@ -104,8 +104,16 @@ const es = {
   'builds.count': 'Mostrando {shown} de {total} builds',
   'builds.reset': 'Quitar filtros',
   'builds.share': 'Copiar enlace con estos filtros',
-  'builds.pendingTitle': '{use}: todavía sin build',
   'builds.empty': 'Todavía no hay builds con estos filtros.',
+  'build.recommended': 'Recomendada',
+  'build.viable': 'Viable',
+  'build.roleHint.recommended': '{use}, nivel {level}: la build recomendada',
+  'build.roleHint.viable': '{use}, nivel {level}: una alternativa viable, no la recomendada',
+  'coverage.title': 'Qué ramas tienen build',
+  'coverage.intro': 'Queremos al menos una build de nivel {level} en cada rama para cada uso, para que puedas jugar con tu rama favorita: una recomendada y las demás viables.',
+  'coverage.pending': 'pendiente para el {level}',
+  'coverage.partial': 'nivel {level}',
+  'coverage.hybrid': 'Híbrida',
   'race.racials': 'Raciales',
   'race.active': 'Activa',
   'race.passive': 'Pasiva',
@@ -174,8 +182,16 @@ const en: Record<BuildUiKey, string> = {
   'builds.count': 'Showing {shown} of {total} builds',
   'builds.reset': 'Clear filters',
   'builds.share': 'Copy link with these filters',
-  'builds.pendingTitle': '{use}: no build yet',
   'builds.empty': 'No builds match these filters yet.',
+  'build.recommended': 'Recommended',
+  'build.viable': 'Viable',
+  'build.roleHint.recommended': '{use}, level {level}: the recommended build',
+  'build.roleHint.viable': '{use}, level {level}: a viable alternative, not the recommended one',
+  'coverage.title': 'Which trees have a build',
+  'coverage.intro': 'We want at least one level {level} build in every tree for each use, so you can play your favourite tree: one recommended, the others viable.',
+  'coverage.pending': 'pending for level {level}',
+  'coverage.partial': 'level {level}',
+  'coverage.hybrid': 'Hybrid',
   'race.racials': 'Racials',
   'race.active': 'Active',
   'race.passive': 'Passive',

@@ -55,7 +55,7 @@ El validador rechaza, por ejemplo, un `verified` sin fuente oficial o un `report
 
 ### Añadir o actualizar una build
 
-1. Añádela a `src/data/builds.json`: `id`, `name`, `uses` (`leveling`, `aoe`, `dungeons`, `raid`, `pvp`, `duels`), `spec`, `level`, `points` (id del talento → rango), `keyTalents`, `summary`, `playstyle` y, si hacen falta, `strengths`, `weaknesses` e `items`.
+1. Añádela a `src/data/builds.json`: `id`, `name`, `uses` (`leveling`, `aoe`, `dungeons`, `raid`, `pvp`, `duels`), `recommendedFor` (los usos en los que es la recomendada; en los demás sale como «Viable»; como mucho una recomendada por uso y nivel), `spec`, `level`, `points` (id del talento → rango), `keyTalents`, `summary`, `playstyle` y, si hacen falta, `strengths`, `weaknesses` e `items`.
 2. Los ids de talento son los de `src/data/talents.json` (árbol de Forever según la calculadora de Wowhead). `npm run validate` comprueba que la build se pueda hacer en el juego: rangos, puntos por fila, requisitos y puntos del nivel.
 3. El enlace a la calculadora de Wowhead y la vista de calculadora se generan solos. No hace falta copiar ninguna URL.
 4. `status: "analysis"` mientras no se haya probado en el juego; `"tested"` cuando sí. Pon `gameVersion`, `sources` y `updated`, y añade una entrada al historial con `refs: ["build:<id>"]`.

@@ -6,6 +6,10 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ## 2026-10-18
 
+### [Web] Builds: qué ramas tienen build en cada uso
+
+La página de Builds muestra, para cada uso (leveo, farmeo en área, mazmorras, banda, JcJ y duelos), qué ramas tienen ya build y cuáles están pendientes para el nivel 60. Queremos al menos una build por rama en cada uso, para que puedas jugar con tu rama favorita. Cada tarjeta dice además si es la recomendada para ese uso o una alternativa viable.
+
 ### [Web] Menú más simple: Aprende, Builds y Elige
 
 El menú tiene seis entradas sin desplegables. Aprende es el camino para empezar desde cero, Builds reúne las builds listas para copiar (con el enlace de Wowhead) y las guías de leveo, y Elige da la mejor raza y la pareja de profesiones en una sola página. La página de duelos a nivel 30, pensada para el torneo de la beta del 17 y 18 de octubre, se retira: su dirección lleva a Builds.

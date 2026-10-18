@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-10-16 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
+> Creado: 2026-10-12 · Revisión: 2026-10-18 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -156,6 +156,25 @@ Muchos lectores no querrán leer la teoría: buscarán una build que funcione y 
 
 Del 1 al 30 ya está publicado como BETA (2026-10-14). Del 31 al 60 sigue bloqueado por el tope de nivel 30 de la beta y por la falta de valores oficiales de los talentos.
 
+### Objetivo: builds de nivel 60 para todo y para cada rama (fijado el 2026-10-18)
+
+- **Cada uso** tiene builds de nivel 60: leveo, farmeo AoE, mazmorras, banda, PvP y duelos.
+- **Cada rama** (Arcano, Fuego y Escarcha) tiene al menos una build viable en cada uso, aunque no sea la mejor: hay jugadores que quieren jugar su rama favorita. Las híbridas se muestran, pero no cuentan como build de ninguna rama.
+- **Recomendada frente a viable**: en cada uso y nivel, una build es la recomendada (`recommendedFor` en `builds.json`) y las demás se etiquetan «Viable». Lo decimos claro en la tarjeta, sin ocultarlas. `npm run validate` da error si hay dos recomendadas para el mismo uso y nivel.
+- **Nada inventado**: las builds de 60 esperan a tener datos del lanzamiento (talentos con valores del juego, mazmorras y bandas abiertas). Mientras tanto, la página lo dice.
+- **Seguimiento**: la sección «Qué ramas tienen build» de `/es/builds/` (`BuildCoverage`, calculada desde `builds.json` con `src/lib/build-coverage.ts`) muestra por uso qué ramas tienen build y cuáles están «pendiente para el 60». `npm run validate` avisa (sin fallar) de cada uso y rama sin build de nivel 60. El objetivo está cumplido cuando ese aviso desaparece.
+
+### Añadir una build de nivel 60
+
+No hace falta tocar el diseño ni las páginas: la tarjeta, los filtros, la cobertura y el aviso salen de `builds.json`.
+
+1. Añade la build a `src/data/builds.json` con `level: 60`, sus `uses` y su `spec` (`arcane`, `fire`, `frost` o `hybrid`). El resto de campos, como en CONTRIBUTING.md («Añadir o actualizar una build»).
+2. Si es la mejor de su uso a nivel 60, pon ese uso en `recommendedFor`; si no, déjalo fuera y saldrá como «Viable». Para cambiar la recomendada, quítasela a la anterior en el mismo cambio.
+3. Para una build de leveo que ya existe a nivel 30, no crees otra: sube su `level` a 60 y amplía `order` (punto 7 de CONTRIBUTING.md).
+4. Si tiene guía en profundidad, enlázala con `page`; si no, la ficha completa queda en Builds.
+5. `npm run check`: valida los puntos y la recomendada, y el aviso de validación ya no lista ese uso y rama.
+6. Entrada en el historial con `refs: ["build:<id>"]` y casilla marcada aquí.
+
 ### Cómo debería ser
 
 - [x] Una página propia «Builds», la primera del menú y del inicio, separada de la explicación de Talentos (hecho el 2026-10-13).
@@ -172,8 +191,12 @@ Del 1 al 30 ya está publicado como BETA (2026-10-14). Del 31 al 60 sigue bloque
 - [ ] **Ampliar el leveo al 60**, sin crear páginas nuevas: en cada build de `leveling`, subir `level` a 60, añadir los puntos 22 a 51 a `order` (más notas en `orderNotes`) y actualizar `points`. A nivel 40 llegan Descarga de Pirofrío y la doble especialización: valorar una build híbrida o de Fuego para el 31-60. El aviso BETA y las etapas se actualizan solos (`src/lib/leveling.ts`) cuando **todas** las builds de leveo llegan al 60.
 - [ ] Probar en el juego las tres builds de leveo (sobre todo la de área, que es experimental) y pasarlas a `tested` o corregirlas.
 - [ ] Si una build necesita otro orden con Talented (no solo los mismos puntos antes), hoy no se puede expresar: habría que añadir un segundo orden.
+- [x] Cobertura por uso y rama en Builds, en lugar de una tarjeta «todavía sin build» por uso, y etiqueta «Recomendada» o «Viable» en cada uso de la tarjeta (hecho el 2026-10-18). La build de leveo en solitario es la recomendada para leveo a nivel 30.
+- [ ] Builds de nivel 60: al menos una por rama en cada uso (Arcano, Fuego, Escarcha × leveo, farmeo AoE, mazmorras, banda, PvP y duelos). Pendientes de los datos del lanzamiento; `npm run validate` lista las que faltan.
 
 ### Orden de publicación
+
+Dentro de cada paso, primero la recomendada y después una viable de cada una de las otras ramas.
 
 1. [ ] Leveo y farmeo AoE: del 1 al 30 publicado como BETA el 2026-10-14; del 31 al 60, el día del lanzamiento o lo antes posible.
 2. [ ] Mazmorras.
