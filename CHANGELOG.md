@@ -4,6 +4,16 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-10-19
+
+### [Web] Calculadora de talentos, glosario y «Qué ha cambiado esta semana»
+
+Nueva calculadora de talentos con los tres árboles de Forever y el texto del juego de cada rango, que se puede compartir y abrir en Wowhead. El inicio resume los cambios para el Mago de la última semana, la página Aprende tiene un glosario cuyas palabras muestran su definición al pasar el ratón en toda la web, cada build dice cuándo se revisó y las fichas de builds, cambios y razas tienen un botón «¿Algo está mal?».
+
+### [Guía] Profesiones: qué da cada una en la hoguera
+
+La página de Profesiones tiene una sección nueva con el buff que da el objeto de campamento de cada profesión al sentarte en la hoguera, con qué buff de clase no se acumula y si le sirve a un Mago.
+
 ## 2026-10-18
 
 ### [Web] Builds: recomendada o viable, y sin duelos

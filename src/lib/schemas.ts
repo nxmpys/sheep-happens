@@ -164,6 +164,18 @@ export const spellTextFileSchema = z
   })
   .strict();
 
+const talentRankText = z.object({ name: z.string().min(1), ranks: z.array(z.string().min(1)).min(1), lang: z.literal('en').optional() }).strict();
+
+/** Per-rank talent text from the Wowhead Forever calculator data (scripts/talent-text.ts). */
+export const talentTextFileSchema = z
+  .object({
+    fetched: isoDate,
+    source: z.url(),
+    talents: z.record(id, z.object({ icon: z.string(), en: talentRankText, es: talentRankText }).strict()),
+  })
+  .strict();
+export type TalentText = z.infer<typeof talentTextFileSchema>;
+
 export const factSchema = z
   .object({ id, label: localized, value: localized, status: z.enum(STATUSES), sources: sourceIds, updated })
   .strict();
@@ -358,6 +370,18 @@ export const PROFESSION_KINDS = ['crafting', 'gathering', 'secondary'] as const;
 /** What a profession mostly gives a Mage: combat power, gold or convenience. */
 export const PROFESSION_EDGES = ['combat', 'economy', 'utility'] as const;
 
+/** How useful a profession's camp object is to a Mage (camp buffs table). */
+export const CAMP_VALUES = ['yes', 'leveling', 'utility', 'no'] as const;
+export type CampValue = (typeof CAMP_VALUES)[number];
+
+/**
+ * The profession's first camp object (skill 20) and what it gives when you sit
+ * at the campfire. `sameAs` is the class buff it does not stack with.
+ */
+const campSchema = z
+  .object({ object: z.string().min(1), buff: localized, sameAs: localized.optional(), mage: z.enum(CAMP_VALUES) })
+  .strict();
+
 export const professionSchema = z
   .object({
     id,
@@ -390,6 +414,7 @@ export const professionSchema = z
       .array(z.object({ name: z.string().min(1), wowhead: z.number().int().positive(), note: localized }).strict())
       .default([]),
     /** Reliability of the facts (effects, items); the ratings are always our analysis. */
+    camp: campSchema.optional(),
     status: z.enum(STATUSES),
     sources: sourceIds,
     updated,
@@ -596,6 +621,20 @@ export const noticeSchema = z
   .strict()
   .refine((n) => Date.parse(n.start) < Date.parse(n.end), { message: 'a notice must start before it ends' });
 export type Notice = z.infer<typeof noticeSchema>;
+
+/**
+ * A glossary term (glossary.json): shown in the Glossary section of the Learn
+ * page and as a tooltip where the term appears in the guide text. `terms` are
+ * the spellings to underline, per language, the first one being the headword.
+ */
+export const glossarySchema = z
+  .object({
+    id,
+    terms: z.object({ es: z.array(z.string().min(2)).min(1), en: z.array(z.string().min(2)).min(1) }).strict(),
+    definition: localized,
+  })
+  .strict();
+export type GlossaryTerm = z.infer<typeof glossarySchema>;
 
 /** Frontmatter for every MDX page (validated by the content collection). */
 export const pageFrontmatter = z

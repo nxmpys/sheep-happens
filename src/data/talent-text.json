@@ -1,0 +1,1025 @@
+{
+  "fetched": "2026-10-19",
+  "source": "https://www.wowhead.com/forever/talent-calc/mage",
+  "talents": {
+    "wand-specialization": {
+      "icon": "inv_wand_01",
+      "en": {
+        "name": "Wand Specialization",
+        "ranks": [
+          "Increases your damage with Wands by 13%.",
+          "Increases your damage with Wands by 25%."
+        ]
+      },
+      "es": {
+        "name": "Especialización en varitas",
+        "ranks": [
+          "Aumenta el daño con varitas en 13%.",
+          "Aumenta el daño con varitas en 25%."
+        ]
+      }
+    },
+    "arcane-focus": {
+      "icon": "spell_holy_devotion",
+      "en": {
+        "name": "Arcane Focus",
+        "ranks": [
+          "Improves your chance to hit with Arcane spells by 1%.",
+          "Improves your chance to hit with Arcane spells by 2%.",
+          "Improves your chance to hit with Arcane spells by 3%.",
+          "Improves your chance to hit with Arcane spells by 4%.",
+          "Improves your chance to hit with Arcane spells by 5%."
+        ]
+      },
+      "es": {
+        "name": "Enfoque Arcano",
+        "ranks": [
+          "Aumenta un 1% tu probabilidad de golpear con hechizos Arcanos.",
+          "Aumenta un 2% tu probabilidad de golpear con hechizos Arcanos.",
+          "Aumenta un 3% tu probabilidad de golpear con hechizos Arcanos.",
+          "Aumenta un 4% tu probabilidad de golpear con hechizos Arcanos.",
+          "Aumenta un 5% tu probabilidad de golpear con hechizos Arcanos."
+        ]
+      }
+    },
+    "improved-channeling": {
+      "icon": "spell_nature_starfall",
+      "en": {
+        "name": "Improved Channeling",
+        "ranks": [
+          "Gives you a 20% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 14% chance while casting Arcane Blast or Arcane Wrath.",
+          "Gives you a 40% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 28% chance while casting Arcane Blast or Arcane Wrath.",
+          "Gives you a 60% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 42% chance while casting Arcane Blast or Arcane Wrath.",
+          "Gives you a 80% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 56% chance while casting Arcane Blast or Arcane Wrath.",
+          "Gives you a 100% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 70% chance while casting Arcane Blast or Arcane Wrath."
+        ]
+      },
+      "es": {
+        "name": "Canalización mejorada",
+        "ranks": [
+          "Gives you a 20% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 14% chance while casting Arcane Blast or Arcane Wrath.",
+          "Gives you a 40% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 28% chance while casting Arcane Blast or Arcane Wrath.",
+          "Gives you a 60% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 42% chance while casting Arcane Blast or Arcane Wrath.",
+          "Gives you a 80% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 56% chance while casting Arcane Blast or Arcane Wrath.",
+          "Gives you a 100% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 70% chance while casting Arcane Blast or Arcane Wrath."
+        ],
+        "lang": "en"
+      }
+    },
+    "missile-barrage": {
+      "icon": "ability_mage_missilebarrage",
+      "en": {
+        "name": "Missile Barrage",
+        "ranks": [
+          "Gives your Arcane Blast spell a 20% chance, your Arcane Missile hits a 5% chance, and your Arcane Wrath, Fireball, Frostbolt, and Frostfire Bolt spells a 10% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec.",
+          "Gives your Arcane Blast spell a 40% chance, your Arcane Missile hits a 10% chance, and your Arcane Wrath, Fireball, Frostbolt, and Frostfire Bolt spells a 20% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec."
+        ]
+      },
+      "es": {
+        "name": "Tromba de misiles",
+        "ranks": [
+          "Gives your Arcane Blast spell a 20% chance, your Arcane Missile hits a 5% chance, and your Arcane Wrath, Fireball, Frostbolt, and Frostfire Bolt spells a 10% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec.",
+          "Gives your Arcane Blast spell a 40% chance, your Arcane Missile hits a 10% chance, and your Arcane Wrath, Fireball, Frostbolt, and Frostfire Bolt spells a 20% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec."
+        ],
+        "lang": "en"
+      }
+    },
+    "arcane-subtlety": {
+      "icon": "spell_holy_dispelmagic",
+      "en": {
+        "name": "Arcane Subtlety",
+        "ranks": [
+          "Reduces your target's resistance to all your spells by 8 and reduces the threat caused by your Arcane spells by 15%.",
+          "Reduces your target's resistance to all your spells by 15 and reduces the threat caused by your Arcane spells by 30%."
+        ]
+      },
+      "es": {
+        "name": "Sutileza Arcana",
+        "ranks": [
+          "Reduce la resistencia de tu objetivo a todos tus hechizos en 8 p. y reduce la amenaza causada por tus hechizos Arcanos en un 15%.",
+          "Reduce la resistencia de tu objetivo a todos tus hechizos en 15 p. y reduce la amenaza causada por tus hechizos Arcanos en un 30%."
+        ]
+      }
+    },
+    "magic-absorption": {
+      "icon": "spell_nature_astralrecalgroup",
+      "en": {
+        "name": "Magic Absorption",
+        "ranks": [
+          "Increases all your resistances by 5 and causes all spells you fully resist to restore 1% of your total mana. Cannot trigger more often than 1 time per sec.",
+          "Increases all your resistances by 10 and causes all spells you fully resist to restore 2% of your total mana. Cannot trigger more often than 1 time per sec."
+        ]
+      },
+      "es": {
+        "name": "Absorción mágica",
+        "ranks": [
+          "Aumenta 5 p. todas tus resistencias y provoca que todos los hechizos que resistas por completo restauren el 1% del total de tu maná. No se puede activar más de una vez por segundo.",
+          "Aumenta 10 p. todas tus resistencias y provoca que todos los hechizos que resistas por completo restauren el 2% del total de tu maná. No se puede activar más de una vez por segundo."
+        ]
+      }
+    },
+    "arcane-concentration": {
+      "icon": "spell_shadow_manaburn",
+      "en": {
+        "name": "Arcane Concentration",
+        "ranks": [
+          "Gives you a 2% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of your next damage spell by 100%.",
+          "Gives you a 4% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of your next damage spell by 100%.",
+          "Gives you a 6% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of your next damage spell by 100%.",
+          "Gives you a 8% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of your next damage spell by 100%.",
+          "Gives you a 10% chance of entering a Clearcasting state after any damage spell hits a target. The Clearcasting state reduces the mana cost of your next damage spell by 100%."
+        ]
+      },
+      "es": {
+        "name": "Concentración Arcana",
+        "ranks": [
+          "Te otorga un 2% de probabilidades de entrar en el estado Lanzamiento libre después de que cualquier hechizo de daño golpee al objetivo. Lanzamiento libre reduce un 100% el coste de maná de tu siguiente hechizo de daño.",
+          "Te otorga un 4% de probabilidades de entrar en el estado Lanzamiento libre después de que cualquier hechizo de daño golpee al objetivo. Lanzamiento libre reduce un 100% el coste de maná de tu siguiente hechizo de daño.",
+          "Te otorga un 6% de probabilidades de entrar en el estado Lanzamiento libre después de que cualquier hechizo de daño golpee al objetivo. Lanzamiento libre reduce un 100% el coste de maná de tu siguiente hechizo de daño.",
+          "Te otorga un 8% de probabilidades de entrar en el estado Lanzamiento libre después de que cualquier hechizo de daño golpee al objetivo. Lanzamiento libre reduce un 100% el coste de maná de tu siguiente hechizo de daño.",
+          "Te otorga un 10% de probabilidades de entrar en el estado Lanzamiento libre después de que cualquier hechizo de daño golpee al objetivo. Lanzamiento libre reduce un 100% el coste de maná de tu siguiente hechizo de daño."
+        ]
+      }
+    },
+    "arcane-resilience": {
+      "icon": "spell_arcane_arcaneresilience",
+      "en": {
+        "name": "Arcane Resilience",
+        "ranks": [
+          "Increases your Armor by an amount equal to 25% of your Intellect.",
+          "Increases your Armor by an amount equal to 50% of your Intellect."
+        ]
+      },
+      "es": {
+        "name": "Recuperación Arcana",
+        "ranks": [
+          "Aumenta tu armadura un valor equivalente al 25% de tu intelecto.",
+          "Aumenta tu armadura un valor equivalente al 50% de tu intelecto."
+        ]
+      }
+    },
+    "arcane-geometry": {
+      "icon": "inv_ability_mage_radiantspark",
+      "en": {
+        "name": "Arcane Geometry",
+        "ranks": [
+          "Increases the range of your Arcane spells by 3 yards.",
+          "Increases the range of your Arcane spells by 6 yards."
+        ]
+      },
+      "es": {
+        "name": "Geometría Arcana",
+        "ranks": [
+          "Aumenta 3 m el alcance de tus hechizos Arcanos.",
+          "Aumenta 6 m el alcance de tus hechizos Arcanos."
+        ]
+      }
+    },
+    "arcane-impact": {
+      "icon": "spell_nature_wispsplode",
+      "en": {
+        "name": "Arcane Impact",
+        "ranks": [
+          "Increases the critical strike chance of your Arcane spells by 2%.",
+          "Increases the critical strike chance of your Arcane spells by 4%.",
+          "Increases the critical strike chance of your Arcane spells by 6%."
+        ]
+      },
+      "es": {
+        "name": "Impacto Arcano",
+        "ranks": [
+          "Aumenta un 2% la probabilidad de golpe crítico de tus hechizos Arcanos.",
+          "Aumenta un 4% la probabilidad de golpe crítico de tus hechizos Arcanos.",
+          "Aumenta un 6% la probabilidad de golpe crítico de tus hechizos Arcanos."
+        ]
+      }
+    },
+    "arcane-blast": {
+      "icon": "spell_arcane_blast",
+      "en": {
+        "name": "Arcane Blast",
+        "ranks": [
+          "Blasts the target with energy, dealing 34 to 38 Arcane damage. Each time you cast Arcane Blast, you gain 15% of your Intellect as Spell Damage and the mana cost of Arcane Blast is increased by 175%. Effect stacks up to 4 times and lasts 15 sec from time of initial application."
+        ]
+      },
+      "es": {
+        "name": "Explosión Arcana",
+        "ranks": [
+          "Golpea al objetivo con energía e inflige 34 al 38 p. de daño Arcano. Cada vez que lances el hechizo Explosión Arcana, obtienes un 15% de tu intelecto como daño con hechizos y el coste de maná de Explosión Arcana aumenta un 175%. El efecto se acumula hasta 4 veces y dura 15 s desde el momento de la aplicación inicial."
+        ]
+      }
+    },
+    "arcane-shielding": {
+      "icon": "spell_shadow_detectlesserinvisibility",
+      "en": {
+        "name": "Arcane Shielding",
+        "ranks": [
+          "Decreases the Mana lost per point of damage taken when your Mana Shield spell is active by 17% and increases the resistances granted by your Mage Armor spell by 25%.",
+          "Decreases the Mana lost per point of damage taken when your Mana Shield spell is active by 33% and increases the resistances granted by your Mage Armor spell by 50%."
+        ]
+      },
+      "es": {
+        "name": "Protección Arcana",
+        "ranks": [
+          "Reduce un 17% la pérdida de maná por punto de daño recibido cuando tu hechizo Escudo de maná está activo y aumenta un 25% las resistencias otorgadas por tu hechizo Armadura de mago.",
+          "Reduce un 33% la pérdida de maná por punto de daño recibido cuando tu hechizo Escudo de maná está activo y aumenta un 50% las resistencias otorgadas por tu hechizo Armadura de mago."
+        ]
+      }
+    },
+    "improved-counterspell": {
+      "icon": "spell_frost_iceshock",
+      "en": {
+        "name": "Improved Counterspell",
+        "ranks": [
+          "Your Counterspell also Silences the target for 2 sec.",
+          "Your Counterspell also Silences the target for 4 sec."
+        ]
+      },
+      "es": {
+        "name": "Contrahechizo mejorado",
+        "ranks": [
+          "Tu Contrahechizo también silenciará al objetivo durante 2 s.",
+          "Tu Contrahechizo también silenciará al objetivo durante 4 s."
+        ]
+      }
+    },
+    "arcane-meditation": {
+      "icon": "spell_shadow_siphonmana",
+      "en": {
+        "name": "Arcane Meditation",
+        "ranks": [
+          "Allows 17% of your Mana regeneration to continue while casting.",
+          "Allows 33% of your Mana regeneration to continue while casting.",
+          "Allows 50% of your Mana regeneration to continue while casting."
+        ]
+      },
+      "es": {
+        "name": "Meditación Arcana",
+        "ranks": [
+          "Permite que un 17% de la regeneración de maná continúe mientras lanzas hechizos.",
+          "Permite que un 33% de la regeneración de maná continúe mientras lanzas hechizos.",
+          "Permite que un 50% de la regeneración de maná continúe mientras lanzas hechizos."
+        ]
+      }
+    },
+    "arcane-wrath": {
+      "icon": "ability_mage_netherwindpresence",
+      "en": {
+        "name": "Arcane Wrath",
+        "ranks": [
+          "Launches a projectile of pure Arcane energy at the enemy target, causing 122 to 146 Arcane damage. This spell gains additional Spell Damage equal to 5% of your maximum Mana."
+        ]
+      },
+      "es": {
+        "name": "Cólera Arcana",
+        "ranks": [
+          "Lanza un proyectil de pura energía Arcana al objetivo enemigo, lo que inflige 122 al 146 p. de daño Arcano. Este hechizo obtiene daño con hechizos adicional equivalente al 5% de tu maná máximo."
+        ]
+      }
+    },
+    "presence-of-mind": {
+      "icon": "spell_nature_enchantarmor",
+      "en": {
+        "name": "Presence of Mind",
+        "ranks": [
+          "When activated, your next Mage spell with a casting time less than 10 sec becomes an instant cast spell."
+        ]
+      },
+      "es": {
+        "name": "Presencia mental",
+        "ranks": [
+          "Tu próximo hechizo de mago con un tiempo de lanzamiento inferior a 10 segundos se convertirá en un hechizo de lanzamiento instantáneo."
+        ]
+      }
+    },
+    "arcane-mind": {
+      "icon": "spell_shadow_charm",
+      "en": {
+        "name": "Arcane Mind",
+        "ranks": [
+          "Increases your Intellect by 2% and increases the critical strike damage bonus of your Arcane spells by 20%.",
+          "Increases your Intellect by 4% and increases the critical strike damage bonus of your Arcane spells by 40%.",
+          "Increases your Intellect by 6% and increases the critical strike damage bonus of your Arcane spells by 60%.",
+          "Increases your Intellect by 8% and increases the critical strike damage bonus of your Arcane spells by 80%.",
+          "Increases your Intellect by 10% and increases the critical strike damage bonus of your Arcane spells by 100%."
+        ]
+      },
+      "es": {
+        "name": "Mente Arcana",
+        "ranks": [
+          "Aumenta un 2% tu intelecto y un 20% el bonus de daño crítico de tus hechizos Arcanos.",
+          "Aumenta un 4% tu intelecto y un 40% el bonus de daño crítico de tus hechizos Arcanos.",
+          "Aumenta un 6% tu intelecto y un 60% el bonus de daño crítico de tus hechizos Arcanos.",
+          "Aumenta un 8% tu intelecto y un 80% el bonus de daño crítico de tus hechizos Arcanos.",
+          "Aumenta un 10% tu intelecto y un 100% el bonus de daño crítico de tus hechizos Arcanos."
+        ]
+      }
+    },
+    "arcane-instability": {
+      "icon": "spell_shadow_teleport",
+      "en": {
+        "name": "Arcane Instability",
+        "ranks": [
+          "Increases the damage done by your spells by 1% and your critical strike chance by 1%.",
+          "Increases the damage done by your spells by 2% and your critical strike chance by 2%.",
+          "Increases the damage done by your spells by 3% and your critical strike chance by 3%."
+        ]
+      },
+      "es": {
+        "name": "Inestabilidad Arcana",
+        "ranks": [
+          "Aumenta el daño infligido con tus hechizos un 1% y tu probabilidad de golpe crítico un 1%.",
+          "Aumenta el daño infligido con tus hechizos un 2% y tu probabilidad de golpe crítico un 2%.",
+          "Aumenta el daño infligido con tus hechizos un 3% y tu probabilidad de golpe crítico un 3%."
+        ]
+      }
+    },
+    "arcane-power": {
+      "icon": "spell_nature_lightning",
+      "en": {
+        "name": "Arcane Power",
+        "ranks": [
+          "For the next 15 sec, your spells deal 30% more damage while costing 30% more mana to cast."
+        ]
+      },
+      "es": {
+        "name": "Poder Arcano",
+        "ranks": [
+          "Durante los siguientes 15 s, tus hechizos infligen un 30% más de daño y cuestan un 30% más de maná."
+        ]
+      }
+    },
+    "wake-of-fire": {
+      "icon": "spell_fire_lavaspawn",
+      "en": {
+        "name": "Improved Fire Blast",
+        "ranks": [
+          "Reduces the cooldown of your Fire Blast spell by 1 sec and increases its range by 8 yards.",
+          "Reduces the cooldown of your Fire Blast spell by 2 sec and increases its range by 15 yards."
+        ]
+      },
+      "es": {
+        "name": "Improved Fire Blast",
+        "ranks": [
+          "Reduces the cooldown of your Fire Blast spell by 1 sec and increases its range by 8 yards.",
+          "Reduces the cooldown of your Fire Blast spell by 2 sec and increases its range by 15 yards."
+        ],
+        "lang": "en"
+      }
+    },
+    "incineration": {
+      "icon": "spell_fire_flameshock",
+      "en": {
+        "name": "Incineration",
+        "ranks": [
+          "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast, and Scorch spells by 2%.",
+          "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast, and Scorch spells by 4%.",
+          "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast, and Scorch spells by 6%."
+        ]
+      },
+      "es": {
+        "name": "Incineración",
+        "ranks": [
+          "Aumenta un 2% la probabilidad de golpe crítico de tus hechizos Explosión de Fuego, Lanza de hielo, Explosión Arcana y Chamuscar.",
+          "Aumenta un 4% la probabilidad de golpe crítico de tus hechizos Explosión de Fuego, Lanza de hielo, Explosión Arcana y Chamuscar.",
+          "Aumenta un 6% la probabilidad de golpe crítico de tus hechizos Explosión de Fuego, Lanza de hielo, Explosión Arcana y Chamuscar."
+        ]
+      }
+    },
+    "improved-fireball": {
+      "icon": "spell_fire_flamebolt",
+      "en": {
+        "name": "Improved Fireball",
+        "ranks": [
+          "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.1 sec.",
+          "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.2 sec.",
+          "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.3 sec.",
+          "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.4 sec.",
+          "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.5 sec."
+        ]
+      },
+      "es": {
+        "name": "Bola de Fuego mejorada",
+        "ranks": [
+          "Reduce 0.1 s el tiempo de lanzamiento de tus hechizos Bola de Fuego y Descarga de Pirofrío.",
+          "Reduce 0.2 s el tiempo de lanzamiento de tus hechizos Bola de Fuego y Descarga de Pirofrío.",
+          "Reduce 0.3 s el tiempo de lanzamiento de tus hechizos Bola de Fuego y Descarga de Pirofrío.",
+          "Reduce 0.4 s el tiempo de lanzamiento de tus hechizos Bola de Fuego y Descarga de Pirofrío.",
+          "Reduce 0.5 s el tiempo de lanzamiento de tus hechizos Bola de Fuego y Descarga de Pirofrío."
+        ]
+      }
+    },
+    "ignite": {
+      "icon": "spell_fire_incinerate",
+      "en": {
+        "name": "Ignite",
+        "ranks": [
+          "Your critical strikes from Fire damage spells cause the target to burn for an additional 8% of your spell's damage over 4 sec.",
+          "Your critical strikes from Fire damage spells cause the target to burn for an additional 16% of your spell's damage over 4 sec.",
+          "Your critical strikes from Fire damage spells cause the target to burn for an additional 24% of your spell's damage over 4 sec.",
+          "Your critical strikes from Fire damage spells cause the target to burn for an additional 32% of your spell's damage over 4 sec.",
+          "Your critical strikes from Fire damage spells cause the target to burn for an additional 40% of your spell's damage over 4 sec."
+        ]
+      },
+      "es": {
+        "name": "Ignición",
+        "ranks": [
+          "Los golpes críticos de tus hechizos de daño de Fuego hacen que el enemigo arda y reciba un 8% del daño de tu hechizo durante 4 s.",
+          "Los golpes críticos de tus hechizos de daño de Fuego hacen que el enemigo arda y reciba un 16% del daño de tu hechizo durante 4 s.",
+          "Los golpes críticos de tus hechizos de daño de Fuego hacen que el enemigo arda y reciba un 24% del daño de tu hechizo durante 4 s.",
+          "Los golpes críticos de tus hechizos de daño de Fuego hacen que el enemigo arda y reciba un 32% del daño de tu hechizo durante 4 s.",
+          "Los golpes críticos de tus hechizos de daño de Fuego hacen que el enemigo arda y reciba un 40% del daño de tu hechizo durante 4 s."
+        ]
+      }
+    },
+    "flame-throwing": {
+      "icon": "spell_fire_flare",
+      "en": {
+        "name": "Flame Throwing",
+        "ranks": [
+          "Increases the range of your Fire spells by 3 yards.",
+          "Increases the range of your Fire spells by 6 yards."
+        ]
+      },
+      "es": {
+        "name": "Lanzallamas",
+        "ranks": [
+          "Aumenta en 3 metros el alcance de tus hechizos de Fuego.",
+          "Aumenta en 6 metros el alcance de tus hechizos de Fuego."
+        ]
+      }
+    },
+    "impact": {
+      "icon": "spell_fire_meteorstorm",
+      "en": {
+        "name": "Impact",
+        "ranks": [
+          "Gives your Fire spells a 3% chance to stun the target for 2 sec.",
+          "Gives your Fire spells a 7% chance to stun the target for 2 sec.",
+          "Gives your Fire spells a 10% chance to stun the target for 2 sec."
+        ]
+      },
+      "es": {
+        "name": "Impacto",
+        "ranks": [
+          "Da a tus hechizos de Fuego un 3% de probabilidad de aturdir al objetivo durante 2 s.",
+          "Da a tus hechizos de Fuego un 7% de probabilidad de aturdir al objetivo durante 2 s.",
+          "Da a tus hechizos de Fuego un 10% de probabilidad de aturdir al objetivo durante 2 s."
+        ]
+      }
+    },
+    "burning-soul": {
+      "icon": "spell_fire_fire",
+      "en": {
+        "name": "Burning Soul",
+        "ranks": [
+          "Gives your Fire spells a 23% chance to not lose casting time when you take damage and reduces the threat caused by your Fire spells by 10%.",
+          "Gives your Fire spells a 47% chance to not lose casting time when you take damage and reduces the threat caused by your Fire spells by 20%.",
+          "Gives your Fire spells a 70% chance to not lose casting time when you take damage and reduces the threat caused by your Fire spells by 30%."
+        ]
+      },
+      "es": {
+        "name": "Alma ardiente",
+        "ranks": [
+          "Da a tus hechizos de Fuego un 23% de probabilidad de no perder tiempo de lanzamiento cuando sufres daños y reduce la amenaza causada por tus hechizos de Fuego en un 10%.",
+          "Da a tus hechizos de Fuego un 47% de probabilidad de no perder tiempo de lanzamiento cuando sufres daños y reduce la amenaza causada por tus hechizos de Fuego en un 20%.",
+          "Da a tus hechizos de Fuego un 70% de probabilidad de no perder tiempo de lanzamiento cuando sufres daños y reduce la amenaza causada por tus hechizos de Fuego en un 30%."
+        ]
+      }
+    },
+    "improved-flamestrike": {
+      "icon": "spell_fire_selfdestruct",
+      "en": {
+        "name": "Improved Flamestrike",
+        "ranks": [
+          "Increases the critical strike chance of your Flamestrike spell by 5%.",
+          "Increases the critical strike chance of your Flamestrike spell by 10%.",
+          "Increases the critical strike chance of your Flamestrike spell by 15%."
+        ]
+      },
+      "es": {
+        "name": "Fogonazo mejorado",
+        "ranks": [
+          "Aumenta en un 5% la probabilidad de golpe crítico de tus hechizos de piroataque.",
+          "Aumenta en un 10% la probabilidad de golpe crítico de tus hechizos de piroataque.",
+          "Aumenta en un 15% la probabilidad de golpe crítico de tus hechizos de piroataque."
+        ]
+      }
+    },
+    "pyroblast": {
+      "icon": "spell_fire_fireball02",
+      "en": {
+        "name": "Pyroblast",
+        "ranks": [
+          "Hurls an immense fiery boulder that causes 101 to 131 Fire damage and an additional 44 Fire damage over 12 sec."
+        ]
+      },
+      "es": {
+        "name": "Piroexplosión",
+        "ranks": [
+          "Lanza una inmensa roca abrasadora que causa 101 al 131 p. de daño de Fuego y 44 p. de daño de Fuego extra durante 12 s."
+        ]
+      }
+    },
+    "improved-scorch": {
+      "icon": "spell_fire_windsofwoe",
+      "en": {
+        "name": "Improved Scorch",
+        "ranks": [
+          "Your Scorch spell has a 33% chance to cause your target to be vulnerable to Fire damage. This vulnerability increases all Fire damage you deal to your target by 3% and lasts 30 sec, stacking up to 5 times.",
+          "Your Scorch spell has a 67% chance to cause your target to be vulnerable to Fire damage. This vulnerability increases all Fire damage you deal to your target by 3% and lasts 30 sec, stacking up to 5 times.",
+          "Your Scorch spell has a 100% chance to cause your target to be vulnerable to Fire damage. This vulnerability increases all Fire damage you deal to your target by 3% and lasts 30 sec, stacking up to 5 times."
+        ]
+      },
+      "es": {
+        "name": "Chamuscar mejorado",
+        "ranks": [
+          "Tu hechizo Chamuscar tiene un 33% de probabilidad de volver al objetivo vulnerable al daño de Fuego, lo que aumenta un 3% todo el daño de Fuego que infliges al objetivo durante 30 s. Se acumula hasta 5 veces.",
+          "Tu hechizo Chamuscar tiene un 67% de probabilidad de volver al objetivo vulnerable al daño de Fuego, lo que aumenta un 3% todo el daño de Fuego que infliges al objetivo durante 30 s. Se acumula hasta 5 veces.",
+          "Tu hechizo Chamuscar tiene un 100% de probabilidad de volver al objetivo vulnerable al daño de Fuego, lo que aumenta un 3% todo el daño de Fuego que infliges al objetivo durante 30 s. Se acumula hasta 5 veces."
+        ]
+      }
+    },
+    "improved-fire-ward": {
+      "icon": "spell_fire_firearmor",
+      "en": {
+        "name": "Improved Fire Ward",
+        "ranks": [
+          "Causes your Fire Ward to have a 10% chance to reflect Fire spells while active.",
+          "Causes your Fire Ward to have a 20% chance to reflect Fire spells while active."
+        ]
+      },
+      "es": {
+        "name": "Custodia de Fuego mejorada",
+        "ranks": [
+          "Provoca que tu Custodia de Fuego tenga un 10% de probabilidad de reflejar hechizos de Fuego mientras permanece activa.",
+          "Provoca que tu Custodia de Fuego tenga un 20% de probabilidad de reflejar hechizos de Fuego mientras permanece activa."
+        ]
+      }
+    },
+    "heating-up": {
+      "icon": "spell_fire_firebolt",
+      "en": {
+        "name": "Heating Up",
+        "ranks": [
+          "Non-periodic critical strikes with Fireball, Frostfire Bolt, Fire Blast, and Scorch reduce the cast time of your next Pyroblast cast within 20 sec by 25%, stacking up to 3 times. Fire Blast grants an additional stack every time it deals damage."
+        ]
+      },
+      "es": {
+        "name": "Calentamiento",
+        "ranks": [
+          "Non-periodic critical strikes with Fireball, Frostfire Bolt, Fire Blast, and Scorch reduce the cast time of your next Pyroblast cast within 20 s by 25%, stacking up to 3 times. Fire Blast grants an additional stack every time it deals damage."
+        ],
+        "lang": "en"
+      }
+    },
+    "master-of-elements": {
+      "icon": "spell_fire_masterofelements",
+      "en": {
+        "name": "Master of Elements",
+        "ranks": [
+          "Your Fire and Frost critical strikes will refund 10% of their base mana cost.",
+          "Your Fire and Frost critical strikes will refund 20% of their base mana cost.",
+          "Your Fire and Frost critical strikes will refund 30% of their base mana cost."
+        ]
+      },
+      "es": {
+        "name": "Maestro de los elementos",
+        "ranks": [
+          "Tus golpes críticos de Fuego y Escarcha te devolverán un 10% de su coste de maná base.",
+          "Tus golpes críticos de Fuego y Escarcha te devolverán un 20% de su coste de maná base.",
+          "Tus golpes críticos de Fuego y Escarcha te devolverán un 30% de su coste de maná base."
+        ]
+      }
+    },
+    "critical-mass": {
+      "icon": "spell_nature_wispheal",
+      "en": {
+        "name": "Critical Mass",
+        "ranks": [
+          "Increases the critical strike chance of your Fire spells by 2%.",
+          "Increases the critical strike chance of your Fire spells by 4%.",
+          "Increases the critical strike chance of your Fire spells by 6%.",
+          "Increases the critical strike chance of your Fire spells by 8%.",
+          "Increases the critical strike chance of your Fire spells by 10%."
+        ]
+      },
+      "es": {
+        "name": "Masa crítica",
+        "ranks": [
+          "Aumenta en un 2% la probabilidad de golpe crítico de tus hechizos de Fuego.",
+          "Aumenta en un 4% la probabilidad de golpe crítico de tus hechizos de Fuego.",
+          "Aumenta en un 6% la probabilidad de golpe crítico de tus hechizos de Fuego.",
+          "Aumenta en un 8% la probabilidad de golpe crítico de tus hechizos de Fuego.",
+          "Aumenta en un 10% la probabilidad de golpe crítico de tus hechizos de Fuego."
+        ]
+      }
+    },
+    "blast-wave": {
+      "icon": "spell_holy_excorcism_02",
+      "en": {
+        "name": "Blast Wave",
+        "ranks": [
+          "A wave of flame radiates outward from the caster, damaging all enemies caught within the blast for 154 to 184 Fire damage, and Dazing them for 50% reduced movement speed for 6 sec."
+        ]
+      },
+      "es": {
+        "name": "Ola explosiva",
+        "ranks": [
+          "El taumaturgo lanza hacia delante una ola de llamas que inflige daño a todos los enemigos alcanzados por la explosión y les inflige 154 al 184 p. de daño de Fuego, además de atontarlos y reducir su velocidad de movimiento un 50% durante 6 s."
+        ]
+      }
+    },
+    "fire-power": {
+      "icon": "spell_fire_immolation",
+      "en": {
+        "name": "Fire Power",
+        "ranks": [
+          "Increases the damage done by your Fire spells by 1% per your Fire effects on the target, up to a maximum increase of 4%. Effects which mix multiple schools of magic do not qualify.",
+          "Increases the damage done by your Fire spells by 2% per your Fire effects on the target, up to a maximum increase of 8%. Effects which mix multiple schools of magic do not qualify.",
+          "Increases the damage done by your Fire spells by 3% per your Fire effects on the target, up to a maximum increase of 12%. Effects which mix multiple schools of magic do not qualify."
+        ]
+      },
+      "es": {
+        "name": "Poder de Fuego",
+        "ranks": [
+          "Increases the damage done by your Fire spells by 1% per your Fire effects on the target, up to a maximum increase of 4%. Effects which mix multiple schools of magic do not qualify.",
+          "Increases the damage done by your Fire spells by 2% per your Fire effects on the target, up to a maximum increase of 8%. Effects which mix multiple schools of magic do not qualify.",
+          "Increases the damage done by your Fire spells by 3% per your Fire effects on the target, up to a maximum increase of 12%. Effects which mix multiple schools of magic do not qualify."
+        ],
+        "lang": "en"
+      }
+    },
+    "combustion": {
+      "icon": "spell_fire_sealoffire",
+      "en": {
+        "name": "Combustion",
+        "ranks": [
+          "When activated, this spell causes each of your Fire damage spell hits to increase your critical strike chance with Fire damage spells by 10%. This effect lasts until you have caused 3 non-periodic critical strikes with Fire spells."
+        ]
+      },
+      "es": {
+        "name": "Combustión",
+        "ranks": [
+          "Cuando se activa, este hechizo provoca que los golpes de tu hechizo de daño de Fuego aumenten un 10% la probabilidad de golpe crítico de los hechizos de daño de Fuego. Este efecto dura hasta que asestes 3 golpes críticos no periódicos con hechizos de Fuego."
+        ]
+      }
+    },
+    "frost-warding": {
+      "icon": "spell_frost_frostward",
+      "en": {
+        "name": "Frost Warding",
+        "ranks": [
+          "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by 15%. In addition, gives your Frost Ward a 10% chance to reflect Frost spells and effects while active.",
+          "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by 30%. In addition, gives your Frost Ward a 20% chance to reflect Frost spells and effects while active."
+        ]
+      },
+      "es": {
+        "name": "Custodia de Escarcha",
+        "ranks": [
+          "Aumenta un 15% la armadura y la resistencia otorgadas por tus hechizos Armadura de Escarcha y Armadura de hielo. Además, otorga a Resguardo contra la Escarcha un 10% de probabilidad de reflejar los hechizos y efectos de Escarcha mientras está activo.",
+          "Aumenta un 30% la armadura y la resistencia otorgadas por tus hechizos Armadura de Escarcha y Armadura de hielo. Además, otorga a Resguardo contra la Escarcha un 20% de probabilidad de reflejar los hechizos y efectos de Escarcha mientras está activo."
+        ]
+      }
+    },
+    "improved-frostbolt": {
+      "icon": "spell_frost_frostbolt02",
+      "en": {
+        "name": "Improved Frostbolt",
+        "ranks": [
+          "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.1 sec.",
+          "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.2 sec.",
+          "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.3 sec.",
+          "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.4 sec.",
+          "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.5 sec."
+        ]
+      },
+      "es": {
+        "name": "Descarga de Escarcha mejorada",
+        "ranks": [
+          "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.1 sec.",
+          "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.2 sec.",
+          "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.3 sec.",
+          "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.4 sec.",
+          "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.5 sec."
+        ],
+        "lang": "en"
+      }
+    },
+    "elemental-precision": {
+      "icon": "spell_ice_magicdamage",
+      "en": {
+        "name": "Elemental Precision",
+        "ranks": [
+          "Improves your chance to hit with Frost and Fire spells by 1%.",
+          "Improves your chance to hit with Frost and Fire spells by 2%.",
+          "Improves your chance to hit with Frost and Fire spells by 3%.",
+          "Improves your chance to hit with Frost and Fire spells by 4%.",
+          "Improves your chance to hit with Frost and Fire spells by 5%."
+        ]
+      },
+      "es": {
+        "name": "Enfoque elemental",
+        "ranks": [
+          "Aumenta un 1% tu probabilidad de golpear con hechizos de Escarcha y de Fuego.",
+          "Aumenta un 2% tu probabilidad de golpear con hechizos de Escarcha y de Fuego.",
+          "Aumenta un 3% tu probabilidad de golpear con hechizos de Escarcha y de Fuego.",
+          "Aumenta un 4% tu probabilidad de golpear con hechizos de Escarcha y de Fuego.",
+          "Aumenta un 5% tu probabilidad de golpear con hechizos de Escarcha y de Fuego."
+        ]
+      }
+    },
+    "ice-shards": {
+      "icon": "spell_frost_iceshard",
+      "en": {
+        "name": "Ice Shards",
+        "ranks": [
+          "Increases the critical strike damage bonus of your Frost spells by 20%.",
+          "Increases the critical strike damage bonus of your Frost spells by 40%.",
+          "Increases the critical strike damage bonus of your Frost spells by 60%.",
+          "Increases the critical strike damage bonus of your Frost spells by 80%.",
+          "Increases the critical strike damage bonus of your Frost spells by 100%."
+        ]
+      },
+      "es": {
+        "name": "Fragmentos de hielo",
+        "ranks": [
+          "Aumenta en un 20% el daño extra de golpe crítico con tus hechizos de Escarcha.",
+          "Aumenta en un 40% el daño extra de golpe crítico con tus hechizos de Escarcha.",
+          "Aumenta en un 60% el daño extra de golpe crítico con tus hechizos de Escarcha.",
+          "Aumenta en un 80% el daño extra de golpe crítico con tus hechizos de Escarcha.",
+          "Aumenta en un 100% el daño extra de golpe crítico con tus hechizos de Escarcha."
+        ]
+      }
+    },
+    "permafrost": {
+      "icon": "spell_frost_wisp",
+      "en": {
+        "name": "Permafrost",
+        "ranks": [
+          "Increases the duration of your Chill effects by 11% and reduces the target's speed by an additional 3%.",
+          "Increases the duration of your Chill effects by 22% and reduces the target's speed by an additional 7%.",
+          "Increases the duration of your Chill effects by 33% and reduces the target's speed by an additional 10%."
+        ]
+      },
+      "es": {
+        "name": "Escarcha permanente",
+        "ranks": [
+          "Aumenta un 11% la duración de los efectos de escalofrío y reduce un 3% más la velocidad del objetivo.",
+          "Aumenta un 22% la duración de los efectos de escalofrío y reduce un 7% más la velocidad del objetivo.",
+          "Aumenta un 33% la duración de los efectos de escalofrío y reduce un 10% más la velocidad del objetivo."
+        ]
+      }
+    },
+    "improved-frost-nova": {
+      "icon": "spell_frost_freezingbreath",
+      "en": {
+        "name": "Improved Frost Nova",
+        "ranks": [
+          "Reduces the cooldown of your Frost Nova spell by 2 sec.",
+          "Reduces the cooldown of your Frost Nova spell by 4 sec."
+        ]
+      },
+      "es": {
+        "name": "Nova de Escarcha mejorada",
+        "ranks": [
+          "Reduce el tiempo de regeneración de tu hechizo Nova de Escarcha en 2 s.",
+          "Reduce el tiempo de regeneración de tu hechizo Nova de Escarcha en 4 s."
+        ]
+      }
+    },
+    "frostbite": {
+      "icon": "spell_frost_frostarmor",
+      "en": {
+        "name": "Frostbite",
+        "ranks": [
+          "Gives your Chill effects a 5% chance to Freeze the target for 5 sec.",
+          "Gives your Chill effects a 10% chance to Freeze the target for 5 sec.",
+          "Gives your Chill effects a 15% chance to Freeze the target for 5 sec."
+        ]
+      },
+      "es": {
+        "name": "Mordiescarcha",
+        "ranks": [
+          "Da a tus efectos de escalofrío un 5% de probabilidad de congelar al objetivo durante 5 s.",
+          "Da a tus efectos de escalofrío un 10% de probabilidad de congelar al objetivo durante 5 s.",
+          "Da a tus efectos de escalofrío un 15% de probabilidad de congelar al objetivo durante 5 s."
+        ]
+      }
+    },
+    "piercing-ice": {
+      "icon": "spell_frost_frostbolt",
+      "en": {
+        "name": "Piercing Ice",
+        "ranks": [
+          "Increases the damage done by your Frost spells by 2%.",
+          "Increases the damage done by your Frost spells by 4%.",
+          "Increases the damage done by your Frost spells by 6%."
+        ]
+      },
+      "es": {
+        "name": "Hielo penetrante",
+        "ranks": [
+          "Aumenta en un 2% el daño causado con tus hechizos de Escarcha.",
+          "Aumenta en un 4% el daño causado con tus hechizos de Escarcha.",
+          "Aumenta en un 6% el daño causado con tus hechizos de Escarcha."
+        ]
+      }
+    },
+    "frost-channeling": {
+      "icon": "spell_frost_stun",
+      "en": {
+        "name": "Frost Channeling",
+        "ranks": [
+          "Reduces the mana cost of your Frost spells by 5% and reduces the threat caused by your Frost spells by 10%.",
+          "Reduces the mana cost of your Frost spells by 10% and reduces the threat caused by your Frost spells by 20%.",
+          "Reduces the mana cost of your Frost spells by 15% and reduces the threat caused by your Frost spells by 30%."
+        ]
+      },
+      "es": {
+        "name": "Canalización de Escarcha",
+        "ranks": [
+          "Reduce el coste de maná de Hechizo de Escarcha en un 5% y reduce la amenaza causada por tu Hechizo de Escarcha en un 10%.",
+          "Reduce el coste de maná de Hechizo de Escarcha en un 10% y reduce la amenaza causada por tu Hechizo de Escarcha en un 20%.",
+          "Reduce el coste de maná de Hechizo de Escarcha en un 15% y reduce la amenaza causada por tu Hechizo de Escarcha en un 30%."
+        ]
+      }
+    },
+    "ice-lance": {
+      "icon": "spell_frost_frostblast",
+      "en": {
+        "name": "Ice Lance",
+        "ranks": [
+          "Deals 28 to 32 Frost damage to an enemy target. Deals 200% increased damage to Frozen targets."
+        ]
+      },
+      "es": {
+        "name": "Lanza de hielo",
+        "ranks": [
+          "Inflige 28 al 32 p. de daño de Escarcha a un objetivo enemigo. Inflige un 200% más de daño contra objetivos congelados."
+        ]
+      }
+    },
+    "improved-blizzard": {
+      "icon": "spell_frost_icestorm",
+      "en": {
+        "name": "Improved Blizzard",
+        "ranks": [
+          "Adds a Chill effect to your Blizzard spell. This effect lowers the target's movement speed by 15% for 1.5 sec.",
+          "Adds a Chill effect to your Blizzard spell. This effect lowers the target's movement speed by 25% for 1.5 sec.",
+          "Adds a Chill effect to your Blizzard spell. This effect lowers the target's movement speed by 40% for 1.5 sec."
+        ]
+      },
+      "es": {
+        "name": "Ventisca mejorada",
+        "ranks": [
+          "Añade un efecto de escalofrío al hechizo Ventisca. Este efecto disminuye un 15% la velocidad de movimiento durante 1.5 s.",
+          "Añade un efecto de escalofrío al hechizo Ventisca. Este efecto disminuye un 25% la velocidad de movimiento durante 1.5 s.",
+          "Añade un efecto de escalofrío al hechizo Ventisca. Este efecto disminuye un 40% la velocidad de movimiento durante 1.5 s."
+        ]
+      }
+    },
+    "arctic-reach": {
+      "icon": "spell_shadow_darkritual",
+      "en": {
+        "name": "Arctic Reach",
+        "ranks": [
+          "Increases the range of your Frostbolt, Frost Blast, and Blizzard spells and the radius of your Frost Nova and Cone of Cold spells by 10%.",
+          "Increases the range of your Frostbolt, Frost Blast, and Blizzard spells and the radius of your Frost Nova and Cone of Cold spells by 20%."
+        ]
+      },
+      "es": {
+        "name": "Alcance ártico",
+        "ranks": [
+          "Increases the range of your Frostbolt, Frost Blast, and Blizzard spells and the radius of your Frost Nova and Cone of Cold spells by 10%.",
+          "Increases the range of your Frostbolt, Frost Blast, and Blizzard spells and the radius of your Frost Nova and Cone of Cold spells by 20%."
+        ],
+        "lang": "en"
+      }
+    },
+    "ice-block": {
+      "icon": "spell_frost_frost",
+      "en": {
+        "name": "Ice Block",
+        "ranks": [
+          "You become encased in a block of ice, protecting you from all physical attacks and spells for 10 sec, but during that time you cannot attack, move, or cast spells."
+        ]
+      },
+      "es": {
+        "name": "Bloqueo de hielo",
+        "ranks": [
+          "Te envuelve un bloque de hielo que te protege de todos los ataques físicos y hechizos durante 10 s, pero durante ese tiempo no puedes atacar, moverte ni usar hechizos."
+        ]
+      }
+    },
+    "shatter": {
+      "icon": "spell_frost_frostshock",
+      "en": {
+        "name": "Shatter",
+        "ranks": [
+          "Increases the critical strike chance of all your spells against Frozen targets by 17%.",
+          "Increases the critical strike chance of all your spells against Frozen targets by 33%.",
+          "Increases the critical strike chance of all your spells against Frozen targets by 50%."
+        ]
+      },
+      "es": {
+        "name": "Trizar",
+        "ranks": [
+          "Aumenta un 17% la probabilidad de golpe crítico de todos tus hechizos contra objetivos congelados.",
+          "Aumenta un 33% la probabilidad de golpe crítico de todos tus hechizos contra objetivos congelados.",
+          "Aumenta un 50% la probabilidad de golpe crítico de todos tus hechizos contra objetivos congelados."
+        ]
+      }
+    },
+    "improved-cone-of-cold": {
+      "icon": "spell_frost_glacier",
+      "en": {
+        "name": "Improved Cone of Cold",
+        "ranks": [
+          "Increases the damage dealt by your Cone of Cold spell by 12%.",
+          "Increases the damage dealt by your Cone of Cold spell by 23%.",
+          "Increases the damage dealt by your Cone of Cold spell by 35%."
+        ]
+      },
+      "es": {
+        "name": "Cono de frío mejorado",
+        "ranks": [
+          "Aumenta en un 12% el daño causado con tu hechizo Cono de frío.",
+          "Aumenta en un 23% el daño causado con tu hechizo Cono de frío.",
+          "Aumenta en un 35% el daño causado con tu hechizo Cono de frío."
+        ]
+      }
+    },
+    "cold-snap": {
+      "icon": "spell_frost_wizardmark",
+      "en": {
+        "name": "Cold Snap",
+        "ranks": [
+          "Finishes the remaining cooldown on all your other Frost spells."
+        ]
+      },
+      "es": {
+        "name": "Mordedura helada",
+        "ranks": [
+          "Termina el tiempo de reutilización restante de todos tus otros hechizos de Escarcha."
+        ]
+      }
+    },
+    "fingers-of-frost": {
+      "icon": "ability_mage_wintersgrasp",
+      "en": {
+        "name": "Fingers of Frost",
+        "ranks": [
+          "Gives your Chill effects a 15% chance to grant you the Fingers of Frost effect, which treats your next 1 spell cast as if the target were Frozen. Lasts 15 sec.",
+          "Gives your Chill effects a 15% chance to grant you the Fingers of Frost effect, which treats your next 2 spells cast as if the target were Frozen. Lasts 15 sec."
+        ]
+      },
+      "es": {
+        "name": "Dedos de Escarcha",
+        "ranks": [
+          "Da a tus efectos de enfriamiento un 15% de probabilidad de otorgarte el efecto de Dedos de Escarcha, que hace que tu(s) siguiente(s) 1 hechizo trate(n) al objetivo como si estuviese congelado. Dura 15 s.",
+          "Da a tus efectos de enfriamiento un 15% de probabilidad de otorgarte el efecto de Dedos de Escarcha, que hace que tu(s) siguiente(s) 2 hechizos trate(n) al objetivo como si estuviese congelado. Dura 15 s."
+        ]
+      }
+    },
+    "winters-chill": {
+      "icon": "spell_frost_chillingblast",
+      "en": {
+        "name": "Winter's Chill",
+        "ranks": [
+          "Gives your Frost damage spells a 20% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
+          "Gives your Frost damage spells a 40% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
+          "Gives your Frost damage spells a 60% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
+          "Gives your Frost damage spells a 80% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
+          "Gives your Frost damage spells a 100% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times."
+        ]
+      },
+      "es": {
+        "name": "Escalofrío del invierno",
+        "ranks": [
+          "Gives your Frost damage spells a 20% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
+          "Gives your Frost damage spells a 40% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
+          "Gives your Frost damage spells a 60% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
+          "Gives your Frost damage spells a 80% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
+          "Gives your Frost damage spells a 100% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times."
+        ],
+        "lang": "en"
+      }
+    },
+    "ice-barrier": {
+      "icon": "spell_ice_lament",
+      "en": {
+        "name": "Ice Barrier",
+        "ranks": [
+          "Instantly shields you, absorbing 448 damage. Lasts 1 min. While the shield holds, your spellcasts will not be interrupted or delayed from taking damage."
+        ]
+      },
+      "es": {
+        "name": "Barrera de hielo",
+        "ranks": [
+          "Te protege instantáneamente con un escudo que absorbe 448 p. de daño. Dura 1 min. Mientras el escudo esté activo, los lanzamientos de hechizos no se interrumpirán ni retrasarán al recibir daño."
+        ]
+      }
+    }
+  }
+}

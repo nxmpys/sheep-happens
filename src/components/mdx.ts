@@ -9,6 +9,7 @@ import BuildCard from './guide/BuildCard.astro';
 import BuildExplorer from './guide/BuildExplorer.astro';
 import BuildPicker from './guide/BuildPicker.astro';
 import Callout from './guide/Callout.astro';
+import CampBuffs from './guide/CampBuffs.astro';
 import ChangeExplorer from './guide/ChangeExplorer.astro';
 import ChangeSummaryList from './guide/ChangeSummaryList.astro';
 import ChangelogList from './guide/ChangelogList.astro';
@@ -16,6 +17,7 @@ import CritCalculator from './guide/CritCalculator.astro';
 import FactList from './guide/FactList.astro';
 import FactionFilter from './guide/FactionFilter.astro';
 import Faq from './guide/Faq.astro';
+import Glossary from './guide/Glossary.astro';
 import FaqItem from './guide/FaqItem.astro';
 import Highlight from './guide/Highlight.astro';
 import Highlights from './guide/Highlights.astro';
@@ -42,8 +44,10 @@ import SpecCards from './guide/SpecCards.astro';
 import SpellStrong from './guide/SpellStrong.astro';
 import StatusBadge from './guide/StatusBadge.astro';
 import StatusLegend from './guide/StatusLegend.astro';
+import TalentCalculator from './guide/TalentCalculator.astro';
 import WatchList from './guide/WatchList.astro';
 import Table from './ui/Table.astro';
+import WeeklyChanges from './guide/WeeklyChanges.astro';
 
 export const mdxComponents = {
   table: Table,
@@ -56,6 +60,7 @@ export const mdxComponents = {
   BuildExplorer,
   BuildPicker,
   Callout,
+  CampBuffs,
   ChangeExplorer,
   ChangeSummaryList,
   ChangelogList,
@@ -64,6 +69,7 @@ export const mdxComponents = {
   FactionFilter,
   Faq,
   FaqItem,
+  Glossary,
   Highlight,
   Highlights,
   HubCards,
@@ -88,5 +94,7 @@ export const mdxComponents = {
   SpecCards,
   Status: StatusBadge,
   StatusLegend,
+  TalentCalculator,
   WatchList,
+  WeeklyChanges,
 };

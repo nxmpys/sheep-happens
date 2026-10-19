@@ -1,0 +1,150 @@
+---
+/**
+ * What each profession's camp object gives when you sit at the campfire, as one
+ * small card per profession (camp field of professions.json), most useful to a
+ * Mage first. Colour and label say whether it helps a Mage; the class buff it
+ * does not stack with is shown under the buff.
+ */
+import StatusBadge from './StatusBadge.astro';
+import { getLocale } from '../../i18n/locale';
+import { professions } from '../../lib/data';
+import { CAMP_VALUES, type CampValue } from '../../lib/schemas';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const LABELS: Record<CampValue, { es: string; en: string }> = {
+  yes: { es: 'Le sirve al Mago', en: 'Helps a Mage' },
+  leveling: { es: 'Solo al subir de nivel', en: 'Only while leveling' },
+  utility: { es: 'Comodidad', en: 'Convenience' },
+  no: { es: 'No le sirve', en: 'No use to a Mage' },
+};
+const list = professions
+  .filter((p) => p.camp)
+  .sort((a, b) => CAMP_VALUES.indexOf(a.camp!.mage) - CAMP_VALUES.indexOf(b.camp!.mage));
+---
+
+<div class="camp" data-pagefind-ignore>
+  <p class="camp__legend">
+    {CAMP_VALUES.map((value) => <span class={`camp__badge camp__badge--${value}`}>{LABELS[value][locale]}</span>)}
+    <StatusBadge status="reported" />
+  </p>
+  <ul class="camp__grid">
+    {
+      list.map((p) => {
+        const camp = p.camp!;
+        return (
+          <li class={`camp__card camp__card--${camp.mage}`}>
+            <p class="camp__prof">{p.name[locale]}</p>
+            <p class="camp__buff">{camp.buff[locale]}</p>
+            {/* Cooking's «object» is the campfire upgrade itself, already in Spanish. */}
+            <p class="camp__object" lang={p.id === 'cooking' ? undefined : 'en'}>
+              {p.id === 'cooking' ? (es ? 'Mejora la hoguera' : 'Upgrades the campfire') : camp.object}
+            </p>
+            {camp.sameAs && (
+              <p class="camp__stack">
+                {es ? 'No se acumula con' : 'Does not stack with'} {camp.sameAs[locale]}
+              </p>
+            )}
+            <span class={`camp__badge camp__badge--${camp.mage}`}>{LABELS[camp.mage][locale]}</span>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>
+
+<style>
+  .camp {
+    margin: var(--space-4) 0;
+  }
+  .camp__legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0 0 var(--space-3);
+  }
+  .camp__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 12.5rem), 1fr));
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .camp__card {
+    --tone: var(--text-subtle);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+    padding: var(--space-3);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--tone);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .camp__card--yes {
+    --tone: var(--status-verified);
+    background: color-mix(in srgb, var(--status-verified) 7%, var(--surface-1));
+  }
+  .camp__card--leveling {
+    --tone: var(--status-reported);
+  }
+  .camp__card--utility {
+    --tone: var(--baseline);
+  }
+  .camp__card--no {
+    opacity: 0.75;
+  }
+  .camp__card p {
+    margin: 0;
+  }
+  .camp__prof {
+    font-size: var(--step--1);
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .camp__buff {
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .camp__object,
+  .camp__stack {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .camp__card .camp__badge {
+    align-self: flex-start;
+    margin-top: auto;
+    padding-top: 2px;
+  }
+  .camp__card .camp__stack + .camp__badge,
+  .camp__card .camp__object + .camp__badge {
+    margin-top: var(--space-2);
+  }
+  .camp__badge {
+    display: inline-block;
+    padding: 0.1em 0.55em;
+    border: 1px solid var(--tone, var(--border));
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .camp__badge--yes {
+    --tone: var(--status-verified);
+  }
+  .camp__badge--leveling {
+    --tone: var(--status-reported);
+  }
+  .camp__badge--utility {
+    --tone: var(--baseline);
+  }
+  .camp__badge--no {
+    --tone: var(--text-subtle);
+    color: var(--text-muted);
+  }
+</style>

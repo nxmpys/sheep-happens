@@ -1,5 +1,40 @@
 [
   {
+    "id": "2026-10-19-talent-calc",
+    "date": "2026-10-19",
+    "type": "site",
+    "title": {
+      "es": "Calculadora de talentos, glosario y «Qué ha cambiado esta semana»",
+      "en": "Talent calculator, glossary and «What changed this week»"
+    },
+    "body": {
+      "es": "Nueva calculadora de talentos con los tres árboles de Forever y el texto del juego de cada rango, que se puede compartir y abrir en Wowhead. El inicio resume los cambios para el Mago de la última semana, la página Aprende tiene un glosario cuyas palabras muestran su definición al pasar el ratón en toda la web, cada build dice cuándo se revisó y las fichas de builds, cambios y razas tienen un botón «¿Algo está mal?».",
+      "en": "A new talent calculator with the three Forever trees and the in-game text of every rank, which you can share and open in Wowhead. The home page sums up the last week of Mage changes, the Learn page has a glossary whose words show their definition on hover across the site, each build says when it was checked, and build, change and race cards have a «Something wrong?» button."
+    },
+    "pages": [
+      "talent-calc",
+      "home",
+      "learn",
+      "builds"
+    ]
+  },
+  {
+    "id": "2026-10-19-camp-buffs",
+    "date": "2026-10-19",
+    "type": "guide",
+    "title": {
+      "es": "Profesiones: qué da cada una en la hoguera",
+      "en": "Professions: what each one gives at the campfire"
+    },
+    "body": {
+      "es": "La página de Profesiones tiene una sección nueva con el buff que da el objeto de campamento de cada profesión al sentarte en la hoguera, con qué buff de clase no se acumula y si le sirve a un Mago.",
+      "en": "The Professions page has a new section with the buff each profession's camp object gives when you sit at the campfire, which class buff it does not stack with, and whether it helps a Mage."
+    },
+    "pages": [
+      "professions"
+    ]
+  },
+  {
     "id": "2026-10-18-build-coverage",
     "date": "2026-10-18",
     "type": "site",

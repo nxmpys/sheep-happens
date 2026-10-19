@@ -196,3 +196,30 @@ export function spentTalents(points: Points, talents: readonly Talent[]): { tree
       .map((talent) => ({ talent, rank: points[talent.id]! })),
   })).filter((group) => group.talents.length > 0);
 }
+
+/**
+ * Reads a build from a Wowhead Forever calculator link or its code (the inverse
+ * of wowheadBuildUrl): ".../mage/v2--0503" or "v2--0503". Returns undefined when
+ * the text is not a Mage build code or a talent gets more ranks than it has.
+ * Anything after the talent digits (glyph or level suffixes) is ignored.
+ */
+export function parseWowheadBuild(text: string, talents: readonly Talent[]): Record<string, number> | undefined {
+  if (/\/mage\/?$/.test(text.trim())) return {};
+  const code = /(?:\/mage\/|^)v2([0-9-]*)/.exec(text.trim())?.[1];
+  if (code === undefined) return undefined;
+  const points: Record<string, number> = {};
+  const segments = code.split('-');
+  if (segments.length > TREE_ORDER.length) return undefined;
+  for (const [i, tree] of TREE_ORDER.entries()) {
+    const list = treeTalents(talents, tree);
+    const digits = segments[i] ?? '';
+    if (digits.length > list.length) return undefined;
+    for (const [j, char] of [...digits].entries()) {
+      const rank = Number(char);
+      if (rank === 0) continue;
+      if (rank > list[j]!.maxRank) return undefined;
+      points[list[j]!.id] = rank;
+    }
+  }
+  return points;
+}

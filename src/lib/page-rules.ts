@@ -31,11 +31,13 @@ export const MDX_COMPONENTS = [
   'ChangeExplorer',
   'ChangeSummaryList',
   'ChangelogList',
+  'CampBuffs',
   'CritCalculator',
   'FactList',
   'FactionFilter',
   'Faq',
   'FaqItem',
+  'Glossary',
   'Highlight',
   'Highlights',
   'HubCards',
@@ -60,7 +62,9 @@ export const MDX_COMPONENTS = [
   'SpecCards',
   'Status',
   'StatusLegend',
+  'TalentCalculator',
   'WatchList',
+  'WeeklyChanges',
 ] as const;
 
 const FRONTMATTER = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/;

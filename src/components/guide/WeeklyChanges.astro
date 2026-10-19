@@ -1,0 +1,157 @@
+---
+/**
+ * «Qué ha cambiado para el Mago esta semana» on the home page: only the game
+ * entries of changelog.json (what Blizzard changed that affects the Mage; our
+ * own guide and site changes stay on the updates page) from the last seven
+ * days up to the build date. Each review of the sources (Wednesday and Friday)
+ * rebuilds the site, so the block stays current. In a week without game
+ * changes it shows the last week that had some, titled «latest changes».
+ */
+import { getLocale, href } from '../../i18n/locale';
+import { formatDate } from '../../i18n/ui';
+import { sortedChangelog } from '../../lib/data';
+import { resolveRefs } from '../../lib/refs';
+import { firstSentence } from '../../lib/text';
+
+interface Props {
+  /** Build date, for tests; defaults to now. */
+  now?: Date;
+}
+
+const DAY = 86_400_000;
+const locale = getLocale(Astro);
+const now = Astro.props.now ?? new Date();
+const relevant = sortedChangelog().filter((entry) => entry.type === 'game');
+const newest = relevant[0];
+const dayOf = (entry: { date: string }) => Date.parse(`${entry.date}T00:00:00Z`);
+// This week: the seven days up to the build date (the site is rebuilt at every review).
+const today = Date.parse(`${now.toISOString().slice(0, 10)}T00:00:00Z`);
+const thisWeek = relevant.filter((entry) => dayOf(entry) > today - 7 * DAY && dayOf(entry) <= today);
+// A quiet week: show the last week that had changes instead, and say so in the title.
+const current = thisWeek.length > 0;
+const end = current ? today : newest ? dayOf(newest) : 0;
+const start = end - 6 * DAY;
+const week = current ? thisWeek : relevant.filter((entry) => dayOf(entry) >= start);
+// The newest few; the rest of the week is one click away on the updates page.
+const SHOWN = 5;
+const entries = week.slice(0, SHOWN);
+const more = week.length - entries.length;
+const day = (ms: number) => formatDate(locale, new Date(ms));
+const es = locale === 'es';
+---
+
+{
+  newest && (
+    <section class="weekly" aria-labelledby="weekly-title">
+      <header class="weekly__header">
+        <h2 id="weekly-title" class="weekly__title">
+          {current
+            ? es
+              ? 'Qué ha cambiado para el Mago esta semana'
+              : 'What changed for the Mage this week'
+            : es
+              ? 'Últimos cambios del juego para el Mago'
+              : 'Latest game changes for the Mage'}
+        </h2>
+        <p class="weekly__range">
+          {day(start)} – {day(end)} · {es ? `${week.length} ${week.length === 1 ? 'cambio' : 'cambios'} en el juego` : `${week.length} game ${week.length === 1 ? 'change' : 'changes'}`}
+        </p>
+      </header>
+      <ol class="weekly__list">
+        {entries.map((entry) => {
+          const refs = resolveRefs(entry.refs, locale).slice(0, 4);
+          return (
+            <li class="weekly__entry">
+              <p class="weekly__meta">
+                <time datetime={entry.date}>{day(Date.parse(`${entry.date}T00:00:00Z`))}</time>
+              </p>
+              <h3 class="weekly__entry-title">
+                <a href={href('updates', locale, `update-${entry.id}`)}>{entry.title[locale]}</a>
+              </h3>
+              <p class="weekly__body">{firstSentence(entry.body[locale])}</p>
+              {refs.length > 0 && (
+                <p class="weekly__refs">
+                  {refs.map((ref) => (ref.href ? <a class="chip" href={ref.href}>{ref.label}</a> : <span class="chip">{ref.label}</span>))}
+                </p>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+      <p class="weekly__more">
+        <a href={href('updates', locale)}>
+          {more > 0 ? (es ? `Ver ${more} más en el historial` : `See ${more} more in the history`) : es ? 'Ver todo el historial' : 'See the full history'}
+        </a>
+        {' · '}
+        <a href={href('changes', locale)}>{es ? 'Todos los cambios de Forever' : 'All Forever changes'}</a>
+      </p>
+    </section>
+  )
+}
+
+<style>
+  .weekly {
+    display: grid;
+    gap: var(--space-3);
+    margin: var(--space-6) 0;
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+  }
+  .weekly__header {
+    display: grid;
+    gap: var(--space-1);
+  }
+  .weekly__title {
+    margin: 0;
+  }
+  .weekly__range {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: var(--step--1);
+  }
+  .weekly__list {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .weekly__entry {
+    display: grid;
+    gap: var(--space-1);
+    margin: 0;
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border);
+  }
+  .weekly__entry:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+  .weekly__meta,
+  .weekly__refs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .weekly__entry-title {
+    margin: 0;
+    font-size: var(--step-0);
+  }
+  .weekly__body {
+    margin: 0;
+  }
+  .weekly__refs a.chip {
+    text-decoration: none;
+  }
+  .weekly__more {
+    margin: 0;
+    font-size: var(--step--1);
+  }
+</style>

@@ -1,0 +1,58 @@
+---
+/**
+ * The glossary (glossary.json) in alphabetical order. Each term has the
+ * anchor #glossary-<id>, which the term tooltips in the guide text link to.
+ */
+import { getLocale } from '../../i18n/locale';
+import { glossary } from '../../lib/data';
+
+const locale = getLocale(Astro);
+const collator = new Intl.Collator(locale, { sensitivity: 'base' });
+const list = [...glossary].sort((a, b) => collator.compare(a.terms[locale][0]!, b.terms[locale][0]!));
+---
+
+<dl class="glossary" data-no-spell-links>
+  {
+    list.map((term) => {
+      const [headword, ...variants] = term.terms[locale];
+      return (
+        <div class="glossary__item" id={`glossary-${term.id}`}>
+          <dt>
+            {headword}
+            {variants.length > 0 && <span class="glossary__variants"> ({variants.join(', ')})</span>}
+          </dt>
+          <dd>{term.definition[locale]}</dd>
+        </div>
+      );
+    })
+  }
+</dl>
+
+<style>
+  .glossary {
+    display: grid;
+    gap: var(--space-2);
+    margin: var(--space-4) 0;
+  }
+  .glossary__item {
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+    scroll-margin-top: calc(var(--header-h) + var(--space-4));
+  }
+  .glossary__item:target {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+  .glossary dt {
+    font-weight: 700;
+  }
+  .glossary__variants {
+    font-weight: 400;
+    color: var(--text-muted);
+    font-size: var(--step--1);
+  }
+  .glossary dd {
+    margin: var(--space-1) 0 0;
+  }
+</style>

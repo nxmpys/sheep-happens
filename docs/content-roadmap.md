@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-10-18 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
+> Creado: 2026-10-12 · Revisión: 2026-10-19 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -12,6 +12,7 @@ Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay q
 6. Mejoras de la experiencia: ideas para que la web sea más útil para aprender, consultar e informarse.
 7. Profesiones: qué revisar en la guía de profesiones.
 8. Addons: mantener al día MageProcs y la página de addons.
+9. Ideas de los lectores y tabla unificada de todo lo pendiente.
 
 ## Cómo usar este documento
 
@@ -317,3 +318,58 @@ Publicada el 2026-10-14 (`/es/addons/`, `/en/addons/`, dentro de Herramientas) c
 - [ ] **Con cada versión nueva del addon**: actualizar `version`, `game` (versión e interfaz del `.toc`), procs, comandos y límites según su changelog, y `checked`. Si cambian las imágenes de CurseForge, volver a convertirlas.
 - [ ] **Cuando se confirmen procs en el juego** con Magos de nivel alto: quitar el primer límite de `limitations`.
 - [ ] **Addons nuevos**: solo si aportan algo concreto al Mago en Forever y se han revisado. Cada uno con descripción, procs o funciones, instalación, límites y enlace oficial; `origin: "third-party"` y su autor si no es nuestro.
+
+## 9. Ideas de los lectores y tabla unificada
+
+Recogido el 2026-10-19 a partir del primer feedback largo de un lector, junto con las ideas de las secciones 1, 4 y 6. Es la vista de conjunto; el detalle de cada idea sigue en su sección. Al hacer una idea, márcala aquí y en su sección.
+
+### Lo que pidió el lector (2026-10-19)
+
+- Constructor de talentos y prioridad de estadísticas y equipo (ya estaban en el plan).
+- Guías de farmeo de mazmorras de un solo pull con AoE, cuando la comunidad las descubra.
+- Guías de PvP detalladas (y arenas, si Blizzard las añade).
+- Con las bandas: qué rama rinde mejor en cada banda, con una cifra aproximada («Escarcha hace el 90 % del daño de Arcano») y guías para jugarlas.
+- Ahora: guías de leveo con imágenes y vídeos («soy muy visual»).
+- Idea grande: importar el personaje (equipo y talentos) y que la web sugiera mazmorras para mejorar el equipo o talentos para hacer más daño.
+
+### Tabla
+
+Dificultad: baja, media, alta o muy alta. Origen: L (lector), N (nuestra).
+
+| Idea | Origen | Dificultad | Bloqueo | Estado |
+|---|---|---|---|---|
+| Constructor de talentos propio | L + N | Alta | Valores oficiales de los talentos | **Hecho el 2026-10-19** (Herramientas → Calculadora de talentos), con las descripciones del juego vía Wowhead; los valores se confirman al lanzar |
+| Prioridad de estadísticas y equipo | L + N | Media | Datos del 31 al 60 | Esperar al lanzamiento |
+| Farmeo de mazmorras con pulls de AoE | L | Media | Probarlo en el juego; Blizzard lo frena | Tras el lanzamiento, en Farmeo AoE |
+| Guías de PvP detalladas | L + N | Media | Builds de 60; no hay arenas | Tras el lanzamiento |
+| Rama por banda con % relativo | L | Alta | No hay bandas; hace falta una fuente de registros (Warcraft Logs) | Cuando haya bandas y registros |
+| Guías de banda | L + N | Media | No hay bandas | Cuando haya bandas |
+| Leveo con imágenes, GIF y vídeos | L + N | Media | Grabar en el juego | Capturar mientras haya acceso al juego |
+| Importar personaje y recibir sugerencias | L | Muy alta | API de Blizzard para Forever (desconocida), datos de objetos | Prueba propuesta: exportar una cadena desde MageProcs ([mageprocs-export-prompt.md](mageprocs-export-prompt.md)) |
+| Leveo hasta el 60 | N | Media | Tope de la beta | Día del lanzamiento (sección 4) |
+| Builds de mazmorras, banda y PvP | N | Media | Datos del 60 | Tras el leveo (sección 4) |
+| Botón «¿Algo está mal?» en cada ficha | N | Baja | — | **Hecho el 2026-10-19** (builds, cambios y razas: abre el formulario con la ficha ya indicada) |
+| Fecha y parche en cada build | N | Baja | — | **Hecho el 2026-10-19** (pie de cada tarjeta de build) |
+| Glosario con tooltip | N | Baja | — | **Hecho el 2026-10-19** (`src/data/glossary.json`, sección Glosario de Aprende) |
+| «Qué ha cambiado esta semana» en el inicio | N | Baja | — | **Hecho el 2026-10-19** (solo las entradas de tipo «Juego» de `changelog.json`: cambios de Blizzard que afectan al Mago, no los de la web) |
+| Aviso de build desactualizada | N | Baja | Que haya parches tras el lanzamiento | Tras el lanzamiento |
+| Calculadora de golpe | N | Baja | Valores de acierto en Forever | Con datos |
+| Comparador de ramas para leveo | N | Media | Datos y pruebas | Con datos |
+| «Mi primer Mago» del 1 al 20 | N | Media | — | Siguiente candidata (junto con imágenes) |
+| Prioridades «de bolsillo» y vista compacta | N | Baja | — | Ya se puede |
+| Caja «Lo esencial» uniforme | N | Baja | — | Ya se puede |
+| Buscador más visible | N | Baja | — | Ya se puede |
+| Inicio orientado a tareas | N | Baja | Builds del lanzamiento | Semana del lanzamiento |
+| Planificador de portales | N | Baja | Niveles de aprendizaje oficiales | Casi (con referencia Classic) |
+| RSS por rama o «nuevo desde tu visita» | N | Baja | — | Ya se puede |
+| Imagen para compartir cada build | N | Media | Builds del 60 | Infraestructura OG ya existe |
+| Diferencias entre parches por talento | N | Media | Varios parches | Tras el lanzamiento |
+| Preguntas frecuentes reales | N | Baja | — | Ya se puede |
+| Modo Hardcore | N | Media | No ha salido | Cuando salga |
+| MageProcs 1.2.0 en CurseForge y capturas nuevas | N | Baja | — | Pendiente (sección 8) |
+
+### Siguiente tanda propuesta
+
+1. «Mi primer Mago» del 1 al 20 con capturas y GIF cortos.
+2. Prueba del export de MageProcs: si funciona, una página que lea la cadena y compare el personaje con las builds.
+3. Calculadora de talentos: al lanzar, revisar `spell-text.json` (`npm run spells:text`) y quitar el aviso de valores de beta.

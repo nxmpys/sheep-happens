@@ -59,6 +59,7 @@ La hace el agente automático (sección 7) o una persona, con los mismos pasos:
    - En **cada registro modificado**, pon `"updated": "AAAA-MM-DD"` con la fecha de hoy.
 4. **Registra el cambio** en `src/data/changelog.json`:
    - Una entrada `type: "game"` por cada build o anuncio, con la fecha del anuncio, `sources` y `refs` (p. ej., `"change:ice-lance"`).
+   - Esas entradas `game` son las que salen en el bloque «Qué ha cambiado para el Mago esta semana» del inicio (`WeeklyChanges.astro`). Usa `game` solo para cambios del juego que afectan al Mago; los cambios de la guía o de la web van como `guide` o `site` y no salen ahí.
    - Una entrada `type: "guide"` con la fecha de hoy que reúna todo lo actualizado en la revisión (`refs` de todos los registros con `updated` de hoy).
    - Si conoces la build, añade `"build": "1.60.1.70338"`.
 5. **Revisa la prosa** de las páginas afectadas (`src/content/pages/{es,en}/*.mdx`). Si has revisado una página completa contra sus fuentes, actualiza su `reviewed`.

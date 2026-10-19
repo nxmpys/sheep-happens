@@ -8,12 +8,14 @@
  * recommended one for that use at its level or a viable alternative.
  */
 import Icon from '../ui/Icon.astro';
+import ReportButton from './ReportButton.astro';
 import SpellRef from './SpellRef.astro';
 import StatusBadge from './StatusBadge.astro';
 import TalentOrder from './TalentOrder.astro';
 import TalentTree from './TalentTree.astro';
 import { SPEC_LABELS, USE_LABELS, tb } from '../../i18n/builds';
 import { getLocale, href } from '../../i18n/locale';
+import { formatDate } from '../../i18n/ui';
 import { buildRole } from '../../lib/build-roles';
 import { getBuild, getTalent, getVersion, talents } from '../../lib/data';
 import { localName } from '../../lib/names';
@@ -114,6 +116,15 @@ const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' 
   <div class="build__meta">
     <StatusBadge status={build.status} />
     <span class="build__version">{tb(locale, 'build.version')}: {version.label[locale]}</span>
+    {
+      build.updated && (
+        <span class="build__checked">
+          <Icon name="calendar" size={14} />
+          {tb(locale, 'build.checked')}: <time datetime={build.updated}>{formatDate(locale, new Date(`${build.updated}T00:00:00Z`))}</time>
+        </span>
+      )
+    }
+    <ReportButton subject={`Build: ${build.name[locale]} (${build.id})`} />
   </div>
 
   <div class="build__actions" data-pagefind-ignore>
@@ -308,6 +319,11 @@ const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' 
     gap: var(--space-2) var(--space-3);
     font-size: var(--step--1);
     color: var(--text-muted);
+  }
+  .build__checked {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
   }
   .build__actions {
     display: flex;

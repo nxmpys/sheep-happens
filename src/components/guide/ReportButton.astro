@@ -1,0 +1,74 @@
+---
+/**
+ * «¿Algo está mal?» on a single card (build, change, race). It opens the page's
+ * feedback form (components/layout/FeedbackBox.astro) with «Un dato es
+ * incorrecto» picked and the card named at the start of the message, so the
+ * issue says which card it is about. Hidden until the script finds the form:
+ * pages without it (home, or no Turnstile key) never show a dead button.
+ */
+import Icon from '../ui/Icon.astro';
+import { getLocale } from '../../i18n/locale';
+
+interface Props {
+  /** What the report is about, e.g. "Build: Frost solo leveling (frost-leveling-solo)". */
+  subject: string;
+}
+
+const { subject } = Astro.props;
+const locale = getLocale(Astro);
+const label = locale === 'es' ? '¿Algo está mal?' : 'Something wrong?';
+const hint = locale === 'es' ? 'Avisar de un error en esta ficha' : 'Report a mistake in this card';
+---
+
+<button type="button" class="report-btn" data-report={subject} title={hint} hidden data-pagefind-ignore>
+  <Icon name="reported" size={14} />
+  {label}
+</button>
+
+<script>
+  const box = document.querySelector<HTMLElement>('[data-feedback]');
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-report]')) {
+    if (!box) continue;
+    button.hidden = false;
+    button.addEventListener('click', () => {
+      const details = box.querySelector('details');
+      const form = box.querySelector('form');
+      const message = form?.querySelector('textarea');
+      if (!details || !form || !message) return;
+      details.open = true;
+      const wrong = form.querySelector<HTMLInputElement>('input[name="kind"][value="wrong"]');
+      if (wrong) wrong.checked = true;
+      const prefix = `[${button.dataset.report}] `;
+      // Replace an earlier card's prefix instead of stacking them.
+      message.value = prefix + message.value.replace(/^\[[^\]]*\]\s*/, '');
+      box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      message.focus({ preventScroll: true });
+      message.setSelectionRange(message.value.length, message.value.length);
+    });
+  }
+</script>
+
+<style>
+  .report-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    min-height: 32px;
+    padding: 0 0.6em;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--text-muted);
+    font: inherit;
+    font-size: var(--step--1);
+    cursor: pointer;
+  }
+  .report-btn[hidden] {
+    display: none;
+  }
+  .report-btn:hover,
+  .report-btn:focus-visible {
+    border-color: var(--border);
+    color: var(--text);
+  }
+</style>

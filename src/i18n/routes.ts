@@ -30,6 +30,7 @@ export const PAGE_IDS = [
   'combat',
   'gear',
   'tools',
+  'talent-calc',
   'addons',
   'sources',
   'updates',
@@ -87,6 +88,7 @@ export const ROUTES: Record<PageId, RouteDef> = {
   combat: { id: 'combat', slug: { es: 'combate', en: 'combat' }, parent: 'learn' },
   gear: { id: 'gear', slug: { es: 'equipo', en: 'gear' }, parent: 'learn' },
   tools: { id: 'tools', slug: { es: 'herramientas', en: 'tools' }, parent: 'home' },
+  'talent-calc': { id: 'talent-calc', slug: { es: 'herramientas/calculadora-talentos', en: 'tools/talent-calculator' }, parent: 'tools' },
   addons: { id: 'addons', slug: { es: 'addons', en: 'addons' }, parent: 'home' },
   sources: { id: 'sources', slug: { es: 'fuentes', en: 'sources' }, parent: 'home' },
   updates: { id: 'updates', slug: { es: 'novedades', en: 'updates' }, parent: 'home' },
@@ -113,7 +115,7 @@ export const PRIMARY_NAV: readonly NavGroup[] = [
   { key: 'builds', page: 'builds', items: ['leveling', 'level-view', 'aoe-farming', 'scrolls'] },
   { key: 'choose', page: 'choose', items: ['races', 'professions'] },
   { key: 'changes', page: 'changes' },
-  { key: 'tools', page: 'tools' },
+  { key: 'tools', page: 'tools', items: ['talent-calc'] },
   { key: 'addons', page: 'addons' },
 ];
 

@@ -6,6 +6,7 @@
  * a card only names the ones that are its own.
  */
 import Icon from '../ui/Icon.astro';
+import ReportButton from './ReportButton.astro';
 import SourceRefs from './SourceRefs.astro';
 import StatusBadge from './StatusBadge.astro';
 import { FACTION_LABELS, VALUE_LABELS, tb } from '../../i18n/builds';
@@ -60,6 +61,7 @@ const list = races.filter((race) => race.faction === faction);
             <SourceRefs ids={ownSourceIds(race.sources, sharedRaceSources)} />
           </div>
         )}
+        <ReportButton subject={`${locale === 'es' ? 'Raza' : 'Race'}: ${race.name[locale]} (${race.id})`} />
       </article>
     ))
   }

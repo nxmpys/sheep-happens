@@ -1,5 +1,6 @@
 ---
 import Icon from '../ui/Icon.astro';
+import ReportButton from './ReportButton.astro';
 import SourceRefs from './SourceRefs.astro';
 import StatusBadge from './StatusBadge.astro';
 import { getLocale, href } from '../../i18n/locale';
@@ -123,6 +124,7 @@ const searchText = [
       )
     }
     <SourceRefs ids={change.sources} />
+    <ReportButton subject={`${locale === 'es' ? 'Cambio' : 'Change'}: ${name.primary} (${change.id})`} />
   </footer>
 </article>
 

@@ -1,0 +1,738 @@
+---
+/**
+ * Talent calculator: the three Forever Mage trees from talents.json, with the
+ * in-game text of every rank (talent-text.json, from the Wowhead Forever
+ * calculator data). Click or tap a talent to add a point, right-click or use
+ * «−» to take it back; the rules are those of lib/talents.ts (5 points per row,
+ * prerequisites, points per level, Legacy perk Talented). The build lives in the
+ * URL (?t=<Wowhead code>&lvl=60&tal=0) so it can be shared, opened in Wowhead,
+ * or loaded from a Wowhead link or one of our builds.
+ */
+import Icon from '../ui/Icon.astro';
+import { getLocale } from '../../i18n/locale';
+import { t, type UiKey } from '../../i18n/ui';
+import { builds, talentText, talents } from '../../lib/data';
+import { localName } from '../../lib/names';
+import { MAX_LEVEL, TREE_ORDER, treeTalents } from '../../lib/talents';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const nameById = new Map(talents.map((talent) => [talent.id, localName(talent, locale)]));
+const data = {
+  talents: talents.map((talent) => {
+    const text = talentText.talents[talent.id];
+    const local = text?.[locale];
+    return {
+      id: talent.id,
+      tree: talent.tree,
+      row: talent.row,
+      col: talent.col,
+      maxRank: talent.maxRank,
+      spell: talent.spell,
+      ...(talent.requires ? { requires: talent.requires } : {}),
+      name: nameById.get(talent.id)!,
+      english: talent.name,
+      ranks: local?.ranks ?? [],
+      untranslated: local?.lang === 'en',
+    };
+  }),
+  builds: builds.map((build) => ({ id: build.id, name: build.name[locale], points: build.points, level: build.level, talented: build.legacyTalented })),
+  trees: Object.fromEntries(TREE_ORDER.map((tree) => [tree, t(locale, `tree.${tree}` as UiKey)])),
+  strings: {
+    rank: es ? 'Rango' : 'Rank',
+    next: es ? 'Siguiente rango' : 'Next rank',
+    max: es ? 'Rango máximo' : 'Max rank',
+    requiresRow: es ? 'Requiere {n} puntos en {tree}' : 'Requires {n} points in {tree}',
+    requiresTalent: es ? 'Requiere {n}/{max} en {name}' : 'Requires {n}/{max} in {name}',
+    untranslated: es ? 'El juego aún no tiene este texto en español.' : '',
+    facts: es ? 'Talento de {tree} · Fila {row} · {max} rangos' : '{tree} talent · Row {row} · {max} ranks',
+    copied: es ? 'Enlace copiado' : 'Link copied',
+    copyFailed: es ? 'No se pudo copiar. Copia la URL de la barra de direcciones.' : 'Could not copy. Copy the URL from the address bar instead.',
+    badLink: es ? 'Ese enlace no es una build de Mago de la calculadora de Wowhead Forever.' : 'That link is not a Mage build from the Wowhead Forever calculator.',
+    tooMany: es
+      ? 'La build tiene más puntos de los que da el nivel elegido: subimos el nivel.'
+      : 'The build has more points than the chosen level gives: the level was raised.',
+    imported: es ? 'Build cargada' : 'Build loaded',
+  },
+};
+const levels = Array.from({ length: MAX_LEVEL - 9 }, (_, i) => MAX_LEVEL - i);
+const rows = Math.max(...talents.map((talent) => talent.row));
+const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(es ? 'es-ES' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+
+<talent-calculator class="tc" data-config={JSON.stringify(data)} data-pagefind-ignore>
+  <div class="tc__bar">
+    <label class="tc__field">
+      <span>{es ? 'Nivel' : 'Level'}</span>
+      <select name="level">
+        {levels.map((level) => <option value={level}>{level}</option>)}
+      </select>
+    </label>
+    <label class="tc__field">
+      <span>Talented</span>
+      <select name="talented">
+        {[0, 1, 2, 3, 4, 5].map((rank) => <option value={rank}>{rank}/5</option>)}
+      </select>
+    </label>
+    <p class="tc__left" aria-live="polite">
+      <strong data-left>51</strong> {es ? 'puntos libres' : 'points left'} · <span data-split>0 / 0 / 0</span>
+    </p>
+    <div class="tc__actions">
+      <a class="button button--primary" data-wowhead href="https://www.wowhead.com/forever/talent-calc/mage" target="_blank" rel="noopener noreferrer">
+        <Icon name="external" size={16} />
+        {es ? 'Abrir en Wowhead' : 'Open in Wowhead'}
+      </a>
+      <button type="button" class="button" data-copy>
+        <Icon name="link" size={16} />
+        {es ? 'Copiar enlace' : 'Copy link'}
+      </button>
+      <button type="button" class="button" data-reset>
+        {es ? 'Reiniciar' : 'Reset'}
+      </button>
+    </div>
+  </div>
+
+  <div class="tc__load">
+    <label class="tc__field">
+      <span>{es ? 'Empezar desde una build' : 'Start from a build'}</span>
+      <select name="build">
+        <option value="">{es ? '— Elige una build —' : '— Pick a build —'}</option>
+        {data.builds.map((build) => <option value={build.id}>{build.name}</option>)}
+      </select>
+    </label>
+    <form class="tc__import">
+      <label class="tc__field">
+        <span>{es ? 'O pega un enlace de Wowhead' : 'Or paste a Wowhead link'}</span>
+        <input name="link" type="text" inputmode="url" autocomplete="off" placeholder="https://www.wowhead.com/forever/talent-calc/mage/v2…" />
+      </label>
+      <button type="submit" class="button">{es ? 'Cargar' : 'Load'}</button>
+    </form>
+  </div>
+
+  <p class="tc__message" data-message role="status" aria-live="polite"></p>
+
+  <div class="tc__trees">
+    {
+      TREE_ORDER.map((tree) => (
+        <section class={`tc-tree school-${tree}`} data-tree={tree} aria-label={data.trees[tree]}>
+          <header class="tc-tree__head">
+            <Icon name={tree} size={18} />
+            <span>{data.trees[tree]}</span>
+            <span class="tc-tree__spent" data-spent>0</span>
+            <button type="button" class="tc-tree__clear" data-clear={tree} aria-label={es ? `Quitar los puntos de ${data.trees[tree]}` : `Clear ${data.trees[tree]}`}>
+              ×
+            </button>
+          </header>
+          <div class="tc-tree__grid" style={`--rows: ${rows}`}>
+            {treeTalents(talents, tree).map((talent) => (
+              <button
+                type="button"
+                class="tc-talent"
+                data-talent={talent.id}
+                style={`grid-row: ${talent.row}; grid-column: ${talent.col}`}
+                aria-describedby="tc-detail"
+              >
+                <span class="tc-talent__name">{nameById.get(talent.id)}</span>
+                <span class="tc-talent__rank" data-rank>
+                  0/{talent.maxRank}
+                </span>
+                {talent.requires && <span class="tc-talent__req" aria-hidden="true">↑</span>}
+              </button>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+
+  <div class="tc-detail" id="tc-detail" role="tooltip" hidden>
+    <div class="tc-detail__body" data-detail>
+      <p class="tc-detail__title"><span data-d-name></span> <span class="tc-detail__en" lang="en" data-d-en></span></p>
+      <p class="tc-detail__facts" data-d-facts></p>
+      <p class="tc-detail__req" data-d-req hidden></p>
+      <p class="tc-detail__rank" data-d-current-label></p>
+      <p data-d-current></p>
+      <p class="tc-detail__rank" data-d-next-label></p>
+      <p data-d-next></p>
+      <p class="tc-detail__note" data-d-untranslated hidden>{data.strings.untranslated}</p>
+      <div class="tc-detail__buttons">
+        <button type="button" class="button" data-d-minus aria-label={es ? 'Quitar un punto' : 'Remove a point'}>−</button>
+        <button type="button" class="button button--primary" data-d-plus aria-label={es ? 'Añadir un punto' : 'Add a point'}>+</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="tc__help">
+    {
+      es
+        ? 'Pasa el ratón (o toca) un talento para ver qué hace en cada rango. Clic o toque: añade un punto. Clic derecho, Mayús + clic o el botón «−»: quita uno. Con el teclado, Intro añade y Retroceso quita.'
+        : 'Hover (or tap) a talent to see what it does at each rank. Click or tap: add a point. Right-click, Shift + click or the «−» button: remove one. With the keyboard, Enter adds and Backspace removes.'
+    }
+  </p>
+  <p class="tc__source">
+    {es ? 'Textos del cliente de Forever, de la base de datos de Wowhead' : 'Text from the Forever client, from the Wowhead database'} ({fetched}).
+  </p>
+</talent-calculator>
+
+<script>
+  import { copyText } from '../../scripts/clipboard';
+  import { showToast } from '../../scripts/toast';
+  import { MAX_LEVEL, TREE_ORDER, parseWowheadBuild, pointsAtLevel, pointsByTree, totalPoints, validateBuild, wowheadBuildUrl } from '../../lib/talents';
+  import type { SpecTree, Talent } from '../../lib/schemas';
+
+  type CalcTalent = Talent & { english: string; ranks: string[]; untranslated: boolean };
+  interface Config {
+    talents: CalcTalent[];
+    builds: { id: string; name: string; points: Record<string, number>; level: number; talented: number }[];
+    trees: Record<SpecTree, string>;
+    strings: Record<string, string>;
+  }
+
+  const fill = (text: string, values: Record<string, string | number>) => text.replace(/\{(\w+)\}/g, (_, key) => String(values[key] ?? ''));
+
+  class TalentCalculator extends HTMLElement {
+    private config!: Config;
+    private byId!: Map<string, CalcTalent>;
+    private points: Record<string, number> = {};
+    private level = MAX_LEVEL;
+    private talented = 0;
+    private shown: string | null = null;
+    private hideTimer: number | undefined;
+
+    connectedCallback() {
+      this.config = JSON.parse(this.dataset.config ?? '{}');
+      this.byId = new Map(this.config.talents.map((t) => [t.id, t]));
+      this.readUrl();
+
+      for (const button of this.querySelectorAll<HTMLButtonElement>('[data-talent]')) {
+        const id = button.dataset.talent!;
+        button.addEventListener('click', (event) => {
+          if (event.shiftKey) this.removePoint(id);
+          else this.addPoint(id);
+          this.show(id);
+        });
+        button.addEventListener('contextmenu', (event) => {
+          event.preventDefault();
+          this.removePoint(id);
+          this.show(id);
+        });
+        button.addEventListener('keydown', (event) => {
+          if (event.key === 'Backspace' || event.key === 'Delete' || event.key === '-') {
+            event.preventDefault();
+            this.removePoint(id);
+            this.show(id);
+          }
+        });
+        // A floating card next to the talent, like the spell tooltips elsewhere on the site.
+        button.addEventListener('mouseenter', () => this.show(id));
+        button.addEventListener('mouseleave', () => this.scheduleHide());
+        button.addEventListener('focus', () => this.show(id));
+        button.addEventListener('blur', () => this.scheduleHide());
+      }
+      this.q('[data-d-plus]').addEventListener('click', () => this.shown && (this.addPoint(this.shown), this.show(this.shown)));
+      this.q('[data-d-minus]').addEventListener('click', () => this.shown && (this.removePoint(this.shown), this.show(this.shown)));
+      // On touch screens the card stays open (with its − and + buttons) until you tap elsewhere.
+      const tip = this.q('#tc-detail');
+      tip.addEventListener('mouseenter', () => clearTimeout(this.hideTimer));
+      tip.addEventListener('mouseleave', () => this.scheduleHide());
+      document.addEventListener('pointerdown', (event) => {
+        const target = event.target as Element;
+        if (!target.closest('#tc-detail, [data-talent]')) this.hide();
+      });
+      document.addEventListener('keydown', (event) => event.key === 'Escape' && this.hide());
+      window.addEventListener('scroll', () => this.place(), { passive: true });
+      window.addEventListener('resize', () => this.place());
+      for (const clear of this.querySelectorAll<HTMLButtonElement>('[data-clear]')) {
+        clear.addEventListener('click', () => this.clearTree(clear.dataset.clear as SpecTree));
+      }
+      this.q('[data-reset]').addEventListener('click', () => {
+        this.points = {};
+        this.update();
+      });
+      this.select('level').addEventListener('change', (e) => {
+        this.level = Number((e.target as HTMLSelectElement).value);
+        this.trimToLevel();
+        this.update();
+      });
+      this.select('talented').addEventListener('change', (e) => {
+        this.talented = Number((e.target as HTMLSelectElement).value);
+        this.trimToLevel();
+        this.update();
+      });
+      this.select('build').addEventListener('change', (e) => {
+        const build = this.config.builds.find((b) => b.id === (e.target as HTMLSelectElement).value);
+        if (!build) return;
+        this.points = { ...build.points };
+        this.level = build.level;
+        this.talented = 0;
+        this.update();
+        this.say(`${this.config.strings['imported']}: ${build.name}`);
+      });
+      this.q<HTMLFormElement>('.tc__import').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const input = this.q<HTMLInputElement>('input[name="link"]');
+        const points = parseWowheadBuild(input.value, this.config.talents);
+        if (!points || validateBuild(points, MAX_LEVEL, this.config.talents).length > 0) {
+          this.say(this.config.strings['badLink']!, true);
+          return;
+        }
+        this.points = points;
+        this.fitLevel();
+        input.value = '';
+        this.update();
+        this.say(this.config.strings['imported']!);
+      });
+      this.q('[data-copy]').addEventListener('click', async () => {
+        const ok = await copyText(location.href);
+        showToast(ok ? this.config.strings['copied']! : this.config.strings['copyFailed']!);
+      });
+      this.update();
+    }
+
+    private q<T extends HTMLElement = HTMLElement>(selector: string): T {
+      return this.querySelector<T>(selector)!;
+    }
+    private select(name: string): HTMLSelectElement {
+      return this.q<HTMLSelectElement>(`select[name="${name}"]`);
+    }
+    private say(text: string, error = false) {
+      const message = this.q('[data-message]');
+      message.textContent = text;
+      message.dataset.tone = error ? 'error' : 'info';
+    }
+
+    private available() {
+      return pointsAtLevel(this.level, this.talented);
+    }
+    private valid(points: Record<string, number>) {
+      return validateBuild(points, MAX_LEVEL, this.config.talents).length === 0;
+    }
+    private with(id: string, delta: number) {
+      const next = { ...this.points, [id]: (this.points[id] ?? 0) + delta };
+      if (next[id]! <= 0) delete next[id];
+      return next;
+    }
+    private canAdd(id: string) {
+      const talent = this.byId.get(id)!;
+      return (this.points[id] ?? 0) < talent.maxRank && totalPoints(this.points) < this.available() && this.valid(this.with(id, 1));
+    }
+    private canRemove(id: string) {
+      return (this.points[id] ?? 0) > 0 && this.valid(this.with(id, -1));
+    }
+    private addPoint(id: string) {
+      if (!this.canAdd(id)) return;
+      this.points = this.with(id, 1);
+      this.update();
+    }
+    private removePoint(id: string) {
+      if (!this.canRemove(id)) return;
+      this.points = this.with(id, -1);
+      this.update();
+    }
+    private clearTree(tree: SpecTree) {
+      const next = Object.fromEntries(Object.entries(this.points).filter(([id]) => this.byId.get(id)?.tree !== tree));
+      // Prerequisites never cross trees, so the rest stays valid.
+      this.points = next;
+      this.update();
+    }
+    /** Raises the level when a loaded build has more points than it gives. */
+    private fitLevel() {
+      const total = totalPoints(this.points);
+      if (total > this.available()) {
+        this.level = Math.min(MAX_LEVEL, Math.max(10, total + 9 - this.talented));
+        this.say(this.config.strings['tooMany']!);
+      }
+    }
+    /** Lowering the level takes points back from the bottom rows up, keeping the build valid. */
+    private trimToLevel() {
+      const order = [...this.config.talents].sort((a, b) => b.row - a.row);
+      while (totalPoints(this.points) > this.available()) {
+        const id = order.find((t) => this.canRemove(t.id))?.id;
+        if (!id) break;
+        this.points = this.with(id, -1);
+      }
+    }
+
+    private readUrl() {
+      const params = new URLSearchParams(location.search);
+      const level = Number(params.get('lvl'));
+      if (level >= 10 && level <= MAX_LEVEL) this.level = level;
+      const talented = Number(params.get('tal'));
+      if (talented >= 0 && talented <= 5) this.talented = talented;
+      const code = params.get('t');
+      if (code) {
+        const points = parseWowheadBuild(`v2${code}`, this.config.talents);
+        if (points && this.valid(points)) {
+          this.points = points;
+          this.fitLevel();
+        }
+      }
+    }
+    private writeUrl(url: string) {
+      const params = new URLSearchParams(location.search);
+      const code = url.split('/mage/v2')[1];
+      if (code) params.set('t', code);
+      else params.delete('t');
+      if (this.level !== MAX_LEVEL) params.set('lvl', String(this.level));
+      else params.delete('lvl');
+      if (this.talented) params.set('tal', String(this.talented));
+      else params.delete('tal');
+      const query = params.toString();
+      history.replaceState(null, '', `${location.pathname}${query ? `?${query}` : ''}${location.hash}`);
+    }
+
+    private update() {
+      const total = totalPoints(this.points);
+      const available = this.available();
+      const byTree = pointsByTree(this.points, this.config.talents);
+      this.q('[data-left]').textContent = String(available - total);
+      this.q('[data-split]').textContent = TREE_ORDER.map((tree) => byTree[tree]).join(' / ');
+      this.select('level').value = String(this.level);
+      this.select('talented').value = String(this.talented);
+      for (const section of this.querySelectorAll<HTMLElement>('[data-tree]')) {
+        section.querySelector('[data-spent]')!.textContent = String(byTree[section.dataset.tree as SpecTree]);
+      }
+      for (const button of this.querySelectorAll<HTMLButtonElement>('[data-talent]')) {
+        const id = button.dataset.talent!;
+        const talent = this.byId.get(id)!;
+        const rank = this.points[id] ?? 0;
+        button.querySelector('[data-rank]')!.textContent = `${rank}/${talent.maxRank}`;
+        const state = rank === talent.maxRank ? 'max' : rank > 0 ? 'some' : this.canAdd(id) ? 'open' : 'locked';
+        button.dataset.state = state;
+        button.setAttribute('aria-label', `${talent.name}, ${rank}/${talent.maxRank}`);
+      }
+      const url = wowheadBuildUrl(this.points, this.config.talents);
+      this.q<HTMLAnchorElement>('[data-wowhead]').href = url;
+      this.writeUrl(url);
+      if (this.shown) this.show(this.shown);
+    }
+
+    private show(id: string) {
+      const talent = this.byId.get(id);
+      if (!talent) return;
+      clearTimeout(this.hideTimer);
+      this.shown = id;
+      const s = this.config.strings;
+      const tip = this.q('#tc-detail');
+      tip.className = `tc-detail school-${talent.tree}`;
+      tip.hidden = false;
+      const rank = this.points[id] ?? 0;
+      this.q('[data-d-name]').textContent = talent.name;
+      this.q('[data-d-facts]').textContent = fill(s['facts']!, { tree: this.config.trees[talent.tree], row: talent.row, max: talent.maxRank });
+      this.q('[data-d-en]').textContent = talent.english !== talent.name ? talent.english : '';
+      const req: string[] = [];
+      if (talent.row > 1) req.push(fill(s['requiresRow']!, { n: (talent.row - 1) * 5, tree: this.config.trees[talent.tree] }));
+      if (talent.requires) {
+        const other = this.byId.get(talent.requires.talent)!;
+        req.push(fill(s['requiresTalent']!, { n: talent.requires.points, max: other.maxRank, name: other.name }));
+      }
+      const reqEl = this.q('[data-d-req]');
+      reqEl.textContent = req.join(' · ');
+      reqEl.hidden = req.length === 0;
+      const current = rank > 0 ? talent.ranks[rank - 1] : undefined;
+      const next = rank < talent.maxRank ? talent.ranks[rank] : undefined;
+      this.q('[data-d-current-label]').textContent = current ? `${s['rank']} ${rank}/${talent.maxRank}` : '';
+      this.q('[data-d-current]').textContent = current ?? '';
+      this.q('[data-d-next-label]').textContent = next ? `${rank === 0 ? s['rank'] : s['next']} ${rank + 1}/${talent.maxRank}` : s['max']!;
+      this.q('[data-d-next]').textContent = next ?? '';
+      this.q('[data-d-untranslated]').hidden = !(talent.untranslated && s['untranslated']);
+      this.q<HTMLButtonElement>('[data-d-plus]').disabled = !this.canAdd(id);
+      this.q<HTMLButtonElement>('[data-d-minus]').disabled = !this.canRemove(id);
+      for (const button of this.querySelectorAll<HTMLElement>('[data-talent]')) {
+        button.classList.toggle('is-shown', button.dataset.talent === id);
+      }
+      this.place();
+    }
+
+    private scheduleHide() {
+      clearTimeout(this.hideTimer);
+      // Touch taps fire no mouseleave; keep the card until a tap elsewhere.
+      if (!matchMedia('(hover: hover)').matches) return;
+      this.hideTimer = window.setTimeout(() => this.hide(), 150);
+    }
+    private hide() {
+      clearTimeout(this.hideTimer);
+      this.q('#tc-detail').hidden = true;
+      this.shown = null;
+      for (const button of this.querySelectorAll<HTMLElement>('.is-shown')) button.classList.remove('is-shown');
+    }
+    /** Below the talent (above if there is no room), kept inside the window, like the spell tooltips. */
+    private place() {
+      const tip = this.q('#tc-detail');
+      const anchor = this.shown ? this.querySelector<HTMLElement>(`[data-talent="${this.shown}"]`) : null;
+      if (!anchor || tip.hidden) return;
+      const rect = anchor.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > innerHeight) return this.hide();
+      const box = tip.getBoundingClientRect();
+      const gutter = 12;
+      const left = Math.max(gutter, Math.min(rect.left, innerWidth - box.width - gutter));
+      const below = rect.bottom + 8;
+      const top = below + box.height > innerHeight - gutter && rect.top - box.height - 8 > gutter ? rect.top - box.height - 8 : below;
+      tip.style.left = `${left}px`;
+      tip.style.top = `${top}px`;
+    }
+  }
+
+  customElements.define('talent-calculator', TalentCalculator);
+</script>
+
+<style>
+  .tc {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3);
+    margin: var(--space-4) 0;
+  }
+  .tc__bar,
+  .tc__load {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .tc__field {
+    display: grid;
+    min-width: 0;
+    gap: var(--space-1);
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+  .tc__field select,
+  .tc__field input {
+    max-width: 100%;
+    min-height: 40px;
+    padding: 0 var(--space-2);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+    color: var(--text);
+    font: inherit;
+    font-weight: 400;
+  }
+  .tc__field input {
+    width: min(100%, 26rem);
+  }
+  .tc__import {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: var(--space-2);
+    flex: 1 1 18rem;
+  }
+  .tc__import .tc__field {
+    flex: 1 1 14rem;
+  }
+  .tc__import .tc__field input {
+    width: 100%;
+  }
+  .tc__left {
+    margin: 0;
+    padding-bottom: 0.55rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .tc__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-left: auto;
+  }
+  .tc__message:empty {
+    display: none;
+  }
+  .tc__message {
+    margin: 0;
+    font-size: var(--step--1);
+  }
+  .tc__message[data-tone='error'] {
+    color: var(--warning);
+    font-weight: 600;
+  }
+  .tc__trees {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+    gap: var(--space-3);
+  }
+  .tc-tree {
+    min-width: 0;
+    padding: var(--space-3);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--school);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .tc-tree__head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    font-weight: 700;
+    color: var(--school);
+  }
+  .tc-tree__spent {
+    margin-left: auto;
+    padding: 0 0.55em;
+    border-radius: 999px;
+    background: var(--school-soft);
+    font-variant-numeric: tabular-nums;
+  }
+  .tc-tree__clear {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+  .tc-tree__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(var(--rows), auto);
+    gap: 6px;
+  }
+  .tc-talent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2px;
+    min-height: 4.1rem;
+    padding: 5px 5px 4px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    color: var(--text-muted);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+  .tc-talent__name {
+    font-size: 0.7rem;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+  .tc-talent__rank {
+    align-self: flex-end;
+    font-size: 0.72rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .tc-talent__req {
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    font-size: 0.65rem;
+    color: var(--text-subtle);
+  }
+  .tc-talent[data-state='locked'] {
+    opacity: 0.45;
+  }
+  .tc-talent[data-state='open'] {
+    color: var(--text);
+    border-color: color-mix(in srgb, var(--school) 40%, var(--border));
+  }
+  .tc-talent[data-state='some'],
+  .tc-talent[data-state='max'] {
+    color: var(--text);
+    background: var(--school-soft);
+    border-color: var(--school);
+  }
+  .tc-talent[data-state='max'] {
+    box-shadow: inset 0 0 0 1px var(--school);
+  }
+  .tc-talent[data-state='some'] .tc-talent__rank,
+  .tc-talent[data-state='max'] .tc-talent__rank {
+    color: var(--school);
+  }
+  .tc-talent.is-shown {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+  .tc-detail {
+    position: fixed;
+    z-index: 60;
+    width: min(22rem, calc(100vw - 24px));
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border-strong);
+    border-top: 3px solid var(--school, var(--accent));
+    border-radius: var(--radius);
+    background: var(--surface-1);
+    box-shadow: var(--shadow);
+    font-size: var(--step--1);
+    line-height: 1.45;
+  }
+  .tc-detail[hidden] {
+    display: none;
+  }
+  .tc-detail p {
+    margin: 0 0 var(--space-1);
+  }
+  .tc-detail__title [data-d-name] {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 700;
+    color: var(--school, var(--text));
+  }
+  .tc-detail__facts {
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .tc-detail__en {
+    color: var(--text-muted);
+    font-size: var(--step--1);
+  }
+  .tc-detail__req {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .tc-detail__rank {
+    margin-top: var(--space-2) !important;
+    font-size: var(--step--1);
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+  .tc-detail__rank:empty {
+    display: none;
+  }
+  .tc-detail__note {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  /* With a mouse, click and right-click do the job; the buttons are for touch screens. */
+  @media (hover: hover) {
+    .tc-detail__buttons {
+      display: none !important;
+    }
+    /* The pointer goes through the card, so the talents under it stay reachable. */
+    .tc-detail {
+      pointer-events: none;
+    }
+  }
+  .tc-detail__buttons {
+    display: flex;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+  }
+  .tc-detail__buttons .button {
+    min-width: 3rem;
+    justify-content: center;
+    font-size: var(--step-1);
+  }
+  .tc-detail__buttons .button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  .tc__help,
+  .tc__source {
+    margin: 0;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+</style>

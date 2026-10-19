@@ -24,6 +24,8 @@ import rawWatchlist from '../data/watchlist.json';
 import rawLevelingSpells from '../data/leveling-spells.json';
 import rawNotices from '../data/notices.json';
 import rawRacePicks from '../data/race-picks.json';
+import rawGlossary from '../data/glossary.json';
+import rawTalentText from '../data/talent-text.json';
 import {
   abilitySchema,
   addonSchema,
@@ -32,6 +34,7 @@ import {
   changelogSchema,
   factSchema,
   gameVersionSchema,
+  glossarySchema,
   levelingSpellSchema,
   milestoneSchema,
   noticeSchema,
@@ -43,6 +46,7 @@ import {
   sourceSchema,
   spellTextFileSchema,
   talentSchema,
+  talentTextFileSchema,
   watchSchema,
   type Ability,
   type Addon,
@@ -351,6 +355,17 @@ export const dataset: Dataset = parseDataset({
 
 /** Best races per situation and faction (races page and «Elige» hub). */
 export const racePicks = parseList('race-picks.json', racePickSchema, rawRacePicks);
+
+/** Per-rank talent text for the talent calculator (scripts/talent-text.ts). */
+export const talentText = (() => {
+  const result = talentTextFileSchema.safeParse(rawTalentText);
+  if (!result.success) throw new Error(`Invalid data in src/data/talent-text.json:
+${z.prettifyError(result.error)}`);
+  return result.data;
+})();
+
+/** Glossary terms, in headword order per language at render time. */
+export const glossary = parseList('glossary.json', glossarySchema, rawGlossary);
 
 /** Temporary banners; see noticeSchema. */
 export const notices = parseList('notices.json', noticeSchema, rawNotices);

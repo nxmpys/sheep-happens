@@ -133,6 +133,18 @@
         }
       }
     ],
+    "camp": {
+      "object": "Faction Banner",
+      "buff": {
+        "es": "Espíritu",
+        "en": "Spirit"
+      },
+      "mage": "yes",
+      "sameAs": {
+        "es": "Espíritu divino",
+        "en": "Divine Spirit"
+      }
+    },
     "status": "reported",
     "sources": [
       "wowhead-forever-professions-db",
@@ -273,6 +285,18 @@
         }
       }
     ],
+    "camp": {
+      "object": "Enchanted Lute",
+      "buff": {
+        "es": "Estadísticas, armadura y resistencias",
+        "en": "Stats, armor and resistances"
+      },
+      "mage": "yes",
+      "sameAs": {
+        "es": "Marca de lo Salvaje",
+        "en": "Mark of the Wild"
+      }
+    },
     "status": "reported",
     "sources": [
       "wowhead-forever-professions-db",
@@ -413,6 +437,14 @@
         }
       }
     ],
+    "camp": {
+      "object": "Reagent Bot",
+      "buff": {
+        "es": "Vende componentes (sin mejora)",
+        "en": "Sells reagents (no buff)"
+      },
+      "mage": "utility"
+    },
     "status": "reported",
     "sources": [
       "wowhead-forever-professions-db",
@@ -544,6 +576,18 @@
         }
       }
     ],
+    "camp": {
+      "object": "Mana Well",
+      "buff": {
+        "es": "Regeneración de maná",
+        "en": "Mana regeneration"
+      },
+      "mage": "yes",
+      "sameAs": {
+        "es": "Bendición de sabiduría",
+        "en": "Blessing of Wisdom"
+      }
+    },
     "status": "reported",
     "sources": [
       "wowhead-forever-professions-db",
@@ -648,6 +692,18 @@
         }
       }
     ],
+    "camp": {
+      "object": "Incense Candle",
+      "buff": {
+        "es": "Intelecto",
+        "en": "Intellect"
+      },
+      "mage": "no",
+      "sameAs": {
+        "es": "Intelecto Arcano",
+        "en": "Arcane Intellect"
+      }
+    },
     "status": "reported",
     "sources": [
       "wowhead-forever-professions-db",
@@ -749,6 +805,14 @@
         }
       }
     ],
+    "camp": {
+      "object": "Lodestone",
+      "buff": {
+        "es": "Poder de ataque cuerpo a cuerpo",
+        "en": "Melee attack power"
+      },
+      "mage": "no"
+    },
     "status": "reported",
     "sources": [
       "wowhead-forever-professions-db",
@@ -848,6 +912,18 @@
         }
       }
     ],
+    "camp": {
+      "object": "Camp Chair",
+      "buff": {
+        "es": "+2 % de crítico con hechizos y ataques",
+        "en": "+2% spell and attack crit"
+      },
+      "mage": "yes",
+      "sameAs": {
+        "es": "Aura de lechúcico",
+        "en": "Moonkin Aura"
+      }
+    },
     "status": "reported",
     "sources": [
       "wowhead-forever-professions-db",
@@ -954,6 +1030,14 @@
         }
       }
     ],
+    "camp": {
+      "object": "Camp Tent",
+      "buff": {
+        "es": "Experiencia descansada (hasta el 5 % de un nivel)",
+        "en": "Rested experience (up to 5% of a level)"
+      },
+      "mage": "leveling"
+    },
     "status": "reported",
     "sources": [
       "wowhead-forever-professions-db",
@@ -1060,6 +1144,14 @@
         }
       }
     ],
+    "camp": {
+      "object": "Sharpening Wheel",
+      "buff": {
+        "es": "Mejora física cuerpo a cuerpo",
+        "en": "Physical melee buff"
+      },
+      "mage": "no"
+    },
     "status": "reported",
     "sources": [
       "wowhead-forever-professions-db",
@@ -1139,6 +1231,14 @@
         }
       }
     ],
+    "camp": {
+      "object": "Campfire upgrades",
+      "buff": {
+        "es": "La hoguera admite 5 o 10 objetos en vez de 3",
+        "en": "The campfire holds 5 or 10 objects instead of 3"
+      },
+      "mage": "utility"
+    },
     "status": "reported",
     "sources": [
       "wowhead-forever-professions-db",
@@ -1223,6 +1323,18 @@
         }
       }
     ],
+    "camp": {
+      "object": "First Aid Kit",
+      "buff": {
+        "es": "Aguante",
+        "en": "Stamina"
+      },
+      "mage": "yes",
+      "sameAs": {
+        "es": "Palabra de poder: entereza",
+        "en": "Power Word: Fortitude"
+      }
+    },
     "status": "reported",
     "sources": [
       "wowhead-forever-professions-db",
@@ -1298,6 +1410,18 @@
         }
       }
     ],
+    "camp": {
+      "object": "Fish Bowl",
+      "buff": {
+        "es": "+8 % a todas las estadísticas",
+        "en": "+8% to all stats"
+      },
+      "mage": "yes",
+      "sameAs": {
+        "es": "Bendición de reyes",
+        "en": "Blessing of Kings"
+      }
+    },
     "status": "reported",
     "sources": [
       "wowhead-forever-professions-db",

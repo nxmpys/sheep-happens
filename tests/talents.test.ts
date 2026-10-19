@@ -11,6 +11,7 @@ import {
   treeTalents,
   validateBuild,
   validateOrder,
+  parseWowheadBuild,
   wowheadBuildUrl,
   WOWHEAD_CALC,
 } from '../src/lib/talents';
@@ -186,5 +187,21 @@ describe('build summaries', () => {
     expect(groups.map((g) => g.tree)).toEqual(['frost']);
     expect(groups[0]!.talents[0]!.talent.id).toBe('improved-frostbolt');
     expect(groups[0]!.talents.at(-1)!.talent.id).toBe('fingers-of-frost');
+  });
+});
+
+describe('parseWowheadBuild', () => {
+  it('reads back what wowheadBuildUrl writes', () => {
+    for (const points of [{ 'improved-frostbolt': 5, 'ice-shards': 3 }, { 'arcane-focus': 1, 'wake-of-fire': 1, 'improved-frostbolt': 5 }, { 'wake-of-fire': 2 }, {}]) {
+      expect(parseWowheadBuild(wowheadBuildUrl(points, talents), talents)).toEqual(points);
+    }
+  });
+  it('accepts the bare code and ignores suffixes', () => {
+    expect(parseWowheadBuild('v2--0503', talents)).toEqual({ 'improved-frostbolt': 5, 'ice-shards': 3 });
+    expect(parseWowheadBuild(`${WOWHEAD_CALC}/v2--0503_abc`, talents)).toEqual({ 'improved-frostbolt': 5, 'ice-shards': 3 });
+  });
+  it('rejects other text and impossible ranks', () => {
+    expect(parseWowheadBuild('hello', talents)).toBeUndefined();
+    expect(parseWowheadBuild(`${WOWHEAD_CALC}/v29`, talents)).toBeUndefined();
   });
 });

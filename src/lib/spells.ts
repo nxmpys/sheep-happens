@@ -10,7 +10,7 @@
  */
 import { pathFor, type Locale, type PageId } from '../i18n/routes';
 import { normalize } from './filters';
-import type { Ability, Change, Milestone, Status, Talent } from './schemas';
+import type { Ability, Change, GlossaryTerm, Milestone, Status, Talent } from './schemas';
 import type { SpellText, SpellTextEntry } from './spell-text';
 
 export type TooltipSchool = 'arcane' | 'fire' | 'frost' | 'frostfire' | 'baseline';
@@ -79,6 +79,8 @@ export function buildSpellIndex(
     spellText?: Readonly<Record<string, SpellTextEntry>>;
     /** English → Spanish names (spell-names.json). */
     names?: Readonly<Record<string, string>>;
+    /** Glossary terms (glossary.json), registered after every spell so they never shadow one. */
+    glossary?: readonly GlossaryTerm[];
   },
   locale: Locale,
   opts: { base?: string } = {},
@@ -195,7 +197,31 @@ export function buildSpellIndex(
     );
   }
 
+  // Glossary terms: our definition, linking to the Glossary section of Learn.
+  for (const term of data.glossary ?? []) {
+    const [headword, ...rest] = term.terms[locale];
+    register(
+      `glossary-${term.id}`,
+      {
+        key: `glossary-${term.id}`,
+        name: headword!,
+        school: 'baseline',
+        facts: [es ? 'Glosario' : 'Glossary'],
+        summary: term.definition[locale],
+        href: link('learn', `glossary-${term.id}`),
+        more: 'guide',
+      },
+      headword,
+      ...rest,
+    );
+  }
+
   return { entries, names };
+}
+
+/** Glossary spellings to underline in the guide text, as autoLinkNames entries. */
+export function glossaryLinkNames(glossary: readonly GlossaryTerm[], locale: Locale): [string, string, string][] {
+  return glossary.flatMap((term) => term.terms[locale].map((name): [string, string, string] => [name, `glossary-${term.id}`, 'baseline']));
 }
 
 /** Finds the tooltip for a visible spell name, or undefined. */

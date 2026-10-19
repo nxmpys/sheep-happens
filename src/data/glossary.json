@@ -1,0 +1,138 @@
+[
+  {
+    "id": "aoe",
+    "terms": { "es": ["AoE"], "en": ["AoE"] },
+    "definition": {
+      "es": "Área de efecto (Area of Effect): hechizos que golpean a todos los enemigos de una zona, como Ventisca, Nova de Escarcha o Deflagración Arcana. «Farmeo AoE» es juntar muchos enemigos y matarlos a la vez.",
+      "en": "Area of Effect: spells that hit every enemy in an area, such as Blizzard, Frost Nova or Arcane Explosion. «AoE farming» means gathering many enemies and killing them at once."
+    }
+  },
+  {
+    "id": "aggro",
+    "terms": { "es": ["aggro", "agro"], "en": ["aggro"] },
+    "definition": {
+      "es": "La atención de un enemigo: a quién ataca. Si haces más daño que el tanque, le «quitas el aggro» y el enemigo va a por ti.",
+      "en": "An enemy's attention: who it attacks. If you deal more damage than the tank, you «pull aggro» and the enemy comes for you."
+    }
+  },
+  {
+    "id": "build",
+    "terms": { "es": ["build híbrida", "builds híbridas"], "en": ["hybrid build", "hybrid builds"] },
+    "definition": {
+      "es": "Reparto de talentos con puntos importantes en dos ramas, por ejemplo Escarcha y Fuego, en vez de casi todos en una sola.",
+      "en": "A talent split with significant points in two trees, for example Frost and Fire, instead of nearly all of them in one."
+    }
+  },
+  {
+    "id": "cc",
+    "terms": { "es": ["control de masas"], "en": ["crowd control"] },
+    "definition": {
+      "es": "Efectos que impiden a un enemigo actuar o moverse: Polimorfia, Nova de Escarcha, Cono de frío… Abreviado CC.",
+      "en": "Effects that stop an enemy from acting or moving: Polymorph, Frost Nova, Cone of Cold… Shortened to CC."
+    }
+  },
+  {
+    "id": "cooldown",
+    "terms": { "es": ["cooldown", "cooldowns"], "en": ["cooldown", "cooldowns"] },
+    "definition": {
+      "es": "Tiempo de reutilización: lo que tarda un hechizo en poder usarse de nuevo. Nova de Escarcha, Blink o Bloqueo de hielo tienen cooldown; Descarga de Escarcha no.",
+      "en": "The time before a spell can be used again. Frost Nova, Blink or Ice Block have a cooldown; Frostbolt does not."
+    }
+  },
+  {
+    "id": "crit",
+    "terms": { "es": ["crítico", "críticos"], "en": ["crit", "crits", "critical strike"] },
+    "definition": {
+      "es": "Golpe crítico: un hechizo que hace un 50 % más de daño de lo normal (más con talentos como Fragmentos de hielo o Ignición). La probabilidad de crítico es un porcentaje de tu personaje.",
+      "en": "Critical strike: a spell that deals 50% more damage than normal (more with talents such as Ice Shards or Ignite). Crit chance is a percentage on your character."
+    }
+  },
+  {
+    "id": "dps",
+    "terms": { "es": ["DPS"], "en": ["DPS"] },
+    "definition": {
+      "es": "Daño por segundo. También se llama así a los personajes cuyo papel en grupo es hacer daño, como el Mago.",
+      "en": "Damage per second. Also the name for characters whose group role is dealing damage, like the Mage."
+    }
+  },
+  {
+    "id": "downrank",
+    "terms": { "es": ["bajar de rango"], "en": ["downranking", "downrank"] },
+    "definition": {
+      "es": "Usar un rango antiguo y más barato de un hechizo (por ejemplo, Ventisca de rango 1) para gastar menos maná. Forever lo ha limitado en algunos hechizos.",
+      "en": "Casting an older, cheaper rank of a spell (for example, Blizzard rank 1) to spend less mana. Forever has limited it for some spells."
+    }
+  },
+  {
+    "id": "frozen",
+    "terms": { "es": ["congelado", "congelados", "congelada", "congeladas"], "en": ["frozen"] },
+    "definition": {
+      "es": "Enemigo inmovilizado por un efecto de Escarcha que congela, como Nova de Escarcha o Mordiescarcha. Contra objetivos congelados se activan Trizar y la bonificación de Lanza de hielo.",
+      "en": "An enemy held in place by a Frost freeze effect, such as Frost Nova or Frostbite. Frozen targets enable Shatter and the Ice Lance bonus."
+    }
+  },
+  {
+    "id": "gcd",
+    "terms": { "es": ["GCD"], "en": ["GCD", "global cooldown"] },
+    "definition": {
+      "es": "Tiempo de reutilización global: la pausa de 1,5 s que deja casi cualquier hechizo antes de poder lanzar el siguiente.",
+      "en": "Global cooldown: the 1.5 s pause almost any spell leaves before you can cast the next one."
+    }
+  },
+  {
+    "id": "hit-cap",
+    "terms": { "es": ["tope de golpe"], "en": ["hit cap"] },
+    "definition": {
+      "es": "La probabilidad de golpe con hechizos a partir de la cual ya no fallas más contra un tipo de enemigo. Por encima no sirve de nada.",
+      "en": "The spell hit chance beyond which you stop missing against a type of enemy. Any more is wasted."
+    }
+  },
+  {
+    "id": "kite",
+    "terms": { "es": ["kitear", "kiteo", "kiteas", "kitea"], "en": ["kite", "kiting"] },
+    "definition": {
+      "es": "Mantener a un enemigo lejos mientras le haces daño: lo ralentizas o congelas, te alejas y repites, para que nunca llegue a pegarte.",
+      "en": "Keeping an enemy away while you damage it: slow or freeze it, move away and repeat, so it never reaches you."
+    }
+  },
+  {
+    "id": "milestone",
+    "terms": { "es": ["talento decisivo", "talentos decisivos"], "en": ["milestone talent", "milestone talents"] },
+    "definition": {
+      "es": "Talento clave de 1 punto en las filas de 11, 16, 21 o 31 puntos de una rama, que cambia cómo se juega. Las builds se planifican alrededor de ellos.",
+      "en": "A key 1-point talent at the 11, 16, 21 or 31 point rows of a tree that changes how it plays. Builds are planned around them."
+    }
+  },
+  {
+    "id": "mob",
+    "terms": { "es": ["mob", "mobs"], "en": ["mob", "mobs"] },
+    "definition": {
+      "es": "Cualquier enemigo controlado por el juego (no un jugador).",
+      "en": "Any enemy controlled by the game (not a player)."
+    }
+  },
+  {
+    "id": "oom",
+    "terms": { "es": ["OOM"], "en": ["OOM"] },
+    "definition": {
+      "es": "Sin maná (Out Of Mana). Al Mago le pasa a menudo al subir de nivel: toca beber agua o comida conjurada.",
+      "en": "Out Of Mana. Mages run into it often while leveling: time to drink conjured water."
+    }
+  },
+  {
+    "id": "proc",
+    "terms": { "es": ["proc", "procs"], "en": ["proc", "procs"] },
+    "definition": {
+      "es": "Efecto que se activa por azar o al cumplirse una condición, como Concentración Arcana o Dedos de Escarcha. Addons como MageProcs te avisan cuando salta.",
+      "en": "An effect that triggers by chance or when a condition is met, such as Arcane Concentration or Fingers of Frost. Addons like MageProcs tell you when it fires."
+    }
+  },
+  {
+    "id": "pull",
+    "terms": { "es": ["pull", "pulls"], "en": ["pull", "pulls"] },
+    "definition": {
+      "es": "Atraer a uno o varios enemigos para empezar un combate. En farmeo AoE, «un pull grande» es juntar muchos a la vez.",
+      "en": "Drawing one or more enemies to start a fight. In AoE farming, «a big pull» means gathering many at once."
+    }
+  }
+]
