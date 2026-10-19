@@ -5,3 +5,9 @@
 /es/builds/duelos-nivel-30 /es/builds/ 301
 /en/builds/duels-level-30/ /en/builds/ 301
 /en/builds/duels-level-30 /en/builds/ 301
+
+# The «Elige» hub (race and professions together) was retired on 19 Oct 2026: races and professions have their own menu entries.
+/es/elige/ /es/razas/ 301
+/es/elige /es/razas/ 301
+/en/choose/ /en/races/ 301
+/en/choose /en/races/ 301

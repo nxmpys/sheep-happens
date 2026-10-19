@@ -14,7 +14,6 @@ export const PAGE_IDS = [
   'home',
   'learn',
   'builds',
-  'choose',
   'races',
   'professions',
   'guide',
@@ -57,11 +56,10 @@ export const ROUTES: Record<PageId, RouteDef> = {
   home: { id: 'home', slug: { es: '', en: '' } },
   learn: { id: 'learn', slug: { es: 'aprende', en: 'learn' }, parent: 'home' },
   builds: { id: 'builds', slug: { es: 'builds', en: 'builds' }, parent: 'home' },
-  choose: { id: 'choose', slug: { es: 'elige', en: 'choose' }, parent: 'home' },
-  races: { id: 'races', slug: { es: 'razas', en: 'races' }, parent: 'choose' },
-  professions: { id: 'professions', slug: { es: 'profesiones', en: 'professions' }, parent: 'choose' },
+  races: { id: 'races', slug: { es: 'razas', en: 'races' }, parent: 'home' },
+  professions: { id: 'professions', slug: { es: 'profesiones', en: 'professions' }, parent: 'home' },
   guide: { id: 'guide', slug: { es: 'guia', en: 'guide' }, parent: 'learn' },
-  changes: { id: 'changes', slug: { es: 'cambios', en: 'changes' }, parent: 'home' },
+  changes: { id: 'changes', slug: { es: 'cambios', en: 'changes' }, parent: 'learn' },
   talents: { id: 'talents', slug: { es: 'talentos', en: 'talents' }, parent: 'learn' },
   'talents-arcane': {
     id: 'talents-arcane',
@@ -101,7 +99,7 @@ export const ROUTES: Record<PageId, RouteDef> = {
  * items in this order (READING_ORDER), so the three never diverge.
  */
 export interface NavGroup {
-  key: 'learn' | 'builds' | 'choose' | 'changes' | 'tools' | 'addons';
+  key: 'learn' | 'builds' | 'races' | 'professions' | 'tools' | 'addons';
   page: PageId;
   items?: PageId[];
 }
@@ -111,10 +109,10 @@ export interface NavGroup {
  * professions to pick, Forever's changes, and the tools.
  */
 export const PRIMARY_NAV: readonly NavGroup[] = [
-  { key: 'learn', page: 'learn', items: ['guide', 'talents', 'talents-arcane', 'talents-fire', 'talents-frost', 'combat', 'gear'] },
+  { key: 'learn', page: 'learn', items: ['guide', 'talents', 'talents-arcane', 'talents-fire', 'talents-frost', 'combat', 'gear', 'changes'] },
   { key: 'builds', page: 'builds', items: ['leveling', 'level-view', 'aoe-farming', 'scrolls'] },
-  { key: 'choose', page: 'choose', items: ['races', 'professions'] },
-  { key: 'changes', page: 'changes' },
+  { key: 'races', page: 'races' },
+  { key: 'professions', page: 'professions' },
   { key: 'tools', page: 'tools', items: ['talent-calc'] },
   { key: 'addons', page: 'addons' },
 ];
@@ -127,7 +125,7 @@ export function navPages(nav: readonly NavGroup[] = PRIMARY_NAV): PageId[] {
 /** The guided reading order used for the previous/next links: the menu, top to bottom. */
 export const READING_ORDER: readonly PageId[] = navPages();
 
-export const FOOTER_NAV: readonly PageId[] = ['sources', 'updates', 'tools'];
+export const FOOTER_NAV: readonly PageId[] = ['changes', 'updates', 'sources', 'tools'];
 
 export function isLocale(value: unknown): value is Locale {
   return typeof value === 'string' && (LOCALES as readonly string[]).includes(value);

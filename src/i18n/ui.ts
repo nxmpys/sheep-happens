@@ -6,7 +6,6 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
     home: 'Inicio',
     learn: 'Aprende',
     builds: 'Builds',
-    choose: 'Elige raza y profesiones',
     races: 'Razas',
     professions: 'Profesiones',
     guide: 'Guía de clase',
@@ -31,7 +30,6 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
     home: 'Home',
     learn: 'Learn',
     builds: 'Builds',
-    choose: 'Pick race and professions',
     races: 'Races',
     professions: 'Professions',
     guide: 'Class guide',
@@ -55,9 +53,9 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
 };
 
 /** Labels of the primary navigation entries (routes.ts PRIMARY_NAV). */
-export const NAV_GROUP_LABELS: Record<Locale, Record<'learn' | 'builds' | 'choose' | 'changes' | 'tools' | 'addons', string>> = {
-  es: { learn: 'Aprende', builds: 'Builds', choose: 'Elige', changes: 'Cambios', tools: 'Herramientas', addons: 'Addons' },
-  en: { learn: 'Learn', builds: 'Builds', choose: 'Choose', changes: 'Changes', tools: 'Tools', addons: 'Addons' },
+export const NAV_GROUP_LABELS: Record<Locale, Record<'learn' | 'builds' | 'races' | 'professions' | 'tools' | 'addons', string>> = {
+  es: { learn: 'Aprende', builds: 'Builds', races: 'Razas', professions: 'Profesiones', tools: 'Herramientas', addons: 'Addons' },
+  en: { learn: 'Learn', builds: 'Builds', races: 'Races', professions: 'Professions', tools: 'Tools', addons: 'Addons' },
 };
 
 const es = {

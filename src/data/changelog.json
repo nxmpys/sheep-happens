@@ -1,5 +1,23 @@
 [
   {
+    "id": "2026-10-19-menu",
+    "date": "2026-10-19",
+    "type": "site",
+    "title": {
+      "es": "Menú: Razas y Profesiones por separado",
+      "en": "Menu: Races and Professions on their own"
+    },
+    "body": {
+      "es": "Razas y Profesiones tienen ahora su propia entrada en el menú, y la página «Elige» que las agrupaba se retira: su dirección lleva a Razas. Los cambios de Forever salen del menú: están en Aprende, en el pie de página y en el bloque semanal del inicio.",
+      "en": "Races and Professions now have their own menu entries, and the «Choose» page that grouped them is retired: its address leads to Races. Forever changes leave the menu: they are in Learn, in the footer and in the home page weekly block."
+    },
+    "pages": [
+      "races",
+      "professions",
+      "learn"
+    ]
+  },
+  {
     "id": "2026-10-19-talent-calc",
     "date": "2026-10-19",
     "type": "site",
@@ -64,7 +82,7 @@
     },
     "pages": [
       "learn",
-      "choose",
+      "races",
       "builds"
     ],
     "sources": [],
