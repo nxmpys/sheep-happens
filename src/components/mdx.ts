@@ -15,6 +15,7 @@ import ChangeSummaryList from './guide/ChangeSummaryList.astro';
 import ChangelogList from './guide/ChangelogList.astro';
 import ClassQuestList from './guide/ClassQuestList.astro';
 import CritCalculator from './guide/CritCalculator.astro';
+import HitCalculator from './guide/HitCalculator.astro';
 import FactList from './guide/FactList.astro';
 import FactionFilter from './guide/FactionFilter.astro';
 import Faq from './guide/Faq.astro';
@@ -71,6 +72,7 @@ export const mdxComponents = {
   ChangelogList,
   ClassQuestList,
   CritCalculator,
+  HitCalculator,
   FactList,
   FactionFilter,
   Faq,

@@ -239,11 +239,8 @@ const leading = grouped && groups ? items.slice(0, items.findIndex((h) => h.slug
   .toc__group > ol {
     margin-bottom: var(--space-2);
   }
+  /* Sticky and scrolling come from the layout's aside, which also holds the prev/next links. */
   .toc--sidebar {
-    position: sticky;
-    top: calc(var(--header-h) + var(--space-5));
-    max-height: calc(100vh - var(--header-h) - var(--space-7));
-    overflow-y: auto;
     padding-bottom: var(--space-4);
   }
   .toc__top {

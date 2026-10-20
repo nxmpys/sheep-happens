@@ -1,5 +1,88 @@
 [
   {
+    "id": "2026-10-20-gear",
+    "date": "2026-10-20",
+    "type": "site",
+    "title": {
+      "es": "Equipo pasa a Guías: leveo, JcE y enlace al JcJ",
+      "en": "Gear moves to Guides: leveling, PvE and a link to PvP"
+    },
+    "body": {
+      "es": "La página de Equipo se muda a Guías. Reúne las piezas clave para subir de nivel, nivel a nivel (misiones de clase, biblioteca e Islas Lanza Negra), y el equipo de JcE de nivel 60 por actividad: los cambios de estadísticas y lo pendiente de mazmorras, bandas, encantamientos y consumibles. El equipo de JcJ sigue en la guía de JcJ, enlazado desde Equipo.",
+      "en": "The Gear page moves to Guides. It gathers the key leveling pieces level by level (class quests, the library and Darkspear Islands) and level 60 PvE gear by activity: the stat changes and what is still pending for dungeons, raids, enchants and consumables. PvP gear stays in the PvP guide, linked from Gear."
+    },
+    "pages": [
+      "gear",
+      "guides"
+    ],
+    "sources": [],
+    "refs": []
+  },
+  {
+    "id": "2026-10-20-tools",
+    "date": "2026-10-20",
+    "type": "site",
+    "title": {
+      "es": "Herramientas: calculadora de golpe con hechizos",
+      "en": "Tools: spell hit calculator"
+    },
+    "body": {
+      "es": "Nueva calculadora de golpe: elige criatura o jugador, su nivel, tus rangos de Enfoque Arcano o Enfoque elemental y el golpe del equipo, y te dice con qué probabilidad aciertas y cuánto te falta para el tope, que en Forever llega al 100 % según los jugadores de la beta. La calculadora de críticos ya coincide con el cliente de la beta en todos los rangos.",
+      "en": "A new hit calculator: pick a creature or a player, its level, your Arcane Focus or Elemental Precision ranks and the hit on your gear, and it tells you how often you land and how much you still need for the cap, which reaches 100% in Forever according to beta players. The crit calculator now matches the beta client at every rank."
+    },
+    "pages": [
+      "tools"
+    ],
+    "sources": [
+      "allakhazam-hit-rate",
+      "method-forever-hit-chance",
+      "blizzard-forums-forever-hit",
+      "wowhead-forever-talent-calc"
+    ],
+    "refs": []
+  },
+  {
+    "id": "2026-10-20-addons",
+    "date": "2026-10-20",
+    "type": "site",
+    "title": {
+      "es": "Addons: MageProcs 1.4.0",
+      "en": "Addons: MageProcs 1.4.0"
+    },
+    "body": {
+      "es": "La página de Addons describe MageProcs 1.4.0: temporizador de tu oveja de Polimorfia, sonidos opcionales por proc, el x2 de Dedos de Escarcha en combate y el comando /mp buffs.",
+      "en": "The Addons page describes MageProcs 1.4.0: a timer for your Polymorph sheep, optional sounds per proc, Fingers of Frost x2 in combat and the /mp buffs command."
+    },
+    "pages": [
+      "addons",
+      "tools"
+    ],
+    "sources": [],
+    "refs": []
+  },
+  {
+    "id": "2026-10-20-site",
+    "date": "2026-10-20",
+    "type": "site",
+    "title": {
+      "es": "Nueva portada, iconos del juego y navegación más cómoda",
+      "en": "New home page, in-game icons and easier navigation"
+    },
+    "body": {
+      "es": "La portada estrena un círculo arcano con una oveja a la que puedes lanzar Polimorfia. Las habilidades de la guía de clase, los talentos decisivos de cada rama y las fichas que aparecen al pasar el ratón por un hechizo muestran su icono del juego. Junto al índice «En esta página» tienes ahora los enlaces a la página anterior y la siguiente.",
+      "en": "The home page gets an arcane circle with a sheep you can cast Polymorph on. Class guide abilities, each tree's milestone talents and the cards that show when you hover a spell now carry their in-game icon. Next to the «On this page» index you now have links to the previous and next page."
+    },
+    "pages": [
+      "home",
+      "guide",
+      "talents-arcane",
+      "talents-fire",
+      "talents-frost"
+    ],
+    "sources": [],
+    "refs": []
+  },
+  {
     "id": "2026-10-19-menu",
     "date": "2026-10-19",
     "type": "site",

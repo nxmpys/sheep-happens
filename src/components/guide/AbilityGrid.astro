@@ -4,7 +4,8 @@ import Icon from '../ui/Icon.astro';
 import type { IconName } from '../ui/icons';
 import StatusBadge from './StatusBadge.astro';
 import { getLocale, href } from '../../i18n/locale';
-import { abilities, getChange } from '../../lib/data';
+import { abilities, getChange, spellText } from '../../lib/data';
+import { iconPath } from '../../lib/icons';
 import { displayName, localName } from '../../lib/names';
 import { ROLES, type Role } from '../../lib/schemas';
 
@@ -31,10 +32,15 @@ const changesHref = href('changes', locale);
           <ul class="abilities">
             {list.map((ability) => {
               const school = (['arcane', 'fire', 'frost', 'frostfire'] as const).find((s) => s === ability.school);
+              const gameIcon = ability.spell ? spellText[ability.spell]?.icon : undefined;
               return (
                 <li class:list={['ability', school && school !== 'frostfire' ? `school-${school}` : 'school-baseline']}>
                   <p class="ability__name">
-                    {school && <Icon name={school satisfies IconName} size={18} />}
+                    {gameIcon ? (
+                      <img class="ability__icon" src={iconPath(gameIcon)} alt="" width="32" height="32" loading="lazy" />
+                    ) : (
+                      school && <Icon name={school satisfies IconName} size={18} />
+                    )}
                     {displayName(ability, locale).primary}
                     {displayName(ability, locale).secondary && ' '}
                     {displayName(ability, locale).secondary && (
@@ -107,6 +113,14 @@ const changesHref = href('changes', locale);
   }
   .ability__name :global(svg) {
     color: var(--school);
+  }
+  .ability__icon {
+    flex: none;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 0 0 1px var(--border-strong);
   }
   .ability__en {
     font-weight: 500;

@@ -160,7 +160,11 @@ const spellText = z
 export const spellTextFileSchema = z
   .object({
     fetched: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-    spells: z.record(z.string().regex(/^\d+$/), z.object({ en: spellText, es: spellText }).strict()),
+    spells: z.record(
+      z.string().regex(/^\d+$/),
+      /** `icon`: client icon file name, served from public/icons/<icon>.jpg. */
+      z.object({ icon: z.string().regex(/^[a-z0-9_]+$/).optional(), en: spellText, es: spellText }).strict(),
+    ),
   })
   .strict();
 

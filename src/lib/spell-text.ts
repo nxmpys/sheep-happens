@@ -14,6 +14,8 @@ export interface SpellText {
 }
 
 export interface SpellTextEntry {
+  /** Client icon file name (public/icons/<icon>.jpg). */
+  icon?: string | undefined;
   en: SpellText;
   es: SpellText;
 }

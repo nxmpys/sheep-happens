@@ -5,13 +5,13 @@
     "origin": "own",
     "author": "Sheep Happens",
     "summary": {
-      "es": "MageProcs muestra una alerta grande y clara en pantalla cuando salta uno de tus procs de Mago, y la quita en cuanto lo gastas. Fuera de combate te recuerda si te falta Intelecto Arcano o comida y agua conjuradas, y guarda tu configuración en perfiles. Está hecho para WoW Forever y solo avisa: no lanza hechizos ni automatiza nada.",
-      "en": "MageProcs puts a big, clear alert on screen when one of your Mage procs is ready, and clears it as soon as you spend it. Out of combat it reminds you when you are missing Arcane Intellect or conjured food and water, and it keeps your setup in profiles. It is made for WoW Forever and only alerts: it never casts or automates anything."
+      "es": "MageProcs muestra una alerta grande y clara en pantalla cuando salta uno de tus procs de Mago, y la quita en cuanto lo gastas. Cuenta el tiempo que le queda a tu oveja de Polimorfia, puede sonar al saltar cada proc y, fuera de combate, te recuerda si te falta Intelecto Arcano o comida y agua conjuradas. Guarda tu configuración en perfiles. Está hecho para WoW Forever y solo avisa: no lanza hechizos ni automatiza nada.",
+      "en": "MageProcs puts a big, clear alert on screen when one of your Mage procs is ready, and clears it as soon as you spend it. It counts down the time left on your Polymorph sheep, can play a sound when each proc pops and, out of combat, reminds you when you are missing Arcane Intellect or conjured food and water. It keeps your setup in profiles. It is made for WoW Forever and only alerts: it never casts or automates anything."
     },
     "url": "https://www.curseforge.com/wow/addons/mageprocs",
     "host": "CurseForge",
     "listing": "live",
-    "version": "1.2.0",
+    "version": "1.4.0",
     "release": "release",
     "game": { "version": "1.60.1", "interface": 16001 },
     "languages": ["es", "en"],
@@ -139,6 +139,7 @@
       { "command": "/mp test", "what": { "es": "Prueba las alertas activadas.", "en": "Previews the enabled alerts." } },
       { "command": "/mp move", "what": { "es": "Coloca las alertas sobre una cuadrícula.", "en": "Places the alerts over a grid." } },
       { "command": "/mp reset", "what": { "es": "Vuelve a los lugares y tamaños por defecto.", "en": "Back to the default places and sizes." } },
+      { "command": "/mp buffs", "what": { "es": "Lista tus beneficios fuera de combate con su ID; útil para confirmar procs de la beta.", "en": "Lists your buffs out of combat with their ID; handy to confirm beta procs." } },
       { "command": "/mp status", "what": { "es": "Qué puede leer de cada proc; inclúyelo si informas de un fallo.", "en": "What it can read for each proc; include it in bug reports." } }
     ],
     "install": [
@@ -147,18 +148,18 @@
         "en": "Install it with the CurseForge app (World of Warcraft, WoW Forever flavor) or extract the file into the Interface\\AddOns folder of your WoW Forever install."
       },
       {
-        "es": "Escribe /mp en el juego. Calentamiento viene activado, y los procs de tus talentos se activan solos la primera vez que un personaje los tiene. Presencia mental y el contador de Explosión Arcana los activas tú.",
-        "en": "Type /mp in game. Heating Up is on from the start, and the procs of your talents turn on by themselves the first time a character has them. Presence of Mind and the Arcane Blast tracker are yours to switch on."
+        "es": "Escribe /mp en el juego. Calentamiento viene activado, y los procs de tus talentos se activan solos la primera vez que un personaje los tiene. Presencia mental y el contador de Explosión Arcana los activas tú. El temporizador de Polimorfia viene activado (en Temporizadores) y los sonidos, desactivados (pestaña Visualización > Sonido).",
+        "en": "Type /mp in game. Heating Up is on from the start, and the procs of your talents turn on by themselves the first time a character has them. Presence of Mind and the Arcane Blast tracker are yours to switch on. The Polymorph timer is on by default (under Timers) and sounds are off (Display tab > Sound)."
       }
     ],
     "limitations": [
       {
-        "es": "La mayoría de los procs llega con talentos de nivel alto y aún no se ha confirmado en el juego: si los usas, tus comentarios en CurseForge ayudan.",
-        "en": "Most procs come from high-level talents and have not been confirmed in game yet: if you use them, your feedback on CurseForge helps."
+        "es": "La mayoría de los procs llega con talentos de nivel alto y aún no se ha confirmado en el juego, igual que el temporizador de Polimorfia y el x2 de Dedos de Escarcha de la 1.4.0: si los usas, tus comentarios en CurseForge ayudan.",
+        "en": "Most procs come from high-level talents and have not been confirmed in game yet, nor have 1.4.0's Polymorph timer and Fingers of Frost x2: if you use them, your feedback on CurseForge helps."
       },
       {
-        "es": "Dedos de Escarcha solo se ve si el juego muestra su propia alerta, y con Libre lanzamiento activo no distingue Tromba de misiles.",
-        "en": "Fingers of Frost only shows if the game shows its own alert, and while Clearcasting is up it cannot tell Missile Barrage apart."
+        "es": "Para ver Dedos de Escarcha en combate, ponlo en los beneficios rastreados del gestor de tiempos de reutilización del juego (Cooldown Manager); su icono puede quedar oculto. Con Libre lanzamiento activo no distingue Tromba de misiles.",
+        "en": "To see Fingers of Frost in combat, put it in the Tracked Buffs of the game's Cooldown Manager; its icon can stay hidden. While Clearcasting is up it cannot tell Missile Barrage apart."
       },
       {
         "es": "El contador de Explosión Arcana cuenta tus lanzamientos: en combate no puede ver el efecto en sí.",
@@ -169,6 +170,6 @@
         "en": "It leaves out Combustion, Arcane Power and effects on the target, such as Impact, Frostbite or Winter's Chill."
       }
     ],
-    "checked": "2026-10-16"
+    "checked": "2026-10-20"
   }
 ]

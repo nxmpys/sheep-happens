@@ -2,20 +2,21 @@
 pageId: tools
 locale: en
 title: Mage tools for WoW Forever
-seoTitle: WoW Forever Mage crit calculator (Frostfire Bolt)
-description: Crit multiplier calculator for Fireball, Frostbolt and Frostfire Bolt based on your Ice Shards and Ignite ranks, validated against Blizzard's official example.
+seoTitle: WoW Forever Mage crit and spell hit calculators
+description: Crit multiplier for Fireball, Frostbolt and Frostfire Bolt from your Ice Shards and Ignite ranks, and your spell hit chance by target level, with the hit cap.
 gameVersion: forever-beta-2026-10
 published: 2026-10-11
-reviewed: 2026-10-11
+reviewed: 2026-10-20
 reviewedBy: Sheep Happens
 status: published
 verification: classic
 summary:
   - Compare how hard a Fireball, Frostbolt and Frostfire Bolt crit hits with your talents.
   - Reproduces Blizzard's official example (280% with both talents maxed).
-  - Intermediate ranks use the Classic values.
-sources: [blizzard-deep-dive-mage, wiki-ice-shards-classic, wiki-ignite-classic, wowhead-forever-talent-calc]
-tags: [tools, calculator, crit, frostfire bolt, ignite, ice shards]
+  - Intermediate ranks match the Forever beta client.
+  - The hit calculator tells you how much hit you still need not to miss creatures or players; in Forever the cap reaches 100%.
+sources: [blizzard-deep-dive-mage, wiki-ice-shards-classic, wiki-ignite-classic, wowhead-forever-talent-calc, allakhazam-hit-rate, almar-classic-mage-hit, method-forever-hit-chance, blizzard-forums-forever-hit]
+tags: [tools, calculator, crit, frostfire bolt, ignite, ice shards, spell hit, hit cap, arcane focus, elemental precision]
 ---
 
 ## Crit multiplier
@@ -27,11 +28,24 @@ Move the **Ice Shards** (Frost) and **Ignite** (Fire) ranks to see how much dama
 ## How it is calculated
 
 - A spell crit deals **150%** damage (+50%). <Status status="classic" />
-- **Ice Shards** raises that bonus by 20% per rank for **Frost** spells: at 5/5 the crit becomes **200%**. <Status status="classic" />
-- **Ignite** burns for 8% per rank of the crit's damage over 4 s for **Fire** spells: **40%** at 5/5. <Status status="classic" />
+- **Ice Shards** raises that bonus by 20% per rank for **Frost** spells: at 5/5 the crit becomes **200%**. All five ranks match the Forever beta client text. <Status status="reported" />
+- **Ignite** burns for 8% per rank of the crit's damage over 4 s for **Fire** spells: **40%** at 5/5. It matches the beta too. <Status status="reported" />
 - **Frostfire Bolt** counts as Fire **and** Frost, so it gets both: 200% + 40% of 200% = **280%**. That is exactly Blizzard's example. <Status status="verified" />
 
 Other modifiers (crit chance, target resistance) are not included: this compares **how hard a crit hits**, not how many crits you will land.
+
+## Spell hit
+
+A spell that misses does nothing and still costs the mana. Pick whether you attack a creature or a player, its level, the school, your **Arcane Focus** or **Elemental Precision** ranks and the hit on your gear to see how often you land and how much you still need for the cap. Resistances are not included.
+
+<HitCalculator />
+
+- Against a creature of your level you hit **96%** of the time; at +1 and +2 levels, 95 and 94%. From +3 it drops 11 points per level: **83%** against a raid boss (level 63 for a level 60). <Status status="classic" />
+- **Changed in Forever:** in Classic a 1% miss chance always remained (99% cap). In Forever beta players reach **100%**: **4%** hit is enough never to miss a target of your level and **17%** against a raid boss. Blizzard has not confirmed it yet. <Status status="reported" />
+- **Against players**, the table is the same up to +2 levels; from +3 it drops 7 points per level instead of 11: **87%** at +3. This is the Classic table; there is no Forever data yet. <Status status="classic" />
+- In Forever, **Arcane Focus** (Arcane) and **Elemental Precision** (Fire and Frost) give 1% hit per rank, up to 5%, according to the beta client. <Status status="reported" />
+
+Some guides give 3% at your level and 16% against bosses: those are Classic's numbers, which keep that 1% miss. We will check it in game at launch.
 
 ## Talent calculator
 
@@ -41,11 +55,11 @@ Every build in <PageLink to="builds">Builds</PageLink> can be loaded into it and
 
 ## Mage addons
 
-In <PageLink to="addons">Addons</PageLink> we present **MageProcs**, our proc alert addon for WoW Forever: it shows on-screen alerts for Heating Up, Clearcasting, Missile Barrage, Presence of Mind and Fingers of Frost, in combat too, and it can count your Arcane Blast stacks.
+In <PageLink to="addons">Addons</PageLink> we present **MageProcs**, our proc alert addon for WoW Forever: it shows on-screen alerts for Heating Up, Clearcasting, Missile Barrage, Presence of Mind and Fingers of Frost, in combat too, counts down your Polymorph sheep and can count your Arcane Blast stacks.
 
 ## Upcoming tools
 
 <Pending
   why="The talent calculator uses the beta values, which may still change."
-  next="On launch day we will update the calculator's text; then come the hit calculator and gear by level."
+  next="On launch day we will update the calculator's text and check the hit table against the live game."
 />

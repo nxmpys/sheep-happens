@@ -4,7 +4,8 @@ import SourceRefs from './SourceRefs.astro';
 import StatusBadge from './StatusBadge.astro';
 import { getLocale } from '../../i18n/locale';
 import { t } from '../../i18n/ui';
-import { milestonesForTree } from '../../lib/data';
+import { milestonesForTree, talentText, talents } from '../../lib/data';
+import { iconPath } from '../../lib/icons';
 import { displayName } from '../../lib/names';
 
 interface Props {
@@ -14,13 +15,23 @@ interface Props {
 const { tree } = Astro.props;
 const locale = getLocale(Astro);
 const slots = milestonesForTree(tree);
+/** In-game icon of the talent in a slot, by its English name (talent-text.json). */
+const iconFor = (name: string | undefined) => {
+  const talent = name ? talents.find((t) => t.tree === tree && t.name === name) : undefined;
+  return talent ? talentText.talents[talent.id]?.icon : undefined;
+};
 ---
 
 <ol id="milestones" class={`milestones school-${tree}`} aria-label={t(locale, 'milestones.title')}>
   {
     slots.map((slot) => (
       <li class:list={['milestone', { 'milestone--pending': slot.status === 'pending' }]}>
-        <span class="milestone__points" data-pagefind-ignore>{t(locale, 'milestones.points', { points: slot.points })}</span>
+        <span class="milestone__head">
+          {iconFor(slot.name) && (
+            <img class="milestone__icon" src={iconPath(iconFor(slot.name)!)} alt="" width="36" height="36" loading="lazy" />
+          )}
+          <span class="milestone__points" data-pagefind-ignore>{t(locale, 'milestones.points', { points: slot.points })}</span>
+        </span>
         <span class="milestone__name">
           {slot.name ? (
             slot.changeId ? (
@@ -35,7 +46,7 @@ const slots = milestonesForTree(tree);
         <StatusBadge status={slot.status} />
         {slot.note && <p class="milestone__note">{slot.note[locale]}</p>}
         <SourceRefs ids={slot.sources} />
-        <Icon name={tree} size={18} class="milestone__sigil" />
+        {!iconFor(slot.name) && <Icon name={tree} size={18} class="milestone__sigil" />}
       </li>
     ))
   }
@@ -91,6 +102,19 @@ const slots = milestonesForTree(tree);
     font-size: var(--step--1);
     color: var(--text-muted);
     line-height: 1.5;
+  }
+  .milestone__head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  .milestone__icon {
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #000;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px var(--border-strong), 0 0 12px color-mix(in srgb, var(--school) 35%, transparent);
   }
   .milestone :global(.milestone__sigil) {
     position: absolute;

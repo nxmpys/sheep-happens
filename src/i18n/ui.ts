@@ -184,11 +184,7 @@ const es = {
   'footer.disclaimer':
     'Sheep Happens es una guía de fans sin relación con Blizzard Entertainment. World of Warcraft es una marca de Blizzard Entertainment, Inc.',
   'footer.license': 'Los iconos de talentos, hechizos y objetos son del juego, © Blizzard Entertainment; el resto de iconos e ilustraciones son propios.',
-  'support.title': '¿Te ha servido la guía?',
-  'support.body':
-    'Sheep Happens es gratis, no tiene anuncios y se revisa cada semana con fuentes. Si quieres ayudar a que siga así, puedes invitarme a un café.',
-  'support.cta': 'Invítame a un café en Ko-fi',
-  'support.short': 'Invítame a un café',
+  'support.short': 'Recarga mi maná',
   'feedback.title': '¿Algo incorrecto o echas algo en falta?',
   'feedback.body': 'Cuéntamelo y lo reviso con las fuentes en la siguiente revisión de la guía. No hace falta cuenta.',
   'feedback.open': 'Enviar un comentario',
@@ -209,6 +205,21 @@ const es = {
   'feedback.error.generic': 'No se pudo enviar. Inténtalo de nuevo dentro de un rato.',
   'notFound.title': 'Página no encontrada',
   'notFound.body': 'Esta oveja se ha escapado. Prueba con el buscador o vuelve al inicio.',
+  'notFound.home': 'Ir al inicio',
+  'hero.cast': 'Lanzar Polymorph',
+  'hero.form': 'Polymorph: {form}',
+  'hero.form.sheep': 'Oveja',
+  'hero.form.pig': 'Cerdo',
+  'hero.form.turtle': 'Tortuga',
+  'hero.form.penguin': 'Pingüino',
+  'hero.form.golden': 'Oveja dorada',
+  'hero.egg.rareTag': '¡rara!',
+  'hero.egg.rare': '¡Forma rara! En el juego se aprende con un tomo.',
+  'hero.egg.rain': '¡Están lloviendo ovejas!',
+  'hero.egg.golden': '¡Has encontrado la oveja legendaria!',
+  'hero.egg.immune': 'Rendimientos decrecientes: inmune durante {s} s',
+  'hero.egg.immuneHit': 'INMUNE',
+  'hero.count': 'Ovejas transformadas en esta visita: {count}',
 } as const;
 
 export type UiKey = keyof typeof es;
@@ -329,11 +340,7 @@ const en: Record<UiKey, string> = {
   'footer.disclaimer':
     'Sheep Happens is a fan-made guide not affiliated with Blizzard Entertainment. World of Warcraft is a trademark of Blizzard Entertainment, Inc.',
   'footer.license': 'Talent, spell and item icons are from the game, © Blizzard Entertainment; all other icons and artwork are original.',
-  'support.title': 'Found the guide useful?',
-  'support.body':
-    'Sheep Happens is free, ad-free and reviewed every week against its sources. If you want to help keep it that way, you can buy me a coffee.',
-  'support.cta': 'Buy me a coffee on Ko-fi',
-  'support.short': 'Buy me a coffee',
+  'support.short': 'Restore my mana',
   'feedback.title': 'Something wrong or missing?',
   'feedback.body': 'Tell me and I will check it against the sources in the next review of the guide. No account needed.',
   'feedback.open': 'Send feedback',
@@ -354,6 +361,21 @@ const en: Record<UiKey, string> = {
   'feedback.error.generic': 'Could not send it. Please try again in a while.',
   'notFound.title': 'Page not found',
   'notFound.body': 'This sheep wandered off. Try the search or head back home.',
+  'notFound.home': 'Go home',
+  'hero.cast': 'Cast Polymorph',
+  'hero.form': 'Polymorph: {form}',
+  'hero.form.sheep': 'Sheep',
+  'hero.form.pig': 'Pig',
+  'hero.form.turtle': 'Turtle',
+  'hero.form.penguin': 'Penguin',
+  'hero.form.golden': 'Golden sheep',
+  'hero.egg.rareTag': 'rare!',
+  'hero.egg.rare': 'A rare form! In game it comes from a tome.',
+  'hero.egg.rain': "It's raining sheep!",
+  'hero.egg.golden': 'You found the legendary sheep!',
+  'hero.egg.immune': 'Diminishing returns: immune for {s} s',
+  'hero.egg.immuneHit': 'IMMUNE',
+  'hero.count': 'Sheep polymorphed this visit: {count}',
 };
 
 const DICTIONARIES: Record<Locale, Record<UiKey, string>> = { es, en };

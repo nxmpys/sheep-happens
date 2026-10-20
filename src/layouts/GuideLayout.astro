@@ -5,7 +5,6 @@ import FeedbackBox from '../components/layout/FeedbackBox.astro';
 import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
 import PageMeta from '../components/layout/PageMeta.astro';
 import PrevNext from '../components/layout/PrevNext.astro';
-import SupportBox from '../components/layout/SupportBox.astro';
 import Toc from '../components/layout/Toc.astro';
 import SourceRefs from '../components/guide/SourceRefs.astro';
 import Icon from '../components/ui/Icon.astro';
@@ -89,6 +88,7 @@ const tocHeadings = sources.length > 0
 
       <div class="guide__toc-inline">
         <Toc headings={tocHeadings} locale={locale} variant="inline" groups={data.tocGroups} />
+        <PrevNext locale={locale} pageId={pageId} variant="compact" />
       </div>
 
       <article class="prose" data-pagefind-body data-heading-anchors={JSON.stringify(strings)}>
@@ -119,15 +119,16 @@ const tocHeadings = sources.length > 0
 
       <FeedbackBox locale={locale} pageId={pageId} />
 
-      <SupportBox locale={locale} />
-
       <PrevNext locale={locale} pageId={pageId} />
     </div>
 
     {
       !data.wide && (
         <aside class="guide__aside" data-pagefind-ignore>
-          <Toc headings={tocHeadings} locale={locale} variant="sidebar" groups={data.tocGroups} />
+          <div class="guide__aside-inner">
+            <Toc headings={tocHeadings} locale={locale} variant="sidebar" groups={data.tocGroups} />
+            <PrevNext locale={locale} pageId={pageId} variant="compact" />
+          </div>
         </aside>
       )
     }
@@ -208,11 +209,31 @@ const tocHeadings = sources.length > 0
     line-height: 1.5;
   }
   .guide__toc-inline {
+    display: grid;
+    gap: var(--space-2);
     max-width: var(--content-max);
     margin-bottom: var(--space-5);
   }
+  .guide__toc-inline :global(.pager-mini) {
+    grid-template-columns: 1fr 1fr;
+  }
+  .guide__toc-inline :global(.pager-mini__link--next) {
+    grid-column: 2;
+  }
   .guide__aside {
     display: none;
+  }
+  .guide__aside-inner {
+    position: sticky;
+    top: calc(var(--header-h) + var(--space-5));
+    display: grid;
+    gap: var(--space-3);
+    max-height: calc(100vh - var(--header-h) - var(--space-7));
+    overflow-y: auto;
+  }
+  .guide__aside-inner :global(.pager-mini) {
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--border);
   }
   .summary {
     padding: var(--space-4) var(--space-5);

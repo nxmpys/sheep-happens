@@ -2,20 +2,21 @@
 pageId: tools
 locale: es
 title: Herramientas para el Mago en Forever
-seoTitle: Calculadora de críticos del Mago para WoW Forever
-description: Calcula el crítico de Bola de Fuego, Descarga de Escarcha y Descarga de Pirofrío según Fragmentos de hielo e Ignición, validado con el ejemplo oficial de Blizzard.
+seoTitle: Calculadoras de crítico y de golpe del Mago para WoW Forever
+description: Calcula el crítico de tus hechizos de Fuego, Escarcha y Pirofrío según tus talentos, y tu probabilidad de golpear según el nivel del objetivo y el tope de golpe.
 gameVersion: forever-beta-2026-10
 published: 2026-10-11
-reviewed: 2026-10-11
+reviewed: 2026-10-20
 reviewedBy: Sheep Happens
 status: published
 verification: classic
 summary:
   - Compara cuánto pega un crítico de Bola de Fuego, Descarga de Escarcha y Descarga de Pirofrío con tus talentos.
   - Reproduce el ejemplo oficial de Blizzard (280 % con ambos talentos al máximo).
-  - Los rangos intermedios usan los valores de Classic.
-sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, wiki-ice-shards-classic, wiki-ignite-classic, wowhead-forever-talent-calc]
-tags: [herramientas, calculadora, crítico, descarga de pirofrío, ignición, fragmentos de hielo]
+  - Los rangos intermedios coinciden con el cliente de la beta de Forever.
+  - La calculadora de golpe te dice cuánto golpe te falta para no fallar contra criaturas o jugadores; en Forever el tope llega al 100 %.
+sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, wiki-ice-shards-classic, wiki-ignite-classic, wowhead-forever-talent-calc, allakhazam-hit-rate, almar-classic-mage-hit, method-forever-hit-chance, blizzard-forums-forever-hit]
+tags: [herramientas, calculadora, crítico, descarga de pirofrío, ignición, fragmentos de hielo, golpe con hechizos, tope de golpe, enfoque arcano, enfoque elemental]
 ---
 
 ## Multiplicador de crítico
@@ -27,11 +28,24 @@ Mueve los rangos de **Fragmentos de hielo** (Ice Shards, Escarcha) e **Ignición
 ## Cómo se calcula
 
 - Un crítico de hechizo hace un **150 %** de daño (+50 %). <Status status="classic" />
-- **Fragmentos de hielo** aumenta esa bonificación un 20 % por rango en los hechizos de **Escarcha**: con 5/5, el crítico pasa al **200 %**. <Status status="classic" />
-- **Ignición** quema un 8 % por rango del daño del crítico durante 4 s en los hechizos de **Fuego**: con 5/5, el **40 %**. <Status status="classic" />
+- **Fragmentos de hielo** aumenta esa bonificación un 20 % por rango en los hechizos de **Escarcha**: con 5/5, el crítico pasa al **200 %**. Los cinco rangos coinciden con el texto del cliente de la beta de Forever. <Status status="reported" />
+- **Ignición** quema un 8 % por rango del daño del crítico durante 4 s en los hechizos de **Fuego**: con 5/5, el **40 %**. También coincide con la beta. <Status status="reported" />
 - **Descarga de Pirofrío** (Frostfire Bolt) cuenta como Fuego **y** Escarcha, así que recibe ambos efectos: 200 % + 40 % de 200 % = **280 %**. Es exactamente el ejemplo que da Blizzard. <Status status="verified" />
 
 No incluye otros modificadores (por ejemplo, la probabilidad de crítico o la resistencia del objetivo): compara solo **cuánto pega un crítico**, no cuántos críticos harás.
+
+## Golpe con hechizos
+
+Un hechizo que falla no hace nada y gasta el maná. Elige si atacas a una criatura o a un jugador, su nivel, la escuela, tus rangos de **Enfoque Arcano** o **Enfoque elemental** y el golpe de tu equipo para ver con qué probabilidad aciertas y cuánto te falta para el tope. No tiene en cuenta las resistencias.
+
+<HitCalculator />
+
+- Contra una criatura de tu nivel aciertas el **96 %** de las veces; a +1 y +2 niveles, el 95 y el 94 %. A partir de +3 cae 11 puntos por nivel: **83 %** contra un jefe de banda (nivel 63 para un nivel 60). <Status status="classic" />
+- **Cambio en Forever:** en Classic siempre quedaba un 1 % de fallo (tope del 99 %). En Forever los jugadores de la beta llegan al **100 %**: un **4 %** de golpe basta para no fallar nunca contra tu nivel y un **17 %** contra un jefe de banda. Blizzard aún no lo ha confirmado. <Status status="reported" />
+- **Contra jugadores**, la tabla es la misma hasta +2 niveles; a partir de +3 cae 7 puntos por nivel en vez de 11: **87 %** a +3. Es la tabla de Classic; no hay datos de Forever todavía. <Status status="classic" />
+- En Forever, **Enfoque Arcano** (Arcano) y **Enfoque elemental** (Fuego y Escarcha) dan un 1 % de golpe por rango, hasta el 5 %, según el cliente de la beta. <Status status="reported" />
+
+Algunas guías dan un 3 % a tu nivel y un 16 % contra jefes: son las cifras de Classic, que dejan ese 1 % de fallo. Lo comprobaremos en el juego en el lanzamiento.
 
 ## Calculadora de talentos
 
@@ -41,11 +55,11 @@ Todas las builds de <PageLink to="builds">Builds</PageLink> se pueden cargar en 
 
 ## Addons para el Mago
 
-En <PageLink to="addons">Addons</PageLink> presentamos **MageProcs**, nuestro addon de alertas de procs para WoW Forever: avisa en pantalla de Calentamiento, Libre lanzamiento, Tromba de misiles, Presencia mental y Dedos de Escarcha, también en combate, y puede contar tus cargas de Explosión Arcana.
+En <PageLink to="addons">Addons</PageLink> presentamos **MageProcs**, nuestro addon de alertas de procs para WoW Forever: avisa en pantalla de Calentamiento, Libre lanzamiento, Tromba de misiles, Presencia mental y Dedos de Escarcha, también en combate, cuenta el tiempo de tu oveja de Polimorfia y puede contar tus cargas de Explosión Arcana.
 
 ## Próximas herramientas
 
 <Pending
   why="La calculadora de talentos usa los valores de la beta, que aún pueden cambiar."
-  next="El día del lanzamiento actualizaremos los textos de la calculadora; después llegarán la calculadora de golpe y el equipo por nivel."
+  next="El día del lanzamiento actualizaremos los textos de la calculadora y comprobaremos la tabla de golpe en el juego."
 />

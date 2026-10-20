@@ -26,6 +26,8 @@ export interface SpellTooltip {
   school: TooltipSchool;
   /** "Hechizo de Escarcha · Nivel 4", "Talento de Fuego · Fila 3". */
   facts: string[];
+  /** Path to the spell's in-game icon (public/icons), when known. */
+  icon?: string;
   /** In-game tooltip text, when the game has one. */
   game?: Omit<SpellText, 'name'>;
   /** Our own description, only when there is no game text. */
@@ -102,11 +104,14 @@ export function buildSpellIndex(
     }
   };
   /** The game text if there is one; otherwise our description and its status. */
+  const iconBase = `${(opts.base ?? '/').replace(/\/?$/, '/')}icons/`;
   const describe = (spell: number | undefined, summary: string, status: Status) => {
-    const text = spell ? data.spellText?.[spell]?.[locale] : undefined;
-    if (!text) return { summary, status };
+    const entry = spell ? data.spellText?.[spell] : undefined;
+    const icon = entry?.icon ? { icon: `${iconBase}${entry.icon}.jpg` } : {};
+    const text = entry?.[locale];
+    if (!text) return { ...icon, summary, status };
     const { name: _name, ...game } = text;
-    return { game, status };
+    return { ...icon, game, status };
   };
   // Milestone slots confirmed for a talent, by English name (milestones.json).
   const milestonePoints = new Map(

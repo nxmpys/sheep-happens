@@ -2,6 +2,7 @@
   "fetched": "2026-10-18",
   "spells": {
     "10": {
+      "icon": "spell_frost_icestorm",
       "en": {
         "name": "Blizzard",
         "meta": [
@@ -22,6 +23,7 @@
       }
     },
     "116": {
+      "icon": "spell_frost_frostbolt02",
       "en": {
         "name": "Frostbolt",
         "meta": [
@@ -42,6 +44,7 @@
       }
     },
     "118": {
+      "icon": "spell_nature_polymorph",
       "en": {
         "name": "Polymorph",
         "meta": [
@@ -62,6 +65,7 @@
       }
     },
     "120": {
+      "icon": "spell_frost_glacier",
       "en": {
         "name": "Cone of Cold",
         "meta": [
@@ -83,6 +87,7 @@
       }
     },
     "122": {
+      "icon": "spell_frost_frostnova",
       "en": {
         "name": "Frost Nova",
         "meta": [
@@ -103,6 +108,7 @@
       }
     },
     "130": {
+      "icon": "spell_magic_featherfall",
       "en": {
         "name": "Slow Fall",
         "meta": [
@@ -121,6 +127,7 @@
       }
     },
     "133": {
+      "icon": "spell_fire_flamebolt",
       "en": {
         "name": "Fireball",
         "meta": [
@@ -141,6 +148,7 @@
       }
     },
     "168": {
+      "icon": "spell_frost_frostarmor02",
       "en": {
         "name": "Frost Armor",
         "meta": [
@@ -159,6 +167,7 @@
       }
     },
     "475": {
+      "icon": "spell_nature_removecurse",
       "en": {
         "name": "Remove Lesser Curse",
         "meta": [
@@ -179,6 +188,7 @@
       }
     },
     "543": {
+      "icon": "spell_fire_firearmor",
       "en": {
         "name": "Fire Ward",
         "meta": [
@@ -199,6 +209,7 @@
       }
     },
     "759": {
+      "icon": "inv_misc_gem_emerald_01",
       "en": {
         "name": "Conjure Mana Agate",
         "meta": [
@@ -217,6 +228,7 @@
       }
     },
     "1449": {
+      "icon": "spell_nature_wispsplode",
       "en": {
         "name": "Arcane Explosion",
         "meta": [
@@ -235,6 +247,7 @@
       }
     },
     "1459": {
+      "icon": "spell_holy_magicalsentry",
       "en": {
         "name": "Arcane Intellect",
         "meta": [
@@ -255,6 +268,7 @@
       }
     },
     "1463": {
+      "icon": "spell_shadow_detectlesserinvisibility",
       "en": {
         "name": "Mana Shield",
         "meta": [
@@ -273,6 +287,7 @@
       }
     },
     "1953": {
+      "icon": "spell_arcane_blink",
       "en": {
         "name": "Blink",
         "meta": [
@@ -293,6 +308,7 @@
       }
     },
     "2120": {
+      "icon": "spell_fire_selfdestruct",
       "en": {
         "name": "Flamestrike",
         "meta": [
@@ -313,6 +329,7 @@
       }
     },
     "2136": {
+      "icon": "spell_fire_fireball",
       "en": {
         "name": "Fire Blast",
         "meta": [
@@ -335,6 +352,7 @@
       }
     },
     "2139": {
+      "icon": "spell_frost_iceshock",
       "en": {
         "name": "Counterspell",
         "meta": [
@@ -357,6 +375,7 @@
       }
     },
     "2948": {
+      "icon": "spell_fire_soulburn",
       "en": {
         "name": "Scorch",
         "meta": [
@@ -377,6 +396,7 @@
       }
     },
     "5143": {
+      "icon": "spell_nature_starfall",
       "en": {
         "name": "Arcane Missiles",
         "meta": [
@@ -397,6 +417,7 @@
       }
     },
     "5504": {
+      "icon": "inv_drink_06",
       "en": {
         "name": "Conjure Water",
         "meta": [
@@ -415,6 +436,7 @@
       }
     },
     "6057": {
+      "icon": "inv_wand_01",
       "en": {
         "name": "Wand Specialization",
         "meta": [],
@@ -427,6 +449,7 @@
       }
     },
     "6117": {
+      "icon": "spell_magearmor",
       "en": {
         "name": "Mage Armor",
         "meta": [
@@ -445,6 +468,7 @@
       }
     },
     "11069": {
+      "icon": "spell_fire_flamebolt",
       "en": {
         "name": "Improved Fireball",
         "meta": [],
@@ -457,6 +481,7 @@
       }
     },
     "11070": {
+      "icon": "spell_frost_frostbolt02",
       "en": {
         "name": "Improved Frostbolt",
         "meta": [],
@@ -470,6 +495,7 @@
       }
     },
     "11071": {
+      "icon": "spell_frost_frostarmor",
       "en": {
         "name": "Frostbite",
         "meta": [],
@@ -482,6 +508,7 @@
       }
     },
     "11078": {
+      "icon": "spell_fire_lavaspawn",
       "en": {
         "name": "Improved Fire Blast",
         "meta": [],
@@ -495,6 +522,7 @@
       }
     },
     "11083": {
+      "icon": "spell_fire_fire",
       "en": {
         "name": "Burning Soul",
         "meta": [],
@@ -507,6 +535,7 @@
       }
     },
     "11094": {
+      "icon": "spell_fire_firearmor",
       "en": {
         "name": "Improved Fire Ward",
         "meta": [],
@@ -519,6 +548,7 @@
       }
     },
     "11095": {
+      "icon": "spell_fire_soulburn",
       "en": {
         "name": "Improved Scorch",
         "meta": [],
@@ -531,6 +561,7 @@
       }
     },
     "11100": {
+      "icon": "spell_fire_flare",
       "en": {
         "name": "Flame Throwing",
         "meta": [],
@@ -543,6 +574,7 @@
       }
     },
     "11103": {
+      "icon": "spell_fire_meteorstorm",
       "en": {
         "name": "Impact",
         "meta": [],
@@ -555,6 +587,7 @@
       }
     },
     "11108": {
+      "icon": "spell_fire_selfdestruct",
       "en": {
         "name": "Improved Flamestrike",
         "meta": [],
@@ -567,6 +600,7 @@
       }
     },
     "11113": {
+      "icon": "spell_holy_excorcism_02",
       "en": {
         "name": "Blast Wave",
         "meta": [
@@ -587,6 +621,7 @@
       }
     },
     "11115": {
+      "icon": "spell_nature_wispheal",
       "en": {
         "name": "Critical Mass",
         "meta": [],
@@ -599,6 +634,7 @@
       }
     },
     "11119": {
+      "icon": "spell_fire_incinerate",
       "en": {
         "name": "Ignite",
         "meta": [],
@@ -611,6 +647,7 @@
       }
     },
     "11124": {
+      "icon": "spell_fire_immolation",
       "en": {
         "name": "Fire Power",
         "meta": [],
@@ -624,6 +661,7 @@
       }
     },
     "11129": {
+      "icon": "spell_fire_sealoffire",
       "en": {
         "name": "Combustion",
         "meta": [
@@ -642,6 +680,7 @@
       }
     },
     "11151": {
+      "icon": "spell_frost_frostbolt",
       "en": {
         "name": "Piercing Ice",
         "meta": [],
@@ -654,6 +693,7 @@
       }
     },
     "11160": {
+      "icon": "spell_frost_stun",
       "en": {
         "name": "Frost Channeling",
         "meta": [],
@@ -666,6 +706,7 @@
       }
     },
     "11165": {
+      "icon": "spell_frost_freezingbreath",
       "en": {
         "name": "Improved Frost Nova",
         "meta": [],
@@ -678,6 +719,7 @@
       }
     },
     "11170": {
+      "icon": "spell_frost_frostshock",
       "en": {
         "name": "Shatter",
         "meta": [],
@@ -690,6 +732,7 @@
       }
     },
     "11175": {
+      "icon": "spell_frost_wisp",
       "en": {
         "name": "Permafrost",
         "meta": [],
@@ -702,6 +745,7 @@
       }
     },
     "11180": {
+      "icon": "spell_frost_chillingblast",
       "en": {
         "name": "Winter's Chill",
         "meta": [],
@@ -715,6 +759,7 @@
       }
     },
     "11185": {
+      "icon": "spell_frost_icestorm",
       "en": {
         "name": "Improved Blizzard",
         "meta": [],
@@ -727,6 +772,7 @@
       }
     },
     "11189": {
+      "icon": "spell_frost_frostward",
       "en": {
         "name": "Frost Warding",
         "meta": [],
@@ -739,6 +785,7 @@
       }
     },
     "11190": {
+      "icon": "spell_frost_glacier",
       "en": {
         "name": "Improved Cone of Cold",
         "meta": [],
@@ -751,6 +798,7 @@
       }
     },
     "11207": {
+      "icon": "spell_frost_iceshard",
       "en": {
         "name": "Ice Shards",
         "meta": [],
@@ -763,6 +811,7 @@
       }
     },
     "11210": {
+      "icon": "spell_holy_dispelmagic",
       "en": {
         "name": "Arcane Subtlety",
         "meta": [],
@@ -775,6 +824,7 @@
       }
     },
     "11213": {
+      "icon": "spell_shadow_manaburn",
       "en": {
         "name": "Arcane Concentration",
         "meta": [],
@@ -787,6 +837,7 @@
       }
     },
     "11222": {
+      "icon": "spell_holy_devotion",
       "en": {
         "name": "Arcane Focus",
         "meta": [],
@@ -799,6 +850,7 @@
       }
     },
     "11232": {
+      "icon": "spell_shadow_charm",
       "en": {
         "name": "Arcane Mind",
         "meta": [],
@@ -811,6 +863,7 @@
       }
     },
     "11237": {
+      "icon": "spell_nature_starfall",
       "en": {
         "name": "Improved Channeling",
         "meta": [],
@@ -824,6 +877,7 @@
       }
     },
     "11242": {
+      "icon": "spell_nature_wispsplode",
       "en": {
         "name": "Arcane Impact",
         "meta": [],
@@ -836,6 +890,7 @@
       }
     },
     "11247": {
+      "icon": "inv_ability_mage_radiantspark",
       "en": {
         "name": "Arcane Geometry",
         "meta": [],
@@ -848,6 +903,7 @@
       }
     },
     "11252": {
+      "icon": "spell_shadow_detectlesserinvisibility",
       "en": {
         "name": "Arcane Shielding",
         "meta": [],
@@ -860,6 +916,7 @@
       }
     },
     "11255": {
+      "icon": "spell_frost_iceshock",
       "en": {
         "name": "Improved Counterspell",
         "meta": [],
@@ -872,6 +929,7 @@
       }
     },
     "11366": {
+      "icon": "spell_fire_fireball02",
       "en": {
         "name": "Pyroblast",
         "meta": [
@@ -892,6 +950,7 @@
       }
     },
     "11426": {
+      "icon": "spell_ice_lament",
       "en": {
         "name": "Ice Barrier",
         "meta": [
@@ -912,6 +971,7 @@
       }
     },
     "11958": {
+      "icon": "spell_frost_frost",
       "en": {
         "name": "Ice Block",
         "meta": [
@@ -932,6 +992,7 @@
       }
     },
     "12042": {
+      "icon": "spell_nature_lightning",
       "en": {
         "name": "Arcane Power",
         "meta": [
@@ -950,6 +1011,7 @@
       }
     },
     "12043": {
+      "icon": "spell_nature_enchantarmor",
       "en": {
         "name": "Presence of Mind",
         "meta": [
@@ -968,6 +1030,7 @@
       }
     },
     "12051": {
+      "icon": "spell_nature_purge",
       "en": {
         "name": "Evocation",
         "meta": [
@@ -986,6 +1049,7 @@
       }
     },
     "12472": {
+      "icon": "spell_frost_wizardmark",
       "en": {
         "name": "Cold Snap",
         "meta": [
@@ -1004,6 +1068,7 @@
       }
     },
     "12606": {
+      "icon": "spell_nature_abolishmagic",
       "en": {
         "name": "Magic Attunement",
         "meta": [],
@@ -1016,6 +1081,7 @@
       }
     },
     "15058": {
+      "icon": "spell_shadow_teleport",
       "en": {
         "name": "Arcane Instability",
         "meta": [],
@@ -1028,6 +1094,7 @@
       }
     },
     "16757": {
+      "icon": "spell_shadow_darkritual",
       "en": {
         "name": "Arctic Reach",
         "meta": [],
@@ -1041,6 +1108,7 @@
       }
     },
     "18459": {
+      "icon": "spell_fire_flameshock",
       "en": {
         "name": "Incineration",
         "meta": [],
@@ -1053,6 +1121,7 @@
       }
     },
     "18462": {
+      "icon": "spell_shadow_siphonmana",
       "en": {
         "name": "Arcane Meditation",
         "meta": [],
@@ -1065,6 +1134,7 @@
       }
     },
     "28574": {
+      "icon": "spell_arcane_arcaneresilience",
       "en": {
         "name": "Arcane Resilience",
         "meta": [],
@@ -1077,6 +1147,7 @@
       }
     },
     "29074": {
+      "icon": "spell_fire_masterofelements",
       "en": {
         "name": "Master of Elements",
         "meta": [],
@@ -1089,6 +1160,7 @@
       }
     },
     "29438": {
+      "icon": "spell_ice_magicdamage",
       "en": {
         "name": "Elemental Precision",
         "meta": [],
@@ -1101,6 +1173,7 @@
       }
     },
     "29441": {
+      "icon": "spell_nature_astralrecalgroup",
       "en": {
         "name": "Magic Absorption",
         "meta": [],
@@ -1113,6 +1186,7 @@
       }
     },
     "400574": {
+      "icon": "spell_arcane_blast",
       "en": {
         "name": "Arcane Blast",
         "meta": [
@@ -1133,6 +1207,7 @@
       }
     },
     "400588": {
+      "icon": "ability_mage_missilebarrage",
       "en": {
         "name": "Missile Barrage",
         "meta": [],
@@ -1146,6 +1221,7 @@
       }
     },
     "400624": {
+      "icon": "spell_fire_firebolt",
       "en": {
         "name": "Heating Up",
         "meta": [],
@@ -1159,6 +1235,7 @@
       }
     },
     "400647": {
+      "icon": "ability_mage_wintersgrasp",
       "en": {
         "name": "Fingers of Frost",
         "meta": [],
@@ -1171,6 +1248,7 @@
       }
     },
     "401502": {
+      "icon": "ability_mage_frostfirebolt",
       "en": {
         "name": "Frostfire Bolt",
         "meta": [
@@ -1191,6 +1269,7 @@
       }
     },
     "1296017": {
+      "icon": "8188276",
       "en": {
         "name": "Comprehend Scroll",
         "meta": [
@@ -1209,6 +1288,7 @@
       }
     },
     "1312002": {
+      "icon": "spell_frost_frostblast",
       "en": {
         "name": "Ice Lance",
         "meta": [
@@ -1229,6 +1309,7 @@
       }
     },
     "1326053": {
+      "icon": "spell_ice_magicdamage",
       "en": {
         "name": "Frost Blast",
         "meta": [
@@ -1250,6 +1331,7 @@
       }
     },
     "1326079": {
+      "icon": "ability_mage_netherwindpresence",
       "en": {
         "name": "Arcane Wrath",
         "meta": [

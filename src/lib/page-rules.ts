@@ -34,6 +34,7 @@ export const MDX_COMPONENTS = [
   'ClassQuestList',
   'CampBuffs',
   'CritCalculator',
+  'HitCalculator',
   'FactList',
   'FactionFilter',
   'Faq',

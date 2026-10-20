@@ -1,0 +1,299 @@
+---
+/**
+ * Spell hit against creatures or players: base chance by level difference,
+ * plus Arcane Focus or Elemental Precision and hit from gear, capped at 100%
+ * (Forever; Classic kept a 1% miss).
+ * Logic: src/lib/hit.ts. Rendered at build time against a raid boss (+3)
+ * with no talents or gear, so the result reads without JavaScript.
+ */
+import SourceRefs from './SourceRefs.astro';
+import SpellRef from './SpellRef.astro';
+import StatusBadge from './StatusBadge.astro';
+import { getLocale } from '../../i18n/locale';
+import { formatHit, MAX_LEVEL_DIFF, MAX_TALENT_RANK, MIN_LEVEL_DIFF, spellHit } from '../../lib/hit';
+import { localSpellName } from '../../lib/names';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const initial = { levelDiff: 3, talentRank: 0, gearHit: 0 };
+const result = spellHit(initial);
+const diffs = Array.from({ length: MAX_LEVEL_DIFF - MIN_LEVEL_DIFF + 1 }, (_, i) => MIN_LEVEL_DIFF + i);
+const diffLabel = (d: number) => {
+  const sign = d > 0 ? `+${d}` : String(d);
+  if (d === 0) return es ? '0 (tu nivel)' : '0 (your level)';
+  if (d === 3) return es ? `${sign} (jefe de banda)` : `${sign} (raid boss)`;
+  return sign;
+};
+const text = {
+  level: es ? 'Nivel del objetivo respecto al tuyo' : 'Target level compared with yours',
+  target: es ? 'Objetivo' : 'Target',
+  creature: es ? 'Criatura' : 'Creature',
+  player: es ? 'Jugador' : 'Player',
+  school: es ? 'Escuela del hechizo' : 'Spell school',
+  arcane: es ? 'Arcano' : 'Arcane',
+  elemental: es ? 'Fuego o Escarcha' : 'Fire or Frost',
+  talent: es ? 'Rangos del talento' : 'Talent ranks',
+  gear: es ? 'Golpe con hechizos del equipo (%)' : 'Spell hit from gear (%)',
+  hit: es ? 'Probabilidad de golpear' : 'Chance to hit',
+  miss: es ? 'Fallo' : 'Miss',
+  toCap: es ? 'Te falta para el tope' : 'Still needed for the cap',
+  capped: es ? 'Tope alcanzado' : 'Cap reached',
+  wasted: es ? 'sobra' : 'wasted',
+};
+const strings = { toCap: text.toCap, capped: text.capped, wasted: text.wasted };
+---
+
+<hit-calculator data-locale={locale} data-strings={JSON.stringify(strings)} data-pagefind-ignore>
+  <form class="calc" onsubmit="return false">
+    <div class="calc__inputs">
+      <label class="field">
+        <span class="field__label">{text.level}</span>
+        <select name="levelDiff">
+          {diffs.map((d) => <option value={d} selected={d === initial.levelDiff}>{diffLabel(d)}</option>)}
+        </select>
+      </label>
+
+      <fieldset class="field">
+        <legend class="field__label">{text.target}</legend>
+        <div class="choices">
+          <label class="choice">
+            <input type="radio" name="target" value="creature" checked />
+            {text.creature}
+          </label>
+          <label class="choice">
+            <input type="radio" name="target" value="player" />
+            {text.player}
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="field">
+        <legend class="field__label">{text.school}</legend>
+        <div class="choices">
+          <label class="choice school-arcane">
+            <input type="radio" name="school" value="arcane" checked />
+            {text.arcane}
+          </label>
+          <label class="choice school-fire">
+            <input type="radio" name="school" value="elemental" />
+            {text.elemental}
+          </label>
+        </div>
+      </fieldset>
+
+      <label class="field range">
+        <span class="field__label">
+          {text.talent}:{' '}
+          <span data-talent="arcane"><SpellRef name="Arcane Focus" label={localSpellName('Arcane Focus', locale)} /></span>
+          <span data-talent="elemental" hidden>
+            <SpellRef name="Elemental Precision" label={localSpellName('Elemental Precision', locale)} />
+          </span>
+        </span>
+        <input type="range" name="talentRank" min="0" max={MAX_TALENT_RANK} step="1" value={initial.talentRank} />
+        <output name="talentOut">{initial.talentRank}/{MAX_TALENT_RANK}</output>
+      </label>
+
+      <label class="field">
+        <span class="field__label">{text.gear}</span>
+        <input type="number" name="gearHit" min="0" max="20" step="1" value={initial.gearHit} inputmode="numeric" />
+      </label>
+    </div>
+
+    <div class="calc__result" aria-live="polite">
+      <p class="result__main">
+        <span class="result__label">{text.hit}</span>
+        <strong data-hit>{formatHit(result.hit, locale)}</strong>
+      </p>
+      <span class="meter" aria-hidden="true"><span class="meter__fill" data-meter style={`width:${result.hit}%`}></span></span>
+      <p class="result__line">
+        {text.miss}: <strong data-miss>{formatHit(result.miss, locale)}</strong>
+      </p>
+      <p class="result__line" data-cap>
+        {text.toCap}: <strong>{formatHit(result.toCap, locale)}</strong>
+      </p>
+    </div>
+  </form>
+  <p class="calc__sources">
+    <StatusBadge status="reported" />
+    <SourceRefs ids={['allakhazam-hit-rate', 'method-forever-hit-chance', 'blizzard-forums-forever-hit', 'wowhead-forever-talent-calc']} />
+  </p>
+</hit-calculator>
+
+<script>
+  import { formatHit, MAX_TALENT_RANK, spellHit, type HitTarget } from '../../lib/hit';
+
+  class HitCalculator extends HTMLElement {
+    connectedCallback() {
+      const form = this.querySelector('form')!;
+      const locale = this.dataset.locale === 'en' ? 'en' : 'es';
+      const strings = JSON.parse(this.dataset.strings ?? '{}') as Record<string, string>;
+      const field = (name: string) => form.elements.namedItem(name) as HTMLInputElement;
+      const update = () => {
+        const school = (form.querySelector<HTMLInputElement>('input[name="school"]:checked')?.value ?? 'arcane') as 'arcane' | 'elemental';
+        for (const name of this.querySelectorAll<HTMLElement>('[data-talent]')) name.hidden = name.dataset.talent !== school;
+        const talentRank = Number(field('talentRank').value);
+        (form.elements.namedItem('talentOut') as HTMLOutputElement).value = `${talentRank}/${MAX_TALENT_RANK}`;
+        const target = (form.querySelector<HTMLInputElement>('input[name="target"]:checked')?.value ?? 'creature') as HitTarget;
+        const result = spellHit({ levelDiff: Number(field('levelDiff').value), target, talentRank, gearHit: Number(field('gearHit').value) });
+        this.querySelector('[data-hit]')!.textContent = formatHit(result.hit, locale);
+        this.querySelector('[data-miss]')!.textContent = formatHit(result.miss, locale);
+        this.querySelector<HTMLElement>('[data-meter]')!.style.width = `${result.hit}%`;
+        const cap = this.querySelector<HTMLElement>('[data-cap]')!;
+        cap.replaceChildren();
+        const value = document.createElement('strong');
+        if (result.toCap > 0) {
+          value.textContent = formatHit(result.toCap, locale);
+          cap.append(`${strings['toCap']}: `, value);
+        } else {
+          value.textContent = strings['capped'] ?? '';
+          cap.append(value);
+          if (result.wasted > 0) cap.append(` (${strings['wasted']}: ${formatHit(result.wasted, locale)})`);
+        }
+      };
+      form.addEventListener('input', update);
+      form.addEventListener('change', update);
+      update();
+    }
+  }
+
+  customElements.define('hit-calculator', HitCalculator);
+</script>
+
+<style>
+  hit-calculator {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+    padding: var(--space-5);
+  }
+  .calc {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: var(--space-5);
+    align-items: start;
+  }
+  .calc__inputs {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .field {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+  .field__label {
+    font-weight: 600;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  select,
+  input[type='number'] {
+    min-height: 44px;
+    max-width: 16rem;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    color: var(--text);
+    font: inherit;
+  }
+  .choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .choice {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+  .choice:has(input:checked) {
+    border-color: var(--school, var(--accent));
+    background: color-mix(in srgb, var(--school, var(--accent)) 10%, transparent);
+  }
+  .choice input {
+    accent-color: var(--school, var(--accent));
+  }
+  .range {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+  .range .field__label {
+    grid-column: 1 / -1;
+  }
+  .range input {
+    width: 100%;
+    min-height: 44px;
+    accent-color: var(--accent);
+  }
+  .range output {
+    min-width: 3ch;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+  }
+  [data-talent][hidden] {
+    display: none;
+  }
+  .calc__result {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+    font-variant-numeric: tabular-nums;
+  }
+  .result__main {
+    display: grid;
+  }
+  .result__label {
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .result__main strong {
+    font-size: var(--step-4);
+    line-height: 1.1;
+    color: var(--accent);
+  }
+  .meter {
+    display: block;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--surface-3);
+    overflow: hidden;
+  }
+  .meter__fill {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+  }
+  .result__line {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .result__line strong {
+    color: var(--text);
+  }
+  .calc__sources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-3);
+    align-items: center;
+    margin-top: var(--space-4);
+  }
+  @media (max-width: 700px) {
+    .calc {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

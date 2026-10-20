@@ -23,8 +23,8 @@ const { locale } = Astro.props;
         <p class="footer-tagline">{t(locale, 'site.tagline')}</p>
         <p class="footer-version">{current.label[locale]}</p>
         <a class="footer-support" href={SUPPORT_URL} target="_blank" rel="noopener noreferrer">
-          <Icon name="coffee" size={16} />
-          {t(locale, 'support.short')}
+          <Icon name="coffee" size={18} />
+          <span class="footer-support__text">{t(locale, 'support.short')}</span>
         </a>
       </div>
     </div>
@@ -65,7 +65,7 @@ const { locale } = Astro.props;
     align-items: flex-start;
   }
   .footer-name {
-    font-family: var(--font-display);
+    font-family: 'Cinzel Decorative', var(--font-display);
     font-weight: 700;
     font-size: var(--step-1);
   }
@@ -74,13 +74,59 @@ const { locale } = Astro.props;
     font-size: var(--step--1);
     color: var(--text-muted);
   }
+  /* The only support call on the site (the box under each guide is gone): plain text, a bit larger.
+     On hover a golden glint runs through the letters and an arcane line is drawn underneath. */
   .footer-support {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-1);
+    gap: var(--space-2);
     min-height: 44px;
-    font-size: var(--step--1);
+    font-size: var(--step-0);
     font-weight: 600;
+    text-decoration: none;
+  }
+  .footer-support__text {
+    position: relative;
+    padding-bottom: 2px;
+    /* Explicit colours: currentColor would turn transparent along with the text. */
+    background: linear-gradient(100deg, var(--link) 0 42%, #f2d48a 50%, var(--link) 58% 100%) 100% 0 / 260% 100% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  .footer-support__text::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--accent), #f2d48a);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 70%, transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s ease-out;
+  }
+  .footer-support:is(:hover, :focus-visible) .footer-support__text {
+    color: transparent;
+    animation: footer-glint 0.9s ease-out forwards;
+  }
+  .footer-support:is(:hover, :focus-visible) .footer-support__text::after {
+    transform: scaleX(1);
+  }
+  @keyframes footer-glint {
+    from {
+      background-position: 100% 0;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .footer-support:is(:hover, :focus-visible) .footer-support__text {
+      color: inherit;
+      animation: none;
+    }
   }
   .footer-links {
     display: flex;

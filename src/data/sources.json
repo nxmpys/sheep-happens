@@ -176,6 +176,56 @@
     }
   },
   {
+    "id": "allakhazam-hit-rate",
+    "title": "Hit Rate (WoW)",
+    "publisher": "Allakhazam",
+    "url": "https://wow.allakhazam.com/wiki/Hit_Rate_(WoW)",
+    "kind": "classic-reference",
+    "accessed": "2026-10-20",
+    "notes": {
+      "es": "Tabla de golpe con hechizos según la diferencia de nivel: 96 % a tu nivel, 95 y 94 % a +1 y +2, 83, 72 y 61 % a +3, +4 y +5 contra criaturas; 97 a 99 % contra objetivos de menor nivel.",
+      "en": "Spell hit table by level difference: 96% at your level, 95 and 94% at +1 and +2, 83, 72 and 61% at +3, +4 and +5 against creatures; 97 to 99% against lower-level targets."
+    }
+  },
+  {
+    "id": "method-forever-hit-chance",
+    "title": "How Does Hit Chance Work in WoW Forever?",
+    "publisher": "Method",
+    "url": "https://www.method.gg/wow-forever/how-does-hit-chance-work-in-wow-forever",
+    "kind": "community",
+    "published": "2026-10-06",
+    "accessed": "2026-10-20",
+    "notes": {
+      "es": "Forever: con hechizos hace falta un 4 % de golpe para no fallar nunca contra tu nivel y un 17 % contra un jefe de banda. El golpe une hechizos y ataques en una sola estadística.",
+      "en": "Forever: spells need 4% hit never to miss a target of your level and 17% against a raid boss. Hit is one stat for spells and attacks."
+    }
+  },
+  {
+    "id": "blizzard-forums-forever-hit",
+    "title": "Where to find Hit%? (WoW: Forever Beta Discussion)",
+    "publisher": "World of Warcraft Forums",
+    "url": "https://us.forums.blizzard.com/en/wow/t/where-to-find-hit/2373854",
+    "kind": "community",
+    "published": "2026-10-06",
+    "accessed": "2026-10-20",
+    "notes": {
+      "es": "Hilo de jugadores de la beta: el tope de golpe de los lanzadores es un 17 % contra enemigos 3 niveles por encima. No responde nadie de Blizzard.",
+      "en": "Beta players' thread: the caster hit cap is 17% against enemies 3 levels above you. No Blizzard reply."
+    }
+  },
+  {
+    "id": "almar-classic-mage-hit",
+    "title": "Mage General Info (Classic)",
+    "publisher": "Almar's Guides",
+    "url": "https://almarsguides.com/wow/gettingstarted/classes/classic/mage/generalinfo/",
+    "kind": "community",
+    "accessed": "2026-10-20",
+    "notes": {
+      "es": "Classic: un jefe de banda (3 niveles por encima) tiene un 17 % de fallo; hace falta un 16 % de golpe para el tope, porque siempre queda un 1 % de fallo.",
+      "en": "Classic: a raid boss (3 levels above) has a 17% miss chance; it takes 16% hit to reach the cap, because a 1% miss chance always remains."
+    }
+  },
+  {
     "id": "wiki-presence-of-mind",
     "title": "Presence of Mind",
     "publisher": "Warcraft Wiki",

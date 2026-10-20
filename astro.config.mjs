@@ -1,5 +1,5 @@
 // @ts-check
-import { readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, renameSync, rmSync } from 'node:fs';
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
@@ -53,6 +53,19 @@ export default defineConfig({
   build: { format: 'directory' },
   integrations: [
     mdx(),
+    {
+      // Cloudflare Pages serves the nearest 404.html: /en/404.html for English paths, /404.html for the rest.
+      // The directory format writes en/404/index.html, so move it to en/404.html.
+      name: 'english-404',
+      hooks: {
+        'astro:build:done': ({ dir }) => {
+          const folder = new URL('en/404/', dir);
+          if (!existsSync(new URL('index.html', folder))) return;
+          renameSync(new URL('index.html', folder), new URL('en/404.html', dir));
+          rmSync(folder, { recursive: true, force: true });
+        },
+      },
+    },
     sitemap({
       // Only real guide pages: no 404, no language-redirect root, no drafts.
       filter: (page) => pages.has(new URL(page).pathname),

@@ -16,10 +16,10 @@ import { fillRankValues, looksEnglish, parseWowheadTooltip, type SpellTextEntry 
 const OUT = new URL('../src/data/spell-text.json', import.meta.url);
 const LOCALES = { en: '', es: '?locale=6' } as const;
 
-async function fetchTooltip(id: number, query: string): Promise<{ name: string; tooltip: string }> {
+async function fetchTooltip(id: number, query: string): Promise<{ name: string; icon?: string; tooltip: string }> {
   const res = await fetch(`https://nether.wowhead.com/forever/tooltip/spell/${id}${query}`);
   if (!res.ok) throw new Error(`spell ${id}: HTTP ${res.status}`);
-  return (await res.json()) as { name: string; tooltip: string };
+  return (await res.json()) as { name: string; icon?: string; tooltip: string };
 }
 
 /**
@@ -60,6 +60,8 @@ for (const id of [...ids].sort((a, b) => a - b)) {
     }
     const untranslated = parsedEs.text === parsedEn.text || looksEnglish(parsedEs.text);
     spells[id] = {
+      // The icon file must also exist in public/icons (check-output fails the build otherwise).
+      ...(en.icon ? { icon: en.icon } : {}),
       en: { name: en.name, ...parsedEn },
       es: { name: es.name, ...parsedEs, ...(untranslated ? { lang: 'en' as const } : {}) },
     };

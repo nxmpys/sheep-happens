@@ -6,6 +6,24 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ## 2026-10-20
 
+### [Web] Equipo pasa a Guías: leveo, JcE y enlace al JcJ
+
+La página de Equipo se muda a Guías. Reúne las piezas clave para subir de nivel, nivel a nivel (misiones de clase, biblioteca e Islas Lanza Negra), y el equipo de JcE de nivel 60 por actividad: los cambios de estadísticas y lo pendiente de mazmorras, bandas, encantamientos y consumibles. El equipo de JcJ sigue en la guía de JcJ, enlazado desde Equipo.
+
+### [Web] Herramientas: calculadora de golpe con hechizos
+
+Nueva calculadora de golpe: elige criatura o jugador, su nivel, tus rangos de Enfoque Arcano o Enfoque elemental y el golpe del equipo, y te dice con qué probabilidad aciertas y cuánto te falta para el tope, que en Forever llega al 100 % según los jugadores de la beta. La calculadora de críticos ya coincide con el cliente de la beta en todos los rangos.
+
+- **Fuentes:** [Hit Rate (WoW)](https://wow.allakhazam.com/wiki/Hit_Rate_(WoW)) (Allakhazam), [How Does Hit Chance Work in WoW Forever?](https://www.method.gg/wow-forever/how-does-hit-chance-work-in-wow-forever) (Method), [Where to find Hit%? (WoW: Forever Beta Discussion)](https://us.forums.blizzard.com/en/wow/t/where-to-find-hit/2373854) (World of Warcraft Forums), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead)
+
+### [Web] Addons: MageProcs 1.4.0
+
+La página de Addons describe MageProcs 1.4.0: temporizador de tu oveja de Polimorfia, sonidos opcionales por proc, el x2 de Dedos de Escarcha en combate y el comando /mp buffs.
+
+### [Web] Nueva portada, iconos del juego y navegación más cómoda
+
+La portada estrena un círculo arcano con una oveja a la que puedes lanzar Polimorfia. Las habilidades de la guía de clase, los talentos decisivos de cada rama y las fichas que aparecen al pasar el ratón por un hechizo muestran su icono del juego. Junto al índice «En esta página» tienes ahora los enlaces a la página anterior y la siguiente.
+
 ### [Guía] Nueva sección Guías: misiones de clase, biblioteca y JcJ
 
 El menú pasa a cinco entradas: Aprende, Builds, Guías, Herramientas y Addons. Guías reúne Razas, Profesiones y Pergaminos con tres páginas nuevas: las siete misiones de clase del Mago con sus recompensas reales, los 38 libros de la biblioteca con un contador de los que llevas, y cómo funciona el JcJ en Forever con el equipo de Mago azul y épico y el de Islas Lanza Negra. La calculadora y las builds muestran ahora los árboles como en el juego, con los iconos originales y los tres árboles en fila. Datos de la beta: pueden cambiar en el lanzamiento.

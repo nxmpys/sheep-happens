@@ -49,6 +49,7 @@ const config = {
     name: string;
     english?: string;
     school: string;
+    icon?: string;
     facts: string[];
     game?: { meta: string[]; text: string; lang?: 'en' };
     summary?: string;
@@ -287,7 +288,20 @@ const config = {
         english.lang = 'en';
         title.append(' ', english);
       }
-      this.tip.append(title, this.el('p', 'spell-tip__facts', entry.facts.join(' · ')));
+      const facts = this.el('p', 'spell-tip__facts', entry.facts.join(' · '));
+      if (entry.icon) {
+        // The in-game icon beside the name, as in the game's own tooltip.
+        const head = this.el('div', 'spell-tip__head');
+        const icon = this.el('img', 'spell-tip__icon') as HTMLImageElement;
+        icon.src = entry.icon;
+        icon.alt = '';
+        icon.width = 40;
+        icon.height = 40;
+        const names = this.el('div', 'spell-tip__titles');
+        names.append(title, facts);
+        head.append(icon, names);
+        this.tip.append(head);
+      } else this.tip.append(title, facts);
       const footer = this.el('p', 'spell-tip__footer');
       if (entry.game) {
         if (entry.game.meta.length > 0) this.tip.append(this.el('p', 'spell-tip__meta', entry.game.meta.join(' · ')));
@@ -372,6 +386,24 @@ const config = {
   }
   .spell-tip > * + * {
     margin-top: var(--space-2);
+  }
+  .spell-tip__head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .spell-tip__titles {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+  .spell-tip__icon {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #000;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px var(--border-strong);
   }
   .spell-tip__name {
     font-family: var(--font-display);

@@ -12,9 +12,11 @@ import { formatSpainTime, formatUtcTime } from '../../i18n/ui';
 interface Props {
   /** Launch instant in UTC ("2026-11-04T23:00:00Z"). */
   at: string;
+  /** Only «Launch in» and the timer (the date stays as a fallback without JS). */
+  compact?: boolean;
 }
 
-const { at } = Astro.props;
+const { at, compact = false } = Astro.props;
 const locale = getLocale(Astro);
 const es = locale === 'es';
 const date = new Date(at);
@@ -30,9 +32,9 @@ const done = es ? 'Ya disponible' : 'Out now';
 
 {
   launched ? (
-    <p class="countdown__done">{done}</p>
+    <p class:list={['countdown__done', { 'countdown__done--compact': compact }]}>{done}</p>
   ) : (
-    <launch-countdown class="countdown" data-at={at} data-locale={es ? 'es-ES' : 'en-GB'} data-pagefind-ignore>
+    <launch-countdown class:list={['countdown', { 'countdown--compact': compact }]} data-at={at} data-locale={es ? 'es-ES' : 'en-GB'} data-pagefind-ignore>
       <div class="countdown__live" data-live hidden>
         <p class="countdown__label">{es ? 'Lanzamiento en' : 'Launch in'}</p>
         <p class="countdown__timer" role="timer">
@@ -48,9 +50,11 @@ const done = es ? 'Ya disponible' : 'Out now';
         <time datetime={at}>{formatUtcTime(locale, date)}</time>
         <span class="countdown__spain">{formatSpainTime(locale, date)}</span>
       </p>
-      <p class="countdown__when" data-local hidden>
-        <span>{es ? 'En tu hora:' : 'Your time:'}</span> <time datetime={at} data-local-time />
-      </p>
+      {!compact && (
+        <p class="countdown__when" data-local hidden>
+          <span>{es ? 'En tu hora:' : 'Your time:'}</span> <time datetime={at} data-local-time />
+        </p>
+      )}
       <p class="countdown__done" data-done hidden>
         {done}
       </p>
@@ -69,9 +73,11 @@ const done = es ? 'Ya disponible' : 'Out now';
       const live = q('[data-live]');
       const done = q('[data-done]');
       const staticWhen = q('[data-static]');
-      const localWhen = q('[data-local]');
+      const localWhen = this.querySelector<HTMLElement>('[data-local]');
+      // Compact: the timer alone once JS runs.
+      if (!localWhen) staticWhen.hidden = true;
       // The launch date in the reader's own time zone, with its name ("15:00 PST").
-      try {
+      if (localWhen) try {
         q('[data-local-time]').textContent = new Intl.DateTimeFormat(this.dataset.locale, {
           weekday: 'long',
           day: 'numeric',
@@ -92,7 +98,7 @@ const done = es ? 'Ya disponible' : 'Out now';
         const left = at - Date.now();
         if (left <= 0) {
           live.hidden = true;
-          localWhen.hidden = true;
+          if (localWhen) localWhen.hidden = true;
           staticWhen.hidden = true;
           done.hidden = false;
           return;
@@ -167,5 +173,39 @@ const done = es ? 'Ya disponible' : 'Out now';
     margin: 0;
     font-weight: 700;
     color: var(--accent);
+  }
+
+  /* Compact (home hero): a small glowing panel, centred. */
+  .countdown--compact {
+    margin: 0;
+    justify-items: center;
+    text-align: center;
+  }
+  .countdown--compact .countdown__live {
+    gap: var(--space-2);
+    min-width: min(100%, 22rem);
+    padding: var(--space-3) var(--space-5) var(--space-4);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--surface-1) 80%, transparent);
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 28px color-mix(in srgb, var(--accent) 18%, transparent), var(--shadow);
+  }
+  .countdown--compact .countdown__label {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: light-dark(var(--accent), #c9b0ff);
+  }
+  .countdown--compact .countdown__timer {
+    gap: var(--space-5);
+  }
+  .countdown--compact .countdown__unit strong {
+    font-size: var(--step-3);
+  }
+  .countdown--compact .countdown__when,
+  .countdown__done--compact {
+    font-size: var(--step--1);
+    color: var(--text-muted);
   }
 </style>

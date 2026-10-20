@@ -95,7 +95,8 @@ export const ROUTES: Record<PageId, RouteDef> = {
   'aoe-farming': { id: 'aoe-farming', slug: { es: 'farmeo-aoe', en: 'aoe-farming' }, parent: 'builds' },
   scrolls: { id: 'scrolls', slug: { es: 'pergaminos', en: 'scrolls' }, parent: 'guides' },
   combat: { id: 'combat', slug: { es: 'combate', en: 'combat' }, parent: 'learn' },
-  gear: { id: 'gear', slug: { es: 'equipo', en: 'gear' }, parent: 'learn' },
+  // Gear moved from Learn to Guides (20 Oct 2026) keeping its slug: leveling and PvE gear; PvP gear lives in the PvP guide.
+  gear: { id: 'gear', slug: { es: 'equipo', en: 'gear' }, parent: 'guides' },
   tools: { id: 'tools', slug: { es: 'herramientas', en: 'tools' }, parent: 'home' },
   'talent-calc': { id: 'talent-calc', slug: { es: 'herramientas/calculadora-talentos', en: 'tools/talent-calculator' }, parent: 'tools' },
   addons: { id: 'addons', slug: { es: 'addons', en: 'addons' }, parent: 'home' },
@@ -118,12 +119,12 @@ export interface NavGroup {
 /**
  * Five entries: the basics of the class, builds to copy (with the pages that
  * explain them), guides for everything around the character (race,
- * professions, Legacy, class quests, library, scrolls, PvP), the tools and addons.
+ * professions, Legacy, gear, class quests, library, scrolls, PvP), the tools and addons.
  */
 export const PRIMARY_NAV: readonly NavGroup[] = [
-  { key: 'learn', page: 'learn', items: ['guide', 'talents', 'talents-arcane', 'talents-fire', 'talents-frost', 'combat', 'gear', 'changes'] },
+  { key: 'learn', page: 'learn', items: ['guide', 'talents', 'talents-arcane', 'talents-fire', 'talents-frost', 'combat', 'changes'] },
   { key: 'builds', page: 'builds', items: ['leveling', 'level-view', 'aoe-farming'] },
-  { key: 'guides', page: 'guides', items: ['races', 'professions', 'legacy', 'class-quests', 'library', 'scrolls', 'pvp'] },
+  { key: 'guides', page: 'guides', items: ['races', 'professions', 'legacy', 'gear', 'class-quests', 'library', 'scrolls', 'pvp'] },
   { key: 'tools', page: 'tools', items: ['talent-calc'] },
   { key: 'addons', page: 'addons' },
 ];

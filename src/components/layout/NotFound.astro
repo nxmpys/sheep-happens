@@ -1,0 +1,48 @@
+---
+/**
+ * «Page not found», in one language only: /404.html is Spanish and
+ * /en/404.html English (Cloudflare Pages serves the nearest one; see the
+ * english-404 step in astro.config.mjs).
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Logo from '../ui/Logo.astro';
+import { href } from '../../i18n/locale';
+import type { Locale } from '../../i18n/routes';
+import { t } from '../../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<BaseLayout locale={locale} pageId={undefined} title={t(locale, 'notFound.title')} description={t(locale, 'notFound.body')} noindex>
+  <div class="container not-found">
+    <Logo size={96} />
+    <h1>{t(locale, 'notFound.title')}</h1>
+    <p>{t(locale, 'notFound.body')}</p>
+    <p class="links">
+      <a class="button button--primary" href={href('home', locale)}>{t(locale, 'notFound.home')}</a>
+      <button type="button" class="button" data-search-open>{t(locale, 'search.open')}</button>
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  .not-found {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-4);
+    padding-block: var(--space-8);
+    max-width: 40rem;
+  }
+  h1 {
+    font-size: var(--step-4);
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+</style>
