@@ -89,10 +89,10 @@ const runePositions = runes.map((rune, i) => {
         <button type="button" class="polymorph__button" aria-label={t(locale, 'hero.cast')} data-cast>
           <svg class="polymorph__form" data-form="sheep" data-shown viewBox="0 0 230 170" role="img" aria-label={formLabels.sheep}>
             <ellipse cx="115" cy="160" rx="70" ry="7" fill="#000" opacity=".4" />
-            <g fill="#2b2350"><rect x="80" y="118" width="10" height="34" rx="4" /><rect x="104" y="122" width="10" height="32" rx="4" /><rect x="132" y="122" width="10" height="32" rx="4" /><rect x="154" y="118" width="10" height="34" rx="4" /></g>
+            <g class="sheep-skin" fill="#2b2350"><rect x="80" y="118" width="10" height="34" rx="4" /><rect x="104" y="122" width="10" height="32" rx="4" /><rect x="132" y="122" width="10" height="32" rx="4" /><rect x="154" y="118" width="10" height="34" rx="4" /></g>
             <g fill="#f6f3ff"><circle cx="78" cy="88" r="24" /><circle cx="104" cy="72" r="27" /><circle cx="134" cy="74" r="26" /><circle cx="156" cy="92" r="22" /><circle cx="98" cy="104" r="22" /><circle cx="132" cy="106" r="22" /></g>
-            <ellipse cx="178" cy="92" rx="19" ry="16" fill="#2b2350" />
-            <ellipse cx="166" cy="80" rx="8" ry="4" fill="#2b2350" transform="rotate(-30 166 80)" />
+            <ellipse class="sheep-skin" cx="178" cy="92" rx="19" ry="16" fill="#2b2350" />
+            <ellipse class="sheep-skin" cx="166" cy="80" rx="8" ry="4" fill="#2b2350" transform="rotate(-30 166 80)" />
             <circle cx="183" cy="88" r="3.2" fill="#f6f3ff" /><circle cx="184" cy="88" r="1.6" fill="#120e2a" />
           </svg>
           <svg class="polymorph__form" data-form="pig" viewBox="0 0 230 170" role="img" aria-label={formLabels.pig}>
@@ -409,6 +409,10 @@ const runePositions = runes.map((rune, i) => {
   /* Only the current form is shown (and exposed to assistive technology). */
   .polymorph__form:not([data-shown]) {
     display: none;
+  }
+  /* The sheep's legs and head: lighter on the dark theme, where #2b2350 almost vanishes. */
+  .sheep-skin {
+    fill: light-dark(#2b2350, #6a5aa8);
   }
   .polymorph__form {
     width: 100%;
