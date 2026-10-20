@@ -1,0 +1,292 @@
+---
+/**
+ * One Legacy combination from legacy.json: the trees it uses drawn like the
+ * game window (perks grouped by the points they need, spent ranks in gold or
+ * green, unused perks in grey), the order to buy them as points come in, and
+ * why each piece is there.
+ */
+import { getLocale } from '../../i18n/locale';
+import { legacy } from '../../lib/data';
+import { iconPath } from '../../lib/icons';
+import { legacyPoints, spentInTree } from '../../lib/legacy';
+import { LEGACY_TREE_LABELS } from '../../lib/legacy-labels';
+import { LEGACY_TREES } from '../../lib/schemas';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const build = legacy.builds.find((b) => b.id === id);
+if (!build) throw new Error(`Unknown Legacy build "${id}"`);
+const points = legacyPoints(build);
+const byId = new Map(legacy.perks.map((perk) => [perk.id, perk]));
+const trees = LEGACY_TREES.filter((tree) => spentInTree(points, legacy.perks, tree) > 0);
+const tiers = [0, 5, 10] as const;
+const tierLabel = (tier: number) => (tier === 0 ? (es ? 'Sin requisito' : 'No requirement') : es ? `${tier} puntos` : `${tier} points`);
+let running = 0;
+const steps = build.steps.map(([perkId, ranks]) => {
+  const from = running + 1;
+  running += ranks;
+  return { perk: byId.get(perkId)!, ranks, from, to: running };
+});
+---
+
+<article class="lb" id={`legado-${build.id}`}>
+  <header class="lb__head">
+    <h3 class="lb__name">{build.name[locale]}</h3>
+    <p class="lb__situation">{build.situation[locale]}</p>
+    <p class="lb__total">{running} / {legacy.cap}</p>
+  </header>
+
+  <div class="lb__trees">
+    {
+      trees.map((tree) => (
+        <section class="lt" aria-label={LEGACY_TREE_LABELS[locale][tree]}>
+          <p class="lt__title">
+            {LEGACY_TREE_LABELS[locale][tree]} <span>{spentInTree(points, legacy.perks, tree)}</span>
+          </p>
+          {tiers.map((tier) => (
+            <div class="lt__band">
+              <span class="lt__tier">{tierLabel(tier)}</span>
+              <ul class="lt__row" role="list">
+                {legacy.perks
+                  .filter((perk) => perk.tree === tree && perk.tier === tier)
+                  .map((perk) => {
+                    const rank = points[perk.id] ?? 0;
+                    const state = rank === 0 ? 'off' : rank === perk.ranks ? 'max' : 'some';
+                    return (
+                      <li class="lt__perk" data-state={state} title={`${perk.name[locale]} ${rank}/${perk.ranks}`}>
+                        <img src={iconPath(perk.icon)} alt="" width="40" height="40" loading="lazy" decoding="async" />
+                        <span class="lt__rank">
+                          {rank}/{perk.ranks}
+                        </span>
+                        <span class="visually-hidden">
+                          {perk.name[locale]}, {rank}/{perk.ranks}
+                        </span>
+                      </li>
+                    );
+                  })}
+              </ul>
+            </div>
+          ))}
+        </section>
+      ))
+    }
+  </div>
+
+  <div class="lb__text">
+    <p class="lb__label">{es ? 'Orden de compra, según consigas puntos' : 'Buying order, as you earn points'}</p>
+    <ol class="lb__steps">
+      {
+        steps.map((step) => (
+          <li>
+            <span class="lb__points">{step.from === step.to ? `${step.from}` : `${step.from}–${step.to}`}</span>
+            <img src={iconPath(step.perk.icon)} alt="" width="22" height="22" loading="lazy" />
+            <span>
+              {step.perk.name[locale]} <strong>+{step.ranks}</strong>
+            </span>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="lb__label">{es ? 'Por qué' : 'Why'}</p>
+    <ul class="lb__why">
+      {build.why.map((line) => <li>{line[locale]}</li>)}
+    </ul>
+  </div>
+</article>
+
+<style>
+  .lb {
+    display: grid;
+    gap: var(--space-4);
+    margin: var(--space-4) 0;
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--accent);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+    scroll-margin-top: calc(var(--header-h) + var(--space-4));
+  }
+  .lb__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-1) var(--space-3);
+  }
+  .lb__name {
+    margin: 0 !important;
+    font-size: var(--step-2);
+  }
+  .lb__situation {
+    grid-column: 1;
+    margin: 0;
+    color: var(--text-muted);
+  }
+  .lb__total {
+    grid-row: 1 / 3;
+    grid-column: 2;
+    align-self: center;
+    margin: 0;
+    padding: 0.2em 0.7em;
+    border-radius: 999px;
+    background: var(--surface-2);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .lb__trees {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+  /* The game's window: a dark panel in both themes. */
+  .lt {
+    flex: 1 1 15rem;
+    max-width: 22rem;
+    padding: var(--space-3);
+    border: 1px solid #3a3550;
+    border-radius: var(--radius);
+    background:
+      radial-gradient(120% 70% at 50% 0%, rgb(176 124 255 / 0.22), transparent 70%),
+      #0f0d18;
+    color: #ecebf4;
+  }
+  .lt__title {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: #cfa6ff;
+  }
+  .lt__title span {
+    padding: 0 0.6em;
+    border-radius: 999px;
+    background: rgb(0 0 0 / 0.45);
+    color: #ecebf4;
+    font-family: var(--font-body);
+    font-variant-numeric: tabular-nums;
+  }
+  .lt__band {
+    display: grid;
+    gap: var(--space-1);
+    padding: var(--space-2) 0;
+    border-top: 1px solid rgb(255 255 255 / 0.08);
+  }
+  .lt__tier {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #948eae;
+  }
+  .lt__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin: 0;
+    padding: 0 0 0.4rem;
+    list-style: none;
+  }
+  .lt__perk {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+  }
+  .lt__perk img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px #000, 0 0 0 2px #5b5670;
+  }
+  .lt__perk[data-state='off'] img {
+    filter: grayscale(1) brightness(0.5);
+  }
+  .lt__perk[data-state='some'] img {
+    box-shadow: 0 0 0 1px #000, 0 0 0 2px #3fdd57;
+  }
+  .lt__perk[data-state='max'] img {
+    box-shadow: 0 0 0 1px #000, 0 0 0 2px #f2c94c, 0 0 10px rgb(242 201 76 / 0.4);
+  }
+  .lt__rank {
+    position: absolute;
+    right: -9px;
+    bottom: -8px;
+    min-width: 1.8rem;
+    padding: 0 3px;
+    border: 1px solid #5b5670;
+    border-radius: 5px;
+    background: #08070c;
+    color: #8b879b;
+    font-size: 0.66rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+  }
+  .lt__perk[data-state='some'] .lt__rank {
+    color: #3fdd57;
+  }
+  .lt__perk[data-state='max'] .lt__rank {
+    color: #f2c94c;
+  }
+  .lb__text {
+    display: grid;
+    gap: var(--space-2);
+  }
+  /* Wide screens: the tree on the left, the buying order beside it. */
+  @media (min-width: 44rem) {
+    .lb {
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: start;
+    }
+    .lb__head {
+      grid-column: 1 / -1;
+    }
+    .lb__trees {
+      flex-direction: column;
+    }
+    .lt {
+      flex: none;
+      width: 16.5rem;
+    }
+  }
+  .lb__label {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-subtle);
+  }
+  .lb__steps {
+    display: grid;
+    gap: var(--space-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .lb__steps li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+  }
+  .lb__steps img {
+    border-radius: 4px;
+  }
+  .lb__points {
+    min-width: 3.2rem;
+    font-size: var(--step--1);
+    font-weight: 700;
+    color: var(--text-subtle);
+    font-variant-numeric: tabular-nums;
+  }
+  .lb__why {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+</style>

@@ -814,5 +814,26 @@
       "wowhead-library-books",
       "foreverdb-mage-quests"
     ]
+  },
+  {
+    "id": "2026-10-20-legacy",
+    "date": "2026-10-20",
+    "type": "guide",
+    "title": {
+      "es": "Nueva guía: el Legado y las mejores ventajas para el Mago",
+      "en": "New guide: Legacy and the best perks for a Mage"
+    },
+    "body": {
+      "es": "Nueva página de Legado, dentro de Guías: qué es, cómo se ganan los puntos (y cuáles da un Mago), las 21 ventajas de los tres árboles con sus requisitos reales y nuestra valoración, y cuatro combinaciones de 16 puntos con su orden de compra: subir de nivel, nivel 60 en grupo, JcJ y oro. Datos de la beta: pueden cambiar en el lanzamiento.",
+      "en": "New Legacy page, under Guides: what it is, how points are earned (and which ones a Mage gives), the 21 perks of the three trees with their real requirements and our verdict, and four 16-point setups with their buying order: leveling, level 60 in groups, PvP and gold. Beta data: it may change at launch."
+    },
+    "pages": [
+      "legacy",
+      "guides"
+    ],
+    "sources": [
+      "wowhead-legacy-calculator",
+      "wowhead-legacy-guide"
+    ]
   }
 ]

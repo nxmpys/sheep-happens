@@ -26,6 +26,8 @@ import HubCards from './guide/HubCards.astro';
 import ItemCards from './guide/ItemCards.astro';
 import LevelView from './guide/LevelView.astro';
 import LevelingSpells from './guide/LevelingSpells.astro';
+import LegacyBuildCard from './guide/LegacyBuildCard.astro';
+import LegacyPerks from './guide/LegacyPerks.astro';
 import LevelingStatus from './guide/LevelingStatus.astro';
 import LibraryBooks from './guide/LibraryBooks.astro';
 import MilestoneMap from './guide/MilestoneMap.astro';
@@ -80,6 +82,8 @@ export const mdxComponents = {
   ItemCards,
   LevelView,
   LevelingSpells,
+  LegacyBuildCard,
+  LegacyPerks,
   LevelingStatus,
   LibraryBooks,
   MilestoneMap,

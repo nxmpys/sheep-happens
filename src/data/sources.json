@@ -680,5 +680,30 @@
       "es": "Precios en Honor y marcas de cada pieza azul, cada lacre y cada arma de rango 14, con los de septiembre y su estimación tras la subida de octubre. Los precios posteriores son estimaciones suyas.",
       "en": "Honor and mark prices for every rare piece, seal and rank 14 weapon, with the September prices and their estimate after the October increase. The later prices are their estimates."
     }
+  },
+  {
+    "id": "wowhead-legacy-guide",
+    "title": "Legacy System Overview for Forever - Earning, Rewards, and Trees",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/guide/legacy-system-overview-rewards",
+    "kind": "community",
+    "published": "2026-09-19",
+    "accessed": "2026-10-20",
+    "notes": {
+      "es": "Los desafíos que dan puntos de Legado (clases, profesiones, JcJ y aventura), la recompensa cosmética por puntos ganados y el cambio de puntos en el instructor. Sus cifras de las ventajas son de septiembre y están desfasadas.",
+      "en": "The challenges that award Legacy points (classes, professions, PvP and adventure), the cosmetic track and respeccing at the trainer. Its perk numbers are from September and outdated."
+    }
+  },
+  {
+    "id": "wowhead-legacy-calculator",
+    "title": "Legacy Calculator - Forever",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/legacy-calculator",
+    "kind": "tool",
+    "accessed": "2026-10-20",
+    "notes": {
+      "es": "Estructura del árbol de Legado de la beta: rangos, puntos necesarios en cada árbol (5 o 10), ventajas que piden un rango en otra y el máximo de 16 puntos por personaje.",
+      "en": "The beta Legacy tree structure: ranks, points needed in each tree (5 or 10), perks that need a rank in another one and the 16-point cap per character."
+    }
   }
 ]

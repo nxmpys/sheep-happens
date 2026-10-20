@@ -1,0 +1,164 @@
+---
+/**
+ * The perks of one Legacy tree (legacy.json) as a list: icon, name, what it
+ * takes to unlock it, its effect and how much it helps a Mage.
+ */
+import { getLocale } from '../../i18n/locale';
+import { legacy } from '../../lib/data';
+import { iconPath } from '../../lib/icons';
+import { LEGACY_TREE_LABELS, MAGE_VALUE_LABELS } from '../../lib/legacy-labels';
+import type { LegacyTree } from '../../lib/schemas';
+
+interface Props {
+  tree: LegacyTree;
+}
+
+const { tree } = Astro.props;
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const byId = new Map(legacy.perks.map((perk) => [perk.id, perk]));
+const perks = legacy.perks.filter((perk) => perk.tree === tree).sort((a, b) => a.tier - b.tier);
+const treeName = LEGACY_TREE_LABELS[locale][tree];
+const unlock = (tier: number, requires?: string) => {
+  const parts: string[] = [];
+  if (tier === 0) parts.push(es ? 'Disponible desde el primer punto' : 'Available from the first point');
+  else parts.push(es ? `${tier} puntos en ${treeName}` : `${tier} points in ${treeName}`);
+  if (requires) parts.push(es ? `1 rango en ${byId.get(requires)!.name.es}` : `1 rank in ${byId.get(requires)!.name.en}`);
+  return parts.join(' + ');
+};
+---
+
+<ul class="perks" role="list">
+  {
+    perks.map((perk) => (
+      <li class={`perk perk--${perk.mage}`}>
+        <span class="perk__icon">
+          <img src={iconPath(perk.icon)} alt="" width="44" height="44" loading="lazy" decoding="async" />
+          <span class="perk__ranks">{perk.ranks}</span>
+        </span>
+        <div class="perk__body">
+          <p class="perk__head">
+            <strong class="perk__name">{perk.name[locale]}</strong>
+            {es && !perk.name.es.includes('(') && <span class="perk__en" lang="en">{perk.name.en}</span>}
+            <span class={`perk__value perk__value--${perk.mage}`}>{MAGE_VALUE_LABELS[locale][perk.mage]}</span>
+          </p>
+          <p class="perk__unlock">
+            {es ? `${perk.ranks} ${perk.ranks === 1 ? 'rango' : 'rangos'} · ` : `${perk.ranks} ${perk.ranks === 1 ? 'rank' : 'ranks'} · `}
+            {unlock(perk.tier, perk.requires)}
+          </p>
+          <p class="perk__effect">{perk.effect[locale]}</p>
+          <p class="perk__note">
+            <strong>{es ? 'Para el Mago: ' : 'For a Mage: '}</strong>
+            {perk.note[locale]}
+          </p>
+        </div>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .perks {
+    display: grid;
+    gap: var(--space-2);
+    margin: var(--space-4) 0;
+    padding: 0;
+    list-style: none;
+  }
+  .perk {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-3);
+    margin: 0;
+    padding: var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .perk--high {
+    border-left: 3px solid var(--accent);
+  }
+  .perk__icon {
+    position: relative;
+    width: 44px;
+    height: 44px;
+  }
+  .perk__icon img {
+    display: block;
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px #000, 0 0 0 2px #5b5670;
+  }
+  .perk--high .perk__icon img {
+    box-shadow: 0 0 0 1px #000, 0 0 0 2px #f2c94c;
+  }
+  .perk__ranks {
+    position: absolute;
+    right: -8px;
+    bottom: -7px;
+    min-width: 1.4rem;
+    padding: 0 3px;
+    border: 1px solid #5b5670;
+    border-radius: 5px;
+    background: #08070c;
+    color: #ecebf4;
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+  }
+  .perk__body {
+    min-width: 0;
+  }
+  .perk__body p {
+    margin: 0;
+  }
+  .perk__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.2rem var(--space-2);
+  }
+  .perk__name {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+  }
+  .perk__en {
+    color: var(--text-subtle);
+    font-size: var(--step--1);
+  }
+  .perk__value {
+    margin-left: auto;
+    padding: 0.05em 0.6em;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .perk__value--high {
+    background: var(--accent);
+    color: var(--accent-contrast);
+  }
+  .perk__value--medium {
+    background: var(--surface-3);
+    color: var(--text);
+  }
+  .perk__value--low {
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+  .perk__unlock {
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--text-subtle);
+  }
+  .perk__effect {
+    margin-top: var(--space-1) !important;
+  }
+  .perk__note {
+    margin-top: var(--space-1) !important;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+</style>

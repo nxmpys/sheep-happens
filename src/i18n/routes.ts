@@ -17,6 +17,7 @@ export const PAGE_IDS = [
   'guides',
   'races',
   'professions',
+  'legacy',
   'class-quests',
   'library',
   'pvp',
@@ -64,6 +65,7 @@ export const ROUTES: Record<PageId, RouteDef> = {
   // Races and professions kept their first slugs when they moved under Guides, so old links still work.
   races: { id: 'races', slug: { es: 'razas', en: 'races' }, parent: 'guides' },
   professions: { id: 'professions', slug: { es: 'profesiones', en: 'professions' }, parent: 'guides' },
+  legacy: { id: 'legacy', slug: { es: 'legado', en: 'legacy' }, parent: 'guides' },
   'class-quests': { id: 'class-quests', slug: { es: 'misiones-de-clase', en: 'class-quests' }, parent: 'guides' },
   library: { id: 'library', slug: { es: 'biblioteca', en: 'library' }, parent: 'guides' },
   pvp: { id: 'pvp', slug: { es: 'jcj', en: 'pvp' }, parent: 'guides' },
@@ -116,12 +118,12 @@ export interface NavGroup {
 /**
  * Five entries: the basics of the class, builds to copy (with the pages that
  * explain them), guides for everything around the character (race,
- * professions, class quests, library, scrolls, PvP), the tools and addons.
+ * professions, Legacy, class quests, library, scrolls, PvP), the tools and addons.
  */
 export const PRIMARY_NAV: readonly NavGroup[] = [
   { key: 'learn', page: 'learn', items: ['guide', 'talents', 'talents-arcane', 'talents-fire', 'talents-frost', 'combat', 'gear', 'changes'] },
   { key: 'builds', page: 'builds', items: ['leveling', 'level-view', 'aoe-farming'] },
-  { key: 'guides', page: 'guides', items: ['races', 'professions', 'class-quests', 'library', 'scrolls', 'pvp'] },
+  { key: 'guides', page: 'guides', items: ['races', 'professions', 'legacy', 'class-quests', 'library', 'scrolls', 'pvp'] },
   { key: 'tools', page: 'tools', items: ['talent-calc'] },
   { key: 'addons', page: 'addons' },
 ];

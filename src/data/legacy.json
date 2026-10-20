@@ -1,0 +1,658 @@
+{
+  "cap": 16,
+  "earnable": 65,
+  "perks": [
+    {
+      "id": "working-overtime",
+      "spell": 1225451,
+      "tree": "professions",
+      "tier": 0,
+      "ranks": 5,
+      "name": {
+        "es": "Horas extra",
+        "en": "Working Overtime"
+      },
+      "icon": "inv_misc_pocketwatch_03",
+      "effect": {
+        "es": "+2 % por rango (10 % con 5/5) de probabilidad de subir habilidad en profesiones primarias, secundarias y de clase.",
+        "en": "+2% per rank (10% at 5/5) chance to gain skill in primary, secondary and class tradeskills."
+      },
+      "mage": "medium",
+      "note": {
+        "es": "Acelera tus dos profesiones y, al ser una habilidad de clase, probablemente también la Comprensión.",
+        "en": "Speeds up both professions and, being a class tradeskill, probably Comprehension too."
+      }
+    },
+    {
+      "id": "bountiful-harvest",
+      "spell": 1225435,
+      "tree": "professions",
+      "tier": 0,
+      "ranks": 5,
+      "name": {
+        "es": "Cosecha generosa",
+        "en": "Bountiful Harvest"
+      },
+      "icon": "inv_misc_bag_18",
+      "effect": {
+        "es": "+20 % por rango (el doble con 5/5) de materiales escasos de minería, herboristería y desuello.",
+        "en": "+20% per rank (double at 5/5) Scarce materials from Mining, Herbalism and Skinning."
+      },
+      "mage": "medium",
+      "note": {
+        "es": "Solo si recolectas. Es la base de cualquier combinación para ganar oro.",
+        "en": "Only if you gather. The base of any gold-making setup."
+      }
+    },
+    {
+      "id": "master-chef",
+      "spell": 1225457,
+      "tree": "professions",
+      "tier": 5,
+      "ranks": 5,
+      "name": {
+        "es": "Maestro cocinero",
+        "en": "Master Chef"
+      },
+      "icon": "achievement_profession_chefhat",
+      "effect": {
+        "es": "+6 % por rango (30 % con 5/5) de probabilidad de un resultado extra al cocinar.",
+        "en": "+6% per rank (30% at 5/5) chance of an extra result when cooking."
+      },
+      "mage": "low",
+      "note": {
+        "es": "El Mago conjura su comida y su agua: apenas cocina para sí.",
+        "en": "Mages conjure their food and water: they barely cook for themselves."
+      }
+    },
+    {
+      "id": "bartering",
+      "spell": 1225459,
+      "tree": "professions",
+      "tier": 5,
+      "ranks": 2,
+      "name": {
+        "es": "Regateando",
+        "en": "Bartering"
+      },
+      "icon": "inv_misc_coin_06",
+      "effect": {
+        "es": "-5 % por rango (-10 % con 2/2) en el precio en oro de todos los vendedores.",
+        "en": "-5% per rank (-10% at 2/2) on the gold price of every vendor."
+      },
+      "mage": "medium",
+      "note": {
+        "es": "Abarata recetas y materiales de vendedor. Abre Estudio dedicado.",
+        "en": "Makes vendor recipes and materials cheaper. Unlocks Dedicated Study."
+      }
+    },
+    {
+      "id": "performance-bonus",
+      "spell": 1225456,
+      "tree": "professions",
+      "tier": 5,
+      "ranks": 3,
+      "name": {
+        "es": "Bonus de rendimiento",
+        "en": "Performance Bonus"
+      },
+      "icon": "racial_dwarf_findtreasure",
+      "effect": {
+        "es": "+5 % por rango (15 % con 3/3) de probabilidad de doblar el favor de mercader al entregar cajones a la Autoridad Comercial de Azeroth.",
+        "en": "+5% per rank (15% at 3/3) chance to double Merchant's Favor when turning in crates to the Azeroth Commerce Authority."
+      },
+      "requires": "bountiful-harvest",
+      "mage": "low",
+      "note": {
+        "es": "Solo si haces los encargos de la Autoridad Comercial.",
+        "en": "Only if you do the Commerce Authority orders."
+      }
+    },
+    {
+      "id": "luremaster",
+      "spell": 1225455,
+      "tree": "professions",
+      "tier": 5,
+      "ranks": 2,
+      "name": {
+        "es": "Maestro de los cebos",
+        "en": "Luremaster"
+      },
+      "icon": "inv_misc_basket_04",
+      "effect": {
+        "es": "+25 % por rango (50 % con 2/2) de probabilidad de un pez extra al pescar con cebo.",
+        "en": "+25% per rank (50% at 2/2) chance of an extra fish when fishing with a lure."
+      },
+      "mage": "low",
+      "note": {
+        "es": "Para pescadores. No aporta nada al Mago en combate.",
+        "en": "For anglers. Nothing for the Mage in combat."
+      }
+    },
+    {
+      "id": "dedicated-study",
+      "spell": 1225469,
+      "tree": "professions",
+      "tier": 10,
+      "ranks": 1,
+      "name": {
+        "es": "Estudio dedicado",
+        "en": "Dedicated Study"
+      },
+      "icon": "inv_misc_book_08",
+      "effect": {
+        "es": "Una vez al día sube 1 punto tu profesión más baja; con todas a 300, da esencias elementales.",
+        "en": "Once a day raises your lowest tradeskill by 1; with all at 300, it gives Elemental Essences."
+      },
+      "requires": "bartering",
+      "mage": "low",
+      "note": {
+        "es": "Lento, pero gratis. Tiene sentido en un personaje dedicado a profesiones.",
+        "en": "Slow but free. Makes sense on a character dedicated to professions."
+      }
+    },
+    {
+      "id": "well-rested",
+      "spell": 1225478,
+      "tree": "adventure",
+      "tier": 0,
+      "ranks": 5,
+      "name": {
+        "es": "Bien descansado",
+        "en": "Well Rested"
+      },
+      "icon": "spell_nature_sleep",
+      "effect": {
+        "es": "+4 % por rango (20 % con 5/5) de velocidad y de límite de la experiencia por descanso.",
+        "en": "+4% per rank (20% at 5/5) rested experience gain and cap."
+      },
+      "mage": "medium",
+      "note": {
+        "es": "1 rango basta para abrir Talentoso. Más rangos, solo si subes muchos personajes.",
+        "en": "1 rank is enough to unlock Talented. More ranks only if you level many characters."
+      }
+    },
+    {
+      "id": "thrill-of-adventure",
+      "spell": 1225472,
+      "tree": "adventure",
+      "tier": 0,
+      "ranks": 5,
+      "name": {
+        "es": "Emoción de la aventura",
+        "en": "Thrill of Adventure"
+      },
+      "icon": "ability_hunter_huntervswild",
+      "effect": {
+        "es": "Cada golpe de gracia a un enemigo no trivial devuelve un 1 % por rango (5 % con 5/5) de tu salud y maná máximos en 10 s. No funciona en mazmorras, bandas ni campos de batalla.",
+        "en": "Each killing blow on a non-trivial enemy returns 1% per rank (5% at 5/5) of your maximum health and mana over 10 sec. Not in dungeons, raids or battlegrounds."
+      },
+      "mage": "high",
+      "note": {
+        "es": "La mejor ventaja para subir un Mago: el maná es lo que más te para, y esto lo devuelve en cada muerte.",
+        "en": "The best perk for leveling a Mage: mana is what stops you most, and this gives it back on every kill."
+      }
+    },
+    {
+      "id": "high-alert",
+      "spell": 1225477,
+      "tree": "adventure",
+      "tier": 5,
+      "ranks": 2,
+      "name": {
+        "es": "Alerta máxima",
+        "en": "High Alert"
+      },
+      "icon": "spell_shadow_detectlesserinvisibility",
+      "effect": {
+        "es": "Detectas el sigilo como si tuvieras 1 nivel más por rango. No funciona en campos de batalla.",
+        "en": "You detect stealth as if you were 1 level higher per rank. Not in battlegrounds."
+      },
+      "mage": "medium",
+      "note": {
+        "es": "Ayuda contra los pícaros en reinos JcJ, que son el enemigo natural del Mago.",
+        "en": "Helps against rogues on PvP realms, the Mage's natural enemy."
+      }
+    },
+    {
+      "id": "talented",
+      "spell": 1225474,
+      "tree": "adventure",
+      "tier": 5,
+      "ranks": 5,
+      "name": {
+        "es": "Talentoso (Talented)",
+        "en": "Talented"
+      },
+      "icon": "ability_marksmanship",
+      "effect": {
+        "es": "Tu primer punto de talento llega 1 nivel antes por rango (a nivel 5 con 5/5). El máximo sigue siendo 51.",
+        "en": "Your first talent point comes 1 level earlier per rank (level 5 at 5/5). The maximum stays at 51."
+      },
+      "requires": "well-rested",
+      "mage": "high",
+      "note": {
+        "es": "Con 5/5 tienes cada talento 5 niveles antes: Lanza de hielo a nivel 15. No hace nada a nivel 60.",
+        "en": "At 5/5 every talent comes 5 levels sooner: Ice Lance at level 15. It does nothing at level 60."
+      }
+    },
+    {
+      "id": "field-guide",
+      "spell": 1225479,
+      "tree": "adventure",
+      "tier": 5,
+      "ranks": 3,
+      "name": {
+        "es": "Guía de campo",
+        "en": "Field Guide"
+      },
+      "icon": "inv_fishingchair",
+      "effect": {
+        "es": "Reduce el tiempo de reutilización para añadir funciones al campamento (un 25 % con 3/3).",
+        "en": "Reduces the cooldown for adding camp features (25% at 3/3)."
+      },
+      "mage": "low",
+      "note": {
+        "es": "Útil si acampas a menudo; el resto del tiempo, relleno.",
+        "en": "Useful if you camp often; otherwise filler."
+      }
+    },
+    {
+      "id": "field-medicine",
+      "spell": 1225475,
+      "tree": "adventure",
+      "tier": 5,
+      "ranks": 2,
+      "name": {
+        "es": "Medicina de campo",
+        "en": "Field Medicine"
+      },
+      "icon": "inv_misc_bandage_05",
+      "effect": {
+        "es": "Vendaje reciente dura 5 s menos por rango (10 s con 2/2). No funciona en mazmorras, bandas ni campos de batalla.",
+        "en": "Recently Bandaged lasts 5 sec less per rank (10 sec at 2/2). Not in dungeons, raids or battlegrounds."
+      },
+      "mage": "low",
+      "note": {
+        "es": "El Mago bebe en lugar de vendarse: poco valor.",
+        "en": "Mages drink rather than bandage: little value."
+      }
+    },
+    {
+      "id": "frequent-flier",
+      "spell": 1225490,
+      "tree": "adventure",
+      "tier": 10,
+      "ranks": 1,
+      "name": {
+        "es": "Viajero frecuente",
+        "en": "Frequent Flier"
+      },
+      "icon": "achievement_guild_ridelikethewind",
+      "effect": {
+        "es": "Las rutas de vuelo cuestan la mitad y van un 20 % más rápido.",
+        "en": "Flight paths cost half and fly 20% faster."
+      },
+      "mage": "medium",
+      "note": {
+        "es": "Tus teletransportes te llevan a las capitales, pero a las mazmorras vas volando.",
+        "en": "Your teleports take you to capitals, but you fly to dungeons."
+      }
+    },
+    {
+      "id": "gourmand",
+      "spell": 1225499,
+      "tree": "resourcefulness",
+      "tier": 0,
+      "ranks": 3,
+      "name": {
+        "es": "Gastronomía",
+        "en": "Gourmand"
+      },
+      "icon": "inv_misc_food_64",
+      "effect": {
+        "es": "Los efectos de la comida duran un 33 % más por rango (el doble con 3/3).",
+        "en": "Food buffs last 33% longer per rank (twice as long at 3/3)."
+      },
+      "mage": "medium",
+      "note": {
+        "es": "La comida con bonificación dura el doble en bandas. Abre Permanencia.",
+        "en": "Buff food lasts twice as long in raids. Unlocks Permanence."
+      }
+    },
+    {
+      "id": "quick-and-the-dead",
+      "spell": 1225500,
+      "tree": "resourcefulness",
+      "tier": 0,
+      "ranks": 2,
+      "name": {
+        "es": "Este muerto está muy vivo",
+        "en": "The Quick and the Dead"
+      },
+      "icon": "spell_shadow_deadofnight",
+      "effect": {
+        "es": "+5 % de velocidad por rango mientras estás muerto; al resucitar, tus hechizos de ayuda no gastan recursos durante 1 min por rango (2 min con 2/2) o hasta entrar en combate.",
+        "en": "+5% speed per rank while dead; after resurrection, your helpful spells cost nothing for 1 min per rank (2 min at 2/2) or until combat."
+      },
+      "mage": "medium",
+      "note": {
+        "es": "Tras un wipe, vuelves a dar Intelecto Arcano a todo el grupo sin gastar maná. Abre Ahorro de componentes.",
+        "en": "After a wipe, you rebuff Arcane Intellect on the whole group for free. Unlocks Reagent Economy."
+      }
+    },
+    {
+      "id": "reinforce",
+      "spell": 1225497,
+      "tree": "resourcefulness",
+      "tier": 0,
+      "ranks": 5,
+      "name": {
+        "es": "Refuerzo",
+        "en": "Reinforce"
+      },
+      "icon": "inv_misc_armorkit_17",
+      "effect": {
+        "es": "Pierdes un 4 % menos de durabilidad por rango al morir (20 % con 5/5).",
+        "en": "4% less durability loss per rank when you die (20% at 5/5)."
+      },
+      "mage": "low",
+      "note": {
+        "es": "Ahorra algo de oro en reparaciones en bandas. Buen relleno.",
+        "en": "Saves some repair gold in raids. Good filler."
+      }
+    },
+    {
+      "id": "for-great-honor",
+      "spell": 1225501,
+      "tree": "resourcefulness",
+      "tier": 5,
+      "ranks": 5,
+      "name": {
+        "es": "Por gran honor",
+        "en": "For Great Honor"
+      },
+      "icon": "achievement_bg_winwsg",
+      "effect": {
+        "es": "+2 % de honor por rango (10 % con 5/5).",
+        "en": "+2% Honor per rank (10% at 5/5)."
+      },
+      "mage": "high",
+      "note": {
+        "es": "Imprescindible si vas a por los rangos JcJ: el equipo se paga con honor.",
+        "en": "A must if you climb PvP ranks: gear is paid with Honor."
+      }
+    },
+    {
+      "id": "permanence",
+      "spell": 1225502,
+      "tree": "resourcefulness",
+      "tier": 5,
+      "ranks": 2,
+      "name": {
+        "es": "Permanencia",
+        "en": "Permanence"
+      },
+      "icon": "spell_misc_emotionhappy",
+      "effect": {
+        "es": "Tus beneficios de clase de larga duración para todo el grupo o banda duran un 50 % más por rango (el doble con 2/2), y los del campamento, un 25 % más por rango.",
+        "en": "Your long-duration class buffs for the whole party or raid last 50% longer per rank (twice as long at 2/2), and camp benefits 25% longer per rank."
+      },
+      "requires": "gourmand",
+      "mage": "medium",
+      "note": {
+        "es": "Para el Mago cuenta Resplandor Arcano (nivel 56): pasa de 1 a 2 horas. Antes del 56, solo alarga el campamento.",
+        "en": "For a Mage it means Arcane Brilliance (level 56): from 1 to 2 hours. Before 56, it only extends camp buffs."
+      }
+    },
+    {
+      "id": "diplomat",
+      "spell": 1225485,
+      "tree": "resourcefulness",
+      "tier": 5,
+      "ranks": 5,
+      "name": {
+        "es": "Diplomático (Diplomat)",
+        "en": "Diplomat"
+      },
+      "icon": "inv_scroll_03",
+      "effect": {
+        "es": "+2 % de reputación por rango (10 % con 5/5).",
+        "en": "+2% reputation per rank (10% at 5/5)."
+      },
+      "mage": "medium",
+      "note": {
+        "es": "Acelera las reputaciones de banda y la de Islas Lanza Negra, que vende la daga de +36 al daño de hechizos.",
+        "en": "Speeds up raid reputations and Darkspear Islands, which sells the +36 spell damage dagger."
+      }
+    },
+    {
+      "id": "reagent-economy",
+      "spell": 1225503,
+      "tree": "resourcefulness",
+      "tier": 10,
+      "ranks": 1,
+      "name": {
+        "es": "Ahorro de componentes",
+        "en": "Reagent Economy"
+      },
+      "icon": "inv_misc_candle_02",
+      "effect": {
+        "es": "Tus facultades de clase ya no necesitan componentes que se compran a vendedores.",
+        "en": "Your class abilities no longer need reagents bought from vendors."
+      },
+      "requires": "quick-and-the-dead",
+      "mage": "high",
+      "note": {
+        "es": "El Mago es de las clases que más lo nota: Partículas Arcanas (Resplandor Arcano), Runas de Teletransporte y de Portales, y Plumas ligeras (Caída lenta y Estudiar).",
+        "en": "Mages feel it more than most: Arcane Powder (Arcane Brilliance), Runes of Teleportation and Portals, and Light Feathers (Slow Fall and Study)."
+      }
+    }
+  ],
+  "builds": [
+    {
+      "id": "leveling",
+      "name": {
+        "es": "Subir de nivel",
+        "en": "Leveling"
+      },
+      "situation": {
+        "es": "Un Mago nuevo o un personaje secundario, del 1 al 60.",
+        "en": "A new Mage or an alt, from 1 to 60."
+      },
+      "steps": [
+        [
+          "thrill-of-adventure",
+          5
+        ],
+        [
+          "well-rested",
+          1
+        ],
+        [
+          "talented",
+          5
+        ],
+        [
+          "frequent-flier",
+          1
+        ],
+        [
+          "field-guide",
+          3
+        ],
+        [
+          "high-alert",
+          1
+        ]
+      ],
+      "why": [
+        {
+          "es": "Emoción de la aventura primero: menos paradas a beber desde el primer punto.",
+          "en": "Thrill of Adventure first: fewer drinking breaks from the very first point."
+        },
+        {
+          "es": "Un solo rango de Bien descansado para abrir Talentoso, que adelanta 5 niveles cada talento.",
+          "en": "A single rank of Well Rested to unlock Talented, which brings every talent 5 levels sooner."
+        },
+        {
+          "es": "Con 10 puntos en Aventura llega Viajero frecuente para los viajes a mazmorras.",
+          "en": "With 10 points in Adventure, Frequent Flier arrives for dungeon trips."
+        },
+        {
+          "es": "El resto, Guía de campo y un punto de Alerta máxima contra los pícaros si juegas en reino JcJ.",
+          "en": "The rest goes to Field Guide and one point of High Alert against rogues if you play on a PvP realm."
+        }
+      ]
+    },
+    {
+      "id": "pve-60",
+      "name": {
+        "es": "Nivel 60: mazmorras y bandas",
+        "en": "Level 60: dungeons and raids"
+      },
+      "situation": {
+        "es": "Tu Mago ya está a 60 y juega en grupo.",
+        "en": "Your Mage is level 60 and plays in groups."
+      },
+      "steps": [
+        [
+          "quick-and-the-dead",
+          2
+        ],
+        [
+          "gourmand",
+          3
+        ],
+        [
+          "diplomat",
+          5
+        ],
+        [
+          "reagent-economy",
+          1
+        ],
+        [
+          "permanence",
+          2
+        ],
+        [
+          "reinforce",
+          3
+        ]
+      ],
+      "why": [
+        {
+          "es": "Ahorro de componentes es la joya del Mago: Resplandor Arcano, portales y teletransportes sin gastar en componentes.",
+          "en": "Reagent Economy is the Mage's jewel: Arcane Brilliance, portals and teleports with no reagent cost."
+        },
+        {
+          "es": "Permanencia dobla la duración de Resplandor Arcano: rebufas la banda la mitad de veces.",
+          "en": "Permanence doubles Arcane Brilliance: you rebuff the raid half as often."
+        },
+        {
+          "es": "Diplomático acelera las reputaciones de banda; Este muerto está muy vivo te deja rebufar gratis tras un wipe.",
+          "en": "Diplomat speeds up raid reputations; The Quick and the Dead lets you rebuff for free after a wipe."
+        },
+        {
+          "es": "Refuerzo, con lo que sobra: menos reparaciones.",
+          "en": "Reinforce with what is left: fewer repairs."
+        }
+      ]
+    },
+    {
+      "id": "pvp",
+      "name": {
+        "es": "JcJ: campos de batalla y rangos",
+        "en": "PvP: battlegrounds and ranks"
+      },
+      "situation": {
+        "es": "Vas a por el equipo JcJ y los rangos.",
+        "en": "You go for PvP gear and ranks."
+      },
+      "steps": [
+        [
+          "quick-and-the-dead",
+          2
+        ],
+        [
+          "gourmand",
+          3
+        ],
+        [
+          "for-great-honor",
+          5
+        ],
+        [
+          "reagent-economy",
+          1
+        ],
+        [
+          "diplomat",
+          5
+        ]
+      ],
+      "why": [
+        {
+          "es": "Por gran honor: un 10 % más de honor es un 10 % menos de partidas para cada pieza.",
+          "en": "For Great Honor: 10% more Honor is 10% fewer games for each piece."
+        },
+        {
+          "es": "Diplomático sube antes las cuatro reputaciones de campo de batalla, y cada una a Exaltado da un punto de Legado.",
+          "en": "Diplomat raises the four battleground reputations faster, and each one at Exalted gives a Legacy point."
+        },
+        {
+          "es": "Ahorro de componentes y Este muerto está muy vivo: rebufas al grupo gratis tras cada muerte.",
+          "en": "Reagent Economy and The Quick and the Dead: you rebuff the group for free after each death."
+        }
+      ]
+    },
+    {
+      "id": "gold",
+      "name": {
+        "es": "Oro y profesiones",
+        "en": "Gold and professions"
+      },
+      "situation": {
+        "es": "Un Mago recolector o dedicado a fabricar y vender.",
+        "en": "A Mage who gathers, or crafts and sells."
+      },
+      "steps": [
+        [
+          "bountiful-harvest",
+          5
+        ],
+        [
+          "working-overtime",
+          5
+        ],
+        [
+          "bartering",
+          2
+        ],
+        [
+          "performance-bonus",
+          3
+        ],
+        [
+          "dedicated-study",
+          1
+        ]
+      ],
+      "why": [
+        {
+          "es": "Cosecha generosa dobla los materiales escasos, que son los que más valen.",
+          "en": "Bountiful Harvest doubles Scarce materials, the most valuable ones."
+        },
+        {
+          "es": "Horas extra sube antes tus profesiones (y la Comprensión).",
+          "en": "Working Overtime levels your professions (and Comprehension) faster."
+        },
+        {
+          "es": "Regateando abarata los vendedores y abre Estudio dedicado; Bonus de rendimiento, para los encargos de la Autoridad Comercial.",
+          "en": "Bartering makes vendors cheaper and unlocks Dedicated Study; Performance Bonus, for Commerce Authority orders."
+        }
+      ]
+    }
+  ]
+}

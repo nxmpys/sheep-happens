@@ -711,6 +711,53 @@ export const classQuestSchema = z
   .strict();
 export type ClassQuest = z.infer<typeof classQuestSchema>;
 
+/**
+ * The Legacy tree (legacy.json): account-wide perks bought with Legacy points.
+ * `tier` is the number of points that must be spent in the same tree first;
+ * `requires` a perk that needs at least one rank. Data from the Forever client
+ * through Wowhead (texts) and the Wowhead Legacy calculator (structure).
+ */
+export const LEGACY_TREES = ['professions', 'adventure', 'resourcefulness'] as const;
+export type LegacyTree = (typeof LEGACY_TREES)[number];
+export const legacyPerkSchema = z
+  .object({
+    id,
+    spell: z.number().int().positive(),
+    tree: z.enum(LEGACY_TREES),
+    tier: z.union([z.literal(0), z.literal(5), z.literal(10)]),
+    ranks: z.number().int().min(1).max(5),
+    name: localized,
+    icon: z.string().regex(/^[a-z0-9_]+$/),
+    effect: localized,
+    requires: id.optional(),
+    /** How much it helps a Mage: our analysis. */
+    mage: z.enum(['high', 'medium', 'low']),
+    note: localized,
+  })
+  .strict();
+export type LegacyPerk = z.infer<typeof legacyPerkSchema>;
+export const legacyBuildSchema = z
+  .object({
+    id,
+    name: localized,
+    situation: localized,
+    /** Purchase order as points come in: [perk id, ranks]. */
+    steps: z.array(z.tuple([id, z.number().int().min(1).max(5)])).min(1),
+    why: z.array(localized).min(1),
+  })
+  .strict();
+export type LegacyBuild = z.infer<typeof legacyBuildSchema>;
+export const legacyFileSchema = z
+  .object({
+    /** Points a character can spend at launch. */
+    cap: z.number().int().positive(),
+    /** Points the account can earn at launch. */
+    earnable: z.number().int().positive(),
+    perks: z.array(legacyPerkSchema).min(1),
+    builds: z.array(legacyBuildSchema),
+  })
+  .strict();
+
 /** Frontmatter for every MDX page (validated by the content collection). */
 export const pageFrontmatter = z
   .object({

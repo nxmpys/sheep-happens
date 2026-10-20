@@ -58,7 +58,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [ ] Coste de la doble especialización y nivel definitivo (40 o antes).
 - [x] Cómo funciona Comprensión: pasos, dónde está Comprender pergamino, qué conviene y qué no, la habilidad que pide cada pergamino y consejos para el leveo, en la página Pergaminos (`scrolls`, 2026-10-15; datos en `src/data/scrolls.json`). Ejemplos de recompensas: imbuir el bastón, familiares, maná (Warcraft Tavern y Wowhead).
 - [ ] Recompensas de Comprensión: qué da cada pergamino, máximo de la habilidad, probabilidad de fallo y de botín, y si se pueden comerciar. Hoy son los bloques «Pendiente» de «Lo que aún no se sabe» en `scrolls`.
-- [ ] Partes del Legado que sirven al Mago (por ejemplo, Reagent Economy).
+- [x] Partes del Legado que sirven al Mago: página `legacy` (2026-10-20).
 - [ ] Nombres oficiales en español de los hechizos que no salen en el artículo de Blizzard sobre el Mago (Blink, Evocation, Flamestrike, Combustion, Ice Barrier…).
 - [ ] Modo Hardcore (llegará más adelante).
 
@@ -72,6 +72,8 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [x] JcJ (`pvp`): Honor, rangos, equipo de Mago azul y épico, lacres, armas del rango 14 e Islas Lanza Negra.
 - [ ] Precios en Honor del equipo JcJ en el lanzamiento (hoy remitimos al intendente; ConquestCapped estima unos 64.000 para el conjunto azul).
 - [ ] Builds de JcJ: solo cuando se pueda jugar a nivel 60 y solo en las ramas que funcionen (ver sección 4).
+- [x] Legado (`legacy`, datos en `src/data/legacy.json`): 21 ventajas con requisitos de la calculadora de Legado de Wowhead y cuatro combinaciones validadas por `src/lib/legacy.ts` (2026-10-20).
+- [ ] Legado en el lanzamiento: valores de cada ventaja, máximo de puntos por personaje (16), coste de cambiarlos, si Ahorro de componentes cubre Estudiar y las ventajas «no implementadas».
 
 ### Razas
 

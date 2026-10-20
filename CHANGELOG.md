@@ -12,6 +12,12 @@ El menú pasa a cinco entradas: Aprende, Builds, Guías, Herramientas y Addons. 
 
 - **Fuentes:** [WoW Forever database (items and quests)](https://www.wowhead.com/forever) (Wowhead), [PvP Overview in Forever - Ranking, Rewards, and Battlegrounds](https://www.wowhead.com/forever/guide/pvp-overview-ranking-rewards) (Wowhead), [Collecting Library Books: Locations and Rewards - WoW Forever](https://www.wowhead.com/forever/guide/library-book-locations-and-rewards) (Wowhead), [Mage quests - WoW Forever quest guide](https://foreverdb.net/quests/mage) (ForeverDB)
 
+### [Guía] Nueva guía: el Legado y las mejores ventajas para el Mago
+
+Nueva página de Legado, dentro de Guías: qué es, cómo se ganan los puntos (y cuáles da un Mago), las 21 ventajas de los tres árboles con sus requisitos reales y nuestra valoración, y cuatro combinaciones de 16 puntos con su orden de compra: subir de nivel, nivel 60 en grupo, JcJ y oro. Datos de la beta: pueden cambiar en el lanzamiento.
+
+- **Fuentes:** [Legacy Calculator - Forever](https://www.wowhead.com/forever/legacy-calculator) (Wowhead), [Legacy System Overview for Forever - Earning, Rewards, and Trees](https://www.wowhead.com/forever/guide/legacy-system-overview-rewards) (Wowhead)
+
 ## 2026-10-19
 
 ### [Web] Menú: Razas y Profesiones por separado

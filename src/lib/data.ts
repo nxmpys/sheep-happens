@@ -29,6 +29,7 @@ import rawTalentText from '../data/talent-text.json';
 import rawItems from '../data/items.json';
 import rawLibraryBooks from '../data/library-books.json';
 import rawClassQuests from '../data/class-quests.json';
+import rawLegacy from '../data/legacy.json';
 import {
   abilitySchema,
   addonSchema,
@@ -40,6 +41,7 @@ import {
   gameVersionSchema,
   glossarySchema,
   itemSchema,
+  legacyFileSchema,
   levelingSpellSchema,
   libraryBookSchema,
   milestoneSchema,
@@ -77,6 +79,7 @@ import {
 import { nameEntry, spellNames } from './spell-names';
 import { recommendedConflicts } from './build-roles';
 import { validateBuild, validateOrder } from './talents';
+import { validateLegacyBuild } from './legacy';
 
 function parseList<T extends z.ZodType>(file: string, schema: T, raw: unknown): z.output<T>[] {
   const result = z.array(schema).safeParse(raw);
@@ -388,6 +391,14 @@ export const libraryBooks = parseList('library-books.json', libraryBookSchema, r
 /** Mage class quest chains, by level (class quests page). */
 export const classQuests = parseList('class-quests.json', classQuestSchema, rawClassQuests).sort((a, b) => a.level - b.level);
 
+/** The Legacy tree and our builds per situation (legacy page). */
+export const legacy = (() => {
+  const result = legacyFileSchema.safeParse(rawLegacy);
+  if (!result.success) throw new Error(`Invalid data in src/data/legacy.json:
+${z.prettifyError(result.error)}`);
+  return result.data;
+})();
+
 /** Spells learned while leveling, by level (leveling page table and level view). */
 export const levelingSpells = parseList('leveling-spells.json', levelingSpellSchema, rawLevelingSpells).sort((a, b) => a.level - b.level);
 
@@ -424,6 +435,12 @@ const integrity = [
       if (!sourceIds.has(source)) integrity.push(`"${record.id}" cites unknown source "${source}"`);
     }
   }
+  const perkIds = new Set(legacy.perks.map((perk) => perk.id));
+  for (const dup of duplicates(legacy.perks.map((perk) => perk.id))) integrity.push(`legacy.json: duplicate perk "${dup}"`);
+  for (const perk of legacy.perks) {
+    if (perk.requires && !perkIds.has(perk.requires)) integrity.push(`legacy.json: "${perk.id}" requires unknown perk "${perk.requires}"`);
+  }
+  for (const build of legacy.builds) integrity.push(...validateLegacyBuild(build, legacy.perks, legacy.cap).map((p) => `legacy.json: ${p}`));
   for (const quest of classQuests) {
     for (const reward of quest.rewards) {
       if (!itemIds.has(reward)) integrity.push(`class-quests.json: "${quest.id}" rewards "${reward}", which is not in items.json`);
