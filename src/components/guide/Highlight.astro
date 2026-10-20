@@ -25,7 +25,8 @@ const locale = getLocale(Astro);
 const url = `${href(to, locale)}${query ? `?${query}` : ''}${hash ? `#${hash}` : ''}`;
 ---
 
-<li class:list={['highlight', `school-${school === 'frostfire' ? 'baseline' : school}`, { 'highlight--frostfire': school === 'frostfire', 'highlight--featured': featured }]}>
+<li class:list={['highlight', 'has-glow', `school-${school === 'frostfire' ? 'baseline' : school}`, { 'highlight--frostfire': school === 'frostfire', 'highlight--featured': featured }]}>
+  <span class="arcane-glow" aria-hidden="true"></span>
   <p class="highlight__label">
     <span class="highlight__icon">
       <Icon name={school} size={featured ? 26 : 20} strokeWidth={1.6} />

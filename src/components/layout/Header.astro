@@ -46,6 +46,7 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
           ))
         }
       </ul>
+      <span class="nav-thread" aria-hidden="true" data-thread></span>
     </nav>
 
     <div class="header-actions">
@@ -96,6 +97,39 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
   document.addEventListener('click', (event) => {
     if (header && !header.contains(event.target as Node)) setMenu(false);
   });
+
+  // Mana thread: the line under the current section slides to the entry under
+  // the pointer and comes back when it leaves (desktop menu only).
+  const thread = nav?.querySelector<HTMLElement>('[data-thread]');
+  const links = [...(nav?.querySelectorAll<HTMLAnchorElement>('.nav-link') ?? [])];
+  const desktop = matchMedia('(min-width: 1001px)');
+  const home = () => links.find((link) => link.matches('[aria-current="page"], .is-section'));
+  const place = (link?: HTMLElement) => {
+    if (!thread || !desktop.matches) return;
+    if (!link) {
+      thread.style.opacity = '0';
+      return;
+    }
+    thread.style.opacity = '1';
+    thread.style.left = `${link.offsetLeft + 10}px`;
+    thread.style.width = `${link.offsetWidth - 20}px`;
+    thread.style.top = `${link.offsetTop + link.offsetHeight - 2}px`;
+  };
+  if (thread && nav) {
+    nav.classList.add('has-thread');
+    for (const link of links) {
+      link.addEventListener('mouseenter', () => place(link));
+      link.addEventListener('focus', () => place(link));
+    }
+    nav.addEventListener('mouseleave', () => place(home()));
+    nav.addEventListener('focusout', () => place(home()));
+    // No transition for the first placement, so the line does not fly in on every page.
+    thread.style.transition = 'none';
+    place(home());
+    requestAnimationFrame(() => thread.style.removeProperty('transition'));
+    window.addEventListener('resize', () => place(home()));
+    document.fonts?.ready.then(() => place(home()));
+  }
 </script>
 
 <style>
@@ -170,6 +204,43 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
     box-shadow: inset 0 -2px 0 var(--accent);
     border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   }
+  .primary-nav {
+    position: relative;
+  }
+  /* With the thread, the static underline steps aside. */
+  .has-thread .nav-link[aria-current='page'],
+  .has-thread .nav-link.is-section {
+    box-shadow: none;
+  }
+  .nav-thread {
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 2px;
+    border-radius: 2px;
+    opacity: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent),
+      color-mix(in srgb, var(--accent) 45%, #fff),
+      var(--accent),
+      transparent
+    );
+    background-size: 200% 100%;
+    box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 80%, transparent);
+    transition:
+      left 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+      width 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 0.2s;
+    animation: nav-thread 2.4s linear infinite;
+  }
+  @keyframes nav-thread {
+    to {
+      background-position: -200% 0;
+    }
+  }
   .header-actions {
     display: flex;
     align-items: center;
@@ -237,9 +308,14 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
       font-size: var(--step-0);
     }
     .nav-link[aria-current='page'],
-    .nav-link.is-section {
+    .nav-link.is-section,
+    .has-thread .nav-link[aria-current='page'],
+    .has-thread .nav-link.is-section {
       box-shadow: inset 3px 0 0 var(--accent);
       border-radius: 0;
+    }
+    .nav-thread {
+      display: none;
     }
   }
 

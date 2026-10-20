@@ -36,7 +36,8 @@ const specs = (['arcane', 'fire', 'frost'] as const).map((tree) => ({
 <ul class="specs">
   {
     specs.map((spec) => (
-      <li class={`spec school-${spec.tree}`}>
+      <li class={`spec has-glow school-${spec.tree}`}>
+        <span class="arcane-glow" aria-hidden="true"></span>
         <a class="spec__link" href={href(spec.pageId, locale)}>
           <span class="spec__icon">
             <Icon name={spec.tree} size={30} strokeWidth={1.5} />

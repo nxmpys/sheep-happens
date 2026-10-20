@@ -77,6 +77,11 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
     <p class="tc__left" aria-live="polite">
       <strong data-left>51</strong> {es ? 'puntos libres' : 'points left'} · <span data-split>0 / 0 / 0</span>
     </p>
+    <div class="cast-bar tc__cast" data-cast aria-hidden="true">
+      <span class="cast-bar__fill" data-cast-fill></span>
+      <span class="cast-bar__spark" data-cast-spark></span>
+      <span class="cast-bar__text" data-cast-text></span>
+    </div>
     <div class="tc__actions">
       <a class="button" data-wowhead href="https://www.wowhead.com/forever/talent-calc/mage" target="_blank" rel="noopener noreferrer">
         <Icon name="external" size={16} />
@@ -319,6 +324,17 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
       if (!this.canAdd(id)) return;
       this.points = this.with(id, 1);
       this.update();
+      this.burst(id);
+    }
+    /** A ring of frost on the talent that got the point; gold when it reaches its max rank. */
+    private burst(id: string) {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const button = this.querySelector<HTMLElement>(`[data-talent="${id}"]`);
+      if (!button) return;
+      const ring = document.createElement('span');
+      ring.className = button.dataset.state === 'max' ? 'tg-burst tg-burst--max' : 'tg-burst';
+      button.append(ring);
+      ring.addEventListener('animationend', () => ring.remove());
     }
     private removePoint(id: string) {
       if (!this.canRemove(id)) return;
@@ -382,6 +398,12 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
       const available = this.available();
       const byTree = pointsByTree(this.points, this.config.talents);
       this.q('[data-left]').textContent = String(available - total);
+      // Spent points as a cast bar (the text above stays the accessible figure).
+      const share = available > 0 ? Math.min(total / available, 1) * 100 : 0;
+      this.q('[data-cast-fill]').style.width = `${share}%`;
+      this.q('[data-cast-spark]').style.left = `calc(${share}% - 5px)`;
+      this.q('[data-cast-text]').textContent = `${total} / ${available}`;
+      this.q('[data-cast]').toggleAttribute('data-empty', total === 0);
       this.q('[data-split]').textContent = TREE_ORDER.map((tree) => byTree[tree]).join(' / ');
       this.select('level').value = String(this.level);
       this.select('talented').value = String(this.talented);
@@ -542,6 +564,11 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
   }
   .tc__import .tc__field input {
     width: 100%;
+  }
+  .tc__cast {
+    flex: 1 1 10rem;
+    max-width: 16rem;
+    align-self: center;
   }
   .tc__left {
     margin: 0;

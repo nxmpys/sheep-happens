@@ -27,8 +27,12 @@ const strings = {
 <library-books class="lib" data-strings={JSON.stringify(strings)}>
   <div class="lib__progress" data-pagefind-ignore hidden>
     <p class="lib__count"><strong data-count>0</strong> {es ? 'libros entregados' : 'books handed in'}</p>
-    <div class="lib__bar" role="progressbar" aria-valuemin="0" aria-valuemax="25" aria-valuenow="0" aria-label={es ? 'Libros entregados' : 'Books handed in'}>
-      <span class="lib__fill" data-fill></span>
+    <div class="lib__bar">
+      <div class="cast-bar" role="progressbar" aria-valuemin="0" aria-valuemax="25" aria-valuenow="0" aria-label={es ? 'Libros entregados' : 'Books handed in'} data-empty>
+        <span class="cast-bar__fill" data-fill></span>
+        <span class="cast-bar__spark" data-spark></span>
+        <span class="cast-bar__text" data-bar-text aria-hidden="true">0 / 25</span>
+      </div>
       {[10, 20, 25].map((n) => <span class="lib__mark" style={`left: ${(n / 25) * 100}%`} data-mark={n}>{n}</span>)}
     </div>
     <p class="lib__next" data-next></p>
@@ -128,8 +132,13 @@ const strings = {
       const count = this.boxes.filter((box) => box.checked).length;
       const es = document.documentElement.lang.startsWith('es');
       this.querySelector('[data-count]')!.textContent = String(count);
-      this.querySelector<HTMLElement>('[data-fill]')!.style.width = `${Math.min(count, 25) * 4}%`;
-      this.querySelector('[role="progressbar"]')!.setAttribute('aria-valuenow', String(Math.min(count, 25)));
+      const share = Math.min(count, 25) * 4;
+      this.querySelector<HTMLElement>('[data-fill]')!.style.width = `${share}%`;
+      this.querySelector<HTMLElement>('[data-spark]')!.style.left = `calc(${share}% - 5px)`;
+      this.querySelector('[data-bar-text]')!.textContent = `${Math.min(count, 25)} / 25`;
+      const bar = this.querySelector('[role="progressbar"]')!;
+      bar.setAttribute('aria-valuenow', String(Math.min(count, 25)));
+      bar.toggleAttribute('data-empty', count === 0);
       for (const mark of this.querySelectorAll<HTMLElement>('[data-mark]')) mark.classList.toggle('is-done', count >= Number(mark.dataset.mark));
       const next = [10, 20, 25].find((n) => n > count);
       this.querySelector('[data-next]')!.textContent = next
@@ -178,22 +187,11 @@ const strings = {
   }
   .lib__bar {
     position: relative;
-    height: 0.6rem;
-    margin: 0 0.75rem 1rem;
-    border-radius: 999px;
-    background: var(--surface-3);
-  }
-  .lib__fill {
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 0;
-    border-radius: inherit;
-    background: linear-gradient(90deg, var(--arcane), var(--frost));
-    transition: width 0.3s;
+    margin: 0 0.75rem 1.1rem;
   }
   .lib__mark {
     position: absolute;
-    top: 0.8rem;
+    top: 1.45rem;
     transform: translateX(-50%);
     font-size: 0.7rem;
     font-weight: 700;

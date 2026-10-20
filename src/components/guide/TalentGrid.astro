@@ -63,7 +63,9 @@ const arrows = list
           data-arrow-to={to.id}
           data-met={met ? 'true' : 'false'}
           aria-hidden="true"
-        />
+        >
+          <span class="tg__arrow-fill" />
+        </span>
       ))
     }
     {
@@ -74,7 +76,7 @@ const arrows = list
         const place = `grid-row: ${talent.row}; grid-column: ${talent.col}`;
         const inner = (
           <>
-            {icon && <img src={iconPath(icon)} alt="" width="56" height="56" loading="lazy" decoding="async" />}
+            {icon && <img src={iconPath(icon)} alt="" width="56" height="56" loading={interactive ? 'eager' : 'lazy'} decoding="async" />}
             <span class="tg__rank" data-rank>
               {rank}/{talent.maxRank}
             </span>
@@ -239,6 +241,16 @@ const arrows = list
   .tg__talent[data-state='max'] {
     box-shadow: 0 0 0 1px #000, 0 0 0 2px var(--gold), 0 0 12px rgb(242 201 76 / 0.4);
   }
+  @media (prefers-reduced-motion: no-preference) {
+    .tg__talent[data-state='max'] {
+      animation: tg-max 2.8s ease-in-out infinite;
+    }
+  }
+  @keyframes tg-max {
+    50% {
+      box-shadow: 0 0 0 1px #000, 0 0 0 2px var(--gold), 0 0 20px rgb(242 201 76 / 0.7);
+    }
+  }
   .tg__talent[data-state='max'] .tg__rank {
     border-color: #a8862a;
     color: var(--gold);
@@ -278,12 +290,29 @@ const arrows = list
     border-right: 0.45rem solid transparent;
     border-top: 0.5rem solid #4a4658;
   }
-  .tg__arrow[data-met='true']::before {
+  /* The gold fills the line from the top when the prerequisite is met, then lights the head. */
+  .tg__arrow-fill {
+    position: absolute;
+    top: var(--cell);
+    bottom: calc(var(--cell) + 0.45rem);
+    left: calc(50% - 2px);
+    width: 4px;
+    border-radius: 2px;
     background: var(--gold);
-    box-shadow: 0 0 6px rgb(242 201 76 / 0.5);
+    box-shadow: 0 0 6px rgb(242 201 76 / 0.6);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.45s ease-out;
+  }
+  .tg__arrow::after {
+    transition: border-top-color 0.15s ease 0s;
+  }
+  .tg__arrow[data-met='true'] .tg__arrow-fill {
+    transform: scaleY(1);
   }
   .tg__arrow[data-met='true']::after {
     border-top-color: var(--gold);
+    transition-delay: 0.35s;
   }
   @media (forced-colors: active) {
     .tg__talent[data-state='some'],

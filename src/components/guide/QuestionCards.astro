@@ -111,7 +111,8 @@ const questions: Question[] = [
 <ul class="questions">
   {
     questions.map((item) => (
-      <li class="question">
+      <li class="question has-glow">
+        <span class="arcane-glow" aria-hidden="true"></span>
         <span class="question__icon">
           <Icon name={item.icon} size={22} />
         </span>

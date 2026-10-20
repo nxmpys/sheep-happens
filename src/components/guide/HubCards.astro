@@ -55,7 +55,8 @@ for (const id of items) {
   {
     cards.map((card, index) =>
       'id' in card ? (
-        <li class:list={['hub__card', { 'is-pending': entries.get(card.id)?.verification === 'pending' }]}>
+        <li class:list={['hub__card', 'has-glow', { 'is-pending': entries.get(card.id)?.verification === 'pending' }]}>
+          <span class="arcane-glow" aria-hidden="true"></span>
           {numbered && <span class="hub__step" aria-hidden="true">{index + 1}</span>}
           <Icon name={ICONS[card.id] ?? 'book'} size={22} class="hub__icon" />
           <span class="hub__text">
@@ -67,7 +68,8 @@ for (const id of items) {
           </span>
         </li>
       ) : (
-        <li class="hub__card">
+        <li class="hub__card has-glow">
+          <span class="arcane-glow" aria-hidden="true"></span>
           {numbered && <span class="hub__step" aria-hidden="true">{index + 1}</span>}
           <Icon name="arcane" size={22} class="hub__icon" />
           <span class="hub__text">

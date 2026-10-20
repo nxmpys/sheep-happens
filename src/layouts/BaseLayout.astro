@@ -3,6 +3,7 @@ import '@fontsource-variable/inter';
 import '@fontsource/spectral/600.css';
 import '@fontsource/spectral/700.css';
 import '../styles/base.css';
+import '../styles/motion.css';
 import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
 import SearchDialog from '../components/layout/SearchDialog.astro';
@@ -108,6 +109,10 @@ const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
     <StatusTooltip locale={locale} />
   </body>
 </html>
+
+<script>
+  import '../scripts/motion';
+</script>
 
 <style>
   main:focus {

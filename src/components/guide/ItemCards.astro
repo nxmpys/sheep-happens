@@ -71,6 +71,22 @@ const list = ids.map((id) => getItem(id));
   .item[hidden] {
     display: none;
   }
+  /* Like looking at loot in the game: the card lights up in its quality colour. */
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .item {
+      transition:
+        border-color 0.25s,
+        box-shadow 0.25s,
+        transform 0.25s;
+    }
+    .item:hover {
+      border-color: var(--q);
+      box-shadow:
+        0 0 0 1px color-mix(in srgb, var(--q) 50%, transparent),
+        0 8px 26px color-mix(in srgb, var(--q) 25%, transparent);
+      transform: translateY(-2px);
+    }
+  }
   .item--uncommon {
     --q: #1eff00;
   }
