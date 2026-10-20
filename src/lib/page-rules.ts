@@ -50,7 +50,6 @@ export const MDX_COMPONENTS = [
   'MilestoneMap',
   'Notices',
   'PageLink',
-  'Perch',
   'Pending',
   'Priority',
   'ProfessionDetail',

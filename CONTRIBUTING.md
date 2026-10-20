@@ -115,7 +115,7 @@ Los iconos de talentos, hechizos y objetos se sirven desde `public/icons/<nombre
 curl -o public/icons/inv_wand_05.jpg https://wow.zamimg.com/images/wow/icons/large/inv_wand_05.jpg
 ```
 
-`npm run output` falla si una página apunta a un icono que no existe. Los objetos se muestran con `<ItemCards ids={[...]} />`; las figuras decorativas sobre un bloque, con `<Perch>` (oveja propia por defecto, o `src="/figures/…"` con un recorte transparente).
+`npm run output` falla si una página apunta a un icono que no existe. Los objetos se muestran con `<ItemCards ids={[...]} />`.
 
 ## Versión del juego
 

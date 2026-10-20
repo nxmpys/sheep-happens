@@ -31,7 +31,6 @@ import LibraryBooks from './guide/LibraryBooks.astro';
 import MilestoneMap from './guide/MilestoneMap.astro';
 import Notices from './guide/Notices.astro';
 import PageLink from './guide/PageLink.astro';
-import Perch from './guide/Perch.astro';
 import Pending from './guide/Pending.astro';
 import Priority from './guide/Priority.astro';
 import ProfessionDetail from './guide/ProfessionDetail.astro';
@@ -86,7 +85,6 @@ export const mdxComponents = {
   MilestoneMap,
   Notices,
   PageLink,
-  Perch,
   Pending,
   Priority,
   ProfessionDetail,
