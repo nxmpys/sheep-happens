@@ -18,6 +18,10 @@
 /og/*
   Cache-Control: public, max-age=86400
 
+# Game icons (talents, spells, items): a file only changes if the game changes it.
+/icons/*
+  Cache-Control: public, max-age=604800
+
 /build.json
   Cache-Control: no-store
 

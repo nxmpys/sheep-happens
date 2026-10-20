@@ -12,7 +12,7 @@ import ReportButton from './ReportButton.astro';
 import SpellRef from './SpellRef.astro';
 import StatusBadge from './StatusBadge.astro';
 import TalentOrder from './TalentOrder.astro';
-import TalentTree from './TalentTree.astro';
+import TalentGrid from './TalentGrid.astro';
 import { SPEC_LABELS, USE_LABELS, tb } from '../../i18n/builds';
 import { getLocale, href } from '../../i18n/locale';
 import { formatDate } from '../../i18n/ui';
@@ -46,6 +46,9 @@ const version = getVersion(build.gameVersion);
 // Shared links point at the full card.
 const fullUrl = href(build.page ?? 'builds', locale, build.id);
 const shareUrl = fullUrl;
+// Our own calculator reads the Wowhead code from ?t= (see TalentCalculator).
+const calcCode = wowheadBuildUrl(build.points, talents).split('/mage/v2')[1] ?? '';
+const calcUrl = `${href('talent-calc', locale)}?t=${calcCode}&lvl=${build.level}`;
 const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' : 'Link copied', failed: locale === 'es' ? 'No se pudo copiar. Copia la URL de la barra de direcciones.' : 'Could not copy. Copy the URL from the address bar instead.' });
 ---
 
@@ -94,81 +97,82 @@ const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' 
     </ul>
   </header>
 
-  {!summary && <p class="build__summary">{build.summary[locale]}</p>}
+  <div class="build__main">
+    <div class="build__trees" role="group" aria-label={tb(locale, 'build.talents')}>
+      {trees.map((tree) => <TalentGrid tree={tree} points={build.points} />)}
+    </div>
+    <div class="build__side">
+      {!summary && <p class="build__summary">{build.summary[locale]}</p>}
 
-  {
-    build.keyTalents.length > 0 && (
-      <p class="build__key">
-        <span class="build__label">{tb(locale, 'build.keyTalents')}:</span>{' '}
-        {build.keyTalents.map((key, i) => {
-          const talent = getTalent(key);
-          return (
-            <>
-              {i > 0 && ' · '}
-              <SpellRef name={talent.name} label={localName(talent, locale)} />
-            </>
-          );
-        })}
-      </p>
-    )
-  }
-
-  <div class="build__meta">
-    <StatusBadge status={build.status} />
-    <span class="build__version">{tb(locale, 'build.version')}: {version.label[locale]}</span>
-    {
-      build.updated && (
-        <span class="build__checked">
-          <Icon name="calendar" size={14} />
-          {tb(locale, 'build.checked')}: <time datetime={build.updated}>{formatDate(locale, new Date(`${build.updated}T00:00:00Z`))}</time>
-        </span>
-      )
-    }
-    <ReportButton subject={`Build: ${build.name[locale]} (${build.id})`} />
-  </div>
-
-  <div class="build__actions" data-pagefind-ignore>
-    <a class="button button--primary" href={wowheadBuildUrl(build.points, talents)} target="_blank" rel="noopener noreferrer">
-      <Icon name="external" size={16} />
-      {tb(locale, 'build.wowhead')}
-      <span class="visually-hidden"> ({tb(locale, 'build.wowheadHint')})</span>
-    </a>
-    <button type="button" class="button" data-copy-link={wowheadBuildUrl(build.points, talents)} data-strings={copyStrings}>
-      <Icon name="copy" size={16} />
-      {tb(locale, 'build.copyWowhead')}
-    </button>
-    {
-      summary ? (
-        <a class="button" href={fullUrl}>
-          <Icon name="book" size={16} />
-          {tb(locale, 'build.full')}
-        </a>
-      ) : (
-        build.page &&
-        !hideGuideLink && (
-          <a class="button" href={href(build.page, locale, build.id)}>
-            <Icon name="book" size={16} />
-            {tb(locale, 'build.guide')}
-          </a>
+      {
+        build.keyTalents.length > 0 && (
+          <p class="build__key">
+            <span class="build__label">{tb(locale, 'build.keyTalents')}:</span>{' '}
+            {build.keyTalents.map((key, i) => {
+              const talent = getTalent(key);
+              return (
+                <>
+                  {i > 0 && ' · '}
+                  <SpellRef name={talent.name} label={localName(talent, locale)} />
+                </>
+              );
+            })}
+          </p>
         )
-      )
-    }
-    <button type="button" class="button" data-copy-link={shareUrl} data-strings={copyStrings}>
-      <Icon name="link" size={16} />
-      {tb(locale, 'build.copy')}
-    </button>
+      }
+
+      <div class="build__meta">
+        <StatusBadge status={build.status} />
+        <span class="build__version">{tb(locale, 'build.version')}: {version.label[locale]}</span>
+        {
+          build.updated && (
+            <span class="build__checked">
+              <Icon name="calendar" size={14} />
+              {tb(locale, 'build.checked')}: <time datetime={build.updated}>{formatDate(locale, new Date(`${build.updated}T00:00:00Z`))}</time>
+            </span>
+          )
+        }
+        <ReportButton subject={`Build: ${build.name[locale]} (${build.id})`} />
+      </div>
+
+      <div class="build__actions" data-pagefind-ignore>
+        <a class="button button--primary" href={calcUrl}>
+          <Icon name="layers" size={16} />
+          {tb(locale, 'build.calc')}
+        </a>
+        <button type="button" class="button" data-copy-link={shareUrl} data-strings={copyStrings}>
+          <Icon name="link" size={16} />
+          {tb(locale, 'build.copy')}
+        </button>
+        {
+          summary ? (
+            <a class="button" href={fullUrl}>
+              <Icon name="book" size={16} />
+              {tb(locale, 'build.full')}
+            </a>
+          ) : (
+            build.page &&
+            !hideGuideLink && (
+              <a class="button" href={href(build.page, locale, build.id)}>
+                <Icon name="book" size={16} />
+                {tb(locale, 'build.guide')}
+              </a>
+            )
+          )
+        }
+        <a class="build__wowhead" href={wowheadBuildUrl(build.points, talents)} target="_blank" rel="noopener noreferrer">
+          {tb(locale, 'build.wowhead')}
+          <Icon name="external" size={14} />
+          <span class="visually-hidden"> ({tb(locale, 'build.wowheadHint')})</span>
+        </a>
+      </div>
+    </div>
   </div>
 
   {!summary && (
   <details class="build__details" open={open}>
     <summary>{tb(locale, build.order ? 'build.detailsOrder' : 'build.details')}</summary>
     <div class="build__body">
-      <section>
-        <Sub>{tb(locale, 'build.talents')}</Sub>
-        <div class="build__trees">
-          {trees.map((tree) => <TalentTree tree={tree} points={build.points} />)}
-        </div>
-      </section>
       {
         build.order && (
           <section>
@@ -356,10 +360,45 @@ const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' 
   .build__body li + li {
     margin-top: var(--space-1);
   }
-  .build__trees {
+  /* The tree first, like the game's window; the explanation and links beside it on wide screens. */
+  .build__main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-4);
+    align-items: start;
+  }
+  .build__side {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    min-width: 0;
+  }
+  .build__wowhead {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    align-self: center;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .build__wowhead:hover {
+    color: var(--text);
+  }
+  .build__trees {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+  .build__trees > :global(.tg) {
+    flex: 0 1 18.5rem;
+  }
+  @media (min-width: 44rem) {
+    .build__main {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+    .build__trees {
+      flex-direction: column;
+    }
   }
   .build__pros {
     display: grid;

@@ -630,5 +630,55 @@
       "es": "Texto de Classic: un 2/4/6/8/10 % de probabilidad de Claridad mental «después de que cualquier hechizo de daño alcance a un objetivo». No dice expresamente si un hechizo de área tira una vez por objetivo.",
       "en": "Classic text: a 2/4/6/8/10% chance to enter a Clearcasting state \"after any damage spell hits a target\". It does not say explicitly whether an AoE spell rolls once per target."
     }
+  },
+  {
+    "id": "wowhead-forever-pvp",
+    "title": "PvP Overview in Forever - Ranking, Rewards, and Battlegrounds",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/guide/pvp-overview-ranking-rewards",
+    "kind": "community",
+    "published": "2026-10-11",
+    "accessed": "2026-10-20",
+    "notes": {
+      "es": "Rangos 1 a 14 con lo que desbloquea cada uno, el equipo azul sin requisito de rango, los lacres por rango, los cuatro campos de batalla (3 marcas por victoria y 1 por derrota) y la tienda de Islas Lanza Negra.",
+      "en": "Ranks 1 to 14 and what each unlocks, rare gear with no rank requirement, seals by rank, the four battlegrounds (3 marks per win, 1 per loss) and the Darkspear Islands vendor."
+    }
+  },
+  {
+    "id": "wowhead-forever-database",
+    "title": "WoW Forever database (items and quests)",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever",
+    "kind": "tool",
+    "accessed": "2026-10-20",
+    "notes": {
+      "es": "Fichas de objetos y misiones extraídas del cliente de la beta: nombres oficiales en inglés y español, estadísticas, requisitos y recompensas. Las usamos para cada objeto citado; las cifras pueden cambiar en el lanzamiento.",
+      "en": "Item and quest data mined from the beta client: official English and Spanish names, stats, requirements and rewards. We use it for every item we quote; numbers may change at launch."
+    }
+  },
+  {
+    "id": "foreverdb-mage-quests",
+    "title": "Mage quests - WoW Forever quest guide",
+    "publisher": "ForeverDB",
+    "url": "https://foreverdb.net/quests/mage",
+    "kind": "community",
+    "accessed": "2026-10-20",
+    "notes": {
+      "es": "Lista de las 45 misiones de Mago en los datos de Forever, con su nivel, quién las da y quién las recibe. La contrastamos con las fichas de Wowhead.",
+      "en": "List of the 45 Mage quests in the Forever data, with their level, giver and turn-in. Cross-checked against Wowhead's quest pages."
+    }
+  },
+  {
+    "id": "conquestcapped-pvp-gear",
+    "title": "WoW Forever — PvP Gear Overview: Honor Costs, Seals & Weapons",
+    "publisher": "ConquestCapped",
+    "url": "https://conquestcapped.com/guides/wow-forever/wow-forever-pvp-gear-costs/",
+    "kind": "community",
+    "published": "2026-10-09",
+    "accessed": "2026-10-20",
+    "notes": {
+      "es": "Precios en Honor y marcas de cada pieza azul, cada lacre y cada arma de rango 14, con los de septiembre y su estimación tras la subida de octubre. Los precios posteriores son estimaciones suyas.",
+      "en": "Honor and mark prices for every rare piece, seal and rank 14 weapon, with the September prices and their estimate after the October increase. The later prices are their estimates."
+    }
   }
 ]

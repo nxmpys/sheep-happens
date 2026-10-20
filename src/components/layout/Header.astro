@@ -15,7 +15,7 @@ interface Props {
 const { locale, pageId } = Astro.props;
 const trail = pageId ? breadcrumbTrail(pageId) : [];
 const labels = NAV_LABELS[locale];
-// Six direct links, no dropdowns: each hub page leads to its own pages.
+// Five direct links, no dropdowns: each hub page leads to its own pages.
 // The entry is highlighted on its hub and on every page under it.
 const currentGroup =
   PRIMARY_NAV.find((group) => pageId !== undefined && navPages([group]).includes(pageId)) ??

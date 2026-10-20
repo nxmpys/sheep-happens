@@ -1,0 +1,308 @@
+---
+/**
+ * The library books (library-books.json) grouped by the level band where the
+ * trip stops being dangerous, with a personal tracker: tick a book once you
+ * have handed it in and the bar shows how far you are from the 10, 20 and 25
+ * book rewards. Ticks live in this browser only (localStorage «sh-library»).
+ * Books only one faction can reach carry data-faction for FactionFilter.
+ */
+import Status from './StatusBadge.astro';
+import { getLocale } from '../../i18n/locale';
+import { libraryBooks } from '../../lib/data';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const bands = [
+  { id: '1-20', title: es ? 'Niveles 1 a 20: de camino mientras subes' : 'Levels 1 to 20: on your way while leveling' },
+  { id: '20-40', title: es ? 'Niveles 20 a 40: con un poco de cuidado' : 'Levels 20 to 40: with some care' },
+  { id: '40-60', title: es ? 'Niveles 40 a 60: viajes largos y zonas peligrosas' : 'Levels 40 to 60: long trips and dangerous zones' },
+] as const;
+const faction = { alliance: es ? 'Solo Alianza' : 'Alliance only', horde: es ? 'Solo Horda' : 'Horde only' };
+const strings = {
+  copied: es ? 'Comando copiado: pégalo en el chat con TomTom instalado' : 'Command copied: paste it in chat with TomTom installed',
+  failed: es ? 'No se pudo copiar' : 'Could not copy',
+};
+---
+
+<library-books class="lib" data-strings={JSON.stringify(strings)}>
+  <div class="lib__progress" data-pagefind-ignore hidden>
+    <p class="lib__count"><strong data-count>0</strong> {es ? 'libros entregados' : 'books handed in'}</p>
+    <div class="lib__bar" role="progressbar" aria-valuemin="0" aria-valuemax="25" aria-valuenow="0" aria-label={es ? 'Libros entregados' : 'Books handed in'}>
+      <span class="lib__fill" data-fill></span>
+      {[10, 20, 25].map((n) => <span class="lib__mark" style={`left: ${(n / 25) * 100}%`} data-mark={n}>{n}</span>)}
+    </div>
+    <p class="lib__next" data-next></p>
+    <button type="button" class="button lib__reset" data-reset>{es ? 'Borrar marcas' : 'Clear ticks'}</button>
+  </div>
+
+  {
+    bands.map((band) => (
+      <section class="lib__band" aria-labelledby={`lib-${band.id}`}>
+        <h3 id={`lib-${band.id}`}>{band.title}</h3>
+        <ul class="lib__list" role="list">
+          {libraryBooks
+            .filter((book) => book.band === band.id)
+            .map((book) => (
+              <li class="lib__book" data-faction={book.faction === 'both' ? undefined : book.faction}>
+                <label class="lib__check" data-pagefind-ignore>
+                  <input type="checkbox" data-book={book.id} />
+                  <span class="visually-hidden">{es ? `Entregado: ${book.name[locale]}` : `Handed in: ${book.name[locale]}`}</span>
+                </label>
+                <div class="lib__text">
+                  <p class="lib__name">
+                    <a href={`https://www.wowhead.com/forever/item=${book.wowhead}`} target="_blank" rel="noopener noreferrer" data-no-spell-links>
+                      {book.name[locale]}
+                    </a>
+                    {book.faction !== 'both' && <span class={`lib__faction lib__faction--${book.faction}`}>{faction[book.faction]}</span>}
+                    {book.status !== 'reported' && <Status status={book.status} compact />}
+                  </p>
+                  <p class="lib__where">
+                    <strong>{book.zone[locale]}</strong> · {book.place[locale]}
+                    {book.coords && (
+                      <>
+                        {' · '}
+                        <button
+                          type="button"
+                          class="lib__way"
+                          data-way={`/way ${book.zone[locale]} ${book.coords.replace(',', '')} ${book.name[locale]}`}
+                          title={es ? 'Copiar el comando /way de TomTom' : 'Copy the TomTom /way command'}
+                        >
+                          {book.coords}
+                        </button>
+                      </>
+                    )}
+                  </p>
+                  <p class="lib__how">{book.how[locale]}</p>
+                </div>
+              </li>
+            ))}
+        </ul>
+      </section>
+    ))
+  }
+</library-books>
+
+<script>
+  import { copyText } from '../../scripts/clipboard';
+  import { showToast } from '../../scripts/toast';
+
+  const KEY = 'sh-library';
+
+  class LibraryBooks extends HTMLElement {
+    private boxes: HTMLInputElement[] = [];
+
+    connectedCallback() {
+      const strings: Record<string, string> = JSON.parse(this.dataset.strings ?? '{}');
+      this.boxes = [...this.querySelectorAll<HTMLInputElement>('[data-book]')];
+      let saved: string[] = [];
+      try {
+        saved = JSON.parse(localStorage.getItem(KEY) ?? '[]');
+      } catch {}
+      for (const box of this.boxes) {
+        box.checked = saved.includes(box.dataset.book!);
+        box.addEventListener('change', () => this.save());
+      }
+      this.querySelector('[data-reset]')?.addEventListener('click', () => {
+        for (const box of this.boxes) box.checked = false;
+        this.save();
+      });
+      for (const button of this.querySelectorAll<HTMLButtonElement>('[data-way]')) {
+        button.addEventListener('click', async () => {
+          const ok = await copyText(button.dataset.way!);
+          showToast(ok ? strings['copied']! : strings['failed']!);
+        });
+      }
+      this.querySelector<HTMLElement>('.lib__progress')!.hidden = false;
+      this.render();
+    }
+
+    private save() {
+      const ids = this.boxes.filter((box) => box.checked).map((box) => box.dataset.book!);
+      try {
+        localStorage.setItem(KEY, JSON.stringify(ids));
+      } catch {}
+      this.render();
+    }
+
+    private render() {
+      const count = this.boxes.filter((box) => box.checked).length;
+      const es = document.documentElement.lang.startsWith('es');
+      this.querySelector('[data-count]')!.textContent = String(count);
+      this.querySelector<HTMLElement>('[data-fill]')!.style.width = `${Math.min(count, 25) * 4}%`;
+      this.querySelector('[role="progressbar"]')!.setAttribute('aria-valuenow', String(Math.min(count, 25)));
+      for (const mark of this.querySelectorAll<HTMLElement>('[data-mark]')) mark.classList.toggle('is-done', count >= Number(mark.dataset.mark));
+      const next = [10, 20, 25].find((n) => n > count);
+      this.querySelector('[data-next]')!.textContent = next
+        ? es
+          ? `Te faltan ${next - count} para el premio de ${next} libros.`
+          : `${next - count} more for the ${next} book reward.`
+        : es
+          ? 'Tienes los tres premios. ¡Enhorabuena!'
+          : 'You have all three rewards. Well done!';
+      for (const box of this.boxes) box.closest('.lib__book')!.classList.toggle('is-done', box.checked);
+    }
+  }
+
+  customElements.define('library-books', LibraryBooks);
+</script>
+
+<style>
+  .lib {
+    display: grid;
+    gap: var(--space-4);
+    margin: var(--space-4) 0;
+  }
+  .lib__progress {
+    position: sticky;
+    top: calc(var(--header-h) + var(--space-2));
+    z-index: 5;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-2) var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: color-mix(in srgb, var(--surface-1) 94%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  .lib__progress[hidden] {
+    display: none;
+  }
+  .lib__progress p {
+    margin: 0;
+  }
+  .lib__count strong {
+    font-size: var(--step-2);
+    font-variant-numeric: tabular-nums;
+  }
+  .lib__bar {
+    position: relative;
+    height: 0.6rem;
+    margin: 0 0.75rem 1rem;
+    border-radius: 999px;
+    background: var(--surface-3);
+  }
+  .lib__fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--arcane), var(--frost));
+    transition: width 0.3s;
+  }
+  .lib__mark {
+    position: absolute;
+    top: 0.8rem;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-subtle);
+  }
+  .lib__mark.is-done {
+    color: var(--accent);
+  }
+  .lib__next {
+    grid-column: 1 / -1;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .lib__reset {
+    grid-row: 1;
+    grid-column: 3;
+  }
+  .lib__band h3 {
+    margin-top: var(--space-3);
+  }
+  .lib__list {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .lib__book {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-3);
+    margin: 0;
+    padding: var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .lib__book[hidden] {
+    display: none;
+  }
+  .lib__book.is-done {
+    opacity: 0.6;
+  }
+  .lib__book.is-done .lib__name a {
+    text-decoration: line-through;
+  }
+  .lib__check input {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.15rem;
+    accent-color: var(--accent);
+  }
+  .lib__text p {
+    margin: 0;
+  }
+  .lib__name {
+    font-weight: 700;
+  }
+  .lib__name a {
+    color: #1eff00;
+    color: light-dark(#18800a, #1eff00);
+  }
+  .lib__faction {
+    margin-left: var(--space-2);
+    padding: 0.05em 0.5em;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    vertical-align: middle;
+  }
+  .lib__faction--alliance {
+    background: light-dark(#e3ecff, #1b2a4a);
+    color: light-dark(#1d4fb8, #8fb4ff);
+  }
+  .lib__faction--horde {
+    background: light-dark(#ffe6e3, #4a1d1b);
+    color: light-dark(#a3241a, #ff9a8f);
+  }
+  .lib__where,
+  .lib__how {
+    font-size: var(--step--1);
+  }
+  .lib__how {
+    color: var(--text-muted);
+  }
+  .lib__way {
+    padding: 0 0.4em;
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--text);
+    font: inherit;
+    font-variant-numeric: tabular-nums;
+    cursor: copy;
+  }
+  .lib__way:hover {
+    border-style: solid;
+  }
+  @media (max-width: 36rem) {
+    .lib__progress {
+      position: static;
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+    .lib__bar {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+    .lib__reset {
+      grid-column: 2;
+    }
+  }
+</style>

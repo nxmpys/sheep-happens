@@ -105,7 +105,17 @@ Los banners de eventos (como el torneo de duelos) van en `src/data/notices.json`
 
 ## Menú y orden de lectura
 
-El menú (`PRIMARY_NAV` en `src/i18n/routes.ts`) es también el orden de «Anterior / Siguiente»: no hay una segunda lista que mantener. Una página nueva entra en el menú una sola vez.
+El menú (`PRIMARY_NAV` en `src/i18n/routes.ts`) es también el orden de «Anterior / Siguiente»: no hay una segunda lista que mantener. Una página nueva entra en el menú una sola vez. Tiene cinco entradas: Aprende (lo básico de la clase), Builds (las builds y las páginas que las explican), Guías (raza, profesiones, misiones de clase, biblioteca, pergaminos y JcJ), Herramientas y Addons.
+
+## Iconos y objetos del juego
+
+Los iconos de talentos, hechizos y objetos se sirven desde `public/icons/<nombre>.jpg` (copiados del CDN de iconos de Wowhead, 56 × 56). El nombre es el del cliente: el de cada talento está en `src/data/talent-text.json` y el de cada objeto en `src/data/items.json`. Si añades uno, descárgalo así:
+
+```bash
+curl -o public/icons/inv_wand_05.jpg https://wow.zamimg.com/images/wow/icons/large/inv_wand_05.jpg
+```
+
+`npm run output` falla si una página apunta a un icono que no existe. Los objetos se muestran con `<ItemCards ids={[...]} />`; las figuras decorativas sobre un bloque, con `<Perch>` (oveja propia por defecto, o `src="/figures/…"` con un recorte transparente).
 
 ## Versión del juego
 

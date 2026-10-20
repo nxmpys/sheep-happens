@@ -6,8 +6,12 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
     home: 'Inicio',
     learn: 'Aprende',
     builds: 'Builds',
+    guides: 'Guías',
     races: 'Razas',
     professions: 'Profesiones',
+    'class-quests': 'Misiones de clase',
+    library: 'Biblioteca y libros',
+    pvp: 'JcJ (PvP)',
     guide: 'Guía de clase',
     changes: 'Cambios en Forever',
     talents: 'Talentos',
@@ -30,8 +34,12 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
     home: 'Home',
     learn: 'Learn',
     builds: 'Builds',
+    guides: 'Guides',
     races: 'Races',
     professions: 'Professions',
+    'class-quests': 'Class quests',
+    library: 'Library and books',
+    pvp: 'PvP',
     guide: 'Class guide',
     changes: 'Forever changes',
     talents: 'Talents',
@@ -53,9 +61,9 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
 };
 
 /** Labels of the primary navigation entries (routes.ts PRIMARY_NAV). */
-export const NAV_GROUP_LABELS: Record<Locale, Record<'learn' | 'builds' | 'races' | 'professions' | 'tools' | 'addons', string>> = {
-  es: { learn: 'Aprende', builds: 'Builds', races: 'Razas', professions: 'Profesiones', tools: 'Herramientas', addons: 'Addons' },
-  en: { learn: 'Learn', builds: 'Builds', races: 'Races', professions: 'Professions', tools: 'Tools', addons: 'Addons' },
+export const NAV_GROUP_LABELS: Record<Locale, Record<'learn' | 'builds' | 'guides' | 'tools' | 'addons', string>> = {
+  es: { learn: 'Aprende', builds: 'Builds', guides: 'Guías', tools: 'Herramientas', addons: 'Addons' },
+  en: { learn: 'Learn', builds: 'Builds', guides: 'Guides', tools: 'Tools', addons: 'Addons' },
 };
 
 const es = {
@@ -173,7 +181,7 @@ const es = {
   'watch.verified': 'Comprobada el {date}',
   'footer.disclaimer':
     'Sheep Happens es una guía de fans sin relación con Blizzard Entertainment. World of Warcraft es una marca de Blizzard Entertainment, Inc.',
-  'footer.license': 'Iconos e ilustraciones propios.',
+  'footer.license': 'Los iconos de talentos, hechizos y objetos son del juego, © Blizzard Entertainment; el resto de iconos e ilustraciones son propios.',
   'support.title': '¿Te ha servido la guía?',
   'support.body':
     'Sheep Happens es gratis, no tiene anuncios y se revisa cada semana con fuentes. Si quieres ayudar a que siga así, puedes invitarme a un café.',
@@ -318,7 +326,7 @@ const en: Record<UiKey, string> = {
   'watch.verified': 'Checked {date}',
   'footer.disclaimer':
     'Sheep Happens is a fan-made guide not affiliated with Blizzard Entertainment. World of Warcraft is a trademark of Blizzard Entertainment, Inc.',
-  'footer.license': 'Original icons and artwork.',
+  'footer.license': 'Talent, spell and item icons are from the game, © Blizzard Entertainment; all other icons and artwork are original.',
   'support.title': 'Found the guide useful?',
   'support.body':
     'Sheep Happens is free, ad-free and reviewed every week against its sources. If you want to help keep it that way, you can buy me a coffee.',

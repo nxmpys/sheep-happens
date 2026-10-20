@@ -636,6 +636,81 @@ export const glossarySchema = z
   .strict();
 export type GlossaryTerm = z.infer<typeof glossarySchema>;
 
+/**
+ * A game item quoted on a page (items.json), shown as a card that mimics the
+ * in-game tooltip. Names and stats come from the Forever client through the
+ * Wowhead database; `wowhead` is its item id there.
+ */
+export const ITEM_QUALITIES = ['common', 'uncommon', 'rare', 'epic'] as const;
+export const itemSchema = z
+  .object({
+    id,
+    wowhead: z.number().int().positive(),
+    name: localized,
+    /** Client icon file name, served from public/icons/<icon>.jpg. */
+    icon: z.string().regex(/^[a-z0-9_]+$/),
+    quality: z.enum(ITEM_QUALITIES),
+    /** Slot and type, e.g. «Manos · Tela». */
+    slot: localized,
+    /** White lines: armor, damage, primary stats. */
+    stats: z.array(localized).default([]),
+    /** Green «Equip:» and «Use:» lines. */
+    effects: z.array(localized).default([]),
+    /** Level, rank or reputation needed to use or buy it. */
+    requires: localized.optional(),
+    faction: z.enum(['alliance', 'horde']).optional(),
+  })
+  .strict();
+export type Item = z.infer<typeof itemSchema>;
+
+/** A book for the librarians (library-books.json). */
+export const libraryBookSchema = z
+  .object({
+    id,
+    wowhead: z.number().int().positive(),
+    name: localized,
+    zone: localized,
+    place: localized,
+    /** Zone map coordinates, e.g. "65.4, 70.1"; absent when the book is inside a building with no useful point. */
+    coords: z.string().regex(/^\d{1,2}(\.\d)?, \d{1,2}(\.\d)?$/).optional(),
+    how: localized,
+    /** Who can reach it without raiding an enemy town. */
+    faction: z.enum(['both', 'alliance', 'horde']),
+    /** Rough danger of the trip for a Mage: the level band where it stops being a risk. */
+    band: z.enum(['1-20', '20-40', '40-60']),
+    status: z.enum(STATUSES),
+    sources: z.array(id).min(1),
+  })
+  .strict();
+export type LibraryBook = z.infer<typeof libraryBookSchema>;
+
+/** One Mage class quest chain (class-quests.json). */
+export const classQuestSchema = z
+  .object({
+    id,
+    /** Level to pick up the chain. */
+    level: z.number().int().min(1).max(60),
+    /** Level of its hardest objectives, when higher than `level`. */
+    hard: z.number().int().min(1).max(60).optional(),
+    title: localized,
+    /** Who runs it: a faction, some races, or everyone. */
+    who: localized,
+    start: localized,
+    steps: z.array(localized).min(1),
+    /** Item ids from items.json the chain lets you choose from. */
+    rewards: z.array(id).default([]),
+    /** Non-item reward (a spell rank), in words. */
+    rewardText: localized.optional(),
+    /** Is it worth the trip for a Mage? Our analysis. */
+    verdict: localized,
+    /** Wowhead quest ids of the chain, in order. */
+    quests: z.array(z.number().int().positive()).min(1),
+    status: z.enum(STATUSES),
+    sources: z.array(id).min(1),
+  })
+  .strict();
+export type ClassQuest = z.infer<typeof classQuestSchema>;
+
 /** Frontmatter for every MDX page (validated by the content collection). */
 export const pageFrontmatter = z
   .object({
@@ -661,6 +736,8 @@ export const pageFrontmatter = z
      * `start` and runs to the next group. Shown as collapsible blocks.
      */
     tocGroups: z.array(z.object({ title: z.string().min(1), start: z.string().min(1) }).strict()).optional(),
+    /** Full-width page without the side index, for tools that need room (the talent calculator). */
+    wide: z.boolean().optional(),
   })
   .strict();
 export type PageFrontmatter = z.infer<typeof pageFrontmatter>;

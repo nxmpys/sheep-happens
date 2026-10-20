@@ -9,11 +9,12 @@
  * or loaded from a Wowhead link or one of our builds.
  */
 import Icon from '../ui/Icon.astro';
+import TalentGrid from './TalentGrid.astro';
 import { getLocale } from '../../i18n/locale';
 import { t, type UiKey } from '../../i18n/ui';
 import { builds, talentText, talents } from '../../lib/data';
 import { localName } from '../../lib/names';
-import { MAX_LEVEL, TREE_ORDER, treeTalents } from '../../lib/talents';
+import { MAX_LEVEL, TREE_ORDER } from '../../lib/talents';
 
 const locale = getLocale(Astro);
 const es = locale === 'es';
@@ -56,7 +57,6 @@ const data = {
   },
 };
 const levels = Array.from({ length: MAX_LEVEL - 9 }, (_, i) => MAX_LEVEL - i);
-const rows = Math.max(...talents.map((talent) => talent.row));
 const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(es ? 'es-ES' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 ---
 
@@ -78,11 +78,11 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
       <strong data-left>51</strong> {es ? 'puntos libres' : 'points left'} · <span data-split>0 / 0 / 0</span>
     </p>
     <div class="tc__actions">
-      <a class="button button--primary" data-wowhead href="https://www.wowhead.com/forever/talent-calc/mage" target="_blank" rel="noopener noreferrer">
+      <a class="button" data-wowhead href="https://www.wowhead.com/forever/talent-calc/mage" target="_blank" rel="noopener noreferrer">
         <Icon name="external" size={16} />
         {es ? 'Abrir en Wowhead' : 'Open in Wowhead'}
       </a>
-      <button type="button" class="button" data-copy>
+      <button type="button" class="button button--primary" data-copy>
         <Icon name="link" size={16} />
         {es ? 'Copiar enlace' : 'Copy link'}
       </button>
@@ -111,36 +111,32 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
 
   <p class="tc__message" data-message role="status" aria-live="polite"></p>
 
+  <div class="tc__tabs" role="group" aria-label={es ? 'Ir a un árbol' : 'Go to a tree'}>
+    {
+      TREE_ORDER.map((tree) => (
+        <a class={`tc__tab school-${tree}`} href={`#tc-${tree}`} data-tab={tree}>
+          {data.trees[tree]} <span data-tab-spent>0</span>
+        </a>
+      ))
+    }
+  </div>
+
   <div class="tc__trees">
     {
       TREE_ORDER.map((tree) => (
-        <section class={`tc-tree school-${tree}`} data-tree={tree} aria-label={data.trees[tree]}>
-          <header class="tc-tree__head">
-            <Icon name={tree} size={18} />
-            <span>{data.trees[tree]}</span>
-            <span class="tc-tree__spent" data-spent>0</span>
-            <button type="button" class="tc-tree__clear" data-clear={tree} aria-label={es ? `Quitar los puntos de ${data.trees[tree]}` : `Clear ${data.trees[tree]}`}>
+        <div class="tc__tree" id={`tc-${tree}`}>
+          <TalentGrid tree={tree} interactive>
+            <button
+              slot="head"
+              type="button"
+              class="tc__clear"
+              data-clear={tree}
+              aria-label={es ? `Quitar los puntos de ${data.trees[tree]}` : `Clear ${data.trees[tree]}`}
+            >
               ×
             </button>
-          </header>
-          <div class="tc-tree__grid" style={`--rows: ${rows}`}>
-            {treeTalents(talents, tree).map((talent) => (
-              <button
-                type="button"
-                class="tc-talent"
-                data-talent={talent.id}
-                style={`grid-row: ${talent.row}; grid-column: ${talent.col}`}
-                aria-describedby="tc-detail"
-              >
-                <span class="tc-talent__name">{nameById.get(talent.id)}</span>
-                <span class="tc-talent__rank" data-rank>
-                  0/{talent.maxRank}
-                </span>
-                {talent.requires && <span class="tc-talent__req" aria-hidden="true">↑</span>}
-              </button>
-            ))}
-          </div>
-        </section>
+          </TalentGrid>
+        </div>
       ))
     }
   </div>
@@ -392,6 +388,13 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
       for (const section of this.querySelectorAll<HTMLElement>('[data-tree]')) {
         section.querySelector('[data-spent]')!.textContent = String(byTree[section.dataset.tree as SpecTree]);
       }
+      for (const tab of this.querySelectorAll<HTMLElement>('[data-tab]')) {
+        tab.querySelector('[data-tab-spent]')!.textContent = String(byTree[tab.dataset.tab as SpecTree]);
+      }
+      for (const arrow of this.querySelectorAll<HTMLElement>('[data-arrow-to]')) {
+        const to = this.byId.get(arrow.dataset.arrowTo!)!;
+        arrow.dataset.met = String((this.points[arrow.dataset.arrowFrom!] ?? 0) >= (to.requires?.points ?? 1));
+      }
       for (const button of this.querySelectorAll<HTMLButtonElement>('[data-talent]')) {
         const id = button.dataset.talent!;
         const talent = this.byId.get(id)!;
@@ -420,9 +423,13 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
       this.q('[data-d-name]').textContent = talent.name;
       this.q('[data-d-facts]').textContent = fill(s['facts']!, { tree: this.config.trees[talent.tree], row: talent.row, max: talent.maxRank });
       this.q('[data-d-en]').textContent = talent.english !== talent.name ? talent.english : '';
+      // Like the game, list only the requirements that are not met yet (in red).
       const req: string[] = [];
-      if (talent.row > 1) req.push(fill(s['requiresRow']!, { n: (talent.row - 1) * 5, tree: this.config.trees[talent.tree] }));
-      if (talent.requires) {
+      const above = this.config.talents
+        .filter((other) => other.tree === talent.tree && other.row < talent.row)
+        .reduce((sum, other) => sum + (this.points[other.id] ?? 0), 0);
+      if (above < (talent.row - 1) * 5) req.push(fill(s['requiresRow']!, { n: (talent.row - 1) * 5, tree: this.config.trees[talent.tree] }));
+      if (talent.requires && (this.points[talent.requires.talent] ?? 0) < talent.requires.points) {
         const other = this.byId.get(talent.requires.talent)!;
         req.push(fill(s['requiresTalent']!, { n: talent.requires.points, max: other.maxRank, name: other.name }));
       }
@@ -516,6 +523,13 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
   .tc__field input {
     width: min(100%, 26rem);
   }
+  /* Long build names must not push the page sideways on a phone. */
+  .tc__load > .tc__field {
+    flex: 1 1 16rem;
+  }
+  .tc__load > .tc__field select {
+    width: 100%;
+  }
   .tc__import {
     display: flex;
     flex-wrap: wrap;
@@ -551,120 +565,81 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
     color: var(--warning);
     font-weight: 600;
   }
+  /* Tree shortcuts: only shown when the three trees do not fit side by side. */
+  .tc__tabs {
+    display: flex;
+    gap: var(--space-2);
+  }
+  .tc__tab {
+    flex: 1;
+    padding: var(--space-2);
+    border: 1px solid var(--border);
+    border-bottom: 3px solid var(--school);
+    border-radius: var(--radius-sm);
+    background: var(--surface-1);
+    color: var(--text);
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+  }
+  .tc__tab span {
+    color: var(--school);
+    font-variant-numeric: tabular-nums;
+  }
   .tc__trees {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(min(19.5rem, 88%), 1fr);
     gap: var(--space-3);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 var(--space-2);
+    padding-bottom: var(--space-2);
   }
-  .tc-tree {
+  .tc__tree {
+    scroll-snap-align: start;
     min-width: 0;
-    padding: var(--space-3);
-    border: 1px solid var(--border);
-    border-top: 4px solid var(--school);
-    border-radius: var(--radius);
-    background: var(--surface-1);
   }
-  .tc-tree__head {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    margin-bottom: var(--space-2);
-    font-weight: 700;
-    color: var(--school);
+  .tc__tree :global(.tg) {
+    height: 100%;
   }
-  .tc-tree__spent {
-    margin-left: auto;
-    padding: 0 0.55em;
-    border-radius: 999px;
-    background: var(--school-soft);
-    font-variant-numeric: tabular-nums;
+  @media (min-width: 62rem) {
+    .tc__tabs {
+      display: none;
+    }
+    .tc__trees {
+      grid-auto-columns: minmax(0, 1fr);
+      overflow: visible;
+    }
+    .tc__tree :global(.tg) {
+      --cell: 3.1rem;
+    }
   }
-  .tc-tree__clear {
+  .tc__clear {
     width: 28px;
     height: 28px;
-    border: 1px solid var(--border);
+    border: 1px solid rgb(255 255 255 / 0.2);
     border-radius: var(--radius-sm);
-    background: none;
-    color: var(--text-muted);
+    background: rgb(0 0 0 / 0.4);
+    color: #cfcbe0;
     cursor: pointer;
   }
-  .tc-tree__grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-template-rows: repeat(var(--rows), auto);
-    gap: 6px;
+  .tc__clear:hover {
+    border-color: #fff;
+    color: #fff;
   }
-  .tc-talent {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 2px;
-    min-height: 4.1rem;
-    padding: 5px 5px 4px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: var(--surface-2);
-    color: var(--text-muted);
-    font: inherit;
-    text-align: left;
-    cursor: pointer;
-    user-select: none;
-    -webkit-touch-callout: none;
-  }
-  .tc-talent__name {
-    font-size: 0.7rem;
-    line-height: 1.2;
-    overflow-wrap: anywhere;
-    hyphens: auto;
-  }
-  .tc-talent__rank {
-    align-self: flex-end;
-    font-size: 0.72rem;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-  }
-  .tc-talent__req {
-    position: absolute;
-    top: 2px;
-    right: 4px;
-    font-size: 0.65rem;
-    color: var(--text-subtle);
-  }
-  .tc-talent[data-state='locked'] {
-    opacity: 0.45;
-  }
-  .tc-talent[data-state='open'] {
-    color: var(--text);
-    border-color: color-mix(in srgb, var(--school) 40%, var(--border));
-  }
-  .tc-talent[data-state='some'],
-  .tc-talent[data-state='max'] {
-    color: var(--text);
-    background: var(--school-soft);
-    border-color: var(--school);
-  }
-  .tc-talent[data-state='max'] {
-    box-shadow: inset 0 0 0 1px var(--school);
-  }
-  .tc-talent[data-state='some'] .tc-talent__rank,
-  .tc-talent[data-state='max'] .tc-talent__rank {
-    color: var(--school);
-  }
-  .tc-talent.is-shown {
-    outline: 2px solid var(--accent);
-    outline-offset: 1px;
-  }
+  /* Styled like the game's tooltip: dark navy, white title, gold description. */
   .tc-detail {
     position: fixed;
     z-index: 60;
     width: min(22rem, calc(100vw - 24px));
     padding: var(--space-3) var(--space-4);
-    border: 1px solid var(--border-strong);
-    border-top: 3px solid var(--school, var(--accent));
+    border: 1px solid #5b5670;
     border-radius: var(--radius);
-    background: var(--surface-1);
-    box-shadow: var(--shadow);
+    background: linear-gradient(#141a33f2, #0b0e1ef2);
+    box-shadow: 0 0 0 1px #000, var(--shadow);
+    color: #ffd100;
     font-size: var(--step--1);
     line-height: 1.45;
   }
@@ -678,32 +653,32 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
     font-family: var(--font-display);
     font-size: var(--step-1);
     font-weight: 700;
-    color: var(--school, var(--text));
+    color: #fff;
   }
   .tc-detail__facts {
-    color: var(--text-muted);
+    color: #fff;
     font-weight: 600;
   }
   .tc-detail__en {
-    color: var(--text-muted);
+    color: #9d9d9d;
     font-size: var(--step--1);
   }
   .tc-detail__req {
     font-size: var(--step--1);
-    color: var(--text-muted);
+    color: #ff4040;
   }
   .tc-detail__rank {
     margin-top: var(--space-2) !important;
     font-size: var(--step--1);
     font-weight: 700;
-    color: var(--text-muted);
+    color: #fff;
   }
   .tc-detail__rank:empty {
     display: none;
   }
   .tc-detail__note {
     font-size: var(--step--1);
-    color: var(--text-muted);
+    color: #9d9d9d;
   }
   /* With a mouse, click and right-click do the job; the buttons are for touch screens. */
   @media (hover: hover) {

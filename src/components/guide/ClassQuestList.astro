@@ -1,0 +1,172 @@
+---
+/**
+ * The Mage class quest chains (class-quests.json) as a level timeline: when to
+ * pick each one up, the route, the rewards as item cards and our verdict.
+ */
+import ItemCards from './ItemCards.astro';
+import Status from './StatusBadge.astro';
+import { getLocale } from '../../i18n/locale';
+import { classQuests } from '../../lib/data';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+---
+
+<ol class="cq" role="list">
+  {
+    classQuests.map((quest) => (
+      <li class="cq__chain" id={quest.id}>
+        <div class="cq__level" aria-hidden="true">
+          <span>{es ? 'Nivel' : 'Level'}</span>
+          <strong>{quest.level}</strong>
+        </div>
+        <section class="cq__body" aria-labelledby={`cq-${quest.id}`}>
+          <h3 id={`cq-${quest.id}`} class="cq__title">
+            {quest.title[locale]}
+          </h3>
+          <p class="cq__meta">
+            <span class="visually-hidden">{es ? `Desde el nivel ${quest.level}. ` : `From level ${quest.level}. `}</span>
+            {quest.who[locale]}
+            {quest.hard && (
+              <>
+                {' · '}
+                <span class="cq__hard">
+                  {es ? `objetivos de nivel ${quest.hard}` : `level ${quest.hard} objectives`}
+                </span>
+              </>
+            )}{' '}
+            <Status status={quest.status} />
+          </p>
+          <p class="cq__start">
+            <strong>{es ? 'Empieza: ' : 'Starts: '}</strong>
+            {quest.start[locale]}
+          </p>
+          <ol class="cq__steps">
+            {quest.steps.map((step) => (
+              <li>{step[locale]}</li>
+            ))}
+          </ol>
+          {quest.rewards.length > 0 && <ItemCards ids={quest.rewards} />}
+          {quest.rewardText && <p class="cq__reward">{quest.rewardText[locale]}</p>}
+          <p class="cq__verdict">
+            <strong>{es ? '¿Merece la pena? ' : 'Worth it? '}</strong>
+            {quest.verdict[locale]}
+          </p>
+          <p class="cq__links" data-pagefind-ignore>
+            {es ? 'Misiones en Wowhead: ' : 'Quests on Wowhead: '}
+            {quest.quests.map((id, index) => (
+              <>
+                {index > 0 && ' · '}
+                <a href={`https://www.wowhead.com/forever/quest=${id}`} target="_blank" rel="noopener noreferrer">
+                  {id}
+                </a>
+              </>
+            ))}
+          </p>
+        </section>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .cq {
+    position: relative;
+    display: grid;
+    gap: var(--space-5);
+    margin: var(--space-5) 0;
+    padding: 0;
+    list-style: none;
+  }
+  /* The level rail. */
+  .cq::before {
+    content: '';
+    position: absolute;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    left: 1.75rem;
+    width: 2px;
+    background: linear-gradient(var(--arcane), var(--frost), var(--fire));
+    opacity: 0.5;
+  }
+  .cq__chain {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    gap: var(--space-3);
+    margin: 0;
+    scroll-margin-top: calc(var(--header-h) + var(--space-4));
+  }
+  .cq__level {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    background: var(--surface-1);
+    line-height: 1;
+  }
+  .cq__level span {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .cq__level strong {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+  }
+  .cq__body {
+    min-width: 0;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+  }
+  .cq__title {
+    margin: 0 !important;
+    font-size: var(--step-1);
+  }
+  .cq__meta,
+  .cq__links {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .cq__hard {
+    color: var(--warning);
+    font-weight: 600;
+  }
+  .cq__steps {
+    padding-left: 1.25rem;
+  }
+  .cq__reward {
+    font-weight: 600;
+  }
+  .cq__verdict {
+    padding: var(--space-2) var(--space-3);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+  }
+  @media (max-width: 30rem) {
+    .cq::before {
+      display: none;
+    }
+    .cq__chain {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .cq__level {
+      width: auto;
+      height: auto;
+      justify-self: start;
+      display: flex;
+      gap: 0.4em;
+      padding: 0.2em 0.8em;
+      border-radius: 999px;
+    }
+  }
+</style>

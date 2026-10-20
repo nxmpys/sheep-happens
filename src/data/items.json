@@ -1,0 +1,1379 @@
+[
+  {
+    "id": "ley-orb",
+    "wowhead": 7508,
+    "name": {
+      "es": "Orbe Ley",
+      "en": "Ley Orb"
+    },
+    "icon": "inv_misc_orb_01",
+    "quality": "uncommon",
+    "slot": {
+      "es": "Sostener con la mano izquierda",
+      "en": "Held in off-hand"
+    },
+    "stats": [
+      {
+        "es": "+1 Espíritu",
+        "en": "+1 Spirit"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Uso: restaura entre 80 y 240 de maná (30 min de reutilización)",
+        "en": "Use: restores 80 to 240 mana (30 min cooldown)"
+      }
+    ],
+    "requires": {
+      "es": "Mago · nivel 10",
+      "en": "Mage · level 10"
+    }
+  },
+  {
+    "id": "ley-staff",
+    "wowhead": 9513,
+    "name": {
+      "es": "Bastón Ley",
+      "en": "Ley Staff"
+    },
+    "icon": "inv_staff_21",
+    "quality": "uncommon",
+    "slot": {
+      "es": "Dos manos · Bastón",
+      "en": "Two-hand · Staff"
+    },
+    "stats": [
+      {
+        "es": "12-19 de daño · velocidad 2,90",
+        "en": "12-19 damage · speed 2.90"
+      },
+      {
+        "es": "+1 Intelecto",
+        "en": "+1 Intellect"
+      },
+      {
+        "es": "+1 Espíritu",
+        "en": "+1 Spirit"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +2 al daño y la sanación con hechizos",
+        "en": "Equip: up to +2 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Mago · nivel 10",
+      "en": "Mage · level 10"
+    }
+  },
+  {
+    "id": "arcane-orb",
+    "wowhead": 7507,
+    "name": {
+      "es": "Orbe Arcano",
+      "en": "Arcane Orb"
+    },
+    "icon": "inv_misc_orb_01",
+    "quality": "uncommon",
+    "slot": {
+      "es": "Sostener con la mano izquierda",
+      "en": "Held in off-hand"
+    },
+    "stats": [
+      {
+        "es": "+1 Espíritu",
+        "en": "+1 Spirit"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Uso: restaura entre 80 y 240 de maná (30 min de reutilización)",
+        "en": "Use: restores 80 to 240 mana (30 min cooldown)"
+      }
+    ],
+    "requires": {
+      "es": "Mago · nivel 10",
+      "en": "Mage · level 10"
+    }
+  },
+  {
+    "id": "arcane-staff",
+    "wowhead": 9514,
+    "name": {
+      "es": "Bastón Arcano",
+      "en": "Arcane Staff"
+    },
+    "icon": "inv_staff_10",
+    "quality": "uncommon",
+    "slot": {
+      "es": "Dos manos · Bastón",
+      "en": "Two-hand · Staff"
+    },
+    "stats": [
+      {
+        "es": "12-19 de daño · velocidad 2,90",
+        "en": "12-19 damage · speed 2.90"
+      },
+      {
+        "es": "+1 Intelecto",
+        "en": "+1 Intellect"
+      },
+      {
+        "es": "+1 Espíritu",
+        "en": "+1 Spirit"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +2 al daño y la sanación con hechizos",
+        "en": "Equip: up to +2 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Mago · nivel 10",
+      "en": "Mage · level 10"
+    }
+  },
+  {
+    "id": "manaweave-robe",
+    "wowhead": 7509,
+    "name": {
+      "es": "Toga Tejemaná",
+      "en": "Manaweave Robe"
+    },
+    "icon": "inv_chest_cloth_36",
+    "quality": "uncommon",
+    "slot": {
+      "es": "Pecho · Tela",
+      "en": "Chest · Cloth"
+    },
+    "stats": [
+      {
+        "es": "34 de armadura",
+        "en": "34 Armor"
+      },
+      {
+        "es": "+6 Intelecto",
+        "en": "+6 Intellect"
+      }
+    ],
+    "effects": [],
+    "requires": {
+      "es": "Mago · nivel 15",
+      "en": "Mage · level 15"
+    },
+    "faction": "alliance"
+  },
+  {
+    "id": "lesser-spellfire-robes",
+    "wowhead": 7510,
+    "name": {
+      "es": "Togas inferiores del fuegohechizo",
+      "en": "Lesser Spellfire Robes"
+    },
+    "icon": "inv_chest_cloth_18",
+    "quality": "uncommon",
+    "slot": {
+      "es": "Pecho · Tela",
+      "en": "Chest · Cloth"
+    },
+    "stats": [
+      {
+        "es": "34 de armadura",
+        "en": "34 Armor"
+      },
+      {
+        "es": "+6 Intelecto",
+        "en": "+6 Intellect"
+      }
+    ],
+    "effects": [],
+    "requires": {
+      "es": "Mago · nivel 15",
+      "en": "Mage · level 15"
+    },
+    "faction": "horde"
+  },
+  {
+    "id": "astral-knot-robe",
+    "wowhead": 7511,
+    "name": {
+      "es": "Toga de nudos astral",
+      "en": "Astral Knot Robe"
+    },
+    "icon": "inv_chest_cloth_04",
+    "quality": "uncommon",
+    "slot": {
+      "es": "Pecho · Tela",
+      "en": "Chest · Cloth"
+    },
+    "stats": [
+      {
+        "es": "44 de armadura",
+        "en": "44 Armor"
+      },
+      {
+        "es": "+6 Aguante",
+        "en": "+6 Stamina"
+      },
+      {
+        "es": "+6 Intelecto",
+        "en": "+6 Intellect"
+      },
+      {
+        "es": "+6 Espíritu",
+        "en": "+6 Spirit"
+      }
+    ],
+    "effects": [],
+    "requires": {
+      "es": "Mago · nivel 26",
+      "en": "Mage · level 26"
+    },
+    "faction": "alliance"
+  },
+  {
+    "id": "astral-knot-blouse",
+    "wowhead": 9516,
+    "name": {
+      "es": "Blusa de nudos astral",
+      "en": "Astral Knot Blouse"
+    },
+    "icon": "inv_shirt_11",
+    "quality": "uncommon",
+    "slot": {
+      "es": "Pecho · Tela",
+      "en": "Chest · Cloth"
+    },
+    "stats": [
+      {
+        "es": "44 de armadura",
+        "en": "44 Armor"
+      },
+      {
+        "es": "+6 Aguante",
+        "en": "+6 Stamina"
+      },
+      {
+        "es": "+9 Intelecto",
+        "en": "+9 Intellect"
+      }
+    ],
+    "effects": [],
+    "requires": {
+      "es": "Mago · nivel 26",
+      "en": "Mage · level 26"
+    },
+    "faction": "alliance"
+  },
+  {
+    "id": "nether-lace-robe",
+    "wowhead": 7512,
+    "name": {
+      "es": "Toga abisal",
+      "en": "Nether-lace Robe"
+    },
+    "icon": "inv_chest_cloth_20",
+    "quality": "uncommon",
+    "slot": {
+      "es": "Pecho · Tela",
+      "en": "Chest · Cloth"
+    },
+    "stats": [
+      {
+        "es": "44 de armadura",
+        "en": "44 Armor"
+      },
+      {
+        "es": "+6 Aguante",
+        "en": "+6 Stamina"
+      },
+      {
+        "es": "+6 Intelecto",
+        "en": "+6 Intellect"
+      },
+      {
+        "es": "+6 Espíritu",
+        "en": "+6 Spirit"
+      }
+    ],
+    "effects": [],
+    "requires": {
+      "es": "Mago · nivel 26",
+      "en": "Mage · level 26"
+    },
+    "faction": "horde"
+  },
+  {
+    "id": "nether-lace-tunic",
+    "wowhead": 9515,
+    "name": {
+      "es": "Túnica abisal",
+      "en": "Nether-lace Tunic"
+    },
+    "icon": "inv_shirt_07",
+    "quality": "uncommon",
+    "slot": {
+      "es": "Pecho · Tela",
+      "en": "Chest · Cloth"
+    },
+    "stats": [
+      {
+        "es": "44 de armadura",
+        "en": "44 Armor"
+      },
+      {
+        "es": "+6 Aguante",
+        "en": "+6 Stamina"
+      },
+      {
+        "es": "+9 Intelecto",
+        "en": "+9 Intellect"
+      }
+    ],
+    "effects": [],
+    "requires": {
+      "es": "Mago · nivel 26",
+      "en": "Mage · level 26"
+    },
+    "faction": "horde"
+  },
+  {
+    "id": "icefury-wand",
+    "wowhead": 7514,
+    "name": {
+      "es": "Varita Furia de Hielo",
+      "en": "Icefury Wand"
+    },
+    "icon": "inv_wand_05",
+    "quality": "rare",
+    "slot": {
+      "es": "A distancia · Varita",
+      "en": "Ranged · Wand"
+    },
+    "stats": [
+      {
+        "es": "41-78 de daño de Escarcha · velocidad 1,60 (37,2 DPS)",
+        "en": "41-78 Frost damage · speed 1.60 (37.2 DPS)"
+      },
+      {
+        "es": "+3 Intelecto",
+        "en": "+3 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +9 al daño de los hechizos de Escarcha",
+        "en": "Equip: up to +9 Frost spell damage"
+      }
+    ],
+    "requires": {
+      "es": "Mago · misión desde el nivel 30",
+      "en": "Mage · quest from level 30"
+    }
+  },
+  {
+    "id": "nether-force-wand",
+    "wowhead": 11263,
+    "name": {
+      "es": "Varita de potencia abisal",
+      "en": "Nether Force Wand"
+    },
+    "icon": "inv_wand_07",
+    "quality": "rare",
+    "slot": {
+      "es": "A distancia · Varita",
+      "en": "Ranged · Wand"
+    },
+    "stats": [
+      {
+        "es": "39-73 de daño Arcano · velocidad 1,50 (37,3 DPS)",
+        "en": "39-73 Arcane damage · speed 1.50 (37.3 DPS)"
+      },
+      {
+        "es": "+3 Intelecto",
+        "en": "+3 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +9 al daño de los hechizos de Arcano",
+        "en": "Equip: up to +9 Arcane spell damage"
+      }
+    ],
+    "requires": {
+      "es": "Mago · misión desde el nivel 30",
+      "en": "Mage · quest from level 30"
+    }
+  },
+  {
+    "id": "ragefire-wand",
+    "wowhead": 7513,
+    "name": {
+      "es": "Varita Ira Ardiente",
+      "en": "Ragefire Wand"
+    },
+    "icon": "inv_wand_09",
+    "quality": "rare",
+    "slot": {
+      "es": "A distancia · Varita",
+      "en": "Ranged · Wand"
+    },
+    "stats": [
+      {
+        "es": "36-68 de daño de Fuego · velocidad 1,40 (37,1 DPS)",
+        "en": "36-68 Fire damage · speed 1.40 (37.1 DPS)"
+      },
+      {
+        "es": "+3 Intelecto",
+        "en": "+3 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +9 al daño de los hechizos de Fuego",
+        "en": "Equip: up to +9 Fire spell damage"
+      }
+    ],
+    "requires": {
+      "es": "Mago · misión desde el nivel 30",
+      "en": "Mage · quest from level 30"
+    }
+  },
+  {
+    "id": "celestial-orb",
+    "wowhead": 7515,
+    "name": {
+      "es": "Orbe celestial",
+      "en": "Celestial Orb"
+    },
+    "icon": "inv_misc_orb_03",
+    "quality": "rare",
+    "slot": {
+      "es": "Sostener con la mano izquierda",
+      "en": "Held in off-hand"
+    },
+    "stats": [
+      {
+        "es": "+3 Intelecto",
+        "en": "+3 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +13 al daño y la sanación con hechizos",
+        "en": "Equip: up to +13 spell damage and healing"
+      },
+      {
+        "es": "Uso: restaura entre 400 y 1200 de maná (30 min de reutilización)",
+        "en": "Use: restores 400 to 1200 mana (30 min cooldown)"
+      }
+    ],
+    "requires": {
+      "es": "Mago · misión desde el nivel 35",
+      "en": "Mage · quest from level 35"
+    }
+  },
+  {
+    "id": "celestial-stave",
+    "wowhead": 9517,
+    "name": {
+      "es": "Bastón celestial",
+      "en": "Celestial Stave"
+    },
+    "icon": "inv_staff_14",
+    "quality": "rare",
+    "slot": {
+      "es": "Dos manos · Bastón",
+      "en": "Two-hand · Staff"
+    },
+    "stats": [
+      {
+        "es": "63-96 de daño · velocidad 3,00",
+        "en": "63-96 damage · speed 3.00"
+      },
+      {
+        "es": "+8 Intelecto",
+        "en": "+8 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +46 al daño y la sanación con hechizos",
+        "en": "Equip: up to +46 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Mago · misión desde el nivel 35",
+      "en": "Mage · quest from level 35"
+    }
+  },
+  {
+    "id": "scholarly-pendant",
+    "wowhead": 277203,
+    "name": {
+      "es": "Colgante académico",
+      "en": "Scholarly Pendant"
+    },
+    "icon": "inv_jewelry_necklace_11",
+    "quality": "uncommon",
+    "slot": {
+      "es": "Cuello",
+      "en": "Neck"
+    },
+    "stats": [
+      {
+        "es": "+3 Aguante",
+        "en": "+3 Stamina"
+      },
+      {
+        "es": "+2 Espíritu",
+        "en": "+2 Spirit"
+      }
+    ],
+    "effects": []
+  },
+  {
+    "id": "erudites-amulet",
+    "wowhead": 277204,
+    "name": {
+      "es": "Amuleto de erudición",
+      "en": "Erudite's Amulet"
+    },
+    "icon": "inv_jewelry_necklace_01",
+    "quality": "uncommon",
+    "slot": {
+      "es": "Cuello",
+      "en": "Neck"
+    },
+    "stats": [
+      {
+        "es": "+2 Agilidad",
+        "en": "+2 Agility"
+      },
+      {
+        "es": "+3 Aguante",
+        "en": "+3 Stamina"
+      }
+    ],
+    "effects": []
+  },
+  {
+    "id": "field-researchers-loop",
+    "wowhead": 281634,
+    "name": {
+      "es": "Aro de investigador de campo",
+      "en": "Field Researcher's Loop"
+    },
+    "icon": "inv_jewelry_ring_02",
+    "quality": "rare",
+    "slot": {
+      "es": "Dedo",
+      "en": "Finger"
+    },
+    "stats": [
+      {
+        "es": "+7 Agilidad",
+        "en": "+7 Agility"
+      },
+      {
+        "es": "+7 Aguante",
+        "en": "+7 Stamina"
+      }
+    ],
+    "effects": []
+  },
+  {
+    "id": "philanthropists-ring",
+    "wowhead": 281635,
+    "name": {
+      "es": "Anillo de filántropo",
+      "en": "Philanthropist's Ring"
+    },
+    "icon": "inv_jewelry_ring_14",
+    "quality": "rare",
+    "slot": {
+      "es": "Dedo",
+      "en": "Finger"
+    },
+    "stats": [
+      {
+        "es": "+5 Intelecto",
+        "en": "+5 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +10 al daño y la sanación con hechizos",
+        "en": "Equip: up to +10 spell damage and healing"
+      }
+    ]
+  },
+  {
+    "id": "truthseekers-bow",
+    "wowhead": 277254,
+    "name": {
+      "es": "Arco de buscaverdades",
+      "en": "Truthseeker's Bow"
+    },
+    "icon": "inv_weapon_bow_01",
+    "quality": "rare",
+    "slot": {
+      "es": "A distancia · Arco",
+      "en": "Ranged · Bow"
+    },
+    "stats": [
+      {
+        "es": "46-87 de daño · velocidad 2,80",
+        "en": "46-87 damage · speed 2.80"
+      },
+      {
+        "es": "+7 Agilidad",
+        "en": "+7 Agility"
+      },
+      {
+        "es": "+3 Aguante",
+        "en": "+3 Stamina"
+      }
+    ],
+    "effects": [],
+    "requires": {
+      "es": "Nivel 40",
+      "en": "Level 40"
+    }
+  },
+  {
+    "id": "crest-of-elucidation",
+    "wowhead": 277258,
+    "name": {
+      "es": "Blasón de esclarecimiento",
+      "en": "Crest of Elucidation"
+    },
+    "icon": "spell_holy_powerwordshield",
+    "quality": "rare",
+    "slot": {
+      "es": "Mano izquierda · Escudo",
+      "en": "Off hand · Shield"
+    },
+    "stats": [
+      {
+        "es": "1580 de armadura",
+        "en": "1580 Armor"
+      },
+      {
+        "es": "+12 Espíritu",
+        "en": "+12 Spirit"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +11 a la sanación y +4 al daño con hechizos",
+        "en": "Equip: up to +11 healing and +4 spell damage"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 40",
+      "en": "Level 40"
+    }
+  },
+  {
+    "id": "researchers-night-light",
+    "wowhead": 277260,
+    "name": {
+      "es": "Luz nocturna de investigación",
+      "en": "Researcher's Night Light"
+    },
+    "icon": "inv_torch_lit",
+    "quality": "rare",
+    "slot": {
+      "es": "Sostener con la mano izquierda",
+      "en": "Held in off-hand"
+    },
+    "stats": [
+      {
+        "es": "+12 Aguante",
+        "en": "+12 Stamina"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +7 al daño de los hechizos de Fuego",
+        "en": "Equip: up to +7 Fire spell damage"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 40",
+      "en": "Level 40"
+    }
+  },
+  {
+    "id": "premier-magus-robes",
+    "wowhead": 272459,
+    "name": {
+      "es": "Togas de Magus de gran calidad",
+      "en": "Premier Magus Robes"
+    },
+    "icon": "inv_chest_cloth_28",
+    "quality": "rare",
+    "slot": {
+      "es": "Pecho · Tela",
+      "en": "Chest · Cloth"
+    },
+    "stats": [
+      {
+        "es": "85 de armadura",
+        "en": "85 Armor"
+      },
+      {
+        "es": "+25 Aguante",
+        "en": "+25 Stamina"
+      },
+      {
+        "es": "+10 Intelecto",
+        "en": "+10 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: +0,5 % de probabilidad de golpe crítico",
+        "en": "Equip: +0.5% critical strike chance"
+      },
+      {
+        "es": "Equipar: hasta +14 al daño y la sanación con hechizos",
+        "en": "Equip: up to +14 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Mago · nivel 55 · sin rango",
+      "en": "Mage · level 55 · no rank"
+    }
+  },
+  {
+    "id": "premier-magus-gloves",
+    "wowhead": 272455,
+    "name": {
+      "es": "Guantes de Magus de gran calidad",
+      "en": "Premier Magus Gloves"
+    },
+    "icon": "inv_gauntlets_06",
+    "quality": "rare",
+    "slot": {
+      "es": "Manos · Tela",
+      "en": "Hands · Cloth"
+    },
+    "stats": [
+      {
+        "es": "53 de armadura",
+        "en": "53 Armor"
+      },
+      {
+        "es": "+19 Aguante",
+        "en": "+19 Stamina"
+      },
+      {
+        "es": "+10 Intelecto",
+        "en": "+10 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +12 al daño y la sanación con hechizos",
+        "en": "Equip: up to +12 spell damage and healing"
+      },
+      {
+        "es": "Equipar: Escudo de maná absorbe 285 más",
+        "en": "Equip: Mana Shield absorbs 285 more"
+      }
+    ],
+    "requires": {
+      "es": "Mago · nivel 55 · sin rango",
+      "en": "Mage · level 55 · no rank"
+    }
+  },
+  {
+    "id": "premier-emboldened-hands-seal",
+    "wowhead": 275239,
+    "name": {
+      "es": "Lacre de manos envalentonado de gran calidad",
+      "en": "Premier Emboldened Hands Seal"
+    },
+    "icon": "inv_misc_desecrated_plategloves",
+    "quality": "epic",
+    "slot": {
+      "es": "Mejora de las manos",
+      "en": "Hands upgrade"
+    },
+    "stats": [
+      {
+        "es": "Convierte los guantes azules en su versión épica",
+        "en": "Turns the rare gloves into their epic version"
+      }
+    ],
+    "effects": [],
+    "requires": {
+      "es": "Nivel 60 · rango 10",
+      "en": "Level 60 · rank 10"
+    }
+  },
+  {
+    "id": "premier-lieutenant-commanders-silk-gloves",
+    "wowhead": 272749,
+    "name": {
+      "es": "Guantes de seda de Teniente coronel de gran calidad",
+      "en": "Premier Lieutenant Commander's Silk Gloves"
+    },
+    "icon": "inv_gauntlets_14",
+    "quality": "epic",
+    "slot": {
+      "es": "Manos · Tela",
+      "en": "Hands · Cloth"
+    },
+    "stats": [
+      {
+        "es": "63 de armadura",
+        "en": "63 Armor"
+      },
+      {
+        "es": "+26 Aguante",
+        "en": "+26 Stamina"
+      },
+      {
+        "es": "+15 Intelecto",
+        "en": "+15 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +14 al daño y la sanación con hechizos",
+        "en": "Equip: up to +14 spell damage and healing"
+      },
+      {
+        "es": "Equipar: Escudo de maná absorbe 285 más",
+        "en": "Equip: Mana Shield absorbs 285 more"
+      }
+    ],
+    "requires": {
+      "es": "Mago · nivel 60 · rango 10",
+      "en": "Mage · level 60 · rank 10"
+    },
+    "faction": "alliance"
+  },
+  {
+    "id": "premier-champions-magus-handguards",
+    "wowhead": 272505,
+    "name": {
+      "es": "Manoplas de Magus de Campeón de gran calidad",
+      "en": "Premier Champion's Magus Handguards"
+    },
+    "icon": "inv_gauntlets_19",
+    "quality": "epic",
+    "slot": {
+      "es": "Manos · Tela",
+      "en": "Hands · Cloth"
+    },
+    "stats": [
+      {
+        "es": "63 de armadura",
+        "en": "63 Armor"
+      },
+      {
+        "es": "+26 Aguante",
+        "en": "+26 Stamina"
+      },
+      {
+        "es": "+15 Intelecto",
+        "en": "+15 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +14 al daño y la sanación con hechizos",
+        "en": "Equip: up to +14 spell damage and healing"
+      },
+      {
+        "es": "Equipar: Escudo de maná absorbe 285 más",
+        "en": "Equip: Mana Shield absorbs 285 more"
+      }
+    ],
+    "requires": {
+      "es": "Mago · nivel 60 · rango 10",
+      "en": "Mage · level 60 · rank 10"
+    },
+    "faction": "horde"
+  },
+  {
+    "id": "premier-grand-marshals-stave",
+    "wowhead": 272850,
+    "name": {
+      "es": "Báculo de Gran mariscal de gran calidad",
+      "en": "Premier Grand Marshal's Stave"
+    },
+    "icon": "inv_staff_14",
+    "quality": "epic",
+    "slot": {
+      "es": "Dos manos · Bastón",
+      "en": "Two-hand · Staff"
+    },
+    "stats": [
+      {
+        "es": "109-165 de daño · velocidad 3,00",
+        "en": "109-165 damage · speed 3.00"
+      },
+      {
+        "es": "+36 Aguante",
+        "en": "+36 Stamina"
+      },
+      {
+        "es": "+20 Intelecto",
+        "en": "+20 Intellect"
+      },
+      {
+        "es": "+5 penetración de hechizos",
+        "en": "+5 Spell Penetration"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +94 al daño y la sanación con hechizos",
+        "en": "Equip: up to +94 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 60 · rango 14",
+      "en": "Level 60 · rank 14"
+    },
+    "faction": "alliance"
+  },
+  {
+    "id": "premier-high-warlords-war-staff",
+    "wowhead": 272603,
+    "name": {
+      "es": "Bastón de guerra de gran señor de la guerra de gran calidad",
+      "en": "Premier High Warlord's War Staff"
+    },
+    "icon": "inv_misc_bone_elfskull_01",
+    "quality": "epic",
+    "slot": {
+      "es": "Dos manos · Bastón",
+      "en": "Two-hand · Staff"
+    },
+    "stats": [
+      {
+        "es": "109-165 de daño · velocidad 3,00",
+        "en": "109-165 damage · speed 3.00"
+      },
+      {
+        "es": "+36 Aguante",
+        "en": "+36 Stamina"
+      },
+      {
+        "es": "+20 Intelecto",
+        "en": "+20 Intellect"
+      },
+      {
+        "es": "+5 penetración de hechizos",
+        "en": "+5 Spell Penetration"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +94 al daño y la sanación con hechizos",
+        "en": "Equip: up to +94 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 60 · rango 14",
+      "en": "Level 60 · rank 14"
+    },
+    "faction": "horde"
+  },
+  {
+    "id": "premier-grand-marshals-mageblade",
+    "wowhead": 272856,
+    "name": {
+      "es": "Hoja de mago de gran mariscal de gran calidad",
+      "en": "Premier Grand Marshal's Mageblade"
+    },
+    "icon": "inv_weapon_shortblade_26",
+    "quality": "epic",
+    "slot": {
+      "es": "Mano derecha · Daga",
+      "en": "Main hand · Dagger"
+    },
+    "stats": [
+      {
+        "es": "44-82 de daño · velocidad 2,00",
+        "en": "44-82 damage · speed 2.00"
+      },
+      {
+        "es": "+8 Aguante",
+        "en": "+8 Stamina"
+      },
+      {
+        "es": "+7 Intelecto",
+        "en": "+7 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: +1 % de probabilidad de golpe crítico",
+        "en": "Equip: +1% critical strike chance"
+      },
+      {
+        "es": "Equipar: hasta +94 al daño y la sanación con hechizos",
+        "en": "Equip: up to +94 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 60 · rango 14",
+      "en": "Level 60 · rank 14"
+    },
+    "faction": "alliance"
+  },
+  {
+    "id": "premier-high-warlords-spellblade",
+    "wowhead": 272683,
+    "name": {
+      "es": "Hoja de hechizo de gran señor de la guerra de gran calidad",
+      "en": "Premier High Warlord's Spellblade"
+    },
+    "icon": "inv_weapon_shortblade_26",
+    "quality": "epic",
+    "slot": {
+      "es": "Mano derecha · Daga",
+      "en": "Main hand · Dagger"
+    },
+    "stats": [
+      {
+        "es": "44-82 de daño · velocidad 2,00",
+        "en": "44-82 damage · speed 2.00"
+      },
+      {
+        "es": "+8 Aguante",
+        "en": "+8 Stamina"
+      },
+      {
+        "es": "+7 Intelecto",
+        "en": "+7 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: +1 % de probabilidad de golpe crítico",
+        "en": "Equip: +1% critical strike chance"
+      },
+      {
+        "es": "Equipar: hasta +94 al daño y la sanación con hechizos",
+        "en": "Equip: up to +94 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 60 · rango 14",
+      "en": "Level 60 · rank 14"
+    },
+    "faction": "horde"
+  },
+  {
+    "id": "premier-grand-marshals-tome-of-power",
+    "wowhead": 278158,
+    "name": {
+      "es": "Escrito sobre poder de gran mariscal de gran calidad",
+      "en": "Premier Grand Marshal's Tome of Power"
+    },
+    "icon": "inv_misc_book_12",
+    "quality": "epic",
+    "slot": {
+      "es": "Sostener con la mano izquierda",
+      "en": "Held in off-hand"
+    },
+    "stats": [
+      {
+        "es": "+15 Aguante",
+        "en": "+15 Stamina"
+      },
+      {
+        "es": "+14 Intelecto",
+        "en": "+14 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +18 al daño y la sanación con hechizos",
+        "en": "Equip: up to +18 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 60 · rango 14",
+      "en": "Level 60 · rank 14"
+    },
+    "faction": "alliance"
+  },
+  {
+    "id": "premier-high-warlords-tome-of-destruction",
+    "wowhead": 272685,
+    "name": {
+      "es": "Escrito sobre destrucción del gran señor de la guerra de gran calidad",
+      "en": "Premier High Warlord's Tome of Destruction"
+    },
+    "icon": "inv_misc_book_15",
+    "quality": "epic",
+    "slot": {
+      "es": "Sostener con la mano izquierda",
+      "en": "Held in off-hand"
+    },
+    "stats": [
+      {
+        "es": "+15 Aguante",
+        "en": "+15 Stamina"
+      },
+      {
+        "es": "+14 Intelecto",
+        "en": "+14 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +18 al daño y la sanación con hechizos",
+        "en": "Equip: up to +18 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 60 · rango 14",
+      "en": "Level 60 · rank 14"
+    },
+    "faction": "horde"
+  },
+  {
+    "id": "clever-expeditionarys-spellblade",
+    "wowhead": 271931,
+    "name": {
+      "es": "Hoja de hechizo de expedicionario ingenioso",
+      "en": "Clever Expeditionary's Spellblade"
+    },
+    "icon": "inv_weapon_shortblade_18",
+    "quality": "rare",
+    "slot": {
+      "es": "Mano derecha · Daga",
+      "en": "Main hand · Dagger"
+    },
+    "stats": [
+      {
+        "es": "14-26 de daño · velocidad 1,40",
+        "en": "14-26 damage · speed 1.40"
+      },
+      {
+        "es": "+4 Aguante",
+        "en": "+4 Stamina"
+      },
+      {
+        "es": "+6 Intelecto",
+        "en": "+6 Intellect"
+      },
+      {
+        "es": "+3 Espíritu",
+        "en": "+3 Spirit"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +36 al daño y la sanación con hechizos",
+        "en": "Equip: up to +36 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 28 · Fuerza Expedicionaria de Theramore, Reverenciado",
+      "en": "Level 28 · Theramore Expeditionary Force, Revered"
+    },
+    "faction": "alliance"
+  },
+  {
+    "id": "darkspear-insurgents-spellblade",
+    "wowhead": 272086,
+    "name": {
+      "es": "Hoja de hechizo de insurgente Lanza Negra",
+      "en": "Darkspear Insurgent's Spellblade"
+    },
+    "icon": "inv_weapon_shortblade_18",
+    "quality": "rare",
+    "slot": {
+      "es": "Mano derecha · Daga",
+      "en": "Main hand · Dagger"
+    },
+    "stats": [
+      {
+        "es": "14-26 de daño · velocidad 1,40",
+        "en": "14-26 damage · speed 1.40"
+      },
+      {
+        "es": "+4 Aguante",
+        "en": "+4 Stamina"
+      },
+      {
+        "es": "+6 Intelecto",
+        "en": "+6 Intellect"
+      },
+      {
+        "es": "+3 Espíritu",
+        "en": "+3 Spirit"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +36 al daño y la sanación con hechizos",
+        "en": "Equip: up to +36 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 28 · Asaltantes Lanza Negra, Reverenciado",
+      "en": "Level 28 · Darkspear Raiders, Revered"
+    },
+    "faction": "horde"
+  },
+  {
+    "id": "insurgents-manifesto",
+    "wowhead": 271935,
+    "name": {
+      "es": "Manifiesto de insurgente",
+      "en": "Insurgent's Manifesto"
+    },
+    "icon": "inv_misc_book_06",
+    "quality": "rare",
+    "slot": {
+      "es": "Sostener con la mano izquierda",
+      "en": "Held in off-hand"
+    },
+    "stats": [
+      {
+        "es": "+8 Aguante",
+        "en": "+8 Stamina"
+      },
+      {
+        "es": "+4 Intelecto",
+        "en": "+4 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +2 al daño y la sanación con hechizos",
+        "en": "Equip: up to +2 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 28 · Fuerza Expedicionaria de Theramore, Reverenciado",
+      "en": "Level 28 · Theramore Expeditionary Force, Revered"
+    },
+    "faction": "alliance"
+  },
+  {
+    "id": "tome-of-the-darkspear-prophecy",
+    "wowhead": 272090,
+    "name": {
+      "es": "Escrito de profecía Lanza Negra",
+      "en": "Tome of the Darkspear Prophecy"
+    },
+    "icon": "inv_misc_book_06",
+    "quality": "rare",
+    "slot": {
+      "es": "Sostener con la mano izquierda",
+      "en": "Held in off-hand"
+    },
+    "stats": [
+      {
+        "es": "+8 Aguante",
+        "en": "+8 Stamina"
+      },
+      {
+        "es": "+4 Intelecto",
+        "en": "+4 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +2 al daño y la sanación con hechizos",
+        "en": "Equip: up to +2 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 28 · Asaltantes Lanza Negra, Reverenciado",
+      "en": "Level 28 · Darkspear Raiders, Revered"
+    },
+    "faction": "horde"
+  },
+  {
+    "id": "expeditionarys-cape",
+    "wowhead": 271923,
+    "name": {
+      "es": "Manteo de expedicionario",
+      "en": "Expeditionary's Cape"
+    },
+    "icon": "inv_misc_cape_20",
+    "quality": "rare",
+    "slot": {
+      "es": "Espalda",
+      "en": "Back"
+    },
+    "stats": [
+      {
+        "es": "25 de armadura",
+        "en": "25 Armor"
+      },
+      {
+        "es": "+4 Aguante",
+        "en": "+4 Stamina"
+      },
+      {
+        "es": "+8 Intelecto",
+        "en": "+8 Intellect"
+      },
+      {
+        "es": "+3 Espíritu",
+        "en": "+3 Spirit"
+      }
+    ],
+    "effects": [],
+    "requires": {
+      "es": "Nivel 28 · Fuerza Expedicionaria de Theramore, Honorable",
+      "en": "Level 28 · Theramore Expeditionary Force, Honored"
+    },
+    "faction": "alliance"
+  },
+  {
+    "id": "darkspear-raiders-cloak",
+    "wowhead": 272078,
+    "name": {
+      "es": "Capa de asaltante Lanza Negra",
+      "en": "Darkspear Raider's Cloak"
+    },
+    "icon": "inv_misc_cape_20",
+    "quality": "rare",
+    "slot": {
+      "es": "Espalda",
+      "en": "Back"
+    },
+    "stats": [
+      {
+        "es": "25 de armadura",
+        "en": "25 Armor"
+      },
+      {
+        "es": "+4 Aguante",
+        "en": "+4 Stamina"
+      },
+      {
+        "es": "+8 Intelecto",
+        "en": "+8 Intellect"
+      },
+      {
+        "es": "+3 Espíritu",
+        "en": "+3 Spirit"
+      }
+    ],
+    "effects": [],
+    "requires": {
+      "es": "Nivel 28 · Asaltantes Lanza Negra, Honorable",
+      "en": "Level 28 · Darkspear Raiders, Honored"
+    },
+    "faction": "horde"
+  }
+]

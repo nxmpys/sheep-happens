@@ -1,0 +1,1063 @@
+[
+  {
+    "id": "theocritus-journal",
+    "wowhead": 203755,
+    "name": {
+      "es": "Diario de investigación del archimago Theocritus",
+      "en": "Archmage Theocritus' Research Journal"
+    },
+    "zone": {
+      "es": "Bosque de Elwynn",
+      "en": "Elwynn Forest"
+    },
+    "place": {
+      "es": "Torre de Azora",
+      "en": "Tower of Azora"
+    },
+    "coords": "65.4, 70.1",
+    "how": {
+      "es": "En una mesa a media altura de la torre. Sube por la rampa interior.",
+      "en": "On a table halfway up the tower. Take the inner ramp."
+    },
+    "faction": "alliance",
+    "band": "1-20",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "antonidas-autobiography",
+    "wowhead": 203754,
+    "name": {
+      "es": "Archimago Antonidas: Autobiografía completa",
+      "en": "Archmage Antonidas: The Unabridged Autobiography"
+    },
+    "zone": {
+      "es": "Forjaz",
+      "en": "Ironforge"
+    },
+    "place": {
+      "es": "Sala de los Expedicionarios",
+      "en": "Hall of Explorers"
+    },
+    "coords": "75.4, 11.0",
+    "how": {
+      "es": "Sobre la gran mesa del centro de la sala.",
+      "en": "On the big table in the middle of the hall."
+    },
+    "faction": "alliance",
+    "band": "1-20",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "rumi-collected-works",
+    "wowhead": 208860,
+    "name": {
+      "es": "Rumi de Gnomeregan: Obras completas",
+      "en": "Rumi of Gnomeregan: The Collected Works"
+    },
+    "zone": {
+      "es": "Páramos de Poniente",
+      "en": "Westfall"
+    },
+    "place": {
+      "es": "Posada de Colina del Centinela",
+      "en": "Sentinel Hill inn"
+    },
+    "coords": "52.7, 53.8",
+    "how": {
+      "es": "En la mesa detrás del posadero. También está en el piso de arriba de la posada de Thelsamar (Loch Modan, 35.6, 48.9): es el mismo libro y cuenta una vez.",
+      "en": "On the table behind the innkeeper. Also upstairs in the Thelsamar inn (Loch Modan, 35.6, 48.9): it is the same book and counts once."
+    },
+    "faction": "alliance",
+    "band": "1-20",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "bewitchments-and-glamours",
+    "wowhead": 209845,
+    "name": {
+      "es": "Encantamientos y embelesamientos",
+      "en": "Bewitchments and Glamours"
+    },
+    "zone": {
+      "es": "Páramos de Poniente",
+      "en": "Westfall"
+    },
+    "place": {
+      "es": "Arroyo de la Luna",
+      "en": "Moonbrook"
+    },
+    "coords": "45.4, 70.5",
+    "how": {
+      "es": "En la estantería de la primera casa a la izquierda al entrar en el pueblo, que está lleno de Defias. En la Isla de Zephras aparece en varios puntos.",
+      "en": "On the bookshelf of the first house on the left as you enter the village, which is full of Defias. On Zephras Isle it shows up in several spots."
+    },
+    "faction": "both",
+    "band": "1-20",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "runes-of-the-sorcerer-kings",
+    "wowhead": 209850,
+    "name": {
+      "es": "Runas de los reyes hechiceros",
+      "en": "Runes of the Sorcerer-Kings"
+    },
+    "zone": {
+      "es": "Loch Modan",
+      "en": "Loch Modan"
+    },
+    "place": {
+      "es": "Bastión Mo'grosh",
+      "en": "Mo'grosh Stronghold"
+    },
+    "coords": "77.5, 14.1",
+    "how": {
+      "es": "Dentro de la cueva de los ogros, por el pasillo de la izquierda. Hay dos ogros al lado: Polimorfia a uno y lucha contra el otro.",
+      "en": "Inside the ogre cave, down the left tunnel. Two ogres stand next to it: Polymorph one and fight the other."
+    },
+    "faction": "both",
+    "band": "1-20",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "apothecary-primer",
+    "wowhead": 208185,
+    "name": {
+      "es": "Manual de metafísica del boticario",
+      "en": "The Apothecary's Metaphysical Primer"
+    },
+    "zone": {
+      "es": "Claros de Tirisfal",
+      "en": "Tirisfal Glades"
+    },
+    "place": {
+      "es": "Rémol, tienda de alquimia",
+      "en": "Brill, alchemy shop"
+    },
+    "coords": "59.4, 52.3",
+    "how": {
+      "es": "En la estantería junto al boticario Johaan.",
+      "en": "On the shelf next to Apothecary Johaan."
+    },
+    "faction": "horde",
+    "band": "1-20",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "dalaran-digest",
+    "wowhead": 209844,
+    "name": {
+      "es": "Compendio de Dalaran, vol. 23",
+      "en": "The Dalaran Digest, Vol. 23"
+    },
+    "zone": {
+      "es": "Bosque de Argénteos",
+      "en": "Silverpine Forest"
+    },
+    "place": {
+      "es": "Molino Ámbar",
+      "en": "Amber Mill"
+    },
+    "coords": "63.5, 63.1",
+    "how": {
+      "es": "En la estantería de la esquina noreste del edificio principal. Los magos de Dalaran del molino son hostiles para la Horda.",
+      "en": "On the bookshelf in the north-east corner of the main hall. The Dalaran mages at the mill are hostile to the Horde."
+    },
+    "faction": "both",
+    "band": "1-20",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "ataeric-arcane-curiosities",
+    "wowhead": 210177,
+    "name": {
+      "es": "Ataeric: sobre curiosidades Arcanas",
+      "en": "Ataeric: On Arcane Curiosities"
+    },
+    "zone": {
+      "es": "Bosque de Argénteos",
+      "en": "Silverpine Forest"
+    },
+    "place": {
+      "es": "El Sepulcro",
+      "en": "The Sepulcher"
+    },
+    "coords": "43.4, 41.2",
+    "how": {
+      "es": "En la mesa de la cripta, junto a Sebastian Meloche.",
+      "en": "On the table inside the crypt, next to Sebastian Meloche."
+    },
+    "faction": "horde",
+    "band": "1-20",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "lessons-of-tazo",
+    "wowhead": 207972,
+    "name": {
+      "es": "Lecciones de Ta'zo",
+      "en": "The Lessons of Ta'zo"
+    },
+    "zone": {
+      "es": "Orgrimmar",
+      "en": "Orgrimmar"
+    },
+    "place": {
+      "es": "Valle de los Espíritus",
+      "en": "Valley of Spirits"
+    },
+    "coords": "38.7, 78.4",
+    "how": {
+      "es": "No es un libro: usa el mural de piedra que hay antes del letrero de la casa de los magos para calcarlo.",
+      "en": "Not a book: use the stone mural just before the mage lodge sign to trace it."
+    },
+    "faction": "horde",
+    "band": "1-20",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "baxtan-destructive-magics",
+    "wowhead": 208800,
+    "name": {
+      "es": "Baxtan: Sobre la magia destructiva",
+      "en": "Baxtan: On Destructive Magics"
+    },
+    "zone": {
+      "es": "Los Baldíos",
+      "en": "The Barrens"
+    },
+    "place": {
+      "es": "Trinquete",
+      "en": "Ratchet"
+    },
+    "coords": "62.7, 36.3",
+    "how": {
+      "es": "En el edificio de ingeniería, junto a Gazlowe. Trinquete es neutral: sirve a las dos facciones.",
+      "en": "In the engineering building, next to Gazlowe. Ratchet is neutral, so both factions can get it."
+    },
+    "faction": "both",
+    "band": "1-20",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "arcanic-systems-manual",
+    "wowhead": 209847,
+    "name": {
+      "es": "Manual de sistemas arcánicos",
+      "en": "Arcanic Systems Manual"
+    },
+    "zone": {
+      "es": "Los Baldíos",
+      "en": "The Barrens"
+    },
+    "place": {
+      "es": "El Fangal, plataforma petrolífera",
+      "en": "The Sludge Fen, oil rig"
+    },
+    "coords": "56.3, 8.8",
+    "how": {
+      "es": "En una silla de la sala de control, arriba del todo. Hay que subir entre goblins.",
+      "en": "On a chair in the control room at the very top. The way up is full of goblins."
+    },
+    "faction": "both",
+    "band": "1-20",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "secrets-of-the-dreamers",
+    "wowhead": 209846,
+    "name": {
+      "es": "Secretos de los soñadores",
+      "en": "Secrets of the Dreamers"
+    },
+    "zone": {
+      "es": "Los Baldíos",
+      "en": "The Barrens"
+    },
+    "place": {
+      "es": "Cuevas de los Lamentos, antes del portal",
+      "en": "Wailing Caverns, before the portal"
+    },
+    "how": {
+      "es": "Entra en la cueva del oasis (46.0, 36.5) y sigue hasta la sala de la entrada de la mazmorra, sin cruzar el portal.",
+      "en": "Enter the oasis cave (46.0, 36.5) and go on to the room with the dungeon entrance, without taking the portal."
+    },
+    "faction": "both",
+    "band": "1-20",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "narthalas-almanac",
+    "wowhead": 209843,
+    "name": {
+      "es": "Almanaque de Nar'thalas, vol. 74",
+      "en": "Nar'thalas Almanac, Vol. 74"
+    },
+    "zone": {
+      "es": "Costa Oscura",
+      "en": "Darkshore"
+    },
+    "place": {
+      "es": "Ruinas de Mathystra",
+      "en": "Ruins of Mathystra"
+    },
+    "coords": "59.6, 22.2",
+    "how": {
+      "es": "Baja las escaleras de las ruinas; está en el tercer rellano. Wowhead lo ha visto también en otros campamentos: cualquier copia cuenta como el mismo título.",
+      "en": "Go down the ruins' stairs; it is on the third landing. Wowhead has also seen it in other camps: any copy counts as the same title."
+    },
+    "faction": "both",
+    "band": "1-20",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "fury-of-the-land",
+    "wowhead": 209851,
+    "name": {
+      "es": "La furia de la tierra",
+      "en": "Fury of the Land"
+    },
+    "zone": {
+      "es": "Sierra Espolón",
+      "en": "Stonetalon Mountains"
+    },
+    "place": {
+      "es": "Campamento Tótem Siniestro",
+      "en": "Grimtotem camp"
+    },
+    "coords": "74.4, 85.7",
+    "how": {
+      "es": "Encima de un barril, dentro de una de las tiendas.",
+      "en": "On top of a barrel inside one of the tents."
+    },
+    "faction": "both",
+    "band": "20-40",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "goaz-scrolls",
+    "wowhead": 209848,
+    "name": {
+      "es": "Pergaminos de Goaz",
+      "en": "Goaz Scrolls"
+    },
+    "zone": {
+      "es": "Humedales",
+      "en": "Wetlands"
+    },
+    "place": {
+      "es": "Excavación de Whelgar",
+      "en": "Whelgar's Excavation Site"
+    },
+    "coords": "33.6, 47.9",
+    "how": {
+      "es": "En una urna del nivel más bajo de la excavación.",
+      "en": "In an urn on the lowest level of the dig site."
+    },
+    "faction": "both",
+    "band": "20-40",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "geomancy-stone-cold-truth",
+    "wowhead": 215683,
+    "name": {
+      "es": "Geomancia: la dura realidad",
+      "en": "Geomancy: The Stone-Cold Truth"
+    },
+    "zone": {
+      "es": "Las Mil Agujas",
+      "en": "Thousand Needles"
+    },
+    "place": {
+      "es": "Cumbre de la Nube Negra",
+      "en": "Darkcloud Pinnacle"
+    },
+    "coords": "34.4, 40.1",
+    "how": {
+      "es": "En la cabaña más grande de la cumbre. El camino de subida empieza hacia 31.0, 37.0.",
+      "en": "In the largest hut on the pinnacle. The path up starts around 31.0, 37.0."
+    },
+    "faction": "both",
+    "band": "20-40",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "crimes-against-anatomy",
+    "wowhead": 209849,
+    "name": {
+      "es": "Crímenes contra la anatomía",
+      "en": "Crimes Against Anatomy"
+    },
+    "zone": {
+      "es": "Bosque del Ocaso",
+      "en": "Duskwood"
+    },
+    "place": {
+      "es": "Cripta de Cerro del Cuervo",
+      "en": "Raven Hill crypt"
+    },
+    "coords": "16.7, 28.5",
+    "how": {
+      "es": "Entra por la cripta del oeste y baja hasta el fondo de las catacumbas: el libro está en un banco. Muchos enemigos y poco sitio para escapar.",
+      "en": "Enter through the western crypt and go down to the bottom of the catacombs: the book is on a bench. Many enemies and little room to escape."
+    },
+    "faction": "both",
+    "band": "20-40",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "basilisks-petrification",
+    "wowhead": 213165,
+    "name": {
+      "es": "Basiliscos: ¿hay que temer la petrificación?",
+      "en": "Basilisks: Should Petrification be Feared?"
+    },
+    "zone": {
+      "es": "Vega de Tuercespina",
+      "en": "Stranglethorn Vale"
+    },
+    "place": {
+      "es": "Mina de Cristal",
+      "en": "Crystalvein Mine"
+    },
+    "coords": "41.4, 50.9",
+    "how": {
+      "es": "En una plataforma de madera a la derecha de la entrada de la mina.",
+      "en": "On a wooden platform to the right of the mine entrance."
+    },
+    "faction": "both",
+    "band": "20-40",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "web-of-lies",
+    "wowhead": 215816,
+    "name": {
+      "es": "Una red de mentiras: desmontando mitos y leyendas",
+      "en": "A Web of Lies: Debunking Myths and Legends"
+    },
+    "zone": {
+      "es": "Tierras Altas de Arathi",
+      "en": "Arathi Highlands"
+    },
+    "place": {
+      "es": "Poblado Secacorteza",
+      "en": "Witherbark Village"
+    },
+    "coords": "73.6, 65.2",
+    "how": {
+      "es": "Junto a una tienda del extremo este del poblado de trols.",
+      "en": "Next to a tent at the eastern end of the troll village."
+    },
+    "faction": "both",
+    "band": "20-40",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "demons-and-you",
+    "wowhead": 215817,
+    "name": {
+      "es": "Los demonios y tú",
+      "en": "Demons and You"
+    },
+    "zone": {
+      "es": "Desolace",
+      "en": "Desolace"
+    },
+    "place": {
+      "es": "Fortaleza del Hacha de Trueno",
+      "en": "Thunder Axe Fortress"
+    },
+    "coords": "55.1, 26.2",
+    "how": {
+      "es": "En un banco contra la pared del edificio grande. Grupos de enemigos: ve con calma.",
+      "en": "On a bench against the wall of the big building. Groups of enemies: take it slow."
+    },
+    "faction": "both",
+    "band": "20-40",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "rwlrwlrwlrwl",
+    "wowhead": 215822,
+    "name": {
+      "es": "¡RwlRwlRwlRwl!",
+      "en": "RwlRwlRwlRwl!"
+    },
+    "zone": {
+      "es": "Marjal Revolcafango",
+      "en": "Dustwallow Marsh"
+    },
+    "place": {
+      "es": "Colina de las Brujas",
+      "en": "Witch Hill"
+    },
+    "coords": "57.2, 20.8",
+    "how": {
+      "es": "En el suelo, en el borde este del campamento múrloc. Los múrlocs llaman a otros: Nova de Escarcha y aléjate.",
+      "en": "On the ground at the eastern edge of the murloc camp. Murlocs call for help: Frost Nova and back off."
+    },
+    "faction": "both",
+    "band": "20-40",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "mummies-unsavory-undead",
+    "wowhead": 215820,
+    "name": {
+      "es": "Momias: guía para una no-muerte desagradable",
+      "en": "Mummies: A Guide to the Unsavory Undead"
+    },
+    "zone": {
+      "es": "Tierras Inhóspitas",
+      "en": "Badlands"
+    },
+    "place": {
+      "es": "Cripta de la meseta",
+      "en": "Crypt on the butte"
+    },
+    "coords": "56.7, 39.9",
+    "how": {
+      "es": "Sube por el camino que empieza hacia 56.0, 45.0, pasa el campamento enano y entra en la cripta de arriba.",
+      "en": "Take the path from around 56.0, 45.0, pass the dwarf camp and go into the crypt above it."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "defensive-magics-101",
+    "wowhead": 215815,
+    "name": {
+      "es": "Magias defensivas para novatos",
+      "en": "Defensive Magics 101"
+    },
+    "zone": {
+      "es": "Montañas de Alterac",
+      "en": "Alterac Mountains"
+    },
+    "place": {
+      "es": "Torre de los ogros",
+      "en": "Ogre fortress tower"
+    },
+    "coords": "48.4, 57.7",
+    "how": {
+      "es": "En la primera torre al entrar en la fortaleza de los ogros. Un ogro de nivel 40 la vigila: déjalo para más adelante o ve en grupo.",
+      "en": "In the first tower as you enter the ogre fortress. A level 40 ogre guards it: leave it for later or bring a group."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "everyday-etiquette",
+    "wowhead": 220348,
+    "name": {
+      "es": "Etiqueta cotidiana",
+      "en": "Everyday Etiquette"
+    },
+    "zone": {
+      "es": "Azshara",
+      "en": "Azshara"
+    },
+    "place": {
+      "es": "Campamento Haldarr",
+      "en": "Haldarr Encampment"
+    },
+    "coords": "20.8, 62.0",
+    "how": {
+      "es": "En el campamento, al norte del camino que llega de Vallefresno.",
+      "en": "In the camp, north of the road from Ashenvale."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "legends-of-the-tidesages",
+    "wowhead": 220346,
+    "name": {
+      "es": "Leyendas de los Sabiomar",
+      "en": "Legends of the Tidesages"
+    },
+    "zone": {
+      "es": "Tanaris",
+      "en": "Tanaris"
+    },
+    "place": {
+      "es": "Cala del Aparejo Perdido",
+      "en": "Lost Rigger Cove"
+    },
+    "coords": "72.6, 47.8",
+    "how": {
+      "es": "En la estantería del edificio de los piratas.",
+      "en": "On the bookshelf in the pirates' building."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "sanguine-sorcery",
+    "wowhead": 220345,
+    "name": {
+      "es": "Brujería sanguina",
+      "en": "Sanguine Sorcery"
+    },
+    "zone": {
+      "es": "Pantano de las Penas",
+      "en": "Swamp of Sorrows"
+    },
+    "place": {
+      "es": "Templo de Atal'Hakkar, por fuera",
+      "en": "Temple of Atal'Hakkar, outside"
+    },
+    "coords": "70.1, 51.8",
+    "how": {
+      "es": "Arriba del templo, por la parte de atrás. No hace falta entrar en la mazmorra.",
+      "en": "On top of the temple, around the back. You do not need to enter the dungeon."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "venomous-journeys",
+    "wowhead": 220350,
+    "name": {
+      "es": "Viajes venenosos",
+      "en": "Venomous Journeys"
+    },
+    "zone": {
+      "es": "Tierras del Interior",
+      "en": "The Hinterlands"
+    },
+    "place": {
+      "es": "Shadra'Alor",
+      "en": "Shadra'Alor"
+    },
+    "coords": "36.0, 72.8",
+    "how": {
+      "es": "En el muro semicircular de la primera pirámide a la izquierda. Un enemigo la vigila.",
+      "en": "On the curved wall of the first pyramid on the left. An enemy guards it."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "mind-of-metal",
+    "wowhead": 220352,
+    "name": {
+      "es": "Mente metálica",
+      "en": "A Mind of Metal"
+    },
+    "zone": {
+      "es": "La Garganta de Fuego",
+      "en": "Searing Gorge"
+    },
+    "place": {
+      "es": "El Caldero",
+      "en": "The Cauldron"
+    },
+    "coords": "37.8, 49.3",
+    "how": {
+      "es": "Dentro de una tienda, junto a un enano Hierro Negro.",
+      "en": "Inside a tent, next to a Dark Iron dwarf."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "conjurers-codex",
+    "wowhead": 220353,
+    "name": {
+      "es": "Códice de conjurador",
+      "en": "Conjurer's Codex"
+    },
+    "zone": {
+      "es": "Las Tierras Devastadas",
+      "en": "Blasted Lands"
+    },
+    "place": {
+      "es": "Edificio quemado",
+      "en": "Burnt-out building"
+    },
+    "coords": "55.4, 32.2",
+    "how": {
+      "es": "Entre las ruinas del edificio.",
+      "en": "Among the ruins of the building."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "stonewrought-design",
+    "wowhead": 220349,
+    "name": {
+      "es": "Diseño de Fraguapiedra",
+      "en": "Stonewrought Design"
+    },
+    "zone": {
+      "es": "Montaña Roca Negra",
+      "en": "Blackrock Mountain"
+    },
+    "place": {
+      "es": "Cámara central",
+      "en": "Center vault"
+    },
+    "how": {
+      "es": "Entra en la montaña, baja un piso desde la cámara central: está en una gran plataforma en el centro de la sala. Fuera de las mazmorras.",
+      "en": "Enter the mountain and go down one floor from the center vault: it is on a large platform in the middle of the room. Outside the dungeons."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "magma-or-lava",
+    "wowhead": 228133,
+    "name": {
+      "es": "¿Magma o lava?",
+      "en": "Magma or Lava?"
+    },
+    "zone": {
+      "es": "Montaña Roca Negra",
+      "en": "Blackrock Mountain"
+    },
+    "place": {
+      "es": "Camino a Profundidades de Roca Negra",
+      "en": "Path to Blackrock Depths"
+    },
+    "how": {
+      "es": "Desde la cámara central, baja por la cadena y, antes de Lothos Levantagrietas, entra por la puerta de la derecha. Fuera de la mazmorra.",
+      "en": "From the center vault, go down the chain and, before Lothos Riftwaker, take the doorway on your right. Outside the dungeon."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "necromancy-101",
+    "wowhead": 228141,
+    "name": {
+      "es": "Nigromancia para principiantes",
+      "en": "Necromancy 101"
+    },
+    "zone": {
+      "es": "Tierras de la Peste del Oeste",
+      "en": "Western Plaguelands"
+    },
+    "place": {
+      "es": "Castel Darrow, Scholomance por fuera",
+      "en": "Caer Darrow, outside Scholomance"
+    },
+    "coords": "69.4, 72.8",
+    "how": {
+      "es": "Entra en el edificio principal, gira a la derecha y sube siempre que puedas: está en una mesa arriba del todo.",
+      "en": "Enter the main building, turn right and keep going up: it is on a table at the very top."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "undead-potatoes",
+    "wowhead": 228132,
+    "name": {
+      "es": "Patatas no-muertas",
+      "en": "Undead Potatoes"
+    },
+    "zone": {
+      "es": "Tierras de la Peste del Oeste",
+      "en": "Western Plaguelands"
+    },
+    "place": {
+      "es": "Campo de Piedramácula",
+      "en": "Felstone Field"
+    },
+    "coords": "38.3, 54.6",
+    "how": {
+      "es": "En la casa de la granja, arriba de la escalera.",
+      "en": "In the farmhouse, at the top of the stairs."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "study-of-the-light",
+    "wowhead": 228135,
+    "name": {
+      "es": "Estudio de la Luz",
+      "en": "A Study of the Light"
+    },
+    "zone": {
+      "es": "Tierras de la Peste del Este",
+      "en": "Eastern Plaguelands"
+    },
+    "place": {
+      "es": "Capilla de la Esperanza de la Luz",
+      "en": "Light's Hope Chapel"
+    },
+    "coords": "81.7, 57.8",
+    "how": {
+      "es": "Dentro de la capilla, al fondo a la izquierda.",
+      "en": "Inside the chapel, at the back on the left."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "knight-and-the-lady",
+    "wowhead": 228138,
+    "name": {
+      "es": "El caballero y la doncella",
+      "en": "The Knight and the Lady"
+    },
+    "zone": {
+      "es": "Tierras de la Peste del Este",
+      "en": "Eastern Plaguelands"
+    },
+    "place": {
+      "es": "Casa quemada junto al lago",
+      "en": "Burnt house by the lake"
+    },
+    "coords": "54.5, 50.8",
+    "how": {
+      "es": "Entre los restos de la casa. Patrullan murciélagos.",
+      "en": "Among the remains of the house. Bats patrol the area."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "scourge-undead-menace",
+    "wowhead": 228140,
+    "name": {
+      "es": "La Plaga: ¿Amenaza no-muerta o incomprendida?",
+      "en": "Scourge: Undead Menace or Misunderstood?"
+    },
+    "zone": {
+      "es": "Tierras de la Peste del Este",
+      "en": "Eastern Plaguelands"
+    },
+    "place": {
+      "es": "Puente de Stratholme",
+      "en": "Stratholme bridge"
+    },
+    "coords": "31.3, 21.0",
+    "how": {
+      "es": "En la mesa junto a las jaulas, antes de cruzar el puente. No hace falta entrar en Stratholme.",
+      "en": "On the table by the gibbets, before you cross the bridge. You do not need to enter Stratholme."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "northern-kalimdor-guide",
+    "wowhead": 228134,
+    "name": {
+      "es": "Guía completa del norte de Kalimdor",
+      "en": "Northern Kalimdor - A Comprehensive Guide"
+    },
+    "zone": {
+      "es": "Frondavil",
+      "en": "Felwood"
+    },
+    "place": {
+      "es": "Bastión Fauces de Madera",
+      "en": "Timbermaw Hold"
+    },
+    "coords": "65.2, 3.2",
+    "how": {
+      "es": "Dentro del túnel, junto al puente que hay sobre el vendedor. Si los Fauces de Madera te odian, te atacarán por el camino.",
+      "en": "Inside the tunnel, next to the bridge above the vendor. If the Timbermaw hate you, they will attack you on the way."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  },
+  {
+    "id": "ka-boom",
+    "wowhead": 228136,
+    "name": {
+      "es": "¡Ca-bum!",
+      "en": "Ka-Boom!"
+    },
+    "zone": {
+      "es": "Cuna del Invierno",
+      "en": "Winterspring"
+    },
+    "place": {
+      "es": "Vista Eterna, tienda de alquimia",
+      "en": "Everlook, alchemy shop"
+    },
+    "coords": "60.7, 37.7",
+    "how": {
+      "es": "En la estantería detrás de la vendedora de alquimia.",
+      "en": "On the shelf behind the alchemy supplies vendor."
+    },
+    "faction": "both",
+    "band": "40-60",
+    "status": "reported",
+    "sources": [
+      "wowhead-library-books",
+      "wowhead-forever-database"
+    ]
+  }
+]

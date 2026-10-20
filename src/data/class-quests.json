@@ -1,0 +1,380 @@
+[
+  {
+    "id": "first-staff",
+    "level": 10,
+    "title": {
+      "es": "Tu primer bastón (u orbe)",
+      "en": "Your first staff (or orb)"
+    },
+    "who": {
+      "es": "Cada raza tiene su versión",
+      "en": "Each race has its own version"
+    },
+    "start": {
+      "es": "Tu instructor de magos de la zona de inicio te manda a la capital al llegar al nivel 10.",
+      "en": "Your starting-zone mage trainer sends you to the capital at level 10."
+    },
+    "steps": [
+      {
+        "es": "Humano: habla con Jennea Cannon en el Sagrario del Mago de Ventormenta, llena su frasco en el Lago Espejo (Bosque de Elwynn) y vuelve con ella.",
+        "en": "Human: talk to Jennea Cannon in the Wizard's Sanctum in Stormwind, fill her flask at Mirror Lake (Elwynn Forest) and go back to her."
+      },
+      {
+        "es": "Gnomo: habla con Bink en Forjaz, recupera su Gizmonitor mágico en Dun Morogh y devuélveselo.",
+        "en": "Gnome: talk to Bink in Ironforge, recover her Mage-tastic Gizmonitor in Dun Morogh and bring it back."
+      },
+      {
+        "es": "No-muerto: habla con Anastasia en el Barrio de los Magos de Entrañas y tráele bocas de dragón de la Hacienda Balnir (este de Claros de Tirisfal).",
+        "en": "Undead: talk to Anastasia Hartwell in the Undercity Magic Quarter and bring her Balnir Snapdragons from the Balnir Farmstead (east Tirisfal Glades)."
+      },
+      {
+        "es": "Trol y orco: habla con Un'Thuwa en el Poblado Sen'jin (Durotar) y destruye 4 montones de Ju-Ju en las Islas del Eco.",
+        "en": "Troll and orc: talk to Un'Thuwa in Sen'jin Village (Durotar) and destroy 4 Ju-Ju Heaps on the Echo Isles."
+      }
+    ],
+    "rewards": [
+      "ley-staff",
+      "ley-orb",
+      "arcane-staff",
+      "arcane-orb"
+    ],
+    "verdict": {
+      "es": "Hazla si te pilla de camino: el bastón da +2 al daño de hechizos y es mejor que casi cualquier arma de nivel 10. El orbe solo compensa si ya llevas un arma de una mano mejor. Humanos, trols y orcos reciben la versión Ley; gnomos y no-muertos, la Arcana: son iguales. Aún no sabemos qué misión recibe el Cielonato.",
+      "en": "Do it if you pass by: the staff gives +2 spell damage and beats almost any level 10 weapon. The orb is only worth it if you already have a better one-hander. Humans, trolls and orcs get the Ley version; gnomes and undead the Arcane one: they are identical. We do not know yet which quest the Skyborne get."
+    },
+    "quests": [
+      1860,
+      1861,
+      1879,
+      1880,
+      1881,
+      1882,
+      1883,
+      1884
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-database",
+      "foreverdb-mage-quests"
+    ]
+  },
+  {
+    "id": "first-robe",
+    "level": 15,
+    "title": {
+      "es": "La toga del nivel 15",
+      "en": "The level 15 robe"
+    },
+    "who": {
+      "es": "Alianza y Horda",
+      "en": "Alliance and Horde"
+    },
+    "start": {
+      "es": "Tu instructor te manda con Jennea Cannon (Ventormenta) o con Anastasia (Entrañas).",
+      "en": "Your trainer sends you to Jennea Cannon (Stormwind) or Anastasia Hartwell (Undercity)."
+    },
+    "steps": [
+      {
+        "es": "Coge el Canto de Manifestación y el cofre de arcas de contención que hay detrás de tu instructora.",
+        "en": "Take the Cantation of Manifestation and the Chest of Containment Coffers from behind your trainer."
+      },
+      {
+        "es": "Alianza: en la taberna El Ermitaño Azul (Barrio de los Magos). Horda: en la tienda de alquimia del Apothecarium. Usa el canto, debilita la manifestación y captúrala con un arca. Repite hasta llenar 3.",
+        "en": "Alliance: in the Blue Recluse tavern (Mage Quarter). Horde: in the Apothecarium's alchemy shop. Use the cantation, weaken the manifestation and trap it with a coffer. Repeat until you fill 3."
+      },
+      {
+        "es": "Alianza: 10 paños de lino y 6 gemas de falla cargadas de la Mina de Fuenteplata (Loch Modan), para Wynne Larson en la sastrería de Ventormenta.",
+        "en": "Alliance: 10 Linen Cloth and 6 Charged Rift Gems from the Silver Stream Mine (Loch Modan), for Wynne Larson at the Stormwind tailor."
+      },
+      {
+        "es": "Horda: 10 paños de lino y 6 gemas de maná de Dalaran de los magos del Molino Ámbar (Bosque de Argénteos), para Josef Gregorian en Entrañas.",
+        "en": "Horde: 10 Linen Cloth and 6 Dalaran Mana Gems from the mages at Amber Mill (Silverpine Forest), for Josef Gregorian in the Undercity."
+      }
+    ],
+    "rewards": [
+      "manaweave-robe",
+      "lesser-spellfire-robes"
+    ],
+    "verdict": {
+      "es": "Merece la pena: +6 de Intelecto en el pecho a nivel 15 es mucho, y el lino lo juntas sin buscarlo. Si eres sastre, guarda el lino de todos modos: la toga es mejor que lo que puedes coser a ese nivel.",
+      "en": "Worth it: +6 Intellect on the chest at level 15 is a lot, and you collect the linen anyway. If you are a tailor, keep the linen for it: the robe beats what you can sew at that level."
+    },
+    "quests": [
+      1919,
+      1920,
+      1921,
+      1941,
+      1959,
+      1960,
+      1961,
+      1962
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-database",
+      "foreverdb-mage-quests"
+    ]
+  },
+  {
+    "id": "second-robe",
+    "level": 26,
+    "title": {
+      "es": "La segunda toga (nivel 26)",
+      "en": "The second robe (level 26)"
+    },
+    "who": {
+      "es": "Alianza y Horda",
+      "en": "Alliance and Horde"
+    },
+    "start": {
+      "es": "Alianza: Sumo Hechicero Andromath, arriba del Sagrario del Mago. Horda: Deino, en Orgrimmar.",
+      "en": "Alliance: High Sorcerer Andromath, upstairs in the Wizard's Sanctum. Horde: Deino, in Orgrimmar."
+    },
+    "steps": [
+      {
+        "es": "Alianza: trae el Tratado de Ur sobre la magia de las Sombras de la biblioteca de la Torre de Ilgalar (Montañas Crestagrana) a Andromath.",
+        "en": "Alliance: bring Ur's Treatise on Shadow Magic from the library of Ilgalar's Tower (Redridge Mountains) to Andromath."
+      },
+      {
+        "es": "Alianza: 8 sedas de araña prístinas de las arañas del Bosque del Ocaso, para Wynne Larson.",
+        "en": "Alliance: 8 Pristine Spider Silk from the spiders of Duskwood, for Wynne Larson."
+      },
+      {
+        "es": "Horda: llena el frasco de Deino en la cascada de Xavian (Vallefresno) y vuelve a Orgrimmar.",
+        "en": "Horde: fill Deino's flask at the Xavian waterfall (Ashenvale) and go back to Orgrimmar."
+      },
+      {
+        "es": "Horda: 12 cabellos de las Hermanas sonrientes (dríades de Vallefresno), para Kil'hala en El Cruce.",
+        "en": "Horde: 12 Laughing Sister's Hairs (Ashenvale dryads), for Kil'hala at the Crossroads."
+      }
+    ],
+    "rewards": [
+      "astral-knot-robe",
+      "astral-knot-blouse",
+      "nether-lace-robe",
+      "nether-lace-tunic"
+    ],
+    "verdict": {
+      "es": "Elige la blusa o la túnica (+9 de Intelecto) para subir: más maná y más crítico; la toga cambia 3 de Intelecto por 6 de Espíritu, que solo ayuda entre combates. Si ya llevas una pieza de mazmorra con daño de hechizos, sáltatela.",
+      "en": "Pick the blouse or the tunic (+9 Intellect) for leveling: more mana and crit; the robe trades 3 Intellect for 6 Spirit, which only helps between fights. If you already wear a dungeon chest with spell damage, skip it."
+    },
+    "quests": [
+      1939,
+      1938,
+      1940,
+      1942,
+      1943,
+      1944,
+      1945,
+      1946
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-database",
+      "foreverdb-mage-quests"
+    ]
+  },
+  {
+    "id": "tabetha-wand",
+    "level": 30,
+    "hard": 38,
+    "title": {
+      "es": "La varita de Tabetha",
+      "en": "Tabetha's wand"
+    },
+    "who": {
+      "es": "Las dos facciones",
+      "en": "Both factions"
+    },
+    "start": {
+      "es": "Tu instructor de la capital te manda con Tabetha, en su cabaña del Marjal Revolcafango, al oeste de Theramore.",
+      "en": "Your capital trainer sends you to Tabetha, at her shack in Dustwallow Marsh, west of Theramore."
+    },
+    "steps": [
+      {
+        "es": "Consigue 10 palos de tótem de los trols Secacorteza (Tierras Altas de Arathi) y úsalos en el círculo de vínculo exterior: recoge la zarza cargada. Lleva también 1 jade.",
+        "en": "Get 10 Witherbark Totem Sticks from the Witherbark trolls (Arathi Highlands) and use them at the Outer Binding circle: pick up the Bolt Charged Bramble. Bring 1 Jade too."
+      },
+      {
+        "es": "Ve con el Magus Tirth en Las Salinas (Las Mil Agujas). El santo y seña te lo da el pollo «Plucky» Johnson: selecciónalo y usa /beckon.",
+        "en": "Go to Magus Tirth in the Shimmering Flats (Thousand Needles). Plucky Johnson the chicken has the passphrase: target it and use /beckon."
+      },
+      {
+        "es": "Consigue el libro Rituales de poder en la Biblioteca del Monasterio Escarlata y llévaselo a Tabetha.",
+        "en": "Get the book Rituals of Power in the Scarlet Monastery Library and bring it to Tabetha."
+      }
+    ],
+    "rewards": [
+      "icefury-wand",
+      "nether-force-wand",
+      "ragefire-wand"
+    ],
+    "verdict": {
+      "es": "Una de las mejores varitas hasta el 40 y un +9 al daño de tu escuela. Si subes con Escarcha, la Furia de Hielo. Se coge a nivel 30, pero los objetivos son de nivel 38 a 40: hazla cuando vayas a la Biblioteca con un grupo.",
+      "en": "One of the best wands until 40, plus +9 to your school's damage. Leveling as Frost, take Icefury. You can pick it up at 30, but the objectives are level 38 to 40: do it when you run the Library with a group."
+    },
+    "quests": [
+      1947,
+      1948,
+      1949,
+      1950,
+      1951,
+      1952
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-database",
+      "foreverdb-mage-quests"
+    ]
+  },
+  {
+    "id": "celestial-power",
+    "level": 35,
+    "hard": 40,
+    "title": {
+      "es": "Poder celestial: el orbe o el bastón",
+      "en": "Celestial Power: the orb or the staff"
+    },
+    "who": {
+      "es": "Las dos facciones",
+      "en": "Both factions"
+    },
+    "start": {
+      "es": "Tu instructor vuelve a mandarte con Tabetha (Regreso al pantano).",
+      "en": "Your trainer sends you back to Tabetha (Return to the Marsh)."
+    },
+    "steps": [
+      {
+        "es": "Consigue el orbe infernal de los invocadores Filo Ardiente del Aquelarre Mannoroc (Desolace) y llévaselo a Tabetha.",
+        "en": "Get the Infernal Orb from the Burning Blade summoners at Mannoroc Coven (Desolace) and bring it to Tabetha."
+      },
+      {
+        "es": "El exorcismo: mata al demonio que sale del orbe antes de que acabe el tiempo.",
+        "en": "The Exorcism: kill the demon that comes out of the orb before the timer ends."
+      },
+      {
+        "es": "Consigue una fuente de poder obsidiana en Uldaman (Tierras Inhóspitas).",
+        "en": "Get an Obsidian Power Source in Uldaman (Badlands)."
+      },
+      {
+        "es": "Oleadas de maná: mata 12 oleadas junto a la cabaña dentro del tiempo límite.",
+        "en": "Mana Surges: kill 12 surges next to the shack within the time limit."
+      }
+    ],
+    "rewards": [
+      "celestial-stave",
+      "celestial-orb"
+    ],
+    "verdict": {
+      "es": "La mejor misión de Mago: el bastón celestial (+46 al daño de hechizos) te dura hasta los 50 largos. Elige el orbe solo si ya llevas un arma de una mano con mucho daño de hechizos. Se coge a nivel 35, pero Uldaman y las oleadas piden nivel 40 o un grupo.",
+      "en": "The best Mage quest: the Celestial Stave (+46 spell damage) lasts you well into your 50s. Pick the orb only if you already wield a one-hander with lots of spell damage. You can pick it up at 35, but Uldaman and the surges call for level 40 or a group."
+    },
+    "quests": [
+      1953,
+      1954,
+      1955,
+      1956,
+      1957,
+      1958
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-database",
+      "foreverdb-mage-quests"
+    ]
+  },
+  {
+    "id": "archmage-xylem",
+    "level": 50,
+    "hard": 52,
+    "title": {
+      "es": "El archimago Xylem",
+      "en": "Archmage Xylem"
+    },
+    "who": {
+      "es": "Las dos facciones",
+      "en": "Both factions"
+    },
+    "start": {
+      "es": "Tu instructor te manda con Sanath Lim-yo, que te da paso a la torre de Xylem en Azshara.",
+      "en": "Your trainer sends you to Sanath Lim-yo, who lets you into Xylem's tower in Azshara."
+    },
+    "steps": [
+      {
+        "es": "Lleva 10 polvos relucientes a Xylem (de Encantamiento o de la casa de subastas).",
+        "en": "Bring 10 Glittering Dust to Xylem (from Enchanting or the auction house)."
+      },
+      {
+        "es": "Consigue 6 corales encantados de las sirenas de la costa de Azshara.",
+        "en": "Get 6 Enchanted Coral from the sirens on the Azshara coast."
+      },
+      {
+        "es": "Mata a Morphaz en el Templo de Atal'Hakkar y lleva el fragmento arcano a Xylem.",
+        "en": "Kill Morphaz in the Temple of Atal'Hakkar and bring the Arcane Shard to Xylem."
+      }
+    ],
+    "rewards": [],
+    "rewardText": {
+      "es": "Recompensas sin confirmar en Forever",
+      "en": "Rewards not confirmed in Forever"
+    },
+    "verdict": {
+      "es": "Las recompensas de Classic (una pieza a elegir por escuela) no están en los datos de Forever: no la hagas solo por ellas hasta que se confirmen tras el lanzamiento.",
+      "en": "The Classic rewards (one item per school) are not in the Forever data: do not do it just for them until they are confirmed after launch."
+    },
+    "quests": [
+      8250,
+      8251,
+      8252,
+      8253
+    ],
+    "status": "pending",
+    "sources": [
+      "wowhead-forever-database",
+      "foreverdb-mage-quests"
+    ]
+  },
+  {
+    "id": "arcane-refreshment",
+    "level": 60,
+    "title": {
+      "es": "El agua de La Masacre",
+      "en": "Dire Maul's water"
+    },
+    "who": {
+      "es": "Las dos facciones",
+      "en": "Both factions"
+    },
+    "start": {
+      "es": "El tradicionalista Lydros, en la biblioteca de La Masacre (Feralas).",
+      "en": "Lorekeeper Lydros, in the Dire Maul library (Feralas)."
+    },
+    "steps": [
+      {
+        "es": "Entra en La Masacre Este, mata al elemental Hidromilecio y recoge su esencia.",
+        "en": "Go into Dire Maul East, kill the water elemental Hydrospawn and take his essence."
+      },
+      {
+        "es": "Vuelve con Lydros en la biblioteca.",
+        "en": "Go back to Lydros in the library."
+      }
+    ],
+    "rewards": [],
+    "rewardText": {
+      "es": "Aprendes el último rango de Conjurar agua",
+      "en": "You learn the last rank of Conjure Water"
+    },
+    "verdict": {
+      "es": "Imprescindible a nivel 60: el último rango de Conjurar agua es la mejor bebida del juego y la que te pedirá tu grupo. Acepta la misión antes de matar al elemental.",
+      "en": "A must at level 60: the last rank of Conjure Water is the best drink in the game and the one your group will ask for. Pick up the quest before you kill the elemental."
+    },
+    "quests": [
+      7463
+    ],
+    "status": "reported",
+    "sources": [
+      "wowhead-forever-database",
+      "foreverdb-mage-quests"
+    ]
+  }
+]

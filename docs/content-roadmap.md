@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-10-19 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
+> Creado: 2026-10-12 · Revisión: 2026-10-20 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -61,6 +61,17 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [ ] Partes del Legado que sirven al Mago (por ejemplo, Reagent Economy).
 - [ ] Nombres oficiales en español de los hechizos que no salen en el artículo de Blizzard sobre el Mago (Blink, Evocation, Flamestrike, Combustion, Ice Barrier…).
 - [ ] Modo Hardcore (llegará más adelante).
+
+### Guías: misiones de clase, biblioteca y JcJ (sección Guías, 2026-10-20)
+
+- [x] Misiones de clase del Mago (`class-quests`, datos en `src/data/class-quests.json` y objetos en `src/data/items.json`): siete cadenas del 10 al 60 con sus recompensas de la base de datos de Forever de Wowhead.
+- [ ] Qué misión del nivel 10 recibe el Cielonato y si las versiones del nivel 26 están limitadas por raza (Orco, Cielonato).
+- [ ] Recompensas de la cadena del archimago Xylem (nivel 50): las de Classic no están en los datos de Forever (`status: pending`).
+- [x] Biblioteca (`library`, datos en `src/data/library-books.json`): 38 libros, premios de 10, 20 y 25 y contador en el navegador (`sh-library`).
+- [ ] Comprobar en el juego los libros de zonas de nivel 40 a 60 (salen de la guía de runas de Season of Discovery de Wowhead) y si hay más títulos.
+- [x] JcJ (`pvp`): Honor, rangos, equipo de Mago azul y épico, lacres, armas del rango 14 e Islas Lanza Negra.
+- [ ] Precios en Honor del equipo JcJ en el lanzamiento (hoy remitimos al intendente; ConquestCapped estima unos 64.000 para el conjunto azul).
+- [ ] Builds de JcJ: solo cuando se pueda jugar a nivel 60 y solo en las ramas que funcionen (ver sección 4).
 
 ### Razas
 
@@ -129,6 +140,7 @@ Comprobar en el juego y marcar como «Oficial» o «Probado en juego», o correg
 - [ ] Datos de «Referencia Classic» y de la beta: tabla de hechizos por nivel de Leveo (hoy «Comunidad», de la lista del instructor de la beta), cuadrícula de habilidades de la Guía y filas de los talentos decisivos.
 - [ ] Valores de los rangos intermedios de la calculadora de crítico (Fragmentos de hielo e Ignición).
 - [ ] Prioridades de Combate y análisis de las páginas de rama: de «Análisis» a «Probado en juego».
+- [ ] Objetos de `src/data/items.json` (misiones de clase, biblioteca, JcJ): estadísticas, niveles y rangos en el cliente final. Si cambia un icono, descárgalo a `public/icons/` (el build falla si falta uno).
 
 ### Con cada parche o hotfix
 

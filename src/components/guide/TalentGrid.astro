@@ -1,0 +1,294 @@
+---
+/**
+ * One talent tree drawn like the game's talent window: the original icons on
+ * their row and column, the rank in a corner badge, arrows from each
+ * prerequisite, and the talents without points greyed out.
+ *
+ * - Static (builds): pass `points`; every icon opens the spell tooltip.
+ * - Interactive (TalentCalculator): pass `interactive`; icons are buttons with
+ *   data-talent, and the calculator script sets data-state on them and
+ *   data-met on the arrows (states: locked, open, some, max).
+ */
+import { getLocale } from '../../i18n/locale';
+import { t, type UiKey } from '../../i18n/ui';
+import { talentText, talents } from '../../lib/data';
+import { iconPath, TREE_ICONS } from '../../lib/icons';
+import { localName } from '../../lib/names';
+import type { SpecTree } from '../../lib/schemas';
+import { spellIndexFor } from '../../lib/spell-index';
+import { findSpell } from '../../lib/spells';
+import { pointsByTree, treeTalents, type Points } from '../../lib/talents';
+
+interface Props {
+  tree: SpecTree;
+  points?: Points;
+  interactive?: boolean;
+}
+
+const { tree, points = {}, interactive = false } = Astro.props;
+const locale = getLocale(Astro);
+const index = spellIndexFor(locale);
+const list = treeTalents(talents, tree);
+const byId = new Map(talents.map((talent) => [talent.id, talent]));
+const rows = Math.max(...talents.map((talent) => talent.row));
+const spent = pointsByTree(points, talents)[tree];
+const label = t(locale, `tree.${tree}` as UiKey);
+
+const stateOf = (id: string, maxRank: number) => {
+  const rank = points[id] ?? 0;
+  return rank === maxRank ? 'max' : rank > 0 ? 'some' : 'locked';
+};
+const arrows = list
+  .filter((talent) => talent.requires)
+  .map((talent) => {
+    const from = byId.get(talent.requires!.talent)!;
+    return { from, to: talent, met: (points[from.id] ?? 0) >= talent.requires!.points };
+  });
+---
+
+<section class={`tg school-${tree}`} data-tree={tree} aria-label={label}>
+  <header class="tg__head">
+    <img class="tg__tab" src={iconPath(TREE_ICONS[tree])} alt="" width="28" height="28" loading="lazy" />
+    <span class="tg__name">{label}</span>
+    <span class="tg__spent" data-spent>{spent}</span>
+    <slot name="head" />
+  </header>
+  <div class="tg__grid" style={`--rows: ${rows}`}>
+    {
+      arrows.map(({ from, to, met }) => (
+        <span
+          class="tg__arrow"
+          style={`grid-column: ${to.col}; grid-row: ${from.row} / ${to.row + 1}`}
+          data-arrow-from={from.id}
+          data-arrow-to={to.id}
+          data-met={met ? 'true' : 'false'}
+          aria-hidden="true"
+        />
+      ))
+    }
+    {
+      list.map((talent) => {
+        const name = localName(talent, locale);
+        const icon = talentText.talents[talent.id]?.icon;
+        const rank = points[talent.id] ?? 0;
+        const place = `grid-row: ${talent.row}; grid-column: ${talent.col}`;
+        const inner = (
+          <>
+            {icon && <img src={iconPath(icon)} alt="" width="56" height="56" loading="lazy" decoding="async" />}
+            <span class="tg__rank" data-rank>
+              {rank}/{talent.maxRank}
+            </span>
+          </>
+        );
+        if (interactive) {
+          return (
+            <button type="button" class="tg__talent" data-talent={talent.id} data-state="locked" style={place} aria-describedby="tc-detail">
+              {inner}
+              <span class="visually-hidden">{name}</span>
+            </button>
+          );
+        }
+        const spell = findSpell(index, talent.name);
+        return (
+          <span
+            class:list={['tg__talent', spell && 'spell-ref']}
+            data-spell={spell?.key}
+            data-state={stateOf(talent.id, talent.maxRank)}
+            style={place}
+            role="img"
+            aria-label={`${name}, ${rank}/${talent.maxRank}`}
+          >
+            {inner}
+          </span>
+        );
+      })
+    }
+  </div>
+</section>
+
+<style>
+  /*
+   * A dark panel in both themes, like the game's own window: the icons are
+   * painted for a dark frame. --cell is the icon size; the calculator raises it.
+   */
+  .tg {
+    --cell: 2.75rem;
+    --gap-x: 0.8rem;
+    --gap-y: 0.7rem;
+    --panel: #0f0d18;
+    --gold: #f2c94c;
+    --green: #3fdd57;
+    position: relative;
+    min-width: 0;
+    padding: var(--space-3);
+    border: 1px solid color-mix(in srgb, var(--school-raw) 45%, #3a3550);
+    border-radius: var(--radius);
+    background:
+      radial-gradient(120% 70% at 50% 0%, color-mix(in srgb, var(--school-raw) 26%, transparent), transparent 70%),
+      radial-gradient(90% 50% at 50% 100%, color-mix(in srgb, var(--school-raw) 14%, transparent), transparent 70%),
+      var(--panel);
+    color: #ecebf4;
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.04), inset 0 0 40px rgb(0 0 0 / 0.55);
+  }
+  .tg.school-arcane {
+    --school-raw: #b07cff;
+  }
+  .tg.school-fire {
+    --school-raw: #ff8a3d;
+  }
+  .tg.school-frost {
+    --school-raw: #5cc2ff;
+  }
+  .tg__head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+  .tg__tab {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.8), 0 0 0 2px color-mix(in srgb, var(--school-raw) 60%, #555);
+  }
+  .tg__name {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 700;
+    color: var(--school-raw);
+    text-shadow: 0 1px 2px #000;
+  }
+  .tg__spent {
+    margin-left: auto;
+    min-width: 2.2em;
+    padding: 0.05em 0.6em;
+    border: 1px solid rgb(255 255 255 / 0.18);
+    border-radius: 999px;
+    background: rgb(0 0 0 / 0.45);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+  }
+  .tg__grid {
+    display: grid;
+    grid-template-columns: repeat(4, var(--cell));
+    grid-template-rows: repeat(var(--rows), var(--cell));
+    gap: var(--gap-y) var(--gap-x);
+    justify-content: center;
+    padding-bottom: 0.35rem;
+  }
+  .tg__talent {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: var(--cell);
+    height: var(--cell);
+    padding: 0;
+    border: 0;
+    border-radius: 6px;
+    background: #000;
+    box-shadow: 0 0 0 1px #000, 0 0 0 2px #5b5670;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+  .tg__talent img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    pointer-events: none;
+  }
+  .tg__rank {
+    position: absolute;
+    right: -0.55rem;
+    bottom: -0.45rem;
+    min-width: 1.9rem;
+    padding: 0 0.25rem;
+    border: 1px solid #5b5670;
+    border-radius: 5px;
+    background: #08070c;
+    color: #b8b4c8;
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1.35;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    pointer-events: none;
+  }
+  /* Locked: grey icon, as in the game. */
+  .tg__talent[data-state='locked'] img {
+    filter: grayscale(1) brightness(0.55);
+  }
+  .tg__talent[data-state='locked'] .tg__rank {
+    color: #8b879b;
+  }
+  /* Available but empty (calculator only): full colour, green rank. */
+  .tg__talent[data-state='open'] {
+    box-shadow: 0 0 0 1px #000, 0 0 0 2px #2f8f3d;
+  }
+  .tg__talent[data-state='open'] .tg__rank,
+  .tg__talent[data-state='some'] .tg__rank {
+    border-color: #2f8f3d;
+    color: var(--green);
+  }
+  .tg__talent[data-state='some'] {
+    box-shadow: 0 0 0 1px #000, 0 0 0 2px var(--green), 0 0 10px rgb(63 221 87 / 0.35);
+  }
+  .tg__talent[data-state='max'] {
+    box-shadow: 0 0 0 1px #000, 0 0 0 2px var(--gold), 0 0 12px rgb(242 201 76 / 0.4);
+  }
+  .tg__talent[data-state='max'] .tg__rank {
+    border-color: #a8862a;
+    color: var(--gold);
+  }
+  .tg__talent:hover,
+  .tg__talent:focus-visible {
+    z-index: 2;
+    outline: none;
+    box-shadow: 0 0 0 1px #000, 0 0 0 2px #fff, 0 0 14px rgb(255 255 255 / 0.35);
+  }
+  .tg__talent:global(.is-shown) {
+    box-shadow: 0 0 0 1px #000, 0 0 0 2px #fff, 0 0 14px rgb(255 255 255 / 0.35);
+  }
+  /* Prerequisite arrow: from the bottom of one icon to the top of the other. */
+  .tg__arrow {
+    position: relative;
+    justify-self: center;
+    width: 0.5rem;
+    pointer-events: none;
+  }
+  .tg__arrow::before {
+    content: '';
+    position: absolute;
+    top: var(--cell);
+    bottom: calc(var(--cell) + 0.45rem);
+    left: calc(50% - 2px);
+    width: 4px;
+    border-radius: 2px;
+    background: #4a4658;
+  }
+  .tg__arrow::after {
+    content: '';
+    position: absolute;
+    bottom: calc(var(--cell) + 0.05rem);
+    left: calc(50% - 0.45rem);
+    border-left: 0.45rem solid transparent;
+    border-right: 0.45rem solid transparent;
+    border-top: 0.5rem solid #4a4658;
+  }
+  .tg__arrow[data-met='true']::before {
+    background: var(--gold);
+    box-shadow: 0 0 6px rgb(242 201 76 / 0.5);
+  }
+  .tg__arrow[data-met='true']::after {
+    border-top-color: var(--gold);
+  }
+  @media (forced-colors: active) {
+    .tg__talent[data-state='some'],
+    .tg__talent[data-state='max'] {
+      outline: 3px solid Highlight;
+    }
+  }
+</style>

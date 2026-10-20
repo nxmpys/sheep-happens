@@ -7,7 +7,8 @@
  * - Ice Lance described with its old 300% bonus (history notes that say
  *   "until 15 October" / "hasta el 15 de octubre" / "from 300%" are fine);
  * - ES/EN parity: the same pages, the same number of sections (h2) and the
- *   same data components in each pair of MDX files.
+ *   same data components in each pair of MDX files;
+ * - game icons (/icons/<name>.jpg) that are not in public/icons.
  *
  * Run after `npm run build`. Exits with code 1 on any problem.
  */
@@ -50,9 +51,15 @@ const rawRef = /\b(?:change|milestone|ability|fact|source|build|race|profession|
 const iceLance300 = /(Lanza de hielo|Ice Lance)[^.]{0,120}\b300 ?%|300 ?%[^.]{0,80}(Lanza de hielo|Ice Lance)/g;
 const history = /hasta el 15 de octubre|until 15 October|del 300 ?% al 200|from 300 ?% to 200|300 ?% hasta|300% until/;
 
+const iconRef = /\/icons\/([a-z0-9_]+)\.jpg/g;
+
 for (const file of walk(dist)) {
   const where = file.slice(dist.length).replaceAll('\\', '/');
-  const body = text(readFileSync(file, 'utf8'));
+  const html = readFileSync(file, 'utf8');
+  for (const [, icon] of html.matchAll(iconRef)) {
+    if (!existsSync(join(root, 'public/icons', `${icon}.jpg`))) problems.push(`${where}: missing icon public/icons/${icon}.jpg`);
+  }
+  const body = text(html);
   const ref = rawRef.exec(body);
   if (ref) problems.push(`${where}: internal ref printed as text: "${ref[0]}"`);
   for (const sentence of sentences) {
@@ -88,4 +95,4 @@ if (problems.length > 0) {
   console.error(`\n${problems.length} problem(s) in the built site.`);
   process.exit(1);
 }
-console.log('✓ Built site: no raw refs, no repeated label sentences, no stale Ice Lance figure, ES/EN in parity.');
+console.log('✓ Built site: no raw refs, no repeated label sentences, no stale Ice Lance figure, ES/EN in parity, every icon present.');

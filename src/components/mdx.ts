@@ -13,6 +13,7 @@ import CampBuffs from './guide/CampBuffs.astro';
 import ChangeExplorer from './guide/ChangeExplorer.astro';
 import ChangeSummaryList from './guide/ChangeSummaryList.astro';
 import ChangelogList from './guide/ChangelogList.astro';
+import ClassQuestList from './guide/ClassQuestList.astro';
 import CritCalculator from './guide/CritCalculator.astro';
 import FactList from './guide/FactList.astro';
 import FactionFilter from './guide/FactionFilter.astro';
@@ -22,12 +23,15 @@ import FaqItem from './guide/FaqItem.astro';
 import Highlight from './guide/Highlight.astro';
 import Highlights from './guide/Highlights.astro';
 import HubCards from './guide/HubCards.astro';
+import ItemCards from './guide/ItemCards.astro';
 import LevelView from './guide/LevelView.astro';
 import LevelingSpells from './guide/LevelingSpells.astro';
 import LevelingStatus from './guide/LevelingStatus.astro';
+import LibraryBooks from './guide/LibraryBooks.astro';
 import MilestoneMap from './guide/MilestoneMap.astro';
 import Notices from './guide/Notices.astro';
 import PageLink from './guide/PageLink.astro';
+import Perch from './guide/Perch.astro';
 import Pending from './guide/Pending.astro';
 import Priority from './guide/Priority.astro';
 import ProfessionDetail from './guide/ProfessionDetail.astro';
@@ -64,6 +68,7 @@ export const mdxComponents = {
   ChangeExplorer,
   ChangeSummaryList,
   ChangelogList,
+  ClassQuestList,
   CritCalculator,
   FactList,
   FactionFilter,
@@ -73,12 +78,15 @@ export const mdxComponents = {
   Highlight,
   Highlights,
   HubCards,
+  ItemCards,
   LevelView,
   LevelingSpells,
   LevelingStatus,
+  LibraryBooks,
   MilestoneMap,
   Notices,
   PageLink,
+  Perch,
   Pending,
   Priority,
   ProfessionDetail,

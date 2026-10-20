@@ -1,6 +1,6 @@
 ---
 /**
- * All / Alliance / Horde switch for the races page. It hides the other
+ * All / Alliance / Horde switch (races, PvP, class quests, library). It hides the other
  * faction's race cards (and the heading above them) and its column in the
  * comparison tables (columns headed «Alianza» / «Horda»). The choice is saved.
  * Without JavaScript the switch stays hidden and everything is shown.
@@ -8,8 +8,14 @@
 import { FACTION_LABELS } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
 
+interface Props {
+  /** Legend of the switch; defaults to «Show races from». */
+  legend?: string;
+}
+
 const locale = getLocale(Astro);
 const labels = FACTION_LABELS[locale];
+const { legend = locale === 'es' ? 'Mostrar razas de' : 'Show races from' } = Astro.props;
 const options = [
   { value: 'all', label: locale === 'es' ? 'Todas' : 'All' },
   { value: 'alliance', label: labels.alliance },
@@ -19,7 +25,7 @@ const options = [
 
 <faction-filter data-labels={JSON.stringify(labels)} hidden data-pagefind-ignore>
   <fieldset class="faction">
-    <legend>{locale === 'es' ? 'Mostrar razas de' : 'Show races from'}</legend>
+    <legend>{legend}</legend>
     <div class="faction__options">
       {
         options.map((option) => (

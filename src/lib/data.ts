@@ -26,16 +26,22 @@ import rawNotices from '../data/notices.json';
 import rawRacePicks from '../data/race-picks.json';
 import rawGlossary from '../data/glossary.json';
 import rawTalentText from '../data/talent-text.json';
+import rawItems from '../data/items.json';
+import rawLibraryBooks from '../data/library-books.json';
+import rawClassQuests from '../data/class-quests.json';
 import {
   abilitySchema,
   addonSchema,
   buildSchema,
   changeSchema,
   changelogSchema,
+  classQuestSchema,
   factSchema,
   gameVersionSchema,
   glossarySchema,
+  itemSchema,
   levelingSpellSchema,
+  libraryBookSchema,
   milestoneSchema,
   noticeSchema,
   racePickSchema,
@@ -373,6 +379,15 @@ export const notices = parseList('notices.json', noticeSchema, rawNotices);
 /** Notices still worth shipping: not ended at `now` (build time). */
 export const liveNotices = (now: Date = new Date(), list: readonly Notice[] = notices) => list.filter((n) => Date.parse(n.end) > now.getTime());
 
+/** Game items quoted on the guide pages (ItemCard). */
+export const items = parseList('items.json', itemSchema, rawItems);
+
+/** Books for the librarians, in catalogue order (library page). */
+export const libraryBooks = parseList('library-books.json', libraryBookSchema, rawLibraryBooks);
+
+/** Mage class quest chains, by level (class quests page). */
+export const classQuests = parseList('class-quests.json', classQuestSchema, rawClassQuests).sort((a, b) => a.level - b.level);
+
 /** Spells learned while leveling, by level (leveling page table and level view). */
 export const levelingSpells = parseList('leveling-spells.json', levelingSpellSchema, rawLevelingSpells).sort((a, b) => a.level - b.level);
 
@@ -392,6 +407,31 @@ const integrity = [
       .map((name) => `leveling-spells.json: level ${row.level} names "${name}", which is not in spell-names.json`),
   ),
 ];
+// Items, library books and class quests: unique ids, known sources and rewards.
+{
+  const sourceIds = new Set(dataset.sources.map((source) => source.id));
+  const itemIds = new Set(items.map((item) => item.id));
+  for (const [file, list] of [
+    ['items.json', items],
+    ['library-books.json', libraryBooks],
+    ['class-quests.json', classQuests],
+  ] as const) {
+    for (const dup of duplicates(list.map((entry) => entry.id))) integrity.push(`${file}: duplicate id "${dup}"`);
+  }
+  for (const dup of duplicates(items.map((item) => String(item.wowhead)))) integrity.push(`items.json: two items share Wowhead id ${dup}`);
+  for (const record of [...libraryBooks, ...classQuests]) {
+    for (const source of record.sources) {
+      if (!sourceIds.has(source)) integrity.push(`"${record.id}" cites unknown source "${source}"`);
+    }
+  }
+  for (const quest of classQuests) {
+    for (const reward of quest.rewards) {
+      if (!itemIds.has(reward)) integrity.push(`class-quests.json: "${quest.id}" rewards "${reward}", which is not in items.json`);
+    }
+    if (quest.rewards.length === 0 && !quest.rewardText) integrity.push(`class-quests.json: "${quest.id}" has no reward`);
+  }
+}
+
 if (integrity.length > 0) {
   throw new Error(`Content integrity problems:\n- ${integrity.join('\n- ')}`);
 }
@@ -449,6 +489,10 @@ export const getProfession = (key: string) => lookup(professionIndex, 'professio
 const addonIndex = new Map(addons.map((a) => [a.id, a]));
 
 export const getAddon = (key: string) => lookup(addonIndex, 'addon', key);
+
+const itemIndex = new Map(items.map((item) => [item.id, item]));
+
+export const getItem = (key: string) => lookup(itemIndex, 'item', key);
 
 /** Blocks of one part of the scrolls page, in file order. */
 export const scrollsByPart = (part: ScrollBlock['part']) => scrolls.filter((s) => s.part === part);

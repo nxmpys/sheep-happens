@@ -787,5 +787,32 @@
       "addons",
       "tools"
     ]
+  },
+  {
+    "id": "2026-10-20-guides",
+    "date": "2026-10-20",
+    "type": "guide",
+    "title": {
+      "es": "Nueva sección Guías: misiones de clase, biblioteca y JcJ",
+      "en": "New Guides section: class quests, library and PvP"
+    },
+    "body": {
+      "es": "El menú pasa a cinco entradas: Aprende, Builds, Guías, Herramientas y Addons. Guías reúne Razas, Profesiones y Pergaminos con tres páginas nuevas: las siete misiones de clase del Mago con sus recompensas reales, los 38 libros de la biblioteca con un contador de los que llevas, y cómo funciona el JcJ en Forever con el equipo de Mago azul y épico y el de Islas Lanza Negra. La calculadora y las builds muestran ahora los árboles como en el juego, con los iconos originales y los tres árboles en fila. Datos de la beta: pueden cambiar en el lanzamiento.",
+      "en": "The menu now has five entries: Learn, Builds, Guides, Tools and Addons. Guides gathers Races, Professions and Scrolls with three new pages: the seven Mage class quests with their actual rewards, the 38 library books with a tracker of the ones you have, and how PvP works in Forever with the rare and epic Mage gear and the Darkspear Islands gear. The calculator and the builds now show the trees as in the game, with the original icons and the three trees side by side. Beta data: it may change at launch."
+    },
+    "pages": [
+      "guides",
+      "class-quests",
+      "library",
+      "pvp",
+      "talent-calc",
+      "builds"
+    ],
+    "sources": [
+      "wowhead-forever-database",
+      "wowhead-forever-pvp",
+      "wowhead-library-books",
+      "foreverdb-mage-quests"
+    ]
   }
 ]

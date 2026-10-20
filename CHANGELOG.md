@@ -4,6 +4,14 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-10-20
+
+### [Guía] Nueva sección Guías: misiones de clase, biblioteca y JcJ
+
+El menú pasa a cinco entradas: Aprende, Builds, Guías, Herramientas y Addons. Guías reúne Razas, Profesiones y Pergaminos con tres páginas nuevas: las siete misiones de clase del Mago con sus recompensas reales, los 38 libros de la biblioteca con un contador de los que llevas, y cómo funciona el JcJ en Forever con el equipo de Mago azul y épico y el de Islas Lanza Negra. La calculadora y las builds muestran ahora los árboles como en el juego, con los iconos originales y los tres árboles en fila. Datos de la beta: pueden cambiar en el lanzamiento.
+
+- **Fuentes:** [WoW Forever database (items and quests)](https://www.wowhead.com/forever) (Wowhead), [PvP Overview in Forever - Ranking, Rewards, and Battlegrounds](https://www.wowhead.com/forever/guide/pvp-overview-ranking-rewards) (Wowhead), [Collecting Library Books: Locations and Rewards - WoW Forever](https://www.wowhead.com/forever/guide/library-book-locations-and-rewards) (Wowhead), [Mage quests - WoW Forever quest guide](https://foreverdb.net/quests/mage) (ForeverDB)
+
 ## 2026-10-19
 
 ### [Web] Menú: Razas y Profesiones por separado

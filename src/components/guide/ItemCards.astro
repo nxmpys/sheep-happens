@@ -1,0 +1,134 @@
+---
+/**
+ * Game items as cards that look like the in-game tooltip: icon, name in its
+ * quality colour, slot, white stats, green «Equip:» lines and the requirement.
+ * Each card links to the item on Wowhead's Forever database. Items of one
+ * faction carry data-faction, so FactionFilter can hide the other side's.
+ */
+import { getLocale } from '../../i18n/locale';
+import { getItem } from '../../lib/data';
+import { iconPath } from '../../lib/icons';
+
+interface Props {
+  ids: string[];
+  /** Short label above an item, e.g. «Alianza» (same index as ids). */
+  labels?: string[];
+}
+
+const { ids, labels = [] } = Astro.props;
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const faction = { alliance: es ? 'Alianza' : 'Alliance', horde: es ? 'Horda' : 'Horde' };
+const list = ids.map((id) => getItem(id));
+---
+
+<ul class="items" role="list">
+  {
+    list.map((item, index) => (
+      <li class={`item item--${item.quality}`} data-faction={item.faction}>
+        <img class="item__icon" src={iconPath(item.icon)} alt="" width="44" height="44" loading="lazy" decoding="async" />
+        <div class="item__body">
+          {(labels[index] || item.faction) && <p class="item__label">{labels[index] ?? faction[item.faction!]}</p>}
+          <a class="item__name" href={`https://www.wowhead.com/forever/item=${item.wowhead}`} target="_blank" rel="noopener noreferrer" data-no-spell-links>
+            {item.name[locale]}
+          </a>
+          {locale === 'es' && <span class="item__en" lang="en">{item.name.en}</span>}
+          <p class="item__slot">{item.slot[locale]}</p>
+          {item.stats.map((line) => <p class="item__stat">{line[locale]}</p>)}
+          {item.effects.map((line) => <p class="item__effect">{line[locale]}</p>)}
+          {item.requires && <p class="item__req">{item.requires[locale]}</p>}
+        </div>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16.5rem), 1fr));
+    gap: var(--space-3);
+    margin: var(--space-4) 0;
+    padding: 0;
+    list-style: none;
+  }
+  /* The game's tooltip, in both themes: the quality colours are made for a dark box. */
+  .item {
+    --q: #ffffff;
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    margin: 0;
+    padding: var(--space-3);
+    border: 1px solid #3f3b52;
+    border-radius: var(--radius);
+    background: linear-gradient(#121733, #0a0d1c);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.03);
+    color: #ffffff;
+    font-size: var(--step--1);
+    line-height: 1.4;
+  }
+  .item[hidden] {
+    display: none;
+  }
+  .item--uncommon {
+    --q: #1eff00;
+  }
+  .item--rare {
+    --q: #4aa8ff;
+  }
+  .item--epic {
+    --q: #c27cff;
+  }
+  .item__icon {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px #000, 0 0 0 2px color-mix(in srgb, var(--q) 70%, #000);
+  }
+  .item__body {
+    min-width: 0;
+  }
+  .item__body p {
+    margin: 0;
+  }
+  .item__label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #9d9aae;
+  }
+  .item__name {
+    font-weight: 700;
+    color: var(--q);
+    text-decoration: none;
+  }
+  .item__name:hover {
+    text-decoration: underline;
+  }
+  .item__name:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+  .item__en {
+    display: block;
+    color: #8f8ca0;
+    font-size: 0.75rem;
+  }
+  .item__slot,
+  .item__stat {
+    color: #ffffff;
+  }
+  .item__slot {
+    color: #d6d4e0;
+  }
+  .item__effect {
+    color: #1eff00;
+  }
+  .item__req {
+    margin-top: var(--space-1) !important;
+    color: #ffd100;
+  }
+</style>

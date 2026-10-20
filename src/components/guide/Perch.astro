@@ -1,0 +1,169 @@
+---
+/**
+ * A figure perched on the top edge of a block (hub cards, a callout), standing
+ * on its border as if it lived in the page. Decorative only: aria-hidden and
+ * no pointer events, so it never hides a link.
+ *
+ * - figure="sheep": the polymorphed sheep, original SVG artwork.
+ * - src="/figures/<name>.webp": any transparent cut-out from public/figures
+ *   (for example game renders, once their use is cleared).
+ *
+ * The wrapper adds room above the block so the figure covers nothing.
+ */
+interface Props {
+  figure?: 'sheep';
+  src?: string;
+  side?: 'left' | 'right';
+  /** Height of the figure in rem. */
+  size?: number;
+}
+
+const { figure = 'sheep', src, side = 'right', size = 7.5 } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const image = src ? `${base}${src.replace(/^\//, '')}` : undefined;
+---
+
+<div class:list={['perch', `perch--${side}`]} style={`--perch: ${size}rem`}>
+  <div class="perch__figure" aria-hidden="true">
+    {
+      image ? (
+        <img src={image} alt="" loading="lazy" decoding="async" />
+      ) : (
+        figure === 'sheep' && (
+          <svg viewBox="0 0 140 124" focusable="false">
+            <defs>
+              <radialGradient id="perch-wool" cx="40%" cy="35%" r="75%">
+                <stop offset="0" stop-color="#ffffff" />
+                <stop offset="0.65" stop-color="#ece7fb" />
+                <stop offset="1" stop-color="#c9bfe9" />
+              </radialGradient>
+              <radialGradient id="perch-glow" cx="50%" cy="50%" r="50%">
+                <stop offset="0" stop-color="#c9a6ff" stop-opacity="0.55" />
+                <stop offset="1" stop-color="#8a5cff" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <ellipse cx="76" cy="62" rx="66" ry="56" fill="url(#perch-glow)" />
+            <ellipse class="perch__ring" cx="78" cy="117" rx="46" ry="5.5" />
+            <g fill="#3b3546">
+              <rect x="54" y="82" width="7" height="32" rx="3.5" />
+              <rect x="68" y="84" width="7" height="31" rx="3.5" />
+              <rect x="88" y="84" width="7" height="31" rx="3.5" />
+              <rect x="101" y="82" width="7" height="32" rx="3.5" />
+            </g>
+            <g fill="#221e2b">
+              <rect x="53" y="110" width="9" height="6" rx="2" />
+              <rect x="67" y="111" width="9" height="6" rx="2" />
+              <rect x="87" y="111" width="9" height="6" rx="2" />
+              <rect x="100" y="110" width="9" height="6" rx="2" />
+            </g>
+            <g fill="#a99cd6">
+              <circle cx="52" cy="58" r="20" />
+              <circle cx="71" cy="45" r="22" />
+              <circle cx="92" cy="47" r="21" />
+              <circle cx="109" cy="60" r="18" />
+              <circle cx="61" cy="75" r="19" />
+              <circle cx="83" cy="77" r="20" />
+              <circle cx="102" cy="74" r="17" />
+              <circle cx="122" cy="57" r="7.5" />
+            </g>
+            <g fill="url(#perch-wool)">
+              <circle cx="52" cy="58" r="18" />
+              <circle cx="71" cy="45" r="20" />
+              <circle cx="92" cy="47" r="19" />
+              <circle cx="109" cy="60" r="16" />
+              <circle cx="61" cy="75" r="17" />
+              <circle cx="83" cy="77" r="18" />
+              <circle cx="102" cy="74" r="15" />
+              <circle cx="122" cy="57" r="5.5" />
+            </g>
+            <g fill="#ffffff" opacity="0.7">
+              <circle cx="64" cy="38" r="5" />
+              <circle cx="86" cy="40" r="4" />
+              <circle cx="47" cy="52" r="3.5" />
+            </g>
+            <ellipse cx="36" cy="58" rx="14.5" ry="17.5" transform="rotate(-18 36 58)" fill="#3e3850" />
+            <ellipse cx="45" cy="40" rx="10" ry="4" transform="rotate(-38 45 40)" fill="#3e3850" />
+            <ellipse cx="45" cy="40.5" rx="6.5" ry="2" transform="rotate(-38 45 40.5)" fill="#b28fd8" />
+            <circle cx="41" cy="42" r="7" fill="url(#perch-wool)" />
+            <circle cx="35" cy="45" r="5.5" fill="url(#perch-wool)" />
+            <circle cx="30" cy="55" r="4" fill="#ffffff" />
+            <circle cx="29.2" cy="55.6" r="2.2" fill="#1a1622" />
+            <circle cx="30.2" cy="54.6" r="0.8" fill="#ffffff" />
+            <ellipse cx="25.5" cy="69" rx="3" ry="1.6" transform="rotate(-18 25.5 69)" fill="#1f1a28" />
+            <g class="perch__spark">
+              <path d="M18 8l2.4 7.6L28 18l-7.6 2.4L18 28l-2.4-7.6L8 18l7.6-2.4z" />
+              <path d="M126 14l1.6 5L133 21l-5.4 1.6L126 28l-1.6-5.4L119 21l5.4-1.6z" />
+              <path d="M10 82l1.2 3.8L15 87l-3.8 1.2L10 92l-1.2-3.8L5 87l3.8-1.2z" />
+            </g>
+          </svg>
+        )
+      )
+    }
+  </div>
+  <slot />
+</div>
+
+<style>
+  .perch {
+    position: relative;
+    margin-top: calc(var(--perch) * 0.72);
+  }
+  /* The block starts right at the figure's feet. */
+  .perch > :global(*) {
+    margin-top: 0;
+  }
+  .perch__figure {
+    position: absolute;
+    z-index: 2;
+    bottom: calc(100% - var(--perch) * 0.06);
+    width: calc(var(--perch) * 1.13);
+    height: var(--perch);
+    pointer-events: none;
+    filter: drop-shadow(0 6px 10px rgb(0 0 0 / 0.35));
+  }
+  .perch--right .perch__figure {
+    right: 1.25rem;
+  }
+  .perch--left .perch__figure {
+    left: 1.25rem;
+    transform: scaleX(-1);
+  }
+  .perch__figure svg,
+  .perch__figure img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom;
+  }
+  .perch__ring {
+    fill: none;
+    stroke: #a98bff;
+    stroke-width: 1.5;
+    opacity: 0.55;
+  }
+  .perch__spark {
+    fill: #e5c97f;
+    transform-origin: 70px 50px;
+    animation: perch-twinkle 3.2s ease-in-out infinite;
+  }
+  @keyframes perch-twinkle {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.35;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .perch__spark {
+      animation: none;
+    }
+  }
+  @media (max-width: 30rem) {
+    .perch {
+      --perch: 4.5rem !important;
+    }
+  }
+</style>

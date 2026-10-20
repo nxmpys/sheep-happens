@@ -14,8 +14,12 @@ export const PAGE_IDS = [
   'home',
   'learn',
   'builds',
+  'guides',
   'races',
   'professions',
+  'class-quests',
+  'library',
+  'pvp',
   'guide',
   'changes',
   'talents',
@@ -56,8 +60,13 @@ export const ROUTES: Record<PageId, RouteDef> = {
   home: { id: 'home', slug: { es: '', en: '' } },
   learn: { id: 'learn', slug: { es: 'aprende', en: 'learn' }, parent: 'home' },
   builds: { id: 'builds', slug: { es: 'builds', en: 'builds' }, parent: 'home' },
-  races: { id: 'races', slug: { es: 'razas', en: 'races' }, parent: 'home' },
-  professions: { id: 'professions', slug: { es: 'profesiones', en: 'professions' }, parent: 'home' },
+  guides: { id: 'guides', slug: { es: 'guias', en: 'guides' }, parent: 'home' },
+  // Races and professions kept their first slugs when they moved under Guides, so old links still work.
+  races: { id: 'races', slug: { es: 'razas', en: 'races' }, parent: 'guides' },
+  professions: { id: 'professions', slug: { es: 'profesiones', en: 'professions' }, parent: 'guides' },
+  'class-quests': { id: 'class-quests', slug: { es: 'misiones-de-clase', en: 'class-quests' }, parent: 'guides' },
+  library: { id: 'library', slug: { es: 'biblioteca', en: 'library' }, parent: 'guides' },
+  pvp: { id: 'pvp', slug: { es: 'jcj', en: 'pvp' }, parent: 'guides' },
   guide: { id: 'guide', slug: { es: 'guia', en: 'guide' }, parent: 'learn' },
   changes: { id: 'changes', slug: { es: 'cambios', en: 'changes' }, parent: 'learn' },
   talents: { id: 'talents', slug: { es: 'talentos', en: 'talents' }, parent: 'learn' },
@@ -82,7 +91,7 @@ export const ROUTES: Record<PageId, RouteDef> = {
   leveling: { id: 'leveling', slug: { es: 'nivelacion', en: 'leveling' }, parent: 'builds' },
   'level-view': { id: 'level-view', slug: { es: 'nivelacion/por-nivel', en: 'leveling/by-level' }, parent: 'leveling' },
   'aoe-farming': { id: 'aoe-farming', slug: { es: 'farmeo-aoe', en: 'aoe-farming' }, parent: 'builds' },
-  scrolls: { id: 'scrolls', slug: { es: 'pergaminos', en: 'scrolls' }, parent: 'builds' },
+  scrolls: { id: 'scrolls', slug: { es: 'pergaminos', en: 'scrolls' }, parent: 'guides' },
   combat: { id: 'combat', slug: { es: 'combate', en: 'combat' }, parent: 'learn' },
   gear: { id: 'gear', slug: { es: 'equipo', en: 'gear' }, parent: 'learn' },
   tools: { id: 'tools', slug: { es: 'herramientas', en: 'tools' }, parent: 'home' },
@@ -99,20 +108,20 @@ export const ROUTES: Record<PageId, RouteDef> = {
  * items in this order (READING_ORDER), so the three never diverge.
  */
 export interface NavGroup {
-  key: 'learn' | 'builds' | 'races' | 'professions' | 'tools' | 'addons';
+  key: 'learn' | 'builds' | 'guides' | 'tools' | 'addons';
   page: PageId;
   items?: PageId[];
 }
 
 /**
- * Six entries: learning the class from zero, builds to copy, race and
- * professions to pick, Forever's changes, and the tools.
+ * Five entries: the basics of the class, builds to copy (with the pages that
+ * explain them), guides for everything around the character (race,
+ * professions, class quests, library, scrolls, PvP), the tools and addons.
  */
 export const PRIMARY_NAV: readonly NavGroup[] = [
   { key: 'learn', page: 'learn', items: ['guide', 'talents', 'talents-arcane', 'talents-fire', 'talents-frost', 'combat', 'gear', 'changes'] },
-  { key: 'builds', page: 'builds', items: ['leveling', 'level-view', 'aoe-farming', 'scrolls'] },
-  { key: 'races', page: 'races' },
-  { key: 'professions', page: 'professions' },
+  { key: 'builds', page: 'builds', items: ['leveling', 'level-view', 'aoe-farming'] },
+  { key: 'guides', page: 'guides', items: ['races', 'professions', 'class-quests', 'library', 'scrolls', 'pvp'] },
   { key: 'tools', page: 'tools', items: ['talent-calc'] },
   { key: 'addons', page: 'addons' },
 ];
