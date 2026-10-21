@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-10-18",
+  "fetched": "2026-10-21",
   "spells": {
     "10": {
       "icon": "spell_frost_icestorm",
@@ -711,19 +711,6 @@
         "text": "Cuando se activa, este hechizo provoca que los golpes de tu hechizo de daño de Fuego aumenten un 10% la probabilidad de golpe crítico de los hechizos de daño de Fuego. Este efecto dura hasta que asestes 3 golpes críticos no periódicos con hechizos de Fuego."
       }
     },
-    "11151": {
-      "icon": "spell_frost_frostbolt",
-      "en": {
-        "name": "Piercing Ice",
-        "meta": [],
-        "text": "Increases the damage done by your Frost spells by 2%."
-      },
-      "es": {
-        "name": "Hielo penetrante",
-        "meta": [],
-        "text": "Aumenta en un 2% el daño causado con tus hechizos de Escarcha."
-      }
-    },
     "11160": {
       "icon": "spell_frost_stun",
       "en": {
@@ -781,12 +768,12 @@
       "en": {
         "name": "Winter's Chill",
         "meta": [],
-        "text": "Gives your Frost damage spells a 20/40/60/80/100% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times."
+        "text": "Gives your Frostbolt, Frost Blast, and Fingers of Frost empowered Ice Lance spells a 20/40/60/80/100% chance to apply Winter's Chill, increasing the target's damage taken from your next Cone of Cold by 5% and it gains an additional 7% of your spell damage, stacking up to 5 times."
       },
       "es": {
         "name": "Escalofrío del invierno",
         "meta": [],
-        "text": "Gives your Frost damage spells a 20/40/60/80/100% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
+        "text": "Gives your Frost damage spells a 20/40/60/80/100% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 5%, stacking up to 5 times.",
         "lang": "en"
       }
     },
@@ -808,12 +795,13 @@
       "en": {
         "name": "Frost Warding",
         "meta": [],
-        "text": "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by 15%. In addition, gives your Frost Ward a 10% chance to reflect Frost spells and effects while active."
+        "text": "Increases the Armor and resistances granted by your Frost Armor and Ice Armor spells by 15%, gives your Frost Ward a 10/20% chance to negate the warded damage spell, and increases the amount absorbed by your Ice Barrier and Frost Ward by 10/20%."
       },
       "es": {
         "name": "Custodia de Escarcha",
         "meta": [],
-        "text": "Aumenta un 15% la armadura y la resistencia otorgadas por tus hechizos Armadura de Escarcha y Armadura de hielo. Además, otorga a Resguardo contra la Escarcha un 10% de probabilidad de reflejar los hechizos y efectos de Escarcha mientras está activo."
+        "text": "Increases the Armor and resistances granted by your Frost Armor and Ice Armor spells by 15%, gives your Frost Ward a 10/20% chance to negate the warded damage spell, and increases the amount absorbed by your Ice Barrier and Frost Ward by 10/20%.",
+        "lang": "en"
       }
     },
     "11190": {
@@ -899,7 +887,7 @@
       "en": {
         "name": "Improved Channeling",
         "meta": [],
-        "text": "Gives you a 20% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 14% chance while casting Arcane Blast or Arcane Wrath."
+        "text": "Gives your Arcane Missiles spell a 20% chance and your Arcane Blast and Arcane Wrath spells a 14% chance to not lose casting time when you take damage."
       },
       "es": {
         "name": "Canalización mejorada",
@@ -990,7 +978,7 @@
           "Instant",
           "30 sec cooldown"
         ],
-        "text": "Instantly shields you, absorbing 448 damage. Lasts 1 min. While the shield holds, your spellcasts will not be interrupted or delayed from taking damage."
+        "text": "Shield yourself, absorbing damage and increasing your Frost damage by 3% for 1 min. While shielded, your Frost damage is increased by an additional 3% and you do not lose casting time when you take damage."
       },
       "es": {
         "name": "Barrera de hielo",
@@ -1444,7 +1432,7 @@
       "en": {
         "name": "Missile Barrage",
         "meta": [],
-        "text": "Gives your Arcane Blast spell a 40% chance, your Arcane Missile hits a 10% chance, and your Arcane Wrath, Fireball, Frostbolt, and Frostfire Bolt spells a 20% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec."
+        "text": "Gives your Arcane Blast spell a 40% chance, and your Arcane Wrath, Fireball, Frostbolt, Frost Blast, and Frostfire Bolt spells a 20% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec."
       },
       "es": {
         "name": "Tromba de misiles",

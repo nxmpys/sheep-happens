@@ -48,9 +48,9 @@ export function tidyDescription(text: string): string {
     .join('\n');
 }
 
-/** Replaces the first value shown as 0 ("by 0 sec", "a 0% chance") with every rank's value: "0.1/0.2/0.3 sec". */
+/** Replaces every value shown as 0 ("by 0 sec", "a 0% chance") with every rank's value: "0.1/0.2/0.3 sec". */
 export function fillRankValues(text: string, values: readonly string[]): string {
-  return text.replace(/(?<![\d.,])0(?=%| sec\b| s\b| seg\b)/, values.join('/'));
+  return text.replace(/(?<![\d.,])0(?=%| sec\b| s\b| seg\b)/g, values.join('/'));
 }
 
 const ENGLISH_WORDS = /\b(the|and|your|you|of|for|with|by|to|an|is|are|chance|damage|target|enemy)\b/gi;

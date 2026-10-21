@@ -87,6 +87,7 @@ describe('in-game tooltip text', () => {
     expect(fillRankValues('a 0% chance, up to 10 times', ['20', '40'])).toBe('a 20/40% chance, up to 10 times');
     expect(fillRankValues('by 0 sec.', ['0.1', '0.2'])).toBe('by 0.1/0.2 sec.');
     expect(fillRankValues('lasts 10 sec.', ['1'])).toBe('lasts 10 sec.');
+    expect(fillRankValues('a 0% chance and 0% more', ['10', '20'])).toBe('a 10/20% chance and 10/20% more');
   });
 
   it('drops talent-dependent notes in brackets', () => {
