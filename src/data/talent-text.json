@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-10-19",
+  "fetched": "2026-10-21",
   "source": "https://www.wowhead.com/forever/talent-calc/mage",
   "talents": {
     "wand-specialization": {
@@ -47,11 +47,11 @@
       "en": {
         "name": "Improved Channeling",
         "ranks": [
-          "Gives you a 20% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 14% chance while casting Arcane Blast or Arcane Wrath.",
-          "Gives you a 40% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 28% chance while casting Arcane Blast or Arcane Wrath.",
-          "Gives you a 60% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 42% chance while casting Arcane Blast or Arcane Wrath.",
-          "Gives you a 80% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 56% chance while casting Arcane Blast or Arcane Wrath.",
-          "Gives you a 100% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 70% chance while casting Arcane Blast or Arcane Wrath."
+          "Gives your Arcane Missiles spell a 20% chance and your Arcane Blast and Arcane Wrath spells a 14% chance to not lose casting time when you take damage.",
+          "Gives your Arcane Missiles spell a 40% chance and your Arcane Blast and Arcane Wrath spells a 28% chance to not lose casting time when you take damage.",
+          "Gives your Arcane Missiles spell a 60% chance and your Arcane Blast and Arcane Wrath spells a 42% chance to not lose casting time when you take damage.",
+          "Gives your Arcane Missiles spell a 80% chance and your Arcane Blast and Arcane Wrath spells a 56% chance to not lose casting time when you take damage.",
+          "Gives your Arcane Missiles spell a 100% chance and your Arcane Blast and Arcane Wrath spells a 70% chance to not lose casting time when you take damage."
         ]
       },
       "es": {
@@ -71,8 +71,8 @@
       "en": {
         "name": "Missile Barrage",
         "ranks": [
-          "Gives your Arcane Blast spell a 20% chance, your Arcane Missile hits a 5% chance, and your Arcane Wrath, Fireball, Frostbolt, and Frostfire Bolt spells a 10% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec.",
-          "Gives your Arcane Blast spell a 40% chance, your Arcane Missile hits a 10% chance, and your Arcane Wrath, Fireball, Frostbolt, and Frostfire Bolt spells a 20% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec."
+          "Gives your Arcane Blast spell a 20% chance, and your Arcane Wrath, Fireball, Frostbolt, Frost Blast, and Frostfire Bolt spells a 10% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec.",
+          "Gives your Arcane Blast spell a 40% chance, and your Arcane Wrath, Fireball, Frostbolt, Frost Blast, and Frostfire Bolt spells a 20% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec."
         ]
       },
       "es": {
@@ -522,7 +522,7 @@
       }
     },
     "improved-scorch": {
-      "icon": "spell_fire_windsofwoe",
+      "icon": "spell_fire_soulburn",
       "en": {
         "name": "Improved Scorch",
         "ranks": [
@@ -670,8 +670,8 @@
       "en": {
         "name": "Frost Warding",
         "ranks": [
-          "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by 15%. In addition, gives your Frost Ward a 10% chance to reflect Frost spells and effects while active.",
-          "Increases the Armor and resistance given by your Frost Armor and Ice Armor spells by 30%. In addition, gives your Frost Ward a 20% chance to reflect Frost spells and effects while active."
+          "Increases the Armor and resistances granted by your Frost Armor and Ice Armor spells by 15%, gives your Frost Ward a 10% chance to negate the warded damage spell, and increases the amount absorbed by your Ice Barrier and Frost Ward by 10%.",
+          "Increases the Armor and resistances granted by your Frost Armor and Ice Armor spells by 30%, gives your Frost Ward a 20% chance to negate the warded damage spell, and increases the amount absorbed by your Ice Barrier and Frost Ward by 20%."
         ]
       },
       "es": {
@@ -711,21 +711,17 @@
       "en": {
         "name": "Elemental Precision",
         "ranks": [
-          "Improves your chance to hit with Frost and Fire spells by 1%.",
           "Improves your chance to hit with Frost and Fire spells by 2%.",
-          "Improves your chance to hit with Frost and Fire spells by 3%.",
           "Improves your chance to hit with Frost and Fire spells by 4%.",
-          "Improves your chance to hit with Frost and Fire spells by 5%."
+          "Improves your chance to hit with Frost and Fire spells by 6%."
         ]
       },
       "es": {
         "name": "Enfoque elemental",
         "ranks": [
-          "Aumenta un 1% tu probabilidad de golpear con hechizos de Escarcha y de Fuego.",
           "Aumenta un 2% tu probabilidad de golpear con hechizos de Escarcha y de Fuego.",
-          "Aumenta un 3% tu probabilidad de golpear con hechizos de Escarcha y de Fuego.",
           "Aumenta un 4% tu probabilidad de golpear con hechizos de Escarcha y de Fuego.",
-          "Aumenta un 5% tu probabilidad de golpear con hechizos de Escarcha y de Fuego."
+          "Aumenta un 6% tu probabilidad de golpear con hechizos de Escarcha y de Fuego."
         ]
       }
     },
@@ -804,25 +800,6 @@
           "Da a tus efectos de escalofrío un 5% de probabilidad de congelar al objetivo durante 5 s.",
           "Da a tus efectos de escalofrío un 10% de probabilidad de congelar al objetivo durante 5 s.",
           "Da a tus efectos de escalofrío un 15% de probabilidad de congelar al objetivo durante 5 s."
-        ]
-      }
-    },
-    "piercing-ice": {
-      "icon": "spell_frost_frostbolt",
-      "en": {
-        "name": "Piercing Ice",
-        "ranks": [
-          "Increases the damage done by your Frost spells by 2%.",
-          "Increases the damage done by your Frost spells by 4%.",
-          "Increases the damage done by your Frost spells by 6%."
-        ]
-      },
-      "es": {
-        "name": "Hielo penetrante",
-        "ranks": [
-          "Aumenta en un 2% el daño causado con tus hechizos de Escarcha.",
-          "Aumenta en un 4% el daño causado con tus hechizos de Escarcha.",
-          "Aumenta en un 6% el daño causado con tus hechizos de Escarcha."
         ]
       }
     },
@@ -987,21 +964,21 @@
       "en": {
         "name": "Winter's Chill",
         "ranks": [
-          "Gives your Frost damage spells a 20% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
-          "Gives your Frost damage spells a 40% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
-          "Gives your Frost damage spells a 60% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
-          "Gives your Frost damage spells a 80% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
-          "Gives your Frost damage spells a 100% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times."
+          "Gives your Frostbolt, Frost Blast, and Fingers of Frost empowered Ice Lance spells a 20% chance to apply Winter's Chill, increasing the target's damage taken from your next Cone of Cold by 5% and it gains an additional 7% of your spell damage, stacking up to 5 times.",
+          "Gives your Frostbolt, Frost Blast, and Fingers of Frost empowered Ice Lance spells a 40% chance to apply Winter's Chill, increasing the target's damage taken from your next Cone of Cold by 5% and it gains an additional 7% of your spell damage, stacking up to 5 times.",
+          "Gives your Frostbolt, Frost Blast, and Fingers of Frost empowered Ice Lance spells a 60% chance to apply Winter's Chill, increasing the target's damage taken from your next Cone of Cold by 5% and it gains an additional 7% of your spell damage, stacking up to 5 times.",
+          "Gives your Frostbolt, Frost Blast, and Fingers of Frost empowered Ice Lance spells a 80% chance to apply Winter's Chill, increasing the target's damage taken from your next Cone of Cold by 5% and it gains an additional 7% of your spell damage, stacking up to 5 times.",
+          "Gives your Frostbolt, Frost Blast, and Fingers of Frost empowered Ice Lance spells a 100% chance to apply Winter's Chill, increasing the target's damage taken from your next Cone of Cold by 5% and it gains an additional 7% of your spell damage, stacking up to 5 times."
         ]
       },
       "es": {
         "name": "Escalofrío del invierno",
         "ranks": [
-          "Gives your Frost damage spells a 20% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
-          "Gives your Frost damage spells a 40% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
-          "Gives your Frost damage spells a 60% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
-          "Gives your Frost damage spells a 80% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times.",
-          "Gives your Frost damage spells a 100% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 40%, stacking up to 5 times."
+          "Gives your Frost damage spells a 20% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 5%, stacking up to 5 times.",
+          "Gives your Frost damage spells a 40% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 5%, stacking up to 5 times.",
+          "Gives your Frost damage spells a 60% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 5%, stacking up to 5 times.",
+          "Gives your Frost damage spells a 80% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 5%, stacking up to 5 times.",
+          "Gives your Frost damage spells a 100% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 5%, stacking up to 5 times."
         ],
         "lang": "en"
       }
@@ -1011,7 +988,7 @@
       "en": {
         "name": "Ice Barrier",
         "ranks": [
-          "Instantly shields you, absorbing 448 damage. Lasts 1 min. While the shield holds, your spellcasts will not be interrupted or delayed from taking damage."
+          "Shield yourself, absorbing [448 + (Frost spell power * 0.1) * (1)] damage and increasing your Frost damage by 3% for 1 min. While shielded, your Frost damage is increased by an additional 3% and you do not lose casting time when you take damage."
         ]
       },
       "es": {

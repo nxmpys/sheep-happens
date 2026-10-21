@@ -8,7 +8,7 @@ export type Status = (typeof STATUSES)[number];
 export const TREES = ['baseline', 'arcane', 'fire', 'frost'] as const;
 export type Tree = (typeof TREES)[number];
 
-export const CHANGE_KINDS = ['new', 'redesigned', 'renamed', 'moved', 'adjusted', 'prerequisite', 'baseline'] as const;
+export const CHANGE_KINDS = ['new', 'redesigned', 'renamed', 'moved', 'adjusted', 'prerequisite', 'baseline', 'removed'] as const;
 export type ChangeKind = (typeof CHANGE_KINDS)[number];
 
 export const SOURCE_KINDS = ['official', 'press', 'community', 'tool', 'classic-reference'] as const;

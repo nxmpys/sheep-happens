@@ -41,7 +41,7 @@ describe('spell tooltips', () => {
   });
 
   it('covers talents Forever did not change, with their milestone slot', () => {
-    expect(findSpell(en, 'Ice Barrier')).toMatchObject({ school: 'frost', more: 'talents', href: '/en/talents/frost/' });
+    expect(findSpell(en, 'Arctic Reach')).toMatchObject({ school: 'frost', more: 'talents', href: '/en/talents/frost/' });
     expect(findSpell(en, 'Presence of Mind')?.facts).toEqual(['Arcane talent', 'Row 5', '21-point milestone']);
   });
 
@@ -57,7 +57,8 @@ describe('spell tooltips', () => {
 
   it('gives every talent and ability with a spell id its in-game text', () => {
     const missing = Object.values(en.entries).filter((entry) => !entry.game && !entry.facts.includes('Forever system'));
-    expect(missing.map((entry) => entry.key)).toEqual(['ability-teleport-portal']);
+    // Piercing Ice left the game, so it has no in-game text.
+    expect(missing.map((entry) => entry.key)).toEqual(['ability-teleport-portal', 'change-piercing-ice']);
     expect(findSpell(en, 'Improved Frostbolt')?.game?.text).toContain('by 0.1/0.2/0.3/0.4/0.5 sec');
   });
 

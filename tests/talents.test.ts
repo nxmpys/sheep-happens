@@ -22,7 +22,7 @@ describe('talent trees', () => {
   it('has the three Forever trees in calculator order', () => {
     expect(treeTalents(talents, 'arcane')).toHaveLength(19);
     expect(treeTalents(talents, 'fire')).toHaveLength(17);
-    expect(treeTalents(talents, 'frost')).toHaveLength(19);
+    expect(treeTalents(talents, 'frost')).toHaveLength(18);
     expect(treeTalents(talents, 'frost').slice(0, 4).map((t) => t.id)).toEqual([
       'frost-warding',
       'improved-frostbolt',

@@ -715,8 +715,8 @@
       {
         "status": "reported",
         "text": {
-          "es": "En los datos de la beta: 40 % con Explosión Arcana, 20 % con Cólera Arcana, Bola de Fuego, Descarga de Escarcha y Descarga de Pirofrío, y 10 % por cada impacto de Misiles Arcanos (con 2/2).",
-          "en": "In the beta data: 40% from Arcane Blast, 20% from Arcane Wrath, Fireball, Frostbolt and Frostfire Bolt, and 10% per Arcane Missiles hit (at 2/2)."
+          "es": "En los datos de la beta, a 2/2: 40 % con Explosión Arcana y 20 % con Cólera Arcana, Bola de Fuego, Descarga de Escarcha, Frost Blast y Descarga de Pirofrío. Desde el hotfix del 20 de octubre, los impactos de Misiles Arcanos ya no aparecen en la descripción.",
+          "en": "In the beta data, at 2/2: 40% from Arcane Blast and 20% from Arcane Wrath, Fireball, Frostbolt, Frost Blast and Frostfire Bolt. Since the 20 October hotfix, Arcane Missiles hits no longer appear in the description."
         }
       },
       {
@@ -740,10 +740,11 @@
       "warcrafttavern-mage-deep-dive",
       "blizzard-dev-notes",
       "wowhead-forever-talent-calc",
-      "forum-missile-barrage-proc"
+      "forum-missile-barrage-proc",
+      "foreverchanges-hotfix-2026-10-20"
     ],
     "previousRow": 4,
-    "updated": "2026-10-16"
+    "updated": "2026-10-21"
   },
   {
     "id": "arcane-mind",
@@ -1154,18 +1155,30 @@
     "tree": "frost",
     "category": "talent",
     "kinds": [
-      "redesigned"
+      "redesigned",
+      "adjusted"
     ],
     "summary": {
       "es": "Ahora aumenta la probabilidad de acierto de los hechizos de Fuego y Escarcha, en lugar de reducir la probabilidad de que el objetivo los resista.",
       "en": "Now increases your chance to hit with Fire and Frost spells instead of reducing the target's chance to resist them."
     },
     "details": [],
-    "notes": [],
+    "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Hotfix visto el 20 de octubre, sin mención en las notas de Blizzard: pasa de 5 rangos de +1 % a 3 rangos de +2 % (6 % en total).",
+          "en": "Hotfix first seen on 20 October, not in Blizzard's notes: it goes from 5 ranks of +1% to 3 ranks of +2% (6% in total)."
+        }
+      }
+    ],
     "status": "verified",
     "sources": [
-      "blizzard-deep-dive-mage"
-    ]
+      "blizzard-deep-dive-mage",
+      "foreverchanges-hotfix-2026-10-20",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-21"
   },
   {
     "id": "permafrost",
@@ -1185,6 +1198,101 @@
     "sources": [
       "blizzard-deep-dive-mage"
     ]
+  },
+  {
+    "id": "frost-warding",
+    "name": "Frost Warding",
+    "tree": "frost",
+    "category": "talent",
+    "kinds": [
+      "adjusted"
+    ],
+    "row": 1,
+    "summary": {
+      "es": "Ahora también aumenta un 10/20 % lo que absorben Barrera de hielo y Custodia de Escarcha (Frost Ward). Su probabilidad de 10/20 % ya no refleja los hechizos de Escarcha: los anula.",
+      "en": "Now also increases the damage absorbed by Ice Barrier and Frost Ward by 10/20%. Its 10/20% chance no longer reflects Frost spells: it negates them."
+    },
+    "details": [],
+    "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Hotfix visto el 20 de octubre, sin mención en las notas de Blizzard.",
+          "en": "Hotfix first seen on 20 October, not in Blizzard's notes."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "foreverchanges-hotfix-2026-10-20",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-21"
+  },
+  {
+    "id": "ice-barrier",
+    "name": "Ice Barrier",
+    "tree": "frost",
+    "category": "talent",
+    "kinds": [
+      "adjusted"
+    ],
+    "row": 7,
+    "summary": {
+      "es": "Ahora también aumenta un 3 % tu daño de Escarcha durante 1 min, y otro 3 % mientras el escudo aguanta. El escudo escala con tu poder con hechizos de Escarcha.",
+      "en": "Now also increases your Frost damage by 3% for 1 min, and by another 3% while the shield holds. The shield scales with your Frost spell power."
+    },
+    "details": [],
+    "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Hotfix visto el 20 de octubre, sin mención en las notas de Blizzard.",
+          "en": "Hotfix first seen on 20 October, not in Blizzard's notes."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "foreverchanges-hotfix-2026-10-20",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-21"
+  },
+  {
+    "id": "piercing-ice",
+    "name": "Piercing Ice",
+    "tree": "frost",
+    "category": "talent",
+    "kinds": [
+      "removed"
+    ],
+    "row": 3,
+    "summary": {
+      "es": "Desaparece del árbol de Escarcha. Daba un 2/4/6 % más de daño a los hechizos de Escarcha.",
+      "en": "Removed from the Frost tree. It gave 2/4/6% more damage to Frost spells."
+    },
+    "details": [
+      {
+        "es": "Canalización de Escarcha ocupa su casilla y Ventisca mejorada pasa a la columna 2 de la fila 3. Mordiescarcha y Escarcha permanente intercambian su posición en la fila 2.",
+        "en": "Frost Channeling takes its place and Improved Blizzard moves to column 2 of row 3. Frostbite and Permafrost swap places in row 2."
+      }
+    ],
+    "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Hotfix de la build del 16 de octubre, visto el 20 de octubre. Blizzard no lo menciona en sus notas.",
+          "en": "Hotfix to the 16 October build, first seen on 20 October. Blizzard does not mention it in its notes."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "foreverchanges-hotfix-2026-10-20",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-21"
   },
   {
     "id": "frost-channeling",
@@ -1408,8 +1516,8 @@
         "en": "At 1/2/3/4/5 points, a 20/40/60/80/100% chance to apply it. Each stack increases the damage the target takes from your next Cone of Cold by 5% and adds 7% of your Spell Damage to it."
       },
       {
-        "es": "Las notas oficiales también lo describen como un 40 % más de daño de Cono de frío por carga; esa cifra coincide con los datos de la beta, pero contradice la descripción detallada. Pendiente de confirmar.",
-        "en": "The official notes also describe it as 40% more Cone of Cold damage per stack; that figure matches the beta data but contradicts the detailed description. Awaiting confirmation."
+        "es": "Las notas oficiales hablaban también de un 40 % más de daño de Cono de frío por acumulación. Desde el hotfix del 20 de octubre, los datos de la beta dan un 5 % por acumulación en todas sus descripciones.",
+        "en": "The official notes also described it as 40% more Cone of Cold damage per stack. Since the 20 October hotfix, the beta data gives 5% per stack in every description."
       },
       {
         "es": "Sigue beneficiando solo al Mago que lo aplica.",
@@ -1429,8 +1537,9 @@
     "sources": [
       "blizzard-deep-dive-mage",
       "blizzard-dev-notes",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "foreverchanges-hotfix-2026-10-20"
     ],
-    "updated": "2026-10-16"
+    "updated": "2026-10-21"
   }
 ]

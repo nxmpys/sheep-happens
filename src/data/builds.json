@@ -16,9 +16,9 @@
     "fromLevel": 1,
     "points": {
       "improved-frostbolt": 5,
+      "elemental-precision": 3,
       "ice-shards": 5,
       "frostbite": 3,
-      "piercing-ice": 3,
       "ice-lance": 1,
       "shatter": 3,
       "fingers-of-frost": 1
@@ -35,9 +35,9 @@
       "ice-shards",
       "ice-shards",
       "ice-lance",
-      "piercing-ice",
-      "piercing-ice",
-      "piercing-ice",
+      "elemental-precision",
+      "elemental-precision",
+      "elemental-precision",
       "ice-shards",
       "shatter",
       "shatter",
@@ -83,8 +83,8 @@
       {
         "point": 12,
         "text": {
-          "es": "Hielo penetrante: un 6 % más de daño de Escarcha con 3/3, siempre activo.",
-          "en": "Piercing Ice: 6% more Frost damage at 3/3, always on."
+          "es": "Enfoque elemental: +6 % de golpe con Fuego y Escarcha con 3/3. En misiones muchos enemigos tienen 1 o 2 niveles más que tú, y cada hechizo fallado es tiempo y maná perdidos.",
+          "en": "Elemental Precision: +6% hit with Fire and Frost at 3/3. While questing many enemies are 1 or 2 levels above you, and every missed spell is lost time and mana."
         }
       },
       {
@@ -212,7 +212,7 @@
       "mobalytics-mage-leveling",
       "method-mage-leveling"
     ],
-    "updated": "2026-10-18"
+    "updated": "2026-10-21"
   },
   {
     "id": "frost-leveling-dungeons",
@@ -232,7 +232,7 @@
       "elemental-precision": 3,
       "ice-shards": 5,
       "frost-channeling": 3,
-      "piercing-ice": 3,
+      "improved-blizzard": 3,
       "ice-lance": 1,
       "ice-block": 1
     },
@@ -250,9 +250,9 @@
       "frost-channeling",
       "frost-channeling",
       "frost-channeling",
-      "piercing-ice",
-      "piercing-ice",
-      "piercing-ice",
+      "improved-blizzard",
+      "improved-blizzard",
+      "improved-blizzard",
       "ice-shards",
       "ice-shards",
       "ice-shards",
@@ -275,8 +275,8 @@
       {
         "point": 6,
         "text": {
-          "es": "Enfoque elemental: +3 % de golpe con Fuego y Escarcha. En mazmorras luchas contra élites y jefes de más nivel, que esquivan más tus hechizos.",
-          "en": "Elemental Precision: +3% hit with Fire and Frost. In dungeons you fight elites and bosses above your level, who avoid more of your spells."
+          "es": "Enfoque elemental: +6 % de golpe con Fuego y Escarcha con 3/3. En mazmorras luchas contra élites y jefes de más nivel, que esquivan más tus hechizos.",
+          "en": "Elemental Precision: +6% hit with Fire and Frost at 3/3. In dungeons you fight elites and bosses above your level, who avoid more of your spells."
         }
       },
       {
@@ -296,8 +296,8 @@
       {
         "point": 14,
         "text": {
-          "es": "Hielo penetrante: +6 % de daño de Escarcha, también con Ventisca y Cono de frío.",
-          "en": "Piercing Ice: +6% Frost damage, Blizzard and Cone of Cold included."
+          "es": "Ventisca mejorada: tu Ventisca ralentiza. Si un enemigo se suelta del tanque y va a por ti o a por el sanador, tarda más en llegar y el tanque tiene tiempo de recuperarlo.",
+          "en": "Improved Blizzard: your Blizzard slows. If an enemy breaks off the tank and goes for you or the healer, it takes longer to get there and the tank has time to take it back."
         }
       },
       {
@@ -348,7 +348,7 @@
     "keyTalents": [
       "elemental-precision",
       "frost-channeling",
-      "piercing-ice",
+      "improved-blizzard",
       "ice-shards",
       "ice-block"
     ],
@@ -418,7 +418,7 @@
       "icyveins-forever-frost",
       "mobalytics-frost"
     ],
-    "updated": "2026-10-14"
+    "updated": "2026-10-21"
   },
   {
     "id": "frost-leveling-aoe",
@@ -467,9 +467,9 @@
       "frost-channeling",
       "cold-snap",
       "frost-channeling",
-      "piercing-ice",
-      "piercing-ice",
-      "piercing-ice"
+      "improved-cone-of-cold",
+      "improved-cone-of-cold",
+      "improved-cone-of-cold"
     ],
     "orderNotes": [
       {
@@ -503,8 +503,8 @@
       {
         "point": 14,
         "text": {
-          "es": "Enfoque elemental: +3 % de golpe. Una Nova de Escarcha resistida en mitad de un grupo es la forma más habitual de morir.",
-          "en": "Elemental Precision: +3% hit. A resisted Frost Nova in the middle of a pack is the most common way to die."
+          "es": "Enfoque elemental: +6 % de golpe con 3/3. Una Nova de Escarcha resistida en mitad de un grupo es la forma más habitual de morir.",
+          "en": "Elemental Precision: +6% hit at 3/3. A resisted Frost Nova in the middle of a pack is the most common way to die."
         }
       },
       {
@@ -538,8 +538,8 @@
       {
         "point": 24,
         "text": {
-          "es": "Solo con Talented: Hielo penetrante, +6 % de daño de Escarcha.",
-          "en": "Talented only: Piercing Ice, +6% Frost damage."
+          "es": "Solo con Talented: Cono de frío mejorado, más daño para el Cono de frío con el que rematas cada grupo.",
+          "en": "Talented only: Improved Cone of Cold, more damage for the Cone of Cold you finish each pack with."
         }
       }
     ],
@@ -637,6 +637,6 @@
       "icyveins-classic-aoe-leveling",
       "conquestcapped-mage-leveling"
     ],
-    "updated": "2026-10-15"
+    "updated": "2026-10-21"
   }
 ]

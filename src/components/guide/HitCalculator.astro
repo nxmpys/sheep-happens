@@ -1,7 +1,7 @@
 ---
 /**
  * Spell hit against creatures or players: base chance by level difference,
- * plus Arcane Focus or Elemental Precision and hit from gear, capped at 100%
+ * plus Arcane Focus (5 × 1%) or Elemental Precision (3 × 2%) and hit from gear, capped at 100%
  * (Forever; Classic kept a 1% miss).
  * Logic: src/lib/hit.ts. Rendered at build time against a raid boss (+3)
  * with no talents or gear, so the result reads without JavaScript.
@@ -10,7 +10,7 @@ import SourceRefs from './SourceRefs.astro';
 import SpellRef from './SpellRef.astro';
 import StatusBadge from './StatusBadge.astro';
 import { getLocale } from '../../i18n/locale';
-import { formatHit, MAX_LEVEL_DIFF, MAX_TALENT_RANK, MIN_LEVEL_DIFF, spellHit } from '../../lib/hit';
+import { formatHit, HIT_TALENTS, MAX_LEVEL_DIFF, MIN_LEVEL_DIFF, spellHit } from '../../lib/hit';
 import { localSpellName } from '../../lib/names';
 
 const locale = getLocale(Astro);
@@ -89,8 +89,8 @@ const strings = { toCap: text.toCap, capped: text.capped, wasted: text.wasted };
             <SpellRef name="Elemental Precision" label={localSpellName('Elemental Precision', locale)} />
           </span>
         </span>
-        <input type="range" name="talentRank" min="0" max={MAX_TALENT_RANK} step="1" value={initial.talentRank} />
-        <output name="talentOut">{initial.talentRank}/{MAX_TALENT_RANK}</output>
+        <input type="range" name="talentRank" min="0" max={HIT_TALENTS.arcane.maxRank} step="1" value={initial.talentRank} />
+        <output name="talentOut">{initial.talentRank}/{HIT_TALENTS.arcane.maxRank}</output>
       </label>
 
       <label class="field">
@@ -120,7 +120,7 @@ const strings = { toCap: text.toCap, capped: text.capped, wasted: text.wasted };
 </hit-calculator>
 
 <script>
-  import { formatHit, MAX_TALENT_RANK, spellHit, type HitTarget } from '../../lib/hit';
+  import { formatHit, HIT_TALENTS, spellHit, type HitSchool, type HitTarget } from '../../lib/hit';
 
   class HitCalculator extends HTMLElement {
     connectedCallback() {
@@ -129,12 +129,17 @@ const strings = { toCap: text.toCap, capped: text.capped, wasted: text.wasted };
       const strings = JSON.parse(this.dataset.strings ?? '{}') as Record<string, string>;
       const field = (name: string) => form.elements.namedItem(name) as HTMLInputElement;
       const update = () => {
-        const school = (form.querySelector<HTMLInputElement>('input[name="school"]:checked')?.value ?? 'arcane') as 'arcane' | 'elemental';
+        const school = (form.querySelector<HTMLInputElement>('input[name="school"]:checked')?.value ?? 'arcane') as HitSchool;
         for (const name of this.querySelectorAll<HTMLElement>('[data-talent]')) name.hidden = name.dataset.talent !== school;
-        const talentRank = Number(field('talentRank').value);
-        (form.elements.namedItem('talentOut') as HTMLOutputElement).value = `${talentRank}/${MAX_TALENT_RANK}`;
+        // Elemental Precision has fewer ranks than Arcane Focus: the slider follows the school.
+        const { maxRank } = HIT_TALENTS[school];
+        const range = field('talentRank');
+        range.max = String(maxRank);
+        if (Number(range.value) > maxRank) range.value = String(maxRank);
+        const talentRank = Number(range.value);
+        (form.elements.namedItem('talentOut') as HTMLOutputElement).value = `${talentRank}/${maxRank}`;
         const target = (form.querySelector<HTMLInputElement>('input[name="target"]:checked')?.value ?? 'creature') as HitTarget;
-        const result = spellHit({ levelDiff: Number(field('levelDiff').value), target, talentRank, gearHit: Number(field('gearHit').value) });
+        const result = spellHit({ levelDiff: Number(field('levelDiff').value), target, school, talentRank, gearHit: Number(field('gearHit').value) });
         this.querySelector('[data-hit]')!.textContent = formatHit(result.hit, locale);
         this.querySelector('[data-miss]')!.textContent = formatHit(result.miss, locale);
         this.querySelector<HTMLElement>('[data-meter]')!.style.width = `${result.hit}%`;

@@ -1,5 +1,38 @@
 [
   {
+    "id": "2026-10-21-frost-tree",
+    "date": "2026-10-21",
+    "type": "game",
+    "title": {
+      "es": "Árbol de Escarcha: adiós a Hielo penetrante y Enfoque elemental a 3 rangos",
+      "en": "Frost tree: Piercing Ice is gone and Elemental Precision drops to 3 ranks"
+    },
+    "body": {
+      "es": "Un hotfix de la beta visto el 20 de octubre, que Blizzard no menciona en sus notas, cambia el árbol de Escarcha: desaparece Hielo penetrante, Enfoque elemental pasa a 3 rangos de +2 % de golpe (6 % en total, antes 5 de +1 %) y cambian de casilla Canalización de Escarcha, Ventisca mejorada, Mordiescarcha y Escarcha permanente. Además, Barrera de hielo da un 3-6 % más de daño de Escarcha y Custodia de Escarcha (Frost Warding) refuerza los escudos. He actualizado la calculadora de talentos y la de golpe, y las tres builds de Escarcha para subir de nivel: la de solitario pone esos 3 puntos en Enfoque elemental, la de mazmorras en Ventisca mejorada y la de área usa los puntos de Talented en Cono de frío mejorado.",
+      "en": "A beta hotfix first seen on 20 October, not mentioned in Blizzard's notes, changes the Frost tree: Piercing Ice is gone, Elemental Precision becomes 3 ranks of +2% hit (6% in total, it was 5 ranks of +1%), and Frost Channeling, Improved Blizzard, Frostbite and Permafrost change places. Ice Barrier also gives 3-6% more Frost damage and Frost Warding strengthens your shields. I updated the talent and hit calculators and the three Frost leveling builds: the solo build puts those 3 points into Elemental Precision, the dungeon build into Improved Blizzard, and the AoE build spends its Talented points on Improved Cone of Cold."
+    },
+    "pages": [
+      "talent-calc",
+      "tools",
+      "leveling",
+      "changes"
+    ],
+    "sources": [
+      "foreverchanges-hotfix-2026-10-20",
+      "wowhead-forever-talent-calc"
+    ],
+    "refs": [
+      "change:piercing-ice",
+      "change:elemental-precision",
+      "change:ice-barrier",
+      "change:frost-warding",
+      "change:winters-chill",
+      "change:missile-barrage",
+      "build:frost-leveling-solo",
+      "build:frost-leveling-dungeons",
+      "build:frost-leveling-aoe"
+    ]
+  }, {
     "id": "2026-10-21-sources",
     "date": "2026-10-21",
     "type": "guide",

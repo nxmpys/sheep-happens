@@ -11,17 +11,22 @@
  * misses against your level and 17% against a raid boss, so hit reaches 100%
  * (Method and a beta forum thread, October 2026; Blizzard has not said it).
  *
- * Forever keeps spell hit talents: Arcane Focus (Arcane) and Elemental
- * Precision (Fire and Frost), +1% per rank, 5 ranks each (Wowhead Forever beta
- * data). Hit from gear adds on top.
+ * Forever keeps spell hit talents: Arcane Focus (Arcane), +1% per rank over 5
+ * ranks, and Elemental Precision (Fire and Frost), +2% per rank over 3 ranks
+ * since the October 2026 beta (Wowhead Forever beta data). Hit from gear adds
+ * on top.
  */
 
 export type HitTarget = 'creature' | 'player';
+/** Arcane spells use Arcane Focus; Fire and Frost spells, Elemental Precision. */
+export type HitSchool = 'arcane' | 'elemental';
 
 export const MIN_LEVEL_DIFF = -3;
 export const MAX_LEVEL_DIFF = 5;
-export const MAX_TALENT_RANK = 5;
-export const TALENT_HIT_PER_RANK = 1;
+export const HIT_TALENTS: Record<HitSchool, { maxRank: number; perRank: number }> = {
+  arcane: { maxRank: 5, perRank: 1 },
+  elemental: { maxRank: 3, perRank: 2 },
+};
 export const HIT_CAP = 100;
 
 /** Drop in hit chance per level from +3 on. */
@@ -38,6 +43,8 @@ export interface HitInput {
   /** Target level minus your level. */
   levelDiff: number;
   target?: HitTarget;
+  /** Spell school; Arcane when left out. */
+  school?: HitSchool;
   /** Arcane Focus or Elemental Precision ranks, depending on the spell's school. */
   talentRank: number;
   /** Spell hit (%) from gear and enchants. */
@@ -60,7 +67,8 @@ const tidy = (value: number) => Math.round(value * 100) / 100;
 
 export function spellHit(input: HitInput): HitResult {
   const base = baseHitChance(input.levelDiff, input.target ?? 'creature');
-  const talent = Math.round(clamp(input.talentRank, 0, MAX_TALENT_RANK)) * TALENT_HIT_PER_RANK;
+  const { maxRank, perRank } = HIT_TALENTS[input.school ?? 'arcane'];
+  const talent = Math.round(clamp(input.talentRank, 0, maxRank)) * perRank;
   const gear = clamp(input.gearHit, 0, 100);
   const raw = base + talent + gear;
   const hit = Math.min(HIT_CAP, raw);

@@ -43,6 +43,12 @@ describe('spellHit', () => {
     expect(result.wasted).toBe(3);
   });
 
+  it('adds 2% per Elemental Precision rank, up to 3 ranks', () => {
+    expect(spellHit({ levelDiff: 3, school: 'elemental', talentRank: 3, gearHit: 0 }).hit).toBe(89);
+    expect(spellHit({ levelDiff: 3, school: 'elemental', talentRank: 5, gearHit: 0 }).hit).toBe(89);
+    expect(spellHit({ levelDiff: 2, school: 'elemental', talentRank: 3, gearHit: 0 }).miss).toBe(0);
+  });
+
   it('uses the player table when asked', () => {
     expect(spellHit({ levelDiff: 3, target: 'player', talentRank: 0, gearHit: 0 }).toCap).toBe(13);
   });

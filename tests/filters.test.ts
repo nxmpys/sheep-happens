@@ -60,7 +60,7 @@ describe('URL state', () => {
   });
 
   it('ignores unknown values instead of failing', () => {
-    expect(parseFilterState('?tree=shadow&kind=removed&q=')).toEqual(EMPTY_FILTERS);
+    expect(parseFilterState('?tree=shadow&kind=deleted&q=')).toEqual(EMPTY_FILTERS);
   });
 
   it('caps very long queries', () => {

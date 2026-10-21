@@ -375,6 +375,7 @@
     "row": 1,
     "col": 1,
     "maxRank": 2,
+    "changeId": "frost-warding",
     "spell": 11189
   },
   {
@@ -392,7 +393,7 @@
     "tree": "frost",
     "row": 1,
     "col": 3,
-    "maxRank": 5,
+    "maxRank": 3,
     "changeId": "elemental-precision",
     "spell": 29438
   },
@@ -410,7 +411,7 @@
     "name": "Permafrost",
     "tree": "frost",
     "row": 2,
-    "col": 2,
+    "col": 4,
     "maxRank": 3,
     "changeId": "permafrost",
     "spell": 11175
@@ -429,25 +430,16 @@
     "name": "Frostbite",
     "tree": "frost",
     "row": 2,
-    "col": 4,
+    "col": 2,
     "maxRank": 3,
     "spell": 11071
-  },
-  {
-    "id": "piercing-ice",
-    "name": "Piercing Ice",
-    "tree": "frost",
-    "row": 3,
-    "col": 1,
-    "maxRank": 3,
-    "spell": 11151
   },
   {
     "id": "frost-channeling",
     "name": "Frost Channeling",
     "tree": "frost",
     "row": 3,
-    "col": 2,
+    "col": 1,
     "maxRank": 3,
     "changeId": "frost-channeling",
     "spell": 11160
@@ -467,7 +459,7 @@
     "name": "Improved Blizzard",
     "tree": "frost",
     "row": 3,
-    "col": 4,
+    "col": 2,
     "maxRank": 3,
     "changeId": "improved-blizzard",
     "spell": 11185
@@ -551,6 +543,7 @@
     "row": 7,
     "col": 2,
     "maxRank": 1,
+    "changeId": "ice-barrier",
     "requires": {
       "talent": "cold-snap",
       "points": 1

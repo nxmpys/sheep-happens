@@ -6,6 +6,13 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ## 2026-10-21
 
+### [Juego] Árbol de Escarcha: adiós a Hielo penetrante y Enfoque elemental a 3 rangos
+
+Un hotfix de la beta visto el 20 de octubre, que Blizzard no menciona en sus notas, cambia el árbol de Escarcha: desaparece Hielo penetrante, Enfoque elemental pasa a 3 rangos de +2 % de golpe (6 % en total, antes 5 de +1 %) y cambian de casilla Canalización de Escarcha, Ventisca mejorada, Mordiescarcha y Escarcha permanente. Además, Barrera de hielo da un 3-6 % más de daño de Escarcha y Custodia de Escarcha (Frost Warding) refuerza los escudos. He actualizado la calculadora de talentos y la de golpe, y las tres builds de Escarcha para subir de nivel: la de solitario pone esos 3 puntos en Enfoque elemental, la de mazmorras en Ventisca mejorada y la de área usa los puntos de Talented en Cono de frío mejorado.
+
+- **Datos afectados:** Hielo penetrante, Enfoque elemental, Barrera de hielo, Custodia de Escarcha, Escalofrío del invierno, Tromba de misiles, build:frost-leveling-solo, build:frost-leveling-dungeons, build:frost-leveling-aoe
+- **Fuentes:** [WoW Forever patch notes: hotfix of 20 October 2026](https://foreverchanges.pro/patch-notes) (Forever Changes (foreverchanges.pro)), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead)
+
 ### [Guía] Revisión de fuentes: la beta cierra el 23 de octubre
 
 Blizzard confirma que la beta cierra el viernes 23 de octubre a las 10:00 PDT (17:00 UTC), con una prueba de estrés el 21 de octubre cuyos personajes se borran al terminar. Quedan resueltas las fechas dudosas del fin de la beta. Además, datos oficiales nuevos: la reserva de nombres (27 de octubre - 3 de noviembre, hasta tres personajes) y la apertura de las bandas de nivel 60 el 9 de diciembre. En Canalización de escarcha se anota que ya reduce bien la amenaza.

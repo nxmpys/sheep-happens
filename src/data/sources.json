@@ -65,6 +65,19 @@
     }
   },
   {
+    "id": "foreverchanges-hotfix-2026-10-20",
+    "title": "WoW Forever patch notes: hotfix of 20 October 2026",
+    "publisher": "Forever Changes (foreverchanges.pro)",
+    "url": "https://foreverchanges.pro/patch-notes",
+    "kind": "community",
+    "published": "2026-10-20",
+    "accessed": "2026-10-21",
+    "notes": {
+      "es": "Registro de cambios de la beta hecho por la comunidad: un hotfix de la build del 16 de octubre, visto el 20 y sin mención en las notas de Blizzard, quita Hielo penetrante, deja Enfoque elemental en +2 % por rango y refuerza Barrera de hielo, Custodia de Escarcha (Frost Ward) y el talento Custodia de Escarcha (Frost Warding).",
+      "en": "Community beta changelog: a hotfix to the 16 October build, first seen on the 20th and not in Blizzard's notes, removes Piercing Ice, makes Elemental Precision +2% per rank and strengthens Ice Barrier, Frost Ward and Frost Warding."
+    }
+  },
+  {
     "id": "forum-missile-barrage-proc",
     "title": "Arcane Missiles does not proc Barrage",
     "publisher": "WoW Forever Beta Discussion (Blizzard forums)",
