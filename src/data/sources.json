@@ -26,6 +26,45 @@
     }
   },
   {
+    "id": "blizzard-stress-test",
+    "title": "Heads Up -- WoW Forever Stress Test on October 21",
+    "publisher": "Blizzard Entertainment",
+    "url": "https://us.forums.blizzard.com/en/wow/t/heads-up-wow-forever-stress-test-on-october-21/2387920",
+    "kind": "official",
+    "published": "2026-10-20",
+    "accessed": "2026-10-21",
+    "notes": {
+      "es": "Aviso oficial: el 21 de octubre se pausa la beta para una prueba de estrés abierta a cualquier cuenta, sus personajes se borran al terminar y la beta cierra el viernes 23 de octubre a las 10:00 PDT.",
+      "en": "Official notice: on 21 October the beta goes offline for a stress test open to any account, its characters are deleted when it ends, and the beta closes on Friday 23 October at 10:00 AM PDT."
+    }
+  },
+  {
+    "id": "blizzard-name-reservation",
+    "title": "Claim Your World of Warcraft: Forever Character Names",
+    "publisher": "Blizzard Entertainment",
+    "url": "https://us.forums.blizzard.com/en/wow/t/claim-your-world-of-warcraft-forever-character-names/2387945",
+    "kind": "official",
+    "published": "2026-10-20",
+    "accessed": "2026-10-21",
+    "notes": {
+      "es": "Aviso oficial de la reserva de nombres (27 oct - 3 nov, hasta tres personajes). Solo se ha leído el resumen del hilo; el artículo completo remite a la web de Blizzard.",
+      "en": "Official name reservation notice (27 Oct - 3 Nov, up to three characters). Only the forum thread summary was read; the full article is on Blizzard's site."
+    }
+  },
+  {
+    "id": "blizzard-raid-overview",
+    "title": "World of Warcraft: Forever Raid Overview—Locations, Raid Sizes, and Attunement",
+    "publisher": "Blizzard Entertainment",
+    "url": "https://us.forums.blizzard.com/en/wow/t/2387821",
+    "kind": "official",
+    "published": "2026-10-20",
+    "accessed": "2026-10-21",
+    "notes": {
+      "es": "Resumen oficial de las bandas de nivel 60: fecha de apertura (9 de diciembre) y Amuleto de Dracofuego para Onyxia. Solo se ha leído el resumen del hilo; tamaños y ubicaciones están en el artículo completo.",
+      "en": "Official overview of the level 60 raids: unlock date (9 December) and the Drakefire Amulet for Onyxia. Only the forum thread summary was read; sizes and locations are in the full article."
+    }
+  },
+  {
     "id": "forum-missile-barrage-proc",
     "title": "Arcane Missiles does not proc Barrage",
     "publisher": "WoW Forever Beta Discussion (Blizzard forums)",

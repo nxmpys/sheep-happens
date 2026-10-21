@@ -36,7 +36,7 @@
 
 | Tema | Fuente A | Fuente B | Decisión |
 |---|---|---|---|
-| Fin de la beta | 21 oct (LFCarry, "último día completo") | 22 oct (imagen de la hoja de ruta de Blizzard, según LFCarry) | Se muestra "21-22 oct" |
+| Fin de la beta | 21 oct (LFCarry, "último día completo") | 22 oct (imagen de la hoja de ruta de Blizzard, según LFCarry) | Resuelto el 2026-10-21: Blizzard anuncia el cierre el 23 oct a las 10:00 PDT (`blizzard-stress-test`) |
 | Límite de nivel inicial de la beta | 20 hasta el 1 oct | Una fuente indica 30 desde el inicio | Se usa 20 → 30 (dos fuentes) |
 | Doble especialización | Deep dive oficial: nivel 40 | Zockify: "no anunciada oficialmente" (página anterior al deep dive) | Se da por buena la fuente oficial, más reciente |
 | "Magic Attunement" | Oficial: pasa a ser habilidad base | Zockify: aparece como "eliminado" | Ambas son compatibles: deja de ser talento. Se usa la redacción oficial |
