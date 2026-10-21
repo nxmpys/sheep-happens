@@ -3,7 +3,9 @@
  * Home hero: an animated arcane circle with a sheep in the middle. Clicking the
  * sheep casts Polymorph: sheep → pig → turtle → sheep, with a burst of light and
  * a per-visit counter (kept in memory only). With «reduce motion» the rings and
- * the parallax stay still and the click just swaps the form.
+ * the parallax stay still and the click just swaps the form. Until the first
+ * cast, «click the sheep» floats over it as combat text; every cast shows
+ * «POLYMORPHED!».
  *
  * Easter eggs by number of casts: 10 a rare form (penguin), 25 a rain of sheep,
  * 50 the legendary golden sheep (rare-elite frame) and 100 diminishing returns:
@@ -32,6 +34,7 @@ const eggs = {
   golden: t(locale, 'hero.egg.golden'),
   immune: t(locale, 'hero.egg.immune', { s: '{s}' }),
   immuneHit: t(locale, 'hero.egg.immuneHit'),
+  polymorphed: t(locale, 'hero.egg.polymorphed'),
 };
 const runes = ['ᚠ', 'ᚱ', 'ᛉ', 'ᛟ', 'ᚨ', 'ᛞ', 'ᛗ', 'ᚲ'];
 // Runes on the outer ring, clockwise from the top, between r=76 and r=91.
@@ -176,6 +179,11 @@ const runePositions = runes.map((rune, i) => {
               <path d="M190 124 l2.5 7 l7 2.5 l-7 2.5 l-2.5 7 l-2.5 -7 l-7 -2.5 l7 -2.5 z" />
             </g>
           </svg>
+          <!-- Hint until the first cast; the button already has its own label. -->
+          <span class="polymorph__hint" aria-hidden="true" data-hint>
+            <span class="polymorph__hint-mouse">{t(locale, 'hero.hint')}</span>
+            <span class="polymorph__hint-touch">{t(locale, 'hero.hintTouch')}</span>
+          </span>
         </button>
       </div>
     </div>
@@ -268,6 +276,8 @@ const runePositions = runes.map((rune, i) => {
     button.addEventListener('click', () => {
       if (Date.now() < immuneUntil) return floatText(eggs.immuneHit ?? '');
       casts += 1;
+      hero.querySelector('[data-hint]')?.remove();
+      floatText(eggs.polymorphed ?? '');
       shown.removeAttribute('data-shown');
       let name: string;
       if (casts === 10) {
@@ -406,6 +416,40 @@ const runePositions = runes.map((rune, i) => {
     outline: 3px solid var(--focus);
     outline-offset: 6px;
   }
+  .polymorph__button > .polymorph__form {
+    transition: scale 0.2s ease-out, filter 0.2s ease-out;
+  }
+  .polymorph__button:hover > .polymorph__form {
+    scale: 1.06;
+    filter: drop-shadow(0 0 14px rgba(160, 120, 255, 0.8));
+  }
+  /* Until the first cast: floating combat text over the sheep, like «IMMUNE». */
+  .polymorph__hint {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    translate: -50% 0;
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ffd100;
+    text-shadow: 0 2px 0 #000, 0 0 6px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+    animation: polymorph-hint 1.6s ease-in-out infinite;
+  }
+  .polymorph__hint-touch {
+    display: none;
+  }
+  @media (hover: none) {
+    .polymorph__hint-mouse {
+      display: none;
+    }
+    .polymorph__hint-touch {
+      display: inline;
+    }
+  }
   /* Only the current form is shown (and exposed to assistive technology). */
   .polymorph__form:not([data-shown]) {
     display: none;
@@ -441,8 +485,8 @@ const runePositions = runes.map((rune, i) => {
     position: absolute;
     top: -6px;
     left: 50%;
-    margin-left: -60px;
-    width: 120px;
+    translate: -50% 0;
+    white-space: nowrap;
     font-size: 22px;
     font-weight: 800;
     letter-spacing: 1px;
@@ -575,6 +619,15 @@ const runePositions = runes.map((rune, i) => {
       transform: translateY(calc(100vh + 240px)) rotate(var(--spin, 0deg));
     }
   }
+  @keyframes polymorph-hint {
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-6px) scale(1.08);
+    }
+  }
   @keyframes polymorph-burst {
     from {
       transform: scale(0.2);
@@ -600,8 +653,12 @@ const runePositions = runes.map((rune, i) => {
     .polymorph__float,
     .polymorph__sparkles path,
     .polymorph__form.is-popping,
+    .polymorph__hint,
     :global(.polymorph__hit) {
       animation: none;
+    }
+    .polymorph__button > .polymorph__form {
+      transition: none;
     }
     .polymorph__circle,
     .polymorph__critter {
