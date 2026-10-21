@@ -41,7 +41,7 @@ El menú pasa a cinco entradas: Aprende, Builds, Guías, Herramientas y Addons. 
 
 ### [Guía] Nueva guía: el Legado y las mejores ventajas para el Mago
 
-Nueva página de Legado, dentro de Guías: qué es, cómo se ganan los puntos (y cuáles da un Mago), las 21 ventajas de los tres árboles con sus requisitos reales y nuestra valoración, y cuatro combinaciones de 16 puntos con su orden de compra: subir de nivel, nivel 60 en grupo, JcJ y oro. Datos de la beta: pueden cambiar en el lanzamiento.
+Nueva página de Legado, dentro de Guías: qué es, cómo se ganan los puntos (y cuáles da un Mago), las 21 ventajas de los tres árboles con sus requisitos reales y mi valoración, y cuatro combinaciones de 16 puntos con su orden de compra: subir de nivel, nivel 60 en grupo, JcJ y oro. Datos de la beta: pueden cambiar en el lanzamiento.
 
 - **Fuentes:** [Legacy Calculator - Forever](https://www.wowhead.com/forever/legacy-calculator) (Wowhead), [Legacy System Overview for Forever - Earning, Rewards, and Trees](https://www.wowhead.com/forever/guide/legacy-system-overview-rewards) (Wowhead)
 
@@ -63,7 +63,7 @@ La página de Profesiones tiene una sección nueva con el buff que da el objeto 
 
 ### [Web] Builds: recomendada o viable, y sin duelos
 
-Cada tarjeta de build dice si es la recomendada para su uso o una alternativa viable. Solo publicamos builds que tienen sentido para cada contenido, y nos centramos en el leveo; el uso «Duelos» desaparece de la página de Builds.
+Cada tarjeta de build dice si es la recomendada para su uso o una alternativa viable. Solo publico builds que tienen sentido para cada contenido, y me centro en el leveo; el uso «Duelos» desaparece de la página de Builds.
 
 ### [Web] Menú más simple: Aprende, Builds y Elige
 
@@ -88,7 +88,7 @@ La página de Addons describe MageProcs 1.2.0: los procs que avisa, el contador 
 
 ### [Guía] Revisión de fuentes del 16 de octubre: cambios del Mago y raciales
 
-Incorporamos la build del 15 de octubre: fichas nuevas de Frost Blast, Cólera Arcana, Masa crítica, Poder de Fuego y varitas; Explosión Arcana, Tromba de misiles, Explosión de Fuego mejorada, Calentamiento, Lanza de hielo, Escalofrío del invierno y Cono de frío actualizados; el árbol de talentos y los talentos decisivos de Arcano, al día; y las raciales de las seis razas que pueden ser Mago. Las builds y las páginas de combate, leveo, farmeo AoE y talentos reflejan los cambios.
+Incorporo la build del 15 de octubre: fichas nuevas de Frost Blast, Cólera Arcana, Masa crítica, Poder de Fuego y varitas; Explosión Arcana, Tromba de misiles, Explosión de Fuego mejorada, Calentamiento, Lanza de hielo, Escalofrío del invierno y Cono de frío actualizados; el árbol de talentos y los talentos decisivos de Arcano, al día; y las raciales de las seis razas que pueden ser Mago. Las builds y las páginas de combate, leveo, farmeo AoE y talentos reflejan los cambios.
 
 - **Datos afectados:** Frost Blast, Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Masa crítica, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (bajar de rango), Varitas, Cólera Arcana, Frost Blast, Cono de frío, Explosión de Fuego, race:human, race:orc, race:undead, race:gnome, race:troll, race:skyborne, build:frost-leveling-solo, Arcane Missiles does not proc Barrage
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead), [Arcane Missiles does not proc Barrage](https://us.forums.blizzard.com/en/wow/t/arcane-missiles-does-not-proc-barrage/2384260) (WoW Forever Beta Discussion (Blizzard forums))
@@ -183,7 +183,7 @@ Incorporados los cambios de Mago de las notas oficiales de las builds del 24 de 
 
 ### [Web] Fuentes vigiladas cada semana y RSS de novedades
 
-La página de fuentes muestra dónde vigilamos las novedades cada semana. Puedes seguir este historial por RSS.
+La página de fuentes muestra dónde vigilo las novedades cada semana. Puedes seguir este historial por RSS.
 
 ### [Web] Primera versión de Sheep Happens
 
