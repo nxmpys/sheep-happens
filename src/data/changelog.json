@@ -173,8 +173,8 @@
       "en": "Builds: recommended or viable, and no duels"
     },
     "body": {
-      "es": "Cada tarjeta de build dice si es la recomendada para su uso o una alternativa viable. Solo publicamos builds que tienen sentido para cada contenido, y nos centramos en el leveo; el uso «Duelos» desaparece de la página de Builds.",
-      "en": "Each build card says whether it is the recommended build for its use or a viable alternative. We only publish builds that make sense for the content, and we focus on leveling; the «Duels» use is gone from the Builds page."
+      "es": "Cada tarjeta de build dice si es la recomendada para su uso o una alternativa viable. Solo publico builds que tienen sentido para cada contenido, y me centro en el leveo; el uso «Duelos» desaparece de la página de Builds.",
+      "en": "Each build card says whether it is the recommended build for its use or a viable alternative. I only publish builds that make sense for the content, and I am focusing on leveling; the «Duels» use is gone from the Builds page."
     },
     "pages": [
       "builds"
@@ -270,8 +270,8 @@
       "en": "16 October source review: Mage changes and racials"
     },
     "body": {
-      "es": "Incorporamos la build del 15 de octubre: fichas nuevas de Frost Blast, Cólera Arcana, Masa crítica, Poder de Fuego y varitas; Explosión Arcana, Tromba de misiles, Explosión de Fuego mejorada, Calentamiento, Lanza de hielo, Escalofrío del invierno y Cono de frío actualizados; el árbol de talentos y los talentos decisivos de Arcano, al día; y las raciales de las seis razas que pueden ser Mago. Las builds y las páginas de combate, leveo, farmeo AoE y talentos reflejan los cambios.",
-      "en": "We added the 15 October build: new entries for Frost Blast, Arcane Wrath, Critical Mass, Fire Power and wands; Arcane Blast, Missile Barrage, Improved Fire Blast, Heating Up, Ice Lance, Winter's Chill and Cone of Cold updated; the talent tree and Arcane milestones brought up to date; and the racials of the six races that can be Mages. The builds and the combat, leveling, AoE farming and talent pages reflect the changes."
+      "es": "Incorporo la build del 15 de octubre: fichas nuevas de Frost Blast, Cólera Arcana, Masa crítica, Poder de Fuego y varitas; Explosión Arcana, Tromba de misiles, Explosión de Fuego mejorada, Calentamiento, Lanza de hielo, Escalofrío del invierno y Cono de frío actualizados; el árbol de talentos y los talentos decisivos de Arcano, al día; y las raciales de las seis razas que pueden ser Mago. Las builds y las páginas de combate, leveo, farmeo AoE y talentos reflejan los cambios.",
+      "en": "I added the 15 October build: new entries for Frost Blast, Arcane Wrath, Critical Mass, Fire Power and wands; Arcane Blast, Missile Barrage, Improved Fire Blast, Heating Up, Ice Lance, Winter's Chill and Cone of Cold updated; the talent tree and Arcane milestones brought up to date; and the racials of the six races that can be Mages. The builds and the combat, leveling, AoE farming and talent pages reflect the changes."
     },
     "pages": [
       "changes",
@@ -490,7 +490,7 @@
     },
     "body": {
       "es": "La página de Nivelación pasa a ser la guía de leveo del Mago, en la misma dirección. Tres builds de Escarcha del 1 al 30, con su orden de puntos nivel a nivel y los puntos extra del perk de Legado Talented: en solitario (la recomendada), en mazmorras y en área (experimental, desde el nivel 22). Además: por qué cada build, cómo jugarlas, una comparativa, los hechizos por nivel, los errores frecuentes y las variantes descartadas. Es una versión BETA: cubre lo que permite la beta y las builds aún no se han probado en el servidor. También aparecen en Builds, con el orden de puntos.",
-      "en": "The Leveling page becomes the Mage leveling guide, at the same address. Three Frost builds from 1 to 30, with their point order level by level and the extra points of the Talented Legacy perk: solo (recommended), dungeons and AoE (experimental, from level 22). Plus why each build works, how to play them, a comparison, spells by level, common mistakes and the variants we ruled out. It is a BETA: it covers what the beta allows and the builds have not been tested on the server yet. They also appear under Builds, with the point order."
+      "en": "The Leveling page becomes the Mage leveling guide, at the same address. Three Frost builds from 1 to 30, with their point order level by level and the extra points of the Talented Legacy perk: solo (recommended), dungeons and AoE (experimental, from level 22). Plus why each build works, how to play them, a comparison, spells by level, common mistakes and the variants I ruled out. It is a BETA: it covers what the beta allows and the builds have not been tested on the server yet. They also appear under Builds, with the point order."
     },
     "pages": [
       "leveling",
@@ -657,8 +657,8 @@
       "en": "Weekly watched sources and an updates RSS feed"
     },
     "body": {
-      "es": "La página de fuentes muestra dónde vigilamos las novedades cada semana. Puedes seguir este historial por RSS.",
-      "en": "The sources page now lists where we watch for news every week. You can follow this history by RSS."
+      "es": "La página de fuentes muestra dónde vigilo las novedades cada semana. Puedes seguir este historial por RSS.",
+      "en": "The sources page now lists where I watch for news every week. You can follow this history by RSS."
     },
     "pages": [
       "sources",
@@ -936,8 +936,8 @@
       "en": "New guide: Legacy and the best perks for a Mage"
     },
     "body": {
-      "es": "Nueva página de Legado, dentro de Guías: qué es, cómo se ganan los puntos (y cuáles da un Mago), las 21 ventajas de los tres árboles con sus requisitos reales y nuestra valoración, y cuatro combinaciones de 16 puntos con su orden de compra: subir de nivel, nivel 60 en grupo, JcJ y oro. Datos de la beta: pueden cambiar en el lanzamiento.",
-      "en": "New Legacy page, under Guides: what it is, how points are earned (and which ones a Mage gives), the 21 perks of the three trees with their real requirements and our verdict, and four 16-point setups with their buying order: leveling, level 60 in groups, PvP and gold. Beta data: it may change at launch."
+      "es": "Nueva página de Legado, dentro de Guías: qué es, cómo se ganan los puntos (y cuáles da un Mago), las 21 ventajas de los tres árboles con sus requisitos reales y mi valoración, y cuatro combinaciones de 16 puntos con su orden de compra: subir de nivel, nivel 60 en grupo, JcJ y oro. Datos de la beta: pueden cambiar en el lanzamiento.",
+      "en": "New Legacy page, under Guides: what it is, how points are earned (and which ones a Mage gives), the 21 perks of the three trees with their real requirements and my verdict, and four 16-point setups with their buying order: leveling, level 60 in groups, PvP and gold. Beta data: it may change at launch."
     },
     "pages": [
       "legacy",

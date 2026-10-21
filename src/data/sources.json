@@ -373,8 +373,8 @@
     "kind": "tool",
     "accessed": "2026-10-16",
     "notes": {
-      "es": "Árbol de talentos y descripciones extraídos del cliente de la beta. Lo usamos para la posición de cada talento y para los enlaces de las builds; sus cifras son una pista, no un dato confirmado.",
-      "en": "Talent trees and tooltips data-mined from the beta client. We use it for talent positions and build links; its numbers are a hint, not a confirmed fact."
+      "es": "Árbol de talentos y descripciones extraídos del cliente de la beta. Lo uso para la posición de cada talento y para los enlaces de las builds; sus cifras son una pista, no un dato confirmado.",
+      "en": "Talent trees and tooltips data-mined from the beta client. I use it for talent positions and build links; its numbers are a hint, not a confirmed fact."
     }
   },
   {
@@ -618,8 +618,8 @@
     "published": "2026-10-10",
     "accessed": "2026-10-14",
     "notes": {
-      "es": "Orden de puntos de Escarcha del 10 al 30, marcado como teoría sin probar. Su guía de farmeo en área usa el 65 % de ralentización de Ventisca mejorada de Classic, no el 40 % de Forever, así que no la seguimos.",
-      "en": "Frost point order from 10 to 30, marked as untested theorycraft. Its AoE guide uses Classic's 65% Improved Blizzard slow, not Forever's 40%, so we do not follow it."
+      "es": "Orden de puntos de Escarcha del 10 al 30, marcado como teoría sin probar. Su guía de farmeo en área usa el 65 % de ralentización de Ventisca mejorada de Classic, no el 40 % de Forever, así que no la sigo.",
+      "en": "Frost point order from 10 to 30, marked as untested theorycraft. Its AoE guide uses Classic's 65% Improved Blizzard slow, not Forever's 40%, so I do not follow it."
     }
   },
   {
@@ -741,8 +741,8 @@
     "kind": "tool",
     "accessed": "2026-10-20",
     "notes": {
-      "es": "Fichas de objetos y misiones extraídas del cliente de la beta: nombres oficiales en inglés y español, estadísticas, requisitos y recompensas. Las usamos para cada objeto citado; las cifras pueden cambiar en el lanzamiento.",
-      "en": "Item and quest data mined from the beta client: official English and Spanish names, stats, requirements and rewards. We use it for every item we quote; numbers may change at launch."
+      "es": "Fichas de objetos y misiones extraídas del cliente de la beta: nombres oficiales en inglés y español, estadísticas, requisitos y recompensas. Las uso para cada objeto citado; las cifras pueden cambiar en el lanzamiento.",
+      "en": "Item and quest data mined from the beta client: official English and Spanish names, stats, requirements and rewards. I use it for every item I quote; numbers may change at launch."
     }
   },
   {
@@ -753,7 +753,7 @@
     "kind": "community",
     "accessed": "2026-10-20",
     "notes": {
-      "es": "Lista de las 45 misiones de Mago en los datos de Forever, con su nivel, quién las da y quién las recibe. La contrastamos con las fichas de Wowhead.",
+      "es": "Lista de las 45 misiones de Mago en los datos de Forever, con su nivel, quién las da y quién las recibe. La contrasto con las fichas de Wowhead.",
       "en": "List of the 45 Mage quests in the Forever data, with their level, giver and turn-in. Cross-checked against Wowhead's quest pages."
     }
   },

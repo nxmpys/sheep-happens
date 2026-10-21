@@ -62,8 +62,8 @@
         "en": "What you craft for yourself cannot be sold, so it earns less gold than a gathering profession while leveling."
       },
       {
-        "es": "A nivel 60 el botín de mazmorras y bandas sustituirá casi todas las piezas; aún no sabemos cuánto aguantan.",
-        "en": "At level 60 dungeon and raid loot will replace most pieces; we do not know yet how long they last."
+        "es": "A nivel 60 el botín de mazmorras y bandas sustituirá casi todas las piezas; aún no se sabe cuánto aguantan.",
+        "en": "At level 60 dungeon and raid loot will replace most pieces; it is not known yet how long they last."
       }
     ],
     "pve": {
@@ -219,8 +219,8 @@
       }
     ],
     "pve": {
-      "es": "Alta en mazmorras mientras subes (bastón u orbe, abalorio y varita), por eso la valoramos como media en conjunto: en bandas lo que queda son los encantamientos, que cualquiera te puede poner.",
-      "en": "High in dungeons while leveling (staff or orb, trinket and wand), which is why we rate it medium overall: in raids what remains are the enchants, which anyone can apply."
+      "es": "Alta en mazmorras mientras subes (bastón u orbe, abalorio y varita), por eso la valoro como media en conjunto: en bandas lo que queda son los encantamientos, que cualquiera te puede poner.",
+      "en": "High in dungeons while leveling (staff or orb, trinket and wand), which is why I rate it medium overall: in raids what remains are the enchants, which anyone can apply."
     },
     "pvp": {
       "es": "Baja: no tiene nada pensado para JcJ, aunque el golpe del abalorio y su ráfaga de Escarcha también sirven en duelos.",
@@ -370,8 +370,8 @@
       }
     ],
     "pve": {
-      "es": "Media: gafas con daño de hechizos y explosivos para grupos de enemigos. Todavía no sabemos si las bandas de Forever premiarán los explosivos como en Classic.",
-      "en": "Medium: spell damage goggles and explosives for packs. We do not know yet whether Forever raids will reward explosives as Classic did."
+      "es": "Media: gafas con daño de hechizos y explosivos para grupos de enemigos. Todavía no se sabe si las bandas de Forever premiarán los explosivos como en Classic.",
+      "en": "Medium: spell damage goggles and explosives for packs. It is not known yet whether Forever raids will reward explosives as Classic did."
     },
     "pvp": {
       "es": "La mejor: más control, más escapes y daño en área extra. En duelos, campos de batalla y JcJ de mundo compensa lo que cuesta.",
@@ -1009,8 +1009,8 @@
       }
     },
     "verdict": {
-      "es": "No la recomendamos para un Mago, salvo que quieras fabricar para otro personaje de tu cuenta.",
-      "en": "We do not recommend it for a Mage, unless you want to craft for another character on your account."
+      "es": "No la recomiendo para un Mago, salvo que quieras fabricar para otro personaje de tu cuenta.",
+      "en": "I do not recommend it for a Mage, unless you want to craft for another character on your account."
     },
     "items": [
       {
