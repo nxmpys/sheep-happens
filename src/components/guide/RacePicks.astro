@@ -1,8 +1,9 @@
 ---
 /**
  * Best races per situation and faction (src/data/race-picks.json). The races
- * page shows the reasons; the «Elige» hub only the answer, with a link to them.
- * Column headers are the faction names, which the faction filter reads.
+ * page shows each race with its own reason under it, racial names as tooltips;
+ * the «Elige» hub only the answer, with a link to them. Column headers are the
+ * faction names, which the faction filter reads.
  */
 import { FACTION_LABELS } from '../../i18n/builds';
 import { getLocale, href } from '../../i18n/locale';
@@ -27,6 +28,17 @@ const raceName = (id: string) => {
   return locale === 'es' ? full : short;
 };
 const names = (ids: readonly string[]) => ids.map(raceName).join(' · ');
+
+type Piece = string | { key: string; text: string };
+const escape = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+/** The reason split so that this race's racial names become tooltip triggers. */
+const withRacials = (raceId: string, text: string): Piece[] => {
+  const racials = races.find((r) => r.id === raceId)?.racials ?? [];
+  const byName = new Map(racials.map((r) => [r.name, `racial-${raceId}-${r.id}`]));
+  if (byName.size === 0) return [text];
+  const pattern = new RegExp(`(${[...byName.keys()].sort((a, b) => b.length - a.length).map(escape).join('|')})`);
+  return text.split(pattern).map((part, i) => (i % 2 === 1 ? { key: byName.get(part)!, text: part } : part)).filter((p) => p !== '');
+};
 ---
 
 <div class="table-wrap" tabindex="0" role="region" aria-label={es ? 'Mejor raza por situación' : 'Best race by situation'}>
@@ -36,7 +48,6 @@ const names = (ids: readonly string[]) => ids.map(raceName).join(' · ');
         <th scope="col">{es ? 'Para' : 'For'}</th>
         <th scope="col">{factions.alliance}</th>
         <th scope="col">{factions.horde}</th>
-        {!compact && <th scope="col">{es ? 'Por qué' : 'Why'}</th>}
       </tr>
     </thead>
     <tbody>
@@ -44,9 +55,36 @@ const names = (ids: readonly string[]) => ids.map(raceName).join(' · ');
         racePicks.map((pick) => (
           <tr>
             <th scope="row">{pick.situation[locale]}</th>
-            <td>{names(pick.alliance)}</td>
-            <td>{names(pick.horde)}</td>
-            {!compact && <td>{pick.why[locale]}</td>}
+            {compact ? (
+              <>
+                <td>{names(pick.alliance)}</td>
+                <td>{names(pick.horde)}</td>
+              </>
+            ) : (
+              (['alliance', 'horde'] as const).map((faction) => (
+                <td>
+                  <ul class="race-pick">
+                    {pick[faction].map((id) => (
+                      <li>
+                        <strong class="race-pick__race">{raceName(id)}</strong>
+                        <span class="race-pick__why">
+                          {withRacials(id, pick.why[id]![locale]).map((piece) =>
+                            typeof piece === 'string' ? (
+                              piece
+                            ) : (
+                              <span class="spell-ref school-baseline" data-spell={piece.key} lang="en">
+                                {piece.text}
+                              </span>
+                            ),
+                          )}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  {pick.note?.[faction] && <p class="race-pick__note">{pick.note[faction]![locale]}</p>}
+                </td>
+              ))
+            )}
           </tr>
         ))
       }
@@ -62,6 +100,28 @@ const names = (ids: readonly string[]) => ids.map(raceName).join(' · ');
 }
 
 <style>
+  .race-pick {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .race-pick li {
+    margin: 0;
+  }
+  .race-pick__race {
+    display: block;
+  }
+  .race-pick__why,
+  .race-pick__note {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .race-pick__note {
+    margin-top: var(--space-2);
+    font-style: italic;
+  }
   .race-picks__more {
     margin-top: var(--space-2);
     font-size: var(--step--1);

@@ -322,6 +322,8 @@ export const racialSchema = z
     id,
     name: z.string().min(1),
     nameEs: z.string().min(1).optional(),
+    /** Wowhead Forever spell id: in-game tooltip text and icon (spell-text.json). */
+    spell: z.number().int().positive(),
     kind: z.enum(['active', 'passive']),
     effect: localized,
     /** How much it helps a Mage: our analysis, shown as a rating. */
@@ -350,8 +352,8 @@ export type Race = z.infer<typeof raceSchema>;
 
 /**
  * Our race recommendation for one situation (src/data/race-picks.json): the
- * best races per faction and why. Shown on the races page and on the
- * «Elige» hub. It is analysis, like the racial values.
+ * best races per faction and, for each race, why. Shown on the races page and
+ * on the «Elige» hub. It is analysis, like the racial values.
  */
 export const racePickSchema = z
   .object({
@@ -359,9 +361,16 @@ export const racePickSchema = z
     situation: localized,
     alliance: z.array(id).min(1),
     horde: z.array(id).min(1),
-    why: localized,
+    /** One reason per listed race, so one race's racials never mix with another's. */
+    why: z.record(id, localized),
+    /** A line under a faction's races, such as a close runner-up. */
+    note: z.object({ alliance: localized.optional(), horde: localized.optional() }).strict().optional(),
   })
-  .strict();
+  .strict()
+  .refine((p) => [...p.alliance, ...p.horde].every((race) => p.why[race]), { message: 'every listed race needs a reason in `why`' })
+  .refine((p) => Object.keys(p.why).every((race) => [...p.alliance, ...p.horde].includes(race)), {
+    message: '`why` lists a race the pick does not',
+  });
 export type RacePick = z.infer<typeof racePickSchema>;
 
 /** Our rating of how much something helps a Mage (racials use the same scale). */

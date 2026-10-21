@@ -6,7 +6,7 @@
  */
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { LOCALES, type Locale } from '../../i18n/routes';
-import { abilities, changes, glossary, talents } from '../../lib/data';
+import { abilities, changes, glossary, races, talents } from '../../lib/data';
 import { spellIndexFor } from '../../lib/spell-index';
 import { SPANISH_NAMES } from '../../lib/spell-names';
 import { autoLinkNames, glossaryLinkNames } from '../../lib/spells';
@@ -15,7 +15,12 @@ export const getStaticPaths = (() => LOCALES.map((lang) => ({ params: { lang } }
 
 export const GET: APIRoute = ({ params }) => {
   const locale = params['lang'] as Locale;
-  const spells = autoLinkNames(spellIndexFor(locale), [...abilities, ...changes, ...talents], locale, SPANISH_NAMES);
+  const spells = autoLinkNames(
+    spellIndexFor(locale),
+    [...abilities, ...changes, ...talents, ...races.flatMap((r) => r.racials)],
+    locale,
+    SPANISH_NAMES,
+  );
   const taken = new Set(spells.map(([name]) => name));
   // Longest first, so "talentos decisivos" wins over a shorter overlapping name.
   const list = [...spells, ...glossaryLinkNames(glossary, locale).filter(([name]) => !taken.has(name))].sort((a, b) => b[0].length - a[0].length);

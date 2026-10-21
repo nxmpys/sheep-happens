@@ -416,6 +416,19 @@
         "text": "Lanza misiles Arcanos contra el enemigo y le causa 25 p. de daño Arcano cada segundo durante 3 s."
       }
     },
+    "5227": {
+      "icon": "spell_shadow_demonbreath",
+      "en": {
+        "name": "Underwater Breathing",
+        "meta": [],
+        "text": "Underwater breath lasts 300% longer than normal."
+      },
+      "es": {
+        "name": "Respiración subacuática",
+        "meta": [],
+        "text": "La respiración subacuática dura un 300% más de lo normal."
+      }
+    },
     "5504": {
       "icon": "inv_drink_06",
       "en": {
@@ -465,6 +478,25 @@
           "Instante"
         ],
         "text": "Aumenta tu resistencia a toda la magia en 5 p. y permite un 50% de regeneración de tu maná mientras lo lanzas. Un mago solo puede tener un tipo de hechizo de armadura activo a la vez. Dura 30 min."
+      }
+    },
+    "7744": {
+      "icon": "spell_shadow_raisedead",
+      "en": {
+        "name": "Will of the Forsaken",
+        "meta": [
+          "Instant",
+          "2 min cooldown"
+        ],
+        "text": "Instantly removes all Charm, Fear and Sleep effects."
+      },
+      "es": {
+        "name": "Voluntad de los Renegados",
+        "meta": [
+          "Instante",
+          "2 min de reutilización"
+        ],
+        "text": "Elimina al instante todos los efectos de embelesamiento, miedo y sueño."
       }
     },
     "11069": {
@@ -1133,6 +1165,207 @@
         "text": "Permite que un 50% de la regeneración de maná continúe mientras lanzas hechizos."
       }
     },
+    "20554": {
+      "icon": "racial_troll_berserk",
+      "en": {
+        "name": "Berserking",
+        "meta": [
+          "Instant",
+          "3 min cooldown"
+        ],
+        "text": "Increases your spellcasting and attack speed by 10% for 10 sec."
+      },
+      "es": {
+        "name": "Iracundia",
+        "meta": [
+          "Instante",
+          "3 min de reutilización"
+        ],
+        "text": "Aumenta un 10% tus velocidades de ataque y lanzamiento de hechizos durante 10 s."
+      }
+    },
+    "20555": {
+      "icon": "spell_nature_regenerate",
+      "en": {
+        "name": "Regeneration",
+        "meta": [],
+        "text": "Health regeneration rate increased by 20%. In addition, 20% of total Health regeneration will continue during combat."
+      },
+      "es": {
+        "name": "Regeneración",
+        "meta": [],
+        "text": "Aumenta un 20% la velocidad de regeneración de salud. Además, un 20% de la regeneración de salud total seguirá activa mientras estás en combate."
+      }
+    },
+    "20557": {
+      "icon": "inv_misc_pelt_bear_ruin_02",
+      "en": {
+        "name": "Beast Slaying",
+        "meta": [],
+        "text": "Damage dealt versus Beasts increased by 5%."
+      },
+      "es": {
+        "name": "Matanza de bestias",
+        "meta": [],
+        "text": "Daño causado contra bestias aumentado en un 5%."
+      }
+    },
+    "20572": {
+      "icon": "racial_orc_berserkerstrength",
+      "en": {
+        "name": "Blood Fury",
+        "meta": [
+          "Instant",
+          "3 min cooldown"
+        ],
+        "text": "Increases Attack Power and Spell Power by 10% for 15 sec."
+      },
+      "es": {
+        "name": "Furia sangrienta",
+        "meta": [
+          "Instante",
+          "3 min de reutilización"
+        ],
+        "text": "Aumenta un 10% el poder de ataque y el poder con hechizos durante 15 s."
+      }
+    },
+    "20573": {
+      "icon": "inv_helmet_23",
+      "en": {
+        "name": "Hardiness",
+        "meta": [],
+        "text": "Duration of Stun effects on you reduced by 20%."
+      },
+      "es": {
+        "name": "Firmeza",
+        "meta": [],
+        "text": "Duración de los efectos de aturdimiento sobre ti reducida un 20%."
+      }
+    },
+    "20574": {
+      "icon": "inv_axe_02",
+      "en": {
+        "name": "Savage",
+        "meta": [],
+        "text": "Increases your critical strike chance with all spells and abilities by 1%."
+      },
+      "es": {
+        "name": "Salvajismo",
+        "meta": [],
+        "text": "Aumenta un 1% la probabilidad de conseguir un golpe crítico con todos los hechizos y habilidades."
+      }
+    },
+    "20577": {
+      "icon": "ability_racial_cannibalize",
+      "en": {
+        "name": "Cannibalize",
+        "meta": [
+          "5 yd range",
+          "Instant",
+          "2 min cooldown"
+        ],
+        "text": "When activated, regenerates 7% of total Health and 7% of total Mana every 2 sec for 10 sec. Only works on Humanoid or Undead corpses within 5 yds. Any movement, action, or damage taken while Cannibalizing will cancel the effect."
+      },
+      "es": {
+        "name": "Canibalizar",
+        "meta": [
+          "Alcance de 5 m",
+          "Instante",
+          "2 min de reutilización"
+        ],
+        "text": "Cuando se activa, regenera un 7% de la salud total y un 7% del maná total cada 2 s durante 10 s. Solo funciona en cadáveres de humanoides o no-muertos en un radio de 5 m. Cualquier movimiento, acción o daño durante Canibalismo cancelará el efecto."
+      }
+    },
+    "20589": {
+      "icon": "ability_rogue_trip",
+      "en": {
+        "name": "Escape Artist",
+        "meta": [
+          "Instant",
+          "2 min cooldown"
+        ],
+        "text": "Instantly escape the effects of any movement impairing effect and gain immunity to those effects for 3 sec."
+      },
+      "es": {
+        "name": "Artista del escape",
+        "meta": [
+          "Instante",
+          "2 min de reutilización"
+        ],
+        "text": "Escapas al instante de los efectos de reducción de movimiento y obtienes inmunidad a esos efectos durante 3 s."
+      }
+    },
+    "20591": {
+      "icon": "inv_enchant_essenceeternallarge",
+      "en": {
+        "name": "Expansive Mind",
+        "meta": [],
+        "text": "Maximum Mana increased by 5%."
+      },
+      "es": {
+        "name": "Mente expansiva",
+        "meta": [],
+        "text": "Maná máximo aumentado un 5%."
+      }
+    },
+    "20593": {
+      "icon": "inv_misc_gear_01",
+      "en": {
+        "name": "Engineering Specialization",
+        "meta": [],
+        "text": "Your gnomish ingenuity reduces the rate of engineering devices failing or backfiring when you use them by 20%."
+      },
+      "es": {
+        "name": "Especialización de ingeniería",
+        "meta": [],
+        "text": "Tu ingenio gnómico reduce un 20% el índice de fallo o defecto de los dispositivos de ingeniería al usarlos."
+      }
+    },
+    "20597": {
+      "icon": "ability_rogue_eviscerate",
+      "en": {
+        "name": "Ruthless",
+        "meta": [],
+        "text": "Increases your critical strike chance with all spells and attacks by 2%."
+      },
+      "es": {
+        "name": "Crueldad",
+        "meta": [],
+        "text": "Aumenta un 2% la probabilidad de conseguir un golpe crítico con todos los hechizos y ataques."
+      }
+    },
+    "20598": {
+      "icon": "inv_enchant_shardbrilliantsmall",
+      "en": {
+        "name": "The Human Spirit",
+        "meta": [],
+        "text": "Spirit increased by 5%."
+      },
+      "es": {
+        "name": "El espíritu humano",
+        "meta": [],
+        "text": "Espíritu aumentado en un 5%."
+      }
+    },
+    "20600": {
+      "icon": "spell_nature_sleep",
+      "en": {
+        "name": "Perception",
+        "meta": [
+          "Instant",
+          "3 min cooldown"
+        ],
+        "text": "Dramatically increases stealth detection for 20 sec."
+      },
+      "es": {
+        "name": "Percepción",
+        "meta": [
+          "Instante",
+          "3 min de reutilización"
+        ],
+        "text": "Aumenta drásticamente la detección de sigilo durante 20 s."
+      }
+    },
     "28574": {
       "icon": "spell_arcane_arcaneresilience",
       "en": {
@@ -1268,6 +1501,141 @@
         "text": "Lanza una Descarga de Pirofrío contra el enemigo, lo que inflige 103 al 118 p. de daño de Pirofrío, reduce un 40% la velocidad de movimiento e inflige 27 p. más de daño de Pirofrío durante 9 s. Este hechizo se probará contra la más baja de las resistencias de Fuego o Escarcha del objetivo y cuenta como daño de Escarcha y Fuego al mismo tiempo."
       }
     },
+    "1259416": {
+      "icon": "inv_elemental_primal_air",
+      "en": {
+        "name": "Walk on Air",
+        "meta": [
+          "Instant",
+          "1.5 min cooldown"
+        ],
+        "text": "Glide downward through the air for 10 sec while controlling your direction of travel."
+      },
+      "es": {
+        "name": "Caminar sobre el aire",
+        "meta": [
+          "Instante",
+          "1.5 min de reutilización"
+        ],
+        "text": "Planeas hacia abajo en el aire durante 10 s. Mantienes el control de la dirección mientras te desplazas."
+      }
+    },
+    "1259705": {
+      "icon": "ability_mage_incantersabsorbtion",
+      "en": {
+        "name": "Read Leyline",
+        "meta": [
+          "2 sec cast",
+          "2 min cooldown"
+        ],
+        "text": "Attempt to tap into the power of a nearby leyline, increasing your Health and Mana regeneration by 100%. Lasts 30 sec if no leyline is nearby, and 15 min if one is found."
+      },
+      "es": {
+        "name": "Read Leyline",
+        "meta": [
+          "Hechizo de 2 seg",
+          "2 min de reutilización"
+        ],
+        "text": "Attempt to tap into the power of a nearby leyline, increasing your Health and Mana regeneration by 100%. Lasts 30 s if no leyline is nearby, and 15 min if one is found.",
+        "lang": "en"
+      }
+    },
+    "1259707": {
+      "icon": "achievement_raidprimalist_windelemental",
+      "en": {
+        "name": "Elemental Insight",
+        "meta": [],
+        "text": "Damage dealt versus Elementals increased by 5%."
+      },
+      "es": {
+        "name": "Perspicacia elemental",
+        "meta": [],
+        "text": "Daño infligido contra elementales aumentado un 5%."
+      }
+    },
+    "1259710": {
+      "icon": "inv_misc_volatileair",
+      "en": {
+        "name": "Wind Blessed",
+        "meta": [],
+        "text": "Increases your spellcasting, melee, and ranged Haste by 3%."
+      },
+      "es": {
+        "name": "Bendición del viento",
+        "meta": [],
+        "text": "Aumenta un 3% la celeridad con hechizos, cuerpo a cuerpo y a distancia."
+      }
+    },
+    "1259718": {
+      "icon": "spell_shadow_charm",
+      "en": {
+        "name": "Will to Survive",
+        "meta": [
+          "Instant",
+          "3 min cooldown"
+        ],
+        "text": "Instantly removes all Stun effects."
+      },
+      "es": {
+        "name": "Voluntad de supervivencia",
+        "meta": [
+          "Instante",
+          "3 min de reutilización"
+        ],
+        "text": "Elimina al instante todos los efectos de aturdimiento."
+      }
+    },
+    "1259817": {
+      "icon": "inv_gnometoy",
+      "en": {
+        "name": "Eureka!",
+        "meta": [
+          "Instant",
+          "2 min cooldown"
+        ],
+        "text": "Your damaging abilities have their Mana cost reduced by 10% and deal 10% more damage for 8 sec."
+      },
+      "es": {
+        "name": "¡Eureka!",
+        "meta": [
+          "Instante",
+          "2 min de reutilización"
+        ],
+        "text": "Las facultades dañinas cuestan un 10% menos de maná e infligen un 10% más de daño."
+      }
+    },
+    "1260201": {
+      "icon": "spell_shadow_fingerofdeath",
+      "en": {
+        "name": "Touch of the Grave",
+        "meta": [],
+        "text": "Your spells and attacks have a 30% chance to drain Health from the target, up to 5% of your maximum Health."
+      },
+      "es": {
+        "name": "Toque de la tumba",
+        "meta": [],
+        "text": "Tus hechizos y ataques tienen un 30% de probabilidades de drenar salud del objetivo, hasta un máximo de un 5% de tu salud máxima."
+      }
+    },
+    "1260270": {
+      "icon": "ability_racial_regeneratin",
+      "en": {
+        "name": "Rapid Regeneration",
+        "meta": [
+          "Channeled (6 sec cast)",
+          "3 min cooldown"
+        ],
+        "text": "Regenerate 50% of your maximum Health over 6 sec. Any movement, action, or damage taken will cancel the effect."
+      },
+      "es": {
+        "name": "Regeneración rápida",
+        "meta": [
+          "Canalizado (Hechizo de 6 seg)",
+          "3 min de reutilización"
+        ],
+        "text": "Regeneras un 50% de tu salud máxima durante 6 s. Cualquier movimiento, acción o daño recibido cancelará el efecto."
+      }
+    },
     "1296017": {
       "icon": "8188276",
       "en": {
@@ -1285,6 +1653,25 @@
           "Instante"
         ],
         "text": "Descifra un pergamino sin traducir."
+      }
+    },
+    "1299026": {
+      "icon": "spell_nature_removecurse",
+      "en": {
+        "name": "Shatter Curse",
+        "meta": [
+          "Instant",
+          "3 min cooldown"
+        ],
+        "text": "Instantly removes all Curses and Banes, and reduces all Magical damage taken by 5% for 8 sec."
+      },
+      "es": {
+        "name": "Trizar maldición",
+        "meta": [
+          "Instante",
+          "3 min de reutilización"
+        ],
+        "text": "Elimina instantáneamente todos los terrores y las maldiciones, y reduce el daño mágico recibido un 5% durante 8 s."
       }
     },
     "1312002": {

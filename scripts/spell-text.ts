@@ -1,5 +1,5 @@
 /**
- * Downloads the in-game tooltip text of every talent and ability the guide
+ * Downloads the in-game tooltip text of every talent, ability and racial the guide
  * documents (by its Wowhead spell id) from the Wowhead Forever database, in
  * English and Spanish, into src/data/spell-text.json. The hover tooltips show
  * this text: what the spell does in the game client, not our notes.
@@ -10,7 +10,7 @@
  * It never edits other data files.
  */
 import { readFileSync, writeFileSync } from 'node:fs';
-import { abilities, changes, talents } from '../src/lib/data';
+import { abilities, changes, races, talents } from '../src/lib/data';
 import { fillRankValues, looksEnglish, parseWowheadTooltip, type SpellTextEntry } from '../src/lib/spell-text';
 
 const OUT = new URL('../src/data/spell-text.json', import.meta.url);
@@ -36,6 +36,7 @@ const ids = new Set<number>([
   ...talents.map((t) => t.spell),
   ...abilities.flatMap((a) => (a.spell ? [a.spell] : [])),
   ...changes.flatMap((c) => (c.spell ? [c.spell] : [])),
+  ...races.flatMap((r) => r.racials.map((racial) => racial.spell)),
 ]);
 const previous = JSON.parse(readFileSync(OUT, 'utf8')) as { spells: Record<string, SpellTextEntry> };
 const spells: Record<string, SpellTextEntry> = {};

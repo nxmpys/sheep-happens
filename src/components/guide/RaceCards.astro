@@ -3,7 +3,9 @@
  * The Mage races of one faction with their racials: effect, value for a Mage
  * (our analysis) and why. Effects come from races.json with their own status.
  * Sources every race shares go to the page's source list (lib/page-sources.ts);
- * a card only names the ones that are its own.
+ * a card only names the ones that are its own. Each racial shows its in-game
+ * icon. One race per row, its racials side by side: the cards take the whole
+ * main column, wider than the text.
  */
 import Icon from '../ui/Icon.astro';
 import ReportButton from './ReportButton.astro';
@@ -11,7 +13,8 @@ import SourceRefs from './SourceRefs.astro';
 import StatusBadge from './StatusBadge.astro';
 import { FACTION_LABELS, VALUE_LABELS, tb } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
-import { races } from '../../lib/data';
+import { races, spellText } from '../../lib/data';
+import { iconPath } from '../../lib/icons';
 import { ownSourceIds, sharedRaceSources } from '../../lib/page-sources';
 
 interface Props {
@@ -21,6 +24,9 @@ interface Props {
 const { faction } = Astro.props;
 const locale = getLocale(Astro);
 const list = races.filter((race) => race.faction === faction);
+/** «Valor alto», «High value»: the rating as a short label. */
+const valueLabel = (value: keyof (typeof VALUE_LABELS)['es']) =>
+  locale === 'es' ? `Valor ${VALUE_LABELS.es[value].toLowerCase()}` : value === 'none' ? 'No value' : `${VALUE_LABELS.en[value]} value`;
 ---
 
 <div class="races" data-faction={faction}>
@@ -44,12 +50,17 @@ const list = races.filter((race) => race.faction === faction);
         <ul class="racials" aria-label={tb(locale, 'race.racials')}>
           {race.racials.map((racial) => (
             <li class={`racial racial--${racial.value}`}>
+              <p class="racial__value" title={tb(locale, 'race.value')}>
+                {valueLabel(racial.value)}
+              </p>
               <p class="racial__head">
-                <span class="racial__name" lang="en">{racial.name}</span>
-                <span class="chip">{tb(locale, racial.kind === 'active' ? 'race.active' : 'race.passive')}</span>
-                <span class="racial__value">
-                  {tb(locale, 'race.value')}: <strong>{VALUE_LABELS[locale][racial.value]}</strong>
+                {spellText[racial.spell]?.icon && (
+                  <img class="racial__icon" src={iconPath(spellText[racial.spell]!.icon!)} alt="" width="36" height="36" loading="lazy" />
+                )}
+                <span class="racial__name spell-ref school-baseline" data-spell={`racial-${race.id}-${racial.id}`} lang="en">
+                  {racial.name}
                 </span>
+                <span class="chip">{tb(locale, racial.kind === 'active' ? 'race.active' : 'race.passive')}</span>
               </p>
               <p class="racial__effect">{racial.effect[locale]}</p>
               <p class="racial__why">{racial.why[locale]}</p>
@@ -71,9 +82,11 @@ const list = races.filter((race) => race.faction === faction);
   .races[hidden] {
     display: none;
   }
+  /* As wide as the main column (the container set in GuideLayout), not the text column. */
   .races {
+    width: 100cqi;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-4);
     align-items: start;
   }
@@ -82,16 +95,18 @@ const list = races.filter((race) => race.faction === faction);
     gap: var(--space-3);
     padding: var(--space-4) var(--space-5);
     border: 1px solid var(--border);
-    border-top: 4px solid var(--faction);
     border-radius: var(--radius-lg);
-    background: var(--surface-1);
+    /* The faction's colour fading into the card, like the school cards on the home page. */
+    background: linear-gradient(160deg, var(--faction-soft), var(--surface-1) 40%);
     scroll-margin-top: calc(var(--header-h) + var(--space-4));
   }
   .race--alliance {
     --faction: var(--frost);
+    --faction-soft: var(--frost-soft);
   }
   .race--horde {
     --faction: var(--fire);
+    --faction-soft: var(--fire-soft);
   }
   .race__header {
     display: grid;
@@ -126,19 +141,27 @@ const list = races.filter((race) => race.faction === faction);
     font-size: var(--step--1);
     color: var(--text-muted);
   }
+  /*
+   * The four racials across the card as plain columns split by hairlines, not
+   * boxes inside the box. Each column draws its own left and top line and is
+   * pulled 1px out, so the list clips the lines on the outer edges and only the
+   * ones between columns (or between wrapped rows) show.
+   */
   .racials {
     display: grid;
-    gap: var(--space-3);
-    margin: 0;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
     padding: 0;
     list-style: none;
+    overflow: hidden;
+    /* Edge to edge in the card, so the first column lines up with the race name. */
+    margin-inline: calc(-1 * var(--space-5));
+    border-top: 1px solid var(--border);
   }
   .racial {
-    padding: var(--space-3);
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--value-color);
-    border-radius: var(--radius-sm);
-    background: var(--surface-2);
+    margin: -1px 0 0 -1px;
+    padding: var(--space-4) var(--space-5);
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
   }
   .racial--high {
     --value-color: var(--status-verified);
@@ -155,28 +178,55 @@ const list = races.filter((race) => race.faction === faction);
   .racial p {
     margin: 0;
   }
+  /* Icon on the left across two lines; name and active/passive stacked beside it. */
   .racial__head {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
-    gap: var(--space-1) var(--space-2);
+    column-gap: var(--space-2);
+  }
+  .racial__head > :not(.racial__icon) {
+    grid-column: 2;
+    justify-self: start;
+  }
+  .racial__head .chip {
+    margin-top: 2px;
+  }
+  .racial__icon {
+    grid-row: span 2;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
   }
   .racial__name {
     font-weight: 700;
   }
+  /* Rating first: a coloured dot and «Valor alto», in the rating's colour. */
   .racial__value {
-    margin-left: auto;
-    font-size: var(--step--1);
-    color: var(--text-muted);
-  }
-  .racial__value strong {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3) !important;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--value-color);
   }
-  .racial--none .racial__value strong {
+  .racial--none .racial__value {
     color: var(--text-muted);
   }
+  .racial__value::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--value-color);
+    box-shadow: 0 0 6px color-mix(in srgb, var(--value-color) 60%, transparent);
+  }
   .racial__effect {
-    margin-top: var(--space-1) !important;
+    margin-top: var(--space-3) !important;
     font-size: var(--step--1);
   }
   .racial__why {

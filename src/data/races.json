@@ -10,6 +10,7 @@
       {
         "id": "will-to-survive",
         "name": "Will to Survive",
+        "spell": 1259718,
         "kind": "active",
         "effect": {
           "es": "Elimina al instante todos los efectos de aturdimiento. 3 min de reutilización.",
@@ -17,13 +18,14 @@
         },
         "value": "high",
         "why": {
-          "es": "Salir de un aturdimiento salva el duelo contra pícaros, guerreros y paladines.",
-          "en": "Breaking a stun wins duels against Rogues, Warriors and Paladins."
+          "es": "Traslación ya te libra de los aturdimientos (desde nivel 20, cada 15 s). Will to Survive es una segunda salida: te deja guardar Traslación para alejarte o salir de otro aturdimiento cuando ya la has gastado.",
+          "en": "Blink already frees you from stuns (from level 20, every 15 sec). Will to Survive is a second way out: it lets you save Blink to get away, or break another stun once Blink is spent."
         }
       },
       {
         "id": "perception",
         "name": "Perception",
+        "spell": 20600,
         "kind": "active",
         "effect": {
           "es": "Aumenta mucho la detección de sigilo durante 20 s. 3 min de reutilización.",
@@ -38,6 +40,7 @@
       {
         "id": "the-human-spirit",
         "name": "The Human Spirit",
+        "spell": 20598,
         "kind": "passive",
         "effect": {
           "es": "Espíritu aumentado un 5 %.",
@@ -52,6 +55,7 @@
       {
         "id": "ruthless",
         "name": "Ruthless",
+        "spell": 20597,
         "kind": "passive",
         "effect": {
           "es": "Crueldad: un 2 % más de probabilidad de crítico con hechizos y ataques. Sustituye a Sword Specialization.",
@@ -83,6 +87,7 @@
       {
         "id": "eureka",
         "name": "Eureka!",
+        "spell": 1259817,
         "kind": "active",
         "effect": {
           "es": "Durante 8 s tus habilidades de daño cuestan un 10 % menos de maná y hacen un 10 % más de daño. 2 min de reutilización.",
@@ -97,6 +102,7 @@
       {
         "id": "escape-artist",
         "name": "Escape Artist",
+        "spell": 20589,
         "kind": "active",
         "effect": {
           "es": "Te libra de cualquier efecto que reduzca el movimiento y te da inmunidad a ellos durante 3 s. 2 min de reutilización.",
@@ -111,6 +117,7 @@
       {
         "id": "expansive-mind",
         "name": "Expansive Mind",
+        "spell": 20591,
         "kind": "passive",
         "effect": {
           "es": "Maná máximo aumentado un 5 %.",
@@ -125,6 +132,7 @@
       {
         "id": "engineering-specialization",
         "name": "Engineering Specialization",
+        "spell": 20593,
         "kind": "passive",
         "effect": {
           "es": "Los artilugios de ingeniería fallan un 20 % menos.",
@@ -161,6 +169,7 @@
       {
         "id": "read-ley-line",
         "name": "Read Ley Line",
+        "spell": 1259705,
         "kind": "active",
         "effect": {
           "es": "Lanzamiento de 2 s, también en movimiento: duplica tu regeneración de salud y maná durante al menos 30 s, o 15 min si encuentras una línea ley cercana. 2 min de reutilización.",
@@ -175,6 +184,7 @@
       {
         "id": "wind-blessed",
         "name": "Wind Blessed",
+        "spell": 1259710,
         "kind": "passive",
         "effect": {
           "es": "Celeridad de lanzamiento y ataque aumentada un 3 %.",
@@ -189,6 +199,7 @@
       {
         "id": "walk-on-air",
         "name": "Walk on Air",
+        "spell": 1259416,
         "kind": "active",
         "effect": {
           "es": "Planeas hacia abajo controlando la dirección durante 10 s. 90 s de reutilización.",
@@ -203,6 +214,7 @@
       {
         "id": "elemental-insight",
         "name": "Elemental Insight",
+        "spell": 1259707,
         "kind": "passive",
         "effect": {
           "es": "Daño contra elementales aumentado un 5 %.",
@@ -235,6 +247,7 @@
       {
         "id": "blood-fury",
         "name": "Blood Fury",
+        "spell": 20572,
         "kind": "active",
         "effect": {
           "es": "Poder de ataque y poder con hechizos aumentados un 10 % durante 15 s. 3 min de reutilización.",
@@ -249,6 +262,7 @@
       {
         "id": "shatter-curse",
         "name": "Shatter Curse",
+        "spell": 1299026,
         "kind": "active",
         "effect": {
           "es": "Disipa las maldiciones y los efectos de perdición (Banes) y reduce un 5 % el daño mágico recibido. 3 min de reutilización. Ya no da inmunidad a las maldiciones.",
@@ -256,13 +270,14 @@
         },
         "value": "medium",
         "why": {
-          "es": "Sigue siendo útil en JcJ contra brujos, pero protege mucho menos que antes.",
-          "en": "Still useful in PvP against Warlocks, but it protects much less than before."
+          "es": "Pierde valor en un Mago: Deshacer maldición inferior (nivel 18) ya quita maldiciones, una por lanzamiento. Shatter Curse solo añade quitarlas todas a la vez sin gastar maná y un 5 % menos de daño mágico durante 8 s.",
+          "en": "Less valuable on a Mage: Remove Lesser Curse (level 18) already removes curses, one per cast. Shatter Curse only adds removing them all at once for no mana, plus 5% less magic damage for 8 sec."
         }
       },
       {
         "id": "hardiness",
         "name": "Hardiness",
+        "spell": 20573,
         "kind": "passive",
         "effect": {
           "es": "Los aturdimientos que recibes duran un 20 % menos.",
@@ -277,6 +292,7 @@
       {
         "id": "savage",
         "name": "Savage",
+        "spell": 20574,
         "kind": "passive",
         "effect": {
           "es": "Salvajismo: un 1 % más de probabilidad de crítico con hechizos y habilidades. Sustituye a Axe Specialization.",
@@ -308,6 +324,7 @@
       {
         "id": "will-of-the-forsaken",
         "name": "Will of the Forsaken",
+        "spell": 7744,
         "kind": "active",
         "effect": {
           "es": "Elimina al instante los efectos de hechizo de control mental, miedo y sueño. 2 min de reutilización. Ya no da inmunidad después.",
@@ -322,6 +339,7 @@
       {
         "id": "cannibalize",
         "name": "Cannibalize",
+        "spell": 20577,
         "kind": "active",
         "effect": {
           "es": "Recuperas un 7 % de salud y de maná cada 2 s durante 10 s junto al cadáver de un humanoide o no-muerto. Se cancela al moverte o recibir daño. 2 min de reutilización.",
@@ -336,6 +354,7 @@
       {
         "id": "touch-of-the-grave",
         "name": "Touch of the Grave",
+        "spell": 1260201,
         "kind": "passive",
         "effect": {
           "es": "Toque de la tumba: tus hechizos tienen un 30 % de probabilidad de drenar salud del objetivo, hasta un 5 % de tu salud máxima, con 25 s de reutilización interna. Ya no escala con las bonificaciones de Sombra ni pierde fuerza con rangos bajos.",
@@ -350,6 +369,7 @@
       {
         "id": "underwater-breathing",
         "name": "Underwater Breathing",
+        "spell": 5227,
         "kind": "passive",
         "effect": {
           "es": "Aguantas la respiración bajo el agua un 300 % más.",
@@ -381,6 +401,7 @@
       {
         "id": "berserking",
         "name": "Berserking",
+        "spell": 20554,
         "kind": "active",
         "effect": {
           "es": "Velocidad de lanzamiento y de ataque aumentada un 10 % durante 10 s. 3 min de reutilización.",
@@ -395,6 +416,7 @@
       {
         "id": "beast-slaying",
         "name": "Beast Slaying",
+        "spell": 20557,
         "kind": "passive",
         "effect": {
           "es": "Daño contra bestias aumentado un 5 %.",
@@ -409,6 +431,7 @@
       {
         "id": "rapid-regeneration",
         "name": "Rapid Regeneration",
+        "spell": 1260270,
         "kind": "active",
         "effect": {
           "es": "Canalizas 6 s para recuperar un 50 % de tu salud máxima. Se cancela al moverte, actuar o recibir daño. 3 min de reutilización.",
@@ -416,13 +439,14 @@
         },
         "value": "low",
         "why": {
-          "es": "Solo fuera de combate, y no recupera maná.",
-          "en": "Out of combat only, and it does not restore mana."
+          "es": "Al subir de nivel te ahorra comer entre combates, aunque solo funciona fuera de combate y no recupera maná.",
+          "en": "While leveling it saves you eating between fights, although it only works out of combat and does not restore mana."
         }
       },
       {
         "id": "regeneration",
         "name": "Regeneration",
+        "spell": 20555,
         "kind": "passive",
         "effect": {
           "es": "Regeneración de salud aumentada un 20 %, y un 20 % continúa en combate.",

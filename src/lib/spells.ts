@@ -10,12 +10,12 @@
  */
 import { pathFor, type Locale, type PageId } from '../i18n/routes';
 import { normalize } from './filters';
-import type { Ability, Change, GlossaryTerm, Milestone, Status, Talent } from './schemas';
+import type { Ability, Change, GlossaryTerm, Milestone, Race, Status, Talent } from './schemas';
 import type { SpellText, SpellTextEntry } from './spell-text';
 
 export type TooltipSchool = 'arcane' | 'fire' | 'frost' | 'frostfire' | 'baseline';
 
-/** Where "more information" leads: the Forever change card, the guide section or the talent tree. */
+/** Where "more information" leads: the Forever change card, the guide section (or race card) or the talent tree. */
 export type TooltipMore = 'changes' | 'guide' | 'talents';
 
 export interface SpellTooltip {
@@ -78,6 +78,8 @@ export function buildSpellIndex(
     changes: readonly Change[];
     talents: readonly Talent[];
     milestones?: readonly Milestone[];
+    /** Races, for their racial abilities. */
+    races?: readonly Race[];
     spellText?: Readonly<Record<string, SpellTextEntry>>;
     /** English → Spanish names (spell-names.json). */
     names?: Readonly<Record<string, string>>;
@@ -202,6 +204,30 @@ export function buildSpellIndex(
     );
   }
 
+  // Racials, active and passive, linking to their race card. The Spanish client
+  // name (from the game text) also finds them, so «**Crueldad**» works too.
+  for (const race of data.races ?? []) {
+    const raceName = race.name[locale].replace(/\s*\(.*\)$/, '');
+    for (const racial of race.racials) {
+      const kind = racial.kind === 'active' ? (es ? 'Activa' : 'Active') : es ? 'Pasiva' : 'Passive';
+      register(
+        `racial-${race.id}-${racial.id}`,
+        {
+          key: `racial-${race.id}-${racial.id}`,
+          ...(es && racial.nameEs ? { name: racial.nameEs, english: racial.name } : { name: racial.name }),
+          school: 'baseline',
+          facts: [es ? `Racial de ${raceName}` : `${raceName} racial`, kind],
+          ...describe(racial.spell, racial.effect[locale], race.status),
+          href: link('races', `race-${race.id}`),
+          more: 'guide',
+        },
+        racial.name,
+        racial.nameEs,
+        data.spellText?.[racial.spell]?.es?.name,
+      );
+    }
+  }
+
   // Glossary terms: our definition, linking to the Glossary section of Learn.
   for (const term of data.glossary ?? []) {
     const [headword, ...rest] = term.terms[locale];
@@ -236,7 +262,21 @@ export function findSpell(index: SpellIndex, text: string): SpellTooltip | undef
 }
 
 /** Visible names that must not become tooltips on their own (Blizzard the company, generic words). */
-const AMBIGUOUS_NAMES = new Set(['Blizzard', 'Portal', 'Teleport', 'Teletransporte', 'Wands', 'Varitas', 'Impact', 'Impacto']);
+const AMBIGUOUS_NAMES = new Set([
+  'Blizzard',
+  'Portal',
+  'Teleport',
+  'Teletransporte',
+  'Wands',
+  'Varitas',
+  'Impact',
+  'Impacto',
+  // Racials named like plain words ("mana regeneration", "a savage hit").
+  'Perception',
+  'Regeneration',
+  'Hardiness',
+  'Savage',
+]);
 
 /**
  * Names the page script turns into tooltip triggers when they appear as plain
