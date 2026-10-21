@@ -4,6 +4,15 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-10-21
+
+### [Guía] Revisión de fuentes: la beta cierra el 23 de octubre
+
+Blizzard confirma que la beta cierra el viernes 23 de octubre a las 10:00 PDT (17:00 UTC), con una prueba de estrés el 21 de octubre cuyos personajes se borran al terminar. Quedan resueltas las fechas dudosas del fin de la beta. Además, datos oficiales nuevos: la reserva de nombres (27 de octubre - 3 de noviembre, hasta tres personajes) y la apertura de las bandas de nivel 60 el 9 de diciembre. En Canalización de escarcha se anota que ya reduce bien la amenaza.
+
+- **Datos afectados:** Beta, Reserva de nombres, Bandas de nivel 60, Canalización de Escarcha
+- **Fuentes:** [Heads Up -- WoW Forever Stress Test on October 21](https://us.forums.blizzard.com/en/wow/t/heads-up-wow-forever-stress-test-on-october-21/2387920) (Blizzard Entertainment), [Claim Your World of Warcraft: Forever Character Names](https://us.forums.blizzard.com/en/wow/t/claim-your-world-of-warcraft-forever-character-names/2387945) (Blizzard Entertainment), [World of Warcraft: Forever Raid Overview—Locations, Raid Sizes, and Attunement](https://us.forums.blizzard.com/en/wow/t/2387821) (Blizzard Entertainment), [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+
 ## 2026-10-20
 
 ### [Web] Equipo pasa a Guías: leveo, JcE y enlace al JcJ

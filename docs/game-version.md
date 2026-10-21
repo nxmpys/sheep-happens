@@ -11,7 +11,7 @@
 | Base | Azeroth de la **época vanilla** (primer año de WoW, 2004), construida sobre WoW Classic. | Comunidad (varias fuentes coinciden) |
 | Nivel máximo | **60**, "en el futuro previsible"; el contenido nuevo se añade de forma horizontal en todos los rangos de nivel. | Oficial, citado por terceros |
 | Versión de cliente | **Parche 1.60.1** (build 70338 de la beta el 10 oct de 2026). Blizzard no publica el número. | Comunidad (wago.tools + Warcraft Wiki) |
-| Beta | Del 17 de septiembre al 21-22 de octubre de 2026. Nivel máximo 20 al inicio y **30 desde la build del 1 de octubre**. | Oficial, citado por terceros (cuenta @Warcraft_Official y foros de Blizzard) |
+| Beta | Del 17 de septiembre al 23 de octubre de 2026 (cierre a las 10:00 PDT; el 21 hay una prueba de estrés). Nivel máximo 20 al inicio y **30 desde la build del 1 de octubre**. | Oficial, citado por terceros (cuenta @Warcraft_Official y foros de Blizzard) |
 | Lanzamiento | **4 de noviembre de 2026**, 15:00 PST (23:00 UTC). Reserva de nombres del 27 de octubre al 3 de noviembre. | Oficial, citado por terceros |
 | Modos de juego | Se elige un conjunto de reglas (PvE, PvP, rol) en lugar de un reino; el modo Hardcore llegará más adelante. | Comunidad |
 

@@ -1200,12 +1200,19 @@
       "es": "Pasa de la fila 4 a la 3.",
       "en": "Moved from row 4 to row 3."
     },
-    "details": [],
+    "details": [
+      {
+        "es": "Corregido el 15 de octubre: ahora reduce correctamente la amenaza del Mago.",
+        "en": "Fixed on 15 October: it now correctly reduces the Mage's threat."
+      }
+    ],
     "notes": [],
     "status": "verified",
     "sources": [
-      "blizzard-deep-dive-mage"
-    ]
+      "blizzard-deep-dive-mage",
+      "blizzard-dev-notes"
+    ],
+    "updated": "2026-10-21"
   },
   {
     "id": "ice-lance",

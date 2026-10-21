@@ -37,14 +37,47 @@
       "en": "Beta"
     },
     "value": {
-      "es": "Del 17 de septiembre al 21-22 de octubre de 2026. Nivel máximo 30 desde el 1 de octubre.",
-      "en": "17 September to 21–22 October 2026. Level cap 30 since 1 October."
+      "es": "Cierra el 23 de octubre de 2026 a las 10:00 PDT (17:00 UTC). El 21 de octubre se pausa la beta para una prueba de estrés en servidores regionales; al terminar se borran sus personajes y se reabre la beta. Nivel máximo 30 desde el 1 de octubre.",
+      "en": "It closes on 23 October 2026 at 10:00 AM PDT (17:00 UTC). On 21 October the beta goes offline for a stress test on regional servers; when it ends, the stress test characters are deleted and the beta reopens. Level cap 30 since 1 October."
     },
-    "status": "reported",
+    "status": "verified",
     "sources": [
-      "lfcarry-beta",
+      "blizzard-stress-test",
       "icyveins-beta-cap"
-    ]
+    ],
+    "updated": "2026-10-21"
+  },
+  {
+    "id": "name-reservation",
+    "label": {
+      "es": "Reserva de nombres",
+      "en": "Name reservation"
+    },
+    "value": {
+      "es": "Del 27 de octubre al 3 de noviembre de 2026 se pueden reservar nombres para hasta tres personajes antes del lanzamiento.",
+      "en": "From 27 October to 3 November 2026 you can reserve names for up to three characters before launch."
+    },
+    "status": "verified",
+    "sources": [
+      "blizzard-name-reservation"
+    ],
+    "updated": "2026-10-21"
+  },
+  {
+    "id": "raid-unlock",
+    "label": {
+      "es": "Bandas de nivel 60",
+      "en": "Level 60 raids"
+    },
+    "value": {
+      "es": "Las bandas Profundidades de Barrow (Barrow Deeps), Cumbre Hyjal (Hyjal Summit) y la Guarida de Onyxia se abren el 9 de diciembre. Para entrar en la de Onyxia hace falta el Amuleto de Dracofuego (Drakefire Amulet).",
+      "en": "Barrow Deeps, Hyjal Summit and Onyxia's Lair unlock on 9 December. Entering Onyxia's Lair requires the Drakefire Amulet."
+    },
+    "status": "verified",
+    "sources": [
+      "blizzard-raid-overview"
+    ],
+    "updated": "2026-10-21"
   },
   {
     "id": "level-cap",
