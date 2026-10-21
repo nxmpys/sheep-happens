@@ -1,0 +1,197 @@
+---
+/**
+ * "Play first" note at the top of the class guide, above the summary. A thin
+ * arcane light runs round the border, and the game's own Polymorph sheep
+ * (classic model, display 856, rendered by Wowhead's model viewer) stands on
+ * the top edge, fast asleep: a slow trail of z's drifts up from its head. With
+ * «reduce motion» the light stays still and the z's sit in a row.
+ */
+import type { Locale } from '../../i18n/routes';
+import { t } from '../../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+
+<aside class="play-first">
+  <span class="play-first__sheep" aria-hidden="true">
+    <img src={`${base}art/polymorph-sheep.webp`} alt="" width="147" height="252" />
+    <span class="play-first__zzz"><span>z</span><span>z</span><span>Z</span></span>
+  </span>
+  <div class="play-first__body">
+    <p class="play-first__title">{t(locale, 'playFirst.title')}</p>
+    <p>{t(locale, 'playFirst.body')}</p>
+  </div>
+</aside>
+
+<style>
+  @property --play-angle {
+    syntax: '<angle>';
+    inherits: true;
+    initial-value: 0deg;
+  }
+
+  /* A card like the rest of the site, with a faint arcane wash under the sheep. */
+  .play-first {
+    position: relative;
+    isolation: isolate;
+    margin-top: 100px;
+    margin-bottom: var(--space-5);
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background:
+      radial-gradient(240px circle at calc(100% - 4.5rem) 0, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%),
+      var(--surface-1);
+  }
+  /* The travelling light: a 1px ring masked out of a conic gradient, as in .arcane-glow. */
+  .play-first::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    z-index: 1;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+      from var(--play-angle),
+      transparent 0 70%,
+      color-mix(in srgb, var(--accent) 80%, transparent) 85%,
+      var(--link-hover) 90%,
+      color-mix(in srgb, var(--accent) 80%, transparent) 95%,
+      transparent
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Feet on the top border, the rest above it, like the goblin on Blizzard's Legacy page. */
+  .play-first__sheep {
+    position: absolute;
+    z-index: 2;
+    right: var(--space-6);
+    bottom: calc(100% - 38px);
+    height: 136px;
+    pointer-events: none;
+  }
+  .play-first__sheep img {
+    display: block;
+    width: auto;
+    height: 100%;
+    filter: drop-shadow(0 0 6px rgb(0 0 0 / 0.55)) drop-shadow(0 6px 6px rgb(0 0 0 / 0.45));
+  }
+  /* Sleepy z's: soft serif italics in the arcane tint, rising from the head. */
+  .play-first__zzz {
+    position: absolute;
+    right: 72%;
+    top: 6px;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--arcane);
+    text-shadow: 0 0 8px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .play-first__zzz > :nth-child(1) {
+    font-size: 16px;
+  }
+  .play-first__zzz > :nth-child(2) {
+    font-size: 21px;
+    margin-bottom: 8px;
+  }
+  .play-first__zzz > :nth-child(3) {
+    font-size: 27px;
+    margin-bottom: 18px;
+  }
+
+  .play-first__body {
+    min-width: 0;
+  }
+  .play-first__body > * + * {
+    margin-top: var(--space-2);
+  }
+  .play-first__title {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--text);
+  }
+
+  @media (max-width: 480px) {
+    .play-first {
+      margin-top: 76px;
+    }
+    .play-first__sheep {
+      right: var(--space-4);
+      height: 104px;
+    }
+    .play-first__zzz {
+      right: 70%;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .play-first::before {
+      animation: play-first-orbit 5s linear infinite;
+    }
+    /* Each z starts at the head and floats off on its own, a third of a cycle apart. */
+    .play-first__zzz {
+      display: block;
+      width: 0;
+      height: 0;
+      top: 26px;
+    }
+    .play-first__zzz > * {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      margin: 0 !important;
+      opacity: 0;
+      animation: play-first-zzz 6s ease-in-out infinite;
+    }
+    .play-first__zzz > :nth-child(2) {
+      animation-delay: 2s;
+    }
+    .play-first__zzz > :nth-child(3) {
+      animation-delay: 4s;
+    }
+  }
+
+  @keyframes play-first-orbit {
+    to {
+      --play-angle: 360deg;
+    }
+  }
+  /* Drifts up and to the left in a lazy wave, growing as it fades. */
+  @keyframes play-first-zzz {
+    0% {
+      transform: translate(0, 0) scale(0.5) rotate(-8deg);
+      opacity: 0;
+    }
+    15% {
+      opacity: 0.95;
+    }
+    35% {
+      transform: translate(-14px, -22px) scale(0.8) rotate(6deg);
+    }
+    65% {
+      transform: translate(-22px, -46px) scale(1) rotate(-6deg);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate(-40px, -72px) scale(1.2) rotate(4deg);
+      opacity: 0;
+    }
+  }
+</style>
