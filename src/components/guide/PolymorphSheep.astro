@@ -1,0 +1,41 @@
+---
+/**
+ * The game's own Polymorph sheep (classic model, display 856, rendered by
+ * Wowhead's model viewer), saved from the "play first" note (b481a7f, 7ab8e7a).
+ * Not used right now: drop it inside a positioned card and it stands on the
+ * top edge, feet on the border and the rest above it, like the goblin on
+ * Blizzard's Legacy page. The card needs room above it (100px, 76px on phones).
+ * Anything passed as children sits over its head: SleepingZzz.astro, or a quest
+ * "!" like the one in PlayFirst.astro (centre it with left: 50%; bottom: 100%).
+ */
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+
+<span class="sheep" aria-hidden="true">
+  <img src={`${base}art/polymorph-sheep.webp`} alt="" width="147" height="252" />
+  <slot />
+</span>
+
+<style>
+  .sheep {
+    position: absolute;
+    z-index: 2;
+    right: var(--space-6);
+    bottom: calc(100% - 38px);
+    height: 136px;
+    pointer-events: none;
+  }
+  .sheep img {
+    display: block;
+    width: auto;
+    height: 100%;
+    filter: drop-shadow(0 0 6px rgb(0 0 0 / 0.55)) drop-shadow(0 6px 6px rgb(0 0 0 / 0.45));
+  }
+
+  @media (max-width: 480px) {
+    .sheep {
+      right: var(--space-4);
+      height: 104px;
+    }
+  }
+</style>
