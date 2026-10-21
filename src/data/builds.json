@@ -32,12 +32,12 @@
       "frostbite",
       "frostbite",
       "frostbite",
-      "ice-shards",
-      "ice-shards",
+      "elemental-precision",
+      "elemental-precision",
       "ice-lance",
       "elemental-precision",
-      "elemental-precision",
-      "elemental-precision",
+      "ice-shards",
+      "ice-shards",
       "ice-shards",
       "shatter",
       "shatter",
@@ -69,8 +69,8 @@
       {
         "point": 9,
         "text": {
-          "es": "Fragmentos de hielo aumenta el daño de tus críticos de Escarcha. Aquí sirve sobre todo para llegar a los 10 puntos que abren la fila 3.",
-          "en": "Ice Shards raises the damage of your Frost critical strikes. Here it mainly gets you to the 10 points that open row 3."
+          "es": "Enfoque elemental antes que Fragmentos de hielo: con 2/3 (+4 % de golpe) ya no fallas contra enemigos de tu nivel, y también abre la fila 3. El tercer punto (+6 %) llega en el 21 y cubre a los que tienen 1 o 2 niveles más.",
+          "en": "Elemental Precision before Ice Shards: at 2/3 (+4% hit) you stop missing enemies of your level, and it opens row 3 just the same. The third point (+6%) comes at 21 and covers enemies 1 or 2 levels above you."
         }
       },
       {
@@ -81,10 +81,10 @@
         }
       },
       {
-        "point": 12,
+        "point": 13,
         "text": {
-          "es": "Enfoque elemental: +6 % de golpe con Fuego y Escarcha con 3/3. En misiones muchos enemigos tienen 1 o 2 niveles más que tú, y cada hechizo fallado es tiempo y maná perdidos.",
-          "en": "Elemental Precision: +6% hit with Fire and Frost at 3/3. While questing many enemies are 1 or 2 levels above you, and every missed spell is lost time and mana."
+          "es": "Fragmentos de hielo: tus críticos de Escarcha hacen el doble de daño extra con 5/5. Brilla con Trizar, que llega justo después.",
+          "en": "Ice Shards: your Frost critical strikes deal double the extra damage at 5/5. It shines with Shatter, which comes right after."
         }
       },
       {
