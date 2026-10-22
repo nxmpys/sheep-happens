@@ -9,11 +9,12 @@ const locale = getLocale(Astro);
 const es = locale === 'es';
 const email = 'hello@sheephappens.app';
 const strings = es
-  ? { copy: 'Copiar', copied: '¡Copiado!', guide: 'La guía', start: 'Empezar', addon: 'Ver addon' }
-  : { copy: 'Copy', copied: 'Copied!', guide: 'The guide', start: 'Start', addon: 'See addon' };
+  ? { copy: 'Copiar', copied: '¡Copiado!', guide: 'La guía', start: 'Empezar', addon: 'Ver addon', follow: 'Seguir' }
+  : { copy: 'Copy', copied: 'Copied!', guide: 'The guide', start: 'Start', addon: 'See addon', follow: 'Follow' };
 const rows = [
   { label: strings.guide, action: strings.start, url: href('learn', locale) },
   { label: 'MageProcs', action: strings.addon, url: href('addons', locale) },
+  { label: '@nxmpys', action: strings.follow, url: 'https://x.com/nxmpys', external: true },
 ];
 ---
 
@@ -21,7 +22,7 @@ const rows = [
   {
     rows.map((row) => (
       <li>
-        <a class="links__row" href={row.url}>
+        <a class="links__row" href={row.url} {...(row.external && { target: '_blank', rel: 'noopener' })}>
           <span class="links__arrow" aria-hidden="true">→</span>
           <span class="links__label">{row.label}</span>
           <span class="links__action">{row.action}</span>
