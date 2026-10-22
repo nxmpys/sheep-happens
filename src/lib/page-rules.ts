@@ -22,6 +22,8 @@ export interface PageReport {
 /** Components registered in src/components/mdx.ts (kept in sync by a unit test). */
 export const MDX_COMPONENTS = [
   'AbilityGrid',
+  'AboutHero',
+  'AboutLinks',
   'AddonDetail',
   'AddonLink',
   'BuildCard',

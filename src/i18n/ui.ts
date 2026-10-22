@@ -30,6 +30,7 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
     addons: 'Addons',
     sources: 'Fuentes',
     updates: 'Novedades',
+    about: 'Sobre mí',
   },
   en: {
     home: 'Home',
@@ -59,6 +60,7 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
     addons: 'Addons',
     sources: 'Sources',
     updates: 'Updates',
+    about: 'About me',
   },
 };
 

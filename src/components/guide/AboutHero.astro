@@ -1,0 +1,959 @@
+---
+/**
+ * Top of the about page, in the spirit of adrienlamy.fr: a hand-drawn author on
+ * one bold colour, where every gesture is a Mage spell. His eyes follow the
+ * pointer and light up with Arcane Intellect on hover. Click: Polymorph, he
+ * becomes a sheep for a while. Drag: he leaves an arcane trail, and letting go
+ * far away casts Blink to the other scene, where he is what he
+ * plays in Forever: a Forsaken, the Undead that Humans become. The lines
+ * "boil" like a cartoon by switching the seed of a small displacement filter.
+ */
+import '@fontsource/permanent-marker';
+import { getLocale } from '../../i18n/locale';
+
+const es = getLocale(Astro) === 'es';
+const strings = es
+  ? {
+      who: '¿Quién soy?',
+      me: 'Yo',
+      drag: 'Arrástrame lejos',
+      click: 'Clic',
+      kind: 'En Forever…',
+      undead: 'No-muerto',
+      still: 'Sigo siendo yo',
+      horde: 'Horda · EU-PvP',
+      back: 'Traslación de vuelta',
+      bleat: '¡Beee!',
+      blink: '¡Traslación!',
+      label: 'Nxmpys: haz clic para lanzarle Polimorfia o arrástralo lejos para lanzar Traslación',
+    }
+  : {
+      who: 'Who am I?',
+      me: 'Me',
+      drag: 'Drag me far',
+      click: 'Click',
+      kind: 'In Forever…',
+      undead: 'Undead',
+      still: 'Still me',
+      horde: 'Horde · EU-PvP',
+      back: 'Blink back',
+      bleat: 'Baaa!',
+      blink: 'Blink!',
+      label: 'Nxmpys: click to cast Polymorph on him or drag him far to cast Blink',
+    };
+---
+
+<section class="me" data-no-spell-links aria-label={strings.who} data-me={JSON.stringify({ bleat: strings.bleat, blink: strings.blink })} data-scene="human">
+  <svg class="me__defs" width="0" height="0" aria-hidden="true">
+    <filter id="me-boil">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" data-boil />
+      <feDisplacementMap in="SourceGraphic" scale="3" />
+    </filter>
+  </svg>
+
+  <!-- Scene 1: the author as a Human, on arcane violet. -->
+  <div class="me__scene me__scene--human">
+    <p class="me__who">{strings.who}</p>
+    <p class="me__name" aria-hidden="true">Nxmpys</p>
+    <p class="note note--me" aria-hidden="true">
+      {strings.me}
+      <svg viewBox="0 0 60 24" width="54" height="22"><path d="M2 14c12-6 28-8 50-2m-9-8 10 8-11 6"></path></svg>
+    </p>
+    <p class="note note--drag" aria-hidden="true">
+      <svg viewBox="0 0 48 48" width="44" height="44">
+        <circle cx="16" cy="12" r="5"></circle><path d="M16 17v13m0-9 10-4m-10 13-6 10m6-10 7 9M30 8c6 2 10 6 12 12m-3-1 3 2 2-4"></path>
+      </svg>
+      {strings.drag}
+    </p>
+    <p class="note note--click" aria-hidden="true">
+      <svg viewBox="0 0 48 48" width="44" height="44">
+        <path d="M24 4v8m-14 6h8m20 0h-8M12 8l6 6m18-6-6 6M22 22l5 16 4-7 7 7 3-3-7-7 7-4z"></path>
+      </svg>
+      {strings.click}
+    </p>
+  </div>
+
+  <!-- Scene 2: the same author as a Forsaken, on the Horde's night. -->
+  <div class="me__scene me__scene--forsaken" aria-hidden="true">
+    <p class="me__kind">{strings.kind}</p>
+    <p class="me__name me__name--light">{strings.undead}</p>
+    <p class="note note--still">
+      {strings.still}
+      <svg viewBox="0 0 60 24" width="54" height="22"><path d="M2 14c12-6 28-8 50-2m-9-8 10 8-11 6"></path></svg>
+    </p>
+    <p class="note note--horde">{strings.horde}</p>
+    <p class="note note--back">{strings.back}</p>
+  </div>
+
+  <button class="me__head" type="button" aria-label={strings.label} data-head>
+    <span class="me__body" data-body>
+      <!-- The author as a clean flat portrait, from a photo: hair swept back with a fallen lock, faded sides, an Italian beard and a trimmed moustache. -->
+      <svg class="art art--human portrait" viewBox="0 0 200 220" aria-hidden="true">
+        <ellipse class="skin" cx="56" cy="122" rx="8" ry="13"></ellipse>
+        <ellipse class="skin" cx="144" cy="122" rx="8" ry="13"></ellipse>
+        <path class="skin" d="M56 102c0-28 20-46 44-46s44 18 44 46c0 28-4 46-14 60-10 14-20 22-30 22s-20-8-30-22c-10-14-14-32-14-60z"></path>
+        <path class="skin-shade" d="M138 108c0 30-6 50-20 64 14-6 22-22 24-42 1-8 0-16-4-22z"></path>
+        <path class="hair-fill fade" d="M56 110c-2-16 2-28 8-34l4 30zm88 0c2-16-2-28-8-34l-4 30z"></path>
+        <path class="hair-fill" d="M57 92c-6-34 14-60 48-62 30-2 50 16 48 50-2 6-4 10-8 12-2-8-8-14-16-16-12-6-30-8-46-4-12 4-20 10-26 20z"></path>
+        <path class="hair-fill" d="M68 50c12-22 46-32 74-18 6 4 10 8 12 14-12-8-30-10-46-6-16 4-28 8-40 10z"></path>
+        <path class="hair-fill" d="M116 64c16 2 28 14 28 32-4-8-10-14-18-16 2 8 0 14-4 18-1-12-2-24-6-34z"></path>
+        <path class="hair-shine" d="M74 56c18-14 44-18 66-10M66 74c18-12 42-16 66-12"></path>
+        <path class="hair-fill" d="M70 100c8-6 18-7 26-3l-1 4c-8-3-17-2-24 3z"></path>
+        <path class="hair-fill" d="M130 100c-8-6-18-7-26-3l1 4c8-3 17-2 24 3z"></path>
+        <path fill="#fff" d="M73 114q11-8 22 0-11 6-22 0z"></path>
+        <path fill="#fff" d="M105 114q11-8 22 0-11 6-22 0z"></path>
+        <g data-eye><circle class="iris" cx="84" cy="113.5" r="4"></circle><circle fill="#fff" cx="85.3" cy="112.2" r="1.2"></circle></g>
+        <g data-eye><circle class="iris" cx="116" cy="113.5" r="4"></circle><circle fill="#fff" cx="117.3" cy="112.2" r="1.2"></circle></g>
+        <path class="lid" d="M73 114q11-9 22 0m10 0q11-9 22 0"></path>
+        <path class="nose" d="M101 112l3 26q-3 4-9 2"></path>
+        <path class="beard" d="M58 132c2 20 12 38 26 48 6 4 10 5 16 5s10-1 16-5c14-10 24-28 26-48-4 14-10 24-18 30-6 6-14 10-24 10s-18-4-24-10c-8-6-14-16-18-30z"></path>
+        <path class="beard" d="M86 148c6-4 11-3 14-1 3-2 8-3 14 1-5 2-10 2-14 2s-9 0-14-2z"></path>
+        <path class="lips" d="M90 155q10 6 20 0-10 2-20 0z"></path>
+        <path class="mouth" d="M89 154q11 4 22-1"></path>
+        <path class="beard" d="M97 162l3 9 3-9z"></path>
+      </svg>
+
+      <!-- Polymorph: the same author, as a sheep. -->
+      <svg class="art art--sheep" viewBox="0 0 200 220" aria-hidden="true">
+        <g class="ink">
+          <path class="fill-ink" d="M70 172v30m20-28v30m24-30v30m20-32v30"></path>
+          <path class="fill-paper" d="M44 122c-10-22 8-46 30-42 6-20 36-24 48-8 20-10 44 6 40 28 20 8 18 38-2 44 2 22-24 34-42 22-14 14-40 12-48-6-22 2-36-22-26-38z"></path>
+          <ellipse class="fill-ink" cx="100" cy="116" rx="26" ry="32"></ellipse>
+          <ellipse class="fill-ink" cx="68" cy="100" rx="16" ry="7" transform="rotate(-20 68 100)"></ellipse>
+          <ellipse class="fill-ink" cx="132" cy="100" rx="16" ry="7" transform="rotate(20 132 100)"></ellipse>
+          <circle class="fill-paper" cx="89" cy="110" r="7"></circle>
+          <circle class="fill-paper" cx="111" cy="110" r="7"></circle>
+          <circle class="fill-ink" cx="90" cy="111" r="3"></circle>
+          <circle class="fill-ink" cx="112" cy="111" r="3"></circle>
+          <path class="stroke-paper" d="M92 134q4 4 8 0 4 4 8 0"></path>
+        </g>
+      </svg>
+
+      <!-- The same portrait as a Forsaken: the very same face in bone, no beard, two holes for a nose, dark sockets with glowing eyes, bare teeth, cheekbones, jaw line and a cracked forehead. -->
+      <svg class="art art--forsaken portrait portrait--undead" viewBox="0 0 200 220" aria-hidden="true">
+        <ellipse class="skin" cx="56" cy="122" rx="8" ry="13"></ellipse>
+        <ellipse class="skin" cx="144" cy="122" rx="8" ry="13"></ellipse>
+        <path class="skin" d="M56 102c0-28 20-46 44-46s44 18 44 46c0 28-4 46-14 60-10 14-20 22-30 22s-20-8-30-22c-10-14-14-32-14-60z"></path>
+        <path class="skin-shade" d="M138 108c0 30-6 50-20 64 14-6 22-22 24-42 1-8 0-16-4-22z"></path>
+        <path class="hair-fill fade" d="M56 110c-2-16 2-28 8-34l4 30zm88 0c2-16-2-28-8-34l-4 30z"></path>
+        <path class="hair-fill" d="M57 92c-6-34 14-60 48-62 30-2 50 16 48 50-2 6-4 10-8 12-2-8-8-14-16-16-12-6-30-8-46-4-12 4-20 10-26 20z"></path>
+        <path class="hair-fill" d="M68 50c12-22 46-32 74-18 6 4 10 8 12 14-12-8-30-10-46-6-16 4-28 8-40 10z"></path>
+        <path class="hair-fill" d="M116 64c16 2 28 14 28 32-4-8-10-14-18-16 2 8 0 14-4 18-1-12-2-24-6-34z"></path>
+        <path class="hair-shine" d="M74 56c18-14 44-18 66-10M66 74c18-12 42-16 66-12"></path>
+        <path class="hair-fill" d="M70 100c8-6 18-7 26-3l-1 4c-8-3-17-2-24 3z"></path>
+        <path class="hair-fill" d="M130 100c-8-6-18-7-26-3l1 4c8-3 17-2 24 3z"></path>
+        <path class="skin-shade" d="M69 115q15-14 30 0-15 12-30 0zm32 0q15-14 30 0-15 12-30 0z"></path>
+        <path class="socket" d="M73 114q11-8 22 0-11 6-22 0z"></path>
+        <path class="socket" d="M105 114q11-8 22 0-11 6-22 0z"></path>
+        <circle class="glow" cx="84" cy="113.5" r="3.6" data-eye></circle>
+        <circle class="glow" cx="116" cy="113.5" r="3.6" data-eye></circle>
+        <path class="lid" d="M73 114q11-9 22 0m10 0q11-9 22 0"></path>
+        <ellipse class="socket" cx="96" cy="138" rx="2.6" ry="4" transform="rotate(18 96 138)"></ellipse>
+        <ellipse class="socket" cx="104" cy="138" rx="2.6" ry="4" transform="rotate(-18 104 138)"></ellipse>
+        <path class="socket" d="M82 149q18 5 36 0v12q-18 6-36 0z"></path>
+        <path class="teeth" d="M83 150q17 4 34 0v4.5q-17 4-34 0zm0 6q17 4 34 0v3.5q-17 4.5-34 0z"></path>
+        <path class="teeth-gaps" d="M89 150v11m6-10v11m5-11v11m5-11v11m6-10v10"></path>
+        <path class="cheekbone" d="M64 126q8 12 22 14m50-14q-8 12-22 14M70 148q6 18 18 28m42-28q-6 18-18 28M108 80l-3 6 4 5-3 7"></path>
+      </svg>
+
+      <span class="me__bleat" data-bleat aria-hidden="true"></span>
+    </span>
+  </button>
+
+</section>
+
+<script>
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  for (const me of document.querySelectorAll<HTMLElement>('[data-me]')) {
+    const { bleat: bleatText, blink: blinkText } = JSON.parse(me.dataset.me ?? '{}');
+    const head = me.querySelector<HTMLButtonElement>('[data-head]')!;
+    const body = me.querySelector<HTMLElement>('[data-body]')!;
+    const bleat = me.querySelector<HTMLElement>('[data-bleat]')!;
+    const eyes = [...me.querySelectorAll<SVGGraphicsElement>('[data-eye]')];
+    const boil = me.querySelector('[data-boil]');
+
+    // Cartoon line boil: a new noise seed a few times a second.
+    if (boil && !reduced) {
+      let seed = 1;
+      window.setInterval(() => {
+        if (document.hidden) return;
+        seed = (seed % 3) + 1;
+        boil.setAttribute('seed', String(seed));
+      }, 140);
+    }
+
+    // Spring physics: the head chases the pointer while held and its spot otherwise.
+    let x = 0;
+    let y = 0;
+    let vx = 0;
+    let vy = 0;
+    let tx = 0;
+    let ty = 0;
+    let angle = 0;
+    let held = false;
+    let moved = false;
+    let grabX = 0;
+    let grabY = 0;
+    let running = false;
+    let switching = false;
+    let trailTick = 0;
+
+    /** Arcane motes left behind while he is dragged around. */
+    const trail = () => {
+      const box = head.getBoundingClientRect();
+      const origin = me.getBoundingClientRect();
+      const mote = document.createElement('span');
+      mote.className = 'me__trail';
+      mote.style.left = `${box.left - origin.left + box.width / 2 + (Math.random() - 0.5) * 60}px`;
+      mote.style.top = `${box.top - origin.top + box.height / 2 + (Math.random() - 0.5) * 60}px`;
+      me.append(mote);
+      window.setTimeout(() => mote.remove(), 700);
+    };
+
+    const frame = () => {
+      const k = held ? 0.22 : 0.075;
+      const damping = held ? 0.72 : 0.86;
+      vx = (vx + (tx - x) * k) * damping;
+      vy = (vy + (ty - y) * k) * damping;
+      x += vx;
+      y += vy;
+      // Lean into the movement, like something on a string.
+      angle += (Math.max(-28, Math.min(28, vx * 1.6)) - angle) * 0.2;
+      const stretch = Math.min(0.12, Math.hypot(vx, vy) / 120);
+      head.style.transform = `translate(${x}px, ${y}px) rotate(${angle}deg) scale(${1 - stretch}, ${1 + stretch})`;
+      if (held && Math.hypot(vx, vy) > 3 && (trailTick = (trailTick + 1) % 3) === 0) trail();
+      const still = Math.abs(vx) + Math.abs(vy) + Math.abs(tx - x) + Math.abs(ty - y) + Math.abs(angle) < 0.08;
+      if (held || !still) requestAnimationFrame(frame);
+      else running = false;
+    };
+    const run = () => {
+      if (running || reduced) return;
+      running = true;
+      requestAnimationFrame(frame);
+    };
+
+    // The glowing eyes look at the pointer.
+    me.addEventListener('pointermove', (event) => {
+      for (const eye of eyes) {
+        const box = eye.ownerSVGElement!.getBoundingClientRect();
+        const dx = event.clientX - (box.left + box.width / 2);
+        const dy = event.clientY - (box.top + box.height / 2);
+        const length = Math.hypot(dx, dy) || 1;
+        eye.style.transform = `translate(${(dx / length) * 5}px, ${(dy / length) * 4}px)`;
+      }
+    });
+
+    const say = (text: string) => {
+      bleat.textContent = text;
+      bleat.classList.remove('is-on');
+      void bleat.offsetWidth;
+      bleat.classList.add('is-on');
+    };
+
+    const burst = () => {
+      if (reduced) return;
+      const colors = ['#ffffff', '#ffd100', '#ff9ef5', '#9fe0ff'];
+      for (let i = 0; i < 18; i++) {
+        const spark = document.createElement('span');
+        spark.className = i % 3 ? 'me__spark' : 'me__spark me__spark--star';
+        const a = (i / 18) * Math.PI * 2 + Math.random() * 0.3;
+        const d = 100 + Math.random() * 90;
+        spark.style.setProperty('--dx', `${Math.cos(a) * d}px`);
+        spark.style.setProperty('--dy', `${Math.sin(a) * d}px`);
+        spark.style.setProperty('--c', colors[i % colors.length]!);
+        body.append(spark);
+        window.setTimeout(() => spark.remove(), 900);
+      }
+      const puff = document.createElement('span');
+      puff.className = 'me__puff';
+      body.append(puff);
+      window.setTimeout(() => puff.remove(), 700);
+      vy -= 16;
+      run();
+    };
+
+    let sheepTimer: number | undefined;
+    const polymorph = () => {
+      const isSheep = me.classList.toggle('is-sheep');
+      burst();
+      window.clearTimeout(sheepTimer);
+      if (isSheep) {
+        say(bleatText);
+        sheepTimer = window.setTimeout(() => {
+          me.classList.remove('is-sheep');
+          burst();
+        }, 6000);
+      }
+    };
+
+    /** Where the head's centre is, inside the scene. */
+    const headCentre = () => {
+      const box = head.getBoundingClientRect();
+      const origin = me.getBoundingClientRect();
+      return { cx: box.left - origin.left + box.width / 2, cy: box.top - origin.top + box.height / 2 };
+    };
+    /** A short-lived effect element at a point of the scene. */
+    const effect = (className: string, cx: number, cy: number, ms: number) => {
+      const el = document.createElement('span');
+      el.className = className;
+      el.style.left = `${cx}px`;
+      el.style.top = `${cy}px`;
+      me.append(el);
+      window.setTimeout(() => el.remove(), ms);
+      return el;
+    };
+
+    /**
+     * Blink, like the spell: he flashes out where he was let go, a streak of
+     * arcane light shoots to his usual spot and he flashes back in there, while
+     * the background fades to the other scene.
+     */
+    const switchScene = () => {
+      if (switching) return;
+      switching = true;
+      const next = me.dataset.scene === 'human' ? 'forsaken' : 'human';
+      say(blinkText);
+      if (reduced) {
+        me.dataset.scene = next;
+        switching = false;
+        return;
+      }
+      const from = headCentre();
+      effect('me__flash', from.cx, from.cy, 500);
+      me.classList.add('is-blinking');
+      window.setTimeout(() => {
+        me.dataset.scene = next;
+        me.classList.remove('is-sheep', 'is-blinking');
+        x = 0;
+        y = 0;
+        vx = 0;
+        vy = 0;
+        tx = 0;
+        ty = 0;
+        angle = 0;
+        head.style.transform = '';
+        const to = headCentre();
+        const streak = effect('me__streak', from.cx, from.cy, 450);
+        streak.style.width = `${Math.hypot(to.cx - from.cx, to.cy - from.cy)}px`;
+        streak.style.setProperty('--a', `${Math.atan2(to.cy - from.cy, to.cx - from.cx)}rad`);
+        effect('me__flash', to.cx, to.cy, 500);
+        me.classList.add('is-arriving');
+        window.setTimeout(() => {
+          me.classList.remove('is-arriving');
+          switching = false;
+        }, 300);
+      }, 140);
+    };
+
+    head.addEventListener('pointerdown', (event) => {
+      if (reduced || event.button !== 0 || switching) return;
+      held = true;
+      moved = false;
+      grabX = event.clientX - x;
+      grabY = event.clientY - y;
+      tx = x;
+      ty = y;
+      head.setPointerCapture(event.pointerId);
+      me.classList.add('is-held');
+      run();
+    });
+    head.addEventListener('pointermove', (event) => {
+      if (!held) return;
+      tx = event.clientX - grabX;
+      ty = event.clientY - grabY;
+      if (Math.hypot(tx, ty) > 8) moved = true;
+    });
+    const release = () => {
+      if (!held) return;
+      held = false;
+      me.classList.remove('is-held');
+      const far = Math.hypot(tx, ty) > Math.min(180, me.clientWidth / 4);
+      tx = 0;
+      ty = 0;
+      run();
+      if (moved && far) switchScene();
+    };
+    head.addEventListener('pointerup', release);
+    head.addEventListener('pointercancel', release);
+    // A drag also fires click on release: only a real click (or Enter) casts Polymorph.
+    head.addEventListener('click', () => {
+      if (moved) {
+        moved = false;
+        return;
+      }
+      polymorph();
+    });
+  }
+</script>
+
+<style>
+  .me {
+    --ink: #140f22;
+    --paper: #fff;
+    --violet: #8f5cf0;
+    --night: #120d20;
+    --body: clamp(200px, 34vw, 270px);
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: clamp(500px, calc(100svh - var(--header-h) - 120px), 720px);
+    margin: var(--space-2) 0 var(--space-6);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--violet);
+    color: var(--ink);
+    font-family: 'Permanent Marker', var(--font-display);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: pan-y;
+  }
+  /* The Forsaken side is Undercity: the sewers' dark green, the Plague glowing up from below. */
+  .me::before,
+  .me::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.45s ease;
+  }
+  .me::before {
+    background:
+      radial-gradient(90% 55% at 50% 112%, rgb(130 214 40 / 0.55), transparent 70%),
+      radial-gradient(60% 40% at 50% 0%, rgb(0 0 0 / 0.5), transparent 70%),
+      linear-gradient(180deg, #0b100d, #111a12 60%, #17240f);
+  }
+  /* A few loose Plague bubbles rising from the glow and fading out. */
+  .me::after {
+    background:
+      radial-gradient(circle at 14% 92%, rgb(170 240 80 / 0.6) 0 4px, transparent 5px),
+      radial-gradient(circle at 31% 80%, rgb(170 240 80 / 0.45) 0 3px, transparent 4px),
+      radial-gradient(circle at 68% 88%, rgb(170 240 80 / 0.5) 0 5px, transparent 6px),
+      radial-gradient(circle at 83% 76%, rgb(170 240 80 / 0.4) 0 3px, transparent 4px),
+      radial-gradient(circle at 52% 96%, rgb(170 240 80 / 0.5) 0 3px, transparent 4px);
+    background-repeat: no-repeat;
+  }
+  .me[data-scene='forsaken']::before {
+    opacity: 1;
+  }
+  .me[data-scene='forsaken']::after {
+    animation: plague 6s ease-in infinite;
+  }
+  @keyframes plague {
+    0% {
+      opacity: 0;
+      transform: translateY(10%);
+    }
+    25% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-45%);
+    }
+  }
+  .me__defs {
+    position: absolute;
+  }
+
+  .me__scene {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    transition:
+      opacity 0.45s ease,
+      visibility 0.45s;
+  }
+  .me[data-scene='human'] .me__scene--forsaken,
+  .me[data-scene='forsaken'] .me__scene--human {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .me__who,
+  .me__kind {
+    position: absolute;
+    left: 50%;
+    top: 7%;
+    margin: 0;
+    font-size: var(--step-1);
+    text-transform: uppercase;
+    transform: translateX(-50%) rotate(-3deg);
+    white-space: nowrap;
+  }
+  .me__kind {
+    color: var(--paper);
+  }
+  .me__name {
+    position: absolute;
+    left: 50%;
+    top: calc(7% + 1.9rem);
+    margin: 0;
+    font-size: clamp(2.6rem, 1.8rem + 4vw, 4.4rem);
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transform: translateX(-50%) rotate(-2deg);
+    filter: url(#me-boil);
+  }
+  .me__name--light {
+    color: var(--paper);
+  }
+
+  /* The character. */
+  .me__head {
+    position: relative;
+    z-index: 3;
+    margin-top: 5rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: grab;
+    touch-action: none;
+    will-change: transform;
+  }
+  .me.is-held .me__head {
+    cursor: grabbing;
+  }
+  .me__head:focus-visible {
+    outline: 3px dashed currentColor;
+    outline-offset: 10px;
+    border-radius: var(--radius);
+  }
+  .me__body {
+    position: relative;
+    display: block;
+    width: var(--body);
+    aspect-ratio: 200 / 220;
+    animation: idle 3.2s ease-in-out infinite;
+  }
+  .me.is-held .me__body {
+    animation-play-state: paused;
+  }
+  @keyframes idle {
+    50% {
+      transform: translateY(-6px) rotate(1.5deg);
+    }
+  }
+  .art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    filter: url(#me-boil);
+    transition:
+      opacity 0.15s,
+      transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .art--sheep,
+  .art--forsaken {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  .me.is-sheep .art--human,
+  .me.is-sheep .art--forsaken,
+  .me[data-scene='forsaken'] .art--human {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  .me.is-sheep .art--sheep,
+  .me[data-scene='forsaken']:not(.is-sheep) .art--forsaken {
+    opacity: 1;
+    transform: none;
+  }
+  .me.is-blinking .me__body {
+    animation: blink-out 0.14s ease-in forwards;
+  }
+  @keyframes blink-out {
+    to {
+      opacity: 0;
+      transform: scale(0.2, 1.6);
+      filter: brightness(3) drop-shadow(0 0 20px #cfa6ff);
+    }
+  }
+
+  .me.is-arriving .me__body {
+    animation: blink-in 0.3s ease-out;
+  }
+  @keyframes blink-in {
+    from {
+      opacity: 0;
+      transform: scale(0.2, 1.6);
+      filter: brightness(3) drop-shadow(0 0 20px #cfa6ff);
+    }
+  }
+
+  /* Hover (or a grab): Arcane Intellect lights his eyes. */
+  .iris {
+    transition: fill 0.25s ease;
+  }
+  .me__head:is(:hover, :focus-visible) .portrait .iris,
+  .me.is-held .portrait .iris {
+    fill: #3fa4ff;
+    filter: drop-shadow(0 0 4px #9fe0ff);
+  }
+  .me :global(.me__trail) {
+    position: absolute;
+    z-index: 2;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff, #cfa6ff 55%, transparent 72%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    animation: trail 0.7s ease-out forwards;
+  }
+  @keyframes trail {
+    to {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.2);
+    }
+  }
+
+  .ink {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .fill-ink {
+    fill: var(--ink);
+  }
+  .fill-paper {
+    fill: var(--paper);
+  }
+  .stroke-paper {
+    stroke: var(--paper);
+  }
+  .fade {
+    opacity: 0.3;
+    stroke: none;
+  }
+  .thin {
+    stroke-width: 2.5;
+  }
+  [data-eye] {
+    transition: transform 0.15s ease-out;
+  }
+  /* The portrait: clean flat shapes, no ink boil, so the author looks his best. */
+  .portrait {
+    --skin: #f0c8a8;
+    --skin-shade: #d9a582;
+    --hair: #1d1724;
+    filter: drop-shadow(0 10px 14px rgb(20 15 34 / 0.3));
+  }
+  .portrait--undead {
+    --skin: #f7f5f0;
+    --skin-shade: #d8d4cc;
+    --hair: #6b6390;
+  }
+  .portrait .skin {
+    fill: var(--skin);
+  }
+  .portrait .skin-shade {
+    fill: var(--skin-shade);
+  }
+  .portrait .hair-fill {
+    fill: var(--hair);
+  }
+  .portrait .fade {
+    opacity: 0.55;
+  }
+  .portrait .hair-shine {
+    fill: none;
+    stroke: #4a3f5e;
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+  .portrait .iris {
+    fill: #3b2516;
+  }
+  .portrait .lid {
+    fill: none;
+    stroke: var(--hair);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+  }
+  .portrait .nose,
+  .portrait .mouth {
+    fill: none;
+    stroke: #a8705a;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .portrait .beard {
+    fill: var(--hair);
+    opacity: 0.9;
+  }
+  .portrait .lips {
+    fill: #c27a68;
+  }
+  .portrait .bone {
+    fill: #ece6d6;
+  }
+  .portrait .bone-shade {
+    fill: #cbbfa4;
+  }
+  .portrait .socket {
+    fill: #1b1626;
+  }
+  .portrait .cheekbone {
+    fill: none;
+    stroke: #a8a39a;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+  }
+  .portrait .teeth {
+    fill: #f6f1e4;
+  }
+  .portrait .teeth-gaps {
+    fill: none;
+    stroke: #1b1626;
+    stroke-width: 1.8;
+  }
+  /* On the night scene the ink would vanish: a white sticker outline and grey-violet hair. */
+  .art--forsaken {
+    filter: drop-shadow(2.5px 0 0 #fff) drop-shadow(-2.5px 0 0 #fff) drop-shadow(0 2.5px 0 #fff) drop-shadow(0 -2.5px 0 #fff);
+  }
+  .glow {
+    fill: #ffd100;
+    filter: drop-shadow(0 0 4px #ffd100);
+    transition: transform 0.15s ease-out;
+    animation: flicker 2.6s steps(1) infinite;
+  }
+  @keyframes flicker {
+    0%,
+    92% {
+      opacity: 1;
+    }
+    94% {
+      opacity: 0.2;
+    }
+    96% {
+      opacity: 1;
+    }
+  }
+  .me__bleat {
+    position: absolute;
+    left: 74%;
+    top: 14%;
+    padding: 2px 10px;
+    border: 3px solid var(--ink);
+    border-radius: 14px 14px 14px 3px;
+    background: var(--paper);
+    font-size: var(--step-1);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .me__bleat.is-on {
+    animation: bleat 1.4s ease-out;
+  }
+  @keyframes bleat {
+    12%,
+    70% {
+      opacity: 1;
+      transform: translateY(-8px) rotate(-6deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-16px) rotate(-2deg);
+    }
+  }
+  .me__body :global(.me__spark) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 11px;
+    height: 11px;
+    border: 2.5px solid var(--ink);
+    border-radius: 3px;
+    background: var(--c);
+    pointer-events: none;
+    animation: spark 0.9s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+  }
+  .me__body :global(.me__spark--star) {
+    border: 0;
+    border-radius: 0;
+    width: 18px;
+    height: 18px;
+    clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  }
+  @keyframes spark {
+    from {
+      transform: translate(-50%, -50%) rotate(0) scale(1.2);
+    }
+    to {
+      transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) rotate(240deg) scale(0.1);
+      opacity: 0;
+    }
+  }
+  .me__body :global(.me__puff) {
+    position: absolute;
+    inset: 10%;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff 0 30%, rgb(255 255 255 / 0.6) 50%, transparent 70%);
+    pointer-events: none;
+    animation: puff 0.7s ease-out forwards;
+  }
+  @keyframes puff {
+    from {
+      transform: scale(0.4);
+      opacity: 1;
+    }
+    to {
+      transform: scale(1.6);
+      opacity: 0;
+    }
+  }
+
+  /* Hand-drawn notes. */
+  .note {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin: 0;
+    font-size: var(--step-0);
+    text-transform: uppercase;
+    pointer-events: none;
+    filter: url(#me-boil);
+  }
+  .note svg {
+    flex: none;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  /* Right next to the head, the arrow almost touching his ear. */
+  .note--me,
+  .note--still {
+    right: calc(50% + var(--body) * 0.3);
+    top: calc(50% + 2.4rem);
+    transform: rotate(-7deg);
+  }
+  .note--still {
+    color: var(--paper);
+  }
+  .note--drag {
+    left: 12%;
+    bottom: 8%;
+    flex-direction: column;
+    transform: rotate(5deg);
+  }
+  .note--click {
+    right: 10%;
+    bottom: 10%;
+    flex-direction: column;
+    transform: rotate(-5deg);
+  }
+  .note--horde {
+    left: 50%;
+    top: calc(7% + 6.4rem);
+    color: #ffd100;
+    white-space: nowrap;
+    transform: translateX(-50%) rotate(2deg);
+  }
+  .note--back {
+    right: 8%;
+    bottom: 10%;
+    color: var(--paper);
+    transform: rotate(4deg);
+  }
+  .note--click svg {
+    animation: nudge 1.6s ease-in-out infinite;
+  }
+  @keyframes nudge {
+    50% {
+      transform: translate(-3px, -3px) rotate(-6deg);
+    }
+  }
+
+  /* Blink, like the spell: a flash where he leaves, a streak of arcane light to where he lands, a flash there. */
+  .me :global(.me__flash) {
+    position: absolute;
+    z-index: 6;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff 0 8%, rgb(226 198 255 / 0.9) 18%, rgb(164 107 255 / 0.5) 38%, transparent 68%);
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.2);
+    animation: flash 0.5s ease-out forwards;
+  }
+  @keyframes flash {
+    30% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1.3);
+    }
+  }
+  .me :global(.me__streak) {
+    position: absolute;
+    z-index: 5;
+    height: 10px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, rgb(207 166 255 / 0.85) 30%, #fff);
+    box-shadow: 0 0 18px #cfa6ff;
+    pointer-events: none;
+    transform-origin: 0 50%;
+    animation: streak 0.45s ease-out forwards;
+  }
+  @keyframes streak {
+    from {
+      opacity: 1;
+      transform: rotate(var(--a)) translateY(-50%) scaleY(1);
+    }
+    to {
+      opacity: 0;
+      transform: rotate(var(--a)) translateY(-50%) scaleY(0.1);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .note {
+      font-size: 0.8125rem;
+    }
+    .note--drag,
+    .note--click,
+    .note--back {
+      max-width: 44%;
+      text-align: center;
+    }
+    .note--me,
+    .note--still {
+      right: calc(50% + var(--body) * 0.28);
+      max-width: 26%;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .note--drag {
+      left: 4%;
+    }
+    .note--click,
+    .note--back {
+      right: 4%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .me__body,
+    .me::after,
+    .glow,
+    .note--click svg {
+      animation: none;
+    }
+    .art {
+      transition: none;
+    }
+  }
+</style>

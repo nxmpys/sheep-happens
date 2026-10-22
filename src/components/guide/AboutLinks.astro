@@ -1,0 +1,146 @@
+---
+/**
+ * Where to go from the about page: big arrow rows. The email row opens the
+ * mail app; its action button copies the address instead.
+ */
+import { getLocale, href } from '../../i18n/locale';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const email = 'hello@sheephappens.app';
+const strings = es
+  ? { copy: 'Copiar', copied: '¡Copiado!', guide: 'La guía', start: 'Empezar', addon: 'Ver addon' }
+  : { copy: 'Copy', copied: 'Copied!', guide: 'The guide', start: 'Start', addon: 'See addon' };
+const rows = [
+  { label: strings.guide, action: strings.start, url: href('learn', locale) },
+  { label: 'MageProcs', action: strings.addon, url: href('addons', locale) },
+];
+---
+
+<ul class="links">
+  {
+    rows.map((row) => (
+      <li>
+        <a class="links__row" href={row.url}>
+          <span class="links__arrow" aria-hidden="true">→</span>
+          <span class="links__label">{row.label}</span>
+          <span class="links__action">{row.action}</span>
+        </a>
+      </li>
+    ))
+  }
+  <li class="links__email">
+    <a class="links__row" href={`mailto:${email}`}>
+      <span class="links__arrow" aria-hidden="true">→</span>
+      <span class="links__label">{email}</span>
+    </a>
+    <button class="links__action links__copy" type="button" data-copy-email={JSON.stringify({ email, copied: strings.copied, copy: strings.copy })}>
+      <span data-copy-label aria-live="polite">{strings.copy}</span>
+    </button>
+  </li>
+</ul>
+
+<script>
+  import { copyText } from '../../scripts/clipboard';
+
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy-email]')) {
+    const { email, copied, copy } = JSON.parse(button.dataset.copyEmail ?? '{}');
+    const label = button.querySelector<HTMLElement>('[data-copy-label]')!;
+    let timer: number | undefined;
+    button.addEventListener('click', async () => {
+      if (!(await copyText(email))) return;
+      label.textContent = copied;
+      button.classList.add('is-copied');
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        label.textContent = copy;
+        button.classList.remove('is-copied');
+      }, 1800);
+    });
+  }
+</script>
+
+<style>
+  .links {
+    margin: var(--space-5) 0 var(--space-6);
+    padding: 0;
+    list-style: none;
+    border-top: 2px solid var(--text);
+  }
+  .links li {
+    position: relative;
+    margin: 0;
+    border-bottom: 2px solid var(--text);
+  }
+  .links__row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    min-height: 64px;
+    padding: var(--space-2) 0;
+    border: 0;
+    background: none;
+    color: var(--text);
+    font: inherit;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .links__arrow {
+    font-size: var(--step-2);
+    transition: transform 0.25s ease;
+  }
+  .links__label {
+    min-width: 0;
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+  .links__action {
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .links__row:hover .links__arrow,
+  .links__row:focus-visible .links__arrow {
+    transform: translateX(8px);
+    color: var(--accent);
+  }
+  .links__row:hover .links__label {
+    color: var(--accent);
+  }
+  .links__email {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-3);
+    align-items: center;
+  }
+  @media (max-width: 480px) {
+    .links__email .links__label {
+      font-size: var(--step-0);
+    }
+  }
+  .links__copy {
+    min-height: 44px;
+    padding: 0 var(--space-3);
+    border: 2px solid var(--text);
+    border-radius: 999px;
+    background: none;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .links__copy:hover {
+    background: var(--text);
+    color: var(--bg);
+  }
+  .links__copy.is-copied {
+    border-color: var(--status-verified);
+    color: var(--status-verified);
+    background: none;
+  }
+</style>

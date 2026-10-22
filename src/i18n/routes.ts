@@ -38,6 +38,7 @@ export const PAGE_IDS = [
   'addons',
   'sources',
   'updates',
+  'about',
 ] as const;
 export type PageId = (typeof PAGE_IDS)[number];
 
@@ -102,6 +103,7 @@ export const ROUTES: Record<PageId, RouteDef> = {
   addons: { id: 'addons', slug: { es: 'addons', en: 'addons' }, parent: 'home' },
   sources: { id: 'sources', slug: { es: 'fuentes', en: 'sources' }, parent: 'home' },
   updates: { id: 'updates', slug: { es: 'novedades', en: 'updates' }, parent: 'home' },
+  about: { id: 'about', slug: { es: 'sobre-mi', en: 'about' }, parent: 'home' },
 };
 
 /**
@@ -137,7 +139,7 @@ export function navPages(nav: readonly NavGroup[] = PRIMARY_NAV): PageId[] {
 /** The guided reading order used for the previous/next links: the menu, top to bottom. */
 export const READING_ORDER: readonly PageId[] = navPages();
 
-export const FOOTER_NAV: readonly PageId[] = ['changes', 'updates', 'sources', 'tools'];
+export const FOOTER_NAV: readonly PageId[] = ['changes', 'updates', 'sources', 'tools', 'about'];
 
 export function isLocale(value: unknown): value is Locale {
   return typeof value === 'string' && (LOCALES as readonly string[]).includes(value);
