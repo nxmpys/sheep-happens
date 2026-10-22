@@ -4,9 +4,10 @@
  * one bold colour, where every gesture is a Mage spell. His eyes follow the
  * pointer and light up with Arcane Intellect on hover. Click: Polymorph, he
  * becomes a sheep for a while. Drag: he leaves an arcane trail, and letting go
- * far away casts Blink to the other scene, where he is what he
- * plays in Forever: a Forsaken, the Undead that Humans become. The lines
- * "boil" like a cartoon by switching the seed of a small displacement filter.
+ * far away casts Blink. A toggle swaps the Human in Dalaran for what he plays
+ * in Forever: a Forsaken in the ruins of Lordaeron, as Warcraft III ends. The
+ * lines "boil" like a cartoon by switching the seed of a small displacement
+ * filter.
  */
 import '@fontsource/permanent-marker';
 import { getLocale } from '../../i18n/locale';
@@ -15,28 +16,30 @@ const es = getLocale(Astro) === 'es';
 const strings = es
   ? {
       who: '¿Quién soy?',
-      me: 'Yo',
       drag: 'Arrástrame lejos',
       click: 'Clic',
       kind: 'En Forever…',
       undead: 'No-muerto',
-      still: 'Sigo siendo yo',
       horde: 'Horda · EU-PvP',
-      back: 'Traslación de vuelta',
+      dalaran: 'Dalaran',
+      lordaeron: 'Ruinas de Lordaeron',
+      human: 'Humano',
+      toggle: 'Ver mi personaje en Forever, no-muerto',
       bleat: '¡Beee!',
       blink: '¡Traslación!',
       label: 'Nxmpys: haz clic para lanzarle Polimorfia o arrástralo lejos para lanzar Traslación',
     }
   : {
       who: 'Who am I?',
-      me: 'Me',
       drag: 'Drag me far',
       click: 'Click',
       kind: 'In Forever…',
       undead: 'Undead',
-      still: 'Still me',
       horde: 'Horde · EU-PvP',
-      back: 'Blink back',
+      dalaran: 'Dalaran',
+      lordaeron: 'Ruins of Lordaeron',
+      human: 'Human',
+      toggle: 'Show my character in Forever, Undead',
       bleat: 'Baaa!',
       blink: 'Blink!',
       label: 'Nxmpys: click to cast Polymorph on him or drag him far to cast Blink',
@@ -51,14 +54,25 @@ const strings = es
     </filter>
   </svg>
 
-  <!-- Scene 1: the author as a Human, on Alliance blue. -->
+  <!-- Scene 1: the author as a Human, on lilac, Dalaran behind him: mage towers round the Violet Citadel, floating crystals, under the city's violet shield. -->
   <div class="me__scene me__scene--human">
+    <svg class="me__city" viewBox="0 0 1000 260" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <path class="dl-dome" d="M30 260A470 196 0 0 1 970 260z"></path>
+      <path class="dl-back" d="M111 260L114 150H126L129 260zM240 260L243 140H257L260 260zM351 260L354 160H366L369 260zM641 260L644 160H656L659 260zM750 260L753 140H767L770 260zM881 260L884 150H896L899 260z"></path>
+      <path class="dl-stone" d="M36 260L39 186H61L64 260zM150 260L153 158H177L180 260zM286 260L289 176H311L314 260zM393 260L396 136H424L427 260zM573 260L576 136H604L607 260zM686 260L689 176H711L714 260zM820 260L823 158H847L850 260zM941 260L944 186H966L969 260zM448 260L451 128H469L472 260zM528 260L531 128H549L552 260zM477 260L480 108H520L523 260zM86 260v-34h28v34zM216 260v-34h28v34zM336 260v-34h28v34zM456 260v-34h28v34zM516 260v-34h28v34zM636 260v-34h28v34zM756 260v-34h28v34zM886 260v-34h28v34zM0 260V232q250-26 500-22t500 22v28z"></path>
+      <path class="dl-roof" d="M109 150Q120 138 120 110Q120 138 131 150zM238 140Q250 126.2 250 94Q250 126.2 262 140zM349 160Q360 149.2 360 124Q360 149.2 371 160zM639 160Q650 149.2 650 124Q650 149.2 661 160zM748 140Q760 126.2 760 94Q760 126.2 772 140zM879 150Q890 138 890 110Q890 138 901 150zM34 186Q50 175.2 50 150Q50 175.2 66 186zM148 158Q165 144.2 165 112Q165 144.2 182 158zM284 176Q300 164 300 136Q300 164 316 176zM391 136Q410 119.8 410 82Q410 119.8 429 136zM571 136Q590 119.8 590 82Q590 119.8 609 136zM684 176Q700 164 700 136Q700 164 716 176zM818 158Q835 144.2 835 112Q835 144.2 852 158zM939 186Q955 175.2 955 150Q955 175.2 971 186zM446 128Q460 114.8 460 84Q460 114.8 474 128zM526 128Q540 114.8 540 84Q540 114.8 554 128zM475 108Q500 91.8 500 54Q500 91.8 525 108zM82 226l18-16 18 16zM212 226l18-16 18 16zM332 226l18-16 18 16zM452 226l18-16 18 16zM512 226l18-16 18 16zM632 226l18-16 18 16zM752 226l18-16 18 16zM882 226l18-16 18 16z"></path>
+      <path class="dl-gold" d="M120 110v-8M250 94v-8M360 124v-8M650 124v-8M760 94v-8M890 110v-8M50 150v-8M36 194H64M165 112v-8M150 166H180M150 200H180M300 136v-8M286 184H314M286 218H314M410 82v-8M393 144H427M393 178H427M393 212H427M590 82v-8M573 144H607M573 178H607M573 212H607M700 136v-8M686 184H714M686 218H714M835 112v-8M820 166H850M820 200H850M955 150v-8M941 194H969M460 84v-8M448 136H472M448 170H472M540 84v-8M528 136H552M528 170H552M500 54v-8M477 116H523M477 150H523M477 184H523"></path>
+      <path class="dl-window" d="M47 202h6v12h-6zM162 174h6v12h-6zM162 208h6v12h-6zM297 192h6v12h-6zM297 226h6v12h-6zM407 152h6v12h-6zM407 186h6v12h-6zM407 220h6v12h-6zM587 152h6v12h-6zM587 186h6v12h-6zM587 220h6v12h-6zM697 192h6v12h-6zM697 226h6v12h-6zM832 174h6v12h-6zM832 208h6v12h-6zM952 202h6v12h-6zM457 144h6v12h-6zM457 178h6v12h-6zM537 144h6v12h-6zM537 178h6v12h-6zM497 124h6v12h-6zM497 158h6v12h-6zM497 192h6v12h-6z"></path>
+      <!-- Each crystal glows on its own beat. -->
+      <path class="dl-gem" style="animation-delay: -0s" d="M230 113l5 7-5 7-5-7z"></path>
+      <path class="dl-gem" style="animation-delay: -0.9s" d="M500 27l5 7-5 7-5-7z"></path>
+      <path class="dl-gem" style="animation-delay: -1.8s" d="M770 113l5 7-5 7-5-7z"></path>
+      <path class="dl-gem" style="animation-delay: -2.7s" d="M360 97l5 7-5 7-5-7z"></path>
+      <path class="dl-gem" style="animation-delay: -3.6s" d="M640 97l5 7-5 7-5-7z"></path>
+    </svg>
+    <p class="me__place" aria-hidden="true">{strings.dalaran}</p>
     <p class="me__who">{strings.who}</p>
     <p class="me__name" aria-hidden="true">Nxmpys</p>
-    <p class="note note--me" aria-hidden="true">
-      {strings.me}
-      <svg viewBox="0 0 60 24" width="54" height="22"><path d="M2 14c12-6 28-8 50-2m-9-8 10 8-11 6"></path></svg>
-    </p>
     <p class="note note--drag" aria-hidden="true">
       <svg viewBox="0 0 48 48" width="44" height="44">
         <circle cx="16" cy="12" r="5"></circle><path d="M16 17v13m0-9 10-4m-10 13-6 10m6-10 7 9M30 8c6 2 10 6 12 12m-3-1 3 2 2-4"></path>
@@ -73,17 +87,23 @@ const strings = es
     </p>
   </div>
 
-  <!-- Scene 2: the same author as a Forsaken, on the Horde's night. -->
+  <!-- Scene 2: the same author as a Forsaken, in the broken towers and throne room of Lordaeron, Undercity glowing through the gate. -->
   <div class="me__scene me__scene--forsaken" aria-hidden="true">
+    <svg class="me__city" viewBox="0 0 1000 260" preserveAspectRatio="xMidYMax slice">
+      <path class="lo-far" d="M0 260V170l90-40 80 30 110-50 90 40 120-30 110 46 120-56 100 40 90-24 90 30v114zM235 260V106L241.6 96L250 110L255.4 88L265 108V260zM597 260V114L602.72 104L610 118L614.68 96L623 116V260zM866 260V120L872.16 110L880 124L885.04 102L894 122V260z"></path>
+      <path class="lo-ruin" d="M0 260V206L18 206L36 216L54 210L72 220L90 208L108 206L126 216L144 210L162 220L180 208L198 206L216 216L234 210L252 220L270 208L288 206L306 216L324 210L342 220L360 208L378 206L396 216L414 210L432 220L450 208L468 206L486 216L504 210L522 220L540 208L558 206L576 216L594 210L612 220L630 208L648 206L666 216L684 210L702 220L720 208L738 206L756 216L774 210L792 220L810 208L828 206L846 216L864 210L882 220L900 208L918 206L936 216L954 210L972 220L990 208L1000 206V260zM400 260V126L418 126L436 136L454 130L472 140L490 128L508 126L526 136L544 130L562 140L580 128L598 126L600 136V260zM392 260V80L399.92 70L410 84L416.48 62L428 82V260zM572 260V88L579.92 78L590 92L596.48 70L608 90V260zM485 260V50L491.6 40L500 54L505.4 32L515 52V260zM125 260V110L131.6 100L140 114L145.4 92L155 112V260zM803 260V70L810.48 60L820 74L826.12 52L837 72V260zM749 260V130L753.84 120L760 134L763.96 112L771 132V260zM43 260V186L50.48 176L60 190L66.12 168L77 188V260zM283 260V186L290.48 176L300 190L306.12 168L317 188V260zM673 260V186L680.48 176L690 190L696.12 168L707 188V260zM933 260V186L940.48 176L950 190L956.12 168L967 188V260z"></path>
+      <path class="lo-tree" d="M28 210v-40m0 20-14-14m14 4 12-16m-12 30 10-6M972 210v-46m0 18 14-12m-14 4-12-18m12 34-10-6"></path>
+      <path class="lo-glow" d="M470 260v-40q30-34 60 0v40zM407 110h6v12h-6zM587 116h6v12h-6zM497 80h6v12h-6zM137 136h6v12h-6zM817 100h6v12h-6zM447 160h6v12h-6zM547 160h6v12h-6z"></path>
+    </svg>
+    <p class="me__place me__place--light">{strings.lordaeron}</p>
     <p class="me__kind">{strings.kind}</p>
     <p class="me__name me__name--light">{strings.undead}</p>
-    <p class="note note--still">
-      {strings.still}
-      <svg viewBox="0 0 60 24" width="54" height="22"><path d="M2 14c12-6 28-8 50-2m-9-8 10 8-11 6"></path></svg>
-    </p>
     <p class="note note--horde">{strings.horde}</p>
-    <p class="note note--back">{strings.back}</p>
   </div>
+
+  <button class="me__toggle" type="button" aria-pressed="false" aria-label={strings.toggle} data-toggle>
+    <span>{strings.human}</span><span>{strings.undead}</span>
+  </button>
 
   <button class="me__head" type="button" aria-label={strings.label} data-head>
     <span class="me__body" data-body>
@@ -319,6 +339,14 @@ const strings = es
       run();
     };
 
+    // The toggle: Human in Dalaran or Forsaken in Lordaeron.
+    const toggle = me.querySelector<HTMLButtonElement>('[data-toggle]')!;
+    toggle.addEventListener('click', () => {
+      const undead = me.dataset.scene !== 'forsaken';
+      me.dataset.scene = undead ? 'forsaken' : 'human';
+      toggle.setAttribute('aria-pressed', String(undead));
+    });
+
     let sheepTimer: number | undefined;
     const polymorph = () => {
       const isSheep = me.classList.toggle('is-sheep');
@@ -352,16 +380,13 @@ const strings = es
 
     /**
      * Blink, like the spell: he flashes out where he was let go, a streak of
-     * arcane light shoots to his usual spot and he flashes back in there, while
-     * the background fades to the other scene.
+     * arcane light shoots to his usual spot and he flashes back in there.
      */
-    const switchScene = () => {
+    const blink = () => {
       if (switching) return;
       switching = true;
-      const next = me.dataset.scene === 'human' ? 'forsaken' : 'human';
       say(blinkText);
       if (reduced) {
-        me.dataset.scene = next;
         switching = false;
         return;
       }
@@ -369,8 +394,7 @@ const strings = es
       effect('me__flash', from.cx, from.cy, 500);
       me.classList.add('is-blinking');
       window.setTimeout(() => {
-        me.dataset.scene = next;
-        me.classList.remove('is-sheep', 'is-blinking');
+        me.classList.remove('is-blinking');
         x = 0;
         y = 0;
         vx = 0;
@@ -418,7 +442,7 @@ const strings = es
       tx = 0;
       ty = 0;
       run();
-      if (moved && far) switchScene();
+      if (moved && far) blink();
     };
     head.addEventListener('pointerup', release);
     head.addEventListener('pointercancel', release);
@@ -437,7 +461,7 @@ const strings = es
   .me {
     --ink: #140f22;
     --paper: #fff;
-    --alliance: #1d4b9e;
+    --lilac: #c4a8f4;
     --night: #120d20;
     --body: clamp(160px, 26vw, 210px);
     position: relative;
@@ -447,31 +471,35 @@ const strings = es
     margin: var(--space-2) 0 var(--space-6);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    background: var(--alliance);
+    background: var(--lilac);
     color: var(--ink);
     font-family: 'Permanent Marker', var(--font-display);
     user-select: none;
     -webkit-user-select: none;
     touch-action: pan-y;
   }
-  /* The Forsaken side is Undercity: the sewers' dark green, the Plague glowing up from below. */
-  .me::before,
-  .me::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.45s ease;
+  /* The Forsaken side is Undercity: the sewers' dark green, the Plague glowing up from below.
+     It opens from the toggle in a growing circle. Each scene keeps its notes in its own stack, so the Human ones never float over the Forsaken. */
+  .me__scene--human {
+    z-index: 0;
   }
-  .me::before {
+  .me__scene--forsaken {
+    z-index: 1;
+    clip-path: circle(0 at 92% 8%);
+    transition: clip-path 0.7s cubic-bezier(0.65, 0, 0.35, 1);
     background:
       radial-gradient(90% 55% at 50% 112%, rgb(130 214 40 / 0.55), transparent 70%),
       radial-gradient(60% 40% at 50% 0%, rgb(0 0 0 / 0.5), transparent 70%),
       linear-gradient(180deg, #0b100d, #111a12 60%, #17240f);
   }
+  .me[data-scene='forsaken'] .me__scene--forsaken {
+    clip-path: circle(150% at 92% 8%);
+  }
   /* A few loose Plague bubbles rising from the glow and fading out. */
-  .me::after {
+  .me__scene--forsaken::after {
+    content: '';
+    position: absolute;
+    inset: 0;
     background:
       radial-gradient(circle at 14% 92%, rgb(170 240 80 / 0.6) 0 4px, transparent 5px),
       radial-gradient(circle at 31% 80%, rgb(170 240 80 / 0.45) 0 3px, transparent 4px),
@@ -479,11 +507,6 @@ const strings = es
       radial-gradient(circle at 83% 76%, rgb(170 240 80 / 0.4) 0 3px, transparent 4px),
       radial-gradient(circle at 52% 96%, rgb(170 240 80 / 0.5) 0 3px, transparent 4px);
     background-repeat: no-repeat;
-  }
-  .me[data-scene='forsaken']::before {
-    opacity: 1;
-  }
-  .me[data-scene='forsaken']::after {
     animation: plague 6s ease-in infinite;
   }
   @keyframes plague {
@@ -499,6 +522,121 @@ const strings = es
       transform: translateY(-45%);
     }
   }
+  /* The city skylines along the bottom. */
+  .me__city {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 34%;
+  }
+  .dl-dome {
+    fill: rgb(255 255 255 / 0.14);
+    stroke: rgb(255 255 255 / 0.6);
+    stroke-width: 2;
+  }
+  .dl-back {
+    fill: #a585e0;
+  }
+  .dl-stone {
+    fill: #e6e2f3;
+  }
+  .dl-roof {
+    fill: #6a3fc9;
+  }
+  .dl-gold {
+    fill: none;
+    stroke: #ffd100;
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+  .dl-window {
+    fill: #3b2470;
+  }
+  .dl-gem {
+    fill: #ff9ef5;
+    filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 6px #ff9ef5);
+    animation: gem-glow 4.5s ease-in-out infinite;
+  }
+  @keyframes gem-glow {
+    50% {
+      fill: #ffd6fb;
+      filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 14px #ff9ef5);
+    }
+  }
+  .lo-far {
+    fill: #142118;
+  }
+  .lo-ruin {
+    fill: #050806;
+  }
+  .lo-tree {
+    fill: none;
+    stroke: #050806;
+    stroke-width: 4;
+    stroke-linecap: round;
+  }
+  .lo-glow {
+    fill: #8fdc3c;
+    filter: drop-shadow(0 0 6px #8fdc3c);
+  }
+  .me__toggle {
+    position: absolute;
+    top: 5%;
+    right: 4%;
+    z-index: 4;
+    display: flex;
+    padding: 4px;
+    border: 3px solid currentColor;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.3);
+    color: var(--ink);
+    font: inherit;
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.4s;
+  }
+  .me__toggle span {
+    padding: 4px 12px;
+    white-space: nowrap;
+    border-radius: 999px;
+    transition:
+      background 0.3s,
+      color 0.3s;
+  }
+  .me__toggle span:first-child {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .me[data-scene='forsaken'] .me__toggle {
+    color: #aef06a;
+  }
+  .me[data-scene='forsaken'] .me__toggle span:first-child {
+    background: none;
+    color: inherit;
+  }
+  .me[data-scene='forsaken'] .me__toggle span:last-child {
+    background: #aef06a;
+    color: var(--ink);
+  }
+  .me__toggle:focus-visible {
+    outline: 3px dashed currentColor;
+    outline-offset: 4px;
+  }
+  .me__place {
+    position: absolute;
+    left: 4%;
+    top: 7%;
+    margin: 0;
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    opacity: 0.8;
+    transform: rotate(-4deg);
+  }
+  .me__place--light {
+    color: #aef06a;
+  }
   .me__defs {
     position: absolute;
   }
@@ -507,20 +645,8 @@ const strings = es
     position: absolute;
     inset: 0;
     pointer-events: none;
-    transition:
-      opacity 0.45s ease,
-      visibility 0.45s;
-  }
-  .me[data-scene='human'] .me__scene--forsaken,
-  .me[data-scene='forsaken'] .me__scene--human {
-    opacity: 0;
-    visibility: hidden;
   }
 
-  /* The ink would sink into the Alliance blue: the human scene writes in white. */
-  .me__scene--human {
-    color: var(--paper);
-  }
   .me__who,
   .me__kind {
     position: absolute;
@@ -597,11 +723,11 @@ const strings = es
       opacity 0.15s,
       transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  .art--sheep,
-  .art--forsaken {
+  .art--sheep {
     opacity: 0;
     transform: scale(0.6);
   }
+  .art--forsaken,
   .me.is-sheep .art--human,
   .me.is-sheep .art--forsaken,
   .me[data-scene='forsaken'] .art--human {
@@ -906,25 +1032,15 @@ const strings = es
     stroke-linecap: round;
     stroke-linejoin: round;
   }
-  /* Right next to the head, the arrow almost touching his ear. */
-  .note--me,
-  .note--still {
-    right: calc(50% + var(--body) * 0.42);
-    top: calc(50% + 3.6rem - var(--body) * 0.61);
-    transform: rotate(-7deg);
-  }
-  .note--still {
-    color: var(--paper);
-  }
   .note--drag {
     left: 12%;
-    bottom: 8%;
+    bottom: 36%;
     flex-direction: column;
     transform: rotate(5deg);
   }
   .note--click {
     right: 10%;
-    bottom: 10%;
+    bottom: 36%;
     flex-direction: column;
     transform: rotate(-5deg);
   }
@@ -934,12 +1050,6 @@ const strings = es
     color: #ffd100;
     white-space: nowrap;
     transform: translateX(-50%) rotate(2deg);
-  }
-  .note--back {
-    right: 8%;
-    bottom: 10%;
-    color: var(--paper);
-    transform: rotate(4deg);
   }
   .note--click svg {
     animation: nudge 1.6s ease-in-out infinite;
@@ -995,38 +1105,42 @@ const strings = es
   }
 
   @media (max-width: 560px) {
+    /* No room at the top on a phone: the toggle sits at the foot, over the city. */
+    .me__toggle {
+      top: auto;
+      right: auto;
+      bottom: 3%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .me__place {
+      display: none;
+    }
     .note {
       font-size: 0.8125rem;
     }
     .note--drag,
-    .note--click,
-    .note--back {
+    .note--click {
       max-width: 44%;
       text-align: center;
-    }
-    .note--me,
-    .note--still {
-      right: calc(50% + var(--body) * 0.4);
-      max-width: 26%;
-      flex-wrap: wrap;
-      justify-content: flex-end;
     }
     .note--drag {
       left: 4%;
     }
-    .note--click,
-    .note--back {
+    .note--click {
       right: 4%;
     }
   }
   @media (prefers-reduced-motion: reduce) {
     .me__body,
-    .me::after,
+    .me__scene--forsaken::after,
+    .dl-gem,
     .glow,
     .note--click svg {
       animation: none;
     }
-    .art {
+    .art,
+    .me__scene--forsaken {
       transition: none;
     }
   }
