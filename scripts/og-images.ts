@@ -8,7 +8,10 @@
  *
  * Fonts: Georgia and Segoe UI from the system (Windows by default). Point
  * OG_FONT_DIR at another folder with georgiab.ttf, segoeui.ttf and seguisb.ttf
- * on other systems.
+ * on other systems. The site name uses Cinzel Decorative, like the header, and
+ * the home card's speech bubble Permanent Marker, like the about page; both
+ * live in scripts/og-assets as TTF (resvg cannot read the site's woff2), next
+ * to the Polymorph sheep the home card shows.
  */
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -21,7 +24,13 @@ import { LOCALES, ROUTES, type Locale, type PageId } from '../src/i18n/routes';
 const root = fileURLToPath(new URL('..', import.meta.url));
 const outDir = join(root, 'public', 'og');
 const fontDir = process.env.OG_FONT_DIR ?? 'C:\\Windows\\Fonts';
-const fontFiles = ['georgiab.ttf', 'segoeui.ttf', 'seguisb.ttf'].map((f) => join(fontDir, f));
+const assets = join(root, 'scripts', 'og-assets');
+const fontFiles = [
+  ...['georgiab.ttf', 'segoeui.ttf', 'seguisb.ttf'].map((f) => join(fontDir, f)),
+  join(assets, 'cinzel-decorative-700.ttf'),
+  join(assets, 'permanent-marker-400.ttf'),
+];
+const sheepPng = `data:image/png;base64,${readFileSync(join(assets, 'polymorph-sheep.png')).toString('base64')}`;
 for (const file of fontFiles) {
   if (!existsSync(file)) {
     console.error(`✗ Font not found: ${file}. Set OG_FONT_DIR to a folder with Georgia Bold and Segoe UI.`);
@@ -92,12 +101,96 @@ function card(locale: Locale, pageId: PageId, title: string): string {
   ${sigil(spec ?? 'arcane', accent)}
   <rect x="0" y="0" width="12" height="630" fill="${accent}"/>
   <g transform="translate(76 52) scale(1.7)">${SHEEP}</g>
-  <text x="156" y="100" font-family="Georgia" font-weight="700" font-size="36" fill="#ecebf4">Sheep Happens</text>
+  <text x="156" y="100" font-family="Cinzel Decorative" font-weight="700" font-size="34" fill="#ecebf4">Sheep Happens</text>
   <text x="80" y="200" font-family="Segoe UI" font-weight="600" font-size="24" letter-spacing="3" fill="${accent}">${escapeXml(KICKER[locale])}</text>
   ${titleSvg}
   <rect x="80" y="520" width="1040" height="1" fill="#2f2b45"/>
   <text x="80" y="570" font-family="Segoe UI" font-size="26" fill="#b6b1cb">${escapeXml(FOOTER[locale])}</text>
   <text x="1120" y="570" text-anchor="end" font-family="Segoe UI" font-weight="600" font-size="26" fill="#ecebf4">${HOST}</text>
+</svg>`;
+}
+
+const HOME: Record<Locale, { tagline: string; chips: string[]; cta: string; bleat: string }> = {
+  es: {
+    tagline: 'La guía del Mago para WoW: Forever',
+    chips: ['Leveo 1-60', 'Calculadora de talentos', 'Cambios vs Classic'],
+    cta: 'Entra y lanza tu primera Polimorfia',
+    bleat: '¡Beee!',
+  },
+  en: {
+    tagline: 'The Mage guide for WoW: Forever',
+    chips: ['Leveling 1-60', 'Talent calculator', 'Changes from Classic'],
+    cta: 'Come in and cast your first Polymorph',
+    bleat: 'Baaa!',
+  },
+};
+
+/** A four-point sparkle centred on (x, y). */
+function star(x: number, y: number, r: number, color: string, opacity = 1): string {
+  const k = r * 0.28;
+  return `<path fill="${color}" opacity="${opacity}" d="M${x} ${y - r}L${x + k} ${y - k}L${x + r} ${y}L${x + k} ${y + k}L${x} ${y + r}L${x - k} ${y + k}L${x - r} ${y}L${x - k} ${y - k}Z"/>`;
+}
+
+/**
+ * The home card, the one people see when they share the site: the name big in
+ * the header's typeface, what the guide offers, and the Polymorph sheep in an
+ * arcane circle saying hello, to make people want to come in.
+ */
+function homeCard(locale: Locale): string {
+  const t = HOME[locale];
+  let chipX = 80;
+  const chips = t.chips
+    .map((label) => {
+      const w = Math.round(label.length * 11 + 40);
+      const g = `<rect x="${chipX}" y="368" width="${w}" height="46" rx="23" fill="#1d1a2c" stroke="#3b3552"/><text x="${chipX + w / 2}" y="398" text-anchor="middle" font-family="Segoe UI" font-weight="600" font-size="21" fill="#ecebf4">${escapeXml(label)}</text>`;
+      chipX += w + 14;
+      return g;
+    })
+    .join('');
+  const ctaW = Math.round(t.cta.length * 12.6 + 100);
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow" cx="78%" cy="52%" r="48%">
+      <stop offset="0" stop-color="#8a4dff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#0e0d16" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="dusk" cx="0%" cy="0%" r="80%">
+      <stop offset="0" stop-color="#2a1f42" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#0e0d16" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="#0e0d16"/>
+  <rect width="1200" height="630" fill="url(#dusk)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="0" y="0" width="12" height="630" fill="#a98bff"/>
+
+  <g transform="translate(935 330)" fill="none" stroke="#cfa6ff">
+    <circle r="200" stroke-opacity="0.18" stroke-width="2"/>
+    <circle r="170" stroke-opacity="0.45" stroke-width="3" stroke-dasharray="4 14" stroke-linecap="round"/>
+    <circle r="140" stroke-opacity="0.3" stroke-width="2"/>
+    <path d="M0-170L147 85L-147 85Z M0 170L-147-85L147-85Z" stroke-opacity="0.22" stroke-width="2"/>
+  </g>
+  <ellipse cx="935" cy="470" rx="120" ry="22" fill="#cfa6ff" opacity="0.35" filter="url(#soft)"/>
+  <image href="${sheepPng}" x="850" y="190" width="170" height="291"/>
+  ${star(830, 205, 18, '#e5c97f')}
+  ${star(1070, 250, 13, '#ffffff', 0.9)}
+  ${star(1045, 430, 10, '#cfa6ff')}
+  ${star(812, 420, 8, '#ffffff', 0.8)}
+  <g transform="translate(1030 150) rotate(-6)">
+    <rect x="-8" y="-40" width="140" height="58" rx="18" fill="#ffffff"/>
+    <path d="M14 14l-10 22 28-20z" fill="#ffffff"/>
+    <text x="62" y="2" text-anchor="middle" font-family="Permanent Marker" font-size="30" fill="#140f22">${escapeXml(t.bleat)}</text>
+  </g>
+
+  <g transform="translate(76 70) scale(1.5)">${SHEEP}</g>
+  <text x="80" y="200" font-family="Segoe UI" font-weight="600" font-size="24" letter-spacing="3" fill="#a98bff">${escapeXml(KICKER[locale])}</text>
+  <text x="76" y="300" font-family="Cinzel Decorative" font-weight="700" font-size="92" fill="#ecebf4">Sheep Happens</text>
+  <text x="80" y="346" font-family="Georgia" font-weight="700" font-size="32" fill="#cfa6ff">${escapeXml(t.tagline)}</text>
+  ${chips}
+  <rect x="80" y="470" width="${ctaW}" height="66" rx="33" fill="#a98bff"/>
+  <text x="${80 + 34}" y="513" font-family="Segoe UI" font-weight="600" font-size="26" fill="#120f1f">${escapeXml(t.cta)}  →</text>
+  <text x="1120" y="590" text-anchor="end" font-family="Segoe UI" font-weight="600" font-size="24" fill="#b6b1cb">${HOST}</text>
 </svg>`;
 }
 
@@ -118,7 +211,8 @@ for (const locale of LOCALES) {
       pageId: PageId;
       title: string;
     };
-    writeFileSync(join(outDir, `${locale}-${frontmatter.pageId}.png`), render(card(locale, frontmatter.pageId, frontmatter.title), 1200));
+    const svg = frontmatter.pageId === 'home' ? homeCard(locale) : card(locale, frontmatter.pageId, frontmatter.title);
+    writeFileSync(join(outDir, `${locale}-${frontmatter.pageId}.png`), render(svg, 1200));
     count++;
   }
 }
