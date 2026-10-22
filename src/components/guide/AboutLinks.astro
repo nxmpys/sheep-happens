@@ -9,12 +9,12 @@ const locale = getLocale(Astro);
 const es = locale === 'es';
 const email = 'hello@sheephappens.app';
 const strings = es
-  ? { copy: 'Copiar', copied: '¡Copiado!', guide: 'La guía', start: 'Empezar', addon: 'Ver addon', follow: 'Seguir' }
-  : { copy: 'Copy', copied: 'Copied!', guide: 'The guide', start: 'Start', addon: 'See addon', follow: 'Follow' };
+  ? { copy: 'Copiar', copied: '¡Copiado!', guide: 'La guía', start: 'Empezar', addon: 'Ver addon', follow: 'Seguir en X' }
+  : { copy: 'Copy', copied: 'Copied!', guide: 'The guide', start: 'Start', addon: 'See addon', follow: 'Follow on X' };
 const rows = [
   { label: strings.guide, action: strings.start, url: href('learn', locale) },
   { label: 'MageProcs', action: strings.addon, url: href('addons', locale) },
-  { label: '@nxmpys', action: strings.follow, url: 'https://x.com/nxmpys', external: true },
+  { label: 'x.com/nxmpys', action: strings.follow, url: 'https://x.com/nxmpys', external: true },
 ];
 ---
 

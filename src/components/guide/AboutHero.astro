@@ -51,7 +51,7 @@ const strings = es
     </filter>
   </svg>
 
-  <!-- Scene 1: the author as a Human, on arcane violet. -->
+  <!-- Scene 1: the author as a Human, on Alliance blue. -->
   <div class="me__scene me__scene--human">
     <p class="me__who">{strings.who}</p>
     <p class="me__name" aria-hidden="true">Nxmpys</p>
@@ -87,8 +87,28 @@ const strings = es
 
   <button class="me__head" type="button" aria-label={strings.label} data-head>
     <span class="me__body" data-body>
-      <!-- The author as a clean flat portrait, from a photo: hair swept back with a fallen lock, faded sides, an Italian beard and a trimmed moustache. -->
-      <svg class="art art--human portrait" viewBox="0 0 200 220" aria-hidden="true">
+      <!-- The author as a clean flat portrait, head from a photo: hair swept back with a fallen lock, faded sides, an Italian beard and a trimmed moustache. -->
+      <svg class="art art--human portrait" viewBox="0 0 200 400" aria-hidden="true">
+        <!-- Full body in the Arcanist Regalia, the Mage Tier 1 set from Molten Core: violet robe with gold trim, domed mantle with gems, belt and crown. -->
+        <rect class="skin" x="92" y="108" width="16" height="22" rx="4"></rect>
+        <path class="robe" d="M66 138q-22 52-32 124 14 10 32 4 4-56 14-106zm68 0q22 52 32 124-14 10-32 4-4-56-14-106z"></path>
+        <path class="gold-line" d="M34 262q14 10 32 4m100-4q-14 10-32 4"></path>
+        <ellipse class="skin" cx="50" cy="276" rx="9" ry="11"></ellipse>
+        <ellipse class="skin" cx="150" cy="276" rx="9" ry="11"></ellipse>
+        <ellipse class="boot" cx="84" cy="390" rx="14" ry="7"></ellipse>
+        <ellipse class="boot" cx="116" cy="390" rx="14" ry="7"></ellipse>
+        <path class="robe" d="M70 128q30-8 60 0l20 122 18 136q-68 10-136 0l18-136z"></path>
+        <path class="robe-panel" d="M90 140h20l14 248q-24 4-48 0z"></path>
+        <path class="gold-line" d="M90 140l-14 248m34-248 14 248M32 386q68 10 136 0"></path>
+        <path class="gold" d="M93 296l7-10 7 10-7 10zm2 44 5-8 5 8-5 8z"></path>
+        <path class="gold" d="M53 236q47 12 94 0l1 14q-48 12-96 0z"></path>
+        <circle class="gem" cx="100" cy="249" r="6"></circle>
+        <path class="gold-line" d="M76 126l24 32 24-32"></path>
+        <path class="robe-panel" d="M42 152q-2-36 38-38 14 6 12 22-26-4-50 16zm116 0q2-36-38-38-14 6-12 22 26-4 50 16z"></path>
+        <path class="gold-line" d="M42 152q-2-36 38-38 14 6 12 22-26-4-50 16l-10-12m126 12q2-36-38-38-14 6-12 22 26-4 50 16l10-12"></path>
+        <circle class="gem" cx="66" cy="128" r="4.5"></circle>
+        <circle class="gem" cx="134" cy="128" r="4.5"></circle>
+        <g transform="translate(38 2) scale(0.62)">
         <ellipse class="skin" cx="56" cy="122" rx="8" ry="13"></ellipse>
         <ellipse class="skin" cx="144" cy="122" rx="8" ry="13"></ellipse>
         <path class="skin" d="M56 102c0-28 20-46 44-46s44 18 44 46c0 28-4 46-14 60-10 14-20 22-30 22s-20-8-30-22c-10-14-14-32-14-60z"></path>
@@ -111,10 +131,13 @@ const strings = es
         <path class="lips" d="M90 155q10 6 20 0-10 2-20 0z"></path>
         <path class="mouth" d="M89 154q11 4 22-1"></path>
         <path class="beard" d="M97 162l3 9 3-9z"></path>
+        </g>
+        <path class="gold" d="M66 46q34-14 68 0l-2 6q-32-12-64 0z"></path>
+        <path class="gem" d="M100 30l5 8-5 8-5-8z"></path>
       </svg>
 
       <!-- Polymorph: the same author, as a sheep. -->
-      <svg class="art art--sheep" viewBox="0 0 200 220" aria-hidden="true">
+      <svg class="art art--sheep" viewBox="0 -110 200 400" aria-hidden="true">
         <g class="ink">
           <path class="fill-ink" d="M70 172v30m20-28v30m24-30v30m20-32v30"></path>
           <path class="fill-paper" d="M44 122c-10-22 8-46 30-42 6-20 36-24 48-8 20-10 44 6 40 28 20 8 18 38-2 44 2 22-24 34-42 22-14 14-40 12-48-6-22 2-36-22-26-38z"></path>
@@ -130,7 +153,27 @@ const strings = es
       </svg>
 
       <!-- The same portrait as a Forsaken: the very same face in bone, no beard, two holes for a nose, dark sockets with glowing eyes, bare teeth, cheekbones, jaw line and a cracked forehead. -->
-      <svg class="art art--forsaken portrait portrait--undead" viewBox="0 0 200 220" aria-hidden="true">
+      <svg class="art art--forsaken portrait portrait--undead" viewBox="0 0 200 400" aria-hidden="true">
+        <!-- Full body in the Arcanist Regalia, the Mage Tier 1 set from Molten Core: violet robe with gold trim, domed mantle with gems, belt and crown. -->
+        <rect class="skin" x="92" y="108" width="16" height="22" rx="4"></rect>
+        <path class="robe" d="M66 138q-22 52-32 124 14 10 32 4 4-56 14-106zm68 0q22 52 32 124-14 10-32 4-4-56-14-106z"></path>
+        <path class="gold-line" d="M34 262q14 10 32 4m100-4q-14 10-32 4"></path>
+        <ellipse class="skin" cx="50" cy="276" rx="9" ry="11"></ellipse>
+        <ellipse class="skin" cx="150" cy="276" rx="9" ry="11"></ellipse>
+        <ellipse class="boot" cx="84" cy="390" rx="14" ry="7"></ellipse>
+        <ellipse class="boot" cx="116" cy="390" rx="14" ry="7"></ellipse>
+        <path class="robe" d="M70 128q30-8 60 0l20 122 18 136q-68 10-136 0l18-136z"></path>
+        <path class="robe-panel" d="M90 140h20l14 248q-24 4-48 0z"></path>
+        <path class="gold-line" d="M90 140l-14 248m34-248 14 248M32 386q68 10 136 0"></path>
+        <path class="gold" d="M93 296l7-10 7 10-7 10zm2 44 5-8 5 8-5 8z"></path>
+        <path class="gold" d="M53 236q47 12 94 0l1 14q-48 12-96 0z"></path>
+        <circle class="gem" cx="100" cy="249" r="6"></circle>
+        <path class="gold-line" d="M76 126l24 32 24-32"></path>
+        <path class="robe-panel" d="M42 152q-2-36 38-38 14 6 12 22-26-4-50 16zm116 0q2-36-38-38-14 6-12 22 26-4 50 16z"></path>
+        <path class="gold-line" d="M42 152q-2-36 38-38 14 6 12 22-26-4-50 16l-10-12m126 12q2-36-38-38-14 6-12 22 26-4 50 16l10-12"></path>
+        <circle class="gem" cx="66" cy="128" r="4.5"></circle>
+        <circle class="gem" cx="134" cy="128" r="4.5"></circle>
+        <g transform="translate(38 2) scale(0.62)">
         <ellipse class="skin" cx="56" cy="122" rx="8" ry="13"></ellipse>
         <ellipse class="skin" cx="144" cy="122" rx="8" ry="13"></ellipse>
         <path class="skin" d="M56 102c0-28 20-46 44-46s44 18 44 46c0 28-4 46-14 60-10 14-20 22-30 22s-20-8-30-22c-10-14-14-32-14-60z"></path>
@@ -154,6 +197,9 @@ const strings = es
         <path class="teeth" d="M83 150q17 4 34 0v4.5q-17 4-34 0zm0 6q17 4 34 0v3.5q-17 4.5-34 0z"></path>
         <path class="teeth-gaps" d="M89 150v11m6-10v11m5-11v11m5-11v11m6-10v10"></path>
         <path class="cheekbone" d="M64 126q8 12 22 14m50-14q-8 12-22 14M70 148q6 18 18 28m42-28q-6 18-18 28M108 80l-3 6 4 5-3 7"></path>
+        </g>
+        <path class="gold" d="M66 46q34-14 68 0l-2 6q-32-12-64 0z"></path>
+        <path class="gem" d="M100 30l5 8-5 8-5-8z"></path>
       </svg>
 
       <span class="me__bleat" data-bleat aria-hidden="true"></span>
@@ -236,7 +282,7 @@ const strings = es
     // The glowing eyes look at the pointer.
     me.addEventListener('pointermove', (event) => {
       for (const eye of eyes) {
-        const box = eye.ownerSVGElement!.getBoundingClientRect();
+        const box = eye.getBoundingClientRect();
         const dx = event.clientX - (box.left + box.width / 2);
         const dy = event.clientY - (box.top + box.height / 2);
         const length = Math.hypot(dx, dy) || 1;
@@ -391,9 +437,9 @@ const strings = es
   .me {
     --ink: #140f22;
     --paper: #fff;
-    --violet: #8f5cf0;
+    --alliance: #1d4b9e;
     --night: #120d20;
-    --body: clamp(200px, 34vw, 270px);
+    --body: clamp(160px, 26vw, 210px);
     position: relative;
     display: grid;
     place-items: center;
@@ -401,7 +447,7 @@ const strings = es
     margin: var(--space-2) 0 var(--space-6);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    background: var(--violet);
+    background: var(--alliance);
     color: var(--ink);
     font-family: 'Permanent Marker', var(--font-display);
     user-select: none;
@@ -471,6 +517,10 @@ const strings = es
     visibility: hidden;
   }
 
+  /* The ink would sink into the Alliance blue: the human scene writes in white. */
+  .me__scene--human {
+    color: var(--paper);
+  }
   .me__who,
   .me__kind {
     position: absolute;
@@ -505,7 +555,7 @@ const strings = es
   .me__head {
     position: relative;
     z-index: 3;
-    margin-top: 5rem;
+    margin-top: 8.5rem;
     padding: 0;
     border: 0;
     background: none;
@@ -525,7 +575,7 @@ const strings = es
     position: relative;
     display: block;
     width: var(--body);
-    aspect-ratio: 200 / 220;
+    aspect-ratio: 200 / 400;
     animation: idle 3.2s ease-in-out infinite;
   }
   .me.is-held .me__body {
@@ -692,6 +742,30 @@ const strings = es
   .portrait .lips {
     fill: #c27a68;
   }
+  .portrait .robe {
+    fill: #4b2a7a;
+  }
+  .portrait .robe-panel {
+    fill: #7b4fc4;
+  }
+  .portrait .gold {
+    fill: #e8b84a;
+  }
+  .portrait .gold-line {
+    fill: none;
+    stroke: #e8b84a;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .portrait .gem {
+    fill: #ff4fd8;
+    stroke: #e8b84a;
+    stroke-width: 1.5;
+  }
+  .portrait .boot {
+    fill: #2a1840;
+  }
   .portrait .bone {
     fill: #ece6d6;
   }
@@ -835,8 +909,8 @@ const strings = es
   /* Right next to the head, the arrow almost touching his ear. */
   .note--me,
   .note--still {
-    right: calc(50% + var(--body) * 0.3);
-    top: calc(50% + 2.4rem);
+    right: calc(50% + var(--body) * 0.42);
+    top: calc(50% + 3.6rem - var(--body) * 0.61);
     transform: rotate(-7deg);
   }
   .note--still {
@@ -932,7 +1006,7 @@ const strings = es
     }
     .note--me,
     .note--still {
-      right: calc(50% + var(--body) * 0.28);
+      right: calc(50% + var(--body) * 0.4);
       max-width: 26%;
       flex-wrap: wrap;
       justify-content: flex-end;
