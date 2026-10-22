@@ -1,8 +1,8 @@
 ---
 /**
  * Top of the about page, in the spirit of adrienlamy.fr: a hand-drawn author on
- * one bold colour, where every gesture is a Mage spell. His eyes follow the
- * pointer and light up with Arcane Intellect on hover. Click: Polymorph, he
+ * one bold colour, where every gesture is a Mage spell. The Mage himself is
+ * the in-game model, rendered by Wowhead. Click: Polymorph, he
  * becomes a sheep for a while. Drag: he leaves an arcane trail, and letting go
  * far away casts Blink. A toggle swaps the Human in Dalaran for what he plays
  * in Forever: a Forsaken in the ruins of Lordaeron, as Warcraft III ends. The
@@ -12,6 +12,7 @@
 import '@fontsource/permanent-marker';
 import { getLocale } from '../../i18n/locale';
 
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const es = getLocale(Astro) === 'es';
 const strings = es
   ? {
@@ -107,118 +108,14 @@ const strings = es
 
   <button class="me__head" type="button" aria-label={strings.label} data-head>
     <span class="me__body" data-body>
-      <!-- The author as a clean flat portrait, head from a photo: hair swept back with a fallen lock, faded sides, an Italian beard and a trimmed moustache. -->
-      <svg class="art art--human portrait" viewBox="0 0 200 400" aria-hidden="true">
-        <!-- Full body in the Arcanist Regalia, the Mage Tier 1 set from Molten Core: violet robe with gold trim, domed mantle with gems, belt and crown. -->
-        <rect class="skin" x="92" y="108" width="16" height="22" rx="4"></rect>
-        <path class="robe" d="M66 138q-22 52-32 124 14 10 32 4 4-56 14-106zm68 0q22 52 32 124-14 10-32 4-4-56-14-106z"></path>
-        <path class="gold-line" d="M34 262q14 10 32 4m100-4q-14 10-32 4"></path>
-        <ellipse class="skin" cx="50" cy="276" rx="9" ry="11"></ellipse>
-        <ellipse class="skin" cx="150" cy="276" rx="9" ry="11"></ellipse>
-        <ellipse class="boot" cx="84" cy="390" rx="14" ry="7"></ellipse>
-        <ellipse class="boot" cx="116" cy="390" rx="14" ry="7"></ellipse>
-        <path class="robe" d="M70 128q30-8 60 0l20 122 18 136q-68 10-136 0l18-136z"></path>
-        <path class="robe-panel" d="M90 140h20l14 248q-24 4-48 0z"></path>
-        <path class="gold-line" d="M90 140l-14 248m34-248 14 248M32 386q68 10 136 0"></path>
-        <path class="gold" d="M93 296l7-10 7 10-7 10zm2 44 5-8 5 8-5 8z"></path>
-        <path class="gold" d="M53 236q47 12 94 0l1 14q-48 12-96 0z"></path>
-        <circle class="gem" cx="100" cy="249" r="6"></circle>
-        <path class="gold-line" d="M76 126l24 32 24-32"></path>
-        <path class="robe-panel" d="M42 152q-2-36 38-38 14 6 12 22-26-4-50 16zm116 0q2-36-38-38-14 6-12 22 26-4 50 16z"></path>
-        <path class="gold-line" d="M42 152q-2-36 38-38 14 6 12 22-26-4-50 16l-10-12m126 12q2-36-38-38-14 6-12 22 26-4 50 16l10-12"></path>
-        <circle class="gem" cx="66" cy="128" r="4.5"></circle>
-        <circle class="gem" cx="134" cy="128" r="4.5"></circle>
-        <g transform="translate(38 2) scale(0.62)">
-        <ellipse class="skin" cx="56" cy="122" rx="8" ry="13"></ellipse>
-        <ellipse class="skin" cx="144" cy="122" rx="8" ry="13"></ellipse>
-        <path class="skin" d="M56 102c0-28 20-46 44-46s44 18 44 46c0 28-4 46-14 60-10 14-20 22-30 22s-20-8-30-22c-10-14-14-32-14-60z"></path>
-        <path class="skin-shade" d="M138 108c0 30-6 50-20 64 14-6 22-22 24-42 1-8 0-16-4-22z"></path>
-        <path class="hair-fill fade" d="M56 110c-2-16 2-28 8-34l4 30zm88 0c2-16-2-28-8-34l-4 30z"></path>
-        <path class="hair-fill" d="M57 92c-6-34 14-60 48-62 30-2 50 16 48 50-2 6-4 10-8 12-2-8-8-14-16-16-12-6-30-8-46-4-12 4-20 10-26 20z"></path>
-        <path class="hair-fill" d="M68 50c12-22 46-32 74-18 6 4 10 8 12 14-12-8-30-10-46-6-16 4-28 8-40 10z"></path>
-        <path class="hair-fill" d="M116 64c16 2 28 14 28 32-4-8-10-14-18-16 2 8 0 14-4 18-1-12-2-24-6-34z"></path>
-        <path class="hair-shine" d="M74 56c18-14 44-18 66-10M66 74c18-12 42-16 66-12"></path>
-        <path class="hair-fill" d="M70 100c8-6 18-7 26-3l-1 4c-8-3-17-2-24 3z"></path>
-        <path class="hair-fill" d="M130 100c-8-6-18-7-26-3l1 4c8-3 17-2 24 3z"></path>
-        <path fill="#fff" d="M73 114q11-8 22 0-11 6-22 0z"></path>
-        <path fill="#fff" d="M105 114q11-8 22 0-11 6-22 0z"></path>
-        <g data-eye><circle class="iris" cx="84" cy="113.5" r="4"></circle><circle fill="#fff" cx="85.3" cy="112.2" r="1.2"></circle></g>
-        <g data-eye><circle class="iris" cx="116" cy="113.5" r="4"></circle><circle fill="#fff" cx="117.3" cy="112.2" r="1.2"></circle></g>
-        <path class="lid" d="M73 114q11-9 22 0m10 0q11-9 22 0"></path>
-        <path class="nose" d="M101 112l3 26q-3 4-9 2"></path>
-        <path class="beard" d="M58 132c2 20 12 38 26 48 6 4 10 5 16 5s10-1 16-5c14-10 24-28 26-48-4 14-10 24-18 30-6 6-14 10-24 10s-18-4-24-10c-8-6-14-16-18-30z"></path>
-        <path class="beard" d="M86 148c6-4 11-3 14-1 3-2 8-3 14 1-5 2-10 2-14 2s-9 0-14-2z"></path>
-        <path class="lips" d="M90 155q10 6 20 0-10 2-20 0z"></path>
-        <path class="mouth" d="M89 154q11 4 22-1"></path>
-        <path class="beard" d="M97 162l3 9 3-9z"></path>
-        </g>
-        <path class="gold" d="M66 46q34-14 68 0l-2 6q-32-12-64 0z"></path>
-        <path class="gem" d="M100 30l5 8-5 8-5-8z"></path>
-      </svg>
+      <!-- The author's Human Mage in Arcanist Mantle and Robes, as rendered by Wowhead's model viewer (outfit 207954). -->
+      <img class="art art--human art--model" src={`${base}about/human-mage.webp`} width="450" height="600" alt="" draggable="false" />
 
-      <!-- Polymorph: the same author, as a sheep. -->
-      <svg class="art art--sheep" viewBox="0 -110 200 400" aria-hidden="true">
-        <g class="ink">
-          <path class="fill-ink" d="M70 172v30m20-28v30m24-30v30m20-32v30"></path>
-          <path class="fill-paper" d="M44 122c-10-22 8-46 30-42 6-20 36-24 48-8 20-10 44 6 40 28 20 8 18 38-2 44 2 22-24 34-42 22-14 14-40 12-48-6-22 2-36-22-26-38z"></path>
-          <ellipse class="fill-ink" cx="100" cy="116" rx="26" ry="32"></ellipse>
-          <ellipse class="fill-ink" cx="68" cy="100" rx="16" ry="7" transform="rotate(-20 68 100)"></ellipse>
-          <ellipse class="fill-ink" cx="132" cy="100" rx="16" ry="7" transform="rotate(20 132 100)"></ellipse>
-          <circle class="fill-paper" cx="89" cy="110" r="7"></circle>
-          <circle class="fill-paper" cx="111" cy="110" r="7"></circle>
-          <circle class="fill-ink" cx="90" cy="111" r="3"></circle>
-          <circle class="fill-ink" cx="112" cy="111" r="3"></circle>
-          <path class="stroke-paper" d="M92 134q4 4 8 0 4 4 8 0"></path>
-        </g>
-      </svg>
+      <!-- Polymorph: the game's own sheep (classic model, display 856), the same one PolymorphSheep.astro uses. -->
+      <img class="art art--sheep art--model" src={`${base}art/polymorph-sheep.webp`} width="147" height="252" alt="" draggable="false" />
 
-      <!-- The same Mage as a Forsaken, the WoW way: bone-white gaunt face, sunken cheeks, lank hair, glowing yellow eyes in deep sockets, no nose, the jaw bone bare on one side, a torn ear and a stitched forehead. -->
-      <svg class="art art--forsaken portrait portrait--undead" viewBox="0 0 200 400" aria-hidden="true">
-        <!-- Full body in the Arcanist Regalia, the Mage Tier 1 set from Molten Core: violet robe with gold trim, domed mantle with gems, belt and crown. -->
-        <rect class="skin" x="92" y="108" width="16" height="22" rx="4"></rect>
-        <path class="robe" d="M66 138q-22 52-32 124 14 10 32 4 4-56 14-106zm68 0q22 52 32 124-14 10-32 4-4-56-14-106z"></path>
-        <path class="gold-line" d="M34 262q14 10 32 4m100-4q-14 10-32 4"></path>
-        <ellipse class="skin" cx="50" cy="276" rx="9" ry="11"></ellipse>
-        <ellipse class="skin" cx="150" cy="276" rx="9" ry="11"></ellipse>
-        <ellipse class="boot" cx="84" cy="390" rx="14" ry="7"></ellipse>
-        <ellipse class="boot" cx="116" cy="390" rx="14" ry="7"></ellipse>
-        <path class="robe" d="M70 128q30-8 60 0l20 122 18 136q-68 10-136 0l18-136z"></path>
-        <path class="robe-panel" d="M90 140h20l14 248q-24 4-48 0z"></path>
-        <path class="gold-line" d="M90 140l-14 248m34-248 14 248M32 386q68 10 136 0"></path>
-        <path class="gold" d="M93 296l7-10 7 10-7 10zm2 44 5-8 5 8-5 8z"></path>
-        <path class="gold" d="M53 236q47 12 94 0l1 14q-48 12-96 0z"></path>
-        <circle class="gem" cx="100" cy="249" r="6"></circle>
-        <path class="gold-line" d="M76 126l24 32 24-32"></path>
-        <path class="robe-panel" d="M42 152q-2-36 38-38 14 6 12 22-26-4-50 16zm116 0q2-36-38-38-14 6-12 22 26-4 50 16z"></path>
-        <path class="gold-line" d="M42 152q-2-36 38-38 14 6 12 22-26-4-50 16l-10-12m126 12q2-36-38-38-14 6-12 22 26-4 50 16l10-12"></path>
-        <circle class="gem" cx="66" cy="128" r="4.5"></circle>
-        <circle class="gem" cx="134" cy="128" r="4.5"></circle>
-        <g transform="translate(38 2) scale(0.62)">
-        <ellipse class="skin" cx="60" cy="120" rx="7" ry="12"></ellipse>
-        <path class="skin" d="M142 112l12-14-2 16 5 5-9 15z"></path>
-        <path class="skin" d="M60 100c0-28 18-46 40-46s40 18 40 46c0 26-4 42-10 54-6 12-14 24-30 26-16-2-24-14-30-26-6-12-10-28-10-54z"></path>
-        <path class="skin-shade" d="M134 108c0 28-6 46-18 60 12-4 20-20 22-40 1-8 0-14-4-20z"></path>
-        <path class="hollow" d="M66 126q4 20 18 26-14 0-20-12zm68 0q-4 20-18 26 14 0 20-12z"></path>
-        <path class="hair-fill" d="M60 92c-4-30 14-52 42-52 26 0 42 18 40 46-6-14-16-22-30-24-10 4-22 2-30 0-10 6-18 16-22 30z"></path>
-        <path class="strand" d="M62 88q-9 30-4 64m10-70q-7 26-1 52m71-46q9 30 2 62m-8-68q5 24-1 46"></path>
-        <path class="skin-shade" d="M68 104q14-10 30-2l-2 6q-14-6-28 2zm64 0q-14-10-30-2l2 6q14-6 28 2z"></path>
-        <ellipse class="socket" cx="84" cy="115" rx="11" ry="7"></ellipse>
-        <ellipse class="socket" cx="116" cy="115" rx="11" ry="7"></ellipse>
-        <circle class="glow" cx="84" cy="115" r="4.6" data-eye></circle>
-        <circle class="glow" cx="116" cy="115" r="4.6" data-eye></circle>
-        <path class="socket" d="M100 125l-6 14h12z"></path>
-        <path class="socket" d="M80 150q20 8 40 0l-2 10q-18 8-36 0z"></path>
-        <path class="teeth" d="M82 151q18 6 36 0v4.5q-18 6-36 0z"></path>
-        <path class="teeth-gaps" d="M88 152v6m6-5v6m6-6v6m6-6v6m6-6v5"></path>
-        <path class="socket" d="M114 146q14-4 20-16l-4 24q-6 10-16 12z"></path>
-        <path class="bone" d="M117 159q10-4 15-17l-2 14q-4 9-13 11z"></path>
-        <path class="teeth-gaps" d="M121 156v6m5-9v6"></path>
-        <path class="cheekbone" d="M64 124q8 10 20 12m52-12q-8 10-20 12"></path>
-        <path class="stitch" d="M88 70l22 10m-18-7-3 7m9-3-3 7m9-3-3 7"></path>
-        </g>
-        <path class="gold" d="M66 46q34-14 68 0l-2 6q-32-12-64 0z"></path>
-        <path class="gem" d="M100 30l5 8-5 8-5-8z"></path>
-      </svg>
+      <!-- The same Mage as a Forsaken in the full Arcanist set, as rendered by Wowhead's model viewer (outfit 448386). -->
+      <img class="art art--forsaken art--model" src={`${base}about/undead-mage.webp`} width="450" height="600" alt="" draggable="false" />
 
       <span class="me__bleat" data-bleat aria-hidden="true"></span>
     </span>
@@ -234,7 +131,6 @@ const strings = es
     const head = me.querySelector<HTMLButtonElement>('[data-head]')!;
     const body = me.querySelector<HTMLElement>('[data-body]')!;
     const bleat = me.querySelector<HTMLElement>('[data-bleat]')!;
-    const eyes = [...me.querySelectorAll<SVGGraphicsElement>('[data-eye]')];
     const boil = me.querySelector('[data-boil]');
 
     // Cartoon line boil: a new noise seed a few times a second.
@@ -296,17 +192,6 @@ const strings = es
       running = true;
       requestAnimationFrame(frame);
     };
-
-    // The glowing eyes look at the pointer.
-    me.addEventListener('pointermove', (event) => {
-      for (const eye of eyes) {
-        const box = eye.getBoundingClientRect();
-        const dx = event.clientX - (box.left + box.width / 2);
-        const dy = event.clientY - (box.top + box.height / 2);
-        const length = Math.hypot(dx, dy) || 1;
-        eye.style.transform = `translate(${(dx / length) * 5}px, ${(dy / length) * 4}px)`;
-      }
-    });
 
     const say = (text: string) => {
       bleat.textContent = text;
@@ -461,7 +346,7 @@ const strings = es
     --paper: #fff;
     --lilac: #c4a8f4;
     --night: #120d20;
-    --body: clamp(160px, 26vw, 210px);
+    --body: clamp(240px, 36vw, 330px);
     position: relative;
     display: grid;
     place-items: center;
@@ -699,7 +584,7 @@ const strings = es
     position: relative;
     display: block;
     width: var(--body);
-    aspect-ratio: 200 / 400;
+    aspect-ratio: 450 / 600;
     animation: idle 3.2s ease-in-out infinite;
   }
   .me.is-held .me__body {
@@ -722,6 +607,8 @@ const strings = es
       transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   .art--sheep {
+    top: 44%;
+    height: 52%;
     opacity: 0;
     transform: scale(0.6);
   }
@@ -759,15 +646,6 @@ const strings = es
     }
   }
 
-  /* Hover (or a grab): Arcane Intellect lights his eyes. */
-  .iris {
-    transition: fill 0.25s ease;
-  }
-  .me__head:is(:hover, :focus-visible) .portrait .iris,
-  .me.is-held .portrait .iris {
-    fill: #3fa4ff;
-    filter: drop-shadow(0 0 4px #9fe0ff);
-  }
   .me :global(.me__trail) {
     position: absolute;
     z-index: 2;
@@ -786,175 +664,17 @@ const strings = es
     }
   }
 
-  .ink {
-    fill: none;
-    stroke: var(--ink);
-    stroke-width: 5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .fill-ink {
-    fill: var(--ink);
-  }
-  .fill-paper {
-    fill: var(--paper);
-  }
-  .stroke-paper {
-    stroke: var(--paper);
-  }
-  .fade {
-    opacity: 0.3;
-    stroke: none;
-  }
-  .thin {
-    stroke-width: 2.5;
-  }
-  [data-eye] {
-    transition: transform 0.15s ease-out;
-  }
-  /* The portrait: clean flat shapes, no ink boil, so the author looks his best. */
-  .portrait {
-    --skin: #f0c8a8;
-    --skin-shade: #d9a582;
-    --hair: #1d1724;
-    filter: drop-shadow(0 10px 14px rgb(20 15 34 / 0.3));
-  }
-  .portrait--undead {
-    --skin: #ebe8e1;
-    --skin-shade: #c4beb3;
-    --hair: #3a3346;
-  }
-  .portrait .skin {
-    fill: var(--skin);
-  }
-  .portrait .skin-shade {
-    fill: var(--skin-shade);
-  }
-  .portrait .hair-fill {
-    fill: var(--hair);
-  }
-  .portrait .fade {
-    opacity: 0.55;
-  }
-  .portrait .hair-shine {
-    fill: none;
-    stroke: #4a3f5e;
-    stroke-width: 2;
-    stroke-linecap: round;
-  }
-  .portrait .iris {
-    fill: #3b2516;
-  }
-  .portrait .lid {
-    fill: none;
-    stroke: var(--hair);
-    stroke-width: 2.2;
-    stroke-linecap: round;
-  }
-  .portrait .nose,
-  .portrait .mouth {
-    fill: none;
-    stroke: #a8705a;
-    stroke-width: 2.2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .portrait .beard {
-    fill: var(--hair);
-    opacity: 0.9;
-  }
-  .portrait .lips {
-    fill: #c27a68;
-  }
-  .portrait .robe {
-    fill: #4b2a7a;
-  }
-  .portrait .robe-panel {
-    fill: #7b4fc4;
-  }
-  .portrait .gold {
-    fill: #e8b84a;
-  }
-  .portrait .gold-line {
-    fill: none;
-    stroke: #e8b84a;
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .portrait .gem {
-    fill: #ff4fd8;
-    stroke: #e8b84a;
-    stroke-width: 1.5;
-  }
-  .portrait .boot {
-    fill: #2a1840;
-  }
-  .portrait .bone {
-    fill: #ece6d6;
-  }
-  .portrait .bone-shade {
-    fill: #cbbfa4;
-  }
-  .portrait .hollow {
-    fill: #9e978b;
-    opacity: 0.8;
-  }
-  .portrait .strand {
-    fill: none;
-    stroke: var(--hair);
-    stroke-width: 3;
-    stroke-linecap: round;
-  }
-  .portrait .stitch {
-    fill: none;
-    stroke: #2c2230;
-    stroke-width: 2;
-    stroke-linecap: round;
-  }
-  .portrait .socket {
-    fill: #1b1626;
-  }
-  .portrait .cheekbone {
-    fill: none;
-    stroke: #a8a39a;
-    stroke-width: 2.4;
-    stroke-linecap: round;
-  }
-  .portrait .teeth {
-    fill: #f6f1e4;
-  }
-  .portrait .teeth-gaps {
-    fill: none;
-    stroke: #1b1626;
-    stroke-width: 1.8;
-  }
-  /* On the night scene the ink would vanish: a white sticker outline and grey-violet hair. */
-  .art--forsaken {
-    filter: drop-shadow(2.5px 0 0 #fff) drop-shadow(-2.5px 0 0 #fff) drop-shadow(0 2.5px 0 #fff) drop-shadow(0 -2.5px 0 #fff);
-  }
-  .glow {
-    fill: #ffd100;
-    filter: drop-shadow(0 0 4px #ffd100);
-    transition: transform 0.15s ease-out;
-    animation: flicker 2.6s steps(1) infinite;
-  }
-  @keyframes flicker {
-    0%,
-    92% {
-      opacity: 1;
-    }
-    94% {
-      opacity: 0.2;
-    }
-    96% {
-      opacity: 1;
-    }
+  /* The in-game renders: a white sticker outline and a soft shadow, so they read on both scenes. */
+  .art--model {
+    object-fit: contain;
+    filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)
+      drop-shadow(0 10px 14px rgb(20 15 34 / 0.45));
+    -webkit-user-drag: none;
   }
   .me__bleat {
     position: absolute;
-    left: 74%;
-    top: 14%;
+    left: 66%;
+    top: 38%;
     padding: 2px 10px;
     border: 3px solid var(--ink);
     border-radius: 14px 14px 14px 3px;
@@ -1149,7 +869,6 @@ const strings = es
     .me__body,
     .me__scene--forsaken::after,
     .dl-gem,
-    .glow,
     .note--click svg {
       animation: none;
     }
