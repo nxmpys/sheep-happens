@@ -11,7 +11,7 @@
     "url": "https://www.curseforge.com/wow/addons/mageprocs",
     "host": "CurseForge",
     "listing": "live",
-    "version": "1.4.0",
+    "version": "1.6.0",
     "release": "release",
     "game": { "version": "1.60.1", "interface": 16001 },
     "languages": ["es", "en"],
@@ -139,8 +139,8 @@
       { "command": "/mp test", "what": { "es": "Prueba las alertas activadas.", "en": "Previews the enabled alerts." } },
       { "command": "/mp move", "what": { "es": "Coloca las alertas sobre una cuadrícula.", "en": "Places the alerts over a grid." } },
       { "command": "/mp reset", "what": { "es": "Vuelve a los lugares y tamaños por defecto.", "en": "Back to the default places and sizes." } },
-      { "command": "/mp buffs", "what": { "es": "Lista tus beneficios fuera de combate con su ID; útil para confirmar procs de la beta.", "en": "Lists your buffs out of combat with their ID; handy to confirm beta procs." } },
-      { "command": "/mp status", "what": { "es": "Qué puede leer de cada proc; inclúyelo si informas de un fallo.", "en": "What it can read for each proc; include it in bug reports." } }
+      { "command": "/mp buffs", "what": { "es": "Lista tus beneficios fuera de combate con su ID; útil si informas de un fallo.", "en": "Lists your buffs out of combat with their ID; handy for bug reports." } },
+      { "command": "/mp status", "what": { "es": "Qué puede leer de cada proc y si lo ve en combate; inclúyelo si informas de un fallo.", "en": "What it can read for each proc and whether it sees it in combat; include it in bug reports." } }
     ],
     "install": [
       {
@@ -148,28 +148,24 @@
         "en": "Install it with the CurseForge app (World of Warcraft, WoW Forever flavor) or extract the file into the Interface\\AddOns folder of your WoW Forever install."
       },
       {
-        "es": "Escribe /mp en el juego. Calentamiento viene activado, y los procs de tus talentos se activan solos la primera vez que un personaje los tiene. Presencia mental y el contador de Explosión Arcana los activas tú. El temporizador de Polimorfia viene activado (en Temporizadores) y los sonidos, desactivados (pestaña Visualización > Sonido).",
-        "en": "Type /mp in game. Heating Up is on from the start, and the procs of your talents turn on by themselves the first time a character has them. Presence of Mind and the Arcane Blast tracker are yours to switch on. The Polymorph timer is on by default (under Timers) and sounds are off (Display tab > Sound)."
+        "es": "Escribe /mp en el juego. Calentamiento viene activado, y los procs de tus talentos se activan solos la primera vez que un personaje los tiene. Presencia mental y el contador de Explosión Arcana los activas tú. El temporizador de Polimorfia y los sonidos de los procs vienen activados (Temporizadores y General > Sonidos).",
+        "en": "Type /mp in game. Heating Up is on from the start, and the procs of your talents turn on by themselves the first time a character has them. Presence of Mind and the Arcane Blast tracker are yours to switch on. The Polymorph timer and the proc sounds are on by default (Timers and General > Sounds)."
       }
     ],
     "limitations": [
       {
-        "es": "La mayoría de los procs llega con talentos de nivel alto y aún no se ha confirmado en el juego, igual que el temporizador de Polimorfia y el x2 de Dedos de Escarcha de la 1.4.0: si los usas, tus comentarios en CurseForge ayudan.",
-        "en": "Most procs come from high-level talents and have not been confirmed in game yet, nor have 1.4.0's Polymorph timer and Fingers of Frost x2: if you use them, your feedback on CurseForge helps."
+        "es": "En combate, MageProcs lee los procs a través del gestor de tiempos de reutilización del juego (Cooldown Manager). Lo activa por ti si hace falta y queda invisible; si ya lo usabas, no lo toca.",
+        "en": "In combat, MageProcs reads the procs through the game's Cooldown Manager. It switches it on for you when needed and keeps it invisible; if you already used it, it leaves it as it was."
       },
       {
-        "es": "Para ver Dedos de Escarcha en combate, ponlo en los beneficios rastreados del gestor de tiempos de reutilización del juego (Cooldown Manager); su icono puede quedar oculto. Con Libre lanzamiento activo no distingue Tromba de misiles.",
-        "en": "To see Fingers of Frost in combat, put it in the Tracked Buffs of the game's Cooldown Manager; its icon can stay hidden. While Clearcasting is up it cannot tell Missile Barrage apart."
-      },
-      {
-        "es": "El contador de Explosión Arcana cuenta tus lanzamientos: en combate no puede ver el efecto en sí.",
-        "en": "The Arcane Blast tracker counts your casts: in combat it cannot see the effect itself."
+        "es": "Dedos de Escarcha se ve en combate aunque no esté en los beneficios rastreados del Cooldown Manager, con la alerta del propio juego. Añádelo ahí si quieres la alerta animada de MageProcs.",
+        "en": "Fingers of Frost shows in combat even if it is not in the Cooldown Manager's Tracked Buffs, with the game's own alert. Add it there for MageProcs's animated alert."
       },
       {
         "es": "No incluye Combustión, Poder Arcano ni efectos sobre el objetivo, como Impacto, Mordiescarcha o Escalofrío del invierno.",
         "en": "It leaves out Combustion, Arcane Power and effects on the target, such as Impact, Frostbite or Winter's Chill."
       }
     ],
-    "checked": "2026-10-20"
+    "checked": "2026-10-22"
   }
 ]
