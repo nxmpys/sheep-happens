@@ -46,10 +46,35 @@ const entries = [
       </div>
       <button class="grimoire__cover" type="button" aria-expanded="true" aria-controls="grimoire-page" data-grimoire-toggle data-labels={JSON.stringify({ open: copy.open, close: copy.close })}>
         <span class="grimoire__front" aria-hidden="true">
-          <svg viewBox="0 0 100 100" class="grimoire__sigil">
-            <circle cx="50" cy="50" r="34"></circle>
-            <circle cx="50" cy="50" r="27" stroke-dasharray="2 5"></circle>
-            <path d="M50 22L56 44L78 46L60 58L66 80L50 66L34 80L40 58L22 46L44 44Z"></path>
+          <!-- A Mage's tome: leather over boards, a spine, thin gilt corners and a Kirin Tor-style eye in a rune circle. -->
+          <svg viewBox="0 0 300 400" class="grimoire__art">
+            <defs>
+              <linearGradient id="tome-spine" x1="0" x2="1">
+                <stop offset="0" stop-color="#140a1f" />
+                <stop offset="0.6" stop-color="#2a1640" />
+                <stop offset="1" stop-color="#1a0e28" />
+              </linearGradient>
+              <radialGradient id="tome-iris">
+                <stop offset="0" stop-color="#ffffff" />
+                <stop offset="0.35" stop-color="#e2ccff" />
+                <stop offset="0.7" stop-color="#a46bff" />
+                <stop offset="1" stop-color="#4a2196" />
+              </radialGradient>
+              <radialGradient id="tome-glow">
+                <stop offset="0" stop-color="#b98bff" stop-opacity="0.55" />
+                <stop offset="1" stop-color="#b98bff" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <rect width="30" height="400" fill="url(#tome-spine)" />
+            <path class="grimoire__line grimoire__line--thin" d="M30 0V400" />
+            <path class="grimoire__line" d="M262 22H282V42M282 358V378H262M70 378H50V358M50 42V22H70" />
+            <rect class="grimoire__line grimoire__line--thin" x="58" y="30" width="216" height="340" rx="3" />
+            <circle cx="166" cy="200" r="80" fill="url(#tome-glow)" class="grimoire__pulse" />
+            <circle class="grimoire__line" cx="166" cy="200" r="54" />
+            <circle class="grimoire__line grimoire__line--thin" cx="166" cy="200" r="46" stroke-dasharray="2 6" />
+            <path class="grimoire__eye" d="M128 200Q166 170 204 200Q166 230 128 200Z" />
+            <circle cx="166" cy="200" r="12" fill="url(#tome-iris)" class="grimoire__pulse" />
+            <circle cx="166" cy="200" r="3.5" fill="#1a0f2b" />
           </svg>
         </span>
         <span class="grimoire__back" aria-hidden="true">
@@ -210,24 +235,51 @@ const entries = [
     border-radius: inherit;
     backface-visibility: hidden;
   }
+  /* Leather cover; the stepped shadows to the right and below are the page block and the back board. */
   .grimoire__front {
+    overflow: hidden;
     background:
-      radial-gradient(80% 60% at 50% 40%, rgb(169 139 255 / 0.25), transparent 70%),
-      linear-gradient(135deg, #3b2350, #1c1029);
-    border: 2px solid #c9a24f;
+      radial-gradient(90% 70% at 58% 42%, #4d2b6b, #2c1743 58%, #170c24),
+      #2c1743;
     box-shadow:
-      inset 0 0 0 8px #241634,
-      inset 0 0 0 10px rgb(201 162 79 / 0.6),
-      0 20px 40px rgb(0 0 0 / 0.5);
+      3px 3px 0 #f1e6ca,
+      5px 5px 0 #d8c7a0,
+      7px 7px 0 #bba97e,
+      9px 9px 0 #1f1030,
+      0 24px 44px rgb(0 0 0 / 0.55);
   }
-  .grimoire__sigil {
-    width: 52%;
+  .grimoire__art {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+  .grimoire__line {
     fill: none;
+    stroke: #d6b25e;
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+  .grimoire__line--thin {
+    stroke-width: 1.2;
+    stroke-opacity: 0.7;
+  }
+  .grimoire__eye {
+    fill: #1a0f2b;
     stroke: #e5c97f;
     stroke-width: 2;
   }
-  .grimoire__sigil path {
-    fill: rgb(229 201 127 / 0.2);
+  @media (prefers-reduced-motion: no-preference) {
+    .grimoire__pulse {
+      animation: tome-pulse 3.6s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+  }
+  @keyframes tome-pulse {
+    50% {
+      opacity: 0.7;
+      transform: scale(0.94);
+    }
   }
   .grimoire__back {
     transform: rotateY(180deg);

@@ -2,7 +2,8 @@
 /**
  * Top of the home page: why this guide exists, in the author's words, over
  * the Mage library, with the launch countdown, the grimoire (three ways in)
- * and the button to the guide beside it. It was the last chapter of the
+ * and the button to the guide beside it. On phones the countdown, the book
+ * and the button come first, right under the site name, and the text after. It was the last chapter of the
  * about page story and shares its look: always dark, Fraunces and Nunito.
  * The site name heads it in the header's Cinzel Decorative; the page title
  * is the small kicker under it (the page's h1).
@@ -33,9 +34,11 @@ const copy = STORY_COPY[locale].guide;
 <section class="welcome" data-no-spell-links aria-labelledby="welcome-title">
   <div class="welcome__backdrop" aria-hidden="true"><StoryArt name="grimoire" locale={locale} eager /></div>
   <div class="welcome__inner">
-    <div class="welcome__copy">
+    <div class="welcome__head">
       <p class="welcome__brand">Sheep Happens</p>
       <h1 class="welcome__kicker">{pageTitle}</h1>
+    </div>
+    <div class="welcome__copy">
       <h2 class="welcome__title" id="welcome-title">{copy.title}</h2>
       {copy.body.map((text) => <p class="welcome__text">{text}</p>)}
       <p class="welcome__line">{copy.welcome}</p>
@@ -88,16 +91,25 @@ const copy = STORY_COPY[locale].guide;
     inset: 0;
     background: linear-gradient(90deg, rgb(14 13 22 / 0.88), rgb(14 13 22 / 0.55) 55%, rgb(14 13 22 / 0.2));
   }
+  /* Phones: name, then countdown, book and button, then the text. */
   .welcome__inner {
     position: relative;
     display: grid;
+    grid-template-areas: 'head' 'aside' 'copy';
     gap: var(--space-7);
     align-items: center;
     max-width: var(--page-max);
     margin-inline: auto;
     padding-inline: var(--gutter);
   }
+  .welcome__head {
+    grid-area: head;
+    display: grid;
+    gap: var(--space-4);
+    text-align: center;
+  }
   .welcome__copy {
+    grid-area: copy;
     display: grid;
     gap: var(--space-4);
   }
@@ -161,13 +173,22 @@ const copy = STORY_COPY[locale].guide;
   }
   /* The countdown sits over the book, with room to breathe. */
   .welcome__aside {
+    grid-area: aside;
     display: grid;
     justify-items: center;
     gap: var(--space-7);
   }
   @media (min-width: 900px) {
+    /* Wide screens: name and text together on the left, centred against the book on the right. */
     .welcome__inner {
       grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+      grid-template-rows: 1fr auto auto 1fr;
+      grid-template-areas: '. aside' 'head aside' 'copy aside' '. aside';
+      row-gap: 0;
+    }
+    .welcome__head {
+      margin-bottom: var(--space-4);
+      text-align: left;
     }
   }
 </style>
