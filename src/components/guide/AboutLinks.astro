@@ -1,45 +1,82 @@
 ---
 /**
- * Where to go from the about page: big arrow rows. The email row opens the
- * mail app; its action button copies the address instead.
+ * End of the about page: «Say hi» as a letter. The email is the address line
+ * (it opens the mail app; the button copies it), and the other ways to find
+ * me are its postscripts. It continues the story's dark band and type.
  */
+import '@fontsource/permanent-marker';
+import '@fontsource-variable/fraunces/soft.css';
+import '@fontsource-variable/fraunces/soft-italic.css';
+import '@fontsource-variable/nunito/wght.css';
+import Logo from '../ui/Logo.astro';
 import { getLocale, href } from '../../i18n/locale';
 
 const locale = getLocale(Astro);
 const es = locale === 'es';
 const email = 'hello@sheephappens.app';
 const strings = es
-  ? { copy: 'Copiar', copied: '¡Copiado!', guide: 'La guía', start: 'Empezar', addon: 'Ver addon', follow: 'Seguir en X' }
-  : { copy: 'Copy', copied: 'Copied!', guide: 'The guide', start: 'Start', addon: 'See addon', follow: 'Follow on X' };
-const rows = [
-  { label: strings.guide, action: strings.start, url: href('learn', locale) },
-  { label: 'MageProcs', action: strings.addon, url: href('addons', locale) },
-  { label: 'x.com/nxmpys', action: strings.follow, url: 'https://x.com/nxmpys', external: true },
-];
+  ? {
+      title: 'Escríbeme',
+      lead: '¿Has visto un dato mal, tienes una duda o solo quieres hablar del Mago? Mándame una carta. Bueno, un correo.',
+      to: 'Para',
+      copy: 'Copiar',
+      copied: '¡Copiado!',
+      sign: 'Nxmpys',
+    }
+  : {
+      title: 'Say hi',
+      lead: 'Spotted a wrong number, have a question or just want to talk Mage? Send me a letter. Well, an email.',
+      to: 'To',
+      copy: 'Copy',
+      copied: 'Copied!',
+      sign: 'Nxmpys',
+    };
+const postscripts = es
+  ? [
+      { tag: 'P. D.', before: '¿Perdido? ', link: 'La guía empieza aquí', after: '.', url: href('learn', locale) },
+      { tag: 'P. P. D.', before: 'También hago ', link: 'MageProcs', after: ', un addon de alertas de procs.', url: href('addons', locale) },
+      { tag: 'P. P. P. D.', before: 'Estoy en X como ', link: '@nxmpys', after: '.', url: 'https://x.com/nxmpys', external: true },
+    ]
+  : [
+      { tag: 'P.S.', before: 'Lost? ', link: 'The guide starts here', after: '.', url: href('learn', locale) },
+      { tag: 'P.P.S.', before: 'I also make ', link: 'MageProcs', after: ', a proc alert addon.', url: href('addons', locale) },
+      { tag: 'P.P.P.S.', before: 'I’m on X as ', link: '@nxmpys', after: '.', url: 'https://x.com/nxmpys', external: true },
+    ];
 ---
 
-<ul class="links">
-  {
-    rows.map((row) => (
-      <li>
-        <a class="links__row" href={row.url} {...(row.external && { target: '_blank', rel: 'noopener' })}>
-          <span class="links__arrow" aria-hidden="true">→</span>
-          <span class="links__label">{row.label}</span>
-          <span class="links__action">{row.action}</span>
-        </a>
-      </li>
-    ))
-  }
-  <li class="links__email">
-    <a class="links__row" href={`mailto:${email}`}>
-      <span class="links__arrow" aria-hidden="true">→</span>
-      <span class="links__label">{email}</span>
-    </a>
-    <button class="links__action links__copy" type="button" data-copy-email={JSON.stringify({ email, copied: strings.copied, copy: strings.copy })}>
-      <span data-copy-label aria-live="polite">{strings.copy}</span>
-    </button>
-  </li>
-</ul>
+<section class="mail" data-no-spell-links aria-labelledby="say-hi">
+  <div class="mail__inner">
+    <div class="mail__intro">
+      <h2 class="mail__title" id="say-hi">{strings.title}</h2>
+      <p class="mail__lead">{strings.lead}</p>
+    </div>
+
+    <div class="letter">
+      <span class="letter__seal" aria-hidden="true"><Logo size={40} /></span>
+      <p class="letter__to">{strings.to}:</p>
+      <div class="letter__address">
+        <a class="letter__email" href={`mailto:${email}`}>{email}</a>
+        <button class="letter__copy" type="button" data-copy-email={JSON.stringify({ email, copied: strings.copied, copy: strings.copy })}>
+          <span data-copy-label aria-live="polite">{strings.copy}</span>
+        </button>
+      </div>
+      <ul class="letter__ps">
+        {
+          postscripts.map((ps) => (
+            <li>
+              <span class="letter__tag">{ps.tag}</span> {ps.before}
+              <a href={ps.url} {...(ps.external && { target: '_blank', rel: 'noopener' })}>
+                {ps.link}
+              </a>
+              {ps.after}
+            </li>
+          ))
+        }
+      </ul>
+      <p class="letter__sign">— {strings.sign}</p>
+    </div>
+  </div>
+</section>
 
 <script>
   import { copyText } from '../../scripts/clipboard';
@@ -62,86 +99,204 @@ const rows = [
 </script>
 
 <style>
-  .links {
-    margin: var(--space-5) 0 var(--space-6);
-    padding: 0;
-    list-style: none;
-    border-top: 2px solid var(--text);
+  /* Full width, right under the story, in its dark band. */
+  :global(body:has(.mail)) {
+    overflow-x: clip;
   }
-  .links li {
+  .mail {
+    --font-display: 'Fraunces Variable', 'Spectral', Georgia, serif;
+    --font-body: 'Nunito Variable', 'Inter Variable', system-ui, sans-serif;
+    color-scheme: dark;
     position: relative;
-    margin: 0;
-    border-bottom: 2px solid var(--text);
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    margin-top: 0 !important;
+    padding-block: clamp(4rem, 12vh, 8rem);
+    background:
+      radial-gradient(50% 60% at 80% 50%, rgb(169 139 255 / 0.12), transparent 70%),
+      #0e0d16;
+    color: #ecebf4;
+    font-family: var(--font-body);
+    font-variation-settings: 'SOFT' 100;
   }
-  .links__row {
+  .mail__inner {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    gap: var(--space-7);
+    align-items: center;
+    max-width: var(--page-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  .mail__intro {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .mail__title {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 1.5rem + 3vw, 3.6rem);
+    line-height: 1.05;
+    color: #fff8ec;
+  }
+  .mail__title::before {
+    background: #cfa6ff;
+  }
+  .mail__lead {
+    max-width: 30rem;
+    margin: 0;
+    font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
+    line-height: 1.6;
+    color: #d9d6e8;
+  }
+
+  /* The letter: parchment, slightly askew, straightening up when you come close. */
+  .letter {
+    position: relative;
+    display: grid;
+    gap: var(--space-4);
+    width: min(100%, 34rem);
+    justify-self: center;
+    padding: clamp(1.5rem, 1rem + 3vw, 2.75rem);
+    border-radius: 6px;
+    background:
+      repeating-linear-gradient(180deg, transparent 0 31px, rgb(120 84 40 / 0.12) 31px 32px),
+      radial-gradient(120% 90% at 20% 10%, #f8eed8, #e6d3ab);
+    box-shadow:
+      0 30px 60px rgb(0 0 0 / 0.5),
+      inset 0 0 40px rgb(120 84 40 / 0.25);
+    color: #2b1d10;
+    transform: rotate(-1.5deg);
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .letter:hover,
+  .letter:focus-within {
+    transform: rotate(0);
+  }
+  /* A wax seal with the sheep pressed in. */
+  .letter__seal {
+    position: absolute;
+    top: -22px;
+    right: clamp(1rem, 4vw, 2rem);
+    display: grid;
+    place-items: center;
+    width: 68px;
+    height: 68px;
+    border-radius: 47% 53% 50% 50% / 52% 48% 52% 48%;
+    background: radial-gradient(circle at 35% 30%, #c2465a, #8a1c30 60%, #5e1020);
+    box-shadow:
+      0 6px 14px rgb(0 0 0 / 0.4),
+      inset 0 -3px 6px rgb(0 0 0 / 0.35),
+      inset 0 2px 4px rgb(255 255 255 / 0.25);
+    color: #f6d9c4;
+    transform: rotate(12deg);
+  }
+  .letter__seal :global(.logo) {
+    fill: currentColor;
+    opacity: 0.85;
+  }
+  .letter__seal :global(.logo *) {
+    fill: currentColor;
+  }
+  .letter__to {
+    margin: 0;
+    font-family: 'Permanent Marker', var(--font-display);
+    font-size: var(--step-1);
+    color: #7a3fd1;
+  }
+  .letter__address {
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: var(--space-3);
-    width: 100%;
-    min-height: 64px;
-    padding: var(--space-2) 0;
-    border: 0;
-    background: none;
-    color: var(--text);
-    font: inherit;
-    text-align: left;
-    text-decoration: none;
-    cursor: pointer;
+    padding-bottom: var(--space-4);
+    border-bottom: 2px dashed rgb(120 84 40 / 0.35);
   }
-  .links__arrow {
-    font-size: var(--step-2);
-    transition: transform 0.25s ease;
-  }
-  .links__label {
+  .letter__email {
     min-width: 0;
     font-family: var(--font-display);
-    font-size: var(--step-2);
+    font-size: clamp(1.25rem, 1rem + 1.2vw, 1.75rem);
     font-weight: 700;
+    color: #2b1d10;
+    text-decoration: underline;
+    text-decoration-color: rgb(122 63 209 / 0.4);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
     overflow-wrap: anywhere;
   }
-  .links__action {
-    font-size: var(--step--1);
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-muted);
+  .letter__email:hover {
+    color: #5b2fc4;
+    text-decoration-color: currentColor;
   }
-  .links__row:hover .links__arrow,
-  .links__row:focus-visible .links__arrow {
-    transform: translateX(8px);
-    color: var(--accent);
-  }
-  .links__row:hover .links__label {
-    color: var(--accent);
-  }
-  .links__email {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: var(--space-3);
-    align-items: center;
-  }
-  @media (max-width: 480px) {
-    .links__email .links__label {
-      font-size: var(--step-0);
-    }
-  }
-  .links__copy {
-    min-height: 44px;
-    padding: 0 var(--space-3);
-    border: 2px solid var(--text);
+  .letter__copy {
+    min-height: 40px;
+    padding: 0 var(--space-4);
+    border: 2px solid #2b1d10;
     border-radius: 999px;
     background: none;
-    font-family: inherit;
+    color: #2b1d10;
+    font: inherit;
+    font-size: var(--step--1);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     cursor: pointer;
   }
-  .links__copy:hover {
-    background: var(--text);
-    color: var(--bg);
+  .letter__copy:hover {
+    background: #2b1d10;
+    color: #f8eed8;
   }
-  .links__copy.is-copied {
-    border-color: var(--status-verified);
-    color: var(--status-verified);
+  .letter__copy.is-copied {
+    border-color: #13723f;
+    color: #13723f;
     background: none;
+  }
+  .letter__ps {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 1.6;
+    color: #4a3520;
+  }
+  .letter__ps li {
+    margin: 0 !important;
+  }
+  .letter__tag {
+    font-family: 'Permanent Marker', var(--font-display);
+    color: #7a3fd1;
+  }
+  .letter__ps a {
+    color: #5b2fc4;
+    font-weight: 700;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .letter__ps a:hover {
+    color: #3f1a99;
+  }
+  .letter a:focus-visible,
+  .letter__copy:focus-visible {
+    outline: 3px solid #b25d00;
+    outline-offset: 3px;
+  }
+  .letter__sign {
+    justify-self: end;
+    margin: 0;
+    font-family: 'Permanent Marker', var(--font-display);
+    font-size: var(--step-2);
+    color: #2b1d10;
+    transform: rotate(-4deg);
+  }
+  @media (min-width: 900px) {
+    .mail__inner {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .letter {
+      transform: none;
+    }
   }
 </style>

@@ -51,7 +51,12 @@ if (story && 'IntersectionObserver' in window) {
       (entry) => {
         if (!entry.isIntersecting) return;
         const step = entry.target as HTMLElement;
+        if (stage.dataset.active === step.dataset.step) return;
         stage.dataset.active = step.dataset.step;
+        // Replays the chapter's change effect (fel slash or arcane ring) from the start.
+        stage.classList.remove('is-shifting');
+        void stage.offsetWidth;
+        stage.classList.add('is-shifting');
         steps.forEach((other) => other.classList.toggle('is-active', other === step));
         syncVideos();
       },

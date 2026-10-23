@@ -21,6 +21,7 @@ import '@fontsource-variable/fraunces/soft-italic.css';
 import '@fontsource-variable/nunito/wght.css';
 import ChapterLabel from './ChapterLabel.astro';
 import StoryArt from './StoryArt.astro';
+import StoryFrame from './StoryFrame.astro';
 import StoryHero from './StoryHero.astro';
 import StoryProgress from './StoryProgress.astro';
 import StoryTimeline from './StoryTimeline.astro';
@@ -47,6 +48,7 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
     <div class="story__inner split">
       <figure class="split__art" data-reveal data-mask>
         <StoryArt name="warlock" locale={locale} />
+        <StoryFrame variant="pandaria" />
       </figure>
       <div class="split__copy">
         <ChapterLabel text={copy.pandaria.chapter} />
@@ -81,6 +83,7 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
             </div>
           ))
         }
+        <StoryFrame variant="fel" />
         <ol class="stage__captions">
           {copy.hunter.steps.map((step, i) => <li data-caption={i}>{step.caption}</li>)}
         </ol>
@@ -110,11 +113,12 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
       <div class="scrolly__stage" data-stage data-active="0" aria-hidden="true">
         {
           classicLayers.map((name, i) => (
-            <div class:list={['layer', name === 'forever' && 'layer--portal']} data-layer={i}>
+            <div class="layer" data-layer={i}>
               <StoryArt name={name} locale={locale} />
             </div>
           ))
         }
+        <StoryFrame variant="arcane" />
         <ol class="stage__captions">
           {copy.classic.steps.map((step, i) => <li data-caption={i}>{step.caption}</li>)}
         </ol>
@@ -296,6 +300,7 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
     align-items: center;
   }
   .split__art {
+    position: relative;
     margin: 0;
     aspect-ratio: 4 / 3;
     border-radius: var(--radius-lg);
@@ -336,6 +341,9 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
     height: calc(100svh - var(--header-h));
     overflow: hidden;
     margin-inline: calc(-1 * var(--gutter));
+    /* Its own compositing layer: playing video inside a pinned box no longer shivers while scrolling. */
+    isolation: isolate;
+    transform: translateZ(0);
   }
   .scrolly__steps {
     position: relative;
@@ -384,6 +392,7 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
   .layer {
     position: absolute;
     inset: 0;
+    backface-visibility: hidden;
     transition:
       opacity 0.8s ease,
       clip-path 1.2s cubic-bezier(0.6, 0, 0.2, 1),
@@ -391,7 +400,8 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
   }
   .stage__captions {
     position: absolute;
-    left: var(--space-5);
+    z-index: 6;
+    left: clamp(3.25rem, 5vw + 1rem, 5rem);
     top: var(--space-5);
     margin: 0;
     padding: 0;
@@ -435,14 +445,99 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
     opacity: 1;
     transform: none;
   }
-  /* Forever does not fade in: it opens from the middle like a portal. */
-  .layer--portal {
+  /*
+   * The change of picture carries the chapter's class, briefly (under a second):
+   * II wipes on a slant with a fel-green glaive edge, III comes into focus out of
+   * an arcane shimmer (blurred and glowing, then sharp) under a violet glow. The
+   * new picture sits on top and the old one
+   * only collapses once it is covered, so nothing flashes black in either direction.
+   */
+  .scene--hunter .layer,
+  .scene--classic .layer {
+    z-index: 1;
     opacity: 1;
     transform: none;
-    clip-path: circle(0% at 50% 55%);
+    transition: clip-path 0s 1s;
   }
-  [data-active='2'] .layer--portal {
-    clip-path: circle(75% at 50% 55%);
+  .scene--hunter .layer {
+    clip-path: polygon(0 0, 0 0, -30% 100%, -30% 100%);
+  }
+  .scene--classic .layer {
+    opacity: 0;
+    filter: blur(12px) brightness(1.5) saturate(1.3);
+    transition:
+      opacity 0s 1s,
+      filter 0s 1s;
+  }
+  .scene--hunter [data-active='0'] [data-layer='0'],
+  .scene--hunter [data-active='1'] [data-layer='1'],
+  .scene--hunter [data-active='2'] [data-layer='2'],
+  .scene--hunter [data-active='3'] [data-layer='3'] {
+    z-index: 2;
+    clip-path: polygon(0 0, 130% 0, 100% 100%, -30% 100%);
+    transition: clip-path 0.9s cubic-bezier(0.65, 0, 0.25, 1);
+  }
+  .scene--classic [data-active='0'] [data-layer='0'],
+  .scene--classic [data-active='1'] [data-layer='1'],
+  .scene--classic [data-active='2'] [data-layer='2'] {
+    z-index: 2;
+    opacity: 1;
+    filter: none;
+    transition:
+      opacity 0.7s ease,
+      filter 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  /* The effect over the change: drawn only while the stage has .is-shifting (about-story.ts). */
+  .scene--hunter .scrolly__stage::after,
+  .scene--classic .scrolly__stage::after {
+    content: '';
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+  }
+  .scene--hunter .scrolly__stage::after {
+    inset: -10% auto -10% 0;
+    width: 12%;
+    background: linear-gradient(90deg, transparent, rgb(124 255 58 / 0.5) 40%, rgb(226 255 190 / 0.85) 55%, transparent);
+    filter: blur(2px);
+    mix-blend-mode: screen;
+    transform: translateX(-150%) skewX(-14deg);
+  }
+  .scene--hunter .scrolly__stage:global(.is-shifting)::after {
+    animation: fel-slash 0.9s cubic-bezier(0.65, 0, 0.25, 1);
+  }
+  .scene--classic .scrolly__stage::after {
+    inset: 0;
+    background: radial-gradient(70% 60% at 50% 50%, rgb(207 166 255 / 0.45), rgb(120 80 220 / 0.15) 60%, transparent 80%);
+    mix-blend-mode: screen;
+  }
+  .scene--classic .scrolly__stage:global(.is-shifting)::after {
+    animation: arcane-glow 1s ease-out;
+  }
+  @keyframes fel-slash {
+    0% {
+      opacity: 1;
+      transform: translateX(-150%) skewX(-14deg);
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(950%) skewX(-14deg);
+    }
+  }
+  @keyframes arcane-glow {
+    0% {
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
   }
 
   @media (min-width: 900px) {

@@ -1,0 +1,136 @@
+---
+/**
+ * A decorative frame laid over a story picture, in the chapter's style:
+ * Pandaria (gold and jade, cloud-scroll corners), fel (Demon Hunter green,
+ * thorned corners and a glow) or arcane (Mage violet, rune circles). Four
+ * drawn corners plus inset border lines; it never catches the pointer.
+ */
+interface Props {
+  variant: 'pandaria' | 'fel' | 'arcane';
+}
+
+const { variant } = Astro.props;
+const corners = ['tl', 'tr', 'br', 'bl'];
+---
+
+<span class:list={['frame', `frame--${variant}`]} aria-hidden="true">
+  {
+    corners.map((corner) => (
+      <svg class:list={['frame__corner', `frame__corner--${corner}`]} viewBox="0 0 64 64">
+        {variant === 'pandaria' && (
+          <>
+            <path class="frame__line" d="M6 58V18Q6 6 18 6H58" />
+            <path class="frame__line frame__line--soft" d="M12 58V22Q12 12 22 12H58" />
+            <path class="frame__line" d="M20 30q0-10 10-10q8 0 8 8q0 6-6 6q-4 0-4-4" />
+            <path class="frame__fill" d="M44 6l4-4 4 4-4 4zM6 44l-4 4 4 4 4-4z" />
+          </>
+        )}
+        {variant === 'fel' && (
+          <>
+            <path class="frame__line" d="M5 60V5H60" />
+            <path class="frame__fill" d="M5 5L34 11L15 15L11 34Z" />
+            <path class="frame__fill" d="M40 5l7 9 3-9zM5 40l9 7-9 3z" />
+          </>
+        )}
+        {variant === 'arcane' && (
+          <>
+            <path class="frame__line" d="M30 6H60M6 30V60" />
+            <path class="frame__line frame__line--soft" d="M30 11H60M11 30V60" />
+            <circle class="frame__line" cx="17" cy="17" r="11" />
+            <circle class="frame__line frame__line--soft" cx="17" cy="17" r="7" stroke-dasharray="2 3" />
+            <path class="frame__fill" d="M17 10l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" />
+          </>
+        )}
+      </svg>
+    ))
+  }
+</span>
+
+<style>
+  .frame {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  .frame__corner {
+    position: absolute;
+    width: clamp(40px, 5vw, 64px);
+    height: auto;
+    max-width: none;
+    overflow: visible;
+  }
+  .frame__corner--tl {
+    top: 6px;
+    left: 6px;
+  }
+  .frame__corner--tr {
+    top: 6px;
+    right: 6px;
+    transform: scaleX(-1);
+  }
+  .frame__corner--br {
+    right: 6px;
+    bottom: 6px;
+    transform: scale(-1);
+  }
+  .frame__corner--bl {
+    bottom: 6px;
+    left: 6px;
+    transform: scaleY(-1);
+  }
+  .frame__line {
+    fill: none;
+    stroke: var(--frame-a);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .frame__line--soft {
+    stroke: var(--frame-b);
+    stroke-width: 1.5;
+  }
+  .frame__fill {
+    fill: var(--frame-a);
+  }
+
+  /* Pandaria: gold leaf with a jade inner line, like a temple panel. */
+  .frame--pandaria {
+    --frame-a: #e5c97f;
+    --frame-b: #6fc79a;
+    box-shadow:
+      inset 0 0 0 2px rgb(229 201 127 / 0.85),
+      inset 0 0 0 7px rgb(14 13 22 / 0.35),
+      inset 0 0 0 8px rgb(111 199 154 / 0.55);
+  }
+  .frame--pandaria .frame__corner {
+    filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.6));
+  }
+
+  /* Demon Hunter: a thin fel edge that glows, thorned corners. */
+  .frame--fel {
+    --frame-a: #9dff6a;
+    --frame-b: #4fd12a;
+    box-shadow:
+      inset 0 0 0 1.5px rgb(157 255 106 / 0.8),
+      inset 0 0 28px rgb(124 255 58 / 0.3);
+  }
+  .frame--fel .frame__corner {
+    filter: drop-shadow(0 0 6px rgb(124 255 58 / 0.8));
+  }
+
+  /* Mage: a double violet line with a rune circle in each corner. */
+  .frame--arcane {
+    --frame-a: #dcc2ff;
+    --frame-b: #a98bff;
+    box-shadow:
+      inset 0 0 0 1px rgb(220 194 255 / 0.8),
+      inset 0 0 0 6px rgb(14 13 22 / 0.3),
+      inset 0 0 0 7px rgb(169 139 255 / 0.5),
+      inset 0 0 30px rgb(169 139 255 / 0.25);
+  }
+  .frame--arcane .frame__corner {
+    filter: drop-shadow(0 0 5px rgb(169 139 255 / 0.8));
+  }
+</style>
