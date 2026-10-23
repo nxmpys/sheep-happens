@@ -1,19 +1,24 @@
 ---
 /**
- * A decorative frame laid over a story picture, in the chapter's style:
- * Pandaria (gold and jade, cloud-scroll corners), fel (Demon Hunter green,
- * thorned corners and a glow) or arcane (Mage violet, rune circles). Four
- * drawn corners plus inset border lines; it never catches the pointer.
+ * A decorative frame laid over one story picture, in the style of what the
+ * picture shows (story-images.ts picks it): Pandaria gold and jade, fel
+ * thorns, loa bone and spirit blue, Shadowlands silver and embers, dragon
+ * scales, Mage fire, arcane runes (violet, or fel green for TBC) or classic
+ * WoW gold. Four drawn corners plus
+ * inset border lines and a glow; it never catches the pointer.
  */
+import { FRAME_COLORS, type FrameStyle } from './story-images';
+
 interface Props {
-  variant: 'pandaria' | 'fel' | 'arcane';
+  variant: FrameStyle;
 }
 
 const { variant } = Astro.props;
 const corners = ['tl', 'tr', 'br', 'bl'];
+const colors = FRAME_COLORS[variant];
 ---
 
-<span class:list={['frame', `frame--${variant}`]} aria-hidden="true">
+<span class="frame" style={`--frame-a: ${colors.a}; --frame-b: ${colors.b}; --frame-glow: ${colors.glow}`} aria-hidden="true">
   {
     corners.map((corner) => (
       <svg class:list={['frame__corner', `frame__corner--${corner}`]} viewBox="0 0 64 64">
@@ -32,13 +37,51 @@ const corners = ['tl', 'tr', 'br', 'bl'];
             <path class="frame__fill" d="M40 5l7 9 3-9zM5 40l9 7-9 3z" />
           </>
         )}
-        {variant === 'arcane' && (
+        {variant === 'loa' && (
+          <>
+            <path class="frame__line" d="M6 58V20Q6 6 20 6H58" />
+            <path class="frame__fill" d="M9 9Q32 10 38 34Q28 20 11 19Z" />
+            <circle class="frame__fill frame__fill--soft" cx="46" cy="6" r="3" />
+            <circle class="frame__fill frame__fill--soft" cx="6" cy="46" r="3" />
+          </>
+        )}
+        {variant === 'shadow' && (
+          <>
+            <path class="frame__line" d="M6 58V6H58" />
+            <path class="frame__line frame__line--soft" d="M12 58V12H58" />
+            <path class="frame__fill" d="M6 6h22l-7 7h-8v8l-7 7z" />
+            <path class="frame__fill frame__fill--soft" d="M40 3l3 3-3 3-3-3zM3 40l3-3 3 3-3 3z" />
+          </>
+        )}
+        {variant === 'dragon' && (
+          <>
+            <path class="frame__line" d="M6 58V18Q6 6 18 6H58" />
+            <path class="frame__line frame__line--soft" d="M10 34a8 8 0 0 1 16 0M18 24a8 8 0 0 1 16 0M26 14a8 8 0 0 1 16 0" />
+            <path class="frame__fill" d="M8 8l14 3-6 5-5 6z" />
+          </>
+        )}
+        {variant === 'fire' && (
+          <>
+            <path class="frame__line" d="M6 58V14Q6 6 14 6H58" />
+            <path class="frame__fill" d="M8 8C24 9 30 20 22 34C20 24 15 23 9 28C12 20 10 14 8 8Z" />
+            <path class="frame__fill frame__fill--soft" d="M30 8c8 1 11 6 8 12c-1-4-4-5-7-3c2-3 1-6-1-9zM8 30c1 8 6 11 12 8c-4-1-5-4-3-7c-3 2-6 1-9-1z" />
+          </>
+        )}
+        {(variant === 'arcane' || variant === 'felrune') && (
           <>
             <path class="frame__line" d="M30 6H60M6 30V60" />
             <path class="frame__line frame__line--soft" d="M30 11H60M11 30V60" />
             <circle class="frame__line" cx="17" cy="17" r="11" />
             <circle class="frame__line frame__line--soft" cx="17" cy="17" r="7" stroke-dasharray="2 3" />
             <path class="frame__fill" d="M17 10l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" />
+          </>
+        )}
+        {variant === 'classic' && (
+          <>
+            <path class="frame__line" d="M6 58V6H58" />
+            <path class="frame__line frame__line--soft" d="M12 58V12H58" />
+            <path class="frame__fill" d="M6 6h12l-12 12zM30 6l4 4-4 4-4-4zM6 30l4 4-4 4-4-4z" />
+            <circle class="frame__fill frame__fill--soft" cx="19" cy="19" r="3.5" />
           </>
         )}
       </svg>
@@ -53,13 +96,19 @@ const corners = ['tl', 'tr', 'br', 'bl'];
     z-index: 5;
     border-radius: inherit;
     pointer-events: none;
+    box-shadow:
+      inset 0 0 0 1.5px color-mix(in srgb, var(--frame-a) 85%, transparent),
+      inset 0 0 0 6px rgb(14 13 22 / 0.3),
+      inset 0 0 0 7px color-mix(in srgb, var(--frame-b) 55%, transparent),
+      inset 0 0 28px color-mix(in srgb, var(--frame-glow) 30%, transparent);
   }
   .frame__corner {
     position: absolute;
-    width: clamp(40px, 5vw, 64px);
+    width: clamp(36px, 5vw, 64px);
     height: auto;
     max-width: none;
     overflow: visible;
+    filter: drop-shadow(0 0 5px color-mix(in srgb, var(--frame-glow) 70%, transparent));
   }
   .frame__corner--tl {
     top: 6px;
@@ -94,43 +143,7 @@ const corners = ['tl', 'tr', 'br', 'bl'];
   .frame__fill {
     fill: var(--frame-a);
   }
-
-  /* Pandaria: gold leaf with a jade inner line, like a temple panel. */
-  .frame--pandaria {
-    --frame-a: #e5c97f;
-    --frame-b: #6fc79a;
-    box-shadow:
-      inset 0 0 0 2px rgb(229 201 127 / 0.85),
-      inset 0 0 0 7px rgb(14 13 22 / 0.35),
-      inset 0 0 0 8px rgb(111 199 154 / 0.55);
-  }
-  .frame--pandaria .frame__corner {
-    filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.6));
-  }
-
-  /* Demon Hunter: a thin fel edge that glows, thorned corners. */
-  .frame--fel {
-    --frame-a: #9dff6a;
-    --frame-b: #4fd12a;
-    box-shadow:
-      inset 0 0 0 1.5px rgb(157 255 106 / 0.8),
-      inset 0 0 28px rgb(124 255 58 / 0.3);
-  }
-  .frame--fel .frame__corner {
-    filter: drop-shadow(0 0 6px rgb(124 255 58 / 0.8));
-  }
-
-  /* Mage: a double violet line with a rune circle in each corner. */
-  .frame--arcane {
-    --frame-a: #dcc2ff;
-    --frame-b: #a98bff;
-    box-shadow:
-      inset 0 0 0 1px rgb(220 194 255 / 0.8),
-      inset 0 0 0 6px rgb(14 13 22 / 0.3),
-      inset 0 0 0 7px rgb(169 139 255 / 0.5),
-      inset 0 0 30px rgb(169 139 255 / 0.25);
-  }
-  .frame--arcane .frame__corner {
-    filter: drop-shadow(0 0 5px rgb(169 139 255 / 0.8));
+  .frame__fill--soft {
+    fill: var(--frame-b);
   }
 </style>

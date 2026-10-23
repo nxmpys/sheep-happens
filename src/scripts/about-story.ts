@@ -33,6 +33,9 @@ if (story && 'IntersectionObserver' in window) {
     story.querySelectorAll('[data-reveal]').forEach((element) => reveal.observe(element));
   }
 
+  // The ambient light: chapter colours come from CSS; inside chapters II and III each step tints it with its picture's frame.
+  const glow = story.querySelector<HTMLElement>('.story__glow');
+
   for (const scrolly of story.querySelectorAll<HTMLElement>('[data-scrolly]')) {
     const stage = scrolly.querySelector<HTMLElement>('[data-stage]')!;
     const steps = [...scrolly.querySelectorAll<HTMLElement>('[data-step]')];
@@ -51,6 +54,7 @@ if (story && 'IntersectionObserver' in window) {
       (entry) => {
         if (!entry.isIntersecting) return;
         const step = entry.target as HTMLElement;
+        if (glow && step.dataset.glow) glow.style.color = step.dataset.glow;
         if (stage.dataset.active === step.dataset.step) return;
         stage.dataset.active = step.dataset.step;
         // Replays the chapter's change effect (fel slash or arcane ring) from the start.
@@ -74,11 +78,24 @@ if (story && 'IntersectionObserver' in window) {
     }
   }
 
+  // Phones show each step's own picture instead of the stage: its live wallpaper plays while it is on screen.
+  const stepVideos = watch(
+    (entry) => {
+      const video = entry.target as HTMLVideoElement;
+      if (!calm && entry.isIntersecting) video.play().catch(() => {});
+      else if (!video.paused) video.pause();
+    },
+    { threshold: 0.4 },
+  );
+  story.querySelectorAll<HTMLVideoElement>('.step__media [data-story-video]').forEach((video) => stepVideos.observe(video));
+
   const links = [...story.querySelectorAll<HTMLAnchorElement>('[data-progress-link]')];
   const chapters = watch((entry) => {
     if (!entry.isIntersecting) return;
     const chapter = entry.target as HTMLElement;
     story.dataset.chapter = chapter.dataset.chapter;
+    // Outside the pinned chapters the chapter colour takes over again.
+    if (glow && !chapter.querySelector('[data-scrolly]')) glow.style.removeProperty('color');
     for (const link of links) {
       if (link.dataset.progressLink === chapter.id) link.setAttribute('aria-current', 'step');
       else link.removeAttribute('aria-current');

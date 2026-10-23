@@ -8,8 +8,8 @@
  * or reduced motion; the pictures then simply stay on their first state.
  *
  * The band is always dark (color-scheme: dark), whatever the site theme, and
- * its ambient light changes colour with the chapter: Pandaria gold, fel
- * green, Classic blue, arcane violet.
+ * its ambient light changes colour with the chapter (Pandaria gold, fel
+ * green, Classic blue) and, in the pinned chapters, with each picture's frame.
  *
  * Type: Fraunces (soft axis) for titles and Nunito for the text, looser and
  * friendlier than the guide's Spectral/Inter; the story swaps the site's
@@ -26,7 +26,7 @@ import StoryHero from './StoryHero.astro';
 import StoryProgress from './StoryProgress.astro';
 import StoryTimeline from './StoryTimeline.astro';
 import { STORY_COPY } from './story-copy';
-import type { StoryArtName } from './story-images';
+import { FRAME_COLORS, STORY_IMAGES, type StoryArtName } from './story-images';
 import { getLocale } from '../../i18n/locale';
 
 const locale = getLocale(Astro);
@@ -35,6 +35,10 @@ const chapterIds = ['story-start', 'chapter-1', 'chapter-2', 'chapter-3'];
 // One picture per step of the pinned scenes, in step order.
 const hunterLayers: StoryArtName[] = ['hunter', 'bfa', 'shadowlands', 'dragonflight'];
 const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
+/** Captions wear their picture's frame colour. */
+const captionColor = (name: StoryArtName) => `color: ${FRAME_COLORS[STORY_IMAGES[name].frame].a}`;
+/** The ambient light behind a step: its picture's frame glow (about-story.ts applies it). */
+const glowOf = (name: StoryArtName) => FRAME_COLORS[STORY_IMAGES[name].frame].glow;
 ---
 
 <div class="story" data-story data-chapter="0" data-no-spell-links aria-label={copy.label}>
@@ -48,7 +52,7 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
     <div class="story__inner split">
       <figure class="split__art" data-reveal data-mask>
         <StoryArt name="warlock" locale={locale} />
-        <StoryFrame variant="pandaria" />
+        <StoryFrame variant={STORY_IMAGES.warlock.frame} />
       </figure>
       <div class="split__copy">
         <ChapterLabel text={copy.pandaria.chapter} />
@@ -68,7 +72,7 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
     </div>
   </section>
 
-  {/* Chapter II: the Demon Hunter, Mythic+, Shadowlands and the calmer expansions, the picture pinned while the text moves on. */}
+  {/* Chapter II: the Demon Hunter, Mythic+, Shadowlands and the calmer expansions. On wide screens the picture stays pinned while the text moves on. */}
   <section class="scene scene--hunter" id="chapter-2" data-chapter="2" aria-labelledby="chapter-2-title">
     <header class="story__inner scene__head">
       <ChapterLabel text={copy.hunter.chapter} />
@@ -80,18 +84,24 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
           hunterLayers.map((name, i) => (
             <div class="layer" data-layer={i}>
               <StoryArt name={name} locale={locale} />
+              <StoryFrame variant={STORY_IMAGES[name].frame} />
             </div>
           ))
         }
-        <StoryFrame variant="fel" />
         <ol class="stage__captions">
-          {copy.hunter.steps.map((step, i) => <li data-caption={i}>{step.caption}</li>)}
+          {copy.hunter.steps.map((step, i) => <li data-caption={i} style={captionColor(hunterLayers[i]!)}>{step.caption}</li>)}
         </ol>
       </div>
       <ol class="scrolly__steps">
         {
           copy.hunter.steps.map((step, i) => (
-            <li class="step" data-step={i}>
+            <li class="step" data-step={i} data-glow={glowOf(hunterLayers[i]!)}>
+              {/* Phones show each step's picture right above its text instead of the pinned stage. */}
+              <figure class="step__media" data-reveal>
+                <StoryArt name={hunterLayers[i]!} locale={locale} />
+                <StoryFrame variant={STORY_IMAGES[hunterLayers[i]!].frame} />
+                <figcaption class="step__caption" style={captionColor(hunterLayers[i]!)}>{step.caption}</figcaption>
+              </figure>
               <div class="step__box">
                 <p>{step.text}</p>
                 {step.note && <p class="marker marker--fel">{step.note}</p>}
@@ -103,7 +113,7 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
     </div>
   </section>
 
-  {/* Chapter III: the Mage in Classic, the Dark Portal for TBC, then Forever opens like a portal of its own. */}
+  {/* Chapter III: the Mage in Classic and TBC, then Forever. */}
   <section class="scene scene--classic" id="chapter-3" data-chapter="3" aria-labelledby="chapter-3-title">
     <header class="story__inner scene__head">
       <ChapterLabel text={copy.classic.chapter} />
@@ -115,18 +125,24 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
           classicLayers.map((name, i) => (
             <div class="layer" data-layer={i}>
               <StoryArt name={name} locale={locale} />
+              <StoryFrame variant={STORY_IMAGES[name].frame} />
             </div>
           ))
         }
-        <StoryFrame variant="arcane" />
         <ol class="stage__captions">
-          {copy.classic.steps.map((step, i) => <li data-caption={i}>{step.caption}</li>)}
+          {copy.classic.steps.map((step, i) => <li data-caption={i} style={captionColor(classicLayers[i]!)}>{step.caption}</li>)}
         </ol>
       </div>
       <ol class="scrolly__steps">
         {
           copy.classic.steps.map((step, i) => (
-            <li class="step" data-step={i}>
+            <li class="step" data-step={i} data-glow={glowOf(classicLayers[i]!)}>
+              {/* Phones show each step's picture right above its text instead of the pinned stage. */}
+              <figure class="step__media" data-reveal>
+                <StoryArt name={classicLayers[i]!} locale={locale} />
+                <StoryFrame variant={STORY_IMAGES[classicLayers[i]!].frame} />
+                <figcaption class="step__caption" style={captionColor(classicLayers[i]!)}>{step.caption}</figcaption>
+              </figure>
               <div class="step__box">
                 <p>{step.text}</p>
                 {step.punch && <p class="step__punch">{step.punch}</p>}
@@ -330,17 +346,19 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
   }
 
   /* ---- Pinned picture with text steps (chapters II and III) ---- */
+  /*
+   * Phones: no pinning. Each step is its own landscape picture with the text
+   * under it. Wide screens (below) pin one stage beside the text instead.
+   */
   .scrolly {
     display: grid;
   }
   .scrolly__stage {
+    display: none;
     position: sticky;
-    top: var(--header-h);
-    grid-area: 1 / 1;
     align-self: start;
-    height: calc(100svh - var(--header-h));
     overflow: hidden;
-    margin-inline: calc(-1 * var(--gutter));
+    border-radius: var(--radius-lg);
     /* Its own compositing layer: playing video inside a pinned box no longer shivers while scrolling. */
     isolation: isolate;
     transform: translateZ(0);
@@ -348,27 +366,49 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
   .scrolly__steps {
     position: relative;
     z-index: 1;
-    grid-area: 1 / 1;
+    display: grid;
+    gap: var(--space-7);
     margin: 0;
-    padding: 45svh 0 30svh;
+    padding: 0;
     list-style: none;
   }
   .step {
     display: grid;
+    gap: var(--space-4);
     align-items: center;
-    min-height: 85svh;
     margin: 0 !important;
+  }
+  .step__media {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 40px rgb(0 0 0 / 0.5);
+  }
+  .step__caption {
+    position: absolute;
+    z-index: 6;
+    top: var(--space-3);
+    left: 50%;
+    max-width: calc(100% - 6rem);
+    padding: var(--space-1) var(--space-3);
+    border-radius: 999px;
+    background: rgb(14 13 22 / 0.75);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    width: max-content;
+    line-height: 1.35;
+    text-align: center;
+    color: var(--chapter);
+    transform: translateX(-50%);
   }
   .step__box {
     display: grid;
     gap: var(--space-3);
     max-width: 30rem;
-    padding: var(--space-5);
-    border-radius: var(--radius-lg);
-    background: rgb(14 13 22 / 0.84);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    box-shadow: 0 10px 40px rgb(0 0 0 / 0.35);
     transition: opacity 0.4s ease;
   }
   .step__box p {
@@ -385,9 +425,6 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
     font-style: italic;
     line-height: 1.25 !important;
     color: #fff8ec;
-  }
-  .story:global(.is-live) .step:not(:global(.is-active)) .step__box {
-    opacity: 0.4;
   }
   .layer {
     position: absolute;
@@ -445,130 +482,139 @@ const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
     opacity: 1;
     transform: none;
   }
-  /*
-   * The change of picture carries the chapter's class, briefly (under a second):
-   * II wipes on a slant with a fel-green glaive edge, III comes into focus out of
-   * an arcane shimmer (blurred and glowing, then sharp) under a violet glow. The
-   * new picture sits on top and the old one
-   * only collapses once it is covered, so nothing flashes black in either direction.
-   */
-  .scene--hunter .layer,
-  .scene--classic .layer {
-    z-index: 1;
-    opacity: 1;
-    transform: none;
-    transition: clip-path 0s 1s;
-  }
-  .scene--hunter .layer {
-    clip-path: polygon(0 0, 0 0, -30% 100%, -30% 100%);
-  }
-  .scene--classic .layer {
-    opacity: 0;
-    filter: blur(12px) brightness(1.5) saturate(1.3);
-    transition:
-      opacity 0s 1s,
-      filter 0s 1s;
-  }
-  .scene--hunter [data-active='0'] [data-layer='0'],
-  .scene--hunter [data-active='1'] [data-layer='1'],
-  .scene--hunter [data-active='2'] [data-layer='2'],
-  .scene--hunter [data-active='3'] [data-layer='3'] {
-    z-index: 2;
-    clip-path: polygon(0 0, 130% 0, 100% 100%, -30% 100%);
-    transition: clip-path 0.9s cubic-bezier(0.65, 0, 0.25, 1);
-  }
-  .scene--classic [data-active='0'] [data-layer='0'],
-  .scene--classic [data-active='1'] [data-layer='1'],
-  .scene--classic [data-active='2'] [data-layer='2'] {
-    z-index: 2;
-    opacity: 1;
-    filter: none;
-    transition:
-      opacity 0.7s ease,
-      filter 1s cubic-bezier(0.2, 0.7, 0.2, 1);
-  }
-  /* The effect over the change: drawn only while the stage has .is-shifting (about-story.ts). */
-  .scene--hunter .scrolly__stage::after,
-  .scene--classic .scrolly__stage::after {
-    content: '';
-    position: absolute;
-    z-index: 3;
-    pointer-events: none;
-    opacity: 0;
-  }
-  .scene--hunter .scrolly__stage::after {
-    inset: -10% auto -10% 0;
-    width: 12%;
-    background: linear-gradient(90deg, transparent, rgb(124 255 58 / 0.5) 40%, rgb(226 255 190 / 0.85) 55%, transparent);
-    filter: blur(2px);
-    mix-blend-mode: screen;
-    transform: translateX(-150%) skewX(-14deg);
-  }
-  .scene--hunter .scrolly__stage:global(.is-shifting)::after {
-    animation: fel-slash 0.9s cubic-bezier(0.65, 0, 0.25, 1);
-  }
-  .scene--classic .scrolly__stage::after {
-    inset: 0;
-    background: radial-gradient(70% 60% at 50% 50%, rgb(207 166 255 / 0.45), rgb(120 80 220 / 0.15) 60%, transparent 80%);
-    mix-blend-mode: screen;
-  }
-  .scene--classic .scrolly__stage:global(.is-shifting)::after {
-    animation: arcane-glow 1s ease-out;
-  }
-  @keyframes fel-slash {
-    0% {
+  /* Wide screens only: on a phone the picture just crossfades. */
+  @media (min-width: 900px) {
+    /*
+     * The change of picture carries the chapter's class, briefly (under a second):
+     * II wipes on a slant with a fel-green glaive edge, III comes into focus out of
+     * an arcane shimmer (blurred and glowing, then sharp) under a violet glow. The
+     * new picture sits on top and the old one
+     * only collapses once it is covered, so nothing flashes black in either direction.
+     */
+    .scene--hunter .layer,
+    .scene--classic .layer {
+      z-index: 1;
       opacity: 1;
+      transform: none;
+      transition: clip-path 0s 1s;
+    }
+    .scene--hunter .layer {
+      clip-path: polygon(0 0, 0 0, -30% 100%, -30% 100%);
+    }
+    .scene--classic .layer {
+      opacity: 0;
+      filter: blur(12px) brightness(1.5) saturate(1.3);
+      transition:
+        opacity 0s 1s,
+        filter 0s 1s;
+    }
+    .scene--hunter [data-active='0'] [data-layer='0'],
+    .scene--hunter [data-active='1'] [data-layer='1'],
+    .scene--hunter [data-active='2'] [data-layer='2'],
+    .scene--hunter [data-active='3'] [data-layer='3'] {
+      z-index: 2;
+      clip-path: polygon(0 0, 130% 0, 100% 100%, -30% 100%);
+      transition: clip-path 0.9s cubic-bezier(0.65, 0, 0.25, 1);
+    }
+    .scene--classic [data-active='0'] [data-layer='0'],
+    .scene--classic [data-active='1'] [data-layer='1'],
+    .scene--classic [data-active='2'] [data-layer='2'] {
+      z-index: 2;
+      opacity: 1;
+      filter: none;
+      transition:
+        opacity 0.7s ease,
+        filter 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+    /* The effect over the change: drawn only while the stage has .is-shifting (about-story.ts). */
+    .scene--hunter .scrolly__stage::after,
+    .scene--classic .scrolly__stage::after {
+      content: '';
+      position: absolute;
+      z-index: 3;
+      pointer-events: none;
+      opacity: 0;
+    }
+    .scene--hunter .scrolly__stage::after {
+      inset: -10% auto -10% 0;
+      width: 12%;
+      background: linear-gradient(90deg, transparent, rgb(124 255 58 / 0.5) 40%, rgb(226 255 190 / 0.85) 55%, transparent);
+      filter: blur(2px);
+      mix-blend-mode: screen;
       transform: translateX(-150%) skewX(-14deg);
     }
-    85% {
-      opacity: 1;
+    .scene--hunter .scrolly__stage:global(.is-shifting)::after {
+      animation: fel-slash 0.9s cubic-bezier(0.65, 0, 0.25, 1);
     }
-    100% {
-      opacity: 0;
-      transform: translateX(950%) skewX(-14deg);
+    .scene--classic .scrolly__stage::after {
+      inset: 0;
+      background: radial-gradient(70% 60% at 50% 50%, rgb(207 166 255 / 0.45), rgb(120 80 220 / 0.15) 60%, transparent 80%);
+      mix-blend-mode: screen;
     }
-  }
-  @keyframes arcane-glow {
-    0% {
-      opacity: 0;
+    .scene--classic .scrolly__stage:global(.is-shifting)::after {
+      animation: arcane-glow 1s ease-out;
     }
-    30% {
-      opacity: 1;
+    @keyframes fel-slash {
+      0% {
+        opacity: 1;
+        transform: translateX(-150%) skewX(-14deg);
+      }
+      85% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(950%) skewX(-14deg);
+      }
     }
-    100% {
-      opacity: 0;
+    @keyframes arcane-glow {
+      0% {
+        opacity: 0;
+      }
+      30% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
     }
   }
 
   @media (min-width: 900px) {
     .story .scrolly {
-      max-width: 100rem;
-      grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+      max-width: 110rem;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 7fr);
       gap: clamp(2rem, 4vw, 4rem);
     }
     /* Pinned in the middle of the screen, never taller than a landscape frame wants. */
     .scrolly__stage {
+      display: block;
       --stage-h: min(calc(100svh - var(--header-h) - 4rem), 760px);
       grid-area: 1 / 2;
       top: calc(var(--header-h) + (100svh - var(--header-h) - var(--stage-h)) / 2);
       height: var(--stage-h);
-      margin-inline: 0;
-      border-radius: var(--radius-lg);
+      aspect-ratio: auto;
       box-shadow: 0 30px 80px rgb(0 0 0 / 0.5);
     }
     .scrolly__steps {
       grid-area: 1 / 1;
       padding-block: 10svh 20svh;
     }
-    .step__box {
-      padding: 0;
-      background: none;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      box-shadow: none;
+    .scrolly__steps {
+      display: block;
+    }
+    .step {
+      min-height: 85svh;
+    }
+    .step__media {
+      display: none;
+    }
+    /* Only the step beside the picture reads at full strength. */
+    .story:global(.is-live) .step:not(:global(.is-active)) .step__box {
+      opacity: 0.4;
     }
     .story .scrolly--wide {
-      grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+      grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
     }
     .scrolly--wide .scrolly__stage {
       grid-area: 1 / 1;
