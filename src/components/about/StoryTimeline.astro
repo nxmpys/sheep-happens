@@ -1,0 +1,116 @@
+---
+/**
+ * A short line of expansions: lit where I played, dashed where I did not, lit
+ * again where I came back. It draws itself left to right when it comes into
+ * view; without JavaScript or with reduced motion it is simply there.
+ */
+interface Props {
+  items: { label: string; note: string; state: 'on' | 'gap' | 'back' }[];
+  label: string;
+}
+const { items, label } = Astro.props;
+---
+
+<ol class="timeline" aria-label={label} data-reveal>
+  {
+    items.map((item, i) => (
+      <li class:list={['timeline__item', `timeline__item--${item.state}`]} style={`--i: ${i}`}>
+        <span class="timeline__dot" aria-hidden="true" />
+        <span class="timeline__label">{item.label}</span>
+        <span class="timeline__note">{item.note}</span>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .timeline {
+    --line: 2px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .timeline__item {
+    position: relative;
+    display: grid;
+    align-content: start;
+    gap: 2px;
+    padding-top: var(--space-5);
+    padding-right: var(--space-2);
+    margin: 0 !important;
+  }
+  /* The segment leading to the next stop: solid while I played, dashed through the gap. */
+  .timeline__item::before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 0;
+    right: 0;
+    height: var(--line);
+    background: #e5c97f;
+    transform-origin: left;
+    transition: transform 0.5s ease calc(var(--i) * 0.35s);
+  }
+  .timeline__item--gap::before,
+  .timeline__item:has(+ .timeline__item--gap)::before {
+    background: repeating-linear-gradient(90deg, rgb(229 201 127 / 0.5) 0 6px, transparent 6px 12px);
+  }
+  .timeline__item:last-child::before {
+    right: auto;
+    width: 30%;
+    background: linear-gradient(90deg, #9dff6a, transparent);
+  }
+  .timeline__dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #e5c97f;
+    background: #e5c97f;
+    transition:
+      transform 0.3s ease calc(var(--i) * 0.35s + 0.2s),
+      opacity 0.3s ease calc(var(--i) * 0.35s + 0.2s);
+  }
+  .timeline__item--gap .timeline__dot {
+    background: #0e0d16;
+    border-style: dashed;
+    border-color: rgb(229 201 127 / 0.6);
+  }
+  .timeline__item--back .timeline__dot {
+    border-color: #9dff6a;
+    background: #9dff6a;
+    box-shadow: 0 0 0 6px rgb(157 255 106 / 0.2);
+  }
+  .timeline__label {
+    font-family: var(--font-display);
+    font-size: var(--step-0);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #ecebf4;
+  }
+  .timeline__item--gap .timeline__label {
+    color: #948eae;
+  }
+  .timeline__note {
+    font-family: 'Permanent Marker', var(--font-display);
+    font-size: 0.95rem;
+    color: #b6b1cb;
+  }
+  :global(.story.is-live) .timeline:not(.is-in) .timeline__item::before {
+    transform: scaleX(0);
+  }
+  :global(.story.is-live) .timeline:not(.is-in) .timeline__dot {
+    transform: scale(0);
+    opacity: 0;
+  }
+  @media (max-width: 560px) {
+    .timeline {
+      grid-template-columns: 1fr 1fr;
+      row-gap: var(--space-4);
+    }
+  }
+</style>

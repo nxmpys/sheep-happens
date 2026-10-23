@@ -1,0 +1,105 @@
+---
+/**
+ * Where you are in the story: five small marks pinned to the right edge,
+ * linking to each chapter. about-story.ts marks the current one. Hidden on
+ * narrow screens, where it would sit on top of the text.
+ */
+interface Props {
+  labels: string[];
+  ids: string[];
+  label: string;
+}
+const { labels, ids, label } = Astro.props;
+---
+
+<div class="progress" data-progress>
+  <nav class="progress__rail" aria-label={label}>
+    <ol>
+      {
+        labels.map((text, i) => (
+          <li>
+            <a href={`#${ids[i]}`} data-progress-link={ids[i]} aria-current={i === 0 ? 'step' : undefined}>
+              <span class="progress__mark" aria-hidden="true" />
+              <span class="progress__text">{text}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </nav>
+</div>
+
+<style>
+  .progress {
+    position: sticky;
+    top: calc(var(--header-h) + 50svh + 4rem);
+    z-index: 5;
+    height: 0;
+    display: none;
+  }
+  @media (min-width: 1000px) {
+    .progress {
+      display: block;
+    }
+  }
+  .progress__rail {
+    position: absolute;
+    right: var(--space-5);
+    /* Hangs above its anchor, so it never spills out of the story's bottom edge. */
+    transform: translateY(-100%);
+  }
+  .progress ol {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .progress li {
+    margin: 0 !important;
+  }
+  .progress a {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 28px;
+    color: #948eae;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .progress__mark {
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition:
+      width 0.3s ease,
+      background 0.3s ease;
+  }
+  /* Labels stay hidden until you point at the rail, so they never sit on a picture. */
+  .progress__text {
+    opacity: 0;
+    transform: translateX(6px);
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+  }
+  .progress__rail:hover .progress__text,
+  .progress a:focus-visible .progress__text {
+    opacity: 1;
+    transform: none;
+  }
+  .progress a[aria-current] {
+    color: var(--glow, #e5c97f);
+  }
+  .progress a[aria-current] .progress__mark {
+    width: 34px;
+  }
+  .progress a:hover {
+    color: #ecebf4;
+  }
+</style>

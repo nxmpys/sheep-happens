@@ -1,0 +1,173 @@
+---
+/**
+ * Top of the home page: why this guide exists, in the author's words, over
+ * the Mage library, with the launch countdown, the grimoire (three ways in)
+ * and the button to the guide beside it. It was the last chapter of the
+ * about page story and shares its look: always dark, Fraunces and Nunito.
+ * The site name heads it in the header's Cinzel Decorative; the page title
+ * is the small kicker under it (the page's h1).
+ */
+import '@fontsource/permanent-marker';
+import '@fontsource-variable/fraunces/soft.css';
+import '@fontsource-variable/fraunces/soft-italic.css';
+import '@fontsource-variable/nunito/wght.css';
+import LaunchCountdown from '../guide/LaunchCountdown.astro';
+import MageGuideCTA from '../about/MageGuideCTA.astro';
+import StoryArt from '../about/StoryArt.astro';
+import { STORY_COPY } from '../about/story-copy';
+import { href } from '../../i18n/locale';
+import type { Locale } from '../../i18n/routes';
+
+interface Props {
+  locale: Locale;
+  /** The page title, shown as the kicker. */
+  pageTitle: string;
+  /** Launch instant in UTC, for the countdown over the grimoire. */
+  launchAt?: string | undefined;
+}
+
+const { locale, pageTitle, launchAt } = Astro.props;
+const copy = STORY_COPY[locale].guide;
+---
+
+<section class="welcome" data-no-spell-links aria-labelledby="welcome-title">
+  <div class="welcome__backdrop" aria-hidden="true"><StoryArt name="grimoire" locale={locale} eager /></div>
+  <div class="welcome__inner">
+    <div class="welcome__copy">
+      <p class="welcome__brand">Sheep Happens</p>
+      <h1 class="welcome__kicker">{pageTitle}</h1>
+      <h2 class="welcome__title" id="welcome-title">{copy.title}</h2>
+      {copy.body.map((text) => <p class="welcome__text">{text}</p>)}
+      <p class="welcome__line">{copy.welcome}</p>
+      <p class="welcome__signature">
+        — <a href={href('about', locale)}>{copy.signature}</a>
+      </p>
+    </div>
+    <div class="welcome__aside">
+      {launchAt && <LaunchCountdown at={launchAt} compact />}
+      <MageGuideCTA locale={locale} copy={copy} />
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Full width out of the page column; the body clips the overflow so no sideways scroll. */
+  :global(body:has(.welcome)) {
+    overflow-x: clip;
+  }
+  .welcome {
+    --font-display: 'Fraunces Variable', 'Spectral', Georgia, serif;
+    --font-body: 'Nunito Variable', 'Inter Variable', system-ui, sans-serif;
+    --focus: #ffd56a;
+    color-scheme: dark;
+    position: relative;
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    margin-top: calc(-1 * var(--space-6));
+    padding-block: clamp(4rem, 12vh, 8rem);
+    background: #0e0d16;
+    color: #ecebf4;
+    font-family: var(--font-body);
+    font-variation-settings: 'SOFT' 100;
+  }
+  .welcome :global(:focus-visible) {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+  }
+  .welcome__backdrop {
+    position: absolute;
+    inset: 0;
+    opacity: 0.6;
+    -webkit-mask: linear-gradient(180deg, #000 70%, transparent);
+    mask: linear-gradient(180deg, #000 70%, transparent);
+  }
+  /* Darker behind the text column, so the library stays a mood and not a distraction. */
+  .welcome__backdrop::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgb(14 13 22 / 0.88), rgb(14 13 22 / 0.55) 55%, rgb(14 13 22 / 0.2));
+  }
+  .welcome__inner {
+    position: relative;
+    display: grid;
+    gap: var(--space-7);
+    align-items: center;
+    max-width: var(--page-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  .welcome__copy {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .welcome__brand {
+    margin: 0 0 var(--space-2);
+    font-family: 'Cinzel Decorative', var(--font-display);
+    font-size: clamp(2rem, 1.4rem + 2.6vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    color: #fff8ec;
+    text-shadow: 0 0 28px rgb(169 139 255 / 0.45);
+  }
+  .welcome__kicker {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #cfa6ff;
+  }
+  .welcome__title {
+    max-width: 18ch;
+    margin: 0;
+    font-family: var(--font-display);
+    /* Always a step below the site name above it. */
+    font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.02;
+    color: #fff8ec;
+  }
+  .welcome__text {
+    max-width: 36rem;
+    margin: 0;
+    font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+    line-height: 1.7;
+    color: #d9d6e8;
+  }
+  .welcome__line {
+    margin: var(--space-3) 0 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 1.1rem + 0.9vw, 1.9rem);
+    font-style: italic;
+    line-height: 1.2;
+    color: #fff8ec;
+  }
+  .welcome__signature {
+    margin: 0;
+    font-family: 'Permanent Marker', var(--font-display);
+    font-size: var(--step-1);
+    color: #cfa6ff;
+  }
+  .welcome__signature a {
+    color: inherit;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+  .welcome__signature a:hover {
+    color: #e4d8ff;
+  }
+  /* The countdown sits over the book, with room to breathe. */
+  .welcome__aside {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-7);
+  }
+  @media (min-width: 900px) {
+    .welcome__inner {
+      grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    }
+  }
+</style>

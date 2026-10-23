@@ -1,0 +1,486 @@
+---
+/**
+ * The about page as a story told by scrolling, in four scenes: Pandaria
+ * (StoryHero), the Warlock years, the Demon Hunter era and the turn to
+ * Classic Mage. Why the guide exists lives on the home page (HomeWelcome). Native scroll only: reveals, the pinned
+ * pictures and the chapter marks come from IntersectionObserver in
+ * about-story.ts, the rest is CSS. Everything is readable with JavaScript off
+ * or reduced motion; the pictures then simply stay on their first state.
+ *
+ * The band is always dark (color-scheme: dark), whatever the site theme, and
+ * its ambient light changes colour with the chapter: Pandaria gold, fel
+ * green, Classic blue, arcane violet.
+ *
+ * Type: Fraunces (soft axis) for titles and Nunito for the text, looser and
+ * friendlier than the guide's Spectral/Inter; the story swaps the site's
+ * font tokens for them, so every child picks them up.
+ */
+import '@fontsource/permanent-marker';
+import '@fontsource-variable/fraunces/soft.css';
+import '@fontsource-variable/fraunces/soft-italic.css';
+import '@fontsource-variable/nunito/wght.css';
+import ChapterLabel from './ChapterLabel.astro';
+import StoryArt from './StoryArt.astro';
+import StoryHero from './StoryHero.astro';
+import StoryProgress from './StoryProgress.astro';
+import StoryTimeline from './StoryTimeline.astro';
+import { STORY_COPY } from './story-copy';
+import type { StoryArtName } from './story-images';
+import { getLocale } from '../../i18n/locale';
+
+const locale = getLocale(Astro);
+const copy = STORY_COPY[locale];
+const chapterIds = ['story-start', 'chapter-1', 'chapter-2', 'chapter-3'];
+// One picture per step of the pinned scenes, in step order.
+const hunterLayers: StoryArtName[] = ['hunter', 'bfa', 'shadowlands', 'dragonflight'];
+const classicLayers: StoryArtName[] = ['mage', 'tbc', 'forever'];
+---
+
+<div class="story" data-story data-chapter="0" data-no-spell-links aria-label={copy.label}>
+  <div class="story__glow" aria-hidden="true"></div>
+  <StoryProgress labels={copy.progress} ids={chapterIds} label={copy.chapters} />
+
+  <StoryHero locale={locale} copy={copy.hero} />
+
+  {/* Chapter I: the Warlock, PvP, then two expansions away. */}
+  <section class="scene scene--pandaria" id="chapter-1" data-chapter="1" aria-labelledby="chapter-1-title">
+    <div class="story__inner split">
+      <figure class="split__art" data-reveal data-mask>
+        <StoryArt name="warlock" locale={locale} />
+      </figure>
+      <div class="split__copy">
+        <ChapterLabel text={copy.pandaria.chapter} />
+        <h2 class="scene__title" id="chapter-1-title" data-reveal>{copy.pandaria.title}</h2>
+        {
+          copy.pandaria.body.map((text, i) => (
+            <p class:list={['scene__text', i === 1 && 'scene__text--beat']} data-reveal>
+              {text}
+            </p>
+          ))
+        }
+      </div>
+    </div>
+    <div class="story__inner timeline-row">
+      <StoryTimeline items={copy.pandaria.timeline} label={copy.pandaria.chapter} />
+      <p class="marker marker--gold" data-reveal aria-hidden="true">{copy.pandaria.note}</p>
+    </div>
+  </section>
+
+  {/* Chapter II: the Demon Hunter, Mythic+, Shadowlands and the calmer expansions, the picture pinned while the text moves on. */}
+  <section class="scene scene--hunter" id="chapter-2" data-chapter="2" aria-labelledby="chapter-2-title">
+    <header class="story__inner scene__head">
+      <ChapterLabel text={copy.hunter.chapter} />
+      <h2 class="scene__title" id="chapter-2-title" data-reveal>{copy.hunter.title}</h2>
+    </header>
+    <div class="story__inner scrolly" data-scrolly>
+      <div class="scrolly__stage" data-stage data-active="0" aria-hidden="true">
+        {
+          hunterLayers.map((name, i) => (
+            <div class="layer" data-layer={i}>
+              <StoryArt name={name} locale={locale} />
+            </div>
+          ))
+        }
+        <ol class="stage__captions">
+          {copy.hunter.steps.map((step, i) => <li data-caption={i}>{step.caption}</li>)}
+        </ol>
+      </div>
+      <ol class="scrolly__steps">
+        {
+          copy.hunter.steps.map((step, i) => (
+            <li class="step" data-step={i}>
+              <div class="step__box">
+                <p>{step.text}</p>
+                {step.note && <p class="marker marker--fel">{step.note}</p>}
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  {/* Chapter III: the Mage in Classic, the Dark Portal for TBC, then Forever opens like a portal of its own. */}
+  <section class="scene scene--classic" id="chapter-3" data-chapter="3" aria-labelledby="chapter-3-title">
+    <header class="story__inner scene__head">
+      <ChapterLabel text={copy.classic.chapter} />
+      <h2 class="scene__title" id="chapter-3-title" data-reveal>{copy.classic.title}</h2>
+    </header>
+    <div class="story__inner scrolly scrolly--wide" data-scrolly>
+      <div class="scrolly__stage" data-stage data-active="0" aria-hidden="true">
+        {
+          classicLayers.map((name, i) => (
+            <div class:list={['layer', name === 'forever' && 'layer--portal']} data-layer={i}>
+              <StoryArt name={name} locale={locale} />
+            </div>
+          ))
+        }
+        <ol class="stage__captions">
+          {copy.classic.steps.map((step, i) => <li data-caption={i}>{step.caption}</li>)}
+        </ol>
+      </div>
+      <ol class="scrolly__steps">
+        {
+          copy.classic.steps.map((step, i) => (
+            <li class="step" data-step={i}>
+              <div class="step__box">
+                <p>{step.text}</p>
+                {step.punch && <p class="step__punch">{step.punch}</p>}
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+</div>
+
+<script>
+  import '../../scripts/about-story';
+</script>
+
+<style>
+  /* Full width out of the page column; the body clips the overflow so no sideways scroll. */
+  :global(body:has(.story)) {
+    overflow-x: clip;
+  }
+  .story {
+    --glow-0: #f3b865;
+    --glow-1: #f0a24a;
+    --glow-2: #7cff3a;
+    --glow-3: #8fc3e8;
+    --font-display: 'Fraunces Variable', 'Spectral', Georgia, serif;
+    --font-body: 'Nunito Variable', 'Inter Variable', system-ui, sans-serif;
+    color-scheme: dark;
+    position: relative;
+    font-family: var(--font-body);
+    font-variation-settings: 'SOFT' 100;
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    margin-top: calc(-1 * var(--space-5));
+    background: #0e0d16;
+    color: #ecebf4;
+    overflow-x: clip;
+    --focus: #ffd56a;
+  }
+  .story :global(:focus-visible) {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+  }
+  .story :global(.story__inner) {
+    width: 100%;
+    max-width: var(--page-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  /* Room for the chapter rail on the right. */
+  @media (min-width: 1000px) {
+    .story :global(.story__inner) {
+      padding-inline: max(var(--gutter), 6rem);
+    }
+  }
+  /* The ambient light: one pinned layer whose colour follows the chapter. */
+  .story__glow {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    margin-bottom: -100svh;
+    pointer-events: none;
+    color: var(--glow-0);
+    background:
+      radial-gradient(55% 45% at 85% 20%, color-mix(in srgb, currentColor 14%, transparent), transparent 70%),
+      radial-gradient(50% 40% at 10% 90%, color-mix(in srgb, currentColor 10%, transparent), transparent 70%);
+    transition: color 1.6s ease;
+  }
+  .story[data-chapter='1'] {
+    --glow: var(--glow-1);
+  }
+  .story[data-chapter='1'] .story__glow {
+    color: var(--glow-1);
+  }
+  .story[data-chapter='2'] .story__glow {
+    color: var(--glow-2);
+  }
+  .story[data-chapter='3'] .story__glow {
+    color: var(--glow-3);
+  }
+  .story[data-chapter='0'] {
+    --glow: var(--glow-0);
+  }
+  .story[data-chapter='2'] {
+    --glow: #9dff6a;
+  }
+  .story[data-chapter='3'] {
+    --glow: #9fd0f0;
+  }
+
+  /* ---- Reveals: only once the script runs with motion allowed (.is-live) ---- */
+  .story :global([data-reveal]) {
+    transition:
+      opacity 0.8s ease var(--d, 0s),
+      transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0s),
+      clip-path 1.1s cubic-bezier(0.6, 0, 0.2, 1) var(--d, 0s);
+  }
+  .story:global(.is-live) :global([data-reveal]:not(.is-in)) {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  .story:global(.is-live) :global([data-mask]:not(.is-in)) {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(100% 0 0 0);
+  }
+
+  /* ---- Scenes ---- */
+  .scene {
+    position: relative;
+    padding-block: clamp(5rem, 14vh, 9rem);
+  }
+  .scene--hunter {
+    --chapter: #9dff6a;
+  }
+  .scene--classic {
+    --chapter: #9fd0f0;
+  }
+  .scene__head {
+    display: grid;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+  .scene__title {
+    max-width: 20ch;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 1.5rem + 3vw, 4rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: #fff8ec;
+  }
+  .scene__title::before {
+    content: none !important;
+  }
+  .scene__text {
+    max-width: 36rem;
+    margin: 0;
+    font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+    line-height: 1.7;
+    color: #d9d6e8;
+  }
+  .scene__text--beat {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem);
+    font-style: italic;
+    color: #fff8ec;
+  }
+  .marker {
+    margin: 0;
+    font-family: 'Permanent Marker', var(--font-display);
+    font-size: clamp(1.15rem, 1rem + 0.6vw, 1.5rem);
+    line-height: 1.3;
+    transform: rotate(-2deg);
+  }
+  .marker--gold {
+    color: #e5c97f;
+  }
+  .marker--fel {
+    margin-top: var(--space-3);
+    color: #b8ff7e;
+  }
+
+  /* Chapter I: picture and text side by side, then the timeline across. */
+  .split {
+    display: grid;
+    gap: var(--space-6);
+    align-items: center;
+  }
+  .split__art {
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgb(0 0 0 / 0.5);
+  }
+  .split__copy {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .timeline-row {
+    display: grid;
+    gap: var(--space-5);
+    margin-top: clamp(3rem, 8vh, 5rem);
+  }
+  .timeline-row .marker {
+    justify-self: end;
+  }
+  @media (min-width: 860px) {
+    .split {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      gap: clamp(2rem, 5vw, 5rem);
+    }
+    .split__art {
+      aspect-ratio: 5 / 4;
+    }
+  }
+
+  /* ---- Pinned picture with text steps (chapters II and III) ---- */
+  .scrolly {
+    display: grid;
+  }
+  .scrolly__stage {
+    position: sticky;
+    top: var(--header-h);
+    grid-area: 1 / 1;
+    align-self: start;
+    height: calc(100svh - var(--header-h));
+    overflow: hidden;
+    margin-inline: calc(-1 * var(--gutter));
+  }
+  .scrolly__steps {
+    position: relative;
+    z-index: 1;
+    grid-area: 1 / 1;
+    margin: 0;
+    padding: 45svh 0 30svh;
+    list-style: none;
+  }
+  .step {
+    display: grid;
+    align-items: center;
+    min-height: 85svh;
+    margin: 0 !important;
+  }
+  .step__box {
+    display: grid;
+    gap: var(--space-3);
+    max-width: 30rem;
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    background: rgb(14 13 22 / 0.84);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 10px 40px rgb(0 0 0 / 0.35);
+    transition: opacity 0.4s ease;
+  }
+  .step__box p {
+    margin: 0;
+    font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
+    line-height: 1.65;
+  }
+  .step__box .marker {
+    font-size: clamp(1.15rem, 1rem + 0.6vw, 1.5rem);
+  }
+  .step__punch {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.2rem) !important;
+    font-style: italic;
+    line-height: 1.25 !important;
+    color: #fff8ec;
+  }
+  .story:global(.is-live) .step:not(:global(.is-active)) .step__box {
+    opacity: 0.4;
+  }
+  .layer {
+    position: absolute;
+    inset: 0;
+    transition:
+      opacity 0.8s ease,
+      clip-path 1.2s cubic-bezier(0.6, 0, 0.2, 1),
+      transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .stage__captions {
+    position: absolute;
+    left: var(--space-5);
+    top: var(--space-5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .stage__captions li {
+    position: absolute;
+    margin: 0;
+    padding: var(--space-1) var(--space-3);
+    border-radius: 999px;
+    background: rgb(14 13 22 / 0.7);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--chapter);
+    opacity: 0;
+    transform: translateY(-6px);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+  }
+  [data-active='0'] [data-caption='0'],
+  [data-active='1'] [data-caption='1'],
+  [data-active='2'] [data-caption='2'],
+  [data-active='3'] [data-caption='3'] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Each step shows its own layer: a crossfade with a slight settle. */
+  .layer {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  [data-active='0'] [data-layer='0'],
+  [data-active='1'] [data-layer='1'],
+  [data-active='2'] [data-layer='2'],
+  [data-active='3'] [data-layer='3'] {
+    opacity: 1;
+    transform: none;
+  }
+  /* Forever does not fade in: it opens from the middle like a portal. */
+  .layer--portal {
+    opacity: 1;
+    transform: none;
+    clip-path: circle(0% at 50% 55%);
+  }
+  [data-active='2'] .layer--portal {
+    clip-path: circle(75% at 50% 55%);
+  }
+
+  @media (min-width: 900px) {
+    .story .scrolly {
+      max-width: 100rem;
+      grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+      gap: clamp(2rem, 4vw, 4rem);
+    }
+    /* Pinned in the middle of the screen, never taller than a landscape frame wants. */
+    .scrolly__stage {
+      --stage-h: min(calc(100svh - var(--header-h) - 4rem), 760px);
+      grid-area: 1 / 2;
+      top: calc(var(--header-h) + (100svh - var(--header-h) - var(--stage-h)) / 2);
+      height: var(--stage-h);
+      margin-inline: 0;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 30px 80px rgb(0 0 0 / 0.5);
+    }
+    .scrolly__steps {
+      grid-area: 1 / 1;
+      padding-block: 10svh 20svh;
+    }
+    .step__box {
+      padding: 0;
+      background: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      box-shadow: none;
+    }
+    .story .scrolly--wide {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    }
+    .scrolly--wide .scrolly__stage {
+      grid-area: 1 / 1;
+    }
+
+    .scrolly--wide .scrolly__steps {
+      grid-area: 1 / 2;
+    }
+  }
+</style>

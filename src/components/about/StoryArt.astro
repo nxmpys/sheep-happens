@@ -1,0 +1,358 @@
+---
+/**
+ * One picture of the about page story. With a real image in story-images.ts it
+ * renders that (cover crop, explicit size, lazy unless `eager`); a live
+ * wallpaper is a muted looping <video> over its poster, loaded and played
+ * only while its step is on screen (about-story.ts). Without either it
+ * draws a placeholder landscape in the flat skyline style of the old about
+ * hero: silhouettes in layers, light and fog from gradients. Layers marked
+ * `data-depth` lag behind the scroll, the farthest most (about-story.ts), only in the hero.
+ */
+import { STORY_IMAGES, type StoryArtName } from './story-images';
+import type { Locale } from '../../i18n/routes';
+
+interface Props {
+  name: StoryArtName;
+  locale: Locale;
+  /** First screen: load at once and with priority. */
+  eager?: boolean;
+  class?: string;
+}
+
+const { name, locale, eager = false, class: className } = Astro.props;
+const image = STORY_IMAGES[name];
+const alt = image.alt[locale];
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+// Narrow screens see the middle of a drawing; the hero keeps its right side, where the sun and the pagoda are.
+const align = name === 'pandaria' ? 'xMaxYMid slice' : 'xMidYMid slice';
+
+/** Karst pillars (Pandaria) standing on `base`, bushy trees on top: [x, width, top] each. */
+const pillars = (list: [number, number, number][], base: number) =>
+  list
+    .map(([x, w, top]) => {
+      const shoulder = top + w * 0.35;
+      const rock = `M${x} ${base}L${x + w * 0.08} ${shoulder}Q${x + w * 0.1} ${top} ${x + w * 0.5} ${top}Q${x + w * 0.9} ${top} ${x + w * 0.92} ${shoulder}L${x + w} ${base}Z`;
+      const tufts = [
+        [0.28, 4, 0.17],
+        [0.52, -8, 0.2],
+        [0.76, 6, 0.15],
+      ]
+        .map(([dx = 0, dy = 0, r = 0]) => {
+          const rr = w * r;
+          return `M${x + w * dx - rr} ${top + dy}a${rr} ${rr} 0 1 0 ${rr * 2} 0a${rr} ${rr} 0 1 0 ${-rr * 2} 0Z`;
+        })
+        .join('');
+      return rock + tufts;
+    })
+    .join('');
+
+/** A three-tier pagoda whose base sits at (cx, y); curled eaves like the Shrine of Seven Stars. */
+const pagoda = (cx: number, y: number, s: number) => {
+  let path = '';
+  let top = y;
+  for (let tier = 0; tier < 3; tier++) {
+    const half = (60 - tier * 14) * s;
+    const wall = (26 - tier * 4) * s;
+    const body = half * 0.62;
+    path += `M${cx - body} ${top}V${top - wall}H${cx + body}V${top}Z`;
+    const eave = top - wall;
+    path += `M${cx - half - 10 * s} ${eave - 6 * s}Q${cx - half * 0.6} ${eave} ${cx - body * 0.8} ${eave - 16 * s}H${cx + body * 0.8}Q${cx + half * 0.6} ${eave} ${cx + half + 10 * s} ${eave - 6 * s}Q${cx + half * 0.5} ${eave + 8 * s} ${cx} ${eave + 4 * s}Q${cx - half * 0.5} ${eave + 8 * s} ${cx - half - 10 * s} ${eave - 6 * s}Z`;
+    top = eave - 16 * s;
+  }
+  path += `M${cx - 3 * s} ${top}V${top - 30 * s}H${cx + 3 * s}V${top}Z`;
+  return path;
+};
+
+/** A pine of stacked triangles at (x, y) with height h. */
+const pine = (x: number, y: number, h: number) => {
+  let path = `M${x - h * 0.04} ${y}V${y - h * 0.2}H${x + h * 0.04}V${y}Z`;
+  for (let i = 0; i < 3; i++) {
+    const tipY = y - h + i * h * 0.22;
+    const bottom = y - h * 0.15 - (2 - i) * h * 0.1;
+    const w = h * (0.18 + i * 0.07);
+    path += `M${x} ${tipY}L${x + w} ${bottom}H${x - w}Z`;
+  }
+  return path;
+};
+
+/** Embers scattered along the Chaos Bolt's path, fixed so the build is stable. */
+const embers = Array.from({ length: 34 }, (_, i) => {
+  const t = (i * 37) % 100 / 100;
+  const x = 240 + t * 980 + (((i * 53) % 90) - 45);
+  const y = 730 - t * 390 + (((i * 71) % 140) - 70);
+  return { x: x.toFixed(0), y: y.toFixed(0), r: 2 + (i % 4), green: i % 3 !== 0, delay: `${-(i % 7) * 0.45}s` };
+});
+
+/** Stars over Forever's night and Oribos. */
+const stars = Array.from({ length: 40 }, (_, i) => ({
+  x: (i * 389) % 1600,
+  y: (i * 131) % 420,
+  r: i % 5 === 0 ? 2.2 : 1.2,
+}));
+---
+
+{
+  image.video ? (
+    <video
+      class:list={['art', className]}
+      width={image.width}
+      height={image.height}
+      poster={`${base}${image.src}`}
+      style={`object-position: ${image.focus}`}
+      aria-label={alt}
+      muted
+      loop
+      playsinline
+      disablepictureinpicture
+      preload="none"
+      data-story-video
+    >
+      <source src={`${base}${image.video}`} type="video/mp4" />
+    </video>
+  ) : image.src ? (
+    <img
+      class:list={['art', className]}
+      src={`${base}${image.src}`}
+      width={image.width}
+      height={image.height}
+      alt={alt}
+      style={`object-position: ${image.focus}`}
+      loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager ? 'high' : 'auto'}
+      decoding="async"
+    />
+  ) : (
+    <svg class:list={['art', `art--${name}`, className]} viewBox="0 0 1600 900" preserveAspectRatio={align} role="img" aria-label={alt} data-placeholder={name}>
+      {name === 'pandaria' && (
+        <>
+          <defs>
+            <linearGradient id="pd-sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#16132a" />
+              <stop offset="0.42" stop-color="#4a3150" />
+              <stop offset="0.72" stop-color="#c2714a" />
+              <stop offset="0.86" stop-color="#f3b865" />
+            </linearGradient>
+            <radialGradient id="pd-sun">
+              <stop offset="0" stop-color="#ffe9b0" stop-opacity="0.9" />
+              <stop offset="0.25" stop-color="#ffc977" stop-opacity="0.35" />
+              <stop offset="1" stop-color="#ffc977" stop-opacity="0" />
+            </radialGradient>
+            <linearGradient id="pd-mist" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffe7cf" stop-opacity="0" />
+              <stop offset="0.5" stop-color="#ffe7cf" stop-opacity="0.32" />
+              <stop offset="1" stop-color="#ffe7cf" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient id="pd-floor" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#0e0d16" stop-opacity="0" />
+              <stop offset="1" stop-color="#0e0d16" />
+            </linearGradient>
+          </defs>
+          <rect width="1600" height="900" fill="url(#pd-sky)" />
+          <g data-depth style="--depth: 0.6">
+            <circle cx="1130" cy="560" r="360" fill="url(#pd-sun)" />
+            <circle cx="1130" cy="560" r="62" fill="#ffe6a8" />
+          </g>
+          <g data-depth style="--depth: 0.45">
+            <path
+              fill="#8a6276"
+              opacity="0.55"
+              d={pillars(
+                [
+                  [-20, 120, 470], [80, 90, 520], [210, 140, 430], [380, 80, 540], [470, 130, 460], [640, 100, 510],
+                  [760, 150, 440], [930, 90, 530], [1040, 120, 470], [1210, 150, 420], [1380, 90, 500], [1480, 140, 450],
+                ],
+                900,
+              )}
+            />
+            <rect y="520" width="1600" height="240" fill="url(#pd-mist)" />
+          </g>
+          <g data-depth style="--depth: 0.28">
+            <path
+              fill="#3b4442"
+              d={
+                pillars(
+                  [
+                    [-40, 170, 560], [150, 120, 610], [300, 200, 500], [560, 110, 640], [1150, 120, 620], [1290, 210, 520], [1520, 140, 590],
+                  ],
+                  900,
+                ) + pagoda(1395, 528, 1.5)
+              }
+            />
+            <rect y="620" width="1600" height="200" fill="url(#pd-mist)" />
+          </g>
+          <g data-depth style="--depth: 0.1">
+            <path
+              fill="#151c1b"
+              d={
+                'M0 900V760Q180 700 380 742T760 728Q980 690 1180 736T1600 716V900Z' +
+                pine(120, 760, 150) + pine(205, 752, 110) + pine(1360, 742, 170) + pine(1460, 736, 120) + pine(1530, 730, 140)
+              }
+            />
+          </g>
+          <rect y="640" width="1600" height="260" fill="url(#pd-floor)" />
+        </>
+      )}
+
+      {name === 'warlock' && (
+        <>
+          <defs>
+            <radialGradient id="wl-bg" cx="0.62" cy="0.38" r="0.8">
+              <stop offset="0" stop-color="#3a1a2c" />
+              <stop offset="0.5" stop-color="#170c1d" />
+              <stop offset="1" stop-color="#07050b" />
+            </radialGradient>
+            <linearGradient id="wl-trail" x1="260" y1="720" x2="1240" y2="340" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#7cff3a" stop-opacity="0" />
+              <stop offset="0.55" stop-color="#7cff3a" stop-opacity="0.55" />
+              <stop offset="0.85" stop-color="#ffcf5a" stop-opacity="0.85" />
+              <stop offset="1" stop-color="#fff6d6" />
+            </linearGradient>
+            <radialGradient id="wl-head">
+              <stop offset="0" stop-color="#ffffff" />
+              <stop offset="0.25" stop-color="#e8ff9e" />
+              <stop offset="0.55" stop-color="#5fd12a" stop-opacity="0.75" />
+              <stop offset="1" stop-color="#5fd12a" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <rect width="1600" height="900" fill="url(#wl-bg)" />
+          {/* The arena: a ring of columns and a lit sand floor. */}
+          <path
+            fill="#22162b"
+            d={
+              'M0 600Q800 400 1600 600V900H0Z' +
+              Array.from({ length: 14 }, (_, i) => {
+                const x = 40 + i * 116;
+                const y = 600 - Math.sin((i / 13) * Math.PI) * 150;
+                return `M${x} ${y + 20}V${y - 120}h40v${140}Z M${x - 8} ${y - 120}h56v-14h-56Z`;
+              }).join('')
+            }
+          />
+          <ellipse cx="800" cy="800" rx="900" ry="150" fill="#0f0a14" />
+          <ellipse cx="800" cy="800" rx="700" ry="110" fill="none" stroke="#7cff3a" stroke-opacity="0.12" stroke-width="3" />
+          {/* The Chaos Bolt: a tapering trail and a white-hot head. */}
+          <path d="M260 724Q760 560 1240 336L1262 372Q780 600 260 732Z" fill="url(#wl-trail)" />
+          <circle cx="1250" cy="350" r="150" fill="url(#wl-head)" class="pulse" />
+          <circle cx="1250" cy="350" r="34" fill="#fffbe8" />
+          {embers.map((e) => (
+            <circle class="ember" cx={e.x} cy={e.y} r={e.r} fill={e.green ? '#a6ff5a' : '#ffb347'} style={`animation-delay: ${e.delay}`} />
+          ))}
+        </>
+      )}
+
+      {name === 'shadowlands' && (
+        <>
+          <defs>
+            <radialGradient id="sl-bg" cx="0.5" cy="0.3" r="0.9">
+              <stop offset="0" stop-color="#2b3c55" />
+              <stop offset="0.55" stop-color="#121a26" />
+              <stop offset="1" stop-color="#07090e" />
+            </radialGradient>
+            <radialGradient id="sl-fel" cx="0.1" cy="1" r="0.6">
+              <stop offset="0" stop-color="#7cff3a" stop-opacity="0.22" />
+              <stop offset="1" stop-color="#7cff3a" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <rect width="1600" height="900" fill="url(#sl-bg)" />
+          <rect width="1600" height="900" fill="url(#sl-fel)" />
+          {stars.map((s) => (
+            <circle cx={s.x} cy={s.y} r={s.r} fill="#dfe8ff" opacity="0.5" />
+          ))}
+          {/* Oribos: tilted rings round a spire. */}
+          <g fill="none" stroke="#a9bfdf">
+            <ellipse cx="800" cy="360" rx="560" ry="150" stroke-width="10" stroke-opacity="0.35" />
+            <ellipse cx="800" cy="360" rx="430" ry="110" stroke-width="7" stroke-opacity="0.5" transform="rotate(-6 800 360)" />
+            <ellipse cx="800" cy="360" rx="300" ry="76" stroke-width="5" stroke-opacity="0.7" transform="rotate(5 800 360)" />
+          </g>
+          <path d="M800 140L830 360L800 560L770 360Z" fill="#c9d7ee" fill-opacity="0.8" />
+          {/* PvP back in the picture: two crossed swords over the arena floor. */}
+          <ellipse cx="800" cy="820" rx="760" ry="110" fill="#0b0f16" />
+          {[-38, 38].map((turn) => (
+            <g transform={`translate(800 700) rotate(${turn})`}>
+              <path d="M-7-170L0-196L7-170V30H-7Z" fill="#dfe6f2" />
+              <path d="M-40 30H40V44H-40Z" fill="#f1c766" />
+              <path d="M-6 44H6V96H-6Z" fill="#6a5640" />
+            </g>
+          ))}
+        </>
+      )}
+
+      {name === 'grimoire' && (
+        <>
+          <defs>
+            <radialGradient id="gr-bg" cx="0.85" cy="0.6" r="0.9">
+              <stop offset="0" stop-color="#5a3a1c" />
+              <stop offset="0.45" stop-color="#21150f" />
+              <stop offset="1" stop-color="#0e0d16" />
+            </radialGradient>
+            <radialGradient id="gr-flame">
+              <stop offset="0" stop-color="#fff3c4" />
+              <stop offset="0.4" stop-color="#ffc35a" stop-opacity="0.7" />
+              <stop offset="1" stop-color="#ffc35a" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <rect width="1600" height="900" fill="url(#gr-bg)" />
+          {[
+            [1400, 700, 1],
+            [1490, 740, 0.7],
+          ].map(([x, y, s]) => (
+            <g transform={`translate(${x} ${y}) scale(${s})`}>
+              <circle cy="-150" r="120" fill="url(#gr-flame)" class="flicker" />
+              <path d="M-26 0V-120h52V0z" fill="#e8dcc2" />
+              <path d="M0-122q-14-18 0-46q14 28 0 46z" fill="#ffd77a" class="flicker" />
+            </g>
+          ))}
+        </>
+      )}
+    </svg>
+  )
+}
+
+<style>
+  .art {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-width: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .ember {
+      animation: ember 3.2s ease-in-out infinite;
+    }
+    .pulse {
+      animation: pulse 4s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    .flicker {
+      animation: flicker 2.4s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: 50% 100%;
+    }
+  }
+  @keyframes ember {
+    0%,
+    100% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes pulse {
+    50% {
+      opacity: 0.7;
+      transform: scale(0.94);
+    }
+  }
+  @keyframes flicker {
+    30% {
+      transform: scale(0.96, 1.04);
+      opacity: 0.85;
+    }
+    60% {
+      transform: scale(1.03, 0.97);
+    }
+  }
+  }
+</style>

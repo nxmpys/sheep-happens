@@ -1,9 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import Icon from '../components/ui/Icon.astro';
-import LaunchCountdown from '../components/guide/LaunchCountdown.astro';
-import PolymorphHero from '../components/guide/PolymorphHero.astro';
-import { href } from '../i18n/locale';
+import HomeWelcome from '../components/home/HomeWelcome.astro';
 import type { Locale } from '../i18n/routes';
 import { currentVersion } from '../lib/data';
 import { lastModified, websiteJsonLd } from '../lib/seo';
@@ -18,7 +15,6 @@ interface Props {
 
 const { locale, data, body = '' } = Astro.props;
 const modified = lastModified('home', data.reviewed, body);
-const es = locale === 'es';
 const { launchAt } = currentVersion;
 const site = Astro.site ?? new URL('https://sheephappens.app');
 const siteUrl = new URL(import.meta.env.BASE_URL, site).href;
@@ -36,34 +32,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   modified={modified}
 >
   <div class="container home" data-pagefind-body>
-    <div class="hero">
-      <div class="hero__magic" aria-hidden="true">
-        <canvas class="hero__motes" data-motes></canvas>
-      </div>
-      <PolymorphHero locale={locale} pageTitle={data.title} />
-    </div>
-
-    <div class="home__start">
-      {launchAt && <LaunchCountdown at={launchAt} compact />}
-      <div class="hero__actions">
-        <a class="button button--primary" href={href('learn', locale)}>
-          <Icon name="book" size={18} />
-          {es ? 'Soy nuevo: aprende' : "I'm new: learn"}
-        </a>
-        <a class="button button--primary" href={href('builds', locale)}>
-          <Icon name="layers" size={18} />
-          {es ? 'Ya sé jugar: builds' : 'I know the class: builds'}
-        </a>
-        <a class="button" href={href('races', locale)}>
-          <Icon name="users" size={18} />
-          {es ? '¿Qué raza elijo?' : 'Which race?'}
-        </a>
-        <a class="button" href={href('level-view', locale)}>
-          <Icon name="level" size={18} />
-          {es ? '¿Qué hago a mi nivel?' : 'What to do at my level'}
-        </a>
-      </div>
-    </div>
+    <HomeWelcome locale={locale} pageTitle={data.title} launchAt={launchAt} />
 
     <div class="home__content">
       <slot />
@@ -71,130 +40,9 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   </div>
 </BaseLayout>
 
-<script>
-  // Mana motes for the home hero. They stop when the hero is off screen or the
-  // tab is hidden; with «reduce motion» they are drawn once and stay still.
-  const canvas = document.querySelector<HTMLCanvasElement>('[data-motes]');
-  const context = canvas?.getContext('2d');
-  if (canvas && context) {
-    const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    type Mote = { x: number; y: number; r: number; v: number; p: number };
-    let motes: Mote[] = [];
-    let width = 0;
-    let height = 0;
-    let colour = '169, 139, 255';
-    const readColour = () => {
-      const match = getComputedStyle(canvas).color.match(/\d+(\.\d+)?/g);
-      if (match) colour = match.slice(0, 3).join(', ');
-    };
-    const resize = () => {
-      const box = canvas.getBoundingClientRect();
-      const ratio = Math.min(window.devicePixelRatio || 1, 2);
-      width = box.width;
-      height = box.height;
-      canvas.width = width * ratio;
-      canvas.height = height * ratio;
-      context.setTransform(ratio, 0, 0, ratio, 0, 0);
-      motes = Array.from({ length: Math.round(Math.min(width, 1400) / 16) }, () => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        r: Math.random() * 1.8 + 0.4,
-        v: Math.random() * 0.25 + 0.08,
-        p: Math.random() * Math.PI * 2,
-      }));
-    };
-    const draw = (move: boolean) => {
-      context.clearRect(0, 0, width, height);
-      context.shadowBlur = 6;
-      context.shadowColor = `rgba(${colour}, 0.8)`;
-      for (const mote of motes) {
-        if (move) {
-          mote.y -= mote.v;
-          mote.p += 0.02;
-          if (mote.y < -4) {
-            mote.y = height + 4;
-            mote.x = Math.random() * width;
-          }
-        }
-        context.beginPath();
-        context.arc(mote.x + Math.sin(mote.p) * 3, mote.y, mote.r, 0, Math.PI * 2);
-        context.fillStyle = `rgba(${colour}, ${0.35 + Math.sin(mote.p) * 0.3})`;
-        context.fill();
-      }
-    };
-    let visible = true;
-    let running = false;
-    const tick = () => {
-      if (!visible || document.hidden) {
-        running = false;
-        return;
-      }
-      draw(true);
-      requestAnimationFrame(tick);
-    };
-    const start = () => {
-      if (calm || running || !visible || document.hidden) return;
-      running = true;
-      requestAnimationFrame(tick);
-    };
-    readColour();
-    resize();
-    draw(false);
-    new IntersectionObserver(([entry]) => {
-      visible = Boolean(entry?.isIntersecting);
-      start();
-    }).observe(canvas);
-    document.addEventListener('visibilitychange', start);
-    window.addEventListener('resize', () => {
-      resize();
-      draw(false);
-    });
-    // The theme switch changes the accent colour.
-    new MutationObserver(() => {
-      readColour();
-      if (calm) draw(false);
-    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', readColour);
-  }
-</script>
-
 <style>
   .home {
     padding-top: var(--space-6);
-  }
-  .hero {
-    position: relative;
-    isolation: isolate;
-  }
-  /* The arcane field behind the hero: mana motes drifting up. */
-  .hero__magic {
-    position: absolute;
-    inset: calc(var(--space-6) * -1) calc(var(--gutter) * -1) 0;
-    z-index: -1;
-    overflow: hidden;
-    pointer-events: none;
-    color: var(--accent);
-    -webkit-mask-image: linear-gradient(#000 70%, transparent);
-    mask-image: linear-gradient(#000 70%, transparent);
-  }
-  .hero__motes {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-  /* Where to start: the launch countdown, then the four paths in a centred row. */
-  .home__start {
-    display: grid;
-    gap: var(--space-5);
-    padding-bottom: var(--space-7);
-    border-bottom: 1px solid var(--border);
-  }
-  .hero__actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-2);
   }
   .home__content {
     display: grid;
