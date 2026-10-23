@@ -1,5 +1,27 @@
 [
   {
+    "id": "2026-10-23-sources",
+    "date": "2026-10-23",
+    "type": "guide",
+    "title": {
+      "es": "Revisión de fuentes: reino de rol y JcJ en el lanzamiento",
+      "en": "Source review: a Roleplay-PvP realm at launch"
+    },
+    "body": {
+      "es": "Blizzard confirma un tipo de reino de rol y JcJ (Roleplay-PvP) para el lanzamiento del 4 de noviembre; se podrá elegir y reservar nombres en él desde el 27 de octubre. No cambia nada del Mago.",
+      "en": "Blizzard confirms a Roleplay-PvP realm ruleset for the 4 November launch; you will be able to select it and reserve names there from 27 October. Nothing changes for the Mage."
+    },
+    "pages": [
+      "sources"
+    ],
+    "sources": [
+      "blizzard-rp-pvp-ruleset"
+    ],
+    "refs": [
+      "fact:rp-pvp-ruleset"
+    ]
+  },
+  {
     "id": "2026-10-21-frost-tree",
     "date": "2026-10-21",
     "type": "game",
