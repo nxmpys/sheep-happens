@@ -4,6 +4,15 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-10-23
+
+### [Guía] Revisión de fuentes: reino de rol y JcJ en el lanzamiento
+
+Blizzard confirma un tipo de reino de rol y JcJ (Roleplay-PvP) para el lanzamiento del 4 de noviembre; se podrá elegir y reservar nombres en él desde el 27 de octubre. No cambia nada del Mago.
+
+- **Datos afectados:** Reino de rol y JcJ
+- **Fuentes:** [The Roleplay-PvP Ruleset is Coming to WoW Forever](https://us.forums.blizzard.com/en/wow/t/the-roleplay-pvp-ruleset-is-coming-to-wow-forever/2389502) (Blizzard Entertainment)
+
 ## 2026-10-21
 
 ### [Juego] Árbol de Escarcha: adiós a Hielo penetrante y Enfoque elemental a 3 rangos
