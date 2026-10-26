@@ -316,8 +316,16 @@
           "en": "In a group"
         },
         "text": {
-          "es": "Si subes sobre todo en mazmorras, adelanta Canalización de Escarcha 3/3 (un 30 % menos de amenaza y un 15 % menos de coste en tus hechizos de Escarcha) y sube Enfoque elemental a 3/3: élites y jefes esquivan más. Para una mazmorra suelta no compensa cambiar.",
-          "en": "If you level mostly in dungeons, take Frost Channeling 3/3 earlier (30% less threat and 15% lower cost on your Frost spells) and raise Elemental Precision to 3/3: elites and bosses dodge more. For a single dungeon it is not worth switching."
+          "es": "Para subir sobre todo en mazmorras. En grupo, los golpes de tus compañeros rompen las congelaciones de Mordiescarcha y el alcance extra sobra; a cambio, Enfoque elemental 3/3 para no fallar contra élites y jefes, y Ventisca mejorada para que no se escape nadie del grupo que sujeta el tanque. Para una mazmorra suelta no compensa cambiar.",
+          "en": "For leveling mostly in dungeons. In a group, your allies' hits break Frostbite's freezes and the extra range is not needed; instead, Elemental Precision 3/3 so you do not miss against elites and bosses, and Improved Blizzard so nothing escapes the pack the tank is holding. For a single dungeon it is not worth switching."
+        },
+        "remove": {
+          "frostbite": 3,
+          "arctic-reach": 1
+        },
+        "add": {
+          "elemental-precision": 1,
+          "improved-blizzard": 3
         }
       }
     ]
