@@ -8,8 +8,10 @@
 import Callout from './Callout.astro';
 import { getLocale, href } from '../../i18n/locale';
 import { liveNotices } from '../../lib/data';
+import { formatUtcTime } from '../../i18n/ui';
 
 const locale = getLocale(Astro);
+const es = locale === 'es';
 const list = liveNotices();
 ---
 
@@ -21,6 +23,16 @@ const list = liveNotices();
           {notice.before[locale]} <a href={href(notice.link.page, locale)}>{notice.link.label[locale]}</a>
           {notice.after[locale]}
         </p>
+        {notice.times && (
+          <p class="notice__times" data-locale={es ? 'es-ES' : 'en-GB'}>
+            <span>{es ? 'Abre, en tu hora:' : 'Opens, in your time:'}</span>
+            {notice.times.map((time) => (
+              <span class="notice__time">
+                {time.label[locale]}: <time datetime={time.at}>{formatUtcTime(locale, new Date(time.at))}</time>
+              </span>
+            ))}
+          </p>
+        )}
       </Callout>
     </div>
   ))
@@ -36,6 +48,22 @@ const list = liveNotices();
           var end = Date.parse(el.getAttribute('data-end'));
           if (now < start || now >= end) el.hidden = true;
         });
+        // Times: the reader's own time zone, with its name ("18:00 CET"); the UTC text stays as the fallback.
+        document.querySelectorAll('.notice__times').forEach(function (el) {
+          try {
+            var format = new Intl.DateTimeFormat(el.getAttribute('data-locale'), {
+              weekday: 'short',
+              day: 'numeric',
+              month: 'short',
+              hour: '2-digit',
+              minute: '2-digit',
+              timeZoneName: 'short',
+            });
+            el.querySelectorAll('time').forEach(function (time) {
+              time.textContent = format.format(Date.parse(time.getAttribute('datetime')));
+            });
+          } catch (e) {}
+        });
       })();
     </script>
   )
@@ -44,5 +72,17 @@ const list = liveNotices();
 <style>
   .notice[hidden] {
     display: none;
+  }
+  .notice__times {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
+    margin-top: var(--space-2);
+  }
+  .notice__times > span:first-child {
+    font-weight: 700;
+  }
+  .notice__time time {
+    font-variant-numeric: tabular-nums;
   }
 </style>

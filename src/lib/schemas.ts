@@ -630,6 +630,8 @@ export const noticeSchema = z
     before: localized,
     link: z.object({ page: z.enum(PAGE_IDS), label: localized }).strict(),
     after: localized,
+    /** Instants worth showing in the reader's own time zone, e.g. when each region opens. */
+    times: z.array(z.object({ label: localized, at: z.iso.datetime() }).strict()).optional(),
   })
   .strict()
   .refine((n) => Date.parse(n.start) < Date.parse(n.end), { message: 'a notice must start before it ends' });
