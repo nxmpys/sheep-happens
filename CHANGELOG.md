@@ -6,6 +6,12 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ## 2026-10-26
 
+### [Guía] Nueva build de leveo: farmeo AoE en solitario
+
+Una build de Escarcha para subir juntando grupos, con Ventisca mejorada desde el nivel 20 y Fuego desde el 41 (Explosión de Fuego mejorada, Incineración, Lanzallamas, Impacto y Fogonazo mejorado). Sustituye a la variante de área de la build de Pirofrío.
+
+- **Datos afectados:** build:frost-aoe-farming-solo
+
 ### [Guía] La build de leveo llega al 60 con Descarga de Pirofrío
 
 La build de leveo pasa a cubrir del 1 al 60: Escarcha hasta el 40 y, desde ahí, Fuego para aprovechar Descarga de Pirofrío (Incineración, Bola de Fuego mejorada, Ignición y Maestro de los elementos). Retiro las builds de leveo en mazmorras y en área: lo que cambiaban queda como variantes de la build. Hasta que la pruebe en el juego, la build no aparece como recomendada.

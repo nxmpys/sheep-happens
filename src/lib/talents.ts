@@ -85,6 +85,17 @@ export function levelForPoint(point: number, talented = 0): number {
   return point + 9 - talented;
 }
 
+/** A build with some ranks taken out and others put in (a talent variant). */
+export function applySwap(points: Points, remove: Points = {}, add: Points = {}): Record<string, number> {
+  const next: Record<string, number> = { ...points };
+  for (const [id, ranks] of Object.entries(remove)) {
+    next[id] = (next[id] ?? 0) - ranks;
+    if (next[id]! <= 0) delete next[id];
+  }
+  for (const [id, ranks] of Object.entries(add)) next[id] = (next[id] ?? 0) + ranks;
+  return next;
+}
+
 /** Adds up the first `count` points of a point order into a build. */
 export function pointsFromOrder(order: readonly string[], count = order.length): Record<string, number> {
   const points: Record<string, number> = {};

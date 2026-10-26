@@ -317,8 +317,24 @@ export const buildSchema = z
     weaknesses: z.array(localized).default([]),
     /** Items, enchantments or consumables that matter for this build, if any. */
     items: z.array(localized).default([]),
-    /** Talent variants: a few points moved for another situation. */
-    variants: z.array(z.object({ name: localized, text: localized }).strict()).default([]),
+    /**
+     * Talent variants: a few points moved for another situation. `remove` and
+     * `add` (talent id → ranks) describe the swap on the final build, so the page
+     * can show it with icons and open it in the calculator; both must add up to
+     * the same number of points and leave a valid build (checked in data.ts).
+     */
+    variants: z
+      .array(
+        z
+          .object({
+            name: localized,
+            text: localized,
+            remove: z.record(id, z.number().int().min(1).max(5)).optional(),
+            add: z.record(id, z.number().int().min(1).max(5)).optional(),
+          })
+          .strict(),
+      )
+      .default([]),
     /** Stat priority and gear advice, most important first. Empty until there is real data. */
     stats: z.array(localized).default([]),
     /** Page with the in-depth explanation, if there is one. */

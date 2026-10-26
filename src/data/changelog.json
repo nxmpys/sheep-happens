@@ -1,5 +1,25 @@
 [
   {
+    "id": "2026-10-26-aoe-farming-build",
+    "date": "2026-10-26",
+    "type": "guide",
+    "title": {
+      "es": "Nueva build de leveo: farmeo AoE en solitario",
+      "en": "New leveling build: solo AoE farming"
+    },
+    "body": {
+      "es": "Una build de Escarcha para subir juntando grupos, con Ventisca mejorada desde el nivel 20 y Fuego desde el 41 (Explosión de Fuego mejorada, Incineración, Lanzallamas, Impacto y Fogonazo mejorado). Sustituye a la variante de área de la build de Pirofrío.",
+      "en": "A Frost build to level by pulling packs, with Improved Blizzard from level 20 and Fire from 41 (Improved Fire Blast, Incineration, Flame Throwing, Impact and Improved Flamestrike). It replaces the AoE variant of the Frostfire build."
+    },
+    "pages": [
+      "builds",
+      "aoe-farming"
+    ],
+    "refs": [
+      "build:frost-aoe-farming-solo"
+    ]
+  },
+  {
     "id": "2026-10-26-leveling-build-60",
     "date": "2026-10-26",
     "type": "guide",

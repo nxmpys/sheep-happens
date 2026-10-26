@@ -9,6 +9,7 @@
  */
 import BuildActions from './BuildActions.astro';
 import BuildTrees from './BuildTrees.astro';
+import BuildVariants from './BuildVariants.astro';
 import Callout from './Callout.astro';
 import StatusBadge from './StatusBadge.astro';
 import TalentOrder from './TalentOrder.astro';
@@ -134,13 +135,7 @@ const hasPros = pros.items.length > 0 || cons.items.length > 0 || pros.headline 
   <h2 id={sections.variants.id}>{sections.variants.text}</h2>
   {
     build.variants.length > 0 ? (
-      <ul>
-        {build.variants.map((v) => (
-          <li>
-            <strong>{v.name[locale]}.</strong> {v.text[locale]}
-          </li>
-        ))}
-      </ul>
+      <BuildVariants build={build} />
     ) : (
       <p class="build-page__empty">{tb(locale, 'build.page.noVariants')}</p>
     )

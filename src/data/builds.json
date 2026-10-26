@@ -319,17 +319,268 @@
           "es": "Si subes sobre todo en mazmorras, adelanta Canalización de Escarcha 3/3 (un 30 % menos de amenaza y un 15 % menos de coste en tus hechizos de Escarcha) y sube Enfoque elemental a 3/3: élites y jefes esquivan más. Para una mazmorra suelta no compensa cambiar.",
           "en": "If you level mostly in dungeons, take Frost Channeling 3/3 earlier (30% less threat and 15% lower cost on your Frost spells) and raise Elemental Precision to 3/3: elites and bosses dodge more. For a single dungeon it is not worth switching."
         }
+      }
+    ]
+  },
+  {
+    "id": "frost-aoe-farming-solo",
+    "name": {
+      "es": "Farmeo AoE en solitario",
+      "en": "Solo AoE farming"
+    },
+    "slug": {
+      "es": "farmeo-aoe-en-solitario",
+      "en": "solo-aoe-farming"
+    },
+    "uses": [
+      "leveling"
+    ],
+    "recommendedFor": [],
+    "discouragedFor": [],
+    "spec": "frost",
+    "hybridWith": "fire",
+    "tagline": {
+      "es": "Escarcha para subir juntando grupos: Ventisca desde el 20 y Fuego desde el 41 para rematar en área.",
+      "en": "Frost to level by pulling packs: Blizzard from 20 and Fire from 41 to finish them in AoE."
+    },
+    "level": 60,
+    "fromLevel": 1,
+    "legacyTalented": 0,
+    "points": {
+      "elemental-precision": 3,
+      "improved-frostbolt": 5,
+      "improved-frost-nova": 2,
+      "permafrost": 3,
+      "improved-blizzard": 3,
+      "ice-lance": 1,
+      "frost-channeling": 3,
+      "ice-block": 1,
+      "arctic-reach": 2,
+      "shatter": 3,
+      "improved-cone-of-cold": 3,
+      "cold-snap": 1,
+      "ice-barrier": 1,
+      "wake-of-fire": 2,
+      "incineration": 3,
+      "flame-throwing": 2,
+      "impact": 3,
+      "improved-flamestrike": 3,
+      "frost-warding": 2,
+      "ice-shards": 5
+    },
+    "order": [
+      "elemental-precision",
+      "elemental-precision",
+      "elemental-precision",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frost-nova",
+      "improved-frost-nova",
+      "permafrost",
+      "permafrost",
+      "permafrost",
+      "improved-blizzard",
+      "improved-blizzard",
+      "improved-blizzard",
+      "ice-lance",
+      "frost-channeling",
+      "ice-block",
+      "arctic-reach",
+      "arctic-reach",
+      "shatter",
+      "shatter",
+      "improved-cone-of-cold",
+      "improved-cone-of-cold",
+      "improved-cone-of-cold",
+      "cold-snap",
+      "shatter",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "frost-channeling",
+      "frost-channeling",
+      "ice-barrier",
+      "wake-of-fire",
+      "wake-of-fire",
+      "incineration",
+      "incineration",
+      "incineration",
+      "flame-throwing",
+      "flame-throwing",
+      "impact",
+      "impact",
+      "impact",
+      "improved-flamestrike",
+      "improved-flamestrike",
+      "improved-flamestrike",
+      "frost-warding",
+      "frost-warding",
+      "ice-shards",
+      "ice-shards",
+      "ice-shards",
+      "ice-shards",
+      "ice-shards"
+    ],
+    "orderNotes": [
+      {
+        "point": 11,
+        "text": {
+          "es": "Ventisca mejorada: con el primer punto (nivel 20, el mismo en que aprendes Ventisca) ya puedes empezar a farmear en área.",
+          "en": "Improved Blizzard: from the first point (level 20, when you learn Blizzard) you can start AoE farming."
+        }
+      },
+      {
+        "point": 31,
+        "text": {
+          "es": "Barrera de hielo, el talento de 31 puntos de Escarcha.",
+          "en": "Ice Barrier, the 31-point Frost talent."
+        }
+      },
+      {
+        "point": 32,
+        "text": {
+          "es": "Desde aquí, Fuego. Hay dos alternativas en las variantes: Bola de Fuego mejorada 5/5, o con Maestro de los elementos.",
+          "en": "From here on, Fire. The variants list two alternatives: Improved Fireball 5/5, or with Master of Elements."
+        }
+      },
+      {
+        "point": 45,
+        "text": {
+          "es": "Los 7 últimos puntos van a tu gusto. Recomiendo Custodia de Escarcha 2/2 y Fragmentos de hielo, para que los críticos de Ventisca y Cono de frío peguen más.",
+          "en": "The last 7 points are up to you. I recommend Frost Warding 2/2 and Ice Shards, so Blizzard and Cone of Cold crits hit harder."
+        }
+      }
+    ],
+    "goal": {
+      "es": "Subir en solitario juntando grupos de enemigos",
+      "en": "Level solo by pulling packs"
+    },
+    "profile": {
+      "es": "Quien ya domina el Mago y tiene una buena zona.",
+      "en": "Players who already know the Mage and have a good spot."
+    },
+    "upside": {
+      "es": "Matas grupos enteros de una vez: mucha experiencia por tirón.",
+      "en": "You kill whole packs at once: lots of experience per pull."
+    },
+    "downside": {
+      "es": "Arriesgada: un error o un enemigo de más suele costar la vida.",
+      "en": "Risky: one mistake or one enemy too many usually means death."
+    },
+    "keyTalents": [
+      "improved-blizzard",
+      "permafrost",
+      "improved-frost-nova",
+      "improved-cone-of-cold",
+      "frost-channeling"
+    ],
+    "summary": {
+      "es": "¿Matar de uno en uno se te hace eterno? Junta al grupo, congélalo y que caiga la Ventisca. Desde el 20, esta build sube a base de tirones.",
+      "en": "Killing one at a time feels endless? Pull the pack, freeze it and let Blizzard fall. From level 20, this build levels pull by pull."
+    },
+    "playstyle": [
+      {
+        "es": "Junta a los enemigos con una Deflagración Arcana para que se apelotonen.",
+        "en": "Gather the enemies with an Arcane Explosion so they bunch up."
+      },
+      {
+        "es": "Nova de Escarcha y aléjate todo lo que puedas.",
+        "en": "Frost Nova and get as far away as you can."
+      },
+      {
+        "es": "Empieza Ventisca en el último segundo de la Nova, donde los enemigos tengan que cruzarla.",
+        "en": "Start Blizzard in the last second of the Nova, where the enemies have to walk through it."
+      },
+      {
+        "es": "Al terminar, Cono de frío para mantenerlos lentos hasta que vuelva la Nova.",
+        "en": "When it ends, Cone of Cold to keep them slowed until Frost Nova is back."
+      },
+      {
+        "es": "Segunda Nova, Fogonazo sobre el grupo congelado, Cono de frío y Deflagración Arcana para acabar. Si algo sale mal, Mordedura helada te devuelve la Nova y el Bloqueo de hielo.",
+        "en": "Second Nova, Flamestrike on the frozen pack, Cone of Cold and Arcane Explosion to finish. If something goes wrong, Cold Snap gives you Frost Nova and Ice Block back."
+      }
+    ],
+    "strengths": [
+      {
+        "es": "Con Ventisca mejorada 3/3 y Escarcha permanente 3/3, los enemigos van a mitad de velocidad dentro de la Ventisca.",
+        "en": "With Improved Blizzard 3/3 and Permafrost 3/3, enemies move at half speed inside Blizzard."
+      },
+      {
+        "es": "Nova de Escarcha mejorada y Mordedura helada te dan más Novas para reiniciar el tirón.",
+        "en": "Improved Frost Nova and Cold Snap give you more Novas to reset the pull."
+      },
+      {
+        "es": "Canalización de Escarcha abarata un 15 % tus hechizos de Escarcha.",
+        "en": "Frost Channeling makes your Frost spells 15% cheaper."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "El maná manda: cada tirón acaba en una parada para beber.",
+        "en": "Mana rules: every pull ends with a stop to drink."
+      },
+      {
+        "es": "Solo funciona con enemigos cuerpo a cuerpo, sin miedos, derribos ni ataques a distancia, en zonas abiertas y sin otros jugadores.",
+        "en": "It only works on melee enemies without fears, knockbacks or ranged attacks, in open areas and without other players."
+      }
+    ],
+    "items": [],
+    "variants": [
+      {
+        "name": {
+          "es": "Bola de Fuego mejorada",
+          "en": "Improved Fireball"
+        },
+        "text": {
+          "es": "Del punto 32 al 36, Bola de Fuego mejorada en lugar de Explosión de Fuego mejorada e Incineración.",
+          "en": "For points 32 to 36, Improved Fireball instead of Improved Fire Blast and Incineration."
+        },
+        "remove": {
+          "wake-of-fire": 2,
+          "incineration": 3
+        },
+        "add": {
+          "improved-fireball": 5
+        }
       },
       {
         "name": {
-          "es": "Farmeo en área",
-          "en": "AoE farming"
+          "es": "Bola de Fuego mejorada y Maestro de los elementos",
+          "en": "Improved Fireball and Master of Elements"
         },
         "text": {
-          "es": "Desde el 22: Ventisca mejorada 3/3 y Escarcha permanente 3/3, y sin Mordiescarcha, porque sus congelaciones al azar separan al grupo. Las rotaciones y las zonas están en la guía de farmeo AoE.",
-          "en": "From 22: Improved Blizzard 3/3 and Permafrost 3/3, and no Frostbite, because its random freezes split the pack. Rotations and spots are in the AoE farming guide."
+          "es": "Bola de Fuego mejorada en lugar de Incineración, y Maestro de los elementos con los puntos libres. Maestro de los elementos pide 15 puntos en Fuego: va después de Fogonazo mejorado.",
+          "en": "Improved Fireball instead of Incineration, and Master of Elements with the free points. Master of Elements needs 15 points in Fire: it comes after Improved Flamestrike."
+        },
+        "remove": {
+          "incineration": 3,
+          "ice-shards": 5
+        },
+        "add": {
+          "improved-fireball": 5,
+          "master-of-elements": 3
+        }
+      },
+      {
+        "name": {
+          "es": "Puntos libres",
+          "en": "Free points"
+        },
+        "text": {
+          "es": "Los 7 últimos puntos (del 45 al 51) dependen de cómo juegues. En la build van Custodia de Escarcha y Fragmentos de hielo.",
+          "en": "The last 7 points (45 to 51) depend on how you play. The build takes Frost Warding and Ice Shards."
         }
       }
-    ]
+    ],
+    "stats": [],
+    "page": "aoe-farming",
+    "status": "analysis",
+    "gameVersion": "forever-beta-2026-10",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "wowhead-forever-talent-calc",
+      "conquestcapped-mage-leveling"
+    ],
+    "updated": "2026-10-26"
   }
 ]

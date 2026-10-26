@@ -1,0 +1,278 @@
+---
+/**
+ * Talent variants of a build as cards. A variant with a swap (`remove` and
+ * `add` in builds.json) shows the talents you take out and the ones you put
+ * in with their game icons and ranks, how the point split changes, and opens
+ * the swapped build in the calculator. A variant without a swap is a short note.
+ */
+import Icon from '../ui/Icon.astro';
+import { tb } from '../../i18n/builds';
+import { getLocale, href } from '../../i18n/locale';
+import { talentText, talents } from '../../lib/data';
+import { iconPath } from '../../lib/icons';
+import { localName } from '../../lib/names';
+import type { Build } from '../../lib/schemas';
+import { spellIndexFor } from '../../lib/spell-index';
+import { findSpell } from '../../lib/spells';
+import { applySwap, distributionLabel, wowheadBuildUrl } from '../../lib/talents';
+
+interface Props {
+  build: Build;
+}
+
+const { build } = Astro.props;
+const locale = getLocale(Astro);
+const index = spellIndexFor(locale);
+const byId = new Map(talents.map((t) => [t.id, t]));
+const before = distributionLabel(build.points, talents);
+const pieces = (ranks: Record<string, number> = {}) =>
+  Object.entries(ranks).map(([id, count]) => {
+    const talent = byId.get(id)!;
+    return {
+      id,
+      count,
+      name: localName(talent, locale),
+      icon: talentText.talents[id]?.icon,
+      spell: findSpell(index, talent.name)?.key,
+      school: talent.tree,
+    };
+  });
+const calcUrl = (points: Record<string, number>) => {
+  const code = wowheadBuildUrl(points, talents).split('/mage/v2')[1] ?? '';
+  return `${href('talent-calc', locale)}?t=${code}&lvl=${build.level}`;
+};
+const cards = build.variants.map((variant) => {
+  const swap = variant.remove || variant.add;
+  const after = swap ? applySwap(build.points, variant.remove, variant.add) : undefined;
+  return {
+    name: variant.name[locale],
+    text: variant.text[locale],
+    out: pieces(variant.remove),
+    in: pieces(variant.add),
+    split: after ? distributionLabel(after, talents) : undefined,
+    url: after ? calcUrl(after) : undefined,
+  };
+});
+---
+
+<div class="variants">
+  {
+    cards.map((card) => (
+      <article class:list={['variant', { 'variant--note': !card.split }]}>
+        <h3 class="variant__name">{card.name}</h3>
+        {card.split && (
+          <div class="variant__swap">
+            <div class="variant__side variant__side--out">
+              <p class="variant__label">{tb(locale, 'variant.out')}</p>
+              <ul class="variant__talents">
+                {card.out.map((p) => (
+                  <li class={`variant__talent school-${p.school}`}>
+                    <span class:list={['variant__icon', p.spell && 'spell-ref']} data-spell={p.spell} tabindex={p.spell ? 0 : undefined}>
+                      {p.icon && <img src={iconPath(p.icon)} alt="" width="44" height="44" loading="lazy" decoding="async" />}
+                      <span class="variant__count">−{p.count}</span>
+                    </span>
+                    <span class="variant__tname">{p.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Icon name="arrowRight" size={22} class="variant__arrow" />
+            <div class="variant__side variant__side--in">
+              <p class="variant__label">{tb(locale, 'variant.in')}</p>
+              <ul class="variant__talents">
+                {card.in.map((p) => (
+                  <li class={`variant__talent school-${p.school}`}>
+                    <span class:list={['variant__icon', p.spell && 'spell-ref']} data-spell={p.spell} tabindex={p.spell ? 0 : undefined}>
+                      {p.icon && <img src={iconPath(p.icon)} alt="" width="44" height="44" loading="lazy" decoding="async" />}
+                      <span class="variant__count">+{p.count}</span>
+                    </span>
+                    <span class="variant__tname">{p.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+        <p class="variant__text">{card.text}</p>
+        {card.split && (
+          <div class="variant__foot">
+            <span class="variant__split" title={tb(locale, 'build.points')}>
+              {before} <Icon name="arrowRight" size={14} /> <strong>{card.split}</strong>
+            </span>
+            <a class="button" href={card.url}>
+              <Icon name="layers" size={16} />
+              {tb(locale, 'build.calc')}
+            </a>
+          </div>
+        )}
+      </article>
+    ))
+  }
+</div>
+
+<style>
+  .variants {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .variant {
+    --out: #e0605a;
+    --in: #3fbf6a;
+    display: grid;
+    align-content: start;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+  }
+  .variant--note {
+    border-style: dashed;
+    background: transparent;
+  }
+  .variant__name {
+    margin: 0;
+    font-size: var(--step-1);
+  }
+  /* Wide screens: the swap on the left, the explanation and the actions on the right. */
+  @media (min-width: 48rem) {
+    .variant:not(.variant--note) {
+      grid-template-columns: auto minmax(0, 1fr);
+      grid-template-areas: 'name name' 'swap text' 'swap foot';
+      column-gap: var(--space-5);
+    }
+    .variant:not(.variant--note) .variant__name {
+      grid-area: name;
+    }
+    .variant:not(.variant--note) .variant__swap {
+      grid-area: swap;
+      align-self: start;
+    }
+    .variant:not(.variant--note) .variant__text {
+      grid-area: text;
+    }
+    .variant:not(.variant--note) .variant__foot {
+      grid-area: foot;
+      align-self: end;
+      justify-content: flex-start;
+    }
+  }
+  .variant__swap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    border-radius: var(--radius);
+    background: #0f0d18;
+    color: #ecebf4;
+  }
+  .variant__swap :global(.variant__arrow) {
+    flex-shrink: 0;
+    color: #cfcbe0;
+  }
+  .variant__side {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .variant__label {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .variant__side--out .variant__label {
+    color: var(--out);
+  }
+  .variant__side--in .variant__label {
+    color: var(--in);
+  }
+  .variant__talents {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .variant__talent {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-1);
+    width: 4.5rem;
+    margin: 0;
+    text-align: center;
+  }
+  .variant__icon {
+    position: relative;
+    display: block;
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    cursor: help;
+  }
+  .variant__icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+  }
+  .variant__side--out .variant__icon {
+    box-shadow: 0 0 0 2px var(--out);
+  }
+  .variant__side--out .variant__icon img {
+    filter: grayscale(0.7) brightness(0.7);
+  }
+  .variant__side--in .variant__icon {
+    box-shadow:
+      0 0 0 2px var(--in),
+      0 0 12px color-mix(in srgb, var(--in) 45%, transparent);
+  }
+  .variant__count {
+    position: absolute;
+    right: -6px;
+    bottom: -6px;
+    min-width: 1.6rem;
+    padding: 0 0.3em;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    line-height: 1.4;
+    color: #0e0d16;
+  }
+  .variant__side--out .variant__count {
+    background: var(--out);
+  }
+  .variant__side--in .variant__count {
+    background: var(--in);
+  }
+  .variant__tname {
+    font-size: 0.75rem;
+    line-height: 1.25;
+    color: #cfcbe0;
+  }
+  .variant__text {
+    margin: 0;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .variant__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-3);
+  }
+  .variant__split {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    font-size: var(--step--1);
+    font-variant-numeric: tabular-nums;
+    color: var(--text-muted);
+  }
+  .variant__split strong {
+    color: var(--text);
+  }
+</style>

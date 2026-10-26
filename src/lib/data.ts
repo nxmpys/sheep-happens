@@ -83,7 +83,7 @@ import {
 import { nameEntry, spellNames } from './spell-names';
 import { recommendedConflicts } from './build-roles';
 import { routeConflicts } from './build-routes';
-import { validateBuild, validateOrder } from './talents';
+import { applySwap, totalPoints, validateBuild, validateOrder } from './talents';
 import { validateLegacyBuild } from './legacy';
 
 function parseList<T extends z.ZodType>(file: string, schema: T, raw: unknown): z.output<T>[] {
@@ -288,6 +288,17 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
       for (const note of build.orderNotes) {
         if (note.point > build.order.length) problems.push(`builds.json: "${build.id}" has a note for point ${note.point}, beyond its order`);
       }
+    }
+    // A variant swaps ranks on the final build: same total, a build you can really have.
+    for (const variant of build.variants) {
+      if (!variant.remove && !variant.add) continue;
+      const label = `builds.json: "${build.id}" variant "${variant.name.en}"`;
+      for (const [id, ranks] of Object.entries(variant.remove ?? {})) {
+        if ((build.points[id] ?? 0) < ranks) problems.push(`${label} removes ${ranks} from "${id}", which has ${build.points[id] ?? 0}`);
+      }
+      if (totalPoints(variant.remove ?? {}) !== totalPoints(variant.add ?? {})) problems.push(`${label} removes and adds a different number of points`);
+      const swapped = applySwap(build.points, variant.remove, variant.add);
+      for (const problem of validateBuild(swapped, build.level, data.talents, build.legacyTalented)) problems.push(`${label}: ${problem}`);
     }
     if (build.fromLevel !== undefined && build.fromLevel > build.level) {
       problems.push(`builds.json: "${build.id}" starts at level ${build.fromLevel}, above its level ${build.level}`);

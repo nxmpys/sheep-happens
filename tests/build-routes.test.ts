@@ -4,6 +4,7 @@ import { buildIcon, buildPath, canonicalUse, contentPath, routeConflicts, usedCo
 import { buildSections } from '../src/lib/build-page';
 import { checkIntegrity, dataset } from '../src/lib/data';
 import { buildSchema, type Build } from '../src/lib/schemas';
+import { applySwap } from '../src/lib/talents';
 
 const base = dataset.builds.find((b) => b.id === 'frost-leveling-solo')!;
 
@@ -69,5 +70,22 @@ describe('not recommended', () => {
     const raw = { ...structuredClone(base), recommendedFor: ['leveling'], discouragedFor: ['leveling'] };
     expect(buildSchema.safeParse(raw).success).toBe(false);
     expect(buildSchema.safeParse({ ...structuredClone(base), discouragedFor: ['raid'] }).success).toBe(false);
+  });
+});
+
+describe('talent variants', () => {
+  const aoe = dataset.builds.find((b) => b.id === 'frost-aoe-farming-solo')!;
+
+  it('swap ranks on the final build', () => {
+    expect(applySwap({ a: 3, b: 2 }, { a: 3 }, { c: 3 })).toEqual({ b: 2, c: 3 });
+  });
+
+  it('must keep the total and leave a valid build', () => {
+    const data = structuredClone(dataset);
+    const build = data.builds.find((b) => b.id === aoe.id)!;
+    build.variants = [{ ...build.variants[0]!, remove: { incineration: 3 }, add: { 'improved-fireball': 2 } }];
+    expect(checkIntegrity(data).join('\n')).toMatch(/removes and adds a different number of points/);
+    build.variants = [{ ...build.variants[0]!, remove: { incineration: 3 }, add: { 'master-of-elements': 3 } }];
+    expect(checkIntegrity(data).join('\n')).toMatch(/variant/);
   });
 });
