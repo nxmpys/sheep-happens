@@ -1,218 +1,734 @@
 ---
 /**
  * The builds index, generated from builds.json, so a new build needs no edit
- * here: one block per content (leveling 1-60, PvP, dungeons, raid) with the
- * builds that exist for it, the recommended one labelled. A block with builds
- * is a link to its content page (/builds/<use>/), where each build shows its
- * three trees; a block without builds says so and links nowhere. There is no
- * content × tree matrix: a tree without a build for a content is not listed.
+ * here. Every build is a card that links straight to its own page: its icon
+ * over a glow in its trees' colours, the contents it is for, the points per
+ * tree, its key talents and one upside and one downside. A row of content
+ * filters (all, leveling 1-60, PvP, dungeons, raid) narrows the cards; a
+ * content without builds says so. Under the cards, each content with builds
+ * links to its page (/builds/<use>/), where the builds are compared tree by tree.
+ * Without JavaScript the filters stay hidden and every card is shown.
  */
 import Icon from '../ui/Icon.astro';
 import { SPEC_LABELS, USE_TITLES, tb } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
 import { buildRole, type BuildRole } from '../../lib/build-roles';
-import { buildIcon, contentPath } from '../../lib/build-routes';
-import { builds } from '../../lib/data';
-import { BUILD_USES, type BuildUse } from '../../lib/schemas';
+import { buildPath, contentPath } from '../../lib/build-routes';
+import { builds, getTalent, talentText, talents } from '../../lib/data';
+import { iconPath } from '../../lib/icons';
+import { localName } from '../../lib/names';
+import { BUILD_USES, type Build, type BuildUse } from '../../lib/schemas';
+import { pointsByTree, totalPoints } from '../../lib/talents';
 
 const locale = getLocale(Astro);
+const base = import.meta.env.BASE_URL;
 const ROLE_ORDER: Record<BuildRole, number> = { recommended: 0, viable: 1, 'not-recommended': 2 };
-const forUse = (use: BuildUse) =>
-  builds.filter((b) => b.uses.includes(use)).sort((a, b) => ROLE_ORDER[buildRole(a, use)] - ROLE_ORDER[buildRole(b, use)]);
+const TREES = ['arcane', 'fire', 'frost'] as const;
+
+const bestRole = (build: Build) => Math.min(...build.uses.map((use) => ROLE_ORDER[buildRole(build, use)]));
+const list = [...builds].sort((a, b) => bestRole(a) - bestRole(b));
+const counts = Object.fromEntries(BUILD_USES.map((use) => [use, builds.filter((b) => b.uses.includes(use)).length])) as Record<BuildUse, number>;
+const empty = BUILD_USES.filter((use) => counts[use] === 0);
+const filled = BUILD_USES.filter((use) => counts[use] > 0);
+
+const talentIcon = (id: string) => talentText.talents[id]?.icon;
+// The content titles already say 1-60 or 60; only another range needs its own tag.
+const levelsTag = (build: Build) =>
+  build.fromLevel && !(build.fromLevel === 1 && build.level === 60)
+    ? tb(locale, 'build.levels', { from: build.fromLevel, to: build.level })
+    : build.level < 60
+      ? tb(locale, 'build.level', { level: build.level })
+      : undefined;
+const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon).find(Boolean);
 ---
 
-<ul class="uses">
-  {
-    BUILD_USES.map((use) => {
-      const list = forUse(use);
-      return (
-        <li class:list={['use', 'has-glow', { 'use--empty': list.length === 0 }]} id={`uses-${use}`}>
-          {list.length > 0 && <span class="arcane-glow" aria-hidden="true" />}
-          <p class="use__title">
-            {list.length > 0 ? (
-              <a class="use__link" href={contentPath(use, locale, { base: import.meta.env.BASE_URL })}>
-                {USE_TITLES[locale][use]}
-              </a>
-            ) : (
-              USE_TITLES[locale][use]
-            )}
-            {list.length > 0 && <Icon name="arrowRight" size={18} class="use__arrow" />}
-          </p>
-          {list.length > 0 ? (
-            <ul class="use__list">
-              {list.map((build) => {
-                const role = buildRole(build, use);
-                return (
-                  <li class={`use__build school-${build.spec}`}>
-                    <Icon name={buildIcon(build)} size={22} class="use__icon" />
-                    <span class="use__text">
-                      <span class="use__name">{build.name[locale]}</span>
-                      <span class="use__meta">
-                        {SPEC_LABELS[locale][build.spec]}
-                        {role !== 'viable' && <span class:list={['use__role', `use__role--${role}`]}>{tb(locale, `build.${role}`)}</span>}
-                        {build.status !== 'tested' && <span class="use__role use__role--untested">{tb(locale, 'build.untested')}</span>}
-                      </span>
-                      <span class="use__desc">{build.tagline[locale]}</span>
+<div class="bx" data-build-explorer>
+  <div class="bx__filters" role="group" aria-label={tb(locale, 'index.filter')} data-filters hidden>
+    <span class="bx__pill" aria-hidden="true" data-pill></span>
+    <button type="button" class="bx__filter" data-filter="all" aria-pressed="true">
+      {tb(locale, 'index.all')}
+      <span class="bx__count">{builds.length}</span>
+    </button>
+    {
+      BUILD_USES.map((use) => (
+        <button type="button" class:list={['bx__filter', { 'bx__filter--empty': counts[use] === 0 }]} data-filter={use} aria-pressed="false">
+          {USE_TITLES[locale][use]}
+          <span class="bx__count">{counts[use]}</span>
+        </button>
+      ))
+    }
+  </div>
+
+  <ul class="bx__grid" data-grid aria-live="polite">
+    {
+      list.map((build, i) => {
+        const icon = cardIcon(build);
+        const tree = pointsByTree(build.points, talents);
+        const total = totalPoints(build.points);
+        const second = build.hybridWith ?? build.spec;
+        return (
+          <li class={`bx__item school-${build.spec}`} data-uses={build.uses.join(' ')} style={`--i: ${i}; view-transition-name: bx-${build.id}`}>
+            <a class="bx__card has-glow" href={buildPath(build, locale, { base })} data-no-spell-links>
+              <span class="arcane-glow" aria-hidden="true" />
+              <span class={`bx__banner bx__banner--${build.spec} bx__banner--with-${second}`} aria-hidden="true">
+                {icon && <img class="bx__aura" src={iconPath(icon)} alt="" width="56" height="56" loading="lazy" decoding="async" />}
+                <span class="bx__motes" />
+                {icon && <img class="bx__icon" src={iconPath(icon)} alt="" width="56" height="56" loading="lazy" decoding="async" />}
+              </span>
+              <span class="bx__tags">
+                {build.uses.map((use) => {
+                  const role = buildRole(build, use);
+                  return (
+                    <span class:list={['bx__tag', { 'bx__tag--recommended': role === 'recommended' }]}>
+                      {USE_TITLES[locale][use]}
+                      {role === 'recommended' && <> · {tb(locale, 'build.recommended')}</>}
                     </span>
-                  </li>
-                );
-              })}
-            </ul>
-          ) : (
-            <p class="use__none">{tb(locale, 'index.none')}</p>
-          )}
-        </li>
-      );
-    })
+                  );
+                })}
+                {levelsTag(build) && <span class="bx__tag">{levelsTag(build)}</span>}
+              </span>
+              <span class="bx__body">
+                <h3 class="bx__name">{build.name[locale]}</h3>
+                <span class="bx__meta">
+                  {SPEC_LABELS[locale][build.spec]}
+                  {build.hybridWith && <> + {SPEC_LABELS[locale][build.hybridWith]}</>}
+                  {build.status !== 'tested' && <span class="bx__untested">{tb(locale, 'build.untested')}</span>}
+                </span>
+                <span class="bx__tagline">{build.tagline[locale]}</span>
+
+                <span class="bx__points" title={tb(locale, 'build.points')}>
+                  <span class="bx__bar" aria-hidden="true">
+                    {TREES.filter((t) => tree[t] > 0).map((t) => (
+                      <span class={`bx__seg school-${t}`} style={`flex-grow: ${tree[t]}`} />
+                    ))}
+                  </span>
+                  <span class="bx__legend">
+                    {TREES.filter((t) => tree[t] > 0).map((t) => (
+                      <span class={`bx__tree school-${t}`}>
+                        <Icon name={t} size={14} /> {SPEC_LABELS[locale][t]} <strong>{tree[t]}</strong>
+                      </span>
+                    ))}
+                    <span class="bx__total">{tb(locale, 'build.totalPoints', { points: total })}</span>
+                  </span>
+                </span>
+
+                {
+                  build.keyTalents.length > 0 && (
+                    <span class="bx__talents">
+                      <span class="visually-hidden">{tb(locale, 'build.keyTalents')}: </span>
+                      {build.keyTalents.map((key, k) => {
+                        const talent = getTalent(key);
+                        const src = talentIcon(key);
+                        const name = localName(talent, locale);
+                        return src ? (
+                          <img class="bx__talent" src={iconPath(src)} alt={name} title={name} width="56" height="56" loading="lazy" decoding="async" style={`--k: ${k}`} />
+                        ) : (
+                          <span class="visually-hidden">{name} </span>
+                        );
+                      })}
+                    </span>
+                  )
+                }
+
+                {
+                  (build.upside || build.downside) && (
+                    <span class="bx__trade">
+                      {build.upside && (
+                        <span class="bx__pro">
+                          <span class="bx__sign" aria-hidden="true">+</span>
+                          <span class="visually-hidden">{tb(locale, 'index.pros')}: </span>
+                          {build.upside[locale]}
+                        </span>
+                      )}
+                      {build.downside && (
+                        <span class="bx__con">
+                          <span class="bx__sign" aria-hidden="true">−</span>
+                          <span class="visually-hidden">{tb(locale, 'index.cons')}: </span>
+                          {build.downside[locale]}
+                        </span>
+                      )}
+                    </span>
+                  )
+                }
+              </span>
+              <span class="bx__open">
+                {tb(locale, 'build.open')}
+                <Icon name="arrowRight" size={18} />
+              </span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+
+  {
+    BUILD_USES.filter((use) => counts[use] === 0).map((use) => (
+      <p class="bx__none" data-none={use} hidden>
+        <Icon name="pending" size={18} />
+        {tb(locale, 'index.none')} {tb(locale, 'index.later')}
+      </p>
+    ))
   }
-</ul>
+
+  {
+    empty.length > 0 && (
+      <p class="bx__soon" data-soon>
+        <span class="bx__soon-uses">
+          {empty.map((use) => (
+            <span class="bx__soon-use">{USE_TITLES[locale][use]}</span>
+          ))}
+        </span>
+        <span>{tb(locale, 'index.soon')}</span>
+      </p>
+    )
+  }
+
+  {
+    filled.length > 0 && (
+      <ul class="bx__compare">
+        {filled.map((use) => (
+          <li data-compare={use}>
+            <a href={contentPath(use, locale, { base })}>
+              {tb(locale, 'index.compare', { use: USE_TITLES[locale][use] })}
+              <Icon name="arrowRight" size={16} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</div>
+
+<script>
+  for (const root of document.querySelectorAll<HTMLElement>('[data-build-explorer]')) {
+    const bar = root.querySelector<HTMLElement>('[data-filters]')!;
+    const pill = root.querySelector<HTMLElement>('[data-pill]')!;
+    const buttons = [...bar.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+    const items = [...root.querySelectorAll<HTMLElement>('[data-uses]')];
+    const nones = [...root.querySelectorAll<HTMLElement>('[data-none]')];
+    const soon = root.querySelector<HTMLElement>('[data-soon]');
+    const compares = [...root.querySelectorAll<HTMLElement>('[data-compare]')];
+    bar.hidden = false;
+
+    const movePill = () => {
+      const active = buttons.find((b) => b.getAttribute('aria-pressed') === 'true')!;
+      pill.style.setProperty('--x', `${active.offsetLeft}px`);
+      pill.style.setProperty('--y', `${active.offsetTop}px`);
+      pill.style.setProperty('--w', `${active.offsetWidth}px`);
+      pill.style.setProperty('--h', `${active.offsetHeight}px`);
+    };
+
+    const apply = (filter: string) => {
+      for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.filter === filter));
+      let shown = 0;
+      for (const item of items) {
+        const match = filter === 'all' || item.dataset.uses!.split(' ').includes(filter);
+        item.hidden = !match;
+        if (match) item.style.setProperty('--i', String(shown++));
+      }
+      for (const none of nones) none.hidden = none.dataset.none !== filter;
+      if (soon) soon.hidden = filter !== 'all';
+      for (const link of compares) link.hidden = filter !== 'all' && link.dataset.compare !== filter;
+      root.dataset.filter = filter;
+      movePill();
+    };
+
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+    for (const button of buttons) {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter!;
+        button.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: reduce.matches ? 'auto' : 'smooth' });
+        if (root.dataset.filter === filter) return;
+        // Cards glide to their new places where the browser can animate the change.
+        if (document.startViewTransition && !reduce.matches) document.startViewTransition(() => apply(filter));
+        else apply(filter);
+      });
+    }
+    apply('all');
+    new ResizeObserver(movePill).observe(bar);
+    requestAnimationFrame(() => requestAnimationFrame(() => (root.dataset.ready = '')));
+  }
+</script>
 
 <style>
-  .uses {
+  .bx {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
-    gap: var(--space-4);
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    gap: var(--space-5);
   }
-  .use {
+
+  /* ---- Filters: a pill slides to the chosen content ---- */
+  .bx__filters {
     position: relative;
     display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    min-width: 0;
-    margin: 0;
-    padding: var(--space-4);
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    justify-self: start;
+    max-width: 100%;
+    padding: var(--space-1);
     border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
+    border-radius: 999px;
     background: var(--surface-1);
-    scroll-margin-top: calc(var(--header-h) + var(--space-4));
-    transition:
-      border-color 0.15s ease,
-      transform 0.15s ease;
   }
-  .use + .use {
-    margin-top: 0;
+  .bx__filters[hidden] {
+    display: none;
   }
-  .use:not(.use--empty):hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
-  }
-  .use--empty {
-    background: transparent;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .use {
-      transition: none;
+  /* Phones: one row that scrolls sideways instead of wrapping. */
+  @media (max-width: 640px) {
+    .bx__filters {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      justify-self: stretch;
     }
-    .use:not(.use--empty):hover {
-      transform: none;
+    .bx__filter {
+      flex-shrink: 0;
     }
   }
-  .use__title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-2);
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: var(--step-1);
-    font-weight: 600;
-  }
-  .use--empty .use__title {
-    color: var(--text-muted);
-  }
-  .use__link {
-    color: var(--text);
-    text-decoration: none;
-  }
-  /* The whole block is the link. */
-  .use__link::after {
-    content: '';
+  .bx__pill {
     position: absolute;
-    inset: 0;
-    z-index: 1;
-    border-radius: var(--radius-lg);
+    top: 0;
+    left: 0;
+    width: var(--w, 0);
+    height: var(--h, 0);
+    border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 4px 18px color-mix(in srgb, var(--accent) 40%, transparent);
+    transform: translate(var(--x, 0), var(--y, 0));
   }
-  .use__link:focus-visible {
-    outline: none;
+  /* Placed before it learns to slide, so it doesn't grow from nothing on load. */
+  .bx[data-ready] .bx__pill {
+    transition:
+      transform 0.35s cubic-bezier(0.3, 1.3, 0.5, 1),
+      width 0.35s cubic-bezier(0.3, 1.3, 0.5, 1);
   }
-  .use:has(.use__link:focus-visible) {
+  .bx__filter {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 2.5rem;
+    padding: 0 var(--space-4);
+    border: 0;
+    border-radius: 999px;
+    background: none;
+    color: var(--text);
+    font: inherit;
+    font-size: var(--step--1);
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.25s ease;
+  }
+  .bx__filter:hover {
+    color: var(--accent);
+  }
+  .bx__filter[aria-pressed='true'] {
+    color: var(--accent-contrast);
+  }
+  .bx__filter:focus-visible {
     outline: 3px solid var(--focus);
     outline-offset: 2px;
   }
-  .use__title :global(.use__arrow) {
-    color: var(--accent);
+  .bx__filter--empty:not([aria-pressed='true']) {
+    color: var(--text-subtle);
   }
-  .use__list {
+  .bx__count {
+    min-width: 1.5em;
+    padding: 0 0.4em;
+    border-radius: 999px;
+    background: color-mix(in srgb, currentColor 16%, transparent);
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  /* ---- Cards ---- */
+  .bx__grid {
     display: grid;
-    gap: var(--space-2);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+    gap: var(--space-5);
     margin: 0;
     padding: 0;
     list-style: none;
   }
-  .use__build {
+  .bx__item {
     display: flex;
-    gap: var(--space-3);
-    align-items: flex-start;
-    margin: 0;
-    padding: var(--space-3);
+    margin: 0 !important;
+    animation: bx-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 70ms);
+  }
+  .bx__item[hidden] {
+    display: none;
+  }
+  @keyframes bx-in {
+    from {
+      opacity: 0;
+      transform: translateY(14px) scale(0.98);
+    }
+  }
+  .bx__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
     border: 1px solid var(--border);
-    border-left: 4px solid var(--school);
     border-radius: var(--radius-lg);
-    background: var(--surface-2, var(--surface-1));
+    background: var(--surface-1);
+    color: var(--text);
+    text-decoration: none;
+    transition:
+      transform 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
   }
-  .use__build :global(.use__icon) {
-    flex-shrink: 0;
-    margin-top: 0.1em;
-    color: var(--school);
+  .bx__card .arcane-glow {
+    --accent: var(--school);
+    z-index: 2;
   }
-  .use__text {
+  .bx__card:hover {
+    border-color: color-mix(in srgb, var(--school) 60%, var(--border));
+    box-shadow: 0 18px 40px -18px color-mix(in srgb, var(--school) 55%, transparent);
+  }
+  .bx__card:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+  }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .bx__card:hover {
+      transform: translateY(-4px);
+    }
+  }
+
+  /* Banner: always dark, like the game's art. Colours per tree, the second tree in the corner. */
+  .bx__banner {
+    --a: #9a6bff;
+    --b: var(--a);
+    position: relative;
     display: grid;
+    place-items: center;
+    height: 8.5rem;
+    overflow: hidden;
+    background:
+      radial-gradient(60% 90% at 50% 110%, color-mix(in srgb, var(--a) 70%, transparent), transparent 70%),
+      radial-gradient(50% 80% at 100% 0%, color-mix(in srgb, var(--b) 55%, transparent), transparent 70%),
+      radial-gradient(50% 80% at 0% 10%, color-mix(in srgb, var(--a) 35%, transparent), transparent 70%),
+      #120d1f;
+  }
+  .bx__banner--arcane,
+  .bx__banner--with-arcane {
+    --a: #a36dff;
+  }
+  .bx__banner--fire {
+    --a: #ff7a2e;
+  }
+  .bx__banner--frost {
+    --a: #3fb0ff;
+  }
+  .bx__banner--with-arcane {
+    --b: #a36dff;
+  }
+  .bx__banner--with-fire {
+    --b: #ff7a2e;
+  }
+  .bx__banner--with-frost {
+    --b: #3fb0ff;
+  }
+  /* The same icon, huge and blurred: the spell's colours fill the banner. */
+  .bx__aura {
+    position: absolute;
+    inset: -40%;
+    width: 180%;
+    height: 180%;
+    max-width: none;
+    object-fit: cover;
+    filter: blur(28px) saturate(1.4);
+    opacity: 0.45;
+    transition:
+      opacity 0.4s ease,
+      transform 0.6s ease;
+  }
+  .bx__motes {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgb(255 255 255 / 0.7) 0 1px, transparent 1.5px),
+      radial-gradient(circle, color-mix(in srgb, var(--a) 90%, white) 0 1.2px, transparent 2px);
+    background-size:
+      60px 60px,
+      90px 90px;
+    background-position:
+      0 0,
+      30px 45px;
+    opacity: 0.35;
+    mask-image: linear-gradient(to top, #000, transparent);
+  }
+  .bx__icon {
+    position: relative;
+    width: 4.25rem;
+    height: 4.25rem;
+    border: 2px solid #d6b25e;
+    border-radius: 12px;
+    box-shadow:
+      0 0 0 3px rgb(0 0 0 / 0.55),
+      0 0 26px color-mix(in srgb, var(--a) 80%, transparent),
+      0 10px 24px rgb(0 0 0 / 0.5);
+    transition: transform 0.35s cubic-bezier(0.3, 1.4, 0.5, 1);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .bx__motes {
+      animation: bx-rise 14s linear infinite;
+    }
+    .bx__card:hover .bx__motes {
+      animation-duration: 4s;
+      opacity: 0.7;
+    }
+    .bx__card:hover .bx__icon {
+      transform: translateY(-4px) scale(1.08) rotate(-3deg);
+    }
+    .bx__card:hover .bx__aura {
+      opacity: 0.7;
+      transform: scale(1.15) rotate(12deg);
+    }
+  }
+  @keyframes bx-rise {
+    to {
+      background-position:
+        0 -120px,
+        30px -135px;
+    }
+  }
+
+  .bx__tags {
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--space-1);
-    min-width: 0;
+    margin: calc(-1 * var(--space-4)) var(--space-4) 0;
+    position: relative;
   }
-  .use__name {
-    font-weight: 700;
+  .bx__tag {
+    padding: 0.15em 0.65em;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-1);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
   }
-  .use__meta {
+  .bx__tag--recommended {
+    border-color: var(--school);
+    background: var(--school);
+    color: var(--accent-contrast);
+  }
+
+  .bx__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4) var(--space-4);
+  }
+  .bx__name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    line-height: 1.15;
+    color: var(--text);
+  }
+  .bx__meta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-2);
+    margin-top: calc(-1 * var(--space-2));
     font-size: var(--step--1);
-    color: var(--text-muted);
+    font-weight: 600;
+    color: var(--school);
   }
-  .use__role {
+  .bx__untested {
     padding: 0 0.55em;
+    border: 1px solid color-mix(in srgb, var(--warning) 60%, transparent);
     border-radius: 999px;
     font-size: 0.75rem;
     font-weight: 700;
-  }
-  .use__role--recommended {
-    background: var(--school);
-    color: var(--accent-contrast);
-  }
-  .use__role--not-recommended {
-    border: 1px dashed var(--border-strong);
-  }
-  /* Not played yet: shown until the build's status is «tested». */
-  .use__role--untested {
-    border: 1px solid color-mix(in srgb, var(--warning) 60%, transparent);
     color: var(--warning);
   }
-  .use__desc {
+  .bx__tagline {
     font-size: var(--step--1);
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+
+  /* Points per tree */
+  .bx__points {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .bx__bar {
+    display: flex;
+    gap: 3px;
+    height: 6px;
+    overflow: hidden;
+    border-radius: 999px;
+  }
+  .bx__seg {
+    background: var(--school);
+    border-radius: 999px;
+    transform-origin: left;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .bx__seg {
+      animation: bx-fill 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      animation-delay: calc(var(--i, 0) * 70ms + 0.2s);
+    }
+  }
+  @keyframes bx-fill {
+    from {
+      transform: scaleX(0);
+    }
+  }
+  .bx__legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-1) var(--space-3);
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+  .bx__tree {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+  }
+  .bx__tree :global(.icon) {
+    color: var(--school);
+  }
+  .bx__tree strong {
+    color: var(--text);
+  }
+  .bx__total {
+    margin-left: auto;
+    color: var(--text-subtle);
+  }
+
+  /* Key talents */
+  .bx__talents {
+    display: flex;
+    gap: var(--space-2);
+  }
+  .bx__talent {
+    width: 2.1rem;
+    height: 2.1rem;
+    border: 1px solid rgb(0 0 0 / 0.6);
+    border-radius: 7px;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--school) 35%, transparent);
+    transition: transform 0.3s cubic-bezier(0.3, 1.4, 0.5, 1);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .bx__card:hover .bx__talent {
+      transform: translateY(-3px);
+      transition-delay: calc(var(--k) * 40ms);
+    }
+  }
+
+  .bx__trade {
+    display: grid;
+    gap: var(--space-1);
+    margin-top: auto;
+    padding-top: var(--space-3);
+    border-top: 1px dashed var(--border);
+    font-size: 0.8125rem;
     line-height: 1.45;
     color: var(--text-muted);
   }
-  .use__none {
+  .bx__pro,
+  .bx__con {
+    display: grid;
+    grid-template-columns: 1.1rem 1fr;
+  }
+  .bx__sign {
+    font-weight: 800;
+  }
+  .bx__pro .bx__sign {
+    color: var(--status-verified);
+  }
+  .bx__con .bx__sign {
+    color: light-dark(#b3261e, #ff8a80);
+  }
+
+  .bx__open {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-4);
+    border-top: 1px solid var(--border);
+    background: color-mix(in srgb, var(--school) 7%, transparent);
+    font-weight: 700;
+    color: var(--school);
+    transition: background 0.25s ease;
+  }
+  .bx__open :global(.icon) {
+    transition: transform 0.25s ease;
+  }
+  .bx__card:hover .bx__open {
+    background: color-mix(in srgb, var(--school) 16%, transparent);
+  }
+  .bx__card:hover .bx__open :global(.icon) {
+    transform: translateX(5px);
+  }
+
+  /* ---- Contents without builds ---- */
+  .bx__none,
+  .bx__soon {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
     margin: 0;
-    padding: var(--space-3);
+    padding: var(--space-3) var(--space-4);
     border: 1px dashed var(--border-strong);
     border-radius: var(--radius-lg);
     font-size: var(--step--1);
     color: var(--text-muted);
+  }
+  .bx__none[hidden],
+  .bx__soon[hidden],
+  .bx__compare li[hidden] {
+    display: none;
+  }
+  .bx__soon-uses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+  .bx__soon-use {
+    padding: 0.1em 0.65em;
+    border-radius: 999px;
+    background: var(--surface-2);
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .bx__compare {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .bx__compare li {
+    margin: 0;
+  }
+  .bx__compare a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 600;
+  }
+  .bx__compare a :global(.icon) {
+    transition: transform 0.2s ease;
+  }
+  .bx__compare a:hover :global(.icon) {
+    transform: translateX(4px);
   }
 </style>

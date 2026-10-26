@@ -15,6 +15,7 @@
     "recommendedFor": [],
     "spec": "frost",
     "hybridWith": "fire",
+    "icon": "ability_mage_frostfirebolt",
     "tagline": {
       "es": "Escarcha para subir del 1 al 60, con Descarga de Pirofrío desde el 40.",
       "en": "Frost to level from 1 to 60, with Frostfire Bolt from 40."
@@ -347,6 +348,7 @@
     "discouragedFor": [],
     "spec": "frost",
     "hybridWith": "fire",
+    "icon": "spell_frost_icestorm",
     "tagline": {
       "es": "Escarcha para subir juntando grupos: Ventisca desde el 20 y Fuego desde el 41 para rematar en área.",
       "en": "Frost to level by pulling packs: Blizzard from 20 and Fire from 41 to finish them in AoE."
@@ -608,6 +610,7 @@
     "discouragedFor": [],
     "spec": "arcane",
     "hybridWith": "frost",
+    "icon": "ability_mage_missilebarrage",
     "tagline": {
       "es": "Arcano a base de procs con Descarga de Escarcha, y Escarcha desde el 31 hasta Bloqueo de hielo.",
       "en": "Arcane built on procs with Frostbolt, and Frost from 31 up to Ice Block."
