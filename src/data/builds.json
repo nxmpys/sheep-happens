@@ -873,5 +873,347 @@
       "wowhead-forever-talent-calc"
     ],
     "updated": "2026-10-26"
+  },
+  {
+    "id": "fire-leveling-solo",
+    "name": {
+      "es": "Fuego para leveo en solitario",
+      "en": "Fire solo leveling"
+    },
+    "slug": {
+      "es": "fuego-en-solitario",
+      "en": "fire-solo"
+    },
+    "uses": [
+      "leveling"
+    ],
+    "recommendedFor": [],
+    "spec": "fire",
+    "hybridWith": "arcane",
+    "icon": "spell_fire_fireball02",
+    "tagline": {
+      "es": "Fuego a base de críticos hasta Combustión al 40, y Arcano desde el 45 para que Bola de Fuego deje Misiles Arcanos gratis.",
+      "en": "Fire built on crits up to Combustion at 40, and Arcane from 45 so Fireball gives free Arcane Missiles."
+    },
+    "level": 60,
+    "fromLevel": 1,
+    "points": {
+      "improved-fireball": 5,
+      "wake-of-fire": 2,
+      "incineration": 3,
+      "pyroblast": 1,
+      "ignite": 5,
+      "heating-up": 1,
+      "improved-scorch": 3,
+      "critical-mass": 5,
+      "fire-power": 3,
+      "master-of-elements": 3,
+      "combustion": 1,
+      "elemental-precision": 3,
+      "missile-barrage": 2,
+      "arcane-focus": 3,
+      "arcane-subtlety": 2,
+      "arcane-concentration": 5,
+      "flame-throwing": 2,
+      "impact": 2
+    },
+    "order": [
+      "improved-fireball",
+      "improved-fireball",
+      "improved-fireball",
+      "improved-fireball",
+      "improved-fireball",
+      "wake-of-fire",
+      "wake-of-fire",
+      "incineration",
+      "incineration",
+      "incineration",
+      "pyroblast",
+      "ignite",
+      "ignite",
+      "ignite",
+      "ignite",
+      "heating-up",
+      "improved-scorch",
+      "improved-scorch",
+      "improved-scorch",
+      "ignite",
+      "critical-mass",
+      "critical-mass",
+      "critical-mass",
+      "critical-mass",
+      "critical-mass",
+      "fire-power",
+      "fire-power",
+      "fire-power",
+      "master-of-elements",
+      "master-of-elements",
+      "combustion",
+      "elemental-precision",
+      "elemental-precision",
+      "elemental-precision",
+      "master-of-elements",
+      "missile-barrage",
+      "missile-barrage",
+      "arcane-focus",
+      "arcane-focus",
+      "arcane-focus",
+      "arcane-subtlety",
+      "arcane-subtlety",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-concentration",
+      "flame-throwing",
+      "flame-throwing",
+      "impact",
+      "impact"
+    ],
+    "orderNotes": [
+      {
+        "point": 1,
+        "text": {
+          "es": "Bola de Fuego mejorada: Bola de Fuego, tu hechizo principal, se lanza 0,1 s más rápido por punto, 0,5 s con 5/5.",
+          "en": "Improved Fireball: Fireball, your main spell, casts 0.1 s faster per point, 0.5 s at 5/5."
+        }
+      },
+      {
+        "point": 6,
+        "text": {
+          "es": "Explosión de Fuego mejorada 2/2 (2 s menos de reutilización y 15 m más de alcance) e Incineración 3/3 (un 6 % más de probabilidad de crítico con Explosión de Fuego y Chamuscar).",
+          "en": "Improved Fire Blast 2/2 (2 s shorter cooldown and 15 yd more range) and Incineration 3/3 (6% more critical strike chance with Fire Blast and Scorch)."
+        }
+      },
+      {
+        "point": 11,
+        "text": {
+          "es": "Piroexplosión, el talento decisivo de 11 puntos: tu golpe de apertura desde lejos.",
+          "en": "Pyroblast, the 11-point milestone: your opener from range."
+        }
+      },
+      {
+        "point": 12,
+        "text": {
+          "es": "Ignición: tus críticos de Fuego queman al enemigo un 8 % más del daño por punto durante 4 s. Completas el 5/5 (40 %) en el punto 20.",
+          "en": "Ignite: your Fire critical strikes burn the enemy for 8% more of the damage per point over 4 s. You complete 5/5 (40%) at point 20."
+        }
+      },
+      {
+        "point": 16,
+        "text": {
+          "es": "Calentamiento: cada crítico directo de Bola de Fuego, Explosión de Fuego o Chamuscar acorta un 25 % tu siguiente Piroexplosión, hasta 3 veces. Explosión de Fuego suma una carga más cada vez que hace daño.",
+          "en": "Heating Up: every direct critical strike from Fireball, Fire Blast or Scorch makes your next Pyroblast 25% faster, stacking up to 3 times. Fire Blast adds an extra stack every time it deals damage."
+        }
+      },
+      {
+        "point": 17,
+        "text": {
+          "es": "Chamuscar mejorado 3/3: cada Chamuscar hace que el objetivo reciba un 3 % más de tu daño de Fuego durante 30 s, hasta 5 veces (un 15 %). Compensa en enemigos duros, no en los normales: mira «Rotación y prioridad de hechizos».",
+          "en": "Improved Scorch 3/3: every Scorch makes the target take 3% more of your Fire damage for 30 s, stacking up to 5 times (15%). It pays off on tough enemies, not on normal ones: see Rotation and spell priority."
+        }
+      },
+      {
+        "point": 21,
+        "text": {
+          "es": "Masa crítica: un 2 % más de probabilidad de crítico con Fuego por punto, un 10 % con 5/5.",
+          "en": "Critical Mass: 2% more critical strike chance with Fire per point, 10% at 5/5."
+        }
+      },
+      {
+        "point": 26,
+        "text": {
+          "es": "Poder de Fuego 3/3: tus hechizos de Fuego hacen un 3 % más de daño por cada uno de tus efectos de Fuego en el objetivo, hasta un 12 %.",
+          "en": "Fire Power 3/3: your Fire spells deal 3% more damage for each of your Fire effects on the target, up to 12%."
+        }
+      },
+      {
+        "point": 29,
+        "text": {
+          "es": "Maestro de los elementos: tus críticos de Fuego y Escarcha te devuelven un 10 % del coste base de maná por punto. Lo completas (30 %) en el punto 35.",
+          "en": "Master of Elements: your Fire and Frost critical strikes refund 10% of their base mana cost per point. You complete it (30%) at point 35."
+        }
+      },
+      {
+        "point": 31,
+        "text": {
+          "es": "Combustión, el talento decisivo de 31 puntos: cada golpe de Fuego te da un 10 % más de crítico hasta que hagas 3 críticos. Guárdala para los enemigos duros.",
+          "en": "Combustion, the 31-point milestone: every Fire hit gives you 10% more critical strike chance until you land 3 crits. Keep it for tough enemies."
+        }
+      },
+      {
+        "point": 32,
+        "text": {
+          "es": "Enfoque elemental 3/3: un 6 % más de probabilidad de golpe con Fuego y Escarcha.",
+          "en": "Elemental Precision 3/3: 6% more hit chance with Fire and Frost."
+        }
+      },
+      {
+        "point": 36,
+        "text": {
+          "es": "Desde aquí, Arcano. Tromba de misiles 2/2: cada Bola de Fuego tiene un 20 % de probabilidad de dejarte unos Misiles Arcanos el doble de rápidos y sin coste de maná.",
+          "en": "From here on, Arcane. Missile Barrage 2/2: every Fireball has a 20% chance to give you Arcane Missiles twice as fast and free."
+        }
+      },
+      {
+        "point": 38,
+        "text": {
+          "es": "Enfoque Arcano 3/5: un 3 % más de probabilidad de golpe con hechizos Arcanos, para que esos Misiles Arcanos no fallen.",
+          "en": "Arcane Focus 3/5: 3% more hit chance with Arcane spells, so those Arcane Missiles land."
+        }
+      },
+      {
+        "point": 41,
+        "text": {
+          "es": "Sutileza Arcana 2/2: el objetivo resiste 15 puntos menos todos tus hechizos.",
+          "en": "Arcane Subtlety 2/2: the target resists all your spells by 15 less."
+        }
+      },
+      {
+        "point": 43,
+        "text": {
+          "es": "Concentración Arcana 5/5: un 10 % de probabilidad de que tu siguiente hechizo de daño no cueste maná.",
+          "en": "Arcane Concentration 5/5: a 10% chance that your next damage spell costs no mana."
+        }
+      },
+      {
+        "point": 48,
+        "text": {
+          "es": "Lanzallamas 2/2: 6 m más de alcance con tus hechizos de Fuego.",
+          "en": "Flame Throwing 2/2: 6 yd more range with your Fire spells."
+        }
+      },
+      {
+        "point": 50,
+        "text": {
+          "es": "Impacto 2/3: tus hechizos de Fuego tienen un 7 % de probabilidad de aturdir 2 s.",
+          "en": "Impact 2/3: your Fire spells have a 7% chance to stun for 2 s."
+        }
+      }
+    ],
+    "goal": {
+      "es": "Subir con Fuego a base de críticos",
+      "en": "Level as Fire, driven by crits"
+    },
+    "profile": {
+      "es": "Quien quiere jugar Fuego y matar rápido, aunque a veces le alcancen.",
+      "en": "Players who want Fire and fast kills, even if enemies reach them now and then."
+    },
+    "upside": {
+      "es": "Mucho daño: críticos, Ignición y Piroexplosión rápida.",
+      "en": "High damage: crits, Ignite and a fast Pyroblast."
+    },
+    "downside": {
+      "es": "Sin ralentizaciones: si el enemigo no muere, te alcanza.",
+      "en": "No slows: if the enemy does not die, it reaches you."
+    },
+    "keyTalents": [
+      "improved-fireball",
+      "ignite",
+      "heating-up",
+      "critical-mass",
+      "combustion"
+    ],
+    "summary": {
+      "es": "¿Te gusta ver números grandes? Bola de Fuego, críticos y fuego que sigue quemando. Fuego puro hasta Combustión y, desde el 45, Arcano para que tus Bolas de Fuego dejen Misiles Arcanos gratis.",
+      "en": "Like big numbers? Fireball, crits and fire that keeps burning. Pure Fire up to Combustion and, from 45, Arcane so your Fireballs give free Arcane Missiles."
+    },
+    "playstyle": [
+      {
+        "es": "Desde el 20, abre con Piroexplosión a máxima distancia, antes de que el enemigo venga a por ti.",
+        "en": "From 20, open with Pyroblast at max range, before the enemy comes for you."
+      },
+      {
+        "es": "Enemigos normales: Bola de Fuego. Pega más que Chamuscar y, desde el 45, puede activar Tromba de misiles; Chamuscar no.",
+        "en": "Normal enemies: Fireball. It hits harder than Scorch and, from 45, can trigger Missile Barrage; Scorch cannot."
+      },
+      {
+        "es": "No acumules Chamuscar en enemigos normales: mueren antes de que las cargas compensen los lanzamientos que gastas en ponerlas.",
+        "en": "Do not stack Scorch on normal enemies: they die before the stacks make up for the casts you spend applying them."
+      },
+      {
+        "es": "Enemigos duros (élites, jefes de misión o los que tienen mucha vida): 3 a 5 Chamuscar primero para que reciba hasta un 15 % más de tu Fuego, y luego Bola de Fuego y Piroexplosión. Un Chamuscar al menos cada 30 s mantiene las cargas.",
+        "en": "Tough enemies (elites, quest bosses or anything with lots of health): 3 to 5 Scorch first so it takes up to 15% more of your Fire, then Fireball and Pyroblast. A Scorch at least every 30 s keeps the stacks up."
+      },
+      {
+        "es": "Para rematar, Chamuscar: sale en 1,5 s, antes que Bola de Fuego. Si Explosión de Fuego está lista, mejor ella, que es instantánea.",
+        "en": "To finish, Scorch: it casts in 1.5 s, faster than Fireball. If Fire Blast is ready, use that instead: it is instant."
+      },
+      {
+        "es": "Explosión de Fuego cada vez que esté lista: es instantánea y, desde el 25, siempre te da una carga de Calentamiento.",
+        "en": "Fire Blast whenever it is ready: it is instant and, from 25, always gives you a Heating Up stack."
+      },
+      {
+        "es": "Con cargas de Calentamiento, Piroexplosión sale más rápida: úsala para rematar o en el siguiente enemigo. Chamuscar, con el 6 % extra de crítico de Incineración, da cargas más a menudo que Bola de Fuego.",
+        "en": "With Heating Up stacks, Pyroblast casts faster: use it to finish or on the next enemy. Scorch, with the extra 6% crit from Incineration, gives stacks more often than Fireball."
+      },
+      {
+        "es": "Desde el 45, si salta Tromba de misiles, Misiles Arcanos: rápidos y gratis.",
+        "en": "From 45, when Missile Barrage procs, Arcane Missiles: fast and free."
+      },
+      {
+        "es": "Si te alcanza: Nova de Escarcha, aléjate y sigue lanzando. Desde el 40, Combustión contra los enemigos duros.",
+        "en": "If it reaches you: Frost Nova, step away and keep casting. From 40, Combustion against tough enemies."
+      }
+    ],
+    "strengths": [
+      {
+        "es": "Mucho crítico: Masa crítica suma un 10 % con Fuego, e Incineración otro 6 % con Explosión de Fuego y Chamuscar.",
+        "en": "Lots of crits: Critical Mass adds 10% with Fire, and Incineration another 6% with Fire Blast and Scorch."
+      },
+      {
+        "es": "Cada crítico rinde más: Ignición sigue quemando, Calentamiento acelera Piroexplosión y Maestro de los elementos te devuelve maná.",
+        "en": "Every crit pays off: Ignite keeps burning, Heating Up speeds up Pyroblast and Master of Elements refunds mana."
+      },
+      {
+        "es": "Desde el 45, Misiles Arcanos gratis con Tromba de misiles y hechizos gratis con Concentración Arcana.",
+        "en": "From 45, free Arcane Missiles with Missile Barrage and free spells with Arcane Concentration."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Ninguna ralentización: solo tienes Nova de Escarcha, y el aturdimiento de Impacto llega al 59.",
+        "en": "No slows at all: you only have Frost Nova, and the stun from Impact comes at 59."
+      },
+      {
+        "es": "Hasta el 25 no hay Calentamiento: Piroexplosión es lenta y solo sirve para abrir.",
+        "en": "Until 25 there is no Heating Up: Pyroblast is slow and only good as an opener."
+      },
+      {
+        "es": "Los enemigos que resisten el Fuego, como los elementales de fuego, te frenan mucho.",
+        "en": "Enemies that resist Fire, such as fire elementals, slow you down a lot."
+      }
+    ],
+    "items": [],
+    "status": "analysis",
+    "gameVersion": "forever-beta-2026-10",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-26",
+    "variants": [
+      {
+        "name": {
+          "es": "Con mazmorras a menudo",
+          "en": "With frequent dungeons"
+        },
+        "text": {
+          "es": "Para quien sube con misiones pero entra a menudo a mazmorras. Mantiene Chamuscar mejorado para los jefes y suma área: Ola explosiva (daño en área instantáneo que ralentiza un 50 % durante 6 s, útil también fuera) y Fogonazo mejorado 3/3 (un 15 % más de crítico con Fogonazo, y cada crítico deja Ignición y te devuelve maná con Maestro de los elementos). A cambio salen Lanzallamas e Impacto: en grupo el tanque sujeta a los enemigos, así que el alcance extra y el aturdimiento importan menos. Ola explosiva en el punto 21 (nivel 30), antes de Masa crítica; el resto se retrasa un punto, y los 3 últimos van a Fogonazo mejorado. En grupo, Fogonazo solo cuando el tanque tenga sujetos a todos.",
+          "en": "For players who level through quests but often join dungeons. It keeps Improved Scorch for bosses and adds area damage: Blast Wave (instant area damage with a 50% slow for 6 s, useful outside dungeons too) and Improved Flamestrike 3/3 (15% more critical strike chance with Flamestrike, and every crit leaves Ignite and refunds mana with Master of Elements). In exchange, Flame Throwing and Impact go: in a group the tank holds the enemies, so the extra range and the stun matter less. Blast Wave at point 21 (level 30), before Critical Mass; everything else moves one point later, and the last 3 go to Improved Flamestrike. In a group, Flamestrike only once the tank is holding every enemy."
+        },
+        "remove": {
+          "flame-throwing": 2,
+          "impact": 2
+        },
+        "add": {
+          "improved-flamestrike": 3,
+          "blast-wave": 1
+        }
+      }
+    ],
+    "discouragedFor": [],
+    "legacyTalented": 0,
+    "stats": []
   }
 ]

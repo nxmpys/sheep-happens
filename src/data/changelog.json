@@ -1,5 +1,25 @@
 [
   {
+    "id": "2026-10-26-fire-leveling-build",
+    "date": "2026-10-26",
+    "type": "guide",
+    "title": {
+      "es": "Nueva build de leveo: Fuego en solitario",
+      "en": "New leveling build: Fire solo"
+    },
+    "body": {
+      "es": "Una build de Fuego para subir a base de críticos: Bola de Fuego mejorada, Ignición, Calentamiento para acelerar Piroexplosión y Masa crítica hasta Combustión al 40. Desde el 45 suma Arcano para que Bola de Fuego active Tromba de misiles.",
+      "en": "A Fire build to level on crits: Improved Fireball, Ignite, Heating Up to speed up Pyroblast and Critical Mass up to Combustion at 40. From 45 it adds Arcane so Fireball triggers Missile Barrage."
+    },
+    "pages": [
+      "builds",
+      "talents-fire"
+    ],
+    "refs": [
+      "build:fire-leveling-solo"
+    ]
+  },
+  {
     "id": "2026-10-26-arcane-leveling-build",
     "date": "2026-10-26",
     "type": "guide",

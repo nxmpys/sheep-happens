@@ -72,10 +72,6 @@
       }
     ],
     "noBuild": {
-      "leveling": {
-        "es": "Hasta el 30 le faltan piezas: Piroexplosión lenta, pocos críticos y ninguna ralentización. Desde el 40, la build de leveo de Escarcha ya aprovecha Fuego con Descarga de Pirofrío.",
-        "en": "Up to level 30 it lacks pieces: a slow Pyroblast, few crits and no slow. From 40, the Frost leveling build already makes use of Fire with Frostfire Bolt."
-      },
       "pvp": {
         "es": "Todavía no he podido probar el JcJ de nivel 60.",
         "en": "I have not been able to test level 60 PvP yet."

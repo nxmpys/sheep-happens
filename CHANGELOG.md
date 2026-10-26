@@ -6,6 +6,12 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ## 2026-10-26
 
+### [Guía] Nueva build de leveo: Fuego en solitario
+
+Una build de Fuego para subir a base de críticos: Bola de Fuego mejorada, Ignición, Calentamiento para acelerar Piroexplosión y Masa crítica hasta Combustión al 40. Desde el 45 suma Arcano para que Bola de Fuego active Tromba de misiles.
+
+- **Datos afectados:** build:fire-leveling-solo
+
 ### [Guía] Nueva build de leveo: Arcano en solitario
 
 Una build de Arcano para subir a base de procs: Descarga de Escarcha activa Tromba de misiles y Concentración Arcana deja Explosiones Arcanas gratis. Desde el 31 suma Escarcha hasta Bloqueo de hielo, y vuelve a Arcano hasta Poder Arcano al 58.
