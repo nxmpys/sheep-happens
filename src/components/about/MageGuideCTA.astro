@@ -111,14 +111,16 @@ const entries = [
     --page-w: min(300px, 78vw);
     width: calc(var(--page-w) * 2);
     max-width: 100%;
-    perspective: 1600px;
   }
   .grimoire__book {
     position: relative;
     width: var(--page-w);
     aspect-ratio: 3 / 4;
     margin-left: auto;
-    transform-style: preserve-3d;
+    /* Flat on purpose (no preserve-3d): the cover always paints over the page.
+       Sorting the two in 3D was left to the GPU, and some drew a strip of the
+       page over the lifted cover. The cover keeps its own 3D for its two faces. */
+    perspective: 1600px;
     transition: transform 0.7s cubic-bezier(0.6, 0, 0.2, 1);
   }
   /* Closed, the book sits centred; open, it slides right so both pages fit. */
