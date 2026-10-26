@@ -10,9 +10,11 @@ import { NAV_GROUP_LABELS, NAV_LABELS, t } from '../../i18n/ui';
 interface Props {
   locale: Locale;
   pageId: PageId | undefined;
+  /** Other-language URL for pages outside ROUTES. */
+  switchTo?: string | undefined;
 }
 
-const { locale, pageId } = Astro.props;
+const { locale, pageId, switchTo } = Astro.props;
 const trail = pageId ? breadcrumbTrail(pageId) : [];
 const labels = NAV_LABELS[locale];
 // Five direct links, no dropdowns: each hub page leads to its own pages.
@@ -55,7 +57,7 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
         <span class="search-trigger__label">{t(locale, 'search.open')}</span>
         <kbd class="search-trigger__kbd" aria-hidden="true">/</kbd>
       </button>
-      <LangSwitch locale={locale} pageId={pageId} />
+      <LangSwitch locale={locale} pageId={pageId} to={switchTo} />
       <ThemeToggle locale={locale} />
       <button
         type="button"

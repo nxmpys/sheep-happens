@@ -1,0 +1,137 @@
+---
+/**
+ * Builds of one content (/builds/<use>/): one card per build with its three
+ * trees in a row, recommended first, each linking to its build page. A build
+ * that covers several contents appears on each of their pages.
+ */
+import BuildTrees from './BuildTrees.astro';
+import Icon from '../ui/Icon.astro';
+import { SPEC_LABELS, tb } from '../../i18n/builds';
+import { getLocale } from '../../i18n/locale';
+import { buildRole, type BuildRole } from '../../lib/build-roles';
+import { buildIcon, buildPath } from '../../lib/build-routes';
+import { builds, talents } from '../../lib/data';
+import type { BuildUse } from '../../lib/schemas';
+import { distributionLabel } from '../../lib/talents';
+
+interface Props {
+  use: BuildUse;
+}
+
+const { use } = Astro.props;
+const locale = getLocale(Astro);
+const ROLE_ORDER: Record<BuildRole, number> = { recommended: 0, viable: 1, 'not-recommended': 2 };
+const list = builds
+  .filter((b) => b.uses.includes(use))
+  .sort((a, b) => ROLE_ORDER[buildRole(a, use)] - ROLE_ORDER[buildRole(b, use)]);
+---
+
+<div class="content-builds">
+  {
+    list.map((build) => {
+      const role = buildRole(build, use);
+      const url = buildPath(build, locale, { base: import.meta.env.BASE_URL });
+      return (
+        <article class={`content-build school-${build.spec}`} aria-labelledby={`${build.id}-title`}>
+          <header class="content-build__head">
+            <Icon name={buildIcon(build)} size={26} class="content-build__icon" />
+            <div class="content-build__text">
+              <h2 class="content-build__name" id={`${build.id}-title`}>
+                <a href={url}>{build.name[locale]}</a>
+              </h2>
+              <p class="content-build__meta">
+                {SPEC_LABELS[locale][build.spec]} · {distributionLabel(build.points, talents)}
+                {role !== 'viable' && <span class:list={['content-build__role', `content-build__role--${role}`]}>{tb(locale, `build.${role}`)}</span>}
+                {build.status !== 'tested' && <span class="content-build__role content-build__role--untested">{tb(locale, 'build.untested')}</span>}
+              </p>
+              <p class="content-build__tagline">{build.tagline[locale]}</p>
+            </div>
+            <a class="button button--primary content-build__open" href={url}>
+              {tb(locale, 'build.open')}
+              <Icon name="arrowRight" size={16} />
+            </a>
+          </header>
+          <BuildTrees build={build} compact />
+        </article>
+      );
+    })
+  }
+</div>
+
+<style>
+  .content-builds {
+    display: grid;
+    gap: var(--space-5);
+  }
+  .content-build {
+    display: grid;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--school);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+  }
+  .content-build__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+  .content-build__head :global(.content-build__icon) {
+    flex-shrink: 0;
+    margin-top: 0.2em;
+    color: var(--school);
+  }
+  .content-build__text {
+    display: grid;
+    gap: var(--space-1);
+    flex: 1 1 16rem;
+    min-width: 0;
+  }
+  .content-build__name {
+    margin: 0;
+    font-size: var(--step-2);
+  }
+  .content-build__name a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  .content-build__name a:hover {
+    color: var(--accent);
+  }
+  .content-build__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .content-build__role {
+    padding: 0 0.55em;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .content-build__role--recommended {
+    background: var(--school);
+    color: var(--accent-contrast);
+  }
+  .content-build__role--not-recommended {
+    border: 1px dashed var(--border-strong);
+  }
+  /* Not played yet: shown until the build's status is «tested». */
+  .content-build__role--untested {
+    border: 1px solid color-mix(in srgb, var(--warning) 60%, transparent);
+    color: var(--warning);
+  }
+  .content-build__tagline {
+    margin: 0;
+    color: var(--text-muted);
+  }
+  .content-build__open {
+    flex-shrink: 0;
+  }
+</style>

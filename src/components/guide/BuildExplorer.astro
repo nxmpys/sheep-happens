@@ -1,289 +1,218 @@
 ---
 /**
- * Every build as a summary card that links to its full card (leveling builds on
- * the leveling page). Only builds that make sense for the content are listed:
- * a use may have builds in one tree only, and that is fine.
- * The use and tree filters only appear from FILTER_THRESHOLD builds: with fewer,
- * they hide almost nothing. Without JavaScript all cards are shown and the
- * filters stay hidden.
+ * The builds index, generated from builds.json, so a new build needs no edit
+ * here: one block per content (leveling 1-60, PvP, dungeons, raid) with the
+ * builds that exist for it, the recommended one labelled. A block with builds
+ * is a link to its content page (/builds/<use>/), where each build shows its
+ * three trees; a block without builds says so and links nowhere. There is no
+ * content × tree matrix: a tree without a build for a content is not listed.
  */
-import BuildCard from './BuildCard.astro';
 import Icon from '../ui/Icon.astro';
-import { SPEC_LABELS, USE_LABELS, tb } from '../../i18n/builds';
+import { SPEC_LABELS, USE_TITLES, tb } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
+import { buildRole, type BuildRole } from '../../lib/build-roles';
+import { buildIcon, contentPath } from '../../lib/build-routes';
 import { builds } from '../../lib/data';
-import { BUILD_SPECS, BUILD_USES } from '../../lib/schemas';
+import { BUILD_USES, type BuildUse } from '../../lib/schemas';
 
 const locale = getLocale(Astro);
-const total = builds.length;
-const FILTER_THRESHOLD = 6;
-const filterable = total >= FILTER_THRESHOLD;
-const useCounts = Object.fromEntries(BUILD_USES.map((use) => [use, builds.filter((b) => b.uses.includes(use)).length]));
-const strings = {
-  count: tb(locale, 'builds.count'),
-  copied: locale === 'es' ? 'Enlace copiado' : 'Link copied',
-  copyFailed: locale === 'es' ? 'No se pudo copiar. Copia la URL de la barra de direcciones.' : 'Could not copy. Copy the URL from the address bar instead.',
-};
+const ROLE_ORDER: Record<BuildRole, number> = { recommended: 0, viable: 1, 'not-recommended': 2 };
+const forUse = (use: BuildUse) =>
+  builds.filter((b) => b.uses.includes(use)).sort((a, b) => ROLE_ORDER[buildRole(a, use)] - ROLE_ORDER[buildRole(b, use)]);
 ---
 
-<build-explorer data-strings={JSON.stringify(strings)} data-filterable={filterable ? '' : undefined}>
-  {filterable && (
-  <form class="filters" aria-label={tb(locale, 'builds.filters')} hidden data-filters data-pagefind-ignore>
-    <fieldset class="filters__group">
-      <legend>{tb(locale, 'builds.use')}</legend>
-      <div class="segmented">
-        <label>
-          <input type="radio" name="use" value="all" checked />
-          <span>{tb(locale, 'builds.all')} <small>{total}</small></span>
-        </label>
-        {
-          BUILD_USES.map((use) => (
-            <label>
-              <input type="radio" name="use" value={use} />
-              <span>
-                {USE_LABELS[locale][use]} <small>{useCounts[use]}</small>
-              </span>
-            </label>
-          ))
-        }
-      </div>
-    </fieldset>
-    <fieldset class="filters__group">
-      <legend>{tb(locale, 'builds.spec')}</legend>
-      <div class="segmented">
-        <label>
-          <input type="radio" name="spec" value="all" checked />
-          <span>{tb(locale, 'builds.all')}</span>
-        </label>
-        {
-          BUILD_SPECS.map((spec) => (
-            <label class={`school-${spec === 'hybrid' ? 'baseline' : spec}`}>
-              <input type="radio" name="spec" value={spec} />
-              <span>
-                <Icon name={spec === 'hybrid' ? 'frostfire' : spec} size={16} />
-                {SPEC_LABELS[locale][spec]}
-              </span>
-            </label>
-          ))
-        }
-      </div>
-    </fieldset>
-    <div class="filters__actions">
-      <button type="button" class="button" data-reset>
-        <Icon name="reset" size={16} />
-        {tb(locale, 'builds.reset')}
-      </button>
-      <button type="button" class="button" data-share>
-        <Icon name="link" size={16} />
-        {tb(locale, 'builds.share')}
-      </button>
-    </div>
-  </form>
-  )}
-
-  {filterable && (
-  <p class="results-count" role="status" aria-live="polite" data-count data-pagefind-ignore>
-    {tb(locale, 'builds.count', { shown: total, total })}
-  </p>
-  )}
-
-  <div class="build-list" data-list>
-    {builds.map((build) => <BuildCard id={build.id} variant={build.page && build.page !== 'builds' ? 'summary' : 'full'} />)}
-  </div>
-
-  <div class="build-empty" hidden data-empty>
-    <p>{tb(locale, 'builds.empty')}</p>
-    <button type="button" class="button button--primary" data-reset>{tb(locale, 'builds.reset')}</button>
-  </div>
-
-</build-explorer>
-
-<script>
-  import {
-    EMPTY_BUILD_FILTERS,
-    isBuildFiltered,
-    matchesBuild,
-    parseBuildFilters,
-    serializeBuildFilters,
-    type BuildFilterState,
-  } from '../../lib/build-filters';
-  import { copyText } from '../../scripts/clipboard';
-  import { showToast } from '../../scripts/toast';
-
-  class BuildExplorer extends HTMLElement {
-    private form!: HTMLFormElement;
-    private cards: HTMLElement[] = [];
-    private strings: Record<string, string> = {};
-
-    connectedCallback() {
-      if (!this.hasAttribute('data-filterable')) return;
-      this.form = this.querySelector<HTMLFormElement>('[data-filters]')!;
-      this.cards = [...this.querySelectorAll<HTMLElement>('[data-build]')];
-      this.strings = JSON.parse(this.dataset.strings ?? '{}');
-      this.form.hidden = false;
-
-      this.applyState(parseBuildFilters(location.search), { updateUrl: false });
-      this.form.addEventListener('change', () => this.applyState(this.readForm()));
-      this.form.addEventListener('submit', (event) => event.preventDefault());
-      this.querySelectorAll('[data-reset]').forEach((button) =>
-        button.addEventListener('click', () => {
-          this.applyState(EMPTY_BUILD_FILTERS);
-          this.form.querySelector<HTMLInputElement>('input[name="use"][value="all"]')?.focus();
-        }),
+<ul class="uses">
+  {
+    BUILD_USES.map((use) => {
+      const list = forUse(use);
+      return (
+        <li class:list={['use', 'has-glow', { 'use--empty': list.length === 0 }]} id={`uses-${use}`}>
+          {list.length > 0 && <span class="arcane-glow" aria-hidden="true" />}
+          <p class="use__title">
+            {list.length > 0 ? (
+              <a class="use__link" href={contentPath(use, locale, { base: import.meta.env.BASE_URL })}>
+                {USE_TITLES[locale][use]}
+              </a>
+            ) : (
+              USE_TITLES[locale][use]
+            )}
+            {list.length > 0 && <Icon name="arrowRight" size={18} class="use__arrow" />}
+          </p>
+          {list.length > 0 ? (
+            <ul class="use__list">
+              {list.map((build) => {
+                const role = buildRole(build, use);
+                return (
+                  <li class={`use__build school-${build.spec}`}>
+                    <Icon name={buildIcon(build)} size={22} class="use__icon" />
+                    <span class="use__text">
+                      <span class="use__name">{build.name[locale]}</span>
+                      <span class="use__meta">
+                        {SPEC_LABELS[locale][build.spec]}
+                        {role !== 'viable' && <span class:list={['use__role', `use__role--${role}`]}>{tb(locale, `build.${role}`)}</span>}
+                        {build.status !== 'tested' && <span class="use__role use__role--untested">{tb(locale, 'build.untested')}</span>}
+                      </span>
+                      <span class="use__desc">{build.tagline[locale]}</span>
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <p class="use__none">{tb(locale, 'index.none')}</p>
+          )}
+        </li>
       );
-      this.querySelector('[data-share]')?.addEventListener('click', async () => {
-        const ok = await copyText(location.href);
-        showToast(ok ? this.strings['copied']! : this.strings['copyFailed']!);
-      });
-      window.addEventListener('popstate', () => this.applyState(parseBuildFilters(location.search), { updateUrl: false }));
-    }
-
-    private readForm(): BuildFilterState {
-      const data = new FormData(this.form);
-      return parseBuildFilters(
-        serializeBuildFilters({
-          use: (data.get('use') as BuildFilterState['use']) ?? 'all',
-          spec: (data.get('spec') as BuildFilterState['spec']) ?? 'all',
-        }),
-      );
-    }
-
-    private applyState(state: BuildFilterState, { updateUrl = true } = {}) {
-      for (const name of ['use', 'spec'] as const) {
-        const input = this.form.querySelector<HTMLInputElement>(`input[name="${name}"][value="${state[name]}"]`);
-        if (input) input.checked = true;
-      }
-      let shown = 0;
-      for (const card of this.cards) {
-        const visible = matchesBuild({ uses: (card.dataset.uses ?? '').split(' '), spec: card.dataset.spec ?? '' }, state);
-        card.hidden = !visible;
-        if (visible) shown++;
-      }
-      this.querySelector<HTMLElement>('[data-count]')!.textContent = (this.strings['count'] ?? '')
-        .replace('{shown}', String(shown))
-        .replace('{total}', String(this.cards.length));
-      this.querySelector<HTMLElement>('[data-empty]')!.hidden = shown > 0;
-      this.form.querySelector<HTMLButtonElement>('[data-reset]')!.disabled = !isBuildFiltered(state);
-      if (updateUrl) history.replaceState(null, '', `${location.pathname}${serializeBuildFilters(state)}${location.hash}`);
-    }
+    })
   }
-
-  customElements.define('build-explorer', BuildExplorer);
-</script>
+</ul>
 
 <style>
-  build-explorer {
-    display: block;
+  .uses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
-  .filters {
+  .use {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
-    padding: var(--space-4) var(--space-5);
+    gap: var(--space-3);
+    min-width: 0;
+    margin: 0;
+    padding: var(--space-4);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     background: var(--surface-1);
+    scroll-margin-top: calc(var(--header-h) + var(--space-4));
+    transition:
+      border-color 0.15s ease,
+      transform 0.15s ease;
   }
-  .filters[hidden] {
-    display: none;
+  .use + .use {
+    margin-top: 0;
   }
-  .filters__group {
-    border: 0;
-    margin: 0;
-    padding: 0;
-    min-width: 0;
+  .use:not(.use--empty):hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
   }
-  legend {
-    display: block;
-    margin-bottom: var(--space-2);
-    font-size: var(--step--1);
-    font-weight: 700;
-    color: var(--text-muted);
+  .use--empty {
+    background: transparent;
   }
-  .segmented {
+  @media (prefers-reduced-motion: reduce) {
+    .use {
+      transition: none;
+    }
+    .use:not(.use--empty):hover {
+      transform: none;
+    }
+  }
+  .use__title {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
-  .segmented label {
-    position: relative;
-    cursor: pointer;
-  }
-  .segmented input {
-    position: absolute;
-    opacity: 0;
-    inset: 0;
-    margin: 0;
-    cursor: pointer;
-  }
-  .segmented span {
-    display: inline-flex;
     align-items: center;
-    gap: 0.4em;
-    min-height: 40px;
-    padding: 0 0.85em;
-    border-radius: 999px;
-    border: 1px solid var(--border-strong);
-    background: var(--surface-1);
-    color: var(--text-muted);
-    font-size: var(--step--1);
+    justify-content: space-between;
+    gap: var(--space-2);
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--step-1);
     font-weight: 600;
   }
-  .segmented small {
-    font-weight: 500;
-    color: var(--text-subtle);
+  .use--empty .use__title {
+    color: var(--text-muted);
   }
-  .segmented label:hover span {
-    background: var(--surface-2);
+  .use__link {
     color: var(--text);
+    text-decoration: none;
   }
-  .segmented [class^='school-'] span :global(svg) {
-    color: var(--school);
+  /* The whole block is the link. */
+  .use__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: var(--radius-lg);
   }
-  .segmented input:checked + span {
-    border-color: var(--accent);
-    background: var(--accent);
-    color: var(--accent-contrast);
+  .use__link:focus-visible {
+    outline: none;
   }
-  .segmented input:checked + span small,
-  .segmented input:checked + span :global(svg) {
-    color: inherit;
-  }
-  .segmented input:focus-visible + span {
+  .use:has(.use__link:focus-visible) {
     outline: 3px solid var(--focus);
     outline-offset: 2px;
   }
-  .filters__actions {
+  .use__title :global(.use__arrow) {
+    color: var(--accent);
+  }
+  .use__list {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .use__build {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    margin: 0;
+    padding: var(--space-3);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--school);
+    border-radius: var(--radius-lg);
+    background: var(--surface-2, var(--surface-1));
+  }
+  .use__build :global(.use__icon) {
+    flex-shrink: 0;
+    margin-top: 0.1em;
+    color: var(--school);
+  }
+  .use__text {
+    display: grid;
+    gap: var(--space-1);
+    min-width: 0;
+  }
+  .use__name {
+    font-weight: 700;
+  }
+  .use__meta {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: var(--space-2);
-  }
-  .filters__actions .button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  .results-count {
-    margin: var(--space-4) 0 var(--space-3);
     font-size: var(--step--1);
-    font-weight: 600;
     color: var(--text-muted);
   }
-  .build-list {
-    display: grid;
-    gap: var(--space-4);
+  .use__role {
+    padding: 0 0.55em;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
   }
-  .build-empty {
-    display: grid;
-    justify-items: start;
-    gap: var(--space-3);
-    padding: var(--space-5);
+  .use__role--recommended {
+    background: var(--school);
+    color: var(--accent-contrast);
+  }
+  .use__role--not-recommended {
+    border: 1px dashed var(--border-strong);
+  }
+  /* Not played yet: shown until the build's status is «tested». */
+  .use__role--untested {
+    border: 1px solid color-mix(in srgb, var(--warning) 60%, transparent);
+    color: var(--warning);
+  }
+  .use__desc {
+    font-size: var(--step--1);
+    line-height: 1.45;
+    color: var(--text-muted);
+  }
+  .use__none {
+    margin: 0;
+    padding: var(--space-3);
     border: 1px dashed var(--border-strong);
     border-radius: var(--radius-lg);
-  }
-  .build-empty[hidden] {
-    display: none;
-  }
-  .build-empty p {
-    margin: 0;
+    font-size: var(--step--1);
+    color: var(--text-muted);
   }
 </style>

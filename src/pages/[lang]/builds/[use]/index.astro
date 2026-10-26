@@ -1,0 +1,65 @@
+---
+/**
+ * One page per content that has builds, generated from builds.json:
+ * /es/builds/leveo/, /en/builds/leveling/. It lists every build of that
+ * content with its three trees; the leveling page also links the leveling guides.
+ */
+import BuildContent from '../../../../components/guide/BuildContent.astro';
+import HubCards from '../../../../components/guide/HubCards.astro';
+import GuideLayout from '../../../../layouts/GuideLayout.astro';
+import { LOCALES, type Locale } from '../../../../i18n/routes';
+import { CONTENT_PAGES, USE_TITLES, tb } from '../../../../i18n/builds';
+import { metaDescription } from '../../../../lib/seo';
+import { USE_SLUGS, contentPath, usedContents } from '../../../../lib/build-routes';
+import { builds, currentVersion } from '../../../../lib/data';
+import type { BuildUse, PageFrontmatter } from '../../../../lib/schemas';
+
+export function getStaticPaths() {
+  return LOCALES.flatMap((lang) => usedContents(builds).map((use) => ({ params: { lang, use: USE_SLUGS[lang][use] }, props: { use } })));
+}
+
+const { use } = Astro.props as { use: BuildUse };
+const locale = Astro.params.lang as Locale;
+const base = import.meta.env.BASE_URL;
+const paths = Object.fromEntries(LOCALES.map((l) => [l, contentPath(use, l, { base })])) as Record<Locale, string>;
+const list = builds.filter((b) => b.uses.includes(use));
+const updated = list.map((b) => b.updated ?? '2026-10-11').sort().at(-1)!;
+const page = CONTENT_PAGES[locale][use];
+const data: PageFrontmatter = {
+  pageId: 'builds',
+  locale,
+  title: page.title,
+  // Search snippet: the builds themselves, not a sentence about the page.
+  description: metaDescription(`${page.title}. ${list.map((b) => `${b.name[locale]}: ${b.tagline[locale]}`).join(' ')}`),
+  gameVersion: list[0]?.gameVersion ?? currentVersion.id,
+  published: new Date(`${updated}T00:00:00Z`),
+  reviewed: new Date(`${updated}T00:00:00Z`),
+  reviewedBy: 'Sheep Happens',
+  status: 'published',
+  verification: 'analysis',
+  sources: [],
+  tags: [],
+  wide: true,
+};
+const guidesId = locale === 'es' ? 'guias-de-leveo' : 'leveling-guides';
+const headings = use === 'leveling' ? [{ depth: 2, slug: guidesId, text: tb(locale, 'content.guides') }] : [];
+---
+
+<GuideLayout
+  locale={locale}
+  pageId="builds"
+  data={data}
+  headings={headings}
+  hideLead
+  subpage={{ paths, crumbs: [{ label: USE_TITLES[locale][use], url: paths[locale] }], modified: new Date(`${updated}T00:00:00Z`) }}
+>
+  <BuildContent use={use} />
+  {
+    use === 'leveling' && (
+      <>
+        <h2 id={guidesId}>{tb(locale, 'content.guides')}</h2>
+        <HubCards group="builds" />
+      </>
+    )
+  }
+</GuideLayout>

@@ -1,11 +1,11 @@
 ---
 /**
- * One build, from builds.json. The full card (talents, point order, how to play
- * it, what to bring) lives on a single page, the build's `page`; elsewhere the
- * summary variant shows what it is for, its points and key talents, and links
- * to that full card. Both use the build id as their id, so /builds/#<id> and
- * /<page>/#<id> keep working. Each use chip says whether the build is the
- * recommended one for that use at its level or a viable alternative.
+ * One build, from builds.json, for the in-depth guide (`page`): talents, point
+ * order, how to play it and what to bring. Every build also has its own page
+ * (/builds/<use>/<slug>/, see build-routes.ts), where shared links point; the
+ * summary variant links there.
+ * Each use chip says whether the build is recommended, viable or not
+ * recommended for that use at its level.
  */
 import Icon from '../ui/Icon.astro';
 import ReportButton from './ReportButton.astro';
@@ -17,6 +17,7 @@ import { SPEC_LABELS, USE_LABELS, tb } from '../../i18n/builds';
 import { getLocale, href } from '../../i18n/locale';
 import { formatDate } from '../../i18n/ui';
 import { buildRole } from '../../lib/build-roles';
+import { buildIcon, buildPath } from '../../lib/build-routes';
 import { getBuild, getTalent, getVersion, talents } from '../../lib/data';
 import { localName } from '../../lib/names';
 import { distributionLabel, pointsAtLevel, spentTalents, totalPoints, wowheadBuildUrl } from '../../lib/talents';
@@ -29,7 +30,7 @@ interface Props {
   open?: boolean;
   /** Hide the link to the guide page (when the card is on that page). */
   hideGuideLink?: boolean;
-  /** "summary": no talents or playstyle, and a link to the full card on the build's page. */
+  /** "summary": no playstyle, and a link to the build page. */
   variant?: 'full' | 'summary';
 }
 
@@ -39,12 +40,12 @@ const locale = getLocale(Astro);
 const build = getBuild(id);
 const Heading = level;
 const Sub = level === 'h2' ? 'h3' : 'h4';
-const icon = build.spec === 'hybrid' ? 'frostfire' : build.spec;
-const school = build.spec === 'hybrid' ? 'baseline' : build.spec;
+const icon = buildIcon(build);
+const school = build.spec;
 const trees = spentTalents(build.points, talents).map((group) => group.tree);
 const version = getVersion(build.gameVersion);
-// Shared links point at the full card.
-const fullUrl = href(build.page ?? 'builds', locale, build.id);
+// Shared links point at the build's own page.
+const fullUrl = buildPath(build, locale);
 const shareUrl = fullUrl;
 // Our own calculator reads the Wowhead code from ?t= (see TalentCalculator).
 const calcCode = wowheadBuildUrl(build.points, talents).split('/mage/v2')[1] ?? '';
@@ -79,7 +80,11 @@ const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' 
           );
         })
       }
-      <li class="chip">{SPEC_LABELS[locale][build.spec]}</li>
+      <li class="chip">
+        {build.hybridWith
+          ? tb(locale, 'build.hybrid', { spec: SPEC_LABELS[locale][build.spec], other: SPEC_LABELS[locale][build.hybridWith] })
+          : SPEC_LABELS[locale][build.spec]}
+      </li>
       <li class="chip">
         {build.order ? tb(locale, 'build.levels', { from: build.fromLevel ?? 1, to: build.level }) : tb(locale, 'build.level', { level: build.level })} ·{' '}
         {tb(locale, 'build.totalPoints', { points: totalPoints(build.points) })}

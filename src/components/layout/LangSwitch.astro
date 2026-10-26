@@ -6,16 +6,18 @@ import { t } from '../../i18n/ui';
 interface Props {
   locale: Locale;
   pageId: PageId | undefined;
+  /** Other-language URL for pages outside ROUTES. */
+  to?: string | undefined;
 }
 
-const { locale, pageId } = Astro.props;
+const { locale, pageId, to } = Astro.props;
 const target = otherLocale(locale);
 const label = target === 'en' ? 'English version of this page' : 'Versión en español de esta página';
 ---
 
 <a
   class="lang-switch"
-  href={href(pageId ?? 'home', target)}
+  href={to ?? href(pageId ?? 'home', target)}
   hreflang={target}
   lang={target}
   title={label}

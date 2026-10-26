@@ -29,6 +29,7 @@ export const MDX_COMPONENTS = [
   'BuildCard',
   'BuildExplorer',
   'BuildPicker',
+  'SpecBuilds',
   'Callout',
   'ChangeExplorer',
   'ChangeSummaryList',

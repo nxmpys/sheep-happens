@@ -1,0 +1,52 @@
+---
+/**
+ * The three talent trees of a build in one row, always all three (a tree with
+ * no points shows greyed out), like the game's talent window. On narrow
+ * screens the row scrolls sideways with snapping, as in the calculator.
+ */
+import TalentGrid from './TalentGrid.astro';
+import { tb } from '../../i18n/builds';
+import { getLocale } from '../../i18n/locale';
+import type { Build } from '../../lib/schemas';
+import { TREE_ORDER } from '../../lib/talents';
+
+interface Props {
+  build: Build;
+  /** Smaller icons, for lists of builds. */
+  compact?: boolean;
+}
+
+const { build, compact = false } = Astro.props;
+const locale = getLocale(Astro);
+---
+
+<div class:list={['build-trees', { 'build-trees--compact': compact }]} role="group" aria-label={tb(locale, 'build.talents')}>
+  {TREE_ORDER.map((tree) => <TalentGrid tree={tree} points={build.points} />)}
+</div>
+
+<style>
+  .build-trees {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(min(15rem, 82%), 1fr);
+    gap: var(--space-3);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    padding-bottom: var(--space-2);
+  }
+  .build-trees > :global(.tg) {
+    scroll-snap-align: start;
+  }
+  .build-trees--compact > :global(.tg) {
+    --cell: 2.2rem;
+    --gap-x: 0.55rem;
+    --gap-y: 0.5rem;
+  }
+  @media (min-width: 48rem) {
+    .build-trees {
+      grid-auto-columns: minmax(0, 1fr);
+      overflow: visible;
+    }
+  }
+</style>

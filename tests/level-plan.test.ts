@@ -21,9 +21,9 @@ describe('level plan', () => {
     expect(pointAtLevel(build, 14, false)).toMatchObject({ point: 5, rank: 5 });
   });
 
-  it('shows the extra Talented points only with Talented', () => {
+  it('moves each point 5 levels earlier with Talented', () => {
     expect(pointAtLevel(build, 30, false)).toMatchObject({ point: 21, extra: false });
-    expect(pointAtLevel(build, 30, true)).toMatchObject({ point: 26, extra: true, talent: 'ice-block' });
+    expect(pointAtLevel(build, 30, true)).toMatchObject({ point: 26, extra: false, talent: 'ice-shards' });
   });
 
   it('lists the spells of the level and of the next two', () => {

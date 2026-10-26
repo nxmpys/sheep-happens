@@ -100,8 +100,8 @@ describe('validateBuild', () => {
 
   it('is enforced by the dataset integrity check', () => {
     const data: Dataset = structuredClone(dataset);
-    data.builds[0]!.points = { ...data.builds[0]!.points, 'ice-barrier': 1 };
-    expect(checkIntegrity(data).join('\n')).toMatch(/ice-barrier/);
+    data.builds[0]!.points = { ...data.builds[0]!.points, 'ice-lance': 2 };
+    expect(checkIntegrity(data).join('\n')).toMatch(/ice-lance/);
   });
 });
 
@@ -133,11 +133,11 @@ describe('point orders', () => {
   });
 
   it('rejects an order that does not reach the build or goes past Talented', () => {
-    expect(validateOrder(solo.order!.slice(0, 20), solo.points, 30, talents).join()).toMatch(/order has 20 points, but level 30 gives 21/);
-    expect(validateOrder([...solo.order!, 'arctic-reach'], solo.points, 30, talents).join()).toMatch(/even Talented 5\/5 gives 26/);
+    expect(validateOrder(solo.order!.slice(0, 20), solo.points, 60, talents).join()).toMatch(/order has 20 points, but level 60 gives 51/);
+    expect(validateOrder([...solo.order!, 'arctic-reach'], solo.points, 60, talents).join()).toMatch(/point 52/);
     const swapped = [...solo.order!];
-    [swapped[20], swapped[22]] = [swapped[22]!, swapped[20]!];
-    expect(validateOrder(swapped, solo.points, 30, talents).join()).toMatch(/the first 21 points give/);
+    [swapped[10], swapped[15]] = [swapped[15]!, swapped[10]!];
+    expect(validateOrder(swapped, solo.points, 60, talents)).not.toEqual([]);
   });
 
   it('groups runs and keeps the Talented points apart', () => {

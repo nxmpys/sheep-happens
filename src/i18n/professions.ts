@@ -45,7 +45,7 @@ const es = {
   'detail.levelingEconomy': 'Leveo y economía',
   'detail.pair': 'Mejor combinación',
   'detail.verdict': 'Veredicto',
-  'detail.items': 'Objetos que lo respaldan (datos de la beta)',
+  'detail.items': 'Objetos que lo respaldan (datos del cliente)',
   'detail.priority': 'Prioridad',
   'detail.wowhead': 'ver en Wowhead, se abre en otra pestaña',
 } as const;
@@ -77,7 +77,7 @@ const en: Record<ProfessionUiKey, string> = {
   'detail.levelingEconomy': 'Leveling and economy',
   'detail.pair': 'Best combination',
   'detail.verdict': 'Verdict',
-  'detail.items': 'Items behind this (beta data)',
+  'detail.items': 'Items behind this (client data)',
   'detail.priority': 'Priority',
   'detail.wowhead': 'view on Wowhead, opens in a new tab',
 };

@@ -30,17 +30,19 @@ interface Props {
   /** schema.org objects rendered as JSON-LD. */
   jsonLd?: object[];
   modified?: Date | undefined;
+  /** Paths of a page outside ROUTES (a build page), per locale: canonical, hreflang and language switch. */
+  paths?: Record<Locale, string> | undefined;
 }
 
-const { locale, pageId, title, seoTitle, description, section, noindex = false, image, jsonLd = [], modified } = Astro.props;
+const { locale, pageId, title, seoTitle, description, section, noindex = false, image, jsonLd = [], modified, paths } = Astro.props;
 const fullTitle = `${seoTitle ?? title} | ${SITE_NAME}`;
 const site = Astro.site ?? new URL('https://sheephappens.app');
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const absolute = (path: string) => new URL(path, site).href;
-const canonical = pageId ? absolute(href(pageId, locale)) : undefined;
-const alternate = pageId ? absolute(href(pageId, otherLocale(locale))) : undefined;
+const canonical = paths ? absolute(paths[locale]) : pageId ? absolute(href(pageId, locale)) : undefined;
+const alternate = paths ? absolute(paths[otherLocale(locale)]) : pageId ? absolute(href(pageId, otherLocale(locale))) : undefined;
 // The root page is the language chooser, so it is the x-default for the home pages.
-const xDefault = pageId === 'home' ? absolute(base) : pageId ? absolute(href(pageId, 'es')) : undefined;
+const xDefault = paths ? absolute(paths.es) : pageId === 'home' ? absolute(base) : pageId ? absolute(href(pageId, 'es')) : undefined;
 const ogImage = absolute(image ?? `${base}og/${locale}-home.png`);
 const ogLocale = { es: 'es_ES', en: 'en_GB' } as const;
 const googleVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
@@ -98,7 +100,7 @@ const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
   </head>
   <body id="top" data-pagefind-meta={section ? `section:${section}` : undefined}>
     <a class="skip-link" href="#main">{t(locale, 'skip.toContent')}</a>
-    <Header locale={locale} pageId={pageId} />
+    <Header locale={locale} pageId={pageId} switchTo={paths?.[otherLocale(locale)]} />
     <main id="main" tabindex="-1">
       <slot />
     </main>

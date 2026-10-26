@@ -40,6 +40,11 @@ export function shownDataDates(body: string, data: DateSource): string[] {
       case 'BuildExplorer':
         add(data.builds);
         break;
+      case 'SpecBuilds': {
+        const spec = stringProp(tag, 'spec');
+        add(data.builds.filter((b) => b.spec === spec));
+        break;
+      }
       case 'LevelingStatus':
         add(data.builds.filter((b) => b.order));
         break;

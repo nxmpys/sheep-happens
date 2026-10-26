@@ -164,7 +164,7 @@
     "id": "unknown-max",
     "part": "unknown",
     "title": { "es": "Máximo de la habilidad", "en": "Skill cap" },
-    "text": { "es": "Los datos de la beta llegan a 300, sin confirmar.", "en": "Beta data reaches 300, unconfirmed." },
+    "text": { "es": "Los datos del cliente llegan a 300, sin confirmar.", "en": "Client data reaches 300, unconfirmed." },
     "status": "pending",
     "sources": ["wowhead-forever-comprehension"]
   },
@@ -180,7 +180,7 @@
     "id": "unknown-trade",
     "part": "unknown",
     "title": { "es": "Comercio", "en": "Trading" },
-    "text": { "es": "En los datos de la beta no van ligados; sin probar.", "en": "Not bound in the beta data; untested." },
+    "text": { "es": "En los datos del cliente no van ligados; sin probar.", "en": "Not bound in the client data; untested." },
     "status": "pending",
     "sources": ["wowhead-forever-comprehension"]
   }

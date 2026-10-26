@@ -24,9 +24,17 @@ interface Props {
   headings: MarkdownHeading[];
   /** MDX source, to date the page by the data it shows. */
   body?: string;
+  /**
+   * A page below `pageId` that is not in ROUTES (a build page): its URL per
+   * locale, the breadcrumbs after `pageId` (the last one is the page itself)
+   * and its last modification. No pager.
+   */
+  subpage?: { paths: Record<Locale, string>; crumbs: { label: string; url: string }[]; modified: Date } | undefined;
+  /** Hide the lead under the title (the description stays in the meta tags). */
+  hideLead?: boolean;
 }
 
-const { locale, pageId, data, headings, body = '' } = Astro.props;
+const { locale, pageId, data, headings, body = '', subpage, hideLead = false } = Astro.props;
 const spec = ROUTES[pageId].spec;
 // The about page is not a guide: no lead, review badges, index, pager or feedback form.
 const personal = pageId === 'about';
@@ -41,11 +49,11 @@ const site = Astro.site ?? new URL('https://sheephappens.app');
 const absolute = (path: string) => new URL(path, site).href;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const image = `${base}og/${locale}-${pageId}.png`;
-const modified = lastModified(pageId, data.reviewed, body);
+const modified = subpage?.modified ?? lastModified(pageId, data.reviewed, body);
 const jsonLd = [
   articleJsonLd({
     locale,
-    url: absolute(href(pageId, locale)),
+    url: absolute(subpage?.paths[locale] ?? href(pageId, locale)),
     siteUrl: absolute(base),
     title: data.title,
     description: data.description,
@@ -53,7 +61,10 @@ const jsonLd = [
     modified,
     image: absolute(image),
   }),
-  breadcrumbJsonLd(trail.map((id) => ({ name: NAV_LABELS[locale][id], url: absolute(href(id, locale)) }))),
+  breadcrumbJsonLd([
+    ...trail.map((id) => ({ name: NAV_LABELS[locale][id], url: absolute(href(id, locale)) })),
+    ...(subpage?.crumbs ?? []).map((crumb) => ({ name: crumb.label, url: absolute(crumb.url) })),
+  ]),
 ];
 const sources = pageSourceIds(data.sources, body);
 const tocHeadings = sources.length > 0
@@ -71,11 +82,12 @@ const tocHeadings = sources.length > 0
   image={image}
   jsonLd={jsonLd}
   modified={modified}
+  paths={subpage?.paths}
 >
   <div class:list={['container', 'guide', spec && `school-${spec}`, (data.wide || personal) && 'guide--wide']}>
     <div class="guide__main">
       <header class="guide__header">
-        <Breadcrumbs locale={locale} pageId={pageId} />
+        <Breadcrumbs locale={locale} pageId={pageId} extra={subpage?.crumbs} />
         {
           spec && (
             <p class="guide__kicker">
@@ -85,7 +97,7 @@ const tocHeadings = sources.length > 0
           )
         }
         <h1 class:list={[personal && 'visually-hidden']} data-pagefind-meta="title">{data.title}</h1>
-        {!personal && <p class="guide__lead">{data.description}</p>}
+        {!personal && !hideLead && <p class="guide__lead">{data.description}</p>}
         {!personal && <PageMeta locale={locale} data={data} modified={modified} sourceCount={sources.length} legend={!body.includes('<StatusLegend')} />}
       </header>
 
@@ -93,7 +105,7 @@ const tocHeadings = sources.length > 0
         !personal && (
           <div class="guide__toc-inline">
             <Toc headings={tocHeadings} locale={locale} variant="inline" groups={data.tocGroups} />
-            <PrevNext locale={locale} pageId={pageId} variant="compact" />
+            {!subpage && <PrevNext locale={locale} pageId={pageId} variant="compact" />}
           </div>
         )
       }
@@ -129,7 +141,7 @@ const tocHeadings = sources.length > 0
         !personal && (
           <>
             <FeedbackBox locale={locale} pageId={pageId} />
-            <PrevNext locale={locale} pageId={pageId} />
+            {!subpage && <PrevNext locale={locale} pageId={pageId} />}
           </>
         )
       }
@@ -140,7 +152,7 @@ const tocHeadings = sources.length > 0
         <aside class="guide__aside" data-pagefind-ignore>
           <div class="guide__aside-inner">
             <Toc headings={tocHeadings} locale={locale} variant="sidebar" groups={data.tocGroups} />
-            <PrevNext locale={locale} pageId={pageId} variant="compact" />
+            {!subpage && <PrevNext locale={locale} pageId={pageId} variant="compact" />}
           </div>
         </aside>
       )

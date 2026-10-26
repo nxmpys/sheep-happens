@@ -1,0 +1,353 @@
+---
+/**
+ * Body of a build page (/builds/<use>/<slug>/). Same template for every build:
+ * tree, content and status as chips; pros and cons first; the three trees in
+ * one row with the actions below; then why these points, variants, rotation
+ * and stats. A section without real data says so instead of being filled with
+ * Classic or Retail numbers. Consumables and races are class-wide, so they
+ * live in their own guides, not here.
+ */
+import BuildActions from './BuildActions.astro';
+import BuildTrees from './BuildTrees.astro';
+import Callout from './Callout.astro';
+import StatusBadge from './StatusBadge.astro';
+import TalentOrder from './TalentOrder.astro';
+import Icon from '../ui/Icon.astro';
+import { SPEC_LABELS, USE_LABELS, USE_TITLES, tb } from '../../i18n/builds';
+import { getLocale } from '../../i18n/locale';
+import { buildRole } from '../../lib/build-roles';
+import { buildIcon, contentPath } from '../../lib/build-routes';
+import { buildSections, type BuildSectionKey } from '../../lib/build-page';
+import type { Build } from '../../lib/schemas';
+
+interface Props {
+  build: Build;
+}
+
+const { build } = Astro.props;
+const locale = getLocale(Astro);
+const sections = {} as Record<BuildSectionKey, { id: string; text: string }>;
+for (const section of buildSections(locale)) sections[section.key] = section;
+const specLabel = build.hybridWith
+  ? tb(locale, 'build.hybrid', { spec: SPEC_LABELS[locale][build.spec], other: SPEC_LABELS[locale][build.hybridWith] })
+  : SPEC_LABELS[locale][build.spec];
+const base = import.meta.env.BASE_URL;
+const pros = { headline: build.upside?.[locale], items: build.strengths.map((s) => s[locale]) };
+const cons = { headline: build.downside?.[locale], items: build.weaknesses.map((s) => s[locale]) };
+const hasPros = pros.items.length > 0 || cons.items.length > 0 || pros.headline || cons.headline;
+---
+
+<div class={`build-page school-${build.spec}`}>
+  <ul class="build-page__chips" data-pagefind-ignore>
+    <li class="chip build-page__spec">
+      <Icon name={buildIcon(build)} size={16} />
+      {specLabel}
+    </li>
+    {
+      build.uses.map((use) => {
+        const role = buildRole(build, use);
+        return (
+          <li>
+            <a
+              class:list={['chip', 'build-page__use', `build-page__use--${role}`]}
+              href={contentPath(use, locale, { base })}
+              title={tb(locale, `build.roleHint.${role}`, { use: USE_LABELS[locale][use], level: build.level })}
+            >
+              {USE_TITLES[locale][use]} · {tb(locale, `build.${role}`)}
+            </a>
+          </li>
+        );
+      })
+    }
+    <li><StatusBadge status={build.status} /></li>
+  </ul>
+
+  {
+    // Until I play it (status «tested»), every build says it is untested.
+    build.status !== 'tested' && (
+      <Callout variant="warning" title={tb(locale, 'build.untested')}>
+        <p>{tb(locale, 'build.untestedText')}</p>
+      </Callout>
+    )
+  }
+
+  <h2 id={sections.pros.id}>{sections.pros.text}</h2>
+  {
+    hasPros ? (
+      <build-verdict class="verdict">
+        <div class="verdict__tabs" role="tablist" hidden data-tabs>
+          <button type="button" role="tab" class="verdict__tab verdict__tab--pro" aria-selected="true" data-tab="pro">
+            {tb(locale, 'build.page.prosTab')}
+          </button>
+          <button type="button" role="tab" class="verdict__tab verdict__tab--con" aria-selected="false" data-tab="con">
+            {tb(locale, 'build.page.consTab')}
+          </button>
+        </div>
+        <div class="verdict__panels">
+          {[
+            { kind: 'pro', label: tb(locale, 'build.page.prosTab'), data: pros, sign: '+' },
+            { kind: 'con', label: tb(locale, 'build.page.consTab'), data: cons, sign: '−' },
+          ].map(({ kind, label, data, sign }) => (
+            <section class={`verdict__panel verdict__panel--${kind}`} data-panel={kind} aria-label={label}>
+              <p class="verdict__label">
+                <span class="verdict__sign" aria-hidden="true">{sign}</span>
+                {label}
+              </p>
+              {data.headline && <p class="verdict__headline">{data.headline}</p>}
+              {data.items.length > 0 ? (
+                <ul class="verdict__items">
+                  {data.items.map((item) => (
+                    <li class="verdict__item" tabindex="0">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                !data.headline && <p class="build-page__empty">{tb(locale, 'build.page.empty')}</p>
+              )}
+            </section>
+          ))}
+        </div>
+      </build-verdict>
+    ) : (
+      <p class="build-page__empty">{tb(locale, 'build.page.empty')}</p>
+    )
+  }
+
+  <h2 id={sections.talents.id}>{sections.talents.text}</h2>
+  <BuildTrees build={build} />
+  <BuildActions build={build} />
+
+  <h2 id={sections.why.id}>{sections.why.text}</h2>
+  {
+    build.order ? (
+      <TalentOrder build={build} />
+    ) : build.orderNotes.length > 0 ? (
+      <ul>{build.orderNotes.map((n) => <li>{n.text[locale]}</li>)}</ul>
+    ) : (
+      <p class="build-page__empty">{tb(locale, 'build.page.empty')}</p>
+    )
+  }
+
+  <h2 id={sections.variants.id}>{sections.variants.text}</h2>
+  {
+    build.variants.length > 0 ? (
+      <ul>
+        {build.variants.map((v) => (
+          <li>
+            <strong>{v.name[locale]}.</strong> {v.text[locale]}
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="build-page__empty">{tb(locale, 'build.page.noVariants')}</p>
+    )
+  }
+
+  <h2 id={sections.rotation.id}>{sections.rotation.text}</h2>
+  <ol>
+    {build.playstyle.map((step) => <li>{step[locale]}</li>)}
+  </ol>
+
+  <h2 id={sections.stats.id}>{sections.stats.text}</h2>
+  {
+    build.stats.length > 0 ? (
+      <ol>{build.stats.map((item) => <li>{item[locale]}</li>)}</ol>
+    ) : (
+      <p class="build-page__empty">{tb(locale, 'build.page.empty')}</p>
+    )
+  }
+</div>
+
+<script>
+  /** On narrow screens pros and cons become two tabs; on wide ones both show side by side. */
+  class BuildVerdict extends HTMLElement {
+    connectedCallback() {
+      const tabs = this.querySelector<HTMLElement>('[data-tabs]');
+      if (!tabs) return;
+      tabs.hidden = false;
+      this.dataset.ready = '';
+      const select = (kind: string) => {
+        for (const tab of tabs.querySelectorAll<HTMLButtonElement>('[data-tab]')) tab.setAttribute('aria-selected', String(tab.dataset.tab === kind));
+        this.dataset.show = kind;
+      };
+      tabs.addEventListener('click', (event) => {
+        const tab = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-tab]');
+        if (tab) select(tab.dataset.tab!);
+      });
+      select('pro');
+    }
+  }
+  customElements.define('build-verdict', BuildVerdict);
+</script>
+
+<style>
+  .build-page__chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0 0 var(--space-4);
+    padding: 0;
+    list-style: none;
+  }
+  .build-page__chips li {
+    margin: 0;
+  }
+  .build-page__spec :global(svg) {
+    color: var(--school);
+  }
+  .build-page__use {
+    text-decoration: none;
+    color: var(--text);
+  }
+  .build-page__use--recommended {
+    border-color: var(--school);
+    font-weight: 700;
+  }
+  .build-page__use--not-recommended {
+    color: var(--text-muted);
+  }
+  .build-page__empty {
+    padding: var(--space-3) var(--space-4);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius-lg);
+    color: var(--text-muted);
+  }
+
+  build-verdict {
+    display: block;
+  }
+  .verdict {
+    --pro: #3fbf6a;
+    --con: #e0605a;
+  }
+  .verdict__tabs {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+  .verdict__tabs[hidden] {
+    display: none;
+  }
+  .verdict__tab {
+    flex: 1;
+    min-height: 44px;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    background: var(--surface-1);
+    color: var(--text-muted);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .verdict__tab[aria-selected='true'].verdict__tab--pro {
+    border-color: var(--pro);
+    background: color-mix(in srgb, var(--pro) 18%, var(--surface-1));
+    color: var(--text);
+  }
+  .verdict__tab[aria-selected='true'].verdict__tab--con {
+    border-color: var(--con);
+    background: color-mix(in srgb, var(--con) 18%, var(--surface-1));
+    color: var(--text);
+  }
+  .verdict__panels {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .verdict__panel {
+    --tone: var(--pro);
+    display: grid;
+    align-content: start;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border: 1px solid color-mix(in srgb, var(--tone) 40%, var(--border));
+    border-radius: var(--radius-lg);
+    background:
+      radial-gradient(120% 80% at 0% 0%, color-mix(in srgb, var(--tone) 14%, transparent), transparent 65%),
+      var(--surface-1);
+  }
+  .verdict__panel--con {
+    --tone: var(--con);
+  }
+  .verdict__label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--tone);
+  }
+  .verdict__sign {
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: var(--tone);
+    color: #0e0d16;
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+  .verdict__headline {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .verdict__items {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .verdict__item {
+    margin: 0;
+    padding: var(--space-2) var(--space-3);
+    border-left: 3px solid color-mix(in srgb, var(--tone) 55%, transparent);
+    border-radius: var(--radius-sm, 6px);
+    background: color-mix(in srgb, var(--tone) 6%, transparent);
+    font-size: var(--step--1);
+    line-height: 1.5;
+    transition:
+      background 0.15s ease,
+      border-color 0.15s ease,
+      transform 0.15s ease;
+  }
+  .verdict__item:hover,
+  .verdict__item:focus-visible {
+    border-left-color: var(--tone);
+    background: color-mix(in srgb, var(--tone) 14%, transparent);
+    transform: translateX(3px);
+    outline: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .verdict__item {
+      transition: none;
+    }
+    .verdict__item:hover,
+    .verdict__item:focus-visible {
+      transform: none;
+    }
+  }
+  /* Narrow screens with JavaScript: one panel at a time, picked with the tabs. */
+  @media (max-width: 39.99rem) {
+    build-verdict[data-ready][data-show='pro'] [data-panel='con'],
+    build-verdict[data-ready][data-show='con'] [data-panel='pro'] {
+      display: none;
+    }
+  }
+  @media (min-width: 40rem) {
+    .verdict__tabs {
+      display: none !important;
+    }
+    .verdict__panels {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

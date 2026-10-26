@@ -1,0 +1,140 @@
+[
+  {
+    "id": "arcane",
+    "strengths": [
+      {
+        "es": "Prepara y potencia el siguiente hechizo: cada Explosión Arcana te da daño con hechizos según tu Intelecto, acumulable hasta 4 veces.",
+        "en": "It sets up and empowers your next spell: each Arcane Blast grants Spell Damage based on your Intellect, stacking up to 4 times."
+      },
+      {
+        "es": "Cólera Arcana (16 puntos) es un golpe fuerte que crece con tu maná máximo.",
+        "en": "Arcane Wrath (16 points) is a big hit that grows with your maximum mana."
+      },
+      {
+        "es": "Tromba de misiles está en la fila 1: misiles rápidos y gratis desde el nivel 10.",
+        "en": "Missile Barrage sits in row 1: fast, free missiles from level 10."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "El maná es el freno: cada Explosión Arcana cuesta más que la anterior.",
+        "en": "Mana is the brake: each Arcane Blast costs more than the last."
+      },
+      {
+        "es": "No ralentiza ni congela como Escarcha, así que contra un enemigo cuerpo a cuerpo recibes más golpes.",
+        "en": "It does not slow or freeze like Frost, so a melee enemy hits you more often."
+      }
+    ],
+    "noBuild": {
+      "leveling": {
+        "es": "Subir con Arcano gasta mucho maná, y antes de su rediseño las guías decían que no despegaba hasta el nivel 25. Lo volveré a mirar cuando haya pruebas con la versión nueva.",
+        "en": "Leveling as Arcane burns a lot of mana, and before its redesign guides said it only took off at level 25. I will look again once there are tests with the new version."
+      },
+      "pvp": {
+        "es": "Todavía no he podido probar el JcJ de nivel 60.",
+        "en": "I have not been able to test level 60 PvP yet."
+      },
+      "dungeons": {
+        "es": "Todavía no he podido probar las mazmorras de nivel 60.",
+        "en": "I have not been able to test level 60 dungeons yet."
+      },
+      "raid": {
+        "es": "Todavía no he podido probar las bandas de Forever.",
+        "en": "I have not been able to test Forever raids yet."
+      }
+    },
+    "updated": "2026-10-26"
+  },
+  {
+    "id": "fire",
+    "strengths": [
+      {
+        "es": "Los críticos aceleran Piroexplosión: con 3 cargas de Calentamiento se lanza en 1,5 s.",
+        "en": "Crits speed up Pyroblast: with 3 Heating Up stacks it casts in 1.5 s."
+      },
+      {
+        "es": "Ignición es individual por Mago y ya no pierde daño con críticos muy seguidos.",
+        "en": "Ignite is per Mage and no longer loses damage with crits in quick succession."
+      },
+      {
+        "es": "Poder de Fuego premia mantener varios efectos de Fuego en el objetivo.",
+        "en": "Fire Power rewards keeping several Fire effects on the target."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Necesita críticos, y a nivel bajo haces pocos.",
+        "en": "It needs crits, and you score few at low level."
+      },
+      {
+        "es": "No ralentiza: los enemigos cuerpo a cuerpo te alcanzan antes.",
+        "en": "It does not slow: melee enemies reach you sooner."
+      },
+      {
+        "es": "Piroexplosión sin cargas tarda 6 s en lanzarse.",
+        "en": "Pyroblast without stacks takes 6 s to cast."
+      }
+    ],
+    "noBuild": {
+      "leveling": {
+        "es": "Hasta el 30 le faltan piezas: Piroexplosión lenta, pocos críticos y ninguna ralentización. Desde el 40, la build de leveo de Escarcha ya aprovecha Fuego con Descarga de Pirofrío.",
+        "en": "Up to level 30 it lacks pieces: a slow Pyroblast, few crits and no slow. From 40, the Frost leveling build already makes use of Fire with Frostfire Bolt."
+      },
+      "pvp": {
+        "es": "Todavía no he podido probar el JcJ de nivel 60.",
+        "en": "I have not been able to test level 60 PvP yet."
+      },
+      "dungeons": {
+        "es": "Todavía no he podido probar las mazmorras de nivel 60.",
+        "en": "I have not been able to test level 60 dungeons yet."
+      },
+      "raid": {
+        "es": "Todavía no he podido probar las bandas de Forever.",
+        "en": "I have not been able to test Forever raids yet."
+      }
+    },
+    "updated": "2026-10-26"
+  },
+  {
+    "id": "frost",
+    "strengths": [
+      {
+        "es": "Control: Descarga de Escarcha ralentiza y Nova de Escarcha congela, así que los enemigos tardan en alcanzarte.",
+        "en": "Control: Frostbolt slows and Frost Nova freezes, so enemies take longer to reach you."
+      },
+      {
+        "es": "El control se convierte en daño: Lanza de hielo hace un 200 % más contra objetivos congelados.",
+        "en": "Control turns into damage: Ice Lance deals 200% more against frozen targets."
+      },
+      {
+        "es": "Un solo hechizo principal, así que la rama es fácil de aprender.",
+        "en": "One main spell, so the tree is easy to learn."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Blizzard ha frenado su farmeo masivo: Ventisca mejorada y Cono de frío pierden fuerza contra muchos enemigos.",
+        "en": "Blizzard has slowed down its mass farming: Improved Blizzard and Cone of Cold lose power against many enemies."
+      },
+      {
+        "es": "Mordedura helada pide 21 puntos y tiene 10 minutos de reutilización.",
+        "en": "Cold Snap needs 21 points and has a 10-minute cooldown."
+      }
+    ],
+    "noBuild": {
+      "pvp": {
+        "es": "Todavía no he podido probar el JcJ de nivel 60.",
+        "en": "I have not been able to test level 60 PvP yet."
+      },
+      "dungeons": {
+        "es": "Todavía no he podido probar las mazmorras de nivel 60.",
+        "en": "I have not been able to test level 60 dungeons yet."
+      },
+      "raid": {
+        "es": "Todavía no he podido probar las bandas de Forever.",
+        "en": "I have not been able to test Forever raids yet."
+      }
+    },
+    "updated": "2026-10-26"
+  }
+]

@@ -28,11 +28,10 @@
       "change:frost-warding",
       "change:winters-chill",
       "change:missile-barrage",
-      "build:frost-leveling-solo",
-      "build:frost-leveling-dungeons",
-      "build:frost-leveling-aoe"
+      "build:frost-leveling-solo"
     ]
-  }, {
+  },
+  {
     "id": "2026-10-21-sources",
     "date": "2026-10-21",
     "type": "guide",
@@ -61,7 +60,8 @@
       "fact:raid-unlock",
       "change:frost-channeling"
     ]
-  }, {
+  },
+  {
     "id": "2026-10-20-gear",
     "date": "2026-10-20",
     "type": "site",
@@ -455,7 +455,6 @@
       "wiki-arcane-concentration"
     ],
     "refs": [
-      "build:frost-leveling-aoe",
       "source:conquestcapped-mage-leveling",
       "source:forg-mage-aoe-spiders",
       "source:wiki-arcane-concentration"
@@ -546,8 +545,6 @@
     ],
     "refs": [
       "build:frost-leveling-solo",
-      "build:frost-leveling-dungeons",
-      "build:frost-leveling-aoe",
       "source:icyveins-forever-frost",
       "source:mobalytics-mage-leveling",
       "source:mobalytics-frost",

@@ -1,0 +1,70 @@
+---
+/**
+ * One page per build, generated from builds.json, under its first use:
+ * /es/builds/leveo/pirofrio-en-solitario/, /en/builds/leveling/frostfire-solo/.
+ * Adding a build to builds.json adds its page, its card on every content page
+ * it covers, its block in the builds index and its sitemap entry.
+ */
+import BuildPage from '../../../../components/guide/BuildPage.astro';
+import GuideLayout from '../../../../layouts/GuideLayout.astro';
+import { LOCALES, type Locale } from '../../../../i18n/routes';
+import { SPEC_LABELS, USE_LABELS, USE_TITLES } from '../../../../i18n/builds';
+import { buildSections } from '../../../../lib/build-page';
+import { USE_SLUGS, buildPath, canonicalUse, contentPath } from '../../../../lib/build-routes';
+import { builds } from '../../../../lib/data';
+import type { Build, PageFrontmatter } from '../../../../lib/schemas';
+
+export function getStaticPaths() {
+  return LOCALES.flatMap((lang) =>
+    builds.map((build) => ({
+      params: { lang, use: USE_SLUGS[lang][canonicalUse(build)], build: build.slug[lang] },
+      props: { build },
+    })),
+  );
+}
+
+const { build } = Astro.props as { build: Build };
+const locale = Astro.params.lang as Locale;
+const base = import.meta.env.BASE_URL;
+const paths = Object.fromEntries(LOCALES.map((l) => [l, buildPath(build, l, { base })])) as Record<Locale, string>;
+const use = canonicalUse(build);
+const spec = SPEC_LABELS[locale][build.spec];
+const updated = build.updated ?? '2026-10-11';
+const title = build.name[locale];
+const seoTitle = locale === 'es' ? `Build de ${spec} para ${USE_LABELS[locale][use].toLowerCase()}: Mago en WoW Forever` : `${spec} Mage ${USE_LABELS[locale][use].toLowerCase()} build for WoW Forever`;
+const data: PageFrontmatter = {
+  pageId: 'builds',
+  locale,
+  title,
+  ...(seoTitle.length <= 60 ? { seoTitle } : {}),
+  description: build.summary[locale],
+  gameVersion: build.gameVersion,
+  published: new Date(`${updated}T00:00:00Z`),
+  reviewed: new Date(`${updated}T00:00:00Z`),
+  reviewedBy: 'Sheep Happens',
+  status: 'published',
+  verification: build.status,
+  // I make the builds myself: no «Sources for this page» list.
+  sources: [],
+  tags: [],
+  wide: true,
+};
+const headings = buildSections(locale).map((s) => ({ depth: 2, slug: s.id, text: s.text }));
+---
+
+<GuideLayout
+  locale={locale}
+  pageId="builds"
+  data={data}
+  headings={headings}
+  subpage={{
+    paths,
+    crumbs: [
+      { label: USE_TITLES[locale][use], url: contentPath(use, locale, { base }) },
+      { label: title, url: paths[locale] },
+    ],
+    modified: new Date(`${updated}T00:00:00Z`),
+  }}
+>
+  <BuildPage build={build} />
+</GuideLayout>

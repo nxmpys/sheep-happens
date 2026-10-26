@@ -7,23 +7,26 @@ import { NAV_LABELS, t } from '../../i18n/ui';
 interface Props {
   locale: Locale;
   pageId: PageId;
+  /** Crumbs below `pageId` for pages that are not in ROUTES (build pages); the last one is the page itself. */
+  extra?: { label: string; url: string }[] | undefined;
 }
 
-const { locale, pageId } = Astro.props;
+const { locale, pageId, extra = [] } = Astro.props;
 const trail = breadcrumbTrail(pageId);
+const crumbs = [...trail.map((id) => ({ label: NAV_LABELS[locale][id], url: href(id, locale) })), ...extra];
 ---
 
 {
-  trail.length > 1 && (
+  crumbs.length > 1 && (
     <nav class="breadcrumbs" aria-label={t(locale, 'nav.breadcrumbs')} data-pagefind-ignore>
       <ol>
-        {trail.map((id, index) => (
+        {crumbs.map((crumb, index) => (
           <li>
-            {index === trail.length - 1 ? (
-              <span aria-current="page">{NAV_LABELS[locale][id]}</span>
+            {index === crumbs.length - 1 ? (
+              <span aria-current="page">{crumb.label}</span>
             ) : (
               <>
-                <a href={href(id, locale)}>{NAV_LABELS[locale][id]}</a>
+                <a href={crumb.url}>{crumb.label}</a>
                 <Icon name="chevronRight" size={14} />
               </>
             )}

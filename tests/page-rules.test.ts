@@ -50,7 +50,7 @@ describe('validatePages', () => {
   });
 
   it('checks the builds offered by <BuildPicker>', () => {
-    const ok = "<BuildPicker ids={['frost-leveling-solo', 'frost-leveling-aoe']} recommended=\"frost-leveling-aoe\" />";
+    const ok = "<BuildPicker ids={['frost-leveling-solo']} recommended=\"frost-leveling-solo\" />";
     const bad = "<BuildPicker ids={['frost-leveling-solo', 'frost-leveling-nope']} recommended=\"frost-duels-30-legacy\" />";
     const withBody = (body: string) => [...complete.filter((f) => f.path !== 'es/leveling.mdx'), page('es', 'leveling', body)];
     expect(validatePages(withBody(ok), dataset, today).errors).toEqual([]);

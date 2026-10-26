@@ -6,13 +6,35 @@ import type { Locale } from './routes';
 import type { BuildSpec, BuildUse, Racial } from '../lib/schemas';
 
 export const USE_LABELS: Record<Locale, Record<BuildUse, string>> = {
-  es: { leveling: 'Leveo', aoe: 'Farmeo en área', dungeons: 'Mazmorras', raid: 'Banda', pvp: 'JcJ' },
-  en: { leveling: 'Leveling', aoe: 'AoE farming', dungeons: 'Dungeons', raid: 'Raid', pvp: 'PvP' },
+  es: { leveling: 'Leveo', pvp: 'JcJ', dungeons: 'Mazmorras', raid: 'Banda' },
+  en: { leveling: 'Leveling', pvp: 'PvP', dungeons: 'Dungeons', raid: 'Raid' },
+};
+
+/** Content blocks of the builds index, with their level range. */
+export const USE_TITLES: Record<Locale, Record<BuildUse, string>> = {
+  es: { leveling: 'Leveo 1-60', pvp: 'JcJ 60', dungeons: 'Mazmorras 60', raid: 'Banda 60' },
+  en: { leveling: 'Leveling 1-60', pvp: 'PvP 60', dungeons: 'Dungeons 60', raid: 'Raid 60' },
+};
+
+/** Title of each content page (/builds/<use>/). */
+export const CONTENT_PAGES: Record<Locale, Record<BuildUse, { title: string }>> = {
+  es: {
+    leveling: { title: 'Builds de leveo del Mago, del 1 al 60' },
+    pvp: { title: 'Builds de JcJ del Mago a nivel 60' },
+    dungeons: { title: 'Builds de mazmorras del Mago a nivel 60' },
+    raid: { title: 'Builds de banda del Mago a nivel 60' },
+  },
+  en: {
+    leveling: { title: 'Mage leveling builds, from 1 to 60' },
+    pvp: { title: 'Mage PvP builds at level 60' },
+    dungeons: { title: 'Mage dungeon builds at level 60' },
+    raid: { title: 'Mage raid builds at level 60' },
+  },
 };
 
 export const SPEC_LABELS: Record<Locale, Record<BuildSpec, string>> = {
-  es: { arcane: 'Arcano', fire: 'Fuego', frost: 'Escarcha', hybrid: 'Híbrida' },
-  en: { arcane: 'Arcane', fire: 'Fire', frost: 'Frost', hybrid: 'Hybrid' },
+  es: { arcane: 'Arcano', fire: 'Fuego', frost: 'Escarcha' },
+  en: { arcane: 'Arcane', fire: 'Fire', frost: 'Frost' },
 };
 
 export const FACTION_LABELS: Record<Locale, Record<'alliance' | 'horde', string>> = {
@@ -77,7 +99,7 @@ const es = {
   'leveling.state.published': 'Publicada',
   'leveling.state.next': 'Próxima ampliación',
   'leveling.state.planned': 'Prevista',
-  'leveling.note': 'Las builds están razonadas a partir de los datos de la beta, las mecánicas oficiales y las guías de la comunidad, pero aún no las he probado en el servidor. Las revisaré al probarlas y tras el lanzamiento del 4 de noviembre.',
+  'leveling.note': 'Las builds están razonadas a partir de las mecánicas oficiales, los datos del cliente y las guías de la comunidad, pero aún no las he probado en el servidor. Las revisaré al probarlas.',
   'builds.filters': 'Filtrar builds',
   'builds.use': 'Para qué',
   'builds.spec': 'Rama',
@@ -90,6 +112,29 @@ const es = {
   'build.viable': 'Viable',
   'build.roleHint.recommended': '{use}, nivel {level}: la build recomendada',
   'build.roleHint.viable': '{use}, nivel {level}: una alternativa viable, no la recomendada',
+  'build.not-recommended': 'No recomendada',
+  'build.roleHint.not-recommended': '{use}, nivel {level}: funciona, pero no la recomiendo',
+  'build.hybrid': '{spec} con {other}',
+  'build.page.talents': 'Talentos',
+  'build.page.why': 'Por qué estos puntos',
+  'build.page.variants': 'Variantes de talentos',
+  'build.page.rotation': 'Rotación y prioridad de hechizos',
+  'build.page.stats': 'Estadísticas y prioridad de equipo',
+  'build.page.pros': 'Pros y contras',
+  'build.page.empty': 'Pendiente: todavía no hay datos fiables.',
+  'build.page.noVariants': 'Esta build no tiene variantes publicadas.',
+  'index.none': 'Todavía no hay build para este contenido.',
+  'build.untested': 'Sin probar en el juego',
+  'build.untestedText': 'La he razonado con las mecánicas y los datos publicados, pero aún no la he jugado: puede que algo no funcione como espero. Pruébala con cuidado; la marcaré como «Probado» cuando la juegue.',
+  'build.open': 'Ver la build',
+  'build.page.prosTab': 'A favor',
+  'build.page.consTab': 'En contra',
+  'content.builds': 'Builds de {use}',
+  'content.more': 'Ver las builds',
+  'content.guides': 'Guías de leveo',
+  'spec.strengths': 'Fortalezas',
+  'spec.weaknesses': 'Debilidades',
+  'spec.noBuild': 'Sin build',
   'race.racials': 'Raciales',
   'race.active': 'Activa',
   'race.passive': 'Pasiva',
@@ -151,7 +196,7 @@ const en: Record<BuildUiKey, string> = {
   'leveling.state.published': 'Published',
   'leveling.state.next': 'Next update',
   'leveling.state.planned': 'Planned',
-  'leveling.note': 'The builds are reasoned from beta data, official mechanics and community guides, but I have not tested them on the server yet. I will review them once tested and after the 4 November launch.',
+  'leveling.note': 'The builds are reasoned from official mechanics, client data and community guides, but I have not tested them on the server yet. I will review them once tested.',
   'builds.filters': 'Filter builds',
   'builds.use': 'Use',
   'builds.spec': 'Tree',
@@ -164,6 +209,29 @@ const en: Record<BuildUiKey, string> = {
   'build.viable': 'Viable',
   'build.roleHint.recommended': '{use}, level {level}: the recommended build',
   'build.roleHint.viable': '{use}, level {level}: a viable alternative, not the recommended one',
+  'build.not-recommended': 'Not recommended',
+  'build.roleHint.not-recommended': '{use}, level {level}: it works, but I do not recommend it',
+  'build.hybrid': '{spec} with {other}',
+  'build.page.talents': 'Talents',
+  'build.page.why': 'Why these points',
+  'build.page.variants': 'Talent variants',
+  'build.page.rotation': 'Rotation and spell priority',
+  'build.page.stats': 'Stats and gear priority',
+  'build.page.pros': 'Pros and cons',
+  'build.page.empty': 'Pending: no reliable data yet.',
+  'build.page.noVariants': 'This build has no published variants.',
+  'index.none': 'No build for this content yet.',
+  'build.untested': 'Not tested in game',
+  'build.untestedText': 'I reasoned it from the published mechanics and data, but I have not played it yet: something may not work as I expect. Try it with care; I will mark it as “Tested” once I play it.',
+  'build.open': 'Open the build',
+  'build.page.prosTab': 'Pros',
+  'build.page.consTab': 'Cons',
+  'content.builds': '{use} builds',
+  'content.more': 'See the builds',
+  'content.guides': 'Leveling guides',
+  'spec.strengths': 'Strengths',
+  'spec.weaknesses': 'Weaknesses',
+  'spec.noBuild': 'No build',
   'race.racials': 'Racials',
   'race.active': 'Active',
   'race.passive': 'Passive',

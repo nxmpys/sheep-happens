@@ -35,7 +35,7 @@ const blocks: ScrollBlock[] =
           : part === 'flow'
             ? scrollsByPart('flow')
             : scrollsByPart('flow').filter((b) => b.id === 'flow-cast');
-// The spellbook part also names the spell as the Spanish beta client shows it.
+// The spellbook part also names the spell as the Spanish client shows it.
 const sources = [...new Set([...blocks.flatMap((b) => b.sources), ...(part === 'spellbook' ? ['wowhead-forever-comprehension'] : [])])];
 
 // Skill scale: from 0 to the highest point at which a scroll still gives skill.

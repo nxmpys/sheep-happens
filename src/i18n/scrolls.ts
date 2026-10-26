@@ -16,7 +16,7 @@ const es = {
   'book.note': 'Esquema, no es una captura del juego.',
   'names.label': 'Los nombres de la mecánica',
   'names.spell': 'En el libro de hechizos',
-  'names.spell.desc': 'Comprender pergamino (Comprehend Scroll). En el cliente en español de la beta se lee «Entender pergamino».',
+  'names.spell.desc': 'Comprender pergamino (Comprehend Scroll). En el cliente en español se lee «Entender pergamino».',
   'names.skill': 'La habilidad',
   'names.skill.desc': 'Comprensión (Comprehension), un oficio menor.',
   'names.prof': 'En la ventana de profesiones',

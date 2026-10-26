@@ -26,9 +26,9 @@ describe('recommended or viable', () => {
 
   it('is checked by the data integrity rules', () => {
     const data = structuredClone(dataset);
-    const other = data.builds.find((b) => b.id !== base.id && b.level === base.level && b.uses.includes('leveling'))!;
-    other.recommendedFor = ['leveling'];
-    expect(checkIntegrity(data).join('\n')).toMatch(/both recommended for leveling at level 30/);
+    data.builds.push({ ...structuredClone(base), id: 'one', slug: { es: 'una', en: 'one' }, recommendedFor: ['leveling'] });
+    data.builds.push({ ...structuredClone(base), id: 'other', slug: { es: 'otra', en: 'other' }, recommendedFor: ['leveling'] });
+    expect(checkIntegrity(data).join('\n')).toMatch(/both recommended for leveling at level 60/);
   });
 
   it('must name one of the build’s own uses', () => {

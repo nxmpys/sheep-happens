@@ -12,6 +12,7 @@ import Icon from '../ui/Icon.astro';
 import { tb } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
 import { builds, getBuild } from '../../lib/data';
+import { buildIcon } from '../../lib/build-routes';
 import { levelingStatus } from '../../lib/leveling';
 
 interface Props {
@@ -32,13 +33,13 @@ const beta = !levelingStatus(builds).complete;
   <div class="picker" data-tabs aria-label={tb(locale, 'picker.label')}>
     {
       list.map((build) => {
-        const school = build.spec === 'hybrid' ? 'baseline' : build.spec;
+        const school = build.spec;
         const upside = build.upside ?? build.strengths[0];
         const downside = build.downside ?? build.weaknesses[0];
         return (
           <a class={`pick school-${school}`} href={`#${build.id}`} id={`pick-${build.id}`} data-tab={build.id}>
             <span class="pick__top">
-              <Icon name={build.spec === 'hybrid' ? 'frostfire' : build.spec} size={20} class="pick__icon" />
+              <Icon name={buildIcon(build)} size={20} class="pick__icon" />
               <span class="pick__name" id={`pick-${build.id}-name`}>
                 {build.name[locale]}
               </span>
@@ -47,7 +48,7 @@ const beta = !levelingStatus(builds).complete;
             <span class="pick__chips" data-pagefind-ignore>
               {beta && <span class="chip pick__beta">{tb(locale, 'leveling.beta')}</span>}
               <span class="chip">{tb(locale, 'build.levels', { from: build.fromLevel ?? 1, to: build.level })}</span>
-              {build.id === recommended && <span class="chip pick__recommended">{tb(locale, 'picker.recommended')}</span>}
+              {build.id === recommended && build.recommendedFor.includes('leveling') && <span class="chip pick__recommended">{tb(locale, 'picker.recommended')}</span>}
             </span>
             <span class="pick__facts" id={`pick-${build.id}-desc`}>
               {build.goal && (

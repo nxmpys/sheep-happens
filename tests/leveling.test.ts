@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { builds } from '../src/lib/data';
 import { isLevelingBuild, levelingStatus } from '../src/lib/leveling';
 
-const build = (level: number, uses: ('leveling' | 'aoe' | 'pvp')[] = ['leveling'], order: string[] | undefined = ['improved-frostbolt']) => ({
+const build = (level: number, uses: ('leveling' | 'dungeons' | 'pvp')[] = ['leveling'], order: string[] | undefined = ['improved-frostbolt']) => ({
   uses,
   level,
   order,
@@ -15,18 +15,18 @@ describe('leveling guide coverage', () => {
     expect(isLevelingBuild({ uses: ['leveling'], level: 30, order: undefined })).toBe(false);
   });
 
-  it('is a beta covering 1–30 with the shipped builds', () => {
+  it('covers 1–60 with the shipped builds', () => {
     const status = levelingStatus(builds);
-    expect(status.coverage).toBe(30);
-    expect(status.complete).toBe(false);
-    expect(status.stages.map((s) => s.state)).toEqual(['published', 'next']);
+    expect(status.coverage).toBe(60);
+    expect(status.complete).toBe(true);
+    expect(status.stages.every((s) => s.state === 'published')).toBe(true);
   });
 
   it('publishes a stage only when every leveling build reaches it', () => {
-    const half = levelingStatus([build(60), build(30, ['leveling', 'aoe'])]);
+    const half = levelingStatus([build(60), build(30, ['leveling', 'dungeons'])]);
     expect(half.coverage).toBe(30);
     expect(half.complete).toBe(false);
-    const full = levelingStatus([build(60), build(60, ['leveling', 'aoe']), build(30, ['pvp'])]);
+    const full = levelingStatus([build(60), build(60, ['leveling', 'dungeons']), build(30, ['pvp'])]);
     expect(full.coverage).toBe(60);
     expect(full.complete).toBe(true);
     expect(full.stages.every((s) => s.state === 'published')).toBe(true);

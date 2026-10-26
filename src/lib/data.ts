@@ -30,7 +30,10 @@ import rawItems from '../data/items.json';
 import rawLibraryBooks from '../data/library-books.json';
 import rawClassQuests from '../data/class-quests.json';
 import rawLegacy from '../data/legacy.json';
+import rawSpecs from '../data/specs.json';
 import {
+  BUILD_SPECS,
+  BUILD_USES,
   abilitySchema,
   addonSchema,
   buildSchema,
@@ -52,6 +55,7 @@ import {
   raceSchema,
   scrollSchema,
   sourceSchema,
+  specOverviewSchema,
   spellTextFileSchema,
   talentSchema,
   talentTextFileSchema,
@@ -78,6 +82,7 @@ import {
 } from './schemas';
 import { nameEntry, spellNames } from './spell-names';
 import { recommendedConflicts } from './build-roles';
+import { routeConflicts } from './build-routes';
 import { validateBuild, validateOrder } from './talents';
 import { validateLegacyBuild } from './legacy';
 
@@ -291,6 +296,8 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
   }
   // One recommended build per use and level; the rest are shown as «viable».
   for (const problem of recommendedConflicts(data.builds)) problems.push(`builds.json: ${problem}`);
+  // Each build has its own page, /builds/<first use>/<spec>/.
+  for (const problem of routeConflicts(data.builds)) problems.push(`builds.json: ${problem}`);
   for (const race of data.races) {
     for (const dup of duplicates(race.racials.map((r) => r.id))) problems.push(`races.json: "${race.id}" lists racial "${dup}" twice`);
   }
@@ -361,6 +368,9 @@ export const dataset: Dataset = parseDataset({
   addons: rawAddons,
   scrolls: rawScrolls,
 });
+
+/** One overview per tree for its talent page: strengths, weaknesses and why a content has no build. */
+export const specs = parseList('specs.json', specOverviewSchema, rawSpecs);
 
 /** Best races per situation and faction (races page and «Elige» hub). */
 export const racePicks = parseList('race-picks.json', racePickSchema, rawRacePicks);
@@ -441,6 +451,18 @@ const integrity = [
     if (perk.requires && !perkIds.has(perk.requires)) integrity.push(`legacy.json: "${perk.id}" requires unknown perk "${perk.requires}"`);
   }
   for (const build of legacy.builds) integrity.push(...validateLegacyBuild(build, legacy.perks, legacy.cap).map((p) => `legacy.json: ${p}`));
+  for (const spec of BUILD_SPECS) {
+    const overview = specs.find((s) => s.id === spec);
+    if (!overview) {
+      integrity.push(`specs.json: no overview for "${spec}"`);
+      continue;
+    }
+    for (const use of BUILD_USES) {
+      const has = dataset.builds.some((b) => b.spec === spec && b.uses.includes(use));
+      if (!has && !overview.noBuild[use]) integrity.push(`specs.json: "${spec}" has no ${use} build and no reason in noBuild.${use}`);
+      if (has && overview.noBuild[use]) integrity.push(`specs.json: "${spec}" explains why there is no ${use} build, but there is one`);
+    }
+  }
   for (const quest of classQuests) {
     for (const reward of quest.rewards) {
       if (!itemIds.has(reward)) integrity.push(`class-quests.json: "${quest.id}" rewards "${reward}", which is not in items.json`);

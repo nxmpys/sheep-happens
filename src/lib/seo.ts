@@ -136,3 +136,10 @@ export function addonJsonLd(
     about: { '@type': 'VideoGame', name: 'World of Warcraft: Forever' },
   };
 }
+
+/** Text cut to what search engines show (≤ 160 characters), at a word boundary. */
+export function metaDescription(text: string, max = 160): string {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (clean.length <= max) return clean;
+  return `${clean.slice(0, max - 1).replace(/\s+\S*$/, '')}…`;
+}

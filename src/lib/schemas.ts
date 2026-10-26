@@ -245,24 +245,37 @@ export const talentSchema = z
   .strict();
 export type Talent = z.infer<typeof talentSchema>;
 
-/** What a build is for. Language-neutral ids, also used in the builds page URL. */
-export const BUILD_USES = ['leveling', 'aoe', 'dungeons', 'raid', 'pvp'] as const;
+/**
+ * The content a build is for, in the order of the builds index: leveling 1–60,
+ * then level 60 PvP, dungeons and raid. Language-neutral ids; the localized URL
+ * slugs live in src/lib/build-routes.ts.
+ */
+export const BUILD_USES = ['leveling', 'pvp', 'dungeons', 'raid'] as const;
 export type BuildUse = (typeof BUILD_USES)[number];
-export const BUILD_SPECS = ['arcane', 'fire', 'frost', 'hybrid'] as const;
+export const BUILD_SPECS = ['arcane', 'fire', 'frost'] as const;
 export type BuildSpec = (typeof BUILD_SPECS)[number];
 
 export const buildSchema = z
   .object({
     id,
     name: localized,
+    /** Last URL segment per locale: /builds/<first use>/<slug>/. */
+    slug: z.object({ es: id, en: id }).strict(),
+    /** Contents it covers; the first one gives the build its URL (/builds/<use>/<slug>/). */
     uses: z.array(z.enum(BUILD_USES)).min(1),
     /**
      * Uses (from `uses`) for which this is the recommended build at its `level`.
-     * In every other use it is shown as «viable». At most one recommended build
-     * per use and level.
+     * At most one recommended build per use and level.
      */
     recommendedFor: z.array(z.enum(BUILD_USES)).default([]),
+    /** Uses (from `uses`) where it works but I advise against it. Any other use shows it as «viable». */
+    discouragedFor: z.array(z.enum(BUILD_USES)).default([]),
+    /** Tree with the most points: the build's spec in the index and its colour. */
     spec: z.enum(BUILD_SPECS),
+    /** Second tree for hybrid builds (e.g. Frost with Fire for Frostfire Bolt). */
+    hybridWith: z.enum(BUILD_SPECS).optional(),
+    /** One line for the builds index. */
+    tagline: localized,
     /** Character level the build is made for; points available = level − 9 (+ Talented). */
     level: z.number().int().min(10).max(60),
     /**
@@ -302,8 +315,12 @@ export const buildSchema = z
     playstyle: z.array(localized).min(1),
     strengths: z.array(localized).default([]),
     weaknesses: z.array(localized).default([]),
-    /** Items or consumables that matter for this build, if any. */
+    /** Items, enchantments or consumables that matter for this build, if any. */
     items: z.array(localized).default([]),
+    /** Talent variants: a few points moved for another situation. */
+    variants: z.array(z.object({ name: localized, text: localized }).strict()).default([]),
+    /** Stat priority and gear advice, most important first. Empty until there is real data. */
+    stats: z.array(localized).default([]),
     /** Page with the in-depth explanation, if there is one. */
     page: z.enum(PAGE_IDS).optional(),
     status: z.enum(STATUSES),
@@ -314,8 +331,28 @@ export const buildSchema = z
   })
   .strict()
   .refine((b) => b.orderNotes.length === 0 || b.order !== undefined, { message: 'orderNotes need an order' })
-  .refine((b) => b.recommendedFor.every((use) => b.uses.includes(use)), { message: 'recommendedFor must list uses from `uses`' });
+  .refine((b) => b.recommendedFor.every((use) => b.uses.includes(use)), { message: 'recommendedFor must list uses from `uses`' })
+  .refine((b) => b.discouragedFor.every((use) => b.uses.includes(use) && !b.recommendedFor.includes(use)), {
+    message: 'discouragedFor must list uses from `uses` that are not in recommendedFor',
+  })
+  .refine((b) => b.hybridWith !== b.spec, { message: 'hybridWith must be another tree' });
 export type Build = z.infer<typeof buildSchema>;
+
+/**
+ * Overview of one tree for its talent page (specs.json): what it does well and
+ * badly, and, for each content without a build in that tree, why there is none.
+ */
+export const specOverviewSchema = z
+  .object({
+    id: z.enum(BUILD_SPECS),
+    strengths: z.array(localized).min(1),
+    weaknesses: z.array(localized).min(1),
+    /** Why the tree has no build for a content. Required for every use without one (checked in data.ts). */
+    noBuild: z.partialRecord(z.enum(BUILD_USES), localized).default({}),
+    updated,
+  })
+  .strict();
+export type SpecOverview = z.infer<typeof specOverviewSchema>;
 
 export const racialSchema = z
   .object({
