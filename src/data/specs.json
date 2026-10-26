@@ -26,10 +26,6 @@
       }
     ],
     "noBuild": {
-      "leveling": {
-        "es": "Subir con Arcano gasta mucho maná, y antes de su rediseño las guías decían que no despegaba hasta el nivel 25. Lo volveré a mirar cuando haya pruebas con la versión nueva.",
-        "en": "Leveling as Arcane burns a lot of mana, and before its redesign guides said it only took off at level 25. I will look again once there are tests with the new version."
-      },
       "pvp": {
         "es": "Todavía no he podido probar el JcJ de nivel 60.",
         "en": "I have not been able to test level 60 PvP yet."

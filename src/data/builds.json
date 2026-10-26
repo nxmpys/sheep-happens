@@ -590,5 +590,285 @@
       "conquestcapped-mage-leveling"
     ],
     "updated": "2026-10-26"
+  },
+  {
+    "id": "arcane-leveling-solo",
+    "name": {
+      "es": "Arcano para leveo en solitario",
+      "en": "Arcane solo leveling"
+    },
+    "slug": {
+      "es": "arcano-en-solitario",
+      "en": "arcane-solo"
+    },
+    "uses": [
+      "leveling"
+    ],
+    "recommendedFor": [],
+    "discouragedFor": [],
+    "spec": "arcane",
+    "hybridWith": "frost",
+    "tagline": {
+      "es": "Arcano a base de procs con Descarga de Escarcha, y Escarcha desde el 31 hasta Bloqueo de hielo.",
+      "en": "Arcane built on procs with Frostbolt, and Frost from 31 up to Ice Block."
+    },
+    "level": 60,
+    "fromLevel": 1,
+    "legacyTalented": 0,
+    "points": {
+      "missile-barrage": 2,
+      "wand-specialization": 2,
+      "arcane-focus": 3,
+      "arcane-concentration": 5,
+      "arcane-blast": 1,
+      "arcane-subtlety": 2,
+      "arcane-geometry": 2,
+      "arcane-meditation": 3,
+      "presence-of-mind": 1,
+      "improved-frostbolt": 5,
+      "elemental-precision": 2,
+      "improved-frost-nova": 2,
+      "frostbite": 3,
+      "frost-channeling": 3,
+      "ice-block": 1,
+      "arcane-impact": 3,
+      "arcane-mind": 5,
+      "arcane-instability": 3,
+      "arcane-power": 1,
+      "improved-counterspell": 2
+    },
+    "order": [
+      "missile-barrage",
+      "missile-barrage",
+      "wand-specialization",
+      "wand-specialization",
+      "arcane-focus",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-blast",
+      "arcane-subtlety",
+      "arcane-subtlety",
+      "arcane-geometry",
+      "arcane-geometry",
+      "arcane-meditation",
+      "arcane-meditation",
+      "arcane-meditation",
+      "arcane-focus",
+      "arcane-focus",
+      "presence-of-mind",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "elemental-precision",
+      "elemental-precision",
+      "improved-frost-nova",
+      "improved-frost-nova",
+      "frostbite",
+      "frostbite",
+      "frostbite",
+      "frost-channeling",
+      "frost-channeling",
+      "frost-channeling",
+      "ice-block",
+      "arcane-impact",
+      "arcane-impact",
+      "arcane-impact",
+      "arcane-mind",
+      "arcane-mind",
+      "arcane-mind",
+      "arcane-mind",
+      "arcane-mind",
+      "arcane-instability",
+      "arcane-instability",
+      "arcane-instability",
+      "arcane-power",
+      "improved-counterspell",
+      "improved-counterspell"
+    ],
+    "orderNotes": [
+      {
+        "point": 1,
+        "text": {
+          "es": "Tromba de misiles: desde el nivel 10, cada Descarga de Escarcha tiene un 20 % de probabilidad (2/2) de dejarte unos Misiles Arcanos el doble de rápidos y sin coste de maná.",
+          "en": "Missile Barrage: from level 10, every Frostbolt has a 20% chance (2/2) to give you Arcane Missiles twice as fast and free."
+        }
+      },
+      {
+        "point": 3,
+        "text": {
+          "es": "Especialización en varitas: un 25 % más de daño con la varita (2/2) para rematar sin gastar maná.",
+          "en": "Wand Specialization: 25% more wand damage (2/2) to finish enemies without spending mana."
+        }
+      },
+      {
+        "point": 6,
+        "text": {
+          "es": "Concentración Arcana: un 10 % de probabilidad (5/5) de que tu siguiente hechizo de daño no cueste maná. Gástalo en Explosión Arcana.",
+          "en": "Arcane Concentration: a 10% chance (5/5) that your next damage spell costs no mana. Spend it on Arcane Blast."
+        }
+      },
+      {
+        "point": 11,
+        "text": {
+          "es": "Explosión Arcana, el talento decisivo de 11 puntos.",
+          "en": "Arcane Blast, the 11-point milestone."
+        }
+      },
+      {
+        "point": 22,
+        "text": {
+          "es": "Desde aquí, Escarcha hasta Bloqueo de hielo, empezando por Descarga de Escarcha mejorada: es tu hechizo principal.",
+          "en": "From here on, Frost up to Ice Block, starting with Improved Frostbolt: it is your main spell."
+        }
+      },
+      {
+        "point": 31,
+        "text": {
+          "es": "Mordiescarcha 3/3: cada enfriamiento tiene un 15 % de probabilidad de congelar al enemigo 5 s.",
+          "en": "Frostbite 3/3: every Chill effect has a 15% chance to freeze the enemy for 5 s."
+        }
+      },
+      {
+        "point": 37,
+        "text": {
+          "es": "Bloqueo de hielo, tu defensa.",
+          "en": "Ice Block, your defensive."
+        }
+      },
+      {
+        "point": 38,
+        "text": {
+          "es": "Vuelta a Arcano: Impacto Arcano, Mente Arcana e Inestabilidad Arcana hasta Poder Arcano.",
+          "en": "Back to Arcane: Arcane Impact, Arcane Mind and Arcane Instability up to Arcane Power."
+        }
+      },
+      {
+        "point": 49,
+        "text": {
+          "es": "Poder Arcano: un 30 % más de daño durante 15 s. Úsalo con varias cargas de Explosión Arcana.",
+          "en": "Arcane Power: 30% more damage for 15 s. Use it with several Arcane Blast stacks."
+        }
+      },
+      {
+        "point": 50,
+        "text": {
+          "es": "Contrahechizo mejorado: tu Contrahechizo también silencia 4 s, y sirve también en JcJ. Si te falta golpe con los hechizos Arcanos, mira la variante.",
+          "en": "Improved Counterspell: your Counterspell also silences for 4 s, which helps in PvP too. If you lack hit with Arcane spells, see the variant."
+        }
+      }
+    ],
+    "goal": {
+      "es": "Subir con Arcano a base de procs",
+      "en": "Level as Arcane, driven by procs"
+    },
+    "profile": {
+      "es": "Quien quiere jugar Arcano y no le importa vigilar procs.",
+      "en": "Players who want Arcane and do not mind watching procs."
+    },
+    "upside": {
+      "es": "Muchos procs gratis y mucho control.",
+      "en": "Plenty of free procs and plenty of control."
+    },
+    "downside": {
+      "es": "Gasta mucho maná y Poder Arcano llega al final.",
+      "en": "Mana hungry, and Arcane Power comes last."
+    },
+    "keyTalents": [
+      "missile-barrage",
+      "arcane-concentration",
+      "arcane-blast",
+      "frostbite",
+      "ice-block"
+    ],
+    "summary": {
+      "es": "¿Te gustan los procs? Descarga de Escarcha sin parar y, según lo que salte, Misiles Arcanos rápidos o Explosión Arcana gratis. Tú lanzas hielo; los procs hacen el resto.",
+      "en": "Love procs? Frostbolt nonstop and, depending on what fires, fast Arcane Missiles or a free Arcane Blast. You cast ice; the procs do the rest."
+    },
+    "playstyle": [
+      {
+        "es": "Descarga de Escarcha todo el rato: ralentiza y puede activar Tromba de misiles.",
+        "en": "Frostbolt all the time: it slows and can trigger Missile Barrage."
+      },
+      {
+        "es": "Si salta Tromba de misiles, Misiles Arcanos: rápidos y gratis.",
+        "en": "When Missile Barrage procs, Arcane Missiles: fast and free."
+      },
+      {
+        "es": "Si salta Lanzamiento libre (Concentración Arcana), Explosión Arcana sin coste de maná.",
+        "en": "When Clearcasting (Arcane Concentration) procs, a free Arcane Blast."
+      },
+      {
+        "es": "Remata con la varita para no gastar maná en el último golpe.",
+        "en": "Finish with your wand so you do not spend mana on the last hit."
+      },
+      {
+        "es": "Si te alcanza: Nova de Escarcha, aléjate y sigue con Descarga de Escarcha. Desde el 46, Bloqueo de hielo como defensa.",
+        "en": "If it reaches you: Frost Nova, step away and keep casting Frostbolt. From 46, Ice Block as your defensive."
+      },
+      {
+        "es": "Desde el 58, con varias cargas de Explosión Arcana, Poder Arcano para pegar un 30 % más.",
+        "en": "From 58, with several Arcane Blast stacks, Arcane Power for 30% more damage."
+      }
+    ],
+    "strengths": [
+      {
+        "es": "Muchos procs: cada Descarga de Escarcha puede dejarte misiles gratis, y cada hechizo de daño, un Lanzamiento libre.",
+        "en": "Plenty of procs: every Frostbolt can give you free missiles, and every damage spell a Clearcasting."
+      },
+      {
+        "es": "Mucho control: Descarga de Escarcha ralentiza, Mordiescarcha congela a menudo y Nova de Escarcha vuelve antes.",
+        "en": "Plenty of control: Frostbolt slows, Frostbite freezes often and Frost Nova comes back sooner."
+      },
+      {
+        "es": "Bloqueo de hielo desde el 46 y Contrahechizo que silencia, útiles también en JcJ.",
+        "en": "Ice Block from 46 and a silencing Counterspell, useful in PvP too."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "El maná es el freno: cada Explosión Arcana cuesta más que la anterior y Poder Arcano encarece un 30 % tus hechizos.",
+        "en": "Mana is the brake: each Arcane Blast costs more than the last and Arcane Power makes your spells 30% more expensive."
+      },
+      {
+        "es": "Poder Arcano llega al 58: casi todo el leveo se juega sin él.",
+        "en": "Arcane Power comes at 58: most of the leveling is played without it."
+      },
+      {
+        "es": "Sin Lanza de hielo, las congelaciones sirven para controlar y alejarte, no para pegar más.",
+        "en": "Without Ice Lance, freezes are for control and getting away, not for extra damage."
+      }
+    ],
+    "items": [],
+    "variants": [
+      {
+        "name": {
+          "es": "Más golpe Arcano",
+          "en": "More Arcane hit"
+        },
+        "text": {
+          "es": "Si fallas a menudo con Explosión Arcana y Misiles Arcanos, Enfoque Arcano en lugar de Contrahechizo mejorado.",
+          "en": "If Arcane Blast and Arcane Missiles miss often, Arcane Focus instead of Improved Counterspell."
+        },
+        "remove": {
+          "improved-counterspell": 2
+        },
+        "add": {
+          "arcane-focus": 2
+        }
+      }
+    ],
+    "stats": [],
+    "status": "analysis",
+    "gameVersion": "forever-beta-2026-10",
+    "sources": [
+      "blizzard-deep-dive-mage",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-26"
   }
 ]

@@ -1,5 +1,25 @@
 [
   {
+    "id": "2026-10-26-arcane-leveling-build",
+    "date": "2026-10-26",
+    "type": "guide",
+    "title": {
+      "es": "Nueva build de leveo: Arcano en solitario",
+      "en": "New leveling build: Arcane solo"
+    },
+    "body": {
+      "es": "Una build de Arcano para subir a base de procs: Descarga de Escarcha activa Tromba de misiles y Concentración Arcana deja Explosiones Arcanas gratis. Desde el 31 suma Escarcha hasta Bloqueo de hielo, y vuelve a Arcano hasta Poder Arcano al 58.",
+      "en": "An Arcane build to level on procs: Frostbolt triggers Missile Barrage and Arcane Concentration gives free Arcane Blasts. From 31 it adds Frost up to Ice Block, then goes back to Arcane up to Arcane Power at 58."
+    },
+    "pages": [
+      "builds",
+      "talents-arcane"
+    ],
+    "refs": [
+      "build:arcane-leveling-solo"
+    ]
+  },
+  {
     "id": "2026-10-26-aoe-farming-build",
     "date": "2026-10-26",
     "type": "guide",

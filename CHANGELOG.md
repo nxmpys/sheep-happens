@@ -6,6 +6,12 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ## 2026-10-26
 
+### [Guía] Nueva build de leveo: Arcano en solitario
+
+Una build de Arcano para subir a base de procs: Descarga de Escarcha activa Tromba de misiles y Concentración Arcana deja Explosiones Arcanas gratis. Desde el 31 suma Escarcha hasta Bloqueo de hielo, y vuelve a Arcano hasta Poder Arcano al 58.
+
+- **Datos afectados:** build:arcane-leveling-solo
+
 ### [Guía] Nueva build de leveo: farmeo AoE en solitario
 
 Una build de Escarcha para subir juntando grupos, con Ventisca mejorada desde el nivel 20 y Fuego desde el 41 (Explosión de Fuego mejorada, Incineración, Lanzallamas, Impacto y Fogonazo mejorado). Sustituye a la variante de área de la build de Pirofrío.
