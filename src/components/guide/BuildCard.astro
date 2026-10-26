@@ -49,7 +49,7 @@ const fullUrl = buildPath(build, locale);
 const shareUrl = fullUrl;
 // Our own calculator reads the Wowhead code from ?t= (see TalentCalculator).
 const calcCode = wowheadBuildUrl(build.points, talents).split('/mage/v2')[1] ?? '';
-const calcUrl = `${href('talent-calc', locale)}?t=${calcCode}&lvl=${build.level}`;
+const calcUrl = `${href('talent-calc', locale)}?t=${calcCode}&lvl=${build.level}${build.order ? `&b=${build.id}` : ''}`;
 const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' : 'Link copied', failed: locale === 'es' ? 'No se pudo copiar. Copia la URL de la barra de direcciones.' : 'Could not copy. Copy the URL from the address bar instead.' });
 ---
 
