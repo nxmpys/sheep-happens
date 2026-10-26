@@ -1,5 +1,25 @@
 [
   {
+    "id": "2026-10-26-leveling-build-60",
+    "date": "2026-10-26",
+    "type": "guide",
+    "title": {
+      "es": "La build de leveo llega al 60 con Descarga de Pirofrío",
+      "en": "The leveling build reaches 60 with Frostfire Bolt"
+    },
+    "body": {
+      "es": "La build de leveo pasa a cubrir del 1 al 60: Escarcha hasta el 40 y, desde ahí, Fuego para aprovechar Descarga de Pirofrío (Incineración, Bola de Fuego mejorada, Ignición y Maestro de los elementos). Retiro las builds de leveo en mazmorras y en área: lo que cambiaban queda como variantes de la build. Hasta que la pruebe en el juego, la build no aparece como recomendada.",
+      "en": "The leveling build now covers 1 to 60: Frost up to 40 and, from there, Fire to make use of Frostfire Bolt (Incineration, Improved Fireball, Ignite and Master of Elements). I removed the dungeon and AoE leveling builds: what they changed is now listed as variants of the build. Until I test it in game, the build is not marked as recommended."
+    },
+    "pages": [
+      "builds",
+      "leveling"
+    ],
+    "refs": [
+      "build:frost-leveling-solo"
+    ]
+  },
+  {
     "id": "2026-10-21-frost-tree",
     "date": "2026-10-21",
     "type": "game",

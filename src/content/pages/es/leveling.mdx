@@ -1,179 +1,84 @@
 ---
 pageId: leveling
 locale: es
-title: Guía de leveo del Mago en WoW Forever, niveles 1 a 60
-seoTitle: Guía de leveo de Mago en WoW Forever, builds del 1 al 30
-description: Builds de leveo del Mago en WoW Forever del nivel 1 al 60 en solitario, en mazmorras y en área, con el orden de talentos por nivel y cómo jugarlas.
+title: Guía de leveo del Mago en WoW Forever
+seoTitle: Guía de leveo de Mago en WoW Forever, cómo subir de nivel
+description: El Mago sube mejor si el enemigo no llega a tocarle. Ralentiza, congela y remata a distancia; estos consejos sirven con cualquier rama.
 gameVersion: forever-beta-2026-10
 published: 2026-10-11
-reviewed: 2026-10-14
+reviewed: 2026-10-26
 reviewedBy: Sheep Happens
 status: published
 verification: analysis
 summary:
-  - 'Escarcha es la rama para subir del 1 al 30: las cuatro guías de Forever que he contrastado coinciden, y es la más segura.'
-  - 'Tres builds: en solitario (la recomendada), en mazmorras (si encadenas grupos) y en área (experimental, desde el nivel 22).'
   - Los talentos empiezan a nivel 10. Con el perk de Legado Talented empiezan a nivel 5, pero tu primer personaje en el lanzamiento no lo tendrá.
-  - 'Las builds están razonadas, no probadas en el servidor. La progresión nivel a nivel llega por ahora al 30; el orden de talentos, al 60.'
-sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, wowhead-forever-talent-calc, icyveins-forever-frost, mobalytics-mage-leveling, mobalytics-frost, method-mage-leveling, wowforeverbuilds-mage-leveling, icyveins-dungeon-xp, warcrafttavern-legacy, wowhead-dual-spec-podcast, icyveins-classic-frost-leveling, icyveins-classic-aoe-leveling]
+  - 'El nivel 20 es el gran salto del Mago: Traslación, Ventisca, Evocación y Escudo de maná.'
+  - Lucha contra un enemigo cada vez, remata con la varita y no bajes de rango tus hechizos.
+  - La progresión nivel a nivel llega por ahora al 30.
+sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, wowhead-forever-talent-calc, mobalytics-mage-leveling, method-mage-leveling, icyveins-dungeon-xp, warcrafttavern-legacy, wowhead-dual-spec-podcast]
 tocGroups:
-  - { title: Elige tu build, start: elige-tu-build-de-leveo }
-  - { title: Las builds en detalle, start: las-builds-en-detalle }
   - { title: Progresión por niveles, start: progresión-por-niveles }
   - { title: Cómo jugar, start: cómo-jugar }
   - { title: Qué cambia en Forever, start: qué-cambia-en-forever-para-subir-de-nivel }
-  - { title: Otras variantes y pendientes, start: otras-variantes-evaluadas }
-tags: [leveo, nivelación, subir de nivel, build de leveo, talentos de leveo, escarcha, mazmorras, farmeo en área, aoe, 1-30]
+  - { title: Lo que falta, start: más-allá-del-nivel-30 }
+tags: [leveo, nivelación, subir de nivel, guía de leveo, consejos, cómo jugar, mazmorras, 1-30]
 ---
 
-<LevelingStatus />
-
-## Elige tu build de leveo
-
-<BuildPicker ids={['frost-leveling-solo']} recommended="frost-leveling-solo" />
-
-Esta es la build de leveo del 1 al 60: Escarcha para subir y, desde el 40, Descarga de Pirofrío. Más abajo está el orden de talentos nivel a nivel. <Status status="analysis" />
-
-¿Ya estás jugando? En <PageLink to="level-view">Estoy a nivel X</PageLink> eliges tu nivel y tu build y ves qué hechizos aprendes, qué punto de talento toca y qué llega después.
-
-## Por qué Escarcha
-
-Las cuatro guías de Forever que he contrastado (Icy Veins, Mobalytics, Method y WoW Forever Builds) proponen Escarcha para subir de nivel. <Status status="reported" /> Coincide con lo que dicen las mecánicas:
-
-- **Los enemigos tardan en alcanzarte.** **Descarga de Escarcha** (Frostbolt) ralentiza un 40 % en cada impacto y **Nova de Escarcha** (Frost Nova) congela hasta 8 s. Un enemigo que no te alcanza no te hace daño: pierdes menos vida y descansas menos. <Status status="reported" />
-- **El control se convierte en daño.** **Lanza de hielo** (Ice Lance), el talento decisivo de 11 puntos, hace un 200 % más contra objetivos congelados. Lo tienes a nivel 20. <Status status="verified" />
-- **Un solo hechizo principal.** Todo gira en torno a Descarga de Escarcha, así que cada punto se nota desde el primero y la build es fácil de aprender. <Status status="analysis" />
-- **Los recortes de Forever no le afectan contra un enemigo.** Blizzard ha frenado el farmeo masivo de Escarcha (Ventisca mejorada y Cono de frío), pero eso pesa en el juego en área, no al matar enemigos de uno en uno. <Status status="analysis" />
-
-Fuego y Arcano pueden subir de nivel, pero hasta el 30 les faltan piezas: lo explico en [otras variantes evaluadas](#otras-variantes-evaluadas). Para la raza, mira <PageLink to="races">qué raza elegir para subir</PageLink>.
-
-## Las builds en detalle
-
-### En solitario: la de referencia
-
-**La idea es congelar y romper.** **Mordiescarcha** (Frostbite) da a cada enfriamiento un 15 % de probabilidad de congelar al enemigo 5 s. Mientras está congelado, **Lanza de hielo** hace un 200 % más, **Trizar** (Shatter) le suma un 50 % de probabilidad de crítico y **Fragmentos de hielo** (Ice Shards) dobla el daño extra de ese crítico. A nivel 30, **Dedos de Escarcha** (Fingers of Frost) te da cargas que tratan al objetivo como congelado sin necesidad de congelarlo. <Status status="reported" />
-
-**Qué sacrifica.** No lleva talentos de área (Ventisca mejorada) ni de maná (Canalización de Escarcha). A cambio, cada punto mejora el combate contra un enemigo, que es casi todo lo que haces al subir con misiones. <Status status="analysis" />
-
-**Hielo penetrante ya no existe.** Enfoque elemental da ahora un 2 % de golpe por rango. Sus 3 puntos pasan a **Enfoque elemental** (Elemental Precision) 3/3: +6 % de golpe, suficiente para no fallar contra enemigos de hasta 2 niveles más que tú. <Status status="reported" />
-
-**Alternativas que he descartado.** Tres de las cuatro guías coinciden en el núcleo (Descarga de Escarcha mejorada, Mordiescarcha, Fragmentos de hielo, Lanza de hielo, Trizar y Dedos de Escarcha) y difieren en dos o tres puntos. Son anteriores al hotfix del 20 de octubre, así que las comparo con el resto de mi build: <Status status="reported" />
-
-| Guía | Qué cambia respecto a la mía | Por qué no la elegí |
-| --- | --- | --- |
-| Icy Veins | 1 punto en Ventisca mejorada en lugar del tercer punto de Enfoque elemental | Ventisca mejorada solo sirve en área, y el tercer punto de Enfoque elemental suma un 2 % de golpe. |
-| Mobalytics (guía de Escarcha) | Bloqueo de hielo en lugar del tercer punto de Enfoque elemental | Más segura ante errores, pero fallas más. Con Talented, mi build también llega a Bloqueo de hielo. |
-| Mobalytics (guía de leveo) | Mordiescarcha 2/3 y 1 punto en Ventisca mejorada | Casi igual que la mía. El tercer punto de Mordiescarcha congela más a menudo, y Ventisca mejorada solo sirve en área. |
-| WoW Forever Builds | Enfoque elemental y Canalización de Escarcha en lugar de Descarga de Escarcha mejorada, solo 1 punto en Trizar y sin Dedos de Escarcha (pone 5 puntos en Enfoque elemental, que ahora tiene 3) | No acelera Descarga de Escarcha, tu hechizo principal, y Trizar 1/3 apenas aporta. |
-
-La build de leveo de Classic de Icy Veins sigue el mismo camino (Mordiescarcha pronto, Trizar hacia el 25), lo que refuerza el núcleo. <Status status="classic" />
-
-**Cuándo cambiar a otra.** Si te paras a beber demasiado, cambia Enfoque elemental por 3 puntos de Canalización de Escarcha. Si vas a encadenar mazmorras, usa la de mazmorras. Si tienes experiencia y una buena zona, prueba la de área desde el 22. <Status status="analysis" />
-
-### En mazmorras: qué cambia y cuándo compensa
-
-En grupo, lo que te limita no es lo mismo que cuando vas solo. Por eso la build cambia de verdad, no solo de nombre: <Status status="analysis" />
-
-- **La amenaza.** Si haces más amenaza que el tanque, los enemigos van a por ti. **Canalización de Escarcha** (Frost Channeling) reduce un 30 % la amenaza de tus hechizos de Escarcha y un 15 % su coste. <Status status="reported" />
-- **El golpe.** Los élites y los jefes suelen ser de más nivel que tú y esquivan más hechizos. **Enfoque elemental** (Elemental Precision) suma un 6 % de golpe con 3 puntos. <Status status="reported" />
-- **El daño en área.** Cuando el tanque sujeta un grupo, Ventisca es tu mejor hechizo. Fragmentos de hielo mejora sus críticos y **Ventisca mejorada** hace que ralentice, así que un enemigo que se suelta del tanque tarda más en llegar a ti o al sanador.
-- **Las congelaciones fallan más.** Los golpes de tus compañeros rompen la congelación antes de que lances Lanza de hielo, y no conviene usar Nova de Escarcha junto al tanque: los enemigos congelados atacan a quien tengan más cerca. Por eso Mordiescarcha y Trizar aportan menos aquí. <Status status="reported" />
-- **Bloqueo de hielo** te salva si un grupo de enemigos se te echa encima, mientras el tanque los recupera.
-
-**¿Merece la pena cambiar?** Casi nunca para una mazmorra suelta. Forever ha reducido mucho la experiencia por matar en mazmorras y la ha pasado a sus misiones, para que la primera visita a cada mazmorra sea la buena y repetirla no sea lo óptimo. <Status status="reported" />
-
-Además, los talentos solo se cambian en el instructor de clase de una capital. Si no los has cambiado hace poco, cuesta 1 de plata; si repites, el precio sube. <Status status="verified" /> La doble especialización llega a nivel 40, aunque Blizzard estudia adelantarla. <Status status="verified" />
-
-**Mi consejo:** haz cada mazmorra una vez, con sus misiones, usando la build en solitario. Cambia a la de mazmorras solo si vas a subir sobre todo en grupo: con un grupo fijo, con amigos o con un tanque que te acompaña. <Status status="analysis" />
-
-### En área: desde cuándo y con qué límites
-
-En Classic, reunir grupos de enemigos y matarlos con Ventisca era la forma más rápida de subir un Mago a partir del nivel 22, gracias a la ralentización del 65 % de Ventisca mejorada. <Status status="classic" /> Forever la ha recortado a propósito: <Status status="verified" />
-
-- **Ventisca mejorada** ralentiza como máximo un 40 %.
-- **Escarcha permanente** (Permafrost) alarga los enfriamientos en porcentaje: 1,5 s pasan a 2 s, en lugar de sumar segundos fijos.
-- **Cono de frío** dura menos: ralentiza un 40 % durante 6 s. <Status status="reported" /> Desde el 15 de octubre, los 4 primeros objetivos que alcanza se ralentizan un 10 % más y durante 3 s más. <Status status="verified" />
-
-Con Ventisca mejorada 3/3 y Escarcha permanente 3/3, los enemigos van a mitad de velocidad mientras están en la Ventisca. Es menos que en Classic: salen antes de la zona y te alcanzan antes. <Status status="analysis" />
-
-**Desde cuándo.** No antes del nivel 22: necesitas Ventisca (nivel 20) y Ventisca mejorada 3/3, que con la build llega al 22. Empieza con grupos de 2 a 4. Gana opciones a nivel 26, con **Cono de frío** (Cone of Cold), y a nivel 28, con Ventisca de rango 2 y la gema de maná. Antes del 22, haz misiones. <Status status="analysis" />
-
-**Límites.** El maná manda: la Ventisca de rango 1 cuesta 320 de maná, así que el tamaño de cada grupo depende de cuántas puedes lanzar. <Status status="reported" /> Solo funciona con enemigos cuerpo a cuerpo, sin miedos, derribos ni ataques a distancia, en zonas abiertas y sin otros jugadores. Una Nova de Escarcha resistida o un enemigo de más suelen acabar en muerte. <Status status="analysis" />
-
-**Lo que se sabe en Forever.** Nadie ha demostrado todavía que sea más rápido que las misiones. Mobalytics dice que sigue siendo viable con práctica, pero sin datos. <Status status="reported" /> La guía de área de WoW Forever Builds usa el 65 % de Classic en lugar del 40 % de Forever, así que no la sigo. Por eso esta build es **experimental** y no la recomiendo para principiantes. <Status status="analysis" />
-
-La rotación corta desde el nivel 14, la rotación con Ventisca y las zonas de farmeo, como las arañas de Cima del Trueno, están en la guía de <PageLink to="aoe-farming">farmeo AoE</PageLink>.
-
-## Comparativa de las builds
-
-Son valoraciones razonadas a partir de las mecánicas, no resultados de pruebas ni estadísticas: no hay datos fiables de tiempo por nivel en Forever. <Status status="analysis" />
-
-| | En solitario | En mazmorras | En área |
-| --- | --- | --- | --- |
-| Velocidad potencial | Media y constante | Depende del grupo y de las misiones de cada mazmorra | Alta si la zona acompaña; sin demostrar en Forever |
-| Facilidad | Alta | Media: hay que coordinarse con el tanque | Baja |
-| Supervivencia | Alta | Media: depende del tanque y del sanador | Baja: un error suele costar la vida |
-| Eficiencia de maná | Media: bebes entre combates | Alta: un 15 % menos en Escarcha | Baja: bebes tras cada grupo |
-| Dependencia de un grupo | Ninguna | Total | Ninguna |
-| Equipo y consumibles | Una varita | Varita, y agua y comida para el grupo | Aguante, mucha agua y vendas |
-| Riesgo | Bajo | Medio | Alto |
-| Para principiantes | Sí | Sí, con un buen tanque | No |
+Los talentos y el orden de puntos están en las <BuildLink use="leveling">builds de leveo</BuildLink>. En <PageLink to="level-view">Estoy a nivel X</PageLink> ves qué te toca en tu nivel, y en <PageLink to="races">razas</PageLink>, cuál elegir para subir.
 
 ## Progresión por niveles
 
-Divido el camino en tres tramos según cuándo cambia de verdad tu forma de jugar: los talentos empiezan a nivel 10 y el nivel 20 es el gran salto del Mago (Traslación, Ventisca, Evocación, Escudo de maná y, en la build en solitario, Lanza de hielo). Los niveles de los hechizos son los de la lista del instructor de Forever (calculadora de Wowhead). <Status status="reported" />
+Divido el camino en tres tramos según cuándo cambia de verdad tu forma de jugar: los talentos empiezan a nivel 10 y el nivel 20 es el gran salto del Mago (Traslación, Ventisca, Evocación y Escudo de maná). Los niveles de los hechizos son los de la lista del instructor de Forever (calculadora de Wowhead). <Status status="reported" />
 
 ### Niveles 1 a 9: antes de los talentos
 
-- **Hechizos.** Empiezas con **Bola de Fuego** (Fireball), Armadura de Escarcha (Frost Armor) y Intelecto Arcano (Arcane Intellect). A nivel 4 llega **Descarga de Escarcha**, que pasa a ser tu hechizo principal. A nivel 6, **Explosión de Fuego** (Fire Blast), para rematar al instante, y a nivel 8, **Polimorfia** (Polymorph) y **Misiles Arcanos** (Arcane Missiles).
-- **Cómo combates.** Descarga de Escarcha, otra Descarga de Escarcha y remate con Explosión de Fuego o con la varita. Lleva siempre puestos Armadura de Escarcha y Intelecto Arcano.
+- **Hechizos.** Empiezas con **Bola de Fuego** (Fireball), Armadura de Escarcha (Frost Armor) y Intelecto Arcano (Arcane Intellect). A nivel 4 llega **Descarga de Escarcha** (Frostbolt), que ralentiza al enemigo. A nivel 6, **Explosión de Fuego** (Fire Blast), para rematar al instante, y a nivel 8, **Polimorfia** (Polymorph) y **Misiles Arcanos** (Arcane Missiles).
+- **Cómo combates.** Descarga de Escarcha, otra Descarga de Escarcha y remate con Explosión de Fuego o con la varita. Lleva siempre puestos Armadura de Escarcha e Intelecto Arcano.
 - **La varita.** Consigue la Lesser Magic Wand (nivel 5) en cuanto puedas, de Encantamiento o de la casa de subastas: al principio hace casi tanto daño como tus hechizos y no gasta maná. <Status status="reported" /> Desde el 15 de octubre tienes que estar quieto 0,5 s antes de disparar. <Status status="verified" />
 - **Agua y comida.** Desde los niveles 4 y 6 las conjuras tú: no gastes dinero en ellas.
-- **Con Talented.** Si tienes el perk de Legado Talented 5/5, tu primer punto llega a nivel 5: empieza por Descarga de Escarcha mejorada (Improved Frostbolt).
+- **Con Talented.** Si tienes el perk de Legado Talented 5/5, tu primer punto de talento llega a nivel 5.
 - **Límites.** Tienes poco maná y nada para escapar. Lucha contra un enemigo cada vez y bebe cuando bajes de la mitad.
 
 ### Niveles 10 a 19: primeros talentos y Nova de Escarcha
 
-- **Nova de Escarcha a nivel 10.** Congela hasta 8 s a los enemigos que tienes cerca y vuelve cada 25 s. Es lo que te permite alejarte cuando un enemigo llega a tu lado. <Status status="reported" />
-- **Talentos.** Las tres builds empiezan con **Descarga de Escarcha mejorada** 5/5 (niveles 10 a 14). Del 15 al 19 se separan: Mordiescarcha en solitario, Enfoque elemental en mazmorras, y Escarcha permanente y Nova de Escarcha mejorada (Improved Frost Nova) en área.
+- **Nova de Escarcha a nivel 10.** Congela hasta 8 s a los enemigos que tienes cerca y vuelve cada 25 s. Es lo que te permite alejarte cuando un enemigo llega a tu lado. <Status status="reported" />
+- **Talentos.** Un punto por nivel desde el 10. Cuáles coger lo dice tu <BuildLink use="leveling">build de leveo</BuildLink>.
 - **Más hechizos.** Deflagración Arcana (Arcane Explosion) a nivel 14, tu primer hechizo de área; Fogonazo (Flamestrike) a nivel 16; Deshacer maldición inferior (Remove Lesser Curse) a nivel 18. Contra un solo enemigo no te compensan: gastan mucho maná.
 - **La varita mejor.** La Greater Magic Wand es de nivel 13. <Status status="reported" />
-- **Cómo combates.** Descarga de Escarcha desde lejos; si llega a tu lado, Nova de Escarcha, unos pasos atrás y otra Descarga de Escarcha. Con Mordiescarcha, algunas Descargas congelan al enemigo antes de que llegue.
+- **Cómo combates.** Desde lejos; si llega a tu lado, Nova de Escarcha, unos pasos atrás y sigue lanzando.
 - **Límites.** Solo tienes una Nova de Escarcha y todavía no tienes Traslación (Blink): no ataques a dos enemigos a la vez sin Polimorfia para el segundo.
 
 ### Niveles 20 a 30: el gran salto
 
-- **Nivel 20.** **Traslación**, **Ventisca** (Blizzard), **Evocación** (Evocation), **Escudo de maná** (Mana Shield), Custodia de Fuego (Fire Ward), Descarga de Escarcha de rango 4 y los primeros teletransportes. En la build en solitario, **Lanza de hielo**.
-- **Del 22 al 30.** Custodia de Escarcha (Frost Ward) y **Chamuscar** (Scorch) a nivel 22; **Contrahechizo** (Counterspell) y **Frost Blast** a nivel 24; **Cono de frío**, Nova de Escarcha de rango 2 y Descarga de Escarcha de rango 5 a nivel 26; gema de maná (Conjure Mana Agate), Ventisca de rango 2 y Lanza de hielo de rango 2 a nivel 28; Armadura de hielo (Ice Armor) a nivel 30.
-- **Talentos.** En solitario llegan **Trizar** (niveles 25 a 27) y **Dedos de Escarcha** (30): la Lanza de hielo tras una congelación pasa a ser casi siempre un crítico enorme. En mazmorras, Canalización de Escarcha y Ventisca mejorada; en área, Ventisca mejorada 3/3 a nivel 22.
+- **Nivel 20.** **Traslación**, **Ventisca** (Blizzard), **Evocación** (Evocation), **Escudo de maná** (Mana Shield), Custodia de Fuego (Fire Ward), Descarga de Escarcha de rango 4 y los primeros teletransportes.
+- **Del 22 al 30.** Custodia de Escarcha (Frost Ward) y **Chamuscar** (Scorch) a nivel 22; **Contrahechizo** (Counterspell) y **Frost Blast** a nivel 24; **Cono de frío**, Nova de Escarcha de rango 2 y Descarga de Escarcha de rango 5 a nivel 26; gema de maná (Conjure Mana Agate) y Ventisca de rango 2 a nivel 28; Armadura de hielo (Ice Armor) a nivel 30.
 - **Cómo combates.** Además de Nova de Escarcha, ahora tienes Traslación para escapar y Contrahechizo contra los lanzadores. Frost Blast ralentiza un 40 % a un enemigo que se acerca sin gastar una Descarga de Escarcha completa. A partir del 22 puedes empezar a probar el farmeo en área.
 - **Límites.** Los hechizos cuestan cada vez más maná. Visita al instructor cada dos niveles: tu daño depende de los rangos nuevos.
 
 ## Cómo jugar
 
-No hay una rotación fija: decides según lo que haga el enemigo. Estas son las prioridades de la build en solitario. <Status status="analysis" />
+No hay una rotación fija: decides según lo que haga el enemigo. La rotación de cada build está en su página; estas prioridades sirven con cualquiera. <Status status="analysis" />
 
 ### Contra un enemigo
 
-1. **Abre con Descarga de Escarcha** a máxima distancia: llega ralentizado.
-2. **Mientras se acerca, más Descarga de Escarcha.** Si Mordiescarcha lo congela, termina la Descarga que estás lanzando y lanza **Lanza de hielo** justo después: el congelamiento llega con el impacto, cuando ya estás con el siguiente hechizo. <Status status="reported" />
-3. **Con una carga de Dedos de Escarcha** (nivel 30), la carga es tuya al instante: puedes cancelar la Descarga y lanzar Lanza de hielo. <Status status="reported" />
-4. **Si llega a tu lado:** Nova de Escarcha, aléjate unos pasos y empieza por el golpe más fuerte (Lanza de hielo), porque el daño puede romper la congelación. <Status status="reported" />
-5. **Remata** con Explosión de Fuego o con la varita, para no gastar maná en el último golpe.
+1. **Abre a máxima distancia.** Si abres con Descarga de Escarcha, llega ralentizado y ganas tiempo.
+2. **Mientras se acerca, sigue lanzando.** Cada segundo que tarda en llegar es daño que no te devuelve.
+3. **Si llega a tu lado:** Nova de Escarcha, aléjate unos pasos y empieza por tu golpe más fuerte, porque el daño puede romper la congelación. <Status status="reported" />
+4. **Remata** con Explosión de Fuego o con la varita, para no gastar maná en el último golpe.
 
 ### Maná y descansos
 
-- **La regla de los 5 segundos.** Tu maná deja de regenerarse durante 5 s cada vez que lanzas un hechizo. Rematar con la varita deja que se recupere. <Status status="classic" />
+- **La regla de los 5 segundos.** Tu maná deja de regenerarse durante 5 s cada vez que lanzas un hechizo. Rematar con la varita deja que se recupere. <Status status="classic" />
 - **Bebe entre combates.** Conjura agua y comida antes de salir de la ciudad; desde el 28, lleva también la gema de maná para los combates largos.
 - **Evocación** (nivel 20, se reutiliza cada 8 minutos) te devuelve maná muy rápido. Úsala en un combate que se alarga o para ahorrarte una parada. <Status status="reported" />
-- **No bajes de rango.** En Forever, los rangos muy inferiores a tu nivel aprovechan menos tu daño de hechizos y activan menos tus talentos: Descarga de Escarcha de rango 1 a nivel 60 tiene un 0 % de probabilidad de activar Mordiescarcha. Usa el rango más alto que tengas; para ralentizar barato, Frost Blast (nivel 24). <Status status="verified" />
+- **No bajes de rango.** En Forever, los rangos muy inferiores a tu nivel aprovechan menos tu daño de hechizos y activan menos tus talentos. Usa el rango más alto que tengas; para ralentizar barato, Frost Blast (nivel 24). <Status status="verified" />
 
 ### Control y supervivencia
 
-- **Polimorfia** saca del combate a un humanoide o una bestia hasta 20 s (en el rango 1). Cualquier daño lo despierta, y solo puedes tener uno a la vez. <Status status="reported" />
-- **Traslación** te mueve 20 m hacia delante y te libra de aturdimientos e inmovilizaciones. Guárdalo para cuando la Nova no esté lista. <Status status="reported" />
+- **Polimorfia** saca del combate a un humanoide o una bestia hasta 20 s (en el rango 1). Cualquier daño lo despierta, y solo puedes tener uno a la vez. <Status status="reported" />
+- **Traslación** te mueve 20 m hacia delante y te libra de aturdimientos e inmovilizaciones. Guárdalo para cuando la Nova no esté lista. <Status status="reported" />
 - **Escudo de maná** absorbe daño físico gastando maná. Úsalo si te alcanzan y necesitas terminar un hechizo.
-- **Armadura de Escarcha** e **Armadura de hielo** ralentizan a quien te golpea cuerpo a cuerpo, y ese enfriamiento también puede activar Mordiescarcha. <Status status="reported" />
+- **Armadura de Escarcha** y **Armadura de hielo** ralentizan a quien te golpea cuerpo a cuerpo. <Status status="reported" />
 - **Contrahechizo** (nivel 24) corta la curación o el hechizo fuerte de un lanzador.
 
 ### Cuando aparecen varios enemigos
@@ -181,11 +86,11 @@ No hay una rotación fija: decides según lo que haga el enemigo. Estas son las 
 - **Evítalo.** Ataca a un enemigo cada vez, fíjate en las patrullas y no luches en cuevas si puedes evitarlo: no hay espacio para alejarte. <Status status="reported" />
 - **Dos enemigos:** Polimorfia al segundo y mata al primero.
 - **Tres o más:** Nova de Escarcha, aléjate, céntrate en uno y usa Traslación si vuelven a alcanzarte. Si el combate no tiene salida, aléjate hasta que dejen de perseguirte.
-- **Con la build en área,** ese es el plan: sigue los pasos de su tarjeta y no improvises con enemigos a distancia.
+- **Si quieres juntar enemigos a propósito,** sigue la guía de <PageLink to="aoe-farming">farmeo AoE</PageLink> y no improvises con enemigos a distancia.
 
 ### Cuando el combate se complica
 
-Si llega un enemigo de más, la Nova falla o te quedas sin maná a mitad de combate, para y elige: Polimorfia al recién llegado, Nova y Traslación para ganar distancia, Evocación, una poción o, si lo tienes, Bloqueo de hielo. Si nada de eso basta, aléjate y deja que los enemigos vuelvan a su sitio.
+Si llega un enemigo de más, la Nova falla o te quedas sin maná a mitad de combate, para y elige: Polimorfia al recién llegado, Nova y Traslación para ganar distancia, Evocación o una poción. Si nada de eso basta, aléjate y deja que los enemigos vuelvan a su sitio.
 
 Si mueres dos veces en el mismo sitio, cambia de zona o de misión. Insistir con la misma técnica sale más caro que dar la vuelta. <Status status="analysis" />
 
@@ -206,11 +111,10 @@ Más detalle de cada hechizo en la <PageLink to="guide">guía de clase</PageLink
 
 ## Errores frecuentes
 
-- **Lanzar Lanza de hielo sin congelación.** Sin congelar, hace poco daño. Úsala con el objetivo congelado, con cargas de Dedos de Escarcha o cuando tengas que moverte.
-- **Romper tu propia Nova.** El daño puede soltar a un enemigo congelado: empieza por Lanza de hielo, no por golpes pequeños.
+- **Romper tu propia Nova.** El daño puede soltar a un enemigo congelado: empieza por tu golpe más fuerte, no por golpes pequeños.
 - **Atraer de más.** Usar Nova de Escarcha en mitad de un grupo sin saber hacia dónde vas a alejarte, o luchar con patrullas cerca.
 - **Gastar maná en área contra un solo enemigo.** Deflagración Arcana y Ventisca son para grupos.
-- **Bajar de rango como en Classic.** En Forever pierdes las activaciones de Mordiescarcha y Dedos de Escarcha. Para ralentizar barato, usa Frost Blast.
+- **Bajar de rango como en Classic.** En Forever activas menos tus talentos. Para ralentizar barato, usa Frost Blast.
 - **Olvidar al instructor y la varita.** Tu daño depende de los rangos nuevos, y la varita te ahorra maná en cada remate.
 - **Empezar a farmear en área antes del 22** o con enemigos que atacan a distancia.
 - **En grupo:** Nova de Escarcha junto al tanque, Ventisca antes de que el tanque tenga el grupo o sobre un enemigo con Polimorfia.
@@ -221,21 +125,17 @@ Más detalle de cada hechizo en la <PageLink to="guide">guía de clase</PageLink
 
 ### Talented: puntos de talento antes
 
-El perk de Legado **Talented** (árbol Aventura) adelanta el primer punto de talento: a nivel 9 con 1 rango y a nivel 5 con 5. El máximo sigue en 51 puntos. <Status status="reported" /> Si lo tienes, activa «Tengo Talented 5/5» encima de cualquier tabla de orden de puntos: la columna de nivel pasa a decir a qué nivel llega cada punto y aparecen al final los puntos extra, solo para quien lo tenga. La preferencia se recuerda en todas las tablas.
+El perk de Legado **Talented** (árbol Aventura) adelanta el primer punto de talento: a nivel 9 con 1 rango y a nivel 5 con 5. El máximo sigue en 51 puntos. <Status status="reported" /> Si lo tienes, activa «Tengo Talented 5/5» encima de cualquier tabla de orden de puntos de las builds: la columna de nivel pasa a decir a qué nivel llega cada punto y aparecen al final los puntos extra, solo para quien lo tenga. La preferencia se recuerda en todas las tablas.
 
 Los puntos de Legado se ganan con desafíos de cuenta, como llevar una clase a nivel 25. Tu primer personaje en el lanzamiento no tendrá Talented. <Status status="reported" />
 
 ### Menos farmeo masivo
 
-Blizzard ha recortado Ventisca mejorada, Escarcha permanente y Cono de frío para dificultar que quienes quieren oro y experiencia rápidos atraigan grandes grupos de criaturas con mecánicas repetitivas y de poco riesgo. <Status status="verified" /> El farmeo en área no desaparece, pero es más arriesgado: lo explico en [la build en área](#en-área-desde-cuándo-y-con-qué-límites).
+Blizzard ha recortado los talentos que permitían atraer grandes grupos de criaturas con mecánicas repetitivas y de poco riesgo, para frenar a quienes buscan oro y experiencia rápidos. <Status status="verified" /> El farmeo en área no desaparece, pero es más arriesgado: lo explico en la guía de <PageLink to="aoe-farming">farmeo AoE</PageLink>.
 
 ### Bajar de rango sale menos a cuenta
 
 Desde la build del 1 de octubre, los rangos muy inferiores a tu nivel aprovechan menos tu daño de hechizos y activan menos tus habilidades y talentos. Además, el 8 de octubre se reajustaron los rangos bajos de Descarga de Escarcha, Bola de Fuego y Misiles Arcanos para que cada rango nuevo sea siempre una mejora. <Status status="verified" />
-
-### Encadenar enemigos con Fuego
-
-**Estela de Fuego** (Wake of Fire), el talento que daba crítico a Explosión de Fuego tras cada muerte, desapareció el 15 de octubre: vuelve a ser **Explosión de Fuego mejorada** (Improved Fire Blast), que reduce su reutilización y le da 8/15 m más de alcance, sin bonificación al matar. A cambio, cada Explosión de Fuego da una carga de Calentamiento (dos si es crítico). <Status status="verified" />
 
 ### Pergaminos para descifrar
 
@@ -243,22 +143,13 @@ Con **Comprensión** (Comprehension) puedes leer los pergaminos que sueltan las 
 
 Cómo leerlos, qué habilidad pide cada uno y consejos para el leveo: <PageLink to="scrolls">guía rápida de pergaminos</PageLink>.
 
-## Otras variantes evaluadas
-
-Solo publico una build cuando aporta algo real. Estas variantes las he estudiado y, por ahora, no tienen build propia: <Status status="analysis" />
-
-- **Fuego.** Tiene a su favor Ignición y una Explosión de Fuego que alimenta Calentamiento; Estela de Fuego, pensada para subir de nivel, ya no existe. Pero hasta el 30 le faltan piezas: Piroexplosión tarda 6 s en lanzarse, Calentamiento necesita críticos (y a esos niveles haces pocos) y no ralentiza, así que los enemigos te alcanzan antes. Las guías la consideran menos eficaz para subir. <Status status="reported" /> La revisaré para el tramo 31 a 60, con Descarga de Pirofrío (nivel 40), que también aprovecha talentos de Fuego.
-- **Arcano.** Desde el 15 de octubre, Tromba de misiles está en la fila 1 (desde el nivel 10), Explosión Arcana llega con 11 puntos (nivel 20) y Cólera Arcana con 16 (nivel 25). Cada Explosión Arcana encarece la siguiente un 175 %: mucho gasto de maná para subir. Antes de ese rediseño, Mobalytics señalaba que no despegaba hasta el nivel 25. <Status status="reported" /> Lo volveré a mirar cuando haya pruebas con la versión nueva.
-- **Subir con un compañero.** Con un tanque que te acompañe, la build de mazmorras ya cubre ese caso; no necesita otra.
-- **Talented.** No es otra build: son los mismos puntos, cada uno 5 niveles antes, más cinco puntos extra al final de cada tabla.
-
 ## Más allá del nivel 30
 
-El orden de talentos de la build ya llega al 60; la progresión nivel a nivel, los hechizos importantes y los consejos de juego llegan por ahora al 30, y completaré el tramo del 31 al 60 en esta misma página. Lo que ya se sabe que cambiará: a nivel 40 llegan **Descarga de Pirofrío** (Frostfire Bolt) y la doble especialización, que permitirá llevar a la vez una build en solitario y otra de mazmorras. <Status status="verified" />
+La progresión nivel a nivel, los hechizos importantes y los consejos de juego llegan por ahora al 30; completaré el tramo del 31 al 60 en esta misma página. Lo que ya se sabe que cambiará: a nivel 40 llegan **Descarga de Pirofrío** (Frostfire Bolt) y la doble especialización, que permitirá llevar dos builds a la vez. <Status status="verified" />
 
 ## Lo que falta por comprobar
 
 <Pending
-  why="Aún no he probado las builds en el servidor. Los valores de los talentos y los niveles de los hechizos vienen del cliente del juego, no de una fuente oficial, y la experiencia de las mazmorras puede cambiar."
-  next="Probaré las tres builds, sobre todo la de área, y las marcaré como «Probado» o las corregiré. Tras el lanzamiento del 4 de noviembre revisaré los valores y ampliaré la guía al nivel 60."
+  why="Aún no he probado estos consejos en el servidor. Los niveles de los hechizos vienen del cliente del juego, no de una fuente oficial, y la experiencia de las mazmorras puede cambiar."
+  next="Los probaré en el juego y los marcaré como «Probado» o los corregiré. Tras el lanzamiento del 4 de noviembre revisaré los valores y ampliaré la guía al nivel 60."
 />

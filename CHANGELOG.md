@@ -4,6 +4,14 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-10-26
+
+### [Guía] La build de leveo llega al 60 con Descarga de Pirofrío
+
+La build de leveo pasa a cubrir del 1 al 60: Escarcha hasta el 40 y, desde ahí, Fuego para aprovechar Descarga de Pirofrío (Incineración, Bola de Fuego mejorada, Ignición y Maestro de los elementos). Retiro las builds de leveo en mazmorras y en área: lo que cambiaban queda como variantes de la build. Hasta que la pruebe en el juego, la build no aparece como recomendada.
+
+- **Datos afectados:** build:frost-leveling-solo
+
 ## 2026-10-21
 
 ### [Juego] Árbol de Escarcha: adiós a Hielo penetrante y Enfoque elemental a 3 rangos

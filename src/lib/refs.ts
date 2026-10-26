@@ -6,6 +6,7 @@ import { localName } from './names';
 import { professionAnchor } from './professions';
 import { dedupeRefs, type ResolvedRef } from './ref-list';
 import type { RefKind } from './schemas';
+import { buildPath } from './build-routes';
 
 export type { ResolvedRef } from './ref-list';
 
@@ -48,7 +49,8 @@ export function resolveRef(reference: string, locale: Locale): ResolvedRef | und
     case 'build': {
       const build = builds.find((b) => b.id === id);
       if (!build) break;
-      return { label: build.name[locale], href: href(build.page ?? 'builds', locale, build.id) };
+      // Its own page (/builds/<use>/<slug>/), so changelog links never point at a removed card.
+      return { label: build.name[locale], href: buildPath(build, locale, { base: import.meta.env.BASE_URL }) };
     }
     case 'race': {
       const race = races.find((r) => r.id === id);

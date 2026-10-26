@@ -72,7 +72,8 @@ export const ROUTES: Record<PageId, RouteDef> = {
   pvp: { id: 'pvp', slug: { es: 'jcj', en: 'pvp' }, parent: 'guides' },
   guide: { id: 'guide', slug: { es: 'guia', en: 'guide' }, parent: 'learn' },
   changes: { id: 'changes', slug: { es: 'cambios', en: 'changes' }, parent: 'learn' },
-  talents: { id: 'talents', slug: { es: 'talentos', en: 'talents' }, parent: 'learn' },
+  // Talents and the three tree pages moved from Learn to Builds (26 Oct 2026) keeping their slugs.
+  talents: { id: 'talents', slug: { es: 'talentos', en: 'talents' }, parent: 'builds' },
   'talents-arcane': {
     id: 'talents-arcane',
     slug: { es: 'talentos/arcano', en: 'talents/arcane' },
@@ -91,9 +92,10 @@ export const ROUTES: Record<PageId, RouteDef> = {
     parent: 'talents',
     spec: 'frost',
   },
-  leveling: { id: 'leveling', slug: { es: 'nivelacion', en: 'leveling' }, parent: 'builds' },
+  // Leveling, its level view and AoE farming moved from Builds to Guides (26 Oct 2026) keeping their slugs.
+  leveling: { id: 'leveling', slug: { es: 'nivelacion', en: 'leveling' }, parent: 'guides' },
   'level-view': { id: 'level-view', slug: { es: 'nivelacion/por-nivel', en: 'leveling/by-level' }, parent: 'leveling' },
-  'aoe-farming': { id: 'aoe-farming', slug: { es: 'farmeo-aoe', en: 'aoe-farming' }, parent: 'builds' },
+  'aoe-farming': { id: 'aoe-farming', slug: { es: 'farmeo-aoe', en: 'aoe-farming' }, parent: 'guides' },
   scrolls: { id: 'scrolls', slug: { es: 'pergaminos', en: 'scrolls' }, parent: 'guides' },
   combat: { id: 'combat', slug: { es: 'combate', en: 'combat' }, parent: 'learn' },
   // Gear moved from Learn to Guides (20 Oct 2026) keeping its slug: leveling and PvE gear; PvP gear lives in the PvP guide.
@@ -119,14 +121,19 @@ export interface NavGroup {
 }
 
 /**
- * Five entries: the basics of the class, builds to copy (with the pages that
- * explain them), guides for everything around the character (race,
- * professions, Legacy, gear, class quests, library, scrolls, PvP), the tools and addons.
+ * Five entries: the basics of the class; builds (a tree, its talents and the
+ * content it is for, with the talent and tree pages); guides, which explain
+ * something concrete whatever the build (leveling, AoE farming, race,
+ * professions, Legacy, gear, class quests, library, scrolls, PvP); the tools and addons.
  */
 export const PRIMARY_NAV: readonly NavGroup[] = [
-  { key: 'learn', page: 'learn', items: ['guide', 'talents', 'talents-arcane', 'talents-fire', 'talents-frost', 'combat', 'changes'] },
-  { key: 'builds', page: 'builds', items: ['leveling', 'level-view', 'aoe-farming'] },
-  { key: 'guides', page: 'guides', items: ['races', 'professions', 'legacy', 'gear', 'class-quests', 'library', 'scrolls', 'pvp'] },
+  { key: 'learn', page: 'learn', items: ['guide', 'combat', 'changes'] },
+  { key: 'builds', page: 'builds', items: ['talents', 'talents-arcane', 'talents-fire', 'talents-frost'] },
+  {
+    key: 'guides',
+    page: 'guides',
+    items: ['leveling', 'level-view', 'aoe-farming', 'races', 'professions', 'legacy', 'gear', 'class-quests', 'library', 'scrolls', 'pvp'],
+  },
   { key: 'tools', page: 'tools', items: ['talent-calc'] },
   { key: 'addons', page: 'addons' },
 ];

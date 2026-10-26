@@ -308,6 +308,28 @@
       "mobalytics-mage-leveling",
       "method-mage-leveling"
     ],
-    "updated": "2026-10-21"
+    "updated": "2026-10-26",
+    "variants": [
+      {
+        "name": {
+          "es": "En grupo",
+          "en": "In a group"
+        },
+        "text": {
+          "es": "Si subes sobre todo en mazmorras, adelanta Canalización de Escarcha 3/3 (un 30 % menos de amenaza y un 15 % menos de coste en tus hechizos de Escarcha) y sube Enfoque elemental a 3/3: élites y jefes esquivan más. Para una mazmorra suelta no compensa cambiar.",
+          "en": "If you level mostly in dungeons, take Frost Channeling 3/3 earlier (30% less threat and 15% lower cost on your Frost spells) and raise Elemental Precision to 3/3: elites and bosses dodge more. For a single dungeon it is not worth switching."
+        }
+      },
+      {
+        "name": {
+          "es": "Farmeo en área",
+          "en": "AoE farming"
+        },
+        "text": {
+          "es": "Desde el 22: Ventisca mejorada 3/3 y Escarcha permanente 3/3, y sin Mordiescarcha, porque sus congelaciones al azar separan al grupo. Las rotaciones y las zonas están en la guía de farmeo AoE.",
+          "en": "From 22: Improved Blizzard 3/3 and Permafrost 3/3, and no Frostbite, because its random freezes split the pack. Rotations and spots are in the AoE farming guide."
+        }
+      }
+    ]
   }
 ]

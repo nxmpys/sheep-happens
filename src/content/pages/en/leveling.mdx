@@ -1,179 +1,84 @@
 ---
 pageId: leveling
 locale: en
-title: WoW Forever Mage leveling guide, levels 1 to 60
-seoTitle: WoW Forever Mage leveling guide, builds for levels 1-30
-description: Mage leveling builds for WoW Forever from level 1 to 60 for solo, dungeon and AoE play, with the talent order by level and how to play each one.
+title: WoW Forever Mage leveling guide
+seoTitle: WoW Forever Mage leveling guide, how to level up
+description: A Mage levels best when the enemy never touches it. Slow, freeze and finish from range; these tips work with any tree.
 gameVersion: forever-beta-2026-10
 published: 2026-10-11
-reviewed: 2026-10-14
+reviewed: 2026-10-26
 reviewedBy: Sheep Happens
 status: published
 verification: analysis
 summary:
-  - 'Frost is the tree to level from 1 to 30: the four Forever guides I checked agree, and it is the safest.'
-  - 'Three builds: solo (recommended), dungeons (if you chain groups) and AoE (experimental, from level 22).'
   - Talents start at level 10. With the Talented Legacy perk they start at level 5, but your first character at launch will not have it.
-  - 'The builds are reasoned, not tested on the server. The level-by-level progression reaches 30 for now; the talent order, 60.'
-sources: [blizzard-deep-dive-mage, blizzard-dev-notes, wowhead-forever-talent-calc, icyveins-forever-frost, mobalytics-mage-leveling, mobalytics-frost, method-mage-leveling, wowforeverbuilds-mage-leveling, icyveins-dungeon-xp, warcrafttavern-legacy, wowhead-dual-spec-podcast, icyveins-classic-frost-leveling, icyveins-classic-aoe-leveling]
+  - 'Level 20 is the Mage''s big jump: Blink, Blizzard, Evocation and Mana Shield.'
+  - Fight one enemy at a time, finish with your wand and do not downrank your spells.
+  - The level-by-level progression reaches 30 for now.
+sources: [blizzard-deep-dive-mage, blizzard-dev-notes, wowhead-forever-talent-calc, mobalytics-mage-leveling, method-mage-leveling, icyveins-dungeon-xp, warcrafttavern-legacy, wowhead-dual-spec-podcast]
 tocGroups:
-  - { title: Pick your build, start: pick-your-leveling-build }
-  - { title: The builds in detail, start: the-builds-in-detail }
   - { title: Progression by level, start: progression-by-level }
   - { title: How to play, start: how-to-play }
   - { title: What Forever changes, start: what-forever-changes-for-leveling }
-  - { title: Other variants and open questions, start: other-variants-evaluated }
-tags: [leveling, leveling build, leveling talents, level up, frost, dungeons, aoe farming, aoe, 1-30]
+  - { title: What is missing, start: beyond-level-30 }
+tags: [leveling, level up, leveling guide, tips, how to play, dungeons, 1-30]
 ---
 
-<LevelingStatus />
-
-## Pick your leveling build
-
-<BuildPicker ids={['frost-leveling-solo']} recommended="frost-leveling-solo" />
-
-This is the 1-to-60 leveling build: Frost to level up and, from 40, Frostfire Bolt. The talent order, level by level, is below. <Status status="analysis" />
-
-Already playing? In <PageLink to="level-view">I'm level X</PageLink> you pick your level and build and see which spells you learn, which talent point comes and what is next.
-
-## Why Frost
-
-The four Forever guides I checked (Icy Veins, Mobalytics, Method and WoW Forever Builds) put forward Frost for leveling. <Status status="reported" /> The mechanics agree:
-
-- **Enemies take a long time to reach you.** **Frostbolt** slows by 40% on every hit and **Frost Nova** freezes for up to 8 s. An enemy that cannot reach you cannot hurt you: you lose less health and rest less. <Status status="reported" />
-- **Control turns into damage.** **Ice Lance**, the 11-point milestone, deals 200% more to frozen targets. You get it at level 20. <Status status="verified" />
-- **One main spell.** Everything revolves around Frostbolt, so every point shows from the first one and the build is easy to learn. <Status status="analysis" />
-- **Forever's nerfs do not touch single-target play.** Blizzard reined in Frost mass farming (Improved Blizzard and Cone of Cold), but that weighs on AoE, not on killing enemies one by one. <Status status="analysis" />
-
-Fire and Arcane can level too, but up to 30 they are missing pieces: see [other variants evaluated](#other-variants-evaluated). For your race, see <PageLink to="races">which race to level with</PageLink>.
-
-## The builds in detail
-
-### Solo: the go-to build
-
-**The idea is freeze and shatter.** **Frostbite** gives each Chill a 15% chance to freeze the enemy for 5 s. While it is frozen, **Ice Lance** deals 200% more, **Shatter** adds 50% critical strike chance and **Ice Shards** doubles that crit's extra damage. At level 30, **Fingers of Frost** gives you charges that treat the target as frozen without freezing it. <Status status="reported" />
-
-**What it gives up.** No AoE talents (Improved Blizzard) and no mana talent (Frost Channeling). In exchange, every point improves single-target fights, which is almost all you do while questing. <Status status="analysis" />
-
-**Piercing Ice is gone.** Elemental Precision now gives 2% hit per rank. Its 3 points go to **Elemental Precision** 3/3: +6% hit, enough not to miss against enemies up to 2 levels above you. <Status status="reported" />
-
-**Alternatives I ruled out.** Three of the four guides agree on the core (Improved Frostbolt, Frostbite, Ice Shards, Ice Lance, Shatter and Fingers of Frost) and differ in two or three points. They were written before the 20 October hotfix, so I compare them with the rest of my build: <Status status="reported" />
-
-| Guide | What changes from mine | Why I did not pick it |
-| --- | --- | --- |
-| Icy Veins | 1 point in Improved Blizzard instead of the third point of Elemental Precision | Improved Blizzard only helps in AoE, and the third point of Elemental Precision adds 2% hit. |
-| Mobalytics (Frost guide) | Ice Block instead of the third point of Elemental Precision | More forgiving, but you miss more. With Talented, my build also reaches Ice Block. |
-| Mobalytics (leveling guide) | Frostbite 2/3 and 1 point in Improved Blizzard | Nearly the same as mine. The third Frostbite point freezes more often, and Improved Blizzard only helps in AoE. |
-| WoW Forever Builds | Elemental Precision and Frost Channeling instead of Improved Frostbolt, only 1 point in Shatter and no Fingers of Frost (it puts 5 points in Elemental Precision, which now has 3) | It does not speed up Frostbolt, your main spell, and Shatter 1/3 adds little. |
-
-Icy Veins' Classic leveling build follows the same path (early Frostbite, Shatter around 25), which backs up the core. <Status status="classic" />
-
-**When to switch.** If you stop to drink too often, swap Elemental Precision for 3 points of Frost Channeling. If you will chain dungeons, use the dungeon build. If you are experienced and have a good spot, try the AoE build from 22. <Status status="analysis" />
-
-### Dungeons: what changes and when it pays off
-
-In a group, what limits you is not what limits you solo. That is why the build really changes, not just its name: <Status status="analysis" />
-
-- **Threat.** If you out-threat the tank, enemies come for you. **Frost Channeling** cuts the threat of your Frost spells by 30% and their cost by 15%. <Status status="reported" />
-- **Hit.** Elites and bosses are often above your level and avoid more spells. **Elemental Precision** adds 6% hit with 3 points. <Status status="reported" />
-- **AoE damage.** When the tank holds a pack, Blizzard is your best spell. Ice Shards improves its crits, and **Improved Blizzard** makes it slow, so an enemy that breaks off the tank takes longer to reach you or the healer.
-- **Freezes fail more.** Your allies' hits break freezes before you cast Ice Lance, and you should not Frost Nova next to the tank: frozen enemies attack whoever is closest. That is why Frostbite and Shatter bring less here. <Status status="reported" />
-- **Ice Block** saves you if a pack turns on you, while the tank takes it back.
-
-**Is it worth switching?** Hardly ever for a single dungeon. Forever cut experience from dungeon kills and moved it to dungeon quests, so the first visit to each dungeon is the rewarding one and repeating it is not optimal. <Status status="reported" />
-
-Also, talents can only be changed at a class trainer in a capital. If you have not changed them recently it costs 1 silver; repeat it and the price goes up. <Status status="verified" /> Dual specialization arrives at level 40, although Blizzard is considering moving it earlier. <Status status="verified" />
-
-**My advice:** run each dungeon once, with its quests, on the solo build. Switch to the dungeon build only if you will level mostly in groups: with a regular group, with friends or with a tank who comes along. <Status status="analysis" />
-
-### AoE farming: when to start and its limits
-
-In Classic, gathering packs and killing them with Blizzard was the fastest way to level a Mage from level 22, thanks to Improved Blizzard's 65% slow. <Status status="classic" /> Forever cut it on purpose: <Status status="verified" />
-
-- **Improved Blizzard** slows by 40% at most.
-- **Permafrost** extends Chill effects by a percentage: 1.5 s becomes 2 s, instead of adding fixed seconds.
-- **Cone of Cold** lasts less: it slows by 40% for 6 s. <Status status="reported" /> Since 15 October, the first 4 targets it hits are slowed by an extra 10% for 3 extra seconds. <Status status="verified" />
-
-With Improved Blizzard 3/3 and Permafrost 3/3, enemies move at half speed while they are in Blizzard. That is less than in Classic: they leave the area and reach you sooner. <Status status="analysis" />
-
-**When to start.** Not before level 22: you need Blizzard (level 20) and Improved Blizzard 3/3, which the build reaches at 22. Start with packs of 2 to 4. It gets better at level 26, with **Cone of Cold**, and at level 28, with rank 2 Blizzard and the mana gem. Before 22, quest. <Status status="analysis" />
-
-**Limits.** Mana rules: rank 1 Blizzard costs 320 mana, so how big a pack you can take depends on how many you can cast. <Status status="reported" /> It only works on melee enemies without fears, knockbacks or ranged attacks, in open areas and without other players. A resisted Frost Nova or one enemy too many usually means death. <Status status="analysis" />
-
-**What is known in Forever.** Nobody has shown yet that it beats questing. Mobalytics says it is still viable with practice, but without data. <Status status="reported" /> WoW Forever Builds' AoE guide uses Classic's 65% instead of Forever's 40%, so I do not follow it. That is why this build is **experimental** and not for beginners. <Status status="analysis" />
-
-The short rotation from level 14, the Blizzard rotation and the farming spots, such as the Thunder Bluff spiders, are in the <PageLink to="aoe-farming">AoE farming guide</PageLink>.
-
-## Build comparison
-
-These are reasoned ratings based on the mechanics, not test results or statistics: there is no reliable time-per-level data for Forever. <Status status="analysis" />
-
-| | Solo | Dungeons | AoE |
-| --- | --- | --- | --- |
-| Potential speed | Steady, medium | Depends on the group and each dungeon's quests | High in the right spot; unproven in Forever |
-| Ease | High | Medium: you work with the tank | Low |
-| Survival | High | Medium: depends on tank and healer | Low: a mistake usually means death |
-| Mana efficiency | Medium: you drink between fights | High: 15% less on Frost | Low: you drink after every pack |
-| Group dependence | None | Total | None |
-| Gear and consumables | A wand | A wand, plus water and food for the group | Stamina, lots of water and bandages |
-| Risk | Low | Medium | High |
-| For beginners | Yes | Yes, with a good tank | No |
+Talents and point order live in the <BuildLink use="leveling">leveling builds</BuildLink>. <PageLink to="level-view">I'm level X</PageLink> shows what your level brings, and <PageLink to="races">races</PageLink> which one to level with.
 
 ## Progression by level
 
-I split the road into three stretches by when your way of playing really changes: talents start at level 10, and level 20 is the Mage's big jump (Blink, Blizzard, Evocation, Mana Shield and, in the solo build, Ice Lance). Spell levels come from Forever's trainer list (Wowhead calculator). <Status status="reported" />
+I split the road into three stretches by when your way of playing really changes: talents start at level 10, and level 20 is the Mage's big jump (Blink, Blizzard, Evocation and Mana Shield). Spell levels come from Forever's trainer list (Wowhead calculator). <Status status="reported" />
 
 ### Levels 1 to 9: before talents
 
-- **Spells.** You start with **Fireball**, Frost Armor and Arcane Intellect. At level 4 comes **Frostbolt**, which becomes your main spell. At level 6, **Fire Blast**, an instant finisher, and at level 8, **Polymorph** and **Arcane Missiles**.
+- **Spells.** You start with **Fireball**, Frost Armor and Arcane Intellect. At level 4 comes **Frostbolt**, which slows the enemy. At level 6, **Fire Blast**, an instant finisher, and at level 8, **Polymorph** and **Arcane Missiles**.
 - **How you fight.** Frostbolt, another Frostbolt, then finish with Fire Blast or your wand. Keep Frost Armor and Arcane Intellect up at all times.
 - **The wand.** Get the Lesser Magic Wand (level 5) as soon as you can, from Enchanting or the Auction House: early on it deals almost as much as your spells and costs no mana. <Status status="reported" /> Since 15 October you must stand still for 0.5 s before shooting. <Status status="verified" />
 - **Water and food.** From levels 4 and 6 you conjure your own: do not spend money on them.
-- **With Talented.** If you have the Talented Legacy perk at 5/5, your first point comes at level 5: start with Improved Frostbolt.
+- **With Talented.** If you have the Talented Legacy perk at 5/5, your first talent point comes at level 5.
 - **Limits.** Little mana and no way to escape. Fight one enemy at a time and drink when you drop below half.
 
 ### Levels 10 to 19: first talents and Frost Nova
 
-- **Frost Nova at level 10.** It freezes nearby enemies for up to 8 s and comes back every 25 s. It is how you get away when an enemy reaches you. <Status status="reported" />
-- **Talents.** All three builds start with **Improved Frostbolt** 5/5 (levels 10 to 14). From 15 to 19 they split: Frostbite solo, Elemental Precision for dungeons, and Permafrost and Improved Frost Nova for AoE.
+- **Frost Nova at level 10.** It freezes nearby enemies for up to 8 s and comes back every 25 s. It is how you get away when an enemy reaches you. <Status status="reported" />
+- **Talents.** One point per level from 10. Your <BuildLink use="leveling">leveling build</BuildLink> tells you which ones.
 - **More spells.** Arcane Explosion at level 14, your first AoE spell; Flamestrike at level 16; Remove Lesser Curse at level 18. Against a single enemy they are not worth it: they cost a lot of mana.
 - **A better wand.** The Greater Magic Wand is level 13. <Status status="reported" />
-- **How you fight.** Frostbolt from range; if it reaches you, Frost Nova, a few steps back and another Frostbolt. With Frostbite, some Frostbolts freeze the enemy before it arrives.
+- **How you fight.** From range; if it reaches you, Frost Nova, a few steps back and keep casting.
 - **Limits.** You have one Frost Nova and no Blink yet: do not take on two enemies without Polymorph for the second one.
 
 ### Levels 20 to 30: the big jump
 
-- **Level 20.** **Blink**, **Blizzard**, **Evocation**, **Mana Shield**, Fire Ward, rank 4 Frostbolt and your first teleports. In the solo build, **Ice Lance**.
-- **From 22 to 30.** Frost Ward and **Scorch** at level 22; **Counterspell** and **Frost Blast** at 24; **Cone of Cold**, rank 2 Frost Nova and rank 5 Frostbolt at 26; the mana gem (Conjure Mana Agate), rank 2 Blizzard and rank 2 Ice Lance at 28; Ice Armor at 30.
-- **Talents.** Solo, **Shatter** (levels 25 to 27) and **Fingers of Frost** (30) arrive: Ice Lance after a freeze becomes a huge crit almost every time. For dungeons, Frost Channeling and Improved Blizzard; for AoE, Improved Blizzard 3/3 at 22.
+- **Level 20.** **Blink**, **Blizzard**, **Evocation**, **Mana Shield**, Fire Ward, rank 4 Frostbolt and your first teleports.
+- **From 22 to 30.** Frost Ward and **Scorch** at level 22; **Counterspell** and **Frost Blast** at 24; **Cone of Cold**, rank 2 Frost Nova and rank 5 Frostbolt at 26; the mana gem (Conjure Mana Agate) and rank 2 Blizzard at 28; Ice Armor at 30.
 - **How you fight.** On top of Frost Nova you now have Blink to escape and Counterspell against casters. Frost Blast slows an approaching enemy by 40% without spending a full Frostbolt. From 22 you can start trying AoE farming.
 - **Limits.** Spells cost more and more mana. Visit your trainer every two levels: your damage depends on new ranks.
 
 ## How to play
 
-There is no fixed rotation: you decide based on what the enemy does. These are the priorities of the solo build. <Status status="analysis" />
+There is no fixed rotation: you decide based on what the enemy does. Each build's rotation is on its page; these priorities work with any of them. <Status status="analysis" />
 
 ### Against one enemy
 
-1. **Open with Frostbolt** from max range: it arrives slowed.
-2. **While it walks in, more Frostbolt.** If Frostbite freezes it, finish the Frostbolt you are casting and cast **Ice Lance** right after: the freeze lands with the hit, when you are already on the next spell. <Status status="reported" />
-3. **With a Fingers of Frost charge** (level 30), the charge is yours instantly: you can cancel Frostbolt and cast Ice Lance. <Status status="reported" />
-4. **If it reaches you:** Frost Nova, walk a few steps away and lead with your biggest hit (Ice Lance), because damage can break the freeze. <Status status="reported" />
-5. **Finish** with Fire Blast or your wand, so you do not spend mana on the last hit.
+1. **Open from max range.** If you open with Frostbolt, it arrives slowed and you buy time.
+2. **While it walks in, keep casting.** Every second it takes to reach you is damage it cannot answer.
+3. **If it reaches you:** Frost Nova, walk a few steps away and lead with your biggest hit, because damage can break the freeze. <Status status="reported" />
+4. **Finish** with Fire Blast or your wand, so you do not spend mana on the last hit.
 
 ### Mana and downtime
 
-- **The five-second rule.** Your mana stops regenerating for 5 s every time you cast. Finishing with your wand lets it recover. <Status status="classic" />
+- **The five-second rule.** Your mana stops regenerating for 5 s every time you cast. Finishing with your wand lets it recover. <Status status="classic" />
 - **Drink between fights.** Conjure water and food before leaving town; from 28, also carry the mana gem for long fights.
 - **Evocation** (level 20, 8-minute cooldown) restores mana very quickly. Use it in a fight that drags on or to skip a stop. <Status status="reported" />
-- **Do not downrank.** In Forever, ranks far below your level get less from your spell damage and trigger your talents less: rank 1 Frostbolt at level 60 has a 0% chance to trigger Frostbite. Use your highest rank; for a cheap slow, Frost Blast (level 24). <Status status="verified" />
+- **Do not downrank.** In Forever, ranks far below your level get less from your spell damage and trigger your talents less. Use your highest rank; for a cheap slow, Frost Blast (level 24). <Status status="verified" />
 
 ### Control and survival
 
-- **Polymorph** takes a humanoid or beast out of the fight for up to 20 s (rank 1). Any damage wakes it, and only one target at a time. <Status status="reported" />
+- **Polymorph** takes a humanoid or beast out of the fight for up to 20 s (rank 1). Any damage wakes it, and only one target at a time. <Status status="reported" />
 - **Blink** moves you 20 yards forward and frees you from stuns and roots. Save it for when Frost Nova is down. <Status status="reported" />
 - **Mana Shield** absorbs physical damage with mana. Use it when you get caught and need to finish a cast.
-- **Frost Armor** and **Ice Armor** slow whoever hits you in melee, and that Chill can also trigger Frostbite. <Status status="reported" />
+- **Frost Armor** and **Ice Armor** slow whoever hits you in melee. <Status status="reported" />
 - **Counterspell** (level 24) stops a caster's heal or big spell.
 
 ### When several enemies show up
@@ -181,11 +86,11 @@ There is no fixed rotation: you decide based on what the enemy does. These are t
 - **Avoid it.** Pull one enemy at a time, watch for patrols and avoid fighting in caves when you can: there is no room to back off. <Status status="reported" />
 - **Two enemies:** Polymorph the second one and kill the first.
 - **Three or more:** Frost Nova, walk away, focus one and Blink if they catch you again. If the fight is lost, keep moving until they stop chasing you.
-- **With the AoE build,** that is the plan: follow the steps on its card and do not improvise with ranged enemies.
+- **If you want to pull packs on purpose,** follow the <PageLink to="aoe-farming">AoE farming</PageLink> guide and do not improvise with ranged enemies.
 
 ### When a fight goes wrong
 
-If an extra enemy joins, Frost Nova misses or you run out of mana mid-fight, stop and choose: Polymorph the newcomer, Frost Nova and Blink to gain distance, Evocation, a potion or, if you have it, Ice Block. If none of that is enough, walk away and let the enemies go home.
+If an extra enemy joins, Frost Nova misses or you run out of mana mid-fight, stop and choose: Polymorph the newcomer, Frost Nova and Blink to gain distance, Evocation or a potion. If none of that is enough, walk away and let the enemies go home.
 
 If you die twice in the same spot, change area or quest. Insisting on the same approach costs more than turning back. <Status status="analysis" />
 
@@ -206,11 +111,10 @@ More on each spell in the <PageLink to="guide">class guide</PageLink> and in <Pa
 
 ## Common mistakes
 
-- **Casting Ice Lance without a freeze.** Unfrozen, it deals little. Use it on frozen targets, with Fingers of Frost charges or when you have to move.
-- **Breaking your own Frost Nova.** Damage can free a frozen enemy: lead with Ice Lance, not small hits.
+- **Breaking your own Frost Nova.** Damage can free a frozen enemy: lead with your biggest hit, not small ones.
 - **Pulling too much.** Frost Nova in the middle of a pack without knowing where you will back off to, or fighting with patrols nearby.
 - **Spending mana on AoE against one enemy.** Arcane Explosion and Blizzard are for packs.
-- **Downranking like in Classic.** In Forever you lose Frostbite and Fingers of Frost procs. For a cheap slow, use Frost Blast.
+- **Downranking like in Classic.** In Forever it triggers your talents less. For a cheap slow, use Frost Blast.
 - **Forgetting the trainer and the wand.** Your damage depends on new ranks, and the wand saves mana on every finisher.
 - **Starting AoE farming before 22** or on enemies that attack at range.
 - **In a group:** Frost Nova next to the tank, Blizzard before the tank holds the pack, or on a polymorphed enemy.
@@ -221,21 +125,17 @@ More on each spell in the <PageLink to="guide">class guide</PageLink> and in <Pa
 
 ### Talented: talent points earlier
 
-The **Talented** Legacy perk (Adventure tree) gives you your first talent point earlier: at level 9 with 1 rank and at level 5 with 5. The maximum stays at 51 points. <Status status="reported" /> If you have it, turn on "I have Talented 5/5" above any point order table: the level column then says at which level each point arrives and the extra points, only for players who have it, appear at the end. The setting is remembered in every table.
+The **Talented** Legacy perk (Adventure tree) gives you your first talent point earlier: at level 9 with 1 rank and at level 5 with 5. The maximum stays at 51 points. <Status status="reported" /> If you have it, turn on "I have Talented 5/5" above any point order table in the builds: the level column then says at which level each point arrives and the extra points, only for players who have it, appear at the end. The setting is remembered in every table.
 
 Legacy points come from account challenges, such as taking a class to level 25. Your first character at launch will not have Talented. <Status status="reported" />
 
 ### Less mass farming
 
-Blizzard cut Improved Blizzard, Permafrost and Cone of Cold to make it harder for people chasing fast gold and experience to pull huge packs with repetitive, low-risk mechanics. <Status status="verified" /> AoE farming does not disappear, but it is riskier: see [the AoE build](#aoe-farming-when-to-start-and-its-limits).
+Blizzard cut the talents that let players pull huge packs of creatures with repetitive, low-risk mechanics, to slow down people chasing fast gold and experience. <Status status="verified" /> AoE farming does not disappear, but it is riskier: see the <PageLink to="aoe-farming">AoE farming</PageLink> guide.
 
 ### Downranking pays off less
 
 Since the 1 October build, ranks far below your level get less from your spell damage and trigger your abilities and talents less. On 8 October the low ranks of Frostbolt, Fireball and Arcane Missiles were also rebalanced so every new rank is always an upgrade. <Status status="verified" />
-
-### Chaining mobs as Fire
-
-**Wake of Fire**, the talent that boosted Fire Blast's crit after every kill, was removed on 15 October: it is **Improved Fire Blast** again, which cuts Fire Blast's cooldown and adds 8/15 yards of range, with no kill bonus. In exchange, every Fire Blast grants a Heating Up stack (two on a crit). <Status status="verified" />
 
 ### Scrolls to decipher
 
@@ -243,22 +143,13 @@ With **Comprehension** you can read scrolls dropped by creatures. They have been
 
 How to read them, what skill each one needs and leveling tips: <PageLink to="scrolls">quick scrolls guide</PageLink>.
 
-## Other variants evaluated
-
-I only publish a build when it brings something real. I looked at these variants and, for now, they have no build of their own: <Status status="analysis" />
-
-- **Fire.** Ignite and a Fire Blast that feeds Heating Up work in its favour; Wake of Fire, designed for leveling, is gone. But up to 30 it is missing pieces: Pyroblast takes 6 s to cast, Heating Up needs crits (and you crit little at those levels) and Fire does not slow, so enemies reach you sooner. Guides consider it less effective for leveling. <Status status="reported" /> I will look at it again for 31 to 60, with Frostfire Bolt (level 40), which also benefits from Fire talents.
-- **Arcane.** Since 15 October, Missile Barrage sits in row 1 (from level 10), Arcane Blast comes with 11 points (level 20) and Arcane Wrath with 16 (level 25). Each Arcane Blast makes the next one cost 175% more: a lot of mana for leveling. Before that redesign, Mobalytics noted it did not take off until level 25. <Status status="reported" /> I will look again once there are tests with the new version.
-- **Leveling with a partner.** With a tank by your side, the dungeon build already covers it; it does not need another one.
-- **Talented.** It is not another build: the same points, each 5 levels earlier, plus five extra points at the end of each table.
-
 ## Beyond level 30
 
-The build's talent order already reaches 60; the level-by-level progression, key spells and play tips reach 30 for now, and I will complete 31 to 60 on this same page. What is already known to change: at level 40 come **Frostfire Bolt** and dual specialization, which will let you carry a solo build and a dungeon build at once. <Status status="verified" />
+The level-by-level progression, key spells and play tips reach 30 for now; I will complete 31 to 60 on this same page. What is already known to change: at level 40 come **Frostfire Bolt** and dual specialization, which will let you carry two builds at once. <Status status="verified" />
 
 ## What is still unconfirmed
 
 <Pending
-  why="I have not tested the builds on the server yet. Talent values and spell levels come from the game client, not from an official source, and dungeon experience may change."
-  next="I will test the three builds, the AoE one in particular, and mark them as “Tested” or correct them. After the 4 November launch I will review the values and extend the guide to level 60."
+  why="I have not tested these tips on the server yet. Spell levels come from the game client, not from an official source, and dungeon experience may change."
+  next="I will test them in game and mark them as “Tested” or correct them. After the 4 November launch I will review the values and extend the guide to level 60."
 />

@@ -11,6 +11,7 @@ import BuildCard from './guide/BuildCard.astro';
 import BuildExplorer from './guide/BuildExplorer.astro';
 import BuildPicker from './guide/BuildPicker.astro';
 import SpecBuilds from './guide/SpecBuilds.astro';
+import BuildLink from './guide/BuildLink.astro';
 import Callout from './guide/Callout.astro';
 import CampBuffs from './guide/CampBuffs.astro';
 import ChangeExplorer from './guide/ChangeExplorer.astro';
@@ -71,6 +72,7 @@ export const mdxComponents = {
   BuildExplorer,
   BuildPicker,
   SpecBuilds,
+  BuildLink,
   Callout,
   CampBuffs,
   ChangeExplorer,

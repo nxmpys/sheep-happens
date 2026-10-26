@@ -14,7 +14,7 @@ import StatusBadge from './StatusBadge.astro';
 import TalentOrder from './TalentOrder.astro';
 import Icon from '../ui/Icon.astro';
 import { SPEC_LABELS, USE_LABELS, USE_TITLES, tb } from '../../i18n/builds';
-import { getLocale } from '../../i18n/locale';
+import { getLocale, href } from '../../i18n/locale';
 import { buildRole } from '../../lib/build-roles';
 import { buildIcon, contentPath } from '../../lib/build-routes';
 import { buildSections, type BuildSectionKey } from '../../lib/build-page';
@@ -39,9 +39,11 @@ const hasPros = pros.items.length > 0 || cons.items.length > 0 || pros.headline 
 
 <div class={`build-page school-${build.spec}`}>
   <ul class="build-page__chips" data-pagefind-ignore>
-    <li class="chip build-page__spec">
-      <Icon name={buildIcon(build)} size={16} />
-      {specLabel}
+    <li>
+      <a class="chip build-page__spec" href={href(`talents-${build.spec}`, locale)}>
+        <Icon name={buildIcon(build)} size={16} />
+        {specLabel}
+      </a>
     </li>
     {
       build.uses.map((use) => {
@@ -193,6 +195,10 @@ const hasPros = pros.items.length > 0 || cons.items.length > 0 || pros.headline 
   }
   .build-page__chips li {
     margin: 0;
+  }
+  .build-page__spec {
+    text-decoration: none;
+    color: var(--text);
   }
   .build-page__spec :global(svg) {
     color: var(--school);

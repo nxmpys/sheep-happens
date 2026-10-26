@@ -36,7 +36,7 @@ const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' 
   </button>
   {
     build.page && (
-      <a class="button" href={href(build.page, locale, build.id)}>
+      <a class="button" href={href(build.page, locale)}>
         <Icon name="book" size={16} />
         {tb(locale, 'build.guide')}
       </a>
