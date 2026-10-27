@@ -1,0 +1,585 @@
+---
+/**
+ * Community builds, under the talent calculator: readers publish the build they
+ * have in the calculator with one to three tags, and the ranking lists the
+ * builds published most often, filtered by tag or main tree. No free text: a
+ * build is named by its spec (from its points) and its most voted tags.
+ * Storage and rules: functions/api/community-builds.ts, lib/community-builds.ts.
+ * The publish form needs Turnstile, like the feedback form; the ranking does not.
+ */
+import { getLocale } from '../../i18n/locale';
+import { t, type UiKey } from '../../i18n/ui';
+import { COMMUNITY_ACTION, COMMUNITY_MAX_TAGS, COMMUNITY_TAGS, type CommunityTag } from '../../lib/community-builds';
+import { talents } from '../../lib/data';
+import { TREE_ORDER } from '../../lib/talents';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || (import.meta.env.DEV ? '1x00000000000000000000AA' : '');
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const tagLabels: Record<CommunityTag, string> = es
+  ? { leveling: 'Leveo', dungeons: 'Mazmorras', raid: 'Banda', 'pvp-bg': 'JcJ · Campos de batalla', 'pvp-general': 'JcJ · General', farming: 'Farmeo' }
+  : { leveling: 'Leveling', dungeons: 'Dungeons', raid: 'Raid', 'pvp-bg': 'PvP · Battlegrounds', 'pvp-general': 'PvP · General', farming: 'Farming' };
+const trees = Object.fromEntries(TREE_ORDER.map((tree) => [tree, t(locale, `tree.${tree}` as UiKey)]));
+const config = {
+  endpoint: `${base}api/community-builds`,
+  siteKey,
+  action: COMMUNITY_ACTION,
+  language: locale,
+  maxTags: COMMUNITY_MAX_TAGS,
+  talents: talents.map(({ id, tree, row, col, maxRank }) => ({ id, tree, row, col, maxRank })),
+  tags: tagLabels,
+  trees,
+  strings: {
+    incomplete: es ? 'Te quedan {n} puntos por repartir: solo se publican builds completas de nivel 60.' : 'You have {n} points left: only complete level 60 builds can be published.',
+    already: es ? 'Ya has publicado esta build desde este navegador.' : 'You already published this build from this browser.',
+    pickTag: es ? 'Elige al menos una etiqueta.' : 'Pick at least one tag.',
+    sending: es ? 'Publicando…' : 'Publishing…',
+    sent: es ? 'Publicada. Gracias: ya cuenta en el ranking.' : 'Published. Thanks: it now counts in the ranking.',
+    verify: es ? 'Completa la verificación antes de publicar.' : 'Complete the check before publishing.',
+    unavailable: es ? 'Las builds de la comunidad no están disponibles ahora mismo.' : 'Community builds are not available right now.',
+    generic: es ? 'No se pudo publicar. Inténtalo de nuevo en un rato.' : 'Could not publish. Try again in a while.',
+    empty: es ? 'Nadie ha publicado todavía una build con estos filtros.' : 'Nobody has published a build with these filters yet.',
+    loading: es ? 'Cargando builds…' : 'Loading builds…',
+    times: es ? '{n} veces' : '{n} times',
+    once: es ? '1 vez' : 'once',
+    load: es ? 'Cargar en la calculadora' : 'Load in the calculator',
+    wowhead: 'Wowhead',
+    split: es ? 'Arcano / Fuego / Escarcha' : 'Arcane / Fire / Frost',
+  },
+};
+---
+
+<community-builds class="cb" data-config={JSON.stringify(config)} data-pagefind-ignore>
+  {
+    siteKey && (
+      <form class="cb__publish">
+        <p class="cb__current">
+          <span class="cb__label">{es ? 'Tu build' : 'Your build'}</span>
+          <span class="cb__spec" data-current-spec />
+          <span class="cb__split" data-current-split />
+        </p>
+        <fieldset class="cb__tags">
+          <legend>{es ? `¿Para qué la usas? Hasta ${COMMUNITY_MAX_TAGS} etiquetas` : `What do you use it for? Up to ${COMMUNITY_MAX_TAGS} tags`}</legend>
+          {
+            COMMUNITY_TAGS.map((tag) => (
+              <label class="cb__tag">
+                <input type="checkbox" name="tag" value={tag} />
+                <span>{tagLabels[tag]}</span>
+              </label>
+            ))
+          }
+        </fieldset>
+        <div class="cb__captcha" />
+        <div class="cb__send">
+          <button type="submit" class="button button--primary" data-publish>
+            {es ? 'Publicar mi build' : 'Publish my build'}
+          </button>
+          <p class="cb__status" role="status" aria-live="polite" data-status />
+        </div>
+      </form>
+    )
+  }
+
+  <div class="cb__filters">
+    <div class="cb__chips" role="group" aria-label={es ? 'Filtrar por etiqueta' : 'Filter by tag'}>
+      <button type="button" class="cb__chip" data-tag="" aria-pressed="true">{es ? 'Todas' : 'All'}</button>
+      {
+        COMMUNITY_TAGS.map((tag) => (
+          <button type="button" class="cb__chip" data-tag={tag} aria-pressed="false">
+            {tagLabels[tag]} <span class="cb__count" data-count={tag} />
+          </button>
+        ))
+      }
+    </div>
+    <label class="cb__field">
+      <span>{es ? 'Rama principal' : 'Main tree'}</span>
+      <select name="spec">
+        <option value="">{es ? 'Todas' : 'All'}</option>
+        {TREE_ORDER.map((tree) => <option value={tree}>{trees[tree]}</option>)}
+      </select>
+    </label>
+  </div>
+
+  <p class="cb__message" data-message role="status" aria-live="polite"></p>
+  <ol class="cb__list" data-list aria-live="polite"></ol>
+</community-builds>
+
+<script>
+  import { communitySpec, type CommunityBuild, type CommunitySpec, type CommunityTag } from '../../lib/community-builds';
+  import { MAX_TALENT_POINTS, TREE_ORDER, parseWowheadBuild, pointsByTree, totalPoints, wowheadBuildUrl } from '../../lib/talents';
+  import type { SpecTree, Talent } from '../../lib/schemas';
+  import { loadTurnstile, type Turnstile } from '../../scripts/turnstile';
+
+  interface Config {
+    endpoint: string;
+    siteKey: string;
+    action: string;
+    language: string;
+    maxTags: number;
+    talents: Talent[];
+    tags: Record<CommunityTag, string>;
+    trees: Record<SpecTree, string>;
+    strings: Record<string, string>;
+  }
+
+  const VOTED_KEY = 'sh-community-voted';
+  const fill = (text: string, values: Record<string, string | number>) => text.replace(/\{(\w+)\}/g, (_, key) => String(values[key] ?? ''));
+
+  /** Codes published from this browser: the form refuses to send the same build twice. */
+  function voted(): string[] {
+    try {
+      const list = JSON.parse(localStorage.getItem(VOTED_KEY) ?? '[]');
+      return Array.isArray(list) ? list : [];
+    } catch {
+      return [];
+    }
+  }
+  function remember(code: string) {
+    try {
+      localStorage.setItem(VOTED_KEY, JSON.stringify([...voted(), code].slice(-100)));
+    } catch {
+      // Private mode: the server still counts it.
+    }
+  }
+
+  class CommunityBuilds extends HTMLElement {
+    private config!: Config;
+    private code = '';
+    private tag = '';
+    private spec = '';
+    private turnstile: Turnstile | undefined;
+    private widget: string | undefined;
+    private request = 0;
+
+    connectedCallback() {
+      this.config = JSON.parse(this.dataset.config ?? '{}');
+      // The calculator may have painted before this script ran: start from the URL it keeps.
+      const code = new URLSearchParams(location.search).get('t') ?? '';
+      const points = parseWowheadBuild(`v2${code}`, this.config.talents) ?? {};
+      this.setBuild(code, totalPoints(points));
+      document.addEventListener('talents-change', (e) => {
+        const { code, total } = (e as CustomEvent<{ code: string; total: number }>).detail;
+        this.setBuild(code, total);
+      });
+
+      for (const chip of this.querySelectorAll<HTMLButtonElement>('[data-tag]')) {
+        chip.addEventListener('click', () => {
+          this.tag = chip.dataset.tag ?? '';
+          for (const other of this.querySelectorAll<HTMLButtonElement>('[data-tag]')) other.setAttribute('aria-pressed', String(other === chip));
+          this.fetchRanking();
+        });
+      }
+      this.querySelector<HTMLSelectElement>('select[name="spec"]')!.addEventListener('change', (e) => {
+        this.spec = (e.target as HTMLSelectElement).value;
+        this.fetchRanking();
+      });
+
+      const form = this.querySelector<HTMLFormElement>('.cb__publish');
+      if (form) {
+        const boxes = [...form.querySelectorAll<HTMLInputElement>('input[name="tag"]')];
+        for (const box of boxes) {
+          box.addEventListener('change', () => {
+            const checked = boxes.filter((b) => b.checked).length;
+            for (const other of boxes) other.disabled = !other.checked && checked >= this.config.maxTags;
+            this.startCaptcha();
+          });
+        }
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          this.publish(boxes.filter((b) => b.checked).map((b) => b.value));
+        });
+      }
+      this.fetchRanking();
+    }
+
+    private q<T extends HTMLElement = HTMLElement>(selector: string): T | null {
+      return this.querySelector<T>(selector);
+    }
+
+    private specLabel(spec: CommunitySpec) {
+      return spec.second ? `${this.config.trees[spec.main]} + ${this.config.trees[spec.second]}` : this.config.trees[spec.main];
+    }
+    private split(code: string) {
+      const byTree = pointsByTree(parseWowheadBuild(`v2${code}`, this.config.talents) ?? {}, this.config.talents);
+      return TREE_ORDER.map((tree) => byTree[tree]).join(' / ');
+    }
+
+    /** The build in the calculator: what the form would publish. */
+    private setBuild(code: string, total: number) {
+      this.code = code;
+      const specEl = this.q('[data-current-spec]');
+      if (!specEl) return;
+      const points = parseWowheadBuild(`v2${code}`, this.config.talents) ?? {};
+      const spec = total > 0 ? communitySpec(points, this.config.talents) : null;
+      specEl.textContent = spec ? this.specLabel(spec) : '';
+      specEl.className = spec ? `cb__spec school-${spec.main}` : 'cb__spec';
+      this.q('[data-current-split]')!.textContent = this.split(code);
+      this.q('[data-current-split]')!.title = this.config.strings['split']!;
+      const status = this.q('[data-status]')!;
+      const left = MAX_TALENT_POINTS - total;
+      const blocked = left > 0 ? fill(this.config.strings['incomplete']!, { n: left }) : voted().includes(code) ? this.config.strings['already']! : '';
+      // Keep an earlier result («Published», an error) while the build stays the same.
+      if (blocked) this.say(blocked, 'muted');
+      else if (status.dataset.code !== code) this.say('', 'muted');
+      this.q<HTMLButtonElement>('[data-publish]')!.disabled = blocked !== '';
+    }
+
+    private say(text: string, tone: 'info' | 'error' | 'muted' = 'info') {
+      const status = this.q('[data-status]');
+      if (!status) return;
+      status.textContent = text;
+      status.dataset.tone = tone;
+      status.dataset.code = this.code;
+    }
+
+    private async startCaptcha() {
+      if (this.widget !== undefined) return;
+      const captcha = this.q('.cb__captcha')!;
+      this.widget = '';
+      try {
+        this.turnstile = await loadTurnstile();
+        this.widget = this.turnstile.render(captcha, { sitekey: this.config.siteKey, action: this.config.action, language: this.config.language, theme: 'auto' });
+      } catch {
+        this.widget = undefined;
+        this.say(this.config.strings['unavailable']!, 'error');
+      }
+    }
+
+    private async publish(tags: string[]) {
+      const s = this.config.strings;
+      if (tags.length === 0) return this.say(s['pickTag']!, 'error');
+      const token = this.turnstile && this.widget ? this.turnstile.getResponse(this.widget) : undefined;
+      if (!token) return this.say(s['verify']!, 'error');
+      const button = this.q<HTMLButtonElement>('[data-publish]')!;
+      const code = this.code;
+      button.disabled = true;
+      this.say(s['sending']!);
+      try {
+        const res = await fetch(this.config.endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code, tags, token }),
+        });
+        const result = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+        if (!res.ok || !result.ok) throw new Error(result.error === 'verify' || result.error === 'unavailable' ? result.error : 'generic');
+        remember(code);
+        for (const box of this.querySelectorAll<HTMLInputElement>('input[name="tag"]')) {
+          box.checked = false;
+          box.disabled = false;
+        }
+        this.say(s['sent']!);
+        this.fetchRanking(true);
+      } catch (error) {
+        const key = error instanceof Error ? error.message : 'generic';
+        this.say(s[key] ?? s['generic']!, 'error');
+        button.disabled = false;
+      } finally {
+        if (this.turnstile && this.widget) this.turnstile.reset(this.widget);
+      }
+    }
+
+    private async fetchRanking(fresh = false) {
+      const id = ++this.request;
+      const s = this.config.strings;
+      const message = this.q('[data-message]')!;
+      const list = this.q('[data-list]')!;
+      list.setAttribute('aria-busy', 'true');
+      if (!list.children.length) message.textContent = s['loading']!;
+      const params = new URLSearchParams();
+      if (this.tag) params.set('tag', this.tag);
+      if (this.spec) params.set('spec', this.spec);
+      try {
+        const res = await fetch(`${this.config.endpoint}${params.size ? `?${params}` : ''}`, fresh ? { cache: 'reload' } : {});
+        if (!res.ok) throw new Error('unavailable');
+        const data = (await res.json()) as { builds: CommunityBuild[]; counts: Record<CommunityTag, number> };
+        if (id !== this.request) return;
+        for (const [tag, votes] of Object.entries(data.counts)) {
+          const count = this.q(`[data-count="${tag}"]`);
+          if (count) count.textContent = votes ? String(votes) : '';
+        }
+        this.render(data.builds);
+        message.textContent = data.builds.length ? '' : s['empty']!;
+      } catch {
+        if (id !== this.request) return;
+        list.replaceChildren();
+        message.textContent = s['unavailable']!;
+      } finally {
+        if (id === this.request) list.removeAttribute('aria-busy');
+      }
+    }
+
+    private render(builds: CommunityBuild[]) {
+      const s = this.config.strings;
+      const list = this.q('[data-list]')!;
+      list.replaceChildren(
+        ...builds.map((build) => {
+          const item = document.createElement('li');
+          item.className = `cb__item school-${build.spec.main}`;
+          const head = document.createElement('p');
+          head.className = 'cb__title';
+          const spec = document.createElement('span');
+          spec.className = 'cb__spec';
+          spec.textContent = this.specLabel(build.spec);
+          const split = document.createElement('span');
+          split.className = 'cb__split';
+          split.title = s['split']!;
+          split.textContent = this.split(build.code);
+          head.append(spec, ' ', split);
+
+          const tags = document.createElement('p');
+          tags.className = 'cb__used';
+          for (const { tag, votes } of build.tags) {
+            const chip = document.createElement('span');
+            chip.className = 'chip';
+            chip.textContent = `${this.config.tags[tag]} · ${votes}`;
+            tags.append(chip);
+          }
+
+          const votes = document.createElement('p');
+          votes.className = 'cb__votes';
+          votes.textContent = build.total === 1 ? s['once']! : fill(s['times']!, { n: build.total });
+
+          const actions = document.createElement('div');
+          actions.className = 'cb__actions';
+          const load = document.createElement('button');
+          load.type = 'button';
+          load.className = 'button';
+          load.textContent = s['load']!;
+          load.addEventListener('click', () => document.dispatchEvent(new CustomEvent('talents-load', { detail: { code: build.code } })));
+          const link = document.createElement('a');
+          link.className = 'button';
+          link.href = wowheadBuildUrl(parseWowheadBuild(`v2${build.code}`, this.config.talents) ?? {}, this.config.talents);
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.textContent = s['wowhead']!;
+          actions.append(load, link);
+
+          item.append(head, tags, votes, actions);
+          return item;
+        }),
+      );
+    }
+  }
+
+  customElements.define('community-builds', CommunityBuilds);
+</script>
+
+<style>
+  .cb {
+    display: grid;
+    gap: var(--space-3);
+    margin: var(--space-4) 0;
+  }
+  .cb__publish {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .cb__current {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2);
+    margin: 0;
+  }
+  .cb__label {
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .cb :global(.cb__spec) {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--school, var(--text));
+  }
+  .cb :global(.cb__split) {
+    font-variant-numeric: tabular-nums;
+    color: var(--text-muted);
+  }
+  .cb__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .cb__tags legend {
+    margin-bottom: var(--space-2);
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+  .cb__tag {
+    position: relative;
+  }
+  .cb__tag input {
+    position: absolute;
+    opacity: 0;
+  }
+  .cb__tag span,
+  .cb__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    min-height: 40px;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--text);
+    font: inherit;
+    font-size: var(--step--1);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .cb__tag input:checked + span,
+  .cb__chip[aria-pressed='true'] {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--accent-contrast);
+  }
+  .cb__tag input:focus-visible + span {
+    outline: 2px solid var(--focus, var(--accent));
+    outline-offset: 2px;
+  }
+  .cb__tag input:disabled + span {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  .cb__send {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .cb__send .button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  .cb__status,
+  .cb__message {
+    margin: 0;
+    font-size: var(--step--1);
+  }
+  .cb__status[data-tone='muted'] {
+    color: var(--text-muted);
+  }
+  .cb__status[data-tone='error'] {
+    color: var(--warning);
+    font-weight: 600;
+  }
+  .cb__message:empty,
+  .cb__captcha:empty {
+    display: none;
+  }
+  .cb__filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+  .cb__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .cb__count {
+    font-variant-numeric: tabular-nums;
+    opacity: 0.75;
+  }
+  .cb__field {
+    display: grid;
+    gap: var(--space-1);
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+  .cb__field select {
+    min-height: 40px;
+    padding: 0 var(--space-2);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+    color: var(--text);
+    font: inherit;
+    font-weight: 400;
+  }
+  .cb__list {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: cb;
+  }
+  .cb__list[aria-busy='true'] {
+    opacity: 0.6;
+  }
+  .cb :global(.cb__item) {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      'rank title votes'
+      'rank used used'
+      'rank actions actions';
+    gap: var(--space-1) var(--space-3);
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--school);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+    counter-increment: cb;
+  }
+  .cb :global(.cb__item::before) {
+    content: counter(cb);
+    grid-area: rank;
+    align-self: start;
+    min-width: 1.5em;
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 700;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .cb :global(.cb__title) {
+    grid-area: title;
+    margin: 0;
+  }
+  .cb :global(.cb__used) {
+    grid-area: used;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    margin: 0;
+  }
+  .cb :global(.cb__votes) {
+    grid-area: votes;
+    margin: 0;
+    font-size: var(--step--1);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .cb :global(.cb__actions) {
+    grid-area: actions;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-1);
+  }
+  @media (min-width: 48rem) {
+    .cb :global(.cb__item) {
+      grid-template-columns: auto minmax(0, 1fr) auto auto;
+      grid-template-areas:
+        'rank title votes actions'
+        'rank used votes actions';
+    }
+    .cb :global(.cb__actions) {
+      margin-top: 0;
+    }
+  }
+</style>

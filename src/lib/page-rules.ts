@@ -37,6 +37,7 @@ export const MDX_COMPONENTS = [
   'ChangelogList',
   'ClassQuestList',
   'CampBuffs',
+  'CommunityBuilds',
   'CritCalculator',
   'HitCalculator',
   'FactList',

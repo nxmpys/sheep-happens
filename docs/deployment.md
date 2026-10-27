@@ -9,7 +9,7 @@ Coste: 0 €. Cloudflare Pages (plan gratuito) ofrece ancho de banda ilimitado, 
 ```
 push a main ──► GitHub ──► Cloudflare Pages ejecuta `npm run check` ──► publica dist/
                   │                (si algo falla, NO publica)
-                  │                + functions/ (POST /api/feedback → issue «feedback»; GET / → idioma)
+                  │                + functions/ (POST /api/feedback → issue «feedback»; /api/community-builds → D1; GET / → idioma)
                   ├── CI (Actions): mismas comprobaciones + datos documentados
                   └── Revisión de fuentes (Actions, miércoles y viernes): issue con las novedades
 ```
@@ -82,6 +82,7 @@ Para cambios grandes, trabaja en una rama: Cloudflare crea una vista previa en `
 | `.github/workflows/weekly-sources.yml` | Informe de fuentes de los miércoles y viernes (issue) |
 | `.github/workflows/smoke.yml` | Tras cada despliegue y cada mañana, comprueba la web publicada desde GitHub: páginas clave, 404, cabeceras, canónica, sitemap, robots y la redirección de `pages.dev` |
 | `functions/api/feedback.ts` | Formulario de comentarios: comprueba Turnstile y abre una issue `feedback` (ver abajo) |
+| `functions/api/community-builds.ts` | Builds de la comunidad de la calculadora: publica (con Turnstile) y lista las más publicadas desde D1 (ver abajo) |
 | `src/pages/build.json.ts` | Publica `/build.json` con el commit desplegado (lo usa la prueba de humo) |
 
 ## Formulario de feedback
@@ -117,6 +118,25 @@ Mientras falte algo de esto, el formulario **no aparece** en producción (en `np
 Si el token caduca o se revoca, el formulario responde «no se pudo enviar» y el error queda en *Deployments* → *Functions* → *Real-time logs*. Para retirarlo, borra `PUBLIC_TURNSTILE_SITE_KEY` y vuelve a desplegar.
 
 Si llega spam pese a Turnstile, añade una regla de *Rate limiting* gratuita en *Security* → *WAF* para la ruta `/api/feedback` (por ejemplo, 5 peticiones por minuto por IP).
+
+## Builds de la comunidad
+
+Bajo la calculadora de talentos, cualquiera puede publicar la build que tiene en la calculadora (los 51 puntos repartidos) con 1 a 3 etiquetas: Leveo, Mazmorras, Banda, JcJ · Campos de batalla, JcJ · General y Farmeo. No hay texto libre, así que no hace falta moderar: cada build se nombra con su rama (la de más puntos, más una segunda si tiene 17 o más, `src/lib/community-builds.ts`) y sus etiquetas más votadas. El ranking lista las 20 más publicadas, en total o por etiqueta y rama principal.
+
+`functions/api/community-builds.ts` guarda una fila por build y etiqueta con su número de votos en una base de datos **D1** (plan gratuito: 5 GB y 100 000 escrituras al día). No guarda IP, cookies ni nada del lector. El servidor solo acepta builds válidas de nivel 60 y un token de Turnstile con la acción `community-build`; el navegador recuerda (en `localStorage`) las builds que ya publicó para no repetirlas.
+
+### Puesta en marcha (una sola vez)
+
+Necesita la misma clave de Turnstile que el formulario de feedback (`PUBLIC_TURNSTILE_SITE_KEY` y `TURNSTILE_SECRET_KEY`). Sin `PUBLIC_TURNSTILE_SITE_KEY` no aparece el formulario de publicar; sin la base de datos, el ranking dice que no está disponible.
+
+1. **Base de datos:** panel de Cloudflare → *Storage & Databases* → *D1* → *Create database*. Nombre `sheep-happens-community`. La tabla `community_builds` se crea sola con la primera petición.
+2. **Enlace:** *Workers & Pages* → `sheep-happens` → *Settings* → *Bindings* → *Add* → *D1 database*. **Variable name: `COMMUNITY_DB`**, base de datos `sheep-happens-community`. Hazlo en **Production** (y en *Preview* si quieres probar en ramas; mejor con otra base de datos para no mezclar votos).
+3. **Vuelve a desplegar** (*Deployments* → *Retry deployment*, o cualquier push): los enlaces se aplican al desplegar.
+4. **Prueba:** `curl -s https://sheephappens.app/api/community-builds` debe devolver `{"builds":[],"counts":{…}}`. Publica una build desde la calculadora y comprueba que aparece.
+
+Para ver o borrar votos: *D1* → `sheep-happens-community` → *Console*, por ejemplo `SELECT * FROM community_builds ORDER BY votes DESC;` o `DELETE FROM community_builds WHERE code = '…';`.
+
+Si alguien infla una build a mano, añade una regla de *Rate limiting* en *Security* → *WAF* para `POST /api/community-builds` (por ejemplo, 3 peticiones por minuto por IP).
 
 ## Si la web no carga desde España
 

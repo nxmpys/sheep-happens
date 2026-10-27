@@ -9,6 +9,8 @@
  * or loaded from a Wowhead link or one of our builds. A build with a point order
  * also adds &b=<build id>: while it stays untouched, changing the level shows its
  * points at that level in its own order, not a trimmed copy of the level 60 build.
+ * Every change fires `talents-change` (detail: code, total) for CommunityBuilds,
+ * and a `talents-load` event on the document (detail: code) loads a build.
  */
 import Icon from '../ui/Icon.astro';
 import TalentGrid from './TalentGrid.astro';
@@ -290,11 +292,24 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
         this.update();
         this.say(this.config.strings['imported']!);
       });
+      document.addEventListener('talents-load', (e) => this.loadCode((e as CustomEvent<{ code: string }>).detail.code));
       this.q('[data-copy]').addEventListener('click', async () => {
         const ok = await copyText(location.href);
         showToast(ok ? this.config.strings['copied']! : this.config.strings['copyFailed']!);
       });
       this.update();
+    }
+
+    /** Loads a build code from another component (a community build) and brings the trees into view. */
+    private loadCode(code: string) {
+      const points = parseWowheadBuild(`v2${code}`, this.config.talents);
+      if (!points || !this.valid(points)) return;
+      this.points = points;
+      this.ordered = null;
+      this.fitLevel();
+      this.update();
+      this.say(this.config.strings['imported']!);
+      this.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
     }
 
     private q<T extends HTMLElement = HTMLElement>(selector: string): T {
@@ -456,6 +471,7 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
       const url = wowheadBuildUrl(this.points, this.config.talents);
       this.q<HTMLAnchorElement>('[data-wowhead]').href = url;
       this.writeUrl(url);
+      this.dispatchEvent(new CustomEvent('talents-change', { bubbles: true, detail: { code: url.split('/mage/v2')[1] ?? '', total } }));
       if (this.shown) this.show(this.shown);
     }
 

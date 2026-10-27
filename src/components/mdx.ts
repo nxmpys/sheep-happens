@@ -18,6 +18,7 @@ import ChangeExplorer from './guide/ChangeExplorer.astro';
 import ChangeSummaryList from './guide/ChangeSummaryList.astro';
 import ChangelogList from './guide/ChangelogList.astro';
 import ClassQuestList from './guide/ClassQuestList.astro';
+import CommunityBuilds from './guide/CommunityBuilds.astro';
 import CritCalculator from './guide/CritCalculator.astro';
 import HitCalculator from './guide/HitCalculator.astro';
 import FactList from './guide/FactList.astro';
@@ -79,6 +80,7 @@ export const mdxComponents = {
   ChangeSummaryList,
   ChangelogList,
   ClassQuestList,
+  CommunityBuilds,
   CritCalculator,
   HitCalculator,
   FactList,

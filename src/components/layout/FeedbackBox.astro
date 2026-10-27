@@ -93,6 +93,8 @@ const config = {
 }
 
 <script>
+  import { loadTurnstile, type Turnstile } from '../../scripts/turnstile';
+
   interface FeedbackConfig {
     endpoint: string;
     page: string;
@@ -100,35 +102,6 @@ const config = {
     action: string;
     language: string;
     strings: Record<'submit' | 'sending' | 'sent' | 'viewIssue' | 'verify' | 'length' | 'unavailable' | 'generic', string>;
-  }
-  interface Turnstile {
-    render(el: HTMLElement, options: Record<string, unknown>): string;
-    getResponse(id: string): string | undefined;
-    reset(id: string): void;
-  }
-  type TurnstileWindow = Window & { turnstile?: Turnstile };
-
-  const TURNSTILE_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
-  let loading: Promise<Turnstile> | undefined;
-
-  /** Loads Turnstile only when someone opens the form: no third-party script on normal page views. */
-  function loadTurnstile(): Promise<Turnstile> {
-    loading ??= new Promise((resolve, reject) => {
-      const script = document.createElement('script');
-      script.src = TURNSTILE_SRC;
-      script.async = true;
-      script.onload = () => {
-        const api = (window as TurnstileWindow).turnstile;
-        if (api) resolve(api);
-        else reject(new Error('turnstile'));
-      };
-      script.onerror = () => {
-        loading = undefined;
-        reject(new Error('turnstile'));
-      };
-      document.head.append(script);
-    });
-    return loading;
   }
 
   for (const box of document.querySelectorAll<HTMLElement>('[data-feedback]')) {
