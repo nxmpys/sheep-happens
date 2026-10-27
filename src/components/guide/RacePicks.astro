@@ -1,16 +1,21 @@
 ---
 /**
  * Best races per situation and faction (src/data/race-picks.json). The races
- * page shows each race with its own reason under it, racial names as tooltips;
- * the «Elige» hub only the answer, with a link to them. Column headers are the
- * faction names, which the faction filter reads.
+ * page shows one card per situation with a lane per faction: the races in
+ * order, each with the icon of the racial its reason names (racial names are
+ * tooltips). The «Elige» hub gets only the answer as a table, with a link to
+ * them. Lanes carry data-faction and the table's column headers are the faction
+ * names, which is what the faction filter reads.
  */
+import Icon from '../ui/Icon.astro';
+import type { IconName } from '../ui/icons';
 import { FACTION_LABELS } from '../../i18n/builds';
 import { getLocale, href } from '../../i18n/locale';
-import { racePicks, races } from '../../lib/data';
+import { racePicks, races, spellText } from '../../lib/data';
+import { iconPath } from '../../lib/icons';
 
 interface Props {
-  /** Without the «Why» column: for the hub page. */
+  /** Only the answer, as a table: for the hub page. */
   compact?: boolean;
 }
 
@@ -18,7 +23,9 @@ const { compact = false } = Astro.props;
 const locale = getLocale(Astro);
 const es = locale === 'es';
 const factions = FACTION_LABELS[locale];
-// "Cielonato (Skyborne)" the first time in the table, "Cielonato" afterwards.
+const FACTION_CREST = { alliance: 'achievement_pvp_a_14', horde: 'achievement_pvp_h_14' } as const;
+const SITUATION_ICON: Record<string, IconName> = { leveling: 'level', dungeons: 'users', pvp: 'swords', aoe: 'aoe' };
+// "Cielonato (Skyborne)" the first time on the page, "Cielonato" afterwards.
 const seen = new Set<string>();
 const raceName = (id: string) => {
   const full = races.find((r) => r.id === id)?.name[locale] ?? id;
@@ -39,91 +46,230 @@ const withRacials = (raceId: string, text: string): Piece[] => {
   const pattern = new RegExp(`(${[...byName.keys()].sort((a, b) => b.length - a.length).map(escape).join('|')})`);
   return text.split(pattern).map((part, i) => (i % 2 === 1 ? { key: byName.get(part)!, text: part } : part)).filter((p) => p !== '');
 };
+/** Icon of the first racial the reason names, if it has one. */
+const reasonIcon = (raceId: string, text: string) => {
+  const racials = races.find((r) => r.id === raceId)?.racials ?? [];
+  const named = racials
+    .filter((r) => text.includes(r.name))
+    .sort((a, b) => text.indexOf(a.name) - text.indexOf(b.name));
+  const icon = named.map((r) => (r.spell ? spellText[r.spell]?.icon : undefined)).find(Boolean);
+  return icon ? iconPath(icon) : undefined;
+};
 ---
 
-<div class="table-wrap" tabindex="0" role="region" aria-label={es ? 'Mejor raza por situación' : 'Best race by situation'}>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">{es ? 'Para' : 'For'}</th>
-        <th scope="col">{factions.alliance}</th>
-        <th scope="col">{factions.horde}</th>
-      </tr>
-    </thead>
-    <tbody>
-      {
-        racePicks.map((pick) => (
-          <tr>
-            <th scope="row">{pick.situation[locale]}</th>
-            {compact ? (
-              <>
+{
+  compact ? (
+    <>
+      <div class="table-wrap" tabindex="0" role="region" aria-label={es ? 'Mejor raza por situación' : 'Best race by situation'}>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">{es ? 'Para' : 'For'}</th>
+              <th scope="col">{factions.alliance}</th>
+              <th scope="col">{factions.horde}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {racePicks.map((pick) => (
+              <tr>
+                <th scope="row">{pick.situation[locale]}</th>
                 <td>{names(pick.alliance)}</td>
                 <td>{names(pick.horde)}</td>
-              </>
-            ) : (
-              (['alliance', 'horde'] as const).map((faction) => (
-                <td>
-                  <ul class="race-pick">
-                    {pick[faction].map((id) => (
-                      <li>
-                        <strong class="race-pick__race">{raceName(id)}</strong>
-                        <span class="race-pick__why">
-                          {withRacials(id, pick.why[id]![locale]).map((piece) =>
-                            typeof piece === 'string' ? (
-                              piece
-                            ) : (
-                              <span class="spell-ref school-baseline" data-spell={piece.key} lang="en">
-                                {piece.text}
-                              </span>
-                            ),
-                          )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="race-picks__more">
+        <a href={href('races', locale)}>{es ? 'Por qué, y las raciales de cada raza' : 'Why, and every race’s racials'}</a>
+      </p>
+    </>
+  ) : (
+    <div class="picks">
+      {racePicks.map((pick) => (
+        <section class="pick" aria-labelledby={`pick-${pick.id}`}>
+          <p class="pick__title" id={`pick-${pick.id}`}>
+            <Icon name={SITUATION_ICON[pick.id] ?? 'mage'} size={22} />
+            {pick.situation[locale]}
+          </p>
+          <div class="pick__lanes">
+            {(['alliance', 'horde'] as const).map((faction) => (
+              <div class={`lane lane--${faction}`} data-faction={faction}>
+                <p class="lane__faction">
+                  <img src={iconPath(FACTION_CREST[faction])} alt="" width="20" height="20" loading="lazy" />
+                  {factions[faction]}
+                </p>
+                <ol class="lane__races">
+                  {pick[faction].map((id, index) => {
+                    const why = pick.why[id]![locale];
+                    const icon = reasonIcon(id, why);
+                    return (
+                      <li class:list={['lane__race', index === 0 && 'lane__race--first']}>
+                        <span class="lane__rank" aria-hidden="true">
+                          {index + 1}
                         </span>
+                        <div class="lane__body">
+                          <strong class="lane__name">{raceName(id)}</strong>
+                          <p class="lane__why">
+                            {icon && <img class="lane__icon" src={icon} alt="" width="28" height="28" loading="lazy" />}
+                            <span>
+                              {withRacials(id, why).map((piece) =>
+                                typeof piece === 'string' ? (
+                                  piece
+                                ) : (
+                                  <span class="spell-ref school-baseline" data-spell={piece.key} lang="en">
+                                    {piece.text}
+                                  </span>
+                                ),
+                              )}
+                            </span>
+                          </p>
+                        </div>
                       </li>
-                    ))}
-                  </ul>
-                  {pick.note?.[faction] && <p class="race-pick__note">{pick.note[faction]![locale]}</p>}
-                </td>
-              ))
-            )}
-          </tr>
-        ))
-      }
-    </tbody>
-  </table>
-</div>
-{
-  compact && (
-    <p class="race-picks__more">
-      <a href={href('races', locale)}>{es ? 'Por qué, y las raciales de cada raza' : 'Why, and every race’s racials'}</a>
-    </p>
+                    );
+                  })}
+                </ol>
+                {pick.note?.[faction] && <p class="lane__note">{pick.note[faction]![locale]}</p>}
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
   )
 }
 
 <style>
-  .race-pick {
+  .race-picks__more {
+    margin-top: var(--space-2);
+    font-size: var(--step--1);
+  }
+  /* As wide as the main column, like the race cards below. */
+  .picks {
+    width: 100cqi;
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 30rem), 1fr));
+    gap: var(--space-4);
+    margin-block: var(--space-4);
+  }
+  .pick {
+    display: grid;
+    align-content: start;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+  }
+  .pick__title {
+    display: flex;
+    align-items: center;
     gap: var(--space-2);
+    margin: 0;
+    font-size: var(--step-1);
+    font-weight: 700;
+  }
+  .pick__title :global(svg) {
+    color: var(--accent);
+  }
+  .pick__lanes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+    gap: var(--space-3);
+  }
+  .lane {
+    display: grid;
+    align-content: start;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    border-radius: var(--radius);
+    border-top: 3px solid var(--faction);
+    background: linear-gradient(180deg, var(--faction-soft), transparent 70%);
+  }
+  .lane[hidden] {
+    display: none;
+  }
+  .lane--alliance {
+    --faction: var(--frost);
+    --faction-soft: var(--frost-soft);
+  }
+  .lane--horde {
+    --faction: var(--fire);
+    --faction-soft: var(--fire-soft);
+  }
+  .lane__faction {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--faction);
+  }
+  .lane__faction img {
+    border-radius: 4px;
+  }
+  .lane__races {
+    display: grid;
+    gap: var(--space-3);
     margin: 0;
     padding: 0;
     list-style: none;
   }
-  .race-pick li {
+  .lane__race {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-2);
     margin: 0;
   }
-  .race-pick__race {
-    display: block;
+  .lane__rank {
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    font-size: var(--step--1);
+    font-weight: 700;
+    color: var(--text-muted);
   }
-  .race-pick__why,
-  .race-pick__note {
+  .lane__race--first .lane__rank {
+    border-color: var(--faction);
+    background: var(--faction);
+    color: var(--surface-1);
+  }
+  .lane__body {
+    display: grid;
+    gap: var(--space-1);
+  }
+  .lane__name {
+    font-size: var(--step-0);
+    line-height: 1.75rem;
+  }
+  .lane__race--first .lane__name {
+    font-size: var(--step-1);
+  }
+  .lane__why {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin: 0;
     font-size: var(--step--1);
     color: var(--text-muted);
   }
-  .race-pick__note {
-    margin-top: var(--space-2);
-    font-style: italic;
+  .lane__icon {
+    flex-shrink: 0;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
   }
-  .race-picks__more {
-    margin-top: var(--space-2);
+  .lane__note {
+    margin: 0;
+    padding-top: var(--space-2);
+    border-top: 1px dashed var(--border);
     font-size: var(--step--1);
+    font-style: italic;
+    color: var(--text-muted);
   }
 </style>
