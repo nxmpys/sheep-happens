@@ -290,6 +290,20 @@
           "es": "Ayuda contra pícaros y guerreros.",
           "en": "Helps against Rogues and Warriors."
         }
+      },
+      {
+        "id": "command",
+        "name": "Command",
+        "kind": "passive",
+        "effect": {
+          "es": "Daño de las mascotas de brujos y cazadores aumentado un 5 %. Sustituye a Savage (Salvajismo), que daba un 1 % de crítico.",
+          "en": "Warlock and Hunter pet damage increased by 5%. Replaces Savage, which gave 1% crit."
+        },
+        "value": "none",
+        "why": {
+          "es": "El Mago no tiene mascotas: el Orco se queda sin racial de daño pasiva.",
+          "en": "Mages have no pets: Orcs are left without a passive damage racial."
+        }
       }
     ],
     "status": "reported",

@@ -377,8 +377,11 @@ export const racialSchema = z
     id,
     name: z.string().min(1),
     nameEs: z.string().min(1).optional(),
-    /** Wowhead Forever spell id: in-game tooltip text and icon (spell-text.json). */
-    spell: z.number().int().positive(),
+    /**
+     * Wowhead Forever spell id: in-game tooltip text and icon (spell-text.json).
+     * Missing when the racial is announced but not yet in the Forever database.
+     */
+    spell: z.number().int().positive().optional(),
     kind: z.enum(['active', 'passive']),
     effect: localized,
     /** How much it helps a Mage: our analysis, shown as a rating. */

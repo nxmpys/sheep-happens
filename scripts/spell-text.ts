@@ -45,7 +45,7 @@ const ids = new Set<number>([
   ...talents.map((t) => t.spell),
   ...abilities.flatMap((a) => (a.spell ? [a.spell] : [])),
   ...changes.flatMap((c) => (c.spell ? [c.spell] : [])),
-  ...races.flatMap((r) => r.racials.map((racial) => racial.spell)),
+  ...races.flatMap((r) => r.racials.flatMap((racial) => (racial.spell ? [racial.spell] : []))),
 ]);
 const previous = JSON.parse(readFileSync(OUT, 'utf8')) as { spells: Record<string, SpellTextEntry> };
 const spells: Record<string, SpellTextEntry> = {};

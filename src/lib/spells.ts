@@ -223,7 +223,7 @@ export function buildSpellIndex(
         },
         racial.name,
         racial.nameEs,
-        data.spellText?.[racial.spell]?.es?.name,
+        racial.spell ? data.spellText?.[racial.spell]?.es?.name : undefined,
       );
     }
   }

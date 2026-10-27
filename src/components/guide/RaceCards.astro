@@ -54,7 +54,7 @@ const valueLabel = (value: keyof (typeof VALUE_LABELS)['es']) =>
                 {valueLabel(racial.value)}
               </p>
               <p class="racial__head">
-                {spellText[racial.spell]?.icon && (
+                {racial.spell && spellText[racial.spell]?.icon && (
                   <img class="racial__icon" src={iconPath(spellText[racial.spell]!.icon!)} alt="" width="36" height="36" loading="lazy" />
                 )}
                 <span class="racial__name spell-ref school-baseline" data-spell={`racial-${race.id}-${racial.id}`} lang="en">
