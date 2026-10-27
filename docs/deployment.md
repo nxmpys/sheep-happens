@@ -121,7 +121,7 @@ Si llega spam pese a Turnstile, añade una regla de *Rate limiting* gratuita en 
 
 ## Builds de la comunidad
 
-Bajo la calculadora de talentos, cualquiera puede publicar la build que tiene en la calculadora (los 51 puntos repartidos) con 1 a 3 etiquetas: Leveo, Mazmorras, Banda, JcJ · Campos de batalla, JcJ · General y Farmeo. No hay texto libre, así que no hace falta moderar: cada build se nombra con su rama (la de más puntos, más una segunda si tiene 17 o más, `src/lib/community-builds.ts`) y sus etiquetas más votadas. El ranking lista las 20 más publicadas, en total o por etiqueta y rama principal.
+Bajo la calculadora de talentos, cualquiera puede publicar la build que tiene en la calculadora (los 51 puntos repartidos) con 1 a 3 etiquetas: Leveo, Mazmorras, Banda, JcJ · Campos de batalla, JcJ · General y Farmeo. No hay texto libre, así que no hace falta moderar: cada build se nombra con su rama (la de más puntos, más una segunda si tiene 17 o más, `src/lib/community-builds.ts`) y sus etiquetas más votadas. El ranking lista las 5 más publicadas, en total o por etiqueta y rama principal, y solo se cargan en la calculadora (sin enlace a Wowhead).
 
 `functions/api/community-builds.ts` guarda una fila por build y etiqueta con su número de votos en una base de datos **D1** (plan gratuito: 5 GB y 100 000 escrituras al día). No guarda IP, cookies ni nada del lector. El servidor solo acepta builds válidas de nivel 60 y un token de Turnstile con la acción `community-build`; el navegador recuerda (en `localStorage`) las builds que ya publicó para no repetirlas.
 

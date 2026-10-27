@@ -2,15 +2,18 @@
 /**
  * Community builds, under the talent calculator: readers publish the build they
  * have in the calculator with one to three tags, and the ranking lists the
- * builds published most often, filtered by tag or main tree. No free text: a
- * build is named by its spec (from its points) and its most voted tags.
+ * five builds published most often, filtered by tag or main tree. No free
+ * text: a build is named by its spec (from its points) and its most voted tags.
+ * Each one is a card with the icon of its deepest talent over a glow in its
+ * trees' colours; it only loads into the calculator (no outside links).
  * Storage and rules: functions/api/community-builds.ts, lib/community-builds.ts.
  * The publish form needs Turnstile, like the feedback form; the ranking does not.
  */
 import { getLocale } from '../../i18n/locale';
 import { t, type UiKey } from '../../i18n/ui';
 import { COMMUNITY_ACTION, COMMUNITY_MAX_TAGS, COMMUNITY_TAGS, type CommunityTag } from '../../lib/community-builds';
-import { talents } from '../../lib/data';
+import { talentText, talents } from '../../lib/data';
+import { TREE_ICONS } from '../../lib/icons';
 import { TREE_ORDER } from '../../lib/talents';
 
 const locale = getLocale(Astro);
@@ -27,7 +30,8 @@ const config = {
   action: COMMUNITY_ACTION,
   language: locale,
   maxTags: COMMUNITY_MAX_TAGS,
-  talents: talents.map(({ id, tree, row, col, maxRank }) => ({ id, tree, row, col, maxRank })),
+  talents: talents.map(({ id, tree, row, col, maxRank }) => ({ id, tree, row, col, maxRank, icon: talentText.talents[id]?.icon ?? TREE_ICONS[tree] })),
+  icons: `${base}icons/`,
   tags: tagLabels,
   trees,
   strings: {
@@ -44,7 +48,6 @@ const config = {
     times: es ? '{n} veces' : '{n} times',
     once: es ? '1 vez' : 'once',
     load: es ? 'Cargar en la calculadora' : 'Load in the calculator',
-    wowhead: 'Wowhead',
     split: es ? 'Arcano / Fuego / Escarcha' : 'Arcane / Fire / Frost',
   },
 };
@@ -107,7 +110,7 @@ const config = {
 
 <script>
   import { communitySpec, type CommunityBuild, type CommunitySpec, type CommunityTag } from '../../lib/community-builds';
-  import { MAX_TALENT_POINTS, TREE_ORDER, parseWowheadBuild, pointsByTree, totalPoints, wowheadBuildUrl } from '../../lib/talents';
+  import { MAX_TALENT_POINTS, TREE_ORDER, parseWowheadBuild, pointsByTree, totalPoints } from '../../lib/talents';
   import type { SpecTree, Talent } from '../../lib/schemas';
   import { loadTurnstile, type Turnstile } from '../../scripts/turnstile';
 
@@ -117,7 +120,8 @@ const config = {
     action: string;
     language: string;
     maxTags: number;
-    talents: Talent[];
+    talents: (Talent & { icon: string })[];
+    icons: string;
     tags: Record<CommunityTag, string>;
     trees: Record<SpecTree, string>;
     strings: Record<string, string>;
@@ -309,53 +313,76 @@ const config = {
       }
     }
 
+    /** The talent deepest in the main tree (ties: more ranks): the build's signature icon. */
+    private signature(points: Record<string, number>, tree: SpecTree) {
+      return this.config.talents
+        .filter((t) => t.tree === tree && (points[t.id] ?? 0) > 0)
+        .sort((a, b) => b.row - a.row || (points[b.id] ?? 0) - (points[a.id] ?? 0))[0];
+    }
+
     private render(builds: CommunityBuild[]) {
       const s = this.config.strings;
-      const list = this.q('[data-list]')!;
-      list.replaceChildren(
-        ...builds.map((build) => {
-          const item = document.createElement('li');
-          item.className = `cb__item school-${build.spec.main}`;
-          const head = document.createElement('p');
-          head.className = 'cb__title';
-          const spec = document.createElement('span');
-          spec.className = 'cb__spec';
-          spec.textContent = this.specLabel(build.spec);
-          const split = document.createElement('span');
-          split.className = 'cb__split';
-          split.title = s['split']!;
-          split.textContent = this.split(build.code);
-          head.append(spec, ' ', split);
+      const el = <K extends keyof HTMLElementTagNameMap>(tag: K, className: string, text?: string) => {
+        const node = document.createElement(tag);
+        node.className = className;
+        if (text !== undefined) node.textContent = text;
+        return node;
+      };
+      this.q('[data-list]')!.replaceChildren(
+        ...builds.map((build, i) => {
+          const points = parseWowheadBuild(`v2${build.code}`, this.config.talents) ?? {};
+          const byTree = pointsByTree(points, this.config.talents);
+          const { main, second } = build.spec;
+          const item = el('li', `cb__item cb__item--${main} cb__item--with-${second ?? main} school-${main}`);
+          item.dataset.rank = String(i + 1);
+          item.style.setProperty('--i', String(i));
 
-          const tags = document.createElement('p');
-          tags.className = 'cb__used';
+          // Icon of the build's deepest talent over a glow in its trees' colours, with its place.
+          const art = el('span', 'cb__art');
+          art.setAttribute('aria-hidden', 'true');
+          const icon = this.signature(points, main)?.icon;
+          if (icon) {
+            const [aura, front] = [el('img', 'cb__aura'), el('img', 'cb__icon')];
+            for (const img of [aura, front]) {
+              img.src = `${this.config.icons}${icon}.jpg`;
+              img.alt = '';
+              img.width = img.height = 56;
+              img.decoding = 'async';
+            }
+            art.append(aura, el('span', 'cb__motes'), front);
+          }
+          art.append(el('span', 'cb__medal', String(i + 1)));
+
+          const head = el('p', 'cb__title');
+          head.append(el('span', 'cb__spec', this.specLabel(build.spec)), el('span', 'cb__votes', build.total === 1 ? s['once']! : fill(s['times']!, { n: build.total })));
+
+          const bar = el('span', 'cb__bar');
+          bar.setAttribute('aria-hidden', 'true');
+          const legend = el('p', 'cb__legend');
+          for (const tree of TREE_ORDER.filter((t) => byTree[t] > 0)) {
+            const seg = el('span', `cb__seg school-${tree}`);
+            seg.style.flexGrow = String(byTree[tree]);
+            bar.append(seg);
+            const part = el('span', `cb__tree school-${tree}`, `${this.config.trees[tree]} `);
+            part.append(el('strong', '', String(byTree[tree])));
+            legend.append(part);
+          }
+
+          const tags = el('p', 'cb__used');
           for (const { tag, votes } of build.tags) {
-            const chip = document.createElement('span');
-            chip.className = 'chip';
-            chip.textContent = `${this.config.tags[tag]} · ${votes}`;
+            const chip = el('span', 'cb__chiplet', this.config.tags[tag]);
+            chip.append(el('span', 'cb__chipcount', String(votes)));
             tags.append(chip);
           }
 
-          const votes = document.createElement('p');
-          votes.className = 'cb__votes';
-          votes.textContent = build.total === 1 ? s['once']! : fill(s['times']!, { n: build.total });
+          const body = el('div', 'cb__body');
+          body.append(head, bar, legend, tags);
 
-          const actions = document.createElement('div');
-          actions.className = 'cb__actions';
-          const load = document.createElement('button');
+          const load = el('button', 'button cb__load', s['load']);
           load.type = 'button';
-          load.className = 'button';
-          load.textContent = s['load']!;
           load.addEventListener('click', () => document.dispatchEvent(new CustomEvent('talents-load', { detail: { code: build.code } })));
-          const link = document.createElement('a');
-          link.className = 'button';
-          link.href = wowheadBuildUrl(parseWowheadBuild(`v2${build.code}`, this.config.talents) ?? {}, this.config.talents);
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-          link.textContent = s['wowhead']!;
-          actions.append(load, link);
 
-          item.append(head, tags, votes, actions);
+          item.append(art, body, load);
           return item;
         }),
       );
@@ -510,76 +537,242 @@ const config = {
   }
   .cb__list {
     display: grid;
-    gap: var(--space-2);
+    gap: var(--space-3);
     margin: 0;
     padding: 0;
     list-style: none;
-    counter-reset: cb;
   }
   .cb__list[aria-busy='true'] {
     opacity: 0.6;
   }
+  /* Each build: art (icon, glow, place) · body · load button. */
   .cb :global(.cb__item) {
+    --a: #a36dff;
+    --b: var(--a);
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    grid-template-areas:
-      'rank title votes'
-      'rank used used'
-      'rank actions actions';
-    gap: var(--space-1) var(--space-3);
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: var(--space-3) var(--space-4);
     align-items: center;
-    padding: var(--space-3) var(--space-4);
-    border: 1px solid var(--border);
-    border-left: 4px solid var(--school);
+    padding: var(--space-3);
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--a) 35%, var(--border));
     border-radius: var(--radius);
-    background: var(--surface-1);
-    counter-increment: cb;
+    background:
+      radial-gradient(120% 140% at 0% 50%, color-mix(in srgb, var(--a) 16%, transparent), transparent 60%),
+      var(--surface-1);
   }
-  .cb :global(.cb__item::before) {
-    content: counter(cb);
-    grid-area: rank;
-    align-self: start;
-    min-width: 1.5em;
+  .cb :global(.cb__item--fire) {
+    --a: #ff7a2e;
+  }
+  .cb :global(.cb__item--frost) {
+    --a: #3fb0ff;
+  }
+  .cb :global(.cb__item--with-arcane) {
+    --b: #a36dff;
+  }
+  .cb :global(.cb__item--with-fire) {
+    --b: #ff7a2e;
+  }
+  .cb :global(.cb__item--with-frost) {
+    --b: #3fb0ff;
+  }
+  /* The most published build gets a gold rim. */
+  .cb :global(.cb__item[data-rank='1']) {
+    border-color: #d6b25e;
+    box-shadow:
+      0 0 0 1px rgb(214 178 94 / 0.35),
+      0 10px 30px -14px color-mix(in srgb, var(--a) 80%, transparent);
+  }
+  .cb :global(.cb__art) {
+    position: relative;
+    display: grid;
+    place-items: center;
+    align-self: stretch;
+    min-height: 5.5rem;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    background:
+      radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--a) 60%, transparent), transparent 70%),
+      radial-gradient(circle at 75% 80%, color-mix(in srgb, var(--b) 55%, transparent), transparent 70%),
+      #0b0e1e;
+  }
+  /* The same icon, huge and blurred: the spell's colours fill the art. */
+  .cb :global(.cb__aura) {
+    position: absolute;
+    inset: -40%;
+    width: 180%;
+    height: 180%;
+    max-width: none;
+    object-fit: cover;
+    filter: blur(20px) saturate(1.4);
+    opacity: 0.45;
+  }
+  .cb :global(.cb__motes) {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgb(255 255 255 / 0.7) 0 1px, transparent 1.5px),
+      radial-gradient(circle, color-mix(in srgb, var(--a) 90%, white) 0 1.2px, transparent 2px);
+    background-size:
+      40px 40px,
+      60px 60px;
+    opacity: 0.45;
+  }
+  .cb :global(.cb__icon) {
+    position: relative;
+    width: 3.25rem;
+    height: 3.25rem;
+    border: 2px solid #d6b25e;
+    border-radius: 10px;
+    box-shadow:
+      0 0 0 3px rgb(0 0 0 / 0.55),
+      0 0 20px color-mix(in srgb, var(--a) 80%, transparent);
+  }
+  .cb :global(.cb__medal) {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: rgb(0 0 0 / 0.65);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.25);
+    color: #fff;
     font-family: var(--font-display);
-    font-size: var(--step-1);
+    font-size: var(--step--1);
     font-weight: 700;
-    color: var(--text-muted);
-    font-variant-numeric: tabular-nums;
+  }
+  .cb :global(.cb__item[data-rank='1'] .cb__medal) {
+    background: linear-gradient(145deg, #ffe08a, #b8862b);
+    color: #2a1a00;
+  }
+  .cb :global(.cb__item[data-rank='2'] .cb__medal) {
+    background: linear-gradient(145deg, #f2f4f8, #9aa3b2);
+    color: #1d2230;
+  }
+  .cb :global(.cb__item[data-rank='3'] .cb__medal) {
+    background: linear-gradient(145deg, #f0b48a, #9c5a2c);
+    color: #2a1200;
+  }
+  .cb :global(.cb__body) {
+    display: grid;
+    gap: var(--space-2);
+    min-width: 0;
   }
   .cb :global(.cb__title) {
-    grid-area: title;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-1) var(--space-3);
     margin: 0;
   }
+  .cb :global(.cb__item .cb__spec) {
+    font-size: var(--step-1);
+  }
+  .cb :global(.cb__votes) {
+    padding: 0.1em 0.6em;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--a) 22%, transparent);
+    font-size: var(--step--1);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .cb :global(.cb__bar) {
+    display: flex;
+    gap: 3px;
+    height: 6px;
+    overflow: hidden;
+    border-radius: 999px;
+  }
+  .cb :global(.cb__seg) {
+    background: var(--school);
+    border-radius: 999px;
+    transform-origin: left;
+  }
+  .cb :global(.cb__legend) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+    margin: 0;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .cb :global(.cb__tree strong) {
+    color: var(--school);
+    font-variant-numeric: tabular-nums;
+  }
   .cb :global(.cb__used) {
-    grid-area: used;
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-1);
     margin: 0;
   }
-  .cb :global(.cb__votes) {
-    grid-area: votes;
-    margin: 0;
+  .cb :global(.cb__chiplet) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+    padding: 0.1em 0.3em 0.1em 0.65em;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-2);
     font-size: var(--step--1);
-    font-weight: 700;
-    white-space: nowrap;
+    font-weight: 600;
   }
-  .cb :global(.cb__actions) {
-    grid-area: actions;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    margin-top: var(--space-1);
+  .cb :global(.cb__chipcount) {
+    min-width: 1.5em;
+    padding: 0 0.4em;
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--text-muted);
+    text-align: center;
+    font-variant-numeric: tabular-nums;
   }
-  @media (min-width: 48rem) {
+  .cb :global(.cb__load) {
+    grid-column: 1 / -1;
+  }
+  @media (min-width: 40rem) {
     .cb :global(.cb__item) {
-      grid-template-columns: auto minmax(0, 1fr) auto auto;
-      grid-template-areas:
-        'rank title votes actions'
-        'rank used votes actions';
+      grid-template-columns: 6.5rem minmax(0, 1fr) auto;
     }
-    .cb :global(.cb__actions) {
-      margin-top: 0;
+    .cb :global(.cb__art) {
+      min-height: 6.5rem;
+    }
+    .cb :global(.cb__icon) {
+      width: 3.75rem;
+      height: 3.75rem;
+    }
+    .cb :global(.cb__load) {
+      grid-column: auto;
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .cb :global(.cb__item) {
+      animation: cb-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      animation-delay: calc(var(--i, 0) * 60ms);
+    }
+    .cb :global(.cb__seg) {
+      animation: cb-fill 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      animation-delay: calc(var(--i, 0) * 60ms + 0.2s);
+    }
+    .cb :global(.cb__icon) {
+      transition: transform 0.25s ease;
+    }
+    .cb :global(.cb__item:hover .cb__icon) {
+      transform: translateY(-2px) scale(1.06) rotate(-3deg);
+    }
+  }
+  @keyframes cb-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+  @keyframes cb-fill {
+    from {
+      transform: scaleX(0);
     }
   }
 </style>

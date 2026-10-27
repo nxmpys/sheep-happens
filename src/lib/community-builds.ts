@@ -15,8 +15,8 @@ export type CommunityTag = (typeof COMMUNITY_TAGS)[number];
 export const COMMUNITY_MAX_TAGS = 3;
 /** Turnstile action: the server rejects tokens issued for anything else. */
 export const COMMUNITY_ACTION = 'community-build';
-/** Builds listed per ranking. */
-export const COMMUNITY_LIMIT = 20;
+/** Builds listed per ranking: a short podium, not a wall of builds. */
+export const COMMUNITY_LIMIT = 5;
 /**
  * A second tree with at least this many points makes the build a hybrid
  * (a third of the 51 points: 17/0/34 is Frost + Arcane, 10/0/41 is Frost).
