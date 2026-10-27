@@ -107,10 +107,10 @@ export function buildSpellIndex(
   };
   /** The game text if there is one; otherwise our description and its status. */
   const iconBase = `${(opts.base ?? '/').replace(/\/?$/, '/')}icons/`;
-  const describe = (spell: number | undefined, summary: string, status: Status) => {
+  const describe = (spell: number | undefined, summary: string, status: Status, stale = false) => {
     const entry = spell ? data.spellText?.[spell] : undefined;
     const icon = entry?.icon ? { icon: `${iconBase}${entry.icon}.jpg` } : {};
-    const text = entry?.[locale];
+    const text = stale ? undefined : entry?.[locale];
     if (!text) return { ...icon, summary, status };
     const { name: _name, ...game } = text;
     return { ...icon, game, status };
@@ -217,7 +217,7 @@ export function buildSpellIndex(
           ...(es && racial.nameEs ? { name: racial.nameEs, english: racial.name } : { name: racial.name }),
           school: 'baseline',
           facts: [es ? `Racial de ${raceName}` : `${raceName} racial`, kind],
-          ...describe(racial.spell, racial.effect[locale], race.status),
+          ...describe(racial.spell, racial.effect[locale], race.status, racial.gameTextStale),
           href: link('races', `race-${race.id}`),
           more: 'guide',
         },

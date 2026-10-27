@@ -41,6 +41,7 @@
         "id": "the-human-spirit",
         "name": "The Human Spirit",
         "spell": 20598,
+        "gameTextStale": true,
         "kind": "passive",
         "effect": {
           "es": "Espíritu aumentado un 10 %.",
@@ -56,6 +57,7 @@
         "id": "ruthless",
         "name": "Ruthless",
         "spell": 20597,
+        "gameTextStale": true,
         "kind": "passive",
         "effect": {
           "es": "Crueldad: un 1 % más de probabilidad de crítico con hechizos y ataques. Sustituye a Sword Specialization.",
@@ -171,6 +173,7 @@
         "id": "read-ley-line",
         "name": "Read Ley Line",
         "spell": 1259705,
+        "gameTextStale": true,
         "kind": "active",
         "effect": {
           "es": "Lanzamiento de 2 s, también en movimiento: aumenta un 50 % tu regeneración de salud y maná durante 15 s. Lanzada en una línea ley te da además Attuned durante 1 h, que sube el efecto al 100 % y se mantiene al morir. No se puede usar con Innervate activo. 2 min de reutilización.",
@@ -186,6 +189,7 @@
         "id": "wind-blessed",
         "name": "Wind Blessed",
         "spell": 1259710,
+        "gameTextStale": true,
         "kind": "passive",
         "effect": {
           "es": "Celeridad de lanzamiento y ataque aumentada un 2 %.",

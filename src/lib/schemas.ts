@@ -382,6 +382,11 @@ export const racialSchema = z
      * Missing when the racial is announced but not yet in the Forever database.
      */
     spell: z.number().int().positive().optional(),
+    /**
+     * The Wowhead text still describes the racial before a change: the tooltip
+     * shows our effect instead (keeping the icon). Remove once Wowhead updates.
+     */
+    gameTextStale: z.literal(true).optional(),
     kind: z.enum(['active', 'passive']),
     effect: localized,
     /** How much it helps a Mage: our analysis, shown as a rating. */
