@@ -43,13 +43,13 @@
         "spell": 20598,
         "kind": "passive",
         "effect": {
-          "es": "Espíritu aumentado un 5 %.",
-          "en": "Spirit increased by 5%."
+          "es": "Espíritu aumentado un 10 %.",
+          "en": "Spirit increased by 10%."
         },
-        "value": "medium",
+        "value": "high",
         "why": {
-          "es": "El Espíritu regenera maná, y en Forever Armadura de mago y Meditación Arcana lo aprovechan más.",
-          "en": "Spirit regenerates mana, and in Forever Mage Armor and Arcane Meditation make better use of it."
+          "es": "El Espíritu regenera maná, y en Forever Armadura de mago y Meditación Arcana lo aprovechan más. Con un 10 % se nota: menos tiempo bebiendo al subir y más maná en peleas largas.",
+          "en": "Spirit regenerates mana, and in Forever Mage Armor and Arcane Meditation make better use of it. At 10% it shows: less drinking while leveling and more mana in long fights."
         }
       },
       {
@@ -58,13 +58,13 @@
         "spell": 20597,
         "kind": "passive",
         "effect": {
-          "es": "Crueldad: un 2 % más de probabilidad de crítico con hechizos y ataques. Sustituye a Sword Specialization.",
-          "en": "2% more critical strike chance with spells and attacks. Replaces Sword Specialization."
+          "es": "Crueldad: un 1 % más de probabilidad de crítico con hechizos y ataques. Sustituye a Sword Specialization.",
+          "en": "1% more critical strike chance with spells and attacks. Replaces Sword Specialization."
         },
-        "value": "high",
+        "value": "medium",
         "why": {
-          "es": "Crítico siempre activo, sin depender de llevar una espada.",
-          "en": "Always-on crit, no longer tied to wielding a sword."
+          "es": "Un poco de crítico siempre activo, sin depender de llevar una espada.",
+          "en": "A little always-on crit, not tied to wielding a sword."
         }
       }
     ],
@@ -72,9 +72,10 @@
     "sources": [
       "lfcarry-racials",
       "wowhead-forever-talent-calc",
-      "blizzard-dev-notes"
+      "blizzard-dev-notes",
+      "wowhead-racials-tuning"
     ],
-    "updated": "2026-10-16"
+    "updated": "2026-10-27"
   },
   {
     "id": "gnome",
@@ -172,13 +173,13 @@
         "spell": 1259705,
         "kind": "active",
         "effect": {
-          "es": "Lanzamiento de 2 s, también en movimiento: duplica tu regeneración de salud y maná durante al menos 30 s, o 15 min si encuentras una línea ley cercana. 2 min de reutilización.",
-          "en": "2 sec cast, also while moving: doubles your health and mana regeneration for at least 30 sec, or 15 min if a ley line is nearby. 2 min cooldown."
+          "es": "Lanzamiento de 2 s, también en movimiento: aumenta un 50 % tu regeneración de salud y maná durante 15 s. Lanzada en una línea ley te da además Attuned durante 1 h, que sube el efecto al 100 % y se mantiene al morir. No se puede usar con Innervate activo. 2 min de reutilización.",
+          "en": "2 sec cast, also while moving: increases your health and mana regeneration by 50% for 15 sec. Cast at a ley line, it also grants Attuned for 1 hour, which raises the effect to 100% and persists through death. Cannot be used while Innervate is active. 2 min cooldown."
         },
         "value": "high",
         "why": {
-          "es": "Reduce mucho los descansos al subir de nivel, y desde el 15 de octubre hay más líneas ley en casi todas las zonas.",
-          "en": "Cuts leveling downtime a lot, and since 15 October there are more ley lines in most zones."
+          "es": "Sin línea ley rinde poco: un 50 % durante 15 s. Pasar por una línea ley para tener Attuned una hora la vuelve a hacer fuerte al subir de nivel.",
+          "en": "Without a ley line it does little: 50% for 15 sec. Stopping at a ley line for an hour of Attuned makes it strong again while leveling."
         }
       },
       {
@@ -187,13 +188,13 @@
         "spell": 1259710,
         "kind": "passive",
         "effect": {
-          "es": "Celeridad de lanzamiento y ataque aumentada un 3 %.",
-          "en": "Spellcasting and attack haste increased by 3%."
+          "es": "Celeridad de lanzamiento y ataque aumentada un 2 %.",
+          "en": "Spellcasting and attack haste increased by 2%."
         },
         "value": "high",
         "why": {
-          "es": "Lanzar un 3 % más rápido es más daño en cualquier situación, siempre activo.",
-          "en": "Casting 3% faster is more damage everywhere, always on."
+          "es": "Lanzar un 2 % más rápido es más daño en cualquier situación, siempre activo.",
+          "en": "Casting 2% faster is more damage everywhere, always on."
         }
       },
       {
@@ -231,9 +232,10 @@
     "sources": [
       "lfcarry-racials",
       "wowhead-forever-talent-calc",
-      "blizzard-dev-notes"
+      "blizzard-dev-notes",
+      "wowhead-racials-tuning"
     ],
-    "updated": "2026-10-16"
+    "updated": "2026-10-27"
   },
   {
     "id": "orc",
@@ -288,30 +290,16 @@
           "es": "Ayuda contra pícaros y guerreros.",
           "en": "Helps against Rogues and Warriors."
         }
-      },
-      {
-        "id": "savage",
-        "name": "Savage",
-        "spell": 20574,
-        "kind": "passive",
-        "effect": {
-          "es": "Salvajismo: un 1 % más de probabilidad de crítico con hechizos y habilidades. Sustituye a Axe Specialization.",
-          "en": "1% more critical strike chance with spells and abilities. Replaces Axe Specialization."
-        },
-        "value": "medium",
-        "why": {
-          "es": "Un poco de crítico siempre activo; antes no aportaba nada al Mago, que no puede llevar hachas.",
-          "en": "A little always-on crit; before, it did nothing for Mages, who cannot use axes."
-        }
       }
     ],
     "status": "reported",
     "sources": [
       "lfcarry-racials",
       "wowhead-forever-talent-calc",
-      "blizzard-dev-notes"
+      "blizzard-dev-notes",
+      "wowhead-racials-tuning"
     ],
-    "updated": "2026-10-16"
+    "updated": "2026-10-27"
   },
   {
     "id": "undead",

@@ -416,6 +416,19 @@
     }
   },
   {
+    "id": "wowhead-racials-tuning",
+    "title": "Racial Ability Tuning Pass for WoW: Forever",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/news/racial-ability-tuning-pass-for-wow-forever-383597",
+    "kind": "press",
+    "published": "2026-10-26",
+    "accessed": "2026-10-27",
+    "notes": {
+      "es": "Reproduce el anuncio de Blizzard con los ajustes de raciales para el lanzamiento: Humano, Enano, Tauren, Orco y Cielonato.",
+      "en": "Reproduces Blizzard's announcement of the racial tuning for launch: Human, Dwarf, Tauren, Orc and Skyborne."
+    }
+  },
+  {
     "id": "forever-open-rules",
     "title": "WoW Forever — Forever Open Duel Tournament Overview: Rules & Prizes",
     "publisher": "Conquest Capped",

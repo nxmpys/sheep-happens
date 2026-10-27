@@ -15,8 +15,8 @@
     ],
     "why": {
       "skyborne": {
-        "es": "Read Ley Line duplica tu regeneración de salud y maná: menos tiempo bebiendo.",
-        "en": "Read Ley Line doubles your Health and Mana regeneration: less time drinking."
+        "es": "Read Ley Line lanzada en una línea ley duplica tu regeneración de salud y maná durante 1 h: menos tiempo bebiendo.",
+        "en": "Read Ley Line cast at a ley line doubles your Health and Mana regeneration for 1 hour: less time drinking."
       },
       "gnome": {
         "es": "Expansive Mind te da un 5 % más de maná para encadenar más combates.",
@@ -40,7 +40,7 @@
     },
     "alliance": [
       "gnome",
-      "human"
+      "skyborne"
     ],
     "horde": [
       "troll",
@@ -51,23 +51,23 @@
         "es": "Eureka! es un estallido de daño: un 10 % más durante 8 s, gastando menos maná.",
         "en": "Eureka! is a damage burst: 10% more damage for 8 sec, at a lower mana cost."
       },
-      "human": {
-        "es": "Ruthless (Crueldad) da un 2 % más de crítico, siempre activo.",
-        "en": "Ruthless gives 2% more crit, always on."
-      },
       "troll": {
         "es": "Berserking es un estallido de daño: un 10 % más de velocidad de lanzamiento durante 10 s.",
         "en": "Berserking is a damage burst: 10% more casting speed for 10 sec."
       },
       "orc": {
-        "es": "Blood Fury es un estallido de daño, y Savage (Salvajismo) da un 1 % más de crítico siempre activo.",
-        "en": "Blood Fury is a damage burst, and Savage gives 1% more crit, always on."
+        "es": "Blood Fury es un estallido de daño: un 10 % más de poder con hechizos durante 15 s.",
+        "en": "Blood Fury is a damage burst: 10% more spell power for 15 sec."
+      },
+      "skyborne": {
+        "es": "Wind Blessed da un 2 % de celeridad, siempre activo.",
+        "en": "Wind Blessed gives 2% haste, always on."
       }
     },
     "note": {
       "alliance": {
-        "es": "El Cielonato, con un 3 % de celeridad, se queda muy cerca.",
-        "en": "Skyborne, with 3% haste, is very close."
+        "es": "El Humano, con un 1 % de crítico y un 10 % de Espíritu, se queda cerca y no necesita el paquete Skyborne.",
+        "en": "Human, with 1% crit and 10% Spirit, is close and does not need the Skyborne pack."
       }
     }
   },
