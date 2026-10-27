@@ -4,6 +4,15 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-10-27
+
+### [Juego] Ajuste de raciales para el lanzamiento
+
+Blizzard anuncia el 26 de octubre un ajuste para el lanzamiento. Crueldad (Ruthless) del Humano baja al 1 % de crítico y The Human Spirit sube al 10 % de Espíritu. El Orco pierde Salvajismo (Savage) y recupera Command, que solo aumenta el daño de las mascotas de brujos y cazadores. Wind Blessed del Cielonato baja al 2 % de celeridad, y Read Ley Line da un 50 % de regeneración durante 15 s, o un 100 % durante 1 h si la lanzas en una línea ley.
+
+- **Datos afectados:** race:human, race:orc, race:skyborne, Racial Ability Tuning Pass for WoW: Forever
+- **Fuentes:** [Racial Ability Tuning Pass for WoW: Forever](https://www.wowhead.com/forever/news/racial-ability-tuning-pass-for-wow-forever-383597) (Wowhead)
+
 ## 2026-10-26
 
 ### [Guía] Nueva build de leveo: Fuego en solitario
