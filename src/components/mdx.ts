@@ -30,7 +30,6 @@ import Highlight from './guide/Highlight.astro';
 import Highlights from './guide/Highlights.astro';
 import HubCards from './guide/HubCards.astro';
 import ItemCards from './guide/ItemCards.astro';
-import LevelView from './guide/LevelView.astro';
 import LevelingSpells from './guide/LevelingSpells.astro';
 import LegacyBuildCard from './guide/LegacyBuildCard.astro';
 import LegacyPerks from './guide/LegacyPerks.astro';
@@ -92,7 +91,6 @@ export const mdxComponents = {
   Highlights,
   HubCards,
   ItemCards,
-  LevelView,
   LevelingSpells,
   LegacyBuildCard,
   LegacyPerks,

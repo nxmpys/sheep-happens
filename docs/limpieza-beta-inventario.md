@@ -37,8 +37,6 @@ Leyenda de la propuesta:
 | `leveling.mdx:251` | «encarece la siguiente un 175 % en los datos de la beta» | Regla 1 |
 | `leveling.mdx:257` | «La beta no pasa del nivel 30, así que esta guía tampoco. La ampliaré al 60…» | **DECIDIR**: depende de si el tramo 31-60 ya está escrito (el cambio sin confirmar de `builds.json` sugiere que sí). |
 | `leveling.mdx:262` | Pending `why`: «La beta no pasa del nivel 30… valores… de los datos de la beta» | Reescribir: «Aún no he probado las builds en el servidor. Los valores de los talentos y los niveles de los hechizos vienen del cliente, no de una fuente oficial.» |
-| `level-view.mdx:23` | «con los niveles de la lista del instructor de la beta» | Reescribir como en `leveling:124`. |
-| `level-view.mdx:25` | «Hasta el nivel 30: la beta no pasa de ese nivel. Ampliaré esta vista al 60» | Igual que `leveling:257`: **DECIDIR**. |
 | `aoe-farming.mdx:24-26` | Callout «Información de beta»: «…guías de la comunidad que han jugado la beta (niveles 1 a 30)…» | Reescribir: título «Sin medir todavía»; «Las rotaciones y las zonas salen de guías de la comunidad y de mi análisis. Nadie ha medido todavía si es más rápido que hacer misiones; lo probaré yo mismo.» |
 | `aoe-farming.mdx:34` | «En los datos de la beta, ralentiza un 40 %…» | Regla 1 |
 | `aoe-farming.mdx:44` | «según las guías que han jugado la beta» | Reescribir: «según las guías de la comunidad». |

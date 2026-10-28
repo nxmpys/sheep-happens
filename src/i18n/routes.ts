@@ -28,7 +28,6 @@ export const PAGE_IDS = [
   'talents-fire',
   'talents-frost',
   'leveling',
-  'level-view',
   'aoe-farming',
   'scrolls',
   'combat',
@@ -94,7 +93,6 @@ export const ROUTES: Record<PageId, RouteDef> = {
   },
   // Leveling, its level view and AoE farming moved from Builds to Guides (26 Oct 2026) keeping their slugs.
   leveling: { id: 'leveling', slug: { es: 'nivelacion', en: 'leveling' }, parent: 'guides' },
-  'level-view': { id: 'level-view', slug: { es: 'nivelacion/por-nivel', en: 'leveling/by-level' }, parent: 'leveling' },
   'aoe-farming': { id: 'aoe-farming', slug: { es: 'farmeo-aoe', en: 'aoe-farming' }, parent: 'guides' },
   scrolls: { id: 'scrolls', slug: { es: 'pergaminos', en: 'scrolls' }, parent: 'guides' },
   combat: { id: 'combat', slug: { es: 'combate', en: 'combat' }, parent: 'learn' },
@@ -132,7 +130,7 @@ export const PRIMARY_NAV: readonly NavGroup[] = [
   {
     key: 'guides',
     page: 'guides',
-    items: ['leveling', 'level-view', 'aoe-farming', 'races', 'professions', 'legacy', 'gear', 'class-quests', 'library', 'scrolls', 'pvp'],
+    items: ['leveling', 'aoe-farming', 'races', 'professions', 'legacy', 'gear', 'class-quests', 'library', 'scrolls', 'pvp'],
   },
   { key: 'tools', page: 'tools', items: ['talent-calc'] },
   { key: 'addons', page: 'addons' },

@@ -11,3 +11,9 @@
 /es/elige /es/razas/ 301
 /en/choose/ /en/races/ 301
 /en/choose /en/races/ 301
+
+# The «Estoy a nivel X» view was retired on 28 Oct 2026: the leveling builds change too often for a per-level plan.
+/es/nivelacion/por-nivel/ /es/nivelacion/ 301
+/es/nivelacion/por-nivel /es/nivelacion/ 301
+/en/leveling/by-level/ /en/leveling/ 301
+/en/leveling/by-level /en/leveling/ 301

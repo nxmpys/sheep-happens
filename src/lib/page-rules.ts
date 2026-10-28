@@ -49,7 +49,6 @@ export const MDX_COMPONENTS = [
   'Highlights',
   'HubCards',
   'ItemCards',
-  'LevelView',
   'LevelingSpells',
   'LegacyBuildCard',
   'LegacyPerks',
