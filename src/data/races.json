@@ -6,6 +6,7 @@
       "en": "Human"
     },
     "faction": "alliance",
+    "icon": "race_human_male",
     "racials": [
       {
         "id": "will-to-survive",
@@ -16,7 +17,7 @@
           "es": "Elimina al instante todos los efectos de aturdimiento. 3 min de reutilización.",
           "en": "Instantly removes all stun effects. 3 min cooldown."
         },
-        "value": "high",
+        "value": "medium",
         "why": {
           "es": "Traslación ya te libra de los aturdimientos (desde nivel 20, cada 15 s). Will to Survive es una segunda salida: te deja guardar Traslación para alejarte o salir de otro aturdimiento cuando ya la has gastado.",
           "en": "Blink already frees you from stuns (from level 20, every 15 sec). Will to Survive is a second way out: it lets you save Blink to get away, or break another stun once Blink is spent."
@@ -63,10 +64,10 @@
           "es": "Crueldad: un 1 % más de probabilidad de crítico con hechizos y ataques. Sustituye a Sword Specialization.",
           "en": "1% more critical strike chance with spells and attacks. Replaces Sword Specialization."
         },
-        "value": "medium",
+        "value": "high",
         "why": {
-          "es": "Un poco de crítico siempre activo, sin depender de llevar una espada.",
-          "en": "A little always-on crit, not tied to wielding a sword."
+          "es": "Crítico siempre activo, sin depender de llevar una espada: suma en todo lo que hagas, del leveo a las bandas.",
+          "en": "Always-on crit, no longer tied to a sword: it adds to everything you do, from leveling to raids."
         }
       }
     ],
@@ -86,6 +87,7 @@
       "en": "Gnome"
     },
     "faction": "alliance",
+    "icon": "race_gnome_male",
     "racials": [
       {
         "id": "eureka",
@@ -163,6 +165,7 @@
       "en": "Skyborne (High Order)"
     },
     "faction": "alliance",
+    "icon": "race_skyborne_male",
     "newForMage": true,
     "access": {
       "es": "Raza nueva de Forever. Requiere el paquete Skyborne Heroic o superior, y solo los Cielonatos de la Alta Orden (Alianza) pueden ser Magos.",
@@ -248,6 +251,7 @@
       "en": "Orc"
     },
     "faction": "horde",
+    "icon": "race_orc_male",
     "newForMage": true,
     "racials": [
       {
@@ -259,7 +263,7 @@
           "es": "Poder de ataque y poder con hechizos aumentados un 10 % durante 15 s. 3 min de reutilización.",
           "en": "Attack Power and Spell Power increased by 10% for 15 sec. 3 min cooldown."
         },
-        "value": "medium",
+        "value": "high",
         "why": {
           "es": "Escala con tu poder con hechizos: poco a nivel bajo, mucho a nivel 60 con buen equipo.",
           "en": "Scales with your spell power: small at low level, strong at 60 with good gear."
@@ -274,7 +278,7 @@
           "es": "Disipa las maldiciones y los efectos de perdición (Banes) y reduce un 5 % el daño mágico recibido. 3 min de reutilización. Ya no da inmunidad a las maldiciones.",
           "en": "Dispels Curses and Banes and reduces magic damage taken by 5%. 3 min cooldown. No longer grants immunity to curses."
         },
-        "value": "medium",
+        "value": "low",
         "why": {
           "es": "Pierde valor en un Mago: Deshacer maldición inferior (nivel 18) ya quita maldiciones, una por lanzamiento. Shatter Curse solo añade quitarlas todas a la vez sin gastar maná y un 5 % menos de daño mágico durante 8 s.",
           "en": "Less valuable on a Mage: Remove Lesser Curse (level 18) already removes curses, one per cast. Shatter Curse only adds removing them all at once for no mana, plus 5% less magic damage for 8 sec."
@@ -289,10 +293,10 @@
           "es": "Los aturdimientos que recibes duran un 20 % menos.",
           "en": "Stun effects on you last 20% less."
         },
-        "value": "medium",
+        "value": "low",
         "why": {
-          "es": "Ayuda contra pícaros y guerreros.",
-          "en": "Helps against Rogues and Warriors."
+          "es": "Ayuda contra pícaros y guerreros, pero un Mago ya sale de los aturdimientos con Traslación.",
+          "en": "Helps against Rogues and Warriors, but a Mage already escapes stuns with Blink."
         }
       },
       {
@@ -326,6 +330,7 @@
       "en": "Undead"
     },
     "faction": "horde",
+    "icon": "race_scourge_male",
     "racials": [
       {
         "id": "will-of-the-forsaken",
@@ -368,8 +373,8 @@
         },
         "value": "medium",
         "why": {
-          "es": "Ahora es una curación gratuita regular, más o menos cada 25 s de combate.",
-          "en": "Now a steady bit of free healing, roughly every 25 sec of combat."
+          "es": "Una curación gratuita regular, más o menos cada 25 s de combate. Un Mago no tiene otra forma de curarse, así que en JcJ da algo de aguante.",
+          "en": "A steady bit of free healing, roughly every 25 sec of combat. A Mage has no other way to heal, so in PvP it adds some staying power."
         }
       },
       {
@@ -403,6 +408,7 @@
       "en": "Troll"
     },
     "faction": "horde",
+    "icon": "race_troll_male",
     "racials": [
       {
         "id": "berserking",
@@ -443,10 +449,10 @@
           "es": "Canalizas 6 s para recuperar un 50 % de tu salud máxima. Se cancela al moverte, actuar o recibir daño. 3 min de reutilización.",
           "en": "Channel for 6 sec to regenerate 50% of your maximum health. Cancelled by moving, acting or taking damage. 3 min cooldown."
         },
-        "value": "low",
+        "value": "medium",
         "why": {
-          "es": "Al subir de nivel te ahorra comer entre combates, aunque solo funciona fuera de combate y no recupera maná.",
-          "en": "While leveling it saves you eating between fights, although it only works out of combat and does not restore mana."
+          "es": "Al subir de nivel te ahorra comer entre combates. En JcJ, tras una Polimorfia, te da tiempo a recuperar media vida. No recupera maná.",
+          "en": "While leveling it saves you eating between fights. In PvP, behind a Polymorph, it gives you time to get half your Health back. It does not restore mana."
         }
       },
       {

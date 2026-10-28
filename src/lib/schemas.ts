@@ -401,6 +401,8 @@ export const raceSchema = z
     id,
     name: localized,
     faction: z.enum(['alliance', 'horde']),
+    /** The race's portrait in the client, e.g. "race_gnome_male". */
+    icon: z.string().min(1),
     /** First time this race can be a Mage. */
     newForMage: z.boolean().default(false),
     access: localized.optional(),

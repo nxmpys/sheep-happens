@@ -2,8 +2,8 @@
 /**
  * Best races per situation and faction (src/data/race-picks.json). The races
  * page shows one card per situation with a lane per faction: the races in
- * order, each with the icon of the racial its reason names (racial names are
- * tooltips). The «Elige» hub gets only the answer as a table, with a link to
+ * order, each with its portrait and the icon of the racial its reason names
+ * (racial names are tooltips). The «Elige» hub gets only the answer as a table, with a link to
  * them. Lanes carry data-faction and the table's column headers are the faction
  * names, which is what the faction filter reads.
  */
@@ -24,7 +24,7 @@ const locale = getLocale(Astro);
 const es = locale === 'es';
 const factions = FACTION_LABELS[locale];
 const FACTION_CREST = { alliance: 'achievement_pvp_a_14', horde: 'achievement_pvp_h_14' } as const;
-const SITUATION_ICON: Record<string, IconName> = { leveling: 'level', dungeons: 'users', pvp: 'swords', aoe: 'aoe' };
+const SITUATION_ICON: Record<string, IconName> = { leveling: 'level', dungeons: 'users', pvp: 'swords' };
 // "Cielonato (Skyborne)" the first time on the page, "Cielonato" afterwards.
 const seen = new Set<string>();
 const raceName = (id: string) => {
@@ -103,11 +103,10 @@ const reasonIcon = (raceId: string, text: string) => {
                   {pick[faction].map((id, index) => {
                     const why = pick.why[id]![locale];
                     const icon = reasonIcon(id, why);
+                    const portrait = races.find((r) => r.id === id)?.icon;
                     return (
                       <li class:list={['lane__race', index === 0 && 'lane__race--first']}>
-                        <span class="lane__rank" aria-hidden="true">
-                          {index + 1}
-                        </span>
+                        {portrait && <img class="lane__portrait" src={iconPath(portrait)} alt="" width="40" height="40" loading="lazy" />}
                         <div class="lane__body">
                           <strong class="lane__name">{raceName(id)}</strong>
                           <p class="lane__why">
@@ -220,25 +219,25 @@ const reasonIcon = (raceId: string, text: string) => {
   }
   .lane__race {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-columns: 3rem minmax(0, 1fr);
     gap: var(--space-2);
     margin: 0;
   }
-  .lane__rank {
-    display: grid;
-    place-items: center;
-    width: 1.75rem;
-    height: 1.75rem;
-    border: 1px solid var(--border-strong);
+  /* The order shows in the portraits: the first pick is larger and ringed in the faction's colour. */
+  .lane__portrait {
+    justify-self: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 2px solid var(--border-strong);
     border-radius: 999px;
-    font-size: var(--step--1);
-    font-weight: 700;
-    color: var(--text-muted);
+    opacity: 0.85;
   }
-  .lane__race--first .lane__rank {
+  .lane__race--first .lane__portrait {
+    width: 3rem;
+    height: 3rem;
     border-color: var(--faction);
-    background: var(--faction);
-    color: var(--surface-1);
+    box-shadow: 0 0 0 3px var(--faction-soft), 0 0 14px color-mix(in srgb, var(--faction) 45%, transparent);
+    opacity: 1;
   }
   .lane__body {
     display: grid;

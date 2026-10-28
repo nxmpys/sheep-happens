@@ -68,6 +68,10 @@
       "alliance": {
         "es": "El Humano, con un 1 % de crítico y un 10 % de Espíritu, se queda cerca y no necesita el paquete Skyborne.",
         "en": "Human, with 1% crit and 10% Spirit, is close and does not need the Skyborne pack."
+      },
+      "horde": {
+        "es": "El No-muerto es la peor opción aquí: no tiene ni Berserking ni Blood Fury, así que no aporta ningún estallido de daño.",
+        "en": "Undead is the weakest pick here: it has neither Berserking nor Blood Fury, so it brings no damage burst at all."
       }
     }
   },
@@ -83,7 +87,7 @@
     ],
     "horde": [
       "undead",
-      "orc"
+      "troll"
     ],
     "why": {
       "gnome": {
@@ -95,35 +99,18 @@
         "en": "Will to Survive breaks a stun without spending Blink."
       },
       "undead": {
-        "es": "Will of the Forsaken te libra del miedo, el embelesamiento y el sueño.",
-        "en": "Will of the Forsaken breaks Fear, Charm and Sleep."
+        "es": "Will of the Forsaken te libra del miedo, el embelesamiento y el sueño de sacerdotes y brujos. Touch of the Grave te cura sin hacer nada, y un Mago no tiene otra forma de curarse.",
+        "en": "Will of the Forsaken breaks Fear, Charm and Sleep from Priests and Warlocks. Touch of the Grave heals you for free, and a Mage has no other way to heal."
       },
-      "orc": {
-        "es": "Hardiness acorta un 20 % los aturdimientos y Shatter Curse quita todas las maldiciones de golpe.",
-        "en": "Hardiness shortens stuns by 20% and Shatter Curse removes every Curse at once."
+      "troll": {
+        "es": "Rapid Regeneration tras una Polimorfia: oveja al rival, 6 s canalizando y recuperas la mitad de la salud para reiniciar el combate.",
+        "en": "Rapid Regeneration behind a Polymorph: sheep your opponent, channel for 6 sec and get half your Health back to reset the fight."
       }
-    }
-  },
-  {
-    "id": "aoe",
-    "situation": {
-      "es": "Farmeo en área",
-      "en": "AoE farming"
     },
-    "alliance": [
-      "gnome"
-    ],
-    "horde": [
-      "undead"
-    ],
-    "why": {
-      "gnome": {
-        "es": "Escape Artist te libra de enraizamientos y ralentizaciones al arrastrar grupos.",
-        "en": "Escape Artist breaks roots and slows while you kite packs."
-      },
-      "undead": {
-        "es": "Cannibalize acorta las pausas entre grupos.",
-        "en": "Cannibalize shortens breaks between packs."
+    "note": {
+      "horde": {
+        "es": "El Orco brilla en JcJ para otras clases, pero no tanto en un Mago: Traslación ya te saca de los aturdimientos, lo que resta valor a Hardiness, y Shatter Curse repite lo que ya hace Deshacer maldición inferior.",
+        "en": "Orc shines in PvP for other classes, but less so on a Mage: Blink already gets you out of stuns, which takes value from Hardiness, and Shatter Curse repeats what Remove Lesser Curse already does."
       }
     }
   }

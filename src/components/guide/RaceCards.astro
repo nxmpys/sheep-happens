@@ -7,7 +7,6 @@
  * icon. One race per row, its racials side by side: the cards take the whole
  * main column, wider than the text.
  */
-import Icon from '../ui/Icon.astro';
 import ReportButton from './ReportButton.astro';
 import SourceRefs from './SourceRefs.astro';
 import StatusBadge from './StatusBadge.astro';
@@ -35,7 +34,7 @@ const valueLabel = (value: keyof (typeof VALUE_LABELS)['es']) =>
       <article class={`race race--${race.faction}`} id={`race-${race.id}`} aria-labelledby={`race-${race.id}-title`}>
         <header class="race__header">
           <h3 class="race__name" id={`race-${race.id}-title`}>
-            <Icon name="users" size={20} />
+            <img class="race__portrait" src={iconPath(race.icon)} alt="" width="40" height="40" loading="lazy" />
             {race.name[locale]}
           </h3>
           <ul class="race__tags" data-pagefind-ignore>
@@ -119,8 +118,9 @@ const valueLabel = (value: keyof (typeof VALUE_LABELS)['es']) =>
     margin: 0;
     font-size: var(--step-2);
   }
-  .race__name :global(svg) {
-    color: var(--faction);
+  .race__portrait {
+    border: 2px solid var(--faction);
+    border-radius: 999px;
   }
   .race__tags {
     display: flex;
