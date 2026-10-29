@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-10-21 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
+> Creado: 2026-10-12 · Revisión: 2026-10-29 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -31,7 +31,10 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [ ] Árbol completo de Forever con valores **oficiales**. La posición de cada talento ya está en `src/data/talents.json` (sacada de la calculadora de Wowhead, datos del cliente de la beta); las cifras siguen sin confirmar.
 - [ ] Talento decisivo de 16 puntos de Fuego (`fire-16` en `src/data/milestones.json`). Pista: en la calculadora de Wowhead, Calentamiento es el único talento de 1 punto de la fila 4 de Fuego. Falta una fuente oficial. (El de Arcano quedó resuelto el 15 de octubre: Cólera Arcana; Tromba de misiles bajó a la fila 1.)
 - [ ] Escalofrío del invierno (15 oct): las notas oficiales dan dos descripciones distintas (+40 % de daño de Cono de frío por carga, o +5 % y un 7 % de tu daño con hechizos por carga). Confirmar cuál queda y corregir `change:winters-chill`.
-- [ ] Nombre oficial en español de **Frost Blast** (hechizo base de nivel 24, 15 oct): el cliente de la beta aún lo tiene en inglés. Cuando exista, añadir `es` a su entrada de `src/data/spell-names.json` y cambiar el texto de leveo, combate y Escarcha.
+- [x] ~~Nombre oficial en español de **Frost Blast**~~: el hechizo desaparece del libro de hechizos en la build del 28 oct (2026-10-29).
+- [ ] Nombres en español de **Accelerant** (antes Bola de Fuego mejorada) y **Precision** (antes Enfoque elemental): el cliente en español aún tiene los nombres y textos anteriores al 28 oct (`STALE_ES` en `scripts/spell-text.ts` y texto en inglés en `talent-text.json`). Cuando cambien, añadir `es` en `src/data/spell-names.json`, quitar esas excepciones y volver a ejecutar `npm run talents:text` y `npm run spells:text`.
+- [ ] **Rehacer las builds de leveo** con el árbol del 28 oct (2026-10-29: se borraron las cuatro builds, `builds.json` está vacío y `/builds/leveo/` redirige a `/builds/` con un 302 en `public/_redirects`; quita esas líneas al publicar la primera). Quitar también la razón `leveling` de `noBuild` en `specs.json` de cada rama que vuelva a tener build.
+- [ ] Comprobar en el juego si Cólera Arcana requiere Explosión Arcana: la calculadora de Wowhead lo marca así desde el 28 oct, sin mención en ninguna nota.
 - [ ] Filas de Piroexplosión, Ola explosiva, Combustión, Presencia mental y Poder Arcano (ahora son «Referencia Classic» en `milestones.json`).
 - [ ] Requisito entre Dedos de Escarcha y Lanza de hielo (discrepancia abierta en `content-validation.md`). Pista: la calculadora de Wowhead confirma la lectura coherente (Dedos de Escarcha requiere Lanza de hielo). Falta comprobarlo en el juego.
 - [ ] Builds probadas: leveo primero; después farmeo AoE, mazmorras, banda y PvP, solo en las ramas con sentido (ver la sección 4).
@@ -39,7 +42,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 
 ### Valores numéricos
 
-- [ ] Daño, coste y probabilidad de Explosión Arcana, Cólera Arcana, Lanza de hielo, Descarga de Pirofrío, Frost Blast, Tromba de misiles, Calentamiento y Dedos de Escarcha. Oficial desde el 15 oct: Explosión Arcana da un 15 % del Intelecto como daño con hechizos por carga; Cólera Arcana suma un 5 % del maná máximo; Lanza de hielo, +200 % contra congelados. Estela de Fuego ya no existe (vuelve a ser Explosión de Fuego mejorada).
+- [ ] Daño, coste y probabilidad de Explosión Arcana, Cólera Arcana, Lanza de hielo, Descarga de Pirofrío, Tromba de misiles, Calentamiento y Dedos de Escarcha. Oficial desde el 15 oct: Explosión Arcana da un 15 % del Intelecto como daño con hechizos por carga; Cólera Arcana suma un 5 % del maná máximo; Lanza de hielo, +200 % contra congelados. Estela de Fuego ya no existe (vuelve a ser Explosión de Fuego mejorada).
 
 ### Contenido de los niveles 31 a 60
 

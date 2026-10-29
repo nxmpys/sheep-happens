@@ -2,11 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { buildRole } from '../src/lib/build-roles';
 import { buildIcon, buildPath, canonicalUse, contentPath, routeConflicts, usedContents } from '../src/lib/build-routes';
 import { buildSections } from '../src/lib/build-page';
-import { checkIntegrity, dataset } from '../src/lib/data';
+import { checkIntegrity } from '../src/lib/data';
 import { buildSchema, type Build } from '../src/lib/schemas';
 import { applySwap } from '../src/lib/talents';
-
-const base = dataset.builds.find((b) => b.id === 'frost-leveling-solo')!;
+import { datasetWithFixture, fixtureBuild as base } from './fixtures/builds';
 
 function build(id: string, overrides: Partial<Build>): Build {
   return { ...structuredClone(base), id, recommendedFor: [], discouragedFor: [], ...overrides };
@@ -36,7 +35,7 @@ describe('build pages', () => {
       '"other" and "frost-leveling-solo" would share the URL /en/builds/leveling/frostfire-solo/: change the first use or the slug',
     ]);
     expect(routeConflicts([base, build('other', { uses: ['pvp', 'leveling'] })])).toEqual([]);
-    const data = structuredClone(dataset);
+    const data = datasetWithFixture();
     data.builds.push(build('twin', {}));
     expect(checkIntegrity(data).join('\n')).toMatch(/would share the URL/);
   });
@@ -74,18 +73,17 @@ describe('not recommended', () => {
 });
 
 describe('talent variants', () => {
-  const aoe = dataset.builds.find((b) => b.id === 'frost-aoe-farming-solo')!;
 
   it('swap ranks on the final build', () => {
     expect(applySwap({ a: 3, b: 2 }, { a: 3 }, { c: 3 })).toEqual({ b: 2, c: 3 });
   });
 
   it('must keep the total and leave a valid build', () => {
-    const data = structuredClone(dataset);
-    const build = data.builds.find((b) => b.id === aoe.id)!;
+    const data = datasetWithFixture();
+    const build = data.builds.find((b) => b.id === base.id)!;
     build.variants = [{ ...build.variants[0]!, remove: { incineration: 3 }, add: { 'improved-fireball': 2 } }];
     expect(checkIntegrity(data).join('\n')).toMatch(/removes and adds a different number of points/);
-    build.variants = [{ ...build.variants[0]!, remove: { incineration: 3 }, add: { 'master-of-elements': 3 } }];
+    build.variants = [{ ...build.variants[0]!, remove: { incineration: 3 }, add: { 'critical-mass': 3 } }];
     expect(checkIntegrity(data).join('\n')).toMatch(/variant/);
   });
 });

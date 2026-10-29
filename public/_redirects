@@ -17,3 +17,10 @@
 /es/nivelacion/por-nivel /es/nivelacion/ 301
 /en/leveling/by-level/ /en/leveling/ 301
 /en/leveling/by-level /en/leveling/ 301
+
+# The leveling builds were removed on 29 Oct 2026: the talent update of 28 Oct moved and removed talents.
+# Remove the leveling lines when new leveling builds are published (Cloudflare applies these before the pages).
+/es/builds/leveo/* /es/builds/ 302
+/en/builds/leveling/* /en/builds/ 302
+/es/builds/leveo /es/builds/ 302
+/en/builds/leveling /en/builds/ 302

@@ -56,12 +56,14 @@
     "tree": "baseline",
     "category": "ability",
     "kinds": [
-      "new"
+      "new",
+      "removed"
     ],
     "learnLevel": 24,
+    "spell": 1326053,
     "summary": {
-      "es": "Nuevo hechizo base que se aprende a nivel 24. Lanzamiento de 1,5 s: hace daño de Escarcha y ralentiza al objetivo un 40 %. Le afectan todos los talentos que afectan a Descarga de Escarcha.",
-      "en": "New baseline spell learned at level 24. 1.5 s cast: deals Frost damage and slows the target's movement by 40%. It is affected by every talent that affects Frostbolt."
+      "es": "Hechizo base nuevo de la beta (nivel 24) que desaparece del libro de hechizos el 28 de octubre: ya no se entrena ninguno de sus 3 rangos. Era un lanzamiento de 1,5 s con daño de Escarcha y una ralentización del 40 %.",
+      "en": "New baseline spell in the beta (level 24), removed from the spellbook on 28 October: none of its 3 ranks is trained any more. It was a 1.5 s cast with Frost damage and a 40% slow."
     },
     "details": [
       {
@@ -71,30 +73,35 @@
       {
         "es": "Puede aplicar Escalofrío del invierno, como Descarga de Escarcha.",
         "en": "It can apply Winter's Chill, like Frostbolt."
+      },
+      {
+        "es": "Algunas descripciones de talentos (Descarga de Escarcha mejorada, Escalofrío del invierno, Alcance ártico, Tromba de misiles) todavía lo nombran.",
+        "en": "Some talent descriptions (Improved Frostbolt, Winter's Chill, Arctic Reach, Missile Barrage) still name it."
       }
     ],
     "notes": [
       {
         "status": "reported",
         "text": {
-          "es": "En los datos de la beta, el rango 1 cuesta 40 de maná, hace 28-31 de daño y ralentiza 9 s; hay un rango 2 a nivel 36. Aún no tiene nombre en español en el cliente.",
-          "en": "In the beta data, rank 1 costs 40 mana, deals 28-31 damage and slows for 9 s; rank 2 comes at level 36. It has no Spanish name in the client yet."
+          "es": "Llega con la build de la beta del 28 de octubre (1.60.1.70685). Blizzard no ha publicado notas de esa build: el cambio sale de sus datos.",
+          "en": "Arrives with the 28 October beta build (1.60.1.70685). Blizzard has published no notes for that build: the change comes from its data."
         }
       },
       {
-        "status": "analysis",
+        "status": "reported",
         "text": {
-          "es": "Es tu herramienta para mantener a distancia a un enemigo (kitear) sin gastar una Descarga de Escarcha completa, y como cuenta como Descarga de Escarcha para los talentos, también puede activar Mordiescarcha y Dedos de Escarcha.",
-          "en": "It is your tool to keep an enemy at range (kiting) without spending a full Frostbolt, and since talents treat it like Frostbolt it can also trigger Frostbite and Fingers of Frost."
+          "es": "En los datos de la beta, el rango 1 cuesta 40 de maná, hace 28-31 de daño y ralentiza 9 s; hay un rango 2 a nivel 36. Aún no tiene nombre en español en el cliente.",
+          "en": "In the beta data, rank 1 costs 40 mana, deals 28-31 damage and slows for 9 s; rank 2 comes at level 36. It has no Spanish name in the client yet."
         }
       }
     ],
-    "status": "verified",
+    "status": "reported",
     "sources": [
       "blizzard-dev-notes",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "foreverchanges-build-2026-10-28"
     ],
-    "updated": "2026-10-16"
+    "updated": "2026-10-29"
   },
   {
     "id": "comprehension",
@@ -331,18 +338,36 @@
     "tree": "arcane",
     "category": "talent",
     "kinds": [
-      "redesigned"
+      "removed"
     ],
     "summary": {
-      "es": "Rediseñado: aumenta la probabilidad de acierto de los hechizos Arcanos.",
-      "en": "Redesigned: increases your chance to hit with Arcane spells."
+      "es": "Desaparece del árbol Arcano. Daba un 1-5 % de probabilidad de golpe con hechizos Arcanos; ahora Precision, en Escarcha, da golpe con todos los hechizos.",
+      "en": "Removed from the Arcane tree. It gave 1-5% hit chance with Arcane spells; Precision, in the Frost tree, now gives hit chance with all spells."
     },
-    "details": [],
-    "notes": [],
-    "status": "verified",
+    "details": [
+      {
+        "es": "Su casilla de la fila 1 la ocupa Canalización mejorada, y Recuperación Arcana sube a la fila 1.",
+        "en": "Improved Channeling takes its row 1 slot, and Arcane Resilience moves up to row 1."
+      }
+    ],
+    "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Llega con la build de la beta del 28 de octubre (1.60.1.70685). Blizzard no ha publicado notas de esa build: el cambio sale de sus datos.",
+          "en": "Arrives with the 28 October beta build (1.60.1.70685). Blizzard has published no notes for that build: the change comes from its data."
+        }
+      }
+    ],
+    "status": "reported",
     "sources": [
-      "blizzard-deep-dive-mage"
-    ]
+      "blizzard-deep-dive-mage",
+      "foreverchanges-build-2026-10-28",
+      "wowhead-forever-talent-calc"
+    ],
+    "row": 1,
+    "spell": 11222,
+    "updated": "2026-10-29"
   },
   {
     "id": "improved-channeling",
@@ -358,12 +383,20 @@
       "es": "Antes Misiles Arcanos mejorados. Además protege a Explosión Arcana de las interrupciones por recibir daño.",
       "en": "Formerly Improved Arcane Missiles. Now also protects Arcane Blast from damage-based interruption."
     },
-    "details": [],
+    "details": [
+      {
+        "es": "El 28 de octubre pasa de la tercera a la segunda columna de la fila 1.",
+        "en": "On 28 October it moved from the third to the second column of row 1."
+      }
+    ],
     "notes": [],
     "status": "verified",
     "sources": [
-      "blizzard-deep-dive-mage"
-    ]
+      "blizzard-deep-dive-mage",
+      "foreverchanges-build-2026-10-28",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-29"
   },
   {
     "id": "arcane-subtlety",
@@ -461,17 +494,33 @@
       "adjusted"
     ],
     "previousRow": 3,
-    "row": 2,
+    "row": 1,
     "summary": {
-      "es": "Pasa de la fila 3 a la 2, deja de ser un talento decisivo y ahora cuesta 2 puntos para el mismo efecto.",
-      "en": "Moved from row 3 to row 2, no longer a milestone talent, and now costs 2 points for the same effect."
+      "es": "Pasa de la fila 3 a la 1 (tercera columna), deja de ser un talento decisivo y ahora cuesta 2 puntos para el mismo efecto.",
+      "en": "Moved from row 3 to row 1 (third column), no longer a milestone talent, and now costs 2 points for the same effect."
     },
-    "details": [],
-    "notes": [],
+    "details": [
+      {
+        "es": "Estuvo en la fila 2 hasta el 28 de octubre.",
+        "en": "It was in row 2 until 28 October."
+      }
+    ],
+    "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Llega con la build de la beta del 28 de octubre (1.60.1.70685). Blizzard no ha publicado notas de esa build: el cambio sale de sus datos.",
+          "en": "Arrives with the 28 October beta build (1.60.1.70685). Blizzard has published no notes for that build: the change comes from its data."
+        }
+      }
+    ],
     "status": "verified",
     "sources": [
-      "blizzard-deep-dive-mage"
-    ]
+      "blizzard-deep-dive-mage",
+      "foreverchanges-build-2026-10-28",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-29"
   },
   {
     "id": "arcane-geometry",
@@ -696,10 +745,10 @@
       "new",
       "moved"
     ],
-    "row": 1,
+    "row": 2,
     "summary": {
-      "es": "Nuevo talento de 2 puntos en la fila 1 (antes, el talento decisivo de 16 puntos). Explosión Arcana, Bola de Fuego, Descarga de Escarcha, Descarga de Pirofrío y, desde el 15 de octubre, los propios impactos de Misiles Arcanos pueden hacer que tu siguiente Misiles Arcanos se canalice el doble de rápido y no cueste maná.",
-      "en": "New 2-point talent in row 1 (formerly the 16-point milestone). Arcane Blast, Fireball, Frostbolt, Frostfire Bolt and, since 15 October, Arcane Missiles hits themselves can make your next Arcane Missiles channel twice as fast and cost no mana."
+      "es": "Nuevo talento de 2 puntos en la fila 2 (antes, el talento decisivo de 16 puntos). Explosión Arcana, Bola de Fuego, Descarga de Escarcha, Descarga de Pirofrío y, desde el 15 de octubre, los propios impactos de Misiles Arcanos pueden hacer que tu siguiente Misiles Arcanos se canalice el doble de rápido y no cueste maná.",
+      "en": "New 2-point talent in row 2 (formerly the 16-point milestone). Arcane Blast, Fireball, Frostbolt, Frostfire Bolt and, since 15 October, Arcane Missiles hits themselves can make your next Arcane Missiles channel twice as fast and cost no mana."
     },
     "details": [
       {
@@ -709,9 +758,20 @@
       {
         "es": "Se corrigió un error por el que podía reducir el coste y la duración de un segundo Misiles Arcanos (15 de octubre).",
         "en": "A bug was fixed where it could reduce the cost and duration of a second Arcane Missiles cast (15 October)."
+      },
+      {
+        "es": "Estuvo en la fila 1 hasta el 28 de octubre: ahora pide 5 puntos en Arcano.",
+        "en": "It was in row 1 until 28 October: it now needs 5 points in Arcane."
       }
     ],
     "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Llega con la build de la beta del 28 de octubre (1.60.1.70685). Blizzard no ha publicado notas de esa build: el cambio sale de sus datos.",
+          "en": "Arrives with the 28 October beta build (1.60.1.70685). Blizzard has published no notes for that build: the change comes from its data."
+        }
+      },
       {
         "status": "reported",
         "text": {
@@ -729,8 +789,8 @@
       {
         "status": "analysis",
         "text": {
-          "es": "Al estar en la fila 1, cualquier Mago puede cogerlo con sus primeros puntos de Arcano, también en builds de Fuego o Escarcha.",
-          "en": "Being in row 1, any Mage can take it with their first Arcane points, including Fire or Frost builds."
+          "es": "Al estar en la fila 2, una build de Fuego o Escarcha necesita 5 puntos en Arcano para cogerlo.",
+          "en": "Being in row 2, a Fire or Frost build needs 5 points in Arcane to take it."
         }
       }
     ],
@@ -741,10 +801,11 @@
       "blizzard-dev-notes",
       "wowhead-forever-talent-calc",
       "forum-missile-barrage-proc",
-      "foreverchanges-hotfix-2026-10-20"
+      "foreverchanges-hotfix-2026-10-20",
+      "foreverchanges-build-2026-10-28"
     ],
     "previousRow": 4,
-    "updated": "2026-10-21"
+    "updated": "2026-10-29"
   },
   {
     "id": "arcane-mind",
@@ -814,18 +875,29 @@
       "redesigned"
     ],
     "previousRow": 2,
-    "row": 1,
+    "row": 3,
     "summary": {
-      "es": "Vuelve a llamarse Explosión de Fuego mejorada (en la beta fue Estela de Fuego hasta el 15 de octubre). Pasa de la fila 2 a la 1, tiene 2 puntos, reduce el tiempo de reutilización de Explosión de Fuego y aumenta su alcance en 8/15 m.",
-      "en": "Named Improved Fire Blast again (it was Wake of Fire in the beta until 15 October). Moved from row 2 to row 1, has 2 points, reduces Fire Blast's cooldown and increases its range by 8/15 yards."
+      "es": "Vuelve a llamarse Explosión de Fuego mejorada (en la beta fue Estela de Fuego hasta el 15 de octubre). Está en la fila 3, cuarta columna, tiene 2 puntos, reduce el tiempo de reutilización de Explosión de Fuego y aumenta su alcance en 8/15 m.",
+      "en": "Named Improved Fire Blast again (it was Wake of Fire in the beta until 15 October). It sits in row 3, fourth column, has 2 points, reduces Fire Blast's cooldown and increases its range by 8/15 yards."
     },
     "details": [
       {
         "es": "Ya no da ninguna bonificación al matar a un objetivo: desaparece el aumento de crítico de Explosión de Fuego tras cada muerte que tenía Estela de Fuego.",
         "en": "It no longer grants any bonus when you kill a target: Wake of Fire's Fire Blast crit boost after each kill is gone."
+      },
+      {
+        "es": "El 28 de octubre baja de la fila 1 a la 3: ya no se puede coger con los primeros puntos de Fuego.",
+        "en": "On 28 October it moved down from row 1 to row 3: you can no longer take it with your first Fire points."
       }
     ],
     "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Llega con la build de la beta del 28 de octubre (1.60.1.70685). Blizzard no ha publicado notas de esa build: el cambio sale de sus datos.",
+          "en": "Arrives with the 28 October beta build (1.60.1.70685). Blizzard has published no notes for that build: the change comes from its data."
+        }
+      },
       {
         "status": "reported",
         "text": {
@@ -845,9 +917,10 @@
     "sources": [
       "blizzard-deep-dive-mage",
       "blizzard-dev-notes",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "foreverchanges-build-2026-10-28"
     ],
-    "updated": "2026-10-16"
+    "updated": "2026-10-29"
   },
   {
     "id": "incineration",
@@ -863,11 +936,23 @@
     "previousRow": 3,
     "row": 1,
     "summary": {
-      "es": "Antes Incinerar. Pasa de la fila 3 a la 1. Además de Explosión de Fuego y Chamuscar, aumenta la probabilidad de crítico de Lanza de hielo y Explosión Arcana.",
-      "en": "Formerly Incinerate. Moved from row 3 to row 1. Besides Fire Blast and Scorch, it now also increases the critical strike chance of Ice Lance and Arcane Blast."
+      "es": "Antes Incinerar. Pasa de la fila 3 a la 1 y tiene 5 puntos: hasta un 10 % más de probabilidad de crítico para Explosión de Fuego y Chamuscar y, además, para Lanza de hielo y Explosión Arcana.",
+      "en": "Formerly Incinerate. Moved from row 3 to row 1 and has 5 points: up to 10% more critical strike chance for Fire Blast and Scorch and, now, also Ice Lance and Arcane Blast."
     },
-    "details": [],
+    "details": [
+      {
+        "es": "Hasta el 28 de octubre tenía 3 puntos (6 % en total).",
+        "en": "Until 28 October it had 3 points (6% in total)."
+      }
+    ],
     "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Llega con la build de la beta del 28 de octubre (1.60.1.70685). Blizzard no ha publicado notas de esa build: el cambio sale de sus datos.",
+          "en": "Arrives with the 28 October beta build (1.60.1.70685). Blizzard has published no notes for that build: the change comes from its data."
+        }
+      },
       {
         "status": "analysis",
         "text": {
@@ -878,27 +963,43 @@
     ],
     "status": "verified",
     "sources": [
-      "blizzard-deep-dive-mage"
-    ]
+      "blizzard-deep-dive-mage",
+      "foreverchanges-build-2026-10-28",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-29"
   },
   {
     "id": "improved-fireball",
-    "name": "Improved Fireball",
+    "name": "Accelerant",
     "tree": "fire",
     "category": "talent",
     "kinds": [
+      "renamed",
       "adjusted"
     ],
     "summary": {
-      "es": "Ahora también reduce el tiempo de lanzamiento de Descarga de Pirofrío.",
-      "en": "Now also reduces the cast time of Frostfire Bolt."
+      "es": "Antes Bola de Fuego mejorada. Reduce 0,1-0,5 s el tiempo de lanzamiento de Bola de Fuego, Descarga de Pirofrío y, desde el 28 de octubre, Cólera Arcana.",
+      "en": "Formerly Improved Fireball. Reduces the cast time of Fireball, Frostfire Bolt and, since 28 October, Arcane Wrath by 0.1-0.5 s."
     },
     "details": [],
-    "notes": [],
+    "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Llega con la build de la beta del 28 de octubre (1.60.1.70685). Blizzard no ha publicado notas de esa build: el cambio sale de sus datos.",
+          "en": "Arrives with the 28 October beta build (1.60.1.70685). Blizzard has published no notes for that build: the change comes from its data."
+        }
+      }
+    ],
     "status": "verified",
     "sources": [
-      "blizzard-deep-dive-mage"
-    ]
+      "blizzard-deep-dive-mage",
+      "foreverchanges-build-2026-10-28",
+      "wowhead-forever-talent-calc"
+    ],
+    "formerly": "Improved Fireball",
+    "updated": "2026-10-29"
   },
   {
     "id": "ignite",
@@ -1075,22 +1176,31 @@
       "adjusted"
     ],
     "summary": {
-      "es": "Ahora tiene 5 puntos, para un 10 % más de probabilidad de crítico con hechizos de Fuego en total.",
-      "en": "It now has 5 points, for 10% more critical strike chance with Fire spells in total."
+      "es": "Tiene 3 puntos, para un 6 % más de probabilidad de crítico con hechizos de Fuego en total, como en Classic.",
+      "en": "It has 3 points, for 6% more critical strike chance with Fire spells in total, as in Classic."
     },
     "details": [
       {
-        "es": "En Classic tenía 3 puntos (6 % en total).",
-        "en": "In Classic it had 3 points (6% in total)."
+        "es": "Desde la beta del 16 de octubre tenía 5 puntos (10 % en total); vuelve a 3 el 28 de octubre. Combustión sigue pidiendo 3 puntos en Masa crítica.",
+        "en": "From the 16 October beta it had 5 points (10% in total); it went back to 3 on 28 October. Combustion still needs 3 points in Critical Mass."
       }
     ],
-    "notes": [],
+    "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Llega con la build de la beta del 28 de octubre (1.60.1.70685). Blizzard no ha publicado notas de esa build: el cambio sale de sus datos.",
+          "en": "Arrives with the 28 October beta build (1.60.1.70685). Blizzard has published no notes for that build: the change comes from its data."
+        }
+      }
+    ],
     "status": "verified",
     "sources": [
       "blizzard-dev-notes",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "foreverchanges-build-2026-10-28"
     ],
-    "updated": "2026-10-16"
+    "updated": "2026-10-29"
   },
   {
     "id": "blast-wave",
@@ -1151,19 +1261,32 @@
   },
   {
     "id": "elemental-precision",
-    "name": "Elemental Precision",
+    "name": "Precision",
     "tree": "frost",
     "category": "talent",
     "kinds": [
+      "renamed",
       "redesigned",
       "adjusted"
     ],
     "summary": {
-      "es": "Ahora aumenta la probabilidad de acierto de los hechizos de Fuego y Escarcha, en lugar de reducir la probabilidad de que el objetivo los resista.",
-      "en": "Now increases your chance to hit with Fire and Frost spells instead of reducing the target's chance to resist them."
+      "es": "Antes Enfoque elemental. Aumenta un 2/4/6 % la probabilidad de golpe de todos tus hechizos, también los Arcanos. En Classic reducía la probabilidad de que el objetivo resistiera tus hechizos de Fuego y Escarcha.",
+      "en": "Formerly Elemental Precision. Increases your chance to hit with all spells by 2/4/6%, Arcane included. In Classic it reduced the target's chance to resist your Fire and Frost spells."
     },
-    "details": [],
+    "details": [
+      {
+        "es": "Hasta el 28 de octubre solo cubría los hechizos de Fuego y Escarcha; el golpe Arcano lo daba Enfoque Arcano, que desaparece.",
+        "en": "Until 28 October it only covered Fire and Frost spells; Arcane hit came from Arcane Focus, which is removed."
+      }
+    ],
     "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Llega con la build de la beta del 28 de octubre (1.60.1.70685). Blizzard no ha publicado notas de esa build: el cambio sale de sus datos.",
+          "en": "Arrives with the 28 October beta build (1.60.1.70685). Blizzard has published no notes for that build: the change comes from its data."
+        }
+      },
       {
         "status": "reported",
         "text": {
@@ -1176,9 +1299,46 @@
     "sources": [
       "blizzard-deep-dive-mage",
       "foreverchanges-hotfix-2026-10-20",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "foreverchanges-build-2026-10-28"
     ],
-    "updated": "2026-10-21"
+    "updated": "2026-10-29",
+    "formerly": "Elemental Precision"
+  },
+  {
+    "id": "frostbite",
+    "name": "Frostbite",
+    "tree": "frost",
+    "category": "talent",
+    "kinds": [
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Su congelación comparte un único grupo de rendimientos decrecientes con las demás raíces de talentos: Entrapment, Counterattack, Improved Wing Clip e Improved Hamstring.",
+      "en": "Its root shares one diminishing returns group with the other talent roots: Entrapment, Counterattack, Improved Wing Clip and Improved Hamstring."
+    },
+    "details": [],
+    "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Hotfix visto el 28 de octubre en los datos que envían los reinos de lanzamiento. Blizzard no lo menciona en sus notas.",
+          "en": "Hotfix seen on 28 October in the data the launch realms send. Blizzard does not mention it in its notes."
+        }
+      },
+      {
+        "status": "analysis",
+        "text": {
+          "es": "En JcJ, si un Cazador o un Guerrero acaba de inmovilizar al objetivo con su talento, tu congelación de Mordiescarcha dura menos sobre él.",
+          "en": "In PvP, if a Hunter or Warrior has just rooted the target with their talent, your Frostbite freeze lasts less on it."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "foreverchanges-build-2026-10-28"
+    ],
+    "updated": "2026-10-29"
   },
   {
     "id": "permafrost",
@@ -1334,16 +1494,27 @@
     "row": 3,
     "milestone": 11,
     "summary": {
-      "es": "Nuevo talento decisivo de 11 puntos. Instantáneo y de poco daño, pero hace un 200 % más contra objetivos congelados (o tratados como congelados gracias a Dedos de Escarcha).",
-      "en": "New 11-point milestone talent. Instant cast with low damage, increased by 200% against Frozen targets (or targets treated as Frozen by Fingers of Frost)."
+      "es": "Nuevo talento decisivo de 11 puntos. Instantáneo y de poco daño, pero hace un 200 % más contra objetivos congelados (o tratados como congelados gracias a Dedos de Escarcha). Tiene 8 s de reutilización.",
+      "en": "New 11-point milestone talent. Instant cast with low damage, increased by 200% against Frozen targets (or targets treated as Frozen by Fingers of Frost). It has an 8 s cooldown."
     },
     "details": [
       {
         "es": "La bonificación contra objetivos congelados bajó del 300 % al 200 % el 15 de octubre.",
         "en": "The bonus against Frozen targets was lowered from 300% to 200% on 15 October."
+      },
+      {
+        "es": "Desde el 28 de octubre tiene 8 s de reutilización: ya no se puede lanzar seguido.",
+        "en": "Since 28 October it has an 8 s cooldown: it can no longer be cast back to back."
       }
     ],
     "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Llega con la build de la beta del 28 de octubre (1.60.1.70685). Blizzard no ha publicado notas de esa build: el cambio sale de sus datos.",
+          "en": "Arrives with the 28 October beta build (1.60.1.70685). Blizzard has published no notes for that build: the change comes from its data."
+        }
+      },
       {
         "status": "analysis",
         "text": {
@@ -1356,9 +1527,11 @@
     "sources": [
       "blizzard-deep-dive-mage",
       "warcrafttavern-mage-deep-dive",
-      "blizzard-dev-notes"
+      "blizzard-dev-notes",
+      "foreverchanges-build-2026-10-28",
+      "wowhead-forever-talent-calc"
     ],
-    "updated": "2026-10-16"
+    "updated": "2026-10-29"
   },
   {
     "id": "improved-blizzard",

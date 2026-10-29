@@ -54,6 +54,8 @@ const PAIRS: [string, string, number][] = [
   ['status-tested', 'surface-1', 4.5],
   ['status-pending', 'surface-1', 4.5],
   ['text', 'warning-soft', 4.5],
+  ['warning', 'surface-1', 4.5],
+  ['nerf', 'surface-1', 4.5],
   // Non-text UI: focus ring and control borders need 3:1.
   ['focus', 'bg', 3],
   ['focus', 'surface-1', 3],

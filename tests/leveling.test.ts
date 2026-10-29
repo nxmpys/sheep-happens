@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { builds } from '../src/lib/data';
 import { isLevelingBuild, levelingStatus } from '../src/lib/leveling';
+import { fixtureBuild } from './fixtures/builds';
 
 const build = (level: number, uses: ('leveling' | 'dungeons' | 'pvp')[] = ['leveling'], order: string[] | undefined = ['improved-frostbolt']) => ({
   uses,
@@ -15,8 +15,8 @@ describe('leveling guide coverage', () => {
     expect(isLevelingBuild({ uses: ['leveling'], level: 30, order: undefined })).toBe(false);
   });
 
-  it('covers 1–60 with the shipped builds', () => {
-    const status = levelingStatus(builds);
+  it('covers 1–60 with a full leveling build', () => {
+    const status = levelingStatus([fixtureBuild]);
     expect(status.coverage).toBe(60);
     expect(status.complete).toBe(true);
     expect(status.stages.every((s) => s.state === 'published')).toBe(true);

@@ -39,6 +39,8 @@ const RANK_VALUES: Record<number, string[]> = {
  */
 const STALE_ES = new Set<number>([
   11189, // Frost Warding: still "reflejar" and no absorb bonus after the 20 Oct 2026 hotfix
+  11069, // Accelerant: still Improved Fireball, without Arcane Wrath, after the 28 Oct 2026 build
+  29438, // Precision: still Elemental Precision (Frost and Fire only) after the 28 Oct 2026 build
 ]);
 
 const ids = new Set<number>([

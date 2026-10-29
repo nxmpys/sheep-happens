@@ -13,6 +13,14 @@ export const COMMUNITY_TAGS = ['leveling', 'dungeons', 'raid', 'pvp-bg', 'pvp-ge
 export type CommunityTag = (typeof COMMUNITY_TAGS)[number];
 
 export const COMMUNITY_MAX_TAGS = 3;
+/**
+ * Votes are kept per talent tree: a calculator code means another build once
+ * talents move, so a tree change starts a new table (and a new list of builds
+ * the browser remembers as published). Bump it when talents move or disappear;
+ * the old table stays in D1 until someone drops it.
+ * 2: the 28 October 2026 tree (Arcane Focus gone, four talents moved).
+ */
+export const COMMUNITY_TREE = 2;
 /** Turnstile action: the server rejects tokens issued for anything else. */
 export const COMMUNITY_ACTION = 'community-build';
 /** Builds listed per ranking: a short podium, not a wall of builds. */

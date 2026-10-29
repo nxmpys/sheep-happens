@@ -2,8 +2,9 @@
 import SourceRefs from './SourceRefs.astro';
 import { getLocale, href } from '../../i18n/locale';
 import { NAV_LABELS, formatDate, t, type UiKey } from '../../i18n/ui';
-import { sortedChangelog } from '../../lib/data';
-import { resolveRefs } from '../../lib/refs';
+import { abilities, changes, sortedChangelog, spellText, talents } from '../../lib/data';
+import { iconPath } from '../../lib/icons';
+import { resolveRef, resolveRefs } from '../../lib/refs';
 import { firstSentence } from '../../lib/text';
 
 interface Props {
@@ -20,6 +21,18 @@ const { limit, headingLevel = 'h3', compact = false } = Astro.props;
 const Heading = headingLevel;
 const locale = getLocale(Astro);
 const entries = sortedChangelog().slice(0, limit);
+
+/** In-game icon of a changed talent or spell: its talent, its own spell id or the ability it changes. */
+function changeIcon(reference: string): string | undefined {
+  const [kind, id] = reference.split(':');
+  if (kind !== 'change') return undefined;
+  const spell =
+    talents.find((t) => t.changeId === id)?.spell ??
+    changes.find((c) => c.id === id)?.spell ??
+    abilities.find((a) => a.changeIds.includes(id!))?.spell;
+  return spell ? spellText[spell]?.icon : undefined;
+}
+const IMPACT_MARK = { buff: '▲', nerf: '▼', neutral: '◆' } as const;
 ---
 
 <ol class:list={['log', { 'log--compact': compact }]}>
@@ -50,6 +63,28 @@ const entries = sortedChangelog().slice(0, limit);
           {entry.title[locale]}
         </Heading>
         <p class="log__body">{entry.body[locale]}</p>
+        {entry.items.length > 0 && (
+          <ul class="log__items">
+            {entry.items.map((item) => {
+              const ref = resolveRef(item.ref, locale);
+              const icon = changeIcon(item.ref);
+              return (
+                <li class:list={['log__item', `log__item--${item.impact}`]}>
+                  <span class="log__impact">
+                    <span aria-hidden="true">{IMPACT_MARK[item.impact]}</span>
+                    {t(locale, `updates.impact.${item.impact}` as UiKey)}
+                  </span>
+                  <span class="log__change">
+                    {icon && <img class="log__icon" src={iconPath(icon)} alt="" width="24" height="24" loading="lazy" />}
+                    {ref?.href ? <a href={ref.href}>{ref.label}</a> : <strong>{ref?.label}</strong>}
+                    {': '}
+                    {item.text[locale]}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        )}
         {resolveRefs(entry.refs, locale).length > 0 && (
           <p class="log__refs">
             <span class="log__refs-label">{t(locale, 'updates.refs')}:</span>
@@ -132,6 +167,56 @@ const entries = sortedChangelog().slice(0, limit);
   .log__body {
     margin-top: var(--space-1);
     color: var(--text-muted);
+  }
+  .log__items {
+    list-style: none;
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+  }
+  .log__item {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: var(--space-2);
+    align-items: start;
+    margin: 0;
+  }
+  .log__impact {
+    display: inline-flex;
+    gap: 0.35em;
+    align-items: center;
+    font-size: var(--step--1);
+    font-weight: 600;
+    padding-top: 0.15em;
+  }
+  .log__item--buff .log__impact {
+    color: var(--status-verified);
+  }
+  .log__item--nerf .log__impact {
+    color: var(--nerf);
+  }
+  .log__item--neutral .log__impact {
+    color: var(--warning);
+  }
+  .log__change {
+    color: var(--text-muted);
+  }
+  .log__change a {
+    font-weight: 600;
+  }
+  .log__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 4px;
+    vertical-align: -0.35em;
+    margin-right: 0.4em;
+  }
+  @media (max-width: 30rem) {
+    .log__item {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
   }
   .log__refs {
     display: flex;

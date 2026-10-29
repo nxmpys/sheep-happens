@@ -109,7 +109,7 @@ const config = {
 </community-builds>
 
 <script>
-  import { communitySpec, type CommunityBuild, type CommunitySpec, type CommunityTag } from '../../lib/community-builds';
+  import { COMMUNITY_TREE, communitySpec, type CommunityBuild, type CommunitySpec, type CommunityTag } from '../../lib/community-builds';
   import { MAX_TALENT_POINTS, TREE_ORDER, parseWowheadBuild, pointsByTree, totalPoints } from '../../lib/talents';
   import type { SpecTree, Talent } from '../../lib/schemas';
   import { loadTurnstile, type Turnstile } from '../../scripts/turnstile';
@@ -127,7 +127,7 @@ const config = {
     strings: Record<string, string>;
   }
 
-  const VOTED_KEY = 'sh-community-voted';
+  const VOTED_KEY = `sh-community-voted-${COMMUNITY_TREE}`;
   const fill = (text: string, values: Record<string, string | number>) => text.replace(/\{(\w+)\}/g, (_, key) => String(values[key] ?? ''));
 
   /** Codes published from this browser: the form refuses to send the same build twice. */

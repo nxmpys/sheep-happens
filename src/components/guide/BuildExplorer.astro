@@ -29,6 +29,9 @@ const bestRole = (build: Build) => Math.min(...build.uses.map((use) => ROLE_ORDE
 const list = [...builds].sort((a, b) => bestRole(a) - bestRole(b));
 const counts = Object.fromEntries(BUILD_USES.map((use) => [use, builds.filter((b) => b.uses.includes(use)).length])) as Record<BuildUse, number>;
 const empty = BUILD_USES.filter((use) => counts[use] === 0);
+/** Why a content has no build yet: leveling builds are being redone, the rest wait for level 60. */
+const later = (use: BuildUse) => tb(locale, use === 'leveling' ? 'index.later.leveling' : 'index.later');
+const soonGroups = [empty.filter((use) => use === 'leveling'), empty.filter((use) => use !== 'leveling')].filter((g) => g.length > 0);
 const filled = BUILD_USES.filter((use) => counts[use] > 0);
 
 const talentIcon = (id: string) => talentText.talents[id]?.icon;
@@ -166,22 +169,22 @@ const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon)
     BUILD_USES.filter((use) => counts[use] === 0).map((use) => (
       <p class="bx__none" data-none={use} hidden>
         <Icon name="pending" size={18} />
-        {tb(locale, 'index.none')} {tb(locale, 'index.later')}
+        {tb(locale, 'index.none')} {later(use)}
       </p>
     ))
   }
 
   {
-    empty.length > 0 && (
+    soonGroups.map((group) => (
       <p class="bx__soon" data-soon>
         <span class="bx__soon-uses">
-          {empty.map((use) => (
+          {group.map((use) => (
             <span class="bx__soon-use">{USE_TITLES[locale][use]}</span>
           ))}
         </span>
-        <span>{tb(locale, 'index.soon')}</span>
+        <span>{group[0] === 'leveling' ? later('leveling') : tb(locale, 'index.soon')}</span>
       </p>
-    )
+    ))
   }
 
   {
@@ -207,7 +210,7 @@ const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon)
     const buttons = [...bar.querySelectorAll<HTMLButtonElement>('[data-filter]')];
     const items = [...root.querySelectorAll<HTMLElement>('[data-uses]')];
     const nones = [...root.querySelectorAll<HTMLElement>('[data-none]')];
-    const soon = root.querySelector<HTMLElement>('[data-soon]');
+    const soons = [...root.querySelectorAll<HTMLElement>('[data-soon]')];
     const compares = [...root.querySelectorAll<HTMLElement>('[data-compare]')];
     bar.hidden = false;
 
@@ -228,7 +231,7 @@ const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon)
         if (match) item.style.setProperty('--i', String(shown++));
       }
       for (const none of nones) none.hidden = none.dataset.none !== filter;
-      if (soon) soon.hidden = filter !== 'all';
+      for (const soon of soons) soon.hidden = filter !== 'all';
       for (const link of compares) link.hidden = filter !== 'all' && link.dataset.compare !== filter;
       root.dataset.filter = filter;
       movePill();

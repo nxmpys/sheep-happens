@@ -11,7 +11,11 @@ export type Tree = (typeof TREES)[number];
 export const CHANGE_KINDS = ['new', 'redesigned', 'renamed', 'moved', 'adjusted', 'prerequisite', 'baseline', 'removed'] as const;
 export type ChangeKind = (typeof CHANGE_KINDS)[number];
 
-export const SOURCE_KINDS = ['official', 'press', 'community', 'tool', 'classic-reference'] as const;
+/** My verdict on one change of a game update, for the Mage. */
+export const CHANGELOG_IMPACTS = ['buff', 'nerf', 'neutral'] as const;
+export type ChangelogImpact = (typeof CHANGELOG_IMPACTS)[number];
+
+export const SOURCE_KINDS =['official', 'press', 'community', 'tool', 'classic-reference'] as const;
 export type SourceKind = (typeof SOURCE_KINDS)[number];
 
 export const SCHOOLS = ['arcane', 'fire', 'frost', 'frostfire', 'mixed', 'none'] as const;
@@ -213,8 +217,17 @@ export const changelogSchema = z
     refs: z.array(ref).default([]),
     /** Game client build the entry refers to, e.g. "1.60.1.70338". */
     build: z.string().regex(/^\d+\.\d+\.\d+(?:\.\d+)?$/).optional(),
+    /**
+     * One line per change of a game update, with my verdict for the Mage:
+     * better (buff), worse (nerf) or about the same. `ref` names the record and
+     * must also be in `refs`.
+     */
+    items: z
+      .array(z.object({ ref, impact: z.enum(CHANGELOG_IMPACTS), text: localized }).strict())
+      .default([]),
   })
-  .strict();
+  .strict()
+  .refine((e) => e.items.every((i) => e.refs.includes(i.ref)), { message: 'every item ref must also be in refs' });
 export type ChangelogEntry = z.infer<typeof changelogSchema>;
 
 export const SPECS = ['arcane', 'fire', 'frost'] as const;

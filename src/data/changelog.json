@@ -1,5 +1,143 @@
 [
   {
+    "id": "2026-10-29-talents",
+    "date": "2026-10-29",
+    "type": "game",
+    "title": {
+      "es": "Cambios de talentos del 28 de octubre",
+      "en": "Talent changes of 28 October"
+    },
+    "body": {
+      "es": "La build de la beta del 28 de octubre cambia los talentos del Mago. Blizzard no ha publicado notas: los cambios salen de los datos de la build y los he contrastado con la calculadora de Wowhead Forever. Debajo, cada cambio con mi valoración: mejora, empeora o se queda igual.",
+      "en": "The 28 October beta build changes the Mage talents. Blizzard has published no notes: the changes come from the build data, and I checked them against the Wowhead Forever talent calculator. Below, each change with my verdict: better, worse or about the same."
+    },
+    "pages": [
+      "changes",
+      "talent-calc",
+      "talents-arcane",
+      "talents-fire",
+      "talents-frost"
+    ],
+    "sources": [
+      "foreverchanges-build-2026-10-28",
+      "wowhead-forever-talent-calc"
+    ],
+    "refs": [
+      "change:improved-fireball",
+      "change:elemental-precision",
+      "change:incineration",
+      "change:arcane-resilience",
+      "change:arcane-focus",
+      "change:improved-channeling",
+      "change:critical-mass",
+      "change:ice-lance",
+      "change:frost-blast",
+      "change:wake-of-fire",
+      "change:missile-barrage",
+      "change:frostbite",
+      "source:foreverchanges-build-2026-10-28"
+    ],
+    "build": "1.60.1.70685",
+    "items": [
+      {
+        "ref": "change:improved-fireball",
+        "impact": "buff",
+        "text": {
+          "es": "Antes Bola de Fuego mejorada. Ahora también acorta 0,1-0,5 s Cólera Arcana, además de Bola de Fuego y Descarga de Pirofrío.",
+          "en": "Was Improved Fireball. It now also cuts 0.1-0.5 s off Arcane Wrath, besides Fireball and Frostfire Bolt."
+        }
+      },
+      {
+        "ref": "change:elemental-precision",
+        "impact": "buff",
+        "text": {
+          "es": "Antes Enfoque elemental. Su 2/4/6 % de golpe cubre todos los hechizos, no solo los de Fuego y Escarcha.",
+          "en": "Was Elemental Precision. Its 2/4/6% hit now covers all spells, not only Fire and Frost."
+        }
+      },
+      {
+        "ref": "change:incineration",
+        "impact": "buff",
+        "text": {
+          "es": "5 puntos en vez de 3: hasta un 10 % de crítico para Explosión de Fuego, Lanza de hielo, Explosión Arcana y Chamuscar (antes 6 %).",
+          "en": "5 points instead of 3: up to 10% crit for Fire Blast, Ice Lance, Arcane Blast and Scorch (was 6%)."
+        }
+      },
+      {
+        "ref": "change:arcane-resilience",
+        "impact": "buff",
+        "text": {
+          "es": "Sube de la fila 2 a la 1, en la tercera columna: se coge con los primeros puntos de Arcano.",
+          "en": "Moves up from row 2 to row 1, third column: you can take it with your first Arcane points."
+        }
+      },
+      {
+        "ref": "change:arcane-focus",
+        "impact": "neutral",
+        "text": {
+          "es": "Desaparece del árbol Arcano (daba un 1-5 % de golpe Arcano). Lo compensa Precision: 3 puntos en Escarcha dan un 6 % a todo.",
+          "en": "Removed from the Arcane tree (it gave 1-5% Arcane hit). Precision makes up for it: 3 Frost points give 6% to everything."
+        }
+      },
+      {
+        "ref": "change:improved-channeling",
+        "impact": "neutral",
+        "text": {
+          "es": "Pasa de la tercera a la segunda columna de la fila 1. Hace lo mismo.",
+          "en": "Moves from the third to the second column of row 1. Same effect."
+        }
+      },
+      {
+        "ref": "change:critical-mass",
+        "impact": "nerf",
+        "text": {
+          "es": "3 puntos en vez de 5: hasta un 6 % de crítico con Fuego (antes 10 %). Combustión sigue pidiendo 3.",
+          "en": "3 points instead of 5: up to 6% Fire crit (was 10%). Combustion still needs 3."
+        }
+      },
+      {
+        "ref": "change:ice-lance",
+        "impact": "nerf",
+        "text": {
+          "es": "Ahora tiene 8 s de reutilización.",
+          "en": "It now has an 8 s cooldown."
+        }
+      },
+      {
+        "ref": "change:frost-blast",
+        "impact": "nerf",
+        "text": {
+          "es": "Desaparece del libro de hechizos: ya no se entrena ninguno de sus 3 rangos. Pierdes la ralentización barata para kitear.",
+          "en": "Removed from the spellbook: none of its 3 ranks is trained any more. You lose the cheap slow for kiting."
+        }
+      },
+      {
+        "ref": "change:wake-of-fire",
+        "impact": "nerf",
+        "text": {
+          "es": "Baja de la fila 1 a la 3 (cuarta columna): ahora pide 10 puntos en Fuego.",
+          "en": "Moves down from row 1 to row 3 (fourth column): it now needs 10 Fire points."
+        }
+      },
+      {
+        "ref": "change:missile-barrage",
+        "impact": "nerf",
+        "text": {
+          "es": "Baja de la fila 1 a la 2: una build de Fuego o Escarcha necesita 5 puntos en Arcano para cogerla.",
+          "en": "Moves down from row 1 to row 2: a Fire or Frost build needs 5 Arcane points to take it."
+        }
+      },
+      {
+        "ref": "change:frostbite",
+        "impact": "nerf",
+        "text": {
+          "es": "Su congelación comparte rendimientos decrecientes con las raíces de talentos de Cazador y Guerrero (Entrapment, Counterattack, Improved Wing Clip, Improved Hamstring). Solo se nota en JcJ.",
+          "en": "Its freeze shares diminishing returns with Hunter and Warrior talent roots (Entrapment, Counterattack, Improved Wing Clip, Improved Hamstring). Only noticeable in PvP."
+        }
+      }
+    ]
+  },
+  {
     "id": "2026-10-27-racials",
     "date": "2026-10-27",
     "type": "game",
@@ -40,9 +178,7 @@
       "builds",
       "talents-fire"
     ],
-    "refs": [
-      "build:fire-leveling-solo"
-    ]
+    "refs": []
   },
   {
     "id": "2026-10-26-arcane-leveling-build",
@@ -60,9 +196,7 @@
       "builds",
       "talents-arcane"
     ],
-    "refs": [
-      "build:arcane-leveling-solo"
-    ]
+    "refs": []
   },
   {
     "id": "2026-10-26-aoe-farming-build",
@@ -80,9 +214,7 @@
       "builds",
       "aoe-farming"
     ],
-    "refs": [
-      "build:frost-aoe-farming-solo"
-    ]
+    "refs": []
   },
   {
     "id": "2026-10-26-leveling-build-60",
@@ -100,9 +232,7 @@
       "builds",
       "leveling"
     ],
-    "refs": [
-      "build:frost-leveling-solo"
-    ]
+    "refs": []
   },
   {
     "id": "2026-10-21-frost-tree",
@@ -132,8 +262,7 @@
       "change:ice-barrier",
       "change:frost-warding",
       "change:winters-chill",
-      "change:missile-barrage",
-      "build:frost-leveling-solo"
+      "change:missile-barrage"
     ]
   },
   {
@@ -265,7 +394,8 @@
       "races",
       "professions",
       "learn"
-    ]
+    ],
+    "refs": []
   },
   {
     "id": "2026-10-19-talent-calc",
@@ -284,7 +414,8 @@
       "home",
       "learn",
       "builds"
-    ]
+    ],
+    "refs": []
   },
   {
     "id": "2026-10-19-camp-buffs",
@@ -300,7 +431,8 @@
     },
     "pages": [
       "professions"
-    ]
+    ],
+    "refs": []
   },
   {
     "id": "2026-10-18-build-coverage",
@@ -316,7 +448,8 @@
     },
     "pages": [
       "builds"
-    ]
+    ],
+    "refs": []
   },
   {
     "id": "2026-10-18-menu",
@@ -374,7 +507,6 @@
       "blizzard-dev-notes"
     ],
     "refs": [
-      "build:frost-leveling-solo",
       "change:ice-lance"
     ]
   },
@@ -445,7 +577,6 @@
       "change:spell-ranks",
       "change:wands",
       "milestone:arcane-16",
-      "ability:frost-blast",
       "ability:cone-of-cold",
       "ability:fire-blast",
       "race:human",
@@ -454,7 +585,6 @@
       "race:gnome",
       "race:troll",
       "race:skyborne",
-      "build:frost-leveling-solo",
       "source:forum-missile-barrage-proc"
     ]
   },
@@ -500,7 +630,6 @@
       "change:spell-ranks",
       "change:wands",
       "milestone:arcane-16",
-      "ability:frost-blast",
       "ability:cone-of-cold",
       "ability:fire-blast"
     ]
@@ -647,7 +776,6 @@
       "icyveins-classic-aoe-leveling"
     ],
     "refs": [
-      "build:frost-leveling-solo",
       "source:icyveins-forever-frost",
       "source:mobalytics-mage-leveling",
       "source:mobalytics-frost",
@@ -921,7 +1049,8 @@
       "leveling",
       "combat",
       "tools"
-    ]
+    ],
+    "refs": []
   },
   {
     "id": "2026-10-deep-dive",
@@ -941,7 +1070,8 @@
     "sources": [
       "blizzard-deep-dive-mage",
       "blizzard-deep-dive-mage-es"
-    ]
+    ],
+    "refs": []
   },
   {
     "id": "2026-10-01-cap-30",
@@ -960,7 +1090,8 @@
     ],
     "sources": [
       "lfcarry-beta"
-    ]
+    ],
+    "refs": []
   },
   {
     "id": "2026-10-14-professions",
@@ -1031,7 +1162,8 @@
     "pages": [
       "addons",
       "tools"
-    ]
+    ],
+    "refs": []
   },
   {
     "id": "2026-10-20-guides",
@@ -1058,7 +1190,8 @@
       "wowhead-forever-pvp",
       "wowhead-library-books",
       "foreverdb-mage-quests"
-    ]
+    ],
+    "refs": []
   },
   {
     "id": "2026-10-20-legacy",
@@ -1079,6 +1212,7 @@
     "sources": [
       "wowhead-legacy-calculator",
       "wowhead-legacy-guide"
-    ]
+    ],
+    "refs": []
   }
 ]

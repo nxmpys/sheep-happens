@@ -102,16 +102,20 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
   </div>
 
   <div class="tc__load">
-    <label class="tc__field">
-      <span>{es ? 'Empezar desde una build' : 'Start from a build'}</span>
-      <select name="build">
-        <option value="">{es ? '— Elige una build —' : '— Pick a build —'}</option>
-        {data.builds.map((build) => <option value={build.id}>{build.name}</option>)}
-      </select>
-    </label>
+    {
+      data.builds.length > 0 && (
+        <label class="tc__field">
+          <span>{es ? 'Empezar desde una build' : 'Start from a build'}</span>
+          <select name="build">
+            <option value="">{es ? '— Elige una build —' : '— Pick a build —'}</option>
+            {data.builds.map((build) => <option value={build.id}>{build.name}</option>)}
+          </select>
+        </label>
+      )
+    }
     <form class="tc__import">
       <label class="tc__field">
-        <span>{es ? 'O pega un enlace de Wowhead' : 'Or paste a Wowhead link'}</span>
+        <span>{data.builds.length > 0 ? (es ? 'O pega un enlace de Wowhead' : 'Or paste a Wowhead link') : es ? 'Pega un enlace de Wowhead' : 'Paste a Wowhead link'}</span>
         <input name="link" type="text" inputmode="url" autocomplete="off" placeholder="https://www.wowhead.com/forever/talent-calc/mage/v2…" />
       </label>
       <button type="submit" class="button">{es ? 'Cargar' : 'Load'}</button>
@@ -267,7 +271,8 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
         this.trimToLevel();
         this.update();
       });
-      this.select('build').addEventListener('change', (e) => {
+      // The build picker only exists while there are builds to pick.
+      this.querySelector<HTMLSelectElement>('select[name="build"]')?.addEventListener('change', (e) => {
         const build = this.config.builds.find((b) => b.id === (e.target as HTMLSelectElement).value);
         if (!build) return;
         this.points = { ...build.points };

@@ -238,27 +238,6 @@
     ]
   },
   {
-    "id": "frost-blast",
-    "name": "Frost Blast",
-    "school": "frost",
-    "role": "control",
-    "level": 24,
-    "changeIds": [
-      "frost-blast",
-      "winters-chill"
-    ],
-    "spell": 1326053,
-    "summary": {
-      "es": "Nuevo en Forever. Lanzamiento de 1,5 s: poco daño de Escarcha y una ralentización del 40 %. Sustituye al truco de la Descarga de Escarcha de rango 1 para mantener a distancia a un enemigo.",
-      "en": "New in Forever. 1.5 s cast: light Frost damage and a 40% slow. It replaces the rank 1 Frostbolt trick for keeping an enemy at range."
-    },
-    "status": "verified",
-    "sources": [
-      "blizzard-dev-notes"
-    ],
-    "updated": "2026-10-16"
-  },
-  {
     "id": "cone-of-cold",
     "name": "Cone of Cold",
     "school": "frost",

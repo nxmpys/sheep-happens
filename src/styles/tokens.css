@@ -46,6 +46,8 @@
   --status-pending: light-dark(#5c5677, #aaa4c0);
 
   --warning: light-dark(#8a5300, #ffc46b);
+  /* Verdict on a game change: --status-verified for a buff, --warning when it stays the same. */
+  --nerf: light-dark(#b0262c, #ff8f8f);
   --warning-soft: light-dark(#fff4e0, #30251a);
 
   /* Typography */

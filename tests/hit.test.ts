@@ -21,7 +21,7 @@ describe('spellHit', () => {
     const result = spellHit({ levelDiff: 0, talentRank: 0, gearHit: 0 });
     expect(result.miss).toBe(4);
     expect(result.toCap).toBe(4);
-    expect(spellHit({ levelDiff: 0, talentRank: 4, gearHit: 0 }).miss).toBe(0);
+    expect(spellHit({ levelDiff: 0, talentRank: 2, gearHit: 0 }).miss).toBe(0);
   });
 
   it('needs 17% hit against a raid boss', () => {
@@ -30,23 +30,23 @@ describe('spellHit', () => {
     expect(result.toCap).toBe(17);
   });
 
-  it('adds 1% per talent rank and gear hit on top', () => {
-    const result = spellHit({ levelDiff: 3, talentRank: 5, gearHit: 6 });
+  it('adds 2% per Precision rank and gear hit on top', () => {
+    const result = spellHit({ levelDiff: 3, talentRank: 3, gearHit: 5 });
     expect(result.hit).toBe(94);
     expect(result.toCap).toBe(6);
   });
 
   it('never goes above 100% and reports the wasted hit', () => {
-    const result = spellHit({ levelDiff: 0, talentRank: 5, gearHit: 2 });
+    const result = spellHit({ levelDiff: 0, talentRank: 3, gearHit: 1 });
     expect(result.hit).toBe(100);
     expect(result.miss).toBe(0);
     expect(result.wasted).toBe(3);
   });
 
-  it('adds 2% per Elemental Precision rank, up to 3 ranks', () => {
-    expect(spellHit({ levelDiff: 3, school: 'elemental', talentRank: 3, gearHit: 0 }).hit).toBe(89);
-    expect(spellHit({ levelDiff: 3, school: 'elemental', talentRank: 5, gearHit: 0 }).hit).toBe(89);
-    expect(spellHit({ levelDiff: 2, school: 'elemental', talentRank: 3, gearHit: 0 }).miss).toBe(0);
+  it('caps Precision at 3 ranks', () => {
+    expect(spellHit({ levelDiff: 3, talentRank: 3, gearHit: 0 }).hit).toBe(89);
+    expect(spellHit({ levelDiff: 3, talentRank: 5, gearHit: 0 }).hit).toBe(89);
+    expect(spellHit({ levelDiff: 2, talentRank: 3, gearHit: 0 }).miss).toBe(0);
   });
 
   it('uses the player table when asked', () => {

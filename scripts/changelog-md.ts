@@ -12,6 +12,7 @@ import { localName } from '../src/lib/names';
 
 const target = fileURLToPath(new URL('../CHANGELOG.md', import.meta.url));
 const TYPE = { site: 'Web', guide: 'Guía', game: 'Juego' } as const;
+const IMPACT = { buff: '▲ Mejora:', nerf: '▼ Empeora:', neutral: '◆ Igual:' } as const;
 
 function label(reference: string): string {
   const [kind, id] = reference.split(':');
@@ -53,6 +54,10 @@ for (const entry of sortedChangelog()) {
     lines.push(`## ${entry.date}`, '');
   }
   lines.push(`### [${TYPE[entry.type]}] ${entry.title.es}${entry.build ? ` (build ${entry.build})` : ''}`, '', entry.body.es, '');
+  if (entry.items.length > 0) {
+    for (const item of entry.items) lines.push(`- ${IMPACT[item.impact]} **${label(item.ref)}**: ${item.text.es}`);
+    lines.push('');
+  }
   if (entry.refs.length > 0) lines.push(`- **Datos afectados:** ${entry.refs.map(label).join(', ')}`);
   if (entry.sources.length > 0) {
     const cited = entry.sources.map((id) => sources.find((s) => s.id === id)).filter(Boolean);

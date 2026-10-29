@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { dataset } from '../src/lib/data';
+import { datasetWithFixture } from './fixtures/builds';
 import { MDX_COMPONENTS, validatePages, type PageFile } from '../src/lib/page-rules';
 import { LOCALES, PAGE_IDS } from '../src/i18n/routes';
 
@@ -53,8 +54,9 @@ describe('validatePages', () => {
     const ok = "<BuildPicker ids={['frost-leveling-solo']} recommended=\"frost-leveling-solo\" />";
     const bad = "<BuildPicker ids={['frost-leveling-solo', 'frost-leveling-nope']} recommended=\"frost-duels-30-legacy\" />";
     const withBody = (body: string) => [...complete.filter((f) => f.path !== 'es/leveling.mdx'), page('es', 'leveling', body)];
-    expect(validatePages(withBody(ok), dataset, today).errors).toEqual([]);
-    const errors = validatePages(withBody(bad), dataset, today).errors.join('\n');
+    const data = datasetWithFixture();
+    expect(validatePages(withBody(ok), data, today).errors).toEqual([]);
+    const errors = validatePages(withBody(bad), data, today).errors.join('\n');
     expect(errors).toMatch(/unknown build "frost-leveling-nope"/);
     expect(errors).toMatch(/recommends "frost-duels-30-legacy", which it does not list/);
   });

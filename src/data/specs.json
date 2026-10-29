@@ -11,8 +11,8 @@
         "en": "Arcane Wrath (16 points) is a big hit that grows with your maximum mana."
       },
       {
-        "es": "Tromba de misiles está en la fila 1: misiles rápidos y gratis desde el nivel 10.",
-        "en": "Missile Barrage sits in row 1: fast, free missiles from level 10."
+        "es": "Tromba de misiles está en la fila 2: misiles rápidos y gratis con tus primeros 7 puntos de Arcano.",
+        "en": "Missile Barrage sits in row 2: fast, free missiles with your first 7 Arcane points."
       }
     ],
     "weaknesses": [
@@ -26,6 +26,10 @@
       }
     ],
     "noBuild": {
+      "leveling": {
+        "es": "Los talentos cambiaron el 28 de octubre y estoy rehaciendo la build de leveo con el árbol nuevo.",
+        "en": "The talents changed on 28 October and I am rebuilding the leveling build on the new tree."
+      },
       "pvp": {
         "es": "Todavía no he podido probar el JcJ de nivel 60.",
         "en": "I have not been able to test level 60 PvP yet."
@@ -39,7 +43,7 @@
         "en": "I have not been able to test Forever raids yet."
       }
     },
-    "updated": "2026-10-26"
+    "updated": "2026-10-29"
   },
   {
     "id": "fire",
@@ -72,6 +76,10 @@
       }
     ],
     "noBuild": {
+      "leveling": {
+        "es": "Los talentos cambiaron el 28 de octubre y estoy rehaciendo la build de leveo con el árbol nuevo.",
+        "en": "The talents changed on 28 October and I am rebuilding the leveling build on the new tree."
+      },
       "pvp": {
         "es": "Todavía no he podido probar el JcJ de nivel 60.",
         "en": "I have not been able to test level 60 PvP yet."
@@ -85,7 +93,7 @@
         "en": "I have not been able to test Forever raids yet."
       }
     },
-    "updated": "2026-10-26"
+    "updated": "2026-10-29"
   },
   {
     "id": "frost",
@@ -114,6 +122,10 @@
       }
     ],
     "noBuild": {
+      "leveling": {
+        "es": "Los talentos cambiaron el 28 de octubre y estoy rehaciendo la build de leveo con el árbol nuevo.",
+        "en": "The talents changed on 28 October and I am rebuilding the leveling build on the new tree."
+      },
       "pvp": {
         "es": "Todavía no he podido probar el JcJ de nivel 60.",
         "en": "I have not been able to test level 60 PvP yet."
@@ -127,6 +139,6 @@
         "en": "I have not been able to test Forever raids yet."
       }
     },
-    "updated": "2026-10-26"
+    "updated": "2026-10-29"
   }
 ]

@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-10-21",
+  "fetched": "2026-10-29",
   "spells": {
     "10": {
       "icon": "spell_frost_icestorm",
@@ -82,8 +82,7 @@
           "Instante",
           "10 seg de reutilización"
         ],
-        "text": "Targets in a cone in front of the caster take 96 to 106 Frost damage and are slowed by 40% for 6 s. The first 4 targets hit by this cone are slowed by an additional 10% for an additional 3 sec.",
-        "lang": "en"
+        "text": "Los objetivos situados en un cono frente al taumaturgo reciben de 96 a 106 p. de daño de Escarcha y sufren una ralentización del 40% durante 6 s. Los primeros 4 objetivos golpeados por el cono sufren un 10% de ralentización adicional durante 3 s más."
       }
     },
     "122": {
@@ -502,14 +501,15 @@
     "11069": {
       "icon": "spell_fire_flamebolt",
       "en": {
-        "name": "Improved Fireball",
+        "name": "Accelerant",
         "meta": [],
-        "text": "Reduces the casting time of your Fireball and Frostfire Bolt spells by 1 sec."
+        "text": "Reduces the casting time of your Fireball, Frostfire Bolt, and Arcane Wrath spells by 1 sec."
       },
       "es": {
         "name": "Bola de Fuego mejorada",
         "meta": [],
-        "text": "Reduce 1 s el tiempo de lanzamiento de tus hechizos Bola de Fuego y Descarga de Pirofrío."
+        "text": "Reduces the casting time of your Fireball, Frostfire Bolt, and Arcane Wrath spells by 1 sec.",
+        "lang": "en"
       }
     },
     "11070": {
@@ -522,8 +522,7 @@
       "es": {
         "name": "Descarga de Escarcha mejorada",
         "meta": [],
-        "text": "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.1/0.2/0.3/0.4/0.5 sec.",
-        "lang": "en"
+        "text": "Reduce 0.1/0.2/0.3/0.4/0.5 s el tiempo de lanzamiento de tus hechizos Descarga de Escarcha y Explosión de Escarcha."
       }
     },
     "11071": {
@@ -547,10 +546,9 @@
         "text": "Reduces the cooldown of your Fire Blast spell by 2 sec and increases its range by 15 yards."
       },
       "es": {
-        "name": "Improved Fire Blast",
+        "name": "Explosión de Fuego mejorada",
         "meta": [],
-        "text": "Reduces the cooldown of your Fire Blast spell by 2 sec and increases its range by 15 yards.",
-        "lang": "en"
+        "text": "Reduce el tiempo de reutilización de tu hechizo Explosión de Fuego en 2 s y su alcance aumenta 15 m."
       }
     },
     "11083": {
@@ -688,8 +686,7 @@
       "es": {
         "name": "Poder de Fuego",
         "meta": [],
-        "text": "Increases the damage done by your Fire spells by 3% per your Fire effects on the target, up to a maximum increase of 12%. Effects which mix multiple schools of magic do not qualify.",
-        "lang": "en"
+        "text": "Aumenta el daño causado con tus hechizos de Fuego en un 3% por cada uno de tus efectos de Fuego en el objetivo, hasta un aumento máximo del 12%. Los efectos que combinan varias escuelas de magia no cuentan."
       }
     },
     "11129": {
@@ -773,8 +770,7 @@
       "es": {
         "name": "Escalofrío del invierno",
         "meta": [],
-        "text": "Gives your Frost damage spells a 20/40/60/80/100% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 5%, stacking up to 5 times.",
-        "lang": "en"
+        "text": "Otorga a tus hechizos Lanza de hielo potenciados con Descarga de Escarcha, Explosión de Escarcha y Dedos de Escarcha un 20/40/60/80/100% de probabilidad de aplicar Escalofrío invernal, lo que aumenta un 5% el daño recibido por el objetivo de tu siguiente Cono de frío y obtiene un 7% adicional de tu daño con hechizos, acumulándose hasta 5 veces."
       }
     },
     "11185": {
@@ -892,8 +888,7 @@
       "es": {
         "name": "Canalización mejorada",
         "meta": [],
-        "text": "Gives you a 20% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 14% chance while casting Arcane Blast or Arcane Wrath.",
-        "lang": "en"
+        "text": "Da a tu hechizo Misiles Arcanos un 20% de probabilidad de no perder tiempo de lanzamiento cuando recibes daño, y un 14% a tus hechizos Explosión Arcana y Cólera Arcana."
       }
     },
     "11242": {
@@ -987,7 +982,7 @@
           "Instante",
           "30 seg de reutilización"
         ],
-        "text": "Te protege instantáneamente con un escudo que absorbe 448 p. de daño. Dura 1 min. Mientras el escudo esté activo, los lanzamientos de hechizos no se interrumpirán ni retrasarán al recibir daño."
+        "text": "Te protege con un escudo que absorbe p. de daño y aumenta un 3% tu daño de Escarcha durante 1 min. Mientras tengas la protección, tu daño de Escarcha aumenta un 3% más y no pierdes tiempo de lanzamiento por recibir daño."
       }
     },
     "11958": {
@@ -1123,8 +1118,7 @@
       "es": {
         "name": "Alcance ártico",
         "meta": [],
-        "text": "Increases the range of your Frostbolt, Frost Blast, and Blizzard spells and the radius of your Frost Nova and Cone of Cold spells by 10%.",
-        "lang": "en"
+        "text": "Aumenta en un 10% el alcance de tus hechizos Descarga de Escarcha, Explosión de Escarcha y Ventisca, así como el radio de tus hechizos Nova de Escarcha y Cono de frío."
       }
     },
     "18459": {
@@ -1212,7 +1206,7 @@
         "name": "Furia sangrienta",
         "meta": [
           "Instante",
-          "3 min de reutilización"
+          "2 min de reutilización"
         ],
         "text": "Aumenta un 10% el poder de ataque y el poder con hechizos durante 15 s."
       }
@@ -1228,19 +1222,6 @@
         "name": "Firmeza",
         "meta": [],
         "text": "Duración de los efectos de aturdimiento sobre ti reducida un 20%."
-      }
-    },
-    "20574": {
-      "icon": "inv_axe_02",
-      "en": {
-        "name": "Savage",
-        "meta": [],
-        "text": "Increases your critical strike chance with all spells and abilities by 1%."
-      },
-      "es": {
-        "name": "Salvajismo",
-        "meta": [],
-        "text": "Aumenta un 1% la probabilidad de conseguir un golpe crítico con todos los hechizos y habilidades."
       }
     },
     "20577": {
@@ -1383,14 +1364,15 @@
     "29438": {
       "icon": "spell_ice_magicdamage",
       "en": {
-        "name": "Elemental Precision",
+        "name": "Precision",
         "meta": [],
-        "text": "Improves your chance to hit with Frost and Fire spells by 6%."
+        "text": "Improves your chance to hit with all spells by 6%."
       },
       "es": {
         "name": "Enfoque elemental",
         "meta": [],
-        "text": "Aumenta un 6% tu probabilidad de golpear con hechizos de Escarcha y de Fuego."
+        "text": "Improves your chance to hit with all spells by 6%.",
+        "lang": "en"
       }
     },
     "29441": {
@@ -1437,7 +1419,7 @@
       "es": {
         "name": "Tromba de misiles",
         "meta": [],
-        "text": "Gives your Arcane Blast spell a 40% chance, your Arcane Missile hits a 10% chance, and your Arcane Wrath, Fireball, Frostbolt, and Frostfire Bolt spells a 20% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec.",
+        "text": "Gives your Arcane Blast spell a 40% chance, and your Arcane Wrath, Fireball, Frostbolt, Frost Blast, and Frostfire Bolt spells a 20% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec.",
         "lang": "en"
       }
     },
@@ -1451,8 +1433,7 @@
       "es": {
         "name": "Calentamiento",
         "meta": [],
-        "text": "Non-periodic critical strikes with Fireball, Frostfire Bolt, Fire Blast, and Scorch reduce the cast time of your next Pyroblast cast within 20 s by 25%, stacking up to 3 times. Fire Blast grants an additional stack every time it deals damage.",
-        "lang": "en"
+        "text": "Los golpes críticos no periódicos con Bola de Fuego, Descarga de Pirofrío, Explosión de Fuego y Chamuscar reducen el tiempo de lanzamiento de la próxima Piroexplosión que lances en un plazo de 20 s un 25%. Se acumula hasta 3 veces. Explosión de Fuego otorga una acumulación adicional cada vez que inflige daño."
       }
     },
     "400647": {
@@ -1519,13 +1500,12 @@
         "text": "Attempt to tap into the power of a nearby leyline, increasing your Health and Mana regeneration by 100%. Lasts 30 sec if no leyline is nearby, and 15 min if one is found."
       },
       "es": {
-        "name": "Read Leyline",
+        "name": "Leer línea Ley",
         "meta": [
           "Hechizo de 2 seg",
           "2 min de reutilización"
         ],
-        "text": "Attempt to tap into the power of a nearby leyline, increasing your Health and Mana regeneration by 100%. Lasts 30 s if no leyline is nearby, and 15 min if one is found.",
-        "lang": "en"
+        "text": "Intentas aprovechar el poder de una línea Ley cercana para aumentar un 100% tu regeneración de salud y maná. Dura 30 s si no hay una línea Ley cerca y 15 min cuando sí la haya."
       }
     },
     "1259707": {
@@ -1589,7 +1569,7 @@
           "Instante",
           "2 min de reutilización"
         ],
-        "text": "Las facultades dañinas cuestan un 10% menos de maná e infligen un 10% más de daño."
+        "text": "Las facultades dañinas cuestan un 10% menos de maná e infligen un 10% más de daño durante 8 s."
       }
     },
     "1260201": {
@@ -1669,7 +1649,8 @@
         "meta": [
           "45 Mana",
           "30 yd range",
-          "Instant"
+          "Instant",
+          "8 sec cooldown"
         ],
         "text": "Deals 28 to 32 Frost damage to an enemy target. Deals 200% increased damage to Frozen targets."
       },
@@ -1678,7 +1659,8 @@
         "meta": [
           "45 Maná",
           "Alcance de 30 m",
-          "Instante"
+          "Instante",
+          "8 seg de reutilización"
         ],
         "text": "Inflige 28 al 32 p. de daño de Escarcha a un objetivo enemigo. Inflige un 200% más de daño contra objetivos congelados."
       }
@@ -1695,14 +1677,13 @@
         "text": "Quickly launch a weak blast of frost at the enemy, causing 28 to 31 Frost damage and slowing movement speed by 40% for 9 sec."
       },
       "es": {
-        "name": "Frost Blast",
+        "name": "Explosión de Escarcha",
         "meta": [
           "40 Maná",
           "Alcance de 30 m",
           "Hechizo de 1.5 seg"
         ],
-        "text": "Quickly launch a weak blast of frost at the enemy, causing 28 al 31 Frost damage and slowing movement speed by 40% for 9 s.",
-        "lang": "en"
+        "text": "Lanza rápidamente un débil estallido de Escarcha al enemigo que inflige 28 al 31 p. de daño de Escarcha y reduce su velocidad de movimiento un 40% durante 9 s."
       }
     },
     "1326079": {

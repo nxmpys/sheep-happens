@@ -2,11 +2,11 @@ import { describe, expect, it } from 'vitest';
 import { dataset } from '../src/lib/data';
 import { latestDate, shownDataDates } from '../src/lib/page-dates';
 import { lastModified } from '../src/lib/seo';
+import { datasetWithFixture, fixtureBuild as solo } from './fixtures/builds';
 
 describe('shownDataDates', () => {
   it('reads the records a page shows from its data components', () => {
-    const solo = dataset.builds.find((b) => b.id === 'frost-leveling-solo')!;
-    const dates = shownDataDates(`Texto\n\n<BuildPicker ids={['frost-leveling-solo']} recommended="frost-leveling-solo" />`, dataset);
+    const dates = shownDataDates(`Texto\n\n<BuildPicker ids={['frost-leveling-solo']} recommended="frost-leveling-solo" />`, datasetWithFixture());
     expect(dates).toEqual([solo.updated]);
     expect(shownDataDates('<FactList ids={["legacy", "respec"]} />', dataset)).toHaveLength(
       dataset.facts.filter((f) => ['legacy', 'respec'].includes(f.id) && f.updated).length,

@@ -4,6 +4,28 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-10-29
+
+### [Juego] Cambios de talentos del 28 de octubre (build 1.60.1.70685)
+
+La build de la beta del 28 de octubre cambia los talentos del Mago. Blizzard no ha publicado notas: los cambios salen de los datos de la build y los he contrastado con la calculadora de Wowhead Forever. Debajo, cada cambio con mi valoración: mejora, empeora o se queda igual.
+
+- ▲ Mejora: **Accelerant**: Antes Bola de Fuego mejorada. Ahora también acorta 0,1-0,5 s Cólera Arcana, además de Bola de Fuego y Descarga de Pirofrío.
+- ▲ Mejora: **Precision**: Antes Enfoque elemental. Su 2/4/6 % de golpe cubre todos los hechizos, no solo los de Fuego y Escarcha.
+- ▲ Mejora: **Incineración**: 5 puntos en vez de 3: hasta un 10 % de crítico para Explosión de Fuego, Lanza de hielo, Explosión Arcana y Chamuscar (antes 6 %).
+- ▲ Mejora: **Recuperación Arcana**: Sube de la fila 2 a la 1, en la tercera columna: se coge con los primeros puntos de Arcano.
+- ◆ Igual: **Enfoque Arcano**: Desaparece del árbol Arcano (daba un 1-5 % de golpe Arcano). Lo compensa Precision: 3 puntos en Escarcha dan un 6 % a todo.
+- ◆ Igual: **Canalización mejorada**: Pasa de la tercera a la segunda columna de la fila 1. Hace lo mismo.
+- ▼ Empeora: **Masa crítica**: 3 puntos en vez de 5: hasta un 6 % de crítico con Fuego (antes 10 %). Combustión sigue pidiendo 3.
+- ▼ Empeora: **Lanza de hielo**: Ahora tiene 8 s de reutilización.
+- ▼ Empeora: **Frost Blast**: Desaparece del libro de hechizos: ya no se entrena ninguno de sus 3 rangos. Pierdes la ralentización barata para kitear.
+- ▼ Empeora: **Explosión de Fuego mejorada**: Baja de la fila 1 a la 3 (cuarta columna): ahora pide 10 puntos en Fuego.
+- ▼ Empeora: **Tromba de misiles**: Baja de la fila 1 a la 2: una build de Fuego o Escarcha necesita 5 puntos en Arcano para cogerla.
+- ▼ Empeora: **Mordiescarcha**: Su congelación comparte rendimientos decrecientes con las raíces de talentos de Cazador y Guerrero (Entrapment, Counterattack, Improved Wing Clip, Improved Hamstring). Solo se nota en JcJ.
+
+- **Datos afectados:** Accelerant, Precision, Incineración, Recuperación Arcana, Enfoque Arcano, Canalización mejorada, Masa crítica, Lanza de hielo, Frost Blast, Explosión de Fuego mejorada, Tromba de misiles, Mordiescarcha, WoW Forever patch notes: build 1.60.1.70685 of 28 October 2026
+- **Fuentes:** [WoW Forever patch notes: build 1.60.1.70685 of 28 October 2026](https://foreverchanges.pro/patch-notes) (Forever Changes (foreverchanges.pro)), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead)
+
 ## 2026-10-27
 
 ### [Juego] Ajuste de raciales para el lanzamiento
@@ -19,25 +41,17 @@ Blizzard anuncia el 26 de octubre un ajuste para el lanzamiento. Crueldad (Ruthl
 
 Una build de Fuego para subir a base de críticos: Bola de Fuego mejorada, Ignición, Calentamiento para acelerar Piroexplosión y Masa crítica hasta Combustión al 40. Desde el 45 suma Arcano para que Bola de Fuego active Tromba de misiles.
 
-- **Datos afectados:** build:fire-leveling-solo
-
 ### [Guía] Nueva build de leveo: Arcano en solitario
 
 Una build de Arcano para subir a base de procs: Descarga de Escarcha activa Tromba de misiles y Concentración Arcana deja Explosiones Arcanas gratis. Desde el 31 suma Escarcha hasta Bloqueo de hielo, y vuelve a Arcano hasta Poder Arcano al 58.
-
-- **Datos afectados:** build:arcane-leveling-solo
 
 ### [Guía] Nueva build de leveo: farmeo AoE en solitario
 
 Una build de Escarcha para subir juntando grupos, con Ventisca mejorada desde el nivel 20 y Fuego desde el 41 (Explosión de Fuego mejorada, Incineración, Lanzallamas, Impacto y Fogonazo mejorado). Sustituye a la variante de área de la build de Pirofrío.
 
-- **Datos afectados:** build:frost-aoe-farming-solo
-
 ### [Guía] La build de leveo llega al 60 con Descarga de Pirofrío
 
 La build de leveo pasa a cubrir del 1 al 60: Escarcha hasta el 40 y, desde ahí, Fuego para aprovechar Descarga de Pirofrío (Incineración, Bola de Fuego mejorada, Ignición y Maestro de los elementos). Retiro las builds de leveo en mazmorras y en área: lo que cambiaban queda como variantes de la build. Hasta que la pruebe en el juego, la build no aparece como recomendada.
-
-- **Datos afectados:** build:frost-leveling-solo
 
 ## 2026-10-21
 
@@ -45,7 +59,7 @@ La build de leveo pasa a cubrir del 1 al 60: Escarcha hasta el 40 y, desde ahí,
 
 Un hotfix de la beta visto el 20 de octubre, que Blizzard no menciona en sus notas, cambia el árbol de Escarcha: desaparece Hielo penetrante, Enfoque elemental pasa a 3 rangos de +2 % de golpe (6 % en total, antes 5 de +1 %) y cambian de casilla Canalización de Escarcha, Ventisca mejorada, Mordiescarcha y Escarcha permanente. Además, Barrera de hielo da un 3-6 % más de daño de Escarcha y Custodia de Escarcha (Frost Warding) refuerza los escudos. He actualizado la calculadora de talentos y la de golpe, y las tres builds de Escarcha para subir de nivel: la de solitario pone esos 3 puntos en Enfoque elemental, la de mazmorras en Ventisca mejorada y la de área usa los puntos de Talented en Cono de frío mejorado.
 
-- **Datos afectados:** Hielo penetrante, Enfoque elemental, Barrera de hielo, Custodia de Escarcha, Escalofrío del invierno, Tromba de misiles, build:frost-leveling-solo
+- **Datos afectados:** Hielo penetrante, Precision, Barrera de hielo, Custodia de Escarcha, Escalofrío del invierno, Tromba de misiles
 - **Fuentes:** [WoW Forever patch notes: hotfix of 20 October 2026](https://foreverchanges.pro/patch-notes) (Forever Changes (foreverchanges.pro)), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead)
 
 ### [Guía] Revisión de fuentes: la beta cierra el 23 de octubre
@@ -119,7 +133,7 @@ Menú por recorrido (Empezar, Builds, Referencia), cada build y cada ficha de ca
 
 La versión en español de la build de leveo en solitario aún daba la bonificación de Lanza de hielo contra objetivos congelados anterior a la build del 15 de octubre, en el orden de puntos y en «Cómo se juega». Ahora dice lo correcto: un 200 % más. El texto del juego que muestran los tooltips de Lanza de hielo y Explosión Arcana también está al día.
 
-- **Datos afectados:** build:frost-leveling-solo, Lanza de hielo
+- **Datos afectados:** Lanza de hielo
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
 
 ## 2026-10-16
@@ -132,7 +146,7 @@ La página de Addons describe MageProcs 1.2.0: los procs que avisa, el contador 
 
 Incorporo la build del 15 de octubre: fichas nuevas de Frost Blast, Cólera Arcana, Masa crítica, Poder de Fuego y varitas; Explosión Arcana, Tromba de misiles, Explosión de Fuego mejorada, Calentamiento, Lanza de hielo, Escalofrío del invierno y Cono de frío actualizados; el árbol de talentos y los talentos decisivos de Arcano, al día; y las raciales de las seis razas que pueden ser Mago. Las builds y las páginas de combate, leveo, farmeo AoE y talentos reflejan los cambios.
 
-- **Datos afectados:** Frost Blast, Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Masa crítica, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (bajar de rango), Varitas, Cólera Arcana, Frost Blast, Cono de frío, Explosión de Fuego, race:human, race:orc, race:undead, race:gnome, race:troll, race:skyborne, build:frost-leveling-solo, Arcane Missiles does not proc Barrage
+- **Datos afectados:** Frost Blast, Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Masa crítica, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (bajar de rango), Varitas, Cólera Arcana, Cono de frío, Explosión de Fuego, race:human, race:orc, race:undead, race:gnome, race:troll, race:skyborne, Arcane Missiles does not proc Barrage
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead), [Arcane Missiles does not proc Barrage](https://us.forums.blizzard.com/en/wow/t/arcane-missiles-does-not-proc-barrage/2384260) (WoW Forever Beta Discussion (Blizzard forums))
 
 ## 2026-10-15
@@ -141,7 +155,7 @@ Incorporo la build del 15 de octubre: fichas nuevas de Frost Blast, Cólera Arca
 
 Nuevo hechizo Frost Blast (nivel 24). Arcano: Explosión Arcana rediseñada (1,5 s, da daño con hechizos según tu Intelecto), Cólera Arcana es el nuevo talento decisivo de 16 puntos y Tromba de misiles baja a la fila 1 con 2 puntos. Fuego: Estela de Fuego vuelve a ser Explosión de Fuego mejorada (más alcance, sin bonificación al matar), Calentamiento gana cargas con cada Explosión de Fuego, Masa crítica pasa a 5 puntos y Poder de Fuego se rediseña con 3. Escarcha: Lanza de hielo baja al 200 % contra objetivos congelados, Escalofrío del invierno ahora potencia Cono de frío y Cono de frío ralentiza más a los 4 primeros objetivos. Además, Libre lanzamiento ya no tira por cada objetivo y las varitas exigen estar quieto 0,5 s.
 
-- **Datos afectados:** Frost Blast, Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Masa crítica, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (bajar de rango), Varitas, Cólera Arcana, Frost Blast, Cono de frío, Explosión de Fuego
+- **Datos afectados:** Frost Blast, Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Masa crítica, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (bajar de rango), Varitas, Cólera Arcana, Cono de frío, Explosión de Fuego
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
 
 ### [Juego] Build de la beta del 15 de octubre: raciales
@@ -178,7 +192,7 @@ La versión del cliente pasa a la build 70374 del 13 de octubre. No hay cambios 
 
 La página de Nivelación pasa a ser la guía de leveo del Mago, en la misma dirección. Tres builds de Escarcha del 1 al 30, con su orden de puntos nivel a nivel y los puntos extra del perk de Legado Talented: en solitario (la recomendada), en mazmorras y en área (experimental, desde el nivel 22). Además: por qué cada build, cómo jugarlas, una comparativa, los hechizos por nivel, los errores frecuentes y las variantes descartadas. Es una versión BETA: cubre lo que permite la beta y las builds aún no se han probado en el servidor. También aparecen en Builds, con el orden de puntos.
 
-- **Datos afectados:** build:frost-leveling-solo, World of Warcraft: Forever Frost Mage Guide, Mage Leveling Guide (Level 1-30) - WoW Forever, Frost Mage Guide - Talents, Rotations, Races & More - WoW Forever, WoW Forever Mage Leveling 1–30: Frost Build & Talents, WoW Forever Cuts Dungeon Kill XP but Makes Dungeon Quests More Rewarding, WoW Classic Single-Target Frost Mage Leveling Talent Build from 1 to 60, WoW Classic AoE Grinding Frost Mage Leveling Talent Build from 1 to 60
+- **Datos afectados:** World of Warcraft: Forever Frost Mage Guide, Mage Leveling Guide (Level 1-30) - WoW Forever, Frost Mage Guide - Talents, Rotations, Races & More - WoW Forever, WoW Forever Mage Leveling 1–30: Frost Build & Talents, WoW Forever Cuts Dungeon Kill XP but Makes Dungeon Quests More Rewarding, WoW Classic Single-Target Frost Mage Leveling Talent Build from 1 to 60, WoW Classic AoE Grinding Frost Mage Leveling Talent Build from 1 to 60
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead), [World of Warcraft: Forever Frost Mage Guide](https://www.icy-veins.com/wow-forever/frost-mage-ranged-dps-pve-guide) (Icy Veins), [Mage Leveling Guide (Level 1-30) - WoW Forever](https://mobalytics.gg/wow-forever/classes/mage-leveling-guide) (Mobalytics), [Frost Mage Guide - Talents, Rotations, Races & More - WoW Forever](https://mobalytics.gg/wow-forever/classes/frost-mage-guide) (Mobalytics), [WoW Forever Mage Leveling Guide & Talents](https://www.method.gg/wow-forever/wow-forever-mage-leveling-guide-and-talents) (Method), [WoW Forever Mage Leveling 1–30: Frost Build & Talents](https://wowforeverbuilds.com/guide/beta-20-frost-mage-leveling) (WoW Forever Builds), [WoW Forever Cuts Dungeon Kill XP but Makes Dungeon Quests More Rewarding](https://www.icy-veins.com/wow/news/wow-forever-cuts-dungeon-kill-xp-but-makes-dungeon-quests-more-rewarding/) (Icy Veins), [WoW Classic Single-Target Frost Mage Leveling Talent Build from 1 to 60](https://www.icy-veins.com/wow-classic/single-target-frost-mage-leveling-talent-build-from-1-to-60) (Icy Veins), [WoW Classic AoE Grinding Frost Mage Leveling Talent Build from 1 to 60](https://icy-veins.com/wow-classic/aoe-grinding-frost-mage-leveling-talent-build-from-1-to-60) (Icy Veins)
 
 ### [Guía] Nueva guía: las mejores profesiones para el Mago

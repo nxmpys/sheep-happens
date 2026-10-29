@@ -65,6 +65,19 @@
     }
   },
   {
+    "id": "foreverchanges-build-2026-10-28",
+    "title": "WoW Forever patch notes: build 1.60.1.70685 of 28 October 2026",
+    "publisher": "Forever Changes (foreverchanges.pro)",
+    "url": "https://foreverchanges.pro/patch-notes",
+    "kind": "community",
+    "published": "2026-10-28",
+    "accessed": "2026-10-29",
+    "notes": {
+      "es": "Cambios de la build de la beta del 28 de octubre leídos de sus datos, sin notas de Blizzard: Accelerant, Precision, Incineración a 5 puntos, Masa crítica a 3, reutilización de Lanza de hielo, adiós a Enfoque Arcano y Frost Blast, cuatro talentos cambian de casilla y Mordiescarcha comparte rendimientos decrecientes con las raíces de otros talentos. Lo he contrastado con la calculadora de Wowhead Forever.",
+      "en": "Changes in the 28 October beta build read from its data, with no Blizzard notes: Accelerant, Precision, Incineration at 5 points, Critical Mass at 3, an Ice Lance cooldown, Arcane Focus and Frost Blast removed, four talents change slots and Frostbite shares diminishing returns with other talents' roots. I checked it against the Wowhead Forever talent calculator."
+    }
+  },
+  {
     "id": "foreverchanges-hotfix-2026-10-20",
     "title": "WoW Forever patch notes: hotfix of 20 October 2026",
     "publisher": "Forever Changes (foreverchanges.pro)",
@@ -384,7 +397,7 @@
     "publisher": "Wowhead",
     "url": "https://www.wowhead.com/forever/talent-calc/mage",
     "kind": "tool",
-    "accessed": "2026-10-16",
+    "accessed": "2026-10-29",
     "notes": {
       "es": "Árbol de talentos y descripciones extraídos del cliente de la beta. Lo uso para la posición de cada talento y para los enlaces de las builds; sus cifras son una pista, no un dato confirmado.",
       "en": "Talent trees and tooltips data-mined from the beta client. I use it for talent positions and build links; its numbers are a hint, not a confirmed fact."

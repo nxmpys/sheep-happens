@@ -178,7 +178,7 @@ export const WOWHEAD_CALC = 'https://www.wowhead.com/forever/talent-calc/mage';
  * Link to the build in the Wowhead Forever calculator. Format (checked by hand
  * on 2026-10-13): "v2", then one digit string per tree in calculator order,
  * Arcane-Fire-Frost joined by "-", each without trailing zeros and with empty
- * trailing trees dropped: Arcane Focus 1 + Wake of Fire 1 + Improved Frostbolt 5
+ * trailing trees dropped: Improved Channeling 1 + Incineration 1 + Improved Frostbolt 5
  * is ".../mage/v201-1-05"; Frost alone is ".../mage/v2--0503".
  */
 export function wowheadBuildUrl(points: Points, talents: readonly Talent[]): string {

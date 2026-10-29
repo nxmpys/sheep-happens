@@ -10,34 +10,24 @@
     "spell": 6057
   },
   {
-    "id": "arcane-focus",
-    "name": "Arcane Focus",
-    "tree": "arcane",
-    "row": 1,
-    "col": 2,
-    "maxRank": 5,
-    "changeId": "arcane-focus",
-    "spell": 11222
-  },
-  {
     "id": "improved-channeling",
     "name": "Improved Channeling",
     "tree": "arcane",
     "row": 1,
-    "col": 3,
+    "col": 2,
     "maxRank": 5,
     "changeId": "improved-channeling",
     "spell": 11237
   },
   {
-    "id": "missile-barrage",
-    "name": "Missile Barrage",
+    "id": "arcane-resilience",
+    "name": "Arcane Resilience",
     "tree": "arcane",
     "row": 1,
-    "col": 4,
+    "col": 3,
     "maxRank": 2,
-    "changeId": "missile-barrage",
-    "spell": 400588
+    "changeId": "arcane-resilience",
+    "spell": 28574
   },
   {
     "id": "arcane-subtlety",
@@ -70,14 +60,14 @@
     "spell": 11213
   },
   {
-    "id": "arcane-resilience",
-    "name": "Arcane Resilience",
+    "id": "missile-barrage",
+    "name": "Missile Barrage",
     "tree": "arcane",
     "row": 2,
     "col": 4,
     "maxRank": 2,
-    "changeId": "arcane-resilience",
-    "spell": 28574
+    "changeId": "missile-barrage",
+    "spell": 400588
   },
   {
     "id": "arcane-geometry",
@@ -150,6 +140,10 @@
     "row": 4,
     "col": 4,
     "maxRank": 1,
+    "requires": {
+      "talent": "arcane-blast",
+      "points": 1
+    },
     "changeId": "arcane-wrath",
     "spell": 1326079
   },
@@ -197,28 +191,18 @@
     "spell": 12042
   },
   {
-    "id": "wake-of-fire",
-    "name": "Improved Fire Blast",
-    "tree": "fire",
-    "row": 1,
-    "col": 1,
-    "maxRank": 2,
-    "changeId": "wake-of-fire",
-    "spell": 11078
-  },
-  {
     "id": "incineration",
     "name": "Incineration",
     "tree": "fire",
     "row": 1,
     "col": 2,
-    "maxRank": 3,
+    "maxRank": 5,
     "changeId": "incineration",
     "spell": 18459
   },
   {
     "id": "improved-fireball",
-    "name": "Improved Fireball",
+    "name": "Accelerant",
     "tree": "fire",
     "row": 1,
     "col": 3,
@@ -284,6 +268,16 @@
     "spell": 11366
   },
   {
+    "id": "wake-of-fire",
+    "name": "Improved Fire Blast",
+    "tree": "fire",
+    "row": 3,
+    "col": 4,
+    "maxRank": 2,
+    "changeId": "wake-of-fire",
+    "spell": 11078
+  },
+  {
     "id": "improved-scorch",
     "name": "Improved Scorch",
     "tree": "fire",
@@ -331,7 +325,7 @@
     "tree": "fire",
     "row": 5,
     "col": 2,
-    "maxRank": 5,
+    "maxRank": 3,
     "changeId": "critical-mass",
     "spell": 11115
   },
@@ -389,7 +383,7 @@
   },
   {
     "id": "elemental-precision",
-    "name": "Elemental Precision",
+    "name": "Precision",
     "tree": "frost",
     "row": 1,
     "col": 3,
@@ -407,14 +401,14 @@
     "spell": 11207
   },
   {
-    "id": "permafrost",
-    "name": "Permafrost",
+    "id": "frostbite",
+    "name": "Frostbite",
     "tree": "frost",
     "row": 2,
-    "col": 4,
+    "col": 2,
     "maxRank": 3,
-    "changeId": "permafrost",
-    "spell": 11175
+    "changeId": "frostbite",
+    "spell": 11071
   },
   {
     "id": "improved-frost-nova",
@@ -426,13 +420,14 @@
     "spell": 11165
   },
   {
-    "id": "frostbite",
-    "name": "Frostbite",
+    "id": "permafrost",
+    "name": "Permafrost",
     "tree": "frost",
     "row": 2,
-    "col": 2,
+    "col": 4,
     "maxRank": 3,
-    "spell": 11071
+    "changeId": "permafrost",
+    "spell": 11175
   },
   {
     "id": "frost-channeling",
@@ -445,16 +440,6 @@
     "spell": 11160
   },
   {
-    "id": "ice-lance",
-    "name": "Ice Lance",
-    "tree": "frost",
-    "row": 3,
-    "col": 3,
-    "maxRank": 1,
-    "changeId": "ice-lance",
-    "spell": 1312002
-  },
-  {
     "id": "improved-blizzard",
     "name": "Improved Blizzard",
     "tree": "frost",
@@ -463,6 +448,16 @@
     "maxRank": 3,
     "changeId": "improved-blizzard",
     "spell": 11185
+  },
+  {
+    "id": "ice-lance",
+    "name": "Ice Lance",
+    "tree": "frost",
+    "row": 3,
+    "col": 3,
+    "maxRank": 1,
+    "changeId": "ice-lance",
+    "spell": 1312002
   },
   {
     "id": "arctic-reach",

@@ -129,12 +129,14 @@ Bajo la calculadora de talentos, cualquiera puede publicar la build que tiene en
 
 Necesita la misma clave de Turnstile que el formulario de feedback (`PUBLIC_TURNSTILE_SITE_KEY` y `TURNSTILE_SECRET_KEY`). Sin `PUBLIC_TURNSTILE_SITE_KEY` no aparece el formulario de publicar; sin la base de datos, el ranking dice que no está disponible.
 
-1. **Base de datos:** panel de Cloudflare → *Storage & Databases* → *D1* → *Create database*. Nombre `sheep-happens-community`. La tabla `community_builds` se crea sola con la primera petición.
+1. **Base de datos:** panel de Cloudflare → *Storage & Databases* → *D1* → *Create database*. Nombre `sheep-happens-community`. La tabla de votos (`community_builds_v2`) se crea sola con la primera petición.
 2. **Enlace:** *Workers & Pages* → `sheep-happens` → *Settings* → *Bindings* → *Add* → *D1 database*. **Variable name: `COMMUNITY_DB`**, base de datos `sheep-happens-community`. Hazlo en **Production** (y en *Preview* si quieres probar en ramas; mejor con otra base de datos para no mezclar votos).
 3. **Vuelve a desplegar** (*Deployments* → *Retry deployment*, o cualquier push): los enlaces se aplican al desplegar.
 4. **Prueba:** `curl -s https://sheephappens.app/api/community-builds` debe devolver `{"builds":[],"counts":{…}}`. Publica una build desde la calculadora y comprueba que aparece.
 
-Para ver o borrar votos: *D1* → `sheep-happens-community` → *Console*, por ejemplo `SELECT * FROM community_builds ORDER BY votes DESC;` o `DELETE FROM community_builds WHERE code = '…';`.
+Para ver o borrar votos: *D1* → `sheep-happens-community` → *Console*, por ejemplo `SELECT * FROM community_builds_v2 ORDER BY votes DESC;` o `DELETE FROM community_builds_v2 WHERE code = '…';`.
+
+**Cuando cambia el árbol de talentos** (talentos que se mueven o desaparecen), el mismo código de la calculadora pasa a ser otra build. Sube `COMMUNITY_TREE` en `src/lib/community-builds.ts`: el ranking empieza de cero en una tabla nueva (`community_builds_v<n>`) y el navegador olvida las builds que ya había publicado. La tabla anterior se queda en D1; bórrala a mano cuando quieras (`DROP TABLE community_builds;` es la del árbol anterior al 28 de octubre de 2026).
 
 Si alguien infla una build a mano, añade una regla de *Rate limiting* en *Security* → *WAF* para `POST /api/community-builds` (por ejemplo, 3 peticiones por minuto por IP).
 

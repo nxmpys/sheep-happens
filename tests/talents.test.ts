@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { builds, checkIntegrity, dataset, talents, type Dataset } from '../src/lib/data';
+import { builds, checkIntegrity, talents, type Dataset } from '../src/lib/data';
 import {
   distributionLabel,
   levelForPoint,
@@ -15,12 +15,13 @@ import {
   wowheadBuildUrl,
   WOWHEAD_CALC,
 } from '../src/lib/talents';
+import { datasetWithFixture, fixtureBuild } from './fixtures/builds';
 
 const frost = (points: Record<string, number>) => points;
 
 describe('talent trees', () => {
   it('has the three Forever trees in calculator order', () => {
-    expect(treeTalents(talents, 'arcane')).toHaveLength(19);
+    expect(treeTalents(talents, 'arcane')).toHaveLength(18);
     expect(treeTalents(talents, 'fire')).toHaveLength(17);
     expect(treeTalents(talents, 'frost')).toHaveLength(18);
     expect(treeTalents(talents, 'frost').slice(0, 4).map((t) => t.id)).toEqual([
@@ -37,9 +38,9 @@ describe('talent trees', () => {
     expect(at('ice-block')).toMatchObject({ row: 4, maxRank: 1 });
     expect(at('cold-snap')).toMatchObject({ row: 5, maxRank: 1 });
     expect(at('arcane-blast')).toMatchObject({ row: 3, maxRank: 1 });
-    // 15 October build: Arcane Wrath took the 16-point milestone and Missile Barrage moved to row 1.
+    // 15 October build: Arcane Wrath took the 16-point milestone; Missile Barrage is in row 2 since 28 October.
     expect(at('arcane-wrath')).toMatchObject({ row: 4, maxRank: 1 });
-    expect(at('missile-barrage')).toMatchObject({ row: 1, maxRank: 2 });
+    expect(at('missile-barrage')).toMatchObject({ row: 2, maxRank: 2 });
   });
 
   it('gives one point per level from 10', () => {
@@ -73,7 +74,7 @@ const TALENTED_POINTS = {
 
 describe('validateBuild', () => {
   it('accepts every shipped build', () => {
-    for (const build of builds) expect(validateBuild(build.points, build.level, talents, build.legacyTalented)).toEqual([]);
+    for (const build of [...builds, fixtureBuild]) expect(validateBuild(build.points, build.level, talents, build.legacyTalented)).toEqual([]);
   });
 
   it('counts the Talented points a build declares', () => {
@@ -99,14 +100,14 @@ describe('validateBuild', () => {
   });
 
   it('is enforced by the dataset integrity check', () => {
-    const data: Dataset = structuredClone(dataset);
+    const data: Dataset = datasetWithFixture();
     data.builds[0]!.points = { ...data.builds[0]!.points, 'ice-lance': 2 };
     expect(checkIntegrity(data).join('\n')).toMatch(/ice-lance/);
   });
 });
 
 describe('point orders', () => {
-  const solo = builds.find((b) => b.id === 'frost-leveling-solo')!;
+  const solo = fixtureBuild;
 
   it('gives each point its level, with and without Talented', () => {
     expect(levelForPoint(1)).toBe(10);
@@ -121,7 +122,7 @@ describe('point orders', () => {
   });
 
   it('accepts every shipped order and matches it to the build at its level', () => {
-    for (const build of builds.filter((b) => b.order)) {
+    for (const build of [...builds, fixtureBuild].filter((b) => b.order)) {
       expect(validateOrder(build.order!, build.points, build.level, talents, build.legacyTalented)).toEqual([]);
       expect(pointsFromOrder(build.order!, pointsAtLevel(build.level, build.legacyTalented))).toEqual(build.points);
     }
@@ -153,7 +154,7 @@ describe('point orders', () => {
   });
 
   it('is enforced by the dataset integrity check', () => {
-    const data: Dataset = structuredClone(dataset);
+    const data: Dataset = datasetWithFixture();
     const build = data.builds.find((b) => b.id === 'frost-leveling-solo')!;
     build.order = build.order!.slice(0, 20);
     expect(checkIntegrity(data).join('\n')).toMatch(/"frost-leveling-solo" order: order has 20 points/);
@@ -162,11 +163,11 @@ describe('point orders', () => {
 
 describe('Wowhead links', () => {
   it('encodes one digit per talent, per tree, without trailing zeros', () => {
-    // URLs produced by the calculator itself on 2026-10-13.
+    // The calculator's layout since the 28 October 2026 build (talent order checked on 2026-10-29).
     expect(wowheadBuildUrl({ 'improved-frostbolt': 5, 'ice-shards': 3 }, talents)).toBe(`${WOWHEAD_CALC}/v2--0503`);
-    expect(wowheadBuildUrl({ 'arcane-focus': 1, 'wake-of-fire': 1, 'improved-frostbolt': 5 }, talents)).toBe(`${WOWHEAD_CALC}/v201-1-05`);
-    expect(wowheadBuildUrl({ 'wake-of-fire': 2 }, talents)).toBe(`${WOWHEAD_CALC}/v2-2`);
-    expect(wowheadBuildUrl({ 'arcane-focus': 2 }, talents)).toBe(`${WOWHEAD_CALC}/v202`);
+    expect(wowheadBuildUrl({ 'improved-channeling': 1, incineration: 1, 'improved-frostbolt': 5 }, talents)).toBe(`${WOWHEAD_CALC}/v201-1-05`);
+    expect(wowheadBuildUrl({ incineration: 2 }, talents)).toBe(`${WOWHEAD_CALC}/v2-2`);
+    expect(wowheadBuildUrl({ 'improved-channeling': 2 }, talents)).toBe(`${WOWHEAD_CALC}/v202`);
   });
 
   it('falls back to the empty calculator', () => {
@@ -192,7 +193,7 @@ describe('build summaries', () => {
 
 describe('parseWowheadBuild', () => {
   it('reads back what wowheadBuildUrl writes', () => {
-    for (const points of [{ 'improved-frostbolt': 5, 'ice-shards': 3 }, { 'arcane-focus': 1, 'wake-of-fire': 1, 'improved-frostbolt': 5 }, { 'wake-of-fire': 2 }, {}]) {
+    for (const points of [{ 'improved-frostbolt': 5, 'ice-shards': 3 }, { 'improved-channeling': 1, incineration: 1, 'improved-frostbolt': 5 }, { incineration: 2 }, {}]) {
       expect(parseWowheadBuild(wowheadBuildUrl(points, talents), talents)).toEqual(points);
     }
   });

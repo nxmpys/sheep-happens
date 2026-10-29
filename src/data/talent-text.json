@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-10-21",
+  "fetched": "2026-10-29",
   "source": "https://www.wowhead.com/forever/talent-calc/mage",
   "talents": {
     "wand-specialization": {
@@ -19,29 +19,6 @@
         ]
       }
     },
-    "arcane-focus": {
-      "icon": "spell_holy_devotion",
-      "en": {
-        "name": "Arcane Focus",
-        "ranks": [
-          "Improves your chance to hit with Arcane spells by 1%.",
-          "Improves your chance to hit with Arcane spells by 2%.",
-          "Improves your chance to hit with Arcane spells by 3%.",
-          "Improves your chance to hit with Arcane spells by 4%.",
-          "Improves your chance to hit with Arcane spells by 5%."
-        ]
-      },
-      "es": {
-        "name": "Enfoque Arcano",
-        "ranks": [
-          "Aumenta un 1% tu probabilidad de golpear con hechizos Arcanos.",
-          "Aumenta un 2% tu probabilidad de golpear con hechizos Arcanos.",
-          "Aumenta un 3% tu probabilidad de golpear con hechizos Arcanos.",
-          "Aumenta un 4% tu probabilidad de golpear con hechizos Arcanos.",
-          "Aumenta un 5% tu probabilidad de golpear con hechizos Arcanos."
-        ]
-      }
-    },
     "improved-channeling": {
       "icon": "spell_nature_starfall",
       "en": {
@@ -57,31 +34,29 @@
       "es": {
         "name": "Canalización mejorada",
         "ranks": [
-          "Gives you a 20% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 14% chance while casting Arcane Blast or Arcane Wrath.",
-          "Gives you a 40% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 28% chance while casting Arcane Blast or Arcane Wrath.",
-          "Gives you a 60% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 42% chance while casting Arcane Blast or Arcane Wrath.",
-          "Gives you a 80% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 56% chance while casting Arcane Blast or Arcane Wrath.",
-          "Gives you a 100% chance to avoid interruption caused by damage while channeling Arcane Missiles and a 70% chance while casting Arcane Blast or Arcane Wrath."
-        ],
-        "lang": "en"
+          "Da a tu hechizo Misiles Arcanos un 20% de probabilidad de no perder tiempo de lanzamiento cuando recibes daño, y un 14% a tus hechizos Explosión Arcana y Cólera Arcana.",
+          "Da a tu hechizo Misiles Arcanos un 40% de probabilidad de no perder tiempo de lanzamiento cuando recibes daño, y un 28% a tus hechizos Explosión Arcana y Cólera Arcana.",
+          "Da a tu hechizo Misiles Arcanos un 60% de probabilidad de no perder tiempo de lanzamiento cuando recibes daño, y un 42% a tus hechizos Explosión Arcana y Cólera Arcana.",
+          "Da a tu hechizo Misiles Arcanos un 80% de probabilidad de no perder tiempo de lanzamiento cuando recibes daño, y un 56% a tus hechizos Explosión Arcana y Cólera Arcana.",
+          "Da a tu hechizo Misiles Arcanos un 100% de probabilidad de no perder tiempo de lanzamiento cuando recibes daño, y un 70% a tus hechizos Explosión Arcana y Cólera Arcana."
+        ]
       }
     },
-    "missile-barrage": {
-      "icon": "ability_mage_missilebarrage",
+    "arcane-resilience": {
+      "icon": "spell_arcane_arcaneresilience",
       "en": {
-        "name": "Missile Barrage",
+        "name": "Arcane Resilience",
         "ranks": [
-          "Gives your Arcane Blast spell a 20% chance, and your Arcane Wrath, Fireball, Frostbolt, Frost Blast, and Frostfire Bolt spells a 10% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec.",
-          "Gives your Arcane Blast spell a 40% chance, and your Arcane Wrath, Fireball, Frostbolt, Frost Blast, and Frostfire Bolt spells a 20% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec."
+          "Increases your Armor by an amount equal to 25% of your Intellect.",
+          "Increases your Armor by an amount equal to 50% of your Intellect."
         ]
       },
       "es": {
-        "name": "Tromba de misiles",
+        "name": "Recuperación Arcana",
         "ranks": [
-          "Gives your Arcane Blast spell a 20% chance, your Arcane Missile hits a 5% chance, and your Arcane Wrath, Fireball, Frostbolt, and Frostfire Bolt spells a 10% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec.",
-          "Gives your Arcane Blast spell a 40% chance, your Arcane Missile hits a 10% chance, and your Arcane Wrath, Fireball, Frostbolt, and Frostfire Bolt spells a 20% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec."
-        ],
-        "lang": "en"
+          "Aumenta tu armadura un valor equivalente al 25% de tu intelecto.",
+          "Aumenta tu armadura un valor equivalente al 50% de tu intelecto."
+        ]
       }
     },
     "arcane-subtlety": {
@@ -141,21 +116,22 @@
         ]
       }
     },
-    "arcane-resilience": {
-      "icon": "spell_arcane_arcaneresilience",
+    "missile-barrage": {
+      "icon": "ability_mage_missilebarrage",
       "en": {
-        "name": "Arcane Resilience",
+        "name": "Missile Barrage",
         "ranks": [
-          "Increases your Armor by an amount equal to 25% of your Intellect.",
-          "Increases your Armor by an amount equal to 50% of your Intellect."
+          "Gives your Arcane Blast spell a 20% chance, and your Arcane Wrath, Fireball, Frostbolt, Frost Blast, and Frostfire Bolt spells a 10% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec.",
+          "Gives your Arcane Blast spell a 40% chance, and your Arcane Wrath, Fireball, Frostbolt, Frost Blast, and Frostfire Bolt spells a 20% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec."
         ]
       },
       "es": {
-        "name": "Recuperación Arcana",
+        "name": "Tromba de misiles",
         "ranks": [
-          "Aumenta tu armadura un valor equivalente al 25% de tu intelecto.",
-          "Aumenta tu armadura un valor equivalente al 50% de tu intelecto."
-        ]
+          "Gives your Arcane Blast spell a 20% chance, and your Arcane Wrath, Fireball, Frostbolt, Frost Blast, and Frostfire Bolt spells a 10% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec.",
+          "Gives your Arcane Blast spell a 40% chance, and your Arcane Wrath, Fireball, Frostbolt, Frost Blast, and Frostfire Bolt spells a 20% chance to reduce the channeled duration of your next Arcane Missiles spell by 50%, reduce the Mana cost by 100%, and missiles fire every 0.5 sec."
+        ],
+        "lang": "en"
       }
     },
     "arcane-geometry": {
@@ -349,24 +325,6 @@
         ]
       }
     },
-    "wake-of-fire": {
-      "icon": "spell_fire_lavaspawn",
-      "en": {
-        "name": "Improved Fire Blast",
-        "ranks": [
-          "Reduces the cooldown of your Fire Blast spell by 1 sec and increases its range by 8 yards.",
-          "Reduces the cooldown of your Fire Blast spell by 2 sec and increases its range by 15 yards."
-        ]
-      },
-      "es": {
-        "name": "Improved Fire Blast",
-        "ranks": [
-          "Reduces the cooldown of your Fire Blast spell by 1 sec and increases its range by 8 yards.",
-          "Reduces the cooldown of your Fire Blast spell by 2 sec and increases its range by 15 yards."
-        ],
-        "lang": "en"
-      }
-    },
     "incineration": {
       "icon": "spell_fire_flameshock",
       "en": {
@@ -374,7 +332,9 @@
         "ranks": [
           "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast, and Scorch spells by 2%.",
           "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast, and Scorch spells by 4%.",
-          "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast, and Scorch spells by 6%."
+          "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast, and Scorch spells by 6%.",
+          "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast, and Scorch spells by 8%.",
+          "Increases the critical strike chance of your Fire Blast, Ice Lance, Arcane Blast, and Scorch spells by 10%."
         ]
       },
       "es": {
@@ -382,31 +342,34 @@
         "ranks": [
           "Aumenta un 2% la probabilidad de golpe crítico de tus hechizos Explosión de Fuego, Lanza de hielo, Explosión Arcana y Chamuscar.",
           "Aumenta un 4% la probabilidad de golpe crítico de tus hechizos Explosión de Fuego, Lanza de hielo, Explosión Arcana y Chamuscar.",
-          "Aumenta un 6% la probabilidad de golpe crítico de tus hechizos Explosión de Fuego, Lanza de hielo, Explosión Arcana y Chamuscar."
+          "Aumenta un 6% la probabilidad de golpe crítico de tus hechizos Explosión de Fuego, Lanza de hielo, Explosión Arcana y Chamuscar.",
+          "Aumenta un 8% la probabilidad de golpe crítico de tus hechizos Explosión de Fuego, Lanza de hielo, Explosión Arcana y Chamuscar.",
+          "Aumenta un 10% la probabilidad de golpe crítico de tus hechizos Explosión de Fuego, Lanza de hielo, Explosión Arcana y Chamuscar."
         ]
       }
     },
     "improved-fireball": {
       "icon": "spell_fire_flamebolt",
       "en": {
-        "name": "Improved Fireball",
+        "name": "Accelerant",
         "ranks": [
-          "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.1 sec.",
-          "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.2 sec.",
-          "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.3 sec.",
-          "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.4 sec.",
-          "Reduces the casting time of your Fireball and Frostfire Bolt spells by 0.5 sec."
+          "Reduces the casting time of your Fireball, Frostfire Bolt, and Arcane Wrath spells by 0.1 sec.",
+          "Reduces the casting time of your Fireball, Frostfire Bolt, and Arcane Wrath spells by 0.2 sec.",
+          "Reduces the casting time of your Fireball, Frostfire Bolt, and Arcane Wrath spells by 0.3 sec.",
+          "Reduces the casting time of your Fireball, Frostfire Bolt, and Arcane Wrath spells by 0.4 sec.",
+          "Reduces the casting time of your Fireball, Frostfire Bolt, and Arcane Wrath spells by 0.5 sec."
         ]
       },
       "es": {
-        "name": "Bola de Fuego mejorada",
+        "name": "Accelerant",
         "ranks": [
-          "Reduce 0.1 s el tiempo de lanzamiento de tus hechizos Bola de Fuego y Descarga de Pirofrío.",
-          "Reduce 0.2 s el tiempo de lanzamiento de tus hechizos Bola de Fuego y Descarga de Pirofrío.",
-          "Reduce 0.3 s el tiempo de lanzamiento de tus hechizos Bola de Fuego y Descarga de Pirofrío.",
-          "Reduce 0.4 s el tiempo de lanzamiento de tus hechizos Bola de Fuego y Descarga de Pirofrío.",
-          "Reduce 0.5 s el tiempo de lanzamiento de tus hechizos Bola de Fuego y Descarga de Pirofrío."
-        ]
+          "Reduces the casting time of your Fireball, Frostfire Bolt, and Arcane Wrath spells by 0.1 sec.",
+          "Reduces the casting time of your Fireball, Frostfire Bolt, and Arcane Wrath spells by 0.2 sec.",
+          "Reduces the casting time of your Fireball, Frostfire Bolt, and Arcane Wrath spells by 0.3 sec.",
+          "Reduces the casting time of your Fireball, Frostfire Bolt, and Arcane Wrath spells by 0.4 sec.",
+          "Reduces the casting time of your Fireball, Frostfire Bolt, and Arcane Wrath spells by 0.5 sec."
+        ],
+        "lang": "en"
       }
     },
     "ignite": {
@@ -521,6 +484,23 @@
         ]
       }
     },
+    "wake-of-fire": {
+      "icon": "spell_fire_lavaspawn",
+      "en": {
+        "name": "Improved Fire Blast",
+        "ranks": [
+          "Reduces the cooldown of your Fire Blast spell by 1 sec and increases its range by 8 yards.",
+          "Reduces the cooldown of your Fire Blast spell by 2 sec and increases its range by 15 yards."
+        ]
+      },
+      "es": {
+        "name": "Explosión de Fuego mejorada",
+        "ranks": [
+          "Reduce el tiempo de reutilización de tu hechizo Explosión de Fuego en 1 s y su alcance aumenta 8 m.",
+          "Reduce el tiempo de reutilización de tu hechizo Explosión de Fuego en 2 s y su alcance aumenta 15 m."
+        ]
+      }
+    },
     "improved-scorch": {
       "icon": "spell_fire_soulburn",
       "en": {
@@ -568,9 +548,8 @@
       "es": {
         "name": "Calentamiento",
         "ranks": [
-          "Non-periodic critical strikes with Fireball, Frostfire Bolt, Fire Blast, and Scorch reduce the cast time of your next Pyroblast cast within 20 s by 25%, stacking up to 3 times. Fire Blast grants an additional stack every time it deals damage."
-        ],
-        "lang": "en"
+          "Los golpes críticos no periódicos con Bola de Fuego, Descarga de Pirofrío, Explosión de Fuego y Chamuscar reducen el tiempo de lanzamiento de la próxima Piroexplosión que lances en un plazo de 20 s un 25%. Se acumula hasta 3 veces. Explosión de Fuego otorga una acumulación adicional cada vez que inflige daño."
+        ]
       }
     },
     "master-of-elements": {
@@ -599,9 +578,7 @@
         "ranks": [
           "Increases the critical strike chance of your Fire spells by 2%.",
           "Increases the critical strike chance of your Fire spells by 4%.",
-          "Increases the critical strike chance of your Fire spells by 6%.",
-          "Increases the critical strike chance of your Fire spells by 8%.",
-          "Increases the critical strike chance of your Fire spells by 10%."
+          "Increases the critical strike chance of your Fire spells by 6%."
         ]
       },
       "es": {
@@ -609,9 +586,7 @@
         "ranks": [
           "Aumenta en un 2% la probabilidad de golpe crítico de tus hechizos de Fuego.",
           "Aumenta en un 4% la probabilidad de golpe crítico de tus hechizos de Fuego.",
-          "Aumenta en un 6% la probabilidad de golpe crítico de tus hechizos de Fuego.",
-          "Aumenta en un 8% la probabilidad de golpe crítico de tus hechizos de Fuego.",
-          "Aumenta en un 10% la probabilidad de golpe crítico de tus hechizos de Fuego."
+          "Aumenta en un 6% la probabilidad de golpe crítico de tus hechizos de Fuego."
         ]
       }
     },
@@ -643,11 +618,10 @@
       "es": {
         "name": "Poder de Fuego",
         "ranks": [
-          "Increases the damage done by your Fire spells by 1% per your Fire effects on the target, up to a maximum increase of 4%. Effects which mix multiple schools of magic do not qualify.",
-          "Increases the damage done by your Fire spells by 2% per your Fire effects on the target, up to a maximum increase of 8%. Effects which mix multiple schools of magic do not qualify.",
-          "Increases the damage done by your Fire spells by 3% per your Fire effects on the target, up to a maximum increase of 12%. Effects which mix multiple schools of magic do not qualify."
-        ],
-        "lang": "en"
+          "Aumenta el daño causado con tus hechizos de Fuego en un 1% por cada uno de tus efectos de Fuego en el objetivo, hasta un aumento máximo del 4%. Los efectos que combinan varias escuelas de magia no cuentan.",
+          "Aumenta el daño causado con tus hechizos de Fuego en un 2% por cada uno de tus efectos de Fuego en el objetivo, hasta un aumento máximo del 8%. Los efectos que combinan varias escuelas de magia no cuentan.",
+          "Aumenta el daño causado con tus hechizos de Fuego en un 3% por cada uno de tus efectos de Fuego en el objetivo, hasta un aumento máximo del 12%. Los efectos que combinan varias escuelas de magia no cuentan."
+        ]
       }
     },
     "combustion": {
@@ -677,8 +651,8 @@
       "es": {
         "name": "Custodia de Escarcha",
         "ranks": [
-          "Aumenta un 15% la armadura y la resistencia otorgadas por tus hechizos Armadura de Escarcha y Armadura de hielo. Además, otorga a Resguardo contra la Escarcha un 10% de probabilidad de reflejar los hechizos y efectos de Escarcha mientras está activo.",
-          "Aumenta un 30% la armadura y la resistencia otorgadas por tus hechizos Armadura de Escarcha y Armadura de hielo. Además, otorga a Resguardo contra la Escarcha un 20% de probabilidad de reflejar los hechizos y efectos de Escarcha mientras está activo."
+          "Aumenta un 15% la armadura y las resistencias otorgadas por tus hechizos Armadura de Escarcha y Armadura de hielo. Además, otorga a tu Resguardo contra la Escarcha un 10% de probabilidad de eludir el hechizo de daño resguardado y aumenta un 10% la cantidad absorbida por tu Barrera de hielo y tu Resguardo contra la Escarcha.",
+          "Aumenta un 30% la armadura y las resistencias otorgadas por tus hechizos Armadura de Escarcha y Armadura de hielo. Además, otorga a tu Resguardo contra la Escarcha un 20% de probabilidad de eludir el hechizo de daño resguardado y aumenta un 20% la cantidad absorbida por tu Barrera de hielo y tu Resguardo contra la Escarcha."
         ]
       }
     },
@@ -697,32 +671,32 @@
       "es": {
         "name": "Descarga de Escarcha mejorada",
         "ranks": [
-          "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.1 sec.",
-          "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.2 sec.",
-          "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.3 sec.",
-          "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.4 sec.",
-          "Reduces the casting time of your Frostbolt and Frost Blast spells by 0.5 sec."
-        ],
-        "lang": "en"
+          "Reduce 0.1 s el tiempo de lanzamiento de tus hechizos Descarga de Escarcha y Explosión de Escarcha.",
+          "Reduce 0.2 s el tiempo de lanzamiento de tus hechizos Descarga de Escarcha y Explosión de Escarcha.",
+          "Reduce 0.3 s el tiempo de lanzamiento de tus hechizos Descarga de Escarcha y Explosión de Escarcha.",
+          "Reduce 0.4 s el tiempo de lanzamiento de tus hechizos Descarga de Escarcha y Explosión de Escarcha.",
+          "Reduce 0.5 s el tiempo de lanzamiento de tus hechizos Descarga de Escarcha y Explosión de Escarcha."
+        ]
       }
     },
     "elemental-precision": {
       "icon": "spell_ice_magicdamage",
       "en": {
-        "name": "Elemental Precision",
+        "name": "Precision",
         "ranks": [
-          "Improves your chance to hit with Frost and Fire spells by 2%.",
-          "Improves your chance to hit with Frost and Fire spells by 4%.",
-          "Improves your chance to hit with Frost and Fire spells by 6%."
+          "Improves your chance to hit with all spells by 2%.",
+          "Improves your chance to hit with all spells by 4%.",
+          "Improves your chance to hit with all spells by 6%."
         ]
       },
       "es": {
-        "name": "Enfoque elemental",
+        "name": "Precision",
         "ranks": [
-          "Aumenta un 2% tu probabilidad de golpear con hechizos de Escarcha y de Fuego.",
-          "Aumenta un 4% tu probabilidad de golpear con hechizos de Escarcha y de Fuego.",
-          "Aumenta un 6% tu probabilidad de golpear con hechizos de Escarcha y de Fuego."
-        ]
+          "Improves your chance to hit with all spells by 2%.",
+          "Improves your chance to hit with all spells by 4%.",
+          "Improves your chance to hit with all spells by 6%."
+        ],
+        "lang": "en"
       }
     },
     "ice-shards": {
@@ -748,22 +722,22 @@
         ]
       }
     },
-    "permafrost": {
-      "icon": "spell_frost_wisp",
+    "frostbite": {
+      "icon": "spell_frost_frostarmor",
       "en": {
-        "name": "Permafrost",
+        "name": "Frostbite",
         "ranks": [
-          "Increases the duration of your Chill effects by 11% and reduces the target's speed by an additional 3%.",
-          "Increases the duration of your Chill effects by 22% and reduces the target's speed by an additional 7%.",
-          "Increases the duration of your Chill effects by 33% and reduces the target's speed by an additional 10%."
+          "Gives your Chill effects a 5% chance to Freeze the target for 5 sec.",
+          "Gives your Chill effects a 10% chance to Freeze the target for 5 sec.",
+          "Gives your Chill effects a 15% chance to Freeze the target for 5 sec."
         ]
       },
       "es": {
-        "name": "Escarcha permanente",
+        "name": "Mordiescarcha",
         "ranks": [
-          "Aumenta un 11% la duración de los efectos de escalofrío y reduce un 3% más la velocidad del objetivo.",
-          "Aumenta un 22% la duración de los efectos de escalofrío y reduce un 7% más la velocidad del objetivo.",
-          "Aumenta un 33% la duración de los efectos de escalofrío y reduce un 10% más la velocidad del objetivo."
+          "Da a tus efectos de escalofrío un 5% de probabilidad de congelar al objetivo durante 5 s.",
+          "Da a tus efectos de escalofrío un 10% de probabilidad de congelar al objetivo durante 5 s.",
+          "Da a tus efectos de escalofrío un 15% de probabilidad de congelar al objetivo durante 5 s."
         ]
       }
     },
@@ -784,22 +758,22 @@
         ]
       }
     },
-    "frostbite": {
-      "icon": "spell_frost_frostarmor",
+    "permafrost": {
+      "icon": "spell_frost_wisp",
       "en": {
-        "name": "Frostbite",
+        "name": "Permafrost",
         "ranks": [
-          "Gives your Chill effects a 5% chance to Freeze the target for 5 sec.",
-          "Gives your Chill effects a 10% chance to Freeze the target for 5 sec.",
-          "Gives your Chill effects a 15% chance to Freeze the target for 5 sec."
+          "Increases the duration of your Chill effects by 11% and reduces the target's speed by an additional 3%.",
+          "Increases the duration of your Chill effects by 22% and reduces the target's speed by an additional 7%.",
+          "Increases the duration of your Chill effects by 33% and reduces the target's speed by an additional 10%."
         ]
       },
       "es": {
-        "name": "Mordiescarcha",
+        "name": "Escarcha permanente",
         "ranks": [
-          "Da a tus efectos de escalofrío un 5% de probabilidad de congelar al objetivo durante 5 s.",
-          "Da a tus efectos de escalofrío un 10% de probabilidad de congelar al objetivo durante 5 s.",
-          "Da a tus efectos de escalofrío un 15% de probabilidad de congelar al objetivo durante 5 s."
+          "Aumenta un 11% la duración de los efectos de escalofrío y reduce un 3% más la velocidad del objetivo.",
+          "Aumenta un 22% la duración de los efectos de escalofrío y reduce un 7% más la velocidad del objetivo.",
+          "Aumenta un 33% la duración de los efectos de escalofrío y reduce un 10% más la velocidad del objetivo."
         ]
       }
     },
@@ -822,21 +796,6 @@
         ]
       }
     },
-    "ice-lance": {
-      "icon": "spell_frost_frostblast",
-      "en": {
-        "name": "Ice Lance",
-        "ranks": [
-          "Deals 28 to 32 Frost damage to an enemy target. Deals 200% increased damage to Frozen targets."
-        ]
-      },
-      "es": {
-        "name": "Lanza de hielo",
-        "ranks": [
-          "Inflige 28 al 32 p. de daño de Escarcha a un objetivo enemigo. Inflige un 200% más de daño contra objetivos congelados."
-        ]
-      }
-    },
     "improved-blizzard": {
       "icon": "spell_frost_icestorm",
       "en": {
@@ -856,6 +815,21 @@
         ]
       }
     },
+    "ice-lance": {
+      "icon": "spell_frost_frostblast",
+      "en": {
+        "name": "Ice Lance",
+        "ranks": [
+          "Deals 28 to 32 Frost damage to an enemy target. Deals 200% increased damage to Frozen targets."
+        ]
+      },
+      "es": {
+        "name": "Lanza de hielo",
+        "ranks": [
+          "Inflige 28 al 32 p. de daño de Escarcha a un objetivo enemigo. Inflige un 200% más de daño contra objetivos congelados."
+        ]
+      }
+    },
     "arctic-reach": {
       "icon": "spell_shadow_darkritual",
       "en": {
@@ -868,10 +842,9 @@
       "es": {
         "name": "Alcance ártico",
         "ranks": [
-          "Increases the range of your Frostbolt, Frost Blast, and Blizzard spells and the radius of your Frost Nova and Cone of Cold spells by 10%.",
-          "Increases the range of your Frostbolt, Frost Blast, and Blizzard spells and the radius of your Frost Nova and Cone of Cold spells by 20%."
-        ],
-        "lang": "en"
+          "Aumenta en un 10% el alcance de tus hechizos Descarga de Escarcha, Explosión de Escarcha y Ventisca, así como el radio de tus hechizos Nova de Escarcha y Cono de frío.",
+          "Aumenta en un 20% el alcance de tus hechizos Descarga de Escarcha, Explosión de Escarcha y Ventisca, así como el radio de tus hechizos Nova de Escarcha y Cono de frío."
+        ]
       }
     },
     "ice-block": {
@@ -974,13 +947,12 @@
       "es": {
         "name": "Escalofrío del invierno",
         "ranks": [
-          "Gives your Frost damage spells a 20% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 5%, stacking up to 5 times.",
-          "Gives your Frost damage spells a 40% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 5%, stacking up to 5 times.",
-          "Gives your Frost damage spells a 60% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 5%, stacking up to 5 times.",
-          "Gives your Frost damage spells a 80% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 5%, stacking up to 5 times.",
-          "Gives your Frost damage spells a 100% chance to apply the Winter's Chill effect, which increases the damage done by your Cone of Cold spell to the target by 5%, stacking up to 5 times."
-        ],
-        "lang": "en"
+          "Otorga a tus hechizos Lanza de hielo potenciados con Descarga de Escarcha, Explosión de Escarcha y Dedos de Escarcha un 20% de probabilidad de aplicar Escalofrío invernal, lo que aumenta un 5% el daño recibido por el objetivo de tu siguiente Cono de frío y obtiene un 7% adicional de tu daño con hechizos, acumulándose hasta 5 veces.",
+          "Otorga a tus hechizos Lanza de hielo potenciados con Descarga de Escarcha, Explosión de Escarcha y Dedos de Escarcha un 40% de probabilidad de aplicar Escalofrío invernal, lo que aumenta un 5% el daño recibido por el objetivo de tu siguiente Cono de frío y obtiene un 7% adicional de tu daño con hechizos, acumulándose hasta 5 veces.",
+          "Otorga a tus hechizos Lanza de hielo potenciados con Descarga de Escarcha, Explosión de Escarcha y Dedos de Escarcha un 60% de probabilidad de aplicar Escalofrío invernal, lo que aumenta un 5% el daño recibido por el objetivo de tu siguiente Cono de frío y obtiene un 7% adicional de tu daño con hechizos, acumulándose hasta 5 veces.",
+          "Otorga a tus hechizos Lanza de hielo potenciados con Descarga de Escarcha, Explosión de Escarcha y Dedos de Escarcha un 80% de probabilidad de aplicar Escalofrío invernal, lo que aumenta un 5% el daño recibido por el objetivo de tu siguiente Cono de frío y obtiene un 7% adicional de tu daño con hechizos, acumulándose hasta 5 veces.",
+          "Otorga a tus hechizos Lanza de hielo potenciados con Descarga de Escarcha, Explosión de Escarcha y Dedos de Escarcha un 100% de probabilidad de aplicar Escalofrío invernal, lo que aumenta un 5% el daño recibido por el objetivo de tu siguiente Cono de frío y obtiene un 7% adicional de tu daño con hechizos, acumulándose hasta 5 veces."
+        ]
       }
     },
     "ice-barrier": {
@@ -994,7 +966,7 @@
       "es": {
         "name": "Barrera de hielo",
         "ranks": [
-          "Te protege instantáneamente con un escudo que absorbe 448 p. de daño. Dura 1 min. Mientras el escudo esté activo, los lanzamientos de hechizos no se interrumpirán ni retrasarán al recibir daño."
+          "Te protege con un escudo que absorbe [448 + (Poder con hechizos de escarcha * 0.1) * (1)] p. de daño y aumenta un 3% tu daño de Escarcha durante 1 min. Mientras tengas la protección, tu daño de Escarcha aumenta un 3% más y no pierdes tiempo de lanzamiento por recibir daño."
         ]
       }
     }

@@ -1,5 +1,9 @@
 [
   {
+    "id": "accelerant",
+    "en": "Accelerant"
+  },
+  {
     "id": "arcane-blast",
     "en": "Arcane Blast",
     "es": "Explosión Arcana",
@@ -464,6 +468,10 @@
     "en": "Polymorph",
     "es": "Polimorfia",
     "source": "official"
+  },
+  {
+    "id": "precision",
+    "en": "Precision"
   },
   {
     "id": "presence-of-mind",

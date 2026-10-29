@@ -1,9 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { buildRole, recommendedConflicts } from '../src/lib/build-roles';
-import { checkIntegrity, dataset } from '../src/lib/data';
+import { checkIntegrity } from '../src/lib/data';
 import { buildSchema, type Build } from '../src/lib/schemas';
-
-const base = dataset.builds.find((b) => b.id === 'frost-leveling-solo')!;
+import { datasetWithFixture, fixtureBuild as base } from './fixtures/builds';
 
 function build(id: string, overrides: Partial<Build>): Build {
   return { ...structuredClone(base), id, recommendedFor: [], ...overrides };
@@ -25,7 +24,7 @@ describe('recommended or viable', () => {
   });
 
   it('is checked by the data integrity rules', () => {
-    const data = structuredClone(dataset);
+    const data = datasetWithFixture();
     data.builds.push({ ...structuredClone(base), id: 'one', slug: { es: 'una', en: 'one' }, recommendedFor: ['leveling'] });
     data.builds.push({ ...structuredClone(base), id: 'other', slug: { es: 'otra', en: 'other' }, recommendedFor: ['leveling'] });
     expect(checkIntegrity(data).join('\n')).toMatch(/both recommended for leveling at level 60/);

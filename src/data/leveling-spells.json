@@ -7,7 +7,7 @@
   { "level": 14, "spells": ["Arcane Explosion"], "ranks": [], "use": { "es": "Primer hechizo de área, caro en maná", "en": "First AoE spell, expensive in mana" } },
   { "level": 16, "spells": ["Flamestrike"], "ranks": [], "use": { "es": "Área sobre un punto del suelo, útil en grupo", "en": "Ground-targeted AoE, useful in groups" } },
   { "level": 20, "spells": ["Blink", "Blizzard", "Evocation", "Mana Shield", "Fire Ward"], "ranks": [], "use": { "es": "Escapar, área, maná y defensa", "en": "Escape, AoE, mana and defense" } },
-  { "level": 24, "spells": ["Counterspell", "Frost Blast"], "ranks": [], "use": { "es": "Cortar a los lanzadores; ralentizar barato", "en": "Stop casters; cheap slow" } },
+  { "level": 24, "spells": ["Counterspell"], "ranks": [], "use": { "es": "Cortar a los lanzadores", "en": "Stop casters" } },
   { "level": 26, "spells": ["Cone of Cold"], "ranks": [{ "spell": "Frostbolt", "rank": 5 }], "use": { "es": "Área y ralentización frente a ti", "en": "AoE and a slow in front of you" } },
   { "level": 28, "spells": ["Conjure Mana Agate"], "ranks": [{ "spell": "Blizzard", "rank": 2 }], "use": { "es": "Maná en combate; más daño en área", "en": "Mana in combat; more AoE damage" } },
   { "level": 30, "spells": ["Ice Armor"], "ranks": [], "use": { "es": "Armadura mejorada", "en": "Better armor" } }

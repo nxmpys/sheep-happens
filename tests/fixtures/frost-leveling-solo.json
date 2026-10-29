@@ -1,0 +1,332 @@
+{
+  "id": "frost-leveling-solo",
+  "name": {
+    "es": "Pirofrío para leveo en solitario",
+    "en": "Frostfire solo leveling"
+  },
+  "slug": {
+    "es": "pirofrio-en-solitario",
+    "en": "frostfire-solo"
+  },
+  "uses": [
+    "leveling"
+  ],
+  "recommendedFor": [],
+  "spec": "frost",
+  "hybridWith": "fire",
+  "icon": "ability_mage_frostfirebolt",
+  "tagline": {
+    "es": "Escarcha para subir del 1 al 60, con Descarga de Pirofrío desde el 40.",
+    "en": "Frost to level from 1 to 60, with Frostfire Bolt from 40."
+  },
+  "level": 60,
+  "fromLevel": 1,
+  "points": {
+    "improved-frostbolt": 5,
+    "frostbite": 3,
+    "improved-frost-nova": 2,
+    "ice-lance": 1,
+    "elemental-precision": 2,
+    "frost-channeling": 3,
+    "ice-block": 1,
+    "shatter": 3,
+    "arctic-reach": 2,
+    "fingers-of-frost": 2,
+    "cold-snap": 1,
+    "ice-shards": 5,
+    "ice-barrier": 1,
+    "incineration": 3,
+    "improved-fireball": 5,
+    "ignite": 5,
+    "flame-throwing": 2,
+    "master-of-elements": 3,
+    "wake-of-fire": 2
+  },
+  "order": [
+    "improved-frostbolt",
+    "improved-frostbolt",
+    "improved-frostbolt",
+    "improved-frostbolt",
+    "improved-frostbolt",
+    "frostbite",
+    "frostbite",
+    "frostbite",
+    "improved-frost-nova",
+    "improved-frost-nova",
+    "ice-lance",
+    "elemental-precision",
+    "elemental-precision",
+    "frost-channeling",
+    "frost-channeling",
+    "ice-block",
+    "shatter",
+    "shatter",
+    "shatter",
+    "arctic-reach",
+    "fingers-of-frost",
+    "fingers-of-frost",
+    "cold-snap",
+    "ice-shards",
+    "ice-shards",
+    "ice-shards",
+    "ice-shards",
+    "ice-shards",
+    "arctic-reach",
+    "frost-channeling",
+    "ice-barrier",
+    "incineration",
+    "incineration",
+    "incineration",
+    "improved-fireball",
+    "improved-fireball",
+    "ignite",
+    "ignite",
+    "ignite",
+    "ignite",
+    "ignite",
+    "improved-fireball",
+    "improved-fireball",
+    "improved-fireball",
+    "flame-throwing",
+    "flame-throwing",
+    "master-of-elements",
+    "master-of-elements",
+    "master-of-elements",
+    "wake-of-fire",
+    "wake-of-fire"
+  ],
+  "orderNotes": [
+    {
+      "point": 1,
+      "text": {
+        "es": "Descarga de Escarcha es tu hechizo principal: con 5/5 se lanza 0,5 s más rápido.",
+        "en": "Frostbolt is your main spell: at 5/5 it casts 0.5 s faster."
+      }
+    },
+    {
+      "point": 6,
+      "text": {
+        "es": "Mordiescarcha da a tus efectos de escalofrío un 15 % (3/3) de probabilidad de congelar 5 s: control de masas para alejarte y, desde el 20, Lanza de hielo con su bonificación.",
+        "en": "Frostbite gives your Chill effects a 15% (3/3) chance to freeze for 5 s: crowd control to step away and, from level 20, Ice Lance with its bonus."
+      }
+    },
+    {
+      "point": 9,
+      "text": {
+        "es": "Nova de Escarcha mejorada 2/2: 4 s menos de enfriamiento. Nova congela siempre, así que tienes Lanza de hielo con su 200 % más a menudo, y además es tu salida cuando algo llega a tu lado.",
+        "en": "Improved Frost Nova 2/2: 4 s less cooldown. Frost Nova always freezes, so you get Ice Lance with its 200% more often, and it is your way out when something reaches you."
+      }
+    },
+    {
+      "point": 11,
+      "text": {
+        "es": "Lanza de hielo, el talento decisivo y la base de la build: instantánea y un 200 % más de daño contra objetivos congelados.",
+        "en": "Ice Lance, the core of the build: instant, and 200% more damage against frozen targets."
+      }
+    },
+    {
+      "point": 12,
+      "text": {
+        "es": "Enfoque elemental y Canalización de Escarcha, según lo que más te falte: si fallas mucho, sube Enfoque elemental; si te quedas sin maná, Canalización. En solitario manda el golpe.",
+        "en": "Elemental Precision and Frost Channeling, depending on what you lack: if you miss a lot, raise Elemental Precision; if you run out of mana, Frost Channeling. Solo, hit comes first."
+      }
+    },
+    {
+      "point": 16,
+      "text": {
+        "es": "Bloqueo de hielo: te salva de un error, de un grupo de enemigos o de aggro en mazmorra.",
+        "en": "Ice Block: it saves you from a mistake, a pack of enemies or dungeon aggro."
+      }
+    },
+    {
+      "point": 17,
+      "text": {
+        "es": "Trizar 3/3: +50 % de probabilidad de crítico contra objetivos congelados. Abre la puerta a Fragmentos de hielo.",
+        "en": "Shatter 3/3: +50% critical strike chance against frozen targets. It opens the door to Ice Shards."
+      }
+    },
+    {
+      "point": 20,
+      "text": {
+        "es": "Alcance ártico: más alcance para Descarga de Escarcha y radio para Nova de Escarcha. Un punto cómodo para el kiting.",
+        "en": "Arctic Reach: more range for Frostbolt and radius for Frost Nova. A comfortable point for kiting."
+      }
+    },
+    {
+      "point": 21,
+      "text": {
+        "es": "Dedos de Escarcha a nivel 30: cada efecto de escalofrío tiene un 15 % de probabilidad de que tus siguientes hechizos traten al objetivo como congelado, sin congelarlo (2/2: dos hechizos).",
+        "en": "Fingers of Frost at level 30: each Chill effect has a 15% chance to make your next spells treat the target as frozen, without freezing it (2/2: two spells)."
+      }
+    },
+    {
+      "point": 23,
+      "text": {
+        "es": "Mordedura helada reinicia Nova de Escarcha y Bloqueo de hielo, y abre Barrera de hielo.",
+        "en": "Cold Snap resets Frost Nova and Ice Block, and unlocks Ice Barrier."
+      }
+    },
+    {
+      "point": 24,
+      "text": {
+        "es": "Fragmentos de hielo 5/5: el daño extra de tus críticos de Escarcha sube mucho. Con Trizar, una congelación seguida de Lanza de hielo es un crítico enorme.",
+        "en": "Ice Shards 5/5: the extra damage of your Frost crits goes way up. With Shatter, a freeze followed by Ice Lance is a huge crit."
+      }
+    },
+    {
+      "point": 31,
+      "text": {
+        "es": "Barrera de hielo a nivel 40, el mismo nivel en el que aprendes Descarga de Pirofrío.",
+        "en": "Ice Barrier at level 40, the same level you learn Frostfire Bolt."
+      }
+    },
+    {
+      "point": 32,
+      "text": {
+        "es": "Incineración: +6 % de crítico en Lanza de hielo. Con Fragmentos de hielo y Trizar, tus Lanzas son las que más pegan.",
+        "en": "Incineration: +6% crit on Ice Lance. With Ice Shards and Shatter, your Lances hit the hardest."
+      }
+    },
+    {
+      "point": 35,
+      "text": {
+        "es": "Bola de Fuego mejorada: con 5/5, Descarga de Pirofrío pasa de 3 s a 2,5 s. Los 2 primeros puntos también abren Ignición.",
+        "en": "Improved Fireball: at 5/5, Frostfire Bolt goes from 3 s to 2.5 s. The first 2 points also open Ignite."
+      }
+    },
+    {
+      "point": 37,
+      "text": {
+        "es": "Ignición: los críticos de tus hechizos de Fuego (como Descarga de Pirofrío) queman al enemigo con un 40 % de su daño durante 4 s con 5/5.",
+        "en": "Ignite: critical hits of your Fire spells (such as Frostfire Bolt) burn the enemy for 40% of their damage over 4 s at 5/5."
+      }
+    },
+    {
+      "point": 45,
+      "text": {
+        "es": "Lanzallamas: más alcance de Fuego, para abrir desde más lejos.",
+        "en": "Flame Throwing: more range for Fire spells, to open from further away."
+      }
+    },
+    {
+      "point": 47,
+      "text": {
+        "es": "Maestro de los elementos 3/3: tus críticos de Fuego y Escarcha te devuelven un 30 % del maná base. Con tantos críticos, menos tiempo bebiendo. A partir de aquí, lo demás depende de cómo juegues.",
+        "en": "Master of Elements 3/3: your Fire and Frost crits refund 30% of base mana. With this many crits, less time drinking. From here on, the rest depends on how you play."
+      }
+    },
+    {
+      "point": 50,
+      "text": {
+        "es": "Explosión de Fuego mejorada: 2 s menos de enfriamiento y más alcance, para rematar mientras haces kiting.",
+        "en": "Improved Fire Blast: 2 s less cooldown and more range, to finish while kiting."
+      }
+    }
+  ],
+  "goal": {
+    "es": "Subir en solitario, a distancia y sin riesgos",
+    "en": "Level solo, at range and safely"
+  },
+  "profile": {
+    "es": "La mayoría: subes con misiones, casi siempre solo.",
+    "en": "Most players: you level through quests, mostly alone."
+  },
+  "upside": {
+    "es": "Mucho control de masas y ralentizaciones: pocos enemigos te alcanzan.",
+    "en": "Plenty of crowd control and slows: few enemies reach you."
+  },
+  "downside": {
+    "es": "Floja contra varios enemigos a la vez.",
+    "en": "Weak against several enemies at once."
+  },
+  "keyTalents": [
+    "improved-frostbolt",
+    "frostbite",
+    "ice-lance",
+    "shatter",
+    "ignite"
+  ],
+  "summary": {
+    "es": "¿Siempre has querido jugar Escarcha y Fuego a la vez? Pues ahora puedes: desde el 40, Descarga de Pirofrío tira de las dos ramas. Congela, revienta, repite.",
+    "en": "Always wanted to play Frost and Fire at once? Now you can: from level 40, Frostfire Bolt feeds off both trees. Freeze, shatter, repeat."
+  },
+  "playstyle": [
+    {
+      "es": "Abre con Descarga de Escarcha a máxima distancia (desde el 40, con Descarga de Pirofrío) y sigue con Descarga de Escarcha mientras el enemigo se acerca ralentizado.",
+      "en": "Open with Frostbolt from max range (from 40, with Frostfire Bolt) and keep casting Frostbolt while the slowed enemy walks in."
+    },
+    {
+      "es": "Cuando se congele (Mordiescarcha o Nova de Escarcha), lanza Lanza de hielo: un 200 % más de daño. Desde el 40, otra Descarga de Pirofrío sobre el objetivo congelado también pega fuerte.",
+      "en": "When it freezes (Frostbite or Frost Nova), cast Ice Lance: 200% more damage. From 40, another Frostfire Bolt on the frozen target also hits hard."
+    },
+    {
+      "es": "Con Dedos de Escarcha (nivel 30), gasta cada carga en Lanza de hielo o en Descarga de Pirofrío aunque el enemigo no esté congelado.",
+      "en": "With Fingers of Frost (level 30), spend each charge on Ice Lance or Frostfire Bolt even if the target is not frozen."
+    },
+    {
+      "es": "Si llega a tu lado: Nova de Escarcha, aléjate unos pasos y sigue con Lanza de hielo. Bloqueo de hielo y Barrera de hielo son tu red de seguridad.",
+      "en": "If it reaches you: Frost Nova, step away and continue with Ice Lance. Ice Block and Ice Barrier are your safety net."
+    }
+  ],
+  "strengths": [
+    {
+      "es": "Muy segura: ralentizas siempre y congelas a menudo, así que pocos enemigos llegan a golpearte.",
+      "en": "Very safe: you always slow and often freeze, so few enemies get to hit you."
+    },
+    {
+      "es": "Fácil de jugar: cada punto mejora algo que ya usas, y el combo congelar y Lanza de hielo es siempre el mismo.",
+      "en": "Easy to play: each point improves something you already use, and the freeze and Ice Lance combo is always the same."
+    }
+  ],
+  "weaknesses": [
+    {
+      "es": "Pensada para un enemigo cada vez: con tres o más a la vez dependes de Nova de Escarcha y de alejarte.",
+      "en": "Made for one enemy at a time: against three or more you rely on Frost Nova and on walking away."
+    },
+    {
+      "es": "El tramo de Fuego (del 41 al 60) está pendiente de verificar con el lanzamiento: sus puntos se han planteado sin poder probarlos.",
+      "en": "The Fire part (41 to 60) is pending verification at launch: its points were planned without being able to test them."
+    }
+  ],
+  "items": [
+    {
+      "es": "Una varita cuanto antes: Lesser Magic Wand (nivel 5) y Greater Magic Wand (nivel 13), de Encantamiento o de la casa de subastas.",
+      "en": "A wand as soon as possible: Lesser Magic Wand (level 5) and Greater Magic Wand (level 13), from Enchanting or the Auction House."
+    },
+    {
+      "es": "Agua y comida conjuradas; desde el nivel 28, gema de maná (Conjurar ágata de maná) para los combates largos.",
+      "en": "Conjured water and food; from level 28, a mana gem (Conjure Mana Agate) for long fights."
+    }
+  ],
+  "page": "leveling",
+  "status": "analysis",
+  "gameVersion": "forever-beta-2026-10",
+  "sources": [
+    "blizzard-deep-dive-mage",
+    "wowhead-forever-talent-calc",
+    "icyveins-forever-frost",
+    "mobalytics-mage-leveling",
+    "method-mage-leveling"
+  ],
+  "updated": "2026-10-26",
+  "variants": [
+    {
+      "name": {
+        "es": "En grupo",
+        "en": "In a group"
+      },
+      "text": {
+        "es": "Para subir sobre todo en mazmorras. En grupo, los golpes de tus compañeros rompen las congelaciones de Mordiescarcha y el alcance extra sobra; a cambio, Enfoque elemental 3/3 para no fallar contra élites y jefes, y Ventisca mejorada para que no se escape nadie del grupo que sujeta el tanque. Para una mazmorra suelta no compensa cambiar.",
+        "en": "For leveling mostly in dungeons. In a group, your allies' hits break Frostbite's freezes and the extra range is not needed; instead, Elemental Precision 3/3 so you do not miss against elites and bosses, and Improved Blizzard so nothing escapes the pack the tank is holding. For a single dungeon it is not worth switching."
+      },
+      "remove": {
+        "frostbite": 3,
+        "arctic-reach": 1
+      },
+      "add": {
+        "elemental-precision": 1,
+        "improved-blizzard": 3
+      }
+    }
+  ]
+}

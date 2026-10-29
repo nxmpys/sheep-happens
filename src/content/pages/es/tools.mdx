@@ -16,7 +16,7 @@ summary:
   - Los rangos intermedios coinciden con el cliente de la beta de Forever.
   - La calculadora de golpe te dice cuánto golpe te falta para no fallar contra criaturas o jugadores; en Forever el tope llega al 100 %.
 sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, wiki-ice-shards-classic, wiki-ignite-classic, wowhead-forever-talent-calc, allakhazam-hit-rate, almar-classic-mage-hit, method-forever-hit-chance, blizzard-forums-forever-hit]
-tags: [herramientas, calculadora, crítico, descarga de pirofrío, ignición, fragmentos de hielo, golpe con hechizos, tope de golpe, enfoque arcano, enfoque elemental]
+tags: [herramientas, calculadora, crítico, descarga de pirofrío, ignición, fragmentos de hielo, golpe con hechizos, tope de golpe, precision]
 ---
 
 ## Multiplicador de crítico
@@ -36,14 +36,14 @@ No incluye otros modificadores (por ejemplo, la probabilidad de crítico o la re
 
 ## Golpe con hechizos
 
-Un hechizo que falla no hace nada y gasta el maná. Elige si atacas a una criatura o a un jugador, su nivel, la escuela, tus rangos de **Enfoque Arcano** o **Enfoque elemental** y el golpe de tu equipo para ver con qué probabilidad aciertas y cuánto te falta para el tope. No tiene en cuenta las resistencias.
+Un hechizo que falla no hace nada y gasta el maná. Elige si atacas a una criatura o a un jugador, su nivel, tus rangos de **Precision** y el golpe de tu equipo para ver con qué probabilidad aciertas y cuánto te falta para el tope. No tiene en cuenta las resistencias.
 
 <HitCalculator />
 
 - Contra una criatura de tu nivel aciertas el **96 %** de las veces; a +1 y +2 niveles, el 95 y el 94 %. A partir de +3 cae 11 puntos por nivel: **83 %** contra un jefe de banda (nivel 63 para un nivel 60). <Status status="classic" />
 - **Cambio en Forever:** en Classic siempre quedaba un 1 % de fallo (tope del 99 %). En Forever los jugadores de la beta llegan al **100 %**: un **4 %** de golpe basta para no fallar nunca contra tu nivel y un **17 %** contra un jefe de banda. Blizzard aún no lo ha confirmado. <Status status="reported" />
 - **Contra jugadores**, la tabla es la misma hasta +2 niveles; a partir de +3 cae 7 puntos por nivel en vez de 11: **87 %** a +3. Es la tabla de Classic; no hay datos de Forever todavía. <Status status="classic" />
-- En Forever, **Enfoque Arcano** (Arcano) da un 1 % de golpe por rango, hasta el 5 %, y **Enfoque elemental** (Fuego y Escarcha) un 2 % por rango, hasta el 6 %, desde el hotfix del 20 de octubre, según el cliente de la beta. <Status status="reported" />
+- En Forever, **Precision** (Escarcha, fila 1) da un 2 % de golpe por rango, hasta el 6 %, con todos los hechizos desde la build del 28 de octubre, según el cliente de la beta. Enfoque Arcano ya no existe. <Status status="reported" />
 
 Algunas guías dan un 3 % a tu nivel y un 16 % contra jefes: son las cifras de Classic, que dejan ese 1 % de fallo. Lo comprobaré en el juego en el lanzamiento.
 

@@ -9,7 +9,7 @@
  * («Builds de la comunidad»).
  */
 import rawTalents from '../../src/data/talents.json';
-import { COMMUNITY_ACTION, COMMUNITY_LIMIT, COMMUNITY_TAGS, parseQuery, parseSubmission, rowToBuild, type CommunityRow } from '../../src/lib/community-builds';
+import { COMMUNITY_ACTION, COMMUNITY_LIMIT, COMMUNITY_TAGS, COMMUNITY_TREE, parseQuery, parseSubmission, rowToBuild, type CommunityRow } from '../../src/lib/community-builds';
 import type { Talent } from '../../src/lib/schemas';
 import { readJson, reply, verifyTurnstile } from '../../src/lib/turnstile';
 
@@ -40,7 +40,10 @@ interface Context {
 const talents = rawTalents as Talent[];
 const MAX_BODY_BYTES = 2048;
 
-const SCHEMA = `CREATE TABLE IF NOT EXISTS community_builds (
+/** One table per talent tree (COMMUNITY_TREE); the first tree used the bare name. */
+const TABLE = `community_builds_v${COMMUNITY_TREE}`;
+
+const SCHEMA = `CREATE TABLE IF NOT EXISTS ${TABLE} (
   code TEXT NOT NULL,
   tag TEXT NOT NULL,
   main TEXT NOT NULL,
@@ -69,13 +72,13 @@ function ensureSchema(db: D1Database): Promise<unknown> {
 const RANKING = `SELECT code, main, second, SUM(votes) AS total,
     SUM(CASE WHEN tag = ?1 THEN votes ELSE 0 END) AS hits,
     group_concat(tag || ':' || votes) AS tags
-  FROM community_builds
+  FROM ${TABLE}
   WHERE ?2 IS NULL OR main = ?2
   GROUP BY code
   HAVING ?1 IS NULL OR hits > 0
   ORDER BY CASE WHEN ?1 IS NULL THEN total ELSE hits END DESC, total DESC, MAX(updated) DESC
   LIMIT ?3`;
-const TAG_TOTALS = `SELECT tag, SUM(votes) AS votes FROM community_builds WHERE ?1 IS NULL OR main = ?1 GROUP BY tag`;
+const TAG_TOTALS = `SELECT tag, SUM(votes) AS votes FROM ${TABLE} WHERE ?1 IS NULL OR main = ?1 GROUP BY tag`;
 
 export async function onRequestGet({ request, env }: Context): Promise<Response> {
   const db = env.COMMUNITY_DB;
@@ -119,7 +122,7 @@ export async function onRequestPost({ request, env }: Context): Promise<Response
       tags.map((tag) =>
         db
           .prepare(
-            `INSERT INTO community_builds (code, tag, main, second, votes, updated) VALUES (?1, ?2, ?3, ?4, 1, ?5)
+            `INSERT INTO ${TABLE} (code, tag, main, second, votes, updated) VALUES (?1, ?2, ?3, ?4, 1, ?5)
              ON CONFLICT (code, tag) DO UPDATE SET votes = votes + 1, updated = excluded.updated`,
           )
           .bind(code, tag, spec.main, spec.second ?? '', today),
