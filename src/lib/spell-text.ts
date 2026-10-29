@@ -60,6 +60,28 @@ export function looksEnglish(text: string): boolean {
   return (text.match(ENGLISH_WORDS) ?? []).length >= 3;
 }
 
+/**
+ * Spells the game removed while other tooltips still name them. Frost Blast
+ * left the spellbook in the 28 October 2026 build, but Improved Frostbolt,
+ * Arctic Reach, Winter's Chill and Missile Barrage still list it. Each phrase
+ * is replaced exactly, so a new wording on Wowhead stays visible and the test
+ * in tests/spells.test.ts fails instead of producing a broken sentence.
+ */
+export const REMOVED_SPELLS = ['Frost Blast', 'Explosión de Escarcha'] as const;
+const REMOVED_SPELL_PHRASES: [string, string][] = [
+  ['your Frostbolt and Frost Blast spells', 'your Frostbolt spell'],
+  // Longer list first: Missile Barrage keeps four other spells.
+  ['Frostbolt, Frost Blast, and Frostfire Bolt', 'Frostbolt, and Frostfire Bolt'],
+  ['Frostbolt, Frost Blast, and ', 'Frostbolt and '],
+  ['tus hechizos Descarga de Escarcha y Explosión de Escarcha', 'tu hechizo Descarga de Escarcha'],
+  ['Descarga de Escarcha, Explosión de Escarcha y ', 'Descarga de Escarcha y '],
+];
+
+/** The game text without the spells the game removed (see REMOVED_SPELLS). */
+export function withoutRemovedSpells(text: string): string {
+  return REMOVED_SPELL_PHRASES.reduce((result, [from, to]) => result.replaceAll(from, to), text);
+}
+
 /** Header lines that are not about the spell itself. */
 const NOT_META = /^(level|nivel|talent|talento|requires|requiere)\b/i;
 

@@ -81,6 +81,7 @@ import {
   type Watch,
 } from './schemas';
 import { nameEntry, spellNames } from './spell-names';
+import { withoutRemovedSpells } from './spell-text';
 import { recommendedConflicts } from './build-roles';
 import { routeConflicts } from './build-routes';
 import { applySwap, totalPoints, validateBuild, validateOrder } from './talents';
@@ -391,6 +392,9 @@ export const talentText = (() => {
   const result = talentTextFileSchema.safeParse(rawTalentText);
   if (!result.success) throw new Error(`Invalid data in src/data/talent-text.json:
 ${z.prettifyError(result.error)}`);
+  for (const talent of Object.values(result.data.talents)) {
+    for (const text of [talent.en, talent.es]) text.ranks = text.ranks.map(withoutRemovedSpells);
+  }
   return result.data;
 })();
 
@@ -504,6 +508,9 @@ function lookup<T>(index: Map<string, T>, kind: string, key: string): T {
 export const spellText = (() => {
   const result = spellTextFileSchema.safeParse(rawSpellText);
   if (!result.success) throw new Error(`Invalid data in src/data/spell-text.json:\n${z.prettifyError(result.error)}`);
+  for (const spell of Object.values(result.data.spells)) {
+    for (const text of [spell.en, spell.es]) text.text = withoutRemovedSpells(text.text);
+  }
   return result.data.spells;
 })();
 

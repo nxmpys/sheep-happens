@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { abilities, changes, milestones, spellText, talents } from '../src/lib/data';
+import { abilities, changes, milestones, spellText, talents, talentText } from '../src/lib/data';
 import { SPANISH_NAMES as names } from '../src/lib/spell-names';
 import { buildSpellIndex, findSpell } from '../src/lib/spells';
-import { fillRankValues, looksEnglish, parseWowheadTooltip, tidyDescription } from '../src/lib/spell-text';
+import { fillRankValues, looksEnglish, parseWowheadTooltip, REMOVED_SPELLS, tidyDescription, withoutRemovedSpells } from '../src/lib/spell-text';
 
 const es = buildSpellIndex({ abilities, changes, talents, milestones, spellText, names }, 'es');
 const en = buildSpellIndex({ abilities, changes, talents, milestones, spellText, names }, 'en');
@@ -99,5 +99,27 @@ describe('in-game tooltip text', () => {
   it('spots Spanish texts that the game has not translated yet', () => {
     expect(looksEnglish('Targets in a cone in front of the caster take 96 to 106 Frost damage')).toBe(true);
     expect(looksEnglish('Transforma al enemigo en una oveja y lo obliga a deambular durante 20 s.')).toBe(false);
+  });
+});
+
+describe('removed spells', () => {
+  it('drop out of the lists in other tooltips', () => {
+    expect(withoutRemovedSpells('Reduces the casting time of your Frostbolt and Frost Blast spells by 0.1 sec.')).toBe(
+      'Reduces the casting time of your Frostbolt spell by 0.1 sec.',
+    );
+    expect(withoutRemovedSpells('your Arcane Wrath, Fireball, Frostbolt, Frost Blast, and Frostfire Bolt spells')).toBe(
+      'your Arcane Wrath, Fireball, Frostbolt, and Frostfire Bolt spells',
+    );
+    expect(withoutRemovedSpells('tus hechizos Descarga de Escarcha, Explosión de Escarcha y Ventisca')).toBe('tus hechizos Descarga de Escarcha y Ventisca');
+  });
+
+  it('are named by no talent or other spell text the guide shows', () => {
+    // Frost Blast's own tooltip (its change card) still describes it.
+    const own = new Set(['1326053']);
+    const texts = [
+      ...Object.values(talentText.talents).flatMap((t) => [...t.en.ranks, ...t.es.ranks]),
+      ...Object.entries(spellText).flatMap(([id, s]) => (own.has(id) ? [] : [s.en.text, s.es.text])),
+    ];
+    for (const name of REMOVED_SPELLS) expect(texts.filter((text) => text.includes(name))).toEqual([]);
   });
 });
