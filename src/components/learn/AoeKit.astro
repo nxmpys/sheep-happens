@@ -59,9 +59,10 @@ const levelWord = es ? 'Nivel' : 'Level';
 ---
 
 <aoe-kit class="kit" data-stages={JSON.stringify(stages)} data-no-spell-links>
-  <label class="kit__level">
+  {/* `for` is needed: without it the label would name the <output>, its first labelable child. */}
+  <label class="kit__level" for="aoe-kit-level">
     <span>{es ? 'Tu nivel' : 'Your level'}: <output data-level>{initial}</output></span>
-    <input type="range" min="10" max="30" value={initial} />
+    <input id="aoe-kit-level" type="range" min="10" max="30" value={initial} />
   </label>
   <p class="kit__stage" data-stage aria-live="polite">{stages.findLast((s) => s.from <= initial)!.text}</p>
   <ul class="kit__spells">

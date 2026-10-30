@@ -64,9 +64,10 @@ const left = (level: number) => ((level - 10) / 50) * 100;
       <button type="button" data-faction-pick="alliance" aria-pressed="false"><GameIcon icon={CREST.alliance} size={20} /> {faction.alliance}</button>
       <button type="button" data-faction-pick="horde" aria-pressed="false"><GameIcon icon={CREST.horde} size={20} /> {faction.horde}</button>
     </div>
-    <label class="finder__level">
+    {/* `for` is needed: without it the label would name the <output>, its first labelable child. */}
+    <label class="finder__level" for="finder-level">
       <span>{copy.level}: <output data-level>{copy.any}</output></span>
-      <input type="range" min="10" max="60" value="10" />
+      <input id="finder-level" type="range" min="10" max="60" value="10" />
     </label>
     <button type="button" class="finder__reset" data-reset hidden>{copy.reset}</button>
   </div>
