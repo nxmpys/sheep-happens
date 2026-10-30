@@ -149,7 +149,7 @@ export function buildSpellIndex(
         ...describe(ability.spell, ability.summary[locale], ability.status),
         ...(own
           ? { href: link('changes', `change-${own.id}`), more: 'changes' as const }
-          : { href: link('guide', `role-${ability.role}`), more: 'guide' as const }),
+          : { href: link('combat', `role-${ability.role}`), more: 'guide' as const }),
       },
       spanish[ability.name],
       ability.name,

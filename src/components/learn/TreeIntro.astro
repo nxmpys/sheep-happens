@@ -1,0 +1,63 @@
+---
+/**
+ * Top of a tree's page: its talent tree drawn as in the game, with the
+ * milestones lit, and next to it (the slot) how the tree plays. Every icon of the
+ * tree opens the spell tooltip.
+ */
+import TalentGrid from '../guide/TalentGrid.astro';
+import '../../styles/learn.css';
+import { milestonesForTree, talents } from '../../lib/data';
+import type { SpecTree } from '../../lib/schemas';
+
+interface Props {
+  tree: SpecTree;
+}
+
+const { tree } = Astro.props;
+const points = Object.fromEntries(
+  milestonesForTree(tree)
+    .map((slot) => talents.find((t) => t.tree === tree && t.name === slot.name))
+    .filter((t) => t !== undefined)
+    .map((t) => [t!.id, t!.maxRank]),
+);
+---
+
+<section class={`tree-intro school-${tree}`}>
+  <div class="tree-intro__text">
+    <slot />
+  </div>
+  <div class="tree-intro__grid" data-no-spell-links>
+    <TalentGrid tree={tree} points={points} />
+  </div>
+</section>
+
+<style>
+  .tree-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+    gap: var(--space-5);
+    align-items: start;
+  }
+  .tree-intro__text {
+    display: grid;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    border: 1px solid color-mix(in srgb, var(--school) 40%, var(--border));
+    border-radius: var(--radius-lg);
+    background: linear-gradient(160deg, var(--school-soft), var(--surface-1) 65%);
+  }
+  .tree-intro__text :global(p) {
+    margin: 0;
+  }
+  .tree-intro__text :global(.tree-intro__line) {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  @media (max-width: 52rem) {
+    .tree-intro {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

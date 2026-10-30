@@ -1,0 +1,135 @@
+---
+/**
+ * The three trees side by side: three levels (dots) on what tells them apart.
+ * It is my reading of the mechanics in specs.json, not a measurement, so it
+ * carries the analysis badge.
+ */
+import GameIcon from './GameIcon.astro';
+import StatusBadge from '../guide/StatusBadge.astro';
+import '../../styles/learn.css';
+import { getLocale, href } from '../../i18n/locale';
+import { NAV_LABELS } from '../../i18n/ui';
+import { TREE_ICONS } from '../../lib/icons';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const TREES = ['arcane', 'fire', 'frost'] as const;
+const rows: { label: string; hint: string; arcane: number; fire: number; frost: number }[] = es
+  ? [
+      { label: 'Mantener lejos al enemigo', hint: 'Escarcha ralentiza y congela; las otras dos no ralentizan por sí solas.', arcane: 1, fire: 1, frost: 3 },
+      { label: 'Golpes grandes', hint: 'Fuego busca Piroexplosión rápidas; Arcano carga y descarga; Escarcha aprovecha lo congelado.', arcane: 2, fire: 3, frost: 2 },
+      { label: 'Ahorro de maná', hint: 'Cada Explosión Arcana cuesta más que la anterior.', arcane: 1, fire: 2, frost: 2 },
+      { label: 'Fácil de aprender', hint: 'Escarcha gira en torno a un hechizo principal.', arcane: 1, fire: 2, frost: 3 },
+      { label: 'Seguridad al subir de nivel', hint: 'Fuego necesita críticos, y a nivel bajo haces pocos.', arcane: 2, fire: 1, frost: 3 },
+    ]
+  : [
+      { label: 'Keeping enemies away', hint: 'Frost slows and freezes; the other two do not slow on their own.', arcane: 1, fire: 1, frost: 3 },
+      { label: 'Big hits', hint: 'Fire chases fast Pyroblasts; Arcane builds up and cashes in; Frost exploits what is frozen.', arcane: 2, fire: 3, frost: 2 },
+      { label: 'Saving mana', hint: 'Each Arcane Blast costs more than the last.', arcane: 1, fire: 2, frost: 2 },
+      { label: 'Easy to learn', hint: 'Frost revolves around one main spell.', arcane: 1, fire: 2, frost: 3 },
+      { label: 'Safety while leveling', hint: 'Fire needs crits, and you score few at low level.', arcane: 2, fire: 1, frost: 3 },
+    ];
+const levelWord = es ? ['bajo', 'medio', 'alto'] : ['low', 'medium', 'high'];
+---
+
+<div class="compare" role="table" aria-label={es ? 'Comparación de las tres ramas' : 'The three trees compared'}>
+  <div class="compare__row compare__row--head" role="row">
+    <span role="columnheader"><StatusBadge status="analysis" /></span>
+    {
+      TREES.map((tree) => (
+        <a class={`compare__tree school-${tree}`} role="columnheader" href={href(`talents-${tree}`, locale)}>
+          <GameIcon icon={TREE_ICONS[tree]} size={32} />
+          <span>{NAV_LABELS[locale][`talents-${tree}`]}</span>
+        </a>
+      ))
+    }
+  </div>
+  {
+    rows.map((row) => (
+      <div class="compare__row" role="row">
+        <span class="compare__label" role="rowheader">
+          {row.label}
+          <small>{row.hint}</small>
+        </span>
+        {TREES.map((tree) => (
+          <span class={`compare__cell school-${tree}`} role="cell">
+            <span class="dots" aria-hidden="true">
+              {[1, 2, 3].map((n) => <i class:list={{ on: n <= row[tree] }} />)}
+            </span>
+            <span class="visually-hidden">{levelWord[row[tree] - 1]}</span>
+          </span>
+        ))}
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .compare {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+    overflow: hidden;
+  }
+  .compare__row {
+    display: grid;
+    grid-template-columns: minmax(0, 2.2fr) repeat(3, minmax(0, 1fr));
+    gap: var(--space-2);
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
+  }
+  .compare__row + .compare__row {
+    border-top: 1px solid var(--border);
+  }
+  .compare__row--head {
+    background: var(--surface-2);
+  }
+  .compare__tree {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-1);
+    color: var(--school);
+    font-size: var(--step--1);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .compare__label {
+    font-weight: 650;
+  }
+  .compare__label small {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+  .compare__cell {
+    display: flex;
+    justify-content: center;
+  }
+  .dots {
+    display: flex;
+    gap: 4px;
+  }
+  .dots i {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    border: 1.5px solid var(--school);
+  }
+  .dots i.on {
+    background: var(--school);
+  }
+  @media (max-width: 40rem) {
+    .compare__row {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      padding: var(--space-3);
+    }
+    .compare__row > :first-child {
+      grid-column: 1 / -1;
+    }
+    .dots i {
+      width: 0.65rem;
+      height: 0.65rem;
+    }
+  }
+</style>

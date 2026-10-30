@@ -1,0 +1,288 @@
+---
+/**
+ * Where to farm: the AoE spots filtered by faction and level, each with its range
+ * on a 10-60 bar. Without JavaScript the filters stay hidden and all spots show.
+ */
+import GameIcon from './GameIcon.astro';
+import StatusBadge from '../guide/StatusBadge.astro';
+import '../../styles/learn.css';
+import { FACTION_LABELS } from '../../i18n/builds';
+import { getLocale } from '../../i18n/locale';
+import type { Status } from '../../lib/schemas';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const CREST = { alliance: 'achievement_pvp_a_14', horde: 'achievement_pvp_h_14' } as const;
+type Faction = 'alliance' | 'horde' | 'both';
+interface Spot {
+  min: number;
+  max: number;
+  faction: Faction;
+  zone: string;
+  enemies: string;
+  status: Status;
+  featured?: boolean;
+}
+const spots: Spot[] = es
+  ? [
+      { min: 10, max: 20, faction: 'horde', zone: 'Los Baldíos', enemies: 'Leones y zancudos', status: 'reported' },
+      { min: 10, max: 20, faction: 'alliance', zone: 'Costa Oscura', enemies: 'Fúrbolgs', status: 'reported' },
+      { min: 14, max: 20, faction: 'alliance', zone: 'Páramos de Poniente', enemies: 'Campamentos Defias', status: 'reported' },
+      { min: 20, max: 30, faction: 'horde', zone: 'Laderas de Trabalomas', enemies: 'Granjeros de los campos de Trabalomas', status: 'reported' },
+      { min: 20, max: 30, faction: 'alliance', zone: 'Los Humedales', enemies: 'Gnolls (Mosshide)', status: 'reported' },
+      { min: 20, max: 30, faction: 'alliance', zone: 'Bosque del Ocaso', enemies: 'Cementerio (Raven Hill) y huargos (Nightbane)', status: 'reported' },
+      { min: 23, max: 30, faction: 'horde', zone: 'Mulgore, noroeste de Cima del Trueno', enemies: 'Arañas Gloomrise (27-29). Nueva en Forever', status: 'reported', featured: true },
+      { min: 30, max: 40, faction: 'both', zone: 'Tierras Altas de Arathi', enemies: "Azurelode Mine, Dabyrie's Farmstead, Go'Shek Farm", status: 'pending' },
+      { min: 30, max: 40, faction: 'both', zone: 'Marjal Revolcafango', enemies: 'Múrlocs', status: 'pending' },
+      { min: 40, max: 50, faction: 'both', zone: 'Tanaris', enemies: 'Piratas (Lost Rigger Cove) y Wastewander', status: 'pending' },
+      { min: 50, max: 60, faction: 'both', zone: 'Frondavil y Tierras de la Peste', enemies: 'Trols y campamentos Escarlata', status: 'pending' },
+    ]
+  : [
+      { min: 10, max: 20, faction: 'horde', zone: 'The Barrens', enemies: 'Lions and plainstriders', status: 'reported' },
+      { min: 10, max: 20, faction: 'alliance', zone: 'Darkshore', enemies: 'Furbolgs', status: 'reported' },
+      { min: 14, max: 20, faction: 'alliance', zone: 'Westfall', enemies: 'Defias camps', status: 'reported' },
+      { min: 20, max: 30, faction: 'horde', zone: 'Hillsbrad Foothills', enemies: 'Farmers in Hillsbrad Fields', status: 'reported' },
+      { min: 20, max: 30, faction: 'alliance', zone: 'Wetlands', enemies: 'Mosshide gnolls', status: 'reported' },
+      { min: 20, max: 30, faction: 'alliance', zone: 'Duskwood', enemies: 'Raven Hill cemetery and Nightbane worgen', status: 'reported' },
+      { min: 23, max: 30, faction: 'horde', zone: 'Mulgore, northwest of Thunder Bluff', enemies: 'Gloomrise spiders (27-29). New in Forever', status: 'reported', featured: true },
+      { min: 30, max: 40, faction: 'both', zone: 'Arathi Highlands', enemies: "Azurelode Mine, Dabyrie's Farmstead, Go'Shek Farm", status: 'pending' },
+      { min: 30, max: 40, faction: 'both', zone: 'Dustwallow Marsh', enemies: 'Murlocs', status: 'pending' },
+      { min: 40, max: 50, faction: 'both', zone: 'Tanaris', enemies: 'Pirates (Lost Rigger Cove) and Wastewander', status: 'pending' },
+      { min: 50, max: 60, faction: 'both', zone: 'Felwood and the Plaguelands', enemies: 'Trolls and Scarlet camps', status: 'pending' },
+    ];
+const faction = FACTION_LABELS[locale];
+const copy = es
+  ? { all: 'Todas', level: 'Tu nivel', any: 'cualquiera', reset: 'Ver todos', none: 'Ningún sitio documentado para este nivel y facción.', both: 'Ambas', levels: 'Niveles' }
+  : { all: 'All', level: 'Your level', any: 'any', reset: 'Show all', none: 'No documented spot for this level and faction.', both: 'Both', levels: 'Levels' };
+const left = (level: number) => ((level - 10) / 50) * 100;
+---
+
+<spot-finder class="finder" data-any={copy.any} data-no-spell-links>
+  <div class="finder__filters" hidden data-filters>
+    <div class="finder__factions" role="group" aria-label={es ? 'Facción' : 'Faction'}>
+      <button type="button" data-faction-pick="all" aria-pressed="true">{copy.all}</button>
+      <button type="button" data-faction-pick="alliance" aria-pressed="false"><GameIcon icon={CREST.alliance} size={20} /> {faction.alliance}</button>
+      <button type="button" data-faction-pick="horde" aria-pressed="false"><GameIcon icon={CREST.horde} size={20} /> {faction.horde}</button>
+    </div>
+    <label class="finder__level">
+      <span>{copy.level}: <output data-level>{copy.any}</output></span>
+      <input type="range" min="10" max="60" value="10" />
+    </label>
+    <button type="button" class="finder__reset" data-reset hidden>{copy.reset}</button>
+  </div>
+  <ul class="finder__spots">
+    {
+      spots.map((spot) => (
+        <li class:list={['spot', { 'spot--featured': spot.featured }]} data-min={spot.min} data-max={spot.max} data-side={spot.faction}>
+          <span class="spot__crests">
+            {spot.faction !== 'horde' && <GameIcon icon={CREST.alliance} size={32} alt={faction.alliance} />}
+            {spot.faction !== 'alliance' && <GameIcon icon={CREST.horde} size={32} alt={faction.horde} />}
+          </span>
+          <span class="spot__text">
+            <span class="spot__zone">{spot.zone}</span>
+            <span class="spot__enemies">{spot.enemies}</span>
+          </span>
+          <span class="spot__range">
+            <span class="spot__levels">{copy.levels} {spot.min}-{spot.max}</span>
+            <i><b style={`left: ${left(spot.min)}%; width: ${left(spot.max) - left(spot.min)}%`}></b></i>
+          </span>
+          <StatusBadge status={spot.status} />
+        </li>
+      ))
+    }
+  </ul>
+  <p class="finder__none" data-none hidden>{copy.none}</p>
+</spot-finder>
+
+<script>
+  class SpotFinder extends HTMLElement {
+    connectedCallback() {
+      this.querySelector<HTMLElement>('[data-filters]')!.hidden = false;
+      const pickers = [...this.querySelectorAll<HTMLButtonElement>('[data-faction-pick]')];
+      const spots = [...this.querySelectorAll<HTMLElement>('.spot')];
+      const input = this.querySelector('input')!;
+      const output = this.querySelector('[data-level]')!;
+      const reset = this.querySelector<HTMLButtonElement>('[data-reset]')!;
+      const none = this.querySelector<HTMLElement>('[data-none]')!;
+      let faction = 'all';
+      let level: number | undefined;
+      // The same choice the faction switch on other pages remembers.
+      try {
+        const saved = localStorage.getItem('sh-faction');
+        if (saved === 'alliance' || saved === 'horde') faction = saved;
+      } catch {}
+
+      const update = () => {
+        for (const picker of pickers) picker.setAttribute('aria-pressed', String(picker.dataset.factionPick === faction));
+        output.textContent = level === undefined ? (this.dataset.any ?? '') : String(level);
+        reset.hidden = level === undefined;
+        let shown = 0;
+        for (const spot of spots) {
+          const side = spot.dataset.side;
+          const hit = (faction === 'all' || side === 'both' || side === faction) && (level === undefined || (level >= Number(spot.dataset.min) && level <= Number(spot.dataset.max)));
+          spot.hidden = !hit;
+          if (hit) shown += 1;
+        }
+        none.hidden = shown > 0;
+      };
+      for (const picker of pickers) {
+        picker.addEventListener('click', () => {
+          faction = picker.dataset.factionPick!;
+          try {
+            if (faction === 'all') localStorage.removeItem('sh-faction');
+            else localStorage.setItem('sh-faction', faction);
+          } catch {}
+          update();
+        });
+      }
+      input.addEventListener('input', () => {
+        level = Number(input.value);
+        update();
+      });
+      reset.addEventListener('click', () => {
+        level = undefined;
+        input.value = '10';
+        update();
+      });
+      update();
+    }
+  }
+  customElements.define('spot-finder', SpotFinder);
+</script>
+
+<style>
+  .finder {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .finder__filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: var(--space-3) var(--space-5);
+  }
+  .finder__filters[hidden] {
+    display: none;
+  }
+  .finder__factions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+  .finder__factions button,
+  .finder__reset {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: 40px;
+    padding: 0 0.9em;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    background: var(--surface-1);
+    color: var(--text-muted);
+    font: inherit;
+    font-size: var(--step--1);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .finder__factions button[aria-pressed='true'] {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--accent-contrast);
+  }
+  .finder__reset[hidden] {
+    display: none;
+  }
+  .finder__level {
+    flex: 1 1 14rem;
+    display: grid;
+    gap: 2px;
+    font-size: var(--step--1);
+    font-weight: 700;
+  }
+  .finder__level input {
+    width: 100%;
+    height: 28px;
+    margin: 0;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+  :global(.prose) .finder__spots {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  :global(.prose) .spot {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1.4fr) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-3);
+    margin: 0;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  :global(.prose) .spot[hidden] {
+    display: none;
+  }
+  :global(.prose) .spot--featured {
+    border-color: var(--accent);
+    box-shadow: inset 3px 0 0 var(--accent);
+  }
+  .spot__crests {
+    display: flex;
+    gap: var(--space-1);
+  }
+  .spot__text {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+  .spot__zone {
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  .spot__enemies {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+    line-height: 1.35;
+  }
+  .spot__range {
+    display: grid;
+    gap: var(--space-1);
+  }
+  .spot__levels {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+  .spot__range i {
+    position: relative;
+    display: block;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--surface-3);
+  }
+  .spot__range b {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 3px;
+    background: var(--accent);
+  }
+  .finder__none {
+    margin: 0;
+    color: var(--text-muted);
+  }
+  @media (max-width: 40rem) {
+    :global(.prose) .spot {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+    .spot__range {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

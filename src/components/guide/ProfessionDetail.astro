@@ -1,13 +1,14 @@
 ---
 /**
- * The analysis of one profession, placed under its "### <name>" heading in the
- * MDX page (the heading stays in Markdown so it shows in the page index):
- *   ### Sastrería
- *   <ProfessionDetail id="tailoring" />
- * Same structure for every profession: summary, advantages, drawbacks, PvE and
- * PvP, leveling and economy, best pair and verdict, then the items behind it.
+ * The analysis of one profession, folded: closed it shows the icon, the name, what
+ * it gives and its ratings; open, the same structure for every profession
+ * (summary, advantages, drawbacks, PvE and PvP, leveling and economy, best pair
+ * and verdict, then the items behind it). Its heading has the id the picks and
+ * the comparison table link to, and a link to it opens the card.
  */
 import Icon from '../ui/Icon.astro';
+import GameIcon from '../learn/GameIcon.astro';
+import '../../styles/learn.css';
 import RatingBadge from './RatingBadge.astro';
 import SourceRefs from './SourceRefs.astro';
 import StatusBadge from './StatusBadge.astro';
@@ -15,7 +16,7 @@ import { getLocale } from '../../i18n/locale';
 import { EDGE_LABELS, KIND_LABELS, PRIORITY_LABELS, tp, type ProfessionUiKey } from '../../i18n/professions';
 import { getProfession } from '../../lib/data';
 import { ownSourceIds, sharedProfessionSources } from '../../lib/page-sources';
-import { professionAnchor, wowheadItemUrl } from '../../lib/professions';
+import { PROFESSION_ICONS, professionAnchor, wowheadItemUrl } from '../../lib/professions';
 
 interface Props {
   id: string;
@@ -29,29 +30,52 @@ const partners = profession.pair?.with.map(getProfession) ?? [];
 const or = locale === 'es' ? ' o ' : ' or ';
 ---
 
-<div class={`profession profession--${profession.kind}`} data-profession={profession.id}>
-  <ul class="profession__tags" data-pagefind-ignore>
-    <li class="chip">{KIND_LABELS[locale][profession.kind]}</li>
-    <li class="chip">{EDGE_LABELS[locale][profession.edge]}</li>
-    {
-      profession.ratings &&
-        RATING_KEYS.map((key) => (
+<details class={`profession profession--${profession.kind}`} data-profession={profession.id}>
+  <summary class="profession__head">
+    <GameIcon icon={PROFESSION_ICONS[profession.id]} size={52} />
+    <span class="profession__title">
+      <h3 id={professionAnchor(profession, locale)}>{profession.name[locale]}</h3>
+      {profession.benefit && <span class="profession__benefit">{profession.benefit[locale]}</span>}
+    </span>
+    <ul class="profession__tags" data-pagefind-ignore>
+      <li class="chip">{EDGE_LABELS[locale][profession.edge]}</li>
+      {
+        profession.ratings && (
+          <li class="profession__rating">
+            <span class="profession__rating-key" aria-hidden="true">
+              {tp(locale, 'rating.overall')}
+            </span>
+            <RatingBadge value={profession.ratings.overall} label={tp(locale, 'rating.overall')} />
+          </li>
+        )
+      }
+      {
+        profession.priority && (
+          <li class="chip profession__priority">
+            {tp(locale, 'detail.priority')}: {PRIORITY_LABELS[locale][profession.priority]}
+          </li>
+        )
+      }
+    </ul>
+    <Icon name="chevronDown" size={18} class="profession__arrow" />
+  </summary>
+
+  <div class="profession__body">
+  {
+    profession.ratings && (
+      <ul class="profession__tags" data-pagefind-ignore>
+        <li class="chip">{KIND_LABELS[locale][profession.kind]}</li>
+        {RATING_KEYS.filter((key) => key !== 'overall').map((key) => (
           <li class="profession__rating">
             <span class="profession__rating-key" aria-hidden="true">
               {tp(locale, `rating.${key}` as ProfessionUiKey)}
             </span>
             <RatingBadge value={profession.ratings![key]} label={tp(locale, `rating.${key}` as ProfessionUiKey)} />
           </li>
-        ))
-    }
-    {
-      profession.priority && (
-        <li class="chip profession__priority">
-          {tp(locale, 'detail.priority')}: {PRIORITY_LABELS[locale][profession.priority]}
-        </li>
-      )
-    }
-  </ul>
+        ))}
+      </ul>
+    )
+  }
 
   <p class="profession__summary">
     <span class="profession__label">{tp(locale, 'detail.summary')}:</span>{' '}
@@ -157,17 +181,68 @@ const or = locale === 'es' ? ' o ' : ' or ';
       <SourceRefs ids={ownSourceIds(profession.sources, sharedProfessionSources)} />
     )}
   </p>
-</div>
+  </div>
+</details>
 
 <style>
   .profession {
-    display: grid;
-    gap: var(--space-4);
-    padding: var(--space-4) var(--space-5);
+    margin-top: var(--space-2);
     border: 1px solid var(--border);
     border-left: 4px solid var(--edge-color, var(--border-strong));
     border-radius: var(--radius);
     background: var(--surface-1);
+  }
+  .profession__head {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    list-style: none;
+    cursor: pointer;
+  }
+  .profession__head::-webkit-details-marker {
+    display: none;
+  }
+  .profession__head:hover {
+    background: var(--surface-2);
+  }
+  .profession__title {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+  .profession__title h3 {
+    margin: 0;
+    font-size: var(--step-1);
+    scroll-margin-top: calc(var(--header-h) + var(--space-4));
+  }
+  .profession__benefit {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+    line-height: 1.35;
+  }
+  .profession__head :global(.profession__arrow) {
+    color: var(--text-subtle);
+    transition: transform 0.15s;
+  }
+  .profession[open] .profession__head :global(.profession__arrow) {
+    transform: rotate(180deg);
+  }
+  .profession__body {
+    display: grid;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    border-top: 1px solid var(--border);
+  }
+  @media (max-width: 44rem) {
+    .profession__head {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+    }
+    .profession__head > .profession__tags {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
   }
   .profession p,
   .profession ul {

@@ -6,8 +6,11 @@
  * does not stack with is shown under the buff.
  */
 import StatusBadge from './StatusBadge.astro';
+import GameIcon from '../learn/GameIcon.astro';
+import '../../styles/learn.css';
 import { getLocale } from '../../i18n/locale';
 import { professions } from '../../lib/data';
+import { PROFESSION_ICONS } from '../../lib/professions';
 import { CAMP_VALUES, type CampValue } from '../../lib/schemas';
 
 const locale = getLocale(Astro);
@@ -34,7 +37,7 @@ const list = professions
         const camp = p.camp!;
         return (
           <li class={`camp__card camp__card--${camp.mage}`}>
-            <p class="camp__prof">{p.name[locale]}</p>
+            <p class="camp__prof"><GameIcon icon={PROFESSION_ICONS[p.id]} size={28} /> {p.name[locale]}</p>
             <p class="camp__buff">{camp.buff[locale]}</p>
             {/* Cooking's «object» is the campfire upgrade itself, already in Spanish. */}
             <p class="camp__object" lang={p.id === 'cooking' ? undefined : 'en'}>

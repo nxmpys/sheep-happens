@@ -7,8 +7,8 @@ import type { Profession } from './schemas';
 /**
  * The id Astro gives a Markdown heading (github-slugger): lowercase, punctuation
  * removed, each space turned into a hyphen. Accented letters are kept.
- * The professions page writes one "### <name>" heading per profession, so the
- * picks and the comparison table link to it with this slug.
+ * Each profession's card (ProfessionDetail) has a heading with this slug, and
+ * the picks and the comparison table link to it.
  */
 export function headingSlug(text: string): string {
   return text
@@ -21,6 +21,22 @@ export function headingSlug(text: string): string {
 export function professionAnchor(profession: Pick<Profession, 'name'>, locale: Locale): string {
   return headingSlug(profession.name[locale]);
 }
+
+/** The in-game icon of each profession (public/icons/<icon>.jpg). */
+export const PROFESSION_ICONS: Readonly<Record<string, string>> = {
+  tailoring: 'trade_tailoring',
+  enchanting: 'trade_engraving',
+  engineering: 'trade_engineering',
+  alchemy: 'trade_alchemy',
+  herbalism: 'trade_herbalism',
+  mining: 'trade_mining',
+  skinning: 'inv_misc_pelt_wolf_01',
+  leatherworking: 'trade_leatherworking',
+  blacksmithing: 'trade_blacksmithing',
+  cooking: 'inv_misc_food_15',
+  'first-aid': 'spell_holy_sealofsacrifice',
+  fishing: 'trade_fishing',
+};
 
 /** Item page in Wowhead's Forever database. */
 export function wowheadItemUrl(id: number): string {

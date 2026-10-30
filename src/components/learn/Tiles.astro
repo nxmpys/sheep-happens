@@ -1,0 +1,14 @@
+---
+/** Grid of <Tile>. `min` is the narrowest a tile may get (rem). */
+import '../../styles/learn.css';
+
+interface Props {
+  min?: number;
+}
+
+const { min } = Astro.props;
+---
+
+<div class="tiles" style={min ? `--tile-min: ${min}rem` : undefined}>
+  <slot />
+</div>

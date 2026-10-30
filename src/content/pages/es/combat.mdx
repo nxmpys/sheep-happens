@@ -1,95 +1,95 @@
 ---
 pageId: combat
 locale: es
-title: Combate con el Mago en Forever, prioridades por rama
-seoTitle: Rotación del Mago en WoW Forever, prioridades por rama
-description: Prioridades condicionales de Escarcha, Fuego y Arcano en WoW Forever basadas en las mecánicas oficiales, además de control y supervivencia, sin rotaciones inventadas.
+title: Cómo combate el Mago
+seoTitle: Combate del Mago en WoW Forever, kit y qué añade cada rama
+description: Los hechizos que comparte todo Mago en WoW Forever, qué añaden Arcano, Fuego y Escarcha y qué hace cada rama mejor que las demás.
 gameVersion: forever-beta-2026-10
 published: 2026-10-11
 reviewed: 2026-10-11
 reviewedBy: Sheep Happens
 status: published
 verification: analysis
-summary:
-  - Son prioridades con condiciones («si pasa X, haz Y»), no secuencias fijas.
-  - Salen de las mecánicas oficiales, pero nadie las ha medido todavía en el juego.
-  - Escarcha congela y rompe con Lanza de hielo; Fuego convierte críticos en Piroexplosiones rápidas; Arcano acumula Explosión Arcana y la descarga.
+wide: true
 sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, wiki-pyroblast, wiki-mage-abilities-classic]
-tags: [combate, rotación, prioridades, control, supervivencia]
+tags: [combate, kit, habilidades, ramas, control, supervivencia, rotación]
 ---
 
-## Cómo leer estas prioridades
+## El kit de todo Mago
 
-Cada lista va de arriba abajo: **usa lo primero cuya condición se cumpla**. No son rotaciones fijas, porque las mecánicas de Forever dependen de lo que pase en el combate (congelaciones, críticos, cargas).
+Estos hechizos te los da el instructor, sean cuales sean tus talentos. Pasa por encima de un icono, o tócalo, para ver qué hace.
 
-Varias condiciones dependen de un proc, como Calentamiento, Tromba de misiles o Dedos de Escarcha. Si te cuesta verlos a tiempo, mi addon <PageLink to="addons">MageProcs</PageLink> los muestra en el centro de la pantalla.
+<Toolkit />
 
-<Callout variant="warning" title="Análisis sin probar">
-  Estas listas son mi lectura de las mecánicas que ha publicado Blizzard. Sin valores numéricos ni acceso a los niveles 31 a 60, no puedo garantizar que sean óptimas. Las marcaré como «Probado» cuando lo estén.
-</Callout>
+## Qué añade cada rama
 
-## Escarcha: un objetivo
+Los talentos no sustituyen esos hechizos: añaden otros y cambian cómo se conectan. La rotación exacta depende de tus talentos, así que está en cada <PageLink to="builds">build</PageLink>.
 
-<Priority title="Escarcha · un objetivo" status="analysis" school="frost">
+<Picker label="Las tres ramas" initial="frost">
+<Pick id="arcane" title="Arcano" icon="spell_holy_magicalsentry" school="arcane" heading="Acumula poder y gástalo">
 
-1. **Lanza de hielo** (Ice Lance) si el objetivo está **congelado** (tras Nova de Escarcha) o tienes cargas de **Dedos de Escarcha** (Fingers of Frost): hace un 200 % más de daño. Tiene 8 s de reutilización.
-2. **Descarga de Escarcha** (Frostbolt) como hechizo principal. Ralentiza (es un efecto de enfriamiento), y eso puede darte cargas de Dedos de Escarcha. Usa un rango alto: los rangos bajos no activan tus talentos.
-3. **Descarga de Pirofrío** (Frostfire Bolt, nivel 40+) si el objetivo resiste mucho la Escarcha.
-4. Lanza de hielo sin congelar o **Explosión de Fuego** (Fire Blast) solo mientras te mueves: son instantáneos.
+Cada **Explosión Arcana** te da daño con hechizos durante 15 s, hasta 4 veces, y cuesta más que la anterior. La acumulas mientras te lo permita el maná y gastas esa ventana en tus hechizos fuertes. También puede activar **Tromba de misiles**: misiles rápidos y gratis.
 
-</Priority>
+<Chain items={[{ spell: 'Arcane Blast', note: 'hasta 4 cargas' }, { spell: 'Arcane Wrath', note: 'el golpe fuerte, crece con tu maná máximo' }]} />
 
-## Fuego: un objetivo
+**Lo que añade a tus barras:**
 
-<Priority title="Fuego · un objetivo" status="analysis" school="fire">
+<SpellBar spells={['Arcane Blast', 'Arcane Wrath', 'Presence of Mind', 'Arcane Power']} />
 
-1. **Piroexplosión** (Pyroblast) con **3 cargas de Calentamiento** (Heating Up): se lanza en 1,5 s. Las cargas duran 20 s.
-2. **Explosión de Fuego** cuando esté disponible: cada una da una carga de Calentamiento, y dos si es crítico. Con Explosión de Fuego mejorada, también para rematar desde lejos.
-3. **Bola de Fuego** (Fireball) o **Descarga de Pirofrío** como relleno: sus críticos generan Calentamiento.
-4. **Chamuscar** (Scorch) cuando necesites un lanzamiento corto. Si llevas Chamuscar mejorado, recuerda que su efecto solo te beneficia a ti.
+<SpecVerdict spec="arcane" />
 
-</Priority>
+</Pick>
+<Pick id="fire" title="Fuego" icon="spell_fire_firebolt02" school="fire" heading="Convierte críticos en Piroexplosiones">
 
-## Arcano: un objetivo
+Tus críticos con **Bola de Fuego**, **Descarga de Pirofrío**, **Explosión de Fuego** y **Chamuscar** acortan tu siguiente **Piroexplosión**: de 6 s de lanzamiento a 1,5 s con 3 cargas. **Ignición** quema además tras cada crítico.
 
-<Priority title="Arcano · un objetivo" status="analysis" school="arcane">
+<Chain items={[{ spell: 'Fire Blast', note: 'siempre da una carga' }, { spell: 'Heating Up', note: 'hasta 3 cargas' }, { spell: 'Pyroblast', note: '1,5 s de lanzamiento' }]} />
 
-1. **Misiles Arcanos** (Arcane Missiles) cuando se active **Tromba de misiles** (Missile Barrage): el doble de rápido y sin coste de maná.
-2. **Explosión Arcana** (Arcane Blast) para acumular cargas (hasta 4) mientras el maná lo permita: cada carga te da daño con hechizos según tu Intelecto durante 15 s desde la primera, y encarece la siguiente.
-3. **Cólera Arcana** (Arcane Wrath, talento de 16 puntos) y otros hechizos fuertes para **aprovechar** esos 15 s. Es lo que Blizzard quiere con su rediseño.
-4. **Presencia mental** (Presence of Mind) y **Poder Arcano** (Arcane Power) como enfriamientos de daño; Poder Arcano ahora requiere Presencia mental.
+**Lo que añade a tus barras:**
 
-</Priority>
+<SpellBar spells={['Pyroblast', 'Blast Wave', 'Combustion']} />
 
-## Varios objetivos
+<SpecVerdict spec="fire" />
 
-Las herramientas de área del Mago siguen siendo **Ventisca** (Blizzard), **Deflagración Arcana** (Arcane Explosion), **Fogonazo** (Flamestrike), **Cono de frío** (Cone of Cold) y el talento **Ola explosiva** (Blast Wave). <Status status="classic" />
+</Pick>
+<Pick id="frost" title="Escarcha" icon="spell_frost_frostbolt02" school="frost" heading="Control que se convierte en daño">
 
-En Forever, **Cono de frío dura menos** (salvo en los 4 primeros objetivos que alcanza) y **Ventisca mejorada ralentiza menos**. <Status status="verified" /> Conviene ser más prudente al arrastrar grupos grandes. <Status status="analysis" /> Las rotaciones de área, las zonas y los consejos de maná están en la guía de <PageLink to="aoe-farming">farmeo AoE</PageLink>.
+**Descarga de Escarcha** ralentiza, y esa ralentización puede darte **Dedos de Escarcha**, que trata tu siguiente hechizo como si el objetivo estuviera congelado. **Nova de Escarcha** congela de verdad. En ambos casos, **Lanza de hielo** hace un 200 % más.
+
+<Chain items={[{ spell: 'Frostbolt', note: 'ralentiza' }, { spell: 'Fingers of Frost', note: 'o Nova de Escarcha' }, { spell: 'Ice Lance', note: '200 % más de daño' }]} />
+
+**Lo que añade a tus barras:**
+
+<SpellBar spells={['Ice Lance', 'Ice Block', 'Cold Snap', 'Ice Barrier']} />
+
+<SpecVerdict spec="frost" />
+
+</Pick>
+</Picker>
+
+## Cómo se comparan las ramas
+
+<TreeCompare />
+
+Los talentos y el detalle de cada rama están en <PageLink to="talents">Talentos</PageLink>.
+
+## Si un enemigo te alcanza
+
+Tus salidas. No son una secuencia: usa la que pida el momento. <Status status="analysis" />
+
+<Chain loose items={[{ spell: 'Frost Nova', note: 'lo inmoviliza' }, { spell: 'Blink', note: 'pone distancia' }, { spell: 'Polymorph', note: 'saca a un segundo enemigo' }, { spell: 'Ice Block', note: 'último recurso, pide 16 puntos de Escarcha' }, { spell: 'Cold Snap', note: 'reinicia hechizos de Escarcha, 10 min, pide 21 puntos' }]} />
+
+Dos cosas más que salvan un combate: **Contrahechizo** corta un lanzamiento peligroso, y con 1 punto en **Contrahechizo mejorado** silencia siempre; **Escudo de maná** absorbe daño con tu maná. <Status status="verified" compact />
+
+Varios de estos momentos dependen de un proc fácil de pasar por alto. Mi addon <PageLink to="addons">MageProcs</PageLink> los muestra en el centro de la pantalla.
+
+## Contra varios enemigos
+
+<SpellBar spells={[{ spell: 'Arcane Explosion', level: 14 }, { spell: 'Flamestrike', level: 16 }, { spell: 'Blizzard', level: 20 }, { spell: 'Cone of Cold', level: 26 }, { spell: 'Blast Wave' }]} />
+
+Tus hechizos de área; el último es un talento de Fuego. En Forever, **Cono de frío** dura menos (salvo en los 4 primeros objetivos que alcanza) y **Ventisca mejorada** ralentiza menos, así que ten cuidado al arrastrar grupos grandes. <Status status="verified" compact /> Cómo hacerlo paso a paso, y dónde: <PageLink to="aoe-farming">farmeo AoE</PageLink>.
 
 <Pending
-  why="Sin valores de daño ni pruebas en grupos grandes, no puedo ordenar las opciones de área."
-  next="Probaré los recorridos de farmeo y los combates contra grupos de enemigos tras el lanzamiento."
-/>
-
-## Control y supervivencia
-
-<Priority title="Si un enemigo te alcanza" status="analysis" school="frost">
-
-1. **Nova de Escarcha** (Frost Nova) para congelarlo en el sitio. Con Escarcha, aprovecha para lanzar **Lanza de hielo**.
-2. **Traslación** (Blink) para alejarte.
-3. **Polimorfia** (Polymorph) sobre un segundo enemigo para sacarlo del combate.
-4. **Bloqueo de hielo** (Ice Block) como último recurso: ahora es el talento decisivo de 16 puntos de Escarcha.
-5. **Mordedura helada** (Cold Snap) reinicia tus enfriamientos de Escarcha, pero su reutilización sube a 10 minutos: guárdala para emergencias.
-
-</Priority>
-
-- **Contrahechizo** (Counterspell) con 1 punto en **Contrahechizo mejorado** silencia siempre (antes, un 50 % de las veces). <Status status="verified" />
-- **Escudo de maná** (Mana Shield) absorbe daño con tu maná; **Protección Arcana** (Arcane Shielding) lo hace más eficiente y mejora las resistencias de Armadura de mago. <Status status="verified" />
-
-## Aperturas
-
-<Pending
-  why="Las aperturas dependen de valores de daño y de la duración de los efectos, que aún no se conocen."
-  next="Las documentaré por rama cuando pueda medirlas en el juego."
+  why="Estas comparaciones son mi lectura de las mecánicas que ha publicado Blizzard. Sin mediciones a nivel 60 no puedo prometer lo cerca que están en realidad las ramas."
+  next="Las probaré tras el lanzamiento y marcaré como «Probado» lo que se sostenga."
 />

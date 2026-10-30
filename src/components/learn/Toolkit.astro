@@ -1,0 +1,245 @@
+---
+/**
+ * The spells every Mage shares, as an action bar per purpose (abilities.json).
+ * Passing the pointer over an icon, or tapping it, shows the spell in the panel.
+ * Without JavaScript every spell's card stays visible below the bars.
+ */
+import GameIcon from './GameIcon.astro';
+import StatusBadge from '../guide/StatusBadge.astro';
+import '../../styles/learn.css';
+import { getLocale, href } from '../../i18n/locale';
+import { abilities, getChange, spellText } from '../../lib/data';
+import { displayName, localName } from '../../lib/names';
+import { ROLES, type Role } from '../../lib/schemas';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const ROLE_LABEL: Record<Role, { es: string; en: string; hint: { es: string; en: string } }> = {
+  damage: { es: 'Daño', en: 'Damage', hint: { es: 'Lo que lanzas la mayor parte del tiempo', en: 'What you cast most of the time' } },
+  control: { es: 'Control', en: 'Control', hint: { es: 'Para que el enemigo no te alcance ni te lance nada', en: 'So the enemy neither reaches you nor casts at you' } },
+  defense: { es: 'Defensa y escape', en: 'Defense and escape', hint: { es: 'Para cuando te alcanzan igualmente', en: 'For when they reach you anyway' } },
+  mana: { es: 'Maná', en: 'Mana', hint: { es: 'Para que no se acabe en mitad del combate', en: 'So it does not run out mid-fight' } },
+  utility: { es: 'Utilidad', en: 'Utility', hint: { es: 'Para ti y para tu grupo, fuera del combate', en: 'For you and your group, outside combat' } },
+};
+const SCHOOL_LABEL: Record<string, { es: string; en: string }> = {
+  arcane: { es: 'Arcano', en: 'Arcane' },
+  fire: { es: 'Fuego', en: 'Fire' },
+  frost: { es: 'Escarcha', en: 'Frost' },
+  frostfire: { es: 'Fuego y Escarcha', en: 'Fire and Frost' },
+};
+const levelWord = es ? 'Nivel' : 'Level';
+const changedLabel = es ? 'En Forever' : 'In Forever';
+const changesHref = href('changes', locale);
+const schoolClass = (school: string) => (school === 'frostfire' ? 'school-fire' : ['arcane', 'fire', 'frost'].includes(school) ? `school-${school}` : 'school-baseline');
+/** The parts of the game's spell line that do not change with the rank: no mana cost, no cast times. */
+const META = /instant|cooldown|reutiliz|range|alcance|metros/i;
+const metaOf = (spell: number | undefined) => (spell ? (spellText[spell]?.[locale].meta ?? []).filter((line) => META.test(line)) : []);
+const iconOf = (ability: (typeof abilities)[number]) =>
+  ability.spell ? spellText[ability.spell]?.icon : ability.id === 'teleport-portal' ? 'spell_arcane_portalstormwind' : undefined;
+const first = abilities.find((a) => a.id === 'frost-nova')!.id;
+---
+
+<pick-panel class="toolkit" role="group" aria-label={es ? 'Hechizos del Mago' : 'Mage spells'} data-hover data-initial={first} data-no-spell-links>
+  <div class="toolkit__bars">
+    {
+      ROLES.map((role) => (
+        <section class="bar" id={`role-${role}`}>
+          <p class="bar__name">
+            {ROLE_LABEL[role][locale]} <span class="bar__hint">{ROLE_LABEL[role].hint[locale]}</span>
+          </p>
+          <div class="bar__slots">
+            {abilities
+              .filter((a) => a.role === role)
+              .map((ability) => (
+                <button type="button" class="slot" data-pick={ability.id} aria-label={displayName(ability, locale).primary}>
+                  <GameIcon icon={iconOf(ability)} size={52} plain />
+                </button>
+              ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+  <div class="toolkit__cards">
+    {
+      abilities.map((ability) => {
+        const name = displayName(ability, locale);
+        return (
+          <article class:list={['card', schoolClass(ability.school)]} data-panel={ability.id}>
+            <p class="card__name">
+              <GameIcon icon={iconOf(ability)} size={56} />
+              <span>
+                {name.primary}
+                {name.secondary && <span class="card__en" lang="en">{name.secondary}</span>}
+              </span>
+            </p>
+            <ul class="card__chips" data-pagefind-ignore>
+              {ability.level && <li class="chip">{levelWord} {ability.level}</li>}
+              {SCHOOL_LABEL[ability.school] && <li class="chip">{SCHOOL_LABEL[ability.school]![locale]}</li>}
+              {metaOf(ability.spell).map((line) => <li class="chip">{line}</li>)}
+            </ul>
+            <p class="card__summary">{ability.summary[locale]}</p>
+            <p class="card__meta">
+              <StatusBadge status={ability.status} />
+              {ability.changeIds.length > 0 && (
+                <a href={`${changesHref}#change-${ability.changeIds[0]}`}>
+                  {changedLabel}: {ability.changeIds.map((id) => localName(getChange(id), locale)).join(', ')}
+                </a>
+              )}
+            </p>
+          </article>
+        );
+      })
+    }
+  </div>
+</pick-panel>
+
+<script>
+  import '../../scripts/pick-panel';
+</script>
+
+<style>
+  .toolkit {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: var(--space-5);
+    align-items: start;
+  }
+  .toolkit__bars {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .bar {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .bar__name {
+    margin: 0;
+    font-weight: 700;
+  }
+  .bar__hint {
+    margin-left: var(--space-1);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--text-subtle);
+  }
+  .bar__slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    width: fit-content;
+    max-width: 100%;
+    padding: var(--space-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+  }
+  .slot {
+    padding: 0;
+    border: 0;
+    border-radius: 9px;
+    background: none;
+    line-height: 0;
+    cursor: pointer;
+    transition: transform 0.12s;
+  }
+  .slot:hover {
+    transform: translateY(-2px);
+  }
+  .slot[aria-selected='true'] :global(.game-icon) {
+    box-shadow: 0 0 0 2px var(--accent), 0 0 14px color-mix(in srgb, var(--accent) 70%, transparent);
+  }
+  .toolkit__cards {
+    position: sticky;
+    top: calc(var(--header-h) + var(--space-4));
+    display: grid;
+    gap: var(--space-3);
+  }
+  .card {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    border: 1px solid color-mix(in srgb, var(--school) 40%, var(--border));
+    border-radius: var(--radius-lg);
+    background: linear-gradient(160deg, var(--school-soft), var(--surface-1) 65%);
+    animation: toolkit-in 0.18s ease-out;
+  }
+  .card[hidden] {
+    display: none;
+  }
+  @keyframes toolkit-in {
+    from {
+      transform: translateY(4px);
+    }
+  }
+  .card p {
+    margin: 0;
+  }
+  .card__name {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .card__en {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--step--1);
+    font-weight: 500;
+    color: var(--text-subtle);
+  }
+  :global(.prose) .card__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  :global(.prose) .card__chips li {
+    margin: 0;
+  }
+  .card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--step--1);
+  }
+  @media (max-width: 52rem) {
+    .toolkit {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    /* The card goes on top while the spells are chosen below it. */
+    .toolkit__cards {
+      order: -1;
+      z-index: 2;
+    }
+    .slot :global(.game-icon) {
+      --game-icon: 44px !important;
+    }
+    /* It stays in sight while the icons scroll under it, so it has to be small. */
+    .card {
+      gap: var(--space-2);
+      padding: var(--space-3);
+      background: var(--school-soft);
+    }
+    .card__name {
+      font-size: var(--step-1);
+    }
+    .card__name :global(.game-icon) {
+      --game-icon: 40px !important;
+    }
+    .card__summary {
+      font-size: var(--step--1);
+      line-height: 1.4;
+    }
+    .card__meta {
+      display: none;
+    }
+  }
+</style>

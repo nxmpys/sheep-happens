@@ -10,28 +10,26 @@ reviewed: 2026-10-11
 reviewedBy: Sheep Happens
 status: published
 verification: verified
-summary:
-  - Frost keeps its control and gains a way to turn it into damage with Ice Lance (11-point milestone) and Fingers of Frost (row 5).
-  - Ice Block becomes the 16-point milestone and Cold Snap the 21-point one, with a 10-minute cooldown.
-  - Improved Blizzard and Cone of Cold slow less or for less time, to curb mass farming; Cone of Cold keeps its power against 4 targets or fewer.
-  - "Winter's Chill no longer grants crit: it now sets up a stronger Cone of Cold."
+wide: true
 sources: [blizzard-deep-dive-mage, blizzard-dev-notes, wiki-ice-barrier, wiki-ice-shards-classic]
 tags: [frost, ice lance, fingers of frost, talents]
 ---
 
-## Identity
+<TreeIntro tree="frost">
 
-Frost **keeps its strength in control**: according to Blizzard, it offers combat control no other class matches, and it gains new interactions that connect it with the rest of the class. <Status status="verified" />
+<p class="tree-intro__line">Slow it, freeze it, then shatter it.</p>
 
-## Milestone talents
+Frost **keeps its strength in control**: according to Blizzard, it offers combat control no other class matches, and it gains new interactions that connect it with the rest of the class. <Status status="verified" compact />
 
-<MilestoneMap tree="frost" />
+<Chain items={[{ spell: 'Frostbolt', note: 'slows' }, { spell: 'Fingers of Frost', note: 'or Frost Nova' }, { spell: 'Ice Lance', note: '200% more damage' }]} />
 
-## Changed talents
+<SpecVerdict spec="frost" />
 
-<ChangeSummaryList tree="frost" />
+</TreeIntro>
 
 ## How the pieces fit
+
+<Pieces>
 
 - **Freeze to shatter.** Ice Lance deals 200% more against Frozen targets (300% until 15 October) and, since 28 October, has an 8 s cooldown. Frost Nova freezes; Fingers of Frost makes your spells treat the target as Frozen. <Status status="verified" />
 - **Frostbolt is the engine.** Fingers of Frost triggers from your Chill effects, and Frostbolt slows. Casting Frostbolt builds the charges you then spend on Ice Lance. Since 15 October, Frostbite and Fingers of Frost also trigger from the Chill of Frost Armor and Ice Armor when you are hit in melee. <Status status="analysis" />
@@ -40,11 +38,26 @@ Frost **keeps its strength in control**: according to Blizzard, it offers combat
 - **Earlier defences, pricier Cold Snap.** Ice Block is now the 16-point milestone; Cold Snap needs 21 points and its cooldown rises to 10 minutes. <Status status="verified" />
 - **Easier Shatter.** It no longer requires Improved Frost Nova, which frees points. <Status status="verified" />
 
+</Pieces>
+
+## Milestone talents
+
+<MilestoneMap tree="frost" />
+
 ## Strengths, weaknesses and builds
 
 What this tree does well, where it falls short and which build it has for each content. If there is no build for a content, I explain why. <Status status="analysis" />
 
 <SpecBuilds spec="frost" />
+
+## Changed talents
+
+<details class="disclosure">
+<summary>Every talent that changes compared with Classic</summary>
+
+<ChangeSummaryList tree="frost" />
+
+</details>
 
 ## Still unknown
 

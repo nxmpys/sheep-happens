@@ -3,29 +3,138 @@ pageId: aoe-farming
 locale: es
 title: Farmeo en área (AoE) con el Mago en WoW Forever
 seoTitle: Farmeo AoE de Mago en WoW Forever, rotación y zonas
-description: 'Cómo farmear en área con el Mago en WoW Forever tras los recortes a Ventisca y Cono de frío: dos rotaciones, Concentración Arcana y zonas por nivel.'
+description: 'Cómo farmear en área con el Mago en WoW Forever: qué haces, qué hechizos y talentos necesitas, dos rotaciones paso a paso y dónde farmear en cada nivel.'
 gameVersion: forever-beta-2026-10
 published: 2026-10-15
 reviewed: 2026-10-15
 reviewedBy: Sheep Happens
 status: published
 verification: analysis
-summary:
-  - 'En Forever ya no se farmea como en Classic: Ventisca ralentiza menos y Cono de frío dura menos, así que los grupos enormes con «kiteo» se acabaron.'
-  - 'Lo que funciona: grupos de 3 a 7 enemigos cuerpo a cuerpo, Nova de Escarcha, Fogonazo (Flamestrike), Cono de frío y Deflagración Arcana. Desde el nivel 14.'
-  - 'El maná decide el tamaño del grupo. Concentración Arcana (hechizos gratis) ayuda, pero desde el 15 de octubre un hechizo de área solo tiene una oportunidad de activarla, no una por enemigo.'
-  - 'Zona nueva de Forever para la Horda: las arañas de la meseta al noroeste de Cima del Trueno (niveles 27 a 29).'
+wide: true
 sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, conquestcapped-mage-leveling, forg-mage-aoe-spiders, wiki-arcane-concentration, icyveins-classic-aoe-leveling, wowhead-forever-talent-calc]
 tags: [farmeo aoe, farmeo en área, aoe mago, aoe farming, mage aoe, leveo en área, zonas de farmeo, grinding, deflagración arcana, ventisca, flamestrike, concentración arcana]
 ---
 
-El farmeo en área es reunir varios enemigos y matarlos a la vez con hechizos de área. Es una de las especialidades del Mago. En Forever sigue funcionando, pero **de otra forma** que en Classic.
+<Tiles min={13}>
+<Tile title="Cómo funciona" icon="spell_frost_frostnova" to="aoe-farming" hash="cómo-funciona">
+
+La idea en tres pasos.
+
+</Tile>
+<Tile title="Qué necesitas" icon="spell_fire_selfdestruct" to="aoe-farming" hash="qué-necesitas">
+
+Hechizos y talentos.
+
+</Tile>
+<Tile title="Las rotaciones" icon="spell_frost_icestorm" to="aoe-farming" hash="las-rotaciones">
+
+Paso a paso, sobre un esquema.
+
+</Tile>
+<Tile title="Dónde farmear" icon="inv_misc_gem_emerald_01" to="aoe-farming" hash="dónde-farmear">
+
+Zonas por nivel y facción.
+
+</Tile>
+</Tiles>
 
 <Callout variant="warning" title="Sin medir todavía">
   Las rotaciones y las zonas salen de guías de la comunidad y de mi propio análisis. Nadie ha medido todavía si es más rápido que hacer misiones. Las probaré yo mismo.
 </Callout>
 
-## Qué ha cambiado respecto a Classic
+## Cómo funciona
+
+<Tiles>
+<Tile title="Reúne" num={1}>
+
+Lleva hasta ti **de 3 a 7 enemigos cuerpo a cuerpo** para que lleguen juntos. Los lanzadores te interrumpen y te disparan desde lejos: conviértelos en oveja con **Polimorfia** o no los atraigas. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Congela" num={2}>
+
+**Nova de Escarcha** cuando estén encima de ti, y da unos pasos atrás. Ese es el momento en que haces daño gratis.
+
+</Tile>
+<Tile title="Quema" num={3}>
+
+Hechizos de área sobre todo el grupo hasta que caigan. Después **bebe**: el maná marca el tamaño del siguiente tirón. <Status status="analysis" compact />
+
+</Tile>
+</Tiles>
+
+## Qué necesitas
+
+Mueve el control hasta tu nivel para ver lo que ya puedes hacer.
+
+<AoeKit />
+
+**Talentos que lo cambian:**
+
+<Tiles min={15}>
+<Tile title="Ventisca mejorada 3/3" spell="Improved Blizzard" school="frost">
+
+Necesaria para la rotación de Ventisca, no para la corta.
+
+</Tile>
+<Tile title="Trizar" spell="Shatter" school="frost">
+
+Más crítico contra enemigos congelados: tu **Fogonazo** sobre el grupo congelado.
+
+</Tile>
+<Tile title="Barrera de hielo" spell="Ice Barrier" school="frost">
+
+Sustituye a **Escudo de maná** al empezar el tirón, si la tienes.
+
+</Tile>
+<Tile title="Concentración Arcana" spell="Arcane Concentration" school="arcane">
+
+Ahorra maná, pero ya no define el farmeo en área: un hechizo de área tiene una sola oportunidad de activarla. <Status status="verified" compact />
+
+</Tile>
+<Tile title="Mordiescarcha, no" spell="Frostbite" school="frost">
+
+No la lleves en una build de área: sus congelaciones al azar separan al grupo. <Status status="reported" compact />
+
+</Tile>
+</Tiles>
+
+Las builds de leveo están en <BuildLink use="leveling">Builds</BuildLink>. Ten también a mano la gema de maná (nivel 28), pociones de maná y, si tienes Ingeniería, bombas o granadas para los tirones grandes. <Status status="reported" compact />
+
+## Las rotaciones
+
+La corta es la más fiable, según las guías de la comunidad, y sirve con cualquier rama. Elige un paso o pulsa Reproducir. <Status status="reported" />
+
+<AoeArena />
+
+**Si resisten la Nova de Escarcha, reinicia el tirón:** no intentes salvarlo. **Traslación** y aléjate; **Bloqueo de hielo** si todo se tuerce. <Status status="reported" compact />
+
+## Dónde farmear
+
+Elige la zona por **tus rangos de hechizo**, no por el color de los enemigos: lo que importa es si tus hechizos de área los matan rápido. Cuando la zona se vuelva verde, cambia de sitio. <Status status="reported" />
+
+<SpotFinder />
+
+Del 30 al 60, las zonas vienen de Classic y nadie las ha probado en Forever. <Status status="pending" compact />
+
+### Las arañas de Cima del Trueno
+
+Es la zona de área más citada por las guías de la comunidad. Baja por el ascensor norte de Cima del Trueno y sube la ladera hacia el noroeste: el campamento está hacia (33, 22) de Mulgore y las arañas, al norte de la meseta, hacia (33, 11). Hay cinco misiones a partir del nivel 23. Junta tres grupos de crías cercanas, mátalos, bebe y repite. No atraigas a Broodmother Valraxx: es élite de nivel 30. <Status status="reported" />
+
+## Antes de atraer
+
+<Pieces>
+
+- **Elige el terreno.** Nada de miedos, derribos ni ataques a distancia, y zonas abiertas, sin obstáculos que separen al grupo. <Status status="analysis" compact />
+- **Mira el reino.** En reinos JcJ, las zonas disputadas atraen a pícaros que esperan a que estés sin maná. <Status status="analysis" compact />
+- **Maná por hechizo.** Cuánto rinde cada hechizo por maná frente a Classic: <PageLink to="mage-water">Agua del Mago</PageLink>.
+- **No-muertos.** Toque de la tumba (Touch of the Grave) puede romper la Nova de Escarcha, según una guía. <Status status="reported" compact /> Ver <PageLink to="races">Razas</PageLink>.
+
+</Pieces>
+
+## Si vienes de Classic
+
+<details class="disclosure">
+<summary>Qué ha cambiado respecto a Classic y por qué se acabaron los tirones grandes</summary>
 
 Blizzard ha recortado a propósito el farmeo masivo de los magos, porque se usaba para conseguir oro y experiencia rápidos con poco riesgo: <Status status="verified" />
 
@@ -37,86 +146,11 @@ Blizzard ha recortado a propósito el farmeo masivo de los magos, porque se usab
 
 **Qué significa en la práctica.** En Classic encadenabas Nova de Escarcha, dos Ventiscas y Cono de frío, y cuando los enemigos te alcanzaban ya tenías la Nova lista otra vez. Ahora salen antes de la Ventisca, te alcanzan antes y hay huecos en los que te golpean. Los grandes tirones de Classic, como el de Zul'Farrak, ya no son viables. <Status status="analysis" />
 
-## Las dos formas de farmear
-
-### Rotación corta (desde el nivel 14)
-
-La más fiable, según las guías de la comunidad. No necesita Ventisca, así que sirve con cualquier rama. <Status status="reported" />
-
-<Priority title="Rotación corta · grupos de 3 a 7" status="reported" school="baseline">
-
-1. **Atrae** un grupo pequeño de 3 o 4 enemigos (con la varita, quieto 0,5 s antes de disparar, o con un hechizo) y llévalos hasta ti para que lleguen juntos.
-2. **Escudo puesto**: **Escudo de maná** (Mana Shield), o Barrera de hielo (Ice Barrier) si la tienes. Vas a recibir golpes.
-3. **Nova de Escarcha** (Frost Nova) cuando estén pegados a ti y aléjate unos pasos.
-4. **Fogonazo** sobre el grupo congelado. Con **Trizar** (Shatter), tiene más crítico contra enemigos congelados.
-5. **Cono de frío** para ralentizarlos cuando se suelten y **Deflagración Arcana** (Arcane Explosion) para rematar.
-
-</Priority>
-
-Desde el nivel 14 tienes Deflagración Arcana y desde el 16, Fogonazo. Con Cono de frío (nivel 26) la rotación queda completa. Una guía la usa para grupos de hasta siete enemigos en niveles altos. <Status status="reported" />
-
-### Con Ventisca (desde el nivel 22)
-
-La forma clásica, ahora más justa. Necesita **Ventisca mejorada** 3/3. Con el maná de estos niveles, cuenta con **una Ventisca completa por grupo**. <Status status="reported" />
-
-<Priority title="Con Ventisca · Escarcha" status="reported" school="frost">
-
-1. Junta a los enemigos con una **Deflagración Arcana** para que se apelotonen.
-2. **Nova de Escarcha** y aléjate todo lo que puedas.
-3. Empieza **Ventisca** (Blizzard) en el último segundo de la Nova, donde los enemigos tengan que cruzarla.
-4. Al terminar, **Cono de frío** para mantenerlos lentos hasta que vuelva la Nova.
-5. Segunda **Nova**, **Fogonazo** sobre el grupo congelado, Cono de frío y dos Deflagraciones Arcanas para acabar.
-
-</Priority>
-
-
-## Concentración Arcana
-
-**Concentración Arcana** (Arcane Concentration) te da una probabilidad de que el siguiente hechizo no cueste maná. En Classic se activaba «después de que cualquier hechizo de daño alcance a un objetivo», así que un hechizo de área que alcanzaba a 7 enemigos tenía 7 oportunidades. <Status status="classic" />
-
-**En Forever ya no.** Desde la build del 15 de octubre, Libre lanzamiento (Clearcasting) no hace una tirada por cada objetivo alcanzado: un hechizo de área tiene una sola oportunidad, como contra un solo enemigo. Tampoco se activa fuera de combate. <Status status="verified" /> Sigue ahorrando maná, pero ya no es el talento que define el farmeo en área. <Status status="analysis" />
+**Concentración Arcana.** En Classic se activaba «después de que cualquier hechizo de daño alcance a un objetivo», así que un hechizo de área que alcanzaba a 7 enemigos tenía 7 oportunidades. <Status status="classic" /> Desde la build del 15 de octubre, un hechizo de área tiene una sola oportunidad, como contra un solo enemigo, y tampoco se activa fuera de combate. <Status status="verified" />
 
 **El truco de Classic que ya no funciona igual.** Lanzar Deflagración Arcana de rango 1 para activar Concentración Arcana barata y luego gastarla en un rango alto. En Forever, los hechizos de un rango muy inferior a tu nivel la activan con menos probabilidad. <Status status="verified" /> Usa rangos altos. <Status status="analysis" />
 
-Está en la fila 2 de Arcano. Las builds de leveo no la llevan; una build de Arcano, sí. <Status status="analysis" />
-
-## Dónde farmear
-
-Elige la zona por **tus rangos de hechizo**, no por el color de los enemigos: lo que importa es si tus hechizos de área los matan rápido. Y cuando la zona se vuelva verde, cambia de sitio. <Status status="reported" />
-
-| Niveles | Zona | Enemigos | Facción | Estado |
-| --- | --- | --- | --- | --- |
-| 10-20 | Los Baldíos | Leones y zancudos | Horda | <Status status="reported" /> |
-| 10-20 | Costa Oscura | Fúrbolgs | Alianza | <Status status="reported" /> |
-| 14-20 | Páramos de Poniente | Campamentos Defias | Alianza | <Status status="reported" /> |
-| 20-30 | Laderas de Trabalomas | Granjeros de los campos de Trabalomas | Horda | <Status status="reported" /> |
-| 20-30 | Los Humedales | Gnolls (Mosshide) | Alianza | <Status status="reported" /> |
-| 20-30 | Bosque del Ocaso | Cementerio (Raven Hill) y huargos (Nightbane) | Alianza | <Status status="reported" /> |
-| 23-30 | **Mulgore**, meseta al noroeste de Cima del Trueno | **Arañas Gloomrise** (27-29) · **nueva en Forever** | Horda | <Status status="reported" /> |
-| 30-40 | Tierras Altas de Arathi | Azurelode Mine, Dabyrie's Farmstead, Go'Shek Farm | Ambas | <Status status="pending" /> |
-| 30-40 | Marjal Revolcafango | Múrlocs | Ambas | <Status status="pending" /> |
-| 40-50 | Tanaris | Piratas (Lost Rigger Cove) y Wastewander | Ambas | <Status status="pending" /> |
-| 50-60 | Frondavil y Tierras de la Peste | Trols y campamentos Escarlata | Ambas | <Status status="pending" /> |
-
-Del 30 al 60, las zonas vienen de Classic y nadie las ha probado en Forever. <Status status="pending" />
-
-### Las arañas de Cima del Trueno
-
-Es la zona de área más citada por las guías de la comunidad. Baja por el ascensor norte de Cima del Trueno y sube la ladera hacia el noroeste: el campamento está hacia (33, 22) de Mulgore y las arañas, al norte de la meseta, hacia (33, 11). Hay cinco misiones a partir del nivel 23. Junta tres grupos de crías cercanas, mátalos, bebe y repite. No atraigas a Broodmother Valraxx: es élite de nivel 30. <Status status="reported" />
-
-## Cómo elegir a los enemigos
-
-- **Solo enemigos cuerpo a cuerpo.** Los lanzadores te interrumpen y te disparan desde lejos: conviértelos en oveja con **Polimorfia** (Polymorph) o no los atraigas. <Status status="reported" />
-- **Nada de miedos, derribos ni ataques a distancia**, y zonas abiertas, sin obstáculos que separen al grupo. <Status status="analysis" />
-- **En reinos JcJ**, las zonas disputadas atraen a pícaros que esperan a que estés sin maná. <Status status="analysis" />
-
-## Maná y supervivencia
-
-- **Bebe después de cada grupo.** El maná marca el tamaño del tirón. <Status status="analysis" /> Cuánto rinde cada hechizo por maná frente a Classic: <PageLink to="mage-water">Agua del Mago</PageLink>.
-- **Ten a mano** la gema de maná (nivel 28), pociones de maná y, si tienes Ingeniería, bombas o granadas para los tirones grandes. <Status status="reported" />
-- **Si resisten la Nova de Escarcha, reinicia el tirón**: no intentes salvarlo. Traslación (Blink) y aléjate; **Bloqueo de hielo** (Ice Block) si todo se tuerce. <Status status="reported" />
-- **No lleves Mordiescarcha** (Frostbite) en una build de área: sus congelaciones al azar separan al grupo. <Status status="reported" />
-- **No-muertos:** Toque de la tumba (Touch of the Grave) puede romper la Nova de Escarcha, según una guía. <Status status="reported" /> Ver <PageLink to="races">Razas</PageLink>.
+</details>
 
 ## Lo que aún no se sabe
 
@@ -142,4 +176,4 @@ Es la zona de área más citada por las guías de la comunidad. Baja por el asce
   </FaqItem>
 </Faq>
 
-Más contexto en la <PageLink to="leveling">guía de leveo</PageLink>, en <PageLink to="combat">Combate</PageLink> y en <PageLink to="changes" query="tree=frost">los cambios de Escarcha</PageLink>.
+Más contexto en <PageLink to="leveling">Primeros pasos en Azeroth</PageLink>, en <PageLink to="combat">Combate</PageLink> y en <PageLink to="changes" query="tree=frost">los cambios de Escarcha</PageLink>.

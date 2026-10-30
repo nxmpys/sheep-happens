@@ -10,29 +10,26 @@ reviewed: 2026-10-11
 reviewedBy: Sheep Happens
 status: published
 verification: verified
-summary:
-  - Arcano potencia al resto de tu arsenal; sus nuevos talentos decisivos son Explosión Arcana (11) y Cólera Arcana (16).
-  - Explosión Arcana se acumula hasta 4 veces y te da daño con hechizos según tu Intelecto durante 15 s, a cambio de un coste de maná creciente.
-  - Tromba de misiles, ahora en la fila 2, hace que Misiles Arcanos se canalice el doble de rápido y gratis, y se activa también con hechizos de Fuego y Escarcha.
+wide: true
 sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, wiki-presence-of-mind, wiki-arcane-power-classic]
 tags: [arcano, explosión arcana, cólera arcana, tromba de misiles, arcane blast, arcane wrath, talentos]
 ---
 
-## Identidad
+<TreeIntro tree="arcane">
 
-En Forever, Arcano es la rama que **prepara y potencia el siguiente hechizo**: según Blizzard, manipula y consume maná para hacer más daño y gana nuevas formas de reforzar lo que lanzas después. <Status status="verified" />
+<p class="tree-intro__line">Acumula poder y gástalo antes de que se pase.</p>
 
-## Talentos decisivos
+Arcano **prepara y potencia el siguiente hechizo**: según Blizzard, manipula y consume maná para hacer más daño y gana nuevas formas de reforzar lo que lanzas después. <Status status="verified" compact />
 
-<MilestoneMap tree="arcane" />
+<Chain items={[{ spell: 'Arcane Blast', note: 'hasta 4 cargas' }, { spell: 'Arcane Wrath', note: 'el golpe fuerte' }]} />
 
-## Talentos que cambian
+<SpecVerdict spec="arcane" />
 
-Elige un talento para ver qué cambia, por qué importa y de dónde sale la información.
-
-<ChangeSummaryList tree="arcane" />
+</TreeIntro>
 
 ## Cómo encajan las piezas
+
+<Pieces>
 
 - **Preparar y descargar.** Desde el 15 de octubre, cada **Explosión Arcana** (Arcane Blast) es un lanzamiento de 1,5 s que te da daño con hechizos igual al 15 % de tu Intelecto, acumulable hasta 4 veces durante 15 s, aunque lances otros hechizos. Blizzard quiere que, tras acumular cargas, uses otros hechizos de tu arsenal. <Status status="verified" />
 - **Cólera Arcana como golpe fuerte.** El nuevo talento decisivo de 16 puntos, **Cólera Arcana** (Arcane Wrath), es un hechizo de 3,5 s y 6 s de reutilización con un daño parecido al de Bola de Fuego, que además suma daño con hechizos igual al 5 % de tu maná máximo. Encaja dentro de la ventana de cargas de Explosión Arcana. <Status status="analysis" />
@@ -42,11 +39,26 @@ Elige un talento para ver qué cambia, por qué importa y de dónde sale la info
 - **Misiles más fiables.** Desde la build del 24 de septiembre, Misiles Arcanos solo comprueba la línea de visión al empezar a canalizar. <Status status="verified" />
 - **Más alcance.** **Geometría Arcana** (Arcane Geometry) aumenta el alcance de los hechizos Arcanos: útil para mantener la distancia. <Status status="verified" />
 
+</Pieces>
+
+## Talentos decisivos
+
+<MilestoneMap tree="arcane" />
+
 ## Fortalezas, debilidades y builds
 
 En qué brilla esta rama, en qué flojea y qué build tiene en cada contenido. Si no hay build para un contenido, explico por qué. <Status status="analysis" />
 
 <SpecBuilds spec="arcane" />
+
+## Talentos que cambian
+
+<details class="disclosure">
+<summary>Cada talento que cambia respecto a Classic</summary>
+
+<ChangeSummaryList tree="arcane" />
+
+</details>
 
 ## Lo que falta por saber
 

@@ -1,0 +1,32 @@
+---
+/**
+ * A row of spells with their names, and optionally the level each one is
+ * learned at:
+ *   <SpellBar spells={['Blink', { spell: 'Blizzard', level: 20 }]} />
+ */
+import GameIcon from './GameIcon.astro';
+import '../../styles/learn.css';
+import { getLocale } from '../../i18n/locale';
+import { localSpellName } from '../../lib/names';
+
+interface Props {
+  spells: (string | { spell?: string; icon?: string; name?: string; level?: number })[];
+}
+
+const { spells } = Astro.props;
+const locale = getLocale(Astro);
+const levelWord = locale === 'es' ? 'Nivel' : 'Level';
+const items = spells.map((item) => (typeof item === 'string' ? { spell: item } : item));
+---
+
+<ul class="spellbar" data-no-spell-links>
+  {
+    items.map((item) => (
+      <li class="spellbar__spell">
+        <GameIcon spell={item.spell} icon={item.icon} size={48} />
+        <span class="spellbar__name">{item.name ?? localSpellName(item.spell ?? '', locale)}</span>
+        {item.level && <span class="spellbar__level">{levelWord} {item.level}</span>}
+      </li>
+    ))
+  }
+</ul>

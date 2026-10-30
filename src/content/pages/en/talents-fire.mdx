@@ -10,29 +10,26 @@ reviewed: 2026-10-11
 reviewedBy: Sheep Happens
 status: published
 verification: verified
-summary:
-  - Fire still rewards critical strikes and timing; its big novelty is Heating Up.
-  - Three Heating Up stacks bring Pyroblast down to a 1.5 s cast; every Fire Blast grants an extra stack.
-  - Incineration goes to 5 points (10% crit) and Fire Power rewards keeping several Fire effects on the target.
-  - Ignite becomes personal to each Mage and no longer loses damage on crits that land close together.
-  - The talent in Fire's new 16-point milestone is not confirmed yet.
+wide: true
 sources: [blizzard-deep-dive-mage, blizzard-dev-notes, wiki-pyroblast, wiki-blast-wave, wiki-combustion, wiki-ignite-classic]
 tags: [fire, heating up, pyroblast, ignite, talents]
 ---
 
-## Identity
+<TreeIntro tree="fire">
 
-Fire **keeps rewarding critical strikes and good timing**: according to Blizzard, it goes for devastating hits and critical damage. Forever gives it a new way to turn crits into fast Pyroblasts. <Status status="verified" />
+<p class="tree-intro__line">Chase critical strikes and turn them into Pyroblasts.</p>
 
-## Milestone talents
+Fire **keeps rewarding critical strikes and good timing**: according to Blizzard, it goes for devastating hits and critical damage. Forever gives it a new way to turn crits into fast Pyroblasts. <Status status="verified" compact />
 
-<MilestoneMap tree="fire" />
+<Chain items={[{ spell: 'Fire Blast', note: 'always gives a stack' }, { spell: 'Heating Up', note: 'up to 3 stacks' }, { spell: 'Pyroblast', note: '1.5 s cast' }]} />
 
-## Changed talents
+<SpecVerdict spec="fire" />
 
-<ChangeSummaryList tree="fire" />
+</TreeIntro>
 
 ## How the pieces fit
+
+<Pieces>
 
 - **Crits → Pyroblast.** With Heating Up, each non-periodic crit from Fireball, Frostfire Bolt, Fire Blast or Scorch cuts the next Pyroblast's cast time by 25% (up to 3 times). Pyroblast is a 6 s cast in Classic; at 3 stacks it drops to 1.5 s, just as Blizzard states. The buff lasts 20 s. Since 15 October every Fire Blast grants an extra stack (a Fire Blast crit grants 2) and stacks are kept if you cast Pyroblast with Presence of Mind. <Status status="verified" />
 - **More crit, more Pyroblast.** Anything that raises your crit chance speeds up that loop, so crit gains value compared with Classic. Incineration takes 5 points (up to 10% crit for Fire Blast and Scorch) and Critical Mass is back to 3, for 6% on every Fire spell. <Status status="verified" />
@@ -41,11 +38,26 @@ Fire **keeps rewarding critical strikes and good timing**: according to Blizzard
 - **Ignite is no longer shared.** Each Mage has their own Ignite, which no longer wastes damage on close crits or double dips on damage modifiers. Several Fire Mages in one group stop stepping on each other. <Status status="verified" />
 - **Personal effects.** Improved Scorch only benefits the Mage who applies it: do not expect another Mage to keep Fire vulnerability up for you. <Status status="verified" />
 
+</Pieces>
+
+## Milestone talents
+
+<MilestoneMap tree="fire" />
+
 ## Strengths, weaknesses and builds
 
 What this tree does well, where it falls short and which build it has for each content. If there is no build for a content, I explain why. <Status status="analysis" />
 
 <SpecBuilds spec="fire" />
+
+## Changed talents
+
+<details class="disclosure">
+<summary>Every talent that changes compared with Classic</summary>
+
+<ChangeSummaryList tree="fire" />
+
+</details>
 
 ## Still unknown
 

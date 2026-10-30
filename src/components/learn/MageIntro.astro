@@ -1,0 +1,141 @@
+---
+/**
+ * Top of the class page: the Mage in one sentence and its class sheet (role,
+ * armor, resource, trees and races), over the art of a Fire Mage.
+ */
+import GameIcon from './GameIcon.astro';
+import '../../styles/learn.css';
+import { getLocale } from '../../i18n/locale';
+import { races } from '../../lib/data';
+import { TREE_ICONS } from '../../lib/icons';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const treeNames = es ? { arcane: 'Arcano', fire: 'Fuego', frost: 'Escarcha' } : { arcane: 'Arcane', fire: 'Fire', frost: 'Frost' };
+const sheet = es
+  ? [
+      { label: 'Rol', value: 'Daño a distancia', icon: 'spell_fire_flamebolt' },
+      { label: 'Armadura', value: 'Tela', icon: 'inv_chest_cloth_04' },
+      { label: 'Recurso', value: 'Maná', icon: 'inv_drink_06' },
+    ]
+  : [
+      { label: 'Role', value: 'Ranged damage', icon: 'spell_fire_flamebolt' },
+      { label: 'Armor', value: 'Cloth', icon: 'inv_chest_cloth_04' },
+      { label: 'Resource', value: 'Mana', icon: 'inv_drink_06' },
+    ];
+---
+
+<section class="intro" data-no-spell-links>
+  <img class="intro__art" src={`${base}about/story/mage-fire.webp`} alt="" width="1200" height="675" />
+  <div class="intro__text">
+    <p class="intro__line">
+      {
+        es
+          ? 'Lanzas hechizos desde lejos, controlas a quien se acerca y llevas la comida, el agua y los viajes de tu grupo.'
+          : 'You cast from afar, control whoever gets close and carry your group’s food, water and travel.'
+      }
+    </p>
+    <dl class="sheet">
+      {
+        sheet.map((row) => (
+          <div class="sheet__row">
+            <GameIcon icon={row.icon} size={36} />
+            <dt>{row.label}</dt>
+            <dd>{row.value}</dd>
+          </div>
+        ))
+      }
+      <div class="sheet__row">
+        <span class="sheet__icons">
+          {Object.values(TREE_ICONS).map((icon) => <GameIcon icon={icon} size={24} />)}
+        </span>
+        <dt>{es ? 'Ramas' : 'Trees'}</dt>
+        <dd>{Object.values(treeNames).join(' · ')}</dd>
+      </div>
+      <div class="sheet__row sheet__row--races">
+        <span class="sheet__icons">
+          {races.map((race) => <GameIcon icon={race.icon} size={24} alt={race.name[locale]} />)}
+        </span>
+        <dt>{es ? 'Razas' : 'Races'}</dt>
+        <dd>{races.map((race) => race.name[locale].replace(/\s*\(.*\)$/, '')).join(' · ')}</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<style>
+  .intro {
+    position: relative;
+    display: grid;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: #120f1f;
+    color: #ecebf4;
+    isolation: isolate;
+  }
+  .intro__art {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 75% 25%;
+    mask-image: linear-gradient(90deg, transparent 22%, #000 62%);
+  }
+  .intro__text {
+    display: grid;
+    gap: var(--space-5);
+    max-width: 34rem;
+    padding: var(--space-6);
+  }
+  .intro__line {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .sheet {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-3);
+    margin: 0;
+  }
+  .sheet__row {
+    display: grid;
+    align-content: start;
+    gap: var(--space-1);
+  }
+  .sheet__row:nth-child(n + 4) {
+    grid-column: 1 / -1;
+  }
+  .sheet__icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+  .sheet dt {
+    margin-top: var(--space-1);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #c9b6ff;
+  }
+  .sheet dd {
+    margin: 0;
+    font-weight: 600;
+  }
+  @media (max-width: 44rem) {
+    .intro__art {
+      mask-image: linear-gradient(0deg, transparent 20%, rgb(0 0 0 / 0.55) 90%);
+      object-position: 70% 0;
+    }
+    .intro__text {
+      padding: var(--space-5) var(--space-4);
+    }
+  }
+</style>

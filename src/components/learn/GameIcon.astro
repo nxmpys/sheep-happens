@@ -1,0 +1,39 @@
+---
+/**
+ * A game icon with its frame. Pass `spell` (English or Spanish name) to take the
+ * icon from the spell index and open the spell tooltip on hover; pass `icon` (a
+ * file in public/icons) for anything else. Decorative by default: the name is
+ * always written next to it, or given with `alt`.
+ */
+import { getLocale } from '../../i18n/locale';
+import { iconPath } from '../../lib/icons';
+import { spellIndexFor } from '../../lib/spell-index';
+import { findSpell } from '../../lib/spells';
+
+interface Props {
+  spell?: string | undefined;
+  icon?: string | undefined;
+  size?: number;
+  alt?: string;
+  /** No tooltip: the icon is inside a control that already explains it. */
+  plain?: boolean;
+  class?: string;
+}
+
+const { spell, icon, size = 40, alt = '', plain = false, class: className } = Astro.props;
+const found = spell ? findSpell(spellIndexFor(getLocale(Astro)), spell) : undefined;
+const src = icon ? iconPath(icon) : found?.icon;
+const school = found ? (found.school === 'frostfire' ? 'fire' : found.school) : undefined;
+---
+
+{
+  src && (
+    <span
+      class:list={['game-icon', className, !plain && found && ['spell-ref', `school-${school}`]]}
+      data-spell={!plain && found ? found.key : undefined}
+      style={`--game-icon: ${size}px`}
+    >
+      <img src={src} alt={alt} width={size} height={size} loading="lazy" decoding="async" />
+    </span>
+  )
+}

@@ -71,9 +71,10 @@ export const ROUTES: Record<PageId, RouteDef> = {
   library: { id: 'library', slug: { es: 'biblioteca', en: 'library' }, parent: 'guides' },
   pvp: { id: 'pvp', slug: { es: 'jcj', en: 'pvp' }, parent: 'guides' },
   guide: { id: 'guide', slug: { es: 'guia', en: 'guide' }, parent: 'learn' },
-  changes: { id: 'changes', slug: { es: 'cambios', en: 'changes' }, parent: 'learn' },
-  // Talents and the three tree pages moved from Learn to Builds (26 Oct 2026) keeping their slugs.
-  talents: { id: 'talents', slug: { es: 'talentos', en: 'talents' }, parent: 'builds' },
+  // The change explorer moved from Learn to Tools (30 Oct 2026) keeping its slug: it is a lookup for people who know Classic.
+  changes: { id: 'changes', slug: { es: 'cambios', en: 'changes' }, parent: 'tools' },
+  // Talents and the three tree pages moved back from Builds to Learn (30 Oct 2026) keeping their slugs.
+  talents: { id: 'talents', slug: { es: 'talentos', en: 'talents' }, parent: 'learn' },
   'talents-arcane': {
     id: 'talents-arcane',
     slug: { es: 'talentos/arcano', en: 'talents/arcane' },
@@ -92,8 +93,9 @@ export const ROUTES: Record<PageId, RouteDef> = {
     parent: 'talents',
     spec: 'frost',
   },
-  // Leveling, its level view and AoE farming moved from Builds to Guides (26 Oct 2026) keeping their slugs.
-  leveling: { id: 'leveling', slug: { es: 'nivelacion', en: 'leveling' }, parent: 'guides' },
+  // Leveling became «First steps in Azeroth» under Learn (30 Oct 2026) keeping its slug, so old links still work.
+  leveling: { id: 'leveling', slug: { es: 'nivelacion', en: 'leveling' }, parent: 'learn' },
+  // AoE farming moved from Builds to Guides (26 Oct 2026) keeping its slug.
   'aoe-farming': { id: 'aoe-farming', slug: { es: 'farmeo-aoe', en: 'aoe-farming' }, parent: 'guides' },
   'mage-water': { id: 'mage-water', slug: { es: 'agua-del-mago', en: 'mage-water' }, parent: 'guides' },
   scrolls: { id: 'scrolls', slug: { es: 'pergaminos', en: 'scrolls' }, parent: 'guides' },
@@ -128,28 +130,30 @@ export interface NavSection {
 }
 
 /**
- * Five entries: the basics of the class; builds (a tree, its talents and the
- * content it is for, with the talent and tree pages); guides, which explain
- * something concrete whatever the build (leveling, AoE farming, Mage water, race,
- * professions, Legacy, gear, class quests, library, scrolls, PvP); the tools and addons.
+ * Five entries: the path for someone new to the class (the class, its combat,
+ * the talents and each tree, then the first steps in the world); builds (a tree,
+ * its talents and the content it is for); guides, which explain something
+ * concrete whatever the build (AoE farming, Mage water, race, professions,
+ * Legacy, gear, class quests, library, scrolls, PvP); the tools (the change
+ * explorer among them) and addons.
  */
 export const PRIMARY_NAV: readonly NavGroup[] = [
   {
     key: 'learn',
     page: 'learn',
-    items: ['guide', 'combat', 'changes'],
+    items: ['guide', 'combat', 'talents', 'talents-arcane', 'talents-fire', 'talents-frost', 'leveling'],
     sections: [{ hash: { es: 'glosario', en: 'glossary' }, label: { es: 'Glosario', en: 'Glossary' } }],
   },
-  { key: 'builds', page: 'builds', items: ['talents', 'talents-arcane', 'talents-fire', 'talents-frost'] },
+  { key: 'builds', page: 'builds' },
   {
     key: 'guides',
     page: 'guides',
-    items: ['leveling', 'aoe-farming', 'mage-water', 'races', 'professions', 'legacy', 'gear', 'class-quests', 'library', 'scrolls', 'pvp'],
+    items: ['aoe-farming', 'mage-water', 'races', 'professions', 'legacy', 'gear', 'class-quests', 'library', 'scrolls', 'pvp'],
   },
   {
     key: 'tools',
     page: 'tools',
-    items: ['talent-calc'],
+    items: ['talent-calc', 'changes'],
     sections: [
       { hash: { es: 'multiplicador-de-crítico', en: 'crit-multiplier' }, label: { es: 'Multiplicador de crítico', en: 'Crit multiplier' } },
       { hash: { es: 'golpe-con-hechizos', en: 'spell-hit' }, label: { es: 'Golpe con hechizos', en: 'Spell hit' } },

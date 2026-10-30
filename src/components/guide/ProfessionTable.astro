@@ -1,15 +1,17 @@
 ---
 /**
- * Comparison of the primary professions: main benefit and limitation, and our
+ * Comparison of the primary professions: icon, main benefit and our
  * rating per activity. On narrow screens each row stacks (profession first,
  * the five ratings below), so nothing scrolls sideways; the explicit ARIA roles
  * keep it a table for screen readers. Data in professions.json.
  */
 import RatingBadge from './RatingBadge.astro';
+import GameIcon from '../learn/GameIcon.astro';
+import '../../styles/learn.css';
 import { getLocale } from '../../i18n/locale';
-import { KIND_LABELS, tp, type ProfessionUiKey } from '../../i18n/professions';
+import { tp, type ProfessionUiKey } from '../../i18n/professions';
 import { professions } from '../../lib/data';
-import { primaryProfessions, professionAnchor } from '../../lib/professions';
+import { PROFESSION_ICONS, primaryProfessions, professionAnchor } from '../../lib/professions';
 
 const locale = getLocale(Astro);
 const rows = primaryProfessions(professions);
@@ -39,15 +41,10 @@ const caption = tp(locale, 'table.caption');
           <tr role="row">
             <th scope="row" role="rowheader">
               <a class="profession-table__name" href={`#${professionAnchor(profession, locale)}`}>
+                <GameIcon icon={PROFESSION_ICONS[profession.id]} size={32} />
                 {profession.name[locale]}
               </a>
-              <span class="profession-table__kind">{KIND_LABELS[locale][profession.kind]}</span>
-              <span class="profession-table__line">
-                <span class="profession-table__label">{tp(locale, 'table.benefit')}:</span> {profession.benefit[locale]}
-              </span>
-              <span class="profession-table__line">
-                <span class="profession-table__label">{tp(locale, 'table.limitation')}:</span> {profession.limitation[locale]}
-              </span>
+              <span class="profession-table__line">{profession.benefit[locale]}</span>
             </th>
             {COLUMNS.map((column) => (
               <td role="cell" data-label={label(column)}>
@@ -63,6 +60,7 @@ const caption = tp(locale, 'table.caption');
 
 <style>
   .profession-table th[scope='row'] {
+    width: 55%;
     font-weight: 400;
   }
   .profession-table th[scope='row'] > span {
@@ -70,22 +68,14 @@ const caption = tp(locale, 'table.caption');
     margin-top: var(--space-1);
   }
   .profession-table__name {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
     font-weight: 700;
     font-size: var(--step-0);
   }
-  .profession-table__kind {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-subtle);
-  }
   .profession-table__line {
     color: var(--text-muted);
-  }
-  .profession-table__label {
-    font-weight: 650;
-    color: var(--text);
   }
   /* Rating columns shrink to their badge; the profession column takes the rest. */
   .profession-table td,
@@ -112,6 +102,7 @@ const caption = tp(locale, 'table.caption');
       border-bottom: 0;
     }
     .profession-table th[scope='row'] {
+      width: auto;
       grid-column: 1 / -1;
       border-bottom: 0;
       background: transparent;

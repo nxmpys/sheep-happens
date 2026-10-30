@@ -10,29 +10,26 @@ reviewed: 2026-10-11
 reviewedBy: Sheep Happens
 status: published
 verification: verified
-summary:
-  - Arcane amplifies the rest of your toolkit; its new milestones are Arcane Blast (11) and Arcane Wrath (16).
-  - Arcane Blast stacks up to 4 times and grants Spell Damage based on your Intellect for 15 s, at a growing mana cost.
-  - Missile Barrage, now in row 2, makes Arcane Missiles twice as fast and free, and it also triggers from Fire and Frost spells.
+wide: true
 sources: [blizzard-deep-dive-mage, blizzard-dev-notes, wiki-presence-of-mind, wiki-arcane-power-classic]
 tags: [arcane, arcane blast, arcane wrath, missile barrage, talents]
 ---
 
-## Identity
+<TreeIntro tree="arcane">
 
-In Forever, Arcane is the tree that **sets up and empowers your next cast**: according to Blizzard, it manipulates and consumes mana for more damage and gains new ways to strengthen whatever you cast next. <Status status="verified" />
+<p class="tree-intro__line">Build up power, then spend it before it fades.</p>
 
-## Milestone talents
+Arcane **sets up and empowers your next cast**: according to Blizzard, it manipulates and consumes mana for more damage and gains new ways to strengthen whatever you cast next. <Status status="verified" compact />
 
-<MilestoneMap tree="arcane" />
+<Chain items={[{ spell: 'Arcane Blast', note: 'up to 4 stacks' }, { spell: 'Arcane Wrath', note: 'the big hit' }]} />
 
-## Changed talents
+<SpecVerdict spec="arcane" />
 
-Pick a talent to see what changes, why it matters and where the information comes from.
-
-<ChangeSummaryList tree="arcane" />
+</TreeIntro>
 
 ## How the pieces fit
+
+<Pieces>
 
 - **Set up and cash in.** Since 15 October, each Arcane Blast is a 1.5 s cast that grants you Spell Damage equal to 15% of your Intellect, stacking up to 4 times for 15 s, even while you cast other spells. Blizzard wants you to use other spells after building stacks. <Status status="verified" />
 - **Arcane Wrath as the big hit.** The new 16-point milestone, Arcane Wrath, is a 3.5 s cast with a 6 s cooldown and Fireball-like damage, plus extra Spell Damage equal to 5% of your maximum mana. It fits inside the Arcane Blast stack window. <Status status="analysis" />
@@ -42,11 +39,26 @@ Pick a talent to see what changes, why it matters and where the information come
 - **More reliable missiles.** Since the 24 September build, Arcane Missiles only checks line of sight when the channel starts. <Status status="verified" />
 - **More range.** Arcane Geometry increases the range of Arcane spells: handy for keeping your distance. <Status status="verified" />
 
+</Pieces>
+
+## Milestone talents
+
+<MilestoneMap tree="arcane" />
+
 ## Strengths, weaknesses and builds
 
 What this tree does well, where it falls short and which build it has for each content. If there is no build for a content, I explain why. <Status status="analysis" />
 
 <SpecBuilds spec="arcane" />
+
+## Changed talents
+
+<details class="disclosure">
+<summary>Every talent that changes compared with Classic</summary>
+
+<ChangeSummaryList tree="arcane" />
+
+</details>
 
 ## Still unknown
 

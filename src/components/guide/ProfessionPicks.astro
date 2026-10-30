@@ -1,155 +1,146 @@
 ---
 /**
- * Quick recommendations on the professions page: one card per goal with the
- * pair to pick, why, the main advantage, what you give up, who it suits and an
- * alternative. Data in profession-picks.json; each card's id is "pick-<goal>".
+ * The short answer on the professions page: a tab per goal with the pair to pick
+ * as two big icons and its main advantage. Why, what you give up, who it suits
+ * and an alternative stay folded. Data in profession-picks.json; each panel's id
+ * is "pick-<goal>".
  */
+import GameIcon from '../learn/GameIcon.astro';
+import '../../styles/learn.css';
 import { getLocale } from '../../i18n/locale';
 import { tp } from '../../i18n/professions';
 import { getProfession, picks } from '../../lib/data';
-import { professionAnchor } from '../../lib/professions';
+import { PROFESSION_ICONS, professionAnchor } from '../../lib/professions';
 
 const locale = getLocale(Astro);
-const and = locale === 'es' ? ' y ' : ' and ';
+const es = locale === 'es';
 const pair = (ids: readonly string[]) => ids.map(getProfession);
 ---
 
-<div class="picks">
+<pick-panel class="picks" role="group" aria-label={tp(locale, 'pick.pair')} data-no-spell-links>
   {
-    picks.map((pick, index) => (
-      <article class:list={['pick', { 'pick--featured': index === 0 }]} id={`pick-${pick.id}`} aria-labelledby={`pick-${pick.id}-title`}>
-        <h3 class="pick__goal" id={`pick-${pick.id}-title`}>
-          {pick.goal[locale]}
-        </h3>
-        <p class="pick__pair">
-          <span class="visually-hidden">{tp(locale, 'pick.pair')}: </span>
-          {pair(pick.professions).map((profession, i) => (
-            <>
-              {i > 0 && (
-                <>
-                  <span class="pick__plus" aria-hidden="true">
+    picks.map((pick) => (
+      <div class="pick">
+        <button type="button" class="pick__button" data-pick={pick.id}>
+          <span class="picks__mini">
+            {pick.professions.map((id) => (
+              <GameIcon icon={PROFESSION_ICONS[id]} size={24} plain />
+            ))}
+          </span>
+          <span>{pick.goal[locale]}</span>
+        </button>
+        <article class="pick__panel" data-panel={pick.id} id={`pick-${pick.id}`}>
+          <p class="picks__pair">
+            <span class="visually-hidden">{tp(locale, 'pick.pair')}: </span>
+            {pair(pick.professions).map((profession, i) => (
+              <>
+                {i > 0 && (
+                  <span class="picks__plus" aria-hidden="true">
                     +
                   </span>
-                  <span class="visually-hidden">{and}</span>
-                </>
-              )}
-              <a href={`#${professionAnchor(profession, locale)}`}>{profession.name[locale]}</a>
-            </>
-          ))}
-        </p>
-        <p class="pick__why">{pick.why[locale]}</p>
-        <dl class="pick__facts">
-          <div>
-            <dt>{tp(locale, 'pick.advantage')}</dt>
-            <dd>{pick.advantage[locale]}</dd>
-          </div>
-          <div>
-            <dt>{tp(locale, 'pick.sacrifice')}</dt>
-            <dd>{pick.sacrifice[locale]}</dd>
-          </div>
-          <div>
-            <dt>{tp(locale, 'pick.profile')}</dt>
-            <dd>{pick.profile[locale]}</dd>
-          </div>
-        </dl>
-        {pick.alternative && (
-          <p class="pick__alt">
-            <span class="pick__label">{tp(locale, 'pick.alternative')}:</span>{' '}
-            {`${pair(pick.alternative.professions)
-              .map((profession) => profession.name[locale])
-              .join(' + ')}. ${pick.alternative.when[locale]}`}
+                )}
+                <a class="picks__prof" href={`#${professionAnchor(profession, locale)}`}>
+                  <GameIcon icon={PROFESSION_ICONS[profession.id]} size={56} />
+                  <span>{profession.name[locale]}</span>
+                </a>
+              </>
+            ))}
           </p>
-        )}
-      </article>
+          <p class="picks__advantage">{pick.advantage[locale]}</p>
+          <details class="picks__more">
+            <summary>{es ? 'Por qué, y lo que sacrificas' : 'Why, and what you give up'}</summary>
+            <p>{pick.why[locale]}</p>
+            <dl class="picks__facts">
+              <div>
+                <dt>{tp(locale, 'pick.sacrifice')}</dt>
+                <dd>{pick.sacrifice[locale]}</dd>
+              </div>
+              <div>
+                <dt>{tp(locale, 'pick.profile')}</dt>
+                <dd>{pick.profile[locale]}</dd>
+              </div>
+              {pick.alternative && (
+                <div>
+                  <dt>{tp(locale, 'pick.alternative')}</dt>
+                  <dd>
+                    {`${pair(pick.alternative.professions)
+                      .map((profession) => profession.name[locale])
+                      .join(' + ')}. ${pick.alternative.when[locale]}`}
+                  </dd>
+                </div>
+              )}
+            </dl>
+          </details>
+        </article>
+      </div>
     ))
   }
-</div>
+</pick-panel>
+
+<script>
+  import '../../scripts/pick-panel';
+</script>
 
 <style>
-  .picks {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
-    gap: var(--space-4);
-    align-items: start;
+  /* Six goals: buttons with room for two icons and a label. */
+  .picks :global(.pick__button) {
+    flex-basis: 13rem;
   }
-  .pick {
-    display: grid;
-    gap: var(--space-3);
-    min-width: 0;
-    padding: var(--space-4) var(--space-5);
-    border: 1px solid var(--border);
-    border-top: 4px solid var(--border-strong);
-    border-radius: var(--radius-lg);
-    background: var(--surface-1);
-    scroll-margin-top: calc(var(--header-h) + var(--space-4));
+  .picks__mini {
+    display: flex;
+    flex: none;
+    gap: 2px;
   }
-  .pick--featured {
-    border-top-color: var(--accent);
-    box-shadow: var(--shadow);
-  }
-  .pick:target {
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 45%, transparent);
-  }
-  .pick p,
-  .pick dl {
+  .pick__panel p,
+  .pick__panel dl {
     margin: 0;
   }
-  .pick__goal {
-    margin: 0;
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .pick--featured .pick__goal {
-    color: var(--accent);
-  }
-  .pick__pair {
+  .picks__pair {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
-    gap: var(--space-1) var(--space-2);
+    align-items: center;
+    gap: var(--space-3) var(--space-4);
+  }
+  .picks__prof {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--text);
     font-family: var(--font-display);
     font-size: var(--step-2);
     font-weight: 700;
-    line-height: 1.2;
+    text-decoration: none;
   }
-  .pick__pair a {
-    color: var(--text);
-    text-decoration-color: var(--border-strong);
-    text-underline-offset: 0.2em;
-  }
-  .pick__pair a:hover {
+  .picks__prof:hover {
     color: var(--link-hover);
   }
-  .pick__plus {
+  .picks__plus {
     color: var(--text-subtle);
-    font-weight: 400;
+    font-size: var(--step-2);
   }
-  .pick__why {
+  .picks__advantage {
+    font-weight: 600;
+  }
+  .picks__more {
     font-size: var(--step--1);
   }
-  .pick__facts {
+  .picks__more summary {
+    color: var(--link);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .picks__more > * + * {
+    margin-top: var(--space-2) !important;
+  }
+  .picks__facts {
     display: grid;
     gap: var(--space-2);
-    padding-top: var(--space-3);
-    border-top: 1px solid var(--border);
-    font-size: var(--step--1);
   }
-  .pick__facts dt,
-  .pick__label {
+  .picks__facts dt {
     font-weight: 700;
     color: var(--text-muted);
   }
-  .pick__facts dd {
+  .picks__facts dd {
     margin: 0;
-  }
-  .pick__alt {
-    padding: var(--space-2) var(--space-3);
-    border-radius: var(--radius-sm);
-    background: var(--surface-2);
-    font-size: var(--step--1);
   }
 </style>

@@ -1,95 +1,95 @@
 ---
 pageId: combat
 locale: en
-title: Mage combat in WoW Forever, priorities by tree
-seoTitle: WoW Forever Mage rotation, priorities by tree
-description: Conditional Frost, Fire and Arcane priorities for WoW Forever built from the official mechanics, plus control and survival, with no made-up rotations.
+title: How the Mage fights
+seoTitle: WoW Forever Mage combat, toolkit and what each tree adds
+description: The spells every WoW Forever Mage shares, what Arcane, Fire and Frost add to them and what each tree does better than the others.
 gameVersion: forever-beta-2026-10
 published: 2026-10-11
 reviewed: 2026-10-11
 reviewedBy: Sheep Happens
 status: published
 verification: analysis
-summary:
-  - These are conditional priorities (“if X happens, do Y”), not fixed sequences.
-  - They come from the official mechanics, but nobody has measured them in game yet.
-  - Frost freezes and shatters with Ice Lance; Fire turns crits into fast Pyroblasts; Arcane stacks Arcane Blast and cashes it in.
+wide: true
 sources: [blizzard-deep-dive-mage, blizzard-dev-notes, wiki-pyroblast, wiki-mage-abilities-classic]
-tags: [combat, rotation, priorities, control, survival]
+tags: [combat, toolkit, abilities, trees, control, survival, rotation]
 ---
 
-## How to read these priorities
+## The toolkit every Mage has
 
-Each list goes top to bottom: **use the first thing whose condition is met**. They are not fixed rotations, because Forever's mechanics depend on what happens in the fight (freezes, crits, charges).
+These spells come from your trainer, whatever your talents. Pass over an icon, or tap it, to see what it does.
 
-Several conditions hang on a proc, such as Heating Up, Missile Barrage or Fingers of Frost. If you find them hard to spot in time, my <PageLink to="addons">MageProcs</PageLink> addon shows them in the middle of the screen.
+<Toolkit />
 
-<Callout variant="warning" title="Untested analysis">
-  These lists are my reading of the mechanics Blizzard has published. Without numbers or access to levels 31–60 I cannot promise they are optimal. I will mark them “Tested” once they are.
-</Callout>
+## What each tree adds
 
-## Frost: single target
+Talents do not replace those spells: they add new ones and change how the old ones connect. The exact rotation depends on your talents, so it is on each <PageLink to="builds">build</PageLink>.
 
-<Priority title="Frost · single target" status="analysis" school="frost">
+<Picker label="The three trees" initial="frost">
+<Pick id="arcane" title="Arcane" icon="spell_holy_magicalsentry" school="arcane" heading="Build up power, then spend it">
 
-1. **Ice Lance** if the target is **Frozen** (after Frost Nova) or you have **Fingers of Frost** charges: 200% more damage. It has an 8 s cooldown.
-2. **Frostbolt** as your main spell. It slows (a Chill effect), which can grant Fingers of Frost charges. Use a high rank: low ranks do not trigger your talents.
-3. **Frostfire Bolt** (level 40+) if the target strongly resists Frost.
-4. Unfrozen **Ice Lance** or **Fire Blast** only while moving: both are instant.
+Every **Arcane Blast** gives you Spell Damage for 15 s, up to 4 times, and costs more than the last. You stack it while your mana allows, then spend that window on your strong spells. It can also trigger **Missile Barrage**: fast, free missiles.
 
-</Priority>
+<Chain items={[{ spell: 'Arcane Blast', note: 'up to 4 stacks' }, { spell: 'Arcane Wrath', note: 'the big hit, grows with your max mana' }]} />
 
-## Fire: single target
+**What it adds to your bars:**
 
-<Priority title="Fire · single target" status="analysis" school="fire">
+<SpellBar spells={['Arcane Blast', 'Arcane Wrath', 'Presence of Mind', 'Arcane Power']} />
 
-1. **Pyroblast** at **3 Heating Up stacks**: it casts in 1.5 s. The stacks last 20 s.
-2. **Fire Blast** when available: each one grants a Heating Up stack, two on a crit. With Improved Fire Blast, also to finish targets from afar.
-3. **Fireball** or **Frostfire Bolt** as filler: their crits build Heating Up.
-4. **Scorch** when you need a short cast. With Improved Scorch, remember its effect only helps you.
+<SpecVerdict spec="arcane" />
 
-</Priority>
+</Pick>
+<Pick id="fire" title="Fire" icon="spell_fire_firebolt02" school="fire" heading="Turn crits into Pyroblasts">
 
-## Arcane: single target
+Your crits with **Fireball**, **Frostfire Bolt**, **Fire Blast** and **Scorch** shorten your next **Pyroblast**: from a 6 s cast to 1.5 s at 3 stacks. **Ignite** burns on top of every crit.
 
-<Priority title="Arcane · single target" status="analysis" school="arcane">
+<Chain items={[{ spell: 'Fire Blast', note: 'always gives a stack' }, { spell: 'Heating Up', note: 'up to 3 stacks' }, { spell: 'Pyroblast', note: '1.5 s cast' }]} />
 
-1. **Arcane Missiles** when **Missile Barrage** is active: twice as fast and no mana cost.
-2. **Arcane Blast** to build stacks (up to 4) while your mana allows it: each stack grants Spell Damage based on your Intellect for 15 s from the first one, and makes the next one more expensive.
-3. **Arcane Wrath** (16-point talent) and other strong spells to **cash in** those 15 s. This is what Blizzard intends with the redesign.
-4. **Presence of Mind** and **Arcane Power** as damage cooldowns (Arcane Power now requires Presence of Mind).
+**What it adds to your bars:**
 
-</Priority>
+<SpellBar spells={['Pyroblast', 'Blast Wave', 'Combustion']} />
 
-## Multiple targets
+<SpecVerdict spec="fire" />
 
-The Mage's AoE tools are still **Blizzard**, **Arcane Explosion**, **Flamestrike**, **Cone of Cold** and the **Blast Wave** talent. <Status status="classic" />
+</Pick>
+<Pick id="frost" title="Frost" icon="spell_frost_frostbolt02" school="frost" heading="Control that turns into damage">
 
-In Forever, **Cone of Cold lasts less** (except on the first 4 targets it hits) and **Improved Blizzard slows less**. <Status status="verified" /> Be more careful when dragging large packs. <Status status="analysis" /> AoE rotations, spots and mana tips are in the <PageLink to="aoe-farming">AoE farming guide</PageLink>.
+**Frostbolt** slows, and that slow can grant **Fingers of Frost**, which treats your next spell as if the target were Frozen. **Frost Nova** freezes for real. Either way, **Ice Lance** deals 200% more.
+
+<Chain items={[{ spell: 'Frostbolt', note: 'slows' }, { spell: 'Fingers of Frost', note: 'or Frost Nova' }, { spell: 'Ice Lance', note: '200% more damage' }]} />
+
+**What it adds to your bars:**
+
+<SpellBar spells={['Ice Lance', 'Ice Block', 'Cold Snap', 'Ice Barrier']} />
+
+<SpecVerdict spec="frost" />
+
+</Pick>
+</Picker>
+
+## How the trees compare
+
+<TreeCompare />
+
+The talents and every tree's detail are in <PageLink to="talents">Talents</PageLink>.
+
+## If an enemy reaches you
+
+Your ways out. They are not a sequence: use whichever the moment asks for. <Status status="analysis" />
+
+<Chain loose items={[{ spell: 'Frost Nova', note: 'roots it in place' }, { spell: 'Blink', note: 'puts distance' }, { spell: 'Polymorph', note: 'takes a second enemy out' }, { spell: 'Ice Block', note: 'last resort, needs 16 Frost points' }, { spell: 'Cold Snap', note: 'resets Frost cooldowns, 10 min, needs 21 points' }]} />
+
+Two more things that save a fight: **Counterspell** stops a dangerous cast, and with 1 point in **Improved Counterspell** it always silences; **Mana Shield** absorbs damage with your mana. <Status status="verified" compact />
+
+Several of these moments hang on a proc that is easy to miss. My <PageLink to="addons">MageProcs</PageLink> addon shows them in the middle of the screen.
+
+## Against several enemies
+
+<SpellBar spells={[{ spell: 'Arcane Explosion', level: 14 }, { spell: 'Flamestrike', level: 16 }, { spell: 'Blizzard', level: 20 }, { spell: 'Cone of Cold', level: 26 }, { spell: 'Blast Wave' }]} />
+
+Your area spells, the last one a Fire talent. In Forever **Cone of Cold** lasts less (except on the first 4 targets it hits) and **Improved Blizzard** slows less, so be careful dragging large packs. <Status status="verified" compact /> How to do it step by step, and where: <PageLink to="aoe-farming">AoE farming</PageLink>.
 
 <Pending
-  why="Without damage numbers or tests on large packs, I cannot rank the AoE options."
-  next="I will test farming routes and multi-target pulls after launch."
-/>
-
-## Control and survival
-
-<Priority title="If an enemy reaches you" status="analysis" school="frost">
-
-1. **Frost Nova** to root it in place. As Frost, use the opening for **Ice Lance**.
-2. **Blink** away.
-3. **Polymorph** a second enemy to take it out of the fight.
-4. **Ice Block** as a last resort: it is now Frost's 16-point milestone.
-5. **Cold Snap** resets your Frost cooldowns, but its cooldown rises to 10 minutes: save it for emergencies.
-
-</Priority>
-
-- **Counterspell** with 1 point in **Improved Counterspell** always silences (previously 50% of the time). <Status status="verified" />
-- **Mana Shield** absorbs damage with your mana; **Arcane Shielding** makes it more efficient and improves Mage Armor resistances. <Status status="verified" />
-
-## Openers
-
-<Pending
-  why="Openers depend on damage values and effect durations that are not known yet."
-  next="I will document them per tree once they can be measured in game."
+  why="These comparisons are my reading of the mechanics Blizzard has published. Without measurements at level 60 I cannot promise how close the trees really are."
+  next="I will test them after launch and mark what holds as “Tested”."
 />

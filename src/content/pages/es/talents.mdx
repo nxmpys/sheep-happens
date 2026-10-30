@@ -3,49 +3,99 @@ pageId: talents
 locale: es
 title: Talentos del Mago en Forever
 seoTitle: Talentos del Mago en WoW Forever, Arcano, Fuego y Escarcha
-description: Cómo funcionan los talentos del Mago en WoW Forever, los nuevos talentos decisivos de 16 puntos, las tres ramas y los talentos que conectan escuelas.
+description: Cómo funcionan los talentos del Mago en WoW Forever, los talentos decisivos que desbloqueas con tus 51 puntos, las tres ramas y los talentos que conectan escuelas.
 gameVersion: forever-beta-2026-10
 published: 2026-10-11
 reviewed: 2026-10-11
 reviewedBy: Sheep Happens
 status: published
 verification: verified
-summary:
-  - Los talentos empiezan a nivel 10 y mantienen los árboles de Classic, con un talento decisivo nuevo a los 16 puntos.
-  - Se cambian en el instructor de clase; la doble especialización llega a nivel 40, aunque Blizzard estudia adelantarla.
-  - Varios talentos refuerzan hechizos de otras ramas, lo que abre la puerta a builds híbridas.
-  - 'Las builds están en su propia página: ya hay de leveo del 1 al 60.'
+wide: true
 sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, wowhead-dual-spec-podcast, seemeta-talents, warcrafttavern-legacy, wowhead-forever-talent-calc]
-tags: [talentos, builds, talentos decisivos, doble especialización]
+tags: [talentos, builds, talentos decisivos, doble especialización, híbridas]
 ---
 
-## Cómo funcionan los talentos en Forever
+<Tiles min={14}>
+<Tile title="Desde el nivel 10" icon="inv_misc_book_09">
 
-<FactList ids={['talents-start', 'talent-points', 'respec', 'dual-spec', 'legacy']} />
+Un punto por nivel: 51 a nivel 60, si se mantiene como en Classic. <Status status="analysis" compact />
 
-Los **talentos decisivos** son talentos de un solo punto que se desbloquean al invertir cierto número de puntos en una rama. Classic los tenía a los 11, 21 y 31 puntos; **Forever añade uno a los 16 puntos**. <Status status="verified" />
+</Tile>
+<Tile title="No son definitivos" icon="inv_misc_book_06">
+
+Los cambias en un instructor de clase de una ciudad principal. <Status status="verified" compact />
+
+</Tile>
+<Tile title="Dos builds a la vez" icon="inv_misc_book_12">
+
+Doble especialización desde el nivel 40 por ahora; Blizzard estudia adelantarla. <Status status="verified" compact />
+
+</Tile>
+<Tile title="Antes con Talented" icon="inv_misc_book_15">
+
+Este perk de Legado adelanta tu primer punto hasta el nivel 5. El máximo sigue en 51. <Status status="reported" compact />
+
+</Tile>
+</Tiles>
+
+## Tus 51 puntos
+
+Cada rama tiene **talentos decisivos** que desbloqueas gastando puntos en ella: a los 11, 16, 21 y 31. Mueve los controles: no puedes tenerlo todo, y esa elección es tu build.
+
+<PointSplitter />
 
 ## Las tres ramas
 
 <SpecCards />
 
-## Builds híbridas: talentos que cruzan escuelas
+## Talentos que cruzan escuelas
 
-Blizzard quiere «más espacio para builds que mezclen escuelas». Estos cambios oficiales lo hacen posible: <Status status="verified" />
+Con talentos de fila 1 tan baratos como estos, una rama puede tomar prestado de otra. Pasa por un nombre para leerlo como en el juego. <Status status="verified" />
 
-| Talento | Rama | Qué cruza |
-| --- | --- | --- |
-| Incineración | Fuego (fila 1) | También aumenta el crítico de **Lanza de hielo** y **Explosión Arcana** |
-| Accelerant | Fuego (fila 1) | También acelera **Descarga de Pirofrío** y **Cólera Arcana** |
-| Tromba de misiles | Arcano (fila 2) | Se activa con **Bola de Fuego**, **Descarga de Escarcha** y **Descarga de Pirofrío** |
-| Calentamiento | Fuego (fila 4) | Se alimenta de los críticos de **Descarga de Pirofrío** |
-| Precision | Escarcha (fila 1) | Da golpe a **todos** los hechizos, también los Arcanos |
-| Descarga de Pirofrío | Base (nivel 40) | Aprovecha la mayoría de los talentos de **Fuego y Escarcha** a la vez |
+<Tiles>
+<Tile title="Incineración" spell="Incineration" school="fire">
 
-Con 51 puntos y talentos de fila 1 tan baratos como Incineración o Precision, es razonable pensar en combinaciones como Escarcha con un poco de Fuego, o Arcano con un poco de Fuego. <Status status="analysis" /> No las recomiendo todavía porque nadie ha podido probarlas por encima del nivel 30.
+También sube el crítico de **Lanza de hielo** y **Explosión Arcana**.
 
-## Builds recomendadas
+</Tile>
+<Tile title="Accelerant" spell="Accelerant" school="fire">
 
-Las builds tienen su propio índice, por contenido (leveo, JcJ, mazmorras y banda), y cada una su página con los talentos, la rotación y el equipo. La de leveo llega al 60, con su orden de puntos en la <PageLink to="leveling">guía de leveo</PageLink>; las de JcJ, mazmorras y banda llegarán cuando se puedan probar en el juego. En la página de cada rama verás en qué contenido tiene build y por qué no en los demás. <PageLink to="builds">Ver las builds</PageLink>.
+También acelera **Descarga de Pirofrío** y **Cólera Arcana**.
 
-Para montar la tuya, usa la [calculadora de talentos de Forever de Wowhead](https://www.wowhead.com/forever/talent-calc/mage). <Status status="reported" />
+</Tile>
+<Tile title="Calentamiento" spell="Heating Up" school="fire">
+
+También se alimenta de los críticos de **Descarga de Pirofrío**.
+
+</Tile>
+<Tile title="Tromba de misiles" spell="Missile Barrage" school="arcane">
+
+También se activa con **Bola de Fuego**, **Descarga de Escarcha** y **Descarga de Pirofrío**.
+
+</Tile>
+<Tile title="Precision" spell="Precision" school="frost">
+
+Da golpe a **todos** los hechizos, también a los Arcanos.
+
+</Tile>
+<Tile title="Descarga de Pirofrío" spell="Frostfire Bolt">
+
+Hechizo base a nivel 40, que aprovecha la mayoría de talentos de Fuego y Escarcha a la vez.
+
+</Tile>
+</Tiles>
+
+## ¿Listo para elegir?
+
+<Tiles>
+<Tile title="Copia una build" icon="inv_misc_book_01" to="builds">
+
+Builds para subir de nivel y para mazmorras, cada una con sus talentos, orden de puntos y rotación.
+
+</Tile>
+<Tile title="Haz la tuya" icon="inv_misc_gear_01" to="talent-calc">
+
+Las tres ramas, el texto del juego de cada rango y un enlace para compartirla.
+
+</Tile>
+</Tiles>

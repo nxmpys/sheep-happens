@@ -80,15 +80,14 @@ ${body}
   const others = LOCALES.flatMap((l) => PAGE_IDS.filter((id) => !(l === 'es' && id === 'professions')).map((id) => page(l, id)));
   const today = new Date('2026-10-14T00:00:00Z');
 
-  it('needs the profession heading right above each detail block', () => {
-    const body = '### Encantamiento\n\n<ProfessionDetail id="tailoring" />\n\n### Pesca\n\n<ProfessionDetail id="fishing" />';
+  it('does not allow the same profession twice', () => {
+    const body = '<ProfessionDetail id="tailoring" />\n\n<ProfessionDetail id="tailoring" />';
     const errors = validatePages([...others, page('es', 'professions', body)], dataset, today).errors.join('\n');
-    expect(errors).toMatch(/<ProfessionDetail id="tailoring"> needs the heading "### Sastrería"/);
-    expect(errors).not.toMatch(/"fishing"> needs/);
+    expect(errors).toMatch(/<ProfessionDetail id="tailoring"> appears twice/);
   });
 
   it('requires every profession when the picks or the table link to them', () => {
-    const body = '<ProfessionTable />\n\n### Sastrería\n\n<ProfessionDetail id="tailoring" />\n\n<ProfessionDetail id="nope" />';
+    const body = '<ProfessionTable />\n\n<ProfessionDetail id="tailoring" />\n\n<ProfessionDetail id="nope" />';
     const errors = validatePages([...others, page('es', 'professions', body)], dataset, today).errors.join('\n');
     expect(errors).toMatch(/unknown profession "nope"/);
     expect(errors).toMatch(/has no <ProfessionDetail id="enchanting">/);

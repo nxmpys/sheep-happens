@@ -2,7 +2,6 @@
  * Components available inside every MDX page without importing them.
  * Editors write <ChangeExplorer />, <Pending why="…" />, etc. directly.
  */
-import AbilityGrid from './guide/AbilityGrid.astro';
 import AboutStory from './about/AboutStory.astro';
 import AboutLinks from './guide/AboutLinks.astro';
 import AddonDetail from './guide/AddonDetail.astro';
@@ -66,6 +65,23 @@ import WaterDungeons from './guide/WaterDungeons.astro';
 import WaterGear from './guide/WaterGear.astro';
 import WaterRanks from './guide/WaterRanks.astro';
 import WaterVersions from './guide/WaterVersions.astro';
+import Chain from './learn/Chain.astro';
+import MageIntro from './learn/MageIntro.astro';
+import Pick from './learn/Pick.astro';
+import Picker from './learn/Picker.astro';
+import Pieces from './learn/Pieces.astro';
+import PointSplitter from './learn/PointSplitter.astro';
+import RaceStrip from './learn/RaceStrip.astro';
+import SpellBar from './learn/SpellBar.astro';
+import SpecVerdict from './learn/SpecVerdict.astro';
+import Tile from './learn/Tile.astro';
+import Tiles from './learn/Tiles.astro';
+import Toolkit from './learn/Toolkit.astro';
+import TreeCompare from './learn/TreeCompare.astro';
+import TreeIntro from './learn/TreeIntro.astro';
+import AoeArena from './learn/AoeArena.astro';
+import AoeKit from './learn/AoeKit.astro';
+import SpotFinder from './learn/SpotFinder.astro';
 import Table from './ui/Table.astro';
 import WeeklyChanges from './guide/WeeklyChanges.astro';
 
@@ -73,8 +89,24 @@ export const mdxComponents = {
   table: Table,
   // Bold spell names become tooltip triggers (see SpellStrong.astro).
   strong: SpellStrong,
-  AbilityGrid,
   AboutStory,
+  Chain,
+  MageIntro,
+  Pick,
+  Picker,
+  Pieces,
+  PointSplitter,
+  RaceStrip,
+  SpellBar,
+  SpecVerdict,
+  Tile,
+  Tiles,
+  Toolkit,
+  TreeCompare,
+  TreeIntro,
+  AoeArena,
+  AoeKit,
+  SpotFinder,
   AboutLinks,
   AddonDetail,
   AddonLink,

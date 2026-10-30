@@ -1,0 +1,27 @@
+---
+/** One tab of a <Picker>: its button (icon and title) and its panel. */
+import GameIcon from './GameIcon.astro';
+
+interface Props {
+  id: string;
+  title: string;
+  spell?: string;
+  icon?: string;
+  school?: 'arcane' | 'fire' | 'frost';
+  /** Heading of the panel, when it says more than the button. */
+  heading?: string;
+}
+
+const { id, title, spell, icon, school, heading } = Astro.props;
+---
+
+<div class:list={['pick', school && `school-${school}`]}>
+  <button type="button" class="pick__button" data-pick={id}>
+    <GameIcon spell={spell} icon={icon} size={32} plain />
+    <span>{title}</span>
+  </button>
+  <div class:list={['pick__panel', school && 'pick__panel--school']} data-panel={id}>
+    {heading && <p class="pick__panel-title">{heading}</p>}
+    <slot />
+  </div>
+</div>

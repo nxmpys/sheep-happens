@@ -3,49 +3,99 @@ pageId: talents
 locale: en
 title: Mage talents in WoW Forever
 seoTitle: WoW Forever Mage talents, Arcane, Fire and Frost trees
-description: How Mage talents work in WoW Forever, the new 16-point milestones, the three trees and the talents that link schools together for hybrid builds.
+description: How Mage talents work in WoW Forever, the milestones you unlock with your 51 points, the three trees and the talents that link schools together.
 gameVersion: forever-beta-2026-10
 published: 2026-10-11
 reviewed: 2026-10-11
 reviewedBy: Sheep Happens
 status: published
 verification: verified
-summary:
-  - Talents start at level 10 and keep the Classic trees, with a new milestone at 16 points.
-  - You respec at a class trainer; dual specialization arrives at level 40, although Blizzard is considering an earlier level.
-  - Several talents boost spells from other trees, opening the door to hybrid builds.
-  - 'Builds have their own page: leveling builds from 1 to 60 are up.'
+wide: true
 sources: [blizzard-deep-dive-mage, wowhead-dual-spec-podcast, seemeta-talents, warcrafttavern-legacy, wowhead-forever-talent-calc]
-tags: [talents, builds, milestones, dual specialization]
+tags: [talents, builds, milestones, dual specialization, hybrid]
 ---
 
-## How talents work in Forever
+<Tiles min={14}>
+<Tile title="From level 10" icon="inv_misc_book_09">
 
-<FactList ids={['talents-start', 'talent-points', 'respec', 'dual-spec', 'legacy']} />
+One point per level: 51 at level 60, if it stays as in Classic. <Status status="analysis" compact />
 
-**Milestone talents** are one-point talents unlocked by spending a number of points in a tree. Classic had them at 11, 21 and 31 points; **Forever adds one at 16 points**. <Status status="verified" />
+</Tile>
+<Tile title="They are not final" icon="inv_misc_book_06">
+
+You change them at a class trainer in a major city. <Status status="verified" compact />
+
+</Tile>
+<Tile title="Two builds at once" icon="inv_misc_book_12">
+
+Dual specialization from level 40 for now; Blizzard is considering an earlier level. <Status status="verified" compact />
+
+</Tile>
+<Tile title="Earlier with Talented" icon="inv_misc_book_15">
+
+This Legacy perk brings your first point as early as level 5. The maximum stays at 51. <Status status="reported" compact />
+
+</Tile>
+</Tiles>
+
+## Your 51 points
+
+Each tree has **milestone talents** you unlock by spending points in it: at 11, 16, 21 and 31. Move the sliders: you cannot have everything, and that choice is your build.
+
+<PointSplitter />
 
 ## The three trees
 
 <SpecCards />
 
-## Hybrid builds: talents that cross schools
+## Talents that cross schools
 
-Blizzard wants “more room for cross-school builds”. These official changes make it possible: <Status status="verified" />
+With row-1 talents as cheap as these, a tree can borrow from another. Hover a name to read it in-game. <Status status="verified" />
 
-| Talent | Tree | What it crosses |
-| --- | --- | --- |
-| Incineration | Fire (row 1) | Also raises the crit chance of **Ice Lance** and **Arcane Blast** |
-| Accelerant | Fire (row 1) | Also speeds up **Frostfire Bolt** and **Arcane Wrath** |
-| Missile Barrage | Arcane (row 2) | Triggers from **Fireball**, **Frostbolt** and **Frostfire Bolt** |
-| Heating Up | Fire (row 4) | Fed by **Frostfire Bolt** crits |
-| Precision | Frost (row 1) | Gives hit to **all** spells, Arcane included |
-| Frostfire Bolt | Baseline (level 40) | Benefits from most **Fire and Frost** talents at once |
+<Tiles>
+<Tile title="Incineration" spell="Incineration" school="fire">
 
-With 51 points and row-1 talents as cheap as Incineration or Precision, combinations such as Frost with a dip into Fire, or Arcane with a dip into Fire, look reasonable. <Status status="analysis" /> I do not recommend them yet because nobody has been able to test them above level 30.
+Also raises the crit chance of **Ice Lance** and **Arcane Blast**.
 
-## Recommended builds
+</Tile>
+<Tile title="Accelerant" spell="Accelerant" school="fire">
 
-Builds have their own index, by content (leveling, PvP, dungeons and raid), and each one its own page with talents, rotation and gear. The leveling build reaches 60, with its point order in the <PageLink to="leveling">leveling guide</PageLink>; PvP, dungeon and raid builds will follow once they can be tested in game. Each tree's page shows which content it has a build for, and why not the rest. <PageLink to="builds">See the builds</PageLink>.
+Also speeds up **Frostfire Bolt** and **Arcane Wrath**.
 
-To make your own, use the [Wowhead Forever talent calculator](https://www.wowhead.com/forever/talent-calc/mage). <Status status="reported" />
+</Tile>
+<Tile title="Heating Up" spell="Heating Up" school="fire">
+
+Also fed by **Frostfire Bolt** crits.
+
+</Tile>
+<Tile title="Missile Barrage" spell="Missile Barrage" school="arcane">
+
+Also triggers from **Fireball**, **Frostbolt** and **Frostfire Bolt**.
+
+</Tile>
+<Tile title="Precision" spell="Precision" school="frost">
+
+Gives hit to **all** spells, Arcane included.
+
+</Tile>
+<Tile title="Frostfire Bolt" spell="Frostfire Bolt">
+
+Baseline at level 40, and benefits from most Fire and Frost talents at once.
+
+</Tile>
+</Tiles>
+
+## Ready to pick?
+
+<Tiles>
+<Tile title="Copy a build" icon="inv_misc_book_01" to="builds">
+
+Builds for leveling and dungeons, each with its talents, point order and rotation.
+
+</Tile>
+<Tile title="Make your own" icon="inv_misc_gear_01" to="talent-calc">
+
+The three trees, the in-game text of every rank and a link to share it.
+
+</Tile>
+</Tiles>

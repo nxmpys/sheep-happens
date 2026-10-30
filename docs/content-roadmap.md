@@ -280,7 +280,8 @@ Al hacer una idea, márcala y anota dónde está.
 
 ### Aprender jugando
 
-- [ ] **Guía «Mi primer Mago» del 1 al 20** (casi ya): qué entrenar en cada nivel, cuándo beber, Nova de Escarcha y Blink, y errores típicos.
+- [x] **Guía «Mi primer Mago»** (hecho el 2026-10-30): «Primeros pasos en Azeroth», con el camino por tramos de nivel, qué hacer entre combates y qué hace el Mago fuera del combate. Falta el tramo del 31 al 60, que espera al lanzamiento.
+- [x] **Aprende como recorrido para quien empieza** (hecho el 2026-10-30): clase, combate, talentos y ramas, primeros pasos; los cambios respecto a Classic pasan a Herramientas.
 - [ ] **Planificador de talentos en profundidad** (con datos): puntos con clic, requisitos y enlace para compartir, con cada talento explicado. De momento, cada build tiene su vista de calculadora y enlace a Wowhead (2026-10-13); el planificador propio espera a los valores definitivos.
 - [ ] **Orden de puntos por nivel** en las builds de leveo, del 10 al 60 (con datos). Del 10 al 30, hecho el 2026-10-14 (tabla «Orden de puntos» de cada build).
 - [ ] **Prioridades en formato «de bolsillo»** (ya): versión compacta de Combate para tener abierta en el móvil mientras juegas.

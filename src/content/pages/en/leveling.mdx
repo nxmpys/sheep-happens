@@ -1,125 +1,169 @@
 ---
 pageId: leveling
 locale: en
-title: WoW Forever Mage leveling guide
+title: First steps in Azeroth
 seoTitle: WoW Forever Mage leveling guide, how to level up
-description: A Mage levels best when the enemy never touches it. Slow, freeze and finish from range; these tips work with any tree.
+description: Your first steps as a Mage in WoW Forever. What you learn at each level, what to do between fights and what the class does outside combat, with any tree.
 gameVersion: forever-beta-2026-10
 published: 2026-10-11
 reviewed: 2026-10-26
 reviewedBy: Sheep Happens
 status: published
 verification: analysis
-summary:
-  - Talents start at level 10. With the Talented Legacy perk they start at level 5, but your first character at launch will not have it.
-  - 'Level 20 is the Mage''s big jump: Blink, Blizzard, Evocation and Mana Shield.'
-  - Fight one enemy at a time, finish with your wand and do not downrank your spells.
-  - The level-by-level progression reaches 30 for now.
+wide: true
 sources: [blizzard-deep-dive-mage, blizzard-dev-notes, wowhead-forever-talent-calc, mobalytics-mage-leveling, method-mage-leveling, icyveins-dungeon-xp, warcrafttavern-legacy, wowhead-dual-spec-podcast]
-tocGroups:
-  - { title: Progression by level, start: progression-by-level }
-  - { title: How to play, start: how-to-play }
-  - { title: What Forever changes, start: what-forever-changes-for-leveling }
-  - { title: What is missing, start: beyond-level-30 }
-tags: [leveling, level up, leveling guide, tips, how to play, dungeons, 1-30]
+tags: [leveling, level up, leveling guide, first steps, tips, how to play, dungeons, 1-30]
 ---
 
-Talents and point order live in the <BuildLink use="leveling">leveling builds</BuildLink>. <PageLink to="races">Races</PageLink> shows which one to level with.
+## From your first spell to level 60
 
-## Progression by level
+Pick a stretch of the road. Spell levels come from Forever's trainer list. <Status status="reported" />
 
-I split the road into three stretches by when your way of playing really changes: talents start at level 10, and level 20 is the Mage's big jump (Blink, Blizzard, Evocation and Mana Shield). Spell levels come from Forever's trainer list (Wowhead calculator). <Status status="reported" />
+<Picker label="Stretches of the road" initial="start">
+<Pick id="start" title="Create your Mage" icon="classicon_mage" heading="Pick the race you like">
 
-### Levels 1 to 9: before talents
+Race changes your numbers very little and Blizzard keeps tuning it, and this is the character you will play from now on. So pick the one you like. If you also want to optimize, these are my first picks for each content; tap one to see why.
 
-- **Spells.** You start with **Fireball**, Frost Armor and Arcane Intellect. At level 4 comes **Frostbolt**, which slows the enemy. At level 6, **Fire Blast**, an instant finisher, and at level 8, **Polymorph** and **Arcane Missiles**.
+<RaceStrip />
+
+Every racial, and the ranking by content: <PageLink to="races">Races</PageLink>. Which <PageLink to="professions">professions</PageLink> to learn can wait until you reach a city.
+
+</Pick>
+<Pick id="1-9" title="Levels 1 to 9" spell="Fireball" heading="Before talents">
+
+<SpellBar spells={[{ spell: 'Fireball', level: 1 }, { spell: 'Frost Armor', level: 1 }, { spell: 'Arcane Intellect', level: 1 }, { spell: 'Frostbolt', level: 4 }, { spell: 'Conjure Water', icon: 'inv_drink_06', level: 4 }, { spell: 'Fire Blast', level: 6 }, { spell: 'Polymorph', level: 8 }, { spell: 'Arcane Missiles', level: 8 }]} />
+
+<Pieces>
+
 - **How you fight.** Frostbolt, another Frostbolt, then finish with Fire Blast or your wand. Keep Frost Armor and Arcane Intellect up at all times.
-- **The wand.** Get the Lesser Magic Wand (level 5) as soon as you can, from Enchanting or the Auction House: early on it deals almost as much as your spells and costs no mana. <Status status="reported" /> Since 15 October you must stand still for 0.5 s before shooting. <Status status="verified" />
-- **Water and food.** From levels 4 and 6 you conjure your own: do not spend money on them.
-- **With Talented.** If you have the Talented Legacy perk at 5/5, your first talent point comes at level 5.
-- **Limits.** Little mana and no way to escape. Fight one enemy at a time and drink when you drop below half.
+- **Get a wand.** The Lesser Magic Wand (level 5), from Enchanting or the Auction House: early on it deals almost as much as your spells and costs no mana. Since 15 October you must stand still for 0.5 s before shooting. <Status status="reported" compact />
+- **Your limit.** Little mana and no way to escape. Fight one enemy at a time and drink when you drop below half.
 
-### Levels 10 to 19: first talents and Frost Nova
+</Pieces>
 
-- **Frost Nova at level 10.** It freezes nearby enemies for up to 8 s and comes back every 25 s. It is how you get away when an enemy reaches you. <Status status="reported" />
-- **Talents.** One point per level from 10. Your <BuildLink use="leveling">leveling build</BuildLink> tells you which ones.
-- **More spells.** Arcane Explosion at level 14, your first AoE spell; Flamestrike at level 16; Remove Lesser Curse at level 18. Against a single enemy they are not worth it: they cost a lot of mana.
-- **A better wand.** The Greater Magic Wand is level 13. <Status status="reported" />
-- **How you fight.** From range; if it reaches you, Frost Nova, a few steps back and keep casting.
-- **Limits.** You have one Frost Nova and no Blink yet: do not take on two enemies without Polymorph for the second one.
+</Pick>
+<Pick id="10-19" title="Levels 10 to 19" spell="Frost Nova" heading="First talents and Frost Nova">
 
-### Levels 20 to 30: the big jump
+<SpellBar spells={[{ spell: 'Frost Nova', level: 10 }, { spell: 'Arcane Explosion', level: 14 }, { spell: 'Flamestrike', level: 16 }, { spell: 'Remove Lesser Curse', level: 18 }]} />
 
-- **Level 20.** **Blink**, **Blizzard**, **Evocation**, **Mana Shield**, Fire Ward, rank 4 Frostbolt and your first teleports.
-- **From 22 to 30.** Frost Ward and **Scorch** at level 22; **Counterspell** at 24; **Cone of Cold**, rank 2 Frost Nova and rank 5 Frostbolt at 26; the mana gem (Conjure Mana Agate) and rank 2 Blizzard at 28; Ice Armor at 30.
-- **How you fight.** On top of Frost Nova you now have Blink to escape and Counterspell against casters. From 22 you can start trying AoE farming.
-- **Limits.** Spells cost more and more mana. Visit your trainer every two levels: your damage depends on new ranks.
+<Pieces>
 
-## How to play
+- **How you fight.** From range; if it reaches you, **Frost Nova** (up to 8 s, back every 25 s), a few steps back and keep casting. <Status status="reported" compact />
+- **Talents.** One point per level. Your <BuildLink use="leveling">leveling build</BuildLink> tells you which ones.
+- **A better wand.** The Greater Magic Wand is level 13. <Status status="reported" compact />
+- **Your limit.** One Frost Nova and no Blink yet: do not take on two enemies without Polymorph for the second one. Area spells are not worth their mana against one enemy.
 
-There is no fixed rotation: you decide based on what the enemy does. Each build's rotation is on its page; these priorities work with any of them. <Status status="analysis" />
+</Pieces>
 
-### Against one enemy
+</Pick>
+<Pick id="20-30" title="Levels 20 to 30" spell="Blink" heading="The big jump">
 
-1. **Open from max range.** If you open with Frostbolt, it arrives slowed and you buy time.
-2. **While it walks in, keep casting.** Every second it takes to reach you is damage it cannot answer.
-3. **If it reaches you:** Frost Nova, walk a few steps away and lead with your biggest hit, because damage can break the freeze. <Status status="reported" />
-4. **Finish** with Fire Blast or your wand, so you do not spend mana on the last hit.
+<SpellBar spells={[{ spell: 'Blink', level: 20 }, { spell: 'Blizzard', level: 20 }, { spell: 'Evocation', level: 20 }, { spell: 'Mana Shield', level: 20 }, { spell: 'Scorch', level: 22 }, { spell: 'Counterspell', level: 24 }, { spell: 'Cone of Cold', level: 26 }, { spell: 'Conjure Mana Agate', icon: 'inv_misc_gem_emerald_01', level: 28 }, { spell: 'Ice Armor', level: 30 }]} />
 
-### Mana and downtime
+<Pieces>
 
-- **The five-second rule.** Your mana stops regenerating for 5 s every time you cast. Finishing with your wand lets it recover. <Status status="classic" />
-- **Drink between fights.** Conjure water and food before leaving town; from 28, also carry the mana gem for long fights. Why you drink more than in Classic and how much water to carry: <PageLink to="mage-water">Mage water</PageLink>.
-- **Evocation** (level 20, 8-minute cooldown) restores mana very quickly. Use it in a fight that drags on or to skip a stop. <Status status="reported" />
-- **Do not downrank.** In Forever, ranks far below your level get less from your spell damage and trigger your talents less. Use your highest rank. <Status status="verified" />
+- **How you fight.** On top of Frost Nova you now have Blink to escape and Counterspell against casters. Your first teleports arrive at 20 too.
+- **Try farming.** From 22 you can start pulling small packs: <PageLink to="aoe-farming">AoE farming</PageLink>.
+- **Your limit.** Spells cost more and more mana. Visit your trainer every two levels: your damage depends on new ranks.
 
-### Control and survival
+</Pieces>
 
-- **Polymorph** takes a humanoid or beast out of the fight for up to 20 s (rank 1). Any damage wakes it, and only one target at a time. <Status status="reported" />
-- **Blink** moves you 20 yards forward and frees you from stuns and roots. Save it for when Frost Nova is down. <Status status="reported" />
-- **Mana Shield** absorbs physical damage with mana. Use it when you get caught and need to finish a cast.
-- **Frost Armor** and **Ice Armor** slow whoever hits you in melee. <Status status="reported" />
-- **Counterspell** (level 24) stops a caster's heal or big spell.
+</Pick>
+<Pick id="31-60" title="Levels 31 to 60" spell="Frostfire Bolt" heading="Still to write">
 
-### When several enemies show up
+The level-by-level road reaches 30 for now; I will complete 31 to 60 on this same page. What is already known: at level 40 come **Frostfire Bolt** and dual specialization, which lets you carry two builds at once. <Status status="verified" compact /> Your <BuildLink use="leveling">leveling build</BuildLink> already goes all the way to 60.
 
-- **Avoid it.** Pull one enemy at a time, watch for patrols and avoid fighting in caves when you can: there is no room to back off. <Status status="reported" />
-- **Two enemies:** Polymorph the second one and kill the first.
-- **Three or more:** Frost Nova, walk away, focus one and Blink if they catch you again. If the fight is lost, keep moving until they stop chasing you.
-- **If you want to pull packs on purpose,** follow the <PageLink to="aoe-farming">AoE farming</PageLink> guide and do not improvise with ranged enemies.
+</Pick>
+</Picker>
 
-### When a fight goes wrong
+## Between fights
 
-If an extra enemy joins, Frost Nova misses or you run out of mana mid-fight, stop and choose: Polymorph the newcomer, Frost Nova and Blink to gain distance, Evocation or a potion. If none of that is enough, walk away and let the enemies go home.
+<Tiles>
+<Tile title="Drink" icon="inv_drink_06">
 
-If you die twice in the same spot, change area or quest. Insisting on the same approach costs more than turning back. <Status status="analysis" />
+Conjure water and food before leaving town. Why you drink more than in Classic and how much to carry: <PageLink to="mage-water">Mage water</PageLink>.
 
-### In a group
+</Tile>
+<Tile title="The five-second rule" icon="inv_misc_pocketwatch_03">
 
-- **Let the tank start** and wait 2 or 3 seconds before your first spell.
-- **Blizzard only once the tank holds the pack**, and never on a polymorphed enemy.
-- **Do not Frost Nova next to the tank:** frozen enemies attack whoever is closest. Keep it for emergencies. <Status status="reported" />
-- **Hand out** Arcane Intellect, water and food before you start.
+Your mana stops regenerating for 5 s every time you cast. Finishing with your wand lets it recover. <Status status="classic" compact />
 
-## Key spells from 1 to 30
+</Tile>
+<Tile title="Evocation" spell="Evocation">
 
-Levels from Forever's trainer list (Wowhead calculator), which match Classic and Method's guide. <Status status="reported" />
+From level 20, every 8 minutes. Restores mana very quickly: for a fight that drags on, or to skip a stop. <Status status="reported" compact />
 
-<LevelingSpells />
+</Tile>
+<Tile title="Your highest rank" icon="inv_misc_book_08">
 
-More on each spell in the <PageLink to="guide">class guide</PageLink> and in <PageLink to="changes">Forever changes</PageLink>.
+In Forever, ranks far below your level get less from your spell damage and trigger your talents less. <Status status="verified" compact />
+
+</Tile>
+</Tiles>
+
+## The Mage in the world
+
+Fights are not all there is. These are worth doing on your way up:
+
+<Tiles>
+<Tile title="Class quests" icon="inv_staff_14" to="class-quests">
+
+A robe at 15 and 26, a wand at 30 and the best staff until 50.
+
+</Tile>
+<Tile title="Library books" icon="inv_misc_book_12" to="library">
+
+Pick them up as you go: the first teaches you Study, and 20 of them get you a ring with spell damage.
+
+</Tile>
+<Tile title="Scrolls" icon="inv_scroll_03" to="scrolls">
+
+Decipher them while you drink, for one-hour buffs.
+
+</Tile>
+<Tile title="AoE farming" spell="Blizzard" to="aoe-farming">
+
+Pull small packs from 14 onwards, and where to do it at each level.
+
+</Tile>
+<Tile title="Gear" icon="inv_chest_cloth_36" to="gear">
+
+The key leveling pieces, level by level.
+
+</Tile>
+<Tile title="Professions" icon="trade_tailoring" to="professions">
+
+Which two to learn, and how they help while leveling.
+
+</Tile>
+</Tiles>
 
 ## Common mistakes
+
+<Pieces dont>
 
 - **Breaking your own Frost Nova.** Damage can free a frozen enemy: lead with your biggest hit, not small ones.
 - **Pulling too much.** Frost Nova in the middle of a pack without knowing where you will back off to, or fighting with patrols nearby.
 - **Spending mana on AoE against one enemy.** Arcane Explosion and Blizzard are for packs.
-- **Downranking like in Classic.** In Forever it triggers your talents less.
 - **Forgetting the trainer and the wand.** Your damage depends on new ranks, and the wand saves mana on every finisher.
-- **Starting AoE farming before 22** or on enemies that attack at range.
-- **In a group:** Frost Nova next to the tank, Blizzard before the tank holds the pack, or on a polymorphed enemy.
+- **Farming too early.** Before 22, or on enemies that attack at range.
+- **In a group.** Frost Nova next to the tank, Blizzard before the tank holds the pack, or on a polymorphed enemy.
 
-## What Forever changes for leveling
+</Pieces>
+
+## All the key spells
+
+<details class="disclosure">
+<summary>Every key spell from 1 to 30, in one table</summary>
+
+<LevelingSpells />
+
+</details>
+
+## If you come from Classic
+
+<details class="disclosure">
+<summary>What Forever changes for leveling</summary>
 
 <FactList ids={['talents-start', 'legacy', 'respec', 'dual-spec']} />
 
@@ -143,9 +187,7 @@ With **Comprehension** you can read scrolls dropped by creatures. They have been
 
 How to read them, what skill each one needs and leveling tips: <PageLink to="scrolls">quick scrolls guide</PageLink>.
 
-## Beyond level 30
-
-The level-by-level progression, key spells and play tips reach 30 for now; I will complete 31 to 60 on this same page. What is already known to change: at level 40 come **Frostfire Bolt** and dual specialization, which will let you carry two builds at once. <Status status="verified" />
+</details>
 
 ## What is still unconfirmed
 

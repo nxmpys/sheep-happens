@@ -1,0 +1,44 @@
+---
+/**
+ * Spells that lead to one another, with arrows between them:
+ *   <Chain items={[{ spell: 'Frostbolt', note: 'slows' }, { spell: 'Ice Lance' }]} />
+ * The name comes from the spell unless `name` is given (a mechanic with no spell).
+ * `loose` is for options with no order: separate cards and no arrows.
+ */
+import GameIcon from './GameIcon.astro';
+import Icon from '../ui/Icon.astro';
+import '../../styles/learn.css';
+import { getLocale } from '../../i18n/locale';
+import { localSpellName } from '../../lib/names';
+
+interface Item {
+  spell?: string;
+  icon?: string;
+  name?: string;
+  note?: string;
+}
+
+interface Props {
+  items: Item[];
+  /** The order does not matter: no arrows. */
+  loose?: boolean;
+}
+
+const { items, loose = false } = Astro.props;
+const locale = getLocale(Astro);
+---
+
+<ol class:list={['chain', { 'chain--loose': loose }]} data-no-spell-links>
+  {
+    items.map((item, index) => (
+      <li class="chain__step">
+        <span class="chain__box">
+          <GameIcon spell={item.spell} icon={item.icon} size={44} />
+          <span class="chain__name">{item.name ?? localSpellName(item.spell ?? '', locale)}</span>
+          {item.note && <span class="chain__note">{item.note}</span>}
+        </span>
+        {!loose && index < items.length - 1 && <Icon name="arrowRight" size={18} class="chain__arrow" />}
+      </li>
+    ))
+  }
+</ol>

@@ -1,125 +1,169 @@
 ---
 pageId: leveling
 locale: es
-title: Guía de leveo del Mago en WoW Forever
+title: Primeros pasos en Azeroth
 seoTitle: Guía de leveo de Mago en WoW Forever, cómo subir de nivel
-description: El Mago sube mejor si el enemigo no llega a tocarle. Ralentiza, congela y remata a distancia; estos consejos sirven con cualquier rama.
+description: Tus primeros pasos como Mago en WoW Forever. Qué aprendes en cada nivel, qué hacer entre combates y qué hace la clase fuera del combate, con cualquier rama.
 gameVersion: forever-beta-2026-10
 published: 2026-10-11
 reviewed: 2026-10-26
 reviewedBy: Sheep Happens
 status: published
 verification: analysis
-summary:
-  - Los talentos empiezan a nivel 10. Con el perk de Legado Talented empiezan a nivel 5, pero tu primer personaje en el lanzamiento no lo tendrá.
-  - 'El nivel 20 es el gran salto del Mago: Traslación, Ventisca, Evocación y Escudo de maná.'
-  - Lucha contra un enemigo cada vez, remata con la varita y no bajes de rango tus hechizos.
-  - La progresión nivel a nivel llega por ahora al 30.
+wide: true
 sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, wowhead-forever-talent-calc, mobalytics-mage-leveling, method-mage-leveling, icyveins-dungeon-xp, warcrafttavern-legacy, wowhead-dual-spec-podcast]
-tocGroups:
-  - { title: Progresión por niveles, start: progresión-por-niveles }
-  - { title: Cómo jugar, start: cómo-jugar }
-  - { title: Qué cambia en Forever, start: qué-cambia-en-forever-para-subir-de-nivel }
-  - { title: Lo que falta, start: más-allá-del-nivel-30 }
-tags: [leveo, nivelación, subir de nivel, guía de leveo, consejos, cómo jugar, mazmorras, 1-30]
+tags: [leveo, nivelación, subir de nivel, guía de leveo, primeros pasos, consejos, cómo jugar, mazmorras, 1-30]
 ---
 
-Los talentos y el orden de puntos están en las <BuildLink use="leveling">builds de leveo</BuildLink>. En <PageLink to="races">razas</PageLink> ves cuál elegir para subir.
+## De tu primer hechizo al nivel 60
 
-## Progresión por niveles
+Elige un tramo del camino. Los niveles de los hechizos son los de la lista del instructor de Forever. <Status status="reported" />
 
-Divido el camino en tres tramos según cuándo cambia de verdad tu forma de jugar: los talentos empiezan a nivel 10 y el nivel 20 es el gran salto del Mago (Traslación, Ventisca, Evocación y Escudo de maná). Los niveles de los hechizos son los de la lista del instructor de Forever (calculadora de Wowhead). <Status status="reported" />
+<Picker label="Tramos del camino" initial="start">
+<Pick id="start" title="Crea tu Mago" icon="classicon_mage" heading="Elige la raza que te guste">
 
-### Niveles 1 a 9: antes de los talentos
+La raza cambia muy poco tus números y Blizzard la retoca a menudo, y este es el personaje con el que vas a jugar a partir de ahora. Así que elige la que te guste. Si además quieres optimizar, estas son mis primeras opciones para cada contenido; toca una para ver por qué.
 
-- **Hechizos.** Empiezas con **Bola de Fuego** (Fireball), Armadura de Escarcha (Frost Armor) y Intelecto Arcano (Arcane Intellect). A nivel 4 llega **Descarga de Escarcha** (Frostbolt), que ralentiza al enemigo. A nivel 6, **Explosión de Fuego** (Fire Blast), para rematar al instante, y a nivel 8, **Polimorfia** (Polymorph) y **Misiles Arcanos** (Arcane Missiles).
+<RaceStrip />
+
+Todas las raciales y la clasificación por contenido: <PageLink to="races">Razas</PageLink>. Qué <PageLink to="professions">profesiones</PageLink> aprender puede esperar a que llegues a una ciudad.
+
+</Pick>
+<Pick id="1-9" title="Niveles 1 a 9" spell="Fireball" heading="Antes de los talentos">
+
+<SpellBar spells={[{ spell: 'Fireball', level: 1 }, { spell: 'Frost Armor', level: 1 }, { spell: 'Arcane Intellect', level: 1 }, { spell: 'Frostbolt', level: 4 }, { spell: 'Conjure Water', icon: 'inv_drink_06', level: 4 }, { spell: 'Fire Blast', level: 6 }, { spell: 'Polymorph', level: 8 }, { spell: 'Arcane Missiles', level: 8 }]} />
+
+<Pieces>
+
 - **Cómo combates.** Descarga de Escarcha, otra Descarga de Escarcha y remate con Explosión de Fuego o con la varita. Lleva siempre puestos Armadura de Escarcha e Intelecto Arcano.
-- **La varita.** Consigue la Lesser Magic Wand (nivel 5) en cuanto puedas, de Encantamiento o de la casa de subastas: al principio hace casi tanto daño como tus hechizos y no gasta maná. <Status status="reported" /> Desde el 15 de octubre tienes que estar quieto 0,5 s antes de disparar. <Status status="verified" />
-- **Agua y comida.** Desde los niveles 4 y 6 las conjuras tú: no gastes dinero en ellas.
-- **Con Talented.** Si tienes el perk de Legado Talented 5/5, tu primer punto de talento llega a nivel 5.
-- **Límites.** Tienes poco maná y nada para escapar. Lucha contra un enemigo cada vez y bebe cuando bajes de la mitad.
+- **Consigue una varita.** La Lesser Magic Wand (nivel 5), de Encantamiento o de la casa de subastas: al principio hace casi tanto daño como tus hechizos y no gasta maná. Desde el 15 de octubre tienes que estar quieto 0,5 s antes de disparar. <Status status="reported" compact />
+- **Tu límite.** Poco maná y nada para escapar. Lucha contra un enemigo cada vez y bebe cuando bajes de la mitad.
 
-### Niveles 10 a 19: primeros talentos y Nova de Escarcha
+</Pieces>
 
-- **Nova de Escarcha a nivel 10.** Congela hasta 8 s a los enemigos que tienes cerca y vuelve cada 25 s. Es lo que te permite alejarte cuando un enemigo llega a tu lado. <Status status="reported" />
-- **Talentos.** Un punto por nivel desde el 10. Cuáles coger lo dice tu <BuildLink use="leveling">build de leveo</BuildLink>.
-- **Más hechizos.** Deflagración Arcana (Arcane Explosion) a nivel 14, tu primer hechizo de área; Fogonazo (Flamestrike) a nivel 16; Deshacer maldición inferior (Remove Lesser Curse) a nivel 18. Contra un solo enemigo no te compensan: gastan mucho maná.
-- **La varita mejor.** La Greater Magic Wand es de nivel 13. <Status status="reported" />
-- **Cómo combates.** Desde lejos; si llega a tu lado, Nova de Escarcha, unos pasos atrás y sigue lanzando.
-- **Límites.** Solo tienes una Nova de Escarcha y todavía no tienes Traslación (Blink): no ataques a dos enemigos a la vez sin Polimorfia para el segundo.
+</Pick>
+<Pick id="10-19" title="Niveles 10 a 19" spell="Frost Nova" heading="Primeros talentos y Nova de Escarcha">
 
-### Niveles 20 a 30: el gran salto
+<SpellBar spells={[{ spell: 'Frost Nova', level: 10 }, { spell: 'Arcane Explosion', level: 14 }, { spell: 'Flamestrike', level: 16 }, { spell: 'Remove Lesser Curse', level: 18 }]} />
 
-- **Nivel 20.** **Traslación**, **Ventisca** (Blizzard), **Evocación** (Evocation), **Escudo de maná** (Mana Shield), Custodia de Fuego (Fire Ward), Descarga de Escarcha de rango 4 y los primeros teletransportes.
-- **Del 22 al 30.** Custodia de Escarcha (Frost Ward) y **Chamuscar** (Scorch) a nivel 22; **Contrahechizo** (Counterspell) a nivel 24; **Cono de frío**, Nova de Escarcha de rango 2 y Descarga de Escarcha de rango 5 a nivel 26; gema de maná (Conjure Mana Agate) y Ventisca de rango 2 a nivel 28; Armadura de hielo (Ice Armor) a nivel 30.
-- **Cómo combates.** Además de Nova de Escarcha, ahora tienes Traslación para escapar y Contrahechizo contra los lanzadores. A partir del 22 puedes empezar a probar el farmeo en área.
-- **Límites.** Los hechizos cuestan cada vez más maná. Visita al instructor cada dos niveles: tu daño depende de los rangos nuevos.
+<Pieces>
 
-## Cómo jugar
+- **Cómo combates.** Desde lejos; si llega a tu lado, **Nova de Escarcha** (hasta 8 s, vuelve cada 25 s), unos pasos atrás y sigue lanzando. <Status status="reported" compact />
+- **Talentos.** Un punto por nivel. Cuáles coger lo dice tu <BuildLink use="leveling">build de leveo</BuildLink>.
+- **Una varita mejor.** La Greater Magic Wand es de nivel 13. <Status status="reported" compact />
+- **Tu límite.** Una sola Nova de Escarcha y aún sin Traslación: no ataques a dos enemigos sin Polimorfia para el segundo. Los hechizos de área no compensan su maná contra un solo enemigo.
 
-No hay una rotación fija: decides según lo que haga el enemigo. La rotación de cada build está en su página; estas prioridades sirven con cualquiera. <Status status="analysis" />
+</Pieces>
 
-### Contra un enemigo
+</Pick>
+<Pick id="20-30" title="Niveles 20 a 30" spell="Blink" heading="El gran salto">
 
-1. **Abre a máxima distancia.** Si abres con Descarga de Escarcha, llega ralentizado y ganas tiempo.
-2. **Mientras se acerca, sigue lanzando.** Cada segundo que tarda en llegar es daño que no te devuelve.
-3. **Si llega a tu lado:** Nova de Escarcha, aléjate unos pasos y empieza por tu golpe más fuerte, porque el daño puede romper la congelación. <Status status="reported" />
-4. **Remata** con Explosión de Fuego o con la varita, para no gastar maná en el último golpe.
+<SpellBar spells={[{ spell: 'Blink', level: 20 }, { spell: 'Blizzard', level: 20 }, { spell: 'Evocation', level: 20 }, { spell: 'Mana Shield', level: 20 }, { spell: 'Scorch', level: 22 }, { spell: 'Counterspell', level: 24 }, { spell: 'Cone of Cold', level: 26 }, { spell: 'Conjure Mana Agate', icon: 'inv_misc_gem_emerald_01', level: 28 }, { spell: 'Ice Armor', level: 30 }]} />
 
-### Maná y descansos
+<Pieces>
 
-- **La regla de los 5 segundos.** Tu maná deja de regenerarse durante 5 s cada vez que lanzas un hechizo. Rematar con la varita deja que se recupere. <Status status="classic" />
-- **Bebe entre combates.** Conjura agua y comida antes de salir de la ciudad; desde el 28, lleva también la gema de maná para los combates largos. Por qué se bebe más que en Classic y cuánta agua llevar: <PageLink to="mage-water">Agua del Mago</PageLink>.
-- **Evocación** (nivel 20, se reutiliza cada 8 minutos) te devuelve maná muy rápido. Úsala en un combate que se alarga o para ahorrarte una parada. <Status status="reported" />
-- **No bajes de rango.** En Forever, los rangos muy inferiores a tu nivel aprovechan menos tu daño de hechizos y activan menos tus talentos. Usa el rango más alto que tengas. <Status status="verified" />
+- **Cómo combates.** Además de Nova de Escarcha, ahora tienes Traslación para escapar y Contrahechizo contra los lanzadores. Tus primeros teletransportes también llegan a nivel 20.
+- **Prueba a farmear.** Desde el 22 puedes empezar a atraer grupos pequeños: <PageLink to="aoe-farming">farmeo AoE</PageLink>.
+- **Tu límite.** Los hechizos cuestan cada vez más maná. Visita al instructor cada dos niveles: tu daño depende de los rangos nuevos.
 
-### Control y supervivencia
+</Pieces>
 
-- **Polimorfia** saca del combate a un humanoide o una bestia hasta 20 s (en el rango 1). Cualquier daño lo despierta, y solo puedes tener uno a la vez. <Status status="reported" />
-- **Traslación** te mueve 20 m hacia delante y te libra de aturdimientos e inmovilizaciones. Guárdalo para cuando la Nova no esté lista. <Status status="reported" />
-- **Escudo de maná** absorbe daño físico gastando maná. Úsalo si te alcanzan y necesitas terminar un hechizo.
-- **Armadura de Escarcha** y **Armadura de hielo** ralentizan a quien te golpea cuerpo a cuerpo. <Status status="reported" />
-- **Contrahechizo** (nivel 24) corta la curación o el hechizo fuerte de un lanzador.
+</Pick>
+<Pick id="31-60" title="Niveles 31 a 60" spell="Frostfire Bolt" heading="Aún por escribir">
 
-### Cuando aparecen varios enemigos
+El camino nivel a nivel llega por ahora al 30; completaré el tramo del 31 al 60 en esta misma página. Lo que ya se sabe: a nivel 40 llegan **Descarga de Pirofrío** y la doble especialización, que permite llevar dos builds a la vez. <Status status="verified" compact /> Tu <BuildLink use="leveling">build de leveo</BuildLink> ya llega hasta el 60.
 
-- **Evítalo.** Ataca a un enemigo cada vez, fíjate en las patrullas y no luches en cuevas si puedes evitarlo: no hay espacio para alejarte. <Status status="reported" />
-- **Dos enemigos:** Polimorfia al segundo y mata al primero.
-- **Tres o más:** Nova de Escarcha, aléjate, céntrate en uno y usa Traslación si vuelven a alcanzarte. Si el combate no tiene salida, aléjate hasta que dejen de perseguirte.
-- **Si quieres juntar enemigos a propósito,** sigue la guía de <PageLink to="aoe-farming">farmeo AoE</PageLink> y no improvises con enemigos a distancia.
+</Pick>
+</Picker>
 
-### Cuando el combate se complica
+## Entre combates
 
-Si llega un enemigo de más, la Nova falla o te quedas sin maná a mitad de combate, para y elige: Polimorfia al recién llegado, Nova y Traslación para ganar distancia, Evocación o una poción. Si nada de eso basta, aléjate y deja que los enemigos vuelvan a su sitio.
+<Tiles>
+<Tile title="Bebe" icon="inv_drink_06">
 
-Si mueres dos veces en el mismo sitio, cambia de zona o de misión. Insistir con la misma técnica sale más caro que dar la vuelta. <Status status="analysis" />
+Conjura agua y comida antes de salir de la ciudad. Por qué se bebe más que en Classic y cuánta llevar: <PageLink to="mage-water">Agua del Mago</PageLink>.
 
-### En grupo
+</Tile>
+<Tile title="La regla de los 5 segundos" icon="inv_misc_pocketwatch_03">
 
-- **Deja que el tanque empiece** y espera 2 o 3 segundos antes de tu primer hechizo.
-- **Ventisca solo cuando el tanque tenga el grupo sujeto**, y nunca sobre un enemigo con Polimorfia.
-- **No uses Nova de Escarcha junto al tanque:** los enemigos congelados atacan a quien tengan más cerca. Resérvala para emergencias. <Status status="reported" />
-- **Reparte** Intelecto Arcano, agua y comida antes de empezar.
+Tu maná deja de regenerarse durante 5 s cada vez que lanzas un hechizo. Rematar con la varita deja que se recupere. <Status status="classic" compact />
 
-## Hechizos importantes del 1 al 30
+</Tile>
+<Tile title="Evocación" spell="Evocation">
 
-Niveles de la lista del instructor de Forever (calculadora de Wowhead), que coinciden con los de Classic y con la guía de Method. <Status status="reported" />
+Desde el nivel 20, cada 8 minutos. Devuelve maná muy rápido: para un combate que se alarga o para ahorrarte una parada. <Status status="reported" compact />
 
-<LevelingSpells />
+</Tile>
+<Tile title="Tu rango más alto" icon="inv_misc_book_08">
 
-Más detalle de cada hechizo en la <PageLink to="guide">guía de clase</PageLink> y en <PageLink to="changes">Cambios en Forever</PageLink>.
+En Forever, los rangos muy inferiores a tu nivel aprovechan menos tu daño de hechizos y activan menos tus talentos. <Status status="verified" compact />
+
+</Tile>
+</Tiles>
+
+## El Mago en el mundo
+
+No todo es combatir. Esto merece la pena por el camino:
+
+<Tiles>
+<Tile title="Misiones de clase" icon="inv_staff_14" to="class-quests">
+
+Una toga a los 15 y a los 26, una varita a los 30 y el mejor bastón hasta los 50.
+
+</Tile>
+<Tile title="Libros de la biblioteca" icon="inv_misc_book_12" to="library">
+
+Recógelos por el camino: el primero te enseña Estudiar, y con 20 tienes un anillo con daño de hechizos.
+
+</Tile>
+<Tile title="Pergaminos" icon="inv_scroll_03" to="scrolls">
+
+Descífralos mientras bebes, para conseguir mejoras de una hora.
+
+</Tile>
+<Tile title="Farmeo AoE" spell="Blizzard" to="aoe-farming">
+
+Atrae grupos pequeños desde el 14, y dónde hacerlo en cada nivel.
+
+</Tile>
+<Tile title="Equipo" icon="inv_chest_cloth_36" to="gear">
+
+Las piezas clave para subir, nivel a nivel.
+
+</Tile>
+<Tile title="Profesiones" icon="trade_tailoring" to="professions">
+
+Qué dos aprender y cómo ayudan mientras subes.
+
+</Tile>
+</Tiles>
 
 ## Errores frecuentes
+
+<Pieces dont>
 
 - **Romper tu propia Nova.** El daño puede soltar a un enemigo congelado: empieza por tu golpe más fuerte, no por golpes pequeños.
 - **Atraer de más.** Usar Nova de Escarcha en mitad de un grupo sin saber hacia dónde vas a alejarte, o luchar con patrullas cerca.
 - **Gastar maná en área contra un solo enemigo.** Deflagración Arcana y Ventisca son para grupos.
-- **Bajar de rango como en Classic.** En Forever activas menos tus talentos.
 - **Olvidar al instructor y la varita.** Tu daño depende de los rangos nuevos, y la varita te ahorra maná en cada remate.
-- **Empezar a farmear en área antes del 22** o con enemigos que atacan a distancia.
-- **En grupo:** Nova de Escarcha junto al tanque, Ventisca antes de que el tanque tenga el grupo o sobre un enemigo con Polimorfia.
+- **Farmear demasiado pronto.** Antes del 22, o con enemigos que atacan a distancia.
+- **En grupo.** Nova de Escarcha junto al tanque, Ventisca antes de que el tanque tenga el grupo o sobre un enemigo con Polimorfia.
 
-## Qué cambia en Forever para subir de nivel
+</Pieces>
+
+## Todos los hechizos clave
+
+<details class="disclosure">
+<summary>Cada hechizo importante del 1 al 30, en una tabla</summary>
+
+<LevelingSpells />
+
+</details>
+
+## Si vienes de Classic
+
+<details class="disclosure">
+<summary>Qué cambia en Forever para subir de nivel</summary>
 
 <FactList ids={['talents-start', 'legacy', 'respec', 'dual-spec']} />
 
@@ -143,9 +187,7 @@ Con **Comprensión** (Comprehension) puedes leer los pergaminos que sueltan las 
 
 Cómo leerlos, qué habilidad pide cada uno y consejos para el leveo: <PageLink to="scrolls">guía rápida de pergaminos</PageLink>.
 
-## Más allá del nivel 30
-
-La progresión nivel a nivel, los hechizos importantes y los consejos de juego llegan por ahora al 30; completaré el tramo del 31 al 60 en esta misma página. Lo que ya se sabe que cambiará: a nivel 40 llegan **Descarga de Pirofrío** (Frostfire Bolt) y la doble especialización, que permitirá llevar dos builds a la vez. <Status status="verified" />
+</details>
 
 ## Lo que falta por comprobar
 

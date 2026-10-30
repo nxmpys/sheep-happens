@@ -1,0 +1,174 @@
+---
+/**
+ * What an AoE farmer casts, with a level slider: the spells you have not learned
+ * yet go grey and a line says what you can do at that level. Levels come from
+ * abilities.json, so they follow the toolkit.
+ */
+import GameIcon from './GameIcon.astro';
+import '../../styles/learn.css';
+import { getLocale } from '../../i18n/locale';
+import { abilities } from '../../lib/data';
+import { localSpellName } from '../../lib/names';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const SPELLS = ['frost-nova', 'arcane-explosion', 'flamestrike', 'mana-shield', 'blink', 'blizzard', 'cone-of-cold', 'conjure-mana-gem'];
+const list = SPELLS.map((id) => abilities.find((a) => a.id === id)!);
+const WHEN = es
+  ? {
+      'frost-nova': 'Congela al grupo',
+      'arcane-explosion': 'Remata a tu alrededor',
+      flamestrike: 'Daño sobre los congelados',
+      'mana-shield': 'Aguanta los golpes',
+      blink: 'Sales si algo falla',
+      blizzard: 'Solo en la rotación de Ventisca',
+      'cone-of-cold': 'Los ralentiza al soltarse',
+      'conjure-mana-gem': 'Maná para el siguiente grupo',
+    }
+  : {
+      'frost-nova': 'Freezes the pack',
+      'arcane-explosion': 'Finishes them around you',
+      flamestrike: 'Damage on the frozen pack',
+      'mana-shield': 'Soaks the hits',
+      blink: 'Your way out if it goes wrong',
+      blizzard: 'Only in the Blizzard rotation',
+      'cone-of-cold': 'Slows them as they break free',
+      'conjure-mana-gem': 'Mana for the next pack',
+    };
+const stages = es
+  ? [
+      { from: 10, text: 'Todavía no: tu primer hechizo de área llega al nivel 14. Sigue con misiones.' },
+      { from: 14, text: 'Puedes empezar con Deflagración Arcana y grupos muy pequeños.' },
+      { from: 16, text: 'Fogonazo se suma: ya puedes congelar y hacer daño de área sobre el grupo.' },
+      { from: 20, text: 'Escudo de maná y Traslación hacen la rotación corta mucho más segura.' },
+      { from: 22, text: 'La rotación de Ventisca ya es viable, si tienes Ventisca mejorada 3/3.' },
+      { from: 26, text: 'Con Cono de frío la rotación corta está completa.' },
+      { from: 28, text: 'Tienes la rotación completa y la gema de maná para encadenar grupos.' },
+    ]
+  : [
+      { from: 10, text: 'Not yet: your first area spell comes at level 14. Stick to questing.' },
+      { from: 14, text: 'You can start with Arcane Explosion and very small packs.' },
+      { from: 16, text: 'Flamestrike joins in: you can now freeze and deal area damage on the pack.' },
+      { from: 20, text: 'Mana Shield and Blink make the short rotation much safer.' },
+      { from: 22, text: 'The Blizzard rotation becomes viable, if you have Improved Blizzard 3/3.' },
+      { from: 26, text: 'With Cone of Cold the short rotation is complete.' },
+      { from: 28, text: 'You have the full rotation, plus the mana gem to chain packs.' },
+    ];
+const initial = 26;
+const levelWord = es ? 'Nivel' : 'Level';
+---
+
+<aoe-kit class="kit" data-stages={JSON.stringify(stages)} data-no-spell-links>
+  <label class="kit__level">
+    <span>{es ? 'Tu nivel' : 'Your level'}: <output data-level>{initial}</output></span>
+    <input type="range" min="10" max="30" value={initial} />
+  </label>
+  <p class="kit__stage" data-stage aria-live="polite">{stages.findLast((s) => s.from <= initial)!.text}</p>
+  <ul class="kit__spells">
+    {
+      list.map((ability) => (
+        <li class="kit__spell" data-at={ability.level} data-on={String((ability.level ?? 0) <= initial)}>
+          <GameIcon spell={ability.name} size={48} />
+          <span class="kit__name">{localSpellName(ability.name, locale)}</span>
+          <span class="kit__when">{WHEN[ability.id as keyof typeof WHEN]}</span>
+          <span class="kit__at">{levelWord} {ability.level}</span>
+        </li>
+      ))
+    }
+  </ul>
+</aoe-kit>
+
+<script>
+  class AoeKit extends HTMLElement {
+    connectedCallback() {
+      const stages: { from: number; text: string }[] = JSON.parse(this.dataset.stages ?? '[]');
+      const input = this.querySelector('input')!;
+      const update = () => {
+        const level = Number(input.value);
+        this.querySelector('[data-level]')!.textContent = String(level);
+        this.querySelector('[data-stage]')!.textContent = stages.findLast((s) => s.from <= level)?.text ?? '';
+        for (const spell of this.querySelectorAll<HTMLElement>('[data-at]')) spell.dataset.on = String(Number(spell.dataset.at) <= level);
+      };
+      input.addEventListener('input', update);
+      update();
+    }
+  }
+  customElements.define('aoe-kit', AoeKit);
+</script>
+
+<style>
+  .kit {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+  }
+  .kit__level {
+    display: grid;
+    gap: var(--space-1);
+    font-weight: 700;
+  }
+  .kit__level output {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    color: var(--accent);
+  }
+  .kit__level input {
+    width: 100%;
+    height: 40px;
+    margin: 0;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+  .kit__stage {
+    margin: 0;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    font-weight: 600;
+  }
+  :global(.prose) .kit__spells {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(45%, 9rem), 1fr));
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  :global(.prose) .kit__spell {
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    gap: 2px;
+    margin: 0;
+    text-align: center;
+    transition: opacity 0.2s;
+  }
+  .kit__spell :global(.game-icon) {
+    margin-bottom: var(--space-1);
+    transition: filter 0.2s;
+  }
+  .kit__spell[data-on='false'] {
+    opacity: 0.45;
+  }
+  .kit__spell[data-on='false'] :global(.game-icon) {
+    filter: grayscale(1);
+  }
+  .kit__name {
+    font-size: var(--step--1);
+    font-weight: 650;
+    line-height: 1.2;
+  }
+  .kit__when {
+    font-size: 0.8125rem;
+    line-height: 1.3;
+    color: var(--text-muted);
+  }
+  .kit__at {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-subtle);
+  }
+</style>

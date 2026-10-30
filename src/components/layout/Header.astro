@@ -42,7 +42,8 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
         {
           PRIMARY_NAV.map((group) => {
             const blocks = menuBlocks(group, locale, menuOptions);
-            const count = blocks.reduce((total, block) => total + block.links.length, 0);
+            // Two columns only when one long list would not fit.
+            const count = Math.max(...blocks.map((block) => block.links.length));
             const panelId = `nav-panel-${group.key}`;
             const name = NAV_GROUP_LABELS[locale][group.key];
             return (
@@ -69,10 +70,15 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
                     {blocks.map((block) => (
                       <div class="nav-block">
                         {block.heading && <p class="nav-block__heading">{block.heading}</p>}
-                        <ul class="nav-sublist">
+                        <ul class:list={['nav-sublist', { 'nav-sublist--trees': block.links[0]?.tree }]}>
                           {block.links.map((link) => (
                             <li>
-                              <a class="nav-sublink" href={link.url} aria-current={link.page && link.page === pageId ? 'page' : undefined}>
+                              <a
+                                class:list={['nav-sublink', link.tree && ['nav-sublink--tree', `school-${link.tree}`]]}
+                                href={link.url}
+                                aria-current={link.page && link.page === pageId ? 'page' : undefined}
+                              >
+                                {link.tree && <Icon name={link.tree} size={15} />}
                                 {link.label}
                               </a>
                             </li>
@@ -318,13 +324,47 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
     background: var(--surface-1);
     box-shadow: var(--shadow);
   }
+  /* A title, not a link: a band across the top of the panel, nothing like the rows below it. */
   .nav-block__heading {
-    margin: var(--space-1) var(--space-3) 2px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-subtle);
+    margin: calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) var(--space-1);
+    padding: var(--space-2) var(--space-3);
+    border-bottom: 1px solid var(--border);
+    border-radius: var(--radius) var(--radius) 0 0;
+    background: var(--surface-2);
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent);
+    cursor: default;
+  }
+  /* The three trees hang from Talents: chips in their school's colour, indented under it. */
+  .nav-sublist.nav-sublist--trees {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    padding: 0 var(--space-2) var(--space-1) var(--space-5);
+  }
+  .nav-sublink.nav-sublink--tree {
+    gap: 0.3em;
+    min-height: 30px;
+    padding: 0 0.65em;
+    border: 1px solid color-mix(in srgb, var(--school) 40%, transparent);
+    border-radius: 999px;
+    color: var(--text);
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+  .nav-sublink.nav-sublink--tree :global(svg) {
+    color: var(--school);
+  }
+  .nav-sublink.nav-sublink--tree:hover {
+    border-color: var(--school);
+    background: var(--school-soft);
+  }
+  .nav-sublink.nav-sublink--tree[aria-current='page'] {
+    border-color: var(--school);
+    background: var(--school-soft);
+    box-shadow: none;
   }
   .nav-sublist {
     display: grid;
@@ -527,6 +567,19 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
     }
     .nav-sublink {
       min-height: 44px;
+    }
+    .nav-sublink.nav-sublink--tree {
+      min-height: 40px;
+    }
+    .nav-sublist.nav-sublist--trees {
+      display: flex;
+      padding-left: var(--space-3);
+    }
+    .nav-block__heading {
+      margin: 0 0 var(--space-1);
+      padding: 0 var(--space-3);
+      border: 0;
+      background: none;
     }
     .nav-link[aria-current='page'],
     .nav-link.is-section,

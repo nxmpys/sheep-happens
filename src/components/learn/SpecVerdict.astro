@@ -1,0 +1,52 @@
+---
+/** What a tree does well and what it gives up, from specs.json, in two columns. */
+import Icon from '../ui/Icon.astro';
+import { tb } from '../../i18n/builds';
+import { getLocale } from '../../i18n/locale';
+import { specs } from '../../lib/data';
+import type { BuildSpec } from '../../lib/schemas';
+
+interface Props {
+  spec: BuildSpec;
+}
+
+const { spec } = Astro.props;
+const locale = getLocale(Astro);
+const overview = specs.find((s) => s.id === spec)!;
+---
+
+<div class="verdict">
+  <section>
+    <p class="verdict__title"><Icon name="verified" size={18} /> {tb(locale, 'spec.strengths')}</p>
+    <ul>{overview.strengths.map((item) => <li>{item[locale]}</li>)}</ul>
+  </section>
+  <section>
+    <p class="verdict__title verdict__title--con"><Icon name="warning" size={18} /> {tb(locale, 'spec.weaknesses')}</p>
+    <ul>{overview.weaknesses.map((item) => <li>{item[locale]}</li>)}</ul>
+  </section>
+</div>
+
+<style>
+  .verdict {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: var(--space-4);
+    font-size: var(--step--1);
+  }
+  .verdict__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0 0 var(--space-2);
+    font-weight: 700;
+  }
+  .verdict__title :global(svg) {
+    color: var(--status-verified);
+  }
+  .verdict__title--con :global(svg) {
+    color: var(--warning);
+  }
+  .verdict ul {
+    margin: 0;
+  }
+</style>

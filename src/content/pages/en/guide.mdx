@@ -1,84 +1,136 @@
 ---
 pageId: guide
 locale: en
-title: Mage class guide for WoW Forever
-seoTitle: WoW Forever Mage class guide, abilities and basics
-description: Mage fundamentals in World of Warcraft Forever, its three trees, the toolkit grouped by purpose, and what changes compared with WoW Classic.
+title: The Mage in WoW Forever
+seoTitle: WoW Forever Mage class guide, what it offers
+description: What the Mage offers compared with the other classes in World of Warcraft Forever, what it asks of you and what each of its three trees plays like.
 gameVersion: forever-beta-2026-10
 published: 2026-10-11
 reviewed: 2026-10-11
 reviewedBy: Sheep Happens
 status: published
 verification: verified
-summary:
-  - The Mage is a ranged damage class with three trees, Arcane, Fire and Frost, and mana as its only resource.
-  - Forever starts from the WoW Classic Mage and adds cross-school spells and talents, such as Frostfire Bolt at level 40.
-  - You survive through distance and control (Frost Nova, Blink, Polymorph), not armour.
-  - Everything here carries its verification status; Forever is still in beta.
+wide: true
 sources: [blizzard-deep-dive-mage, wiki-mage-abilities-classic, warcrafttavern-classes]
-tags: [fundamentals, mana, abilities, races]
+tags: [fundamentals, class guide, what is the mage, why play mage, mana, abilities, races]
 ---
 
-## What the Mage is in Forever
+<MageIntro />
 
-World of Warcraft: Forever brings back the original Azeroth and expands it with new content at every level range. The Mage keeps its classic role: **ranged damage, crowd control and group utility** (food, water, teleports).
+## What sets it apart
 
-Blizzard sums it up like this: the Mage has one of the best crowd control tools in **Polymorph** and masters ranged area damage, but is extremely fragile if caught in melee. The answer is specialization: Arcane manipulates and consumes mana for more damage, Fire goes for devastating hits and critical damage, and Frost offers combat control no other class matches. <Status status="verified" />
+What the Mage has that the other classes do not, and what it asks of you in return. <Status status="classic" />
 
-Forever's changes aim to make **each school of magic ask for active decisions moment to moment** and to make **more room for builds that mix schools**. <Status status="verified" />
+<Picker label="What the Mage offers" hover>
+<Pick id="travel" title="Teleports and portals" icon="spell_arcane_portalstormwind" heading="You are the group's transport">
 
-<FactList ids={['specs', 'races', 'talents-start', 'respec', 'dual-spec']} />
+From level 20 you teleport yourself to the capital cities, and from level 40 you open portals your whole group can step through. No other class does this.
 
-## Fundamentals
+</Pick>
+<Pick id="water" title="Food and water" spell="Conjure Water" icon="inv_drink_06" heading="You never pay for food or water">
 
-### Mana is your real limit
+You conjure water from level 4 and food from level 6, for yourself and for your group. How much to carry and why it matters: <PageLink to="mage-water">Mage water</PageLink>.
 
-Every spell costs mana. When you run dry, the fight is over for you. You get it back like this: <Status status="classic" />
+</Pick>
+<Pick id="polymorph" title="Polymorph" spell="Polymorph" heading="You turn enemies into sheep">
 
-- **Out of combat:** drinking the water you conjure yourself (Conjure Water).
-- **While casting:** only through effects that let Spirit regeneration continue while casting, such as **Mage Armor** or the **Arcane Meditation** talent.
-- **In emergencies:** with Evocation and mana gems.
+From level 8, **Polymorph** takes one enemy out of the fight until something hits it. Blizzard calls it one of the best crowd control tools in the game. <Status status="verified" compact />
 
-In Forever, Mage Armor regenerates more mana from Spirit, and Arcane Meditation improves too, although it now requires Arcane Concentration. <Status status="verified" />
+</Pick>
+<Pick id="aoe" title="Area damage" spell="Blizzard" heading="You hit whole packs from afar">
 
-### Distance, control and escape
+**Arcane Explosion**, **Flamestrike**, **Blizzard** and **Cone of Cold** damage everything in an area. According to Blizzard, the Mage masters ranged area damage, and it is also a way to farm: <PageLink to="aoe-farming">AoE farming</PageLink>. <Status status="verified" compact />
 
-The Mage wears cloth and cannot take many hits. Its defence is **not being where the enemy is**: <Status status="classic" />
+</Pick>
+<Pick id="escape" title="Escapes" spell="Blink" heading="You get out of bad spots">
 
-1. **Frost Nova** roots nearby enemies in place.
-2. **Blink** puts distance between you instantly.
-3. **Polymorph** takes one enemy out of the fight (any damage wakes it).
-4. **Counterspell** stops a dangerous cast. In Forever, 1 point in **Improved Counterspell** makes the silence certain instead of a 50% chance. <Status status="verified" />
+**Frost Nova** roots everything next to you and **Blink** moves you 20 yards in an instant, even out of a stun. Your defense is not being where the enemy is.
 
-In Forever, freezing an enemy is also a **damage opportunity**: **Ice Lance** deals 200% more against Frozen targets. <Status status="verified" />
+</Pick>
+<Pick id="mixed" title="Mixed schools" spell="Frostfire Bolt" heading="You can mix three schools of magic">
 
-### Schools and resistances
+**Frostfire Bolt**, at level 40, counts as Fire and Frost at once, and several talents boost spells from other trees. Forever wants more room for builds that mix them. <Status status="verified" compact />
 
-Every spell belongs to a school (Arcane, Fire or Frost), and some enemies resist some schools better than others. <Status status="classic" /> The new **Frostfire Bolt** counts as Fire and Frost at once: it uses your **higher bonus** of the two and the target's **lower resistance**, and most talents of both schools affect it. <Status status="verified" />
+</Pick>
+<Pick id="scrolls" title="Scrolls" icon="inv_scroll_03" heading="You read what others cannot">
 
-## Your toolkit
+Comprehension is a minor tradeskill only Mages have: you decipher the scrolls creatures drop and get one-hour buffs. <PageLink to="scrolls">How it works</PageLink>. <Status status="reported" compact />
 
-The Mage's baseline kit grouped by purpose. Learn levels are the Classic ones and **still need checking in Forever**. Abilities that change in Forever link to their card.
+</Pick>
+</Picker>
 
-<AbilityGrid />
+**What it asks of you:**
 
-## What changes compared with Classic
+<Tiles min={15}>
+<Tile title="You are fragile" icon="inv_chest_cloth_04">
 
-Blizzard has published 40+ Mage changes, and the beta notes add more every week. The most important ones to start with:
+You wear cloth and cannot take many hits. If something reaches you and stays, the fight is going badly.
 
-- **New spells and talents:** Frostfire Bolt (baseline, level 40), Ice Lance, Fingers of Frost, Heating Up, Arcane Blast, Arcane Wrath, Missile Barrage and Arcane Geometry.
-- **A new 16-point milestone talent** in every tree, on top of the 11-, 21- and 31-point ones.
-- **Group effects become personal:** Ignite, Improved Scorch and Winter's Chill now only benefit the Mage who applies them.
-- **Less mass farming:** Cone of Cold lasts less and Improved Blizzard slows by at most 40% (was 65%). How to farm now, in the <PageLink to="aoe-farming">AoE farming guide</PageLink>.
-- **Downranking pays off less:** very low ranks get less from your spell damage and trigger your talents less often.
-- **Comprehension:** a Mage-only minor tradeskill to decipher scrolls dropped by creatures. How to use it, in the <PageLink to="scrolls">quick scrolls guide</PageLink>.
+</Tile>
+<Tile title="Mana runs out" icon="spell_shadow_manaburn">
 
-<PageLink to="changes">Explore every change with filters</PageLink>.
+Every spell costs mana. When it runs out you stop doing anything until you drink.
 
-## How to read this guide
+</Tile>
+<Tile title="Damage is your only role" icon="spell_nature_regenerate">
 
-Every fact carries a badge saying where it comes from and how much you can trust it:
+You cannot tank or heal, and you have no pet. In a group your job is damage and control.
 
-<StatusLegend />
+</Tile>
+</Tiles>
 
-If something looks out of date, check the review date in the page header and the list of <PageLink to="sources">sources</PageLink>.
+## Three ways to play it
+
+All three trees deal ranged damage. They differ in how they get there, and you are not stuck with your first choice: you can change talents at a class trainer.
+
+<Picker label="The three trees">
+<Pick id="arcane" title="Arcane" icon="spell_holy_magicalsentry" school="arcane" heading="Build up, then cash in">
+
+**Arcane Blast** gets stronger and more expensive with every cast. You spend that power on a big hit before it fades, and you watch your mana closely.
+
+<SpellBar spells={['Arcane Blast', 'Arcane Wrath', 'Missile Barrage']} />
+
+<PageLink to="talents-arcane">Arcane in detail</PageLink>
+
+</Pick>
+<Pick id="fire" title="Fire" icon="spell_fire_firebolt02" school="fire" heading="Chase critical strikes">
+
+Your crits charge up **Pyroblast** until a slow, huge spell casts in 1.5 s. Very satisfying when crits flow; at low level you score few, and nothing slows the enemy.
+
+<SpellBar spells={['Pyroblast', 'Heating Up', 'Combustion']} />
+
+<PageLink to="talents-fire">Fire in detail</PageLink>
+
+</Pick>
+<Pick id="frost" title="Frost" icon="spell_frost_frostbolt02" school="frost" heading="Freeze it, then shatter it">
+
+You slow and freeze enemies so they never reach you, and hit what is frozen with **Ice Lance**. One main spell, which makes it the easiest tree to learn.
+
+<SpellBar spells={['Frostbolt', 'Ice Lance', 'Fingers of Frost']} />
+
+<PageLink to="talents-frost">Frost in detail</PageLink>
+
+</Pick>
+</Picker>
+
+## Three things to keep in mind
+
+<Tiles>
+<Tile title="Mana sets the pace" icon="inv_drink_06">
+
+You recover it by drinking between fights. During a fight you have **Evocation** and mana gems; only effects like **Mage Armor** or **Arcane Meditation** let Spirit keep regenerating it while you cast. <Status status="classic" compact />
+
+</Tile>
+<Tile title="Freezing is also damage" spell="Ice Lance">
+
+**Ice Lance** deals 200% more against Frozen targets, so **Frost Nova** can be an opportunity, not just an escape. <Status status="verified" compact />
+
+</Tile>
+<Tile title="Some enemies resist a school" spell="Frostfire Bolt">
+
+Every spell belongs to a school. **Frostfire Bolt** uses your higher bonus of Fire and Frost and the target's lower resistance. <Status status="verified" compact />
+
+</Tile>
+</Tiles>
+
+Already know Classic? What is different in Forever is in the <PageLink to="changes">change explorer</PageLink>.

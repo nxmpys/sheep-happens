@@ -1,0 +1,30 @@
+---
+/**
+ * A small card: a game icon (or a step number), a title and a few words. With
+ * `to`, the whole card links to that page.
+ */
+import GameIcon from './GameIcon.astro';
+import { getLocale, href } from '../../i18n/locale';
+import type { PageId } from '../../i18n/routes';
+
+interface Props {
+  title: string;
+  spell?: string;
+  icon?: string;
+  /** A number instead of an icon, for steps. */
+  num?: number;
+  to?: PageId;
+  hash?: string;
+  school?: 'arcane' | 'fire' | 'frost';
+}
+
+const { title, spell, icon, num, to, hash, school } = Astro.props;
+const locale = getLocale(Astro);
+const url = to ? `${href(to, locale)}${hash ? `#${hash}` : ''}` : undefined;
+---
+
+<div class:list={['tile', school && ['tile--school', `school-${school}`]]}>
+  {num !== undefined ? <span class="tile__num" aria-hidden="true">{num}</span> : <GameIcon spell={spell} icon={icon} size={44} plain={Boolean(to)} />}
+  <p class="tile__title">{url ? <a class="tile__link" href={url}>{title}</a> : title}</p>
+  <div class="tile__body"><slot /></div>
+</div>

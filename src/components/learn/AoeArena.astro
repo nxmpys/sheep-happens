@@ -1,0 +1,561 @@
+---
+/**
+ * The two AoE rotations, step by step, on a top-down sketch of the fight: where
+ * the Mage stands, where the pack is, what is frozen and where each spell lands.
+ * Each step is a button; Play walks through them. Without JavaScript the sketch
+ * stays hidden and the steps read as two lists.
+ */
+import GameIcon from './GameIcon.astro';
+import Icon from '../ui/Icon.astro';
+import StatusBadge from '../guide/StatusBadge.astro';
+import '../../styles/learn.css';
+import { getLocale } from '../../i18n/locale';
+import { iconPath } from '../../lib/icons';
+import { localSpellName } from '../../lib/names';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+
+/** x/y in the sketch's 640×280 box. `fx` are the spell shapes drawn in that step. */
+interface Frame {
+  mage: [number, number];
+  pack: [number, number];
+  spread: number;
+  frozen?: boolean;
+  shield?: boolean;
+  fx?: ('nova' | 'flame' | 'cone' | 'blizzard' | 'explosion')[];
+  hp: number;
+}
+interface Step {
+  spell?: string;
+  icon?: string;
+  name?: string;
+  text: string;
+  frame: Frame;
+}
+interface Rotation {
+  id: string;
+  title: string;
+  sub: string;
+  school: 'frost' | 'baseline';
+  steps: Step[];
+}
+
+const name = (spell: string) => localSpellName(spell, locale);
+const rotations: Rotation[] = [
+  {
+    id: 'short',
+    title: es ? 'Rotación corta' : 'Short rotation',
+    sub: es ? 'Grupos de 3 a 7 · desde el nivel 14 · cualquier rama' : 'Packs of 3 to 7 · from level 14 · any tree',
+    school: 'baseline',
+    steps: [
+      {
+        icon: 'inv_wand_01',
+        name: es ? 'Atrae' : 'Pull',
+        text: es
+          ? 'Atrae 3 o 4 enemigos con la varita (quieto 0,5 s antes de que dispare) o con un hechizo, para que lleguen juntos.'
+          : 'Pull 3 or 4 enemies with your wand (standing still 0.5 s before it shoots) or a spell, so they arrive together.',
+        frame: { mage: [270, 140], pack: [560, 140], spread: 46, hp: 100 },
+      },
+      {
+        spell: 'Mana Shield',
+        text: es ? `${name('Mana Shield')}, o Barrera de hielo si la tienes: vas a recibir golpes.` : 'Mana Shield, or Ice Barrier if you have it: you are going to take hits.',
+        frame: { mage: [270, 140], pack: [410, 140], spread: 30, shield: true, hp: 100 },
+      },
+      {
+        spell: 'Frost Nova',
+        text: es ? 'Cuando los tengas encima, congélalos y da unos pasos atrás.' : 'When they are on top of you, freeze them and step back.',
+        frame: { mage: [120, 140], pack: [300, 140], spread: 26, frozen: true, shield: true, fx: ['nova'], hp: 100 },
+      },
+      {
+        spell: 'Flamestrike',
+        text: es ? 'Sobre el grupo congelado. Con Trizar tiene más probabilidad de crítico contra ellos.' : 'On the frozen pack. With Shatter it has more crit chance against them.',
+        frame: { mage: [120, 140], pack: [300, 140], spread: 26, frozen: true, fx: ['flame'], hp: 55 },
+      },
+      {
+        spell: 'Cone of Cold',
+        text: es ? 'Cuando se suelten, para ralentizarlos.' : 'When they break free, to slow them.',
+        frame: { mage: [120, 140], pack: [235, 140], spread: 24, fx: ['cone'], hp: 35 },
+      },
+      {
+        spell: 'Arcane Explosion',
+        text: es ? 'Cuando lleguen, para rematarlos a tu alrededor. Después bebes.' : 'When they arrive, to finish them around you. Then you drink.',
+        frame: { mage: [120, 140], pack: [150, 140], spread: 24, fx: ['explosion'], hp: 0 },
+      },
+    ],
+  },
+  {
+    id: 'blizzard',
+    title: es ? 'Con Ventisca' : 'With Blizzard',
+    sub: es ? 'Desde el nivel 22 · Ventisca mejorada 3/3 · una Ventisca por grupo' : 'From level 22 · Improved Blizzard 3/3 · one Blizzard per pull',
+    school: 'frost',
+    steps: [
+      {
+        spell: 'Arcane Explosion',
+        text: es ? 'Reúne a los enemigos a tu alrededor para que se agrupen.' : 'Gather the enemies around you so they bunch up.',
+        frame: { mage: [300, 140], pack: [330, 140], spread: 34, fx: ['explosion'], hp: 90 },
+      },
+      {
+        spell: 'Frost Nova',
+        text: es ? 'Congélalos y aléjate todo lo que puedas.' : 'Freeze them and get as far away as you can.',
+        frame: { mage: [70, 140], pack: [330, 140], spread: 28, frozen: true, fx: ['nova'], hp: 90 },
+      },
+      {
+        spell: 'Blizzard',
+        text: es ? 'En el último segundo de la Nova, donde tendrán que cruzarla para llegar a ti.' : 'In the last second of the Nova, where they have to walk through it to reach you.',
+        frame: { mage: [70, 140], pack: [240, 140], spread: 28, fx: ['blizzard'], hp: 55 },
+      },
+      {
+        spell: 'Cone of Cold',
+        text: es ? 'Al acabar la Ventisca, para que sigan lentos hasta que vuelva Nova de Escarcha.' : 'When Blizzard ends, to keep them slowed until Frost Nova is back.',
+        frame: { mage: [70, 140], pack: [150, 140], spread: 24, fx: ['cone'], hp: 40 },
+      },
+      {
+        spell: 'Flamestrike',
+        text: es ? 'Segunda Nova y Fogonazo sobre el grupo congelado.' : 'Second Nova, then Flamestrike on the frozen pack.',
+        frame: { mage: [70, 140], pack: [125, 140], spread: 24, frozen: true, fx: ['flame'], hp: 20 },
+      },
+      {
+        spell: 'Arcane Explosion',
+        text: es ? 'Cono de frío y dos Deflagraciones Arcanas para rematar. Después bebes.' : 'Cone of Cold and two Arcane Explosions to finish. Then you drink.',
+        frame: { mage: [70, 140], pack: [100, 140], spread: 24, fx: ['explosion'], hp: 0 },
+      },
+    ],
+  },
+];
+const ENEMIES = [
+  [0, 0],
+  [-0.7, -0.75],
+  [0.8, -0.6],
+  [-0.85, 0.65],
+  [0.7, 0.8],
+];
+const copy = es
+  ? { play: 'Reproducir', pause: 'Pausar', pack: 'Vida del grupo', sketch: 'Esquema del combate', step: 'Paso' }
+  : { play: 'Play', pause: 'Pause', pack: 'Pack’s health', sketch: 'Sketch of the fight', step: 'Step' };
+---
+
+<aoe-arena class="arena" data-play={copy.play} data-pause={copy.pause} data-no-spell-links>
+  <div class="arena__tabs" role="group" aria-label={es ? 'Rotaciones' : 'Rotations'} hidden data-tabs>
+    {
+      rotations.map((rotation, index) => (
+        <button type="button" class="arena__tab" data-rot={rotation.id} aria-pressed={index === 0 ? 'true' : 'false'}>
+          <span>{rotation.title}</span>
+          <small>{rotation.sub}</small>
+        </button>
+      ))
+    }
+  </div>
+
+  <div class="arena__stage" hidden data-stage>
+    <svg viewBox="0 0 640 280" role="img" aria-label={copy.sketch}>
+      <defs>
+        <clipPath id="arena-mage"><rect x="-22" y="-22" width="44" height="44" rx="6"></rect></clipPath>
+      </defs>
+      <g class="fx" data-fx="blizzard"><circle cx="170" cy="140" r="78"></circle></g>
+      <g class="fx" data-fx="flame"><circle data-at-pack r="78"></circle></g>
+      <g class="fx" data-fx="nova"><circle data-at-origin r="96"></circle></g>
+      <g class="fx" data-fx="explosion"><circle data-at-mage r="92"></circle></g>
+      <g class="fx" data-fx="cone"><path data-cone d="M0 0 L190 -90 A200 200 0 0 1 190 90 Z"></path></g>
+      {
+        ENEMIES.map((offset, index) => (
+          <g class="enemy" data-enemy={index} data-dx={offset[0]} data-dy={offset[1]}>
+            <circle r="14"></circle>
+            <circle class="enemy__eye" cx="-4" cy="-3" r="2"></circle>
+            <circle class="enemy__eye" cx="4" cy="-3" r="2"></circle>
+          </g>
+        ))
+      }
+      <g class="mage" data-mage>
+        <circle class="mage__shield" r="34"></circle>
+        <image href={iconPath('classicon_mage')} x="-22" y="-22" width="44" height="44" clip-path="url(#arena-mage)"></image>
+      </g>
+    </svg>
+    <div class="arena__hud">
+      <span>{copy.pack}</span>
+      <i><b data-hp></b></i>
+      <button type="button" class="arena__play" data-toggle>
+        <Icon name="cast" size={16} />
+        <span data-toggle-label>{copy.play}</span>
+      </button>
+    </div>
+  </div>
+
+  {
+    rotations.map((rotation) => (
+      <section class={`rotation school-${rotation.school}`} data-rotation={rotation.id} data-frames={JSON.stringify(rotation.steps.map((s) => s.frame))}>
+        <header class="rotation__head">
+          <p class="rotation__title">{rotation.title}</p>
+          <StatusBadge status="reported" />
+        </header>
+        <ol class="rotation__steps">
+          {rotation.steps.map((step, index) => (
+            <li>
+              <button type="button" class="rstep" data-step={index} aria-label={`${copy.step} ${index + 1}: ${step.name ?? name(step.spell ?? '')}`}>
+                <span class="rstep__num">{index + 1}</span>
+                <GameIcon spell={step.spell} icon={step.icon} size={40} plain />
+                <span class="rstep__text">
+                  <strong>{step.name ?? name(step.spell ?? '')}</strong>
+                  {step.text}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))
+  }
+</aoe-arena>
+
+<script>
+  interface Frame {
+    mage: [number, number];
+    pack: [number, number];
+    spread: number;
+    frozen?: boolean;
+    shield?: boolean;
+    fx?: string[];
+    hp: number;
+  }
+
+  class AoeArena extends HTMLElement {
+    timer: number | undefined;
+
+    connectedCallback() {
+      this.querySelector<HTMLElement>('[data-tabs]')!.hidden = false;
+      this.querySelector<HTMLElement>('[data-stage]')!.hidden = false;
+      const tabs = [...this.querySelectorAll<HTMLButtonElement>('[data-rot]')];
+      const sections = [...this.querySelectorAll<HTMLElement>('[data-rotation]')];
+      const mage = this.querySelector<SVGGElement>('[data-mage]')!;
+      const enemies = [...this.querySelectorAll<SVGGElement>('[data-enemy]')];
+      const hp = this.querySelector<HTMLElement>('[data-hp]')!;
+      const toggle = this.querySelector<HTMLButtonElement>('[data-toggle]')!;
+      const toggleLabel = this.querySelector<HTMLElement>('[data-toggle-label]')!;
+      const fxs = [...this.querySelectorAll<SVGGElement>('[data-fx]')];
+      let section = sections[0]!;
+      let frames: Frame[] = [];
+      let current = 0;
+
+      const place = (el: Element, x: number, y: number) => el.setAttribute('style', `transform: translate(${x}px, ${y}px)`);
+
+      const draw = (index: number) => {
+        current = index;
+        const frame = frames[index]!;
+        place(mage, frame.mage[0], frame.mage[1]);
+        mage.classList.toggle('has-shield', Boolean(frame.shield));
+        for (const enemy of enemies) {
+          const x = frame.pack[0] + Number(enemy.dataset.dx) * frame.spread;
+          const y = frame.pack[1] + Number(enemy.dataset.dy) * frame.spread;
+          place(enemy, x, y);
+          enemy.classList.toggle('is-frozen', Boolean(frame.frozen));
+          enemy.classList.toggle('is-dead', frame.hp <= 0);
+        }
+        hp.style.width = `${frame.hp}%`;
+        for (const fx of fxs) {
+          const on = frame.fx?.includes(fx.dataset.fx!) ?? false;
+          fx.classList.toggle('is-on', on);
+          const shape = fx.firstElementChild as SVGElement;
+          if (shape.hasAttribute('data-at-pack')) place(shape, frame.pack[0], frame.pack[1]);
+          // The Nova goes off where the Mage was standing when the pack arrived: on the pack.
+          if (shape.hasAttribute('data-at-origin')) place(shape, frame.pack[0], frame.pack[1]);
+          if (shape.hasAttribute('data-at-mage') || shape.hasAttribute('data-cone')) place(shape, frame.mage[0], frame.mage[1]);
+        }
+        for (const button of section.querySelectorAll<HTMLButtonElement>('[data-step]')) {
+          button.setAttribute('aria-current', String(Number(button.dataset.step) === index));
+        }
+      };
+
+      const stop = () => {
+        window.clearInterval(this.timer);
+        this.timer = undefined;
+        toggleLabel.textContent = this.dataset.play ?? '';
+        toggle.dataset.playing = 'false';
+      };
+
+      const open = (id: string) => {
+        stop();
+        for (const tab of tabs) tab.setAttribute('aria-pressed', String(tab.dataset.rot === id));
+        for (const other of sections) other.hidden = other.dataset.rotation !== id;
+        section = sections.find((s) => s.dataset.rotation === id)!;
+        frames = JSON.parse(section.dataset.frames ?? '[]');
+        draw(0);
+      };
+
+      for (const tab of tabs) tab.addEventListener('click', () => open(tab.dataset.rot!));
+      for (const button of this.querySelectorAll<HTMLButtonElement>('[data-step]')) {
+        button.addEventListener('click', () => {
+          stop();
+          draw(Number(button.dataset.step));
+        });
+      }
+      toggle.addEventListener('click', () => {
+        if (this.timer !== undefined) return stop();
+        toggleLabel.textContent = this.dataset.pause ?? '';
+        toggle.dataset.playing = 'true';
+        if (current === frames.length - 1) draw(0);
+        this.timer = window.setInterval(() => {
+          if (current >= frames.length - 1) return stop();
+          draw(current + 1);
+        }, 2200);
+      });
+      open(tabs[0]!.dataset.rot!);
+    }
+
+    disconnectedCallback() {
+      window.clearInterval(this.timer);
+    }
+  }
+  customElements.define('aoe-arena', AoeArena);
+</script>
+
+<style>
+  .arena {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: var(--space-3) var(--space-5);
+    align-items: start;
+    padding: var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+  }
+  .arena__tabs {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: var(--space-2);
+  }
+  .arena__tabs[hidden],
+  .arena__stage[hidden],
+  .rotation[hidden] {
+    display: none;
+  }
+  .arena__tab {
+    display: grid;
+    gap: 2px;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+    color: var(--text);
+    font: inherit;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+  }
+  .arena__tab small {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+  .arena__tab:hover {
+    border-color: var(--accent);
+  }
+  .arena__tab[aria-pressed='true'] {
+    border-color: var(--accent);
+    box-shadow: inset 0 -3px 0 var(--accent);
+  }
+  .arena__stage {
+    position: sticky;
+    top: calc(var(--header-h) + var(--space-4));
+    display: grid;
+    gap: var(--space-2);
+  }
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    background: radial-gradient(circle at 30% 40%, color-mix(in srgb, var(--status-verified) 12%, var(--surface-2)), var(--surface-2));
+  }
+  .mage,
+  .enemy,
+  [data-at-pack],
+  [data-at-origin],
+  [data-at-mage],
+  [data-cone] {
+    transition: transform 0.8s cubic-bezier(0.3, 0.8, 0.3, 1);
+  }
+  .mage__shield {
+    fill: color-mix(in srgb, var(--status-reported) 25%, transparent);
+    stroke: var(--status-reported);
+    stroke-width: 2;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .mage.has-shield .mage__shield {
+    opacity: 1;
+  }
+  .enemy circle:first-child {
+    fill: var(--nerf);
+    stroke: color-mix(in srgb, var(--nerf) 60%, #000);
+    stroke-width: 2;
+    transition: fill 0.3s;
+  }
+  .enemy__eye {
+    fill: #fff;
+  }
+  .enemy.is-frozen circle:first-child {
+    fill: var(--frost);
+    stroke: #fff;
+  }
+  .enemy {
+    transition:
+      transform 0.8s cubic-bezier(0.3, 0.8, 0.3, 1),
+      opacity 0.5s;
+  }
+  .enemy.is-dead {
+    opacity: 0.2;
+  }
+  .fx {
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  .fx.is-on {
+    opacity: 1;
+  }
+  [data-fx='blizzard'] circle {
+    fill: color-mix(in srgb, var(--frost) 30%, transparent);
+    stroke: var(--frost);
+    stroke-dasharray: 6 5;
+    stroke-width: 2;
+  }
+  [data-fx='flame'] circle {
+    fill: color-mix(in srgb, var(--fire) 40%, transparent);
+    stroke: var(--fire);
+    stroke-width: 2;
+  }
+  [data-fx='nova'] circle {
+    fill: color-mix(in srgb, var(--frost) 18%, transparent);
+    stroke: var(--frost);
+    stroke-width: 3;
+  }
+  [data-fx='explosion'] circle {
+    fill: color-mix(in srgb, var(--arcane) 25%, transparent);
+    stroke: var(--arcane);
+    stroke-width: 2;
+  }
+  [data-fx='cone'] path {
+    fill: color-mix(in srgb, var(--frost) 30%, transparent);
+    stroke: var(--frost);
+    stroke-width: 2;
+  }
+  .arena__hud {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--step--1);
+    font-weight: 650;
+    color: var(--text-muted);
+  }
+  .arena__hud i {
+    display: block;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--surface-3);
+    overflow: hidden;
+  }
+  .arena__hud b {
+    display: block;
+    height: 100%;
+    background: var(--nerf);
+    transition: width 0.6s;
+  }
+  .arena__play {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: 40px;
+    padding: 0 0.9em;
+    border: 0;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    font: inherit;
+    font-weight: 650;
+    cursor: pointer;
+  }
+  .rotation {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .rotation__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+  .rotation__title {
+    margin: 0;
+    font-weight: 700;
+  }
+  :global(.prose) .rotation__steps {
+    display: grid;
+    gap: var(--space-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  :global(.prose) .rotation__steps li {
+    margin: 0;
+  }
+  .rstep {
+    display: grid;
+    grid-template-columns: 1.5rem auto minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-2);
+    width: 100%;
+    padding: var(--space-2);
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--text-muted);
+    font: inherit;
+    font-size: var(--step--1);
+    line-height: 1.4;
+    text-align: left;
+    cursor: pointer;
+  }
+  .rstep:hover {
+    background: var(--surface-2);
+  }
+  .rstep[aria-current='true'] {
+    border-color: var(--accent);
+    background: var(--surface-2);
+    color: var(--text);
+  }
+  .rstep__num {
+    font-weight: 800;
+    color: var(--text-subtle);
+    line-height: 2.4rem;
+    text-align: center;
+  }
+  .rstep__text strong {
+    display: block;
+    color: var(--text);
+  }
+  @media (max-width: 52rem) {
+    .arena {
+      grid-template-columns: minmax(0, 1fr);
+      padding: var(--space-3);
+    }
+    .arena__stage {
+      z-index: 2;
+      background: var(--surface-1);
+      padding-bottom: var(--space-2);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mage,
+    .enemy,
+    [data-at-pack],
+    [data-at-origin],
+    [data-at-mage],
+    [data-cone] {
+      transition: none;
+    }
+  }
+</style>

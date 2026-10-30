@@ -65,11 +65,16 @@ const specs = (['arcane', 'fire', 'frost'] as const).map((tree) => ({
 <style>
   .specs {
     list-style: none;
-    margin: 0;
+    margin: var(--space-3) 0 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-4);
+  }
+  @media (max-width: 52rem) {
+    .specs {
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
   .spec {
     position: relative;

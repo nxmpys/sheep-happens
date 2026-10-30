@@ -3,29 +3,138 @@ pageId: aoe-farming
 locale: en
 title: Mage AoE farming in WoW Forever
 seoTitle: Mage AoE Farming in WoW Forever, rotation and spots
-description: 'How to AoE farm as a Mage in WoW Forever after the Blizzard and Cone of Cold nerfs: two rotations, Arcane Concentration and farming spots by level.'
+description: 'How to AoE farm as a Mage in WoW Forever: what you do, which spells and talents you need, two rotations step by step and where to farm at each level.'
 gameVersion: forever-beta-2026-10
 published: 2026-10-15
 reviewed: 2026-10-15
 reviewedBy: Sheep Happens
 status: published
 verification: analysis
-summary:
-  - 'Forever is not Classic: Blizzard slows less and Cone of Cold is shorter, so huge kited pulls are over.'
-  - 'What works: packs of 3 to 7 melee enemies with Frost Nova, Flamestrike, Cone of Cold and Arcane Explosion. From level 14.'
-  - 'Mana decides the pack size. Arcane Concentration (free spells) helps, but since 15 October an area spell has only one chance to trigger it, not one per enemy.'
-  - 'A new Forever spot for the Horde: the spiders on the plateau northwest of Thunder Bluff (levels 27 to 29).'
+wide: true
 sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, conquestcapped-mage-leveling, forg-mage-aoe-spiders, wiki-arcane-concentration, icyveins-classic-aoe-leveling, wowhead-forever-talent-calc]
 tags: [aoe farming, mage aoe, aoe grinding, aoe leveling, grinding spots, farming spots, arcane explosion, blizzard, flamestrike, arcane concentration]
 ---
 
-AoE farming means gathering several enemies and killing them all at once with area spells. It is one of the Mage's specialties. In Forever it still works, but **differently** from Classic.
+<Tiles min={13}>
+<Tile title="How it works" icon="spell_frost_frostnova" to="aoe-farming" hash="how-it-works">
+
+The idea in three steps.
+
+</Tile>
+<Tile title="What you need" icon="spell_fire_selfdestruct" to="aoe-farming" hash="what-you-need">
+
+Spells and talents.
+
+</Tile>
+<Tile title="The rotations" icon="spell_frost_icestorm" to="aoe-farming" hash="the-rotations">
+
+Step by step, on a sketch.
+
+</Tile>
+<Tile title="Where to farm" icon="inv_misc_gem_emerald_01" to="aoe-farming" hash="where-to-farm">
+
+Spots by level and faction.
+
+</Tile>
+</Tiles>
 
 <Callout variant="warning" title="Not measured yet">
   The rotations and spots come from community guides and from my own analysis. Nobody has measured yet whether it beats questing. I will test them myself.
 </Callout>
 
-## What changed from Classic
+## How it works
+
+<Tiles>
+<Tile title="Gather" num={1}>
+
+Bring **3 to 7 melee enemies** to you so they arrive together. Casters interrupt you and shoot from range: **Polymorph** them or leave them out. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Freeze" num={2}>
+
+**Frost Nova** when they are on top of you, and step back. That is the moment you deal damage for free.
+
+</Tile>
+<Tile title="Burn" num={3}>
+
+Area spells on the whole pack until they drop. Then **drink**: mana sets how big your next pull can be. <Status status="analysis" compact />
+
+</Tile>
+</Tiles>
+
+## What you need
+
+Move the slider to your level to see what you can already do.
+
+<AoeKit />
+
+**Talents that change it:**
+
+<Tiles min={15}>
+<Tile title="Improved Blizzard 3/3" spell="Improved Blizzard" school="frost">
+
+Required for the Blizzard rotation, not for the short one.
+
+</Tile>
+<Tile title="Shatter" spell="Shatter" school="frost">
+
+More crit chance against frozen enemies: your **Flamestrike** on the frozen pack.
+
+</Tile>
+<Tile title="Ice Barrier" spell="Ice Barrier" school="frost">
+
+Replaces **Mana Shield** at the start of the pull, if you have it.
+
+</Tile>
+<Tile title="Arcane Concentration" spell="Arcane Concentration" school="arcane">
+
+Saves mana, but no longer defines AoE farming: an area spell gets one chance to trigger it. <Status status="verified" compact />
+
+</Tile>
+<Tile title="Not Frostbite" spell="Frostbite" school="frost">
+
+Skip it in an AoE build: its random freezes split the pack. <Status status="reported" compact />
+
+</Tile>
+</Tiles>
+
+The leveling builds are in <BuildLink use="leveling">Builds</BuildLink>. Also keep at hand your mana gem (level 28), mana potions and, with Engineering, bombs or grenades for big pulls. <Status status="reported" compact />
+
+## The rotations
+
+The short one is the most reliable, according to community guides, and it works with any tree. Pick a step, or press Play. <Status status="reported" />
+
+<AoeArena />
+
+**If Frost Nova is resisted, reset the pull:** do not try to save it. **Blink** away, and **Ice Block** if everything goes wrong. <Status status="reported" compact />
+
+## Where to farm
+
+Pick the spot by **your spell ranks**, not by enemy color: what matters is whether your area spells kill them fast. Once the spot turns green, move on. <Status status="reported" />
+
+<SpotFinder />
+
+From 30 to 60, the spots come from Classic and nobody has tested them in Forever. <Status status="pending" compact />
+
+### The Thunder Bluff spiders
+
+The AoE spot community guides cite most. Take the north elevator down from Thunder Bluff and climb the slope to the northwest: the camp is around (33, 22) in Mulgore and the spiders, at the north end of the plateau, around (33, 11). There are five quests from level 23. Gather three nearby hatchling packs, kill them, drink and repeat. Do not pull Broodmother Valraxx: she is a level 30 elite. <Status status="reported" />
+
+## Before you pull
+
+<Pieces>
+
+- **Choose the ground.** No fears, knockbacks or ranged attacks, and open ground with no obstacles that split the pack. <Status status="analysis" compact />
+- **Watch the realm.** On PvP realms, contested spots attract Rogues waiting for you to run out of mana. <Status status="analysis" compact />
+- **Mana per spell.** What each spell does per mana against Classic: <PageLink to="mage-water">Mage water</PageLink>.
+- **Undead.** Touch of the Grave can break Frost Nova, according to one guide. <Status status="reported" compact /> See <PageLink to="races">Races</PageLink>.
+
+</Pieces>
+
+## If you come from Classic
+
+<details class="disclosure">
+<summary>What changed from Classic, and why big pulls are gone</summary>
 
 Blizzard deliberately cut Mage mass farming, because it was used for fast gold and experience at little risk: <Status status="verified" />
 
@@ -37,86 +146,11 @@ Blizzard deliberately cut Mage mass farming, because it was used for fast gold a
 
 **What it means in practice.** In Classic you chained Frost Nova, two Blizzards and Cone of Cold, and by the time the enemies reached you Frost Nova was ready again. Now they leave Blizzard sooner, reach you sooner, and there are gaps where they hit you. Big Classic pulls, like the Zul'Farrak one, are no longer viable. <Status status="analysis" />
 
-## Two ways to farm
-
-### Short rotation (from level 14)
-
-The most reliable one, according to community guides. It does not need Blizzard, so it works with any tree. <Status status="reported" />
-
-<Priority title="Short rotation · packs of 3 to 7" status="reported" school="baseline">
-
-1. **Pull** a small pack of 3 or 4 enemies (with your wand, standing still 0.5 s before it shoots, or with a spell) and bring them to you so they arrive together.
-2. **Shield up**: **Mana Shield**, or Ice Barrier if you have it. You will take hits.
-3. **Frost Nova** when they are on top of you, then step away.
-4. **Flamestrike** on the frozen pack. With **Shatter**, it has more crit chance against frozen enemies.
-5. **Cone of Cold** to slow them when they break free and **Arcane Explosion** to finish them.
-
-</Priority>
-
-You get Arcane Explosion at level 14 and Flamestrike at 16. With Cone of Cold (level 26) the rotation is complete. One guide uses it for packs of up to seven enemies at higher levels. <Status status="reported" />
-
-### With Blizzard (from level 22)
-
-The classic way, now tighter. It needs **Improved Blizzard** 3/3. With the mana you have at these levels, count on **one full Blizzard per pull**. <Status status="reported" />
-
-<Priority title="With Blizzard · Frost" status="reported" school="frost">
-
-1. Gather the enemies with an **Arcane Explosion** so they bunch up.
-2. **Frost Nova** and get as far away as you can.
-3. Start **Blizzard** in the last second of the Nova, where the enemies have to walk through it.
-4. When it ends, **Cone of Cold** to keep them slowed until Frost Nova is back.
-5. Second **Nova**, **Flamestrike** on the frozen pack, Cone of Cold and two Arcane Explosions to finish.
-
-</Priority>
-
-
-## Arcane Concentration
-
-**Arcane Concentration** gives you a chance that your next spell costs no mana. In Classic it triggered "after any damage spell hits a target", so an area spell that hit 7 enemies had 7 chances. <Status status="classic" />
-
-**Not in Forever.** Since the 15 October build, Clearcasting no longer rolls for every target hit: an area spell gets a single chance, as against one enemy. It also no longer triggers out of combat. <Status status="verified" /> It still saves mana, but it is no longer the talent that defines AoE farming. <Status status="analysis" />
+**Arcane Concentration.** In Classic it triggered "after any damage spell hits a target", so an area spell that hit 7 enemies had 7 chances. <Status status="classic" /> Since the 15 October build an area spell gets a single chance, as against one enemy, and it no longer triggers out of combat. <Status status="verified" />
 
 **The Classic trick that no longer works the same.** Casting rank 1 Arcane Explosion to trigger Arcane Concentration cheaply and then spending it on a high rank. In Forever, spells of a rank far below your level trigger it less often. <Status status="verified" /> Use high ranks. <Status status="analysis" />
 
-It sits in row 2 of Arcane. The leveling builds do not take it; an Arcane build does. <Status status="analysis" />
-
-## Where to farm
-
-Pick the spot by **your spell ranks**, not by enemy color: what matters is whether your area spells kill them fast. And once the spot turns green, move on. <Status status="reported" />
-
-| Levels | Zone | Enemies | Faction | Status |
-| --- | --- | --- | --- | --- |
-| 10-20 | The Barrens | Lions and plainstriders | Horde | <Status status="reported" /> |
-| 10-20 | Darkshore | Furbolgs | Alliance | <Status status="reported" /> |
-| 14-20 | Westfall | Defias camps | Alliance | <Status status="reported" /> |
-| 20-30 | Hillsbrad Foothills | Farmers in Hillsbrad Fields | Horde | <Status status="reported" /> |
-| 20-30 | Wetlands | Mosshide gnolls | Alliance | <Status status="reported" /> |
-| 20-30 | Duskwood | Raven Hill cemetery and Nightbane worgen | Alliance | <Status status="reported" /> |
-| 23-30 | **Mulgore**, plateau northwest of Thunder Bluff | **Gloomrise spiders** (27-29) · **new in Forever** | Horde | <Status status="reported" /> |
-| 30-40 | Arathi Highlands | Azurelode Mine, Dabyrie's Farmstead, Go'Shek Farm | Both | <Status status="pending" /> |
-| 30-40 | Dustwallow Marsh | Murlocs | Both | <Status status="pending" /> |
-| 40-50 | Tanaris | Pirates (Lost Rigger Cove) and Wastewander | Both | <Status status="pending" /> |
-| 50-60 | Felwood and the Plaguelands | Trolls and Scarlet camps | Both | <Status status="pending" /> |
-
-From 30 to 60, the spots come from Classic and nobody has tested them in Forever. <Status status="pending" />
-
-### The Thunder Bluff spiders
-
-The AoE spot community guides cite most. Take the north elevator down from Thunder Bluff and climb the slope to the northwest: the camp is around (33, 22) in Mulgore and the spiders, at the north end of the plateau, around (33, 11). There are five quests from level 23. Gather three nearby hatchling packs, kill them, drink and repeat. Do not pull Broodmother Valraxx: she is a level 30 elite. <Status status="reported" />
-
-## Choosing your enemies
-
-- **Melee enemies only.** Casters interrupt you and shoot you from range: **Polymorph** them or leave them out of the pull. <Status status="reported" />
-- **No fears, knockbacks or ranged attacks**, and open ground, with no obstacles that split the pack. <Status status="analysis" />
-- **On PvP realms**, contested spots attract Rogues waiting for you to run out of mana. <Status status="analysis" />
-
-## Mana and survival
-
-- **Drink after every pack.** Mana sets the size of the pull. <Status status="analysis" /> What each spell does per mana against Classic: <PageLink to="mage-water">Mage water</PageLink>.
-- **Keep at hand** your mana gem (level 28), mana potions and, with Engineering, bombs or grenades for big pulls. <Status status="reported" />
-- **If Frost Nova is resisted, reset the pull**: do not try to save it. Blink away; **Ice Block** if everything goes wrong. <Status status="reported" />
-- **Skip Frostbite** in an AoE build: its random freezes split the pack. <Status status="reported" />
-- **Undead:** Touch of the Grave can break Frost Nova, according to one guide. <Status status="reported" /> See <PageLink to="races">Races</PageLink>.
+</details>
 
 ## What is not known yet
 
@@ -142,4 +176,4 @@ The AoE spot community guides cite most. Take the north elevator down from Thund
   </FaqItem>
 </Faq>
 
-More context in the <PageLink to="leveling">leveling guide</PageLink>, in <PageLink to="combat">Combat</PageLink> and in <PageLink to="changes" query="tree=frost">the Frost changes</PageLink>.
+More context in <PageLink to="leveling">First steps in Azeroth</PageLink>, in <PageLink to="combat">Combat</PageLink> and in <PageLink to="changes" query="tree=frost">the Frost changes</PageLink>.

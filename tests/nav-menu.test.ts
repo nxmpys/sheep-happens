@@ -23,8 +23,14 @@ describe('menuBlocks', () => {
   });
 
   it('lists what the user asked for under Learn and Tools', () => {
-    expect(labels('learn', 'en')).toEqual(['Class guide', 'Combat', 'Forever changes', 'Glossary']);
-    expect(labels('tools', 'en')).toEqual(['Crit multiplier', 'Spell hit', 'Talent calculator']);
+    expect(labels('learn', 'en')).toEqual(['Class guide', 'Combat', 'Talents', 'Arcane', 'Fire', 'Frost', 'First steps in Azeroth', 'Glossary']);
+    expect(labels('tools', 'en')).toEqual(['Crit multiplier', 'Spell hit', 'Talent calculator', 'Forever changes']);
+  });
+
+  it('keeps the talent trees apart, as a row without a heading', () => {
+    const blocks = menuBlocks(group('learn'), 'en');
+    expect(blocks.map((block) => block.heading)).toEqual([undefined, undefined, undefined]);
+    expect(blocks[1]!.links.map((link) => link.tree)).toEqual(['arcane', 'fire', 'frost']);
   });
 
   it('links sections of a hub page by their anchor', () => {
@@ -33,11 +39,9 @@ describe('menuBlocks', () => {
     expect(links[0]!.page).toBeUndefined();
   });
 
-  it('shows the contents with builds and the talents, then the trees under a heading', () => {
+  it('shows the contents with builds', () => {
     const blocks = menuBlocks(group('builds'), 'es', { contents: ['leveling', 'dungeons'] });
-    expect(blocks[0]!.links.map((link) => link.url)).toEqual(['/es/builds/leveo/', '/es/builds/mazmorras/', '/es/talentos/']);
-    expect(blocks[1]!.heading).toBe('Ramas');
-    expect(blocks[1]!.links.map((link) => link.label)).toEqual(['Arcano', 'Fuego', 'Escarcha']);
+    expect(blocks[0]!.links.map((link) => link.url)).toEqual(['/es/builds/leveo/', '/es/builds/mazmorras/']);
   });
 
   it('names the addon its sections belong to', () => {

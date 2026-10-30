@@ -10,29 +10,26 @@ reviewed: 2026-10-11
 reviewedBy: Sheep Happens
 status: published
 verification: verified
-summary:
-  - Fuego sigue premiando los críticos y el momento justo; su gran novedad es Calentamiento.
-  - Tres cargas de Calentamiento dejan Piroexplosión en 1,5 s de lanzamiento; cada Explosión de Fuego da una carga extra.
-  - Incineración sube a 5 puntos (10 % de crítico) y Poder de Fuego premia mantener varios efectos de Fuego en el objetivo.
-  - Ignición pasa a ser individual por Mago y ya no pierde daño con críticos muy seguidos.
-  - Aún no se sabe qué talento ocupa el nuevo talento decisivo de 16 puntos de Fuego.
+wide: true
 sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, wiki-pyroblast, wiki-blast-wave, wiki-combustion, wiki-ignite-classic]
 tags: [fuego, calentamiento, piroexplosión, ignición, heating up, talentos]
 ---
 
-## Identidad
+<TreeIntro tree="fire">
 
-Fuego **sigue premiando los críticos y el buen momento para lanzar**: según Blizzard, busca golpes devastadores y daño crítico. Forever le da una nueva forma de convertir los críticos en Piroexplosiones rápidas. <Status status="verified" />
+<p class="tree-intro__line">Busca críticos y conviértelos en Piroexplosiones.</p>
 
-## Talentos decisivos
+Fuego **sigue premiando los críticos y el buen momento para lanzar**: según Blizzard, busca golpes devastadores y daño crítico. Forever le da una nueva forma de convertir los críticos en Piroexplosiones rápidas. <Status status="verified" compact />
 
-<MilestoneMap tree="fire" />
+<Chain items={[{ spell: 'Fire Blast', note: 'siempre da una carga' }, { spell: 'Heating Up', note: 'hasta 3 cargas' }, { spell: 'Pyroblast', note: '1,5 s de lanzamiento' }]} />
 
-## Talentos que cambian
+<SpecVerdict spec="fire" />
 
-<ChangeSummaryList tree="fire" />
+</TreeIntro>
 
 ## Cómo encajan las piezas
+
+<Pieces>
 
 - **Críticos → Piroexplosión.** Con **Calentamiento** (Heating Up), cada crítico no periódico de **Bola de Fuego** (Fireball), **Descarga de Pirofrío** (Frostfire Bolt), **Explosión de Fuego** (Fire Blast) o **Chamuscar** (Scorch) reduce un 25 % el lanzamiento de tu siguiente **Piroexplosión** (Pyroblast), hasta 3 veces. Piroexplosión tarda 6 s en Classic; con 3 cargas queda en 1,5 s, tal como indica Blizzard. El efecto dura 20 s. Desde el 15 de octubre, cada Explosión de Fuego da una carga extra (un crítico de Explosión de Fuego da 2) y las cargas no se gastan si lanzas Piroexplosión con **Presencia mental** (Presence of Mind). <Status status="verified" />
 - **Más crítico, más Piroexplosión.** Todo lo que sube tu probabilidad de crítico acelera ese ciclo, así que el crítico gana valor respecto a Classic. **Incineración** (Incineration) admite 5 puntos (hasta un 10 % de crítico para Explosión de Fuego y Chamuscar) y **Masa crítica** (Critical Mass) vuelve a 3, para un 6 % con todos los hechizos de Fuego. <Status status="verified" />
@@ -41,11 +38,26 @@ Fuego **sigue premiando los críticos y el buen momento para lanzar**: según Bl
 - **La Ignición ya no se comparte.** Cada Mago tiene su propia **Ignición** (Ignite), que ya no pierde daño con críticos muy seguidos ni se beneficia dos veces de los modificadores de daño. Varios Magos de Fuego en el mismo grupo dejan de pisarse. <Status status="verified" />
 - **Efectos personales.** **Chamuscar mejorado** (Improved Scorch) solo beneficia al Mago que lo aplica: no esperes que otro Mago te mantenga la vulnerabilidad al Fuego. <Status status="verified" />
 
+</Pieces>
+
+## Talentos decisivos
+
+<MilestoneMap tree="fire" />
+
 ## Fortalezas, debilidades y builds
 
 En qué brilla esta rama, en qué flojea y qué build tiene en cada contenido. Si no hay build para un contenido, explico por qué. <Status status="analysis" />
 
 <SpecBuilds spec="fire" />
+
+## Talentos que cambian
+
+<details class="disclosure">
+<summary>Cada talento que cambia respecto a Classic</summary>
+
+<ChangeSummaryList tree="fire" />
+
+</details>
 
 ## Lo que falta por saber
 

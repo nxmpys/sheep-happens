@@ -1,0 +1,26 @@
+---
+/**
+ * Group of <Pick> tabs, written in MDX:
+ *   <Picker label="…"><Pick id="frost" title="Frost" school="frost">Text…</Pick></Picker>
+ * Without JavaScript every panel stays visible.
+ */
+import '../../styles/learn.css';
+
+interface Props {
+  label: string;
+  /** Id of the panel open at first. */
+  initial?: string;
+  /** Also switch when the pointer passes over a button. */
+  hover?: boolean;
+}
+
+const { label, initial, hover = false } = Astro.props;
+---
+
+<pick-panel role="group" aria-label={label} data-initial={initial} data-hover={hover ? '' : undefined}>
+  <slot />
+</pick-panel>
+
+<script>
+  import '../../scripts/pick-panel';
+</script>
