@@ -1,0 +1,82 @@
+---
+/** Conjure Water, rank by rank, in Classic and Forever. */
+import Table from '../ui/Table.astro';
+import SpellRef from './SpellRef.astro';
+import VerifyTag from './VerifyTag.astro';
+import { getLocale } from '../../i18n/locale';
+import { mageWater } from '../../lib/data';
+import { bottlesPerCast, formatNumber, formatPercent, MAX_LEVEL } from '../../lib/water';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const text = {
+  caption: es ? 'Conjurar agua por rango: coste, botellas y maná por botella en Classic y en Forever' : 'Conjure Water by rank: cost, bottles and mana per bottle in Classic and Forever',
+  rank: es ? 'Rango' : 'Rank',
+  level: es ? 'Nivel' : 'Level',
+  cost: es ? 'Coste' : 'Cost',
+  bottles: es ? 'Botellas por lanzamiento' : 'Bottles per cast',
+  use: es ? 'Pide nivel' : 'Needs level',
+  classic: es ? 'Maná, Classic' : 'Mana, Classic',
+  forever: es ? 'Maná, Forever' : 'Mana, Forever',
+  diff: es ? 'Diferencia' : 'Difference',
+  time: es ? 'Bebiendo' : 'Drinking',
+  same: es ? 'igual' : 'same',
+  atLevel: es ? 'niv.' : 'lvl',
+};
+---
+
+<Table>
+  <caption class="visually-hidden">{text.caption}</caption>
+  <thead>
+    <tr>
+      <th scope="col">{text.rank}</th>
+      <th scope="col">{text.level}</th>
+      <th scope="col">{text.cost}</th>
+      <th scope="col">{text.bottles}</th>
+      <th scope="col">{text.use}</th>
+      <th scope="col">{text.classic}</th>
+      <th scope="col">{text.forever}</th>
+      <th scope="col">{text.diff}</th>
+      <th scope="col">{text.time}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      mageWater.waterRanks.map((rank) => {
+        const top = Math.min(rank.growthTo, MAX_LEVEL);
+        const diff = ((rank.manaForever - rank.manaClassic) / rank.manaClassic) * 100;
+        return (
+          <tr>
+            <th scope="row">
+              <SpellRef name="Conjure Water" label={String(rank.rank)} />
+            </th>
+            <td>{rank.learn}</td>
+            <td>{rank.cost}</td>
+            <td class="nowrap">
+              {bottlesPerCast(rank, rank.learn)}
+              {top > rank.learn ? ` → ${bottlesPerCast(rank, top)} (${text.atLevel} ${top})` : ''}
+            </td>
+            <td>{rank.requires}</td>
+            <td>{formatNumber(rank.manaClassic, locale)}</td>
+            <td>{formatNumber(rank.manaForever, locale)}</td>
+            <td>
+              {diff === 0 ? text.same : <strong class="delta">{formatPercent(diff, locale, 1).replace('-', '−')}</strong>}
+              {rank.todo && <VerifyTag />}
+            </td>
+            <td class="nowrap">{rank.seconds} s</td>
+          </tr>
+        );
+      })
+    }
+  </tbody>
+</Table>
+
+<style>
+  .nowrap {
+    white-space: nowrap;
+  }
+  .delta {
+    display: block;
+    color: var(--nerf);
+  }
+</style>

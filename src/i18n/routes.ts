@@ -29,6 +29,7 @@ export const PAGE_IDS = [
   'talents-frost',
   'leveling',
   'aoe-farming',
+  'mage-water',
   'scrolls',
   'combat',
   'gear',
@@ -94,6 +95,7 @@ export const ROUTES: Record<PageId, RouteDef> = {
   // Leveling, its level view and AoE farming moved from Builds to Guides (26 Oct 2026) keeping their slugs.
   leveling: { id: 'leveling', slug: { es: 'nivelacion', en: 'leveling' }, parent: 'guides' },
   'aoe-farming': { id: 'aoe-farming', slug: { es: 'farmeo-aoe', en: 'aoe-farming' }, parent: 'guides' },
+  'mage-water': { id: 'mage-water', slug: { es: 'agua-del-mago', en: 'mage-water' }, parent: 'guides' },
   scrolls: { id: 'scrolls', slug: { es: 'pergaminos', en: 'scrolls' }, parent: 'guides' },
   combat: { id: 'combat', slug: { es: 'combate', en: 'combat' }, parent: 'learn' },
   // Gear moved from Learn to Guides (20 Oct 2026) keeping its slug: leveling and PvE gear; PvP gear lives in the PvP guide.
@@ -108,32 +110,60 @@ export const ROUTES: Record<PageId, RouteDef> = {
 
 /**
  * One entry of the primary navigation: a hub page and the pages it leads to.
- * The menu shows only the hubs (no dropdowns); each hub page lists its
- * `items` as cards (HubCards), and the previous/next links walk hubs and
- * items in this order (READING_ORDER), so the three never diverge.
+ * Each hub page lists its `items` as cards (HubCards), the menu shows them in
+ * the entry's dropdown (src/lib/nav-menu.ts), and the previous/next links walk
+ * hubs and items in this order (READING_ORDER), so the three never diverge.
  */
 export interface NavGroup {
   key: 'learn' | 'builds' | 'guides' | 'tools' | 'addons';
   page: PageId;
   items?: PageId[];
+  /** Sections of the hub page itself that the dropdown also links to, with their heading id per locale. */
+  sections?: NavSection[];
+}
+
+export interface NavSection {
+  hash: Record<Locale, string>;
+  label: Record<Locale, string>;
 }
 
 /**
  * Five entries: the basics of the class; builds (a tree, its talents and the
  * content it is for, with the talent and tree pages); guides, which explain
- * something concrete whatever the build (leveling, AoE farming, race,
+ * something concrete whatever the build (leveling, AoE farming, Mage water, race,
  * professions, Legacy, gear, class quests, library, scrolls, PvP); the tools and addons.
  */
 export const PRIMARY_NAV: readonly NavGroup[] = [
-  { key: 'learn', page: 'learn', items: ['guide', 'combat', 'changes'] },
+  {
+    key: 'learn',
+    page: 'learn',
+    items: ['guide', 'combat', 'changes'],
+    sections: [{ hash: { es: 'glosario', en: 'glossary' }, label: { es: 'Glosario', en: 'Glossary' } }],
+  },
   { key: 'builds', page: 'builds', items: ['talents', 'talents-arcane', 'talents-fire', 'talents-frost'] },
   {
     key: 'guides',
     page: 'guides',
-    items: ['leveling', 'aoe-farming', 'races', 'professions', 'legacy', 'gear', 'class-quests', 'library', 'scrolls', 'pvp'],
+    items: ['leveling', 'aoe-farming', 'mage-water', 'races', 'professions', 'legacy', 'gear', 'class-quests', 'library', 'scrolls', 'pvp'],
   },
-  { key: 'tools', page: 'tools', items: ['talent-calc'] },
-  { key: 'addons', page: 'addons' },
+  {
+    key: 'tools',
+    page: 'tools',
+    items: ['talent-calc'],
+    sections: [
+      { hash: { es: 'multiplicador-de-crítico', en: 'crit-multiplier' }, label: { es: 'Multiplicador de crítico', en: 'Crit multiplier' } },
+      { hash: { es: 'golpe-con-hechizos', en: 'spell-hit' }, label: { es: 'Golpe con hechizos', en: 'Spell hit' } },
+    ],
+  },
+  {
+    key: 'addons',
+    page: 'addons',
+    sections: [
+      { hash: { es: 'procs-que-avisa', en: 'procs-it-alerts-you-to' }, label: { es: 'Procs que avisa', en: 'Procs it alerts you to' } },
+      { hash: { es: 'instalación', en: 'installation' }, label: { es: 'Instalación', en: 'Installation' } },
+      { hash: { es: 'límites', en: 'limits' }, label: { es: 'Límites', en: 'Limits' } },
+    ],
+  },
 ];
 
 /** Pages of the primary navigation in menu order, groups first and then their items. */

@@ -767,6 +767,67 @@ export const itemSchema = z
   .strict();
 export type Item = z.infer<typeof itemSchema>;
 
+/** The Mage water page (mage-water.json). `todo` holds a «TODO verificar» note and shows as «por verificar». */
+const waterTodo = z.string().startsWith('TODO verificar');
+const waterDamage = z.object({ min: z.number(), max: z.number(), dot: z.number().optional() }).strict();
+const waterSpell = z
+  .object({
+    name: z.string().min(1),
+    rank: z.number().int().positive(),
+    cost: z.number().int().positive(),
+    classic: waterDamage,
+    forever: waterDamage,
+    coefficient: z.number().positive().optional(),
+    countDot: z.literal(true).optional(),
+    todo: waterTodo.optional(),
+  })
+  .strict();
+const waterStats = z.object({ int: z.number().int(), sta: z.number().int(), spellPower: z.number().int(), mp5: z.number().int() }).strict();
+export const mageWaterSchema = z
+  .object({
+    reviewed: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    builds: z.object({ forever: z.string(), classic: z.string() }).strict(),
+    waterRanks: z.array(
+      z
+        .object({
+          rank: z.number().int().positive(),
+          spell: z.number().int().positive(),
+          item: z.number().int().positive(),
+          name: localized,
+          learn: z.number().int().positive(),
+          growthTo: z.number().int().positive(),
+          base: z.number().int().positive(),
+          perLevel: z.number().int().positive(),
+          cost: z.number().int().positive(),
+          seconds: z.number().int().positive(),
+          requires: z.number().int().positive(),
+          manaClassic: z.number().int().positive(),
+          manaForever: z.number().int().positive(),
+          todo: waterTodo.optional(),
+        })
+        .strict(),
+    ),
+    gear: z.array(z.object({ item: z.number().int().positive(), name: localized, classic: waterStats, forever: waterStats, note: localized.optional() }).strict()),
+    spells: z.array(waterSpell),
+    spellPowerExample: z.object({ item: z.number().int().positive(), spellPower: z.number().int().positive(), spells: z.array(waterSpell) }).strict(),
+    dungeons: z.array(
+      z
+        .object({
+          name: localized,
+          start: z.number().int().positive(),
+          end: z.number().int().positive(),
+          isNew: z.literal(true).optional(),
+          quests: z.object({ alliance: z.number().int().positive(), horde: z.number().int().positive(), levels: z.string(), levelsEn: z.string() }).strict().optional(),
+          todo: waterTodo.optional(),
+        })
+        .strict(),
+    ),
+    compensations: z.array(z.object({ name: z.string().min(1), classic: localized, forever: localized, when: localized }).strict()),
+    chain: z.array(z.object({ kind: z.enum(['data', 'inference']), text: localized }).strict()),
+  })
+  .strict();
+export type MageWater = z.infer<typeof mageWaterSchema>;
+
 /** A book for the librarians (library-books.json). */
 export const libraryBookSchema = z
   .object({

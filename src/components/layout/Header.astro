@@ -6,6 +6,9 @@ import ThemeToggle from './ThemeToggle.astro';
 import { href } from '../../i18n/locale';
 import { PRIMARY_NAV, breadcrumbTrail, navPages, type Locale, type NavGroup, type PageId } from '../../i18n/routes';
 import { NAV_GROUP_LABELS, NAV_LABELS, t } from '../../i18n/ui';
+import { usedContents } from '../../lib/build-routes';
+import { builds } from '../../lib/data';
+import { menuBlocks } from '../../lib/nav-menu';
 
 interface Props {
   locale: Locale;
@@ -17,8 +20,10 @@ interface Props {
 const { locale, pageId, switchTo } = Astro.props;
 const trail = pageId ? breadcrumbTrail(pageId) : [];
 const labels = NAV_LABELS[locale];
-// Five direct links, no dropdowns: each hub page leads to its own pages.
+// Five entries: the link goes to the hub page, the dropdown straight to what is
+// inside it (open on hover or with the arrow; always open in the mobile menu).
 // The entry is highlighted on its hub and on every page under it.
+const menuOptions = { base: import.meta.env.BASE_URL, contents: usedContents(builds) };
 const currentGroup =
   PRIMARY_NAV.find((group) => pageId !== undefined && navPages([group]).includes(pageId)) ??
   PRIMARY_NAV.find((group) => trail.includes(group.page));
@@ -35,17 +40,51 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
     <nav class="primary-nav" id="primary-nav" aria-label={t(locale, 'nav.primary')} data-nav>
       <ul class="nav-list">
         {
-          PRIMARY_NAV.map((group) => (
-            <li class="nav-item">
-              <a
-                href={href(group.page, locale)}
-                class:list={['nav-link', { 'is-section': inGroup(group) }]}
-                aria-current={pageId === group.page ? 'page' : undefined}
-              >
-                {NAV_GROUP_LABELS[locale][group.key]}
-              </a>
-            </li>
-          ))
+          PRIMARY_NAV.map((group) => {
+            const blocks = menuBlocks(group, locale, menuOptions);
+            const count = blocks.reduce((total, block) => total + block.links.length, 0);
+            const panelId = `nav-panel-${group.key}`;
+            const name = NAV_GROUP_LABELS[locale][group.key];
+            return (
+              <li class="nav-item" data-submenu>
+                <a
+                  href={href(group.page, locale)}
+                  class:list={['nav-link', { 'is-section': inGroup(group) }]}
+                  aria-current={pageId === group.page ? 'page' : undefined}
+                >
+                  {name}
+                </a>
+                <button
+                  type="button"
+                  class="nav-toggle"
+                  aria-expanded="false"
+                  aria-controls={panelId}
+                  aria-label={t(locale, 'nav.submenu').replace('{name}', name)}
+                  data-submenu-toggle
+                >
+                  <Icon name="chevronDown" size={14} strokeWidth={2.5} />
+                </button>
+                <div class:list={['nav-panel', { 'nav-panel--wide': count > 6 }]} id={panelId}>
+                  <div class="nav-panel__box">
+                    {blocks.map((block) => (
+                      <div class="nav-block">
+                        {block.heading && <p class="nav-block__heading">{block.heading}</p>}
+                        <ul class="nav-sublist">
+                          {block.links.map((link) => (
+                            <li>
+                              <a class="nav-sublink" href={link.url} aria-current={link.page && link.page === pageId ? 'page' : undefined}>
+                                {link.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </li>
+            );
+          })
         }
       </ul>
       <span class="nav-thread" aria-hidden="true" data-thread></span>
@@ -92,12 +131,54 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
 
   menuButton?.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
 
+  // Dropdowns: hover opens them with CSS; the arrow opens them for keyboard and
+  // touch. Escape also hides the one under the pointer until the pointer leaves.
+  const submenus = [...(nav?.querySelectorAll<HTMLElement>('[data-submenu]') ?? [])];
+  const toggleOf = (item: HTMLElement) => item.querySelector<HTMLButtonElement>('[data-submenu-toggle]');
+
+  function setSubmenu(item: HTMLElement, open: boolean) {
+    item.dataset.open = String(open);
+    toggleOf(item)?.setAttribute('aria-expanded', String(open));
+  }
+
+  for (const item of submenus) {
+    toggleOf(item)?.addEventListener('click', () => {
+      const open = item.dataset.open !== 'true';
+      for (const other of submenus) setSubmenu(other, other === item && open);
+    });
+    item.addEventListener('mouseleave', () => delete item.dataset.dismissed);
+    item.addEventListener('focusout', (event) => {
+      if (!item.contains(event.relatedTarget as Node | null)) setSubmenu(item, false);
+    });
+    // An anchor on the same page does not navigate: the menu has to get out of the way by itself.
+    item.querySelector('.nav-panel')?.addEventListener('click', (event) => {
+      if (!(event.target as Element).closest('a')) return;
+      setSubmenu(item, false);
+      item.dataset.dismissed = 'true';
+      setMenu(false);
+    });
+  }
+
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') setMenu(false, { restoreFocus: true });
+    if (event.key !== 'Escape') return;
+    const openItem = submenus.find((item) => item.dataset.open === 'true');
+    for (const item of submenus) {
+      if (item.matches(':hover')) item.dataset.dismissed = 'true';
+    }
+    if (openItem) {
+      setSubmenu(openItem, false);
+      toggleOf(openItem)?.focus();
+    } else if (menuButton?.getAttribute('aria-expanded') === 'true') {
+      setMenu(false, { restoreFocus: true });
+    }
   });
 
   document.addEventListener('click', (event) => {
-    if (header && !header.contains(event.target as Node)) setMenu(false);
+    const target = event.target as Node;
+    for (const item of submenus) {
+      if (!item.contains(target)) setSubmenu(item, false);
+    }
+    if (header && !header.contains(target)) setMenu(false);
   });
 
   // Mana thread: the line under the current section slides to the entry under
@@ -112,10 +193,13 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
       thread.style.opacity = '0';
       return;
     }
+    // Measured against the nav: each entry is now the positioning parent of its own dropdown.
+    const box = link.getBoundingClientRect();
+    const origin = nav!.getBoundingClientRect();
     thread.style.opacity = '1';
-    thread.style.left = `${link.offsetLeft + 10}px`;
-    thread.style.width = `${link.offsetWidth - 20}px`;
-    thread.style.top = `${link.offsetTop + link.offsetHeight - 2}px`;
+    thread.style.left = `${box.left - origin.left + 10}px`;
+    thread.style.width = `${box.width - 20}px`;
+    thread.style.top = `${box.bottom - origin.top - 2}px`;
   };
   if (thread && nav) {
     nav.classList.add('has-thread');
@@ -181,14 +265,115 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
     padding: 0;
   }
   .nav-item {
+    position: relative;
     display: flex;
     align-items: center;
+  }
+  .nav-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 22px;
+    min-height: 40px;
+    margin-left: -2px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--text-subtle);
+    cursor: pointer;
+  }
+  .nav-toggle:hover {
+    color: var(--text);
+    background: var(--surface-2);
+  }
+  .nav-toggle :global(svg) {
+    transition: transform 0.15s;
+  }
+  .nav-item[data-open='true'] .nav-toggle :global(svg) {
+    transform: rotate(180deg);
+  }
+  /* The padding is part of the panel, so the pointer can cross from the entry without closing it. */
+  .nav-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    width: max-content;
+    min-width: 13rem;
+    padding-top: var(--space-3);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition:
+      opacity 0.15s,
+      transform 0.15s,
+      visibility 0.15s;
+  }
+  .nav-panel__box {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+    box-shadow: var(--shadow);
+  }
+  .nav-block__heading {
+    margin: var(--space-1) var(--space-3) 2px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-subtle);
+  }
+  .nav-sublist {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .nav-panel--wide .nav-sublist {
+    grid-template-columns: repeat(2, minmax(10.5rem, 1fr));
+  }
+  .nav-sublink {
+    display: flex;
+    align-items: center;
+    min-height: 36px;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    text-decoration: none;
+  }
+  .nav-sublink:hover {
+    color: var(--text);
+    background: var(--surface-2);
+  }
+  .nav-sublink[aria-current='page'] {
+    color: var(--text);
+    font-weight: 650;
+    box-shadow: inset 3px 0 0 var(--accent);
+  }
+  @media (min-width: 1001px) {
+    .nav-item:hover:not([data-dismissed]) .nav-panel,
+    .nav-item[data-open='true'] .nav-panel {
+      visibility: visible;
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-panel,
+    .nav-toggle :global(svg) {
+      transition: none;
+      transform: none;
+    }
   }
   .nav-link {
     display: inline-flex;
     align-items: center;
     min-height: 40px;
-    padding: 0 var(--space-3);
+    padding: 0 var(--space-1) 0 var(--space-3);
     border-radius: var(--radius-sm);
     color: var(--text-muted);
     font-size: 0.9375rem;
@@ -289,7 +474,7 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
       top: var(--header-h);
       left: 0;
       right: 0;
-      max-height: calc(100vh - var(--header-h));
+      max-height: calc(100dvh - var(--header-h));
       overflow-y: auto;
       border-bottom: 1px solid var(--border);
       background: var(--bg);
@@ -304,10 +489,44 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
       gap: 0;
       padding: var(--space-2) var(--gutter) var(--space-4);
     }
+    .nav-item {
+      display: block;
+    }
     .nav-link {
-      flex: 1;
+      display: flex;
       min-height: 48px;
+      padding: 0 var(--space-3);
       font-size: var(--step-0);
+      font-weight: 650;
+      color: var(--text);
+    }
+    /* In the mobile menu everything is already in sight: there is nothing to open. */
+    .nav-toggle {
+      display: none;
+    }
+    .nav-panel {
+      position: static;
+      width: auto;
+      min-width: 0;
+      padding: 0 0 var(--space-2);
+      visibility: visible;
+      opacity: 1;
+      transform: none;
+    }
+    .nav-panel__box {
+      gap: var(--space-1);
+      padding: 0 0 0 var(--space-3);
+      border: 0;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+    }
+    .nav-sublist,
+    .nav-panel--wide .nav-sublist {
+      grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    }
+    .nav-sublink {
+      min-height: 44px;
     }
     .nav-link[aria-current='page'],
     .nav-link.is-section,

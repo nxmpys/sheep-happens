@@ -68,6 +68,14 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [ ] Nombres oficiales en español de los hechizos que no salen en el artículo de Blizzard sobre el Mago (Blink, Evocation, Flamestrike, Combustion, Ice Barrier…).
 - [ ] Modo Hardcore (llegará más adelante).
 
+### Agua del Mago (`mage-water`, 2026-10-30)
+
+- [x] Página con el análisis del agua, datos en `src/data/mage-water.json` y cálculos en `src/lib/water.ts`.
+- [ ] Rangos 5 a 7 de Conjurar agua: comprobar en el juego el maná real de la botella (el tooltip baja un 3,9 %) y las botellas por lanzamiento.
+- [ ] Comprobar en Forever los 15 de maná por punto de Intelecto, el coeficiente de Ventisca y el valor de Ventisca de rango 1 (200 o 196).
+- [ ] Comprobar los totales de Intelecto de la comparativa de equipo (61 y 89) y el rango de Excavation Site (26-31 o 24-29).
+- [ ] Tras el lanzamiento: reescribir el aviso de beta, revisar todas las cifras con la build final y medir el tiempo bebiendo por tirón.
+
 ### Guías: misiones de clase, biblioteca y JcJ (sección Guías, 2026-10-20)
 
 - [x] Misiones de clase del Mago (`class-quests`, datos en `src/data/class-quests.json` y objetos en `src/data/items.json`): siete cadenas del 10 al 60 con sus recompensas de la base de datos de Forever de Wowhead.

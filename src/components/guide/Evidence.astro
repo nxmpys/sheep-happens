@@ -1,0 +1,83 @@
+---
+/**
+ * Labels a block as game data, as my reading of it, or as advice derived from
+ * both, so the three never blend. The label is a word and an icon, not just a colour.
+ */
+import Icon from '../ui/Icon.astro';
+import type { IconName } from '../ui/icons';
+import { getLocale } from '../../i18n/locale';
+
+type Kind = 'data' | 'inference' | 'advice';
+
+interface Props {
+  kind: Kind;
+  title?: string;
+}
+
+const { kind, title } = Astro.props;
+const es = getLocale(Astro) === 'es';
+const LABELS: Record<Kind, { icon: IconName; label: string }> = {
+  data: { icon: 'info', label: es ? 'Dato' : 'Data' },
+  inference: { icon: 'analysis', label: es ? 'Interpretación' : 'Interpretation' },
+  advice: { icon: 'cast', label: es ? 'Recomendación, no es un dato del juego' : 'Advice, not game data' },
+};
+const { icon, label } = LABELS[kind];
+---
+
+<div class:list={['evidence', `evidence--${kind}`]}>
+  <p class="evidence__label">
+    <Icon name={icon} size={15} strokeWidth={2} />
+    {label}
+  </p>
+  {title && <p class="evidence__title">{title}</p>}
+  <div class="evidence__body">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .evidence {
+    display: grid;
+    gap: var(--space-2);
+    min-width: 0;
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--evidence);
+    border-radius: var(--radius);
+    background: var(--surface-1);
+  }
+  .evidence--data {
+    --evidence: var(--status-reported);
+  }
+  .evidence--inference {
+    --evidence: var(--status-analysis);
+    border-left-style: dashed;
+  }
+  .evidence--advice {
+    --evidence: var(--status-tested);
+    border-left-style: double;
+    border-left-width: 6px;
+  }
+  .evidence__label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--evidence);
+  }
+  .evidence__title {
+    font-weight: 700;
+  }
+  .evidence__body {
+    display: grid;
+    gap: var(--space-3);
+    min-width: 0;
+  }
+  .evidence__body > :global(*) {
+    margin: 0;
+    min-width: 0;
+  }
+</style>

@@ -1,0 +1,220 @@
+---
+/**
+ * Casts from a full pool and the water to refill it. Logic: src/lib/water.ts.
+ * Rendered at build time with its defaults, so it reads without JavaScript.
+ */
+import StatusBadge from './StatusBadge.astro';
+import VerifyTag from './VerifyTag.astro';
+import { getLocale } from '../../i18n/locale';
+import { mageWater } from '../../lib/data';
+import { estimateWater, formatNumber, MAX_LEVEL } from '../../lib/water';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const initial = { level: 30, maxMana: 2000, spellCost: 100, refills: 3 };
+const result = estimateWater(mageWater.waterRanks, initial)!;
+const ranks = mageWater.waterRanks.map(({ rank, learn, growthTo, base, perLevel, cost, seconds, requires, manaClassic, manaForever, todo }) => ({
+  rank,
+  learn,
+  growthTo,
+  base,
+  perLevel,
+  cost,
+  seconds,
+  requires,
+  manaClassic,
+  manaForever,
+  verify: Boolean(todo),
+}));
+const text = {
+  level: es ? 'Tu nivel' : 'Your level',
+  mana: es ? 'Maná máximo' : 'Maximum mana',
+  cost: es ? 'Coste de tu hechizo' : 'Your spell cost',
+  refills: es ? 'Veces que quieres rellenar' : 'Refills you plan for',
+  casts: es ? 'Hechizos con la reserva llena' : 'Casts from a full pool',
+  bottles: es ? 'Botellas por relleno' : 'Bottles per refill',
+  seconds: es ? 'Tiempo por relleno' : 'Time per refill',
+  total: es ? 'Botellas en total' : 'Bottles in total',
+  conjure: es ? 'Lanzamientos de Conjurar agua' : 'Conjure Water casts',
+  rank: es ? 'Rango que usas' : 'Rank you use',
+  invalid: es ? 'Revisa los valores' : 'Check the values',
+  mana2: es ? 'de maná' : 'mana',
+};
+const strings = { invalid: text.invalid, mana: text.mana2 };
+const sentence = (r: typeof result) => `${r.conjureCasts} (${formatNumber(r.conjureMana, locale)} ${text.mana2})`;
+---
+
+<water-calculator data-locale={locale} data-ranks={JSON.stringify(ranks)} data-strings={JSON.stringify(strings)} data-pagefind-ignore>
+  <form class="calc" onsubmit="return false">
+    <div class="calc__inputs">
+      <label class="field">
+        <span class="field__label">{text.level}</span>
+        <input type="number" name="level" min="4" max={MAX_LEVEL} step="1" value={initial.level} inputmode="numeric" />
+      </label>
+      <label class="field">
+        <span class="field__label">{text.mana}</span>
+        <input type="number" name="maxMana" min="1" step="10" value={initial.maxMana} inputmode="numeric" />
+      </label>
+      <label class="field">
+        <span class="field__label">{text.cost}</span>
+        <input type="number" name="spellCost" min="1" step="5" value={initial.spellCost} inputmode="numeric" />
+      </label>
+      <label class="field">
+        <span class="field__label">{text.refills}</span>
+        <input type="number" name="refills" min="1" max="50" step="1" value={initial.refills} inputmode="numeric" />
+      </label>
+    </div>
+
+    <div class="calc__result" aria-live="polite">
+      <p class="result__main">
+        <span class="result__label">{text.casts}</span>
+        <strong data-casts>{result.castsFromFull}</strong>
+      </p>
+      <p class="result__line">{text.rank}: <strong data-rank>{result.rank.rank}</strong> <span data-verify hidden><VerifyTag /></span></p>
+      <p class="result__line">{text.bottles}: <strong data-bottles>{result.bottlesPerRefill}</strong></p>
+      <p class="result__line">{text.seconds}: <strong data-seconds>{formatNumber(result.secondsPerRefill, locale)} s</strong></p>
+      <p class="result__line">{text.total}: <strong data-total>{result.totalBottles}</strong></p>
+      <p class="result__line">{text.conjure}: <strong data-conjure>{sentence(result)}</strong></p>
+    </div>
+  </form>
+  <details class="calc__how">
+    <summary>{es ? 'De dónde sale cada cifra' : 'Where each figure comes from'}</summary>
+    <ul>
+      <li>{es ? 'Hechizos = maná máximo ÷ coste, hacia abajo.' : 'Casts = maximum mana ÷ cost, rounded down.'}</li>
+      <li>{es ? 'Botellas por relleno = maná máximo ÷ maná de la botella de tu rango, hacia arriba.' : "Bottles per refill = maximum mana ÷ your rank's bottle mana, rounded up."}</li>
+      <li>{es ? 'Tiempo = maná máximo ÷ (maná de la botella ÷ duración de la botella).' : 'Time = maximum mana ÷ (bottle mana ÷ bottle duration).'}</li>
+      <li>{es ? 'Lanzamientos = botellas en total ÷ botellas por lanzamiento a tu nivel, hacia arriba.' : 'Casts = total bottles ÷ bottles per cast at your level, rounded up.'}</li>
+    </ul>
+    <p>
+      {es
+        ? 'Es una estimación: no cuenta regeneración, críticos, Libre lanzamiento ni el daño que recibas con Escudo de maná. Sirve para comparar, no para predecir un tirón.'
+        : 'It is an estimate: it leaves out regeneration, crits, Clearcasting and damage taken through Mana Shield. Use it to compare, not to predict a pull.'}
+    </p>
+  </details>
+  <p class="calc__status"><StatusBadge status="analysis" /></p>
+</water-calculator>
+
+<script>
+  import { estimateWater, formatNumber, type WaterRank } from '../../lib/water';
+
+  class WaterCalculator extends HTMLElement {
+    connectedCallback() {
+      const form = this.querySelector('form')!;
+      const locale = this.dataset.locale === 'en' ? 'en' : 'es';
+      const ranks = JSON.parse(this.dataset.ranks ?? '[]') as (WaterRank & { verify: boolean })[];
+      const strings = JSON.parse(this.dataset.strings ?? '{}') as Record<string, string>;
+      const value = (name: string) => Number((form.elements.namedItem(name) as HTMLInputElement).value);
+      const set = (selector: string, content: string) => {
+        this.querySelector(selector)!.textContent = content;
+      };
+      const update = () => {
+        const result = estimateWater(ranks, { level: value('level'), maxMana: value('maxMana'), spellCost: value('spellCost'), refills: value('refills') });
+        if (!result) {
+          for (const selector of ['[data-casts]', '[data-rank]', '[data-bottles]', '[data-seconds]', '[data-total]', '[data-conjure]']) set(selector, '—');
+          set('[data-casts]', strings['invalid'] ?? '—');
+          return;
+        }
+        set('[data-casts]', String(result.castsFromFull));
+        set('[data-rank]', String(result.rank.rank));
+        set('[data-bottles]', String(result.bottlesPerRefill));
+        set('[data-seconds]', `${formatNumber(result.secondsPerRefill, locale)} s`);
+        set('[data-total]', String(result.totalBottles));
+        set('[data-conjure]', `${result.conjureCasts} (${formatNumber(result.conjureMana, locale)} ${strings['mana']})`);
+        this.querySelector<HTMLElement>('[data-verify]')!.hidden = !(result.rank as WaterRank & { verify: boolean }).verify;
+      };
+      form.addEventListener('input', update);
+      form.addEventListener('change', update);
+      update();
+    }
+  }
+
+  customElements.define('water-calculator', WaterCalculator);
+</script>
+
+<style>
+  water-calculator {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+    padding: var(--space-5);
+  }
+  .calc {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-5);
+    align-items: start;
+  }
+  .calc__inputs {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .field {
+    display: grid;
+    gap: var(--space-2);
+    min-width: 0;
+  }
+  .field__label {
+    font-weight: 600;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  input[type='number'] {
+    min-height: 44px;
+    max-width: 16rem;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    color: var(--text);
+    font: inherit;
+  }
+  .calc__result {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+    font-variant-numeric: tabular-nums;
+  }
+  .result__main {
+    display: grid;
+  }
+  .result__label {
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .result__main strong {
+    font-size: var(--step-4);
+    line-height: 1.1;
+    color: var(--accent);
+  }
+  .result__line {
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .result__line strong {
+    color: var(--text);
+  }
+  .calc__how {
+    margin-top: var(--space-4);
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .calc__how summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .calc__how ul {
+    margin: var(--space-2) 0;
+  }
+  .calc__status {
+    margin-top: var(--space-3);
+  }
+  @media (max-width: 700px) {
+    .calc {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

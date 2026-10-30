@@ -1,0 +1,41 @@
+---
+/** Regeneration while casting: what went up in Forever and when you get it. */
+import Table from '../ui/Table.astro';
+import SpellRef from './SpellRef.astro';
+import { getLocale } from '../../i18n/locale';
+import { mageWater } from '../../lib/data';
+import { localSpellName } from '../../lib/names';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+---
+
+<Table>
+  <caption class="visually-hidden">{es ? 'Regeneración de maná mientras lanzas, en Classic y en Forever' : 'Mana regeneration while casting, in Classic and Forever'}</caption>
+  <thead>
+    <tr>
+      <th scope="col">{es ? 'Fuente' : 'Source'}</th>
+      <th scope="col">Classic</th>
+      <th scope="col">Forever</th>
+      <th scope="col">{es ? 'Cuándo la tienes' : 'When you have it'}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      mageWater.compensations.map((row) => (
+        <tr>
+          <th scope="row"><SpellRef name={row.name} label={localSpellName(row.name, locale)} /></th>
+          <td class="nowrap">{row.classic[locale]}</td>
+          <td class="nowrap"><strong>{row.forever[locale]}</strong></td>
+          <td>{row.when[locale]}</td>
+        </tr>
+      ))
+    }
+  </tbody>
+</Table>
+
+<style>
+  .nowrap {
+    white-space: nowrap;
+  }
+</style>

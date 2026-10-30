@@ -1,0 +1,21 @@
+---
+/** Marks a value that still has a «TODO verificar» note in src/data/mage-water.json. */
+import { getLocale } from '../../i18n/locale';
+
+const es = getLocale(Astro) === 'es';
+---
+
+<span class="verify-tag">{es ? 'por verificar' : 'to verify'}</span>
+
+<style>
+  .verify-tag {
+    display: inline-block;
+    padding: 0 var(--space-1);
+    border: 1px dashed var(--warning);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--warning);
+  }
+</style>
