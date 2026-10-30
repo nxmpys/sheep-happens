@@ -24,7 +24,7 @@ La reutilización de Blood Fury baja de 3 a 2 minutos para el lanzamiento. El an
 
 - **Datos afectados:** race:orc
 
-### [Guía] Cuatro builds de leveo del 10 al 60
+### [Guía] Cuatro builds de leveo del 1 al 60
 
 Arcano y Escarcha, Arcano hacia mazmorras, Escarcha y Fuego, con el orden de puntos nivel a nivel y el motivo de cada talento. Las dos de Arcano están probadas en la beta, hasta el nivel 30; las de Escarcha y Fuego, aún sin probar.
 

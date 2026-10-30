@@ -222,7 +222,7 @@ No hace falta tocar el diseño ni las páginas: la tarjeta y los filtros salen d
   - estado de verificación y parche en que se comprobó.
 - [x] Builds de leveo con el orden de puntos nivel a nivel (campo `order` en `builds.json`, tabla `TalentOrder` en cada tarjeta) y la columna «Con Talented»: los puntos extra del perk de Legado van al final del orden (hecho del 1 al 30 el 2026-10-14).
 - [x] Guía de leveo en la misma URL de Nivelación (`/es/nivelacion/`, `/en/leveling/`), con selector de builds (`BuildPicker`) y aviso de estado (`LevelingStatus`) (2026-10-14): en solitario (recomendada), mazmorras y área (experimental, desde el 22).
-- [x] **Ampliar el leveo al 60** (2026-10-30): cuatro builds de leveo del 10 al 60 en `builds.json`, con `order` y `orderNotes`. Los componentes `BuildPicker` y `LevelingStatus` ya no se usan en ninguna página.
+- [x] **Ampliar el leveo al 60** (2026-10-30): cuatro builds de leveo del 1 al 60 en `builds.json`, con `order` y `orderNotes` (los puntos empiezan a nivel 10). Los componentes `BuildPicker` y `LevelingStatus` ya no se usan en ninguna página.
 - [ ] Probar en el juego las tres builds de leveo (sobre todo la de área, que es experimental) y pasarlas a `tested` o corregirlas.
 - [ ] Si una build necesita otro orden con Talented (no solo los mismos puntos antes), hoy no se puede expresar: habría que añadir un segundo orden.
 - [x] Etiqueta «Recomendada» o «Viable» en cada uso de la tarjeta (hecho el 2026-10-18). La build de leveo en solitario es la recomendada para leveo a nivel 30. Sin apartado de duelos.
