@@ -647,7 +647,7 @@
           "en": "Arcane path"
         },
         "text": {
-          "es": "Desde el nivel 50 (45 con Talented), en lugar de seguir hacia Piroexplosión: 5 puntos en Accelerant, 3 en Fogonazo mejorado, 2 en Geometría Arcana y 1 en Contrahechizo mejorado. Es la mejor vía si te encuentras con muchos enemigos inmunes al Fuego.",
+          "es": "Desde el nivel 50 (45 con Talentoso), en lugar de seguir hacia Piroexplosión: 5 puntos en Accelerant, 3 en Fogonazo mejorado, 2 en Geometría Arcana y 1 en Contrahechizo mejorado. Es la mejor vía si te encuentras con muchos enemigos inmunes al Fuego.",
           "en": "From level 50 (45 with Talented), instead of carrying on towards Pyroblast: 5 points in Accelerant, 3 in Improved Flamestrike, 2 in Arcane Geometry and 1 in Improved Counterspell. It is the better path if you face many Fire-immune enemies."
         },
         "remove": {
@@ -2268,7 +2268,7 @@
           "ice-shards"
         ],
         "text": {
-          "es": "El corazón de la build: el ralentizamiento de Descarga de Pirofrío tiene un 15 % de probabilidad de activar Dedos de Escarcha, tus 2 siguientes hechizos cuentan contra un objetivo congelado y Trizar les da un 50 % de crítico. Fragmentos de hielo da un 100 % más de bonificación a los críticos de Escarcha, y Descarga de Pirofrío también cuenta como Escarcha.",
+          "es": "El corazón de la build: la ralentización de Descarga de Pirofrío tiene un 15 % de probabilidad de activar Dedos de Escarcha, tus 2 siguientes hechizos cuentan contra un objetivo congelado y Trizar les da un 50 % de crítico. Fragmentos de hielo da un 100 % más de bonificación a los críticos de Escarcha, y Descarga de Pirofrío también cuenta como Escarcha.",
           "en": "The heart of the build: Frostfire Bolt's slow has a 15% chance to trigger Fingers of Frost, your next 2 spells count against a frozen target and Shatter gives them 50% crit. Ice Shards adds 100% to the bonus of Frost crits, and Frostfire Bolt also counts as Frost."
         }
       },

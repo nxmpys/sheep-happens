@@ -218,11 +218,11 @@
   },
   {
     "id": "wiki-ice-shards-classic",
-    "title": "Ice Shards (Classic)",
+    "title": "Ice Shards",
     "publisher": "Warcraft Wiki",
-    "url": "https://warcraft.wiki.gg/wiki/Ice_Shards_(Classic)",
+    "url": "https://warcraft.wiki.gg/wiki/Ice_Shards",
     "kind": "classic-reference",
-    "accessed": "2026-10-11",
+    "accessed": "2026-10-30",
     "notes": {
       "es": "Classic: 5 rangos, +20/40/60/80/100 % a la bonificación de daño crítico de Escarcha.",
       "en": "Classic: 5 ranks, +20/40/60/80/100% Frost critical strike damage bonus."
@@ -568,7 +568,7 @@
     "kind": "community",
     "accessed": "2026-10-15",
     "notes": {
-      "es": "Recomienda Sastrería y Encantamiento para el Mago; Ingeniería por sus consumibles para PvE y JcJ, y Alquimia para ganar oro.",
+      "es": "Recomienda Sastrería y Encantamiento para el Mago; Ingeniería por sus consumibles para JcE y JcJ, y Alquimia para ganar oro.",
       "en": "Recommends Tailoring and Enchanting for Mages; Engineering for its PvE and PvP consumables, and Alchemy to make gold."
     }
   },

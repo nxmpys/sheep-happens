@@ -1,6 +1,6 @@
 /**
- * Labels for builds and races, kept apart from ui.ts because only the builds,
- * races and duel pages use them.
+ * Labels for builds and races, kept apart from ui.ts because only the builds
+ * and races pages use them.
  */
 import type { Locale } from './routes';
 import type { BuildSpec, BuildUse, Racial } from '../lib/schemas';
@@ -50,8 +50,8 @@ export const VALUE_LABELS: Record<Locale, Record<Racial['value'], string>> = {
 const es = {
   'build.level': 'Nivel {level}',
   'build.totalPoints': '{points} puntos',
-  'build.legacy': 'Legado: Talented {rank}/5',
-  'build.legacyHint': 'El perk de Legado Talented adelanta los puntos de talento: a este nivel tienes {extra} más.',
+  'build.legacy': 'Legado: Talentoso {rank}/5',
+  'build.legacyHint': 'La ventaja de Legado Talentoso adelanta los puntos de talento: a este nivel tienes {extra} más.',
   'build.points': 'Arcano / Fuego / Escarcha',
   'build.keyTalents': 'Talentos clave',
   'build.wowhead': 'Ver en Wowhead',
@@ -73,16 +73,16 @@ const es = {
   'build.milestone': 'Talento decisivo',
   'build.levels': 'Niveles {from}–{to}',
   'build.order': 'Orden de puntos',
-  'build.orderIntro': 'Un punto por nivel desde el 10: {points} puntos a nivel {level}. Con el perk de Legado Talented 5/5 empiezas a nivel 5 y llegas a {talented}.',
-  'build.orderIntroNoExtra': 'Un punto por nivel desde el 10: {points} puntos a nivel {level}. Con el perk de Legado Talented 5/5, cada punto llega 5 niveles antes.',
-  'build.talentedToggle': 'Tengo Talented 5/5',
-  'build.talentedHint': 'Perk de Legado: niveles con Talented y puntos extra. Se recuerda en todas las tablas.',
+  'build.orderIntro': 'Un punto por nivel desde el 10: {points} puntos a nivel {level}. Con la ventaja de Legado Talentoso 5/5 empiezas a nivel 5 y llegas a {talented}.',
+  'build.orderIntroNoExtra': 'Un punto por nivel desde el 10: {points} puntos a nivel {level}. Con la ventaja de Legado Talentoso 5/5, cada punto llega 5 niveles antes.',
+  'build.talentedToggle': 'Tengo Talentoso 5/5',
+  'build.talentedHint': 'Ventaja de Legado: niveles con Talentoso y puntos extra. Se recuerda en todas las tablas.',
   'build.orderCaption': 'Orden de puntos de talento: {name}',
   'build.orderLevel': 'Nivel',
-  'build.orderWithTalented': 'con Talented',
+  'build.orderWithTalented': 'con Talentoso',
   'build.orderTalent': 'Talento',
-  'build.orderExtra': 'Solo con Talented',
-  'build.orderExtraHeading': 'Puntos extra con Talented',
+  'build.orderExtra': 'Solo con Talentoso',
+  'build.orderExtraHeading': 'Puntos extra con Talentoso',
   'picker.label': 'Builds de leveo',
   'picker.goal': 'Objetivo',
   'picker.profile': 'Para quién',

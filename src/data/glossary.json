@@ -33,7 +33,7 @@
   },
   {
     "id": "chill",
-    "terms": { "es": ["efecto de escalofrío", "efectos de escalofrío"], "en": ["chill effect", "chill effects"] },
+    "terms": { "es": ["efecto de escalofrío", "efectos de escalofrío", "efecto de enfriamiento", "efectos de enfriamiento"], "en": ["chill effect", "chill effects"] },
     "definition": {
       "es": "Ralentización de movimiento que aplican algunos hechizos de Escarcha, como Descarga de Escarcha o Ventisca (con Ventisca mejorada). El enemigo te sigue persiguiendo, pero más lento. Es la base de la rama: Mordiescarcha puede congelar con cada efecto de escalofrío, Dedos de Escarcha puede activarse con él y Escarcha permanente lo alarga y lo hace más fuerte.",
       "en": "A movement slow applied by some Frost spells, such as Frostbolt or Blizzard (with Improved Blizzard). The enemy keeps chasing you, only slower. It is the base of the tree: Frostbite can freeze on every Chill effect, Fingers of Frost can trigger from it, and Permafrost makes it last longer and slow more."
@@ -43,7 +43,7 @@
     "id": "cooldown",
     "terms": { "es": ["cooldown", "cooldowns"], "en": ["cooldown", "cooldowns"] },
     "definition": {
-      "es": "Tiempo de reutilización: lo que tarda un hechizo en poder usarse de nuevo. Nova de Escarcha, Blink o Bloqueo de hielo tienen cooldown; Descarga de Escarcha no.",
+      "es": "Tiempo de reutilización: lo que tarda un hechizo en poder usarse de nuevo. Nova de Escarcha, Traslación o Bloqueo de hielo tienen cooldown; Descarga de Escarcha no.",
       "en": "The time before a spell can be used again. Frost Nova, Blink or Ice Block have a cooldown; Frostbolt does not."
     }
   },
@@ -137,7 +137,7 @@
   },
   {
     "id": "pull",
-    "terms": { "es": ["pull", "pulls"], "en": ["pull", "pulls"] },
+    "terms": { "es": ["pull", "pulls", "tirón", "tirones"], "en": ["pull", "pulls"] },
     "definition": {
       "es": "Atraer a uno o varios enemigos para empezar un combate. En farmeo AoE, «un pull grande» es juntar muchos a la vez.",
       "en": "Drawing one or more enemies to start a fight. In AoE farming, «a big pull» means gathering many at once."

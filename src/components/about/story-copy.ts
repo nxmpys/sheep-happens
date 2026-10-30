@@ -99,9 +99,9 @@ const en: StoryCopy = {
     chapter: 'Chapter III — Classic & TBC Anniversary',
     title: 'Plot twist: I actually like Classic Mage.',
     steps: [
-      { text: 'Somewhere along the way, I also levelled my first Mage in Classic Anniversary.', caption: 'Classic Anniversary' },
+      { text: 'Somewhere along the way, I also leveled my first Mage in Classic Anniversary.', caption: 'Classic Anniversary' },
       {
-        text: 'Then came TBC Anniversary, and I realised how much I enjoyed the whole experience. Not just the class, but the journey of levelling, learning the toolkit and making every spell count.',
+        text: 'Then came TBC Anniversary, and I realized how much I enjoyed the whole experience. Not just the class, but the journey of leveling, learning the toolkit and making every spell count.',
         caption: 'TBC Anniversary',
       },
       {

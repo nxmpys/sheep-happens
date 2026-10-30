@@ -135,7 +135,7 @@
       "en": "Talents"
     },
     "value": {
-      "es": "Desde el nivel 10. Talentos de hito de 1 punto con 11, 21 y 31 puntos, más un nuevo hito de 16.",
+      "es": "Desde el nivel 10. Talentos decisivos de 1 punto con 11, 21 y 31 puntos, más uno nuevo de 16.",
       "en": "From level 10. One-point milestone talents at 11, 21 and 31 points, plus a new 16-point milestone."
     },
     "status": "verified",
@@ -213,7 +213,7 @@
       "en": "Legacy system"
     },
     "value": {
-      "es": "Puntos a nivel de cuenta que cada personaje gasta en tres árboles (Profesiones, Aventura, Recursos). Máximo de 16 en el lanzamiento. No da puntos de talento de clase extra, pero el perk Talented adelanta el primero hasta el nivel 5 (el máximo sigue en 51).",
+      "es": "Puntos a nivel de cuenta que cada personaje gasta en tres árboles (Profesiones, Aventura, Ingenio). Máximo de 16 en el lanzamiento. No da puntos de talento de clase extra, pero la ventaja Talentoso adelanta el primero hasta el nivel 5 (el máximo sigue en 51).",
       "en": "Account-wide points each character spends in three trees (Professions, Adventure, Resourcefulness). Capped at 16 at launch. It gives no extra class talent points, but the Talented perk moves the first one as early as level 5 (the maximum stays at 51)."
     },
     "status": "reported",

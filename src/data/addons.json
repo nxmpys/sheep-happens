@@ -104,7 +104,7 @@
         "on": true
       },
       {
-        "name": { "es": "Libre lanzamiento", "en": "Clearcasting" },
+        "name": { "es": "Lanzamiento libre", "en": "Clearcasting" },
         "spec": "arcane",
         "what": { "es": "Tu próximo hechizo de daño no cuesta maná.", "en": "Your next damage spell costs no mana." },
         "on": false

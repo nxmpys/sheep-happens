@@ -82,7 +82,7 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
       </select>
     </label>
     <label class="tc__field">
-      <span>Talented</span>
+      <span>{es ? 'Talentoso' : 'Talented'}</span>
       <select name="talented">
         {[0, 1, 2, 3, 4, 5].map((rank) => <option value={rank}>{rank}/5</option>)}
       </select>

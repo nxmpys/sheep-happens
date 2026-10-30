@@ -21,7 +21,7 @@ export const PRIORITY_LABELS: Record<Locale, Record<NonNullable<Profession['prio
 };
 
 const es = {
-  'rating.pve': 'PvE',
+  'rating.pve': 'JcE',
   'rating.pvp': 'JcJ',
   'rating.leveling': 'Leveo',
   'rating.economy': 'Economía',
@@ -39,8 +39,8 @@ const es = {
   'detail.summary': 'En resumen',
   'detail.pros': 'Ventajas',
   'detail.cons': 'Inconvenientes',
-  'detail.pvePvp': 'PvE y JcJ',
-  'detail.pve': 'PvE',
+  'detail.pvePvp': 'JcE y JcJ',
+  'detail.pve': 'JcE',
   'detail.pvp': 'JcJ',
   'detail.levelingEconomy': 'Leveo y economía',
   'detail.pair': 'Mejor combinación',
