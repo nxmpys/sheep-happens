@@ -1,21 +1,30 @@
 ---
-/** Task-oriented entry points for the home page. */
+/**
+ * What the reader needs, as picture cards on a sphere that turns with the scroll
+ * (scripts/question-globe.ts draws it in WebGL). The markup is a plain grid of
+ * linked cards: that is what search engines, screen readers, reduced motion and
+ * browsers without WebGL get, and the script only lays the same cards over the
+ * sphere, one at a time, so every answer and link stays real text.
+ * The slot holds the section heading and its introduction.
+ */
 import Icon from '../ui/Icon.astro';
 import type { IconName } from '../ui/icons';
-import StatusBadge from './StatusBadge.astro';
 import { getLocale, href } from '../../i18n/locale';
 import type { PageId } from '../../i18n/routes';
-import type { Status } from '../../lib/schemas';
 
 const locale = getLocale(Astro);
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+// Scenery between the questions: pictures only, in the rings above and below them.
+const scenery = Array.from({ length: 10 }, (_, i) => `${base}home/d-${i + 1}.webp`);
 
 interface Question {
   page: PageId;
   hash?: string;
+  /** File in public/home/ shown on this question's card. */
+  image: string;
   icon: IconName;
   q: { es: string; en: string };
   a: { es: string; en: string };
-  status?: Status;
 }
 
 // In the order a new player needs them: how to start, race, tree, leveling
@@ -23,76 +32,84 @@ interface Question {
 const questions: Question[] = [
   {
     page: 'guide',
+    image: 'q-guide',
     icon: 'book',
     q: { es: '¿Cómo empiezo a jugar Mago?', en: 'How do I start playing Mage?' },
     a: { es: 'Fundamentos, herramientas por función y qué cambia respecto a Classic.', en: 'Basics, tools by purpose, and what differs from Classic.' },
   },
   {
     page: 'races',
+    image: 'q-races',
     icon: 'users',
     q: { es: '¿Qué raza elijo?', en: 'Which race should I pick?' },
     a: { es: 'La mejor raza según juegues leveo, mazmorras o JcJ, y por qué.', en: 'The best race for leveling, dungeons or PvP, and why.' },
   },
   {
     page: 'talents',
+    image: 'q-talents',
     icon: 'arcane',
     q: { es: '¿Qué rama elijo?', en: 'Which tree should I pick?' },
     a: { es: 'Identidad de Arcano, Fuego y Escarcha, hitos y talentos nuevos.', en: 'Arcane, Fire and Frost identity, milestones and new talents.' },
   },
   {
     page: 'leveling',
+    image: 'q-leveling',
     icon: 'map',
     q: { es: '¿Con qué build subo de nivel?', en: 'Which build should I level with?' },
     a: { es: 'Cómo jugar cada tramo de nivel, los errores frecuentes y lo que cambia Forever al subir.', en: 'How to play each level stretch, common mistakes and what Forever changes for leveling.' },
-    status: 'analysis',
   },
   {
     page: 'combat',
+    image: 'q-combat',
     icon: 'fire',
     q: { es: '¿Qué pulso y cuándo?', en: 'What do I press, and when?' },
     a: { es: 'Prioridades condicionales por rama, basadas en mecánicas oficiales.', en: 'Conditional priorities per tree, based on official mechanics.' },
-    status: 'analysis',
   },
   {
     page: 'builds',
+    image: 'q-builds',
     icon: 'layers',
     q: { es: '¿Qué build uso?', en: 'Which build should I use?' },
     a: { es: 'Builds por uso y rama, con calculadora y explicación. Ya hay de leveo del 1 al 60, listas para copiar.', en: 'Builds by use and tree, with a calculator link and an explanation. Leveling builds from 1 to 60 are up, ready to copy.' },
-    status: 'analysis',
   },
   {
     page: 'changes',
+    image: 'q-changes',
     icon: 'filter',
     q: { es: '¿Qué cambia en Forever?', en: 'What changes in Forever?' },
     a: { es: 'Más de 40 cambios oficiales, filtrables por rama y tipo.', en: '40+ official changes, filterable by tree and type.' },
   },
   {
     page: 'professions',
+    image: 'q-professions',
     icon: 'hammer',
     q: { es: '¿Qué profesiones elijo?', en: 'Which professions should I pick?' },
     a: { es: 'Las dos mejores según tu objetivo (JcE, JcJ, leveo u oro) y qué aporta cada una al Mago.', en: 'The best two for your goal (PvE, PvP, leveling or gold) and what each one gives a Mage.' },
-    status: 'analysis',
   },
   {
     page: 'class-quests',
+    image: 'q-class-quests',
     icon: 'reward',
     q: { es: '¿Qué misiones de clase merecen la pena?', en: 'Which class quests are worth it?' },
     a: { es: 'Las siete cadenas de Mago del 10 al 60, sus recompensas y cuándo hacerlas.', en: 'The seven Mage chains from 10 to 60, their rewards and when to do them.' },
   },
   {
     page: 'library',
+    image: 'q-library',
     icon: 'library',
     q: { es: '¿Dónde están los libros de la biblioteca?', en: 'Where are the library books?' },
     a: { es: 'Los 38 libros por zona, los premios de 10, 20 y 25 libros y un contador de los que llevas.', en: 'All 38 books by zone, the 10, 20 and 25 book rewards and a tracker of the ones you have.' },
   },
   {
     page: 'pvp',
+    image: 'q-pvp',
     icon: 'swords',
     q: { es: '¿Cómo funciona el JcJ?', en: 'How does PvP work?' },
     a: { es: 'Honor, los 14 rangos, el equipo JcJ del Mago y el equipo de Islas Lanza Negra.', en: 'Honor, the 14 ranks, the Mage PvP gear and the Darkspear Islands gear.' },
   },
   {
     page: 'gear',
+    image: 'q-gear',
     icon: 'frost',
     q: { es: '¿Qué equipo busco mientras subo?', en: 'Which gear should I chase while leveling?' },
     a: { es: 'Las piezas clave nivel a nivel: misiones de clase, biblioteca e Islas Lanza Negra. Y el equipo de JcE y JcJ.', en: 'The key pieces level by level: class quests, the library and Darkspear Islands. Plus PvE and PvP gear.' },
@@ -100,94 +117,301 @@ const questions: Question[] = [
 ];
 ---
 
-<ul class="questions">
-  {
-    questions.map((item) => (
-      <li class="question has-glow">
-        <span class="arcane-glow" aria-hidden="true"></span>
-        <span class="question__icon">
-          <Icon name={item.icon} size={22} />
-        </span>
-        <a class="question__link" href={href(item.page, locale, item.hash)}>
-          {item.q[locale]}
-        </a>
-        <p class="question__answer">{item.a[locale]}</p>
-        {item.status && <StatusBadge status={item.status} />}
-        <Icon name="arrowRight" size={18} class="question__arrow" />
-      </li>
-    ))
-  }
-</ul>
+<section class="qglobe" data-question-globe data-scenery={JSON.stringify(scenery)} style={`--n: ${questions.length}`}>
+  <div class="qglobe__stage">
+    <canvas class="qglobe__canvas" aria-hidden="true" data-globe-canvas></canvas>
+    <div class="qglobe__head">
+      <slot />
+    </div>
+    <ol class="qglobe__list">
+      {
+        questions.map((item, i) => (
+          <li class="qcard" data-card data-image={`${base}home/${item.image}.webp`} data-q={item.q[locale]}>
+            <img class="qcard__image" src={`${base}home/${item.image}.webp`} alt="" width="960" height="540" loading="lazy" decoding="async" />
+            <div class="qcard__text">
+              <span class="qcard__count" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')} / {questions.length}
+              </span>
+              <a class="qcard__link" href={href(item.page, locale, item.hash)}>
+                <Icon name={item.icon} size={20} />
+                {item.q[locale]}
+              </a>
+              <p class="qcard__answer">{item.a[locale]}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<script>
+  import { startQuestionGlobe } from '../../scripts/question-globe';
+
+  for (const section of document.querySelectorAll<HTMLElement>('[data-question-globe]')) startQuestionGlobe(section);
+</script>
 
 <style>
-  .questions {
-    list-style: none;
+  .qglobe {
+    --focus: #ffd56a;
+    position: relative;
+    z-index: 1;
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    padding-block: clamp(4rem, 10vh, 7rem);
+    background: #05070f;
+    color-scheme: dark;
+    color: #f4f5fb;
+  }
+  .qglobe__stage {
+    width: 100%;
+    max-width: var(--page-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  .qglobe__canvas {
+    display: none;
+  }
+  .qglobe__head {
+    max-width: 40rem;
+  }
+  .qglobe__head :global(h2) {
     margin: 0;
-    padding: 0;
+    color: #fff;
+  }
+  .qglobe__head :global(p) {
+    margin: var(--space-3) 0 0;
+    color: rgb(244 245 251 / 0.74);
+  }
+  /* Without the sphere: a grid of picture cards. */
+  .qglobe__list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
-    gap: var(--space-3);
+    gap: var(--space-4);
+    margin: var(--space-6) 0 0;
+    padding: 0;
+    list-style: none;
   }
-  .question {
+  .qcard {
     position: relative;
     display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto 1fr auto;
-    column-gap: var(--space-3);
-    row-gap: var(--space-1);
-    align-items: start;
+    align-content: start;
     margin: 0;
-    padding: var(--space-4) var(--space-6) var(--space-4) var(--space-4);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--surface-1);
+    overflow: hidden;
+    border: 1px solid rgb(255 255 255 / 0.12);
+    border-radius: var(--radius-lg);
+    background: #0d1120;
   }
-  .question:hover {
-    border-color: var(--border-strong);
-    background: var(--surface-2);
-  }
-  .question:has(.question__link:focus-visible) {
+  .qcard:has(.qcard__link:focus-visible) {
     outline: 3px solid var(--focus);
     outline-offset: 2px;
   }
-  .question__icon {
-    grid-row: 1 / span 3;
-    display: grid;
-    place-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: var(--radius-sm);
-    background: var(--surface-2);
-    color: var(--accent);
+  .qcard__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
   }
-  .question__link {
+  .qcard__text {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-2);
+    padding: var(--space-4);
+  }
+  .qcard__count {
+    display: none;
+  }
+  .qcard__link {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 0.45em;
+    color: #fff;
     font-weight: 700;
-    font-size: var(--step-0);
-    color: var(--text);
+    line-height: 1.3;
     text-decoration: none;
   }
-  .question__link::after {
+  .qcard__link :global(svg) {
+    flex: none;
+    margin-top: 0.15em;
+    color: #8db8ff;
+  }
+  /* The whole card is the link. */
+  .qcard__link::after {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: inherit;
   }
-  .question__link:focus-visible {
+  .qcard__link:focus-visible {
     outline: none;
   }
-  .question__answer {
+  .qcard__answer {
+    margin: 0;
     font-size: var(--step--1);
-    color: var(--text-muted);
     line-height: 1.5;
+    color: rgb(244 245 251 / 0.74);
   }
-  .question :global(.status) {
-    justify-self: start;
-    margin-top: var(--space-1);
+
+  /* ---- With the sphere: the section pins and the scroll turns the globe ---- */
+  .qglobe.is-globe {
+    height: calc(100svh + (var(--n) - 1) * 62svh);
+    padding: 0;
   }
-  .question :global(.question__arrow) {
+  .is-globe .qglobe__stage {
+    position: sticky;
+    top: 0;
+    max-width: none;
+    height: 100svh;
+    padding: 0;
+    overflow: clip;
+  }
+  .is-globe .qglobe__canvas {
     position: absolute;
-    right: var(--space-4);
-    top: var(--space-4);
-    color: var(--text-subtle);
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+  /* The words keep clear ground over whatever the sphere is showing behind them. */
+  .is-globe .qglobe__stage::after {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 52%;
+    background: linear-gradient(90deg, rgb(5 7 15 / 0.9) 45%, transparent);
+    pointer-events: none;
+  }
+  .is-globe .qglobe__canvas.is-over {
+    cursor: pointer;
+  }
+  .is-globe .qglobe__head,
+  .is-globe .qglobe__list {
+    position: absolute;
+    z-index: 1;
+    left: max(var(--gutter), calc((100% - var(--page-max)) / 2 + var(--gutter)));
+    width: min(27rem, 36%);
+    pointer-events: none;
+  }
+  .is-globe .qglobe__head {
+    top: calc(var(--header-h) + clamp(1.5rem, 7svh, 4.5rem));
+  }
+  .is-globe .qglobe__head :global(h2) {
+    pointer-events: auto;
+  }
+  .is-globe .qglobe__list {
+    bottom: clamp(2.5rem, 12svh, 7rem);
+    display: block;
+    height: 15rem;
+    margin: 0;
+  }
+  .is-globe .qcard {
+    position: absolute;
+    inset: auto 0 0;
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .is-globe .qcard.is-active {
+    opacity: 1;
+    transform: none;
+  }
+  .is-globe .qcard.is-active {
+    pointer-events: auto;
+  }
+  .is-globe .qcard__image {
+    display: none;
+  }
+  .is-globe .qcard__text {
+    padding: 0;
+    gap: var(--space-3);
+  }
+  .is-globe .qcard__count {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    font-variant-numeric: tabular-nums;
+    color: #8db8ff;
+  }
+  .is-globe .qcard__link {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.25rem);
+    font-weight: 600;
+    line-height: 1.12;
+    text-shadow: 0 2px 18px rgb(5 7 15 / 0.9);
+  }
+  .is-globe .qcard__link :global(svg) {
+    display: none;
+  }
+  .is-globe .qcard__link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+  }
+  .is-globe .qcard__link::after {
+    content: none;
+  }
+  .is-globe .qcard:has(.qcard__link:focus-visible) {
+    outline: none;
+  }
+  .is-globe .qcard__link:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 4px;
+  }
+  .is-globe .qcard__answer {
+    font-size: var(--step-0);
+    color: rgb(244 245 251 / 0.86);
+    text-shadow: 0 1px 12px rgb(5 7 15 / 0.95);
+  }
+  /* Phones: heading on top, sphere in the middle, the question under it over a dark foot. */
+  @media (max-width: 820px) {
+    .is-globe .qglobe__head,
+    .is-globe .qglobe__list {
+      left: var(--gutter);
+      right: var(--gutter);
+      width: auto;
+    }
+    .is-globe .qglobe__head :global(p) {
+      font-size: var(--step--1);
+      line-height: 1.45;
+    }
+    .is-globe .qglobe__head {
+      top: calc(var(--header-h) + var(--space-3));
+    }
+    .is-globe .qglobe__list {
+      bottom: var(--space-5);
+      height: 11rem;
+    }
+    .is-globe .qglobe__stage::before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      inset: 0 0 auto;
+      height: 15rem;
+      background: linear-gradient(180deg, #05070f 62%, transparent);
+      pointer-events: none;
+    }
+    .is-globe .qglobe__stage::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      width: auto;
+      height: 15rem;
+      background: linear-gradient(0deg, #05070f 62%, transparent);
+      pointer-events: none;
+    }
+    .is-globe .qcard__answer {
+      font-size: var(--step--1);
+    }
+    .is-globe .qcard__text {
+      gap: var(--space-2);
+    }
   }
 </style>

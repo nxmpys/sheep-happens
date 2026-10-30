@@ -31,7 +31,6 @@ export interface StoryCopy {
     chapter: string;
     title: string;
     body: string[];
-    welcome: string;
     cta: string;
     open: string;
     close: string;
@@ -120,7 +119,6 @@ const en: StoryCopy = {
       'A place to learn, experiment, compare options and get answers without having to piece together a dozen different sources.',
       'I’m still a player, still learning and still figuring things out. This is simply where I want to collect what I learn and make it useful to others.',
     ],
-    welcome: 'Welcome. Let’s make this Mage count.',
     cta: 'Explore the Mage Guide',
     open: 'Open the grimoire',
     close: 'Close the grimoire',
@@ -213,7 +211,6 @@ const es: StoryCopy = {
       'Un sitio para aprender, experimentar, comparar opciones y resolver dudas sin tener que juntar una docena de fuentes distintas.',
       'Sigo siendo un jugador, sigo aprendiendo y sigo descubriendo cosas. Este es simplemente el lugar donde quiero reunir lo que aprendo y hacerlo útil para los demás.',
     ],
-    welcome: 'Bienvenido. Hagamos que este Mago cuente.',
     cta: 'Explorar la guía del Mago',
     open: 'Abrir el grimorio',
     close: 'Cerrar el grimorio',

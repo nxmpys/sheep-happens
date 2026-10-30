@@ -97,20 +97,20 @@ export const STORY_IMAGES: Record<StoryArtName, StoryImage> = {
     'Waterfalls and stone bridges of the Dragon Isles, a small dragon flying past',
     'Cascadas y puentes de piedra de las Islas Dragón, con un pequeño dragón volando',
   ),
-  tbc: story(
-    'mage-guldan-illidan.webp', 1920, 1080, '50% 40%', 'felrune',
-    'A young Mage holding a spellbook between Gul’dan and Illidan, under a fel-green sky',
-    'Un joven Mago con un libro de hechizos entre Gul’dan e Illidan, bajo un cielo verde vil',
+  tbc: live(
+    'tbc-live', 1280, 720, '50% 50%', 'felrune',
+    'The login screen of The Burning Crusade: the Dark Portal blazing green between two hooded guardians',
+    'La pantalla de inicio de The Burning Crusade: el Portal Oscuro ardiendo en verde entre dos guardianes encapuchados',
   ),
-  mage: story(
-    'mage-fire.webp', 1200, 675, '50% 28%', 'fire',
-    'A Blood Elf Mage conjuring fire with both hands',
-    'Un Mago elfo de sangre conjurando fuego con las dos manos',
+  mage: live(
+    'classic-live', 1280, 720, '50% 50%', 'classic',
+    'The login screen of World of Warcraft Classic: the Dark Portal open between two stone guardians, a bright land beyond it',
+    'La pantalla de inicio de World of Warcraft Classic: el Portal Oscuro abierto entre dos guardianes de piedra, con una tierra luminosa al otro lado',
   ),
   forever: story(
-    'wow-forever.webp', 1920, 1080, '50% 50%', 'classic',
-    'The World of Warcraft: Forever logo over green plains, mountains and a volcano',
-    'El logo de World of Warcraft: Forever sobre llanuras verdes, montañas y un volcán',
+    'tirisfal.webp', 1920, 1080, '62% 45%', 'fel',
+    'Tirisfal Glades, where an Undead begins: a misty pine forest under a green sun, a dark house and its clock tower',
+    'Los Claros de Tirisfal, donde empieza un no-muerto: un pinar con niebla bajo un sol verde, una casa oscura y su torre del reloj',
   ),
   grimoire: story(
     'dalaran-library.webp', 1920, 1080, '50% 50%', 'arcane',

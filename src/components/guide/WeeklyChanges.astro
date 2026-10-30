@@ -1,6 +1,6 @@
 ---
 /**
- * «Qué ha cambiado para el Mago esta semana» on the home page: only the game
+ * «Qué ha cambiado para el Mago esta semana» at the top of the updates page: only the game
  * entries of changelog.json (what Blizzard changed that affects the Mage; our
  * own guide and site changes stay on the updates page) from the last seven
  * days up to the build date. Each review of the sources (Wednesday and Friday)
@@ -32,10 +32,9 @@ const current = thisWeek.length > 0;
 const end = current ? today : newest ? dayOf(newest) : 0;
 const start = end - 6 * DAY;
 const week = current ? thisWeek : relevant.filter((entry) => dayOf(entry) >= start);
-// The newest few; the rest of the week is one click away on the updates page.
+// The newest few; the rest of the week is in the history right below.
 const SHOWN = 5;
 const entries = week.slice(0, SHOWN);
-const more = week.length - entries.length;
 const day = (ms: number) => formatDate(locale, new Date(ms));
 const es = locale === 'es';
 ---
@@ -79,10 +78,6 @@ const es = locale === 'es';
         })}
       </ol>
       <p class="weekly__more">
-        <a href={href('updates', locale)}>
-          {more > 0 ? (es ? `Ver ${more} más en el historial` : `See ${more} more in the history`) : es ? 'Ver todo el historial' : 'See the full history'}
-        </a>
-        {' · '}
         <a href={href('changes', locale)}>{es ? 'Todos los cambios de Forever' : 'All Forever changes'}</a>
       </p>
     </section>

@@ -6,8 +6,15 @@ import { NAV_LABELS, t } from '../../i18n/ui';
 import { changesForTree, milestonesForTree } from '../../lib/data';
 import { localName } from '../../lib/names';
 
+interface Props {
+  /** The home page's version: tall picture panels that widen under the pointer. */
+  panels?: boolean;
+}
+
+const { panels = false } = Astro.props;
 const locale = getLocale(Astro);
 const es = locale === 'es';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
 /** Paraphrased from Blizzard's deep dive (see sources). */
 const identity = {
@@ -33,10 +40,11 @@ const specs = (['arcane', 'fire', 'frost'] as const).map((tree) => ({
 }));
 ---
 
-<ul class="specs">
+<ul class:list={['specs', { 'specs--panels': panels }]}>
   {
     specs.map((spec) => (
       <li class={`spec has-glow school-${spec.tree}`}>
+        {panels && <img class="spec__picture" src={`${base}home/tree-${spec.tree}.webp`} alt="" width="1200" height="500" loading="lazy" decoding="async" />}
         <span class="arcane-glow" aria-hidden="true"></span>
         <a class="spec__link" href={href(spec.pageId, locale)}>
           <span class="spec__icon">
@@ -156,5 +164,96 @@ const specs = (['arcane', 'fire', 'frost'] as const).map((tree) => ({
   .spec__milestones {
     font-size: var(--step--1);
     color: var(--text-muted);
+  }
+
+  /* ---- Home page: picture panels, always dark over their picture ---- */
+  .specs--panels {
+    color-scheme: dark;
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+    min-height: min(40rem, 86svh);
+  }
+  .specs--panels .spec {
+    flex: 1 1 0;
+    min-width: 0;
+    overflow: hidden;
+    background: #05070f;
+    color: #f4f5fb;
+    transition:
+      flex-grow 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+      border-color 0.2s;
+  }
+  /* The text lets clicks through to the link that covers the card; tooltips keep working. */
+  .specs--panels .spec > :not(.spec__picture, .arcane-glow, .spec__link) {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .specs--panels .spec :global(.status),
+  .specs--panels .spec :global(.spell-ref) {
+    pointer-events: auto;
+  }
+  .spec__picture {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  /* Over the picture, under the words: the text sits on near-solid dark. */
+  .specs--panels .spec::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(0deg, #05070f 40%, rgb(5 7 15 / 0.8) 58%, rgb(5 7 15 / 0.05) 84%);
+    pointer-events: none;
+  }
+  /* The picture above, and the three names on one line whatever the text below them. */
+  .specs--panels .spec__link {
+    margin-top: clamp(10rem, 30svh, 17rem);
+  }
+  .specs--panels .spec__link,
+  .specs--panels .spec__name {
+    color: #fff;
+  }
+  .specs--panels .spec__name {
+    font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.4rem);
+  }
+  .specs--panels .spec__icon {
+    background: rgb(5 7 15 / 0.7);
+  }
+  .specs--panels .spec__identity,
+  .specs--panels .spec__milestones {
+    color: rgb(244 245 251 / 0.8);
+  }
+  @media (hover: hover) and (min-width: 821px) {
+    .specs--panels .spec:hover,
+    .specs--panels .spec:focus-within {
+      flex-grow: 1.45;
+    }
+    .specs--panels .spec:hover .spec__picture {
+      transform: scale(1.05);
+    }
+  }
+  @media (max-width: 820px) {
+    .specs--panels {
+      flex-direction: column;
+      min-height: 0;
+    }
+    .specs--panels .spec {
+      flex: none;
+      min-height: 30rem;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .specs--panels .spec,
+    .spec__picture {
+      transition: none;
+    }
   }
 </style>
