@@ -40,7 +40,7 @@
 | Límite de nivel inicial de la beta | 20 hasta el 1 oct | Una fuente indica 30 desde el inicio | Se usa 20 → 30 (dos fuentes) |
 | Doble especialización | Deep dive oficial: nivel 40 | Zockify: "no anunciada oficialmente" (página anterior al deep dive) | Se da por buena la fuente oficial, más reciente |
 | "Magic Attunement" | Oficial: pasa a ser habilidad base | Zockify: aparece como "eliminado" | Ambas son compatibles: deja de ser talento. Se usa la redacción oficial |
-| Requisito de Fingers of Frost | Texto oficial: «Pre-requisite of Ice Lance» | Ice Lance es hito de 11 (fila 3) y Fingers of Frost está en la fila 5: no puede ser requisito de Ice Lance | Se muestra la redacción oficial y la lectura coherente («FoF requiere Ice Lance»), marcada como pendiente |
+| Requisito de Fingers of Frost | Texto oficial: «Pre-requisite of Ice Lance» | Ice Lance es hito de 11 (fila 3) y Fingers of Frost está en la fila 5: no puede ser requisito de Ice Lance | Cerrada el 2026-10-30: FoF requiere Ice Lance, como muestra la calculadora de Forever |
 | Versión de cliente | "1.60.1 beta" (Seemeta) | "build 69913" (Guildorder, antigua) | Resuelto: se publica «1.60.1, build 70338» como dato de la comunidad (wago.tools + Warcraft Wiki) |
 | Nivel de la doble especialización | Deep dive: nivel 40 | Pódcast: «currently 40», estudian adelantarlo | Se muestra «40 por ahora» con el aviso |
 | Ventisca mejorada en las guías de área | Oficial y calculadora: ralentiza como máximo un 40 % | WoW Forever Builds (guía de área 22-60): 65 %, el valor de Classic | Se usa el 40 %. No seguimos esa guía para la build de área |

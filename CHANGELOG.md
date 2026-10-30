@@ -6,6 +6,12 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ## 2026-10-30
 
+### [Guía] Fichas de talentos al día con el árbol del 28 de octubre
+
+Corrijo varias fichas que no reflejaban el árbol del 28 de octubre: Barrera de hielo requiere Mordedura helada, Tromba de misiles está en la fila 2 y Frost Blast ya no figura entre lo que activa Tromba de misiles ni entre lo que aplica Escalofrío del invierno. También doy por cerrado el requisito de Dedos de Escarcha, que requiere Lanza de hielo, y corrijo dos erratas de la versión inglesa.
+
+- **Datos afectados:** Barrera de hielo, Cólera Arcana, Tromba de misiles, Escalofrío del invierno, Dedos de Escarcha, Descarga de Pirofrío, Frost Blast
+
 ### [Guía] Menos puntos en Canalización mejorada
 
 Todas las builds que llevaban Canalización mejorada a 3/5 o 5/5 ahora llevan Especialización en varitas 2/2, Recuperación Arcana 2/2 y Canalización mejorada 1/5.

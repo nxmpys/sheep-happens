@@ -153,11 +153,13 @@
     "name": "Ice Barrier",
     "status": "classic",
     "note": {
-      "es": "En Classic, fila 7 y requiere Bloqueo de hielo. Como Bloqueo de hielo cambia de fila en Forever, su requisito podría cambiar.",
-      "en": "Tier 7 in Classic and requires Ice Block. Since Ice Block moves rows in Forever, the prerequisite may change."
+      "es": "En Classic, fila 7 y requiere Bloqueo de hielo. En la calculadora de Forever requiere Mordedura helada.",
+      "en": "Tier 7 in Classic and requires Ice Block. In the Forever calculator it requires Cold Snap."
     },
     "sources": [
-      "wiki-ice-barrier"
-    ]
+      "wiki-ice-barrier",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-30"
   }
 ]

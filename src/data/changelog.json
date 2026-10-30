@@ -1,5 +1,34 @@
 [
   {
+    "id": "2026-10-30-talent-cards",
+    "date": "2026-10-30",
+    "type": "guide",
+    "title": {
+      "es": "Fichas de talentos al día con el árbol del 28 de octubre",
+      "en": "Talent cards up to date with the 28 October tree"
+    },
+    "body": {
+      "es": "Corrijo varias fichas que no reflejaban el árbol del 28 de octubre: Barrera de hielo requiere Mordedura helada, Tromba de misiles está en la fila 2 y Frost Blast ya no figura entre lo que activa Tromba de misiles ni entre lo que aplica Escalofrío del invierno. También doy por cerrado el requisito de Dedos de Escarcha, que requiere Lanza de hielo, y corrijo dos erratas de la versión inglesa.",
+      "en": "I fix several cards that did not reflect the 28 October tree: Ice Barrier requires Cold Snap, Missile Barrage sits in row 2, and Frost Blast no longer appears among what triggers Missile Barrage or applies Winter's Chill. I also close the Fingers of Frost prerequisite, which requires Ice Lance, and fix two typos in the English text."
+    },
+    "pages": [
+      "changes",
+      "talents-arcane",
+      "talents-frost",
+      "sources"
+    ],
+    "sources": [],
+    "refs": [
+      "milestone:frost-31",
+      "change:arcane-wrath",
+      "change:missile-barrage",
+      "change:winters-chill",
+      "change:fingers-of-frost",
+      "change:frostfire-bolt",
+      "change:frost-blast"
+    ]
+  },
+  {
     "id": "2026-10-30-improved-channeling",
     "date": "2026-10-30",
     "type": "guide",

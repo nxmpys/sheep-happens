@@ -31,7 +31,7 @@
         "status": "analysis",
         "text": {
           "es": "Al beneficiarse de talentos de ambas ramas, es la pieza central de las builds híbridas Fuego/Escarcha. Puedes calcular el multiplicador en Herramientas.",
-          "en": "Because it benefits from talents in both trees, it is the centrepiece of hybrid Fire/Frost builds. Work out the multiplier under Tools."
+          "en": "Because it benefits from talents in both trees, it is the centerpiece of hybrid Fire/Frost builds. Work out the multiplier under Tools."
         }
       },
       {
@@ -48,7 +48,7 @@
       "warcrafttavern-mage-deep-dive",
       "blizzard-deep-dive-mage-es"
     ],
-    "updated": "2026-10-11"
+    "updated": "2026-10-30"
   },
   {
     "id": "frost-blast",
@@ -68,7 +68,7 @@
     "details": [
       {
         "es": "Blizzard lo crea para recuperar lo que antes daba Descarga de Escarcha de rango 1 (una ralentización rápida y barata), ahora que bajar de rango se penaliza. Cuesta algo más de maná que ese rango 1 y hace un poco más de daño.",
-        "en": "Blizzard added it to restore what Rank 1 Frostbolt used to offer (a quick, cheap slow), now that downranking is penalised. It costs a little more mana than that rank 1 and deals a little more damage."
+        "en": "Blizzard added it to restore what Rank 1 Frostbolt used to offer (a quick, cheap slow), now that downranking is penalized. It costs a little more mana than that rank 1 and deals a little more damage."
       },
       {
         "es": "Puede aplicar Escalofrío del invierno, como Descarga de Escarcha.",
@@ -101,7 +101,7 @@
       "wowhead-forever-talent-calc",
       "foreverchanges-build-2026-10-28"
     ],
-    "updated": "2026-10-29"
+    "updated": "2026-10-30"
   },
   {
     "id": "comprehension",
@@ -709,8 +709,8 @@
     },
     "details": [
       {
-        "es": "Sustituye a Tromba de misiles como talento decisivo de 16 puntos; Tromba de misiles baja a la fila 1.",
-        "en": "It replaces Missile Barrage as the 16-point milestone; Missile Barrage moves down to row 1."
+        "es": "Sustituye a Tromba de misiles como talento decisivo de 16 puntos; Tromba de misiles baja a la fila 1 y, desde el 28 de octubre, a la 2.",
+        "en": "It replaces Missile Barrage as the 16-point milestone; Missile Barrage moves down to row 1 and, since 28 October, to row 2."
       }
     ],
     "notes": [
@@ -734,7 +734,7 @@
       "blizzard-dev-notes",
       "wowhead-forever-talent-calc"
     ],
-    "updated": "2026-10-16"
+    "updated": "2026-10-30"
   },
   {
     "id": "missile-barrage",
@@ -775,8 +775,8 @@
       {
         "status": "reported",
         "text": {
-          "es": "En los datos de la beta, a 2/2: 40 % con Explosión Arcana y 20 % con Cólera Arcana, Bola de Fuego, Descarga de Escarcha, Frost Blast y Descarga de Pirofrío. Desde el hotfix del 20 de octubre, los impactos de Misiles Arcanos ya no aparecen en la descripción.",
-          "en": "In the beta data, at 2/2: 40% from Arcane Blast and 20% from Arcane Wrath, Fireball, Frostbolt, Frost Blast and Frostfire Bolt. Since the 20 October hotfix, Arcane Missiles hits no longer appear in the description."
+          "es": "En los datos de la beta, a 2/2: 40 % con Explosión Arcana y 20 % con Cólera Arcana, Bola de Fuego, Descarga de Escarcha y Descarga de Pirofrío. Desde el hotfix del 20 de octubre, los impactos de Misiles Arcanos ya no aparecen en la descripción.",
+          "en": "In the beta data, at 2/2: 40% from Arcane Blast and 20% from Arcane Wrath, Fireball, Frostbolt and Frostfire Bolt. Since the 20 October hotfix, Arcane Missiles hits no longer appear in the description."
         }
       },
       {
@@ -805,7 +805,7 @@
       "foreverchanges-build-2026-10-28"
     ],
     "previousRow": 4,
-    "updated": "2026-10-29"
+    "updated": "2026-10-30"
   },
   {
     "id": "arcane-mind",
@@ -1647,8 +1647,8 @@
     },
     "details": [
       {
-        "es": "El texto oficial lo describe como «Requisito previo de Lanza de hielo» («Pre-requisite of Ice Lance»). Como Lanza de hielo es un talento decisivo de 11 puntos (fila 3), lo más probable es que Dedos de Escarcha requiera Lanza de hielo y no al revés. Pendiente de confirmar.",
-        "en": "The official text calls it “Pre-requisite of Ice Lance”. Since Ice Lance is an 11-point milestone (row 3), Fingers of Frost most likely requires Ice Lance rather than the reverse. Awaiting confirmation."
+        "es": "Requiere Lanza de hielo, un talento decisivo de 11 puntos (fila 3). El texto oficial lo expresa como «Requisito previo de Lanza de hielo» («Pre-requisite of Ice Lance»).",
+        "en": "It requires Ice Lance, an 11-point milestone (row 3). The official text words it as “Pre-requisite of Ice Lance”."
       },
       {
         "es": "Desde el 15 de octubre se activa también con el enfriamiento de Armadura de Escarcha y Armadura de hielo (un error lo impedía), igual que Mordiescarcha.",
@@ -1669,7 +1669,7 @@
       "blizzard-deep-dive-mage",
       "blizzard-dev-notes"
     ],
-    "updated": "2026-10-16"
+    "updated": "2026-10-30"
   },
   {
     "id": "winters-chill",
@@ -1680,8 +1680,8 @@
       "redesigned"
     ],
     "summary": {
-      "es": "Rediseñado el 15 de octubre: ya no aumenta la probabilidad de crítico. Ahora prepara Cono de frío: Descarga de Escarcha, Frost Blast y Lanza de hielo potenciada por Dedos de Escarcha aplican cargas (hasta 5) que tu siguiente Cono de frío consume para hacer más daño.",
-      "en": "Redesigned on 15 October: it no longer increases critical strike chance. It now sets up Cone of Cold: Frostbolt, Frost Blast and Fingers of Frost-empowered Ice Lance apply stacks (up to 5) that your next Cone of Cold consumes to deal more damage."
+      "es": "Rediseñado el 15 de octubre: ya no aumenta la probabilidad de crítico. Ahora prepara Cono de frío: Descarga de Escarcha y Lanza de hielo potenciada por Dedos de Escarcha aplican cargas (hasta 5) que tu siguiente Cono de frío consume para hacer más daño.",
+      "en": "Redesigned on 15 October: it no longer increases critical strike chance. It now sets up Cone of Cold: Frostbolt and Fingers of Frost-empowered Ice Lance apply stacks (up to 5) that your next Cone of Cold consumes to deal more damage."
     },
     "details": [
       {
@@ -1701,8 +1701,8 @@
       {
         "status": "analysis",
         "text": {
-          "es": "Convierte Cono de frío en un remate: 5 Descargas de Escarcha (o Frost Blast) y después Cono de frío. Está en la fila 6, así que no llega hasta unos 25 puntos en Escarcha.",
-          "en": "It turns Cone of Cold into a finisher: 5 Frostbolts (or Frost Blasts), then Cone of Cold. It sits in row 6, so it is out of reach until about 25 points in Frost."
+          "es": "Convierte Cono de frío en un remate: 5 Descargas de Escarcha y después Cono de frío. Está en la fila 6, así que no llega hasta unos 25 puntos en Escarcha.",
+          "en": "It turns Cone of Cold into a finisher: 5 Frostbolts, then Cone of Cold. It sits in row 6, so it is out of reach until about 25 points in Frost."
         }
       }
     ],
@@ -1713,6 +1713,6 @@
       "wowhead-forever-talent-calc",
       "foreverchanges-hotfix-2026-10-20"
     ],
-    "updated": "2026-10-21"
+    "updated": "2026-10-30"
   }
 ]
