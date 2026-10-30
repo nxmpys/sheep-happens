@@ -12,7 +12,7 @@ status: published
 verification: analysis
 wide: true
 sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, wowhead-forever-talent-calc, mobalytics-mage-leveling, method-mage-leveling, icyveins-dungeon-xp, warcrafttavern-legacy, wowhead-dual-spec-podcast]
-tags: [leveo, nivelación, subir de nivel, guía de leveo, primeros pasos, consejos, cómo jugar, mazmorras, 1-30]
+tags: [leveo, nivelación, subir de nivel, guía de leveo, primeros pasos, consejos, cómo jugar, mazmorras, 1-30, bajar de rango, piedra de hogar, portales, agua, comida]
 ---
 
 ## De tu primer hechizo al nivel 60
@@ -37,6 +37,7 @@ Todas las raciales y la clasificación por contenido: <PageLink to="races">Razas
 
 - **Cómo combates.** Descarga de Escarcha, otra Descarga de Escarcha y remate con Explosión de Fuego o con la varita. Lleva siempre puestos Armadura de Escarcha e Intelecto Arcano.
 - **Consigue una varita.** La Lesser Magic Wand (nivel 5), de Encantamiento o de la casa de subastas: al principio hace casi tanto daño como tus hechizos y no gasta maná. Desde el 15 de octubre tienes que estar quieto 0,5 s antes de disparar. <Status status="reported" compact />
+- **Agua y comida.** Desde los niveles 4 y 6 las conjuras tú. La excepción es el agua a nivel 5: la Leche fría como el hielo (Ice Cold Milk) da 437 de maná frente a los 151 de la tuya, hasta que aprendes el rango 2 a nivel 10. <Status status="reported" compact />
 - **Tu límite.** Poco maná y nada para escapar. Lucha contra un enemigo cada vez y bebe cuando bajes de la mitad.
 
 </Pieces>
@@ -84,6 +85,16 @@ El camino nivel a nivel llega por ahora al 30; completaré el tramo del 31 al 60
 Conjura agua y comida antes de salir de la ciudad. Por qué se bebe más que en Classic y cuánta llevar: <PageLink to="mage-water">Agua del Mago</PageLink>.
 
 </Tile>
+<Tile title="Compra agua antes de cada rango" icon="inv_misc_coin_06">
+
+Durante los cinco niveles previos a aprender un rango de Conjurar agua, los vendedores ya tienen esa agua: Zumo de melón (Melon Juice) a nivel 15 o Néctar dulce (Sweet Nectar) a nivel 25. Tabla completa en <PageLink to="mage-water">Agua del Mago</PageLink>. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Come comida cocinada antes de salir" icon="inv_misc_food_64">
+
+Tras 10 s comiendo sentado, ganas un 5 % más de experiencia por muerte durante 15 min, además de la estadística del plato. La comida conjurada no lo da. Qué platos, en <PageLink to="gear" hash="consumibles-para-subir-de-nivel">Equipo</PageLink>. <Status status="reported" compact />
+
+</Tile>
 <Tile title="La regla de los 5 segundos" icon="inv_misc_pocketwatch_03">
 
 Tu maná deja de regenerarse durante 5 s cada vez que lanzas un hechizo. Rematar con la varita deja que se recupere. <Status status="classic" compact />
@@ -94,9 +105,34 @@ Tu maná deja de regenerarse durante 5 s cada vez que lanzas un hechizo. Rematar
 Desde el nivel 20, cada 8 minutos. Devuelve maná muy rápido: para un combate que se alarga o para ahorrarte una parada. <Status status="reported" compact />
 
 </Tile>
-<Tile title="Tu rango más alto" icon="inv_misc_book_08">
+<Tile title="No bajes de rango para hacer daño" icon="inv_misc_book_08">
 
-En Forever, los rangos muy inferiores a tu nivel aprovechan menos tu daño de hechizos y activan menos tus talentos. <Status status="verified" compact />
+En Forever, los rangos muy inferiores a tu nivel aprovechan menos tu daño de hechizos y activan menos tus talentos. Usa el rango más alto que tengas, salvo cuando buscas el efecto y no el daño: <PageLink to="leveling" hash="cuándo-sí-bajar-de-rango">cuándo sí bajar de rango</PageLink>. <Status status="verified" compact />
+
+</Tile>
+</Tiles>
+
+## Hechizos fáciles de pasar por alto
+
+<Tiles>
+<Tile title="Escudo de maná" spell="Mana Shield">
+
+Absorbe daño físico a cambio de 2 de maná por punto, así que vacía tu reserva deprisa. Úsalo si te alcanzan y necesitas terminar un hechizo. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Tu armadura" spell="Mage Armor">
+
+Armadura de Escarcha y Armadura de hielo ralentizan a quien te golpea cuerpo a cuerpo. Solo puedes llevar una armadura a la vez: desde el nivel 34, cambia a **Armadura de mago** (Mage Armor) si nadie te va a golpear, como en una mazmorra, por su regeneración de maná. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Contrahechizo" spell="Counterspell">
+
+Nivel 24, cada 30 s. Corta la curación o el hechizo fuerte de un lanzador y le impide usar esa escuela durante 10 s. Genera mucha amenaza. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Empapar magia" icon="spell_nature_abolishmagic">
+
+Dampen Magic, nivel 12. Reduce el daño de hechizos que recibes y también las curaciones: 15 y 30 puntos en el rango 1, durante 10 min. Si subes solo, nadie te cura, así que apenas pierdes nada. <Status status="reported" compact />
 
 </Tile>
 </Tiles>
@@ -138,6 +174,31 @@ Qué dos aprender y cómo ayudan mientras subes.
 </Tile>
 </Tiles>
 
+## Viajes, portales y oro
+
+<Tiles>
+<Tile title="Pon tu Piedra de hogar donde estás subiendo" icon="inv_misc_rune_01">
+
+Los teletransportes te llevan a dos capitales desde el nivel 20 y a la tercera desde el 30 (120 de maná, 10 s de lanzamiento y una Runa de Teletransporte), así que no necesitas la Piedra de hogar (Hearthstone) para volver a la ciudad. Úsala para volver a la posada de tu zona. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Portales" icon="spell_arcane_portalstormwind">
+
+Los aprendes a nivel 40 y 50, según la ciudad: 850 de maná, 1 min de reutilización y una Runa de Portales. Tu grupo te los pedirá al acabar una mazmorra, y puedes venderlos por el canal de comercio. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Conjura nada más conectarte" icon="inv_drink_06">
+
+Lo conjurado desaparece si pasas más de 15 min desconectado. Aprovecha también los viajes para reponer agua, comida y gemas. El agua y la comida se pueden vender en las capitales. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Caída lenta" spell="Slow Fall">
+
+Slow Fall, nivel 12. Solo se lanza sobre ti, dura 30 s y gasta una Pluma ligera. <Status status="reported" compact />
+
+</Tile>
+</Tiles>
+
 ## Errores frecuentes
 
 <Pieces dont>
@@ -145,6 +206,7 @@ Qué dos aprender y cómo ayudan mientras subes.
 - **Romper tu propia Nova.** El daño puede soltar a un enemigo congelado: empieza por tu golpe más fuerte, no por golpes pequeños.
 - **Atraer de más.** Usar Nova de Escarcha en mitad de un grupo sin saber hacia dónde vas a alejarte, o luchar con patrullas cerca.
 - **Gastar maná en área contra un solo enemigo.** Deflagración Arcana y Ventisca son para grupos.
+- **Bajar de rango para hacer daño, como en Classic.** En Forever activas menos tus talentos.
 - **Olvidar al instructor y la varita.** Tu daño depende de los rangos nuevos, y la varita te ahorra maná en cada remate.
 - **Farmear demasiado pronto.** Antes del 22, o con enemigos que atacan a distancia.
 - **En grupo.** Nova de Escarcha junto al tanque, Ventisca antes de que el tanque tenga el grupo o sobre un enemigo con Polimorfia.
@@ -180,6 +242,22 @@ Blizzard ha recortado los talentos que permitían atraer grandes grupos de criat
 ### Bajar de rango sale menos a cuenta
 
 Desde la build del 1 de octubre, los rangos muy inferiores a tu nivel aprovechan menos tu daño de hechizos y activan menos tus habilidades y talentos. Además, el 8 de octubre se reajustaron los rangos bajos de Descarga de Escarcha, Bola de Fuego y Misiles Arcanos para que cada rango nuevo sea siempre una mejora. <Status status="verified" />
+
+### Cuándo sí bajar de rango
+
+El castigo recae en el daño y en lo que se activa, no en el efecto del propio hechizo. Por eso el rango 1 sigue sirviendo cuando quieres ese efecto a poco coste. Los costes y efectos son los del cliente de Forever y los usos, de Mobalytics. Aún no los he probado. <Status status="reported" />
+
+| Hechizo | Rango 1 | Rango máximo | Para qué |
+| --- | --- | --- | --- |
+| **Nova de Escarcha** | 55 de maná, 8 s | 145 de maná, 8 s | Congelar: solo pierdes daño, y es poco |
+| **Cono de frío** | 210 de maná | 555 de maná | La misma ralentización en área, instantánea |
+| **Descarga de Escarcha** | 25 de maná, 1,5 s; ralentiza 5 s | 290 de maná, 3 s; ralentiza 9 s | Ralentizar para alejarte |
+| **Polimorfia** | 60 de maná, 20 s | 150 de maná, 50 s | Controlar con poco maná, aunque dura menos |
+| **Ventisca**, con **Ventisca mejorada** | 320 de maná | 1400 de maná | Ralentizar en área |
+| **Bola de Fuego** | 30 de maná | 395 de maná | Atraer desde 35 m, 5 más que Descarga de Escarcha |
+| **Explosión de Fuego** | 40 de maná | 340 de maná | Reclamar un enemigo al instante |
+
+Blizzard plantea así Descarga de Escarcha: a nivel 60, el rango 1 tiene un 0 % de probabilidad de activar **Mordiescarcha** (Frostbite), así que eliges entre la ralentización barata y el talento. <Status status="verified" /> Frost Blast, el hechizo creado para ese papel, desapareció el 28 de octubre. <Status status="reported" /> No sé si la penalización reduce también la ralentización de Ventisca mejorada. <Status status="pending" />
 
 ### Pergaminos para descifrar
 

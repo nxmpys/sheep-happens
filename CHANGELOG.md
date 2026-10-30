@@ -12,6 +12,12 @@ Todas las builds que llevaban Canalización mejorada a 3/5 o 5/5 ahora llevan Es
 
 - **Datos afectados:** build:arcane-frost-leveling, build:arcane-dungeons-leveling, build:frost-leveling, build:fire-leveling, build:arcane-dungeons, build:arcane-fire-dungeons, build:fire-dungeons, build:frost-dungeons
 
+### [Juego] Blood Fury vuelve a 2 minutos
+
+La reutilización de Blood Fury baja de 3 a 2 minutos para el lanzamiento. El anuncio de raciales de Blizzard del 26 de octubre no lo menciona: el dato sale de los datos de Forever.
+
+- **Datos afectados:** race:orc
+
 ### [Guía] Cuatro builds de leveo del 10 al 60
 
 Arcano y Escarcha, Arcano hacia mazmorras, Escarcha y Fuego, con el orden de puntos nivel a nivel y el motivo de cada talento. Las dos de Arcano están probadas en la beta, hasta el nivel 30; las de Escarcha y Fuego, aún sin probar.

@@ -27,6 +27,25 @@
     ]
   },
   {
+    "id": "2026-10-30-blood-fury",
+    "date": "2026-10-30",
+    "type": "game",
+    "title": {
+      "es": "Blood Fury vuelve a 2 minutos",
+      "en": "Blood Fury back to 2 minutes"
+    },
+    "body": {
+      "es": "La reutilización de Blood Fury baja de 3 a 2 minutos para el lanzamiento. El anuncio de raciales de Blizzard del 26 de octubre no lo menciona: el dato sale de los datos de Forever.",
+      "en": "Blood Fury's cooldown drops from 3 to 2 minutes for launch. Blizzard's 26 October racials announcement does not mention it: the value comes from the Forever data."
+    },
+    "pages": [
+      "races"
+    ],
+    "refs": [
+      "race:orc"
+    ]
+  },
+  {
     "id": "2026-10-30-leveling-builds",
     "date": "2026-10-30",
     "type": "guide",

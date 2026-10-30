@@ -175,6 +175,8 @@ const or = locale === 'es' ? ' o ' : ' or ';
     )
   }
 
+  <slot />
+
   <p class="profession__meta">
     <StatusBadge status={profession.status} />
     {ownSourceIds(profession.sources, sharedProfessionSources).length > 0 && (

@@ -12,7 +12,7 @@ status: published
 verification: analysis
 wide: true
 sources: [blizzard-deep-dive-mage, blizzard-dev-notes, wowhead-forever-talent-calc, mobalytics-mage-leveling, method-mage-leveling, icyveins-dungeon-xp, warcrafttavern-legacy, wowhead-dual-spec-podcast]
-tags: [leveling, level up, leveling guide, first steps, tips, how to play, dungeons, 1-30]
+tags: [leveling, level up, leveling guide, first steps, tips, how to play, dungeons, 1-30, downranking, hearthstone, portals, water, food]
 ---
 
 ## From your first spell to level 60
@@ -37,6 +37,7 @@ Every racial, and the ranking by content: <PageLink to="races">Races</PageLink>.
 
 - **How you fight.** Frostbolt, another Frostbolt, then finish with Fire Blast or your wand. Keep Frost Armor and Arcane Intellect up at all times.
 - **Get a wand.** The Lesser Magic Wand (level 5), from Enchanting or the Auction House: early on it deals almost as much as your spells and costs no mana. Since 15 October you must stand still for 0.5 s before shooting. <Status status="reported" compact />
+- **Water and food.** From levels 4 and 6 you conjure your own. The exception is water at level 5: Ice Cold Milk gives 437 mana against 151 from yours, until you learn rank 2 at level 10. <Status status="reported" compact />
 - **Your limit.** Little mana and no way to escape. Fight one enemy at a time and drink when you drop below half.
 
 </Pieces>
@@ -84,6 +85,16 @@ The level-by-level road reaches 30 for now; I will complete 31 to 60 on this sam
 Conjure water and food before leaving town. Why you drink more than in Classic and how much to carry: <PageLink to="mage-water">Mage water</PageLink>.
 
 </Tile>
+<Tile title="Buy water before each rank" icon="inv_misc_coin_06">
+
+For the five levels before you learn a rank of Conjure Water, vendors already sell that water: Melon Juice at level 15 or Sweet Nectar at level 25. Full table in <PageLink to="mage-water">Mage water</PageLink>. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Eat cooked food before heading out" icon="inv_misc_food_64">
+
+After eating seated for 10 s, you gain 5% more experience from kills for 15 min, plus the dish's stat. Conjured food does not give this. Which dishes, in <PageLink to="gear" hash="consumables-for-leveling">Gear</PageLink>. <Status status="reported" compact />
+
+</Tile>
 <Tile title="The five-second rule" icon="inv_misc_pocketwatch_03">
 
 Your mana stops regenerating for 5 s every time you cast. Finishing with your wand lets it recover. <Status status="classic" compact />
@@ -94,9 +105,34 @@ Your mana stops regenerating for 5 s every time you cast. Finishing with your wa
 From level 20, every 8 minutes. Restores mana very quickly: for a fight that drags on, or to skip a stop. <Status status="reported" compact />
 
 </Tile>
-<Tile title="Your highest rank" icon="inv_misc_book_08">
+<Tile title="Do not downrank for damage" icon="inv_misc_book_08">
 
-In Forever, ranks far below your level get less from your spell damage and trigger your talents less. <Status status="verified" compact />
+In Forever, ranks far below your level get less from your spell damage and trigger your talents less. Use your highest rank, except when you want the effect and not the damage: <PageLink to="leveling" hash="when-downranking-still-pays">when downranking still pays</PageLink>. <Status status="verified" compact />
+
+</Tile>
+</Tiles>
+
+## Spells that are easy to miss
+
+<Tiles>
+<Tile title="Mana Shield" spell="Mana Shield">
+
+Absorbs physical damage at 2 mana per point, so it drains your pool fast. Use it when you get caught and need to finish a cast. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Your armor" spell="Mage Armor">
+
+Frost Armor and Ice Armor slow whoever hits you in melee. You can only wear one armor at a time: from level 34, switch to **Mage Armor** when nobody will hit you, such as in a dungeon, for its mana regeneration. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Counterspell" spell="Counterspell">
+
+Level 24, every 30 s. Stops a caster's heal or big spell and locks them out of that school for 10 s. It generates a lot of threat. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Dampen Magic" icon="spell_nature_abolishmagic">
+
+Level 12. Reduces the spell damage you take and your healing too: 15 and 30 points at rank 1, for 10 min. When you level alone nobody heals you, so you lose almost nothing. <Status status="reported" compact />
 
 </Tile>
 </Tiles>
@@ -138,6 +174,31 @@ Which two to learn, and how they help while leveling.
 </Tile>
 </Tiles>
 
+## Travel, portals and gold
+
+<Tiles>
+<Tile title="Set your Hearthstone where you are leveling" icon="inv_misc_rune_01">
+
+Teleports take you to two capitals from level 20 and the third from 30 (120 mana, a 10 s cast and a Rune of Teleportation), so you do not need the Hearthstone to get back to town. Use it to return to your zone's inn. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Portals" icon="spell_arcane_portalstormwind">
+
+You learn them at level 40 and 50, depending on the city: 850 mana, 1 min cooldown and a Rune of Portals. Your group will ask for one when a dungeon ends, and you can sell them in trade chat. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Conjure as soon as you log in" icon="inv_drink_06">
+
+Conjured items disappear if you stay logged out for more than 15 min. Use travel time to restock water, food and gems too. Water and food can be sold in capitals. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Slow Fall" spell="Slow Fall">
+
+Level 12. Only works on yourself, lasts 30 s and uses a Light Feather. <Status status="reported" compact />
+
+</Tile>
+</Tiles>
+
 ## Common mistakes
 
 <Pieces dont>
@@ -145,6 +206,7 @@ Which two to learn, and how they help while leveling.
 - **Breaking your own Frost Nova.** Damage can free a frozen enemy: lead with your biggest hit, not small ones.
 - **Pulling too much.** Frost Nova in the middle of a pack without knowing where you will back off to, or fighting with patrols nearby.
 - **Spending mana on AoE against one enemy.** Arcane Explosion and Blizzard are for packs.
+- **Downranking for damage, like in Classic.** In Forever it triggers your talents less.
 - **Forgetting the trainer and the wand.** Your damage depends on new ranks, and the wand saves mana on every finisher.
 - **Farming too early.** Before 22, or on enemies that attack at range.
 - **In a group.** Frost Nova next to the tank, Blizzard before the tank holds the pack, or on a polymorphed enemy.
@@ -180,6 +242,22 @@ Blizzard cut the talents that let players pull huge packs of creatures with repe
 ### Downranking pays off less
 
 Since the 1 October build, ranks far below your level get less from your spell damage and trigger your abilities and talents less. On 8 October the low ranks of Frostbolt, Fireball and Arcane Missiles were also rebalanced so every new rank is always an upgrade. <Status status="verified" />
+
+### When downranking still pays
+
+The penalty hits damage and what triggers, not the spell's own effect. That is why rank 1 still works when you want that effect cheaply. Costs and effects come from the Forever client and the uses from Mobalytics. I have not tested them yet. <Status status="reported" />
+
+| Spell | Rank 1 | Top rank | What for |
+| --- | --- | --- | --- |
+| **Frost Nova** | 55 mana, 8 s | 145 mana, 8 s | Freezing: you only lose damage, and little of it |
+| **Cone of Cold** | 210 mana | 555 mana | The same instant area slow |
+| **Frostbolt** | 25 mana, 1.5 s; slows 5 s | 290 mana, 3 s; slows 9 s | Slowing so you can back off |
+| **Polymorph** | 60 mana, 20 s | 150 mana, 50 s | Control on little mana, though it lasts less |
+| **Blizzard**, with **Improved Blizzard** | 320 mana | 1400 mana | Area slow |
+| **Fireball** | 30 mana | 395 mana | Pulling from 35 yards, 5 more than Frostbolt |
+| **Fire Blast** | 40 mana | 340 mana | Tagging an enemy instantly |
+
+Blizzard frames Frostbolt this way: at level 60, rank 1 has a 0% chance to trigger **Frostbite**, so you choose between the cheap slow and the talent. <Status status="verified" /> Frost Blast, the spell created for that role, was removed on 28 October. <Status status="reported" /> I do not know whether the penalty also reduces the Improved Blizzard slow. <Status status="pending" />
 
 ### Scrolls to decipher
 
