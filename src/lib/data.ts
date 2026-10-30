@@ -297,6 +297,10 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
         if (note.point > build.order.length) problems.push(`builds.json: "${build.id}" has a note for point ${note.point}, beyond its order`);
       }
     }
+    for (const linked of [...build.orderNotes, ...build.variants]) {
+      if (linked.build && !data.builds.some((b) => b.id === linked.build)) problems.push(`builds.json: "${build.id}" links to unknown build "${linked.build}"`);
+    }
+    if (build.testedUpTo !== undefined && build.status !== 'tested') problems.push(`builds.json: "${build.id}" has testedUpTo but its status is not "tested"`);
     // A variant swaps ranks on the final build: same total, a build you can really have.
     for (const variant of build.variants) {
       if (!variant.remove && !variant.add) continue;

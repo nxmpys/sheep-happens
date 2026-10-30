@@ -26,10 +26,6 @@
       }
     ],
     "noBuild": {
-      "leveling": {
-        "es": "Los talentos cambiaron el 28 de octubre y estoy rehaciendo la build de leveo con el árbol nuevo.",
-        "en": "The talents changed on 28 October and I am rebuilding the leveling build on the new tree."
-      },
       "pvp": {
         "es": "Todavía no he podido probar el JcJ de nivel 60.",
         "en": "I have not been able to test level 60 PvP yet."
@@ -72,10 +68,6 @@
       }
     ],
     "noBuild": {
-      "leveling": {
-        "es": "Los talentos cambiaron el 28 de octubre y estoy rehaciendo la build de leveo con el árbol nuevo.",
-        "en": "The talents changed on 28 October and I am rebuilding the leveling build on the new tree."
-      },
       "pvp": {
         "es": "Todavía no he podido probar el JcJ de nivel 60.",
         "en": "I have not been able to test level 60 PvP yet."
@@ -114,10 +106,6 @@
       }
     ],
     "noBuild": {
-      "leveling": {
-        "es": "Los talentos cambiaron el 28 de octubre y estoy rehaciendo la build de leveo con el árbol nuevo.",
-        "en": "The talents changed on 28 October and I am rebuilding the leveling build on the new tree."
-      },
       "pvp": {
         "es": "Todavía no he podido probar el JcJ de nivel 60.",
         "en": "I have not been able to test level 60 PvP yet."

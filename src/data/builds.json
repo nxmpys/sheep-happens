@@ -1,6 +1,1578 @@
 [
   {
     "uses": [
+      "leveling"
+    ],
+    "recommendedFor": [],
+    "discouragedFor": [],
+    "level": 60,
+    "legacyTalented": 0,
+    "gameVersion": "forever-beta-2026-10",
+    "updated": "2026-10-30",
+    "status": "tested",
+    "testedUpTo": 30,
+    "id": "arcane-frost-leveling",
+    "name": {
+      "es": "Arcano y Escarcha",
+      "en": "Arcane Frost"
+    },
+    "slug": {
+      "es": "arcano-escarcha",
+      "en": "arcane-frost"
+    },
+    "spec": "arcane",
+    "hybridWith": "frost",
+    "icon": "spell_frost_frostbolt02",
+    "tagline": {
+      "es": "Descarga de Escarcha de relleno, que ralentiza al objetivo y activa los procs de Arcano, con Mordiescarcha para congelarlo.",
+      "en": "Frostbolt as filler, which slows the target and triggers the Arcane procs, with Frostbite to freeze it."
+    },
+    "points": {
+      "improved-channeling": 3,
+      "wand-specialization": 2,
+      "missile-barrage": 2,
+      "arcane-concentration": 5,
+      "arcane-blast": 1,
+      "improved-frostbolt": 5,
+      "elemental-precision": 3,
+      "frostbite": 2,
+      "ice-lance": 1,
+      "arcane-subtlety": 2,
+      "arcane-wrath": 1,
+      "arcane-meditation": 3,
+      "arcane-impact": 3,
+      "presence-of-mind": 1,
+      "arcane-mind": 5,
+      "arcane-instability": 3,
+      "arcane-power": 1,
+      "incineration": 5,
+      "frost-channeling": 3
+    },
+    "order": [
+      "improved-channeling",
+      "improved-channeling",
+      "improved-channeling",
+      "wand-specialization",
+      "wand-specialization",
+      "missile-barrage",
+      "missile-barrage",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-blast",
+      "arcane-concentration",
+      "arcane-concentration",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "elemental-precision",
+      "elemental-precision",
+      "elemental-precision",
+      "frostbite",
+      "frostbite",
+      "ice-lance",
+      "arcane-subtlety",
+      "arcane-subtlety",
+      "arcane-wrath",
+      "arcane-meditation",
+      "arcane-meditation",
+      "arcane-meditation",
+      "arcane-impact",
+      "arcane-impact",
+      "arcane-impact",
+      "presence-of-mind",
+      "arcane-mind",
+      "arcane-mind",
+      "arcane-mind",
+      "arcane-mind",
+      "arcane-mind",
+      "arcane-instability",
+      "arcane-instability",
+      "arcane-instability",
+      "arcane-power",
+      "incineration",
+      "incineration",
+      "incineration",
+      "incineration",
+      "incineration",
+      "frost-channeling",
+      "frost-channeling",
+      "frost-channeling"
+    ],
+    "orderNotes": [
+      {
+        "point": 1,
+        "text": {
+          "es": "Canalización mejorada no es muy útil todavía, pero abre la fila siguiente.",
+          "en": "Improved Channeling is not very useful yet, but it opens the next row."
+        }
+      },
+      {
+        "point": 4,
+        "text": {
+          "es": "A estos niveles ya tendrás tu primera varita, si no antes: un 25 % más de daño con ella se nota mucho al principio. Si aún no tienes, sigue en Canalización mejorada.",
+          "en": "By these levels you will have your first wand, if not sooner: 25% more wand damage is very noticeable early on. If you still have none, stay on Improved Channeling."
+        }
+      },
+      {
+        "point": 6,
+        "text": {
+          "es": "Misiles Arcanos gratis y en la mitad de tiempo. Salta un 20 % de las veces con Descarga de Escarcha y un 40 % con Explosión Arcana.",
+          "en": "Free Arcane Missiles in half the time. It triggers 20% of the time from Frostbolt and 40% from Arcane Blast."
+        }
+      },
+      {
+        "point": 8,
+        "text": {
+          "es": "Un 6 % de probabilidad de Lanzamiento libre tras cualquier hechizo de daño. Paro en 3 para llegar antes a Explosión Arcana.",
+          "en": "A 6% chance of Clearcasting after any damage spell. I stop at 3 to reach Arcane Blast sooner."
+        }
+      },
+      {
+        "point": 12,
+        "text": {
+          "es": "Con 5/5, un 10 %. Desde aquí el maná mejora mucho.",
+          "en": "At 5/5, 10%. Your mana gets much better from here."
+        }
+      },
+      {
+        "point": 14,
+        "text": {
+          "es": "Descarga de Escarcha es tu relleno para conseguir los procs. Con 0,5 s menos de lanzamiento la lanzas más veces, y su ralentización hace que el objetivo tarde más en llegar a ti.",
+          "en": "Frostbolt is your filler to get the procs. With 0.5 s less cast time you cast it more often, and its slow means the target takes longer to reach you."
+        }
+      },
+      {
+        "point": 19,
+        "text": {
+          "es": "Un 6 % de golpe con todos los hechizos para no fallar tanto.",
+          "en": "6% hit with every spell so you miss less."
+        }
+      },
+      {
+        "point": 22,
+        "text": {
+          "es": "La ralentización de Descarga de Escarcha tiene un 10 % de probabilidad de congelar al objetivo durante 5 s.",
+          "en": "Frostbolt's slow has a 10% chance to freeze the target for 5 s."
+        }
+      },
+      {
+        "point": 24,
+        "text": {
+          "es": "Instantánea, así que la lanzas en movimiento, y hace un 200 % más de daño si el objetivo está congelado.",
+          "en": "Instant, so you can cast it on the move, and it deals 200% more damage if the target is frozen."
+        }
+      },
+      {
+        "point": 25,
+        "text": {
+          "es": "Los dos puntos que faltan para abrir la fila de Cólera Arcana, con 15 de resistencia menos contra todos tus hechizos.",
+          "en": "The two points missing to open the Arcane Wrath row, with 15 less resistance against all your spells."
+        }
+      },
+      {
+        "point": 27,
+        "text": {
+          "es": "Un golpe fuerte que crece con tu maná máximo. Tiene 6 s de reutilización.",
+          "en": "A big hit that grows with your maximum mana. It has a 6 s cooldown."
+        }
+      },
+      {
+        "point": 28,
+        "text": {
+          "es": "El 50 % de tu regeneración sigue activa mientras lanzas: bebes mucho menos.",
+          "en": "50% of your regeneration keeps running while you cast: you drink far less."
+        }
+      },
+      {
+        "point": 31,
+        "text": {
+          "es": "Un 6 % de crítico Arcano.",
+          "en": "6% Arcane crit."
+        }
+      },
+      {
+        "point": 35,
+        "text": {
+          "es": "Un 10 % más de Intelecto y un 100 % más de bonificación a los críticos Arcanos.",
+          "en": "10% more Intellect and 100% more bonus on Arcane crits."
+        }
+      },
+      {
+        "point": 40,
+        "text": {
+          "es": "Un 3 % de daño y un 3 % de crítico siempre.",
+          "en": "3% damage and 3% crit at all times."
+        }
+      },
+      {
+        "point": 44,
+        "text": {
+          "es": "Un 10 % de crítico para Explosión Arcana y Lanza de hielo.",
+          "en": "10% crit for Arcane Blast and Ice Lance."
+        }
+      },
+      {
+        "point": 49,
+        "text": {
+          "es": "Tu Descarga de Escarcha de relleno gasta un 15 % menos, así que aguantas más tiempo sin beber.",
+          "en": "Your filler Frostbolt costs 15% less, so you last longer without drinking."
+        }
+      }
+    ],
+    "upside": {
+      "es": "Mucho daño a un objetivo y lo mantienes lejos",
+      "en": "High single-target damage and you keep it away"
+    },
+    "downside": {
+      "es": "Sin daño en área y cara hasta el nivel 22",
+      "en": "No AoE damage and expensive until level 22"
+    },
+    "keyTalents": [
+      "arcane-blast",
+      "missile-barrage",
+      "arcane-concentration",
+      "improved-frostbolt",
+      "frostbite"
+    ],
+    "summary": {
+      "es": "Build de leveo de Arcano con 14 puntos en Escarcha para WoW Forever, en orden del 10 al 60. Descarga de Escarcha rellena y ralentiza, y Tromba de misiles y Lanzamiento libre aportan el daño Arcano gratis.",
+      "en": "Arcane leveling build with 14 points in Frost for WoW Forever, in order from 10 to 60. Frostbolt fills and slows, and Missile Barrage and Clearcasting bring the Arcane damage for free."
+    },
+    "strengths": [
+      {
+        "es": "Ralentizas al objetivo principal y puedes congelarlo con Mordiescarcha.",
+        "en": "You slow your main target and can freeze it with Frostbite."
+      },
+      {
+        "es": "Puedes alejarte mientras peleas y, si lo congelas, lanzar Lanza de hielo en movimiento.",
+        "en": "You can kite while you fight and, if you freeze it, cast Ice Lance on the move."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "No tiene daño en área propio: en mazmorras depende de Fogonazo con Lanzamiento libre.",
+        "en": "It has no AoE damage of its own: in dungeons it relies on Flamestrike with Clearcasting."
+      },
+      {
+        "es": "Hasta el nivel 22, más o menos, gasta bastante maná. Después mejora mucho con Lanzamiento libre y Meditación Arcana.",
+        "en": "Until around level 22 it spends a lot of mana. After that it gets much better with Clearcasting and Arcane Meditation."
+      }
+    ],
+    "reasons": [],
+    "variants": [],
+    "playstyle": [
+      {
+        "es": "Misiles Arcanos si Tromba de misiles está activa.",
+        "en": "Arcane Missiles if Missile Barrage is active."
+      },
+      {
+        "es": "Lanza de hielo si el objetivo está congelado, y siempre que tengas que moverte.",
+        "en": "Ice Lance if the target is frozen, and whenever you have to move."
+      },
+      {
+        "es": "Cólera Arcana si está lista y nada te va a interrumpir: tarda en lanzarse.",
+        "en": "Arcane Wrath if it is ready and nothing will interrupt you: it is slow to cast."
+      },
+      {
+        "es": "Descarga de Escarcha en cualquier otro caso. No pagues Explosiones Arcanas: cada carga la encarece un 175 %.",
+        "en": "Frostbolt in any other case. Do not pay for Arcane Blasts: each stack makes it 175% more expensive."
+      },
+      {
+        "es": "Remata con la varita: ahorras maná y tu regeneración vuelve antes.",
+        "en": "Finish enemies with your wand: you save mana and your regeneration comes back sooner."
+      },
+      {
+        "es": "Sin maná en pleno combate: gema de maná, poción o Evocación, y la varita si no te queda nada.",
+        "en": "Out of mana mid-fight: mana gem, potion or Evocation, and your wand if you have nothing left."
+      }
+    ],
+    "clearcasting": [
+      {
+        "es": "Explosión Arcana: es el hechizo que más maná te ahorra y tiene un 40 % de probabilidad de activar Tromba de misiles.",
+        "en": "Arcane Blast: it is the spell that saves you the most mana and has a 40% chance to trigger Missile Barrage."
+      },
+      {
+        "es": "En mazmorras, con varios enemigos, Fogonazo: bastante daño en área sin gastar maná.",
+        "en": "In dungeons, with several enemies, Flamestrike: plenty of AoE damage without spending mana."
+      },
+      {
+        "es": "Si también tienes Tromba de misiles, lanza primero el otro hechizo y después los Misiles: ya son gratis.",
+        "en": "If you also have Missile Barrage, cast the other spell first and the Missiles after: they are already free."
+      }
+    ],
+    "aoe": [
+      {
+        "es": "Si es seguro, deja Fogonazo preparado antes del pull, con cuidado de no quitarle los enemigos al tanque.",
+        "en": "If it is safe, have Flamestrike ready before the pull, taking care not to pull the enemies off the tank."
+      },
+      {
+        "es": "Deflagración Arcana sin parar mientras te dure el maná. Sutileza Arcana le quita un 30 % de amenaza.",
+        "en": "Arcane Explosion nonstop while your mana lasts. Arcane Subtlety takes 30% of its threat off."
+      }
+    ],
+    "cooldowns": [
+      {
+        "es": "Poder Arcano para un jefe de mazmorra o un pull peligroso: un 30 % más de daño durante 15 s, a un 30 % más de coste.",
+        "en": "Arcane Power for a dungeon boss or a dangerous pull: 30% more damage for 15 s, at 30% more mana cost."
+      },
+      {
+        "es": "Presencia mental para lanzar Cólera Arcana al instante.",
+        "en": "Presence of Mind to cast Arcane Wrath instantly."
+      },
+      {
+        "es": "Evocación cuando te falte poco para quedarte sin maná y no tengas gema ni poción.",
+        "en": "Evocation when you are close to running out of mana and have no gem or potion."
+      }
+    ],
+    "stats": [
+      {
+        "es": "Daño de hechizos: es lo que más encontrarás subiendo y lo que más se nota.",
+        "en": "Spell Damage: it is what you will find most while leveling and what you will notice most."
+      },
+      {
+        "es": "Intelecto: más maná y más crítico, y sale en casi todas las piezas.",
+        "en": "Intellect: more mana and more crit, and it is on almost every piece."
+      },
+      {
+        "es": "Golpe: Precision ya da un 6 %, y subiendo apenas hay equipo con golpe: no lo persigas.",
+        "en": "Hit: Precision already gives 6%, and there is hardly any hit gear while leveling: do not chase it."
+      },
+      {
+        "es": "Crítico: Mente Arcana da un 100 % más de bonificación a los críticos Arcanos. Subiendo verás poco; cógelo cuando salga.",
+        "en": "Crit: Arcane Mind adds 100% to the bonus of Arcane crits. You will see little of it while leveling; take it when it shows up."
+      },
+      {
+        "es": "Espíritu: te hace beber menos, y Meditación Arcana lo aprovecha también mientras lanzas.",
+        "en": "Spirit: you drink less with it, and Arcane Meditation also uses it while you cast."
+      },
+      {
+        "es": "Aguante: súbelo antes que lo anterior si juegas en un reino JcJ.",
+        "en": "Stamina: raise it ahead of the above if you play on a PvP realm."
+      }
+    ],
+    "sources": [
+      "mobalytics-mage-leveling"
+    ]
+  },
+  {
+    "uses": [
+      "leveling"
+    ],
+    "recommendedFor": [],
+    "discouragedFor": [],
+    "level": 60,
+    "legacyTalented": 0,
+    "gameVersion": "forever-beta-2026-10",
+    "updated": "2026-10-30",
+    "status": "tested",
+    "testedUpTo": 30,
+    "id": "arcane-dungeons-leveling",
+    "name": {
+      "es": "Arcano hacia mazmorras",
+      "en": "Arcane into dungeons"
+    },
+    "slug": {
+      "es": "arcano-hacia-mazmorras",
+      "en": "arcane-into-dungeons"
+    },
+    "spec": "arcane",
+    "icon": "spell_arcane_blast",
+    "tagline": {
+      "es": "El camino más corto a Cólera Arcana y Poder Arcano, que al 60 ya es tu build de mazmorras.",
+      "en": "The shortest path to Arcane Wrath and Arcane Power, which at 60 is already your dungeon build."
+    },
+    "points": {
+      "improved-channeling": 3,
+      "wand-specialization": 2,
+      "missile-barrage": 2,
+      "arcane-concentration": 5,
+      "arcane-blast": 1,
+      "arcane-subtlety": 2,
+      "arcane-wrath": 1,
+      "arcane-meditation": 3,
+      "elemental-precision": 3,
+      "arcane-impact": 3,
+      "arcane-mind": 5,
+      "presence-of-mind": 1,
+      "arcane-instability": 3,
+      "arcane-power": 1,
+      "incineration": 5,
+      "ignite": 5,
+      "pyroblast": 1,
+      "wake-of-fire": 2,
+      "flame-throwing": 2,
+      "heating-up": 1
+    },
+    "order": [
+      "improved-channeling",
+      "improved-channeling",
+      "improved-channeling",
+      "wand-specialization",
+      "wand-specialization",
+      "missile-barrage",
+      "missile-barrage",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-blast",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-subtlety",
+      "arcane-subtlety",
+      "arcane-wrath",
+      "arcane-meditation",
+      "arcane-meditation",
+      "arcane-meditation",
+      "elemental-precision",
+      "elemental-precision",
+      "elemental-precision",
+      "arcane-impact",
+      "arcane-impact",
+      "arcane-impact",
+      "arcane-mind",
+      "arcane-mind",
+      "arcane-mind",
+      "arcane-mind",
+      "arcane-mind",
+      "presence-of-mind",
+      "arcane-instability",
+      "arcane-instability",
+      "arcane-instability",
+      "arcane-power",
+      "incineration",
+      "incineration",
+      "incineration",
+      "incineration",
+      "incineration",
+      "ignite",
+      "ignite",
+      "ignite",
+      "ignite",
+      "ignite",
+      "pyroblast",
+      "wake-of-fire",
+      "wake-of-fire",
+      "flame-throwing",
+      "flame-throwing",
+      "heating-up"
+    ],
+    "orderNotes": [
+      {
+        "point": 1,
+        "text": {
+          "es": "Canalización mejorada no es muy útil todavía, pero abre la fila siguiente. Si no quieres pagar por cambiar talentos después, pon aquí los 5 puntos y al 60 ya tendrás la build final:",
+          "en": "Improved Channeling is not very useful yet, but it opens the next row. If you do not want to pay to change talents later, put all 5 points here and at 60 you will already have the final build:"
+        },
+        "build": "arcane-fire-dungeons"
+      },
+      {
+        "point": 4,
+        "text": {
+          "es": "A estos niveles ya tendrás tu primera varita, si no antes: un 25 % más de daño con ella se nota mucho al principio. Si aún no tienes, sigue en Canalización mejorada.",
+          "en": "By these levels you will have your first wand, if not sooner: 25% more wand damage is very noticeable early on. If you still have none, stay on Improved Channeling."
+        }
+      },
+      {
+        "point": 6,
+        "text": {
+          "es": "Misiles Arcanos gratis y en la mitad de tiempo. Salta un 20 % de las veces con Descarga de Escarcha y un 40 % con Explosión Arcana.",
+          "en": "Free Arcane Missiles in half the time. It triggers 20% of the time from Frostbolt and 40% from Arcane Blast."
+        }
+      },
+      {
+        "point": 8,
+        "text": {
+          "es": "Un 6 % de probabilidad de Lanzamiento libre tras cualquier hechizo de daño. Paro en 3 para llegar antes a Explosión Arcana.",
+          "en": "A 6% chance of Clearcasting after any damage spell. I stop at 3 to reach Arcane Blast sooner."
+        }
+      },
+      {
+        "point": 12,
+        "text": {
+          "es": "Con 5/5, un 10 %. Desde aquí el maná mejora mucho.",
+          "en": "At 5/5, 10%. Your mana gets much better from here."
+        }
+      },
+      {
+        "point": 14,
+        "text": {
+          "es": "Dos puntos para abrir la fila siguiente. Es la opción más útil: 15 de resistencia menos contra todos tus hechizos y un 30 % menos de amenaza Arcana.",
+          "en": "Two points to open the next row. It is the most useful option: 15 less resistance against all your spells and 30% less Arcane threat."
+        }
+      },
+      {
+        "point": 16,
+        "text": {
+          "es": "Un golpe fuerte que crece con tu maná máximo. Tiene 6 s de reutilización.",
+          "en": "A big hit that grows with your maximum mana. It has a 6 s cooldown."
+        }
+      },
+      {
+        "point": 17,
+        "text": {
+          "es": "El 50 % de tu regeneración sigue activa mientras lanzas: descansas menos y subes más rápido.",
+          "en": "50% of your regeneration keeps running while you cast: you rest less and level faster."
+        }
+      },
+      {
+        "point": 20,
+        "text": {
+          "es": "De la rama de Escarcha: un 6 % de golpe con todos los hechizos para no fallar tanto.",
+          "en": "From the Frost tree: 6% hit with every spell so you miss less."
+        }
+      },
+      {
+        "point": 23,
+        "text": {
+          "es": "Un 6 % de crítico Arcano.",
+          "en": "6% Arcane crit."
+        }
+      },
+      {
+        "point": 26,
+        "text": {
+          "es": "Un 10 % más de Intelecto y un 100 % más de bonificación a los críticos Arcanos.",
+          "en": "10% more Intellect and 100% more bonus on Arcane crits."
+        }
+      },
+      {
+        "point": 32,
+        "text": {
+          "es": "Un 3 % de daño y un 3 % de crítico siempre.",
+          "en": "3% damage and 3% crit at all times."
+        }
+      },
+      {
+        "point": 35,
+        "text": {
+          "es": "Aquí termina lo imprescindible de Arcano. A partir de aquí hay dos vías: sigo con Arcano y Fuego, y la de Arcano puro está en las variantes.",
+          "en": "This is the end of what Arcane cannot do without. From here there are two paths: I carry on with Arcane Fire, and pure Arcane is in the variants."
+        }
+      },
+      {
+        "point": 36,
+        "text": {
+          "es": "En las dos vías: un 10 % de crítico para Explosión Arcana, Explosión de Fuego y Chamuscar.",
+          "en": "On both paths: 10% crit for Arcane Blast, Fire Blast and Scorch."
+        }
+      },
+      {
+        "point": 41,
+        "text": {
+          "es": "Añade un 40 % a cada crítico de Fuego, y abre el camino a Piroexplosión.",
+          "en": "It adds 40% to each Fire crit, and opens the way to Pyroblast."
+        }
+      },
+      {
+        "point": 49,
+        "text": {
+          "es": "Lanzallamas da 6 metros más a tus hechizos de Fuego. También puedes poner estos dos puntos en Accelerant, que quita 0,2 s a Cólera Arcana y Bola de Fuego.",
+          "en": "Flame Throwing gives your Fire spells 6 more yards. You can also put these two points in Accelerant, which takes 0.2 s off Arcane Wrath and Fireball."
+        }
+      },
+      {
+        "point": 51,
+        "text": {
+          "es": "Con 3 cargas de Calentamiento, Piroexplosión baja a 1,5 s. Es el último punto porque pide 15 en Fuego.",
+          "en": "At 3 Heating Up stacks, Pyroblast drops to 1.5 s. It is the last point because it asks for 15 in Fire."
+        }
+      }
+    ],
+    "upside": {
+      "es": "Mucho daño a un objetivo y poco gasto de maná",
+      "en": "High single-target damage for little mana"
+    },
+    "downside": {
+      "es": "Ralentiza menos que la build con Escarcha",
+      "en": "It slows less than the build with Frost"
+    },
+    "keyTalents": [
+      "arcane-blast",
+      "arcane-wrath",
+      "arcane-power",
+      "missile-barrage",
+      "arcane-meditation"
+    ],
+    "summary": {
+      "es": "Build de leveo de Arcano para WoW Forever, en orden del 10 al 60, que termina en una build de mazmorras de nivel 60. Llega pronto a Cólera Arcana, Meditación Arcana y Poder Arcano, y desde ahí se abre en dos vías: Arcano y Fuego o Arcano puro.",
+      "en": "Arcane leveling build for WoW Forever, in order from 10 to 60, that ends in a level 60 dungeon build. It reaches Arcane Wrath, Arcane Meditation and Arcane Power early, and from there it splits into two paths: Arcane Fire or pure Arcane."
+    },
+    "strengths": [
+      {
+        "es": "Eficiente con el maná si aprovechas bien los procs y rematas con la varita, para que tu regeneración vuelva antes.",
+        "en": "Mana efficient if you make good use of the procs and finish enemies with your wand, so your regeneration comes back sooner."
+      },
+      {
+        "es": "Con Meditación Arcana y Cólera Arcana desde muy pronto, descansas menos y subes más rápido.",
+        "en": "With Arcane Meditation and Arcane Wrath very early, you rest less and level faster."
+      },
+      {
+        "es": "Al llegar al 60 no tienes que rehacer la build: como mucho, mover dos puntos.",
+        "en": "At 60 you do not have to redo the build: at most, move two points."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Solo tienes el efecto base de Descarga de Escarcha, sin Mordiescarcha para congelar.",
+        "en": "You only have Frostbolt's base effect, with no Frostbite to freeze."
+      },
+      {
+        "es": "Sin Descarga de Escarcha mejorada, tu relleno tarda 0,5 s más en lanzarse.",
+        "en": "Without Improved Frostbolt, your filler takes 0.5 s longer to cast."
+      }
+    ],
+    "reasons": [],
+    "variants": [
+      {
+        "name": {
+          "es": "Sin cambiar talentos al 60",
+          "en": "No talent change at 60"
+        },
+        "text": {
+          "es": "Los 5 primeros puntos, todos en Canalización mejorada. Pierdes el 25 % de daño con varita, que está bien al principio, pero al 60 tienes la build final sin pagar por cambiar talentos. Si eliges la otra vía, también te ahorras el cambio.",
+          "en": "Your first 5 points, all in Improved Channeling. You lose the 25% wand damage, which is nice early on, but at 60 you have the final build without paying to change talents. If you take the other path, you also save the change."
+        },
+        "remove": {
+          "wand-specialization": 2
+        },
+        "add": {
+          "improved-channeling": 2
+        },
+        "build": "arcane-fire-dungeons"
+      },
+      {
+        "name": {
+          "es": "Vía de Arcano",
+          "en": "Arcane path"
+        },
+        "text": {
+          "es": "Desde el nivel 50 (45 con Talented), en lugar de seguir hacia Piroexplosión: 5 puntos en Accelerant, 3 en Fogonazo mejorado, 2 en Geometría Arcana y 1 en Contrahechizo mejorado. Es la mejor vía si te encuentras con muchos enemigos inmunes al Fuego.",
+          "en": "From level 50 (45 with Talented), instead of carrying on towards Pyroblast: 5 points in Accelerant, 3 in Improved Flamestrike, 2 in Arcane Geometry and 1 in Improved Counterspell. It is the better path if you face many Fire-immune enemies."
+        },
+        "remove": {
+          "ignite": 5,
+          "pyroblast": 1,
+          "wake-of-fire": 2,
+          "flame-throwing": 2,
+          "heating-up": 1
+        },
+        "add": {
+          "improved-fireball": 5,
+          "improved-flamestrike": 3,
+          "arcane-geometry": 2,
+          "improved-counterspell": 1
+        },
+        "build": "arcane-dungeons"
+      }
+    ],
+    "playstyle": [
+      {
+        "es": "Misiles Arcanos si Tromba de misiles está activa.",
+        "en": "Arcane Missiles if Missile Barrage is active."
+      },
+      {
+        "es": "Cólera Arcana si está lista y nada te va a interrumpir: tarda en lanzarse.",
+        "en": "Arcane Wrath if it is ready and nothing will interrupt you: it is slow to cast."
+      },
+      {
+        "es": "Descarga de Escarcha en cualquier otro caso. No pagues Explosiones Arcanas: cada carga la encarece un 175 %.",
+        "en": "Frostbolt in any other case. Do not pay for Arcane Blasts: each stack makes it 175% more expensive."
+      },
+      {
+        "es": "Remata con la varita: ahorras maná y tu regeneración vuelve antes.",
+        "en": "Finish enemies with your wand: you save mana and your regeneration comes back sooner."
+      },
+      {
+        "es": "Sin maná en pleno combate: gema de maná, poción o Evocación, y la varita si no te queda nada.",
+        "en": "Out of mana mid-fight: mana gem, potion or Evocation, and your wand if you have nothing left."
+      },
+      {
+        "es": "Al llegar al 60, pasa a la rotación de la build de mazmorras que hayas elegido.",
+        "en": "When you reach 60, switch to the rotation of the dungeon build you chose."
+      }
+    ],
+    "clearcasting": [
+      {
+        "es": "Explosión Arcana: es el hechizo que más maná te ahorra y tiene un 40 % de probabilidad de activar Tromba de misiles.",
+        "en": "Arcane Blast: it is the spell that saves you the most mana and has a 40% chance to trigger Missile Barrage."
+      },
+      {
+        "es": "En mazmorras, con varios enemigos, Fogonazo: bastante daño en área sin gastar maná.",
+        "en": "In dungeons, with several enemies, Flamestrike: plenty of AoE damage without spending mana."
+      },
+      {
+        "es": "Si también tienes Tromba de misiles, lanza primero el otro hechizo y después los Misiles: ya son gratis.",
+        "en": "If you also have Missile Barrage, cast the other spell first and the Missiles after: they are already free."
+      }
+    ],
+    "aoe": [
+      {
+        "es": "Si es seguro, deja Fogonazo preparado antes del pull, con cuidado de no quitarle los enemigos al tanque.",
+        "en": "If it is safe, have Flamestrike ready before the pull, taking care not to pull the enemies off the tank."
+      },
+      {
+        "es": "Deflagración Arcana sin parar mientras te dure el maná. Sutileza Arcana le quita un 30 % de amenaza.",
+        "en": "Arcane Explosion nonstop while your mana lasts. Arcane Subtlety takes 30% of its threat off."
+      }
+    ],
+    "cooldowns": [
+      {
+        "es": "Poder Arcano para un jefe de mazmorra o un pull peligroso: un 30 % más de daño durante 15 s, a un 30 % más de coste.",
+        "en": "Arcane Power for a dungeon boss or a dangerous pull: 30% more damage for 15 s, at 30% more mana cost."
+      },
+      {
+        "es": "Presencia mental para lanzar Cólera Arcana al instante.",
+        "en": "Presence of Mind to cast Arcane Wrath instantly."
+      },
+      {
+        "es": "Evocación cuando te falte poco para quedarte sin maná y no tengas gema ni poción.",
+        "en": "Evocation when you are close to running out of mana and have no gem or potion."
+      }
+    ],
+    "stats": [
+      {
+        "es": "Daño de hechizos: es lo que más encontrarás subiendo y lo que más se nota.",
+        "en": "Spell Damage: it is what you will find most while leveling and what you will notice most."
+      },
+      {
+        "es": "Intelecto: más maná y más crítico, y sale en casi todas las piezas.",
+        "en": "Intellect: more mana and more crit, and it is on almost every piece."
+      },
+      {
+        "es": "Golpe: Precision ya da un 6 %, y subiendo apenas hay equipo con golpe: no lo persigas.",
+        "en": "Hit: Precision already gives 6%, and there is hardly any hit gear while leveling: do not chase it."
+      },
+      {
+        "es": "Crítico: Mente Arcana da un 100 % más de bonificación a los críticos Arcanos. Subiendo verás poco; cógelo cuando salga.",
+        "en": "Crit: Arcane Mind adds 100% to the bonus of Arcane crits. You will see little of it while leveling; take it when it shows up."
+      },
+      {
+        "es": "Espíritu: te hace beber menos, y Meditación Arcana lo aprovecha también mientras lanzas.",
+        "en": "Spirit: you drink less with it, and Arcane Meditation also uses it while you cast."
+      },
+      {
+        "es": "Aguante: súbelo antes que lo anterior si juegas en un reino JcJ.",
+        "en": "Stamina: raise it ahead of the above if you play on a PvP realm."
+      }
+    ],
+    "sources": [
+      "mobalytics-mage-leveling"
+    ]
+  },
+  {
+    "uses": [
+      "leveling"
+    ],
+    "recommendedFor": [],
+    "discouragedFor": [],
+    "level": 60,
+    "legacyTalented": 0,
+    "gameVersion": "forever-beta-2026-10",
+    "updated": "2026-10-30",
+    "status": "analysis",
+    "id": "frost-leveling",
+    "name": {
+      "es": "Escarcha",
+      "en": "Frost"
+    },
+    "slug": {
+      "es": "escarcha",
+      "en": "frost"
+    },
+    "spec": "frost",
+    "icon": "spell_frost_frostbolt",
+    "tagline": {
+      "es": "Descarga de Escarcha rápida, Lanza de hielo contra objetivos congelados y mucho control para pelear de uno en uno.",
+      "en": "Fast Frostbolt, Ice Lance against frozen targets and plenty of control to fight one enemy at a time."
+    },
+    "points": {
+      "improved-frostbolt": 5,
+      "elemental-precision": 3,
+      "frostbite": 3,
+      "ice-lance": 1,
+      "ice-shards": 5,
+      "ice-block": 1,
+      "shatter": 3,
+      "fingers-of-frost": 2,
+      "cold-snap": 1,
+      "frost-channeling": 3,
+      "permafrost": 3,
+      "ice-barrier": 1,
+      "improved-channeling": 5,
+      "missile-barrage": 2,
+      "arcane-concentration": 5,
+      "arcane-blast": 1,
+      "arcane-subtlety": 2,
+      "arcane-meditation": 3,
+      "arctic-reach": 2
+    },
+    "order": [
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "elemental-precision",
+      "elemental-precision",
+      "frostbite",
+      "frostbite",
+      "frostbite",
+      "ice-lance",
+      "ice-shards",
+      "ice-shards",
+      "ice-shards",
+      "ice-shards",
+      "ice-shards",
+      "ice-block",
+      "shatter",
+      "shatter",
+      "shatter",
+      "fingers-of-frost",
+      "fingers-of-frost",
+      "cold-snap",
+      "elemental-precision",
+      "frost-channeling",
+      "frost-channeling",
+      "frost-channeling",
+      "permafrost",
+      "permafrost",
+      "permafrost",
+      "ice-barrier",
+      "improved-channeling",
+      "improved-channeling",
+      "improved-channeling",
+      "improved-channeling",
+      "improved-channeling",
+      "missile-barrage",
+      "missile-barrage",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-blast",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-subtlety",
+      "arcane-subtlety",
+      "arcane-meditation",
+      "arcane-meditation",
+      "arcane-meditation",
+      "arctic-reach",
+      "arctic-reach"
+    ],
+    "orderNotes": [
+      {
+        "point": 1,
+        "text": {
+          "es": "Descarga de Escarcha es tu relleno: con esto la lanzas 0,5 s más rápido.",
+          "en": "Frostbolt is your filler: with this you cast it 0.5 s faster."
+        }
+      },
+      {
+        "point": 6,
+        "text": {
+          "es": "Un 4 % de golpe con todos los hechizos.",
+          "en": "4% hit with every spell."
+        }
+      },
+      {
+        "point": 8,
+        "text": {
+          "es": "Un 15 % de probabilidad de congelar a un solo objetivo con tus ralentizaciones. Si vas a hacer área, no cojas este talento: mira la variante.",
+          "en": "A 15% chance to freeze a single target with your slows. If you are going to do AoE, skip this talent: see the variant."
+        }
+      },
+      {
+        "point": 11,
+        "text": {
+          "es": "Para usarla contra enemigos congelados: hace un 200 % más de daño.",
+          "en": "To use against frozen enemies: it deals 200% more damage."
+        }
+      },
+      {
+        "point": 12,
+        "text": {
+          "es": "Un 100 % más de bonificación a los críticos de Escarcha.",
+          "en": "100% more bonus on Frost crits."
+        }
+      },
+      {
+        "point": 18,
+        "text": {
+          "es": "Un 50 % de crítico contra objetivos congelados.",
+          "en": "50% crit against frozen targets."
+        }
+      },
+      {
+        "point": 21,
+        "text": {
+          "es": "Tus ralentizaciones tienen un 15 % de probabilidad de hacer que tus 2 siguientes hechizos traten al objetivo como congelado.",
+          "en": "Your slows have a 15% chance to make your next 2 spells treat the target as frozen."
+        }
+      },
+      {
+        "point": 24,
+        "text": {
+          "es": "El tercer punto de Precision: un 6 % de golpe.",
+          "en": "The third point of Precision: 6% hit."
+        }
+      },
+      {
+        "point": 25,
+        "text": {
+          "es": "Estos 6 puntos son flexibles entre Canalización de Escarcha, Escarcha permanente y Ventisca mejorada. Si te quedas sin maná, Canalización de Escarcha primero; si necesitas más ralentización, Escarcha permanente; si haces más mazmorras, Ventisca mejorada.",
+          "en": "These 6 points are flexible between Frost Channeling, Permafrost and Improved Blizzard. If you run out of mana, Frost Channeling first; if you need more slow, Permafrost; if you do more dungeons, Improved Blizzard."
+        }
+      },
+      {
+        "point": 31,
+        "text": {
+          "es": "Un escudo que además da un 3 % más de daño de Escarcha, otro 3 % mientras lo tengas y evita que los golpes retrasen tus hechizos.",
+          "en": "A shield that also gives 3% more Frost damage, another 3% while you have it and stops hits from delaying your spells."
+        }
+      },
+      {
+        "point": 32,
+        "text": {
+          "es": "El peaje para llegar a lo útil de Arcano. Canalización mejorada protege tus Misiles Arcanos de los golpes.",
+          "en": "The toll to reach the useful part of Arcane. Improved Channeling protects your Arcane Missiles from hits."
+        }
+      },
+      {
+        "point": 37,
+        "text": {
+          "es": "Misiles Arcanos gratis y en la mitad de tiempo, un 20 % de las veces que lanzas Descarga de Escarcha.",
+          "en": "Free Arcane Missiles in half the time, 20% of the times you cast Frostbolt."
+        }
+      },
+      {
+        "point": 39,
+        "text": {
+          "es": "Un 10 % de probabilidad de lanzar gratis tu siguiente hechizo de daño cuando llegues a 5/5.",
+          "en": "A 10% chance that your next damage spell is free once you reach 5/5."
+        }
+      },
+      {
+        "point": 47,
+        "text": {
+          "es": "El 50 % de tu regeneración sigue activa mientras lanzas.",
+          "en": "50% of your regeneration keeps running while you cast."
+        }
+      },
+      {
+        "point": 50,
+        "text": {
+          "es": "Flexibles: termina los puntos que te falten en Escarcha permanente, Canalización de Escarcha o Ventisca mejorada. Si no te falta ninguno, Alcance ártico: un 20 % más de alcance para Descarga de Escarcha y Ventisca.",
+          "en": "Flexible: finish whatever you are missing in Permafrost, Frost Channeling or Improved Blizzard. If you are missing none, Arctic Reach: 20% more range for Frostbolt and Blizzard."
+        }
+      }
+    ],
+    "upside": {
+      "es": "La más segura para subir en solitario",
+      "en": "The safest for leveling solo"
+    },
+    "downside": {
+      "es": "En mazmorras limpia más lento que Arcano",
+      "en": "Slower than Arcane at clearing dungeons"
+    },
+    "keyTalents": [
+      "improved-frostbolt",
+      "ice-lance",
+      "shatter",
+      "fingers-of-frost",
+      "ice-barrier"
+    ],
+    "summary": {
+      "es": "Build de leveo de Escarcha con 18 puntos en Arcano para WoW Forever, en orden del 10 al 60. Descarga de Escarcha rápida, Lanza de hielo con Trizar y Dedos de Escarcha, y Tromba de misiles al final.",
+      "en": "Frost leveling build with 18 points in Arcane for WoW Forever, in order from 10 to 60. Fast Frostbolt, Ice Lance with Shatter and Fingers of Frost, and Missile Barrage at the end."
+    },
+    "strengths": [
+      {
+        "es": "Ralentiza con casi todo, y con Nova de Escarcha y Mordiescarcha el enemigo apenas te alcanza.",
+        "en": "It slows with almost everything, and with Frost Nova and Frostbite the enemy barely reaches you."
+      },
+      {
+        "es": "Bloqueo de hielo y Barrera de hielo son defensas que las builds de Arcano no tienen.",
+        "en": "Ice Block and Ice Barrier are defenses the Arcane builds do not have."
+      },
+      {
+        "es": "Golpes muy fuertes con Lanza de hielo contra objetivos congelados.",
+        "en": "Very big hits with Ice Lance against frozen targets."
+      },
+      {
+        "es": "Se adapta: 8 de sus puntos son flexibles según te falte maná o ralentización.",
+        "en": "It adapts: 8 of its points are flexible depending on whether you lack mana or slow."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Tienes que parar a beber más a menudo, y el grupo te espera en cada pull.",
+        "en": "You have to stop to drink more often, and the group waits for you on every pull."
+      },
+      {
+        "es": "Mordiescarcha no congela a todos los enemigos, como los jefes.",
+        "en": "Frostbite does not freeze every enemy, such as bosses."
+      },
+      {
+        "es": "Hasta el nivel 41 no tiene ningún talento de Arcano, así que todo su ahorro de maná depende de Canalización de Escarcha.",
+        "en": "Until level 41 it has no Arcane talents, so all its mana saving depends on Frost Channeling."
+      }
+    ],
+    "reasons": [],
+    "variants": [
+      {
+        "name": {
+          "es": "Más área",
+          "en": "More AoE"
+        },
+        "text": {
+          "es": "Sin Mordiescarcha: si Ventisca congela a un enemigo, se queda atrás del grupo y luego te puede dar problemas. Sus 3 puntos van a Escarcha permanente. En los flexibles, prioriza Ventisca mejorada; los que ya tenías en Escarcha permanente pasan a Nova de Escarcha mejorada y 1 a Alcance ártico. Los 2 últimos puntos, a Canalización de Escarcha.",
+          "en": "No Frostbite: if Blizzard freezes an enemy, it stays behind the group and can cause you trouble later. Its 3 points go to Permafrost. In the flexible points, prioritize Improved Blizzard; those you already had in Permafrost move to Improved Frost Nova and 1 to Arctic Reach. The last 2 points go to Frost Channeling."
+        },
+        "remove": {
+          "frostbite": 3,
+          "frost-channeling": 1,
+          "arctic-reach": 1
+        },
+        "add": {
+          "improved-blizzard": 3,
+          "improved-frost-nova": 2
+        }
+      }
+    ],
+    "playstyle": [
+      {
+        "es": "Barrera de hielo activa siempre que puedas, en cuanto la tengas.",
+        "en": "Keep Ice Barrier up whenever you can, once you have it."
+      },
+      {
+        "es": "Si salta Dedos de Escarcha, Lanza de hielo al momento, aunque tengas que cancelar lo que estás lanzando: Descarga de Escarcha también gastaría la carga. Lanza de hielo tiene 8 s de reutilización, así que la segunda carga es para tu siguiente Descarga de Escarcha.",
+        "en": "If Fingers of Frost triggers, Ice Lance at once, even if you have to cancel what you are casting: Frostbolt would also spend the charge. Ice Lance has an 8 s cooldown, so the second charge is for your next Frostbolt."
+      },
+      {
+        "es": "Si Mordiescarcha congela al objetivo, Descarga de Escarcha y justo después Lanza de hielo: llegan a la vez y las dos aprovechan Trizar. Si sigue congelado y Lanza de hielo está lista, otra.",
+        "en": "If Frostbite freezes the target, Frostbolt and right after it Ice Lance: they land together and both get Shatter. If it is still frozen and Ice Lance is ready, another one."
+      },
+      {
+        "es": "Misiles Arcanos si Tromba de misiles está activa y es seguro canalizar.",
+        "en": "Arcane Missiles if Missile Barrage is active and it is safe to channel."
+      },
+      {
+        "es": "Si un enemigo llega hasta ti, Nova de Escarcha para ganar distancia.",
+        "en": "If an enemy reaches you, Frost Nova to gain distance."
+      },
+      {
+        "es": "Descarga de Escarcha en cualquier otro caso.",
+        "en": "Frostbolt in any other case."
+      },
+      {
+        "es": "Si tienes que moverte y no hay Dedos de Escarcha, Explosión de Fuego u otro hechizo instantáneo.",
+        "en": "If you have to move and have no Fingers of Frost, Fire Blast or another instant spell."
+      },
+      {
+        "es": "Remata con la varita: ahorras maná y tu regeneración vuelve antes.",
+        "en": "Finish enemies with your wand: you save mana and your regeneration comes back sooner."
+      },
+      {
+        "es": "Sin maná en pleno combate: gema de maná, poción o Evocación, y la varita si no te queda nada.",
+        "en": "Out of mana mid-fight: mana gem, potion or Evocation, and your wand if you have nothing left."
+      }
+    ],
+    "clearcasting": [
+      {
+        "es": "Con varios enemigos, Ventisca: es tu hechizo más caro.",
+        "en": "With several enemies, Blizzard: it is your most expensive spell."
+      },
+      {
+        "es": "A un solo objetivo, Explosión Arcana: cuesta más que Descarga de Escarcha y sube tu daño de hechizos.",
+        "en": "On a single target, Arcane Blast: it costs more than Frostbolt and raises your Spell Damage."
+      }
+    ],
+    "aoe": [
+      {
+        "es": "Si es seguro, deja Fogonazo preparado antes del pull, con cuidado de no quitarle los enemigos al tanque.",
+        "en": "If it is safe, have Flamestrike ready before the pull, taking care not to pull the enemies off the tank."
+      },
+      {
+        "es": "Ventisca siempre que puedas canalizar, alcanzando a tantos enemigos como puedas.",
+        "en": "Blizzard whenever you can channel, hitting as many enemies as you can."
+      },
+      {
+        "es": "Si no puedes canalizar, Cono de frío y Deflagración Arcana.",
+        "en": "If you cannot channel, Cone of Cold and Arcane Explosion."
+      },
+      {
+        "es": "Gasta Dedos de Escarcha en Lanza de hielo mientras te mueves.",
+        "en": "Spend Fingers of Frost on Ice Lance while you move."
+      },
+      {
+        "es": "En solitario, prueba Nova de Escarcha, Fogonazo y Cono de frío para aprovechar Trizar. En mazmorras cuesta más, porque tus compañeros rompen la Nova.",
+        "en": "Solo, try Frost Nova, Flamestrike and Cone of Cold to get Shatter. It is harder in dungeons, because your party breaks the Nova."
+      }
+    ],
+    "cooldowns": [
+      {
+        "es": "Bloqueo de hielo si te van a matar: te protege 10 s, pero no puedes hacer nada mientras dura.",
+        "en": "Ice Block if you are about to die: it protects you for 10 s, but you cannot do anything while it lasts."
+      },
+      {
+        "es": "Mordedura helada para tener otra Nova de Escarcha, Barrera de hielo o Bloqueo de hielo cuando un pull se complica.",
+        "en": "Cold Snap to get another Frost Nova, Ice Barrier or Ice Block when a pull gets complicated."
+      },
+      {
+        "es": "Evocación cuando te falte poco para quedarte sin maná y no tengas gema ni poción.",
+        "en": "Evocation when you are close to running out of mana and have no gem or potion."
+      }
+    ],
+    "stats": [
+      {
+        "es": "Daño de hechizos: es lo que más encontrarás subiendo y lo que más se nota.",
+        "en": "Spell Damage: it is what you will find most while leveling and what you will notice most."
+      },
+      {
+        "es": "Intelecto: más maná y más crítico, y sale en casi todas las piezas.",
+        "en": "Intellect: more mana and more crit, and it is on almost every piece."
+      },
+      {
+        "es": "Golpe: Precision ya da un 6 %, y subiendo apenas hay equipo con golpe: no lo persigas.",
+        "en": "Hit: Precision already gives 6%, and there is hardly any hit gear while leveling: do not chase it."
+      },
+      {
+        "es": "Crítico: Fragmentos de hielo da un 100 % más de bonificación a los críticos de Escarcha. Subiendo verás poco; cógelo cuando salga.",
+        "en": "Crit: Ice Shards adds 100% to the bonus of Frost crits. You will see little of it while leveling; take it when it shows up."
+      },
+      {
+        "es": "Espíritu: te hace beber menos, y desde el nivel 56 Meditación Arcana también lo aprovecha mientras lanzas.",
+        "en": "Spirit: you drink less with it, and from level 56 Arcane Meditation also uses it while you cast."
+      },
+      {
+        "es": "Aguante: súbelo antes que lo anterior si juegas en un reino JcJ.",
+        "en": "Stamina: raise it ahead of the above if you play on a PvP realm."
+      }
+    ],
+    "sources": [
+      "mobalytics-mage-leveling"
+    ]
+  },
+  {
+    "uses": [
+      "leveling"
+    ],
+    "recommendedFor": [],
+    "discouragedFor": [],
+    "level": 60,
+    "legacyTalented": 0,
+    "gameVersion": "forever-beta-2026-10",
+    "updated": "2026-10-30",
+    "status": "analysis",
+    "id": "fire-leveling",
+    "name": {
+      "es": "Fuego",
+      "en": "Fire"
+    },
+    "slug": {
+      "es": "fuego",
+      "en": "fire"
+    },
+    "spec": "fire",
+    "icon": "spell_fire_fireball02",
+    "tagline": {
+      "es": "Bola de Fuego rápida, Ignición y Piroexplosión con Calentamiento: mucha ráfaga a un objetivo, con menos margen de error que Escarcha.",
+      "en": "Fast Fireball, Ignite and Pyroblast with Heating Up: strong single-target burst, with less room for error than Frost."
+    },
+    "points": {
+      "improved-fireball": 5,
+      "ignite": 5,
+      "pyroblast": 1,
+      "burning-soul": 3,
+      "wake-of-fire": 2,
+      "heating-up": 1,
+      "master-of-elements": 3,
+      "blast-wave": 1,
+      "critical-mass": 3,
+      "incineration": 2,
+      "fire-power": 3,
+      "improved-scorch": 1,
+      "combustion": 1,
+      "improved-channeling": 5,
+      "missile-barrage": 2,
+      "elemental-precision": 3,
+      "arcane-concentration": 5,
+      "arcane-subtlety": 2,
+      "arcane-impact": 1,
+      "arcane-meditation": 2
+    },
+    "order": [
+      "improved-fireball",
+      "improved-fireball",
+      "improved-fireball",
+      "improved-fireball",
+      "improved-fireball",
+      "ignite",
+      "ignite",
+      "ignite",
+      "ignite",
+      "ignite",
+      "pyroblast",
+      "burning-soul",
+      "burning-soul",
+      "burning-soul",
+      "wake-of-fire",
+      "heating-up",
+      "master-of-elements",
+      "master-of-elements",
+      "master-of-elements",
+      "wake-of-fire",
+      "blast-wave",
+      "critical-mass",
+      "critical-mass",
+      "critical-mass",
+      "incineration",
+      "fire-power",
+      "fire-power",
+      "fire-power",
+      "incineration",
+      "improved-scorch",
+      "combustion",
+      "improved-channeling",
+      "improved-channeling",
+      "improved-channeling",
+      "improved-channeling",
+      "improved-channeling",
+      "missile-barrage",
+      "missile-barrage",
+      "elemental-precision",
+      "elemental-precision",
+      "elemental-precision",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-subtlety",
+      "arcane-subtlety",
+      "arcane-impact",
+      "arcane-meditation",
+      "arcane-meditation"
+    ],
+    "orderNotes": [
+      {
+        "point": 1,
+        "text": {
+          "es": "Bola de Fuego es tu hechizo principal: con esto la lanzas 0,5 s más rápido.",
+          "en": "Fireball is your main spell: with this you cast it 0.5 s faster."
+        }
+      },
+      {
+        "point": 6,
+        "text": {
+          "es": "Añade un 40 % a cada crítico de Fuego.",
+          "en": "It adds 40% to each Fire crit."
+        }
+      },
+      {
+        "point": 11,
+        "text": {
+          "es": "Tu golpe más fuerte. Lánzala antes de empezar el combate.",
+          "en": "Your biggest hit. Cast it before the fight starts."
+        }
+      },
+      {
+        "point": 12,
+        "text": {
+          "es": "Un 70 % de probabilidad de que los golpes no retrasen tus hechizos de Fuego, y un 30 % menos de amenaza con ellos.",
+          "en": "70% chance that hits do not delay your Fire spells, and 30% less threat with them."
+        }
+      },
+      {
+        "point": 15,
+        "text": {
+          "es": "Con los dos puntos, Explosión de Fuego tiene 2 s menos de reutilización y 15 metros más de alcance.",
+          "en": "With both points, Fire Blast has 2 s less cooldown and 15 more yards of range."
+        }
+      },
+      {
+        "point": 16,
+        "text": {
+          "es": "Explosión de Fuego da siempre una carga, y dos si es crítico. Con 3 cargas, Piroexplosión baja a 1,5 s.",
+          "en": "Fire Blast always gives one stack, two if it crits. At 3 stacks, Pyroblast drops to 1.5 s."
+        }
+      },
+      {
+        "point": 17,
+        "text": {
+          "es": "Tus críticos de Fuego devuelven un 30 % de su coste base. Es tu principal ahorro de maná hasta el final de la build.",
+          "en": "Your Fire crits refund 30% of their base cost. It is your main mana saving until the end of the build."
+        }
+      },
+      {
+        "point": 21,
+        "text": {
+          "es": "Daño de área instantáneo, y ralentiza un 50 % durante 6 s.",
+          "en": "Instant AoE damage, and a 50% slow for 6 s."
+        }
+      },
+      {
+        "point": 22,
+        "text": {
+          "es": "Un 6 % de crítico con tus hechizos de Fuego.",
+          "en": "6% crit with your Fire spells."
+        }
+      },
+      {
+        "point": 25,
+        "text": {
+          "es": "El punto que falta para abrir Poder de Fuego. Con el segundo, un 4 % de crítico para Explosión de Fuego, que así carga Calentamiento más rápido.",
+          "en": "The point missing to open Fire Power. With the second one, 4% crit for Fire Blast, which then builds Heating Up faster."
+        }
+      },
+      {
+        "point": 26,
+        "text": {
+          "es": "Un 3 % más de daño de Fuego por cada efecto de Fuego tuyo en el objetivo, hasta un 12 %.",
+          "en": "3% more Fire damage for each Fire effect of yours on the target, up to 12%."
+        }
+      },
+      {
+        "point": 30,
+        "text": {
+          "es": "El punto que falta para llegar a Combustión.",
+          "en": "The point missing to reach Combustion."
+        }
+      },
+      {
+        "point": 31,
+        "text": {
+          "es": "Tu ráfaga: cada golpe de Fuego sube tu crítico un 10 % hasta que hagas 3 críticos.",
+          "en": "Your burst: each Fire hit raises your crit by 10% until you land 3 crits."
+        }
+      },
+      {
+        "point": 32,
+        "text": {
+          "es": "El peaje para llegar a Tromba de misiles. Canalización mejorada protege tus Misiles Arcanos de los golpes.",
+          "en": "The toll to reach Missile Barrage. Improved Channeling protects your Arcane Missiles from hits."
+        }
+      },
+      {
+        "point": 37,
+        "text": {
+          "es": "Misiles Arcanos gratis y en la mitad de tiempo, un 20 % de las veces que lanzas Bola de Fuego.",
+          "en": "Free Arcane Missiles in half the time, 20% of the times you cast Fireball."
+        }
+      },
+      {
+        "point": 39,
+        "text": {
+          "es": "Un 6 % de golpe con todos los hechizos.",
+          "en": "6% hit with every spell."
+        }
+      },
+      {
+        "point": 42,
+        "text": {
+          "es": "Un 10 % de probabilidad de lanzar gratis tu siguiente hechizo de daño.",
+          "en": "A 10% chance that your next damage spell is free."
+        }
+      },
+      {
+        "point": 47,
+        "text": {
+          "es": "15 de resistencia menos contra todos tus hechizos.",
+          "en": "15 less resistance against all your spells."
+        }
+      },
+      {
+        "point": 49,
+        "text": {
+          "es": "El punto que falta para abrir Meditación Arcana.",
+          "en": "The point missing to open Arcane Meditation."
+        }
+      },
+      {
+        "point": 50,
+        "text": {
+          "es": "El 33 % de tu regeneración sigue activa mientras lanzas.",
+          "en": "33% of your regeneration keeps running while you cast."
+        }
+      }
+    ],
+    "upside": {
+      "es": "Mucha ráfaga a un objetivo",
+      "en": "Strong single-target burst"
+    },
+    "downside": {
+      "es": "Sin la ralentización ni las defensas de Escarcha",
+      "en": "Without Frost's slows and defenses"
+    },
+    "keyTalents": [
+      "improved-fireball",
+      "ignite",
+      "heating-up",
+      "combustion",
+      "blast-wave"
+    ],
+    "summary": {
+      "es": "Build de leveo de Fuego con 17 puntos en Arcano para WoW Forever, en orden del 10 al 60. Bola de Fuego rápida, Piroexplosión con Calentamiento y Combustión para la ráfaga, con Tromba de misiles al final.",
+      "en": "Fire leveling build with 17 points in Arcane for WoW Forever, in order from 10 to 60. Fast Fireball, Pyroblast with Heating Up and Combustion for burst, with Missile Barrage at the end."
+    },
+    "strengths": [
+      {
+        "es": "Empieza a hacer daño muy pronto: con Accelerant e Ignición ya en el nivel 19.",
+        "en": "It starts dealing damage very early: with Accelerant and Ignite already at level 19."
+      },
+      {
+        "es": "Con Calentamiento, Piroexplosión tarda casi lo mismo que Bola de Fuego y pega mucho más.",
+        "en": "With Heating Up, Pyroblast takes about as long as Fireball and hits much harder."
+      },
+      {
+        "es": "Ola explosiva te da daño de área instantáneo y una ralentización cuando te rodean.",
+        "en": "Blast Wave gives you instant AoE damage and a slow when you get surrounded."
+      },
+      {
+        "es": "Alma ardiente hace que te cueste menos terminar tus hechizos con un enemigo encima.",
+        "en": "Burning Soul makes it easier to finish your spells with an enemy on you."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Perdona menos los errores: si un enemigo te alcanza, no tienes las defensas de Escarcha para salir del apuro.",
+        "en": "It is less forgiving: if an enemy reaches you, you lack the defenses of Frost to get out of trouble."
+      },
+      {
+        "es": "Tu daño y tu maná dependen de los críticos, y al subir tendrás pocos.",
+        "en": "Your damage and mana depend on crits, and you will have few while leveling."
+      },
+      {
+        "es": "Lanzamiento libre no llega hasta el nivel 51 ni Meditación Arcana hasta el 59.",
+        "en": "Clearcasting does not arrive until level 51, nor Arcane Meditation until 59."
+      },
+      {
+        "es": "Contra enemigos inmunes al Fuego casi todo tu daño desaparece.",
+        "en": "Against Fire-immune enemies almost all your damage is gone."
+      }
+    ],
+    "reasons": [],
+    "variants": [
+      {
+        "name": {
+          "es": "Combates largos",
+          "en": "Long fights"
+        },
+        "text": {
+          "es": "Dos puntos de Maestro de los elementos pasan a Chamuscar mejorado: gastas más maná, pero contra enemigos que van a durar lanzas 5 Chamuscar antes que nada y tu daño de Fuego sube un 15 %. Vale poco en misiones; vale más en jefes de mazmorra.",
+          "en": "Two Master of Elements points move to Improved Scorch: you spend more mana, but against enemies that will last you cast 5 Scorches first and your Fire damage goes up by 15%. It is worth little while questing; it is worth more on dungeon bosses."
+        },
+        "remove": {
+          "master-of-elements": 2
+        },
+        "add": {
+          "improved-scorch": 2
+        }
+      }
+    ],
+    "playstyle": [
+      {
+        "es": "Antes de empezar el combate, Piroexplosión.",
+        "en": "Before the fight starts, Pyroblast."
+      },
+      {
+        "es": "Piroexplosión si tienes 3 cargas de Calentamiento.",
+        "en": "Pyroblast if you have 3 Heating Up stacks."
+      },
+      {
+        "es": "Explosión de Fuego siempre que esté lista, también para lanzar algo mientras te mueves.",
+        "en": "Fire Blast whenever it is ready, also to cast something while you move."
+      },
+      {
+        "es": "Misiles Arcanos si Tromba de misiles está activa y es seguro canalizar.",
+        "en": "Arcane Missiles if Missile Barrage is active and it is safe to channel."
+      },
+      {
+        "es": "Bola de Fuego en cualquier otro caso.",
+        "en": "Fireball in any other case."
+      },
+      {
+        "es": "Remata con la varita: ahorras maná y tu regeneración vuelve antes.",
+        "en": "Finish enemies with your wand: you save mana and your regeneration comes back sooner."
+      },
+      {
+        "es": "Sin maná en pleno combate: gema de maná, poción o Evocación, y la varita si no te queda nada.",
+        "en": "Out of mana mid-fight: mana gem, potion or Evocation, and your wand if you have nothing left."
+      }
+    ],
+    "clearcasting": [
+      {
+        "es": "Piroexplosión si tienes 3 cargas de Calentamiento; si no, Bola de Fuego.",
+        "en": "Pyroblast if you have 3 Heating Up stacks; if not, Fireball."
+      },
+      {
+        "es": "Con varios enemigos, Fogonazo antes que Deflagración Arcana, si van a seguir en esa zona.",
+        "en": "With several enemies, Flamestrike before Arcane Explosion, if they will stay in that area."
+      },
+      {
+        "es": "Si también tienes Tromba de misiles, lanza primero el otro hechizo y después los Misiles: ya son gratis.",
+        "en": "If you also have Missile Barrage, cast the other spell first and the Missiles after: they are already free."
+      }
+    ],
+    "aoe": [
+      {
+        "es": "Si es seguro, deja Fogonazo preparado antes del pull, con cuidado de no quitarle los enemigos al tanque.",
+        "en": "If it is safe, have Flamestrike ready before the pull, taking care not to pull the enemies off the tank."
+      },
+      {
+        "es": "Ola explosiva y Fogonazo cada vez que estén listos.",
+        "en": "Blast Wave and Flamestrike whenever they are ready."
+      },
+      {
+        "es": "Deflagración Arcana el resto del tiempo, vigilando la amenaza.",
+        "en": "Arcane Explosion the rest of the time, watching your threat."
+      }
+    ],
+    "cooldowns": [
+      {
+        "es": "Combustión para un enemigo difícil, justo antes de tus golpes más fuertes.",
+        "en": "Combustion for a tough enemy, right before your biggest hits."
+      },
+      {
+        "es": "Evocación cuando te falte poco para quedarte sin maná y no tengas gema ni poción.",
+        "en": "Evocation when you are close to running out of mana and have no gem or potion."
+      }
+    ],
+    "stats": [
+      {
+        "es": "Daño de hechizos: es lo que más encontrarás subiendo y lo que más se nota.",
+        "en": "Spell Damage: it is what you will find most while leveling and what you will notice most."
+      },
+      {
+        "es": "Intelecto: más maná y más crítico, y sale en casi todas las piezas.",
+        "en": "Intellect: more mana and more crit, and it is on almost every piece."
+      },
+      {
+        "es": "Crítico: en esta build vale más que en las otras, porque es Ignición, Calentamiento y maná a la vez. Subiendo verás poco; cógelo cuando salga.",
+        "en": "Crit: it is worth more here than in the other builds, because it is Ignite, Heating Up and mana at once. You will see little of it while leveling; take it when it shows up."
+      },
+      {
+        "es": "Golpe: Precision da un 6 % desde el nivel 50. Subiendo apenas hay equipo con golpe: no lo persigas.",
+        "en": "Hit: Precision gives 6% from level 50. There is hardly any hit gear while leveling: do not chase it."
+      },
+      {
+        "es": "Espíritu: te hace beber menos.",
+        "en": "Spirit: you drink less with it."
+      },
+      {
+        "es": "Aguante: súbelo antes que lo anterior si juegas en un reino JcJ.",
+        "en": "Stamina: raise it ahead of the above if you play on a PvP realm."
+      }
+    ],
+    "sources": [
+      "mobalytics-mage-leveling"
+    ]
+  },
+  {
+    "uses": [
       "dungeons"
     ],
     "recommendedFor": [],

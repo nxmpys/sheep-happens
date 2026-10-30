@@ -1,5 +1,33 @@
 [
   {
+    "id": "2026-10-30-leveling-builds",
+    "date": "2026-10-30",
+    "type": "guide",
+    "title": {
+      "es": "Cuatro builds de leveo del 10 al 60",
+      "en": "Four leveling builds from 10 to 60"
+    },
+    "body": {
+      "es": "Arcano y Escarcha, Arcano hacia mazmorras, Escarcha y Fuego, con el orden de puntos nivel a nivel y el motivo de cada talento. Las dos de Arcano están probadas en la beta, hasta el nivel 30; las de Escarcha y Fuego, aún sin probar.",
+      "en": "Arcane Frost, Arcane into dungeons, Frost and Fire, with the point order level by level and the reason for each talent. Both Arcane builds are tested in the beta, up to level 30; the Frost and Fire ones are not tested yet."
+    },
+    "pages": [
+      "builds",
+      "talents-arcane",
+      "talents-fire",
+      "talents-frost"
+    ],
+    "sources": [
+      "mobalytics-mage-leveling"
+    ],
+    "refs": [
+      "build:arcane-frost-leveling",
+      "build:arcane-dungeons-leveling",
+      "build:frost-leveling",
+      "build:fire-leveling"
+    ]
+  },
+  {
     "id": "2026-10-30-dungeon-builds",
     "date": "2026-10-30",
     "type": "guide",

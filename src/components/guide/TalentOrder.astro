@@ -9,11 +9,12 @@
  * "Talented only" rows. Without JavaScript the table shows the levels without
  * Talented, which is what a first character at launch has.
  */
+import BuildLink from './BuildLink.astro';
 import SpellRef from './SpellRef.astro';
 import TalentedToggle from './TalentedToggle.astro';
 import { tb } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
-import { talents } from '../../lib/data';
+import { getBuild, talents } from '../../lib/data';
 import { localName } from '../../lib/names';
 import type { Build } from '../../lib/schemas';
 import { levelForPoint, orderSteps, pointsAtLevel } from '../../lib/talents';
@@ -86,7 +87,10 @@ const intro =
                       </span>
                     </span>
                     {notesFor(step.from, step.to).map((note) => (
-                      <span class="talent-order__note">{note.text[locale]}</span>
+                      <span class="talent-order__note">
+                        {note.text[locale]}{' '}
+                        {note.build && <BuildLink id={note.build}>{getBuild(note.build).name[locale]}</BuildLink>}
+                      </span>
                     ))}
                   </td>
                 </tr>
