@@ -112,7 +112,7 @@
       {
         "name": { "es": "Tromba de misiles", "en": "Missile Barrage" },
         "spec": "arcane",
-        "what": { "es": "Misiles Arcanos el doble de rápido y gratis. Talento de la fila 1, al alcance de cualquier rama.", "en": "Arcane Missiles twice as fast and free. A row 1 talent, within reach of any tree." },
+        "what": { "es": "Misiles Arcanos el doble de rápido y gratis. Talento de la fila 2, al alcance de cualquier rama con 5 puntos en Arcano.", "en": "Arcane Missiles twice as fast and free. A row 2 talent, within reach of any tree with 5 points in Arcane." },
         "on": false
       },
       {
