@@ -1,6 +1,6 @@
 # Auditoría de Sheep Happens
 
-Fecha: 30 de octubre de 2026. Punto de partida: commit `72a7b4e`. Resultado: siete commits de corrección, de `fcfebbd` a `644098d`, más el de este informe, y seis más con tus decisiones, de `80f122d` a `d83ef76` (ver la sección 3). No he subido nada a GitHub.
+Fecha: 30 de octubre de 2026. Punto de partida: commit `72a7b4e`. Resultado: siete commits de corrección, de `fcfebbd` a `644098d`, más el de este informe, y ocho más con tus decisiones, de `80f122d` a `7cbcf77` (ver la sección 3). Todo está subido a GitHub.
 
 ## 1. Resumen
 
@@ -25,8 +25,6 @@ Fecha: 30 de octubre de 2026. Punto de partida: commit `72a7b4e`. Resultado: sie
 | Código y recursos sin usar | 3 | 0 |
 | Documentación del repositorio | 4 documentos | 0 |
 | **Total** | **36** | **8** |
-
-De esos 8 puntos queda abierta una sola duda: la recomendación de leveo (sección 3).
 
 ### Estado final
 
@@ -120,22 +118,21 @@ Son 4 problemas en la tabla del resumen porque los dos de `builds.mdx` cuentan c
 
 ## 3. Decisiones
 
-Dejé 8 puntos abiertos y los decidiste el mismo 30 de octubre. Están todos aplicados, salvo la duda final, que sigue abierta.
+Dejé 8 puntos abiertos y los decidiste el mismo 30 de octubre. Están todos aplicados.
 
 | Punto | Tu decisión | Qué hice | Commit |
 | --- | --- | --- | --- |
 | 1. Textos trazados desfasados | Opción A: una sola entrada en el historial | Corregidos los 5 casos en `milestones.json` y `changes.json`, con `updated` y la entrada «Fichas de talentos al día con el árbol del 28 de octubre» | `80f122d` |
 | 2. Datos sin usar en `facts.json` | Opción A: borrarlos | Borrados `beta` y `client-version`, y lo que apuntaba a ellos en el historial y en `seo.ts` | `bb0285d` |
 | 3. Nombre de los datos tras la beta | Opción A: seguir diciendo «beta» hasta el 4 de noviembre | Nada que cambiar | No aplica |
-| 4. Leveo 1-60 o 10-60 | Opción A: 1-60 como tramo, 10-60 solo para el orden de puntos | Corregidos la descripción de Builds y un título del historial. Las builds siguen diciendo «en orden del 10 al 60» | `a706645` |
+| 4. Leveo 1-60 o 10-60 | Opción A: 1-60 como tramo, 10-60 solo para el orden de puntos | Corregidos la descripción de Builds, un título del historial y la tarjeta de builds de Inicio. Las builds siguen diciendo «en orden del 10 al 60» | `a706645`, `7cbcf77` |
 | 5. Cuatro nombres para el mismo concepto | Opción A: «daño de hechizos» | Unificado en español y en inglés, también en las columnas de Agua del Mago, donde «SP» desaparece. «spell power» sigue como etiqueta de búsqueda | `b0aeb84` |
 | 6. Escalofrío o enfriamiento | Opción B: «enfriamiento», si es lo que publica Blizzard | Comprobado: su página en español dice «efectos de enfriamiento» y nunca «efectos de escalofrío». Aplicado en builds, habilidades y glosario | `c59c92c` |
 | 7. Prioridad de estadísticas | Opción A: enlazar a las builds | Equipo enlaza a las builds de leveo y mazmorras. Queda pendiente la prioridad de banda y comprobar las de nivel 60 | `d83ef76` |
 | 8. Requisito de Dedos de Escarcha | Cerrarlo, ya está comprobado | Fuera de las discrepancias de Fuentes y Cambios. La ficha dice que requiere Lanza de hielo | `80f122d` |
+| 8. Recomendación de leveo | Quitar la frase «para subir de nivel, Escarcha» | Fuera de Aprende. En Inicio esa frase era la respuesta a «¿Cuál es la mejor rama para subir de nivel?», así que quité la pregunta entera | `ff1146f` |
 
-### Lo que sigue abierto
-
-**Recomendación de leveo.** Era la segunda duda del punto 8 y tu respuesta no la cubría, así que no la he tocado. Aprende e Inicio dicen «para subir de nivel, Escarcha», pero las builds probadas son las de Arcano y la de Escarcha sigue sin probar. ¿Mantengo la frase hasta el lanzamiento o la suavizo?
+La build de Escarcha sigue presentándose como «la más segura para subir en solitario» (`builds.json`). Es una ventaja de esa build, no una recomendación general de rama, y no la he tocado.
 
 ## 4. Lo que detecté y decidí no tocar
 
