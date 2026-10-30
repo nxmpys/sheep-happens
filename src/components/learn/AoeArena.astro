@@ -50,16 +50,18 @@ const rotations: Rotation[] = [
     school: 'baseline',
     steps: [
       {
+        spell: 'Mana Shield',
+        text: es
+          ? `Antes de atraer: ${name('Mana Shield')}, o Barrera de hielo si la tienes. Vas a recibir golpes.`
+          : 'Before you pull: Mana Shield, or Ice Barrier if you have it. You are going to take hits.',
+        frame: { mage: [270, 140], pack: [560, 140], spread: 46, shield: true, hp: 100 },
+      },
+      {
         icon: 'inv_wand_01',
         name: es ? 'Atrae' : 'Pull',
         text: es
           ? 'Atrae 3 o 4 enemigos con la varita (quieto 0,5 s antes de que dispare) o con un hechizo, para que lleguen juntos.'
           : 'Pull 3 or 4 enemies with your wand (standing still 0.5 s before it shoots) or a spell, so they arrive together.',
-        frame: { mage: [270, 140], pack: [560, 140], spread: 46, hp: 100 },
-      },
-      {
-        spell: 'Mana Shield',
-        text: es ? `${name('Mana Shield')}, o Barrera de hielo si la tienes: vas a recibir golpes.` : 'Mana Shield, or Ice Barrier if you have it: you are going to take hits.',
         frame: { mage: [270, 140], pack: [410, 140], spread: 30, shield: true, hp: 100 },
       },
       {
