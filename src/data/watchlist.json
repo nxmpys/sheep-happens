@@ -38,6 +38,26 @@
     }
   },
   {
+    "id": "foreverchanges",
+    "name": "ForeverChanges: Patch notes",
+    "publisher": "ForeverChanges",
+    "url": "https://foreverchanges.pro/patch-notes",
+    "kind": "community",
+    "lang": "en",
+    "type": "rss",
+    "endpoint": "https://foreverchanges.pro/patch-notes/feed.xml",
+    "priority": "high",
+    "focus": {
+      "es": "Notas de cada build y hotfix, a menudo antes del mensaje de Blizzard. Lee los datos del cliente y del servidor, y dice lo que aún no está confirmado.",
+      "en": "Notes for every build and hotfix, often before Blizzard posts. It reads client and server data, and says what is not confirmed yet."
+    },
+    "verified": "2026-10-30",
+    "notes": {
+      "es": "Los títulos no mencionan clases: abre la entrada de cada build para ver la sección del Mago.",
+      "en": "Titles do not name classes: open each build's entry to see the Mage section."
+    }
+  },
+  {
     "id": "forever-known-issues",
     "name": "WoW Forever Beta Known Issues",
     "publisher": "Blizzard Entertainment",
@@ -172,5 +192,50 @@
       "en": "Spell tooltips and values extracted from the client. Only for publishing numbers, always as datamined, not official."
     },
     "verified": "2026-10-11"
+  },
+  {
+    "id": "wowhead-guide-arcane",
+    "name": "Wowhead: Arcane Mage guide",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/guide/classes/mage/arcane/overview-pve-dps",
+    "kind": "community",
+    "lang": "en",
+    "type": "manual",
+    "priority": "low",
+    "focus": {
+      "es": "Guía de Arcano. Su rotación ya tiene en cuenta los hechizos hasta el 60; el resto sigue siendo de nivel 30 y la revisaré cuando la actualicen a 60.",
+      "en": "Arcane guide. Its rotation already covers spells up to 60; the rest is still level 30 and I will review it when it is updated for 60."
+    },
+    "verified": "2026-10-30"
+  },
+  {
+    "id": "wowhead-guide-fire",
+    "name": "Wowhead: Fire Mage guide",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/guide/classes/mage/fire/overview-pve-dps",
+    "kind": "community",
+    "lang": "en",
+    "type": "manual",
+    "priority": "low",
+    "focus": {
+      "es": "Guía de Fuego. Su rotación ya tiene en cuenta los hechizos hasta el 60; el resto sigue siendo de nivel 30 y la revisaré cuando la actualicen a 60.",
+      "en": "Fire guide. Its rotation already covers spells up to 60; the rest is still level 30 and I will review it when it is updated for 60."
+    },
+    "verified": "2026-10-30"
+  },
+  {
+    "id": "wowhead-guide-frost",
+    "name": "Wowhead: Frost Mage guide",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/guide/classes/mage/frost/overview-pve-dps",
+    "kind": "community",
+    "lang": "en",
+    "type": "manual",
+    "priority": "low",
+    "focus": {
+      "es": "Guía de Escarcha. Su rotación ya tiene en cuenta los hechizos hasta el 60; el resto sigue siendo de nivel 30 y la revisaré cuando la actualicen a 60.",
+      "en": "Frost guide. Its rotation already covers spells up to 60; the rest is still level 30 and I will review it when it is updated for 60."
+    },
+    "verified": "2026-10-30"
   }
 ]

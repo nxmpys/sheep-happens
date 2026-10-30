@@ -1,0 +1,124 @@
+---
+/**
+ * Why a level 60 build spends its points: one row per group of talents, with
+ * their game icons and ranks next to the explanation. Builds with a point
+ * `order` use TalentOrder instead.
+ */
+import { getLocale } from '../../i18n/locale';
+import { getTalent, talentText } from '../../lib/data';
+import { iconPath } from '../../lib/icons';
+import { localName } from '../../lib/names';
+import type { Build } from '../../lib/schemas';
+import { spellIndexFor } from '../../lib/spell-index';
+import { findSpell } from '../../lib/spells';
+
+interface Props {
+  build: Build;
+}
+
+const { build } = Astro.props;
+const locale = getLocale(Astro);
+const index = spellIndexFor(locale);
+const rows = build.reasons.map((reason) => ({
+  text: reason.text[locale],
+  talents: reason.talents.map((id) => {
+    const talent = getTalent(id);
+    return {
+      id,
+      rank: build.points[id],
+      max: talent.maxRank,
+      name: localName(talent, locale),
+      icon: talentText.talents[id]?.icon,
+      spell: findSpell(index, talent.name)?.key,
+      school: talent.tree,
+    };
+  }),
+}));
+---
+
+<ul class="reasons">
+  {
+    rows.map((row) => (
+      <li class="reason">
+        <ul class="reason__talents">
+          {row.talents.map((t) => (
+            <li class={`reason__talent school-${t.school}`}>
+              <span class:list={['reason__icon', t.spell && 'spell-ref']} data-spell={t.spell} tabindex={t.spell ? 0 : undefined} title={t.name}>
+                {t.icon && <img src={iconPath(t.icon)} alt={t.name} width="40" height="40" loading="lazy" decoding="async" />}
+                <span class="reason__rank">{t.rank}/{t.max}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+        <p class="reason__text">{row.text}</p>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .reasons,
+  .reason__talents {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .reasons {
+    display: grid;
+    gap: var(--space-3);
+  }
+  .reason {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+  }
+  .reason__talents {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: var(--space-2);
+  }
+  .reason__talent {
+    margin: 0;
+  }
+  .reason__icon {
+    position: relative;
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .reason__icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--school);
+    border-radius: var(--radius-sm, 6px);
+  }
+  .reason__rank {
+    position: absolute;
+    right: -4px;
+    bottom: -4px;
+    padding: 0 3px;
+    border-radius: 4px;
+    background: #0e0d16;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+  .reason__text {
+    margin: 0;
+    font-size: var(--step--1);
+    line-height: 1.55;
+  }
+  @media (min-width: 48rem) {
+    .reason {
+      grid-template-columns: 11.5rem 1fr;
+      align-items: start;
+    }
+  }
+</style>

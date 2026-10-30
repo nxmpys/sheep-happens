@@ -4,6 +4,14 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-10-30
+
+### [Guía] Cinco builds de mazmorras a nivel 60
+
+Arcano, Arcano y Fuego, Pirofrío, Fuego y Escarcha, cada una con sus pros y contras, el porqué de sus puntos, variantes, rotación y estadísticas. Aún sin probar en el juego: la beta llega al nivel 30.
+
+- **Datos afectados:** build:arcane-dungeons, build:arcane-fire-dungeons, build:frostfire-dungeons, build:fire-dungeons, build:frost-dungeons
+
 ## 2026-10-29
 
 ### [Juego] Cambios de talentos del 28 de octubre (build 1.60.1.70685)

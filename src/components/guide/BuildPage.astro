@@ -8,6 +8,7 @@
  * live in their own guides, not here.
  */
 import BuildActions from './BuildActions.astro';
+import BuildReasons from './BuildReasons.astro';
 import BuildTrees from './BuildTrees.astro';
 import BuildVariants from './BuildVariants.astro';
 import Callout from './Callout.astro';
@@ -35,6 +36,14 @@ const specLabel = build.hybridWith
 const base = import.meta.env.BASE_URL;
 const pros = { headline: build.upside?.[locale], items: build.strengths.map((s) => s[locale]) };
 const cons = { headline: build.downside?.[locale], items: build.weaknesses.map((s) => s[locale]) };
+const rotations = (
+  [
+    { title: 'build.page.rotation.single', steps: build.playstyle },
+    { title: 'build.page.rotation.clearcasting', steps: build.clearcasting },
+    { title: 'build.page.rotation.aoe', steps: build.aoe },
+    { title: 'build.page.rotation.cooldowns', steps: build.cooldowns },
+  ] as const
+).filter((r) => r.steps.length > 0);
 const hasPros = pros.items.length > 0 || cons.items.length > 0 || pros.headline || cons.headline;
 ---
 
@@ -125,8 +134,8 @@ const hasPros = pros.items.length > 0 || cons.items.length > 0 || pros.headline 
   {
     build.order ? (
       <TalentOrder build={build} />
-    ) : build.orderNotes.length > 0 ? (
-      <ul>{build.orderNotes.map((n) => <li>{n.text[locale]}</li>)}</ul>
+    ) : build.reasons.length > 0 ? (
+      <BuildReasons build={build} />
     ) : (
       <p class="build-page__empty">{tb(locale, 'build.page.empty')}</p>
     )
@@ -142,9 +151,16 @@ const hasPros = pros.items.length > 0 || cons.items.length > 0 || pros.headline 
   }
 
   <h2 id={sections.rotation.id}>{sections.rotation.text}</h2>
-  <ol>
-    {build.playstyle.map((step) => <li>{step[locale]}</li>)}
-  </ol>
+  {
+    rotations.map((rotation) => (
+      <>
+        {rotations.length > 1 && <h3>{tb(locale, rotation.title)}</h3>}
+        <ol>
+          {rotation.steps.map((step) => <li>{step[locale]}</li>)}
+        </ol>
+      </>
+    ))
+  }
 
   <h2 id={sections.stats.id}>{sections.stats.text}</h2>
   {

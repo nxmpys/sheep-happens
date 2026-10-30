@@ -49,6 +49,14 @@
 | `warcrafttavern-legacy` | [Warcraft Tavern — Legacy System Overview](https://www.warcrafttavern.com/forever/guides/legacy/) | community | Sistema de Legado (16 puntos en el lanzamiento, árboles) | Detalles de beta |
 | `seemeta-talents` | [Seemeta — WoW Forever Talent Calculator](https://seemeta.com/en/wow-forever/talent-calculator) | tool | 51 puntos (1 por nivel desde el 10); cita "1.60.1 beta" | Datos extraídos de la beta, no oficiales |
 
+### Builds de mazmorras (consultadas el 2026-10-30)
+
+| ID | Fuente | Tipo | Qué respalda | Limitaciones |
+|---|---|---|---|---|
+| `wowhead-mage-arcane-guide` | [Wowhead — Arcane Mage Rotation](https://www.wowhead.com/forever/guide/classes/mage/arcane/rotation-cooldowns-pve-dps) | community | Rotación de Arcano y de Arcano con Fuego | Guía de nivel 30; su rotación ya cuenta con los hechizos hasta el 60, sin probar a ese nivel |
+| `wowhead-mage-fire-guide` | [Wowhead — Fire Mage Rotation](https://www.wowhead.com/forever/guide/classes/mage/fire/rotation-cooldowns-pve-dps) | community | Rotación de Fuego y de Pirofrío | Igual que la anterior |
+| `wowhead-mage-frost-guide` | [Wowhead — Frost Mage Rotation](https://www.wowhead.com/forever/guide/classes/mage/frost/rotation-cooldowns-pve-dps) | community | Rotación de Escarcha | Lanza dos Lanzas de hielo por proc, algo que no cabe con la reutilización de 8 s del 28 oct; en la build está ajustado |
+
 ### Guía de leveo (consultadas el 2026-10-14)
 
 | ID | Fuente | Tipo | Qué respalda | Limitaciones |

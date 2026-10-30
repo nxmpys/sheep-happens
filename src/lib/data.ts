@@ -282,6 +282,11 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
     for (const key of build.keyTalents) {
       if (!build.points[key]) problems.push(`builds.json: "${build.id}" highlights "${key}" without points in it`);
     }
+    for (const reason of build.reasons) {
+      for (const key of reason.talents) {
+        if (!build.points[key]) problems.push(`builds.json: "${build.id}" explains "${key}" without points in it`);
+      }
+    }
     if (build.order) {
       for (const problem of validateOrder(build.order, build.points, build.level, data.talents, build.legacyTalented)) {
         problems.push(`builds.json: "${build.id}" order: ${problem}`);

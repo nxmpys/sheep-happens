@@ -1,5 +1,31 @@
 [
   {
+    "id": "2026-10-30-dungeon-builds",
+    "date": "2026-10-30",
+    "type": "guide",
+    "title": {
+      "es": "Cinco builds de mazmorras a nivel 60",
+      "en": "Five level 60 dungeon builds"
+    },
+    "body": {
+      "es": "Arcano, Arcano y Fuego, Pirofrío, Fuego y Escarcha, cada una con sus pros y contras, el porqué de sus puntos, variantes, rotación y estadísticas. Aún sin probar en el juego: la beta llega al nivel 30.",
+      "en": "Arcane, Arcane Fire, Frostfire, Fire and Frost, each with its pros and cons, the reason for its points, variants, rotation and stats. Not tested in game yet: the beta stops at level 30."
+    },
+    "pages": [
+      "builds",
+      "talents-arcane",
+      "talents-fire",
+      "talents-frost"
+    ],
+    "refs": [
+      "build:arcane-dungeons",
+      "build:arcane-fire-dungeons",
+      "build:frostfire-dungeons",
+      "build:fire-dungeons",
+      "build:frost-dungeons"
+    ]
+  },
+  {
     "id": "2026-10-29-talents",
     "date": "2026-10-29",
     "type": "game",

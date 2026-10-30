@@ -8,7 +8,7 @@
 import BuildPage from '../../../../components/guide/BuildPage.astro';
 import GuideLayout from '../../../../layouts/GuideLayout.astro';
 import { LOCALES, type Locale } from '../../../../i18n/routes';
-import { SPEC_LABELS, USE_LABELS, USE_TITLES } from '../../../../i18n/builds';
+import { USE_LABELS, USE_TITLES } from '../../../../i18n/builds';
 import { buildSections } from '../../../../lib/build-page';
 import { USE_SLUGS, buildPath, canonicalUse, contentPath } from '../../../../lib/build-routes';
 import { builds } from '../../../../lib/data';
@@ -28,10 +28,9 @@ const locale = Astro.params.lang as Locale;
 const base = import.meta.env.BASE_URL;
 const paths = Object.fromEntries(LOCALES.map((l) => [l, buildPath(build, l, { base })])) as Record<Locale, string>;
 const use = canonicalUse(build);
-const spec = SPEC_LABELS[locale][build.spec];
 const updated = build.updated ?? '2026-10-11';
 const title = build.name[locale];
-const seoTitle = locale === 'es' ? `Build de ${spec} para ${USE_LABELS[locale][use].toLowerCase()}: Mago en WoW Forever` : `${spec} Mage ${USE_LABELS[locale][use].toLowerCase()} build for WoW Forever`;
+const seoTitle = locale === 'es' ? `Build de ${title} para ${USE_LABELS[locale][use].toLowerCase()}: Mago en WoW Forever` : `${title} Mage ${USE_LABELS[locale][use].toLowerCase()} build for WoW Forever`;
 const data: PageFrontmatter = {
   pageId: 'builds',
   locale,

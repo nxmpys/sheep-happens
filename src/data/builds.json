@@ -1,1 +1,1493 @@
-[]
+[
+  {
+    "uses": [
+      "dungeons"
+    ],
+    "recommendedFor": [],
+    "discouragedFor": [],
+    "level": 60,
+    "legacyTalented": 0,
+    "status": "analysis",
+    "gameVersion": "forever-beta-2026-10",
+    "updated": "2026-10-30",
+    "id": "arcane-dungeons",
+    "name": {
+      "es": "Arcano",
+      "en": "Arcane"
+    },
+    "slug": {
+      "es": "arcano",
+      "en": "arcane"
+    },
+    "spec": "arcane",
+    "icon": "spell_arcane_blast",
+    "tagline": {
+      "es": "Explosión Arcana gratis con Lanzamiento libre, Misiles Arcanos con Tromba de misiles y Bola de Fuego de relleno hasta que salten.",
+      "en": "Free Arcane Blast with Clearcasting, Arcane Missiles with Missile Barrage and Fireball as filler until they trigger."
+    },
+    "points": {
+      "improved-channeling": 5,
+      "arcane-subtlety": 2,
+      "arcane-concentration": 5,
+      "missile-barrage": 2,
+      "arcane-geometry": 2,
+      "arcane-impact": 3,
+      "arcane-blast": 1,
+      "improved-counterspell": 1,
+      "arcane-meditation": 3,
+      "arcane-wrath": 1,
+      "presence-of-mind": 1,
+      "arcane-mind": 5,
+      "arcane-instability": 3,
+      "arcane-power": 1,
+      "incineration": 5,
+      "improved-fireball": 5,
+      "improved-flamestrike": 3,
+      "elemental-precision": 3
+    },
+    "upside": {
+      "es": "Su daño fuerte sale casi gratis",
+      "en": "Its big damage comes almost free"
+    },
+    "downside": {
+      "es": "Depende de que salten los procs",
+      "en": "Relies on procs triggering"
+    },
+    "keyTalents": [
+      "arcane-blast",
+      "arcane-wrath",
+      "arcane-power",
+      "missile-barrage",
+      "arcane-mind"
+    ],
+    "summary": {
+      "es": "Build de Arcano con 35 puntos en Arcano para mazmorras en WoW Forever. Bola de Fuego rellena hasta que salta un proc: Lanzamiento libre paga Explosión Arcana y Tromba de misiles paga Misiles Arcanos.",
+      "en": "Arcane build with 35 points in Arcane for WoW Forever dungeons. Fireball fills the gaps until a proc triggers: Clearcasting pays for Arcane Blast and Missile Barrage pays for Arcane Missiles."
+    },
+    "strengths": [
+      {
+        "es": "Una regla sencilla: solo pagas la primera Explosión Arcana de cada ciclo. El resto de tu daño Arcano fuerte llega gratis con los procs.",
+        "en": "A simple rule: you only pay for the first Arcane Blast of each cycle. The rest of your big Arcane damage comes free with procs."
+      },
+      {
+        "es": "Sus 35 puntos son Arcanos: contra enemigos inmunes al Fuego solo cambias el relleno, y en esos combates supera a la versión con Fuego.",
+        "en": "Its 35 points are Arcane: against Fire-immune enemies you only change the filler, and in those fights it beats the version with Fire."
+      },
+      {
+        "es": "Explosión Arcana llega a un 16 % de crítico extra (Impacto Arcano e Incineración), y Mente Arcana refuerza cada crítico.",
+        "en": "Arcane Blast gets 16% extra crit (Arcane Impact and Incineration), and Arcane Mind makes each crit bigger."
+      },
+      {
+        "es": "Fogonazo mejorado y Sutileza Arcana le dan un buen inicio de pull y mucho margen de amenaza con Deflagración Arcana.",
+        "en": "Improved Flamestrike and Arcane Subtlety give it a strong start to a pull and plenty of threat room with Arcane Explosion."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Si no saltan los procs, solo estás lanzando Bola de Fuego sin talentos de crítico de Fuego, y cuesta 410 de maná.",
+        "en": "If procs do not trigger, you are only casting Fireball with no Fire crit talents, and it costs 410 mana."
+      },
+      {
+        "es": "Rinde menos que Arcano y Fuego contra enemigos normales: tus 13 puntos de Fuego no dan Calentamiento ni Piroexplosión.",
+        "en": "It does less damage than Arcane Fire against normal enemies: your 13 Fire points give you neither Heating Up nor Pyroblast."
+      },
+      {
+        "es": "Contra enemigos inmunes al Fuego pierdes el relleno: Misiles Arcanos de pago cuestan 655 de maná.",
+        "en": "Against Fire-immune enemies you lose the filler: paid Arcane Missiles cost 655 mana."
+      }
+    ],
+    "reasons": [
+      {
+        "talents": [
+          "arcane-blast",
+          "arcane-mind",
+          "arcane-wrath"
+        ],
+        "text": {
+          "es": "El núcleo: cada Explosión Arcana suma un 15 % de tu Intelecto como daño de hechizos, hasta 4 veces. Mente Arcana sube el Intelecto un 10 % y da un 100 % más de bonificación a los críticos Arcanos, y Cólera Arcana gana daño según tu maná máximo.",
+          "en": "The core: each Arcane Blast adds 15% of your Intellect as Spell Damage, up to 4 times. Arcane Mind raises Intellect by 10% and adds 100% to the bonus of Arcane crits, and Arcane Wrath gains damage from your maximum mana."
+        }
+      },
+      {
+        "talents": [
+          "missile-barrage",
+          "improved-channeling"
+        ],
+        "text": {
+          "es": "Tromba de misiles salta un 40 % de las veces con Explosión Arcana: son Misiles Arcanos gratis y en la mitad de tiempo, tu mejor forma de gastar las cargas. Canalización mejorada evita que los golpes retrasen esos Misiles.",
+          "en": "Missile Barrage triggers 40% of the time from Arcane Blast: free Arcane Missiles in half the time, your best way to spend the stacks. Improved Channeling stops hits from delaying those Missiles."
+        }
+      },
+      {
+        "talents": [
+          "arcane-concentration",
+          "arcane-meditation"
+        ],
+        "text": {
+          "es": "Sin estos dos talentos la build no se sostiene: un 10 % de probabilidad de lanzar gratis el siguiente hechizo tras cualquier golpe, y el 50 % de tu regeneración sigue activa mientras lanzas.",
+          "en": "The build does not hold up without these two: a 10% chance that your next spell is free after any hit, and 50% of your regeneration keeps running while you cast."
+        }
+      },
+      {
+        "talents": [
+          "arcane-power",
+          "presence-of-mind",
+          "arcane-instability",
+          "arcane-impact"
+        ],
+        "text": {
+          "es": "La ráfaga y el crítico: Poder Arcano da un 30 % más de daño durante 15 s, Presencia mental hace instantánea Cólera Arcana, Inestabilidad Arcana suma un 3 % de daño y un 3 % de crítico e Impacto Arcano, un 6 % de crítico Arcano.",
+          "en": "Burst and crit: Arcane Power gives 30% more damage for 15 s, Presence of Mind makes Arcane Wrath instant, Arcane Instability adds 3% damage and 3% crit, and Arcane Impact 6% Arcane crit."
+        }
+      },
+      {
+        "talents": [
+          "improved-fireball",
+          "incineration"
+        ],
+        "text": {
+          "es": "El relleno es Bola de Fuego, por eso Accelerant: baja de 3,5 a 3 s y también acorta Cólera Arcana. Chamuscar es más barato (150 de maná frente a 410), pero hacen casi el mismo daño por maná y solo Bola de Fuego puede activar Tromba de misiles (20 %), así que la prefiero. Incineración da un 10 % de crítico a Explosión Arcana y, con Accelerant, abre el camino a Fogonazo mejorado.",
+          "en": "The filler is Fireball, hence Accelerant: it drops from 3.5 to 3 s and also shortens Arcane Wrath. Scorch is cheaper (150 mana against 410), but they deal almost the same damage per mana and only Fireball can trigger Missile Barrage (20%), so I prefer it. Incineration gives Arcane Blast 10% crit and, with Accelerant, opens the way to Improved Flamestrike."
+        }
+      },
+      {
+        "talents": [
+          "improved-flamestrike",
+          "arcane-subtlety"
+        ],
+        "text": {
+          "es": "Para los pulls de mazmorra: Fogonazo mejorado da un 15 % de crítico a tu primer golpe de área, y Sutileza Arcana quita un 30 % de la amenaza a Deflagración Arcana y 15 de resistencia a todos tus hechizos.",
+          "en": "For dungeon pulls: Improved Flamestrike gives your opening AoE 15% crit, and Arcane Subtlety takes 30% of the threat off Arcane Explosion and removes 15 resistance against all your spells."
+        }
+      },
+      {
+        "talents": [
+          "arcane-geometry",
+          "improved-counterspell"
+        ],
+        "text": {
+          "es": "Puntos libres: 6 metros más para tus hechizos Arcanos y 2 s de silencio con Contrahechizo, que ayudan contra los lanzadores de los pulls. Puedes moverlos sin perder daño.",
+          "en": "Free points: 6 more yards for your Arcane spells and a 2 s silence on Counterspell, which helps against casters in pulls. You can move them without losing damage."
+        }
+      },
+      {
+        "talents": [
+          "elemental-precision"
+        ],
+        "text": {
+          "es": "Tres puntos en Escarcha dan un 6 % de golpe con todos los hechizos. Según las tablas de Classic y lo que reportan los jugadores, con eso ya no fallas contra enemigos hasta dos niveles por encima, lo normal en mazmorras.",
+          "en": "Three points in Frost give 6% hit with every spell. Going by the Classic tables and what players report, that already removes misses against enemies up to two levels above you, the usual case in dungeons."
+        }
+      }
+    ],
+    "variants": [],
+    "playstyle": [
+      {
+        "es": "Misiles Arcanos si Tromba de misiles está activa.",
+        "en": "Arcane Missiles if Missile Barrage is active."
+      },
+      {
+        "es": "Cólera Arcana si está lista: un 20 % de probabilidad de activar Tromba de misiles.",
+        "en": "Arcane Wrath if it is ready: a 20% chance to trigger Missile Barrage."
+      },
+      {
+        "es": "Explosión Arcana si no tienes cargas: la primera cuesta un 15 % de tu maná base y tiene un 40 % de activar Tromba de misiles. Las cargas no se renuevan y caen a los 15 s.",
+        "en": "Arcane Blast if you have no stacks: the first one costs 15% of your base mana and has a 40% chance to trigger Missile Barrage. Stacks do not refresh and fall off after 15 s."
+      },
+      {
+        "es": "Bola de Fuego en cualquier otro caso. Si no ha saltado nada, no pagues otra Explosión Arcana: cada carga la encarece un 175 %.",
+        "en": "Fireball in any other case. If nothing has triggered, do not pay for another Arcane Blast: each stack makes it 175% more expensive."
+      },
+      {
+        "es": "Si te quedas corto de maná, Chamuscar en vez de Bola de Fuego. Contra enemigos inmunes al Fuego, Misiles Arcanos de pago.",
+        "en": "If you run short of mana, Scorch instead of Fireball. Against Fire-immune enemies, paid Arcane Missiles."
+      }
+    ],
+    "aoe": [
+      {
+        "es": "Si el tanque aún está reuniendo a los enemigos, deja Fogonazo preparado donde van a acabar.",
+        "en": "If the tank is still gathering the enemies, have Flamestrike ready where they will end up."
+      },
+      {
+        "es": "Deflagración Arcana sin parar, con cuidado de no quedarte sin maná antes del siguiente pull.",
+        "en": "Arcane Explosion nonstop, taking care not to run out of mana before the next pull."
+      }
+    ],
+    "cooldowns": [
+      {
+        "es": "Solo para la ráfaga de un jefe, aquí sí pagas Explosiones Arcanas: Cólera Arcana antes del pull y Explosión Arcana hasta que salte Tromba de misiles.",
+        "en": "Only for burst on a boss, here you do pay for Arcane Blasts: Arcane Wrath before the pull and Arcane Blast until Missile Barrage triggers."
+      },
+      {
+        "es": "Poder Arcano y, justo después, los Misiles Arcanos que has guardado.",
+        "en": "Arcane Power and, right after, the Arcane Missiles you saved."
+      },
+      {
+        "es": "Con Poder Arcano activo: Presencia mental y Cólera Arcana si está lista; si no, otra Explosión Arcana mientras tengas menos de 4 cargas.",
+        "en": "With Arcane Power active: Presence of Mind and Arcane Wrath if it is ready; if not, another Arcane Blast while you have fewer than 4 stacks."
+      },
+      {
+        "es": "Evocación cuando te falte poco para quedarte sin maná. Córtala si ya tienes bastante para acabar el combate.",
+        "en": "Evocation when you are close to running out of mana. Cut it short if you already have enough to finish the fight."
+      }
+    ],
+    "stats": [
+      {
+        "es": "Golpe: Precision da un 6 %, que debería bastar en mazmorras. Solo un jefe de banda (tres niveles por encima) pide el 17 %, así que en mazmorras no sacrifiques daño por más golpe.",
+        "en": "Hit: Precision gives 6%, which should be enough for dungeons. Only a raid boss (three levels above you) asks for 17%, so in dungeons do not give up damage for more hit."
+      },
+      {
+        "es": "Daño de hechizos, mejor general que Arcano: Bola de Fuego también lo usa.",
+        "en": "Spell Damage, general rather than Arcane: Fireball uses it too."
+      },
+      {
+        "es": "Intelecto: en esta build vale más que en las otras, porque da maná, daño con Explosión Arcana y daño con Cólera Arcana.",
+        "en": "Intellect: it is worth more here than in the other builds, because it gives mana, damage through Arcane Blast and damage through Arcane Wrath."
+      },
+      {
+        "es": "Crítico: Mente Arcana da un 100 % más de bonificación a los críticos Arcanos.",
+        "en": "Crit: Arcane Mind adds 100% to the bonus of Arcane crits."
+      },
+      {
+        "es": "Espíritu: Meditación Arcana (50 %) y Armadura de mago (50 %) lo aprovechan mientras lanzas. Si se suman como en Classic, regeneras todo tu maná por Espíritu en combate, algo que aún hay que comprobar.",
+        "en": "Spirit: Arcane Meditation (50%) and Mage Armor (50%) use it while you cast. If they add up as in Classic, you get all your Spirit regeneration in combat, which still needs checking."
+      }
+    ],
+    "sources": [
+      "wowhead-mage-arcane-guide"
+    ],
+    "clearcasting": [
+      {
+        "es": "Explosión Arcana, tengas las cargas que tengas: con cargas es tu hechizo más caro, y sigue teniendo un 40 % de activar Tromba de misiles.",
+        "en": "Arcane Blast, however many stacks you have: with stacks it is your most expensive spell, and it still has a 40% chance to trigger Missile Barrage."
+      },
+      {
+        "es": "Con varios enemigos, Fogonazo (990 de maná) antes que Deflagración Arcana (390), si van a seguir en esa zona.",
+        "en": "With several enemies, Flamestrike (990 mana) before Arcane Explosion (390), if they will stay in that area."
+      },
+      {
+        "es": "Si también tienes Tromba de misiles, lanza primero Explosión Arcana y después los Misiles: gratis no ahorran nada más.",
+        "en": "If you also have Missile Barrage, cast Arcane Blast first and the Missiles after: they are already free."
+      }
+    ]
+  },
+  {
+    "uses": [
+      "dungeons"
+    ],
+    "recommendedFor": [],
+    "discouragedFor": [],
+    "level": 60,
+    "legacyTalented": 0,
+    "status": "analysis",
+    "gameVersion": "forever-beta-2026-10",
+    "updated": "2026-10-30",
+    "id": "arcane-fire-dungeons",
+    "name": {
+      "es": "Arcano y Fuego",
+      "en": "Arcane Fire"
+    },
+    "slug": {
+      "es": "arcano-fuego",
+      "en": "arcane-fire"
+    },
+    "spec": "arcane",
+    "hybridWith": "fire",
+    "icon": "ability_mage_netherwindpresence",
+    "tagline": {
+      "es": "Arcano con Piroexplosión rápida y Chamuscar de relleno, que gasta poco y carga Calentamiento con sus críticos.",
+      "en": "Arcane with fast Pyroblast and Scorch as filler, which costs little and builds Heating Up with its crits."
+    },
+    "points": {
+      "improved-channeling": 5,
+      "arcane-subtlety": 2,
+      "arcane-concentration": 5,
+      "missile-barrage": 2,
+      "arcane-impact": 3,
+      "arcane-blast": 1,
+      "arcane-meditation": 3,
+      "arcane-wrath": 1,
+      "presence-of-mind": 1,
+      "arcane-mind": 5,
+      "arcane-instability": 3,
+      "arcane-power": 1,
+      "incineration": 5,
+      "ignite": 5,
+      "pyroblast": 1,
+      "wake-of-fire": 2,
+      "heating-up": 1,
+      "elemental-precision": 3,
+      "flame-throwing": 2
+    },
+    "upside": {
+      "es": "Daño Arcano con relleno de Fuego barato",
+      "en": "Arcane damage with cheap Fire filler"
+    },
+    "downside": {
+      "es": "Prioridad larga y atenta al maná",
+      "en": "Long priority that watches your mana"
+    },
+    "keyTalents": [
+      "arcane-wrath",
+      "heating-up",
+      "arcane-power",
+      "missile-barrage",
+      "ignite"
+    ],
+    "summary": {
+      "es": "Build de Arcano con 16 puntos en Fuego para mazmorras en WoW Forever: Explosión de Fuego carga Calentamiento, Piroexplosión aprovecha las cargas de Explosión Arcana y Chamuscar rellena sin gastar apenas maná.",
+      "en": "Arcane build with 16 points in Fire for WoW Forever dungeons: Fire Blast builds Heating Up, Pyroblast cashes in your Arcane Blast stacks and Scorch fills the gaps for little mana."
+    },
+    "strengths": [
+      {
+        "es": "Mientras esperas a que caigan las cargas de Explosión Arcana tienes algo útil que lanzar: Chamuscar es barato y sus críticos cargan Calentamiento.",
+        "en": "While you wait for your Arcane Blast stacks to run out you have something useful to cast: Scorch is cheap and its crits build Heating Up."
+      },
+      {
+        "es": "Las cargas de Explosión Arcana dan daño de hechizos a todo lo que lanzas, también a Piroexplosión y a Ignición.",
+        "en": "Arcane Blast stacks give Spell Damage to everything you cast, including Pyroblast and Ignite."
+      },
+      {
+        "es": "Poder Arcano y Presencia mental te dan una ráfaga para el jefe o para el pull peligroso.",
+        "en": "Arcane Power and Presence of Mind give you burst for the boss or the dangerous pull."
+      },
+      {
+        "es": "Sutileza Arcana quita un 30 % de la amenaza a Deflagración Arcana, así que puedes abusar de ella en los pulls.",
+        "en": "Arcane Subtlety takes 30% of the threat off Arcane Explosion, so you can lean on it in pulls."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Es la prioridad más larga de las cinco y depende de tu maná: cuántas Explosiones Arcanas lanzas cambia según el equipo.",
+        "en": "It is the longest priority of the five and it depends on your mana: how many Arcane Blasts you cast changes with your gear."
+      },
+      {
+        "es": "El Fuego se queda a medias: sin Masa crítica ni Combustión, y Piroexplosión sale menos que en la build de Fuego.",
+        "en": "Fire stays half done: no Critical Mass or Combustion, and Pyroblast comes less often than in the Fire build."
+      },
+      {
+        "es": "Contra enemigos inmunes al Fuego pierdes los 16 puntos: ahí conviene la build de Arcano.",
+        "en": "Against Fire-immune enemies those 16 points are wasted: the Arcane build is the better pick there."
+      }
+    ],
+    "reasons": [
+      {
+        "talents": [
+          "arcane-blast",
+          "arcane-mind",
+          "arcane-wrath",
+          "missile-barrage"
+        ],
+        "text": {
+          "es": "El motor Arcano: cada Explosión Arcana suma un 15 % de tu Intelecto como daño de hechizos, y Mente Arcana sube ese Intelecto un 10 %. Cólera Arcana crece con tu maná máximo, y Tromba de misiles convierte Explosión Arcana (40 %) y Cólera Arcana (20 %) en Misiles Arcanos gratis y más rápidos.",
+          "en": "The Arcane engine: each Arcane Blast adds 15% of your Intellect as Spell Damage, and Arcane Mind raises that Intellect by 10%. Arcane Wrath grows with your maximum mana, and Missile Barrage turns Arcane Blast (40%) and Arcane Wrath (20%) into free, faster Arcane Missiles."
+        }
+      },
+      {
+        "talents": [
+          "heating-up",
+          "pyroblast",
+          "wake-of-fire",
+          "ignite"
+        ],
+        "text": {
+          "es": "El motivo de ir a Fuego: Explosión de Fuego da siempre una carga de Calentamiento, y dos si es crítico. Con tres, Piroexplosión baja a 1,5 s. Explosión de Fuego mejorada le quita 2 s de reutilización y le da 15 metros más para que llegue tan lejos como el resto. Ignición añade un 40 % a cada crítico de Fuego.",
+          "en": "The reason to go into Fire: Fire Blast always gives one Heating Up stack, and two if it crits. At three, Pyroblast drops to 1.5 s. Improved Fire Blast takes 2 s off its cooldown and adds 15 yards so it reaches as far as everything else. Ignite adds 40% to each Fire crit."
+        }
+      },
+      {
+        "talents": [
+          "incineration"
+        ],
+        "text": {
+          "es": "Un 10 % de crítico para Explosión de Fuego, Chamuscar y Explosión Arcana. Es lo que hace que Chamuscar cargue Calentamiento con frecuencia sin pagar Masa crítica, que queda fuera de alcance con 16 puntos.",
+          "en": "10% crit for Fire Blast, Scorch and Arcane Blast. It is what lets Scorch build Heating Up often without paying for Critical Mass, which is out of reach with 16 points."
+        }
+      },
+      {
+        "talents": [
+          "flame-throwing"
+        ],
+        "text": {
+          "es": "Estos dos puntos completan los 15 de Fuego que pide Calentamiento. Aquí no lanzas Bola de Fuego, así que Accelerant apenas aporta: Lanzallamas da 6 metros más a Piroexplosión, Chamuscar y Fogonazo.",
+          "en": "These two points complete the 15 in Fire that Heating Up asks for. You do not cast Fireball here, so Accelerant adds little: Flame Throwing gives Pyroblast, Scorch and Flamestrike 6 more yards."
+        }
+      },
+      {
+        "talents": [
+          "arcane-concentration",
+          "arcane-meditation"
+        ],
+        "text": {
+          "es": "El maná: un 10 % de probabilidad de lanzar gratis el siguiente hechizo tras cualquier golpe, y el 50 % de tu regeneración sigue activa mientras lanzas.",
+          "en": "Mana: a 10% chance that your next spell is free after any hit, and 50% of your regeneration keeps running while you cast."
+        }
+      },
+      {
+        "talents": [
+          "arcane-power",
+          "presence-of-mind",
+          "arcane-instability"
+        ],
+        "text": {
+          "es": "La ráfaga: Poder Arcano da un 30 % más de daño durante 15 s a cambio de un 30 % más de coste, Presencia mental hace instantánea Cólera Arcana e Inestabilidad Arcana suma un 3 % de daño y un 3 % de crítico siempre.",
+          "en": "The burst: Arcane Power gives 30% more damage for 15 s at 30% more mana cost, Presence of Mind makes Arcane Wrath instant and Arcane Instability adds 3% damage and 3% crit at all times."
+        }
+      },
+      {
+        "talents": [
+          "arcane-subtlety",
+          "improved-channeling",
+          "arcane-impact"
+        ],
+        "text": {
+          "es": "Sutileza Arcana quita 15 de resistencia a todos tus hechizos y un 30 % de amenaza a los Arcanos. Canalización mejorada evita que los golpes retrasen tus Misiles Arcanos (y, un 70 % de las veces, Explosión Arcana y Cólera Arcana), algo que se nota cuando un enemigo se te escapa. Impacto Arcano añade un 6 % de crítico Arcano.",
+          "en": "Arcane Subtlety removes 15 resistance against all your spells and 30% of the threat from Arcane spells. Improved Channeling stops hits from delaying your Arcane Missiles (and, 70% of the time, Arcane Blast and Arcane Wrath), which you notice when an enemy gets loose. Arcane Impact adds 6% Arcane crit."
+        }
+      },
+      {
+        "talents": [
+          "elemental-precision"
+        ],
+        "text": {
+          "es": "Tres puntos en Escarcha dan un 6 % de golpe con todos los hechizos. Según las tablas de Classic y lo que reportan los jugadores, con eso ya no fallas contra enemigos hasta dos niveles por encima, lo normal en mazmorras.",
+          "en": "Three points in Frost give 6% hit with every spell. Going by the Classic tables and what players report, that already removes misses against enemies up to two levels above you, the usual case in dungeons."
+        }
+      }
+    ],
+    "variants": [],
+    "playstyle": [
+      {
+        "es": "Piroexplosión si tienes 3 cargas de Calentamiento.",
+        "en": "Pyroblast if you have 3 Heating Up stacks."
+      },
+      {
+        "es": "Explosión de Fuego siempre que esté lista.",
+        "en": "Fire Blast whenever it is ready."
+      },
+      {
+        "es": "Misiles Arcanos si Tromba de misiles está activa.",
+        "en": "Arcane Missiles if Missile Barrage is active."
+      },
+      {
+        "es": "Cólera Arcana si está lista.",
+        "en": "Arcane Wrath if it is ready."
+      },
+      {
+        "es": "Explosión Arcana hasta 2, 3 o 4 cargas: cuantas más puedas pagar sin quedarte sin maná. Las cargas no se renuevan y caen 15 s después de la primera.",
+        "en": "Arcane Blast up to 2, 3 or 4 stacks: as many as you can pay for without running out of mana. Stacks do not refresh and fall off 15 s after the first one."
+      },
+      {
+        "es": "Chamuscar en cualquier otro caso: gasta poco y sus críticos cargan Calentamiento.",
+        "en": "Scorch in any other case: it costs little and its crits build Heating Up."
+      }
+    ],
+    "aoe": [
+      {
+        "es": "Si el tanque aún está reuniendo a los enemigos, deja Fogonazo preparado donde van a acabar.",
+        "en": "If the tank is still gathering the enemies, have Flamestrike ready where they will end up."
+      },
+      {
+        "es": "Deflagración Arcana sin parar, con cuidado de no quedarte sin maná antes del siguiente pull.",
+        "en": "Arcane Explosion nonstop, taking care not to run out of mana before the next pull."
+      }
+    ],
+    "cooldowns": [
+      {
+        "es": "Prepara la ráfaga: Cólera Arcana antes del pull y Explosión Arcana hasta que salte Tromba de misiles.",
+        "en": "Set up the burst: Arcane Wrath before the pull and Arcane Blast until Missile Barrage triggers."
+      },
+      {
+        "es": "Poder Arcano y, justo después, los Misiles Arcanos que has guardado.",
+        "en": "Arcane Power and, right after, the Arcane Missiles you saved."
+      },
+      {
+        "es": "Con Poder Arcano activo: Presencia mental y Cólera Arcana si está lista; si no, otra Explosión Arcana mientras tengas menos de 4 cargas.",
+        "en": "With Arcane Power active: Presence of Mind and Arcane Wrath if it is ready; if not, another Arcane Blast while you have fewer than 4 stacks."
+      },
+      {
+        "es": "Evocación cuando te falte poco para quedarte sin maná. Córtala si ya tienes bastante para acabar el combate.",
+        "en": "Evocation when you are close to running out of mana. Cut it short if you already have enough to finish the fight."
+      }
+    ],
+    "stats": [
+      {
+        "es": "Golpe: Precision da un 6 %, que debería bastar en mazmorras. Solo un jefe de banda (tres niveles por encima) pide el 17 %, así que en mazmorras no sacrifiques daño por más golpe.",
+        "en": "Hit: Precision gives 6%, which should be enough for dungeons. Only a raid boss (three levels above you) asks for 17%, so in dungeons do not give up damage for more hit."
+      },
+      {
+        "es": "Daño de hechizos, mejor si es general: lo aprovechan los hechizos Arcanos y los de Fuego.",
+        "en": "Spell Damage, ideally the general kind: both your Arcane and your Fire spells use it."
+      },
+      {
+        "es": "Crítico: alimenta Calentamiento e Ignición, y Mente Arcana da un 100 % más de bonificación a los críticos Arcanos.",
+        "en": "Crit: it feeds Heating Up and Ignite, and Arcane Mind adds 100% to the bonus of Arcane crits."
+      },
+      {
+        "es": "Intelecto: lo convierte en daño Explosión Arcana y, como maná máximo, Cólera Arcana.",
+        "en": "Intellect: Arcane Blast turns it into damage, and so does Arcane Wrath through your maximum mana."
+      },
+      {
+        "es": "Espíritu: Meditación Arcana lo aprovecha mientras lanzas.",
+        "en": "Spirit: Arcane Meditation uses it while you cast."
+      }
+    ],
+    "sources": [
+      "wowhead-mage-arcane-guide"
+    ],
+    "clearcasting": [
+      {
+        "es": "Explosión Arcana si ya tienes al menos 1 carga: es tu hechizo más caro.",
+        "en": "Arcane Blast if you already have at least 1 stack: it is your most expensive spell."
+      },
+      {
+        "es": "Sin cargas: Piroexplosión si tienes Calentamiento a 3 (440 de maná) o Explosión de Fuego si está lista (340). Si no, Explosión Arcana, nunca Chamuscar (150).",
+        "en": "With no stacks: Pyroblast if Heating Up is at 3 (440 mana) or Fire Blast if it is ready (340). If not, Arcane Blast, never Scorch (150)."
+      },
+      {
+        "es": "Con varios enemigos, Fogonazo (990) antes que Deflagración Arcana (390), si van a seguir en esa zona.",
+        "en": "With several enemies, Flamestrike (990) before Arcane Explosion (390), if they will stay in that area."
+      },
+      {
+        "es": "Si también tienes Tromba de misiles, lanza primero el otro hechizo y después los Misiles: ya son gratis.",
+        "en": "If you also have Missile Barrage, cast the other spell first and the Missiles after: they are already free."
+      }
+    ]
+  },
+  {
+    "uses": [
+      "dungeons"
+    ],
+    "recommendedFor": [],
+    "discouragedFor": [],
+    "level": 60,
+    "legacyTalented": 0,
+    "status": "analysis",
+    "gameVersion": "forever-beta-2026-10",
+    "updated": "2026-10-30",
+    "id": "frostfire-dungeons",
+    "name": {
+      "es": "Pirofrío",
+      "en": "Frostfire"
+    },
+    "slug": {
+      "es": "pirofrio",
+      "en": "frostfire"
+    },
+    "spec": "fire",
+    "hybridWith": "frost",
+    "icon": "ability_mage_frostfirebolt",
+    "tagline": {
+      "es": "Descarga de Pirofrío con Dedos de Escarcha y Trizar: crítico constante sin esperar a tener un gran equipo.",
+      "en": "Frostfire Bolt with Fingers of Frost and Shatter: steady crit without waiting for great gear."
+    },
+    "points": {
+      "incineration": 5,
+      "improved-fireball": 5,
+      "ignite": 5,
+      "pyroblast": 1,
+      "wake-of-fire": 2,
+      "improved-scorch": 3,
+      "heating-up": 1,
+      "master-of-elements": 1,
+      "critical-mass": 3,
+      "fire-power": 3,
+      "frost-warding": 2,
+      "elemental-precision": 3,
+      "ice-shards": 5,
+      "improved-frost-nova": 1,
+      "frost-channeling": 3,
+      "improved-blizzard": 1,
+      "ice-lance": 1,
+      "ice-block": 1,
+      "shatter": 3,
+      "fingers-of-frost": 2
+    },
+    "upside": {
+      "es": "Mucho crítico desde el primer día a nivel 60",
+      "en": "Plenty of crit from your first day at 60"
+    },
+    "downside": {
+      "es": "Sin ráfagas y con poco margen de talentos",
+      "en": "No burst and little room in its talents"
+    },
+    "keyTalents": [
+      "fingers-of-frost",
+      "heating-up",
+      "shatter",
+      "ignite",
+      "ice-shards"
+    ],
+    "summary": {
+      "es": "Build híbrida de Fuego y Escarcha para mazmorras en WoW Forever: Descarga de Pirofrío como hechizo principal y Dedos de Escarcha para que entre con Trizar. Necesita menos equipo que la build de Fuego, a cambio de no tener talentos de ráfaga.",
+      "en": "Fire and Frost hybrid build for WoW Forever dungeons: Frostfire Bolt as the main spell and Fingers of Frost so it lands with Shatter. It needs less gear than the Fire build, in exchange for having no burst talents."
+    },
+    "strengths": [
+      {
+        "es": "Trizar da un 50 % de crítico contra objetivos congelados, y Dedos de Escarcha hace que tus 2 siguientes hechizos cuenten como tales. No necesitas equipo para sacarle partido.",
+        "en": "Shatter gives 50% crit against frozen targets, and Fingers of Frost makes your next 2 spells count as such. You do not need gear to get value out of it."
+      },
+      {
+        "es": "Descarga de Pirofrío cuenta como Fuego y como Escarcha y se compara con la resistencia más baja de las dos, así que un enemigo que resiste una sola escuela apenas la frena.",
+        "en": "Frostfire Bolt counts as both Fire and Frost and checks the lower of the two resistances, so an enemy that resists only one school barely slows it down."
+      },
+      {
+        "es": "Ralentiza a todo lo que golpea, lo que da margen cuando un enemigo se escapa del tanque.",
+        "en": "It slows everything it hits, which gives you room when an enemy gets past the tank."
+      },
+      {
+        "es": "Con Bloqueo de hielo tienes una salida de emergencia que las builds de Arcano y Fuego no tienen.",
+        "en": "Ice Block gives you an emergency exit the Arcane and Fire builds do not have."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Sin Combustión, Poder Arcano ni Presencia mental: no hay nada que apretar para la ráfaga.",
+        "en": "No Combustion, Arcane Power or Presence of Mind: there is nothing to press for burst."
+      },
+      {
+        "es": "Es la más exigente de reflejos: hay que reaccionar a Dedos de Escarcha y, para sacarle todo, poner un hechizo en cola justo al final de otro.",
+        "en": "It asks for the fastest reactions: you have to respond to Fingers of Frost and, to get the most from it, queue a spell right at the end of another."
+      },
+      {
+        "es": "Debería crecer menos con el equipo que la build de Fuego a medida que avance el juego.",
+        "en": "It should scale less with gear than the Fire build as the game goes on."
+      },
+      {
+        "es": "Sin Arcano no tienes Concentración Arcana ni Meditación Arcana, ni Sutileza Arcana para bajar la amenaza de Deflagración Arcana.",
+        "en": "With no Arcane you have no Arcane Concentration or Arcane Meditation, and no Arcane Subtlety to lower the threat of Arcane Explosion."
+      }
+    ],
+    "reasons": [
+      {
+        "talents": [
+          "fingers-of-frost",
+          "shatter",
+          "ice-shards"
+        ],
+        "text": {
+          "es": "El corazón de la build: el ralentizamiento de Descarga de Pirofrío tiene un 15 % de probabilidad de activar Dedos de Escarcha, tus 2 siguientes hechizos cuentan contra un objetivo congelado y Trizar les da un 50 % de crítico. Fragmentos de hielo da un 100 % más de bonificación a los críticos de Escarcha, y Descarga de Pirofrío también cuenta como Escarcha.",
+          "en": "The heart of the build: Frostfire Bolt's slow has a 15% chance to trigger Fingers of Frost, your next 2 spells count against a frozen target and Shatter gives them 50% crit. Ice Shards adds 100% to the bonus of Frost crits, and Frostfire Bolt also counts as Frost."
+        }
+      },
+      {
+        "talents": [
+          "ignite",
+          "critical-mass",
+          "incineration"
+        ],
+        "text": {
+          "es": "Fuego convierte esos críticos en más daño: Ignición añade un 40 %, Masa crítica un 6 % de crítico de Fuego e Incineración un 10 % a Explosión de Fuego, Lanza de hielo y Chamuscar.",
+          "en": "Fire turns those crits into more damage: Ignite adds 40%, Critical Mass 6% Fire crit and Incineration 10% to Fire Blast, Ice Lance and Scorch."
+        }
+      },
+      {
+        "talents": [
+          "heating-up",
+          "pyroblast",
+          "wake-of-fire"
+        ],
+        "text": {
+          "es": "Tu segundo plan: Explosión de Fuego carga Calentamiento (dos cargas si es crítico) y con 3 cargas Piroexplosión baja a 1,5 s. Lanzada con Dedos de Escarcha, además entra con Trizar.",
+          "en": "Your second plan: Fire Blast builds Heating Up (two stacks if it crits) and at 3 stacks Pyroblast drops to 1.5 s. Cast with Fingers of Frost, it also lands with Shatter."
+        }
+      },
+      {
+        "talents": [
+          "improved-scorch",
+          "fire-power",
+          "improved-fireball"
+        ],
+        "text": {
+          "es": "Más daño: 5 cargas de Chamuscar dan un 15 % más de daño de Fuego y Accelerant quita 0,5 s a Descarga de Pirofrío. Ojo con Poder de Fuego: da un 3 % por efecto de Fuego, pero no cuentan los de escuelas mezcladas, así que el daño periódico de Descarga de Pirofrío no suma. Sí suman Ignición y Piroexplosión.",
+          "en": "More damage: 5 Scorch stacks give 15% more Fire damage and Accelerant takes 0.5 s off Frostfire Bolt. Careful with Fire Power: it gives 3% per Fire effect, but effects that mix schools do not count, so Frostfire Bolt's damage over time does not add to it. Ignite and Pyroblast do."
+        }
+      },
+      {
+        "talents": [
+          "frost-channeling",
+          "master-of-elements"
+        ],
+        "text": {
+          "es": "El maná, sin Arcano: Canalización de Escarcha reduce un 15 % el coste y un 30 % la amenaza de los hechizos de Escarcha, y un punto de Maestro de los elementos devuelve un 10 % del coste base de cada crítico.",
+          "en": "Mana, without Arcane: Frost Channeling cuts the cost of Frost spells by 15% and their threat by 30%, and one point in Master of Elements refunds 10% of the base cost of each crit."
+        }
+      },
+      {
+        "talents": [
+          "ice-lance",
+          "ice-block",
+          "improved-blizzard",
+          "improved-frost-nova",
+          "frost-warding"
+        ],
+        "text": {
+          "es": "Son los puntos que hacen falta para llegar a Dedos de Escarcha, que pide 20 en Escarcha. Lanza de hielo es además requisito de Dedos y tu golpe extra; Bloqueo de hielo te salva; Ventisca mejorada hace que Ventisca también active Dedos; Nova de Escarcha mejorada y Custodia de Escarcha son relleno útil.",
+          "en": "These are the points needed to reach Fingers of Frost, which asks for 20 in Frost. Ice Lance is also its prerequisite and your extra hit; Ice Block saves you; Improved Blizzard lets Blizzard trigger Fingers too; Improved Frost Nova and Frost Warding are useful filler."
+        }
+      },
+      {
+        "talents": [
+          "elemental-precision"
+        ],
+        "text": {
+          "es": "Tres puntos en Escarcha dan un 6 % de golpe con todos los hechizos. Según las tablas de Classic y lo que reportan los jugadores, con eso ya no fallas contra enemigos hasta dos niveles por encima, lo normal en mazmorras.",
+          "en": "Three points in Frost give 6% hit with every spell. Going by the Classic tables and what players report, that already removes misses against enemies up to two levels above you, the usual case in dungeons."
+        }
+      }
+    ],
+    "variants": [
+      {
+        "name": {
+          "es": "Si te quedas sin maná",
+          "en": "If you run out of mana"
+        },
+        "text": {
+          "es": "Pasa dos puntos de Incineración a Maestro de los elementos: 30 % del coste base en cada crítico en vez de 10 %, a cambio de un 4 % menos de crítico en Explosión de Fuego, Lanza de hielo y Chamuscar. Es el único cambio que haría.",
+          "en": "Move two Incineration points to Master of Elements: 30% of base cost on each crit instead of 10%, in exchange for 4% less crit on Fire Blast, Ice Lance and Scorch. It is the only change I would make."
+        },
+        "remove": {
+          "incineration": 2
+        },
+        "add": {
+          "master-of-elements": 2
+        }
+      }
+    ],
+    "playstyle": [
+      {
+        "es": "Chamuscar hasta 5 cargas y mantenlas: solo en jefes u objetivos que vayan a durar.",
+        "en": "Scorch up to 5 stacks and keep them up: only on bosses or targets that will last."
+      },
+      {
+        "es": "Piroexplosión si tienes 3 cargas de Calentamiento.",
+        "en": "Pyroblast if you have 3 Heating Up stacks."
+      },
+      {
+        "es": "Descarga de Pirofrío si Dedos de Escarcha está activo.",
+        "en": "Frostfire Bolt if Fingers of Frost is active."
+      },
+      {
+        "es": "Explosión de Fuego siempre que esté lista.",
+        "en": "Fire Blast whenever it is ready."
+      },
+      {
+        "es": "Descarga de Pirofrío en cualquier otro caso.",
+        "en": "Frostfire Bolt in any other case."
+      },
+      {
+        "es": "Para afinar: al final de la segunda carga de Dedos de Escarcha, pon en cola Explosión de Fuego o Lanza de hielo. Entra también como congelado, un tercer golpe de regalo.",
+        "en": "To refine it: at the end of the second Fingers of Frost charge, queue Fire Blast or Ice Lance. It also lands as frozen, a free third hit."
+      }
+    ],
+    "aoe": [
+      {
+        "es": "Si el tanque aún está reuniendo a los enemigos, deja Fogonazo preparado donde van a acabar.",
+        "en": "If the tank is still gathering the enemies, have Flamestrike ready where they will end up."
+      },
+      {
+        "es": "Enemigos quietos y a distancia: Ventisca. Canalización de Escarcha le baja coste y amenaza, y su escalofrío puede activar Dedos de Escarcha.",
+        "en": "Enemies standing still at range: Blizzard. Frost Channeling lowers its cost and threat, and its chill can trigger Fingers of Frost."
+      },
+      {
+        "es": "Enemigos a tu lado: Deflagración Arcana, vigilando la amenaza porque aquí no tienes Sutileza Arcana.",
+        "en": "Enemies next to you: Arcane Explosion, watching your threat because you have no Arcane Subtlety here."
+      }
+    ],
+    "cooldowns": [
+      {
+        "es": "Esta build no tiene talentos de ráfaga: usa los efectos de raza y los abalorios cuando tengas Dedos de Escarcha o Calentamiento a 3.",
+        "en": "This build has no burst talents: use racial effects and trinkets when you have Fingers of Frost or Heating Up at 3."
+      },
+      {
+        "es": "Evocación cuando te falte poco para quedarte sin maná. Sin Meditación Arcana la necesitarás antes que las builds con Arcano.",
+        "en": "Evocation when you are close to running out of mana. Without Arcane Meditation you will need it sooner than the builds with Arcane."
+      },
+      {
+        "es": "Bloqueo de hielo si un enemigo te ha fijado: te protege, pero no te quita amenaza, así que avisa al tanque.",
+        "en": "Ice Block if an enemy has locked onto you: it protects you, but it does not remove threat, so warn the tank."
+      }
+    ],
+    "stats": [
+      {
+        "es": "Golpe: Precision da un 6 %, que debería bastar en mazmorras. Solo un jefe de banda (tres niveles por encima) pide el 17 %, así que en mazmorras no sacrifiques daño por más golpe.",
+        "en": "Hit: Precision gives 6%, which should be enough for dungeons. Only a raid boss (three levels above you) asks for 17%, so in dungeons do not give up damage for more hit."
+      },
+      {
+        "es": "Daño de hechizos, general o de la escuela que más tengas: Descarga de Pirofrío usa tu mejor bonificación entre Fuego y Escarcha.",
+        "en": "Spell Damage, general or whichever school you have most of: Frostfire Bolt uses your better bonus between Fire and Frost."
+      },
+      {
+        "es": "Crítico: al principio vale menos que en la build de Fuego, porque Trizar ya te da mucho, pero sigue alimentando Ignición y Calentamiento.",
+        "en": "Crit: at first it is worth less than in the Fire build, because Shatter already gives you a lot, but it still feeds Ignite and Heating Up."
+      },
+      {
+        "es": "Intelecto y Espíritu: te faltan los talentos de maná de Arcano, así que los notarás más que en otras builds.",
+        "en": "Intellect and Spirit: you lack the mana talents from Arcane, so you will feel them more than in other builds."
+      }
+    ],
+    "sources": [
+      "wowhead-mage-fire-guide"
+    ]
+  },
+  {
+    "uses": [
+      "dungeons"
+    ],
+    "recommendedFor": [],
+    "discouragedFor": [],
+    "level": 60,
+    "legacyTalented": 0,
+    "status": "analysis",
+    "gameVersion": "forever-beta-2026-10",
+    "updated": "2026-10-30",
+    "id": "fire-dungeons",
+    "name": {
+      "es": "Fuego",
+      "en": "Fire"
+    },
+    "slug": {
+      "es": "fuego",
+      "en": "fire"
+    },
+    "spec": "fire",
+    "icon": "spell_fire_sealoffire",
+    "tagline": {
+      "es": "Críticos, Ignición y Piroexplosiones rápidas, con Combustión para la ráfaga y Arcano para sostener el maná.",
+      "en": "Crits, Ignite and fast Pyroblasts, with Combustion for burst and Arcane to sustain your mana."
+    },
+    "points": {
+      "improved-channeling": 5,
+      "arcane-subtlety": 2,
+      "arcane-concentration": 5,
+      "missile-barrage": 2,
+      "arcane-blast": 1,
+      "arcane-meditation": 1,
+      "incineration": 5,
+      "improved-fireball": 5,
+      "ignite": 5,
+      "pyroblast": 1,
+      "wake-of-fire": 2,
+      "improved-scorch": 3,
+      "heating-up": 1,
+      "master-of-elements": 3,
+      "critical-mass": 3,
+      "fire-power": 3,
+      "combustion": 1,
+      "elemental-precision": 3
+    },
+    "upside": {
+      "es": "Mucho daño y poco gasto de maná",
+      "en": "High damage for little mana"
+    },
+    "downside": {
+      "es": "Depende de la suerte y del equipo",
+      "en": "Relies on luck and gear"
+    },
+    "keyTalents": [
+      "combustion",
+      "heating-up",
+      "ignite",
+      "improved-scorch",
+      "missile-barrage"
+    ],
+    "summary": {
+      "es": "Build de Fuego con 32 puntos en Fuego y 16 en Arcano para mazmorras en WoW Forever: Bola de Fuego como hechizo principal, Piroexplosión con Calentamiento y Combustión, con Tromba de misiles y el maná de Arcano.",
+      "en": "Fire build with 32 points in Fire and 16 in Arcane for WoW Forever dungeons: Fireball as the main spell, Pyroblast with Heating Up and Combustion, plus Missile Barrage and the mana from Arcane."
+    },
+    "strengths": [
+      {
+        "es": "Es la que mejor debería crecer con el equipo: cuanto más crítico, más Ignición, más Calentamiento y más maná devuelve Maestro de los elementos.",
+        "en": "It should scale the best with gear: more crit means more Ignite, more Heating Up and more mana back from Master of Elements."
+      },
+      {
+        "es": "No suele tener problemas de maná: Maestro de los elementos, Concentración Arcana y Meditación Arcana trabajan a la vez.",
+        "en": "It rarely has mana problems: Master of Elements, Arcane Concentration and Arcane Meditation all work at once."
+      },
+      {
+        "es": "Rotación sencilla en su versión básica, con margen para mejorar si quieres afinar.",
+        "en": "A simple rotation in its basic form, with room to improve if you want to refine it."
+      },
+      {
+        "es": "Tiene Combustión: una ráfaga que puedes usar en cada jefe.",
+        "en": "It has Combustion: burst you can use on every boss."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Tu daño depende de los críticos: habrá combates malos sin que hayas hecho nada mal.",
+        "en": "Your damage depends on crits: you will have bad fights without doing anything wrong."
+      },
+      {
+        "es": "Rinde poco con mal equipo, y al llegar a 60 todavía tendrás poco crítico.",
+        "en": "It underperforms with poor gear, and you will still have little crit when you reach 60."
+      },
+      {
+        "es": "Sin talento de amenaza para el Fuego: los críticos grandes te pueden poner en peligro si el tanque aún no ha fijado a los enemigos.",
+        "en": "No threat talent for Fire: big crits can put you in danger if the tank has not secured the enemies yet."
+      },
+      {
+        "es": "Contra enemigos inmunes al Fuego casi todo tu daño desaparece.",
+        "en": "Against Fire-immune enemies almost all your damage is gone."
+      }
+    ],
+    "reasons": [
+      {
+        "talents": [
+          "ignite",
+          "critical-mass",
+          "incineration"
+        ],
+        "text": {
+          "es": "La base: Ignición añade un 40 % a cada crítico de Fuego, Masa crítica da un 6 % de crítico a los hechizos de Fuego e Incineración, otro 10 % a Explosión de Fuego y Chamuscar. Estos dos son los que más cargan Calentamiento.",
+          "en": "The base: Ignite adds 40% to each Fire crit, Critical Mass gives Fire spells 6% crit and Incineration another 10% to Fire Blast and Scorch. Those two build Heating Up the most."
+        }
+      },
+      {
+        "talents": [
+          "heating-up",
+          "pyroblast",
+          "wake-of-fire"
+        ],
+        "text": {
+          "es": "Tu daño fuerte: con 3 cargas de Calentamiento, Piroexplosión baja a 1,5 s. Explosión de Fuego da siempre una carga, y dos si es crítico; Explosión de Fuego mejorada le quita 2 s de reutilización y le da 15 metros más.",
+          "en": "Your big hit: at 3 Heating Up stacks, Pyroblast drops to 1.5 s. Fire Blast always gives one stack, two if it crits; Improved Fire Blast takes 2 s off its cooldown and adds 15 yards."
+        }
+      },
+      {
+        "talents": [
+          "improved-scorch",
+          "fire-power"
+        ],
+        "text": {
+          "es": "Daño extra por mantener efectos: 5 cargas de Chamuscar dan un 15 % más de daño de Fuego, solo a ti. Poder de Fuego da un 3 % por cada efecto de Fuego tuyo en el objetivo, hasta un 12 %.",
+          "en": "Extra damage for keeping effects up: 5 Scorch stacks give 15% more Fire damage, yours only. Fire Power gives 3% per Fire effect of yours on the target, up to 12%."
+        }
+      },
+      {
+        "talents": [
+          "combustion",
+          "improved-fireball"
+        ],
+        "text": {
+          "es": "Combustión sube un 10 % tu crítico de Fuego con cada golpe hasta que hagas 3 críticos. Accelerant quita 0,5 s a Bola de Fuego, y por tanto más hechizos, más críticos y más Tromba de misiles.",
+          "en": "Combustion raises your Fire crit by 10% with each hit until you land 3 crits. Accelerant takes 0.5 s off Fireball, which means more spells, more crits and more Missile Barrage."
+        }
+      },
+      {
+        "talents": [
+          "master-of-elements",
+          "arcane-concentration",
+          "arcane-meditation"
+        ],
+        "text": {
+          "es": "El maná: Maestro de los elementos devuelve un 30 % del coste base de cada crítico, Concentración Arcana da hechizos gratis y un solo punto de Meditación Arcana mantiene un 17 % de tu regeneración mientras lanzas.",
+          "en": "Mana: Master of Elements refunds 30% of the base cost of each crit, Arcane Concentration gives free spells and a single point in Arcane Meditation keeps 17% of your regeneration while you cast."
+        }
+      },
+      {
+        "talents": [
+          "missile-barrage",
+          "arcane-blast"
+        ],
+        "text": {
+          "es": "Por qué Arcano y no Escarcha: Bola de Fuego activa Tromba de misiles un 20 % de las veces (Misiles Arcanos gratis) y un solo punto en Explosión Arcana da, con una carga, un 15 % de tu Intelecto como daño de hechizos.",
+          "en": "Why Arcane and not Frost: Fireball triggers Missile Barrage 20% of the time (free Arcane Missiles) and a single point in Arcane Blast gives, at one stack, 15% of your Intellect as Spell Damage."
+        }
+      },
+      {
+        "talents": [
+          "improved-channeling",
+          "arcane-subtlety"
+        ],
+        "text": {
+          "es": "El peaje hasta llegar a lo anterior, pero no son puntos perdidos: Canalización mejorada protege tus Misiles Arcanos de los golpes y Sutileza Arcana quita 15 de resistencia a todos tus hechizos.",
+          "en": "The toll to reach the above, but not wasted points: Improved Channeling protects your Arcane Missiles from hits and Arcane Subtlety removes 15 resistance against all your spells."
+        }
+      },
+      {
+        "talents": [
+          "elemental-precision"
+        ],
+        "text": {
+          "es": "Tres puntos en Escarcha dan un 6 % de golpe con todos los hechizos. Según las tablas de Classic y lo que reportan los jugadores, con eso ya no fallas contra enemigos hasta dos niveles por encima, lo normal en mazmorras.",
+          "en": "Three points in Frost give 6% hit with every spell. Going by the Classic tables and what players report, that already removes misses against enemies up to two levels above you, the usual case in dungeons."
+        }
+      }
+    ],
+    "variants": [
+      {
+        "name": {
+          "es": "Más área",
+          "en": "More AoE"
+        },
+        "text": {
+          "es": "Un punto de Maestro de los elementos pasa a Ola explosiva: otro golpe instantáneo de área con ralentización para los pulls. Es la que elegiría en mazmorras si no vas justo de maná.",
+          "en": "One Master of Elements point moves to Blast Wave: another instant AoE hit with a slow for pulls. It is the one I would pick for dungeons if your mana is not tight."
+        },
+        "remove": {
+          "master-of-elements": 1
+        },
+        "add": {
+          "blast-wave": 1
+        }
+      },
+      {
+        "name": {
+          "es": "Más alcance",
+          "en": "More range"
+        },
+        "text": {
+          "es": "El mismo punto en Lanzallamas da 3 metros más a tus hechizos de Fuego. Mejor en jefes con mecánicas de apartarse que en pulls.",
+          "en": "The same point in Flame Throwing gives your Fire spells 3 more yards. Better on bosses that make you spread out than in pulls."
+        },
+        "remove": {
+          "master-of-elements": 1
+        },
+        "add": {
+          "flame-throwing": 1
+        }
+      }
+    ],
+    "playstyle": [
+      {
+        "es": "Antes del pull, si el tanque lo permite: Piroexplosión para entrar con el combate ya empezado.",
+        "en": "Before the pull, if the tank allows it: Pyroblast so you open with the fight already going."
+      },
+      {
+        "es": "Chamuscar hasta 5 cargas y mantenlas: solo en jefes u objetivos que vayan a durar.",
+        "en": "Scorch up to 5 stacks and keep them up: only on bosses or targets that will last."
+      },
+      {
+        "es": "Piroexplosión si tienes 3 cargas de Calentamiento.",
+        "en": "Pyroblast if you have 3 Heating Up stacks."
+      },
+      {
+        "es": "Explosión de Fuego siempre que esté lista.",
+        "en": "Fire Blast whenever it is ready."
+      },
+      {
+        "es": "Misiles Arcanos si Tromba de misiles está activa.",
+        "en": "Arcane Missiles if Missile Barrage is active."
+      },
+      {
+        "es": "Bola de Fuego en cualquier otro caso.",
+        "en": "Fireball in any other case."
+      },
+      {
+        "es": "Para afinar: una Explosión Arcana cuando no tengas carga (dura 15 s), y Chamuscar en vez de Bola de Fuego si a Explosión de Fuego le quedan menos de 3 s.",
+        "en": "To refine it: one Arcane Blast whenever you have no stack (it lasts 15 s), and Scorch instead of Fireball if Fire Blast has under 3 s left."
+      }
+    ],
+    "aoe": [
+      {
+        "es": "Si el tanque aún está reuniendo a los enemigos, deja Fogonazo preparado donde van a acabar.",
+        "en": "If the tank is still gathering the enemies, have Flamestrike ready where they will end up."
+      },
+      {
+        "es": "Ola explosiva, si has elegido esa variante.",
+        "en": "Blast Wave, if you picked that variant."
+      },
+      {
+        "es": "Deflagración Arcana sin parar: Sutileza Arcana le quita un 30 % de amenaza.",
+        "en": "Arcane Explosion nonstop: Arcane Subtlety takes 30% of its threat away."
+      }
+    ],
+    "cooldowns": [
+      {
+        "es": "Combustión cuando tengas las 5 cargas de Chamuscar y Calentamiento cargado, junto con abalorios u otros efectos de daño.",
+        "en": "Combustion once you have 5 Scorch stacks and Heating Up built, together with trinkets or other damage effects."
+      },
+      {
+        "es": "Evocación cuando te falte poco para quedarte sin maná. Córtala si ya tienes bastante para acabar el combate.",
+        "en": "Evocation when you are close to running out of mana. Cut it short if you already have enough to finish the fight."
+      }
+    ],
+    "stats": [
+      {
+        "es": "Golpe: Precision da un 6 %, que debería bastar en mazmorras. Solo un jefe de banda (tres niveles por encima) pide el 17 %, así que en mazmorras no sacrifiques daño por más golpe.",
+        "en": "Hit: Precision gives 6%, which should be enough for dungeons. Only a raid boss (three levels above you) asks for 17%, so in dungeons do not give up damage for more hit."
+      },
+      {
+        "es": "Daño de hechizos, general o de Fuego.",
+        "en": "Spell Damage, general or Fire."
+      },
+      {
+        "es": "Crítico: en esta build vale más que en las otras, porque es Ignición, Calentamiento y maná a la vez.",
+        "en": "Crit: it is worth more here than in the other builds, because it is Ignite, Heating Up and mana all at once."
+      },
+      {
+        "es": "Intelecto: da maná y algo de crítico, pero no daño directo salvo por la carga de Explosión Arcana.",
+        "en": "Intellect: it gives mana and some crit, but no direct damage apart from the Arcane Blast stack."
+      },
+      {
+        "es": "Espíritu y Aguante, por detrás de todo lo anterior.",
+        "en": "Spirit and Stamina, behind all of the above."
+      }
+    ],
+    "sources": [
+      "wowhead-mage-fire-guide"
+    ],
+    "clearcasting": [
+      {
+        "es": "Piroexplosión si tienes Calentamiento a 3 (440 de maná); si no, Bola de Fuego (410). Explosión de Fuego (340) también vale si está lista, pero nunca Chamuscar (150).",
+        "en": "Pyroblast if Heating Up is at 3 (440 mana); if not, Fireball (410). Fire Blast (340) is also fine if it is ready, but never Scorch (150)."
+      },
+      {
+        "es": "Con varios enemigos, Fogonazo (990) antes que Deflagración Arcana (390), si van a seguir en esa zona.",
+        "en": "With several enemies, Flamestrike (990) before Arcane Explosion (390), if they will stay in that area."
+      },
+      {
+        "es": "Si también tienes Tromba de misiles, lanza primero el otro hechizo y después los Misiles: ya son gratis.",
+        "en": "If you also have Missile Barrage, cast the other spell first and the Missiles after: they are already free."
+      }
+    ]
+  },
+  {
+    "uses": [
+      "dungeons"
+    ],
+    "recommendedFor": [],
+    "discouragedFor": [],
+    "level": 60,
+    "legacyTalented": 0,
+    "status": "analysis",
+    "gameVersion": "forever-beta-2026-10",
+    "updated": "2026-10-30",
+    "id": "frost-dungeons",
+    "name": {
+      "es": "Escarcha",
+      "en": "Frost"
+    },
+    "slug": {
+      "es": "escarcha",
+      "en": "frost"
+    },
+    "spec": "frost",
+    "icon": "ability_mage_wintersgrasp",
+    "tagline": {
+      "es": "Escarcha profunda con Tromba de misiles y Explosión Arcana: Cono de frío potenciado, Ventisca y el maná más estable.",
+      "en": "Deep Frost with Missile Barrage and Arcane Blast: empowered Cone of Cold, Blizzard and the steadiest mana."
+    },
+    "points": {
+      "improved-channeling": 5,
+      "arcane-subtlety": 2,
+      "arcane-concentration": 5,
+      "missile-barrage": 2,
+      "arcane-impact": 1,
+      "arcane-blast": 1,
+      "arcane-meditation": 3,
+      "improved-frostbolt": 5,
+      "elemental-precision": 3,
+      "ice-shards": 5,
+      "frost-channeling": 2,
+      "improved-blizzard": 1,
+      "ice-lance": 1,
+      "shatter": 3,
+      "improved-cone-of-cold": 3,
+      "cold-snap": 1,
+      "fingers-of-frost": 2,
+      "winters-chill": 5,
+      "ice-barrier": 1
+    },
+    "upside": {
+      "es": "Área fuerte y maná estable",
+      "en": "Strong AoE and steady mana"
+    },
+    "downside": {
+      "es": "Sin ráfaga y sin Bloqueo de hielo",
+      "en": "No burst and no Ice Block"
+    },
+    "keyTalents": [
+      "winters-chill",
+      "fingers-of-frost",
+      "ice-barrier",
+      "shatter",
+      "missile-barrage"
+    ],
+    "summary": {
+      "es": "Build de Escarcha con 32 puntos en Escarcha y 19 en Arcano para mazmorras en WoW Forever: Escalofrío del invierno y Cono de frío, Dedos de Escarcha con Trizar, y Arcano para el maná y para Tromba de misiles.",
+      "en": "Frost build with 32 points in Frost and 19 in Arcane for WoW Forever dungeons: Winter's Chill and Cone of Cold, Fingers of Frost with Shatter, and Arcane for mana and Missile Barrage."
+    },
+    "strengths": [
+      {
+        "es": "La más fácil de sostener: Concentración Arcana, Meditación Arcana completa y Canalización de Escarcha trabajan a la vez. Es la que menos debería depender de Evocación.",
+        "en": "The easiest to sustain: Arcane Concentration, full Arcane Meditation and Frost Channeling all work at once. It is the one that should rely least on Evocation."
+      },
+      {
+        "es": "Área con control: Ventisca, Cono de frío y Nova de Escarcha ralentizan o congelan, algo que el grupo agradece.",
+        "en": "AoE with control: Blizzard, Cone of Cold and Frost Nova slow or freeze, which your group will appreciate."
+      },
+      {
+        "es": "Barrera de hielo te da un 6 % más de daño de Escarcha y evita que los golpes te retrasen mientras aguante.",
+        "en": "Ice Barrier gives you 6% more Frost damage and stops hits from delaying you while it holds."
+      },
+      {
+        "es": "Mordedura helada reinicia Cono de frío, Nova de Escarcha, Lanza de hielo y Barrera de hielo a la vez.",
+        "en": "Cold Snap resets Cone of Cold, Frost Nova, Ice Lance and Ice Barrier all at once."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "No trae Bloqueo de hielo tal cual (mira las variantes: cuesta un solo punto).",
+        "en": "It does not come with Ice Block as is (see the variants: it costs a single point)."
+      },
+      {
+        "es": "Sin Poder Arcano ni Combustión no hay ráfaga: en jefes cortos quedarás por detrás.",
+        "en": "With no Arcane Power or Combustion there is no burst: you will fall behind on short bosses."
+      },
+      {
+        "es": "Lanza de hielo tiene 8 s de reutilización desde el 28 de octubre, así que Dedos de Escarcha da menos daño que antes.",
+        "en": "Ice Lance has an 8 s cooldown since 28 October, so Fingers of Frost does less damage than it used to."
+      },
+      {
+        "es": "Contra enemigos que resisten o son inmunes a la Escarcha casi todo tu daño se pierde.",
+        "en": "Against enemies that resist or are immune to Frost almost all your damage is lost."
+      }
+    ],
+    "reasons": [
+      {
+        "talents": [
+          "fingers-of-frost",
+          "shatter",
+          "ice-lance",
+          "ice-shards"
+        ],
+        "text": {
+          "es": "Tu daño fuerte: los efectos de escalofrío tienen un 15 % de probabilidad de activar Dedos de Escarcha, tus 2 siguientes hechizos cuentan como contra un objetivo congelado, Trizar les da un 50 % de crítico y Fragmentos de hielo un 100 % más de bonificación. Lanza de hielo hace un 200 % más de daño contra congelados.",
+          "en": "Your big hits: Chill effects have a 15% chance to trigger Fingers of Frost, your next 2 spells count as against a frozen target, Shatter gives them 50% crit and Ice Shards 100% more bonus. Ice Lance deals 200% more damage to frozen targets."
+        }
+      },
+      {
+        "talents": [
+          "winters-chill",
+          "improved-cone-of-cold",
+          "cold-snap"
+        ],
+        "text": {
+          "es": "El motivo de llegar tan abajo: Descarga de Escarcha y Lanza de hielo con Dedos de Escarcha acumulan Escalofrío del invierno, hasta 5 veces. Cada carga da a tu siguiente Cono de frío un 5 % más de daño y un 7 % de tu daño con hechizos. Cono de frío mejorado le suma un 35 % y Mordedura helada te da uno más.",
+          "en": "The reason to go this deep: Frostbolt and Fingers-of-Frost Ice Lance stack Winter's Chill, up to 5 times. Each stack gives your next Cone of Cold 5% more damage and 7% of your Spell Damage. Improved Cone of Cold adds 35% and Cold Snap gives you another one."
+        }
+      },
+      {
+        "talents": [
+          "ice-barrier",
+          "improved-frostbolt"
+        ],
+        "text": {
+          "es": "Barrera de hielo da un 3 % de daño de Escarcha durante 1 min, y otro 3 % y ningún retraso al recibir golpes mientras aguante el escudo. Descarga de Escarcha mejorada quita 0,5 s al lanzamiento: más escalofríos, más Escalofrío del invierno y más Tromba de misiles.",
+          "en": "Ice Barrier gives 3% Frost damage for 1 min, plus another 3% and no delay when hit while the shield holds. Improved Frostbolt takes 0.5 s off the cast: more Chills, more Winter's Chill and more Missile Barrage."
+        }
+      },
+      {
+        "talents": [
+          "missile-barrage",
+          "arcane-blast"
+        ],
+        "text": {
+          "es": "Por qué Arcano: Descarga de Escarcha activa Tromba de misiles un 20 % de las veces, y Explosión Arcana un 40 %. Con 2 cargas de Explosión Arcana sumas un 30 % de tu Intelecto como daño de hechizos a todo lo demás.",
+          "en": "Why Arcane: Frostbolt triggers Missile Barrage 20% of the time, and Arcane Blast 40%. Two Arcane Blast stacks add 30% of your Intellect as Spell Damage to everything else."
+        }
+      },
+      {
+        "talents": [
+          "arcane-concentration",
+          "arcane-meditation",
+          "frost-channeling"
+        ],
+        "text": {
+          "es": "El maná: hechizos gratis, un 50 % de la regeneración mientras lanzas, y un 10 % menos de coste y un 20 % menos de amenaza en los hechizos de Escarcha. Si tienes que usar Evocación en pleno combate, estás perdiendo daño.",
+          "en": "Mana: free spells, 50% of your regeneration while you cast, and 10% lower cost and 20% less threat on Frost spells. If you have to use Evocation mid-fight, you are losing damage."
+        }
+      },
+      {
+        "talents": [
+          "improved-blizzard",
+          "arcane-subtlety",
+          "improved-channeling",
+          "arcane-impact"
+        ],
+        "text": {
+          "es": "Un punto en Ventisca mejorada añade escalofrío a Ventisca, lo que permite activar Dedos de Escarcha en área. Sutileza Arcana y Canalización mejorada son el camino hasta Tromba de misiles, con 15 de resistencia menos y Misiles Arcanos sin retrasos. Impacto Arcano es el único punto libre de verdad.",
+          "en": "One point in Improved Blizzard adds a Chill to Blizzard, which lets Fingers of Frost trigger in AoE. Arcane Subtlety and Improved Channeling are the path to Missile Barrage, with 15 less resistance and Arcane Missiles without delays. Arcane Impact is the only truly free point."
+        }
+      },
+      {
+        "talents": [
+          "elemental-precision"
+        ],
+        "text": {
+          "es": "Tres puntos en Escarcha dan un 6 % de golpe con todos los hechizos. Según las tablas de Classic y lo que reportan los jugadores, con eso ya no fallas contra enemigos hasta dos niveles por encima, lo normal en mazmorras.",
+          "en": "Three points in Frost give 6% hit with every spell. Going by the Classic tables and what players report, that already removes misses against enemies up to two levels above you, the usual case in dungeons."
+        }
+      }
+    ],
+    "variants": [
+      {
+        "name": {
+          "es": "Con Bloqueo de hielo",
+          "en": "With Ice Block"
+        },
+        "text": {
+          "es": "El punto de Impacto Arcano apenas se nota. Pásalo a Bloqueo de hielo y tendrás tu inmunidad, que además Mordedura helada puede reiniciar. Es la primera variante que probaría.",
+          "en": "The Arcane Impact point barely shows. Move it to Ice Block and you get your immunity, which Cold Snap can also reset. It is the first variant I would try."
+        },
+        "remove": {
+          "arcane-impact": 1
+        },
+        "add": {
+          "ice-block": 1
+        }
+      },
+      {
+        "name": {
+          "es": "Solo jefes",
+          "en": "Bosses only"
+        },
+        "text": {
+          "es": "Si no vas a usar Ventisca, ese punto da más en Canalización de Escarcha: un 15 % menos de coste y un 30 % menos de amenaza.",
+          "en": "If you are not going to use Blizzard, that point does more in Frost Channeling: 15% lower cost and 30% less threat."
+        },
+        "remove": {
+          "improved-blizzard": 1
+        },
+        "add": {
+          "frost-channeling": 1
+        }
+      },
+      {
+        "name": {
+          "es": "Tanque seguro y maná de sobra",
+          "en": "Safe tank and mana to spare"
+        },
+        "text": {
+          "es": "Si el tanque no pierde a los enemigos y no vas justo de maná, cambia Canalización de Escarcha por Alcance ártico: un 20 % más de alcance y de radio en tus hechizos de Escarcha.",
+          "en": "If the tank holds the enemies and your mana is not tight, swap Frost Channeling for Arctic Reach: 20% more range and radius on your Frost spells."
+        },
+        "remove": {
+          "frost-channeling": 2
+        },
+        "add": {
+          "arctic-reach": 2
+        }
+      }
+    ],
+    "playstyle": [
+      {
+        "es": "Antes del pull: Barrera de hielo 4 s antes y Descarga de Escarcha 2,5 s antes.",
+        "en": "Before the pull: Ice Barrier 4 s before and Frostbolt 2.5 s before."
+      },
+      {
+        "es": "Con Dedos de Escarcha: Descarga de Escarcha, o Cono de frío si está listo, y en la segunda carga, Descarga de Escarcha con Lanza de hielo en cola justo al final. Lanza de hielo tiene 8 s de reutilización, así que no caben dos en un mismo proc.",
+        "en": "With Fingers of Frost: Frostbolt, or Cone of Cold if it is ready, then on the second charge Frostbolt with Ice Lance queued right at the end. Ice Lance has an 8 s cooldown, so two do not fit in one proc."
+      },
+      {
+        "es": "Mordedura helada si a Cono de frío le quedan más de 5 s. Tiene mucha reutilización: guárdala si vas a necesitar otra Nova de Escarcha.",
+        "en": "Cold Snap if Cone of Cold has over 5 s left. Its cooldown is long: save it if you will need another Frost Nova."
+      },
+      {
+        "es": "Cono de frío, mejor con varias cargas de Escalofrío del invierno.",
+        "en": "Cone of Cold, ideally with several Winter's Chill stacks."
+      },
+      {
+        "es": "Misiles Arcanos si Tromba de misiles está activa.",
+        "en": "Arcane Missiles if Missile Barrage is active."
+      },
+      {
+        "es": "Explosión Arcana si tienes menos de 2 cargas o van a caer.",
+        "en": "Arcane Blast if you have fewer than 2 stacks or they are about to fall off."
+      },
+      {
+        "es": "Barrera de hielo si se ha roto: el mejor momento es justo después de recibir daño, para que dure más.",
+        "en": "Ice Barrier if it has broken: the best moment is right after taking damage, so it lasts longer."
+      },
+      {
+        "es": "Descarga de Escarcha en cualquier otro caso.",
+        "en": "Frostbolt in any other case."
+      },
+      {
+        "es": "Versión sencilla: quita los pasos de Arcano y haz solo Dedos de Escarcha, Cono de frío, Barrera de hielo y Descarga de Escarcha. Rinde menos, pero funciona.",
+        "en": "Simple version: drop the Arcane steps and do only Fingers of Frost, Cone of Cold, Ice Barrier and Frostbolt. It does less, but it works."
+      }
+    ],
+    "aoe": [
+      {
+        "es": "Antes del pull: Barrera de hielo.",
+        "en": "Before the pull: Ice Barrier."
+      },
+      {
+        "es": "Mordedura helada si a Cono de frío le quedan más de 5 s.",
+        "en": "Cold Snap if Cone of Cold has over 5 s left."
+      },
+      {
+        "es": "Cono de frío, sobre todo con Dedos de Escarcha activo: entra con Trizar.",
+        "en": "Cone of Cold, especially with Fingers of Frost active: it lands with Shatter."
+      },
+      {
+        "es": "Ventisca el resto del tiempo. Con Ventisca mejorada puede activar Dedos de Escarcha.",
+        "en": "Blizzard the rest of the time. With Improved Blizzard it can trigger Fingers of Frost."
+      },
+      {
+        "es": "Si los enemigos llegan a ti: Nova de Escarcha y Cono de frío en cuanto estén congelados, con un 50 % más de crítico gracias a Trizar.",
+        "en": "If the enemies reach you: Frost Nova and Cone of Cold as soon as they are frozen, with 50% more crit thanks to Shatter."
+      }
+    ],
+    "cooldowns": [
+      {
+        "es": "Tu único cooldown de daño es Mordedura helada: úsala donde más enemigos vaya a alcanzar Cono de frío o cuando el grupo necesite otra Nova de Escarcha.",
+        "en": "Your only damage cooldown is Cold Snap: use it where Cone of Cold will reach the most enemies or when the group needs another Frost Nova."
+      },
+      {
+        "es": "Gema de maná pronto, que no consume tiempo global, y Evocación entre pulls. Si necesitas Evocación en mitad del combate, ajusta el equipo: mejor algo menos de daño y lanzar siempre.",
+        "en": "Mana gem early, since it does not use the global cooldown, and Evocation between pulls. If you need Evocation mid-fight, adjust your gear: better slightly less damage and casting all the time."
+      },
+      {
+        "es": "Efectos de raza y pociones cuando el enemigo sea vulnerable o en pulls grandes.",
+        "en": "Racial effects and potions when the enemy is vulnerable or in big pulls."
+      }
+    ],
+    "stats": [
+      {
+        "es": "Golpe: Precision da un 6 %, que debería bastar en mazmorras. Solo un jefe de banda (tres niveles por encima) pide el 17 %, así que en mazmorras no sacrifiques daño por más golpe.",
+        "en": "Hit: Precision gives 6%, which should be enough for dungeons. Only a raid boss (three levels above you) asks for 17%, so in dungeons do not give up damage for more hit."
+      },
+      {
+        "es": "Crítico: Fragmentos de hielo da un 100 % más de bonificación a los críticos de Escarcha.",
+        "en": "Crit: Ice Shards adds 100% to the bonus of Frost crits."
+      },
+      {
+        "es": "Daño de hechizos, general o de Escarcha.",
+        "en": "Spell Damage, general or Frost."
+      },
+      {
+        "es": "Intelecto: da maná, crítico y daño con Explosión Arcana.",
+        "en": "Intellect: it gives mana, crit and damage through Arcane Blast."
+      },
+      {
+        "es": "Espíritu: con Meditación Arcana (50 %) y Armadura de mago (50 %) lo aprovechas mientras lanzas. Si se suman como en Classic, regeneras todo tu maná por Espíritu en combate, algo que aún hay que comprobar.",
+        "en": "Spirit: with Arcane Meditation (50%) and Mage Armor (50%) you use it while you cast. If they add up as in Classic, you get all your Spirit regeneration in combat, which still needs checking."
+      }
+    ],
+    "sources": [
+      "wowhead-mage-frost-guide"
+    ],
+    "clearcasting": [
+      {
+        "es": "Con 3 enemigos o más, Ventisca: cuesta 1400 de maná, mucho más que cualquier otro hechizo.",
+        "en": "With 3 or more enemies, Blizzard: it costs 1400 mana, far more than any other spell."
+      },
+      {
+        "es": "Con 1 o 2 enemigos, Cono de frío si está listo (555).",
+        "en": "With 1 or 2 enemies, Cone of Cold if it is ready (555)."
+      },
+      {
+        "es": "Si no, Explosión Arcana si te falta la segunda carga; si no, Descarga de Escarcha (290).",
+        "en": "If not, Arcane Blast if you are missing the second stack; if not, Frostbolt (290)."
+      },
+      {
+        "es": "Si también tienes Tromba de misiles, lanza primero el otro hechizo y después los Misiles: ya son gratis.",
+        "en": "If you also have Missile Barrage, cast the other spell first and the Missiles after: they are already free."
+      }
+    ]
+  }
+]

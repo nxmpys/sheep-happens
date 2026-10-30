@@ -11,6 +11,7 @@ No hay que buscar fuentes nuevas cada semana. La lista fija está en **`src/data
 | Alta | **Blizzard Tracker (US)** | Todo mensaje oficial: notas, errores conocidos, noticias, pódcast | Automática (RSS, filtro «Forever») |
 | Alta | **WoW Forever Beta Development Notes** | Lista de cambios de cada build; el vigilante extrae la sección «Mage» | Automática (JSON del foro) |
 | Alta | **Blizzard Tracker (EU, español)** | Traducciones oficiales → nombres en español | Automática (RSS) |
+| Alta | **ForeverChanges: Patch notes** | Notas de cada build y hotfix, a menudo antes que Blizzard. Lo que no sale de Blizzard viene marcado como sin confirmar | Automática (RSS, sin filtro: los títulos no nombran clases) |
 | Normal | **WoW Forever Beta Known Issues** | Errores conocidos: evita documentar un fallo como si fuera un cambio | Automática (líneas sobre el Mago) |
 | Normal | **wago.tools builds** | Avisa de builds nuevas del cliente (p. ej., 1.60.1.70338) | Automática |
 | Normal | **Wowhead News** | Noticias y cambios extraídos de cada build | Automática (RSS, filtro «Forever») |
@@ -18,6 +19,7 @@ No hay que buscar fuentes nuevas cada semana. La lista fija está en **`src/data
 | Normal | **Icy Veins — Forever** | Noticias y guías | Manual (bloquea peticiones automáticas) |
 | Baja | **Foro de la beta** | Opiniones y errores de jugadores | Automática (RSS) |
 | Baja | **Wowhead — base de datos de Forever** | Cifras de hechizos (datos extraídos) | Manual |
+| Baja | **Wowhead — guías de Arcano, Fuego y Escarcha** | De momento solo sus rotaciones, que ya cubren hasta el 60. El resto es de nivel 30: no se incorpora hasta que las actualicen a 60 | Manual |
 
 **Tras el lanzamiento (4 nov 2026):** el hilo de notas de la beta dejará de actualizarse. Las notas de parche aparecerán en el Blizzard Tracker; cuando exista un hilo o una página estable de notas de parche, añádela a `watchlist.json` con `type: "discourse-topic"` o `"rss"`.
 

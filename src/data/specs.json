@@ -34,16 +34,12 @@
         "es": "Todavía no he podido probar el JcJ de nivel 60.",
         "en": "I have not been able to test level 60 PvP yet."
       },
-      "dungeons": {
-        "es": "Todavía no he podido probar las mazmorras de nivel 60.",
-        "en": "I have not been able to test level 60 dungeons yet."
-      },
       "raid": {
         "es": "Todavía no he podido probar las bandas de Forever.",
         "en": "I have not been able to test Forever raids yet."
       }
     },
-    "updated": "2026-10-29"
+    "updated": "2026-10-30"
   },
   {
     "id": "fire",
@@ -84,16 +80,12 @@
         "es": "Todavía no he podido probar el JcJ de nivel 60.",
         "en": "I have not been able to test level 60 PvP yet."
       },
-      "dungeons": {
-        "es": "Todavía no he podido probar las mazmorras de nivel 60.",
-        "en": "I have not been able to test level 60 dungeons yet."
-      },
       "raid": {
         "es": "Todavía no he podido probar las bandas de Forever.",
         "en": "I have not been able to test Forever raids yet."
       }
     },
-    "updated": "2026-10-29"
+    "updated": "2026-10-30"
   },
   {
     "id": "frost",
@@ -130,15 +122,11 @@
         "es": "Todavía no he podido probar el JcJ de nivel 60.",
         "en": "I have not been able to test level 60 PvP yet."
       },
-      "dungeons": {
-        "es": "Todavía no he podido probar las mazmorras de nivel 60.",
-        "en": "I have not been able to test level 60 dungeons yet."
-      },
       "raid": {
         "es": "Todavía no he podido probar las bandas de Forever.",
         "en": "I have not been able to test Forever raids yet."
       }
     },
-    "updated": "2026-10-29"
+    "updated": "2026-10-30"
   }
 ]

@@ -326,8 +326,19 @@ export const buildSchema = z
     keyTalents: z.array(id).max(5).default([]),
     /** One or two sentences: what the build does and when to pick it. */
     summary: localized,
-    /** How to play it, as short steps. */
+    /** How to play it, as short steps (single target when `aoe` or `cooldowns` are set). */
     playstyle: z.array(localized).min(1),
+    /** Which spell to cast with Clearcasting (Arcane Concentration), most valuable first. */
+    clearcasting: z.array(localized).default([]),
+    /** Same as `playstyle`, for several enemies. */
+    aoe: z.array(localized).default([]),
+    /** When to use cooldowns and mana recovery. */
+    cooldowns: z.array(localized).default([]),
+    /**
+     * Builds without a point `order` (level 60): why each group of talents is
+     * there. `talents` must have points; they show as icons next to the text.
+     */
+    reasons: z.array(z.object({ talents: z.array(id).min(1), text: localized }).strict()).default([]),
     strengths: z.array(localized).default([]),
     weaknesses: z.array(localized).default([]),
     /** Items, enchantments or consumables that matter for this build, if any. */

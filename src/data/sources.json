@@ -833,5 +833,44 @@
       "es": "Estructura del árbol de Legado de la beta: rangos, puntos necesarios en cada árbol (5 o 10), ventajas que piden un rango en otra y el máximo de 16 puntos por personaje.",
       "en": "The beta Legacy tree structure: ranks, points needed in each tree (5 or 10), perks that need a rank in another one and the 16-point cap per character."
     }
+  },
+  {
+    "id": "wowhead-mage-arcane-guide",
+    "title": "Arcane Mage DPS Rotation and Cooldowns - WoW: Forever",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/guide/classes/mage/arcane/rotation-cooldowns-pve-dps",
+    "kind": "community",
+    "published": "2026-10-29",
+    "accessed": "2026-10-30",
+    "notes": {
+      "es": "Guía de Foolipe. Rotación de Arcano y de Arcano con Fuego a nivel 60. Nadie la ha probado a ese nivel porque la beta llega al 30.",
+      "en": "Guide by Foolipe. Rotations for Arcane and Arcane Fire at level 60. Nobody has tried them at that level because the beta stops at 30."
+    }
+  },
+  {
+    "id": "wowhead-mage-fire-guide",
+    "title": "Fire Mage DPS Rotation and Cooldowns - WoW: Forever",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/guide/classes/mage/fire/rotation-cooldowns-pve-dps",
+    "kind": "community",
+    "published": "2026-10-29",
+    "accessed": "2026-10-30",
+    "notes": {
+      "es": "Guía de Foolipe. Rotación de Fuego y de Pirofrío a nivel 60, con el truco de poner un hechizo en cola con Dedos de Escarcha. Nadie la ha probado a ese nivel porque la beta llega al 30.",
+      "en": "Guide by Foolipe. Rotations for Fire and Frostfire at level 60, with the trick of queuing a spell with Fingers of Frost. Nobody has tried them at that level because the beta stops at 30."
+    }
+  },
+  {
+    "id": "wowhead-mage-frost-guide",
+    "title": "Frost Mage DPS Rotation and Cooldowns - WoW: Forever",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/guide/classes/mage/frost/rotation-cooldowns-pve-dps",
+    "kind": "community",
+    "published": "2026-10-29",
+    "accessed": "2026-10-30",
+    "notes": {
+      "es": "Guía de Porom. Rotación de Escarcha con y sin Arcano a nivel 60. Lanza dos Lanzas de hielo por proc, algo que no cabe con la reutilización de 8 s del 28 de octubre, así que la ajusto.",
+      "en": "Guide by Porom. Frost rotation with and without Arcane at level 60. It casts two Ice Lances per proc, which does not fit the 8 s cooldown of 28 October, so I adjust it."
+    }
   }
 ]
