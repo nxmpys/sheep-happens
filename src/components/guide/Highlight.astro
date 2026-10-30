@@ -5,11 +5,14 @@
  * tooltips; `featured` spans two columns.
  */
 import Icon from '../ui/Icon.astro';
+import type { IconName } from '../ui/icons';
 import { getLocale, href } from '../../i18n/locale';
 import type { PageId } from '../../i18n/routes';
 
 interface Props {
-  school: 'arcane' | 'fire' | 'frost' | 'frostfire';
+  school: 'arcane' | 'fire' | 'frost' | 'frostfire' | 'baseline';
+  /** Icon when it is not the school's own. */
+  icon?: IconName;
   /** File in public/home/ behind the card. */
   image: string;
   /** Short line above the text, e.g. "Escarcha · talentos nuevos". */
@@ -23,7 +26,7 @@ interface Props {
   featured?: boolean;
 }
 
-const { school, image, label, to, hash, query, cta, featured = false } = Astro.props;
+const { school, icon, image, label, to, hash, query, cta, featured = false } = Astro.props;
 const locale = getLocale(Astro);
 const url = `${href(to, locale)}${query ? `?${query}` : ''}${hash ? `#${hash}` : ''}`;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
@@ -33,7 +36,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   <img class="highlight__picture" src={`${base}home/${image}.webp`} alt="" width="900" height="375" loading="lazy" decoding="async" />
   <p class="highlight__label" data-no-spell-links>
     <span class="highlight__icon">
-      <Icon name={school} size={featured ? 26 : 20} strokeWidth={1.6} />
+      <Icon name={icon ?? (school === 'baseline' ? 'book' : school)} size={featured ? 26 : 20} strokeWidth={1.6} />
     </span>
     <span>{label}</span>
   </p>
