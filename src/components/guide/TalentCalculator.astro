@@ -14,6 +14,7 @@
  */
 import Icon from '../ui/Icon.astro';
 import TalentGrid from './TalentGrid.astro';
+import { USE_TITLES } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
 import { t, type UiKey } from '../../i18n/ui';
 import { builds, talentText, talents } from '../../lib/data';
@@ -41,7 +42,15 @@ const data = {
       untranslated: local?.lang === 'en',
     };
   }),
-  builds: builds.map((build) => ({ id: build.id, name: build.name[locale], points: build.points, level: build.level, talented: build.legacyTalented, order: build.order ?? null })),
+  builds: builds.map((build) => ({
+    id: build.id,
+    // Several builds share a name ("Frost"), so the content tells them apart.
+    name: `${build.name[locale]} - ${build.uses.map((use) => USE_TITLES[locale][use]).join(', ')}`,
+    points: build.points,
+    level: build.level,
+    talented: build.legacyTalented,
+    order: build.order ?? null,
+  })),
   trees: Object.fromEntries(TREE_ORDER.map((tree) => [tree, t(locale, `tree.${tree}` as UiKey)])),
   strings: {
     rank: es ? 'Rango' : 'Rank',

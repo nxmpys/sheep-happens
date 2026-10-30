@@ -257,8 +257,8 @@
         "en": "It has no AoE damage of its own: in dungeons it relies on Flamestrike with Clearcasting."
       },
       {
-        "es": "Hasta el nivel 22, más o menos, gasta bastante maná. Después mejora mucho con Lanzamiento libre y Meditación Arcana.",
-        "en": "Until around level 22 it spends a lot of mana. After that it gets much better with Clearcasting and Arcane Meditation."
+        "es": "Hasta el nivel 22, más o menos, gasta bastante maná. Después mejora mucho con Tromba de misiles y Concentración Arcana.",
+        "en": "Until around level 22 it spends a lot of mana. After that it gets much better with Missile Barrage and Arcane Concentration."
       }
     ],
     "reasons": [],
@@ -1192,16 +1192,15 @@
       "master-of-elements": 3,
       "blast-wave": 1,
       "critical-mass": 3,
-      "incineration": 2,
+      "incineration": 3,
       "fire-power": 3,
-      "improved-scorch": 1,
       "combustion": 1,
       "improved-channeling": 5,
       "missile-barrage": 2,
       "elemental-precision": 3,
       "arcane-concentration": 5,
       "arcane-subtlety": 2,
-      "arcane-impact": 1,
+      "arcane-blast": 1,
       "arcane-meditation": 2
     },
     "order": [
@@ -1234,7 +1233,7 @@
       "fire-power",
       "fire-power",
       "incineration",
-      "improved-scorch",
+      "incineration",
       "combustion",
       "improved-channeling",
       "improved-channeling",
@@ -1253,7 +1252,7 @@
       "arcane-concentration",
       "arcane-subtlety",
       "arcane-subtlety",
-      "arcane-impact",
+      "arcane-blast",
       "arcane-meditation",
       "arcane-meditation"
     ],
@@ -1324,8 +1323,8 @@
       {
         "point": 25,
         "text": {
-          "es": "El punto que falta para abrir Poder de Fuego. Con el segundo, un 4 % de crítico para Explosión de Fuego, que así carga Calentamiento más rápido.",
-          "en": "The point missing to open Fire Power. With the second one, 4% crit for Fire Blast, which then builds Heating Up faster."
+          "es": "El punto que falta para abrir Poder de Fuego: un 2 % de crítico para Explosión de Fuego.",
+          "en": "The point missing to open Fire Power: 2% crit for Fire Blast."
         }
       },
       {
@@ -1336,10 +1335,10 @@
         }
       },
       {
-        "point": 30,
+        "point": 29,
         "text": {
-          "es": "El punto que falta para llegar a Combustión.",
-          "en": "The point missing to reach Combustion."
+          "es": "Con estos dos, un 6 % de crítico para Explosión de Fuego, que así carga Calentamiento más rápido, y ya tienes los 30 puntos que pide Combustión.",
+          "en": "With these two, 6% crit for Fire Blast, which then builds Heating Up faster, and you now have the 30 points Combustion asks for."
         }
       },
       {
@@ -1387,8 +1386,8 @@
       {
         "point": 49,
         "text": {
-          "es": "El punto que falta para abrir Meditación Arcana.",
-          "en": "The point missing to open Arcane Meditation."
+          "es": "Con una carga, un 15 % de tu Intelecto como daño de hechizos, y el punto que falta para abrir Meditación Arcana.",
+          "en": "At one stack, 15% of your Intellect as Spell Damage, and the point missing to open Arcane Meditation."
         }
       },
       {
@@ -1462,14 +1461,15 @@
           "en": "Long fights"
         },
         "text": {
-          "es": "Dos puntos de Maestro de los elementos pasan a Chamuscar mejorado: gastas más maná, pero contra enemigos que van a durar lanzas 5 Chamuscar antes que nada y tu daño de Fuego sube un 15 %. Vale poco en misiones; vale más en jefes de mazmorra.",
-          "en": "Two Master of Elements points move to Improved Scorch: you spend more mana, but against enemies that will last you cast 5 Scorches first and your Fire damage goes up by 15%. It is worth little while questing; it is worth more on dungeon bosses."
+          "es": "Dos puntos de Maestro de los elementos y uno de Incineración pasan a Chamuscar mejorado: gastas más maná, pero contra enemigos que van a durar lanzas 5 Chamuscar antes que nada y tu daño de Fuego sube un 15 %. Vale poco en misiones; vale más en jefes de mazmorra.",
+          "en": "Two Master of Elements points and one Incineration point move to Improved Scorch: you spend more mana, but against enemies that will last you cast 5 Scorches first and your Fire damage goes up by 15%. It is worth little while questing; it is worth more on dungeon bosses."
         },
         "remove": {
-          "master-of-elements": 2
+          "master-of-elements": 2,
+          "incineration": 1
         },
         "add": {
-          "improved-scorch": 2
+          "improved-scorch": 3
         }
       }
     ],
@@ -1489,6 +1489,10 @@
       {
         "es": "Misiles Arcanos si Tromba de misiles está activa y es seguro canalizar.",
         "en": "Arcane Missiles if Missile Barrage is active and it is safe to channel."
+      },
+      {
+        "es": "Desde el nivel 58, una Explosión Arcana si no tienes carga: dura 15 s y no hace falta acumular más.",
+        "en": "From level 58, one Arcane Blast if you have no stack: it lasts 15 s and there is no need to build more."
       },
       {
         "es": "Bola de Fuego en cualquier otro caso.",
