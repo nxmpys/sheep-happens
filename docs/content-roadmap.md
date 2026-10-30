@@ -22,7 +22,7 @@ Revísalo **cada vez que actualices la guía**: en cada revisión de fuentes (mi
 2. Añade lo nuevo que falte o que haya que vigilar.
 3. Actualiza la fecha de «Revisión» de la cabecera.
 
-Las decisiones que dejó abiertas la auditoría del 30 de octubre están en [AUDITORIA.md](../AUDITORIA.md), sección 3.
+La auditoría del 30 de octubre está en [AUDITORIA.md](../AUDITORIA.md). Su sección 3 recoge lo decidido y la duda que sigue abierta.
 
 Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificación ([content-sources.md](content-sources.md)), nunca se usan valores de Retail o de Classic como si fueran de Forever, y cada cambio de datos lleva su `updated` y su entrada en el historial ([maintenance.md](maintenance.md)). Todo cambio de texto se hace en los dos idiomas (`es` y `en`).
 

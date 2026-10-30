@@ -1,6 +1,6 @@
 # Auditoría de Sheep Happens
 
-Fecha: 30 de octubre de 2026. Punto de partida: commit `72a7b4e`. Resultado: siete commits de corrección, de `fcfebbd` a `644098d`, más el de este informe. No he subido nada a GitHub.
+Fecha: 30 de octubre de 2026. Punto de partida: commit `72a7b4e`. Resultado: siete commits de corrección, de `fcfebbd` a `644098d`, más el de este informe, y seis más con tus decisiones, de `80f122d` a `d83ef76` (ver la sección 3). No he subido nada a GitHub.
 
 ## 1. Resumen
 
@@ -14,7 +14,7 @@ Fecha: 30 de octubre de 2026. Punto de partida: commit `72a7b4e`. Resultado: sie
 
 ### Problemas encontrados y corregidos
 
-| Categoría | Corregidos | Pendientes de tu decisión |
+| Categoría | Corregidos | Decididos después por ti |
 | --- | --- | --- |
 | Contradicciones y datos desactualizados | 8 | 5 |
 | Terminología, voz y grafía | 11 | 2 |
@@ -26,9 +26,11 @@ Fecha: 30 de octubre de 2026. Punto de partida: commit `72a7b4e`. Resultado: sie
 | Documentación del repositorio | 4 documentos | 0 |
 | **Total** | **36** | **8** |
 
+De esos 8 puntos queda abierta una sola duda: la recomendación de leveo (sección 3).
+
 ### Estado final
 
-`npm run check` termina con código 0: 0 errores, 0 advertencias y 0 sugerencias de tipos, 285 pruebas superadas, 11 219 enlaces internos sin errores y paridad ES/EN correcta. Tras corregir, no queda ningún desborde horizontal en las 79 URL a los cuatro anchos.
+`npm run check` termina con código 0, también tras aplicar tus decisiones: 0 errores, 0 advertencias y 0 sugerencias de tipos, 285 pruebas superadas, ningún enlace interno roto y paridad ES/EN correcta. Tras corregir, no queda ningún desborde horizontal en las 79 URL a los cuatro anchos.
 
 ### Lo que esta auditoría no cubre
 
@@ -116,70 +118,24 @@ Son 4 problemas en la tabla del resumen porque los dos de `builds.mdx` cuentan c
 - `docs/game-version.md`: beta cerrada, build actual, árbol Ingenio y talentos decisivos tras las builds del 15 y el 28 de octubre.
 - `docs/content-roadmap.md`: builds de leveo hechas, tramo 31-60 pendiente y enlace a este informe.
 
-## 3. Pendientes que requieren tu decisión
+## 3. Decisiones
 
-### 1. Textos trazados que siguen desfasados
+Dejé 8 puntos abiertos y los decidiste el mismo 30 de octubre. Están todos aplicados, salvo la duda final, que sigue abierta.
 
-Corregirlos cambia campos que `npm run data:diff` vigila, así que exigen `updated` y una entrada en el historial. Tu regla es no anotar correcciones de errores propios, así que no los he tocado.
+| Punto | Tu decisión | Qué hice | Commit |
+| --- | --- | --- | --- |
+| 1. Textos trazados desfasados | Opción A: una sola entrada en el historial | Corregidos los 5 casos en `milestones.json` y `changes.json`, con `updated` y la entrada «Fichas de talentos al día con el árbol del 28 de octubre» | `80f122d` |
+| 2. Datos sin usar en `facts.json` | Opción A: borrarlos | Borrados `beta` y `client-version`, y lo que apuntaba a ellos en el historial y en `seo.ts` | `bb0285d` |
+| 3. Nombre de los datos tras la beta | Opción A: seguir diciendo «beta» hasta el 4 de noviembre | Nada que cambiar | No aplica |
+| 4. Leveo 1-60 o 10-60 | Opción A: 1-60 como tramo, 10-60 solo para el orden de puntos | Corregidos la descripción de Builds y un título del historial. Las builds siguen diciendo «en orden del 10 al 60» | `a706645` |
+| 5. Cuatro nombres para el mismo concepto | Opción A: «daño de hechizos» | Unificado en español y en inglés, también en las columnas de Agua del Mago, donde «SP» desaparece. «spell power» sigue como etiqueta de búsqueda | `b0aeb84` |
+| 6. Escalofrío o enfriamiento | Opción B: «enfriamiento», si es lo que publica Blizzard | Comprobado: su página en español dice «efectos de enfriamiento» y nunca «efectos de escalofrío». Aplicado en builds, habilidades y glosario | `c59c92c` |
+| 7. Prioridad de estadísticas | Opción A: enlazar a las builds | Equipo enlaza a las builds de leveo y mazmorras. Queda pendiente la prioridad de banda y comprobar las de nivel 60 | `d83ef76` |
+| 8. Requisito de Dedos de Escarcha | Cerrarlo, ya está comprobado | Fuera de las discrepancias de Fuentes y Cambios. La ficha dice que requiere Lanza de hielo | `80f122d` |
 
-| Registro | Dice ahora | Debería decir |
-| --- | --- | --- |
-| `milestones.json`, `frost-31` | Barrera de hielo requiere Bloqueo de hielo y «podría cambiar» | En la calculadora de Forever requiere Mordedura helada |
-| `changes.json`, `arcane-wrath` | Tromba de misiles «baja a la fila 1» | Fila 2 desde el 28 de octubre |
-| `changes.json`, `missile-barrage` | Se activa también con Frost Blast | Quitar Frost Blast, retirado el 28 de octubre |
-| `changes.json`, `winters-chill` (resumen y nota) | Frost Blast aplica cargas | Quitar Frost Blast |
-| `changes.json`, `frostfire-bolt` y `frost-blast` | «centrepiece», «penalised» | Grafía americana |
+### Lo que sigue abierto
 
-- **Opción A (la que recomiendo):** una sola entrada `guide` que las agrupe, la excepción que ya aprobaste el 26 de octubre.
-- **Opción B:** que `data:diff` deje pasar estas correcciones sin entrada.
-- **Opción C:** dejarlas para la revisión del lanzamiento.
-
-### 2. Datos sin usar en `facts.json`
-
-`beta` habla en futuro del 21 y el 23 de octubre, y `client-version` cita la build 70374. Ninguna página los muestra.
-
-- **Opción A (la que recomiendo):** borrarlos.
-- **Opción B:** actualizarlos, con la misma condición del punto 1.
-
-### 3. ¿Cómo llamar a los datos tras el cierre de la beta?
-
-La beta cerró el 23 de octubre, pero la web habla de la «build de la beta del 28 de octubre» y sigue mostrando «Beta oct 2026». `changes.mdx` avisa de que los talentos pueden cambiar «durante la beta».
-
-- **Opción A:** seguir diciendo «beta» hasta el 4 de noviembre, porque son los datos de ese cliente.
-- **Opción B:** usar «cliente previo al lanzamiento» a partir del 28 de octubre.
-
-### 4. ¿Leveo 1-60 o 10-60?
-
-El menú, las tarjetas y el título dicen «Leveo 1-60» y «del 1 al 60». La descripción de Builds y el historial dicen «del 10 al 60».
-
-- **Opción A:** 1-60 como tramo del contenido y 10-60 solo al hablar del orden de puntos.
-- **Opción B:** 10-60 en todas partes.
-
-### 5. El mismo concepto con cuatro nombres
-
-«Daño de hechizos» (67 veces), «daño con hechizos» (14), «spell power» (17, casi todas en Agua del Mago) y «poder con hechizos» (6). El cliente usa más de uno.
-
-- **Opción A:** «daño de hechizos» en el texto, reservando las otras formas para las citas del cliente.
-- **Opción B:** mantener «spell power» en Agua del Mago, explicándolo una vez, y unificar el resto.
-
-### 6. ¿«Efectos de escalofrío» o «efectos de enfriamiento»?
-
-El cliente de Forever y el glosario dicen «escalofrío». `CONTRIBUTING.md`, Escarcha, Farmeo AoE y Cambios dicen «enfriamiento». De momento he hecho que el glosario defina los dos.
-
-- **Opción A:** «escalofrío», como el cliente.
-- **Opción B:** «enfriamiento», si es lo que publica Blizzard en español.
-
-### 7. Prioridad de estadísticas en Equipo
-
-La sección dice que no hay datos y que «publicaré una prioridad por rama y por actividad». Las nueve builds ya traen su prioridad de estadísticas.
-
-- **Opción A:** enlazar a las builds y dejar pendiente solo lo que no cubren.
-- **Opción B:** mantener el aviso hasta el lanzamiento.
-
-### 8. Otras dos dudas de contenido
-
-- **Requisito de Dedos de Escarcha.** Fuentes y Cambios lo dan como discrepancia abierta, pero `talents.json` y la build de Escarcha ya lo tratan como requisito de Lanza de hielo. ¿Lo cierro citando la calculadora o espero a comprobarlo en el juego?
-- **Recomendación de leveo.** Aprende e Inicio dicen «para subir de nivel, Escarcha», pero las builds probadas son las de Arcano y la de Escarcha sigue sin probar. ¿Mantengo la frase hasta el lanzamiento o la suavizo?
+**Recomendación de leveo.** Era la segunda duda del punto 8 y tu respuesta no la cubría, así que no la he tocado. Aprende e Inicio dicen «para subir de nivel, Escarcha», pero las builds probadas son las de Arcano y la de Escarcha sigue sin probar. ¿Mantengo la frase hasta el lanzamiento o la suavizo?
 
 ## 4. Lo que detecté y decidí no tocar
 
@@ -193,6 +149,9 @@ La sección dice que no hay datos y que «publicaré una prioridad por rama y po
 | «pull» y «tirón» | Se entienden los dos y ahora ambos tienen definición. Unificarlos reescribiría texto correcto |
 | «perk» y «Talented» en notas de `sources.json` y entradas antiguas del historial | Describen esas fuentes o aquel momento |
 | «PvE» en tu historia de Sobre mí | Es tu voz, no un texto de guía |
+| «poder con hechizos» en Blood Fury (`races.json` y `race-picks.json`) | Es el texto del cliente, y «un 10 % más de daño de hechizos» significaría otra cosa: la racial aumenta la bonificación, no el daño que haces |
+| «Frost spell power» en la ficha inglesa de Barrera de hielo (`changes.json`) | Es un campo trazado y cambiarlo pediría otra entrada en el historial solo por una palabra. En español ya dice «daño de hechizos» |
+| «efectos de escalofrío» en los tooltips de Mordiescarcha, Escarcha permanente y Ventisca mejorada | Es el texto del cliente, que `npm run talents:text` vuelve a traer. El propio cliente usa «enfriamiento» en Dedos de Escarcha. El glosario define las dos formas |
 | Unos 330 colores fijos en Inicio, Sobre mí y los árboles de talentos | Son escenas con tema oscuro fijo: forman parte de la identidad visual |
 | CSS único de 182 KB, Cambios con 390 KB de HTML y un vídeo de 3,3 MB en Sobre mí | No rompen nada y reducirlos exige cambiar cómo se empaqueta el sitio |
 | Enlaces de 23 px de alto, anclas de encabezado de 21×22 y casillas de 20×20 | Rozan el mínimo de 24 px en sitios donde hay margen alrededor. Agrandarlos cambia la densidad de la página |
