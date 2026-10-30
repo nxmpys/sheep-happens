@@ -30,12 +30,14 @@ const paths = Object.fromEntries(LOCALES.map((l) => [l, buildPath(build, l, { ba
 const use = canonicalUse(build);
 const updated = build.updated ?? '2026-10-11';
 const title = build.name[locale];
-const seoTitle = locale === 'es' ? `Build de ${title} para ${USE_LABELS[locale][use].toLowerCase()}: Mago en WoW Forever` : `${title} Mage ${USE_LABELS[locale][use].toLowerCase()} build for WoW Forever`;
+const fullSeoTitle = locale === 'es' ? `Build de ${title} para ${USE_LABELS[locale][use].toLowerCase()}: Mago en WoW Forever` : `${title} Mage ${USE_LABELS[locale][use].toLowerCase()} build for WoW Forever`;
+// A long name drops the use, so the title still says it is a Mage build.
+const seoTitle = fullSeoTitle.length <= 60 ? fullSeoTitle : locale === 'es' ? `Build de ${title}: Mago en WoW Forever` : `${title} Mage build for WoW Forever`;
 const data: PageFrontmatter = {
   pageId: 'builds',
   locale,
   title,
-  ...(seoTitle.length <= 60 ? { seoTitle } : {}),
+  seoTitle,
   description: build.summary[locale],
   gameVersion: build.gameVersion,
   published: new Date(`${updated}T00:00:00Z`),
