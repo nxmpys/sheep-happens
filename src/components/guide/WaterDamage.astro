@@ -60,7 +60,7 @@ const fireballWithDot = damageLoss({ ...fireballTop, countDot: true });
   view === 'table' && (
     <>
       <Table>
-        <caption class="visually-hidden">{es ? 'Daño de cada hechizo en Classic y en Forever, con su pérdida, el maná extra y el spell power para igualar' : 'Damage of each spell in Classic and Forever, with its loss, the extra mana and the spell power to match'}</caption>
+        <caption class="visually-hidden">{es ? 'Daño de cada hechizo en Classic y en Forever, con su pérdida, el maná extra y el daño de hechizos para igualar' : 'Damage of each spell in Classic and Forever, with its loss, the extra mana and the spell damage to match'}</caption>
         <thead>
           <tr>
             <th scope="col">{es ? 'Hechizo' : 'Spell'}</th>
@@ -70,7 +70,7 @@ const fireballWithDot = damageLoss({ ...fireballTop, countDot: true });
             <th scope="col">{es ? 'Pérdida' : 'Loss'}</th>
             <th scope="col">{es ? 'Maná extra, mismo daño' : 'Extra mana, same damage'}</th>
             <th scope="col">Coef.</th>
-            <th scope="col">{es ? 'SP para igualar' : 'SP to match'}</th>
+            <th scope="col">{es ? 'Daño de hechizos para igualar' : 'Spell damage to match'}</th>
           </tr>
         </thead>
         <tbody>
@@ -106,14 +106,14 @@ const fireballWithDot = damageLoss({ ...fireballTop, countDot: true });
 {
   view === 'example' && (
     <Table>
-      <caption class="visually-hidden">{es ? 'Cuánto de la diferencia cubren 13 de spell power en dos hechizos' : 'How much of the gap 13 spell power covers on two spells'}</caption>
+      <caption class="visually-hidden">{es ? 'Cuánto de la diferencia cubre +13 al daño de hechizos en dos hechizos' : 'How much of the gap +13 spell damage covers on two spells'}</caption>
       <thead>
         <tr>
           <th scope="col">{es ? 'Hechizo' : 'Spell'}</th>
           <th scope="col">Base, Classic</th>
           <th scope="col">Base, Forever</th>
           <th scope="col">{es ? 'Diferencia' : 'Gap'}</th>
-          <th scope="col">{es ? `Con +${example.spellPower} SP` : `With +${example.spellPower} SP`}</th>
+          <th scope="col">{es ? `Con +${example.spellPower} al daño de hechizos` : `With +${example.spellPower} spell damage`}</th>
           <th scope="col">{es ? 'Cubre' : 'Covers'}</th>
         </tr>
       </thead>

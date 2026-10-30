@@ -576,7 +576,7 @@
     "row": 3,
     "milestone": 11,
     "summary": {
-      "es": "Talento decisivo de 11 puntos, rediseñado el 15 de octubre. Lanzamiento de 1,5 s. Cada vez que lo lanzas ganas daño con hechizos igual al 15 % de tu Intelecto, y su propio coste de maná sube.",
+      "es": "Talento decisivo de 11 puntos, rediseñado el 15 de octubre. Lanzamiento de 1,5 s. Cada vez que lo lanzas ganas daño de hechizos igual al 15 % de tu Intelecto, y su propio coste de maná sube.",
       "en": "11-point milestone talent, redesigned on 15 October. 1.5 s cast. Each cast grants you Spell Damage equal to 15% of your Intellect and raises its own mana cost."
     },
     "details": [
@@ -585,7 +585,7 @@
         "en": "The effect stacks up to 4 times and lasts 15 s from when it is first applied: it no longer fades when you cast another spell."
       },
       {
-        "es": "Su daño y su coeficiente de daño con hechizos bajan un 40 %; el coste de maná no cambia.",
+        "es": "Su daño y su coeficiente de daño de hechizos bajan un 40 %; el coste de maná no cambia.",
         "en": "Its damage and Spell Damage coefficient are both reduced by 40%; the mana cost is unchanged."
       },
       {
@@ -597,7 +597,7 @@
       {
         "status": "verified",
         "text": {
-          "es": "Blizzard quiere que, tras acumular cargas, uses otros hechizos de tu arsenal. Con el rediseño, la bonificación de daño con hechizos sigue activa 15 s aunque lances otros hechizos.",
+          "es": "Blizzard quiere que, tras acumular cargas, uses otros hechizos de tu arsenal. Con el rediseño, la bonificación de daño de hechizos sigue activa 15 s aunque lances otros hechizos.",
           "en": "Blizzard wants you to use other spells after building stacks. With the redesign, the Spell Damage bonus stays up for 15 s even while you cast other spells."
         }
       },
@@ -704,7 +704,7 @@
     "row": 4,
     "milestone": 16,
     "summary": {
-      "es": "Nuevo talento decisivo de 16 puntos (15 de octubre). Hechizo de 3,5 s de lanzamiento y 6 s de reutilización con un daño base parecido al de Bola de Fuego, que además suma daño con hechizos igual al 5 % de tu maná máximo.",
+      "es": "Nuevo talento decisivo de 16 puntos (15 de octubre). Hechizo de 3,5 s de lanzamiento y 6 s de reutilización con un daño base parecido al de Bola de Fuego, que además suma daño de hechizos igual al 5 % de tu maná máximo.",
       "en": "New 16-point milestone talent (15 October). A 3.5 s cast spell with a 6 s cooldown and base damage similar to Fireball, which also adds Spell Damage equal to 5% of your maximum mana."
     },
     "details": [
@@ -1399,7 +1399,7 @@
     ],
     "row": 7,
     "summary": {
-      "es": "Ahora también aumenta un 3 % tu daño de Escarcha durante 1 min, y otro 3 % mientras el escudo aguanta. El escudo escala con tu poder con hechizos de Escarcha.",
+      "es": "Ahora también aumenta un 3 % tu daño de Escarcha durante 1 min, y otro 3 % mientras el escudo aguanta. El escudo escala con tu daño de hechizos de Escarcha.",
       "en": "Now also increases your Frost damage by 3% for 1 min, and by another 3% while the shield holds. The shield scales with your Frost spell power."
     },
     "details": [],
@@ -1685,7 +1685,7 @@
     },
     "details": [
       {
-        "es": "Con 1/2/3/4/5 puntos, un 20/40/60/80/100 % de probabilidad de aplicarlo. Cada carga aumenta un 5 % el daño que el objetivo recibe de tu siguiente Cono de frío y le suma un 7 % de tu daño con hechizos.",
+        "es": "Con 1/2/3/4/5 puntos, un 20/40/60/80/100 % de probabilidad de aplicarlo. Cada carga aumenta un 5 % el daño que el objetivo recibe de tu siguiente Cono de frío y le suma un 7 % de tu daño de hechizos.",
         "en": "At 1/2/3/4/5 points, a 20/40/60/80/100% chance to apply it. Each stack increases the damage the target takes from your next Cone of Cold by 5% and adds 7% of your Spell Damage to it."
       },
       {

@@ -775,15 +775,15 @@
     {
       "kind": "data",
       "text": {
-        "es": "Parte del equipo de tela cambia Intelecto por spell power o mp5.",
-        "en": "Some cloth gear trades Intellect for spell power or mp5."
+        "es": "Parte del equipo de tela cambia Intelecto por daño de hechizos o mp5.",
+        "en": "Some cloth gear trades Intellect for spell damage or mp5."
       }
     },
     {
       "kind": "inference",
       "text": {
-        "es": "Si el spell power no cubre la diferencia, matar al mismo enemigo cuesta más maná.",
-        "en": "If spell power does not cover the gap, killing the same enemy costs more mana."
+        "es": "Si el daño de hechizos del equipo no cubre la diferencia, matar al mismo enemigo cuesta más maná.",
+        "en": "If spell damage from gear does not cover the gap, killing the same enemy costs more mana."
       }
     },
     {

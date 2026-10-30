@@ -581,8 +581,8 @@
     "published": "2026-10-09",
     "accessed": "2026-10-14",
     "notes": {
-      "es": "Para subir de nivel: Sastrería (equipo ligado con poder con hechizos desde el nivel 10) y Encantamiento (varitas y armas ligadas); Cocina da comida con experiencia y Primeros auxilios saca de apuros.",
-      "en": "For leveling: Tailoring (bound gear with spell power from level 10) and Enchanting (bound wands and weapons); Cooking gives experience food and First Aid gets you out of trouble."
+      "es": "Para subir de nivel: Sastrería (equipo ligado con daño de hechizos desde el nivel 10) y Encantamiento (varitas y armas ligadas); Cocina da comida con experiencia y Primeros auxilios saca de apuros.",
+      "en": "For leveling: Tailoring (bound gear with spell damage from level 10) and Enchanting (bound wands and weapons); Cooking gives experience food and First Aid gets you out of trouble."
     }
   },
   {
@@ -605,8 +605,8 @@
     "kind": "community",
     "accessed": "2026-10-14",
     "notes": {
-      "es": "Varitas con poder con hechizos desde el nivel 5, bastones y orbes nuevos, encantamientos de collar y la sinergia con Sastrería al desencantar.",
-      "en": "Wands with spell power from level 5, new staves and orbs, necklace enchants and the synergy with Tailoring through disenchanting."
+      "es": "Varitas con daño de hechizos desde el nivel 5, bastones y orbes nuevos, encantamientos de collar y la sinergia con Sastrería al desencantar.",
+      "en": "Wands with spell damage from level 5, new staves and orbs, necklace enchants and the synergy with Tailoring through disenchanting."
     }
   },
   {
@@ -893,8 +893,8 @@
     "kind": "community",
     "accessed": "2026-10-30",
     "notes": {
-      "es": "Coste, tiempo de lanzamiento, valor al aprender y coeficiente de spell power de cada rango en la build 1.60.1.70707. La guía que la acompaña explica la penalización de los rangos bajos y mide la regla en sanaciones hasta el nivel 30.",
-      "en": "Cost, cast time, value when learned and spell power coefficient of every rank in build 1.60.1.70707. Its companion guide explains the low rank penalty and measures the rule on heals up to level 30."
+      "es": "Coste, tiempo de lanzamiento, valor al aprender y coeficiente de daño de hechizos de cada rango en la build 1.60.1.70707. La guía que la acompaña explica la penalización de los rangos bajos y mide la regla en sanaciones hasta el nivel 30.",
+      "en": "Cost, cast time, value when learned and spell damage coefficient of every rank in build 1.60.1.70707. Its companion guide explains the low rank penalty and measures the rule on heals up to level 30."
     }
   },
   {
@@ -917,8 +917,8 @@
     "kind": "community",
     "accessed": "2026-10-30",
     "notes": {
-      "es": "Listas por objeto de la build 70707. La de Escarcha en mazmorras prioriza daño de Escarcha y spell power, y después golpe.",
-      "en": "Per item lists for build 70707. The Frost dungeon list puts Frost damage and spell power first, then hit."
+      "es": "Listas por objeto de la build 70707. La de Escarcha en mazmorras prioriza daño de Escarcha y daño de hechizos, y después golpe.",
+      "en": "Per item lists for build 70707. The Frost dungeon list puts Frost damage and spell damage first, then hit."
     }
   },
   {

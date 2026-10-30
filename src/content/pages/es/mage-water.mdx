@@ -13,11 +13,11 @@ verification: analysis
 summary:
   - 'El agua no explica la sensación: hasta el rango 4 es la misma. Lo que cambia es el gasto, porque los hechizos cuestan igual y hacen entre un 2 % y un 33 % menos de daño base.'
   - 'Fuego es lo que más pierde: Bola de Fuego de rango 12 pide un 40 % más de maná por el mismo daño base; Descarga de Escarcha de rango 11, un 13 %.'
-  - 'El spell power del equipo cierra parte de esa distancia, y en hechizos de área casi nada: su coeficiente es muy bajo.'
+  - 'El daño de hechizos del equipo cierra parte de esa distancia, y en hechizos de área casi nada: su coeficiente es muy bajo.'
   - 'Perder Intelecto no te hace gastar más botellas: te hace parar antes. Las botellas dependen del maná que gastas.'
   - 'Que se beba más es una inferencia razonable. Nadie ha medido el tiempo bebiendo por tirón.'
 sources: [foreverchanges-mage, foreverchanges-downrank, foreverchanges-dungeons, foreverchanges-mage-bis, foreverchanges-build-2026-10-15, wowhead-forever-database, wowhead-classic-database, wowhead-classic-mage-twink, icyveins-dungeon-xp, mobalytics-mage-leveling]
-tags: [agua del mago, conjurar agua, conjure water, maná, mana, beber, drinking, downtime, intelecto, spell power, mazmorras, meditación arcana, armadura de mago]
+tags: [agua del mago, conjurar agua, conjure water, maná, mana, beber, drinking, downtime, intelecto, daño de hechizos, spell power, mazmorras, meditación arcana, armadura de mago]
 ---
 
 <WaterVersions view="notice" />
@@ -55,7 +55,7 @@ La beta llegó al nivel 30, justo los rangos en los que el agua es idéntica. Si
 
 <Evidence kind="data">
 
-Varias piezas de tela de nivel bajo pierden Intelecto a cambio de spell power o de mp5 (maná cada 5 segundos). <Status status="reported" />
+Varias piezas de tela de nivel bajo pierden Intelecto a cambio de daño de hechizos o de mp5 (maná cada 5 segundos). <Status status="reported" />
 
 <WaterGear />
 
@@ -63,7 +63,7 @@ Varias piezas de tela de nivel bajo pierden Intelecto a cambio de spell power o 
 
 El maná de reserva asume 15 por punto de Intelecto, como en Classic. <Status status="classic" />
 
-También hay equipo nuevo con Intelecto: el set Rotmender's Raiment, de Ruins of Lordaeron, da +10 con 3 piezas y, con 4, devuelve 200 de maná cuando bajas del 15 %. Aun así, la lista de mejor equipo de Escarcha a nivel 30 de ForeverChanges pone delante daño de Escarcha y spell power. <Status status="reported" />
+También hay equipo nuevo con Intelecto: el set Rotmender's Raiment, de Ruins of Lordaeron, da +10 con 3 piezas y, con 4, devuelve 200 de maná cuando bajas del 15 %. Aun así, la lista de mejor equipo de Escarcha a nivel 30 de ForeverChanges pone delante daño de Escarcha y daño de hechizos. <Status status="reported" />
 
 </Evidence>
 
@@ -101,15 +101,15 @@ Los rangos altos son los valores a nivel 60. Wowhead Forever da cifras mayores (
 
 <Evidence kind="inference" title="Daño base no es daño real">
 
-La tabla compara el daño del hechizo sin equipo. En la columna «SP para igualar» está el spell power con el que Forever alcanza a un personaje de Classic que no llevara ninguno. Es una referencia, no una comparación real: en Classic también se gana spell power a nivel alto.
+La tabla compara el daño del hechizo sin equipo. En la columna «Daño de hechizos para igualar» está el que debe dar tu equipo para que Forever alcance a un personaje de Classic que no llevara ninguno. Es una referencia, no una comparación real: en Classic también se gana daño de hechizos a nivel alto.
 
-Lo que sí se ve es la diferencia entre escuelas. **Descarga de Escarcha** (Frostbolt) de rango 11 necesita 74 de spell power; **Bola de Fuego** (Fireball) de rango 12, 195, y **Chamuscar** (Scorch) de rango 7, 180. En **Deflagración Arcana** (Arcane Explosion) o **Ventisca** (Blizzard) se pierde poco, pero el spell power apenas las ayuda: Deflagración solo aprovecha un 14,3 %.
+Lo que sí se ve es la diferencia entre escuelas. **Descarga de Escarcha** (Frostbolt) de rango 11 necesita +74 al daño de hechizos; **Bola de Fuego** (Fireball) de rango 12, +195, y **Chamuscar** (Scorch) de rango 7, +180. En **Deflagración Arcana** (Arcane Explosion) o **Ventisca** (Blizzard) se pierde poco, pero el daño de hechizos apenas las ayuda: Deflagración solo aprovecha un 14,3 %.
 
-Un ejemplo con la Chaqueta ladrido de árbol, que da +13 de spell power en vez de +10 de Intelecto:
+Un ejemplo con la Chaqueta ladrido de árbol, que da +13 al daño de hechizos en vez de +10 de Intelecto:
 
 <WaterDamage view="example" />
 
-En Escarcha, esa pieza casi tapa la diferencia en los rangos bajos. En Fuego, menos de la mitad. Cuenta además que ForeverChanges midió en sanaciones que un rango pierde spell power a partir de 18 niveles después de aprenderlo, y supone lo mismo para el daño.
+En Escarcha, esa pieza casi tapa la diferencia en los rangos bajos. En Fuego, menos de la mitad. Cuenta además que ForeverChanges midió en sanaciones que un rango aprovecha menos tu bonificación a partir de 18 niveles después de aprenderlo, y supone lo mismo para el daño.
 
 </Evidence>
 
@@ -175,7 +175,7 @@ Si el gasto de tu grupo sube, sube tu trabajo: el sanador y los otros lanzadores
 
 <Evidence kind="advice" title="Cuenta con un margen según tu escuela">
 
-Sin spell power, el mismo daño base pide hasta un 13 % más de maná con Descarga de Escarcha 11 y hasta un 40 % más con Bola de Fuego 12. Son topes, no una previsión: cuanto más spell power lleves, menos. Si el maná te frena al subir, Escarcha es la que menos paga.
+Sin daño de hechizos en el equipo, el mismo daño base pide hasta un 13 % más de maná con Descarga de Escarcha 11 y hasta un 40 % más con Bola de Fuego 12. Son topes, no una previsión: cuanto más lleves, menos. Si el maná te frena al subir, Escarcha es la que menos paga.
 
 </Evidence>
 

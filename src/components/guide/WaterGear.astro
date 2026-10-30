@@ -13,7 +13,7 @@ const stats = (s: Stats) =>
   [
     s.int && `${signed(s.int)} Int`,
     s.sta && `${signed(s.sta)} ${es ? 'Agu' : 'Sta'}`,
-    s.spellPower && `${signed(s.spellPower)} SP`,
+    s.spellPower && `${signed(s.spellPower)} ${es ? 'daño de hechizos' : 'spell damage'}`,
     s.mp5 && `${signed(s.mp5)} mp5`,
   ]
     .filter(Boolean)

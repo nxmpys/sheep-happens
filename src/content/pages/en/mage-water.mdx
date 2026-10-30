@@ -13,11 +13,11 @@ verification: analysis
 summary:
   - 'Water does not explain the feeling: up to rank 4 it is the same. Spending is what changes, because spells cost the same and deal 2% to 33% less base damage.'
   - 'Fire loses the most: Fireball rank 12 needs 40% more mana for the same base damage; Frostbolt rank 11, 13%.'
-  - 'Spell power on gear closes part of that gap, and almost none of it on area spells: their coefficient is very low.'
+  - 'Spell damage on gear closes part of that gap, and almost none of it on area spells: their coefficient is very low.'
   - 'Losing Intellect does not make you use more bottles: it makes you stop sooner. Bottles depend on the mana you spend.'
   - 'Drinking more is a reasonable inference. Nobody has measured drinking time per pull.'
 sources: [foreverchanges-mage, foreverchanges-downrank, foreverchanges-dungeons, foreverchanges-mage-bis, foreverchanges-build-2026-10-15, wowhead-forever-database, wowhead-classic-database, wowhead-classic-mage-twink, icyveins-dungeon-xp, mobalytics-mage-leveling]
-tags: [mage water, conjure water, mana, drinking, downtime, intellect, spell power, dungeons, arcane meditation, mage armor]
+tags: [mage water, conjure water, mana, drinking, downtime, intellect, spell damage, spell power, dungeons, arcane meditation, mage armor]
 ---
 
 <WaterVersions view="notice" />
@@ -55,7 +55,7 @@ The beta went up to level 30, exactly the ranks where water is identical. If peo
 
 <Evidence kind="data">
 
-Several low level cloth pieces lose Intellect in exchange for spell power or mp5 (mana per 5 seconds). <Status status="reported" />
+Several low level cloth pieces lose Intellect in exchange for spell damage or mp5 (mana per 5 seconds). <Status status="reported" />
 
 <WaterGear />
 
@@ -63,7 +63,7 @@ Several low level cloth pieces lose Intellect in exchange for spell power or mp5
 
 The mana pool column assumes 15 per point of Intellect, as in Classic. <Status status="classic" />
 
-There is new Intellect gear too: the Rotmender's Raiment set, from the Ruins of Lordaeron, gives +10 at 3 pieces and, at 4, returns 200 mana when you fall below 15%. Even so, the ForeverChanges best in slot list for Frost at level 30 puts Frost damage and spell power first. <Status status="reported" />
+There is new Intellect gear too: the Rotmender's Raiment set, from the Ruins of Lordaeron, gives +10 at 3 pieces and, at 4, returns 200 mana when you fall below 15%. Even so, the ForeverChanges best in slot list for Frost at level 30 puts Frost damage and spell damage first. <Status status="reported" />
 
 </Evidence>
 
@@ -101,15 +101,15 @@ High ranks are the values at level 60. Wowhead Forever gives higher figures (Fro
 
 <Evidence kind="inference" title="Base damage is not real damage">
 
-The table compares the spell's damage without gear. The “SP to match” column is the spell power at which Forever catches a Classic character wearing none. It is a reference, not a real comparison: Classic also gains spell power at high levels.
+The table compares the spell's damage without gear. The “Spell damage to match” column is how much your gear must give for Forever to catch a Classic character wearing none. It is a reference, not a real comparison: Classic also gains spell damage at high levels.
 
-What it does show is the difference between schools. **Frostbolt** rank 11 needs 74 spell power; **Fireball** rank 12, 195, and **Scorch** rank 7, 180. **Arcane Explosion** and **Blizzard** lose little, but spell power barely helps them: Arcane Explosion only uses 14.3%.
+What it does show is the difference between schools. **Frostbolt** rank 11 needs +74 spell damage; **Fireball** rank 12, +195, and **Scorch** rank 7, +180. **Arcane Explosion** and **Blizzard** lose little, but spell damage barely helps them: Arcane Explosion only uses 14.3%.
 
-An example with Tree Bark Jacket, which gives +13 spell power instead of +10 Intellect:
+An example with Tree Bark Jacket, which gives +13 spell damage instead of +10 Intellect:
 
 <WaterDamage view="example" />
 
-On Frost, that piece almost closes the gap at low ranks. On Fire, less than half. ForeverChanges also measured on heals that a rank starts losing spell power 18 levels after you learn it, and assumes the same for damage.
+On Frost, that piece almost closes the gap at low ranks. On Fire, less than half. ForeverChanges also measured on heals that a rank starts getting less from your bonus 18 levels after you learn it, and assumes the same for damage.
 
 </Evidence>
 
@@ -175,7 +175,7 @@ If your group spends more, you work more: the healer and the other casters drink
 
 <Evidence kind="advice" title="Allow a margin by school">
 
-Without spell power, the same base damage takes up to 13% more mana with Frostbolt 11 and up to 40% more with Fireball 12. These are ceilings, not a forecast: the more spell power you wear, the less. If mana holds you back while leveling, Frost pays the least.
+Without spell damage on your gear, the same base damage takes up to 13% more mana with Frostbolt 11 and up to 40% more with Fireball 12. These are ceilings, not a forecast: the more you wear, the less. If mana holds you back while leveling, Frost pays the least.
 
 </Evidence>
 

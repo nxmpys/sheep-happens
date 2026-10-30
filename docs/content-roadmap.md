@@ -32,7 +32,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 
 - [ ] Árbol completo de Forever con valores **oficiales**. La posición de cada talento ya está en `src/data/talents.json` (sacada de la calculadora de Wowhead, datos del cliente de la beta); las cifras siguen sin confirmar.
 - [ ] Talento decisivo de 16 puntos de Fuego (`fire-16` en `src/data/milestones.json`). Pista: en la calculadora de Wowhead, Calentamiento es el único talento de 1 punto de la fila 4 de Fuego. Falta una fuente oficial. (El de Arcano quedó resuelto el 15 de octubre: Cólera Arcana; Tromba de misiles bajó a la fila 1.)
-- [ ] Escalofrío del invierno (15 oct): las notas oficiales dan dos descripciones distintas (+40 % de daño de Cono de frío por carga, o +5 % y un 7 % de tu daño con hechizos por carga). Confirmar cuál queda y corregir `change:winters-chill`.
+- [ ] Escalofrío del invierno (15 oct): las notas oficiales dan dos descripciones distintas (+40 % de daño de Cono de frío por carga, o +5 % y un 7 % de tu daño de hechizos por carga). Confirmar cuál queda y corregir `change:winters-chill`.
 - [x] ~~Nombre oficial en español de **Frost Blast**~~: el hechizo desaparece del libro de hechizos en la build del 28 oct (2026-10-29).
 - [ ] Nombres en español de **Accelerant** (antes Bola de Fuego mejorada) y **Precision** (antes Enfoque elemental): el cliente en español aún tiene los nombres y textos anteriores al 28 oct (`STALE_ES` en `scripts/spell-text.ts` y texto en inglés en `talent-text.json`). Cuando cambien, añadir `es` en `src/data/spell-names.json`, quitar esas excepciones y volver a ejecutar `npm run talents:text` y `npm run spells:text`.
 - [x] **Rehacer las builds de leveo** con el árbol del 28 oct (2026-10-30): Arcano y Escarcha, Arcano hacia mazmorras, Escarcha y Fuego, del 10 al 60, con `order` y `orderNotes`. Quitado el 302 de `/builds/leveo/`.
@@ -48,7 +48,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 
 ### Valores numéricos
 
-- [ ] Daño, coste y probabilidad de Explosión Arcana, Cólera Arcana, Lanza de hielo, Descarga de Pirofrío, Tromba de misiles, Calentamiento y Dedos de Escarcha. Oficial desde el 15 oct: Explosión Arcana da un 15 % del Intelecto como daño con hechizos por carga; Cólera Arcana suma un 5 % del maná máximo; Lanza de hielo, +200 % contra congelados. Estela de Fuego ya no existe (vuelve a ser Explosión de Fuego mejorada).
+- [ ] Daño, coste y probabilidad de Explosión Arcana, Cólera Arcana, Lanza de hielo, Descarga de Pirofrío, Tromba de misiles, Calentamiento y Dedos de Escarcha. Oficial desde el 15 oct: Explosión Arcana da un 15 % del Intelecto como daño de hechizos por carga; Cólera Arcana suma un 5 % del maná máximo; Lanza de hielo, +200 % contra congelados. Estela de Fuego ya no existe (vuelve a ser Explosión de Fuego mejorada).
 
 ### Contenido de los niveles 31 a 60
 

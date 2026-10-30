@@ -265,8 +265,8 @@
         },
         "value": "high",
         "why": {
-          "es": "Escala con tu poder con hechizos: poco a nivel bajo, mucho a nivel 60 con buen equipo. Ya no reduce las curaciones que recibes, como en Classic.",
-          "en": "Scales with your spell power: small at low level, strong at 60 with good gear. It no longer reduces the healing you receive, as it did in Classic."
+          "es": "Escala con el daño de hechizos de tu equipo: poco a nivel bajo, mucho a nivel 60 con buen equipo. Ya no reduce las curaciones que recibes, como en Classic.",
+          "en": "Scales with the spell damage on your gear: small at low level, strong at 60 with good gear. It no longer reduces the healing you receive, as it did in Classic."
         }
       },
       {

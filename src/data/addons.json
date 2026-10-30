@@ -124,7 +124,7 @@
       {
         "name": { "es": "Contador de Explosión Arcana", "en": "Arcane Blast tracker" },
         "spec": "arcane",
-        "what": { "es": "Cuenta tus cargas de daño con hechizos (hasta 4) y los 15 s desde la primera.", "en": "Counts your spell damage stacks (up to 4) and the 15 s from the first one." },
+        "what": { "es": "Cuenta tus cargas de daño de hechizos (hasta 4) y los 15 s desde la primera.", "en": "Counts your spell damage stacks (up to 4) and the 15 s from the first one." },
         "on": false
       },
       {
