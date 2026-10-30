@@ -147,7 +147,8 @@ const cards = build.variants.map((variant) => {
   /* Wide screens: the swap on the left, the explanation and the actions on the right. */
   @media (min-width: 48rem) {
     .variant:not(.variant--note) {
-      grid-template-columns: auto minmax(0, 1fr);
+      /* A long swap wraps inside its 60 %, so the explanation always keeps room. */
+      grid-template-columns: fit-content(60%) minmax(0, 1fr);
       grid-template-areas: 'name name' 'swap text' 'swap foot';
       column-gap: var(--space-5);
     }

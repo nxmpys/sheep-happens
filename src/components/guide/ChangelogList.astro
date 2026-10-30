@@ -230,6 +230,10 @@ const IMPACT_MARK = { buff: '▲', nerf: '▼', neutral: '◆' } as const;
     color: var(--text-subtle);
     margin-right: var(--space-1);
   }
+  /* A long talent name must wrap on a phone instead of pushing the page sideways. */
+  .log__ref {
+    white-space: normal;
+  }
   a.log__ref {
     color: var(--link);
     text-decoration: none;
