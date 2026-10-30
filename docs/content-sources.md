@@ -63,7 +63,7 @@
 |---|---|---|---|---|
 | `wowhead-forever-talent-calc` | [Wowhead — Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) | tool | Descripción de cada rango de talento y lista del instructor (niveles de los hechizos y rangos) | Datos del cliente de la beta, no oficiales; su aviso de «datos de la BlizzCon» está desfasado |
 | `icyveins-forever-frost` | [Icy Veins — Forever Frost Mage Guide](https://www.icy-veins.com/wow-forever/frost-mage-ranged-dps-pve-guide) | community | Build de nivel 30, extras con Talented, prioridades, consejos de leveo | Teoría para la beta (1 oct) |
-| `mobalytics-mage-leveling` | [Mobalytics — Mage Leveling Guide (1-30)](https://mobalytics.gg/wow-forever/classes/mage-leveling-guide) | community | Escarcha como rama de leveo; build 0/0/21 | Guía en curso |
+| `mobalytics-mage-leveling` | [Mobalytics — Mage Leveling Guide (1-60)](https://mobalytics.gg/wow-forever/classes/mage-leveling-guide) | community | Escarcha como rama de leveo; build 0/0/21 | Guía en curso |
 | `mobalytics-frost` | [Mobalytics — Frost Mage Guide](https://mobalytics.gg/wow-forever/classes/frost-mage-guide) | community | Build con Bloqueo de hielo; mazmorras; área «viable con práctica» | Sin datos que respalden lo del área |
 | `method-mage-leveling` | [Method — Mage Leveling Guide](https://www.method.gg/wow-forever/wow-forever-mage-leveling-guide-and-talents) | community | Escarcha para subir; hechizos por nivel | No se cargó su orden de talentos |
 | `wowforeverbuilds-mage-leveling` | [WoW Forever Builds — Frost 1-30](https://wowforeverbuilds.com/guide/beta-20-frost-mage-leveling) | community | Orden de puntos alternativo | Teoría sin probar; su guía de área usa valores de Classic (descartada) |

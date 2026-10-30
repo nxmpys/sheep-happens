@@ -115,8 +115,8 @@
         },
         "value": "high",
         "why": {
-          "es": "Romper un enraizamiento o una ralentización es vital para un Mago, que vive de la distancia.",
-          "en": "Breaking a root or snare is vital for a Mage, who lives on distance."
+          "es": "Romper un enraizamiento o una ralentización es vital para un Mago, que vive de la distancia. Además te deja guardar Traslación para salir de un aturdimiento.",
+          "en": "Breaking a root or snare is vital for a Mage, who lives on distance. It also lets you save Blink to break a stun."
         }
       },
       {
@@ -260,13 +260,13 @@
         "spell": 20572,
         "kind": "active",
         "effect": {
-          "es": "Poder de ataque y poder con hechizos aumentados un 10 % durante 15 s. 3 min de reutilización.",
-          "en": "Attack Power and Spell Power increased by 10% for 15 sec. 3 min cooldown."
+          "es": "Poder de ataque y poder con hechizos aumentados un 10 % durante 15 s. 2 min de reutilización.",
+          "en": "Attack Power and Spell Power increased by 10% for 15 sec. 2 min cooldown."
         },
         "value": "high",
         "why": {
-          "es": "Escala con tu poder con hechizos: poco a nivel bajo, mucho a nivel 60 con buen equipo.",
-          "en": "Scales with your spell power: small at low level, strong at 60 with good gear."
+          "es": "Escala con tu poder con hechizos: poco a nivel bajo, mucho a nivel 60 con buen equipo. Ya no reduce las curaciones que recibes, como en Classic.",
+          "en": "Scales with your spell power: small at low level, strong at 60 with good gear. It no longer reduces the healing you receive, as it did in Classic."
         }
       },
       {
@@ -319,9 +319,11 @@
       "lfcarry-racials",
       "wowhead-forever-talent-calc",
       "blizzard-dev-notes",
-      "wowhead-racials-tuning"
+      "wowhead-racials-tuning",
+      "wowhead-forever-database",
+      "foreverchanges-build-2026-10-28"
     ],
-    "updated": "2026-10-27"
+    "updated": "2026-10-30"
   },
   {
     "id": "undead",

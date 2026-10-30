@@ -624,15 +624,15 @@
   },
   {
     "id": "mobalytics-mage-leveling",
-    "title": "Mage Leveling Guide (Level 1-30) - WoW Forever",
+    "title": "Mage Leveling Guide (Level 1-60) - Talents, Rotations, Races & More - WoW Forever",
     "publisher": "Mobalytics",
     "url": "https://mobalytics.gg/wow-forever/classes/mage-leveling-guide",
     "kind": "community",
     "published": "2026-10-13",
-    "accessed": "2026-10-14",
+    "accessed": "2026-10-30",
     "notes": {
-      "es": "Recomienda Escarcha para subir y una build 0/0/21 con Dedos de Escarcha a nivel 30. Guía en curso para la beta.",
-      "en": "Recommends Frost for leveling and a 0/0/21 build with Fingers of Frost at level 30. Work in progress for the beta."
+      "es": "Recomienda Escarcha para subir y cubre del 1 al 60, con consumibles, profesiones, raciales, utilidad, bajar de rango y consejos. Actualizada el 29 de octubre, pero aún cita Frost Blast y Arcane Focus, que ya no están en el árbol, así que contrasto sus datos con el cliente de Forever.",
+      "en": "Recommends Frost for leveling and covers 1 to 60, with consumables, professions, racials, utility, downranking and tips. Updated on 29 October, but it still cites Frost Blast and Arcane Focus, which are no longer in the tree, so I check its data against the Forever client."
     }
   },
   {

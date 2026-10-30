@@ -53,7 +53,8 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [ ] Orden de los hechizos de área (Ventisca, Cono de frío, Deflagración Arcana, Flamestrike) y aperturas por rama (avisos pendientes en Combate).
 - [ ] Prioridad de estadísticas por rama y actividad, y cuánto golpe hace falta (Equipo).
 - [ ] Equipo por tramo de nivel, equipo antes de bandas y mejor equipo posible.
-- [ ] Encantamientos, consumibles y profesiones.
+- [ ] Encantamientos y consumibles de nivel 60. Hasta el 30, en `gear` (2026-10-30). Comprobar en el juego: si se puede llevar un elixir de batalla y uno de guardián a la vez, si los elixires nuevos de Forever cuentan como de batalla y si los pergaminos no se acumulan con los buffs de clase.
+- [ ] Probar en el juego los usos del rango 1 de `leveling` (2026-10-30, de Mobalytics) y si la penalización de rango reduce la ralentización de Ventisca mejorada.
 - [ ] Mazmorras, bandas y PvP nuevos de Forever.
 - [x] Zonas y rutas de farmeo del 10 al 30: página Farmeo AoE (`aoe-farming`, 2026-10-15), con las dos rotaciones, Concentración Arcana y las arañas de Cima del Trueno. Del 30 al 60, las zonas son de Classic y están «Pendiente».
 - [ ] Farmeo AoE del 31 al 60: probar las zonas, comparar con las misiones (experiencia por hora) y ordenar las opciones de área (aviso pendiente en Combate y en `aoe-farming`).
