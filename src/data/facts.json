@@ -25,10 +25,12 @@
       "es": "4 de noviembre de 2026, 15:00 PST (23:00 UTC).",
       "en": "4 November 2026, 3:00 PM PST (23:00 UTC)."
     },
-    "status": "reported",
+    "status": "verified",
     "sources": [
+      "blizzard-launch-announcement",
       "lfcarry-beta"
-    ]
+    ],
+    "updated": "2026-10-30"
   },
   {
     "id": "beta",
