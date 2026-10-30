@@ -18,12 +18,6 @@ export function displayName(record: Named, locale: Locale): { primary: string; s
   return { primary: record.name };
 }
 
-/** Plain-text version, e.g. "Lanza de hielo (Ice Lance)". */
-export function displayNameText(record: Named, locale: Locale): string {
-  const { primary, secondary } = displayName(record, locale);
-  return secondary ? `${primary} (${secondary})` : primary;
-}
-
 /** Just the localized name. */
 export function localName(record: Named, locale: Locale): string {
   return displayName(record, locale).primary;
