@@ -22,6 +22,8 @@ Revísalo **cada vez que actualices la guía**: en cada revisión de fuentes (mi
 2. Añade lo nuevo que falte o que haya que vigilar.
 3. Actualiza la fecha de «Revisión» de la cabecera.
 
+Las decisiones que dejó abiertas la auditoría del 30 de octubre están en [AUDITORIA.md](../AUDITORIA.md), sección 3.
+
 Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificación ([content-sources.md](content-sources.md)), nunca se usan valores de Retail o de Classic como si fueran de Forever, y cada cambio de datos lleva su `updated` y su entrada en el historial ([maintenance.md](maintenance.md)). Todo cambio de texto se hace en los dos idiomas (`es` y `en`).
 
 ## 1. Lo que todavía no existe
@@ -117,7 +119,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [ ] Inicio: preguntas frecuentes «¿Cuándo sale WoW Forever?» (fin de la beta y tope de 30) y «¿Cuál es la mejor rama para subir de nivel?».
 - [ ] Inicio: tarjeta de Equipo con «Pendiente hasta el lanzamiento» (`src/components/guide/QuestionCards.astro`).
 - [ ] Guía: «Forever sigue en beta» y «las notas de la beta añaden más cada semana».
-- [ ] Leveo: la guía es una BETA del 1 al 30 (aviso `LevelingStatus`, resumen, título, `seoTitle` y descripción con «1 a 30» y «BETA»). Al lanzar, revisar las tres builds y los valores sacados de la beta (Ventisca de rango 1 a 320 de maná, Cono de frío 40 % durante 6 s, probabilidades de Frostbite y Dedos de Escarcha) y las misiones de mazmorra. El aviso BETA solo desaparece cuando las builds lleguen al 60 (ver la sección 4).
+- [ ] Primeros pasos: el tramo «Niveles 31 a 60» sigue «aún por escribir». Al lanzar, escribirlo y revisar los valores sacados de la beta (Ventisca de rango 1 a 320 de maná, Cono de frío 40 % durante 6 s, probabilidades de Frostbite y Dedos de Escarcha) y las misiones de mazmorra. Las builds de leveo ya llegan al 60 (2026-10-30).
 - [ ] Talentos: «nadie ha podido probarlas por encima del nivel 30» y el aviso pendiente de builds.
 - [ ] Combate: aviso «Análisis sin probar… sin acceso a los niveles 31 a 60».
 - [ ] Cambios: aviso «Información de beta».
@@ -220,7 +222,7 @@ No hace falta tocar el diseño ni las páginas: la tarjeta y los filtros salen d
   - estado de verificación y parche en que se comprobó.
 - [x] Builds de leveo con el orden de puntos nivel a nivel (campo `order` en `builds.json`, tabla `TalentOrder` en cada tarjeta) y la columna «Con Talented»: los puntos extra del perk de Legado van al final del orden (hecho del 1 al 30 el 2026-10-14).
 - [x] Guía de leveo en la misma URL de Nivelación (`/es/nivelacion/`, `/en/leveling/`), con selector de builds (`BuildPicker`) y aviso de estado (`LevelingStatus`) (2026-10-14): en solitario (recomendada), mazmorras y área (experimental, desde el 22).
-- [ ] **Ampliar el leveo al 60**, sin crear páginas nuevas: en cada build de `leveling`, subir `level` a 60, añadir los puntos 22 a 51 a `order` (más notas en `orderNotes`) y actualizar `points`. A nivel 40 llegan Descarga de Pirofrío y la doble especialización: valorar una build híbrida o de Fuego para el 31-60. El aviso BETA y las etapas se actualizan solos (`src/lib/leveling.ts`) cuando **todas** las builds de leveo llegan al 60.
+- [x] **Ampliar el leveo al 60** (2026-10-30): cuatro builds de leveo del 10 al 60 en `builds.json`, con `order` y `orderNotes`. Los componentes `BuildPicker` y `LevelingStatus` ya no se usan en ninguna página.
 - [ ] Probar en el juego las tres builds de leveo (sobre todo la de área, que es experimental) y pasarlas a `tested` o corregirlas.
 - [ ] Si una build necesita otro orden con Talented (no solo los mismos puntos antes), hoy no se puede expresar: habría que añadir un segundo orden.
 - [x] Etiqueta «Recomendada» o «Viable» en cada uso de la tarjeta (hecho el 2026-10-18). La build de leveo en solitario es la recomendada para leveo a nivel 30. Sin apartado de duelos.

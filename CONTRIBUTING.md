@@ -45,7 +45,7 @@ El validador rechaza, por ejemplo, un `verified` sin fuente oficial o un `report
 
 1. Edita `src/data/changes.json`. Campos clave: `id` (kebab-case), `name` (nombre oficial en inglés), `tree`, `category`, `kinds`, `summary.es`/`summary.en`, `status`, `sources`.
 2. Si el cambio mueve un talento, rellena `row` y `previousRow`. Si se renombra, `formerly`.
-3. Si es un talento de hito, actualiza también `src/data/milestones.json` (el validador comprueba que coincidan).
+3. Si es un talento decisivo, actualiza también `src/data/milestones.json` (el validador comprueba que coincidan).
 4. Las interpretaciones van en `notes` con su propio `status` (normalmente `analysis`), nunca mezcladas con el `summary`.
 
 ### Añadir una fuente
@@ -55,7 +55,7 @@ El validador rechaza, por ejemplo, un `verified` sin fuente oficial o un `report
 
 ### Añadir o actualizar una build
 
-1. Añádela a `src/data/builds.json`: `id`, `name`, `uses` (`leveling`, `aoe`, `dungeons`, `raid`, `pvp`; solo los usos en los que la build tiene sentido), `recommendedFor` (los usos en los que es la recomendada; en los demás sale como «Viable»; como mucho una recomendada por uso y nivel), `spec`, `level`, `points` (id del talento → rango), `keyTalents`, `summary`, `playstyle` y, si hacen falta, `strengths`, `weaknesses` e `items`.
+1. Añádela a `src/data/builds.json`: `id`, `name`, `uses` (`leveling`, `dungeons`, `raid`, `pvp`; solo los usos en los que la build tiene sentido), `recommendedFor` (los usos en los que es la recomendada; en los demás sale como «Viable»; como mucho una recomendada por uso y nivel), `spec`, `level`, `points` (id del talento → rango), `keyTalents`, `summary`, `playstyle` y, si hacen falta, `strengths`, `weaknesses` e `items`.
 2. Los ids de talento son los de `src/data/talents.json` (árbol de Forever según la calculadora de Wowhead). `npm run validate` comprueba que la build se pueda hacer en el juego: rangos, puntos por fila, requisitos y puntos del nivel.
 3. El enlace a la calculadora de Wowhead y la vista de calculadora se generan solos. No hace falta copiar ninguna URL.
 4. `status: "analysis"` mientras no se haya probado en el juego; `"tested"` cuando sí. Pon `gameVersion`, `sources` y `updated`, y añade una entrada al historial con `refs: ["build:<id>"]`.
@@ -105,7 +105,7 @@ Los banners de eventos (como el torneo de duelos) van en `src/data/notices.json`
 
 ## Menú y orden de lectura
 
-El menú (`PRIMARY_NAV` en `src/i18n/routes.ts`) es también el orden de «Anterior / Siguiente»: no hay una segunda lista que mantener. Una página nueva entra en el menú una sola vez. Tiene cinco entradas: Aprende (lo básico de la clase), Builds (las builds y las páginas que las explican), Guías (raza, profesiones, misiones de clase, biblioteca, pergaminos y JcJ), Herramientas y Addons.
+El menú (`PRIMARY_NAV` en `src/i18n/routes.ts`) es también el orden de «Anterior / Siguiente»: no hay una segunda lista que mantener. Una página nueva entra en el menú una sola vez. Tiene cinco entradas: Aprende (la clase, su combate, los talentos con sus tres ramas y los primeros pasos), Builds (generadas desde `builds.json`, por contenido), Guías (farmeo AoE, agua del Mago, raza, profesiones, Legado, equipo, misiones de clase, biblioteca, pergaminos y JcJ), Herramientas (calculadoras y explorador de cambios) y Addons.
 
 ## Iconos y objetos del juego
 

@@ -1,9 +1,9 @@
 # Sheep Happens
 
 Guía en profundidad y bilingüe (ES/EN) del **Mago** para **World of Warcraft: Forever**.
-Sitio estático con interactividad selectiva: builds filtrables por uso y rama (con vista de calculadora y enlace a Wowhead), guía de leveo con selector de builds y orden de puntos nivel a nivel, razas con sus raciales, profesiones recomendadas según el objetivo, fichas de hechizos al pasar el ratón, explorador de cambios filtrable, explorador de talentos por rama, buscador por secciones y calculadora de crítico. Cada dato muestra su fuente y su estado de verificación.
+Sitio estático con interactividad selectiva: un camino para aprender la clase desde cero, builds por contenido (leveo y mazmorras) con orden de puntos, vista de calculadora y enlace a Wowhead, razas con sus raciales, profesiones según el objetivo, Legado, equipo, misiones de clase, biblioteca, pergaminos, JcJ, fichas de hechizos al pasar el ratón, explorador de cambios filtrable, buscador por secciones y calculadoras de talentos, crítico, golpe y agua. Cada dato muestra su fuente y su estado de verificación.
 
-> Estado del juego en la última revisión (2026-10-11): **beta** (cliente 1.60.1). El lanzamiento está previsto para el 4 de noviembre de 2026. Ver [`docs/game-version.md`](docs/game-version.md).
+> Estado del juego en la última revisión (2026-10-30): la **beta** cerró el 23 de octubre y los datos salen de su cliente (1.60.1). El lanzamiento está previsto para el 4 de noviembre de 2026. Ver [`docs/game-version.md`](docs/game-version.md).
 >
 > Producción: **https://sheephappens.app** (Cloudflare Pages; `sheep-happens.pages.dev` redirige aquí). Ver [`docs/deployment.md`](docs/deployment.md).
 
@@ -29,7 +29,8 @@ Sitio estático con interactividad selectiva: builds filtrables por uso y rama (
 | `npm run typecheck` | Comprobación de tipos (`astro check`) |
 | `npm test` | Pruebas unitarias (filtros, rutas, calculadora, datos, contraste WCAG, enlaces) |
 | `npm run links` | Comprueba los enlaces internos y las anclas de `dist/` (`-- --external` también comprueba las fuentes externas) |
-| `npm run check` | Validación, historial, tipos, pruebas, compilación y enlaces, igual que la CI y Cloudflare |
+| `npm run output` | Comprueba `dist/`: referencias internas a la vista, paridad ES/EN e iconos que faltan |
+| `npm run check` | Validación, historial, tipos, pruebas, compilación, enlaces y salida, igual que la CI y Cloudflare |
 
 ## Estructura
 
@@ -68,4 +69,4 @@ Ver [`docs/deployment.md`](docs/deployment.md) (Cloudflare Pages, paso a paso) y
 
 ## Aviso legal
 
-Guía de fans sin relación con Blizzard Entertainment. World of Warcraft es una marca de Blizzard Entertainment, Inc. El logotipo y los iconos son originales de este proyecto.
+Guía de fans sin relación con Blizzard Entertainment. World of Warcraft es una marca de Blizzard Entertainment, Inc. Los iconos de talentos, hechizos y objetos son del juego, © Blizzard Entertainment; el logotipo y el resto de iconos e ilustraciones son originales de este proyecto.
