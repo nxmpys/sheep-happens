@@ -39,6 +39,7 @@ const data: PageFrontmatter = {
   title,
   seoTitle,
   description: build.summary[locale],
+  lead: build.tagline[locale],
   gameVersion: build.gameVersion,
   published: new Date(`${updated}T00:00:00Z`),
   reviewed: new Date(`${updated}T00:00:00Z`),

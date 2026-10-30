@@ -937,6 +937,8 @@ export const pageFrontmatter = z
     seoTitle: z.string().min(10).max(60).optional(),
     /** Used for <meta name="description">; keep it within what search engines show. */
     description: z.string().min(50).max(170),
+    /** The short line under the title. Defaults to the description. */
+    lead: z.string().min(10).max(130).optional(),
     gameVersion: id,
     published: z.coerce.date(),
     /** Set by hand only after a real content review — never automatically. */

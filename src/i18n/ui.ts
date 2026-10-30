@@ -103,15 +103,7 @@ const es = {
   'search.result': '1 resultado',
   'search.unavailable': 'El índice de búsqueda solo existe en la versión compilada (npm run build → npm run preview).',
   'search.loading': 'Buscando…',
-  'meta.reviewed': 'Revisado',
-  'meta.verification': 'Estado de la información',
-  'meta.betaWarning': 'Datos de la beta de Forever: pueden cambiar antes del lanzamiento.',
   'meta.howWeVerify': 'Cómo lo verifico',
-  'meta.betaShort': 'Puede cambiar',
-  'meta.sourcesCount': '{count} fuentes',
-  'meta.sourceCount': '1 fuente',
-  'meta.legend': '¿Qué significan las etiquetas?',
-  'meta.legendIntro': 'Cada dato lleva una etiqueta que dice de dónde sale y cuánto puedes fiarte de él. Pasa el ratón, enfoca o toca una etiqueta para ver su explicación.',
   'summary.title': 'En resumen',
   'playFirst.title': 'Antes de abrir el libro de hechizos',
   'playFirst.body': 'Lo importante es disfrutar del Mago. Si es tu primera vez en Forever, sube unos niveles a tu aire: prueba talentos, convierte en oveja todo lo que se mueva y haz un portal a Forjaz cuando te pidan uno a Ventormenta. Descubrir la clase por tu cuenta es de lo mejor que tiene el juego. Cuando quieras ir más en serio o algo no te cuadre, aquí tienes mis apuntes.',
@@ -239,15 +231,7 @@ const en: Record<UiKey, string> = {
   'search.result': '1 result',
   'search.unavailable': 'The search index only exists in the built site (npm run build → npm run preview).',
   'search.loading': 'Searching…',
-  'meta.reviewed': 'Reviewed',
-  'meta.verification': 'Information status',
-  'meta.betaWarning': 'Data from the Forever beta: it may change before launch.',
   'meta.howWeVerify': 'How I verify',
-  'meta.betaShort': 'May change',
-  'meta.sourcesCount': '{count} sources',
-  'meta.sourceCount': '1 source',
-  'meta.legend': 'What do the labels mean?',
-  'meta.legendIntro': 'Every claim carries a label saying where it comes from and how far you can trust it. Hover, focus or tap a label to see what it means.',
   'summary.title': 'In short',
   'playFirst.title': 'Before you open the spellbook',
   'playFirst.body': "What matters is enjoying the Mage. If this is your first time in Forever, level at your own pace: try talents, turn everything that moves into a sheep and open a portal to Ironforge when someone asks for Stormwind. Figuring out the class yourself is one of the best parts of the game. When you want to get serious or something doesn't add up, my notes are here.",
@@ -360,15 +344,6 @@ export function formatDate(locale: Locale, date: Date): string {
     year: 'numeric',
     timeZone: 'UTC',
   }).format(date);
-}
-
-/** Short calendar date for compact lines: "16 oct 2026", "16 Oct 2026". */
-export function formatShortDate(locale: Locale, date: Date): string {
-  // Some ICU versions write "16 oct. 2026" or "16 de oct de 2026": keep it short and plain.
-  return new Intl.DateTimeFormat(DATE_LOCALES[locale], { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
-    .format(date)
-    .replace(/ de /g, ' ')
-    .replace(/\.(?= )/, '');
 }
 
 /** Formats an instant in UTC: "4 de noviembre de 2026, 23:00 UTC". */

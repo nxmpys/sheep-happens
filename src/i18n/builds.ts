@@ -16,19 +16,19 @@ export const USE_TITLES: Record<Locale, Record<BuildUse, string>> = {
   en: { leveling: 'Leveling 1-60', pvp: 'PvP 60', dungeons: 'Dungeons 60', raid: 'Raid 60' },
 };
 
-/** Title of each content page (/builds/<use>/). */
-export const CONTENT_PAGES: Record<Locale, Record<BuildUse, { title: string }>> = {
+/** Title of each content page (/builds/<use>/), and the longer one for search results. */
+export const CONTENT_PAGES: Record<Locale, Record<BuildUse, { title: string; seoTitle: string }>> = {
   es: {
-    leveling: { title: 'Builds de leveo del Mago, del 1 al 60' },
-    pvp: { title: 'Builds de JcJ del Mago a nivel 60' },
-    dungeons: { title: 'Builds de mazmorras del Mago a nivel 60' },
-    raid: { title: 'Builds de banda del Mago a nivel 60' },
+    leveling: { title: 'Builds de leveo', seoTitle: 'Builds de leveo del Mago, del 1 al 60' },
+    pvp: { title: 'Builds de JcJ', seoTitle: 'Builds de JcJ del Mago a nivel 60' },
+    dungeons: { title: 'Builds de mazmorras', seoTitle: 'Builds de mazmorras del Mago a nivel 60' },
+    raid: { title: 'Builds de banda', seoTitle: 'Builds de banda del Mago a nivel 60' },
   },
   en: {
-    leveling: { title: 'Mage leveling builds, from 1 to 60' },
-    pvp: { title: 'Mage PvP builds at level 60' },
-    dungeons: { title: 'Mage dungeon builds at level 60' },
-    raid: { title: 'Mage raid builds at level 60' },
+    leveling: { title: 'Leveling builds', seoTitle: 'Mage leveling builds, from 1 to 60' },
+    pvp: { title: 'PvP builds', seoTitle: 'Mage PvP builds at level 60' },
+    dungeons: { title: 'Dungeon builds', seoTitle: 'Mage dungeon builds at level 60' },
+    raid: { title: 'Raid builds', seoTitle: 'Mage raid builds at level 60' },
   },
 };
 

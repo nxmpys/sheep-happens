@@ -29,8 +29,9 @@ const data: PageFrontmatter = {
   pageId: 'builds',
   locale,
   title: page.title,
+  seoTitle: page.seoTitle,
   // Search snippet: the builds themselves, not a sentence about the page.
-  description: metaDescription(`${page.title}. ${list.map((b) => `${b.name[locale]}: ${b.tagline[locale]}`).join(' ')}`),
+  description: metaDescription(`${page.seoTitle}. ${list.map((b) => `${b.name[locale]}: ${b.tagline[locale]}`).join(' ')}`),
   gameVersion: list[0]?.gameVersion ?? currentVersion.id,
   published: new Date(`${updated}T00:00:00Z`),
   reviewed: new Date(`${updated}T00:00:00Z`),

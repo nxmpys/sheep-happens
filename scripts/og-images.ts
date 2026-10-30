@@ -210,8 +210,9 @@ for (const locale of LOCALES) {
     const frontmatter = parseYaml(readFileSync(join(dir, file), 'utf8').split(/^---\s*$/m)[1] ?? '') as {
       pageId: PageId;
       title: string;
+      seoTitle?: string;
     };
-    const svg = frontmatter.pageId === 'home' ? homeCard(locale) : card(locale, frontmatter.pageId, frontmatter.title);
+    const svg = frontmatter.pageId === 'home' ? homeCard(locale) : card(locale, frontmatter.pageId, frontmatter.seoTitle ?? frontmatter.title);
     writeFileSync(join(outDir, `${locale}-${frontmatter.pageId}.png`), render(svg, 1200));
     count++;
   }

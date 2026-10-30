@@ -3,7 +3,6 @@ import type { MarkdownHeading } from 'astro';
 import BaseLayout from './BaseLayout.astro';
 import FeedbackBox from '../components/layout/FeedbackBox.astro';
 import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
-import PageMeta from '../components/layout/PageMeta.astro';
 import PrevNext from '../components/layout/PrevNext.astro';
 import Toc from '../components/layout/Toc.astro';
 import PlayFirst from '../components/guide/PlayFirst.astro';
@@ -36,7 +35,7 @@ interface Props {
 
 const { locale, pageId, data, headings, body = '', subpage, hideLead = false } = Astro.props;
 const spec = ROUTES[pageId].spec;
-// The about page is not a guide: no lead, review badges, index, pager or feedback form.
+// The about page is not a guide: no lead, index, pager or feedback form.
 const personal = pageId === 'about';
 const trail = breadcrumbTrail(pageId);
 const section = NAV_LABELS[locale][trail[1] ?? pageId];
@@ -55,7 +54,7 @@ const jsonLd = [
     locale,
     url: absolute(subpage?.paths[locale] ?? href(pageId, locale)),
     siteUrl: absolute(base),
-    title: data.title,
+    title: data.seoTitle ?? data.title,
     description: data.description,
     published: data.published,
     modified,
@@ -97,8 +96,7 @@ const tocHeadings = sources.length > 0
           )
         }
         <h1 class:list={[personal && 'visually-hidden']} data-pagefind-meta="title">{data.title}</h1>
-        {!personal && !hideLead && <p class="guide__lead">{data.description}</p>}
-        {!personal && <PageMeta locale={locale} data={data} modified={modified} sourceCount={sources.length} legend={!body.includes('<StatusLegend')} />}
+        {!personal && !hideLead && <p class="guide__lead">{data.lead ?? data.description}</p>}
       </header>
 
       {
