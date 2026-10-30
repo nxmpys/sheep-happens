@@ -22,7 +22,7 @@ export function lastModified(pageId: PageId, reviewed: Date, body = '', extra: r
 }
 
 /** Facts the home page status card shows (HomeLayout.astro). */
-export const HOME_FACTS = ['launch', 'beta'] as const;
+export const HOME_FACTS = ['launch'] as const;
 
 const IN_LANGUAGE: Record<Locale, string> = { es: 'es-ES', en: 'en-GB' };
 

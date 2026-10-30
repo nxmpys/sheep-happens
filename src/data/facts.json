@@ -31,23 +31,6 @@
     ]
   },
   {
-    "id": "beta",
-    "label": {
-      "es": "Beta",
-      "en": "Beta"
-    },
-    "value": {
-      "es": "Cierra el 23 de octubre de 2026 a las 10:00 PDT (17:00 UTC). El 21 de octubre se pausa la beta para una prueba de estrés en servidores regionales; al terminar se borran sus personajes y se reabre la beta. Nivel máximo 30 desde el 1 de octubre.",
-      "en": "It closes on 23 October 2026 at 10:00 AM PDT (17:00 UTC). On 21 October the beta goes offline for a stress test on regional servers; when it ends, the stress test characters are deleted and the beta reopens. Level cap 30 since 1 October."
-    },
-    "status": "verified",
-    "sources": [
-      "blizzard-stress-test",
-      "icyveins-beta-cap"
-    ],
-    "updated": "2026-10-21"
-  },
-  {
     "id": "name-reservation",
     "label": {
       "es": "Reserva de nombres",
@@ -94,23 +77,6 @@
       "wowforever-level-cap",
       "lfcarry-beta"
     ]
-  },
-  {
-    "id": "client-version",
-    "label": {
-      "es": "Versión del cliente",
-      "en": "Client version"
-    },
-    "value": {
-      "es": "Parche 1.60.1 (build 70374 de la beta, 13 de octubre de 2026).",
-      "en": "Patch 1.60.1 (beta build 70374, 13 October 2026)."
-    },
-    "status": "reported",
-    "sources": [
-      "warcraft-wiki-forever",
-      "wago-tools-builds"
-    ],
-    "updated": "2026-10-14"
   },
   {
     "id": "specs",

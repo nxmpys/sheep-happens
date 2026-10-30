@@ -108,7 +108,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 
 ### Datos
 
-- [ ] `facts.json`: borrar `beta`, poner `launch` en pasado, cambiar `client-version` (es una build de la beta) y revisar `dual-spec` («estudian adelantarla»).
+- [ ] `facts.json`: poner `launch` en pasado y revisar `dual-spec` («estudian adelantarla»). `beta` y `client-version` ya no existen (2026-10-30).
 - [ ] `changes.json`: quitar de las fichas la historia de la beta («en la beta pasó de 20 a 30 s», «se llamaba Hot Streak en la beta», «build del 1 de octubre») y dejar solo cómo funciona. Esa historia ya está en el historial.
 - [ ] `changes.json`: revisar las 43 fichas contra las notas del parche de lanzamiento.
 - [ ] `watchlist.json`: cambiar las notas de desarrollo, los errores conocidos y el foro de la beta por las notas de parche, los hotfixes y los errores conocidos del juego.
@@ -170,7 +170,7 @@ Forma parte de cada revisión de fuentes ([maintenance.md](maintenance.md)):
 - [x] **Semana del 12 de octubre de 2026:** comprobar si llegan los cambios de raciales anunciados y anotarlos en la sección 1. Llegaron en las notas de la build del 15 de octubre; incorporados en la revisión del 16 de octubre.
 - Las fichas de cambios, los mapas de talentos decisivos y la tabla de builds híbridas de Talentos.
 - Las raciales y la recomendación de razas (sección 5), cuando existan.
-- La versión del cliente (`client-version`).
+- La versión del cliente (`game-versions.json`).
 - **Farmeo AoE y bajar de rango:** es lo más inestable, porque Blizzard ya los ha frenado a propósito y puede seguir haciéndolo.
 - Builds, prioridades de estadísticas y equipo, cuando existan: cada una indica «válida para el parche X».
 
