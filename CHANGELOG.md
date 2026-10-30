@@ -12,6 +12,13 @@ La reutilización de Blood Fury baja de 3 a 2 minutos para el lanzamiento. El an
 
 - **Datos afectados:** race:orc
 
+### [Guía] Cuatro builds de leveo del 10 al 60
+
+Arcano y Escarcha, Arcano hacia mazmorras, Escarcha y Fuego, con el orden de puntos nivel a nivel y el motivo de cada talento. Las dos de Arcano están probadas en la beta, hasta el nivel 30; las de Escarcha y Fuego, aún sin probar.
+
+- **Datos afectados:** build:arcane-frost-leveling, build:arcane-dungeons-leveling, build:frost-leveling, build:fire-leveling
+- **Fuentes:** [Mage Leveling Guide (Level 1-60) - Talents, Rotations, Races & More - WoW Forever](https://mobalytics.gg/wow-forever/classes/mage-leveling-guide) (Mobalytics)
+
 ### [Guía] Cinco builds de mazmorras a nivel 60
 
 Arcano, Arcano y Fuego, Pirofrío, Fuego y Escarcha, cada una con sus pros y contras, el porqué de sus puntos, variantes, rotación y estadísticas. Aún sin probar en el juego: la beta llega al nivel 30.

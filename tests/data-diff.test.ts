@@ -29,6 +29,13 @@ describe('diffRecords', () => {
     expect(diffRecords('changes.json', 'change', [base], [after])).toEqual([]);
   });
 
+  it('accepts another change on the day of its "updated" date, but not later', () => {
+    const before = { ...base, updated: '2026-10-30' };
+    const after = { ...before, status: 'tested' };
+    expect(diffRecords('changes.json', 'change', [before], [after], '2026-10-30')).toEqual([]);
+    expect(diffRecords('changes.json', 'change', [before], [after], '2026-10-31')).toHaveLength(1);
+  });
+
   it('flags new records without a date and warns about removals', () => {
     const problems = diffRecords('changes.json', 'change', [base], [{ ...base, id: 'arcane-blast' }]);
     expect(problems.map((p) => [p.ref, p.severity])).toEqual([

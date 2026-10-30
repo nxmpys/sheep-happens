@@ -5,10 +5,11 @@
  * in with their game icons and ranks, how the point split changes, and opens
  * the swapped build in the calculator. A variant without a swap is a short note.
  */
+import BuildLink from './BuildLink.astro';
 import Icon from '../ui/Icon.astro';
 import { tb } from '../../i18n/builds';
 import { getLocale, href } from '../../i18n/locale';
-import { talentText, talents } from '../../lib/data';
+import { getBuild, talentText, talents } from '../../lib/data';
 import { iconPath } from '../../lib/icons';
 import { localName } from '../../lib/names';
 import type { Build } from '../../lib/schemas';
@@ -47,6 +48,7 @@ const cards = build.variants.map((variant) => {
   return {
     name: variant.name[locale],
     text: variant.text[locale],
+    build: variant.build,
     out: pieces(variant.remove),
     in: pieces(variant.add),
     split: after ? distributionLabel(after, talents) : undefined,
@@ -93,7 +95,15 @@ const cards = build.variants.map((variant) => {
             </div>
           </div>
         )}
-        <p class="variant__text">{card.text}</p>
+        <p class="variant__text">
+          {card.text}
+          {card.build && (
+            <>
+              {' '}
+              {tb(locale, 'variant.final')} <BuildLink id={card.build}>{getBuild(card.build).name[locale]}</BuildLink>.
+            </>
+          )}
+        </p>
         {card.split && (
           <div class="variant__foot">
             <span class="variant__split" title={tb(locale, 'build.points')}>

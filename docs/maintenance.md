@@ -85,7 +85,7 @@ La hace el agente automático (sección 7) o una persona, con los mismos pasos:
 | Regla | Dónde se comprueba |
 |---|---|
 | Cada registro con `updated` tiene una entrada del historial de **esa fecha** que lo referencia | `npm run validate` (integridad de datos) |
-| Si cambias un **dato** (texto en inglés, estado, fuentes, fila, nivel…) sin cambiar `updated`, falla | `npm run data:diff` (compara con el último commit; en la CI, con el commit anterior o con la rama base) |
+| Si cambias un **dato** (texto en inglés, estado, fuentes, fila, nivel…) sin cambiar `updated`, falla, salvo que `updated` ya sea la fecha de hoy | `npm run data:diff` (compara con el último commit; en la CI, con el commit anterior o con la rama base) |
 | `CHANGELOG.md` coincide con `changelog.json` | `npm run changelog -- --check` |
 | Toda referencia (`refs`, `sources`) existe | `npm run validate` |
 

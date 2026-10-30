@@ -43,6 +43,9 @@ const list = builds
                 {SPEC_LABELS[locale][build.spec]} · {distributionLabel(build.points, talents)}
                 {role !== 'viable' && <span class:list={['content-build__role', `content-build__role--${role}`]}>{tb(locale, `build.${role}`)}</span>}
                 {build.status !== 'tested' && <span class="content-build__role content-build__role--untested">{tb(locale, 'build.untested')}</span>}
+                {build.testedUpTo !== undefined && build.testedUpTo < build.level && (
+                  <span class="content-build__role content-build__role--untested">{tb(locale, 'build.testedUpTo', { level: build.testedUpTo })}</span>
+                )}
               </p>
               <p class="content-build__tagline">{build.tagline[locale]}</p>
             </div>

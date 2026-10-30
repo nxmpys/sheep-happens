@@ -47,7 +47,7 @@ export interface DiffProblem {
  * Compares two versions of a data file (arrays of records with `id`).
  * `kind` is the ref prefix used by the changelog ("change", "fact"…).
  */
-export function diffRecords(file: string, kind: string, before: Json[], after: Json[]): DiffProblem[] {
+export function diffRecords(file: string, kind: string, before: Json[], after: Json[], today = new Date().toISOString().slice(0, 10)): DiffProblem[] {
   const fields = FACT_FIELDS[file] ?? [];
   const previous = new Map(before.map((r) => [r['id'] as string, r]));
   const current = new Map(after.map((r) => [r['id'] as string, r]));
@@ -61,7 +61,8 @@ export function diffRecords(file: string, kind: string, before: Json[], after: J
       continue;
     }
     const changed = fields.filter((f) => JSON.stringify(pick(old, f)) !== JSON.stringify(pick(record, f)));
-    if (changed.length > 0 && record['updated'] === old['updated']) {
+    // A second change on the same day cannot bump the date: today's changelog entry already covers it.
+    if (changed.length > 0 && record['updated'] === old['updated'] && record['updated'] !== today) {
       problems.push({ ref, severity: 'error', message: `facts changed (${changed.join(', ')}) but "updated" was not bumped` });
     }
   }

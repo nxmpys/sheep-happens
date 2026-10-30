@@ -82,6 +82,13 @@ const hasPros = pros.items.length > 0 || cons.items.length > 0 || pros.headline 
       </Callout>
     )
   }
+  {
+    build.testedUpTo !== undefined && build.testedUpTo < build.level && (
+      <Callout variant="info" title={tb(locale, 'build.testedUpTo', { level: build.testedUpTo })}>
+        <p>{tb(locale, 'build.testedUpToText', { level: build.testedUpTo })}</p>
+      </Callout>
+    )
+  }
 
   <h2 id={sections.pros.id}>{sections.pros.text}</h2>
   {

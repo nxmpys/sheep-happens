@@ -311,7 +311,7 @@ export const buildSchema = z
     order: z.array(id).max(51).optional(),
     /** Why key points of `order` go where they go, by point number (1 = first point). */
     orderNotes: z
-      .array(z.object({ point: z.number().int().min(1).max(51), text: localized }).strict())
+      .array(z.object({ point: z.number().int().min(1).max(51), text: localized, build: id.optional() }).strict())
       .default([]),
     /** First level the build is meant for (e.g. 22 for an AoE build). Defaults to 1. */
     fromLevel: z.number().int().min(1).max(60).optional(),
@@ -357,6 +357,8 @@ export const buildSchema = z
             text: localized,
             remove: z.record(id, z.number().int().min(1).max(5)).optional(),
             add: z.record(id, z.number().int().min(1).max(5)).optional(),
+            /** Build this variant ends in (a level 60 build reached through leveling), linked from its card. */
+            build: id.optional(),
           })
           .strict(),
       )
@@ -366,6 +368,8 @@ export const buildSchema = z
     /** Page with the in-depth explanation, if there is one. */
     page: z.enum(PAGE_IDS).optional(),
     status: z.enum(STATUSES),
+    /** A `tested` build played only up to this level (the beta's cap): the page says how far. */
+    testedUpTo: z.number().int().min(1).max(60).optional(),
     /** Game version the build was made for (game-versions.json). */
     gameVersion: id,
     sources: sourceIds,

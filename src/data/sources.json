@@ -628,11 +628,11 @@
     "publisher": "Mobalytics",
     "url": "https://mobalytics.gg/wow-forever/classes/mage-leveling-guide",
     "kind": "community",
-    "published": "2026-10-13",
+    "published": "2026-10-29",
     "accessed": "2026-10-30",
     "notes": {
-      "es": "Recomienda Escarcha para subir y cubre del 1 al 60, con consumibles, profesiones, raciales, utilidad, bajar de rango y consejos. Actualizada el 29 de octubre, pero aún cita Frost Blast y Arcane Focus, que ya no están en el árbol, así que contrasto sus datos con el cliente de Forever.",
-      "en": "Recommends Frost for leveling and covers 1 to 60, with consumables, professions, racials, utility, downranking and tips. Updated on 29 October, but it still cites Frost Blast and Arcane Focus, which are no longer in the tree, so I check its data against the Forever client."
+      "es": "Guía de Asuna_qt con builds de leveo del 1 al 60 de Escarcha, Fuego y Arcano, y con consumibles, profesiones, raciales, utilidad, bajar de rango y consejos. Uso sus rotaciones y su prioridad de estadísticas, y contrasto el resto con el cliente de Forever: sus talentos no están del todo al día con el árbol del 28 de octubre (citan Enfoque Arcano y Frost Blast).",
+      "en": "Guide by Asuna_qt with level 1-60 leveling builds for Frost, Fire and Arcane, plus consumables, professions, racials, utility, downranking and tips. I use its rotations and stat priority, and check the rest against the Forever client: its talents are not fully up to date with the 28 October tree (they mention Arcane Focus and Frost Blast)."
     }
   },
   {

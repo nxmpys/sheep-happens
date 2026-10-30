@@ -53,6 +53,14 @@ const headings = use === 'leveling' ? [{ depth: 2, slug: guidesId, text: tb(loca
   hideLead
   subpage={{ paths, crumbs: [{ label: USE_TITLES[locale][use], url: paths[locale] }], modified: new Date(`${updated}T00:00:00Z`) }}
 >
+  {
+    use === 'leveling' && (
+      <>
+        <p>{tb(locale, 'content.levelingIntro.arcane')}</p>
+        <p>{tb(locale, 'content.levelingIntro.rotation')}</p>
+      </>
+    )
+  }
   <BuildContent use={use} />
   {
     use === 'leveling' && (
