@@ -1,5 +1,29 @@
 [
   {
+    "id": "2026-10-30-sources",
+    "date": "2026-10-30",
+    "type": "guide",
+    "title": {
+      "es": "Revisión de fuentes: Blizzard confirma la hora del lanzamiento",
+      "en": "Source review: Blizzard confirms the launch time"
+    },
+    "body": {
+      "es": "Blizzard confirma en un aviso oficial que World of Warcraft: Forever sale en todo el mundo el 4 de noviembre a las 15:00 PST (23:00 UTC), que en España es la medianoche del 5 de noviembre. El dato pasa de «Comunidad» a «Oficial». No hay cambios nuevos del Mago.",
+      "en": "Blizzard confirms in an official notice that World of Warcraft: Forever launches worldwide on 4 November at 3:00 PM PST (23:00 UTC), which is midnight on 5 November in mainland Spain. The fact moves from Community to Official. There are no new Mage changes."
+    },
+    "pages": [
+      "home",
+      "sources"
+    ],
+    "sources": [
+      "blizzard-launch-announcement"
+    ],
+    "refs": [
+      "fact:launch",
+      "source:blizzard-launch-announcement"
+    ]
+  },
+  {
     "id": "2026-10-29-talents",
     "date": "2026-10-29",
     "type": "game",

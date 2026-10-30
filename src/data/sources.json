@@ -52,6 +52,19 @@
     }
   },
   {
+    "id": "blizzard-launch-announcement",
+    "title": "World of Warcraft: Forever Goes Live Globally November 4!",
+    "publisher": "Blizzard Entertainment",
+    "url": "https://us.forums.blizzard.com/en/wow/t/world-of-warcraft-forever-goes-live-globally-november-4/2396008",
+    "kind": "official",
+    "published": "2026-10-29",
+    "accessed": "2026-10-30",
+    "notes": {
+      "es": "Aviso oficial del lanzamiento mundial: 4 de noviembre a las 15:00 PST (23:00 UTC). La versión en español de los foros europeos dice «5 de noviembre a las 00:00 CET», que es la misma hora. Solo se ha leído el resumen del hilo; el artículo completo remite a la web de Blizzard.",
+      "en": "Official worldwide launch notice: 4 November at 3:00 PM PST (23:00 UTC). The Spanish version on the EU forums says 5 November at 00:00 CET, the same moment. Only the forum thread summary was read; the full article is on Blizzard's site."
+    }
+  },
+  {
     "id": "blizzard-raid-overview",
     "title": "World of Warcraft: Forever Raid Overview—Locations, Raid Sizes, and Attunement",
     "publisher": "Blizzard Entertainment",

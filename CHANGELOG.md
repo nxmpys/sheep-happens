@@ -4,6 +4,15 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-10-30
+
+### [Guía] Revisión de fuentes: Blizzard confirma la hora del lanzamiento
+
+Blizzard confirma en un aviso oficial que World of Warcraft: Forever sale en todo el mundo el 4 de noviembre a las 15:00 PST (23:00 UTC), que en España es la medianoche del 5 de noviembre. El dato pasa de «Comunidad» a «Oficial». No hay cambios nuevos del Mago.
+
+- **Datos afectados:** Lanzamiento, World of Warcraft: Forever Goes Live Globally November 4!
+- **Fuentes:** [World of Warcraft: Forever Goes Live Globally November 4!](https://us.forums.blizzard.com/en/wow/t/world-of-warcraft-forever-goes-live-globally-november-4/2396008) (Blizzard Entertainment)
+
 ## 2026-10-29
 
 ### [Juego] Cambios de talentos del 28 de octubre (build 1.60.1.70685)
