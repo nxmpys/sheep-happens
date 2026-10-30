@@ -172,7 +172,7 @@ const es = {
   'watch.verified': 'Comprobada el {date}',
   'footer.disclaimer':
     'Sheep Happens es una guía de fans sin relación con Blizzard Entertainment. World of Warcraft es una marca de Blizzard Entertainment, Inc.',
-  'footer.license': 'Los iconos de talentos, hechizos y objetos son del juego, © Blizzard Entertainment; el resto de iconos e ilustraciones son propios.',
+  'footer.license': 'Los iconos de talentos, hechizos y objetos y las imágenes de World of Warcraft son del juego y de sus cinemáticas, © Blizzard Entertainment; el resto de iconos e ilustraciones son propios.',
   'feedback.title': '¿Algo incorrecto o echas algo en falta?',
   'feedback.body': 'Cuéntamelo y lo reviso con las fuentes en la siguiente revisión de la guía. No hace falta cuenta.',
   'feedback.open': 'Enviar un comentario',
@@ -300,7 +300,7 @@ const en: Record<UiKey, string> = {
   'watch.verified': 'Checked {date}',
   'footer.disclaimer':
     'Sheep Happens is a fan-made guide not affiliated with Blizzard Entertainment. World of Warcraft is a trademark of Blizzard Entertainment, Inc.',
-  'footer.license': 'Talent, spell and item icons are from the game, © Blizzard Entertainment; all other icons and artwork are original.',
+  'footer.license': 'Talent, spell and item icons and World of Warcraft images come from the game and its cinematics, © Blizzard Entertainment; all other icons and artwork are original.',
   'feedback.title': 'Something wrong or missing?',
   'feedback.body': 'Tell me and I will check it against the sources in the next review of the guide. No account needed.',
   'feedback.open': 'Send feedback',
