@@ -1,5 +1,32 @@
 [
   {
+    "id": "2026-10-30-improved-channeling",
+    "date": "2026-10-30",
+    "type": "guide",
+    "title": {
+      "es": "Menos puntos en Canalización mejorada",
+      "en": "Fewer points in Improved Channeling"
+    },
+    "body": {
+      "es": "Todas las builds que llevaban Canalización mejorada a 3/5 o 5/5 ahora llevan Especialización en varitas 2/2, Recuperación Arcana 2/2 y Canalización mejorada 1/5.",
+      "en": "Every build with Improved Channeling at 3/5 or 5/5 now takes Wand Specialization 2/2, Arcane Resilience 2/2 and Improved Channeling 1/5."
+    },
+    "pages": [
+      "builds"
+    ],
+    "sources": [],
+    "refs": [
+      "build:arcane-frost-leveling",
+      "build:arcane-dungeons-leveling",
+      "build:frost-leveling",
+      "build:fire-leveling",
+      "build:arcane-dungeons",
+      "build:arcane-fire-dungeons",
+      "build:fire-dungeons",
+      "build:frost-dungeons"
+    ]
+  },
+  {
     "id": "2026-10-30-leveling-builds",
     "date": "2026-10-30",
     "type": "guide",

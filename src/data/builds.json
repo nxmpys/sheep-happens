@@ -28,7 +28,8 @@
       "en": "Frostbolt as filler, which slows the target and triggers the Arcane procs, with Frostbite to freeze it."
     },
     "points": {
-      "improved-channeling": 3,
+      "improved-channeling": 1,
+      "arcane-resilience": 2,
       "wand-specialization": 2,
       "missile-barrage": 2,
       "arcane-concentration": 5,
@@ -49,11 +50,11 @@
       "frost-channeling": 3
     },
     "order": [
-      "improved-channeling",
-      "improved-channeling",
-      "improved-channeling",
       "wand-specialization",
       "wand-specialization",
+      "arcane-resilience",
+      "arcane-resilience",
+      "improved-channeling",
       "missile-barrage",
       "missile-barrage",
       "arcane-concentration",
@@ -105,15 +106,22 @@
       {
         "point": 1,
         "text": {
-          "es": "Canalización mejorada no es muy útil todavía, pero abre la fila siguiente.",
-          "en": "Improved Channeling is not very useful yet, but it opens the next row."
+          "es": "A estos niveles ya tendrás tu primera varita, si no antes: un 25 % más de daño con ella se nota mucho al principio. Si aún no tienes, empieza por Recuperación Arcana.",
+          "en": "By these levels you will have your first wand, if not sooner: 25% more wand damage is very noticeable early on. If you still have none, start with Arcane Resilience."
         }
       },
       {
-        "point": 4,
+        "point": 3,
         "text": {
-          "es": "A estos niveles ya tendrás tu primera varita, si no antes: un 25 % más de daño con ella se nota mucho al principio. Si aún no tienes, sigue en Canalización mejorada.",
-          "en": "By these levels you will have your first wand, if not sooner: 25% more wand damage is very noticeable early on. If you still have none, stay on Improved Channeling."
+          "es": "Armadura igual al 50 % de tu Intelecto: aguantas mejor los golpes que te lleguen.",
+          "en": "Armor equal to 50% of your Intellect: you take the hits that reach you better."
+        }
+      },
+      {
+        "point": 5,
+        "text": {
+          "es": "Canalización mejorada es lo que menos aporta de la fila: solo este punto, que abre la fila siguiente.",
+          "en": "Improved Channeling adds the least of the row: only this point, which opens the next row."
         }
       },
       {
@@ -385,7 +393,8 @@
       "en": "The shortest path to Arcane Wrath and Arcane Power, which at 60 is already your dungeon build."
     },
     "points": {
-      "improved-channeling": 3,
+      "improved-channeling": 1,
+      "arcane-resilience": 2,
       "wand-specialization": 2,
       "missile-barrage": 2,
       "arcane-concentration": 5,
@@ -407,11 +416,11 @@
       "heating-up": 1
     },
     "order": [
-      "improved-channeling",
-      "improved-channeling",
-      "improved-channeling",
       "wand-specialization",
       "wand-specialization",
+      "arcane-resilience",
+      "arcane-resilience",
+      "improved-channeling",
       "missile-barrage",
       "missile-barrage",
       "arcane-concentration",
@@ -463,16 +472,22 @@
       {
         "point": 1,
         "text": {
-          "es": "Canalización mejorada no es muy útil todavía, pero abre la fila siguiente. Si no quieres pagar por cambiar talentos después, pon aquí los 5 puntos y al 60 ya tendrás la build final:",
-          "en": "Improved Channeling is not very useful yet, but it opens the next row. If you do not want to pay to change talents later, put all 5 points here and at 60 you will already have the final build:"
-        },
-        "build": "arcane-fire-dungeons"
+          "es": "A estos niveles ya tendrás tu primera varita, si no antes: un 25 % más de daño con ella se nota mucho al principio. Si aún no tienes, empieza por Recuperación Arcana.",
+          "en": "By these levels you will have your first wand, if not sooner: 25% more wand damage is very noticeable early on. If you still have none, start with Arcane Resilience."
+        }
       },
       {
-        "point": 4,
+        "point": 3,
         "text": {
-          "es": "A estos niveles ya tendrás tu primera varita, si no antes: un 25 % más de daño con ella se nota mucho al principio. Si aún no tienes, sigue en Canalización mejorada.",
-          "en": "By these levels you will have your first wand, if not sooner: 25% more wand damage is very noticeable early on. If you still have none, stay on Improved Channeling."
+          "es": "Armadura igual al 50 % de tu Intelecto: aguantas mejor los golpes que te lleguen.",
+          "en": "Armor equal to 50% of your Intellect: you take the hits that reach you better."
+        }
+      },
+      {
+        "point": 5,
+        "text": {
+          "es": "Canalización mejorada es lo que menos aporta de la fila: solo este punto, que abre la fila siguiente.",
+          "en": "Improved Channeling adds the least of the row: only this point, which opens the next row."
         }
       },
       {
@@ -626,23 +641,6 @@
     ],
     "reasons": [],
     "variants": [
-      {
-        "name": {
-          "es": "Sin cambiar talentos al 60",
-          "en": "No talent change at 60"
-        },
-        "text": {
-          "es": "Los 5 primeros puntos, todos en Canalización mejorada. Pierdes el 25 % de daño con varita, que está bien al principio, pero al 60 tienes la build final sin pagar por cambiar talentos. Si eliges la otra vía, también te ahorras el cambio.",
-          "en": "Your first 5 points, all in Improved Channeling. You lose the 25% wand damage, which is nice early on, but at 60 you have the final build without paying to change talents. If you take the other path, you also save the change."
-        },
-        "remove": {
-          "wand-specialization": 2
-        },
-        "add": {
-          "improved-channeling": 2
-        },
-        "build": "arcane-fire-dungeons"
-      },
       {
         "name": {
           "es": "Vía de Arcano",
@@ -801,7 +799,9 @@
       "frost-channeling": 3,
       "permafrost": 3,
       "ice-barrier": 1,
-      "improved-channeling": 5,
+      "wand-specialization": 2,
+      "improved-channeling": 1,
+      "arcane-resilience": 2,
       "missile-barrage": 2,
       "arcane-concentration": 5,
       "arcane-blast": 1,
@@ -841,10 +841,10 @@
       "permafrost",
       "permafrost",
       "ice-barrier",
-      "improved-channeling",
-      "improved-channeling",
-      "improved-channeling",
-      "improved-channeling",
+      "wand-specialization",
+      "wand-specialization",
+      "arcane-resilience",
+      "arcane-resilience",
       "improved-channeling",
       "missile-barrage",
       "missile-barrage",
@@ -936,8 +936,8 @@
       {
         "point": 32,
         "text": {
-          "es": "El peaje para llegar a lo útil de Arcano. Canalización mejorada protege tus Misiles Arcanos de los golpes.",
-          "en": "The toll to reach the useful part of Arcane. Improved Channeling protects your Arcane Missiles from hits."
+          "es": "El peaje para llegar a lo útil de Arcano: un 25 % más de daño con varita, armadura igual al 50 % de tu Intelecto y solo un punto en Canalización mejorada, lo que menos aporta de la fila.",
+          "en": "The toll to reach the useful part of Arcane: 25% more wand damage, armor equal to 50% of your Intellect and only one point in Improved Channeling, which adds the least of the row."
         }
       },
       {
@@ -1195,7 +1195,9 @@
       "incineration": 3,
       "fire-power": 3,
       "combustion": 1,
-      "improved-channeling": 5,
+      "wand-specialization": 2,
+      "improved-channeling": 1,
+      "arcane-resilience": 2,
       "missile-barrage": 2,
       "elemental-precision": 3,
       "arcane-concentration": 5,
@@ -1235,10 +1237,10 @@
       "incineration",
       "incineration",
       "combustion",
-      "improved-channeling",
-      "improved-channeling",
-      "improved-channeling",
-      "improved-channeling",
+      "wand-specialization",
+      "wand-specialization",
+      "arcane-resilience",
+      "arcane-resilience",
       "improved-channeling",
       "missile-barrage",
       "missile-barrage",
@@ -1351,8 +1353,8 @@
       {
         "point": 32,
         "text": {
-          "es": "El peaje para llegar a Tromba de misiles. Canalización mejorada protege tus Misiles Arcanos de los golpes.",
-          "en": "The toll to reach Missile Barrage. Improved Channeling protects your Arcane Missiles from hits."
+          "es": "El peaje para llegar a Tromba de misiles: un 25 % más de daño con varita, armadura igual al 50 % de tu Intelecto y solo un punto en Canalización mejorada, lo que menos aporta de la fila.",
+          "en": "The toll to reach Missile Barrage: 25% more wand damage, armor equal to 50% of your Intellect and only one point in Improved Channeling, which adds the least of the row."
         }
       },
       {
@@ -1602,7 +1604,9 @@
       "en": "Free Arcane Blast with Clearcasting, Arcane Missiles with Missile Barrage and Fireball as filler until they trigger."
     },
     "points": {
-      "improved-channeling": 5,
+      "wand-specialization": 2,
+      "improved-channeling": 1,
+      "arcane-resilience": 2,
       "arcane-subtlety": 2,
       "arcane-concentration": 5,
       "missile-barrage": 2,
@@ -1686,12 +1690,11 @@
       },
       {
         "talents": [
-          "missile-barrage",
-          "improved-channeling"
+          "missile-barrage"
         ],
         "text": {
-          "es": "Tromba de misiles salta un 40 % de las veces con Explosión Arcana: son Misiles Arcanos gratis y en la mitad de tiempo, tu mejor forma de gastar las cargas. Canalización mejorada evita que los golpes retrasen esos Misiles.",
-          "en": "Missile Barrage triggers 40% of the time from Arcane Blast: free Arcane Missiles in half the time, your best way to spend the stacks. Improved Channeling stops hits from delaying those Missiles."
+          "es": "Tromba de misiles salta un 40 % de las veces con Explosión Arcana: son Misiles Arcanos gratis y en la mitad de tiempo, tu mejor forma de gastar las cargas.",
+          "en": "Missile Barrage triggers 40% of the time from Arcane Blast: free Arcane Missiles in half the time, your best way to spend the stacks."
         }
       },
       {
@@ -1734,6 +1737,17 @@
         "text": {
           "es": "Para los pulls de mazmorra: Fogonazo mejorado da un 15 % de crítico a tu primer golpe de área, y Sutileza Arcana quita un 30 % de la amenaza a Deflagración Arcana y 15 de resistencia a todos tus hechizos.",
           "en": "For dungeon pulls: Improved Flamestrike gives your opening AoE 15% crit, and Arcane Subtlety takes 30% of the threat off Arcane Explosion and removes 15 resistance against all your spells."
+        }
+      },
+      {
+        "talents": [
+          "wand-specialization",
+          "arcane-resilience",
+          "improved-channeling"
+        ],
+        "text": {
+          "es": "La primera fila de Arcano: Especialización en varitas da un 25 % más de daño con varita y Recuperación Arcana, armadura igual al 50 % de tu Intelecto. En Canalización mejorada, solo un punto: es lo que menos aporta de la fila.",
+          "en": "The first Arcane row: Wand Specialization gives 25% more wand damage and Arcane Resilience, armor equal to 50% of your Intellect. Only one point in Improved Channeling: it adds the least of the row."
         }
       },
       {
@@ -1875,7 +1889,9 @@
       "en": "Arcane with fast Pyroblast and Scorch as filler, which costs little and builds Heating Up with its crits."
     },
     "points": {
-      "improved-channeling": 5,
+      "wand-specialization": 2,
+      "improved-channeling": 1,
+      "arcane-resilience": 2,
       "arcane-subtlety": 2,
       "arcane-concentration": 5,
       "missile-barrage": 2,
@@ -2013,12 +2029,22 @@
       {
         "talents": [
           "arcane-subtlety",
-          "improved-channeling",
           "arcane-impact"
         ],
         "text": {
-          "es": "Sutileza Arcana quita 15 de resistencia a todos tus hechizos y un 30 % de amenaza a los Arcanos. Canalización mejorada evita que los golpes retrasen tus Misiles Arcanos (y, un 70 % de las veces, Explosión Arcana y Cólera Arcana), algo que se nota cuando un enemigo se te escapa. Impacto Arcano añade un 6 % de crítico Arcano.",
-          "en": "Arcane Subtlety removes 15 resistance against all your spells and 30% of the threat from Arcane spells. Improved Channeling stops hits from delaying your Arcane Missiles (and, 70% of the time, Arcane Blast and Arcane Wrath), which you notice when an enemy gets loose. Arcane Impact adds 6% Arcane crit."
+          "es": "Sutileza Arcana quita 15 de resistencia a todos tus hechizos y un 30 % de amenaza a los Arcanos. Impacto Arcano añade un 6 % de crítico Arcano.",
+          "en": "Arcane Subtlety removes 15 resistance against all your spells and 30% of the threat from Arcane spells. Arcane Impact adds 6% Arcane crit."
+        }
+      },
+      {
+        "talents": [
+          "wand-specialization",
+          "arcane-resilience",
+          "improved-channeling"
+        ],
+        "text": {
+          "es": "La primera fila de Arcano: Especialización en varitas da un 25 % más de daño con varita y Recuperación Arcana, armadura igual al 50 % de tu Intelecto. En Canalización mejorada, solo un punto: es lo que menos aporta de la fila.",
+          "en": "The first Arcane row: Wand Specialization gives 25% more wand damage and Arcane Resilience, armor equal to 50% of your Intellect. Only one point in Improved Channeling: it adds the least of the row."
         }
       },
       {
@@ -2433,7 +2459,9 @@
       "en": "Crits, Ignite and fast Pyroblasts, with Combustion for burst and Arcane to sustain your mana."
     },
     "points": {
-      "improved-channeling": 5,
+      "wand-specialization": 2,
+      "improved-channeling": 1,
+      "arcane-resilience": 2,
       "arcane-subtlety": 2,
       "arcane-concentration": 5,
       "missile-barrage": 2,
@@ -2573,12 +2601,14 @@
       },
       {
         "talents": [
+          "wand-specialization",
+          "arcane-resilience",
           "improved-channeling",
           "arcane-subtlety"
         ],
         "text": {
-          "es": "El peaje hasta llegar a lo anterior, pero no son puntos perdidos: Canalización mejorada protege tus Misiles Arcanos de los golpes y Sutileza Arcana quita 15 de resistencia a todos tus hechizos.",
-          "en": "The toll to reach the above, but not wasted points: Improved Channeling protects your Arcane Missiles from hits and Arcane Subtlety removes 15 resistance against all your spells."
+          "es": "El peaje hasta llegar a lo anterior, pero no son puntos perdidos: Especialización en varitas da un 25 % más de daño con varita, Recuperación Arcana, armadura igual al 50 % de tu Intelecto, y Sutileza Arcana quita 15 de resistencia a todos tus hechizos. En Canalización mejorada, solo un punto: es lo que menos aporta.",
+          "en": "The toll to reach the above, but not wasted points: Wand Specialization gives 25% more wand damage, Arcane Resilience armor equal to 50% of your Intellect, and Arcane Subtlety removes 15 resistance against all your spells. Only one point in Improved Channeling: it adds the least."
         }
       },
       {
@@ -2746,7 +2776,9 @@
       "en": "Deep Frost with Missile Barrage and Arcane Blast: empowered Cone of Cold, Blizzard and the steadiest mana."
     },
     "points": {
-      "improved-channeling": 5,
+      "wand-specialization": 2,
+      "improved-channeling": 1,
+      "arcane-resilience": 2,
       "arcane-subtlety": 2,
       "arcane-concentration": 5,
       "missile-barrage": 2,
@@ -2879,13 +2911,15 @@
       {
         "talents": [
           "improved-blizzard",
-          "arcane-subtlety",
+          "wand-specialization",
+          "arcane-resilience",
           "improved-channeling",
+          "arcane-subtlety",
           "arcane-impact"
         ],
         "text": {
-          "es": "Un punto en Ventisca mejorada añade escalofrío a Ventisca, lo que permite activar Dedos de Escarcha en área. Sutileza Arcana y Canalización mejorada son el camino hasta Tromba de misiles, con 15 de resistencia menos y Misiles Arcanos sin retrasos. Impacto Arcano es el único punto libre de verdad.",
-          "en": "One point in Improved Blizzard adds a Chill to Blizzard, which lets Fingers of Frost trigger in AoE. Arcane Subtlety and Improved Channeling are the path to Missile Barrage, with 15 less resistance and Arcane Missiles without delays. Arcane Impact is the only truly free point."
+          "es": "Un punto en Ventisca mejorada añade escalofrío a Ventisca, lo que permite activar Dedos de Escarcha en área. La primera fila de Arcano y Sutileza Arcana son el camino hasta Tromba de misiles: un 25 % más de daño con varita, armadura igual al 50 % de tu Intelecto y 15 de resistencia menos, con solo un punto en Canalización mejorada, lo que menos aporta. Impacto Arcano es el único punto libre de verdad.",
+          "en": "One point in Improved Blizzard adds a Chill to Blizzard, which lets Fingers of Frost trigger in AoE. The first Arcane row and Arcane Subtlety are the path to Missile Barrage: 25% more wand damage, armor equal to 50% of your Intellect and 15 less resistance, with only one point in Improved Channeling, which adds the least. Arcane Impact is the only truly free point."
         }
       },
       {

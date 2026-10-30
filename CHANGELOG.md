@@ -6,6 +6,12 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ## 2026-10-30
 
+### [Guía] Menos puntos en Canalización mejorada
+
+Todas las builds que llevaban Canalización mejorada a 3/5 o 5/5 ahora llevan Especialización en varitas 2/2, Recuperación Arcana 2/2 y Canalización mejorada 1/5.
+
+- **Datos afectados:** build:arcane-frost-leveling, build:arcane-dungeons-leveling, build:frost-leveling, build:fire-leveling, build:arcane-dungeons, build:arcane-fire-dungeons, build:fire-dungeons, build:frost-dungeons
+
 ### [Guía] Cuatro builds de leveo del 10 al 60
 
 Arcano y Escarcha, Arcano hacia mazmorras, Escarcha y Fuego, con el orden de puntos nivel a nivel y el motivo de cada talento. Las dos de Arcano están probadas en la beta, hasta el nivel 30; las de Escarcha y Fuego, aún sin probar.
