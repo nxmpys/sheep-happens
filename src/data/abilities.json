@@ -27,7 +27,7 @@
     "level": 4,
     "spell": 116,
     "summary": {
-      "es": "Daño de Escarcha a un objetivo que además lo ralentiza (efecto de Escalofrío).",
+      "es": "Daño de Escarcha a un objetivo que además lo ralentiza (efecto de enfriamiento).",
       "en": "Single-target Frost damage that also slows the target (a Chill effect)."
     },
     "status": "classic",

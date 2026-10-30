@@ -2388,7 +2388,7 @@
         "en": "If the tank is still gathering the enemies, have Flamestrike ready where they will end up."
       },
       {
-        "es": "Enemigos quietos y a distancia: Ventisca. Canalización de Escarcha le baja coste y amenaza, y su escalofrío puede activar Dedos de Escarcha.",
+        "es": "Enemigos quietos y a distancia: Ventisca. Canalización de Escarcha le baja coste y amenaza, y su enfriamiento puede activar Dedos de Escarcha.",
         "en": "Enemies standing still at range: Blizzard. Frost Channeling lowers its cost and threat, and its chill can trigger Fingers of Frost."
       },
       {
@@ -2862,7 +2862,7 @@
           "ice-shards"
         ],
         "text": {
-          "es": "Tu daño fuerte: los efectos de escalofrío tienen un 15 % de probabilidad de activar Dedos de Escarcha, tus 2 siguientes hechizos cuentan como contra un objetivo congelado, Trizar les da un 50 % de crítico y Fragmentos de hielo un 100 % más de bonificación. Lanza de hielo hace un 200 % más de daño contra congelados.",
+          "es": "Tu daño fuerte: los efectos de enfriamiento tienen un 15 % de probabilidad de activar Dedos de Escarcha, tus 2 siguientes hechizos cuentan como contra un objetivo congelado, Trizar les da un 50 % de crítico y Fragmentos de hielo un 100 % más de bonificación. Lanza de hielo hace un 200 % más de daño contra congelados.",
           "en": "Your big hits: Chill effects have a 15% chance to trigger Fingers of Frost, your next 2 spells count as against a frozen target, Shatter gives them 50% crit and Ice Shards 100% more bonus. Ice Lance deals 200% more damage to frozen targets."
         }
       },
@@ -2883,7 +2883,7 @@
           "improved-frostbolt"
         ],
         "text": {
-          "es": "Barrera de hielo da un 3 % de daño de Escarcha durante 1 min, y otro 3 % y ningún retraso al recibir golpes mientras aguante el escudo. Descarga de Escarcha mejorada quita 0,5 s al lanzamiento: más escalofríos, más Escalofrío del invierno y más Tromba de misiles.",
+          "es": "Barrera de hielo da un 3 % de daño de Escarcha durante 1 min, y otro 3 % y ningún retraso al recibir golpes mientras aguante el escudo. Descarga de Escarcha mejorada quita 0,5 s al lanzamiento: más enfriamientos, más Escalofrío del invierno y más Tromba de misiles.",
           "en": "Ice Barrier gives 3% Frost damage for 1 min, plus another 3% and no delay when hit while the shield holds. Improved Frostbolt takes 0.5 s off the cast: more Chills, more Winter's Chill and more Missile Barrage."
         }
       },
@@ -2918,7 +2918,7 @@
           "arcane-impact"
         ],
         "text": {
-          "es": "Un punto en Ventisca mejorada añade escalofrío a Ventisca, lo que permite activar Dedos de Escarcha en área. La primera fila de Arcano y Sutileza Arcana son el camino hasta Tromba de misiles: un 25 % más de daño con varita, armadura igual al 50 % de tu Intelecto y 15 de resistencia menos, con solo un punto en Canalización mejorada, lo que menos aporta. Impacto Arcano es el único punto libre de verdad.",
+          "es": "Un punto en Ventisca mejorada añade enfriamiento a Ventisca, lo que permite activar Dedos de Escarcha en área. La primera fila de Arcano y Sutileza Arcana son el camino hasta Tromba de misiles: un 25 % más de daño con varita, armadura igual al 50 % de tu Intelecto y 15 de resistencia menos, con solo un punto en Canalización mejorada, lo que menos aporta. Impacto Arcano es el único punto libre de verdad.",
           "en": "One point in Improved Blizzard adds a Chill to Blizzard, which lets Fingers of Frost trigger in AoE. The first Arcane row and Arcane Subtlety are the path to Missile Barrage: 25% more wand damage, armor equal to 50% of your Intellect and 15 less resistance, with only one point in Improved Channeling, which adds the least. Arcane Impact is the only truly free point."
         }
       },

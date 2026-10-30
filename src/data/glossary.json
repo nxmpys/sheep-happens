@@ -33,9 +33,9 @@
   },
   {
     "id": "chill",
-    "terms": { "es": ["efecto de escalofrío", "efectos de escalofrío", "efecto de enfriamiento", "efectos de enfriamiento"], "en": ["chill effect", "chill effects"] },
+    "terms": { "es": ["efecto de enfriamiento", "efectos de enfriamiento", "efecto de escalofrío", "efectos de escalofrío"], "en": ["chill effect", "chill effects"] },
     "definition": {
-      "es": "Ralentización de movimiento que aplican algunos hechizos de Escarcha, como Descarga de Escarcha o Ventisca (con Ventisca mejorada). El enemigo te sigue persiguiendo, pero más lento. Es la base de la rama: Mordiescarcha puede congelar con cada efecto de escalofrío, Dedos de Escarcha puede activarse con él y Escarcha permanente lo alarga y lo hace más fuerte.",
+      "es": "Ralentización de movimiento que aplican algunos hechizos de Escarcha, como Descarga de Escarcha o Ventisca (con Ventisca mejorada). El enemigo te sigue persiguiendo, pero más lento. Es la base de la rama: Mordiescarcha puede congelar con cada efecto de enfriamiento, Dedos de Escarcha puede activarse con él y Escarcha permanente lo alarga y lo hace más fuerte.",
       "en": "A movement slow applied by some Frost spells, such as Frostbolt or Blizzard (with Improved Blizzard). The enemy keeps chasing you, only slower. It is the base of the tree: Frostbite can freeze on every Chill effect, Fingers of Frost can trigger from it, and Permafrost makes it last longer and slow more."
     }
   },
