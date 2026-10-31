@@ -50,6 +50,12 @@ describe('validatePages', () => {
     expect(errors).not.toMatch(/"launch"/);
   });
 
+  it('lets <BuildLink> point to a content, never to a concrete build', () => {
+    const withBody = (body: string) => [...complete.filter((f) => f.path !== 'es/leveling.mdx'), page('es', 'leveling', body)];
+    expect(validatePages(withBody('<BuildLink use="pvp">x</BuildLink>'), dataset, today).errors).toEqual([]);
+    expect(validatePages(withBody('<BuildLink id="frost-leveling-solo">x</BuildLink>'), dataset, today).errors.join('\n')).toMatch(/never to a concrete build/);
+  });
+
   it('checks the builds offered by <BuildPicker>', () => {
     const ok = "<BuildPicker ids={['frost-leveling-solo']} recommended=\"frost-leveling-solo\" />";
     const bad = "<BuildPicker ids={['frost-leveling-solo', 'frost-leveling-nope']} recommended=\"frost-duels-30-legacy\" />";

@@ -25,16 +25,6 @@
         "en": "It does not slow or freeze like Frost, so a melee enemy hits you more often."
       }
     ],
-    "noBuild": {
-      "pvp": {
-        "es": "Todavía no he podido probar el JcJ de nivel 60.",
-        "en": "I have not been able to test level 60 PvP yet."
-      },
-      "raid": {
-        "es": "Todavía no he podido probar las bandas de Forever.",
-        "en": "I have not been able to test Forever raids yet."
-      }
-    },
     "updated": "2026-10-30"
   },
   {
@@ -67,16 +57,6 @@
         "en": "Pyroblast without stacks takes 6 s to cast."
       }
     ],
-    "noBuild": {
-      "pvp": {
-        "es": "Todavía no he podido probar el JcJ de nivel 60.",
-        "en": "I have not been able to test level 60 PvP yet."
-      },
-      "raid": {
-        "es": "Todavía no he podido probar las bandas de Forever.",
-        "en": "I have not been able to test Forever raids yet."
-      }
-    },
     "updated": "2026-10-30"
   },
   {
@@ -87,8 +67,8 @@
         "en": "Control: Frostbolt slows and Frost Nova freezes, so enemies take longer to reach you."
       },
       {
-        "es": "El control se convierte en daño: Lanza de hielo hace un 200 % más contra objetivos congelados.",
-        "en": "Control turns into damage: Ice Lance deals 200% more against frozen targets."
+        "es": "El control se convierte en daño: Lanza de hielo hace un 300 % más contra objetivos congelados.",
+        "en": "Control turns into damage: Ice Lance deals 300% more against frozen targets."
       },
       {
         "es": "Un solo hechizo principal, así que la rama es fácil de aprender.",
@@ -105,16 +85,6 @@
         "en": "Cold Snap needs 21 points and has a 10-minute cooldown."
       }
     ],
-    "noBuild": {
-      "pvp": {
-        "es": "Todavía no he podido probar el JcJ de nivel 60.",
-        "en": "I have not been able to test level 60 PvP yet."
-      },
-      "raid": {
-        "es": "Todavía no he podido probar las bandas de Forever.",
-        "en": "I have not been able to test Forever raids yet."
-      }
-    },
     "updated": "2026-10-30"
   }
 ]

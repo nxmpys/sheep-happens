@@ -393,8 +393,6 @@ export const specOverviewSchema = z
     id: z.enum(BUILD_SPECS),
     strengths: z.array(localized).min(1),
     weaknesses: z.array(localized).min(1),
-    /** Why the tree has no build for a content. Required for every use without one (checked in data.ts). */
-    noBuild: z.partialRecord(z.enum(BUILD_USES), localized).default({}),
     updated,
   })
   .strict();

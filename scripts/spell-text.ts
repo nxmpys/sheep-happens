@@ -11,7 +11,7 @@
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { abilities, changes, races, talents } from '../src/lib/data';
-import { fillRankValues, looksEnglish, parseWowheadTooltip, type SpellTextEntry } from '../src/lib/spell-text';
+import { fillRankValues, fixGameText, looksEnglish, parseWowheadTooltip, type SpellTextEntry } from '../src/lib/spell-text';
 
 const OUT = new URL('../src/data/spell-text.json', import.meta.url);
 const LOCALES = { en: '', es: '?locale=6' } as const;
@@ -43,6 +43,17 @@ const STALE_ES = new Set<number>([
   29438, // Precision: still Elemental Precision (Frost and Fire only) after the 28 Oct 2026 build
 ]);
 
+/**
+ * Tooltips Wowhead has not caught up with, by spell. The rank tooltip shows one
+ * rank, so a talent whose ranks changed lists them all.
+ */
+const TOOLTIP_FIXES: Record<number, [string, string][]> = {
+  28574: [
+    ['equal to 50% of', 'equal to 25/50/75% of'],
+    ['equivalente al 50% de', 'equivalente al 25/50/75% de'],
+  ], // Arcane Resilience: 3 ranks since the 30 Oct 2026 hotfix
+};
+
 const ids = new Set<number>([
   ...talents.map((t) => t.spell),
   ...abilities.flatMap((a) => (a.spell ? [a.spell] : [])),
@@ -71,6 +82,12 @@ for (const id of [...ids].sort((a, b) => a - b)) {
       continue;
     }
     if (STALE_ES.has(id)) parsedEs.text = parsedEn.text;
+    parsedEn.text = fixGameText(parsedEn.text);
+    parsedEs.text = fixGameText(parsedEs.text);
+    for (const [from, to] of TOOLTIP_FIXES[id] ?? []) {
+      parsedEn.text = parsedEn.text.replace(from, to);
+      parsedEs.text = parsedEs.text.replace(from, to);
+    }
     const untranslated = parsedEs.text === parsedEn.text || looksEnglish(parsedEs.text);
     spells[id] = {
       // The icon file must also exist in public/icons (check-output fails the build otherwise).

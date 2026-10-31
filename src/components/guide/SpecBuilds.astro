@@ -1,17 +1,14 @@
 ---
 /**
- * Overview of one tree for its talent page, from specs.json and builds.json:
- * strengths, weaknesses, and for each content its builds in this tree or the
- * reason there is none. A new build in builds.json shows up here by itself
- * (and data.ts then asks to remove the matching `noBuild` reason).
+ * Overview of one tree for its talent page, from specs.json: strengths and
+ * weaknesses, and links to the builds of each content. It never links to a
+ * concrete build, because builds change.
  */
-import Icon from '../ui/Icon.astro';
 import { USE_TITLES, tb } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
-import { buildRole } from '../../lib/build-roles';
-import { buildIcon, buildPath } from '../../lib/build-routes';
-import { builds, specs } from '../../lib/data';
-import { BUILD_USES, type BuildSpec } from '../../lib/schemas';
+import { LINKED_CONTENTS, contentPath } from '../../lib/build-routes';
+import { specs } from '../../lib/data';
+import type { BuildSpec } from '../../lib/schemas';
 
 interface Props {
   spec: BuildSpec;
@@ -20,11 +17,6 @@ interface Props {
 const { spec } = Astro.props;
 const locale = getLocale(Astro);
 const overview = specs.find((s) => s.id === spec)!;
-const rows = BUILD_USES.map((use) => ({
-  use,
-  list: builds.filter((b) => b.spec === spec && b.uses.includes(use)),
-  reason: overview.noBuild[use],
-}));
 ---
 
 <div class={`spec-builds school-${spec}`}>
@@ -39,30 +31,10 @@ const rows = BUILD_USES.map((use) => ({
     </section>
   </div>
 
-  <ul class="spec-builds__uses">
-    {
-      rows.map(({ use, list, reason }) => (
-        <li class:list={['spec-builds__use', { 'is-empty': list.length === 0 }]}>
-          <span class="spec-builds__content">{USE_TITLES[locale][use]}</span>
-          {list.length > 0 ? (
-            <span class="spec-builds__list">
-              {list.map((build) => (
-                <a href={buildPath(build, locale, { base: import.meta.env.BASE_URL })}>
-                  <Icon name={buildIcon(build)} size={16} />
-                  {build.name[locale]}
-                  <span class="spec-builds__role">· {tb(locale, `build.${buildRole(build, use)}`)}</span>
-                </a>
-              ))}
-            </span>
-          ) : (
-            <span class="spec-builds__none">
-              <strong>{tb(locale, 'spec.noBuild')}.</strong> {reason?.[locale]}
-            </span>
-          )}
-        </li>
-      ))
-    }
-  </ul>
+  <p class="spec-builds__uses">
+    <span class="spec-builds__label">Builds</span>
+    {LINKED_CONTENTS.map((use) => <a href={contentPath(use, locale, { base: import.meta.env.BASE_URL })}>{USE_TITLES[locale][use]}</a>)}
+  </p>
 </div>
 
 <style>
@@ -83,17 +55,10 @@ const rows = BUILD_USES.map((use) => ({
     margin: 0;
   }
   .spec-builds__uses {
-    display: grid;
-    gap: var(--space-2);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .spec-builds__use {
-    display: grid;
-    grid-template-columns: minmax(8rem, 10rem) 1fr;
-    gap: var(--space-3);
+    display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
+    gap: var(--space-2) var(--space-4);
     margin: 0;
     padding: var(--space-3) var(--space-4);
     border: 1px solid var(--border);
@@ -101,38 +66,10 @@ const rows = BUILD_USES.map((use) => ({
     border-radius: var(--radius-lg);
     background: var(--surface-1);
   }
-  .spec-builds__use.is-empty {
-    border-left-style: dashed;
+  .spec-builds__uses .spec-builds__label {
+    margin: 0;
   }
-  .spec-builds__content {
-    font-weight: 700;
-  }
-  .spec-builds__list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-3);
-  }
-  .spec-builds__list a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35em;
+  .spec-builds__uses a {
     font-weight: 600;
-  }
-  .spec-builds__list :global(svg) {
-    color: var(--school);
-  }
-  .spec-builds__role {
-    font-weight: 400;
-    color: var(--text-muted);
-  }
-  .spec-builds__none {
-    font-size: var(--step--1);
-    color: var(--text-muted);
-  }
-  @media (max-width: 30rem) {
-    .spec-builds__use {
-      grid-template-columns: 1fr;
-      gap: var(--space-1);
-    }
   }
 </style>

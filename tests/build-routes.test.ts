@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { buildRole } from '../src/lib/build-roles';
-import { buildIcon, buildPath, canonicalUse, contentPath, routeConflicts, usedContents } from '../src/lib/build-routes';
+import { buildIcon, buildPath, canonicalUse, contentPages, contentPath, routeConflicts, usedContents } from '../src/lib/build-routes';
 import { buildSections } from '../src/lib/build-page';
 import { checkIntegrity } from '../src/lib/data';
 import { buildSchema, type Build } from '../src/lib/schemas';
@@ -24,9 +24,11 @@ describe('build pages', () => {
     expect(buildPath(dual, 'en')).toBe('/en/builds/dungeons/fire/');
   });
 
-  it('give a page only to contents with builds', () => {
+  it('give a page to the contents the guide links to, with or without builds', () => {
     expect(contentPath('leveling', 'es')).toBe('/es/builds/leveo/');
     expect(usedContents([base, build('dual', { uses: ['dungeons', 'leveling'] })])).toEqual(['leveling', 'dungeons']);
+    expect(contentPages([])).toEqual(['leveling', 'dungeons', 'pvp']);
+    expect(contentPages([build('raid', { uses: ['raid'] })])).toEqual(['leveling', 'dungeons', 'pvp', 'raid']);
   });
 
   it('never share a URL', () => {

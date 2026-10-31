@@ -4,8 +4,9 @@
  * - internal data refs printed as text ("race:human", "build:frost-…");
  * - a verification label's full sentence repeated in the reading flow
  *   (allowed once per page: the label legend);
- * - Ice Lance described with its old 300% bonus (history notes that say
- *   "until 15 October" / "hasta el 15 de octubre" / "from 300%" are fine);
+ * - Ice Lance described with its old 200% bonus (history notes that say
+ *   "until the 30 October hotfix" / "hasta el hotfix del 30 de octubre" or
+ *   "from 300% to 200%" / "del 300 % al 200" are fine);
  * - ES/EN parity: the same pages, the same number of sections (h2) and the
  *   same data components in each pair of MDX files;
  * - game icons (/icons/<name>.jpg) that are not in public/icons.
@@ -48,8 +49,8 @@ function text(html: string): string {
 
 const sentences = LOCALES.flatMap((locale) => STATUSES.map((s) => t(locale, `status.${s}.desc` as UiKey)));
 const rawRef = /\b(?:change|milestone|ability|fact|source|build|race|profession|pick):[a-z0-9]+(?:-[a-z0-9]+)*/;
-const iceLance300 = /(Lanza de hielo|Ice Lance)[^.]{0,120}\b300 ?%|300 ?%[^.]{0,80}(Lanza de hielo|Ice Lance)/g;
-const history = /hasta el 15 de octubre|until 15 October|del 300 ?% al 200|from 300 ?% to 200|300 ?% hasta|300% until/;
+const iceLance200 = /(Lanza de hielo|Ice Lance)[^.]{0,120}\b200 ?%|200 ?%[^.]{0,80}(Lanza de hielo|Ice Lance)/g;
+const history = /del 300 ?% al 200|from 300 ?% to 200|baja al 200|drops to 200|instead of 200|en vez de un 200|hasta el hotfix del 30 de octubre|until the 30 October hotfix|Corrección: Lanza de hielo|Fix: Ice Lance/;
 
 const iconRef = /\/icons\/([a-z0-9_]+)\.jpg/g;
 
@@ -66,9 +67,9 @@ for (const file of walk(dist)) {
     const count = body.split(sentence).length - 1;
     if (count > 1) problems.push(`${where}: label sentence repeated ${count}×: "${sentence.slice(0, 50)}…"`);
   }
-  for (const match of body.matchAll(iceLance300)) {
+  for (const match of body.matchAll(iceLance200)) {
     const around = body.slice(Math.max(0, match.index - 40), match.index + match[0].length + 60);
-    if (!history.test(around)) problems.push(`${where}: Ice Lance with 300%: "…${match[0].slice(0, 120)}…"`);
+    if (!history.test(around)) problems.push(`${where}: Ice Lance with 200%: "…${match[0].slice(0, 120)}…"`);
   }
 }
 

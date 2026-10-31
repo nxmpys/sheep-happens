@@ -1,6 +1,6 @@
 ---
 /**
- * One page per content that has builds, generated from builds.json:
+ * One page per content, generated from builds.json, with or without builds yet:
  * /es/builds/leveo/, /en/builds/leveling/. It lists every build of that
  * content with its three trees; the leveling page also links the leveling guides.
  */
@@ -10,12 +10,12 @@ import GuideLayout from '../../../../layouts/GuideLayout.astro';
 import { LOCALES, type Locale } from '../../../../i18n/routes';
 import { CONTENT_PAGES, USE_TITLES, tb } from '../../../../i18n/builds';
 import { metaDescription } from '../../../../lib/seo';
-import { USE_SLUGS, contentPath, usedContents } from '../../../../lib/build-routes';
+import { USE_SLUGS, contentPages, contentPath } from '../../../../lib/build-routes';
 import { builds, currentVersion } from '../../../../lib/data';
 import type { BuildUse, PageFrontmatter } from '../../../../lib/schemas';
 
 export function getStaticPaths() {
-  return LOCALES.flatMap((lang) => usedContents(builds).map((use) => ({ params: { lang, use: USE_SLUGS[lang][use] }, props: { use } })));
+  return LOCALES.flatMap((lang) => contentPages(builds).map((use) => ({ params: { lang, use: USE_SLUGS[lang][use] }, props: { use } })));
 }
 
 const { use } = Astro.props as { use: BuildUse };
@@ -23,7 +23,7 @@ const locale = Astro.params.lang as Locale;
 const base = import.meta.env.BASE_URL;
 const paths = Object.fromEntries(LOCALES.map((l) => [l, contentPath(use, l, { base })])) as Record<Locale, string>;
 const list = builds.filter((b) => b.uses.includes(use));
-const updated = list.map((b) => b.updated ?? '2026-10-11').sort().at(-1)!;
+const updated = list.map((b) => b.updated ?? '2026-10-11').sort().at(-1) ?? '2026-10-31';
 const page = CONTENT_PAGES[locale][use];
 const data: PageFrontmatter = {
   pageId: 'builds',
@@ -31,7 +31,7 @@ const data: PageFrontmatter = {
   title: page.title,
   seoTitle: page.seoTitle,
   // Search snippet: the builds themselves, not a sentence about the page.
-  description: metaDescription(`${page.seoTitle}. ${list.map((b) => `${b.name[locale]}: ${b.tagline[locale]}`).join(' ')}`),
+  description: metaDescription(`${page.seoTitle}. ${list.map((b) => `${b.name[locale]}: ${b.tagline[locale]}`).join(' ') || tb(locale, 'index.none')}`),
   gameVersion: list[0]?.gameVersion ?? currentVersion.id,
   published: new Date(`${updated}T00:00:00Z`),
   reviewed: new Date(`${updated}T00:00:00Z`),
@@ -55,7 +55,7 @@ const headings = use === 'leveling' ? [{ depth: 2, slug: guidesId, text: tb(loca
   subpage={{ paths, crumbs: [{ label: USE_TITLES[locale][use], url: paths[locale] }], modified: new Date(`${updated}T00:00:00Z`) }}
 >
   {
-    use === 'leveling' && (
+    use === 'leveling' && list.length > 0 && (
       <>
         <p>{tb(locale, 'content.levelingIntro.arcane')}</p>
         <p>{tb(locale, 'content.levelingIntro.rotation')}</p>

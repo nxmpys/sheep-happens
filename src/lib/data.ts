@@ -33,7 +33,6 @@ import rawLegacy from '../data/legacy.json';
 import rawSpecs from '../data/specs.json';
 import {
   BUILD_SPECS,
-  BUILD_USES,
   abilitySchema,
   addonSchema,
   buildSchema,
@@ -480,11 +479,6 @@ const integrity = [
     if (!overview) {
       integrity.push(`specs.json: no overview for "${spec}"`);
       continue;
-    }
-    for (const use of BUILD_USES) {
-      const has = dataset.builds.some((b) => b.spec === spec && b.uses.includes(use));
-      if (!has && !overview.noBuild[use]) integrity.push(`specs.json: "${spec}" has no ${use} build and no reason in noBuild.${use}`);
-      if (has && overview.noBuild[use]) integrity.push(`specs.json: "${spec}" explains why there is no ${use} build, but there is one`);
     }
   }
   for (const quest of classQuests) {

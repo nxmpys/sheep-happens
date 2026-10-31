@@ -12,7 +12,7 @@
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { talents } from '../src/lib/data';
-import { looksEnglish } from '../src/lib/spell-text';
+import { fixGameText, looksEnglish } from '../src/lib/spell-text';
 
 const OUT = new URL('../src/data/talent-text.json', import.meta.url);
 const PAGES = { en: 'https://www.wowhead.com/forever/talent-calc/mage', es: 'https://www.wowhead.com/forever/es/talent-calc/mage' } as const;
@@ -88,7 +88,7 @@ for (const talent of talents) {
     continue;
   }
   const ranks = (t: WowheadTalent) =>
-    Array.from({ length: talent.maxRank }, (_, n) => plain(t.descriptions[String(n + 1)] ?? t.descriptions['1'] ?? ''));
+    Array.from({ length: talent.maxRank }, (_, n) => fixGameText(plain(t.descriptions[String(n + 1)] ?? t.descriptions['1'] ?? '')));
   const esRanks = ranks(b);
   if (a.row + 1 !== talent.row || a.col + 1 !== talent.col) {
     console.warn(`- ${talent.id}: Wowhead has it at row ${a.row + 1}, col ${a.col + 1} (talents.json: ${talent.row}, ${talent.col})`);

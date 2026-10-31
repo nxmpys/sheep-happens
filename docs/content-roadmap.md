@@ -41,7 +41,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [ ] Filas de Piroexplosión, Ola explosiva, Combustión, Presencia mental y Poder Arcano (ahora son «Referencia Classic» en `milestones.json`).
 - [x] Requisito entre Dedos de Escarcha y Lanza de hielo (2026-10-30): Dedos de Escarcha requiere Lanza de hielo. Discrepancia cerrada en Fuentes, Cambios y `content-validation.md`.
 - [x] Builds de mazmorras a nivel 60 (`*-dungeons` en `builds.json`, 2026-10-30): Arcano, Arcano y Fuego, Pirofrío, Fuego y Escarcha, sin probar en el juego.
-- [ ] Decidir si las builds de mazmorras sirven también para banda (añadir `raid` a sus `uses` y quitar `noBuild.raid` en `specs.json`).
+- [ ] Decidir si las builds de mazmorras sirven también para banda (añadir `raid` a sus `uses`).
 - [ ] Al llegar a 60: comprobar con esas builds si el 6 % de golpe de Precision basta en mazmorras, si Meditación Arcana y Armadura de mago se suman, si la cola de un hechizo sobre Dedos de Escarcha da el tercer golpe, si Poder de Fuego cuenta Chamuscar mejorado, cuánto maná base tiene el Mago (el coste de Explosión Arcana depende de él), si Misiles Arcanos gratis consumen Lanzamiento libre y si los costes de los rangos máximos siguen siendo los de la beta. Revisar también las guías de Wowhead de cada rama cuando las actualicen a 60.
 - [ ] Builds probadas: leveo primero; después farmeo AoE, mazmorras, banda y PvP, solo en las ramas con sentido (ver la sección 4).
 - [x] Calculadora de talentos de Forever: la de Wowhead, con enlaces generados desde `src/lib/talents.ts` (`wowheadBuildUrl`) (hecho el 2026-10-13).
@@ -180,7 +180,7 @@ Forever añade contenido en todos los rangos de nivel:
 
 Muchos lectores no querrán leer la teoría: buscarán una build que funcione y cómo jugarla. Al principio, **builds de leveo y de farmeo AoE**; cuando la gente llegue a 60, de mazmorras, banda, PvP y duelos. El contenido en profundidad se queda para quien quiera entender el Mago.
 
-Del 1 al 30 ya está publicado como BETA (2026-10-14). Del 31 al 60 sigue bloqueado por el tope de nivel 30 de la beta y por la falta de valores oficiales de los talentos.
+El 2026-10-31 retiré todas las builds (`builds.json` está vacío). La guía enlaza solo a las páginas de contenido (`<BuildLink use="leveling">`, `dungeons`, `pvp`), que existen aunque no tengan builds, y nunca a una build concreta, porque las builds cambian. Las URL de las builds retiradas redirigen con un 302 en `public/_redirects`: si una build nueva reutiliza su slug, quita esas líneas.
 
 ### Objetivo: builds viables que encajen con el contenido (fijado el 2026-10-18)
 

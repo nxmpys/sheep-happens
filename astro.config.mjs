@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import { parse as parseYaml } from 'yaml';
 import { LOCALES, pathFor } from './src/i18n/routes.ts';
 import { lastModified } from './src/lib/seo.ts';
-import { buildPath, contentPath, usedContents } from './src/lib/build-routes.ts';
+import { buildPath, contentPages, contentPath } from './src/lib/build-routes.ts';
 
 // Production URL (Cloudflare Pages). Override with SITE_URL for another host
 // or a custom domain, and BASE_PATH if the site lives under a sub-path.
@@ -40,12 +40,12 @@ function sitemapIndex() {
       });
     }
   }
-  // Build pages (src/pages/[lang]/builds/[use]/): one per content with builds and one per build,
+  // Build pages (src/pages/[lang]/builds/[use]/): one per content and one per build,
   // dated by the builds' `updated`.
   /** @type {import('./src/lib/schemas.ts').Build[]} */
   const builds = JSON.parse(readFileSync(new URL('./src/data/builds.json', import.meta.url), 'utf8'));
   /** @param {typeof builds} list */
-  const dated = (list) => new Date(`${list.map((b) => b.updated ?? '2026-10-11').sort().at(-1)}T00:00:00Z`).toISOString();
+  const dated = (list) => new Date(`${list.map((b) => b.updated ?? '2026-10-11').sort().at(-1) ?? '2026-10-31'}T00:00:00Z`).toISOString();
   /** @param {(locale: import('./src/i18n/routes.ts').Locale) => string} pathIn @param {string} lastmod */
   const addPage = (pathIn, lastmod) => {
     for (const locale of LOCALES) {
@@ -58,7 +58,7 @@ function sitemapIndex() {
       });
     }
   };
-  for (const use of usedContents(builds)) {
+  for (const use of contentPages(builds)) {
     addPage((locale) => contentPath(use, locale, { base }), dated(builds.filter((b) => b.uses.includes(use))));
   }
   for (const build of builds) addPage((locale) => buildPath(build, locale, { base }), dated([build]));

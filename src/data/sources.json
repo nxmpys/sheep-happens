@@ -78,6 +78,19 @@
     }
   },
   {
+    "id": "foreverchanges-hotfix-2026-10-30",
+    "title": "WoW Forever patch notes: hotfix of 30 October 2026",
+    "publisher": "Forever Changes (foreverchanges.pro)",
+    "url": "https://foreverchanges.pro/patch-notes",
+    "kind": "community",
+    "published": "2026-10-30",
+    "accessed": "2026-10-31",
+    "notes": {
+      "es": "Hotfix de la build 1.60.1.70707, visto el 30 de octubre y sin notas de Blizzard: Lanza de hielo vuelve al 300 % contra objetivos congelados y lleva 8 s de reutilización en todos sus rangos, y cambian Barrera de hielo, Escalofrío del invierno, Alcance ártico, Recuperación Arcana y Explosión Arcana. Lo he contrastado con la calculadora de Wowhead Forever.",
+      "en": "Hotfix to build 1.60.1.70707, first seen on 30 October with no Blizzard notes: Ice Lance goes back to 300% against Frozen targets and has an 8 s cooldown at every rank, and Ice Barrier, Winter's Chill, Arctic Reach, Arcane Resilience and Arcane Blast change. I checked it against the Wowhead Forever talent calculator."
+    }
+  },
+  {
     "id": "foreverchanges-hotfix-2026-10-20",
     "title": "WoW Forever patch notes: hotfix of 20 October 2026",
     "publisher": "Forever Changes (foreverchanges.pro)",

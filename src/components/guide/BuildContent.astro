@@ -27,6 +27,7 @@ const list = builds
 ---
 
 <div class="content-builds">
+  {list.length === 0 && <p>{tb(locale, 'index.none')}</p>}
   {
     list.map((build) => {
       const role = buildRole(build, use);

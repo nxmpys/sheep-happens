@@ -1,26 +1,21 @@
 ---
 /**
- * Link to a build's own page by build id, or to a content's builds page by
- * use, so MDX never hardcodes their URLs. A content with no builds yet has no
- * page, so its link goes to the builds index:
- *   <BuildLink id="frost-leveling-solo">la build de leveo</BuildLink>
+ * Link to a content's builds page, so MDX never hardcodes its URL. The guide
+ * never links to a concrete build, because builds change. A content with no
+ * page goes to the builds index:
  *   <BuildLink use="leveling">las builds de leveo</BuildLink>
  */
 import { getLocale, href } from '../../i18n/locale';
-import { buildPath, contentPath, usedContents } from '../../lib/build-routes';
-import { builds, getBuild } from '../../lib/data';
+import { contentPages, contentPath } from '../../lib/build-routes';
+import { builds } from '../../lib/data';
 import type { BuildUse } from '../../lib/schemas';
 
-type Props = { id: string; use?: never } | { use: BuildUse; id?: never };
+type Props = { use: BuildUse };
 
-const { id, use } = Astro.props;
+const { use } = Astro.props;
 const locale = getLocale(Astro);
 const base = import.meta.env.BASE_URL;
-const url = id
-  ? buildPath(getBuild(id), locale, { base })
-  : usedContents(builds).includes(use!)
-    ? contentPath(use!, locale, { base })
-    : href('builds', locale);
+const url = contentPages(builds).includes(use) ? contentPath(use, locale, { base }) : href('builds', locale);
 ---
 
 <a href={url}><slot /></a>

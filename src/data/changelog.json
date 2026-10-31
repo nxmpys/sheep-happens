@@ -1,5 +1,97 @@
 [
   {
+    "id": "2026-10-31-talents",
+    "date": "2026-10-31",
+    "type": "game",
+    "title": {
+      "es": "Cambios de talentos del 30 de octubre",
+      "en": "Talent changes of 30 October"
+    },
+    "body": {
+      "es": "Un hotfix de la build 1.60.1.70707 cambia varios talentos del Mago. Blizzard no ha publicado notas: los cambios salen de los datos de la build. Debajo, cada cambio con mi valoración: mejora, empeora o se queda igual. También he retirado todas las builds que tenía publicadas.",
+      "en": "A hotfix to build 1.60.1.70707 changes several Mage talents. Blizzard has published no notes: the changes come from the build data. Below, each change with my verdict: better, worse or about the same. I have also withdrawn every build I had published."
+    },
+    "pages": [
+      "changes",
+      "talent-calc",
+      "talents-arcane",
+      "talents-frost",
+      "builds"
+    ],
+    "sources": [
+      "foreverchanges-hotfix-2026-10-30",
+      "wowhead-forever-talent-calc"
+    ],
+    "refs": [
+      "change:ice-lance",
+      "change:ice-barrier",
+      "change:winters-chill",
+      "change:arctic-reach",
+      "change:arcane-resilience",
+      "change:arcane-blast",
+      "source:foreverchanges-hotfix-2026-10-30"
+    ],
+    "build": "1.60.1.70707",
+    "items": [
+      {
+        "ref": "change:ice-lance",
+        "impact": "buff",
+        "text": {
+          "es": "Hace un 300 % más contra objetivos congelados en vez de un 200 %, en todos los rangos.",
+          "en": "Deals 300% more damage to Frozen targets instead of 200%, at every rank."
+        }
+      },
+      {
+        "ref": "change:ice-barrier",
+        "impact": "buff",
+        "text": {
+          "es": "Aumenta tu daño de Escarcha un 15 % durante 1 min en vez de un 3 %, y otro 5 % en vez de un 3 % mientras el escudo aguanta.",
+          "en": "Increases your Frost damage by 15% for 1 min instead of 3%, and by another 5% instead of 3% while the shield holds."
+        }
+      },
+      {
+        "ref": "change:winters-chill",
+        "impact": "buff",
+        "text": {
+          "es": "Cada carga hace que el objetivo reciba un 20 % más de daño de tu siguiente Cono de frío, en vez de un 5 %.",
+          "en": "Each stack makes the target take 20% more damage from your next Cone of Cold instead of 5%."
+        }
+      },
+      {
+        "ref": "change:arctic-reach",
+        "impact": "buff",
+        "text": {
+          "es": "Ahora también aumenta el alcance de Lanza de hielo, un 10 o un 20 %.",
+          "en": "Now extends the range of Ice Lance too, by 10% or 20%."
+        }
+      },
+      {
+        "ref": "change:arcane-resilience",
+        "impact": "buff",
+        "text": {
+          "es": "Tiene 3 rangos en vez de 2: hasta un 75 % de tu Intelecto como armadura, antes un 50 %.",
+          "en": "Has 3 ranks instead of 2: up to 75% of your Intellect as Armor, was 50%."
+        }
+      },
+      {
+        "ref": "change:ice-lance",
+        "impact": "nerf",
+        "text": {
+          "es": "Los rangos 2 a 6 ahora también tienen los 8 s de reutilización del rango 1. Antes solo los tenía el rango 1, el del talento.",
+          "en": "Ranks 2 to 6 now have the 8 s cooldown of rank 1 too. Only rank 1, the talent's, had it."
+        }
+      },
+      {
+        "ref": "change:arcane-blast",
+        "impact": "neutral",
+        "text": {
+          "es": "Cada lanzamiento da un 12 % de tu Intelecto como daño de hechizos en vez de un 15 % y sube su coste un 100 % en vez de un 175 %. El efecto dura 18 s en vez de 15.",
+          "en": "Each cast gives 12% of your Intellect as spell damage instead of 15% and raises its mana cost by 100% instead of 175%. The effect lasts 18 s instead of 15."
+        }
+      }
+    ]
+  },
+  {
     "id": "2026-10-30-talent-cards",
     "date": "2026-10-30",
     "type": "guide",
@@ -44,16 +136,7 @@
       "builds"
     ],
     "sources": [],
-    "refs": [
-      "build:arcane-frost-leveling",
-      "build:arcane-dungeons-leveling",
-      "build:frost-leveling",
-      "build:fire-leveling",
-      "build:arcane-dungeons",
-      "build:arcane-fire-dungeons",
-      "build:fire-dungeons",
-      "build:frost-dungeons"
-    ]
+    "refs": []
   },
   {
     "id": "2026-10-30-blood-fury",
@@ -95,12 +178,7 @@
     "sources": [
       "mobalytics-mage-leveling"
     ],
-    "refs": [
-      "build:arcane-frost-leveling",
-      "build:arcane-dungeons-leveling",
-      "build:frost-leveling",
-      "build:fire-leveling"
-    ]
+    "refs": []
   },
   {
     "id": "2026-10-30-dungeon-builds",
@@ -120,13 +198,7 @@
       "talents-fire",
       "talents-frost"
     ],
-    "refs": [
-      "build:arcane-dungeons",
-      "build:arcane-fire-dungeons",
-      "build:frostfire-dungeons",
-      "build:fire-dungeons",
-      "build:frost-dungeons"
-    ]
+    "refs": []
   },
   {
     "id": "2026-10-29-talents",

@@ -496,16 +496,27 @@
     "previousRow": 3,
     "row": 1,
     "summary": {
-      "es": "Pasa de la fila 3 a la 1 (tercera columna), deja de ser un talento decisivo y ahora cuesta 2 puntos para el mismo efecto.",
-      "en": "Moved from row 3 to row 1 (third column), no longer a milestone talent, and now costs 2 points for the same effect."
+      "es": "Pasa de la fila 3 a la 1 (tercera columna) y deja de ser un talento decisivo. Tiene 3 rangos: hasta un 75 % de tu Intelecto como armadura.",
+      "en": "Moved from row 3 to row 1 (third column), no longer a milestone talent. It has 3 ranks: up to 75% of your Intellect as Armor."
     },
     "details": [
       {
         "es": "Estuvo en la fila 2 hasta el 28 de octubre.",
         "en": "It was in row 2 until 28 October."
+      },
+      {
+        "es": "Hasta el hotfix del 30 de octubre tenía 2 rangos y llegaba al 50 %.",
+        "en": "Until the 30 October hotfix it had 2 ranks and reached 50%."
       }
     ],
     "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Hotfix visto el 30 de octubre en la build 1.60.1.70707. Blizzard no ha publicado notas: el cambio sale de sus datos.",
+          "en": "Hotfix first seen on 30 October on build 1.60.1.70707. Blizzard has published no notes: the change comes from its data."
+        }
+      },
       {
         "status": "reported",
         "text": {
@@ -516,11 +527,12 @@
     ],
     "status": "verified",
     "sources": [
+      "foreverchanges-hotfix-2026-10-30",
       "blizzard-deep-dive-mage",
       "foreverchanges-build-2026-10-28",
       "wowhead-forever-talent-calc"
     ],
-    "updated": "2026-10-29"
+    "updated": "2026-10-31"
   },
   {
     "id": "arcane-geometry",
@@ -576,13 +588,13 @@
     "row": 3,
     "milestone": 11,
     "summary": {
-      "es": "Talento decisivo de 11 puntos, rediseñado el 15 de octubre. Lanzamiento de 1,5 s. Cada vez que lo lanzas ganas daño de hechizos igual al 15 % de tu Intelecto, y su propio coste de maná sube.",
-      "en": "11-point milestone talent, redesigned on 15 October. 1.5 s cast. Each cast grants you Spell Damage equal to 15% of your Intellect and raises its own mana cost."
+      "es": "Talento decisivo de 11 puntos, rediseñado el 15 de octubre. Lanzamiento de 1,5 s. Cada vez que lo lanzas ganas daño de hechizos igual al 12 % de tu Intelecto, y su propio coste de maná sube.",
+      "en": "11-point milestone talent, redesigned on 15 October. 1.5 s cast. Each cast grants you Spell Damage equal to 12% of your Intellect and raises its own mana cost."
     },
     "details": [
       {
-        "es": "El efecto se acumula hasta 4 veces y dura 15 s desde que se aplica por primera vez: ya no desaparece al lanzar otro hechizo.",
-        "en": "The effect stacks up to 4 times and lasts 15 s from when it is first applied: it no longer fades when you cast another spell."
+        "es": "El efecto se acumula hasta 4 veces y dura 18 s desde que se aplica por primera vez: ya no desaparece al lanzar otro hechizo.",
+        "en": "The effect stacks up to 4 times and lasts 18 s from when it is first applied: it no longer fades when you cast another spell."
       },
       {
         "es": "Su daño y su coeficiente de daño de hechizos bajan un 40 %; el coste de maná no cambia.",
@@ -591,39 +603,51 @@
       {
         "es": "Antes del 15 de octubre era un lanzamiento de 2,5 s que aumentaba el daño de tus otros hechizos de Mago y duraba 8 s o hasta lanzar otro hechizo.",
         "en": "Before 15 October it was a 2.5 s cast that increased the damage of your other Mage spells and lasted 8 s or until another spell was cast."
+      },
+      {
+        "es": "Hasta el hotfix del 30 de octubre daba un 15 % de tu Intelecto, duraba 15 s y cada carga subía su coste un 175 %.",
+        "en": "Until the 30 October hotfix it gave 15% of your Intellect, lasted 15 s and each stack raised its cost by 175%."
       }
     ],
     "notes": [
       {
+        "status": "reported",
+        "text": {
+          "es": "Hotfix visto el 30 de octubre en la build 1.60.1.70707. Blizzard no ha publicado notas: el cambio sale de sus datos.",
+          "en": "Hotfix first seen on 30 October on build 1.60.1.70707. Blizzard has published no notes: the change comes from its data."
+        }
+      },
+      {
         "status": "verified",
         "text": {
-          "es": "Blizzard quiere que, tras acumular cargas, uses otros hechizos de tu arsenal. Con el rediseño, la bonificación de daño de hechizos sigue activa 15 s aunque lances otros hechizos.",
-          "en": "Blizzard wants you to use other spells after building stacks. With the redesign, the Spell Damage bonus stays up for 15 s even while you cast other spells."
+          "es": "Blizzard quiere que, tras acumular cargas, uses otros hechizos de tu arsenal. Con el rediseño, la bonificación de daño de hechizos sigue activa aunque lances otros hechizos.",
+          "en": "Blizzard wants you to use other spells after building stacks. With the redesign, the Spell Damage bonus stays up even while you cast other spells."
         }
       },
       {
         "status": "reported",
         "text": {
-          "es": "En los datos de la beta, cada carga sube su coste de maná un 175 %.",
-          "en": "In the beta data, each stack raises its mana cost by 175%."
+          "es": "En los datos de la build 1.60.1.70707, cada carga sube su coste de maná un 100 %.",
+          "en": "In the data of build 1.60.1.70707, each stack raises its mana cost by 100%."
         }
       },
       {
         "status": "analysis",
         "text": {
-          "es": "El juego natural es acumular 2-4 cargas y gastar los 15 s en Cólera Arcana, Misiles Arcanos u otros hechizos potenciados.",
-          "en": "The natural play is to build 2-4 stacks and spend the 15 s on Arcane Wrath, Arcane Missiles or other boosted spells."
+          "es": "El juego natural es acumular 2-4 cargas y gastar los 18 s en Cólera Arcana, Misiles Arcanos u otros hechizos potenciados.",
+          "en": "The natural play is to build 2-4 stacks and spend the 18 s on Arcane Wrath, Arcane Missiles or other boosted spells."
         }
       }
     ],
     "status": "verified",
     "sources": [
+      "foreverchanges-hotfix-2026-10-30",
       "blizzard-deep-dive-mage",
       "warcrafttavern-mage-deep-dive",
       "blizzard-dev-notes",
       "wowhead-forever-talent-calc"
     ],
-    "updated": "2026-10-16"
+    "updated": "2026-10-31"
   },
   {
     "id": "arcane-shielding",
@@ -1399,11 +1423,23 @@
     ],
     "row": 7,
     "summary": {
-      "es": "Ahora también aumenta un 3 % tu daño de Escarcha durante 1 min, y otro 3 % mientras el escudo aguanta. El escudo escala con tu daño de hechizos de Escarcha.",
-      "en": "Now also increases your Frost damage by 3% for 1 min, and by another 3% while the shield holds. The shield scales with your Frost spell power."
+      "es": "Ahora también aumenta un 15 % tu daño de Escarcha durante 1 min, y otro 5 % mientras el escudo aguanta. El escudo escala con tu daño de hechizos de Escarcha.",
+      "en": "Now also increases your Frost damage by 15% for 1 min, and by another 5% while the shield holds. The shield scales with your Frost spell power."
     },
-    "details": [],
+    "details": [
+      {
+        "es": "Hasta el hotfix del 30 de octubre era un 3 % durante 1 min y otro 3 % con el escudo.",
+        "en": "Until the 30 October hotfix it was 3% for 1 min and another 3% with the shield."
+      }
+    ],
     "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Hotfix visto el 30 de octubre en la build 1.60.1.70707. Blizzard no ha publicado notas: el cambio sale de sus datos.",
+          "en": "Hotfix first seen on 30 October on build 1.60.1.70707. Blizzard has published no notes: the change comes from its data."
+        }
+      },
       {
         "status": "reported",
         "text": {
@@ -1414,10 +1450,41 @@
     ],
     "status": "reported",
     "sources": [
+      "foreverchanges-hotfix-2026-10-30",
       "foreverchanges-hotfix-2026-10-20",
       "wowhead-forever-talent-calc"
     ],
-    "updated": "2026-10-21"
+    "updated": "2026-10-31"
+  },
+  {
+    "id": "arctic-reach",
+    "name": "Arctic Reach",
+    "tree": "frost",
+    "category": "talent",
+    "kinds": [
+      "adjusted"
+    ],
+    "row": 4,
+    "summary": {
+      "es": "Ahora también aumenta el alcance de Lanza de hielo, un 10 o un 20 % según los puntos, además del de Descarga de Escarcha y Ventisca y el radio de Nova de Escarcha y Cono de frío.",
+      "en": "Now also extends the range of Ice Lance, by 10% or 20% depending on points, besides that of Frostbolt and Blizzard and the radius of Frost Nova and Cone of Cold."
+    },
+    "details": [],
+    "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Hotfix visto el 30 de octubre en la build 1.60.1.70707. Blizzard no ha publicado notas: el cambio sale de sus datos.",
+          "en": "Hotfix first seen on 30 October on build 1.60.1.70707. Blizzard has published no notes: the change comes from its data."
+        }
+      }
+    ],
+    "status": "reported",
+    "sources": [
+      "foreverchanges-hotfix-2026-10-30",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-10-31"
   },
   {
     "id": "piercing-ice",
@@ -1494,20 +1561,27 @@
     "row": 3,
     "milestone": 11,
     "summary": {
-      "es": "Nuevo talento decisivo de 11 puntos. Instantáneo y de poco daño, pero hace un 200 % más contra objetivos congelados (o tratados como congelados gracias a Dedos de Escarcha). Tiene 8 s de reutilización.",
-      "en": "New 11-point milestone talent. Instant cast with low damage, increased by 200% against Frozen targets (or targets treated as Frozen by Fingers of Frost). It has an 8 s cooldown."
+      "es": "Nuevo talento decisivo de 11 puntos. Instantáneo y de poco daño, pero hace un 300 % más contra objetivos congelados (o tratados como congelados gracias a Dedos de Escarcha). Tiene 8 s de reutilización en todos sus rangos.",
+      "en": "New 11-point milestone talent. Instant cast with low damage, increased by 300% against Frozen targets (or targets treated as Frozen by Fingers of Frost). It has an 8 s cooldown at every rank."
     },
     "details": [
       {
-        "es": "La bonificación contra objetivos congelados bajó del 300 % al 200 % el 15 de octubre.",
-        "en": "The bonus against Frozen targets was lowered from 300% to 200% on 15 October."
+        "es": "La bonificación contra objetivos congelados bajó del 300 % al 200 % el 15 de octubre y volvió al 300 % con el hotfix del 30 de octubre, en todos los rangos.",
+        "en": "The bonus against Frozen targets was lowered from 300% to 200% on 15 October and went back to 300% with the 30 October hotfix, at every rank."
       },
       {
-        "es": "Desde el 28 de octubre tiene 8 s de reutilización: ya no se puede lanzar seguido.",
-        "en": "Since 28 October it has an 8 s cooldown: it can no longer be cast back to back."
+        "es": "Desde el 28 de octubre, el rango 1, el del talento, tiene 8 s de reutilización. Con el hotfix del 30 de octubre, los rangos 2 a 6 también.",
+        "en": "Since 28 October, rank 1, the talent's, has an 8 s cooldown. With the 30 October hotfix, ranks 2 to 6 do too."
       }
     ],
     "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Hotfix visto el 30 de octubre en la build 1.60.1.70707. Blizzard no ha publicado notas: el cambio sale de sus datos.",
+          "en": "Hotfix first seen on 30 October on build 1.60.1.70707. Blizzard has published no notes: the change comes from its data."
+        }
+      },
       {
         "status": "reported",
         "text": {
@@ -1525,13 +1599,14 @@
     ],
     "status": "verified",
     "sources": [
+      "foreverchanges-hotfix-2026-10-30",
       "blizzard-deep-dive-mage",
       "warcrafttavern-mage-deep-dive",
       "blizzard-dev-notes",
       "foreverchanges-build-2026-10-28",
       "wowhead-forever-talent-calc"
     ],
-    "updated": "2026-10-29"
+    "updated": "2026-10-31"
   },
   {
     "id": "improved-blizzard",
@@ -1685,12 +1760,12 @@
     },
     "details": [
       {
-        "es": "Con 1/2/3/4/5 puntos, un 20/40/60/80/100 % de probabilidad de aplicarlo. Cada carga aumenta un 5 % el daño que el objetivo recibe de tu siguiente Cono de frío y le suma un 7 % de tu daño de hechizos.",
-        "en": "At 1/2/3/4/5 points, a 20/40/60/80/100% chance to apply it. Each stack increases the damage the target takes from your next Cone of Cold by 5% and adds 7% of your Spell Damage to it."
+        "es": "Con 1/2/3/4/5 puntos, un 20/40/60/80/100 % de probabilidad de aplicarlo. Cada carga aumenta un 20 % el daño que el objetivo recibe de tu siguiente Cono de frío y le suma un 7 % de tu daño de hechizos.",
+        "en": "At 1/2/3/4/5 points, a 20/40/60/80/100% chance to apply it. Each stack increases the damage the target takes from your next Cone of Cold by 20% and adds 7% of your Spell Damage to it."
       },
       {
-        "es": "Las notas oficiales hablaban también de un 40 % más de daño de Cono de frío por acumulación. Desde el hotfix del 20 de octubre, los datos de la beta dan un 5 % por acumulación en todas sus descripciones.",
-        "en": "The official notes also described it as 40% more Cone of Cold damage per stack. Since the 20 October hotfix, the beta data gives 5% per stack in every description."
+        "es": "Las notas oficiales hablaban de un 40 % más de daño de Cono de frío por acumulación. El hotfix del 20 de octubre lo dejó en un 5 % y el del 30 de octubre, en un 20 %.",
+        "en": "The official notes described it as 40% more Cone of Cold damage per stack. The 20 October hotfix made it 5%, and the 30 October hotfix 20%."
       },
       {
         "es": "Sigue beneficiando solo al Mago que lo aplica.",
@@ -1698,6 +1773,13 @@
       }
     ],
     "notes": [
+      {
+        "status": "reported",
+        "text": {
+          "es": "Hotfix visto el 30 de octubre en la build 1.60.1.70707. Blizzard no ha publicado notas: el cambio sale de sus datos.",
+          "en": "Hotfix first seen on 30 October on build 1.60.1.70707. Blizzard has published no notes: the change comes from its data."
+        }
+      },
       {
         "status": "analysis",
         "text": {
@@ -1708,11 +1790,12 @@
     ],
     "status": "verified",
     "sources": [
+      "foreverchanges-hotfix-2026-10-30",
       "blizzard-deep-dive-mage",
       "blizzard-dev-notes",
       "wowhead-forever-talent-calc",
       "foreverchanges-hotfix-2026-10-20"
     ],
-    "updated": "2026-10-30"
+    "updated": "2026-10-31"
   }
 ]

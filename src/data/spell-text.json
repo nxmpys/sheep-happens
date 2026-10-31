@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-10-29",
+  "fetched": "2026-10-31",
   "spells": {
     "10": {
       "icon": "spell_frost_icestorm",
@@ -506,7 +506,7 @@
         "text": "Reduces the casting time of your Fireball, Frostfire Bolt, and Arcane Wrath spells by 1 sec."
       },
       "es": {
-        "name": "Bola de Fuego mejorada",
+        "name": "Acelerante",
         "meta": [],
         "text": "Reduces the casting time of your Fireball, Frostfire Bolt, and Arcane Wrath spells by 1 sec.",
         "lang": "en"
@@ -765,12 +765,12 @@
       "en": {
         "name": "Winter's Chill",
         "meta": [],
-        "text": "Gives your Frostbolt, Frost Blast, and Fingers of Frost empowered Ice Lance spells a 20/40/60/80/100% chance to apply Winter's Chill, increasing the target's damage taken from your next Cone of Cold by 5% and it gains an additional 7% of your spell damage, stacking up to 5 times."
+        "text": "Gives your Frostbolt, Frost Blast, and Fingers of Frost empowered Ice Lance spells a 20/40/60/80/100% chance to apply Winter's Chill, increasing the target's damage taken from your next Cone of Cold by 20% and it gains an additional 7% of your spell damage, stacking up to 5 times."
       },
       "es": {
         "name": "Escalofrío del invierno",
         "meta": [],
-        "text": "Otorga a tus hechizos Lanza de hielo potenciados con Descarga de Escarcha, Explosión de Escarcha y Dedos de Escarcha un 20/40/60/80/100% de probabilidad de aplicar Escalofrío invernal, lo que aumenta un 5% el daño recibido por el objetivo de tu siguiente Cono de frío y obtiene un 7% adicional de tu daño con hechizos, acumulándose hasta 5 veces."
+        "text": "Otorga a tus hechizos Lanza de hielo potenciados con Descarga de Escarcha, Explosión de Escarcha y Dedos de Escarcha un 20/40/60/80/100% de probabilidad de aplicar Escalofrío invernal, lo que aumenta un 20% el daño recibido por el objetivo de tu siguiente Cono de frío y obtiene un 7% adicional de tu daño con hechizos, acumulándose hasta 5 veces."
       }
     },
     "11185": {
@@ -888,7 +888,8 @@
       "es": {
         "name": "Canalización mejorada",
         "meta": [],
-        "text": "Da a tu hechizo Misiles Arcanos un 20% de probabilidad de no perder tiempo de lanzamiento cuando recibes daño, y un 14% a tus hechizos Explosión Arcana y Cólera Arcana."
+        "text": "Gives your Arcane Missiles spell a 20% chance and your Arcane Blast and Arcane Wrath spells a 14% chance to not lose casting time when you take damage.",
+        "lang": "en"
       }
     },
     "11242": {
@@ -973,7 +974,7 @@
           "Instant",
           "30 sec cooldown"
         ],
-        "text": "Shield yourself, absorbing damage and increasing your Frost damage by 3% for 1 min. While shielded, your Frost damage is increased by an additional 3% and you do not lose casting time when you take damage."
+        "text": "Shield yourself, absorbing damage and increasing your Frost damage by 15% for 1 min. While shielded, your Frost damage is increased by an additional 5% and you do not lose casting time when you take damage."
       },
       "es": {
         "name": "Barrera de hielo",
@@ -982,7 +983,7 @@
           "Instante",
           "30 seg de reutilización"
         ],
-        "text": "Te protege con un escudo que absorbe p. de daño y aumenta un 3% tu daño de Escarcha durante 1 min. Mientras tengas la protección, tu daño de Escarcha aumenta un 3% más y no pierdes tiempo de lanzamiento por recibir daño."
+        "text": "Te protege con un escudo que absorbe p. de daño y aumenta un 15% tu daño de Escarcha durante 1 min. Mientras tengas la protección, tu daño de Escarcha aumenta un 5% más y no pierdes tiempo de lanzamiento por recibir daño."
       }
     },
     "11958": {
@@ -1113,12 +1114,12 @@
       "en": {
         "name": "Arctic Reach",
         "meta": [],
-        "text": "Increases the range of your Frostbolt, Frost Blast, and Blizzard spells and the radius of your Frost Nova and Cone of Cold spells by 10%."
+        "text": "Increases the range of your Frostbolt, Frost Blast, Ice Lance, and Blizzard spells and the radius of your Frost Nova and Cone of Cold spells by 10%."
       },
       "es": {
         "name": "Alcance ártico",
         "meta": [],
-        "text": "Aumenta en un 10% el alcance de tus hechizos Descarga de Escarcha, Explosión de Escarcha y Ventisca, así como el radio de tus hechizos Nova de Escarcha y Cono de frío."
+        "text": "Aumenta en un 10% el alcance de tus hechizos Descarga de Escarcha, Explosión de Escarcha, Lanza de hielo y Ventisca, así como el radio de tus hechizos Nova de Escarcha y Cono de frío."
       }
     },
     "18459": {
@@ -1155,7 +1156,7 @@
           "Instant",
           "3 min cooldown"
         ],
-        "text": "Increases your spellcasting and attack speed by 10% for 10 sec."
+        "text": "Increases your spellcasting and attack speed by 10% for 15 sec."
       },
       "es": {
         "name": "Iracundia",
@@ -1163,7 +1164,7 @@
           "Instante",
           "3 min de reutilización"
         ],
-        "text": "Aumenta un 10% tus velocidades de ataque y lanzamiento de hechizos durante 10 s."
+        "text": "Aumenta un 10% tus velocidades de ataque y lanzamiento de hechizos durante 15 s."
       }
     },
     "20555": {
@@ -1295,12 +1296,12 @@
       "en": {
         "name": "Ruthless",
         "meta": [],
-        "text": "Increases your critical strike chance with all spells and attacks by 2%."
+        "text": "Increases your critical strike chance with all spells and attacks by 1%."
       },
       "es": {
         "name": "Crueldad",
         "meta": [],
-        "text": "Aumenta un 2% la probabilidad de conseguir un golpe crítico con todos los hechizos y ataques."
+        "text": "Aumenta un 1% la probabilidad de conseguir un golpe crítico con todos los hechizos y ataques."
       }
     },
     "20598": {
@@ -1308,12 +1309,12 @@
       "en": {
         "name": "The Human Spirit",
         "meta": [],
-        "text": "Spirit increased by 5%."
+        "text": "Spirit increased by 10%."
       },
       "es": {
         "name": "El espíritu humano",
         "meta": [],
-        "text": "Espíritu aumentado en un 5%."
+        "text": "Espíritu aumentado en un 10%."
       }
     },
     "20600": {
@@ -1340,12 +1341,12 @@
       "en": {
         "name": "Arcane Resilience",
         "meta": [],
-        "text": "Increases your Armor by an amount equal to 50% of your Intellect."
+        "text": "Increases your Armor by an amount equal to 25/50/75% of your Intellect."
       },
       "es": {
         "name": "Recuperación Arcana",
         "meta": [],
-        "text": "Aumenta tu armadura un valor equivalente al 50% de tu intelecto."
+        "text": "Aumenta tu armadura un valor equivalente al 25/50/75% de tu intelecto."
       }
     },
     "29074": {
@@ -1369,7 +1370,7 @@
         "text": "Improves your chance to hit with all spells by 6%."
       },
       "es": {
-        "name": "Enfoque elemental",
+        "name": "Precisión",
         "meta": [],
         "text": "Improves your chance to hit with all spells by 6%.",
         "lang": "en"
@@ -1397,7 +1398,7 @@
           "30 yd range",
           "1.5 sec cast"
         ],
-        "text": "Blasts the target with energy, dealing 34 to 38 Arcane damage. Each time you cast Arcane Blast, you gain 15% of your Intellect as Spell Damage and the mana cost of Arcane Blast is increased by 175%. Effect stacks up to 4 times and lasts 15 sec from time of initial application."
+        "text": "Blasts the target with energy, dealing 34 to 38 Arcane damage. Each time you cast Arcane Blast, you gain 12% of your Intellect as Spell Damage and the mana cost of Arcane Blast is increased by 100%. Effect stacks up to 4 times and lasts 18 sec from time of initial application."
       },
       "es": {
         "name": "Explosión Arcana",
@@ -1406,7 +1407,7 @@
           "Alcance de 30 m",
           "Hechizo de 1.5 seg"
         ],
-        "text": "Golpea al objetivo con energía e inflige 34 al 38 p. de daño Arcano. Cada vez que lances el hechizo Explosión Arcana, obtienes un 15% de tu intelecto como daño con hechizos y el coste de maná de Explosión Arcana aumenta un 175%. El efecto se acumula hasta 4 veces y dura 15 s desde el momento de la aplicación inicial."
+        "text": "Golpea al objetivo con energía e inflige 34 al 38 p. de daño Arcano. Cada vez que lances el hechizo Explosión Arcana, obtienes un 12% de tu intelecto como daño con hechizos y el coste de maná de Explosión Arcana aumenta un 100%. El efecto se acumula hasta 4 veces y dura 18 s desde el momento de la aplicación inicial."
       }
     },
     "400588": {
@@ -1494,18 +1495,19 @@
       "en": {
         "name": "Read Leyline",
         "meta": [
-          "2 sec cast",
+          "0.5 sec cast",
           "2 min cooldown"
         ],
-        "text": "Attempt to tap into the power of a nearby leyline, increasing your Health and Mana regeneration by 100%. Lasts 30 sec if no leyline is nearby, and 15 min if one is found."
+        "text": "Attempt to tap into the power of a nearby leyline, increasing your Health and Mana regeneration by 50% for 15 sec. If a leyline is nearby, you will become Attuned for the next 1 hour and the effect of this ability will be increased by 100%."
       },
       "es": {
-        "name": "Leer línea Ley",
+        "name": "Read Leyline",
         "meta": [
-          "Hechizo de 2 seg",
+          "Hechizo de 0.5 seg",
           "2 min de reutilización"
         ],
-        "text": "Intentas aprovechar el poder de una línea Ley cercana para aumentar un 100% tu regeneración de salud y maná. Dura 30 s si no hay una línea Ley cerca y 15 min cuando sí la haya."
+        "text": "Attempt to tap into the power of a nearby leyline, increasing your Health and Mana regeneration by 100%. Lasts 15 s if no leyline is nearby, and 1 h if one is found.",
+        "lang": "en"
       }
     },
     "1259707": {
@@ -1526,12 +1528,12 @@
       "en": {
         "name": "Wind Blessed",
         "meta": [],
-        "text": "Increases your spellcasting, melee, and ranged Haste by 3%."
+        "text": "Increases your spellcasting, melee, and ranged Haste by 2%."
       },
       "es": {
         "name": "Bendición del viento",
         "meta": [],
-        "text": "Aumenta un 3% la celeridad con hechizos, cuerpo a cuerpo y a distancia."
+        "text": "Aumenta un 2% la celeridad con hechizos, cuerpo a cuerpo y a distancia."
       }
     },
     "1259718": {
@@ -1652,7 +1654,7 @@
           "Instant",
           "8 sec cooldown"
         ],
-        "text": "Deals 28 to 32 Frost damage to an enemy target. Deals 200% increased damage to Frozen targets."
+        "text": "Deals 28 to 32 Frost damage to an enemy target. Deals 300% increased damage to Frozen targets."
       },
       "es": {
         "name": "Lanza de hielo",
@@ -1662,7 +1664,7 @@
           "Instante",
           "8 seg de reutilización"
         ],
-        "text": "Inflige 28 al 32 p. de daño de Escarcha a un objetivo enemigo. Inflige un 200% más de daño contra objetivos congelados."
+        "text": "Inflige 28 al 32 p. de daño de Escarcha a un objetivo enemigo. Inflige un 300% más de daño contra objetivos congelados."
       }
     },
     "1326053": {

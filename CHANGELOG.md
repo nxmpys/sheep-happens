@@ -4,6 +4,23 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-10-31
+
+### [Juego] Cambios de talentos del 30 de octubre (build 1.60.1.70707)
+
+Un hotfix de la build 1.60.1.70707 cambia varios talentos del Mago. Blizzard no ha publicado notas: los cambios salen de los datos de la build. Debajo, cada cambio con mi valoración: mejora, empeora o se queda igual. También he retirado todas las builds que tenía publicadas.
+
+- ▲ Mejora: **Lanza de hielo**: Hace un 300 % más contra objetivos congelados en vez de un 200 %, en todos los rangos.
+- ▲ Mejora: **Barrera de hielo**: Aumenta tu daño de Escarcha un 15 % durante 1 min en vez de un 3 %, y otro 5 % en vez de un 3 % mientras el escudo aguanta.
+- ▲ Mejora: **Escalofrío del invierno**: Cada carga hace que el objetivo reciba un 20 % más de daño de tu siguiente Cono de frío, en vez de un 5 %.
+- ▲ Mejora: **Alcance ártico**: Ahora también aumenta el alcance de Lanza de hielo, un 10 o un 20 %.
+- ▲ Mejora: **Recuperación Arcana**: Tiene 3 rangos en vez de 2: hasta un 75 % de tu Intelecto como armadura, antes un 50 %.
+- ▼ Empeora: **Lanza de hielo**: Los rangos 2 a 6 ahora también tienen los 8 s de reutilización del rango 1. Antes solo los tenía el rango 1, el del talento.
+- ◆ Igual: **Explosión Arcana**: Cada lanzamiento da un 12 % de tu Intelecto como daño de hechizos en vez de un 15 % y sube su coste un 100 % en vez de un 175 %. El efecto dura 18 s en vez de 15.
+
+- **Datos afectados:** Lanza de hielo, Barrera de hielo, Escalofrío del invierno, Alcance ártico, Recuperación Arcana, Explosión Arcana, WoW Forever patch notes: hotfix of 30 October 2026
+- **Fuentes:** [WoW Forever patch notes: hotfix of 30 October 2026](https://foreverchanges.pro/patch-notes) (Forever Changes (foreverchanges.pro)), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead)
+
 ## 2026-10-30
 
 ### [Guía] Fichas de talentos al día con el árbol del 28 de octubre
@@ -16,8 +33,6 @@ Corrijo varias fichas que no reflejaban el árbol del 28 de octubre: Barrera de 
 
 Todas las builds que llevaban Canalización mejorada a 3/5 o 5/5 ahora llevan Especialización en varitas 2/2, Recuperación Arcana 2/2 y Canalización mejorada 1/5.
 
-- **Datos afectados:** build:arcane-frost-leveling, build:arcane-dungeons-leveling, build:frost-leveling, build:fire-leveling, build:arcane-dungeons, build:arcane-fire-dungeons, build:fire-dungeons, build:frost-dungeons
-
 ### [Juego] Blood Fury vuelve a 2 minutos
 
 La reutilización de Blood Fury baja de 3 a 2 minutos para el lanzamiento. El anuncio de raciales de Blizzard del 26 de octubre no lo menciona: el dato sale de los datos de Forever.
@@ -28,14 +43,11 @@ La reutilización de Blood Fury baja de 3 a 2 minutos para el lanzamiento. El an
 
 Arcano y Escarcha, Arcano hacia mazmorras, Escarcha y Fuego, con el orden de puntos nivel a nivel y el motivo de cada talento. Las dos de Arcano están probadas en la beta, hasta el nivel 30; las de Escarcha y Fuego, aún sin probar.
 
-- **Datos afectados:** build:arcane-frost-leveling, build:arcane-dungeons-leveling, build:frost-leveling, build:fire-leveling
 - **Fuentes:** [Mage Leveling Guide (Level 1-60) - Talents, Rotations, Races & More - WoW Forever](https://mobalytics.gg/wow-forever/classes/mage-leveling-guide) (Mobalytics)
 
 ### [Guía] Cinco builds de mazmorras a nivel 60
 
 Arcano, Arcano y Fuego, Pirofrío, Fuego y Escarcha, cada una con sus pros y contras, el porqué de sus puntos, variantes, rotación y estadísticas. Aún sin probar en el juego: la beta llega al nivel 30.
-
-- **Datos afectados:** build:arcane-dungeons, build:arcane-fire-dungeons, build:frostfire-dungeons, build:fire-dungeons, build:frost-dungeons
 
 ## 2026-10-29
 

@@ -1,19 +1,16 @@
 ---
 /**
  * «Your 51 points»: three sliders that share the budget, with each tree's
- * milestone talents lighting up as you reach their points. The presets are real
- * builds (builds.json), so the split shown is the one that build uses.
+ * milestone talents lighting up as you reach their points.
  */
 import GameIcon from './GameIcon.astro';
 import Icon from '../ui/Icon.astro';
 import '../../styles/learn.css';
 import { getLocale, href } from '../../i18n/locale';
 import { NAV_LABELS, t } from '../../i18n/ui';
-import { buildPath } from '../../lib/build-routes';
-import { builds, milestonesForTree, talentText, talents } from '../../lib/data';
+import { milestonesForTree, talentText, talents } from '../../lib/data';
 import { TREE_ICONS } from '../../lib/icons';
 import { localSpellName } from '../../lib/names';
-import { pointsByTree } from '../../lib/talents';
 
 const TOTAL = 51;
 const TREES = ['arcane', 'fire', 'frost'] as const;
@@ -26,19 +23,10 @@ const trees = TREES.map((tree) => ({
     return { points: slot.points, name: slot.name ?? '', icon: talent ? talentText.talents[talent.id]?.icon : undefined };
   }),
 }));
-const presets = ['frost-leveling', 'arcane-frost-leveling', 'fire-dungeons', 'arcane-fire-dungeons', 'frostfire-dungeons']
-  .map((id) => builds.find((b) => b.id === id))
-  .filter((b) => b !== undefined && b.level === 60)
-  .map((build) => ({
-    id: build!.id,
-    name: build!.name[locale],
-    split: pointsByTree(build!.points, talents),
-    url: buildPath(build!, locale, { base: import.meta.env.BASE_URL }),
-  }));
-const initial = presets[0]!.split;
+const initial = { arcane: 0, fire: 0, frost: 0 };
 const copy = es
-  ? { left: 'Puntos libres', presets: 'Reparto de una build:', see: 'Ver esta build', calc: 'Probarlo con todos los talentos en la calculadora', points: 'puntos' }
-  : { left: 'Points left', presets: 'Split of a build:', see: 'See this build', calc: 'Try it with every talent in the calculator', points: 'points' };
+  ? { left: 'Puntos libres', calc: 'Probarlo con todos los talentos en la calculadora', points: 'puntos' }
+  : { left: 'Points left', calc: 'Try it with every talent in the calculator', points: 'points' };
 ---
 
 <point-splitter class="splitter" data-total={TOTAL} data-no-spell-links>
@@ -77,21 +65,7 @@ const copy = es
       ))
     }
   </div>
-  <div class="splitter__presets">
-    <span>{copy.presets}</span>
-    {
-      presets.map((preset, index) => (
-        <button type="button" class="preset" data-split={JSON.stringify(preset.split)} data-url={preset.url} aria-pressed={index === 0 ? 'true' : 'false'}>
-          {preset.name}
-          <small>
-            {preset.split.arcane}/{preset.split.fire}/{preset.split.frost}
-          </small>
-        </button>
-      ))
-    }
-  </div>
   <p class="splitter__links">
-    <a data-build-link href={presets[0]!.url}>{copy.see}</a>
     <a href={href('talent-calc', locale)}>{copy.calc} <Icon name="arrowRight" size={14} /></a>
   </p>
 </point-splitter>
@@ -101,9 +75,7 @@ const copy = es
     connectedCallback() {
       const total = Number(this.dataset.total);
       const ranges = [...this.querySelectorAll<HTMLInputElement>('input[data-tree]')];
-      const presets = [...this.querySelectorAll<HTMLButtonElement>('.preset')];
       const left = this.querySelector('[data-left]')!;
-      const buildLink = this.querySelector<HTMLAnchorElement>('[data-build-link]');
       const draw = () => {
         left.textContent = String(total - ranges.reduce((sum, r) => sum + Number(r.value), 0));
         for (const range of ranges) {
@@ -120,20 +92,6 @@ const copy = es
           // The three trees share the budget: a slider stops where the points run out.
           const others = ranges.filter((r) => r !== range).reduce((sum, r) => sum + Number(r.value), 0);
           if (Number(range.value) + others > total) range.value = String(total - others);
-          for (const preset of presets) preset.setAttribute('aria-pressed', 'false');
-          if (buildLink) buildLink.hidden = true;
-          draw();
-        });
-      }
-      for (const preset of presets) {
-        preset.addEventListener('click', () => {
-          const split: Record<string, number> = JSON.parse(preset.dataset.split ?? '{}');
-          for (const range of ranges) range.value = String(split[range.dataset.tree!] ?? 0);
-          for (const other of presets) other.setAttribute('aria-pressed', String(other === preset));
-          if (buildLink) {
-            buildLink.hidden = false;
-            buildLink.href = preset.dataset.url ?? '';
-          }
           draw();
         });
       }
@@ -263,53 +221,11 @@ const copy = es
     background: var(--school);
     color: var(--surface-1);
   }
-  .splitter__presets {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-2);
-    font-size: var(--step--1);
-    font-weight: 650;
-    color: var(--text-muted);
-  }
-  .preset {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-    min-height: 40px;
-    padding: 0 0.9em;
-    border: 1px solid var(--border-strong);
-    border-radius: 999px;
-    background: var(--surface-1);
-    color: var(--text);
-    font: inherit;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  .preset small {
-    font-weight: 500;
-    color: var(--text-subtle);
-  }
-  .preset:hover {
-    border-color: var(--accent);
-  }
-  .preset[aria-pressed='true'] {
-    border-color: var(--accent);
-    background: var(--accent);
-    color: var(--accent-contrast);
-  }
-  .preset[aria-pressed='true'] small {
-    color: inherit;
-  }
   .splitter__links {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-2) var(--space-5);
     font-size: var(--step--1);
     font-weight: 600;
-  }
-  .splitter__links a[hidden] {
-    display: none;
   }
 </style>

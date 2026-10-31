@@ -41,7 +41,7 @@ describe('spell tooltips', () => {
   });
 
   it('covers talents Forever did not change, with their milestone slot', () => {
-    expect(findSpell(en, 'Arctic Reach')).toMatchObject({ school: 'frost', more: 'talents', href: '/en/talents/frost/' });
+    expect(findSpell(en, 'Improved Cone of Cold')).toMatchObject({ school: 'frost', more: 'talents', href: '/en/talents/frost/' });
     expect(findSpell(en, 'Presence of Mind')?.facts).toEqual(['Arcane talent', 'Row 5', '21-point milestone']);
   });
 

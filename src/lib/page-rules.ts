@@ -165,7 +165,8 @@ export function validatePages(
         if (!factIds.has(id!)) errors.push(`${where}: unknown fact "${id}"`);
       }
     }
-    for (const [, id] of body.matchAll(/<Build(?:Card|Link)[^>]*\bid="([^"]+)"/g)) {
+    if (/<BuildLink[^>]*\bid=/.test(body)) errors.push(`${where}: <BuildLink> links to a content (use="leveling"), never to a concrete build`);
+    for (const [, id] of body.matchAll(/<BuildCard[^>]*\bid="([^"]+)"/g)) {
       if (!data.builds.some((b) => b.id === id)) errors.push(`${where}: unknown build "${id}"`);
     }
     for (const [, list, recommended] of body.matchAll(/<BuildPicker[^>]*\bids=\{\[([^\]]*)\]\}(?:[^>]*\brecommended="([^"]+)")?/g)) {

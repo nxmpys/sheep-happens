@@ -6,7 +6,7 @@ import ThemeToggle from './ThemeToggle.astro';
 import { href } from '../../i18n/locale';
 import { PRIMARY_NAV, breadcrumbTrail, navPages, type Locale, type NavGroup, type PageId } from '../../i18n/routes';
 import { NAV_GROUP_LABELS, NAV_LABELS, t } from '../../i18n/ui';
-import { usedContents } from '../../lib/build-routes';
+import { contentPages } from '../../lib/build-routes';
 import { builds } from '../../lib/data';
 import { menuBlocks } from '../../lib/nav-menu';
 
@@ -23,7 +23,7 @@ const labels = NAV_LABELS[locale];
 // Four entries: the link goes to the hub page, the dropdown straight to what is
 // inside it (open on hover or with the arrow; always open in the mobile menu).
 // The entry is highlighted on its hub and on every page under it.
-const menuOptions = { base: import.meta.env.BASE_URL, contents: usedContents(builds) };
+const menuOptions = { base: import.meta.env.BASE_URL, contents: contentPages(builds) };
 const currentGroup =
   PRIMARY_NAV.find((group) => pageId !== undefined && navPages([group]).includes(pageId)) ??
   PRIMARY_NAV.find((group) => trail.includes(group.page));

@@ -1,7 +1,7 @@
 /**
  * URLs of the build pages:
  *
- * - one page per content that has builds: /es/builds/leveo/, /en/builds/leveling/;
+ * - one page per content the guide links to, with or without builds yet: /es/builds/leveo/, /en/builds/leveling/;
  * - one page per build, under its first use: /es/builds/leveo/pirofrio-en-solitario/.
  *
  * A build that covers several contents has one canonical URL, from the first
@@ -38,9 +38,17 @@ export function buildPath(build: Routable, locale: Locale, opts: { base?: string
   return opts.hash ? `${path}#${opts.hash}` : path;
 }
 
-/** Contents with at least one build: only those get a page. */
+/** Contents the guide links to: their pages exist even with no builds, so those links never change. */
+export const LINKED_CONTENTS: readonly BuildUse[] = ['leveling', 'dungeons', 'pvp'];
+
+/** Contents with at least one build. */
 export function usedContents(builds: readonly Pick<Build, 'uses'>[]): BuildUse[] {
   return [...new Set(builds.flatMap((b) => b.uses))];
+}
+
+/** Contents with their own page: the linked ones, plus any other that has builds. */
+export function contentPages(builds: readonly Pick<Build, 'uses'>[]): BuildUse[] {
+  return [...new Set([...LINKED_CONTENTS, ...usedContents(builds)])];
 }
 
 /** Builds that would share a URL (same first use and slug, in either locale). */

@@ -70,16 +70,29 @@ export function looksEnglish(text: string): boolean {
 export const REMOVED_SPELLS = ['Frost Blast', 'Explosión de Escarcha'] as const;
 const REMOVED_SPELL_PHRASES: [string, string][] = [
   ['your Frostbolt and Frost Blast spells', 'your Frostbolt spell'],
-  // Longer list first: Missile Barrage keeps four other spells.
+  // Longer lists first: Missile Barrage keeps four other spells, Arctic Reach three.
   ['Frostbolt, Frost Blast, and Frostfire Bolt', 'Frostbolt, and Frostfire Bolt'],
+  ['Frostbolt, Frost Blast, Ice Lance, and ', 'Frostbolt, Ice Lance, and '],
   ['Frostbolt, Frost Blast, and ', 'Frostbolt and '],
   ['tus hechizos Descarga de Escarcha y Explosión de Escarcha', 'tu hechizo Descarga de Escarcha'],
+  ['Descarga de Escarcha, Explosión de Escarcha, Lanza de hielo y ', 'Descarga de Escarcha, Lanza de hielo y '],
   ['Descarga de Escarcha, Explosión de Escarcha y ', 'Descarga de Escarcha y '],
 ];
 
 /** The game text without the spells the game removed (see REMOVED_SPELLS). */
 export function withoutRemovedSpells(text: string): string {
   return REMOVED_SPELL_PHRASES.reduce((result, [from, to]) => result.replaceAll(from, to), text);
+}
+
+/**
+ * Game text Wowhead has not caught up with, applied when downloading it. Each
+ * phrase is replaced exactly, so nothing changes once Wowhead has the new text.
+ * The Spanish Arctic Reach still lacks Ice Lance after the 30 October 2026 hotfix.
+ */
+const GAME_TEXT_FIXES: [string, string][] = [['Descarga de Escarcha, Explosión de Escarcha y Ventisca, así como', 'Descarga de Escarcha, Explosión de Escarcha, Lanza de hielo y Ventisca, así como']];
+
+export function fixGameText(text: string): string {
+  return GAME_TEXT_FIXES.reduce((result, [from, to]) => result.replaceAll(from, to), text);
 }
 
 /** Header lines that are not about the spell itself. */
