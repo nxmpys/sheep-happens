@@ -25,22 +25,18 @@ const entries = new Map(
   (await getCollection('pages', (e) => e.data.locale === locale && e.data.status === 'published')).map((e) => [e.data.pageId, e.data]),
 );
 const ICONS: Partial<Record<PageId, IconName>> = {
-  guide: 'book',
   talents: 'layers',
-  combat: 'cast',
   gear: 'shield',
   leveling: 'map',
   'aoe-farming': 'aoe',
-  'mage-water': 'reset',
-  scrolls: 'scroll',
   races: 'users',
   professions: 'hammer',
   legacy: 'skill',
-  'class-quests': 'reward',
   library: 'library',
   pvp: 'swords',
   changes: 'filter',
   'talent-calc': 'layers',
+  addons: 'cast',
 };
 // Consecutive talent tree pages become one card with three links.
 type Card = { id: PageId } | { trees: PageId[] };

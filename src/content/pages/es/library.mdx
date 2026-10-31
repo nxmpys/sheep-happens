@@ -1,12 +1,12 @@
 ---
 pageId: library
 locale: es
-title: Biblioteca y libros
-seoTitle: Libros de la biblioteca de WoW Forever y sus premios
-description: Dónde está cada libro de la biblioteca en WoW Forever, a quién se entregan, qué premios dan a los 10, 20 y 25 libros y cuál elegir con un Mago.
-lead: Dónde están los 38 libros y qué premio elegir.
+title: Libros y pergaminos
+seoTitle: Libros de biblioteca y Comprender pergamino en WoW Forever
+description: 'Dónde está cada libro de la biblioteca en WoW Forever, qué premios dan y cuál elegir, y cómo usa el Mago Comprender pergamino y qué habilidad pide cada uno.'
+lead: Dónde están los 38 libros, qué premio elegir y cómo descifrar pergaminos.
 gameVersion: forever-beta-2026-10
-published: 2026-10-20
+published: 2026-10-15
 reviewed: 2026-10-20
 reviewedBy: Sheep Happens
 status: published
@@ -16,8 +16,8 @@ summary:
   - 'Premios a los 10, 20 y 25 libros distintos. Para un Mago, el que importa es el Anillo de filántropo (20 libros): +5 de Intelecto y +10 al daño de hechizos.'
   - 'Con el primer libro, el Mago aprende Estudiar: en una biblioteca te da pergaminos para la Comprensión.'
   - 'Marca aquí los libros que entregas y la página te dice cuántos te faltan.'
-sources: [wowhead-library-books, wowhead-forever-database, blizzard-dev-notes]
-tags: [biblioteca, libros, libros de la biblioteca, garion wendell, owen thadd, anillo de filántropo, estudiar, amigo de la biblioteca, ubicaciones de libros]
+sources: [wowhead-library-books, wowhead-forever-database, blizzard-dev-notes, blizzard-deep-dive-mage-es, warcrafttavern-mage-guide, wowhead-forever-comprehension]
+tags: [biblioteca, libros, libros de la biblioteca, garion wendell, owen thadd, anillo de filántropo, estudiar, amigo de la biblioteca, ubicaciones de libros, comprender pergamino, comprehend scroll, comprensión mago, pergaminos wow forever, comprensión, comprehension, investigación del mago, mage research, entender pergamino, pergaminos]
 ---
 
 ## Cómo funciona
@@ -26,7 +26,7 @@ tags: [biblioteca, libros, libros de la biblioteca, garion wendell, owen thadd, 
 2. **Entrégalo al bibliotecario de tu facción.** Cada título cuenta una sola vez, aunque lo encuentres en dos sitios.
 3. **Recoge el premio** cuando hayas entregado 10, 20 y 25 libros distintos: el bibliotecario te ofrece una misión con varios objetos a elegir. Los 10 primeros cuentan para los 20, y estos para los 25.
 
-Todas las clases pueden coleccionar libros. El Mago se lleva algo más: al entregar el primero aprende **Estudiar**, que en una biblioteca te da un montón de pergaminos para descifrar con la Comprensión. Está todo en <PageLink to="scrolls">Pergaminos</PageLink>. <Status status="reported" />
+Todas las clases pueden coleccionar libros. El Mago se lleva algo más: al entregar el primero aprende **Estudiar**, que en una biblioteca te da un montón de pergaminos para descifrar con la Comprensión. Está todo en <PageLink to="library" hash="pergaminos">Pergaminos</PageLink>. <Status status="reported" />
 
 ## Dónde se entregan
 
@@ -72,6 +72,36 @@ Los libros están agrupados por el nivel a partir del cual el viaje deja de ser 
 - **Alianza**: Torre de Azora (Elwynn), Forjaz, la posada de Colina del Centinela y Arroyo de la Luna (Páramos de Poniente), Bastión Mo'grosh (Loch Modan) y, cuando viajes a Kalimdor, Costa Oscura, Trinquete, El Fangal y la cueva de los Lamentos. <Status status="analysis" />
 - **Horda**: Rémol (Tirisfal), El Sepulcro y Molino Ámbar (Argénteos), el mural de Orgrimmar, Trinquete, El Fangal, la cueva de los Lamentos y, cuando puedas, Costa Oscura. Arroyo de la Luna y Mo'grosh están en territorio de la Alianza: déjalos para más adelante. <Status status="analysis" />
 
+## Pergaminos
+
+**Comprensión** (Comprehension) es un oficio menor exclusivo del Mago: lees los pergaminos que sueltan las criaturas y obtienes un pergamino con un efecto útil. Blizzard deja que los jugadores descubran qué dan.
+
+<ScrollGuide part="flow" />
+
+### Dónde está
+
+En el cliente en español, Comprender pergamino aparece como «Entender pergamino». <Status status="verified" />
+
+<ScrollGuide part="spellbook" />
+
+### Sí y no
+
+<ScrollGuide part="yesno" />
+
+### Progresión de la habilidad
+
+Cada pergamino pide un mínimo de Comprensión y deja de subirla al final de su barra.
+
+<ScrollGuide part="tiers" />
+
+### Consejos para el leveo
+
+<ScrollGuide part="tips" />
+
+### Lo que aún no se sabe
+
+<ScrollGuide part="unknown" />
+
 ## Preguntas frecuentes
 
 <Faq>
@@ -86,5 +116,11 @@ Los libros están agrupados por el nivel a partir del cual el viaje deja de ser 
   </FaqItem>
   <FaqItem q="¿Necesito un addon?" status="analysis">
     No, pero TomTom ayuda: copia las coordenadas desde el catálogo y pégalas en el chat para tener una flecha hasta el libro.
+  </FaqItem>
+  <FaqItem q="¿Merece la pena descifrar pergaminos mientras subes de nivel?" status="analysis">
+    Sí, si ya te paras a beber: no cuesta maná y los pergaminos dan mejoras de una hora, como el familiar rata (+2 de Intelecto) o imbuir escarcha en el bastón (hasta +8 al daño de Escarcha, desde el nivel 16).
+  </FaqItem>
+  <FaqItem q="¿Se pueden vender o comerciar los pergaminos?" status="analysis">
+    En los datos del cliente, los pergaminos sin descifrar no van ligados, pero solo un Mago puede leerlos y el vendedor paga 15 cobres. Aún no lo he probado en el juego.
   </FaqItem>
 </Faq>

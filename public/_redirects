@@ -18,3 +18,31 @@
 /en/leveling/by-level/ /en/leveling/ 301
 /en/leveling/by-level /en/leveling/ 301
 
+# The class guide and combat pages were merged into Learn on 31 Oct 2026.
+/es/guia/ /es/aprende/ 301
+/es/guia /es/aprende/ 301
+/en/guide/ /en/learn/ 301
+/en/guide /en/learn/ 301
+/es/combate/ /es/aprende/#el-kit-de-todo-mago 301
+/es/combate /es/aprende/#el-kit-de-todo-mago 301
+/en/combat/ /en/learn/#the-toolkit-every-mage-has 301
+/en/combat /en/learn/#the-toolkit-every-mage-has 301
+
+# The class quests were merged into Gear on 31 Oct 2026.
+/es/misiones-de-clase/ /es/equipo/#misiones-de-clase 301
+/es/misiones-de-clase /es/equipo/#misiones-de-clase 301
+/en/class-quests/ /en/gear/#class-quests 301
+/en/class-quests /en/gear/#class-quests 301
+
+# The scrolls guide was merged into the library page on 31 Oct 2026.
+/es/pergaminos/ /es/biblioteca/#pergaminos 301
+/es/pergaminos /es/biblioteca/#pergaminos 301
+/en/scrolls/ /en/library/#scrolls 301
+/en/scrolls /en/library/#scrolls 301
+
+# The Mage water page was retired on 31 Oct 2026.
+/es/agua-del-mago/ /es/nivelacion/#entre-combates 301
+/es/agua-del-mago /es/nivelacion/#entre-combates 301
+/en/mage-water/ /en/leveling/#between-fights 301
+/en/mage-water /en/leveling/#between-fights 301
+

@@ -1,9 +1,9 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+﻿import { afterEach, describe, expect, it, vi } from 'vitest';
 import { onRequestPost, type Env } from '../functions/api/feedback';
 import { FEEDBACK_MAX, cleanMessage, feedbackIssue, parseFeedback } from '../src/lib/feedback';
 
 const ORIGIN = 'https://sheephappens.app';
-const valid = { kind: 'wrong', message: 'La Nova de Escarcha dura 8 s, no 10.', page: '/es/guia/' };
+const valid = { kind: 'wrong', message: 'La Nova de Escarcha dura 8 s, no 10.', page: '/es/aprende/' };
 
 describe('parseFeedback', () => {
   it('accepts a valid message and derives the locale from the page', () => {
@@ -14,7 +14,7 @@ describe('parseFeedback', () => {
   it('rejects unknown kinds, unknown pages and bad lengths', () => {
     expect(parseFeedback({ ...valid, kind: 'spam' })).toEqual({ ok: false, error: 'kind' });
     expect(parseFeedback({ ...valid, page: '/es/no-existe/' })).toEqual({ ok: false, error: 'page' });
-    expect(parseFeedback({ ...valid, page: 'https://evil.example/es/guia/' })).toEqual({ ok: false, error: 'page' });
+    expect(parseFeedback({ ...valid, page: 'https://evil.example/es/aprende/' })).toEqual({ ok: false, error: 'page' });
     expect(parseFeedback({ ...valid, message: '   corto   ' })).toEqual({ ok: false, error: 'length' });
     expect(parseFeedback({ ...valid, message: 'x'.repeat(FEEDBACK_MAX + 1) })).toEqual({ ok: false, error: 'length' });
     expect(parseFeedback(null)).toEqual({ ok: false, error: 'invalid' });
@@ -32,10 +32,10 @@ describe('feedbackIssue', () => {
     const issue = feedbackIssue(parsed.value, ORIGIN);
     expect(issue.body).toContain('`````text\nHola @nxmpys ````');
     expect(issue.body.trimEnd().endsWith('\n`````')).toBe(true);
-    expect(issue.title).toBe('Feedback: Dato incorrecto · /es/guia/');
+    expect(issue.title).toBe('Feedback: Dato incorrecto · /es/aprende/');
     expect(issue.title).not.toContain('Hola');
     expect(issue.labels).toEqual(['feedback']);
-    expect(issue.body).toContain(`${ORIGIN}/es/guia/`);
+    expect(issue.body).toContain(`${ORIGIN}/es/aprende/`);
   });
 });
 

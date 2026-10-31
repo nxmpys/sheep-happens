@@ -31,11 +31,11 @@ interface Question {
 // (and the level view), what to press, builds, changes, professions, gear.
 const questions: Question[] = [
   {
-    page: 'guide',
+    page: 'learn',
     image: 'q-guide',
     icon: 'book',
     q: { es: '¿Cómo empiezo a jugar Mago?', en: 'How do I start playing Mage?' },
-    a: { es: 'Fundamentos, herramientas por función y qué cambia respecto a Classic.', en: 'Basics, tools by purpose, and what differs from Classic.' },
+    a: { es: 'Qué ofrece la clase, qué te pide y cómo combate.', en: 'What the class offers, what it asks of you and how it fights.' },
   },
   {
     page: 'races',
@@ -59,11 +59,12 @@ const questions: Question[] = [
     a: { es: 'Cómo jugar cada tramo de nivel, los errores frecuentes y lo que cambia Forever al subir.', en: 'How to play each level stretch, common mistakes and what Forever changes for leveling.' },
   },
   {
-    page: 'combat',
+    page: 'learn',
+    hash: 'role-damage',
     image: 'q-combat',
     icon: 'fire',
     q: { es: '¿Qué pulso y cuándo?', en: 'What do I press, and when?' },
-    a: { es: 'Prioridades condicionales por rama, basadas en mecánicas oficiales.', en: 'Conditional priorities per tree, based on official mechanics.' },
+    a: { es: 'Tus hechizos y qué añade cada rama.', en: 'Your spells and what each tree adds.' },
   },
   {
     page: 'builds',
@@ -87,7 +88,8 @@ const questions: Question[] = [
     a: { es: 'Las dos mejores según tu objetivo (JcE, JcJ, leveo u oro) y qué aporta cada una al Mago.', en: 'The best two for your goal (PvE, PvP, leveling or gold) and what each one gives a Mage.' },
   },
   {
-    page: 'class-quests',
+    page: 'gear',
+    hash: 'first-staff',
     image: 'q-class-quests',
     icon: 'reward',
     q: { es: '¿Qué misiones de clase merecen la pena?', en: 'Which class quests are worth it?' },

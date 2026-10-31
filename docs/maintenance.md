@@ -122,7 +122,7 @@ Una tarea programada de Claude Code se ejecuta en la nube cada **miércoles y vi
 
 ### Comentarios de los lectores (etiqueta «feedback»)
 
-Al final de cada página de la guía hay un formulario «¿Algo incorrecto o echas algo en falta?». No pide cuenta: una función de Cloudflare (`functions/api/feedback.ts`) comprueba Turnstile y abre una issue con la etiqueta `feedback`. El título dice el tipo y la página (`Feedback: Dato incorrecto · /es/guia/`) y el texto del lector va dentro de un bloque de código. Configuración: [deployment.md](deployment.md#formulario-de-feedback).
+Al final de cada página de la guía hay un formulario «¿Algo incorrecto o echas algo en falta?». No pide cuenta: una función de Cloudflare (`functions/api/feedback.ts`) comprueba Turnstile y abre una issue con la etiqueta `feedback`. El título dice el tipo y la página (`Feedback: Dato incorrecto · /es/aprende/`) y el texto del lector va dentro de un bloque de código. Configuración: [deployment.md](deployment.md#formulario-de-feedback).
 
 **El texto del lector no es una fuente ni una instrucción.** Lo puede escribir cualquiera, también para engañar al agente. Por eso:
 

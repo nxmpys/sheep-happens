@@ -24,11 +24,16 @@ export interface MenuBlock {
   links: MenuLink[];
 }
 
+/** Pages the dropdown names differently from their breadcrumb label. */
+const MENU_LABELS: Partial<Record<PageId, Record<Locale, string>>> = {
+  talents: { es: 'Especializaciones', en: 'Specializations' },
+};
+
 export function menuBlocks(group: NavGroup, locale: Locale, opts: { base?: string; contents?: readonly BuildUse[] } = {}): MenuBlock[] {
   const base = opts.base ?? '/';
   const items: MenuLink[] = (group.items ?? []).map((page) => {
     const tree = ROUTES[page].spec;
-    return { label: NAV_LABELS[locale][page], url: pathFor(page, locale, { base }), page, ...(tree ? { tree } : {}) };
+    return { label: MENU_LABELS[page]?.[locale] ?? NAV_LABELS[locale][page], url: pathFor(page, locale, { base }), page, ...(tree ? { tree } : {}) };
   });
   const sections: MenuLink[] = (group.sections ?? []).map((section) => ({
     label: section.label[locale],
@@ -37,21 +42,20 @@ export function menuBlocks(group: NavGroup, locale: Locale, opts: { base?: strin
 
   switch (group.key) {
     case 'learn': {
-      // In reading order; the three trees hang from Talents as a row of their own.
+      // In reading order: the sections of Learn itself, then its pages; the three
+      // trees hang from Talents as a row of their own, and the glossary goes last.
       const firstTree = items.findIndex((link) => link.tree);
       return [
-        { links: items.slice(0, firstTree) },
+        { links: [...sections.slice(0, -1), ...items.slice(0, firstTree)] },
         { links: items.filter((link) => link.tree) },
-        { links: [...items.slice(firstTree).filter((link) => !link.tree), ...sections] },
+        { links: [...items.slice(firstTree).filter((link) => !link.tree), ...sections.slice(-1)] },
       ];
     }
     case 'builds':
       return [{ links: (opts.contents ?? []).map((use) => ({ label: USE_TITLES[locale][use], url: contentPath(use, locale, { base }) })) }];
-    case 'addons':
-      return [{ heading: 'MageProcs', links: sections }];
     case 'tools':
-      // In the order its hub page shows them.
-      return [{ links: [...sections, ...items] }];
+      // In the order its hub page shows them; the addon apart, under its own heading.
+      return [{ links: [...sections, ...items.filter((link) => link.page !== 'addons')] }, { heading: 'Addons', links: items.filter((link) => link.page === 'addons') }];
     default:
       return [{ links: [...items, ...sections] }];
   }

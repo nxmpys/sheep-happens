@@ -23,8 +23,8 @@ describe('menuBlocks', () => {
   });
 
   it('lists what the user asked for under Learn and Tools', () => {
-    expect(labels('learn', 'en')).toEqual(['Class guide', 'Combat', 'Talents', 'Arcane', 'Fire', 'Frost', 'First steps in Azeroth', 'Glossary']);
-    expect(labels('tools', 'en')).toEqual(['Crit multiplier', 'Spell hit', 'Talent calculator', 'Forever changes']);
+    expect(labels('learn', 'en')).toEqual(['The class', 'Combat', 'Specializations', 'Arcane', 'Fire', 'Frost', 'First steps in Azeroth', 'Glossary']);
+    expect(labels('tools', 'en')).toEqual(['Crit multiplier', 'Spell hit', 'Talent calculator', 'Forever changes', 'MageProcs']);
   });
 
   it('keeps the talent trees apart, as a row without a heading', () => {
@@ -44,7 +44,9 @@ describe('menuBlocks', () => {
     expect(blocks[0]!.links.map((link) => link.url)).toEqual(['/es/builds/leveo/', '/es/builds/mazmorras/']);
   });
 
-  it('names the addon its sections belong to', () => {
-    expect(menuBlocks(group('addons'), 'en')[0]!.heading).toBe('MageProcs');
+  it('shows the addon once, under its own heading in Tools', () => {
+    const block = menuBlocks(group('tools'), 'en').at(-1)!;
+    expect(block.heading).toBe('Addons');
+    expect(block.links.map((link) => link.label)).toEqual(['MageProcs']);
   });
 });

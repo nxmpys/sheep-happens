@@ -10,10 +10,8 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
     races: 'Razas',
     professions: 'Profesiones',
     legacy: 'Legado',
-    'class-quests': 'Misiones de clase',
-    library: 'Biblioteca y libros',
+    library: 'Libros y pergaminos',
     pvp: 'JcJ (PvP)',
-    guide: 'Guía de clase',
     changes: 'Cambios en Forever',
     talents: 'Talentos',
     'talents-arcane': 'Arcano',
@@ -21,13 +19,10 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
     'talents-frost': 'Escarcha',
     leveling: 'Primeros pasos en Azeroth',
     'aoe-farming': 'Farmeo AoE',
-    'mage-water': 'Agua del Mago',
-    scrolls: 'Pergaminos',
-    combat: 'Combate',
-    gear: 'Equipo',
+    gear: 'Equipo y misiones',
     tools: 'Herramientas',
     'talent-calc': 'Calculadora de talentos',
-    addons: 'Addons',
+    addons: 'MageProcs',
     sources: 'Fuentes',
     updates: 'Novedades',
     about: 'Sobre mí',
@@ -40,10 +35,8 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
     races: 'Races',
     professions: 'Professions',
     legacy: 'Legacy',
-    'class-quests': 'Class quests',
-    library: 'Library and books',
+    library: 'Books and scrolls',
     pvp: 'PvP',
-    guide: 'Class guide',
     changes: 'Forever changes',
     talents: 'Talents',
     'talents-arcane': 'Arcane',
@@ -51,13 +44,10 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
     'talents-frost': 'Frost',
     leveling: 'First steps in Azeroth',
     'aoe-farming': 'AoE farming',
-    'mage-water': 'Mage water',
-    scrolls: 'Scrolls',
-    combat: 'Combat',
-    gear: 'Gear',
+    gear: 'Gear and quests',
     tools: 'Tools',
     'talent-calc': 'Talent calculator',
-    addons: 'Addons',
+    addons: 'MageProcs',
     sources: 'Sources',
     updates: 'Updates',
     about: 'About me',
@@ -65,9 +55,9 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
 };
 
 /** Labels of the primary navigation entries (routes.ts PRIMARY_NAV). */
-export const NAV_GROUP_LABELS: Record<Locale, Record<'learn' | 'builds' | 'guides' | 'tools' | 'addons', string>> = {
-  es: { learn: 'Aprende', builds: 'Builds', guides: 'Guías', tools: 'Herramientas', addons: 'Addons' },
-  en: { learn: 'Learn', builds: 'Builds', guides: 'Guides', tools: 'Tools', addons: 'Addons' },
+export const NAV_GROUP_LABELS: Record<Locale, Record<'learn' | 'builds' | 'guides' | 'tools', string>> = {
+  es: { learn: 'Aprende', builds: 'Builds', guides: 'Guías', tools: 'Herramientas' },
+  en: { learn: 'Learn', builds: 'Builds', guides: 'Guides', tools: 'Tools' },
 };
 
 const es = {

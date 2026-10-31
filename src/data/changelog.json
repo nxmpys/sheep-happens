@@ -498,7 +498,7 @@
     },
     "pages": [
       "home",
-      "guide",
+      "learn",
       "talents-arcane",
       "talents-fire",
       "talents-frost"
@@ -679,8 +679,7 @@
       "builds",
       "leveling",
       "aoe-farming",
-      "combat",
-      "guide",
+      "learn",
       "home"
     ],
     "sources": [
@@ -734,7 +733,7 @@
       "talents-arcane",
       "talents-fire",
       "talents-frost",
-      "combat",
+      "learn",
       "leveling",
       "aoe-farming"
     ],
@@ -804,8 +803,7 @@
     "pages": [
       "aoe-farming",
       "leveling",
-      "combat",
-      "guide",
+      "learn",
       "home"
     ],
     "sources": [
@@ -833,9 +831,9 @@
       "en": "New Scrolls page, under the Class guide. It explains in 90 seconds, with very little text, how to read scrolls with Comprehend Scroll: the steps, where it is in the spellbook, do and don't, the skill each kind of scroll needs according to beta data, three leveling tips and what is still unknown, such as the full list of rewards."
     },
     "pages": [
-      "scrolls",
+      "library",
       "leveling",
-      "guide"
+      "learn"
     ],
     "sources": [
       "blizzard-deep-dive-mage-es",
@@ -862,7 +860,7 @@
       "en": "The client version moves to the 13 October build 70374. The official sources in this review contain no new Mage changes."
     },
     "pages": [
-      "guide"
+      "learn"
     ],
     "sources": [
       "wago-tools-builds"
@@ -1169,11 +1167,10 @@
       "en": "Class guide, Forever change explorer, Arcane, Fire and Frost pages, leveling, combat and a crit calculator. All based on the October 2026 beta."
     },
     "pages": [
-      "guide",
+      "learn",
       "changes",
       "talents",
       "leveling",
-      "combat",
       "tools"
     ],
     "refs": []
@@ -1305,7 +1302,7 @@
     },
     "pages": [
       "guides",
-      "class-quests",
+      "gear",
       "library",
       "pvp",
       "talent-calc",

@@ -56,15 +56,6 @@ import StatusBadge from './guide/StatusBadge.astro';
 import StatusLegend from './guide/StatusLegend.astro';
 import TalentCalculator from './guide/TalentCalculator.astro';
 import WatchList from './guide/WatchList.astro';
-import WaterCalculator from './guide/WaterCalculator.astro';
-import WaterChain from './guide/WaterChain.astro';
-import WaterCompensations from './guide/WaterCompensations.astro';
-import WaterConjureBatches from './guide/WaterConjureBatches.astro';
-import WaterDamage from './guide/WaterDamage.astro';
-import WaterDungeons from './guide/WaterDungeons.astro';
-import WaterGear from './guide/WaterGear.astro';
-import WaterRanks from './guide/WaterRanks.astro';
-import WaterVersions from './guide/WaterVersions.astro';
 import Chain from './learn/Chain.astro';
 import MageIntro from './learn/MageIntro.astro';
 import Pick from './learn/Pick.astro';
@@ -159,14 +150,5 @@ export const mdxComponents = {
   StatusLegend,
   TalentCalculator,
   WatchList,
-  WaterCalculator,
-  WaterChain,
-  WaterCompensations,
-  WaterConjureBatches,
-  WaterDamage,
-  WaterDungeons,
-  WaterGear,
-  WaterRanks,
-  WaterVersions,
   WeeklyChanges,
 };

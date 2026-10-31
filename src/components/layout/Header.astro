@@ -20,7 +20,7 @@ interface Props {
 const { locale, pageId, switchTo } = Astro.props;
 const trail = pageId ? breadcrumbTrail(pageId) : [];
 const labels = NAV_LABELS[locale];
-// Five entries: the link goes to the hub page, the dropdown straight to what is
+// Four entries: the link goes to the hub page, the dropdown straight to what is
 // inside it (open on hover or with the arrow; always open in the mobile menu).
 // The entry is highlighted on its hub and on every page under it.
 const menuOptions = { base: import.meta.env.BASE_URL, contents: usedContents(builds) };

@@ -18,10 +18,8 @@ export const PAGE_IDS = [
   'races',
   'professions',
   'legacy',
-  'class-quests',
   'library',
   'pvp',
-  'guide',
   'changes',
   'talents',
   'talents-arcane',
@@ -29,9 +27,6 @@ export const PAGE_IDS = [
   'talents-frost',
   'leveling',
   'aoe-farming',
-  'mage-water',
-  'scrolls',
-  'combat',
   'gear',
   'tools',
   'talent-calc',
@@ -67,10 +62,8 @@ export const ROUTES: Record<PageId, RouteDef> = {
   races: { id: 'races', slug: { es: 'razas', en: 'races' }, parent: 'guides' },
   professions: { id: 'professions', slug: { es: 'profesiones', en: 'professions' }, parent: 'guides' },
   legacy: { id: 'legacy', slug: { es: 'legado', en: 'legacy' }, parent: 'guides' },
-  'class-quests': { id: 'class-quests', slug: { es: 'misiones-de-clase', en: 'class-quests' }, parent: 'guides' },
   library: { id: 'library', slug: { es: 'biblioteca', en: 'library' }, parent: 'guides' },
   pvp: { id: 'pvp', slug: { es: 'jcj', en: 'pvp' }, parent: 'guides' },
-  guide: { id: 'guide', slug: { es: 'guia', en: 'guide' }, parent: 'learn' },
   // The change explorer moved from Learn to Tools (30 Oct 2026) keeping its slug: it is a lookup for people who know Classic.
   changes: { id: 'changes', slug: { es: 'cambios', en: 'changes' }, parent: 'tools' },
   // Talents and the three tree pages moved back from Builds to Learn (30 Oct 2026) keeping their slugs.
@@ -97,14 +90,12 @@ export const ROUTES: Record<PageId, RouteDef> = {
   leveling: { id: 'leveling', slug: { es: 'nivelacion', en: 'leveling' }, parent: 'learn' },
   // AoE farming moved from Builds to Guides (26 Oct 2026) keeping its slug.
   'aoe-farming': { id: 'aoe-farming', slug: { es: 'farmeo-aoe', en: 'aoe-farming' }, parent: 'guides' },
-  'mage-water': { id: 'mage-water', slug: { es: 'agua-del-mago', en: 'mage-water' }, parent: 'guides' },
-  scrolls: { id: 'scrolls', slug: { es: 'pergaminos', en: 'scrolls' }, parent: 'guides' },
-  combat: { id: 'combat', slug: { es: 'combate', en: 'combat' }, parent: 'learn' },
-  // Gear moved from Learn to Guides (20 Oct 2026) keeping its slug: leveling and PvE gear; PvP gear lives in the PvP guide.
+  // Gear moved from Learn to Guides (20 Oct 2026) keeping its slug: leveling and PvE gear plus the class quests; PvP gear lives in the PvP guide.
   gear: { id: 'gear', slug: { es: 'equipo', en: 'gear' }, parent: 'guides' },
   tools: { id: 'tools', slug: { es: 'herramientas', en: 'tools' }, parent: 'home' },
   'talent-calc': { id: 'talent-calc', slug: { es: 'herramientas/calculadora-talentos', en: 'tools/talent-calculator' }, parent: 'tools' },
-  addons: { id: 'addons', slug: { es: 'addons', en: 'addons' }, parent: 'home' },
+  // Addons moved under Tools (31 Oct 2026) as the MageProcs page, keeping its slug: it is the top search page.
+  addons: { id: 'addons', slug: { es: 'addons', en: 'addons' }, parent: 'tools' },
   sources: { id: 'sources', slug: { es: 'fuentes', en: 'sources' }, parent: 'home' },
   updates: { id: 'updates', slug: { es: 'novedades', en: 'updates' }, parent: 'home' },
   about: { id: 'about', slug: { es: 'sobre-mi', en: 'about' }, parent: 'home' },
@@ -117,7 +108,7 @@ export const ROUTES: Record<PageId, RouteDef> = {
  * hubs and items in this order (READING_ORDER), so the three never diverge.
  */
 export interface NavGroup {
-  key: 'learn' | 'builds' | 'guides' | 'tools' | 'addons';
+  key: 'learn' | 'builds' | 'guides' | 'tools';
   page: PageId;
   items?: PageId[];
   /** Sections of the hub page itself that the dropdown also links to, with their heading id per locale. */
@@ -130,42 +121,37 @@ export interface NavSection {
 }
 
 /**
- * Five entries: the path for someone new to the class (the class, its combat,
- * the talents and each tree, then the first steps in the world); builds (a tree,
- * its talents and the content it is for); guides, which explain something
- * concrete whatever the build (AoE farming, Mage water, race, professions,
- * Legacy, gear, class quests, library, scrolls, PvP); the tools (the change
- * explorer among them) and addons.
+ * Four entries: the path for someone new to the class (the Learn page holds the
+ * class and its combat, then the talents and each tree, then the first steps in
+ * the world); builds (a tree, its talents and the content it is for); guides,
+ * which explain something concrete whatever the build (AoE farming, race,
+ * professions, Legacy, gear and class quests, books and scrolls, PvP); and the
+ * tools (the change explorer and the MageProcs addon among them).
  */
 export const PRIMARY_NAV: readonly NavGroup[] = [
   {
     key: 'learn',
     page: 'learn',
-    items: ['guide', 'combat', 'talents', 'talents-arcane', 'talents-fire', 'talents-frost', 'leveling'],
-    sections: [{ hash: { es: 'glosario', en: 'glossary' }, label: { es: 'Glosario', en: 'Glossary' } }],
+    items: ['talents', 'talents-arcane', 'talents-fire', 'talents-frost', 'leveling'],
+    sections: [
+      { hash: { es: 'qué-lo-diferencia', en: 'what-sets-it-apart' }, label: { es: 'La clase', en: 'The class' } },
+      { hash: { es: 'el-kit-de-todo-mago', en: 'the-toolkit-every-mage-has' }, label: { es: 'Combate', en: 'Combat' } },
+      { hash: { es: 'glosario', en: 'glossary' }, label: { es: 'Glosario', en: 'Glossary' } },
+    ],
   },
   { key: 'builds', page: 'builds' },
   {
     key: 'guides',
     page: 'guides',
-    items: ['aoe-farming', 'mage-water', 'races', 'professions', 'legacy', 'gear', 'class-quests', 'library', 'scrolls', 'pvp'],
+    items: ['aoe-farming', 'races', 'professions', 'legacy', 'gear', 'library', 'pvp'],
   },
   {
     key: 'tools',
     page: 'tools',
-    items: ['talent-calc', 'changes'],
+    items: ['talent-calc', 'changes', 'addons'],
     sections: [
       { hash: { es: 'multiplicador-de-crítico', en: 'crit-multiplier' }, label: { es: 'Multiplicador de crítico', en: 'Crit multiplier' } },
       { hash: { es: 'golpe-con-hechizos', en: 'spell-hit' }, label: { es: 'Golpe con hechizos', en: 'Spell hit' } },
-    ],
-  },
-  {
-    key: 'addons',
-    page: 'addons',
-    sections: [
-      { hash: { es: 'procs-que-avisa', en: 'procs-it-alerts-you-to' }, label: { es: 'Procs que avisa', en: 'Procs it alerts you to' } },
-      { hash: { es: 'instalación', en: 'installation' }, label: { es: 'Instalación', en: 'Installation' } },
-      { hash: { es: 'límites', en: 'limits' }, label: { es: 'Límites', en: 'Limits' } },
     ],
   },
 ];

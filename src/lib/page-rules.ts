@@ -91,15 +91,6 @@ export const MDX_COMPONENTS = [
   'StatusLegend',
   'TalentCalculator',
   'WatchList',
-  'WaterCalculator',
-  'WaterChain',
-  'WaterCompensations',
-  'WaterConjureBatches',
-  'WaterDamage',
-  'WaterDungeons',
-  'WaterGear',
-  'WaterRanks',
-  'WaterVersions',
   'WeeklyChanges',
 ] as const;
 

@@ -66,13 +66,12 @@ Que un jugador de Mago en Forever pueda **aprender** la clase de forma progresiv
 | Página | ES | EN |
 |---|---|---|
 | Inicio | `/es/` | `/en/` |
-| Guía de clase | `/es/guia/` | `/en/guide/` |
+| Aprende (clase y combate) | `/es/aprende/` | `/en/learn/` |
 | Cambios en Forever | `/es/cambios/` | `/en/changes/` |
 | Talentos (índice) | `/es/talentos/` | `/en/talents/` |
 | Arcano / Fuego / Escarcha | `/es/talentos/arcano/` … | `/en/talents/arcane/` … |
 | Nivelación | `/es/nivelacion/` | `/en/leveling/` |
-| Combate | `/es/combate/` | `/en/combat/` |
-| Equipo (pendiente) | `/es/equipo/` | `/en/gear/` |
+| Equipo y misiones | `/es/equipo/` | `/en/gear/` |
 | Herramientas | `/es/herramientas/` | `/en/tools/` |
 | Fuentes | `/es/fuentes/` | `/en/sources/` |
 | Novedades | `/es/novedades/` | `/en/updates/` |

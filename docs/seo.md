@@ -35,15 +35,14 @@ Objetivo: aparecer cuando alguien busque **«guía mago wow forever»**, «talen
 | Página | Búsqueda principal |
 |---|---|
 | `/es/` | guía mago wow forever |
-| `/es/guia/` | guía de clase mago forever, habilidades mago forever |
+| `/es/aprende/` | guía de clase mago forever, habilidades mago forever, rotación mago wow forever |
 | `/es/cambios/` | cambios mago wow forever, talentos nuevos mago forever |
 | `/es/talentos/` | talentos mago wow forever |
 | `/es/talentos/arcano/` | mago arcano wow forever, explosión arcana forever |
 | `/es/talentos/fuego/` | mago fuego wow forever, calentamiento piroexplosión |
 | `/es/talentos/escarcha/` | mago escarcha wow forever, lanza de hielo forever |
 | `/es/nivelacion/` | guía de leveo mago wow forever, build de leveo mago, talentos de leveo 1-30, subir de nivel mago wow forever (en inglés, `/en/leveling/`: wow forever mage leveling guide, mage leveling build, leveling talents 1-30) |
-| `/es/combate/` | rotación mago wow forever |
-| `/es/equipo/` | equipo mago wow forever, estadísticas mago forever |
+| `/es/equipo/` | equipo mago wow forever, estadísticas mago forever, misiones de clase mago forever |
 
 ## Lo que tienes que hacer tú (tras publicar)
 
@@ -55,7 +54,7 @@ Estado (14 oct 2026), propiedad **`https://sheephappens.app/`** (prefijo de URL)
 - **Ya indexadas** («URL is on Google»): `/`, `/es/`, `/en/`, `/es/guia/`, `/es/builds/`, `/es/builds/duelos-nivel-30/` y `/es/razas/`. Último rastreo de la portada: 13 oct, 20:56.
 - **Cambio de dirección** iniciado el 14 oct desde la propiedad antigua (*Ajustes* → *Cambio de dirección*): `sheep-happens.pages.dev` → `sheephappens.app`, con la validación superada (301 en la portada y las dos propiedades verificadas). Google traslada los resultados poco a poco durante unos 180 días. Mientras tanto, en las búsquedas pueden seguir saliendo URL de `pages.dev`: redirigen bien, así que no hay que hacer nada más. No canceles el traslado ni quites la redirección.
 - **Favicon:** el 14 oct pasó a ser la oveja del logo. Google lo actualiza cuando vuelve a rastrear la portada, y puede tardar días o semanas. Solicitar la indexación de `/` dio «Quota Exceeded» el 14 oct: reinténtalo otro día.
-- **Pendientes de solicitar**, una tanda al día y en este orden: `/`, `/es/cambios/`, `/es/talentos/`, `/es/talentos/fuego/`, `/es/talentos/arcano/`, `/es/nivelacion/`, `/es/combate/`, `/es/equipo/` y después las páginas en inglés. Antes de pedirla, inspecciona la URL: si ya dice «URL is on Google», no gastes cupo.
+- **Pendientes de solicitar**, una tanda al día y en este orden: `/`, `/es/cambios/`, `/es/talentos/`, `/es/talentos/fuego/`, `/es/talentos/arcano/`, `/es/nivelacion/`, `/es/aprende/`, `/es/equipo/` y después las páginas en inglés. Antes de pedirla, inspecciona la URL: si ya dice «URL is on Google», no gastes cupo.
 - La propiedad antigua `https://sheep-happens.pages.dev/` se mantiene: el traslado necesita que siga verificada.
 
 Notas:
@@ -71,7 +70,7 @@ Pasos (ya hechos para las dos direcciones):
 3. Pulsa **Verificar** en Search Console.
 4. En **Sitemaps**, envía `sitemap-index.xml`.
 5. Espera: Google lee el sitemap por su cuenta en días.
-6. En **Inspección de URLs**, solicita la indexación de `/es/`, `/es/guia/`, `/es/cambios/` y de las tres ramas. Hay un **cupo diario** pequeño: si sale «Quota Exceeded», vuelve a intentarlo al día siguiente.
+6. En **Inspección de URLs**, solicita la indexación de `/es/`, `/es/aprende/`, `/es/cambios/` y de las tres ramas. Hay un **cupo diario** pequeño: si sale «Quota Exceeded», vuelve a intentarlo al día siguiente.
 
 ### 2. Bing Webmaster Tools (gratis, 5 minutos)
 

@@ -30,7 +30,6 @@ import rawItems from '../data/items.json';
 import rawLibraryBooks from '../data/library-books.json';
 import rawClassQuests from '../data/class-quests.json';
 import rawLegacy from '../data/legacy.json';
-import rawMageWater from '../data/mage-water.json';
 import rawSpecs from '../data/specs.json';
 import {
   BUILD_SPECS,
@@ -48,7 +47,6 @@ import {
   legacyFileSchema,
   levelingSpellSchema,
   libraryBookSchema,
-  mageWaterSchema,
   milestoneSchema,
   noticeSchema,
   racePickSchema,
@@ -426,13 +424,6 @@ export const libraryBooks = parseList('library-books.json', libraryBookSchema, r
 
 /** Mage class quest chains, by level (class quests page). */
 export const classQuests = parseList('class-quests.json', classQuestSchema, rawClassQuests).sort((a, b) => a.level - b.level);
-
-/** Every number on the Mage water page: its tables and charts read only from here. */
-export const mageWater = (() => {
-  const result = mageWaterSchema.safeParse(rawMageWater);
-  if (!result.success) throw new Error(`Invalid data in src/data/mage-water.json:\n${z.prettifyError(result.error)}`);
-  return result.data;
-})();
 
 /** The Legacy tree and our builds per situation (legacy page). */
 export const legacy = (() => {

@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+﻿import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { dataset } from '../src/lib/data';
 import { datasetWithFixture } from './fixtures/builds';
@@ -41,7 +41,7 @@ describe('validatePages', () => {
 
   it('catches unknown components, statuses, links and facts', () => {
     const body = '<Pendig why="x" />\n<Status status="maybe" />\n<PageLink to="nowhere">x</PageLink>\n<FactList ids={[\'launch\', \'nope\']} />';
-    const files = [...complete.filter((f) => f.path !== 'es/guide.mdx'), page('es', 'guide', body)];
+    const files = [...complete.filter((f) => f.path !== 'es/learn.mdx'), page('es', 'learn', body)];
     const errors = validatePages(files, dataset, today).errors.join('\n');
     expect(errors).toMatch(/unknown component <Pendig>/);
     expect(errors).toMatch(/unknown status "maybe"/);
@@ -72,8 +72,8 @@ describe('validatePages', () => {
   });
 
   it('rejects future review dates and mismatched folders', () => {
-    const future = page('es', 'guide').content.replace('reviewed: 2026-10-11', 'reviewed: 2026-12-01');
-    const files = [...complete.filter((f) => f.path !== 'es/guide.mdx'), { path: 'en/guide.mdx', content: future }];
+    const future = page('es', 'learn').content.replace('reviewed: 2026-10-11', 'reviewed: 2026-12-01');
+    const files = [...complete.filter((f) => f.path !== 'es/learn.mdx'), { path: 'en/guide.mdx', content: future }];
     const errors = validatePages(files, dataset, today).errors.join('\n');
     expect(errors).toMatch(/reviewed date is in the future/);
     expect(errors).toMatch(/does not match folder "en"/);
@@ -81,8 +81,8 @@ describe('validatePages', () => {
 
   it('flags TODO markers but not the Spanish word "todo"', () => {
     const files = [
-      ...complete.filter((f) => !['es/guide.mdx', 'es/gear.mdx'].includes(f.path)),
-      page('es', 'guide', 'Sirve sobre todo para subir de nivel.'),
+      ...complete.filter((f) => !['es/learn.mdx', 'es/gear.mdx'].includes(f.path)),
+      page('es', 'learn', 'Sirve sobre todo para subir de nivel.'),
       page('es', 'gear', 'TODO: completar'),
     ];
     const warnings = validatePages(files, dataset, today).warnings;

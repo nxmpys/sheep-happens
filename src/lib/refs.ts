@@ -34,7 +34,7 @@ export function resolveRef(reference: string, locale: Locale): ResolvedRef | und
     case 'ability': {
       const ability = abilities.find((a) => a.id === id);
       if (!ability) break;
-      return { label: localName(ability, locale), href: href('combat', locale, `role-${ability.role}`) };
+      return { label: localName(ability, locale), href: href('learn', locale, `role-${ability.role}`) };
     }
     case 'fact': {
       const fact = facts.find((f) => f.id === id);

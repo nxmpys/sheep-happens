@@ -1,10 +1,10 @@
 ---
 pageId: gear
 locale: en
-title: Mage gear
-seoTitle: WoW Forever Mage gear, leveling and PvE
-description: 'Mage gear in WoW Forever: the key leveling pieces level by level, which stats change for level 60 PvE, and where to find PvP gear.'
-lead: The key leveling pieces, level by level.
+title: Gear and quests
+seoTitle: WoW Forever Mage gear and class quests, level by level
+description: 'The key Mage leveling pieces in WoW Forever, the seven class quests from 10 to 60 and their rewards, and which stats change for level 60 PvE.'
+lead: The key leveling pieces and where they come from.
 gameVersion: forever-beta-2026-10
 published: 2026-10-11
 reviewed: 2026-10-20
@@ -14,51 +14,74 @@ verification: reported
 summary:
   - 'The best leveling pieces do not drop at random: they come from class quests, the library and the Darkspear Islands quartermaster.'
   - The must-haves are the level 15 robe, the Philanthropist's Ring (20 books), the Darkspear Islands dagger (28) and the Celestial Stave (35), which lasts you until 50.
+  - 'You can pick up the wand and the Celestial chain at 30 and 35, but their objectives are level 38 to 40: do them with that bracket''s dungeons.'
   - For level 60 PvE, the stat changes are known; gear lists will come with launch. PvP gear is in the PvP guide.
 sources: [wowhead-forever-database, foreverdb-mage-quests, wowhead-library-books, wowhead-forever-pvp, blizzard-deep-dive-mage, mobalytics-mage-leveling]
-tags: [gear, leveling gear, leveling, pve, stats, hit, intellect, spirit, celestial stave, philanthropist's ring, wand, robe, darkspear islands, consumables, elixirs, potions, food]
+tags: [gear, leveling gear, leveling, pve, stats, hit, intellect, spirit, celestial stave, celestial orb, philanthropist's ring, wand, robe, darkspear islands, consumables, elixirs, potions, food, class quests, mage quests, tabetha, mage wand, manaweave robe, xylem, conjure water, dire maul]
 ---
 
 ## The essentials, level by level
 
-| Level | Piece | What it gives | Where from |
-| --- | --- | --- | --- |
-| 10 | Your race's staff (or orb) | +2 spell damage | <PageLink to="class-quests">Class quest</PageLink> |
-| 15 | Robe | +6 Intellect | Class quest |
-| 20 books | Philanthropist's Ring | +5 Intellect and +10 spell damage | <PageLink to="library">Library</PageLink> |
-| 26 | Second robe (blouse or tunic) | +9 Intellect | Class quest |
-| 28 | Darkspear Islands dagger | +36 spell damage | <PageLink to="pvp" hash="darkspear-islands-gear-for-leveling">Darkspear Islands</PageLink>, Revered |
-| 30 (level 38 objectives) | Wand of your school | +9 damage of its school | Class quest |
-| 35 (level 40 objectives) | Celestial Stave | +46 spell damage | Class quest |
+| Level | Piece | What it gives | Where from | Worth it? |
+| --- | --- | --- | --- | --- |
+| 10 | Your race's staff (or orb) | +2 spell damage | <PageLink to="gear" hash="class-quests">Class quest</PageLink> | Yes, if you pass through your capital |
+| 15 | Robe | +6 Intellect | Class quest | Yes |
+| 20 books | Philanthropist's Ring | +5 Intellect and +10 spell damage | <PageLink to="library">Library</PageLink> | Yes |
+| 26 | Second robe (blouse or tunic) | +9 Intellect | Class quest | Yes, unless you have something better |
+| 28 | Darkspear Islands dagger | +36 spell damage | <PageLink to="pvp" hash="darkspear-islands-gear-for-leveling">Darkspear Islands</PageLink>, Revered | If you play Darkspear Islands |
+| 30 (level 38 objectives) | Wand of your school | +9 damage of its school | Class quest | Yes, together with the Scarlet Monastery Library |
+| 35 (level 40 objectives) | Celestial Stave (or orb) | +46 spell damage | Class quest | A must |
+| 50 | Archmage Xylem's chain | Not confirmed in Forever | Class quest | Wait for launch |
+| 60 | Dire Maul's water | Last rank of Conjure Water | Class quest | A must at level 60 |
 
 <Status status="reported" />
 
 These pieces cover your weapon, chest, ring and wand for most of your leveling. The rest (head, shoulders, legs…) you will swap for whatever drops in quests and dungeons: look for **spell damage** and **Intellect**, plus some **Spirit** if you run out of mana between fights. <Status status="analysis" />
 
-## From 10 to 26: class quests and the library
+## Class quests
 
-The first three class quests happen in your capital and in zones of your level: pick them up when you visit your trainer. <Status status="analysis" />
+Filter by faction to see only your side's rewards. Each item name opens its page on Wowhead.
 
-<FactionFilter legend="Show gear from" />
+<FactionFilter legend="Show rewards from" />
 
-<ItemCards ids={['ley-staff', 'manaweave-robe', 'lesser-spellfire-robes', 'astral-knot-robe', 'nether-lace-robe']} />
+<ClassQuestList />
 
-Meanwhile, keep handing in **library books**. With 20 different books the librarian lets you pick a ring: the **Philanthropist's Ring** is one of the best things you will wear until 40, and reaching 20 before level 30 is doable if you pick them up on your way. <Status status="analysis" />
+### How to fit them into your leveling
+
+- **From 10 to 26, whenever you visit the capital.** The first three happen in your capital and in zones of your level: pick them up when you visit your trainer. <Status status="analysis" />
+- **The wand, with the Scarlet Monastery Library.** The book Rituals of Power is inside: if you run the Monastery between levels 33 and 40, have the quest active. The Arathi and Thousand Needles parts are level 38 to 40. <Status status="analysis" />
+- **The Celestial Stave, with Uldaman.** The Obsidian Power Source drops in Uldaman: pick up the chain at 35 and finish it when you run that dungeon. The Mana Surges have a time limit and come several at a time: keep Frost Nova and Ice Block ready. <Status status="analysis" />
+- **For Frost, Icefury and the staff.** The +9 Frost damage and the +46 spell damage are the two biggest upgrades a Frost Mage finds between levels 30 and 45. <Status status="analysis" />
+
+### What is not known yet
+
+- **The Skyborne** are a new race and do not show up in any version of the level 10 quest. They may get another one or the human one. <Status status="pending" />
+- **The level 26 race versions** may be limited to some races, as in Classic: if you are an Orc or a Skyborne, check that your trainer offers the follow-up before you travel. <Status status="pending" />
+- **Xylem's rewards**: the Classic ones are not in the Forever data. <Status status="pending" />
+
+### Frequently asked questions
+
+<Faq>
+  <FaqItem q="Are class quests needed to learn spells?" status="reported">
+    No. You learn spells from the trainer. Mage class quests only give gear, except the level 60 one, which teaches the last rank of Conjure Water.
+  </FaqItem>
+  <FaqItem q="Which wand should I pick from Tabetha?" status="analysis">
+    The one for your tree: Icefury for Frost, Ragefire for Fire and Nether Force for Arcane. All three have almost the same damage per second; what changes is the school of the +9.
+  </FaqItem>
+  <FaqItem q="Celestial Stave or Celestial Orb?" status="analysis">
+    The staff for almost everyone: +46 spell damage against +13 on the orb. The orb is only worth it if you already have a one-hander with more than 30 spell damage.
+  </FaqItem>
+</Faq>
+
+## Outside the quests
+
+While you level, keep handing in **library books**. With 20 different books the librarian lets you pick a ring: the **Philanthropist's Ring** is one of the best things you will wear until 40, and reaching 20 before level 30 is doable if you pick them up on your way. <Status status="analysis" />
 
 <ItemCards ids={['philanthropists-ring']} />
-
-## From 28 to 35: the dagger, the wand and the staff
 
 If you play **Darkspear Islands**, its quartermaster sells a dagger with **+36 spell damage** from level 28: almost as much as the Celestial Stave, but it leaves your off-hand free. It needs Revered with the Theramore Expeditionary Force (Alliance) or the Darkspear Raiders (Horde). <Status status="analysis" />
 
 <ItemCards ids={['clever-expeditionarys-spellblade', 'darkspear-insurgents-spellblade']} />
-
-From 30 you get **Tabetha's wand** and, from 35, the **Celestial Stave**. Their objectives are level 38 to 40: do them together with the Scarlet Monastery Library and Uldaman. <Status status="analysis" />
-
-<ItemCards ids={['icefury-wand', 'celestial-stave']} />
-
-- **Frost**: the Icefury Wand (+9 Frost damage) and the staff are the two biggest upgrades between levels 30 and 45. <Status status="analysis" />
-- **Fire or Arcane**: pick the wand of your school; the staff works for all three trees. <Status status="analysis" />
 
 <PageLink to="professions">Professions</PageLink> craft gear too: **Tailoring and Enchanting** give you bound armor, a staff or orb, a wand and a trinket with spell damage from level 10. <Status status="analysis" />
 
@@ -89,15 +112,11 @@ Values from the Forever client up to level 30. Alchemy makes the elixirs and pot
 
 - **Elixirs.** According to Mobalytics, you can have one battle and one guardian elixir at once. The Forever database labels the classic elixirs this way, but the new ones carry no label and I have not tested it yet. <Status status="reported" />
 - **Food.** Briny Seafood Stew gives twice the damage of Sagefish Delight and can be eaten five levels earlier.
-- **Scrolls.** These are the consumable ones, not the <PageLink to="scrolls">Comprehension</PageLink> ones. According to Mobalytics, they do not stack with the matching class buff: a Scroll of Intellect adds nothing on top of your Arcane Intellect. <Status status="reported" />
+- **Scrolls.** These are the consumable ones, not the <PageLink to="library" hash="scrolls">Comprehension</PageLink> ones. According to Mobalytics, they do not stack with the matching class buff: a Scroll of Intellect adds nothing on top of your Arcane Intellect. <Status status="reported" />
 
 ## PvE gear at level 60
 
-What you will look for at 60 in dungeons and raids, by activity. Almost all of it is pending until launch, but some official changes already tell you which stats will be worth more.
-
-### What already changes for stats
-
-<Status status="verified" />
+Almost all of it is pending until launch, but some official changes already tell you which stats will be worth more. <Status status="verified" />
 
 | Talent or spell | Change in Forever | Stat affected |
 | --- | --- | --- |
@@ -113,36 +132,13 @@ What follows from them: <Status status="analysis" />
 - With Arcane Mind raising Intellect, Intellect gains some value for Arcane.
 - **Fire damage** or **Frost damage** items are no longer an all-or-nothing bet: Frostfire Bolt uses the better of the two.
 
-### Stat priority
-
-Every build has its own under “Stats and gear priority”: see the <BuildLink use="leveling">leveling</BuildLink> and <BuildLink use="dungeons">dungeon</BuildLink> builds. Which cloth items lose Intellect against Classic and what it means for your mana: <PageLink to="mage-water">Mage water</PageLink>.
+Every build has its stat priority under “Stats and gear priority”: see the <BuildLink use="leveling">leveling</BuildLink> and <BuildLink use="dungeons">dungeon</BuildLink> builds.
 
 <Pending
-  why="There are no raid builds yet, and the priorities of the level 60 builds are untested: the beta stopped at level 30."
-  next="I will add the raid priority when I publish those builds and review the rest after launch."
-/>
-
-### Dungeons
-
-<Pending
-  why="Forever adds new items and dungeons at every level range, and its level 60 version cannot be tested in the beta. Classic gear lists do not apply."
-  next="I will collect the best dungeon pieces by slot once launch data is available."
-/>
-
-### Raids
-
-<Pending
-  why="The level 60 raids unlock on 9 December and I have not been able to check their gear yet."
-  next="Once they are, I will compare their pieces with what professions craft, such as Tailoring's Robe of the Archmage."
-/>
-
-### Enchants and consumables
-
-<Pending
-  why="Level 60 consumables and enchants are in the client data, but I have not been able to test which ones are worth it: the beta stops at level 30."
-  next="I will add them once they can be checked in game."
+  why="There are no raid builds yet and the level 60 priorities are untested: the beta stopped at level 30. Forever adds new items and dungeons at every level range, so Classic gear lists do not apply, and the raids unlock on 9 December. I have not been able to test which level 60 consumables and enchants are worth it either."
+  next="With launch data I will collect the best dungeon pieces by slot and add consumables, enchants and the raid priority. I will compare raid gear with what professions craft, such as Tailoring's Robe of the Archmage."
 />
 
 ## PvP gear
 
-If you want to see the PvP gear, it is in the <PageLink to="pvp" hash="the-mage-pvp-gear">PvP</PageLink> guide, together with everything else: Honor, ranks and how the Mage plays in each battleground. There you have the rare set (level 55, no rank), the upgrade to epic with seals, the rank 14 weapons and the Darkspear Islands gear, which already helps while you level.
+It is in the <PageLink to="pvp" hash="the-mage-pvp-gear">PvP</PageLink> guide: the rare set (level 55, no rank), the upgrade to epic with seals, the rank 14 weapons and the Darkspear Islands gear, which already helps while you level.

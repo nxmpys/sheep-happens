@@ -1,12 +1,12 @@
 ---
 pageId: library
 locale: en
-title: Library books
-seoTitle: WoW Forever library books, locations and rewards
-description: Where every library book is in WoW Forever, who you hand them in to, what the 10, 20 and 25 book rewards are and which one a Mage should pick.
-lead: Where the 38 books are and which reward to pick.
+title: Books and scrolls
+seoTitle: WoW Forever library books and Comprehend Scroll guide
+description: 'Where every library book is in WoW Forever, the rewards and which to pick, plus how a Mage uses Comprehend Scroll and what skill each scroll needs.'
+lead: Where the 38 books are, which reward to pick and how to decipher scrolls.
 gameVersion: forever-beta-2026-10
-published: 2026-10-20
+published: 2026-10-15
 reviewed: 2026-10-20
 reviewedBy: Sheep Happens
 status: published
@@ -16,8 +16,8 @@ summary:
   - 'Rewards at 10, 20 and 25 different books. For a Mage, the one that matters is the Philanthropist''s Ring (20 books): +5 Intellect and +10 spell damage.'
   - 'With the first book, Mages learn Study: in a library it gives you scrolls for Comprehension.'
   - 'Tick the books you hand in here and the page tells you how many you still need.'
-sources: [wowhead-library-books, wowhead-forever-database, blizzard-dev-notes]
-tags: [library, books, library books, garion wendell, owen thadd, philanthropist's ring, study, friend of the library, book locations]
+sources: [wowhead-library-books, wowhead-forever-database, blizzard-dev-notes, blizzard-deep-dive-mage, warcrafttavern-mage-guide, wowhead-forever-comprehension]
+tags: [library, books, library books, garion wendell, owen thadd, philanthropist's ring, study, friend of the library, book locations, comprehend scroll, comprehension, mage comprehension, wow forever scrolls, mage research, scrolls, comprender pergamino, comprensión mago, pergaminos wow forever]
 ---
 
 ## How it works
@@ -26,7 +26,7 @@ tags: [library, books, library books, garion wendell, owen thadd, philanthropist
 2. **Hand it in to your faction's librarian.** Each title counts once, even if you find it in two places.
 3. **Collect the reward** once you have handed in 10, 20 and 25 different books: the librarian offers a quest with a choice of items. The first 10 count towards the 20, and those towards the 25.
 
-Every class can collect books. Mages get something extra: when they hand in the first one they learn **Study**, which gives you a bundle of scrolls to decipher with Comprehension while in a library. It is all in <PageLink to="scrolls">Scrolls</PageLink>. <Status status="reported" />
+Every class can collect books. Mages get something extra: when they hand in the first one they learn **Study**, which gives you a bundle of scrolls to decipher with Comprehension while in a library. It is all in <PageLink to="library" hash="scrolls">Scrolls</PageLink>. <Status status="reported" />
 
 ## Where to hand them in
 
@@ -72,6 +72,34 @@ Books are grouped by the level from which the trip stops being dangerous for a M
 - **Alliance**: Tower of Azora (Elwynn), Ironforge, the Sentinel Hill inn and Moonbrook (Westfall), Mo'grosh Stronghold (Loch Modan) and, when you travel to Kalimdor, Darkshore, Ratchet, the Sludge Fen and the Wailing Caverns cave. <Status status="analysis" />
 - **Horde**: Brill (Tirisfal), the Sepulcher and Amber Mill (Silverpine), the Orgrimmar mural, Ratchet, the Sludge Fen, the Wailing Caverns cave and, when you can, Darkshore. Moonbrook and Mo'grosh are in Alliance territory: leave them for later. <Status status="analysis" />
 
+## Scrolls
+
+**Comprehension** is a Mage-only minor tradeskill: you read the scrolls creatures drop and get a scroll with a useful effect. Blizzard leaves players to discover what they give.
+
+<ScrollGuide part="flow" />
+
+### Where it is
+
+<ScrollGuide part="spellbook" />
+
+### Do and don't
+
+<ScrollGuide part="yesno" />
+
+### Skill progression
+
+Each scroll needs a minimum Comprehension and stops raising it at the end of its bar.
+
+<ScrollGuide part="tiers" />
+
+### Leveling tips
+
+<ScrollGuide part="tips" />
+
+### Still unknown
+
+<ScrollGuide part="unknown" />
+
 ## Frequently asked questions
 
 <Faq>
@@ -86,5 +114,11 @@ Books are grouped by the level from which the trip stops being dangerous for a M
   </FaqItem>
   <FaqItem q="Do I need an addon?" status="analysis">
     No, but TomTom helps: copy the coordinates from the catalogue and paste them in chat to get an arrow to the book.
+  </FaqItem>
+  <FaqItem q="Is deciphering scrolls worth it while leveling?" status="analysis">
+    Yes, if you stop to drink anyway: it costs no mana and scrolls give one-hour buffs, such as the rat familiar (+2 Intellect) or Imbue Frost on your staff (up to +8 Frost damage, from level 16).
+  </FaqItem>
+  <FaqItem q="Can you sell or trade scrolls?" status="analysis">
+    In the client data, untranslated scrolls are not bound, but only a Mage can read them and vendors pay 15 copper. I have not tested it in game yet.
   </FaqItem>
 </Faq>

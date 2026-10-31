@@ -2,28 +2,172 @@
 pageId: learn
 locale: en
 title: Learn to play Mage
-seoTitle: Learn to play Mage in WoW Forever from zero
-description: The path to learn the Mage in WoW Forever step by step, from what the class offers to its combat, its talents and your first steps in the world.
-lead: What the class offers, its combat, its talents and your first steps.
+seoTitle: Learn to play Mage in WoW Forever, class guide and combat
+description: 'WoW Forever Mage class guide from zero: what it offers compared with the other classes, what it asks of you, its spells and what each of its three trees adds.'
+lead: What the class offers, how it fights and where to go next.
 gameVersion: forever-beta-2026-10
-published: 2026-10-18
+published: 2026-10-11
 reviewed: 2026-10-18
 reviewedBy: Sheep Happens
 status: published
 verification: analysis
-tags: [learn, beginner, mage from zero, guide, start]
+wide: true
+sources: [blizzard-deep-dive-mage, blizzard-dev-notes, wiki-mage-abilities-classic, wiki-pyroblast, warcrafttavern-classes]
+tags: [learn, beginner, mage from zero, guide, start, fundamentals, class guide, what is the mage, why play mage, mana, abilities, races, combat, toolkit, trees, control, survival, rotation]
 ---
 
-My notes start here: follow these steps in order. Each one is a short page; at the end of each, "Next" takes you to the next step.
+<MageIntro />
+
+## What sets it apart
+
+What the Mage has that the other classes do not, and what it asks of you in return. <Status status="classic" />
+
+<Picker label="What the Mage offers" hover>
+<Pick id="travel" title="Teleports and portals" icon="spell_arcane_portalstormwind" heading="You are the group's transport">
+
+From level 20 you teleport yourself to the capital cities, and from level 40 you open portals your whole group can step through. No other class does this.
+
+</Pick>
+<Pick id="water" title="Food and water" spell="Conjure Water" icon="inv_drink_06" heading="You never pay for food or water">
+
+You conjure water from level 4 and food from level 6, for yourself and for your group.
+
+</Pick>
+<Pick id="polymorph" title="Polymorph" spell="Polymorph" heading="You turn enemies into sheep">
+
+From level 8, **Polymorph** takes one enemy out of the fight until something hits it. Blizzard calls it one of the best crowd control tools in the game. <Status status="verified" compact />
+
+</Pick>
+<Pick id="aoe" title="Area damage" spell="Blizzard" heading="You hit whole packs from afar">
+
+**Arcane Explosion**, **Flamestrike**, **Blizzard** and **Cone of Cold** damage everything in an area. According to Blizzard, the Mage masters ranged area damage, and it is also a way to farm: <PageLink to="aoe-farming">AoE farming</PageLink>. <Status status="verified" compact />
+
+</Pick>
+<Pick id="escape" title="Escapes" spell="Blink" heading="You get out of bad spots">
+
+**Frost Nova** roots everything next to you and **Blink** moves you 20 yards in an instant, even out of a stun. Your defense is not being where the enemy is.
+
+</Pick>
+<Pick id="mixed" title="Mixed schools" spell="Frostfire Bolt" heading="You can mix three schools of magic">
+
+**Frostfire Bolt**, at level 40, counts as Fire and Frost at once: it uses your higher bonus of the two and the target's lower resistance. Several talents boost spells from other trees, and Forever wants more room for builds that mix them. <Status status="verified" compact />
+
+</Pick>
+<Pick id="scrolls" title="Scrolls" icon="inv_scroll_03" heading="You read what others cannot">
+
+Comprehension is a minor tradeskill only Mages have: you decipher the scrolls creatures drop and get one-hour buffs. <PageLink to="library" hash="scrolls">How it works</PageLink>. <Status status="reported" compact />
+
+</Pick>
+</Picker>
+
+**What it asks of you:**
+
+<Tiles min={15}>
+<Tile title="You are fragile" icon="inv_chest_cloth_04">
+
+You wear cloth and cannot take many hits. If something reaches you and stays, the fight is going badly.
+
+</Tile>
+<Tile title="Mana sets the pace" icon="spell_shadow_manaburn">
+
+Every spell costs mana, and you recover it by drinking between fights. During a fight you have **Evocation** and mana gems; only effects like **Mage Armor** or **Arcane Meditation** let Spirit keep regenerating it while you cast. <Status status="classic" compact />
+
+</Tile>
+<Tile title="Damage is your only role" icon="spell_nature_regenerate">
+
+You cannot tank or heal, and you have no pet. In a group your job is damage and control.
+
+</Tile>
+</Tiles>
+
+## The toolkit every Mage has
+
+These spells come from your trainer, whatever your talents. Pass over an icon, or tap it, to see what it does.
+
+<Toolkit />
+
+## What each tree adds
+
+All three deal ranged damage. Talents do not replace those spells: they add new ones and change how the old ones connect. You are not stuck with your first choice, because you can change talents at a class trainer, and the exact rotation is on each <PageLink to="builds">build</PageLink>.
+
+<Picker label="The three trees">
+<Pick id="arcane" title="Arcane" icon="spell_holy_magicalsentry" school="arcane" heading="Build up power, then spend it">
+
+Every **Arcane Blast** gives you Spell Damage for 15 s, up to 4 times, and costs more than the last. You stack it while your mana allows, then spend that window on your strong spells. It can also trigger **Missile Barrage**: fast, free missiles.
+
+<Chain items={[{ spell: 'Arcane Blast', note: 'up to 4 stacks' }, { spell: 'Arcane Wrath', note: 'the big hit, grows with your max mana' }]} />
+
+**What it adds to your bars:**
+
+<SpellBar spells={['Arcane Blast', 'Arcane Wrath', 'Presence of Mind', 'Arcane Power']} />
+
+<SpecVerdict spec="arcane" />
+
+<PageLink to="talents-arcane">Arcane in detail</PageLink>
+
+</Pick>
+<Pick id="fire" title="Fire" icon="spell_fire_firebolt02" school="fire" heading="Turn crits into Pyroblasts">
+
+Your crits with **Fireball**, **Frostfire Bolt**, **Fire Blast** and **Scorch** shorten your next **Pyroblast**: from a 6 s cast to 1.5 s at 3 stacks. **Ignite** burns on top of every crit.
+
+<Chain items={[{ spell: 'Fire Blast', note: 'always gives a stack' }, { spell: 'Heating Up', note: 'up to 3 stacks' }, { spell: 'Pyroblast', note: '1.5 s cast' }]} />
+
+**What it adds to your bars:**
+
+<SpellBar spells={['Pyroblast', 'Blast Wave', 'Combustion']} />
+
+<SpecVerdict spec="fire" />
+
+<PageLink to="talents-fire">Fire in detail</PageLink>
+
+</Pick>
+<Pick id="frost" title="Frost" icon="spell_frost_frostbolt02" school="frost" heading="Control that turns into damage">
+
+**Frostbolt** slows, and that slow can grant **Fingers of Frost**, which treats your next spell as if the target were Frozen. **Frost Nova** freezes for real. Either way, **Ice Lance** deals 200% more.
+
+<Chain items={[{ spell: 'Frostbolt', note: 'slows' }, { spell: 'Fingers of Frost', note: 'or Frost Nova' }, { spell: 'Ice Lance', note: '200% more damage' }]} />
+
+**What it adds to your bars:**
+
+<SpellBar spells={['Ice Lance', 'Ice Block', 'Cold Snap', 'Ice Barrier']} />
+
+<SpecVerdict spec="frost" />
+
+<PageLink to="talents-frost">Frost in detail</PageLink>
+
+</Pick>
+</Picker>
+
+## How the trees compare
+
+<TreeCompare />
+
+<Pending
+  why="These comparisons are my reading of the mechanics Blizzard has published. Without measurements at level 60 I cannot promise how close the trees really are."
+  next="I will test them after launch and mark what holds as “Tested”."
+/>
+
+## If an enemy reaches you
+
+Your ways out. They are not a sequence: use whichever the moment asks for. <Status status="analysis" />
+
+<Chain loose items={[{ spell: 'Frost Nova', note: 'roots it in place' }, { spell: 'Blink', note: 'puts distance' }, { spell: 'Polymorph', note: 'takes a second enemy out' }, { spell: 'Ice Block', note: 'last resort, needs 16 Frost points' }, { spell: 'Cold Snap', note: 'resets Frost cooldowns, 10 min, needs 21 points' }]} />
+
+Two more things that save a fight: **Counterspell** stops a dangerous cast, and with 1 point in **Improved Counterspell** it always silences; **Mana Shield** absorbs damage with your mana. <Status status="verified" compact />
+
+Several of these moments hang on a proc that is easy to miss. My <PageLink to="addons">MageProcs</PageLink> addon shows them in the middle of the screen.
+
+## Against several enemies
+
+<SpellBar spells={[{ spell: 'Arcane Explosion', level: 14 }, { spell: 'Flamestrike', level: 16 }, { spell: 'Blizzard', level: 20 }, { spell: 'Cone of Cold', level: 26 }, { spell: 'Blast Wave' }]} />
+
+Your area spells, the last one a Fire talent. In Forever **Cone of Cold** lasts less (except on the first 4 targets it hits) and **Improved Blizzard** slows less, so be careful dragging large packs. <Status status="verified" compact /> How to do it step by step, and where: <PageLink to="aoe-farming">AoE farming</PageLink>.
+
+## Where to go next
 
 <HubCards group="learn" numbered />
 
-## The essentials in one minute
-
-- **The Mage deals ranged damage** with three trees: Arcane, Fire and Frost. Its strength is never letting the enemy reach it: it slows, freezes and walks away.
-- **Pick the race you like.** It barely changes your numbers and this is the character you will keep. If you want to optimize, <PageLink to="races">Races</PageLink> ranks them by content.
-- **Talents start at level 10**, one point per level. You do not need to understand them all: copy a build and follow its point order.
-- **Already know how to play?** Go straight to the <PageLink to="builds">builds</PageLink>, to the <PageLink to="professions">professions</PageLink> or to <PageLink to="changes">what Forever changes from Classic</PageLink>.
+Already know Classic? What is different in Forever is in the <PageLink to="changes">change explorer</PageLink>.
 
 ## Glossary
 
