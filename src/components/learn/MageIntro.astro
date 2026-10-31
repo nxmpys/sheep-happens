@@ -1,9 +1,13 @@
----
+﻿---
 /**
- * Top of the class page: the Mage in one sentence and its class sheet (role,
- * armor, resource, trees and races), over the art of a Fire Mage.
+ * Opening of the Learn page. The scroll flies the camera into the portal of
+ * Dalaran. The colour is born soft from the portal's centre and grows until it
+ * fills the window, and on it wait the Mage in big type, one sentence and the
+ * class sheet. With «reduce motion» or without JavaScript there is no flight:
+ * the page opens directly on the colour.
  */
 import GameIcon from './GameIcon.astro';
+import Icon from '../ui/Icon.astro';
 import '../../styles/learn.css';
 import { getLocale } from '../../i18n/locale';
 import { races } from '../../lib/data';
@@ -24,93 +28,229 @@ const sheet = es
       { label: 'Armor', value: 'Cloth', icon: 'inv_chest_cloth_04' },
       { label: 'Resource', value: 'Mana', icon: 'inv_drink_06' },
     ];
+
+/** The centre of the portal on the picture (2560 × 1440) and the radius of its bright disc. */
+const PORTAL = { x: 1111, y: 922, radius: 95 };
 ---
 
 <section class="intro" data-no-spell-links>
-  <img class="intro__art" src={`${base}about/story/mage-fire.webp`} alt="" width="1200" height="675" />
-  <div class="intro__text">
-    <p class="intro__line">
-      {
-        es
-          ? 'Lanzas hechizos desde lejos, controlas a quien se acerca y llevas la comida, el agua y los viajes de tu grupo.'
-          : 'You cast from afar, control whoever gets close and carry your group’s food, water and travel.'
-      }
-    </p>
-    <dl class="sheet">
-      {
-        sheet.map((row) => (
+  <scene-zoom class="bz" data-portal={JSON.stringify(PORTAL)}>
+    <div class="bz__stage" data-stage>
+      <div class="bz__scene" data-scene aria-hidden="true">
+        <img src={`${base}home/learn-hero.webp`} alt="" width="2560" height="1440" fetchpriority="high" decoding="async" />
+      </div>
+      <div class="bz__glow" data-glow aria-hidden="true"></div>
+      <p class="bz__title" data-title aria-hidden="true">{es ? 'Aprende a jugar Mago' : 'Learn to play Mage'}</p>
+      <div class="bz__ui" data-ui>
+        <p class="intro__title" aria-hidden="true">{es ? 'El Mago' : 'The Mage'}</p>
+        <p class="intro__line">
+          {
+            es
+              ? 'Lanzas hechizos desde lejos, controlas a quien se acerca y llevas la comida, el agua y los viajes de tu grupo.'
+              : 'You cast from afar, control whoever gets close and carry your group’s food, water and travel.'
+          }
+        </p>
+        <dl class="sheet">
+          {
+            sheet.map((row) => (
+              <div class="sheet__row">
+                <GameIcon icon={row.icon} size={36} />
+                <dt>{row.label}</dt>
+                <dd>{row.value}</dd>
+              </div>
+            ))
+          }
           <div class="sheet__row">
-            <GameIcon icon={row.icon} size={36} />
-            <dt>{row.label}</dt>
-            <dd>{row.value}</dd>
+            <span class="sheet__icons">
+              {Object.values(TREE_ICONS).map((icon) => <GameIcon icon={icon} size={36} />)}
+            </span>
+            <dt>{es ? 'Ramas' : 'Trees'}</dt>
+            <dd>{Object.values(treeNames).join(' · ')}</dd>
           </div>
-        ))
-      }
-      <div class="sheet__row">
-        <span class="sheet__icons">
-          {Object.values(TREE_ICONS).map((icon) => <GameIcon icon={icon} size={24} />)}
-        </span>
-        <dt>{es ? 'Ramas' : 'Trees'}</dt>
-        <dd>{Object.values(treeNames).join(' · ')}</dd>
+          <div class="sheet__row sheet__row--races">
+            <span class="sheet__icons">
+              {races.map((race) => <GameIcon icon={race.icon} size={36} alt={race.name[locale]} />)}
+            </span>
+            <dt>{es ? 'Razas' : 'Races'}</dt>
+            <dd>{races.map((race) => race.name[locale].replace(/\s*\(.*\)$/, '')).join(' · ')}</dd>
+          </div>
+        </dl>
       </div>
-      <div class="sheet__row sheet__row--races">
-        <span class="sheet__icons">
-          {races.map((race) => <GameIcon icon={race.icon} size={24} alt={race.name[locale]} />)}
-        </span>
-        <dt>{es ? 'Razas' : 'Races'}</dt>
-        <dd>{races.map((race) => race.name[locale].replace(/\s*\(.*\)$/, '')).join(' · ')}</dd>
-      </div>
-    </dl>
-  </div>
+      <div class="bz__cue" data-cue aria-hidden="true"><Icon name="chevronDown" size={30} /></div>
+    </div>
+  </scene-zoom>
 </section>
+
+<script>
+  const SCENE = { width: 2560, height: 1440 };
+  const clamp = (value: number) => Math.min(1, Math.max(0, value));
+  const between = (value: number, from: number, to: number) => clamp((value - from) / (to - from));
+  const smooth = (t: number) => t * t * (3 - 2 * t);
+  /** Softer than smooth: barely moves at both ends, for what must not be noticed starting. */
+  const softer = (t: number) => t * t * t * (t * (t * 6 - 15) + 10);
+
+  class SceneZoom extends HTMLElement {
+    connectedCallback() {
+      if (!matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+      const stage = this.querySelector<HTMLElement>('[data-stage]')!;
+      const scene = this.querySelector<HTMLElement>('[data-scene]')!;
+      const glow = this.querySelector<HTMLElement>('[data-glow]')!;
+      const title = this.querySelector<HTMLElement>('[data-title]')!;
+      const ui = this.querySelector<HTMLElement>('[data-ui]')!;
+      const cue = this.querySelector<HTMLElement>('[data-cue]')!;
+      const portal = JSON.parse(this.dataset.portal ?? '{}') as { x: number; y: number; radius: number };
+      let width = 0;
+      let height = 0;
+      let startScale = 1;
+      let endScale = 1;
+      let startX = 0;
+      let startY = 0;
+      let reach = 0;
+      let shown = -1;
+      let frame = 0;
+
+      const target = () => {
+        // The stage pins under the header, so the flight starts once the picture reaches that line.
+        const travel = this.offsetHeight - stage.offsetHeight;
+        const pinned = parseFloat(getComputedStyle(stage).top) || 0;
+        return travel > 0 ? clamp((pinned - this.getBoundingClientRect().top) / travel) : 1;
+      };
+      const measure = () => {
+        width = stage.clientWidth;
+        height = stage.clientHeight;
+        // The picture always fills the window. When it is wider than the window, it slides to keep the portal in sight.
+        startScale = Math.max(width / SCENE.width, height / SCENE.height);
+        startX = Math.min(0, Math.max(width - SCENE.width * startScale, width / 2 - portal.x * startScale));
+        startY = Math.min(0, Math.max(height - SCENE.height * startScale, height * 0.55 - portal.y * startScale));
+        // The camera stops when the portal's bright disc fills the window.
+        endScale = (Math.hypot(width, height) / (portal.radius * 2)) * 1.1;
+        // The colour's solid part must reach every corner by the end.
+        reach = Math.hypot(width, height) * 2.2;
+        shown = -1;
+        request();
+      };
+      const draw = (p: number) => {
+        // The camera flies at a steady apparent speed: a multiplying zoom, eased only at the start.
+        const fly = between(p, 0, 0.74);
+        const eased = fly * fly * (2 - fly);
+        const scale = startScale * (endScale / startScale) ** eased;
+        const centring = smooth(between(fly, 0, 0.7));
+        const fromX = startX + portal.x * startScale;
+        const fromY = startY + portal.y * startScale;
+        const pointX = fromX + (width / 2 - fromX) * centring;
+        const pointY = fromY + (height / 2 - fromY) * centring;
+        // The picture's edges never come into the window.
+        const moveX = Math.min(0, Math.max(width - SCENE.width * scale, pointX - portal.x * scale));
+        const moveY = Math.min(0, Math.max(height - SCENE.height * scale, pointY - portal.y * scale));
+        scene.style.transform = `translate3d(${moveX.toFixed(2)}px, ${moveY.toFixed(2)}px, 0) scale(${scale.toFixed(5)})`;
+        scene.style.visibility = p >= 0.76 ? 'hidden' : 'visible';
+
+        // The colour: a soft light from the portal's centre, with no edge, that takes over little by little.
+        const born = softer(between(p, 0.16, 0.74));
+        const portalX = moveX + portal.x * scale;
+        const portalY = moveY + portal.y * scale;
+        const radius = portal.radius * scale * 0.9 + reach * born * born;
+        glow.style.opacity = born.toFixed(4);
+        glow.style.transform = `translate3d(${portalX.toFixed(1)}px, ${portalY.toFixed(1)}px, 0) scale(${(radius / 100).toFixed(3)})`;
+        glow.style.visibility = born > 0 ? 'visible' : 'hidden';
+
+        const leaving = between(p, 0, 0.09);
+        title.style.opacity = String(1 - leaving);
+        title.style.transform = `translate3d(0, ${(-leaving * 24).toFixed(1)}px, 0)`;
+        cue.style.opacity = String(1 - between(p, 0, 0.05));
+
+        const arriving = softer(between(p, 0.66, 0.86));
+        ui.style.opacity = arriving.toFixed(4);
+        ui.style.visibility = arriving > 0 ? 'visible' : 'hidden';
+        ui.style.transform = `translate3d(0, ${((1 - arriving) * 36).toFixed(1)}px, 0)`;
+
+        // At the very end the colour leaves as a card with rounded corners.
+        const out = smooth(between(p, 0.95, 1));
+        stage.style.clipPath = out > 0 ? `inset(${(out * 16).toFixed(1)}px round ${(out * 24).toFixed(1)}px)` : 'none';
+      };
+      // Follows the scroll with some lag, so the flight never jerks.
+      const tick = () => {
+        frame = 0;
+        const goal = target();
+        const next = shown < 0 ? goal : shown + (goal - shown) * 0.09;
+        shown = Math.abs(goal - next) < 0.0002 ? goal : next;
+        draw(shown);
+        if (shown !== goal) request();
+      };
+      const request = () => {
+        if (!frame) frame = requestAnimationFrame(tick);
+      };
+
+      addEventListener('scroll', request, { passive: true });
+      addEventListener('resize', measure);
+      measure();
+    }
+  }
+  if (!customElements.get('scene-zoom')) customElements.define('scene-zoom', SceneZoom);
+</script>
 
 <style>
   .intro {
+    --bz-colour: #a98bff;
+    --bz-ink: #14101f;
+    margin-inline: calc(50% - 50vw);
+    margin-bottom: var(--space-6);
+  }
+  .bz {
+    display: block;
+  }
+  .bz__stage {
     position: relative;
     display: grid;
     overflow: hidden;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    background: #120f1f;
-    color: #ecebf4;
+    background: var(--bz-colour);
+    color: var(--bz-ink);
     isolation: isolate;
   }
-  .intro__art {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 75% 25%;
-    mask-image: linear-gradient(90deg, transparent 22%, #000 62%);
+  .bz__scene,
+  .bz__glow,
+  .bz__title,
+  .bz__cue {
+    display: none;
   }
-  .intro__text {
+  .bz__ui {
+    box-sizing: border-box;
     display: grid;
-    gap: var(--space-5);
-    max-width: 34rem;
-    padding: var(--space-6);
+    align-content: end;
+    gap: var(--space-4);
+    width: 100%;
+    padding: var(--space-7) max(var(--space-4), calc(50vw - var(--content-max, 72rem) / 2)) var(--space-6);
   }
-  .intro__line {
+  .intro__title {
     margin: 0;
     font-family: var(--font-display);
-    font-size: var(--step-3);
+    font-size: clamp(4.25rem, 16vw, 13.5rem);
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+  }
+  .intro__line {
+    max-width: 44rem;
+    margin: 0;
+    font-size: var(--step-2);
+    font-weight: 500;
+    line-height: 1.3;
   }
   .sheet {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-3);
-    margin: 0;
+    grid-template-columns: repeat(auto-fit, minmax(min(45%, 9.5rem), 1fr));
+    gap: var(--space-4);
+    margin: var(--space-3) 0 0;
+    padding-top: var(--space-4);
+    border-top: 1px solid rgb(20 16 31 / 0.35);
   }
   .sheet__row {
     display: grid;
     align-content: start;
     gap: var(--space-1);
   }
-  .sheet__row:nth-child(n + 4) {
-    grid-column: 1 / -1;
+  .sheet__row--races {
+    grid-column: span 2;
   }
   .sheet__icons {
     display: flex;
@@ -123,19 +263,129 @@ const sheet = es
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #c9b6ff;
+    opacity: 0.72;
   }
   .sheet dd {
     margin: 0;
-    font-weight: 600;
+    font-weight: 650;
   }
-  @media (max-width: 44rem) {
-    .intro__art {
-      mask-image: linear-gradient(0deg, transparent 20%, rgb(0 0 0 / 0.55) 90%);
-      object-position: 70% 0;
+
+  /* The flight, only when the script can run it: same conditions as the script. */
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    .bz {
+      height: 460vh;
     }
-    .intro__text {
-      padding: var(--space-5) var(--space-4);
+    .bz__stage {
+      position: sticky;
+      top: var(--header-h);
+      height: calc(100svh - var(--header-h));
+    }
+    .bz__scene {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      width: 2560px;
+      height: 1440px;
+      transform-origin: 0 0;
+      will-change: transform;
+    }
+    .bz__scene img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      margin: 0;
+    }
+    /* Solid in the middle and fading out to nothing, so it never shows an edge. */
+    .bz__glow {
+      display: block;
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      z-index: 1;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      background: radial-gradient(
+        closest-side,
+        var(--bz-colour) 0%,
+        var(--bz-colour) 42%,
+        rgb(169 139 255 / 0.82) 56%,
+        rgb(169 139 255 / 0.45) 72%,
+        rgb(169 139 255 / 0.14) 88%,
+        rgb(169 139 255 / 0) 100%
+      );
+      will-change: transform, opacity;
+    }
+    .bz__title {
+      display: block;
+      position: absolute;
+      inset: auto 0 var(--space-7);
+      z-index: 3;
+      margin: 0;
+      padding-inline: var(--space-4);
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 6vw, 4.75rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      text-align: center;
+      color: #fff;
+      text-shadow: 0 2px 28px rgb(0 0 0 / 0.75);
+      pointer-events: none;
+    }
+    .bz__ui {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .bz__cue {
+      display: block;
+      position: absolute;
+      inset: auto 0 var(--space-4);
+      z-index: 3;
+      color: #fff;
+      text-align: center;
+      filter: drop-shadow(0 1px 6px rgb(0 0 0 / 0.7));
+      pointer-events: none;
+      animation: bz-cue 1.8s ease-in-out infinite;
+    }
+  }
+  @keyframes bz-cue {
+    50% {
+      translate: 0 8px;
+    }
+  }
+  @media (max-width: 40rem) {
+    .bz__ui {
+      gap: var(--space-3);
+      padding-block: var(--space-5) var(--space-4);
+    }
+    .intro__line {
+      font-size: var(--step-1);
+    }
+    /* The stage is one screen tall: on a phone the sheet is words only, so it always fits. */
+    .sheet {
+      gap: var(--space-2) var(--space-3);
+      margin-top: 0;
+      padding-top: var(--space-3);
+    }
+    .sheet :global(.game-icon),
+    .sheet__icons {
+      display: none;
+    }
+    .sheet dt {
+      margin-top: 0;
+    }
+    .sheet dd {
+      font-size: var(--step--1);
     }
   }
 </style>

@@ -22,7 +22,11 @@ export interface PageReport {
 /** Components registered in src/components/mdx.ts (kept in sync by a unit test). */
 export const MDX_COMPONENTS = [
   'Chain',
+  'HCard',
+  'HScroll',
   'MageIntro',
+  'Stack',
+  'StackCard',
   'Pick',
   'Picker',
   'Pieces',

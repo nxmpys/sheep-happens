@@ -1,4 +1,4 @@
-import type { Locale, PageId } from './routes';
+﻿import type { Locale, PageId } from './routes';
 
 /** Short labels used in navigation, breadcrumbs and prev/next links. */
 export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
@@ -95,8 +95,6 @@ const es = {
   'search.loading': 'Buscando…',
   'meta.howWeVerify': 'Cómo lo verifico',
   'summary.title': 'En resumen',
-  'playFirst.title': 'Antes de abrir el libro de hechizos',
-  'playFirst.body': 'Lo importante es disfrutar del Mago. Si es tu primera vez en Forever, sube unos niveles a tu aire: prueba talentos, convierte en oveja todo lo que se mueva y haz un portal a Forjaz cuando te pidan uno a Ventormenta. Descubrir la clase por tu cuenta es de lo mejor que tiene el juego. Cuando quieras ir más en serio o algo no te cuadre, aquí tienes mis apuntes.',
   'status.verified': 'Oficial',
   'status.reported': 'Comunidad',
   'status.classic': 'Ref. Classic',
@@ -223,8 +221,6 @@ const en: Record<UiKey, string> = {
   'search.loading': 'Searching…',
   'meta.howWeVerify': 'How I verify',
   'summary.title': 'In short',
-  'playFirst.title': 'Before you open the spellbook',
-  'playFirst.body': "What matters is enjoying the Mage. If this is your first time in Forever, level at your own pace: try talents, turn everything that moves into a sheep and open a portal to Ironforge when someone asks for Stormwind. Figuring out the class yourself is one of the best parts of the game. When you want to get serious or something doesn't add up, my notes are here.",
   'status.verified': 'Official',
   'status.reported': 'Community',
   'status.classic': 'Classic ref.',

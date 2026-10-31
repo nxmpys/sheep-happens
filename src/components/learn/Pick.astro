@@ -1,5 +1,5 @@
 ---
-/** One tab of a <Picker>: its button (icon and title) and its panel. */
+/** One tab of a <Picker>: its button (icon and title) and its panel. In an `art` Picker the button is a picture from public/home. */
 import GameIcon from './GameIcon.astro';
 
 interface Props {
@@ -10,13 +10,17 @@ interface Props {
   school?: 'arcane' | 'fire' | 'frost';
   /** Heading of the panel, when it says more than the button. */
   heading?: string;
+  /** Picture of the button (a file in public/home, without extension). */
+  image?: string;
 }
 
-const { id, title, spell, icon, school, heading } = Astro.props;
+const { id, title, spell, icon, school, heading, image } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 
 <div class:list={['pick', school && `school-${school}`]}>
   <button type="button" class="pick__button" data-pick={id}>
+    {image && <img class="pick__art" src={`${base}home/${image}.webp`} alt="" width="960" height="540" loading="lazy" decoding="async" />}
     <GameIcon spell={spell} icon={icon} size={32} plain />
     <span>{title}</span>
   </button>

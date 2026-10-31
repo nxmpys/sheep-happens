@@ -187,6 +187,68 @@ pick-panel {
   }
 }
 
+/* Picture buttons: the chosen one takes the room of the others. */
+.pick-art .pick__button {
+  position: relative;
+  flex: 1 1 0;
+  align-items: flex-end;
+  height: clamp(13rem, 30vw, 24rem);
+  padding: var(--space-4);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: #120f1f;
+  color: #f1eff8;
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  isolation: isolate;
+  transition:
+    flex-grow 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.15s;
+}
+.pick-art .pick__button:hover {
+  color: #fff;
+}
+.pick-art .pick__button[aria-selected='true'] {
+  flex-grow: 2.4;
+  background: #120f1f;
+  color: #fff;
+  box-shadow: inset 0 -3px 0 var(--school, var(--accent));
+}
+.pick__art {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  transition:
+    opacity 0.4s,
+    scale 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.pick-art .pick__button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, transparent 40%, rgb(10 8 20 / 0.85));
+}
+.pick-art .pick__button[aria-selected='true'] .pick__art {
+  opacity: 1;
+  scale: 1.04;
+}
+@media (max-width: 40rem) {
+  .pick-art .pick__button {
+    flex-basis: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    height: 11rem;
+    padding: var(--space-3);
+    font-size: var(--step-0, 1rem);
+  }
+}
+
 /* A chain of spells: each one leads to the next. */
 .prose .chain {
   display: flex;
@@ -235,6 +297,7 @@ pick-panel {
   gap: var(--space-3);
 }
 .chain--loose .chain__box {
+  flex: 1;
   width: auto;
   height: 100%;
   padding: var(--space-3) var(--space-2);

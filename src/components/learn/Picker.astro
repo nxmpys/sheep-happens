@@ -12,12 +12,14 @@ interface Props {
   initial?: string;
   /** Also switch when the pointer passes over a button. */
   hover?: boolean;
+  /** Buttons as tall pictures (Pick `image`): the chosen one widens and the others narrow. */
+  art?: boolean;
 }
 
-const { label, initial, hover = false } = Astro.props;
+const { label, initial, hover = false, art = false } = Astro.props;
 ---
 
-<pick-panel role="group" aria-label={label} data-initial={initial} data-hover={hover ? '' : undefined}>
+<pick-panel class:list={[{ 'pick-art': art }]} role="group" aria-label={label} data-initial={initial} data-hover={hover ? '' : undefined}>
   <slot />
 </pick-panel>
 

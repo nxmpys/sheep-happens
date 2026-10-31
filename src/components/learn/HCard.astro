@@ -1,0 +1,98 @@
+---
+/** One picture card of an <HScroll>: a real game picture from public/home, a label, a heading and a few words. */
+interface Props {
+  image: string;
+  title: string;
+  heading: string;
+}
+
+const { image, title, heading } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+
+<article class="hcard">
+  <img class="hcard__art" src={`${base}home/${image}.webp`} alt="" width="960" height="540" loading="lazy" decoding="async" />
+  <div class="hcard__text">
+    <p class="hcard__label">{title}</p>
+    <p class="hcard__heading">{heading}</p>
+    <div class="hcard__body"><slot /></div>
+  </div>
+</article>
+
+<style>
+  .hcard {
+    position: relative;
+    display: grid;
+    align-items: end;
+    flex: none;
+    width: min(86vw, 22rem);
+    min-height: 26rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: #120f1f;
+    color: #f1eff8;
+    scroll-snap-align: start;
+    isolation: isolate;
+  }
+  .hcard__art {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .hcard::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgb(10 8 20 / 0.05) 20%, rgb(10 8 20 / 0.92) 78%);
+  }
+  .hcard:hover .hcard__art {
+    scale: 1.05;
+  }
+  .hcard__text {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-5);
+  }
+  .hcard__label {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #d9c8ff;
+  }
+  .hcard__heading {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-weight: 600;
+    line-height: 1.12;
+  }
+  .hcard__body {
+    font-size: var(--step--1);
+    line-height: 1.5;
+    color: #ded9ec;
+  }
+  .hcard__body :global(p) {
+    margin: 0;
+  }
+  .hcard__body :global(a) {
+    color: #fff;
+  }
+  @media (min-width: 62rem) {
+    .hcard {
+      width: min(62vw, 52rem);
+      min-height: min(72vh, 44rem);
+    }
+    .hcard__text {
+      max-width: 34rem;
+      padding: var(--space-6);
+    }
+  }
+</style>

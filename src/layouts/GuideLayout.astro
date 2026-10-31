@@ -5,7 +5,6 @@ import FeedbackBox from '../components/layout/FeedbackBox.astro';
 import Breadcrumbs from '../components/layout/Breadcrumbs.astro';
 import PrevNext from '../components/layout/PrevNext.astro';
 import Toc from '../components/layout/Toc.astro';
-import PlayFirst from '../components/guide/PlayFirst.astro';
 import SourceRefs from '../components/guide/SourceRefs.astro';
 import Icon from '../components/ui/Icon.astro';
 import '../styles/prose.css';
@@ -37,6 +36,8 @@ const { locale, pageId, data, headings, body = '', subpage, hideLead = false } =
 const spec = ROUTES[pageId].spec;
 // The about page is not a guide: no lead, index, pager or feedback form.
 const personal = pageId === 'about';
+// Learn opens with its own full-width picture, so its title stays for search and screen readers only.
+const immersive = pageId === 'learn';
 const trail = breadcrumbTrail(pageId);
 const section = NAV_LABELS[locale][trail[1] ?? pageId];
 const strings = {
@@ -83,9 +84,9 @@ const tocHeadings = sources.length > 0
   modified={modified}
   paths={subpage?.paths}
 >
-  <div class:list={['container', 'guide', spec && `school-${spec}`, (data.wide || personal) && 'guide--wide']}>
+  <div class:list={['container', 'guide', spec && `school-${spec}`, (data.wide || personal) && 'guide--wide', immersive && 'guide--immersive']} data-fx={immersive ? '' : undefined}>
     <div class="guide__main">
-      <header class="guide__header">
+      <header class:list={['guide__header', immersive && 'visually-hidden']}>
         <Breadcrumbs locale={locale} pageId={pageId} extra={subpage?.crumbs} />
         {
           spec && (
@@ -109,7 +110,6 @@ const tocHeadings = sources.length > 0
       }
 
       <article class="prose" data-pagefind-body data-heading-anchors={JSON.stringify(strings)}>
-        {pageId === 'learn' && <PlayFirst locale={locale} />}
         {
           data.summary && data.summary.length > 0 && (
             <section class="summary" aria-labelledby="summary-title">
@@ -301,5 +301,12 @@ const tocHeadings = sources.length > 0
   }
   .guide--wide .guide__toc-inline {
     display: none;
+  }
+  .guide--immersive {
+    padding-top: 0;
+  }
+  /* Its full-width pieces measure 100vw, which includes the scrollbar. Clip keeps sticky working. */
+  :global(body:has(.guide--immersive)) {
+    overflow-x: clip;
   }
 </style>

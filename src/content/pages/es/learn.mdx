@@ -3,8 +3,8 @@ pageId: learn
 locale: es
 title: Aprende a jugar Mago
 seoTitle: Aprende a jugar Mago en WoW Forever, guía de clase y combate
-description: 'Guía de clase del Mago en WoW Forever desde cero: qué ofrece frente a las demás clases, qué te pide, sus hechizos y qué añade cada una de sus tres ramas.'
-lead: Qué ofrece la clase, cómo combate y por dónde seguir.
+description: 'Guía de clase del Mago en WoW Forever desde cero: qué lo diferencia de las demás clases, sus hechizos, qué añade cada rama y cómo se juega.'
+lead: Qué lo diferencia, sus hechizos, sus ramas y cómo se juega.
 gameVersion: forever-beta-2026-10
 published: 2026-10-11
 reviewed: 2026-10-18
@@ -13,54 +13,54 @@ status: published
 verification: analysis
 wide: true
 sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, wiki-mage-abilities-classic, wiki-pyroblast, warcrafttavern-classes]
-tags: [aprender, principiante, mago desde cero, guía, empezar, fundamentos, guía de clase, qué es el mago, por qué jugar mago, maná, habilidades, razas, combate, kit, ramas, control, supervivencia, rotación]
+tags: [aprender, principiante, mago desde cero, guía, empezar, fundamentos, guía de clase, qué es el mago, por qué jugar mago, maná, habilidades, razas, combate, kit, ramas, control, supervivencia, rotación, cómo jugar]
 ---
 
 <MageIntro />
 
 ## Qué lo diferencia
 
-Lo que tiene el Mago y no tienen las demás clases, y lo que te pide a cambio. <Status status="classic" />
+Lo que tiene el Mago y no tienen las demás clases. <Status status="classic" />
 
-<Picker label="Lo que ofrece el Mago" hover>
-<Pick id="travel" title="Teletransportes y portales" icon="spell_arcane_portalstormwind" heading="Eres el transporte del grupo">
-
-Desde el nivel 20 te teletransportas a las capitales, y desde el 40 abres portales que todo tu grupo puede cruzar. Ninguna otra clase puede hacerlo.
-
-</Pick>
-<Pick id="water" title="Comida y agua" spell="Conjure Water" icon="inv_drink_06" heading="Nunca pagas por comida ni agua">
-
-Conjuras agua desde el nivel 4 y comida desde el 6, para ti y para tu grupo.
-
-</Pick>
-<Pick id="polymorph" title="Polimorfia" spell="Polymorph" heading="Conviertes enemigos en ovejas">
+<HScroll label="Lo que ofrece el Mago">
+<HCard image="q-combat" title="Polimorfia" heading="Conviertes enemigos en ovejas">
 
 Desde el nivel 8, **Polimorfia** (Polymorph) saca a un enemigo del combate hasta que algo lo golpee. Blizzard la considera una de las mejores herramientas de control del juego. <Status status="verified" compact />
 
-</Pick>
-<Pick id="aoe" title="Daño en área" spell="Blizzard" heading="Golpeas a grupos enteros desde lejos">
+</HCard>
+<HCard image="hl-aoe" title="Daño en área" heading="Golpeas a grupos enteros desde lejos">
 
 **Deflagración Arcana**, **Fogonazo**, **Ventisca** y **Cono de frío** dañan todo lo que hay en una zona. Según Blizzard, el Mago domina el daño en área a distancia, y también es una forma de farmear: <PageLink to="aoe-farming">farmeo AoE</PageLink>. <Status status="verified" compact />
 
-</Pick>
-<Pick id="escape" title="Escapes" spell="Blink" heading="Sales de los malos momentos">
+</HCard>
+<HCard image="q-changes" title="Teletransportes y portales" heading="Eres el transporte del grupo">
+
+Desde el nivel 20 te teletransportas a las capitales, y desde el 40 abres portales que todo tu grupo puede cruzar. Ninguna otra clase puede hacerlo.
+
+</HCard>
+<HCard image="d-7" title="Comida y agua" heading="Nunca pagas por comida ni agua">
+
+Conjuras agua desde el nivel 4 y comida desde el 6, para ti y para tu grupo.
+
+</HCard>
+<HCard image="tree-frost" title="Escapes" heading="Sales de los malos momentos">
 
 **Nova de Escarcha** inmoviliza todo lo que tienes al lado y **Traslación** (Blink) te mueve 20 m al instante, incluso si estás aturdido. Tu defensa es no estar donde está el enemigo.
 
-</Pick>
-<Pick id="mixed" title="Escuelas mezcladas" spell="Frostfire Bolt" heading="Puedes mezclar tres escuelas de magia">
+</HCard>
+<HCard image="hl-frostfire" title="Escuelas mezcladas" heading="Puedes mezclar tres escuelas de magia">
 
 **Descarga de Pirofrío**, a nivel 40, cuenta como Fuego y Escarcha a la vez: usa tu mayor bonificación entre las dos y la menor resistencia del objetivo. Varios talentos refuerzan hechizos de otras ramas, y Forever quiere dar más espacio a las builds que las mezclan. <Status status="verified" compact />
 
-</Pick>
-<Pick id="scrolls" title="Pergaminos" icon="inv_scroll_03" heading="Lees lo que otros no pueden">
+</HCard>
+<HCard image="hl-scrolls" title="Pergaminos" heading="Lees lo que otros no pueden">
 
 La Comprensión es una habilidad menor que solo tiene el Mago: descifras los pergaminos que sueltan las criaturas y consigues mejoras de una hora. <PageLink to="library" hash="pergaminos">Cómo funciona</PageLink>. <Status status="reported" compact />
 
-</Pick>
-</Picker>
+</HCard>
+</HScroll>
 
-**Lo que te pide:**
+**Lo que te pide a cambio:**
 
 <Tiles min={15}>
 <Tile title="Eres frágil" icon="inv_chest_cloth_04">
@@ -70,7 +70,7 @@ Llevas tela y no aguantas muchos golpes. Si algo te alcanza y se queda, el comba
 </Tile>
 <Tile title="El maná marca el ritmo" icon="spell_shadow_manaburn">
 
-Todos los hechizos cuestan maná, y lo recuperas bebiendo entre combates. Durante el combate tienes **Evocación** y las gemas de maná; solo efectos como **Armadura de mago** o **Meditación Arcana** dejan que el Espíritu lo regenere mientras lanzas. <Status status="classic" compact />
+Todos los hechizos cuestan maná. Cuando se acaba, no puedes hacer nada hasta que bebas.
 
 </Tile>
 <Tile title="Tu único rol es el daño" icon="spell_nature_regenerate">
@@ -88,10 +88,10 @@ Estos hechizos te los da el instructor, sean cuales sean tus talentos. Pasa por 
 
 ## Qué añade cada rama
 
-Las tres hacen daño a distancia. Los talentos no sustituyen esos hechizos: añaden otros y cambian cómo se conectan. Tu primera elección no es definitiva, porque puedes cambiar de talentos en el instructor de clase, y la rotación exacta está en cada <PageLink to="builds">build</PageLink>.
+Las tres hacen daño a distancia. Los talentos no sustituyen esos hechizos: añaden otros y cambian cómo se conectan. Tu primera elección no es definitiva, porque puedes cambiar de talentos en el instructor de clase.
 
-<Picker label="Las tres ramas">
-<Pick id="arcane" title="Arcano" icon="spell_holy_magicalsentry" school="arcane" heading="Acumula poder y gástalo">
+<Picker label="Las tres ramas" art hover>
+<Pick id="arcane" title="Arcano" icon="spell_holy_magicalsentry" school="arcane" image="tree-arcane" heading="Acumula poder y gástalo">
 
 Cada **Explosión Arcana** te da daño de hechizos durante 18 s, hasta 4 veces, y cuesta más que la anterior. La acumulas mientras te lo permita el maná y gastas esa ventana en tus hechizos fuertes. También puede activar **Tromba de misiles**: misiles rápidos y gratis.
 
@@ -106,7 +106,7 @@ Cada **Explosión Arcana** te da daño de hechizos durante 18 s, hasta 4 veces, 
 <PageLink to="talents-arcane">Arcano en detalle</PageLink>
 
 </Pick>
-<Pick id="fire" title="Fuego" icon="spell_fire_firebolt02" school="fire" heading="Convierte críticos en Piroexplosiones">
+<Pick id="fire" title="Fuego" icon="spell_fire_firebolt02" school="fire" image="tree-fire" heading="Convierte críticos en Piroexplosiones">
 
 Tus críticos con **Bola de Fuego**, **Descarga de Pirofrío**, **Explosión de Fuego** y **Chamuscar** acortan tu siguiente **Piroexplosión**: de 6 s de lanzamiento a 1,5 s con 3 cargas. **Ignición** quema además tras cada crítico.
 
@@ -121,7 +121,7 @@ Tus críticos con **Bola de Fuego**, **Descarga de Pirofrío**, **Explosión de 
 <PageLink to="talents-fire">Fuego en detalle</PageLink>
 
 </Pick>
-<Pick id="frost" title="Escarcha" icon="spell_frost_frostbolt02" school="frost" heading="Control que se convierte en daño">
+<Pick id="frost" title="Escarcha" icon="spell_frost_frostbolt02" school="frost" image="tree-frost" heading="Control que se convierte en daño">
 
 **Descarga de Escarcha** ralentiza, y esa ralentización puede darte **Dedos de Escarcha**, que trata tu siguiente hechizo como si el objetivo estuviera congelado. **Nova de Escarcha** congela de verdad. En ambos casos, **Lanza de hielo** hace un 300 % más.
 
@@ -138,30 +138,49 @@ Tus críticos con **Bola de Fuego**, **Descarga de Pirofrío**, **Explosión de 
 </Pick>
 </Picker>
 
-## Cómo se comparan las ramas
+## Cómo se juega
 
-<TreeCompare />
+Da igual la rama: estas ideas se repiten en casi todos los combates. La rotación exacta depende de tus talentos y está en las <PageLink to="builds">builds</PageLink>.
 
-<Pending
-  why="Estas comparaciones son mi lectura de las mecánicas que ha publicado Blizzard. Sin mediciones a nivel 60 no puedo prometer lo cerca que están en realidad las ramas."
-  next="Las probaré tras el lanzamiento y marcaré como «Probado» lo que se sostenga."
-/>
+<Stack>
+<StackCard n={1} title="Prepárate antes de salir">
 
-## Si un enemigo te alcanza
+Lleva siempre puestos tu armadura e **Intelecto Arcano**, y conjura agua y comida antes de salir de la ciudad. Visita al instructor cada dos niveles: tu daño depende de los rangos nuevos.
+
+<Chain loose items={[{ spell: 'Frost Armor', name: 'Armadura de Escarcha', note: 'nivel 1, ralentiza a quien te golpea' }, { spell: 'Arcane Intellect', note: 'nivel 1, siempre puesto' }, { icon: 'inv_drink_06', name: 'Conjurar agua', note: 'nivel 4' }, { icon: 'inv_misc_food_15', name: 'Conjurar comida', note: 'nivel 6' }]} />
+
+</StackCard>
+<StackCard n={2} title="Golpea antes de que llegue">
+
+Tu defensa es no estar donde está el enemigo, así que empieza a lanzar en cuanto lo tengas a tiro. Remata con la varita: no gasta maná y deja que se recupere.
+
+<Chain loose items={[{ spell: 'Frostbolt', note: 'nivel 4, ralentiza' }, { spell: 'Fireball', note: 'nivel 1, alcance de 35 m' }, { spell: 'Fire Blast', note: 'nivel 6, para rematar' }, { icon: 'inv_wand_05', name: 'Varita', note: 'remata sin gastar maná' }]} />
+
+</StackCard>
+<StackCard n={3} title="Si te alcanza, sal">
 
 Tus salidas. No son una secuencia: usa la que pida el momento. <Status status="analysis" />
 
 <Chain loose items={[{ spell: 'Frost Nova', note: 'lo inmoviliza' }, { spell: 'Blink', note: 'pone distancia' }, { spell: 'Polymorph', note: 'saca a un segundo enemigo' }, { spell: 'Ice Block', note: 'último recurso, pide 16 puntos de Escarcha' }, { spell: 'Cold Snap', note: 'reinicia hechizos de Escarcha, 10 min, pide 21 puntos' }]} />
 
-Dos cosas más que salvan un combate: **Contrahechizo** corta un lanzamiento peligroso, y con 1 punto en **Contrahechizo mejorado** silencia siempre; **Escudo de maná** absorbe daño con tu maná. <Status status="verified" compact />
+**Contrahechizo** corta un lanzamiento peligroso, y con 1 punto en **Contrahechizo mejorado** silencia siempre; **Escudo de maná** absorbe daño con tu maná. <Status status="verified" compact /> Varios de estos momentos dependen de un proc fácil de pasar por alto: mi addon <PageLink to="addons">MageProcs</PageLink> los muestra en el centro de la pantalla.
 
-Varios de estos momentos dependen de un proc fácil de pasar por alto. Mi addon <PageLink to="addons">MageProcs</PageLink> los muestra en el centro de la pantalla.
-
-## Contra varios enemigos
+</StackCard>
+<StackCard n={4} title="Contra varios, en área">
 
 <SpellBar spells={[{ spell: 'Arcane Explosion', level: 14 }, { spell: 'Flamestrike', level: 16 }, { spell: 'Blizzard', level: 20 }, { spell: 'Cone of Cold', level: 26 }, { spell: 'Blast Wave' }]} />
 
-Tus hechizos de área; el último es un talento de Fuego. En Forever, **Cono de frío** dura menos (salvo en los 4 primeros objetivos que alcanza) y **Ventisca mejorada** ralentiza menos, así que ten cuidado al arrastrar grupos grandes. <Status status="verified" compact /> Cómo hacerlo paso a paso, y dónde: <PageLink to="aoe-farming">farmeo AoE</PageLink>.
+Tus hechizos de área; el último es un talento de Fuego. Contra un solo enemigo no compensan su maná. En Forever, **Cono de frío** dura menos (salvo en los 4 primeros objetivos que alcanza) y **Ventisca mejorada** ralentiza menos, así que ten cuidado al arrastrar grupos grandes. <Status status="verified" compact /> Cómo hacerlo paso a paso, y dónde: <PageLink to="aoe-farming">farmeo AoE</PageLink>.
+
+</StackCard>
+<StackCard n={5} title="Vigila el maná">
+
+Lo recuperas bebiendo entre combates. Durante el combate tienes **Evocación** y las gemas de maná; solo efectos como **Armadura de mago** o **Meditación Arcana** dejan que el Espíritu lo regenere mientras lanzas. <Status status="classic" compact />
+
+<Chain loose items={[{ icon: 'inv_drink_06', name: 'Beber', note: 'entre combates' }, { spell: 'Evocation', note: 'nivel 20, cada 8 min' }, { icon: 'inv_misc_gem_emerald_01', name: 'Gema de maná', note: 'nivel 28' }, { spell: 'Mage Armor', note: 'nivel 34, regenera mientras lanzas' }, { spell: 'Arcane Meditation', note: 'talento de Arcano, regenera mientras lanzas' }]} />
+
+</StackCard>
+</Stack>
 
 ## Sigue por aquí
 
@@ -173,4 +192,9 @@ Tus hechizos de área; el último es un talento de Fuego. En Forever, **Cono de 
 
 Las palabras que verás en las guías y en el chat del juego. En el resto de la web, al pasar el ratón (o tocar) por encima de estas palabras sale su definición.
 
+<details class="disclosure">
+<summary>Ver todas las palabras</summary>
+
 <Glossary />
+
+</details>

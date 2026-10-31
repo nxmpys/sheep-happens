@@ -1,0 +1,66 @@
+﻿---
+/** One card of a <Stack>: its number, title and text. */
+interface Props {
+  n: number;
+  title: string;
+}
+
+const { n, title } = Astro.props;
+---
+
+<li class="stack-card" style={`--n: ${n}`}>
+  <p class="stack-card__num" aria-hidden="true">{String(n).padStart(2, '0')}</p>
+  <div class="stack-card__main">
+    <p class="stack-card__title">{title}</p>
+    <div class="stack-card__body"><slot /></div>
+  </div>
+</li>
+
+<style>
+  :global(.prose) .stack-card {
+    display: grid;
+    grid-template-columns: minmax(3.5rem, 7rem) minmax(0, 1fr);
+    gap: var(--space-4);
+    margin: 0;
+    padding: var(--space-5);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(160deg, var(--surface-2, var(--surface-1)), var(--surface-1) 60%);
+    box-shadow: 0 -12px 28px rgb(0 0 0 / 0.28);
+  }
+  .stack-card__num {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--step-4, 2.6rem);
+    font-weight: 600;
+    line-height: 1;
+    color: var(--accent);
+  }
+  .stack-card__title {
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .stack-card__body > :global(* + *) {
+    margin-top: var(--space-3);
+  }
+  .stack-card__body :global(p) {
+    margin-bottom: 0;
+  }
+  @media (min-width: 48rem) and (min-height: 40rem) and (prefers-reduced-motion: no-preference) {
+    :global(.prose) .stack-card {
+      position: sticky;
+      top: calc(var(--header-h) + var(--n) * 0.75rem);
+      min-height: 18rem;
+    }
+  }
+  @media (max-width: 34rem) {
+    :global(.prose) .stack-card {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-2);
+      padding: var(--space-4);
+    }
+  }
+</style>

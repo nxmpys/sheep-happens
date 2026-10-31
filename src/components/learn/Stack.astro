@@ -1,0 +1,19 @@
+﻿---
+/**
+ * Numbered cards (<StackCard>) that stop under the header while the next one
+ * slides over them, each leaving its top edge in sight. Plain CSS: with no room
+ * for it (short windows, phones) they are an ordinary list.
+ */
+---
+
+<ol class="stack"><slot /></ol>
+
+<style>
+  :global(.prose) .stack {
+    display: grid;
+    gap: var(--space-4);
+    margin: var(--space-5) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+</style>

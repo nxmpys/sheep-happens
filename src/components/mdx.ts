@@ -57,7 +57,11 @@ import StatusLegend from './guide/StatusLegend.astro';
 import TalentCalculator from './guide/TalentCalculator.astro';
 import WatchList from './guide/WatchList.astro';
 import Chain from './learn/Chain.astro';
+import HCard from './learn/HCard.astro';
+import HScroll from './learn/HScroll.astro';
 import MageIntro from './learn/MageIntro.astro';
+import Stack from './learn/Stack.astro';
+import StackCard from './learn/StackCard.astro';
 import Pick from './learn/Pick.astro';
 import Picker from './learn/Picker.astro';
 import Pieces from './learn/Pieces.astro';
@@ -82,7 +86,11 @@ export const mdxComponents = {
   strong: SpellStrong,
   AboutStory,
   Chain,
+  HCard,
+  HScroll,
   MageIntro,
+  Stack,
+  StackCard,
   Pick,
   Picker,
   Pieces,
