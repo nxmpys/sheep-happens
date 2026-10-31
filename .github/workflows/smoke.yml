@@ -42,7 +42,8 @@ jobs:
           check / 200
           check /es/ 200
           check /en/ 200
-          check /es/guia/ 200
+          check /es/aprende/ 200
+          check /es/guia/ 301
           check /es/cambios/ 200
           check /es/talentos/escarcha/ 200
           check /en/talents/fire/ 200
