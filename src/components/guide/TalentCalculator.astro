@@ -9,6 +9,9 @@
  * or loaded from a Wowhead link or one of our builds. A build with a point order
  * also adds &b=<build id>: while it stays untouched, changing the level shows its
  * points at that level in its own order, not a trimmed copy of the level 60 build.
+ * The calculator remembers the order points were spent in and shows it in a
+ * foldable list, with the level of each point; &o= keeps it in the link. A build
+ * that arrives without one (a Wowhead link) gets one by tree and row, with a note.
  * Every change fires `talents-change` (detail: code, total) for CommunityBuilds,
  * and a `talents-load` event on the document (detail: code) loads a build.
  */
@@ -18,6 +21,7 @@ import { USE_TITLES } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
 import { t, type UiKey } from '../../i18n/ui';
 import { builds, talentText, talents } from '../../lib/data';
+import { iconPath } from '../../lib/icons';
 import { localName } from '../../lib/names';
 import { MAX_LEVEL, TREE_ORDER } from '../../lib/talents';
 
@@ -40,6 +44,7 @@ const data = {
       english: talent.name,
       ranks: local?.ranks ?? [],
       untranslated: local?.lang === 'en',
+      ...(text?.icon ? { icon: iconPath(text.icon) } : {}),
     };
   }),
   builds: builds.map((build) => ({
@@ -180,6 +185,22 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
     </div>
   </div>
 
+  <details class="disclosure tc-order" data-order>
+    <summary>
+      {es ? 'Orden de talentos' : 'Talent order'}
+      <span class="tc-order__hint">{es ? 'Qué punto coger a cada nivel' : 'Which point at which level'}</span>
+    </summary>
+    <p class="tc-order__note" data-order-empty>{es ? 'Cada punto que añadas aparece aquí, con el nivel al que lo coges.' : 'Every point you add shows up here, with the level you take it at.'}</p>
+    <ol class="tc-order__list" data-order-list data-no-spell-links></ol>
+    <p class="tc-order__note" data-order-auto hidden>
+      {
+        es
+          ? 'Esta build llegó sin orden, así que está ordenada por rama y fila. Para cambiarlo, quita los puntos y añádelos en el orden que quieras.'
+          : 'This build came without an order, so it is sorted by tree and row. To change it, remove the points and add them in the order you want.'
+      }
+    </p>
+  </details>
+
   <p class="tc__help">
     {
       es
@@ -195,10 +216,25 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
 <script>
   import { copyText } from '../../scripts/clipboard';
   import { showToast } from '../../scripts/toast';
-  import { MAX_LEVEL, TREE_ORDER, parseWowheadBuild, pointsAtLevel, pointsByTree, pointsFromOrder, totalPoints, validateBuild, wowheadBuildUrl } from '../../lib/talents';
+  import {
+    MAX_LEVEL,
+    TREE_ORDER,
+    decodeOrder,
+    defaultOrder,
+    encodeOrder,
+    levelForPoint,
+    parseWowheadBuild,
+    pointsAtLevel,
+    pointsByTree,
+    pointsFromOrder,
+    repairOrder,
+    totalPoints,
+    validateBuild,
+    wowheadBuildUrl,
+  } from '../../lib/talents';
   import type { SpecTree, Talent } from '../../lib/schemas';
 
-  type CalcTalent = Talent & { english: string; ranks: string[]; untranslated: boolean };
+  type CalcTalent = Talent & { english: string; ranks: string[]; untranslated: boolean; icon?: string };
   interface Config {
     talents: CalcTalent[];
     builds: { id: string; name: string; points: Record<string, number>; level: number; talented: number; order: string[] | null }[];
@@ -216,6 +252,10 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
     private talented = 0;
     /** Loaded build with a point order, until the reader changes a point by hand. */
     private ordered: Config['builds'][number] | null = null;
+    /** The current points in the order they were spent; always a legal order. */
+    private pickOrder: string[] = [];
+    /** The build came without an order, so pickOrder is one made up by tree and row. */
+    private orderIsGuess = false;
     private shown: string | null = null;
     private hideTimer: number | undefined;
 
@@ -268,6 +308,7 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
       this.q('[data-reset]').addEventListener('click', () => {
         this.points = {};
         this.ordered = null;
+        this.pickOrder = [];
         this.update();
       });
       this.select('level').addEventListener('change', (e) => {
@@ -288,6 +329,8 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
         this.level = build.level;
         this.talented = 0;
         this.ordered = build.order ? build : null;
+        if (build.order) this.followOrder(build.order);
+        else this.guessOrder();
         this.update();
         this.say(`${this.config.strings['imported']}: ${build.name}`);
       });
@@ -301,6 +344,7 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
         }
         this.points = points;
         this.ordered = null;
+        this.guessOrder();
         this.fitLevel();
         input.value = '';
         this.update();
@@ -320,6 +364,7 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
       if (!points || !this.valid(points)) return;
       this.points = points;
       this.ordered = null;
+      this.guessOrder();
       this.fitLevel();
       this.update();
       this.say(this.config.strings['imported']!);
@@ -360,6 +405,8 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
       if (!this.canAdd(id)) return;
       this.points = this.with(id, 1);
       this.ordered = null;
+      this.pickOrder.push(id);
+      this.orderIsGuess = false;
       this.update();
       this.burst(id);
     }
@@ -377,6 +424,9 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
       if (!this.canRemove(id)) return;
       this.points = this.with(id, -1);
       this.ordered = null;
+      this.pickOrder.splice(this.pickOrder.lastIndexOf(id), 1);
+      this.pickOrder = repairOrder(this.pickOrder, this.config.talents);
+      this.orderIsGuess = false;
       this.update();
     }
     private clearTree(tree: SpecTree) {
@@ -384,7 +434,17 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
       // Prerequisites never cross trees, so the rest stays valid.
       this.points = next;
       this.ordered = null;
+      this.pickOrder = this.pickOrder.filter((id) => this.byId.get(id)?.tree !== tree);
       this.update();
+    }
+    /** The order of a loaded build, up to the points it has at this level. */
+    private followOrder(order: readonly string[]) {
+      this.pickOrder = order.slice(0, totalPoints(this.points));
+      this.orderIsGuess = false;
+    }
+    private guessOrder() {
+      this.pickOrder = defaultOrder(this.points, this.config.talents);
+      this.orderIsGuess = this.pickOrder.length > 0;
     }
     /** Raises the level when a loaded build has more points than it gives. */
     private fitLevel() {
@@ -397,20 +457,17 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
     /**
      * Fits the points to a new level. A loaded build with a point order is
      * rebuilt from that order (the points you really have at that level, both
-     * when lowering and raising it); otherwise lowering the level takes points
-     * back from the bottom rows up, keeping the build valid.
+     * when lowering and raising it); otherwise lowering the level takes back the
+     * last points spent, as you did not have them yet at that level.
      */
     private trimToLevel() {
       if (this.ordered?.order) {
         this.points = pointsFromOrder(this.ordered.order, Math.min(this.available(), this.ordered.order.length));
+        this.followOrder(this.ordered.order);
         return;
       }
-      const order = [...this.config.talents].sort((a, b) => b.row - a.row);
-      while (totalPoints(this.points) > this.available()) {
-        const id = order.find((t) => this.canRemove(t.id))?.id;
-        if (!id) break;
-        this.points = this.with(id, -1);
-      }
+      this.pickOrder = this.pickOrder.slice(0, this.available());
+      this.points = pointsFromOrder(this.pickOrder);
     }
 
     private readUrl() {
@@ -427,11 +484,20 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
           this.fitLevel();
         }
       }
+      const sameBuild = (other: Record<string, number>) => wowheadBuildUrl(other, this.config.talents) === wowheadBuildUrl(this.points, this.config.talents);
+      // The order in the link only counts if it adds up to the build in the link.
+      const saved = decodeOrder(params.get('o') ?? '', this.config.talents);
+      if (saved && sameBuild(pointsFromOrder(saved))) {
+        this.pickOrder = saved;
+        this.q<HTMLDetailsElement>('[data-order]').open = true;
+      } else {
+        this.guessOrder();
+      }
       // A build link (?b=): follow its point order if the points are that build at this level.
       const build = this.config.builds.find((b) => b.id === params.get('b'));
-      if (build?.order) {
-        const expected = pointsFromOrder(build.order, Math.min(this.available(), build.order.length));
-        if (wowheadBuildUrl(expected, this.config.talents) === wowheadBuildUrl(this.points, this.config.talents)) this.ordered = build;
+      if (build?.order && sameBuild(pointsFromOrder(build.order, Math.min(this.available(), build.order.length)))) {
+        this.ordered = build;
+        this.followOrder(build.order);
       }
     }
     private writeUrl(url: string) {
@@ -445,6 +511,9 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
       else params.delete('tal');
       if (this.ordered) params.set('b', this.ordered.id);
       else params.delete('b');
+      // A guessed order stays out of the link until the reader changes it: it is not theirs yet.
+      if (!this.ordered && !this.orderIsGuess && this.pickOrder.length > 0) params.set('o', encodeOrder(this.pickOrder, this.config.talents));
+      else params.delete('o');
       const query = params.toString();
       history.replaceState(null, '', `${location.pathname}${query ? `?${query}` : ''}${location.hash}`);
     }
@@ -484,9 +553,38 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
       }
       const url = wowheadBuildUrl(this.points, this.config.talents);
       this.q<HTMLAnchorElement>('[data-wowhead]').href = url;
+      if (this.pickOrder.length === 0) this.orderIsGuess = false;
       this.writeUrl(url);
+      this.drawOrder();
       this.dispatchEvent(new CustomEvent('talents-change', { bubbles: true, detail: { code: url.split('/mage/v2')[1] ?? '', total } }));
       if (this.shown) this.show(this.shown);
+    }
+
+    /** One row per point: its level with the chosen Talented rank, the talent and the rank it reaches. */
+    private drawOrder() {
+      const ranks: Record<string, number> = {};
+      const rows = this.pickOrder.map((id, index) => {
+        const talent = this.byId.get(id)!;
+        ranks[id] = (ranks[id] ?? 0) + 1;
+        const row = document.createElement('li');
+        row.className = `tc-order__row school-${talent.tree}`;
+        const cell = (name: string, text: string) => {
+          const span = document.createElement('span');
+          span.className = `tc-order__${name}`;
+          span.textContent = text;
+          return span;
+        };
+        const icon = document.createElement('img');
+        icon.src = talent.icon ?? '';
+        icon.alt = '';
+        icon.width = icon.height = 24;
+        icon.loading = 'lazy';
+        row.append(cell('level', String(levelForPoint(index + 1, this.talented))), icon, cell('name', talent.name), cell('rank', `${ranks[id]}/${talent.maxRank}`));
+        return row;
+      });
+      this.q('[data-order-list]').replaceChildren(...rows);
+      this.q('[data-order-empty]').hidden = rows.length > 0;
+      this.q('[data-order-auto]').hidden = !this.orderIsGuess;
     }
 
     private show(id: string) {
@@ -787,6 +885,60 @@ const fetched = new Date(`${talentText.fetched}T00:00:00Z`).toLocaleDateString(e
   .tc-detail__buttons .button:disabled {
     opacity: 0.45;
     cursor: not-allowed;
+  }
+  .tc-order__hint {
+    margin-left: var(--space-2);
+    font-size: var(--step--1);
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+  .tc-order__note {
+    margin: 0;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .tc-order__note[hidden] {
+    display: none;
+  }
+  /* Top to bottom and then the next column, as many as fit. */
+  .tc .tc-order__list {
+    columns: 3 15rem;
+    column-gap: var(--space-5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .tc .tc-order__list:empty {
+    display: none;
+  }
+  /* The rows are drawn by the script, so Astro's scoping does not reach them. */
+  .tc .tc-order__list :global(.tc-order__row) {
+    display: grid;
+    grid-template-columns: 1.6rem 24px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0.15rem 0;
+    break-inside: avoid;
+    font-size: var(--step--1);
+    line-height: 1.3;
+  }
+  .tc .tc-order__list :global(.tc-order__row img) {
+    margin: 0;
+    border-radius: 3px;
+  }
+  .tc .tc-order__list :global(.tc-order__level) {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+  .tc .tc-order__list :global(.tc-order__name) {
+    color: var(--school);
+    font-weight: 600;
+  }
+  .tc .tc-order__list :global(.tc-order__rank) {
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
   }
   .tc__help,
   .tc__source {

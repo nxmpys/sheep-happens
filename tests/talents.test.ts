@@ -1,7 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { builds, checkIntegrity, talents, type Dataset } from '../src/lib/data';
 import {
+  decodeOrder,
+  defaultOrder,
   distributionLabel,
+  encodeOrder,
+  repairOrder,
   levelForPoint,
   orderSteps,
   pointsAtLevel,
@@ -204,5 +208,43 @@ describe('parseWowheadBuild', () => {
   it('rejects other text and impossible ranks', () => {
     expect(parseWowheadBuild('hello', talents)).toBeUndefined();
     expect(parseWowheadBuild(`${WOWHEAD_CALC}/v29`, talents)).toBeUndefined();
+  });
+});
+
+describe('the calculator point order', () => {
+  const frostbolt = Array.from({ length: 5 }, () => 'improved-frostbolt');
+
+  it('moves a point back when the one that unlocked it leaves', () => {
+    expect(repairOrder([...frostbolt.slice(0, 4), 'ice-shards', 'elemental-precision'], talents)).toEqual([...frostbolt.slice(0, 4), 'elemental-precision', 'ice-shards']);
+  });
+
+  it('leaves a legal order as it is', () => {
+    const order = [...frostbolt, 'ice-shards', 'elemental-precision'];
+    expect(repairOrder(order, talents)).toEqual(order);
+  });
+
+  it('orders a build with no order by its main tree, row by row', () => {
+    const order = defaultOrder({ 'arcane-resilience': 1, 'improved-frostbolt': 5, 'ice-shards': 1 }, talents);
+    expect(order).toEqual([...frostbolt, 'ice-shards', 'arcane-resilience']);
+  });
+
+  it('gives every legal build a legal default order', () => {
+    const points = { 'improved-frostbolt': 5, 'ice-shards': 5, 'elemental-precision': 3 };
+    const order = defaultOrder(points, talents);
+    expect(pointsFromOrder(order)).toEqual(points);
+    expect(decodeOrder(encodeOrder(order, talents), talents)).toEqual(order);
+  });
+
+  it('round-trips through a link with one character per point', () => {
+    const order = [...frostbolt, 'ice-shards', 'arcane-resilience'];
+    const code = encodeOrder(order, talents);
+    expect(code).toHaveLength(order.length);
+    expect(decodeOrder(code, talents)).toEqual(order);
+  });
+
+  it('refuses a link order that is unknown or breaks the rules', () => {
+    expect(decodeOrder('', talents)).toBeUndefined();
+    expect(decodeOrder('!!', talents)).toBeUndefined();
+    expect(decodeOrder(encodeOrder(['ice-shards', ...frostbolt], talents), talents)).toBeUndefined();
   });
 });

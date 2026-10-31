@@ -137,6 +137,48 @@ export function validateOrder(
   return problems;
 }
 
+/**
+ * Makes a point order legal again after a point left it: each point moves back
+ * until its row and prerequisites are met, and the rest keep their order. More
+ * points never break a requirement, so a valid build always has a legal order.
+ */
+export function repairOrder(order: readonly string[], talents: readonly Talent[]): string[] {
+  const placed: string[] = [];
+  const pending = [...order];
+  while (pending.length > 0) {
+    const next = pending.findIndex((id) => validateBuild(pointsFromOrder([...placed, id]), MAX_LEVEL, talents).length === 0);
+    if (next === -1) return [...placed, ...pending];
+    placed.push(...pending.splice(next, 1));
+  }
+  return placed;
+}
+
+/** An order for a build that came without one: the tree with most points first, row by row. */
+export function defaultOrder(points: Points, talents: readonly Talent[]): string[] {
+  const totals = pointsByTree(points, talents);
+  const trees = [...TREE_ORDER].sort((a, b) => totals[b] - totals[a]);
+  const order = trees.flatMap((tree) => treeTalents(talents, tree).flatMap((t) => Array.from({ length: points[t.id] ?? 0 }, () => t.id)));
+  return repairOrder(order, talents);
+}
+
+const ORDER_ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const orderKeys = (talents: readonly Talent[]) => TREE_ORDER.flatMap((tree) => treeTalents(talents, tree).map((t) => t.id));
+
+/** A point order for a link: one character per point, the talent's place in calculator order. */
+export function encodeOrder(order: readonly string[], talents: readonly Talent[]): string {
+  const keys = orderKeys(talents);
+  return order.map((id) => ORDER_ALPHABET[keys.indexOf(id)]).join('');
+}
+
+/** Reads an order written by encodeOrder. Undefined when it is not one, or breaks the rules at any point. */
+export function decodeOrder(text: string, talents: readonly Talent[]): string[] | undefined {
+  const keys = orderKeys(talents);
+  const order = [...text].map((char) => keys[ORDER_ALPHABET.indexOf(char)]);
+  if (order.length === 0 || order.includes(undefined)) return undefined;
+  const ids = order as string[];
+  return repairOrder(ids, talents).join() === ids.join() ? ids : undefined;
+}
+
 /** A run of consecutive points in the same talent, e.g. Improved Frostbolt 1 → 5 at points 1–5. */
 export interface OrderStep {
   talent: Talent;
