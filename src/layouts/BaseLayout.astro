@@ -11,7 +11,7 @@ import SpellTooltip from '../components/layout/SpellTooltip.astro';
 import StatusTooltip from '../components/layout/StatusTooltip.astro';
 import Toast from '../components/layout/Toast.astro';
 import { href, otherLocale } from '../i18n/locale';
-import type { Locale, PageId } from '../i18n/routes';
+import { ROUTES, type Locale, type PageId } from '../i18n/routes';
 import { t } from '../i18n/ui';
 import { SITE_NAME } from '../lib/seo';
 
@@ -47,10 +47,12 @@ const ogImage = absolute(image ?? `${base}og/${locale}-home.png`);
 const ogLocale = { es: 'es_ES', en: 'en_GB' } as const;
 const googleVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
+// A talent tree's page takes that tree's colours and background (tokens.css, scripts/ambience.ts).
+const tree = pageId ? ROUTES[pageId].spec : undefined;
 ---
 
 <!doctype html>
-<html lang={locale}>
+<html lang={locale} data-tree={tree}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -99,6 +101,7 @@ const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
     </script>
   </head>
   <body id="top" data-pagefind-meta={section ? `section:${section}` : undefined}>
+    {tree && <canvas class="ambience" aria-hidden="true" data-ambience={tree}></canvas>}
     <a class="skip-link" href="#main">{t(locale, 'skip.toContent')}</a>
     <Header locale={locale} pageId={pageId} switchTo={paths?.[otherLocale(locale)]} />
     <main id="main" tabindex="-1">
@@ -114,10 +117,20 @@ const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
 
 <script>
   import '../scripts/motion';
+  import '../scripts/ambience';
 </script>
 
 <style>
   main:focus {
     outline: none;
+  }
+  /* Behind everything, over the body's colour; never in the way of the pointer. */
+  .ambience {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
   }
 </style>

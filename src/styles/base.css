@@ -36,11 +36,7 @@ body {
   flex-direction: column;
   background-color: var(--bg);
   /* A faint arcane glow at the top; information stays on flat surfaces. */
-  background-image: radial-gradient(
-    ellipse 70rem 28rem at 50% -10rem,
-    light-dark(rgb(122 63 209 / 0.08), rgb(169 139 255 / 0.1)),
-    transparent 70%
-  );
+  background-image: radial-gradient(ellipse 70rem 28rem at 50% -10rem, var(--page-glow), transparent 70%);
   background-repeat: no-repeat;
   color: var(--text);
   font-family: var(--font-body);
@@ -119,7 +115,7 @@ code {
 }
 
 ::selection {
-  background: light-dark(#d9c8ff, #4b3b80);
+  background: var(--selection);
   color: var(--text);
 }
 
