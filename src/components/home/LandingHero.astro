@@ -9,6 +9,7 @@
  */
 import Icon from '../ui/Icon.astro';
 import LaunchCountdown from '../guide/LaunchCountdown.astro';
+import Signature from './Signature.astro';
 import type { Locale } from '../../i18n/routes';
 
 interface Props {
@@ -61,6 +62,7 @@ const more = { es: 'Sigue bajando', en: 'Keep scrolling' };
           ))
         }
       </p>
+      <div class="lhero__signature"><Signature /></div>
     </div>
     <a class="lhero__more" href="#questions">
       {more[locale]}
@@ -129,10 +131,19 @@ const more = { es: 'Sigue bajando', en: 'Keep scrolling' };
   .lhero__words {
     grid-row: 3;
     align-self: end;
+    position: relative;
     display: grid;
     gap: clamp(0.25rem, 1vw, 0.75rem);
     padding: 0 var(--gutter) clamp(4.5rem, 11svh, 7rem);
     text-align: center;
+  }
+  /* Signed under the end of the name, rising a little like a real signature. */
+  .lhero__signature {
+    position: absolute;
+    right: calc(var(--gutter) + 2vw);
+    bottom: clamp(1rem, 3svh, 2.25rem);
+    width: clamp(10rem, 19vw, 22rem);
+    rotate: -6deg;
   }
   /* Too short for the centre (a phone on its side): countdown and name stack at the bottom. */
   @media (max-height: 520px) {
@@ -196,6 +207,15 @@ const more = { es: 'Sigue bajando', en: 'Keep scrolling' };
     }
     .lhero__name {
       font-size: clamp(3rem, 17vw, 5rem);
+    }
+    /* The signature takes the room over «keep scrolling». */
+    .lhero__words {
+      padding-bottom: 6.5rem;
+    }
+    .lhero__signature {
+      right: var(--gutter);
+      bottom: 2.75rem;
+      width: 9rem;
     }
   }
   @media (prefers-reduced-motion: no-preference) {

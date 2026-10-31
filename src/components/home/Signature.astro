@@ -1,0 +1,67 @@
+---
+/**
+ * «Nxmpys» written by hand when the home page loads: each stroke of the pen is
+ * drawn in turn, with CSS only. The strokes are in their final state by default,
+ * so without animations (reduced motion, old browsers) the signature is simply
+ * there. Decorative: the author's name is on the about page.
+ */
+
+/** One stroke of the pen, in the order it is written, and how long it takes in ms. */
+const strokes = [
+  // N
+  { d: 'M24 158C38 116 52 66 68 26C72 58 84 112 98 148C112 106 128 58 146 14', time: 520 },
+  // x and m, joined, rising to the top of the p
+  { d: 'M150 108C158 92 170 94 174 108C178 124 184 134 198 128C206 124 212 110 218 98C216 112 212 124 210 136C218 116 230 96 240 98C248 100 242 122 240 136C248 116 262 96 272 98C280 100 274 122 274 130C274 138 286 134 296 120C300 112 304 104 306 96', time: 760 },
+  // The stem of the p
+  { d: 'M306 96C304 130 296 176 282 210', time: 170 },
+  // Its bowl, then y and s in one go
+  { d: 'M304 108C316 92 338 92 340 106C342 122 320 136 302 130C326 134 340 122 352 104C350 118 350 130 360 132C372 134 384 116 390 98C388 128 376 176 352 202C342 212 332 206 340 192C354 170 388 150 420 130C430 122 440 108 444 94C432 98 424 108 432 118C440 128 442 136 428 140C420 142 412 138 408 132', time: 980 },
+  // The cross of the x
+  { d: 'M196 94C182 108 166 124 150 142', time: 120 },
+  // The line under the name
+  { d: 'M40 192C150 184 330 168 500 118', time: 340 },
+];
+const LIFT = 70;
+let at = 0;
+const timed = strokes.map((stroke) => {
+  const start = at;
+  at += stroke.time + LIFT;
+  return { ...stroke, start };
+});
+---
+
+<svg class="signature" viewBox="0 0 520 220" aria-hidden="true" fill="none">
+  <g transform="translate(26 0) skewX(-8)">
+    {timed.map((stroke) => <path d={stroke.d} pathLength="1" style={`--start: ${stroke.start}ms; --time: ${stroke.time}ms`} />)}
+  </g>
+</svg>
+
+<style>
+  .signature {
+    display: block;
+    overflow: visible;
+    filter: drop-shadow(0 0 10px rgb(169 110 255 / 0.65));
+  }
+  .signature path {
+    stroke: #c79bff;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    /* A little past the full length, so the round cap does not show a dot before its turn. */
+    .signature path {
+      stroke-dasharray: 1 2;
+      animation: signature-write var(--time) cubic-bezier(0.45, 0.05, 0.55, 0.95) backwards;
+      animation-delay: calc(0.9s + var(--start));
+    }
+  }
+  @keyframes signature-write {
+    from {
+      stroke-dashoffset: 1.05;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+</style>
