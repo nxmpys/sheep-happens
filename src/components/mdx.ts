@@ -68,6 +68,7 @@ import Pieces from './learn/Pieces.astro';
 import PointSplitter from './learn/PointSplitter.astro';
 import RaceStrip from './learn/RaceStrip.astro';
 import SpellBar from './learn/SpellBar.astro';
+import SpellIcons from './learn/SpellIcons.astro';
 import SpecVerdict from './learn/SpecVerdict.astro';
 import Tile from './learn/Tile.astro';
 import Tiles from './learn/Tiles.astro';
@@ -97,6 +98,7 @@ export const mdxComponents = {
   PointSplitter,
   RaceStrip,
   SpellBar,
+  SpellIcons,
   SpecVerdict,
   Tile,
   Tiles,

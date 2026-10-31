@@ -4,7 +4,7 @@
  *   <Pieces>
  *   - **Freeze to shatter.** Ice Lance…
  *   </Pieces>
- * `dont` marks each one as a mistake to avoid.
+ * `dont` marks each one as a mistake to avoid. A point can open with <SpellIcons>.
  */
 import '../../styles/learn.css';
 
@@ -40,7 +40,8 @@ const { dont = false } = Astro.props;
     color: var(--text-muted);
   }
   .pieces :global(li > strong:first-child),
-  .pieces :global(li > p > strong:first-child) {
+  .pieces :global(li > p > strong:first-child),
+  .pieces :global(.spell-icons + strong) {
     display: block;
     margin-bottom: var(--space-1);
     font-size: var(--step-0);

@@ -33,6 +33,7 @@ export const MDX_COMPONENTS = [
   'PointSplitter',
   'RaceStrip',
   'SpellBar',
+  'SpellIcons',
   'SpecVerdict',
   'Tile',
   'Tiles',

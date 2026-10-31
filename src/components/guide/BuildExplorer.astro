@@ -192,7 +192,6 @@ const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon)
           <li data-compare={use}>
             <a href={contentPath(use, locale, { base })}>
               {counts[use] > 0 ? tb(locale, 'index.compare', { use: USE_TITLES[locale][use] }) : USE_TITLES[locale][use]}
-              <Icon name="arrowRight" size={16} />
             </a>
           </li>
         ))}
@@ -721,15 +720,6 @@ const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon)
     margin: 0;
   }
   .bx__compare a {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
     font-weight: 600;
-  }
-  .bx__compare a :global(.icon) {
-    transition: transform 0.2s ease;
-  }
-  .bx__compare a:hover :global(.icon) {
-    transform: translateX(4px);
   }
 </style>
