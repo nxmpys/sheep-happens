@@ -25,7 +25,6 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
     addons: 'MageProcs',
     sources: 'Fuentes',
     updates: 'Novedades',
-    about: 'Sobre mí',
   },
   en: {
     home: 'Home',
@@ -50,7 +49,6 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
     addons: 'MageProcs',
     sources: 'Sources',
     updates: 'Updates',
-    about: 'About me',
   },
 };
 

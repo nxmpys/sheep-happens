@@ -84,3 +84,8 @@
 /en/builds/dungeons/frost/ /en/builds/dungeons/ 302
 /en/builds/dungeons/frost /en/builds/dungeons/ 302
 
+# The about page was removed on 31 Oct 2026; its letter is now at the end of the home page.
+/es/sobre-mi/ /es/ 301
+/es/sobre-mi /es/ 301
+/en/about/ /en/ 301
+/en/about /en/ 301

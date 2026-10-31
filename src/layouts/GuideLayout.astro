@@ -34,8 +34,6 @@ interface Props {
 
 const { locale, pageId, data, headings, body = '', subpage, hideLead = false } = Astro.props;
 const spec = ROUTES[pageId].spec;
-// The about page is not a guide: no lead, index, pager or feedback form.
-const personal = pageId === 'about';
 // Learn opens with its own full-width picture, so its title stays for search and screen readers only.
 const immersive = pageId === 'learn';
 const trail = breadcrumbTrail(pageId);
@@ -84,7 +82,7 @@ const tocHeadings = sources.length > 0
   modified={modified}
   paths={subpage?.paths}
 >
-  <div class:list={['container', 'guide', spec && `school-${spec}`, (data.wide || personal) && 'guide--wide', immersive && 'guide--immersive']} data-fx={immersive ? '' : undefined}>
+  <div class:list={['container', 'guide', spec && `school-${spec}`, data.wide && 'guide--wide', immersive && 'guide--immersive']} data-fx={immersive ? '' : undefined}>
     <div class="guide__main">
       <header class:list={['guide__header', immersive && 'visually-hidden']}>
         <Breadcrumbs locale={locale} pageId={pageId} extra={subpage?.crumbs} />
@@ -96,18 +94,14 @@ const tocHeadings = sources.length > 0
             </p>
           )
         }
-        <h1 class:list={[personal && 'visually-hidden']} data-pagefind-meta="title">{data.title}</h1>
-        {!personal && !hideLead && <p class="guide__lead">{data.lead ?? data.description}</p>}
+        <h1 data-pagefind-meta="title">{data.title}</h1>
+        {!hideLead && <p class="guide__lead">{data.lead ?? data.description}</p>}
       </header>
 
-      {
-        !personal && (
-          <div class="guide__toc-inline">
-            <Toc headings={tocHeadings} locale={locale} variant="inline" groups={data.tocGroups} />
-            {!subpage && <PrevNext locale={locale} pageId={pageId} variant="compact" />}
-          </div>
-        )
-      }
+      <div class="guide__toc-inline">
+        <Toc headings={tocHeadings} locale={locale} variant="inline" groups={data.tocGroups} />
+        {!subpage && <PrevNext locale={locale} pageId={pageId} variant="compact" />}
+      </div>
 
       <article class="prose" data-pagefind-body data-heading-anchors={JSON.stringify(strings)}>
         {
@@ -135,18 +129,12 @@ const tocHeadings = sources.length > 0
         }
       </article>
 
-      {
-        !personal && (
-          <>
-            <FeedbackBox locale={locale} pageId={pageId} />
-            {!subpage && <PrevNext locale={locale} pageId={pageId} />}
-          </>
-        )
-      }
+      <FeedbackBox locale={locale} pageId={pageId} />
+      {!subpage && <PrevNext locale={locale} pageId={pageId} />}
     </div>
 
     {
-      !data.wide && !personal && (
+      !data.wide && (
         <aside class="guide__aside" data-pagefind-ignore>
           <div class="guide__aside-inner">
             <Toc headings={tocHeadings} locale={locale} variant="sidebar" groups={data.tocGroups} />

@@ -20,7 +20,9 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 </article>
 
 <style>
+  /* Always dark over its picture, so spell names and marks must read as on a dark page. */
   .hcard {
+    color-scheme: dark;
     position: relative;
     display: grid;
     align-items: end;

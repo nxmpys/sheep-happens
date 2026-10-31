@@ -2,8 +2,6 @@
  * Components available inside every MDX page without importing them.
  * Editors write <ChangeExplorer />, <Pending why="…" />, etc. directly.
  */
-import AboutStory from './about/AboutStory.astro';
-import AboutLinks from './guide/AboutLinks.astro';
 import AddonDetail from './guide/AddonDetail.astro';
 import AddonLink from './guide/AddonLink.astro';
 import BuildCard from './guide/BuildCard.astro';
@@ -28,6 +26,7 @@ import Glossary from './guide/Glossary.astro';
 import FaqItem from './guide/FaqItem.astro';
 import Highlight from './guide/Highlight.astro';
 import Highlights from './guide/Highlights.astro';
+import GuideMosaic from './guide/GuideMosaic.astro';
 import HubCards from './guide/HubCards.astro';
 import ItemCards from './guide/ItemCards.astro';
 import LevelingSpells from './guide/LevelingSpells.astro';
@@ -85,7 +84,6 @@ export const mdxComponents = {
   table: Table,
   // Bold spell names become tooltip triggers (see SpellStrong.astro).
   strong: SpellStrong,
-  AboutStory,
   Chain,
   HCard,
   HScroll,
@@ -108,7 +106,6 @@ export const mdxComponents = {
   AoeArena,
   AoeKit,
   SpotFinder,
-  AboutLinks,
   AddonDetail,
   AddonLink,
   BuildCard,
@@ -133,6 +130,7 @@ export const mdxComponents = {
   Glossary,
   Highlight,
   Highlights,
+  GuideMosaic,
   HubCards,
   ItemCards,
   LevelingSpells,

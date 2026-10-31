@@ -1,10 +1,13 @@
 /**
  * The «What do you need?» sphere. Each question is a curved picture card on a
  * globe seen from outside; the far side shows through, mirrored. Scrolling the
- * pinned section turns the globe from one question to the next, and light arcs
- * drift behind it. Plain WebGL, no library. It runs only while on screen, and
+ * pinned section turns the globe from one question to the next, over the arcs
+ * behind the page (home-arcs.ts). It follows the theme: on a light page the far
+ * side only just shows through. Plain WebGL, no library. It runs only while on screen, and
  * if WebGL or motion is unavailable the cards stay as the grid in the markup.
  */
+import { isDarkPage, onThemeChange } from './page-theme';
+
 const CARD_W = 0.82;
 const CARD_H = 0.46;
 const SCENERY_W = 0.72;
@@ -13,34 +16,6 @@ const FOV = (40 * Math.PI) / 180;
 const TILT = -0.09;
 const GRID_X = 28;
 const GRID_Y = 16;
-
-const ARC_VERTEX = `
-attribute vec2 aPos;
-varying vec2 vPos;
-void main() { vPos = aPos; gl_Position = vec4(aPos, 0.0, 1.0); }`;
-
-const ARC_FRAGMENT = `
-precision mediump float;
-varying vec2 vPos;
-uniform float uAspect;
-uniform float uTime;
-uniform float uTurn;
-float arc(vec2 p, vec2 centre, float radius, float width) {
-  return width / (abs(length(p - centre) - radius) + 0.012);
-}
-float grain(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
-void main() {
-  vec2 p = vec2(vPos.x * uAspect, vPos.y);
-  float t = uTime * 0.03 + uTurn * 0.09;
-  float g = 0.0;
-  g += arc(p, vec2(1.5 * cos(t), -1.2 + 0.3 * sin(t)), 1.9, 0.010);
-  g += arc(p, vec2(-1.6 + 0.4 * sin(t * 0.7), 1.1 * cos(t * 0.9)), 2.2, 0.008);
-  g += arc(p, vec2(0.4 * sin(t * 1.3), 1.9), 1.6, 0.006);
-  g += arc(p, vec2(2.0, 0.8 * sin(t)), 2.8, 0.006);
-  vec3 colour = vec3(0.02, 0.03, 0.06) + vec3(0.03, 0.27, 0.95) * g;
-  colour += (grain(vPos * 91.0) - 0.5) * 0.035;
-  gl_FragColor = vec4(colour, 1.0);
-}`;
 
 const CARD_VERTEX = `
 attribute vec2 aUv;
@@ -69,6 +44,7 @@ varying vec2 vUv;
 varying float vFacing;
 uniform sampler2D uImage;
 uniform float uActive;
+uniform float uLight;
 void main() {
   vec2 half_ = vec2(0.889, 0.5);
   vec2 q = abs(vUv - 0.5) * vec2(1.778, 1.0);
@@ -76,10 +52,12 @@ void main() {
   float alpha = 1.0 - smoothstep(-0.008, 0.0, d);
   if (alpha <= 0.0) discard;
   vec3 colour = texture2D(uImage, vUv).rgb;
-  float light = vFacing < 0.0 ? 0.3 : 0.42 + 0.58 * smoothstep(0.0, 0.85, vFacing);
-  colour *= light * mix(0.68, 1.0, uActive);
+  float shade = vFacing < 0.0 ? 0.3 : 0.42 + 0.58 * smoothstep(0.0, 0.85, vFacing);
+  float bright = vFacing < 0.0 ? 1.0 : 0.72 + 0.28 * smoothstep(0.0, 0.85, vFacing);
+  colour *= mix(shade, bright, uLight) * mix(mix(0.68, 0.9, uLight), 1.0, uActive);
+  float seen = alpha * (vFacing < 0.0 ? mix(1.0, 0.16, uLight) : 1.0);
   colour += vec3(0.25, 0.5, 1.0) * uActive * (1.0 - smoothstep(0.0, 0.012, abs(d + 0.006)));
-  gl_FragColor = vec4(colour * alpha, alpha);
+  gl_FragColor = vec4(colour * seen, seen);
 }`;
 
 interface Card {
@@ -144,12 +122,16 @@ export function startQuestionGlobe(section: HTMLElement) {
   const canvas = section.querySelector<HTMLCanvasElement>('[data-globe-canvas]');
   const items = [...section.querySelectorAll<HTMLElement>('[data-card]')];
   // The canvas is display:none until the section switches on; give it a context first.
-  const gl = canvas?.getContext('webgl', { antialias: true, alpha: false, powerPreference: 'low-power' });
+  const gl = canvas?.getContext('webgl', { antialias: true, alpha: true, powerPreference: 'low-power' });
   if (!canvas || !gl || items.length === 0) return;
 
-  const arcs = program(gl, ARC_VERTEX, ARC_FRAGMENT);
   const cardsProgram = program(gl, CARD_VERTEX, CARD_FRAGMENT);
-  if (!arcs || !cardsProgram) return;
+  if (!cardsProgram) return;
+  gl.clearColor(0, 0, 0, 0);
+  let lightPage = !isDarkPage();
+  onThemeChange(() => {
+    lightPage = !isDarkPage();
+  });
 
   const count = items.length;
   const blank = (): WebGLTexture => {
@@ -203,14 +185,8 @@ export function startQuestionGlobe(section: HTMLElement) {
   const indexBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
   gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
-  const quadBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, quadBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
 
   const u = {
-    arcAspect: gl.getUniformLocation(arcs, 'uAspect'),
-    arcTime: gl.getUniformLocation(arcs, 'uTime'),
-    arcTurn: gl.getUniformLocation(arcs, 'uTurn'),
     card: gl.getUniformLocation(cardsProgram, 'uCard'),
     turn: gl.getUniformLocation(cardsProgram, 'uTurn'),
     distance: gl.getUniformLocation(cardsProgram, 'uDistance'),
@@ -218,8 +194,8 @@ export function startQuestionGlobe(section: HTMLElement) {
     aspect: gl.getUniformLocation(cardsProgram, 'uAspect'),
     shift: gl.getUniformLocation(cardsProgram, 'uShift'),
     active: gl.getUniformLocation(cardsProgram, 'uActive'),
+    light: gl.getUniformLocation(cardsProgram, 'uLight'),
   };
-  const aPos = gl.getAttribLocation(arcs, 'aPos');
   const aUv = gl.getAttribLocation(cardsProgram, 'aUv');
 
   section.classList.add('is-globe');
@@ -314,27 +290,15 @@ export function startQuestionGlobe(section: HTMLElement) {
     return turn[2]! * x + turn[5]! * y + turn[8]! * z;
   };
 
-  const start = performance.now();
-  const draw = (now: number) => {
+  const draw = () => {
     shown += (stop - shown) * 0.1;
     swayX += (pointerX * 0.05 - swayX) * 0.05;
     swayY += (pointerY * 0.03 - swayY) * 0.05;
     const aspect = width / height;
     const turn = turnAt(shown);
 
-    gl.disable(gl.DEPTH_TEST);
-    gl.disable(gl.BLEND);
-    gl.useProgram(arcs);
-    gl.bindBuffer(gl.ARRAY_BUFFER, quadBuffer);
-    gl.enableVertexAttribArray(aPos);
-    gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
-    gl.uniform1f(u.arcAspect, aspect);
-    gl.uniform1f(u.arcTime, (now - start) / 1000);
-    gl.uniform1f(u.arcTurn, shown);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-
     gl.enable(gl.DEPTH_TEST);
-    gl.clear(gl.DEPTH_BUFFER_BIT);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     gl.useProgram(cardsProgram);
@@ -347,6 +311,7 @@ export function startQuestionGlobe(section: HTMLElement) {
     gl.uniform1f(u.focal, focal);
     gl.uniform1f(u.aspect, aspect);
     gl.uniform2f(u.shift, shift[0], shift[1]);
+    gl.uniform1f(u.light, lightPage ? 1 : 0);
     // Far ones first, so the rounded corners blend over what is behind them.
     for (const card of [...cards].sort((a, b) => depthOf(a, turn) - depthOf(b, turn))) {
       gl.bindTexture(gl.TEXTURE_2D, card.texture);
@@ -357,9 +322,9 @@ export function startQuestionGlobe(section: HTMLElement) {
   };
 
   let frame = 0;
-  const loop = (now: number) => {
+  const loop = () => {
     readScroll();
-    draw(now);
+    draw();
     frame = requestAnimationFrame(loop);
   };
   const seen = new IntersectionObserver(

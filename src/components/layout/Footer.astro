@@ -39,8 +39,8 @@ const { locale } = Astro.props;
 <style>
   .site-footer {
     margin-top: var(--space-8);
-    border-top: 1px solid var(--border);
-    background: var(--surface-1);
+    /* It grows out of the page, with no line between them. */
+    background: linear-gradient(180deg, transparent, var(--surface-1) 70%);
   }
   .footer-inner {
     display: grid;

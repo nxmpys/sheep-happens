@@ -9,7 +9,7 @@
  * Fonts: Georgia and Segoe UI from the system (Windows by default). Point
  * OG_FONT_DIR at another folder with georgiab.ttf, segoeui.ttf and seguisb.ttf
  * on other systems. The site name uses Cinzel Decorative, like the header, and
- * the home card's speech bubble Permanent Marker, like the about page; both
+ * the home card's speech bubble Permanent Marker, like the letter on it; both
  * live in scripts/og-assets as TTF (resvg cannot read the site's woff2), next
  * to the Polymorph sheep the home card shows.
  */

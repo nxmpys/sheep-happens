@@ -33,7 +33,6 @@ export const PAGE_IDS = [
   'addons',
   'sources',
   'updates',
-  'about',
 ] as const;
 export type PageId = (typeof PAGE_IDS)[number];
 
@@ -98,7 +97,6 @@ export const ROUTES: Record<PageId, RouteDef> = {
   addons: { id: 'addons', slug: { es: 'addons', en: 'addons' }, parent: 'tools' },
   sources: { id: 'sources', slug: { es: 'fuentes', en: 'sources' }, parent: 'home' },
   updates: { id: 'updates', slug: { es: 'novedades', en: 'updates' }, parent: 'home' },
-  about: { id: 'about', slug: { es: 'sobre-mi', en: 'about' }, parent: 'home' },
 };
 
 /**
@@ -123,9 +121,9 @@ export interface NavSection {
 /**
  * Four entries: the path for someone new to the class (the Learn page holds the
  * class and its combat, then the talents and each tree, then the first steps in
- * the world); builds (a tree, its talents and the content it is for); guides,
- * which explain something concrete whatever the build (AoE farming, race,
- * professions, Legacy, gear and class quests, books and scrolls, PvP); and the
+ * the world); guides, which explain something concrete whatever the build (AoE
+ * farming, race, professions, Legacy, gear and class quests, books and scrolls,
+ * PvP); builds (a tree, its talents and the content it is for); and the
  * tools (the change explorer and the MageProcs addon among them).
  */
 export const PRIMARY_NAV: readonly NavGroup[] = [
@@ -139,12 +137,12 @@ export const PRIMARY_NAV: readonly NavGroup[] = [
       { hash: { es: 'glosario', en: 'glossary' }, label: { es: 'Glosario', en: 'Glossary' } },
     ],
   },
-  { key: 'builds', page: 'builds' },
   {
     key: 'guides',
     page: 'guides',
     items: ['aoe-farming', 'races', 'professions', 'legacy', 'gear', 'library', 'pvp'],
   },
+  { key: 'builds', page: 'builds' },
   {
     key: 'tools',
     page: 'tools',
@@ -164,7 +162,7 @@ export function navPages(nav: readonly NavGroup[] = PRIMARY_NAV): PageId[] {
 /** The guided reading order used for the previous/next links: the menu, top to bottom. */
 export const READING_ORDER: readonly PageId[] = navPages();
 
-export const FOOTER_NAV: readonly PageId[] = ['changes', 'updates', 'sources', 'tools', 'about'];
+export const FOOTER_NAV: readonly PageId[] = ['changes', 'updates', 'sources', 'tools'];
 
 export function isLocale(value: unknown): value is Locale {
   return typeof value === 'string' && (LOCALES as readonly string[]).includes(value);

@@ -4,6 +4,8 @@
  * on Arcane. It must stay almost unnoticed: small, slow and very transparent.
  * Nothing runs with «reduce motion», and it stops while the tab is hidden.
  */
+import { isDarkPage, onThemeChange } from './page-theme';
+
 type Tree = 'arcane' | 'fire' | 'frost';
 
 interface Mote {
@@ -87,10 +89,6 @@ function start(canvas: HTMLCanvasElement, tree: Tree) {
     dark = isDarkPage();
     // Snow is white in the dark; on a light page white would not show, so it takes the accent.
     dot = softDot(tree === 'frost' && dark ? '#dff1ff' : color);
-  };
-  const isDarkPage = () => {
-    const [r = 0, g = 0, b = 0] = getComputedStyle(document.body).backgroundColor.match(/[\d.]+/g)?.map(Number) ?? [];
-    return r * 0.3 + g * 0.6 + b * 0.1 < 128;
   };
   const measure = () => {
     scale = Math.min(devicePixelRatio || 1, 1.5);
@@ -203,9 +201,7 @@ function start(canvas: HTMLCanvasElement, tree: Tree) {
   measure();
   addEventListener('resize', measure);
   document.addEventListener('visibilitychange', run);
-  // The theme button and the system's theme change the colours.
-  new MutationObserver(readColors).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', readColors);
+  onThemeChange(readColors);
   run();
 }
 

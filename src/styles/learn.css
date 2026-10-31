@@ -189,6 +189,7 @@ pick-panel {
 
 /* Picture buttons: the chosen one takes the room of the others. */
 .pick-art .pick__button {
+  color-scheme: dark;
   position: relative;
   flex: 1 1 0;
   align-items: flex-end;
@@ -221,6 +222,9 @@ pick-panel {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* The heads are near the top of these pictures: keep them in frame, and grow from there. */
+  object-position: 50% 12%;
+  transform-origin: 50% 0;
   opacity: 0.7;
   transition:
     opacity 0.4s,

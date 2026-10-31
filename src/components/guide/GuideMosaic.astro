@@ -1,0 +1,198 @@
+---
+/**
+ * The Guides hub: every guide at a glance, as one mosaic of linked pictures that
+ * fits in the window. Each page keeps the picture it has on the home page. The
+ * cards are always dark over their picture, whatever the theme.
+ */
+import Icon from '../ui/Icon.astro';
+import { getLocale, href } from '../../i18n/locale';
+import { PRIMARY_NAV, type PageId } from '../../i18n/routes';
+import { NAV_LABELS } from '../../i18n/ui';
+
+const locale = getLocale(Astro);
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const pages = PRIMARY_NAV.find((group) => group.key === 'guides')?.items ?? [];
+
+const cards: Partial<Record<PageId, { image: string; text: Record<'es' | 'en', string> }>> = {
+  'aoe-farming': { image: 'hl-aoe', text: { es: 'Lugares, rotaciones y rutas.', en: 'Spots, rotations and routes.' } },
+  races: { image: 'q-races', text: { es: 'La mejor raza para lo que juegues.', en: 'The best race for how you play.' } },
+  professions: { image: 'q-professions', text: { es: 'Las dos que te convienen.', en: 'The two that suit you.' } },
+  legacy: { image: 'hl-legacy', text: { es: 'Puntos de cuenta y ventajas.', en: 'Account points and perks.' } },
+  gear: { image: 'q-gear', text: { es: 'Piezas clave y misiones de clase.', en: 'Key pieces and class quests.' } },
+  library: { image: 'q-library', text: { es: 'Los 38 libros y los pergaminos.', en: 'All 38 books, and the scrolls.' } },
+  pvp: { image: 'q-pvp', text: { es: 'Honor, rangos y equipo.', en: 'Honor, ranks and gear.' } },
+};
+---
+
+<ol class="mosaic" data-no-spell-links>
+  {
+    pages.map((page, i) => (
+      <li class="mosaic__card" style={`--i: ${i}`}>
+        <img class="mosaic__picture" src={`${base}home/${cards[page]?.image}.webp`} alt="" width="960" height="540" decoding="async" />
+        <span class="mosaic__count" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+        <div class="mosaic__foot">
+          <a class="mosaic__link" href={href(page, locale)}>{NAV_LABELS[locale][page]}</a>
+          <p class="mosaic__text">{cards[page]?.text[locale]}</p>
+        </div>
+        <span class="mosaic__go" aria-hidden="true"><Icon name="arrowRight" size={18} /></span>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  /* Phones: the first across, the rest in pairs, all of it in one window. */
+  .mosaic {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: minmax(6.5rem, 1fr);
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .mosaic__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-2);
+    margin: 0 !important;
+    padding: var(--space-3);
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: #14101f;
+    color: #fff;
+    isolation: isolate;
+  }
+  .mosaic__card:first-child {
+    grid-column: 1 / -1;
+  }
+  .mosaic__picture {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+    transition: scale 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  /* Dark at the foot and along the side where the words are. */
+  .mosaic__card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(0deg, rgb(10 8 20 / 0.92), rgb(10 8 20 / 0.35) 62%, rgb(10 8 20 / 0.5));
+    transition: opacity 0.4s ease;
+  }
+  .mosaic__count {
+    font-family: var(--font-display);
+    font-size: var(--step-0);
+    font-weight: 600;
+    line-height: 1;
+    color: #d9c8ff;
+  }
+  .mosaic__foot {
+    display: grid;
+    gap: 0.15rem;
+    padding-right: 2.25rem;
+  }
+  .mosaic__link {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    line-height: 1.15;
+    color: #fff;
+    text-decoration: none;
+  }
+  /* The whole card is the link. */
+  .mosaic__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  .mosaic__link:focus-visible {
+    outline: none;
+  }
+  .mosaic__card:has(.mosaic__link:focus-visible) {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+  .mosaic__text {
+    margin: 0;
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    color: rgb(255 255 255 / 0.84);
+  }
+  .mosaic__go {
+    position: absolute;
+    right: var(--space-3);
+    bottom: var(--space-3);
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid rgb(255 255 255 / 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    transition:
+      background 0.25s ease,
+      color 0.25s ease,
+      translate 0.25s ease;
+  }
+  .mosaic__card:hover .mosaic__picture {
+    scale: 1.05;
+  }
+  .mosaic__card:hover .mosaic__go {
+    background: #fff;
+    color: #14101f;
+    translate: 3px 0;
+  }
+  /* Wide screens: one large picture and two rows of smaller ones, then two across, filling what is left of the window. */
+  @media (min-width: 760px) {
+    .mosaic {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: var(--space-3);
+      height: clamp(25rem, calc(100svh - 18.5rem), 46rem);
+    }
+    .mosaic__card {
+      grid-column: span 3;
+      padding: var(--space-4) var(--space-5);
+    }
+    .mosaic__card:nth-child(1) {
+      grid-column: span 6;
+      grid-row: span 2;
+    }
+    .mosaic__card:nth-child(n + 6) {
+      grid-column: span 6;
+    }
+    .mosaic__card:first-child .mosaic__link {
+      font-size: var(--step-4);
+    }
+    .mosaic__card:first-child .mosaic__text {
+      font-size: var(--step-0);
+    }
+    .mosaic__text {
+      font-size: var(--step--1);
+    }
+    .mosaic__go {
+      right: var(--space-5);
+      bottom: var(--space-4);
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .mosaic__card {
+      animation: mosaic-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+      animation-delay: calc(var(--i) * 60ms);
+    }
+  }
+  @keyframes mosaic-in {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+  }
+</style>
