@@ -1,6 +1,5 @@
 /**
- * Words of the about page story (AboutStory.astro) and of the home page
- * welcome (HomeWelcome.astro, the `guide` part), in both languages. The
+ * Words of the about page story (AboutStory.astro), in both languages. The
  * story is the author's real path through WoW: nothing here may be invented
  * (no dates, ranks or achievements he did not give).
  */
@@ -26,17 +25,6 @@ export interface StoryCopy {
     chapter: string;
     title: string;
     steps: { text: string; punch?: string; caption: string }[];
-  };
-  guide: {
-    chapter: string;
-    title: string;
-    body: string[];
-    cta: string;
-    open: string;
-    close: string;
-    pages: { title: string; text: string }[];
-    margin: string;
-    signature: string;
   };
   progress: string[];
 }
@@ -110,26 +98,6 @@ const en: StoryCopy = {
       },
     ],
   },
-  guide: {
-    chapter: 'Chapter IV — WoW Forever',
-    title: 'Why this guide exists',
-    body: [
-      'I’m building this place because finding the information you need shouldn’t feel like a boss fight of its own.',
-      'Whether you’re a new Mage trying to figure out what all these spells do, a returning player getting back into the game, or someone who wants to squeeze every last bit of performance out of their character, the idea is the same.',
-      'A place to learn, experiment, compare options and get answers without having to piece together a dozen different sources.',
-      'I’m still a player, still learning and still figuring things out. This is simply where I want to collect what I learn and make it useful to others.',
-    ],
-    cta: 'Explore the Mage Guide',
-    open: 'Open the grimoire',
-    close: 'Close the grimoire',
-    pages: [
-      { title: 'New to Mage', text: 'What every spell does, from zero.' },
-      { title: 'Coming back', text: 'What Forever changes from Classic.' },
-      { title: 'Min-maxing', text: 'Builds, talents and calculators.' },
-    ],
-    margin: 'Still being written.',
-    signature: 'Nxmpys · Undead Mage, Horde, EU-PvP',
-  },
   progress: ['Start', 'Pandaria', 'BFA → Midnight', 'Classic'],
 };
 
@@ -201,26 +169,6 @@ const es: StoryCopy = {
         caption: 'WoW Forever · no-muerto · Horda',
       },
     ],
-  },
-  guide: {
-    chapter: 'Capítulo IV — WoW Forever',
-    title: 'Por qué existe esta guía',
-    body: [
-      'Construyo este sitio porque encontrar la información que necesitas no debería sentirse como otro jefe más.',
-      'Tanto si eres un Mago nuevo intentando entender qué hacen todos estos hechizos, como si vuelves al juego después de un tiempo o quieres exprimir hasta el último punto de rendimiento de tu personaje, la idea es la misma.',
-      'Un sitio para aprender, experimentar, comparar opciones y resolver dudas sin tener que juntar una docena de fuentes distintas.',
-      'Sigo siendo un jugador, sigo aprendiendo y sigo descubriendo cosas. Este es simplemente el lugar donde quiero reunir lo que aprendo y hacerlo útil para los demás.',
-    ],
-    cta: 'Explorar la guía del Mago',
-    open: 'Abrir el grimorio',
-    close: 'Cerrar el grimorio',
-    pages: [
-      { title: 'Nuevo en el Mago', text: 'Qué hace cada hechizo, desde cero.' },
-      { title: 'Vuelves al juego', text: 'Qué cambia Forever respecto a Classic.' },
-      { title: 'Exprimir al máximo', text: 'Builds, talentos y calculadoras.' },
-    ],
-    margin: 'Aún se está escribiendo.',
-    signature: 'Nxmpys · Mago no-muerto, Horda, EU-PvP',
   },
   progress: ['Inicio', 'Pandaria', 'BFA → Midnight', 'Classic'],
 };

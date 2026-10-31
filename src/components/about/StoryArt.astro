@@ -275,34 +275,6 @@ const stars = Array.from({ length: 40 }, (_, i) => ({
           ))}
         </>
       )}
-
-      {name === 'grimoire' && (
-        <>
-          <defs>
-            <radialGradient id="gr-bg" cx="0.85" cy="0.6" r="0.9">
-              <stop offset="0" stop-color="#5a3a1c" />
-              <stop offset="0.45" stop-color="#21150f" />
-              <stop offset="1" stop-color="#0e0d16" />
-            </radialGradient>
-            <radialGradient id="gr-flame">
-              <stop offset="0" stop-color="#fff3c4" />
-              <stop offset="0.4" stop-color="#ffc35a" stop-opacity="0.7" />
-              <stop offset="1" stop-color="#ffc35a" stop-opacity="0" />
-            </radialGradient>
-          </defs>
-          <rect width="1600" height="900" fill="url(#gr-bg)" />
-          {[
-            [1400, 700, 1],
-            [1490, 740, 0.7],
-          ].map(([x, y, s]) => (
-            <g transform={`translate(${x} ${y}) scale(${s})`}>
-              <circle cy="-150" r="120" fill="url(#gr-flame)" class="flicker" />
-              <path d="M-26 0V-120h52V0z" fill="#e8dcc2" />
-              <path d="M0-122q-14-18 0-46q14 28 0 46z" fill="#ffd77a" class="flicker" />
-            </g>
-          ))}
-        </>
-      )}
     </svg>
   )
 }

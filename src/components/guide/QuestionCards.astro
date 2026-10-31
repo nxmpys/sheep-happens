@@ -7,6 +7,8 @@
  * sphere, one at a time, so every answer and link stays real text.
  * The slot holds the section heading and its introduction.
  */
+import '@fontsource-variable/fraunces/soft.css';
+import '@fontsource-variable/nunito/wght.css';
 import Icon from '../ui/Icon.astro';
 import type { IconName } from '../ui/icons';
 import { getLocale, href } from '../../i18n/locale';
@@ -119,7 +121,7 @@ const questions: Question[] = [
 ];
 ---
 
-<section class="qglobe" data-question-globe data-scenery={JSON.stringify(scenery)} style={`--n: ${questions.length}`}>
+<section class="qglobe" id="questions" data-question-globe data-scenery={JSON.stringify(scenery)} style={`--n: ${questions.length}`}>
   <div class="qglobe__stage">
     <canvas class="qglobe__canvas" aria-hidden="true" data-globe-canvas></canvas>
     <div class="qglobe__head">
@@ -161,6 +163,10 @@ const questions: Question[] = [
     width: 100vw;
     margin-inline: calc(50% - 50vw);
     padding-block: clamp(4rem, 10vh, 7rem);
+    /* It rises over the hero as a sheet, and the link from the hero lands with it filling the window. */
+    border-radius: clamp(1rem, 3vw, 2.5rem) clamp(1rem, 3vw, 2.5rem) 0 0;
+    box-shadow: 0 -30px 80px rgb(5 7 15 / 0.7);
+    scroll-margin-top: calc(-1 * (var(--header-h) + var(--space-4)));
     background: #05070f;
     color-scheme: dark;
     color: #f4f5fb;
@@ -266,6 +272,7 @@ const questions: Question[] = [
     height: 100svh;
     padding: 0;
     overflow: clip;
+    border-radius: inherit;
   }
   .is-globe .qglobe__canvas {
     position: absolute;

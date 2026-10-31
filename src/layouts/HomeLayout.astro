@@ -1,6 +1,5 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import HomeWelcome from '../components/home/HomeWelcome.astro';
 import LandingHero from '../components/home/LandingHero.astro';
 import type { Locale } from '../i18n/routes';
 import { currentVersion } from '../lib/data';
@@ -33,11 +32,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   modified={modified}
 >
   <div class="container home" data-pagefind-body>
-    <!-- The hero stays pinned only as long as this wrapper lasts: until the welcome has covered it. -->
-    <div class="home__opening">
-      <LandingHero locale={locale} pageTitle={data.title} />
-      <HomeWelcome locale={locale} launchAt={launchAt} />
-    </div>
+    <LandingHero locale={locale} pageTitle={data.title} launchAt={launchAt} />
 
     <div class="home__content">
       <slot />
@@ -63,9 +58,6 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       border-color: transparent;
       backdrop-filter: none;
     }
-  }
-  .home__opening {
-    position: relative;
   }
   .home__content {
     position: relative;

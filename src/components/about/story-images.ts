@@ -19,8 +19,7 @@ export type StoryArtName =
   | 'dragonflight'
   | 'tbc'
   | 'mage'
-  | 'forever'
-  | 'grimoire';
+  | 'forever';
 
 /** The decorative frame drawn over a picture (StoryFrame.astro), chosen by what the picture shows. */
 export type FrameStyle = 'pandaria' | 'fel' | 'loa' | 'shadow' | 'dragon' | 'fire' | 'arcane' | 'felrune' | 'classic';
@@ -111,10 +110,5 @@ export const STORY_IMAGES: Record<StoryArtName, StoryImage> = {
     'tirisfal.webp', 1920, 1080, '62% 45%', 'fel',
     'Tirisfal Glades, where an Undead begins: a misty pine forest under a green sun, a dark house and its clock tower',
     'Los Claros de Tirisfal, donde empieza un no-muerto: un pinar con niebla bajo un sol verde, una casa oscura y su torre del reloj',
-  ),
-  grimoire: story(
-    'dalaran-library.webp', 1920, 1080, '50% 50%', 'arcane',
-    'A quiet Mage library under a starry ceiling, books and candles',
-    'Una biblioteca de magos tranquila bajo un techo estrellado, con libros y velas',
   ),
 };
