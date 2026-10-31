@@ -74,11 +74,10 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
                           {block.links.map((link) => (
                             <li>
                               <a
-                                class:list={['nav-sublink', link.tree && ['nav-sublink--tree', `school-${link.tree}`]]}
+                                class:list={['nav-sublink', { 'nav-sublink--tree': link.tree }]}
                                 href={link.url}
                                 aria-current={link.page && link.page === pageId ? 'page' : undefined}
                               >
-                                {link.tree && <Icon name={link.tree} size={15} />}
                                 {link.label}
                               </a>
                             </li>
@@ -337,40 +336,24 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
     color: var(--accent);
     cursor: default;
   }
-  /* The three trees hang from Talents: chips in their school's colour, indented under it. */
-  .nav-sublist.nav-sublist--trees {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-1);
-    padding: 0 var(--space-2) var(--space-1) var(--space-5);
-  }
-  .nav-sublink.nav-sublink--tree {
-    gap: 0.3em;
-    min-height: 30px;
-    padding: 0 0.65em;
-    border: 1px solid color-mix(in srgb, var(--school) 40%, transparent);
-    border-radius: 999px;
-    color: var(--text);
-    font-size: 0.8125rem;
-    font-weight: 600;
-  }
-  .nav-sublink.nav-sublink--tree :global(svg) {
-    color: var(--school);
-  }
-  .nav-sublink.nav-sublink--tree:hover {
-    border-color: var(--school);
-    background: var(--school-soft);
-  }
-  .nav-sublink.nav-sublink--tree[aria-current='page'] {
-    border-color: var(--school);
-    background: var(--school-soft);
-    box-shadow: none;
-  }
   .nav-sublist {
     display: grid;
     margin: 0;
     padding: 0;
     list-style: none;
+  }
+  /* The three trees hang from Specializations: a smaller list, indented under it with a thin line. */
+  .nav-block:has(.nav-sublist--trees) {
+    margin-top: calc(-1 * var(--space-2));
+  }
+  .nav-sublist.nav-sublist--trees {
+    margin-left: var(--space-4);
+    padding-left: var(--space-1);
+    border-left: 1px solid var(--border);
+  }
+  .nav-sublink.nav-sublink--tree {
+    min-height: 32px;
+    font-size: 0.875rem;
   }
   .nav-panel--wide .nav-sublist {
     grid-template-columns: repeat(2, minmax(10.5rem, 1fr));
@@ -392,7 +375,6 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
   .nav-sublink[aria-current='page'] {
     color: var(--text);
     font-weight: 650;
-    box-shadow: inset 3px 0 0 var(--accent);
   }
   @media (min-width: 1001px) {
     .nav-item:hover:not([data-dismissed]) .nav-panel,
@@ -572,8 +554,10 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
       min-height: 40px;
     }
     .nav-sublist.nav-sublist--trees {
-      display: flex;
-      padding-left: var(--space-3);
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .nav-block:has(.nav-sublist--trees) {
+      margin-top: calc(-1 * var(--space-1));
     }
     .nav-block__heading {
       margin: 0 0 var(--space-1);
@@ -585,7 +569,7 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
     .nav-link.is-section,
     .has-thread .nav-link[aria-current='page'],
     .has-thread .nav-link.is-section {
-      box-shadow: inset 3px 0 0 var(--accent);
+      box-shadow: none;
       border-radius: 0;
     }
     .nav-thread {

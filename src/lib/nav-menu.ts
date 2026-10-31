@@ -15,7 +15,7 @@ export interface MenuLink {
   url: string;
   /** The page it leads to, to mark it as current. Absent on sections of a page. */
   page?: PageId;
-  /** Talent tree the page belongs to: these links show as a row of chips with its school colour. */
+  /** Talent tree the page belongs to: these links show as a list hanging from Specializations. */
   tree?: SpecTree;
 }
 
@@ -43,7 +43,7 @@ export function menuBlocks(group: NavGroup, locale: Locale, opts: { base?: strin
   switch (group.key) {
     case 'learn': {
       // In reading order: the sections of Learn itself, then its pages; the three
-      // trees hang from Talents as a row of their own, and the glossary goes last.
+      // trees hang from Specializations as a list of their own, and the glossary goes last.
       const firstTree = items.findIndex((link) => link.tree);
       return [
         { links: [...sections.slice(0, -1), ...items.slice(0, firstTree)] },

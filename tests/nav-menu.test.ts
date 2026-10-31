@@ -27,7 +27,7 @@ describe('menuBlocks', () => {
     expect(labels('tools', 'en')).toEqual(['Crit multiplier', 'Spell hit', 'Talent calculator', 'Forever changes', 'MageProcs']);
   });
 
-  it('keeps the talent trees apart, as a row without a heading', () => {
+  it('keeps the talent trees apart, as a list without a heading', () => {
     const blocks = menuBlocks(group('learn'), 'en');
     expect(blocks.map((block) => block.heading)).toEqual([undefined, undefined, undefined]);
     expect(blocks[1]!.links.map((link) => link.tree)).toEqual(['arcane', 'fire', 'frost']);
