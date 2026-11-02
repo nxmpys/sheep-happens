@@ -241,6 +241,9 @@ pick-panel {
   opacity: 1;
   scale: 1.04;
 }
+.pick-art .school-arcane .pick__button[aria-selected='true'] .pick__art {
+  scale: none;
+}
 @media (max-width: 40rem) {
   .pick-art .pick__button {
     flex-basis: 0;

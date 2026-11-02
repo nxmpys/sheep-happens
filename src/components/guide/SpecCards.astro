@@ -236,7 +236,7 @@ const specs = (['arcane', 'fire', 'frost'] as const).map((tree) => ({
     .specs--panels .spec:focus-within {
       flex-grow: 1.45;
     }
-    .specs--panels .spec:hover .spec__picture {
+    .specs--panels .spec:not(.school-arcane):hover .spec__picture {
       transform: scale(1.05);
     }
   }
