@@ -6,6 +6,12 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ## 2026-11-03
 
+### [Guía] Nueva build de leveo de Escarcha
+
+Una build de Escarcha del 10 al 60, con el orden de puntos nivel a nivel, para subir en el mundo y hacer área en mazmorras. Aún no la he probado en el juego.
+
+- **Datos afectados:** build:frost-leveling
+
 ### [Juego] Los rangos bajos vuelven a activar talentos
 
 En sus notas para el lanzamiento, Blizzard quita la penalización de los rangos bajos en los talentos que se activan con tus hechizos, salvo con Ventisca. Los rangos bajos siguen aprovechando menos tu daño de hechizos.

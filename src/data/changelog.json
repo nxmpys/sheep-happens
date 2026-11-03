@@ -1,5 +1,24 @@
 [
   {
+    "id": "2026-11-03-frost-leveling",
+    "date": "2026-11-03",
+    "type": "guide",
+    "title": {
+      "es": "Nueva build de leveo de Escarcha",
+      "en": "New Frost leveling build"
+    },
+    "body": {
+      "es": "Una build de Escarcha del 10 al 60, con el orden de puntos nivel a nivel, para subir en el mundo y hacer área en mazmorras. Aún no la he probado en el juego.",
+      "en": "A Frost build from 10 to 60, with the point order level by level, for leveling in the world and AoE in dungeons. I have not tested it in the game yet."
+    },
+    "pages": [
+      "builds"
+    ],
+    "refs": [
+      "build:frost-leveling"
+    ]
+  },
+  {
     "id": "2026-11-03-downranking",
     "date": "2026-11-03",
     "type": "game",

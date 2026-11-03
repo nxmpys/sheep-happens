@@ -1,1 +1,391 @@
-[]
+[
+  {
+    "id": "frost-leveling",
+    "name": {
+      "es": "Escarcha",
+      "en": "Frost"
+    },
+    "slug": {
+      "es": "escarcha",
+      "en": "frost"
+    },
+    "uses": [
+      "leveling"
+    ],
+    "recommendedFor": [],
+    "discouragedFor": [],
+    "spec": "frost",
+    "icon": "spell_frost_frostbolt",
+    "tagline": {
+      "es": "Descarga de Escarcha rápida y Lanza de hielo contra objetivos congelados para subir en el mundo, y Ventisca para el área en mazmorras.",
+      "en": "Fast Frostbolt and Ice Lance against frozen targets for leveling in the world, and Blizzard for AoE in dungeons."
+    },
+    "level": 60,
+    "legacyTalented": 0,
+    "points": {
+      "improved-frostbolt": 5,
+      "frostbite": 3,
+      "elemental-precision": 3,
+      "ice-lance": 1,
+      "ice-shards": 5,
+      "ice-block": 1,
+      "shatter": 3,
+      "fingers-of-frost": 2,
+      "cold-snap": 1,
+      "frost-channeling": 3,
+      "improved-blizzard": 3,
+      "permafrost": 3,
+      "ice-barrier": 1,
+      "wand-specialization": 2,
+      "arcane-resilience": 3,
+      "missile-barrage": 2,
+      "arcane-subtlety": 2,
+      "arcane-concentration": 5,
+      "arcane-blast": 1,
+      "arcane-meditation": 2
+    },
+    "order": [
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "frostbite",
+      "frostbite",
+      "frostbite",
+      "elemental-precision",
+      "elemental-precision",
+      "ice-lance",
+      "ice-shards",
+      "ice-shards",
+      "ice-shards",
+      "ice-shards",
+      "ice-block",
+      "shatter",
+      "shatter",
+      "shatter",
+      "ice-shards",
+      "fingers-of-frost",
+      "fingers-of-frost",
+      "cold-snap",
+      "elemental-precision",
+      "frost-channeling",
+      "frost-channeling",
+      "frost-channeling",
+      "improved-blizzard",
+      "permafrost",
+      "permafrost",
+      "ice-barrier",
+      "wand-specialization",
+      "wand-specialization",
+      "arcane-resilience",
+      "arcane-resilience",
+      "arcane-resilience",
+      "missile-barrage",
+      "missile-barrage",
+      "arcane-subtlety",
+      "arcane-subtlety",
+      "arcane-concentration",
+      "arcane-blast",
+      "permafrost",
+      "improved-blizzard",
+      "improved-blizzard",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-meditation",
+      "arcane-meditation"
+    ],
+    "orderNotes": [
+      {
+        "point": 1,
+        "text": {
+          "es": "Descarga de Escarcha es tu relleno: a 5/5 la lanzas 0,5 s más rápido.",
+          "en": "Frostbolt is your filler: at 5/5 you cast it 0.5 s faster."
+        }
+      },
+      {
+        "point": 6,
+        "text": {
+          "es": "Tus efectos de enfriamiento tienen hasta un 15 % de probabilidad de congelar al objetivo 5 s. Desde el 3 de noviembre también con Descarga de Escarcha de rango 1.",
+          "en": "Your Chill effects get up to a 15% chance to freeze the target for 5 s. Since 3 November Rank 1 Frostbolt triggers it too."
+        }
+      },
+      {
+        "point": 9,
+        "text": {
+          "es": "Un 4 % de golpe con todos los hechizos.",
+          "en": "4% hit with every spell."
+        }
+      },
+      {
+        "point": 11,
+        "text": {
+          "es": "Hace un 300 % más de daño contra objetivos congelados.",
+          "en": "It deals 300% more damage against frozen targets."
+        }
+      },
+      {
+        "point": 12,
+        "text": {
+          "es": "Hasta un 100 % más de bonificación a los críticos de Escarcha.",
+          "en": "Up to 100% more bonus on Frost crits."
+        }
+      },
+      {
+        "point": 17,
+        "text": {
+          "es": "Hasta un 50 % de crítico contra objetivos congelados.",
+          "en": "Up to 50% crit against frozen targets."
+        }
+      },
+      {
+        "point": 21,
+        "text": {
+          "es": "Tus efectos de enfriamiento tienen un 15 % de probabilidad de hacer que tus 2 siguientes hechizos traten al objetivo como congelado.",
+          "en": "Your Chill effects have a 15% chance to make your next 2 spells treat the target as frozen."
+        }
+      },
+      {
+        "point": 23,
+        "text": {
+          "es": "Reinicia Nova de Escarcha, Bloqueo de hielo y, desde el nivel 40, Barrera de hielo.",
+          "en": "Resets Frost Nova, Ice Block and, from level 40, Ice Barrier."
+        }
+      },
+      {
+        "point": 24,
+        "text": {
+          "es": "El tercer punto de Precision: un 6 % de golpe.",
+          "en": "The third point of Precision: 6% hit."
+        }
+      },
+      {
+        "point": 25,
+        "text": {
+          "es": "Tus hechizos de Escarcha cuestan hasta un 15 % menos de maná y generan un 30 % menos de amenaza. En mazmorras es lo que te deja usar Ventisca sin quitarle los enemigos al tanque.",
+          "en": "Your Frost spells cost up to 15% less mana and cause 30% less threat. In dungeons it is what lets you Blizzard without pulling enemies off the tank."
+        }
+      },
+      {
+        "point": 28,
+        "text": {
+          "es": "Ventisca pasa a ralentizar, así que activa Mordiescarcha y Dedos de Escarcha en todo el grupo. Lánzala con uno de tus dos rangos más altos: los rangos aprendidos más de 12 niveles por debajo del tuyo los activan menos.",
+          "en": "Blizzard now slows, so it triggers Frostbite and Fingers of Frost on the whole pack. Cast it at one of your two highest ranks: ranks learned more than 12 levels below yours trigger them less."
+        }
+      },
+      {
+        "point": 29,
+        "text": {
+          "es": "Tus ralentizaciones duran más y frenan más.",
+          "en": "Your slows last longer and slow more."
+        }
+      },
+      {
+        "point": 31,
+        "text": {
+          "es": "Un escudo que además da un 15 % más de daño de Escarcha durante 1 min, otro 5 % mientras aguanta, y evita que los golpes retrasen tus hechizos.",
+          "en": "A shield that also gives 15% more Frost damage for 1 min, another 5% while it holds, and stops hits from delaying your spells."
+        }
+      },
+      {
+        "point": 32,
+        "text": {
+          "es": "El peaje para llegar a lo útil de Arcano: un 25 % más de daño con varita y armadura igual al 75 % de tu Intelecto.",
+          "en": "The toll to reach the useful part of Arcane: 25% more wand damage and armor equal to 75% of your Intellect."
+        }
+      },
+      {
+        "point": 37,
+        "text": {
+          "es": "Un 20 % de las veces que lanzas Descarga de Escarcha, tus siguientes Misiles Arcanos son gratis y duran la mitad.",
+          "en": "20% of the times you cast Frostbolt, your next Arcane Missiles are free and take half as long."
+        }
+      },
+      {
+        "point": 39,
+        "text": {
+          "es": "Tus hechizos Arcanos generan un 30 % menos de amenaza: Deflagración Arcana en mazmorras.",
+          "en": "Your Arcane spells cause 30% less threat: Arcane Explosion in dungeons."
+        }
+      },
+      {
+        "point": 41,
+        "text": {
+          "es": "El primer punto abre la fila de Explosión Arcana. A 5/5, un 10 % de probabilidad de que tu siguiente hechizo de daño sea gratis.",
+          "en": "The first point opens the Arcane Blast row. At 5/5, a 10% chance that your next damage spell is free."
+        }
+      },
+      {
+        "point": 44,
+        "text": {
+          "es": "Ventisca mejorada a 3/3: la ralentización de Ventisca sube al 40 %.",
+          "en": "Improved Blizzard at 3/3: the Blizzard slow rises to 40%."
+        }
+      },
+      {
+        "point": 50,
+        "text": {
+          "es": "Un 33 % de tu regeneración de maná sigue activa mientras lanzas.",
+          "en": "33% of your mana regeneration keeps running while you cast."
+        }
+      }
+    ],
+    "goal": {
+      "es": "Subir en el mundo y hacer área en mazmorras",
+      "en": "Leveling in the world and AoE in dungeons"
+    },
+    "upside": {
+      "es": "Mucho control en solitario y Ventisca para los grupos",
+      "en": "Plenty of control solo and Blizzard for packs"
+    },
+    "downside": {
+      "es": "Ventisca mejorada llega tarde, al nivel 37",
+      "en": "Improved Blizzard comes late, at level 37"
+    },
+    "keyTalents": [
+      "improved-frostbolt",
+      "ice-lance",
+      "shatter",
+      "fingers-of-frost",
+      "frost-channeling"
+    ],
+    "summary": {
+      "es": "Build de leveo de Escarcha con 17 puntos en Arcano, en orden del 10 al 60. En el mundo peleas de uno en uno con Descarga de Escarcha, Lanza de hielo y Trizar. En mazmorras, Ventisca con Canalización de Escarcha para hacer área sin quitarle los enemigos al tanque.",
+      "en": "Frost leveling build with 17 points in Arcane, in order from 10 to 60. In the world you fight one enemy at a time with Frostbolt, Ice Lance and Shatter. In dungeons, Blizzard with Frost Channeling to AoE without pulling enemies off the tank."
+    },
+    "playstyle": [
+      {
+        "es": "Barrera de hielo activa siempre que puedas, en cuanto la tengas.",
+        "en": "Keep Ice Barrier up whenever you can, once you have it."
+      },
+      {
+        "es": "Si salta Dedos de Escarcha, Lanza de hielo al momento, aunque tengas que cancelar lo que estás lanzando: Descarga de Escarcha también gastaría la carga. Lanza de hielo tiene 8 s de reutilización, así que la segunda carga es para tu siguiente Descarga de Escarcha.",
+        "en": "If Fingers of Frost triggers, Ice Lance at once, even if you have to cancel what you are casting: Frostbolt would also spend the charge. Ice Lance has an 8 s cooldown, so the second charge is for your next Frostbolt."
+      },
+      {
+        "es": "Si Mordiescarcha congela al objetivo, Descarga de Escarcha y justo después Lanza de hielo: llegan a la vez y las dos aprovechan Trizar.",
+        "en": "If Frostbite freezes the target, Frostbolt and right after it Ice Lance: they land together and both get Shatter."
+      },
+      {
+        "es": "Misiles Arcanos si Tromba de misiles está activa y es seguro canalizar.",
+        "en": "Arcane Missiles if Missile Barrage is active and it is safe to channel."
+      },
+      {
+        "es": "Si un enemigo llega hasta ti, Nova de Escarcha para ganar distancia.",
+        "en": "If an enemy reaches you, Frost Nova to gain distance."
+      },
+      {
+        "es": "Descarga de Escarcha en cualquier otro caso.",
+        "en": "Frostbolt in any other case."
+      },
+      {
+        "es": "Remata con la varita: ahorras maná y tu regeneración vuelve antes.",
+        "en": "Finish enemies with your wand: you save mana and your regeneration comes back sooner."
+      }
+    ],
+    "clearcasting": [
+      {
+        "es": "Con varios enemigos, Ventisca: es tu hechizo más caro.",
+        "en": "With several enemies, Blizzard: it is your most expensive spell."
+      },
+      {
+        "es": "A un solo objetivo, Explosión Arcana: cuesta más que Descarga de Escarcha y sube tu daño de hechizos.",
+        "en": "On a single target, Arcane Blast: it costs more than Frostbolt and raises your spell damage."
+      }
+    ],
+    "aoe": [
+      {
+        "es": "Deja que el tanque reúna a los enemigos y empieza después de sus primeros golpes.",
+        "en": "Let the tank gather the enemies and start after their first hits."
+      },
+      {
+        "es": "Ventisca con uno de tus dos rangos más altos, alcanzando a tantos enemigos como puedas.",
+        "en": "Blizzard at one of your two highest ranks, hitting as many enemies as you can."
+      },
+      {
+        "es": "Si no puedes canalizar, Cono de frío y Deflagración Arcana.",
+        "en": "If you cannot channel, Cone of Cold and Arcane Explosion."
+      },
+      {
+        "es": "Gasta Dedos de Escarcha en Lanza de hielo mientras te mueves.",
+        "en": "Spend Fingers of Frost on Ice Lance while you move."
+      },
+      {
+        "es": "Si un enemigo va a por ti, Nova de Escarcha y apártate para que el tanque lo recupere.",
+        "en": "If an enemy comes for you, Frost Nova and step away so the tank can take it back."
+      }
+    ],
+    "cooldowns": [
+      {
+        "es": "Bloqueo de hielo si te van a matar: te protege 10 s, pero no puedes hacer nada mientras dura.",
+        "en": "Ice Block if you are about to die: it protects you for 10 s, but you cannot do anything while it lasts."
+      },
+      {
+        "es": "Mordedura helada para tener otra Nova de Escarcha, Barrera de hielo o Bloqueo de hielo cuando un pull se complica.",
+        "en": "Cold Snap to get another Frost Nova, Ice Barrier or Ice Block when a pull gets complicated."
+      },
+      {
+        "es": "Evocación cuando te falte poco para quedarte sin maná y no tengas gema ni poción.",
+        "en": "Evocation when you are close to running out of mana and have no gem or potion."
+      }
+    ],
+    "strengths": [
+      {
+        "es": "Ralentiza con casi todo, y con Nova de Escarcha y Mordiescarcha el enemigo apenas te alcanza.",
+        "en": "It slows with almost everything, and with Frost Nova and Frostbite the enemy barely reaches you."
+      },
+      {
+        "es": "Bloqueo de hielo, Barrera de hielo y Mordedura helada son defensas que las builds de Arcano no tienen.",
+        "en": "Ice Block, Ice Barrier and Cold Snap are defenses the Arcane builds do not have."
+      },
+      {
+        "es": "Canalización de Escarcha y Sutileza Arcana reducen tu amenaza en el área de las mazmorras.",
+        "en": "Frost Channeling and Arcane Subtlety lower your threat in dungeon AoE."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Hasta el nivel 41 no tiene ningún talento de Arcano, así que todo su ahorro de maná depende de Canalización de Escarcha.",
+        "en": "Until level 41 it has no Arcane talents, so all its mana saving depends on Frost Channeling."
+      },
+      {
+        "es": "Mordiescarcha no congela a todos los enemigos, como los jefes.",
+        "en": "Frostbite does not freeze every enemy, such as bosses."
+      },
+      {
+        "es": "Concentración Arcana no llega a 5/5 hasta el nivel 58.",
+        "en": "Arcane Concentration does not reach 5/5 until level 58."
+      }
+    ],
+    "stats": [
+      {
+        "es": "Daño de hechizos: es lo que más encontrarás subiendo y lo que más se nota.",
+        "en": "Spell damage: it is what you will find most while leveling and what you will notice most."
+      },
+      {
+        "es": "Intelecto: más maná y más crítico, y sale en casi todas las piezas.",
+        "en": "Intellect: more mana and more crit, and it is on almost every piece."
+      },
+      {
+        "es": "Golpe: Precision ya da un 6 %, y subiendo apenas hay equipo con golpe: no lo persigas.",
+        "en": "Hit: Precision already gives 6%, and there is hardly any hit gear while leveling: do not chase it."
+      },
+      {
+        "es": "Espíritu: te hace beber menos, y desde el nivel 59 Meditación Arcana también lo aprovecha mientras lanzas.",
+        "en": "Spirit: you drink less with it, and from level 59 Arcane Meditation also uses it while you cast."
+      },
+      {
+        "es": "Aguante: súbelo antes que lo anterior si juegas en un reino JcJ.",
+        "en": "Stamina: raise it ahead of the above if you play on a PvP realm."
+      }
+    ],
+    "status": "analysis",
+    "gameVersion": "forever-beta-2026-10",
+    "sources": [
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-11-03"
+  }
+]
