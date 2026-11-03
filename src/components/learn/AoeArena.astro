@@ -104,7 +104,9 @@ const rotations: Rotation[] = [
       },
       {
         spell: 'Blizzard',
-        text: es ? 'En el último segundo de la Nova, donde tendrán que cruzarla para llegar a ti.' : 'In the last second of the Nova, where they have to walk through it to reach you.',
+        text: es
+          ? 'En el último segundo de la Nova, donde tendrán que cruzarla para llegar a ti. Solo si puedes canalizarla entera.'
+          : 'In the last second of the Nova, where they have to walk through it to reach you. Only if you can channel it fully.',
         frame: { mage: [70, 140], pack: [240, 140], spread: 28, fx: ['blizzard'], hp: 55 },
       },
       {

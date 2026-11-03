@@ -749,6 +749,19 @@
     }
   },
   {
+    "id": "maxroll-mage-leveling",
+    "title": "Mage Leveling Guide for World of Warcraft: Forever",
+    "publisher": "Maxroll",
+    "url": "https://maxroll.gg/wow-forever/class-guides/mage-leveling-guide",
+    "kind": "community",
+    "published": "2026-10-27",
+    "accessed": "2026-11-03",
+    "notes": {
+      "es": "Guía de leveo con rotaciones de área por rama. Lanza Ventisca solo si puede canalizarla entera y remata con Lanza de hielo tras la Nova de Escarcha. No da datos medidos.",
+      "en": "Leveling guide with AoE rotations for each tree. It casts Blizzard only when the full channel is safe and finishes with Ice Lance after Frost Nova. No measured data."
+    }
+  },
+  {
     "id": "forg-mage-aoe-spiders",
     "title": "WoW Forever Mage AoE Leveling — Skywatcher Plateau Spider Farm",
     "publisher": "forg.gg",
