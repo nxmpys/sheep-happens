@@ -289,6 +289,8 @@ export const buildSchema = z
     hybridWith: z.enum(BUILD_SPECS).optional(),
     /** One line for the builds index. */
     tagline: localized,
+    /** Why pick it, as short paragraphs under its card on the content page. */
+    intro: z.array(localized).default([]),
     /** Client icon file name (public/icons/<icon>.jpg) for the builds index card. Defaults to the first key talent's icon. */
     icon: z.string().optional(),
     /** Character level the build is made for; points available = level − 9 (+ Talented). */

@@ -6,6 +6,12 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ## 2026-11-03
 
+### [Guía] Nueva build de leveo de Arcano
+
+Una build de Arcano del 10 al 60, con el orden de puntos nivel a nivel y sin Canalización mejorada. Probé Arcano en la beta hasta el nivel 30.
+
+- **Datos afectados:** build:arcane-leveling
+
 ### [Guía] Nueva build de leveo de Escarcha
 
 Una build de Escarcha del 10 al 60, con el orden de puntos nivel a nivel, para subir en el mundo y hacer área en mazmorras. Aún no la he probado en el juego.

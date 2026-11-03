@@ -1,5 +1,24 @@
 [
   {
+    "id": "2026-11-03-arcane-leveling",
+    "date": "2026-11-03",
+    "type": "guide",
+    "title": {
+      "es": "Nueva build de leveo de Arcano",
+      "en": "New Arcane leveling build"
+    },
+    "body": {
+      "es": "Una build de Arcano del 10 al 60, con el orden de puntos nivel a nivel y sin Canalización mejorada. Probé Arcano en la beta hasta el nivel 30.",
+      "en": "An Arcane build from 10 to 60, with the point order level by level and no Improved Channeling. I tested Arcane in the beta up to level 30."
+    },
+    "pages": [
+      "builds"
+    ],
+    "refs": [
+      "build:arcane-leveling"
+    ]
+  },
+  {
     "id": "2026-11-03-frost-leveling",
     "date": "2026-11-03",
     "type": "guide",
