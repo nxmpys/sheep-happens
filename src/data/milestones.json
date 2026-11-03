@@ -72,14 +72,18 @@
     "id": "fire-16",
     "tree": "fire",
     "points": 16,
-    "status": "pending",
+    "name": "Heating Up",
+    "changeId": "heating-up",
+    "status": "analysis",
     "note": {
-      "es": "Blizzard no ha dicho qué talento ocupa el nuevo talento decisivo de 16 puntos de Fuego. Calentamiento está en la fila 4, pero no se describe como talento decisivo.",
-      "en": "Blizzard has not said which talent fills Fire's new 16-point milestone. Heating Up sits in row 4 but is not described as a milestone talent."
+      "es": "Blizzard no lo ha confirmado. Es el único talento de 1 punto de la fila 4 de Fuego en la calculadora de Forever.",
+      "en": "Blizzard has not confirmed it. It is the only 1-point talent in Fire's row 4 in the Forever calculator."
     },
     "sources": [
+      "wowhead-forever-talent-calc",
       "blizzard-deep-dive-mage"
-    ]
+    ],
+    "updated": "2026-11-02"
   },
   {
     "id": "fire-21",

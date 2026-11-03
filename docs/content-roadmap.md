@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-10-31 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
+> Creado: 2026-10-12 · Revisión: 2026-11-02 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -31,7 +31,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 ### Talentos y builds
 
 - [ ] Árbol completo de Forever con valores **oficiales**. La posición de cada talento ya está en `src/data/talents.json` (sacada de la calculadora de Wowhead, datos del cliente de la beta); las cifras siguen sin confirmar.
-- [ ] Talento decisivo de 16 puntos de Fuego (`fire-16` en `src/data/milestones.json`). Pista: en la calculadora de Wowhead, Calentamiento es el único talento de 1 punto de la fila 4 de Fuego. Falta una fuente oficial. (El de Arcano quedó resuelto el 15 de octubre: Cólera Arcana; Tromba de misiles bajó a la fila 1.)
+- [ ] Confirmar el talento decisivo de 16 puntos de Fuego (`fire-16` en `src/data/milestones.json`). Desde el 2 nov figura Calentamiento como `analysis`: en la calculadora de Wowhead es el único talento de 1 punto de la fila 4 de Fuego. Falta una fuente oficial o verlo en el juego; entonces, ajustar su `status` y quitar el aviso de `talents-fire`. (El de Arcano quedó resuelto el 15 de octubre: Cólera Arcana; Tromba de misiles bajó a la fila 1.)
 - [ ] Escalofrío del invierno (15 oct): las notas oficiales dan dos descripciones distintas (+40 % de daño de Cono de frío por carga, o +5 % y un 7 % de tu daño de hechizos por carga). Confirmar cuál queda y corregir `change:winters-chill`.
 - [x] ~~Nombre oficial en español de **Frost Blast**~~: el hechizo desaparece del libro de hechizos en la build del 28 oct (2026-10-29).
 - [ ] Nombres en español de **Accelerant** (antes Bola de Fuego mejorada) y **Precision** (antes Enfoque elemental): el cliente en español aún tiene los nombres y textos anteriores al 28 oct (`STALE_ES` en `scripts/spell-text.ts` y texto en inglés en `talent-text.json`). Cuando cambien, añadir `es` en `src/data/spell-names.json`, quitar esas excepciones y volver a ejecutar `npm run talents:text` y `npm run spells:text`.

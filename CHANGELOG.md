@@ -4,6 +4,14 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-11-02
+
+### [Guía] Calentamiento, en el hueco de 16 puntos de Fuego
+
+Pongo Calentamiento como talento decisivo de 16 puntos de Fuego: es el único de 1 punto en la fila 4 de la calculadora. Blizzard no lo ha confirmado, así que queda como análisis hasta verlo en el juego.
+
+- **Datos afectados:** Calentamiento
+
 ## 2026-10-31
 
 ### [Juego] Cambios de talentos del 30 de octubre (build 1.60.1.70707)

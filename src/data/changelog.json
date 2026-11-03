@@ -1,5 +1,25 @@
 [
   {
+    "id": "2026-11-02-fire-16",
+    "date": "2026-11-02",
+    "type": "guide",
+    "title": {
+      "es": "Calentamiento, en el hueco de 16 puntos de Fuego",
+      "en": "Heating Up, in Fire's 16-point slot"
+    },
+    "body": {
+      "es": "Pongo Calentamiento como talento decisivo de 16 puntos de Fuego: es el único de 1 punto en la fila 4 de la calculadora. Blizzard no lo ha confirmado, así que queda como análisis hasta verlo en el juego.",
+      "en": "I now list Heating Up as Fire's 16-point milestone: it is the only 1-point talent in row 4 of the calculator. Blizzard has not confirmed it, so it stays as analysis until I see it in the game."
+    },
+    "pages": [
+      "talents-fire",
+      "talents"
+    ],
+    "refs": [
+      "milestone:fire-16"
+    ]
+  },
+  {
     "id": "2026-10-31-talents",
     "date": "2026-10-31",
     "type": "game",
