@@ -24,7 +24,7 @@ describe('menuBlocks', () => {
 
   it('lists what the user asked for under Learn and Tools', () => {
     expect(labels('learn', 'en')).toEqual(['The class', 'Combat', 'Specializations', 'Arcane', 'Fire', 'Frost', 'First steps in Azeroth', 'Glossary']);
-    expect(labels('tools', 'en')).toEqual(['Crit multiplier', 'Spell hit', 'Talent calculator', 'Forever changes', 'MageProcs']);
+    expect(labels('tools', 'en')).toEqual(['Crit multiplier', 'Spell hit', 'Talent calculator', 'Mage cheat sheet', 'Forever changes', 'MageProcs']);
   });
 
   it('keeps the talent trees apart, as a list without a heading', () => {

@@ -1,0 +1,553 @@
+---
+/**
+ * The Mage on one screen: each panel answers a question with icons and a word
+ * or two, and links to the page that explains it. Spell icons open their
+ * tooltip; professions and races come from profession-picks.json and
+ * race-picks.json, so the sheet follows the guides when they change.
+ */
+import GameIcon from '../learn/GameIcon.astro';
+import Icon from '../ui/Icon.astro';
+import StatusBadge from './StatusBadge.astro';
+import '../../styles/learn.css';
+import { getLocale, href } from '../../i18n/locale';
+import type { PageId } from '../../i18n/routes';
+import { picks, racePicks, races, professions } from '../../lib/data';
+import { iconPath, TREE_ICONS } from '../../lib/icons';
+import { localSpellName } from '../../lib/names';
+import { PROFESSION_ICONS } from '../../lib/professions';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+
+interface Step {
+  spell?: string;
+  icon?: string;
+  name?: string;
+  /** A short tag under the name: stacks, a level, a bonus. */
+  tag?: string;
+  /** A proc: drawn with a glow, as MageProcs shows it. */
+  proc?: boolean;
+}
+
+interface Panel {
+  title: string;
+  steps: Step[];
+  /** The steps lead to one another: arrows between them. */
+  chain?: boolean;
+  link: { page: PageId; label: string };
+}
+
+const name = (step: Step) => step.name ?? localSpellName(step.spell ?? '', locale);
+
+const combos: { tree: 'arcane' | 'fire' | 'frost'; label: string; steps: Step[] }[] = [
+  {
+    tree: 'arcane',
+    label: es ? 'Arcano' : 'Arcane',
+    steps: [{ spell: 'Arcane Blast', tag: '×4' }, { spell: 'Arcane Wrath' }],
+  },
+  {
+    tree: 'fire',
+    label: es ? 'Fuego' : 'Fire',
+    steps: [{ spell: 'Fire Blast' }, { spell: 'Heating Up', tag: '×3', proc: true }, { spell: 'Pyroblast', tag: es ? '1,5 s' : '1.5 s' }],
+  },
+  {
+    tree: 'frost',
+    label: es ? 'Escarcha' : 'Frost',
+    steps: [{ spell: 'Frostbolt' }, { spell: 'Fingers of Frost', proc: true }, { spell: 'Ice Lance', tag: '+300 %' }],
+  },
+];
+
+const panels: Panel[] = [
+  {
+    title: es ? '¿Te alcanza?' : 'Caught?',
+    chain: true,
+    steps: [{ spell: 'Frost Nova' }, { spell: 'Blink', tag: '20 m' }, { spell: 'Ice Block', tag: es ? 'Escarcha' : 'Frost' }],
+    link: { page: 'learn', label: es ? 'Combate' : 'Combat' },
+  },
+  {
+    title: es ? '¿Control?' : 'Crowd control?',
+    steps: [{ spell: 'Polymorph', tag: es ? 'nivel 8' : 'level 8' }, { spell: 'Counterspell' }, { spell: 'Frost Nova' }],
+    link: { page: 'pvp', label: es ? 'JcJ' : 'PvP' },
+  },
+  {
+    title: es ? '¿Muchos enemigos?' : 'A whole pack?',
+    steps: [{ spell: 'Arcane Explosion' }, { spell: 'Flamestrike' }, { spell: 'Blizzard' }, { spell: 'Cone of Cold' }],
+    link: { page: 'aoe-farming', label: es ? 'Farmeo AoE' : 'AoE farming' },
+  },
+  {
+    title: es ? '¿Sin maná?' : 'Out of mana?',
+    steps: [
+      { icon: 'inv_drink_06', name: es ? 'Beber' : 'Drink' },
+      { spell: 'Evocation' },
+      { icon: 'inv_misc_gem_emerald_01', name: es ? 'Gema de maná' : 'Mana gem' },
+      { spell: 'Mage Armor' },
+    ],
+    link: { page: 'learn', label: es ? 'Combate' : 'Combat' },
+  },
+  {
+    title: es ? 'Antes de salir' : 'Before you head out',
+    steps: [
+      { spell: 'Arcane Intellect' },
+      { spell: 'Frost Armor', name: es ? 'Armadura' : 'Armor' },
+      { icon: 'inv_drink_06', name: es ? 'Agua' : 'Water', tag: es ? 'nivel 4' : 'level 4' },
+      { icon: 'inv_misc_food_15', name: es ? 'Comida' : 'Food', tag: es ? 'nivel 6' : 'level 6' },
+    ],
+    link: { page: 'leveling', label: es ? 'Primeros pasos' : 'First steps' },
+  },
+];
+
+// Professions: one pair per goal, in the order of the professions guide.
+const PROFESSION_GOALS = ['leveling', 'pve', 'pvp', 'gold'];
+const professionPairs = PROFESSION_GOALS.map((id) => picks.find((p) => p.id === id)).filter((p) => p !== undefined);
+const professionName = (id: string) => professions.find((p) => p.id === id)?.name[locale] ?? id;
+
+// "Cielonato (Skyborne)" is too long under a portrait.
+const raceShort = (id: string) => (races.find((r) => r.id === id)?.name[locale] ?? id).replace(/\s*\(.*\)$/, '');
+const raceIcon = (id: string) => races.find((r) => r.id === id)?.icon;
+const FACTIONS = [
+  { id: 'alliance', label: es ? 'Alianza' : 'Alliance', crest: 'achievement_pvp_a_14' },
+  { id: 'horde', label: es ? 'Horda' : 'Horde', crest: 'achievement_pvp_h_14' },
+] as const;
+---
+
+<div class="cheat" data-no-spell-links>
+  <section class="cheat__panel cheat__panel--wide" aria-labelledby="cheat-combo">
+    <h2 class="cheat__title" id="cheat-combo">
+      <span class="cheat__rule" aria-hidden="true"></span>
+      {es ? 'Tu combo por rama' : 'Your combo by tree'}
+      <span class="cheat__rule" aria-hidden="true"></span>
+    </h2>
+    <div class="cheat__trees">
+      {
+        combos.map((combo) => (
+          <div class={`cheat__tree school-${combo.tree}`}>
+            <p class="cheat__tree-name">
+              <GameIcon icon={TREE_ICONS[combo.tree]} size={28} />
+              {combo.label}
+            </p>
+            <ol class="cheat__steps cheat__steps--chain" style="--cheat-icon: 52px">
+              {combo.steps.map((step, index) => (
+                <li class:list={['cheat__step', { 'is-proc': step.proc }]}>
+                  <GameIcon spell={step.spell} icon={step.icon} size={52} />
+                  <span class="cheat__name">{name(step)}</span>
+                  {step.tag && <span class="cheat__tag">{step.tag}</span>}
+                  {index < combo.steps.length - 1 && <Icon name="arrowRight" size={18} class="cheat__arrow" />}
+                </li>
+              ))}
+            </ol>
+          </div>
+        ))
+      }
+    </div>
+    <p class="cheat__more">
+      <span class="cheat__proc-key" aria-hidden="true"></span>
+      {es ? 'Proc: lo avisa ' : 'Proc: shown by '}
+      <a href={href('addons', locale)}>MageProcs</a>
+      <span class="cheat__sep" aria-hidden="true">·</span>
+      <a href={href('talents', locale)}>{es ? 'Las ramas' : 'The trees'} <Icon name="arrowRight" size={14} /></a>
+    </p>
+  </section>
+
+  {
+    panels.map((panel, index) => (
+      <section class="cheat__panel" aria-labelledby={`cheat-panel-${index}`}>
+        <h2 class="cheat__title" id={`cheat-panel-${index}`}>
+          <span class="cheat__rule" aria-hidden="true"></span>
+          {panel.title}
+          <span class="cheat__rule" aria-hidden="true"></span>
+        </h2>
+        <ol class:list={['cheat__steps', { 'cheat__steps--chain': panel.chain }]} style="--cheat-icon: 44px">
+          {panel.steps.map((step, i) => (
+            <li class="cheat__step">
+              <GameIcon spell={step.spell} icon={step.icon} size={44} />
+              <span class="cheat__name">{name(step)}</span>
+              {step.tag && <span class="cheat__tag">{step.tag}</span>}
+              {panel.chain && i < panel.steps.length - 1 && <Icon name="arrowRight" size={18} class="cheat__arrow" />}
+            </li>
+          ))}
+        </ol>
+        <p class="cheat__more">
+          <a href={href(panel.link.page, locale)}>
+            {panel.link.label} <Icon name="arrowRight" size={14} />
+          </a>
+        </p>
+      </section>
+    ))
+  }
+
+  <section class="cheat__panel" aria-labelledby="cheat-hit">
+    <h2 class="cheat__title" id="cheat-hit">
+      <span class="cheat__rule" aria-hidden="true"></span>
+      {es ? 'Tope de golpe' : 'Hit cap'}
+      <span class="cheat__rule" aria-hidden="true"></span>
+    </h2>
+    <dl class="cheat__numbers">
+      <div>
+        <dt>{es ? 'Tu nivel' : 'Your level'}</dt>
+        <dd>4 %</dd>
+      </div>
+      <div>
+        <dt>{es ? 'Jefe de banda' : 'Raid boss'}</dt>
+        <dd>17 %</dd>
+      </div>
+    </dl>
+    <p class="cheat__more">
+      <StatusBadge status="reported" compact />
+      <a href={href('tools', locale, es ? 'golpe-con-hechizos' : 'spell-hit')}>
+        {es ? 'Calculadora' : 'Calculator'} <Icon name="arrowRight" size={14} />
+      </a>
+    </p>
+  </section>
+
+  <section class="cheat__panel cheat__panel--wide" aria-labelledby="cheat-professions">
+    <h2 class="cheat__title" id="cheat-professions">
+      <span class="cheat__rule" aria-hidden="true"></span>
+      {es ? '¿Qué profesiones?' : 'Which professions?'}
+      <span class="cheat__rule" aria-hidden="true"></span>
+    </h2>
+    <ul class="cheat__pairs">
+      {
+        professionPairs.map((pick) => (
+          <li class="cheat__pair">
+            <span class="cheat__pair-goal">{pick.goal[locale].replace(/ a nivel 60| at level 60/, '').replace(/ \(PvP\)/, '')}</span>
+            <span class="cheat__pair-icons">
+              {pick.professions.map((id, i) => (
+                <>
+                  {i > 0 && (
+                    <span class="cheat__plus" aria-hidden="true">
+                      +
+                    </span>
+                  )}
+                  <span class="cheat__step">
+                    <GameIcon icon={PROFESSION_ICONS[id]} size={48} />
+                    <span class="cheat__name">{professionName(id)}</span>
+                  </span>
+                </>
+              ))}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="cheat__more">
+      <a href={href('professions', locale)}>
+        {es ? 'Profesiones' : 'Professions'} <Icon name="arrowRight" size={14} />
+      </a>
+    </p>
+  </section>
+
+  <section class="cheat__panel cheat__panel--wide" aria-labelledby="cheat-races">
+    <h2 class="cheat__title" id="cheat-races">
+      <span class="cheat__rule" aria-hidden="true"></span>
+      {es ? '¿Qué raza?' : 'Which race?'}
+      <span class="cheat__rule" aria-hidden="true"></span>
+    </h2>
+    <ul class="cheat__pairs">
+      {
+        racePicks.map((pick) => (
+          <li class="cheat__pair cheat__pair--race">
+            <span class="cheat__pair-goal">{pick.situation[locale]}</span>
+            {FACTIONS.map((faction) => (
+              <span class="cheat__faction">
+                <img class="cheat__crest" src={iconPath(faction.crest)} alt={faction.label} title={faction.label} width="22" height="22" loading="lazy" />
+                {pick[faction.id].map((id) => (
+                  <span class="cheat__step">
+                    {raceIcon(id) && <GameIcon icon={raceIcon(id)} size={40} />}
+                    <span class="cheat__name">{raceShort(id)}</span>
+                  </span>
+                ))}
+              </span>
+            ))}
+          </li>
+        ))
+      }
+    </ul>
+    <p class="cheat__more">
+      <a href={href('races', locale)}>
+        {es ? 'Razas' : 'Races'} <Icon name="arrowRight" size={14} />
+      </a>
+    </p>
+  </section>
+</div>
+
+<style>
+  .cheat {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+    gap: var(--space-4);
+    margin-block: var(--space-5);
+  }
+  .cheat__panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin: 0;
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background:
+      radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 70%),
+      var(--surface-1);
+  }
+  .cheat__panel--wide {
+    grid-column: 1 / -1;
+  }
+
+  /* Centred heading between two gold rules, each ending in a diamond. */
+  .cheat__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--baseline);
+  }
+  /* The guide's rune stroke over each h2 does not belong here. */
+  .cheat__title::before {
+    content: none;
+  }
+  .cheat__rule {
+    flex: 1;
+    min-width: 1rem;
+    height: 1px;
+    background: linear-gradient(to right, transparent, color-mix(in srgb, var(--baseline) 70%, transparent));
+  }
+  .cheat__rule:last-child {
+    transform: scaleX(-1);
+  }
+
+  .cheat__trees {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: var(--space-3);
+  }
+  .cheat__tree {
+    display: grid;
+    gap: var(--space-3);
+    justify-items: center;
+    padding: var(--space-3);
+    border: 1px solid color-mix(in srgb, var(--school) 35%, transparent);
+    border-radius: var(--radius);
+    background: var(--school-soft);
+  }
+  .cheat__tree-name {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    color: var(--school);
+  }
+
+  .cheat__steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cheat__steps--chain {
+    flex-wrap: nowrap;
+    gap: var(--space-5);
+  }
+  .cheat__step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    width: 4.5rem;
+    margin: 0;
+    text-align: center;
+  }
+  .cheat__steps--chain .cheat__step {
+    width: 5.25rem;
+  }
+  .cheat__name {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text);
+  }
+  .cheat__tag {
+    padding: 0 0.45em;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--baseline) 18%, transparent);
+    color: var(--baseline);
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  /* Centred in the gap after the icon. */
+  .cheat :global(.cheat__arrow) {
+    position: absolute;
+    top: calc(var(--cheat-icon) / 2 - 9px);
+    right: calc(-1 * var(--space-5) / 2 - 9px);
+    color: var(--baseline);
+  }
+
+  /* Procs glow as MageProcs draws them on screen. */
+  .is-proc :global(.game-icon),
+  .cheat__proc-key {
+    box-shadow:
+      0 0 0 2px var(--baseline),
+      0 0 14px 2px color-mix(in srgb, var(--baseline) 60%, transparent);
+  }
+  .cheat__proc-key {
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-right: 0.35em;
+    border-radius: 3px;
+    vertical-align: -0.05em;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .is-proc :global(.game-icon) {
+      animation: cheat-proc 2.4s ease-in-out infinite;
+    }
+  }
+  @keyframes cheat-proc {
+    50% {
+      box-shadow:
+        0 0 0 2px var(--baseline),
+        0 0 22px 5px color-mix(in srgb, var(--baseline) 75%, transparent);
+    }
+  }
+
+  .cheat__numbers {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-5);
+    margin: 0;
+  }
+  .cheat__numbers div {
+    display: grid;
+    justify-items: center;
+  }
+  .cheat__numbers dt {
+    order: 2;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .cheat__numbers dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text);
+  }
+
+  .cheat__pairs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cheat__pair {
+    display: grid;
+    gap: var(--space-2);
+    justify-items: center;
+    margin: 0;
+    padding: var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+  }
+  .cheat__pair-goal {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    text-align: center;
+  }
+  .cheat__pair-icons,
+  .cheat__faction {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--space-2);
+  }
+  .cheat__plus {
+    margin-top: 0.6rem;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--baseline);
+  }
+  /* Alliance and Horde side by side, each under its crest. */
+  .cheat__pair--race {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cheat__pair--race .cheat__pair-goal {
+    grid-column: 1 / -1;
+  }
+  .cheat__faction {
+    flex-wrap: wrap;
+  }
+  .cheat__faction + .cheat__faction {
+    border-left: 1px solid var(--border);
+  }
+  .cheat__faction .cheat__step {
+    width: 4rem;
+  }
+  .cheat__crest {
+    flex-basis: 100%;
+    object-fit: contain;
+    height: 22px;
+    border-radius: 50%;
+  }
+
+  .cheat__more {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35em;
+    margin: auto 0 0;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .cheat__more a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    font-weight: 600;
+  }
+  .cheat__sep {
+    margin-inline: 0.35em;
+  }
+
+  /* Phones: every row keeps its icons on one line. */
+  @media (max-width: 26rem) {
+    .cheat__steps {
+      gap: var(--space-2);
+    }
+    .cheat__step {
+      width: 4.1rem;
+    }
+    .cheat__steps--chain {
+      gap: var(--space-3);
+    }
+    .cheat__steps--chain .cheat__step {
+      width: 4.25rem;
+    }
+    .cheat :global(.cheat__arrow) {
+      right: calc(-1 * var(--space-3) / 2 - 9px);
+    }
+  }
+</style>

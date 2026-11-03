@@ -30,6 +30,7 @@ export const PAGE_IDS = [
   'gear',
   'tools',
   'talent-calc',
+  'cheat-sheet',
   'addons',
   'sources',
   'updates',
@@ -93,6 +94,7 @@ export const ROUTES: Record<PageId, RouteDef> = {
   gear: { id: 'gear', slug: { es: 'equipo', en: 'gear' }, parent: 'guides' },
   tools: { id: 'tools', slug: { es: 'herramientas', en: 'tools' }, parent: 'home' },
   'talent-calc': { id: 'talent-calc', slug: { es: 'herramientas/calculadora-talentos', en: 'tools/talent-calculator' }, parent: 'tools' },
+  'cheat-sheet': { id: 'cheat-sheet', slug: { es: 'herramientas/cheat-sheet', en: 'tools/cheat-sheet' }, parent: 'tools' },
   // Addons moved under Tools (31 Oct 2026) as the MageProcs page, keeping its slug: it is the top search page.
   addons: { id: 'addons', slug: { es: 'addons', en: 'addons' }, parent: 'tools' },
   sources: { id: 'sources', slug: { es: 'fuentes', en: 'sources' }, parent: 'home' },
@@ -146,7 +148,7 @@ export const PRIMARY_NAV: readonly NavGroup[] = [
   {
     key: 'tools',
     page: 'tools',
-    items: ['talent-calc', 'changes', 'addons'],
+    items: ['talent-calc', 'cheat-sheet', 'changes', 'addons'],
     sections: [
       { hash: { es: 'multiplicador-de-crítico', en: 'crit-multiplier' }, label: { es: 'Multiplicador de crítico', en: 'Crit multiplier' } },
       { hash: { es: 'golpe-con-hechizos', en: 'spell-hit' }, label: { es: 'Golpe con hechizos', en: 'Spell hit' } },

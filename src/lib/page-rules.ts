@@ -51,6 +51,7 @@ export const MDX_COMPONENTS = [
   'SpecBuilds',
   'BuildLink',
   'Callout',
+  'CheatSheet',
   'ChangeExplorer',
   'ChangeSummaryList',
   'ChangelogList',

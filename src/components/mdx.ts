@@ -11,6 +11,7 @@ import SpecBuilds from './guide/SpecBuilds.astro';
 import BuildLink from './guide/BuildLink.astro';
 import Callout from './guide/Callout.astro';
 import CampBuffs from './guide/CampBuffs.astro';
+import CheatSheet from './guide/CheatSheet.astro';
 import ChangeExplorer from './guide/ChangeExplorer.astro';
 import ChangeSummaryList from './guide/ChangeSummaryList.astro';
 import ChangelogList from './guide/ChangelogList.astro';
@@ -115,6 +116,7 @@ export const mdxComponents = {
   BuildLink,
   Callout,
   CampBuffs,
+  CheatSheet,
   ChangeExplorer,
   ChangeSummaryList,
   ChangelogList,
