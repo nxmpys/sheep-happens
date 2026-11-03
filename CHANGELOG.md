@@ -4,6 +4,18 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-11-03
+
+### [Juego] Los rangos bajos vuelven a activar talentos
+
+En sus notas para el lanzamiento, Blizzard quita la penalización de los rangos bajos en los talentos que se activan con tus hechizos, salvo con Ventisca. Los rangos bajos siguen aprovechando menos tu daño de hechizos.
+
+- ▲ Mejora: **Rangos de hechizos (bajar de rango)**: Un rango bajo activa tus talentos con la misma probabilidad que el rango máximo. Descarga de Escarcha de rango 1 vuelve a activar Mordiescarcha y Dedos de Escarcha, y Deflagración Arcana de rango 1, Concentración Arcana.
+- ◆ Igual: **Concentración Arcana**: Ventisca es la excepción: un rango aprendido más de 12 niveles por debajo del tuyo sigue activando menos Concentración Arcana, Mordiescarcha y Dedos de Escarcha.
+
+- **Datos afectados:** Rangos de hechizos (bajar de rango), Concentración Arcana, WoW Forever Beta Development Notes
+- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+
 ## 2026-11-02
 
 ### [Guía] Calentamiento, en el hueco de 16 puntos de Fuego

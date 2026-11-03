@@ -1,5 +1,50 @@
 [
   {
+    "id": "2026-11-03-downranking",
+    "date": "2026-11-03",
+    "type": "game",
+    "title": {
+      "es": "Los rangos bajos vuelven a activar talentos",
+      "en": "Low ranks trigger talents again"
+    },
+    "body": {
+      "es": "En sus notas para el lanzamiento, Blizzard quita la penalización de los rangos bajos en los talentos que se activan con tus hechizos, salvo con Ventisca. Los rangos bajos siguen aprovechando menos tu daño de hechizos.",
+      "en": "In its launch notes, Blizzard removes the low-rank penalty on talents that trigger from your spells, except with Blizzard. Low ranks still get less from your spell damage."
+    },
+    "pages": [
+      "changes",
+      "leveling",
+      "aoe-farming",
+      "talents-frost"
+    ],
+    "sources": [
+      "blizzard-dev-notes"
+    ],
+    "refs": [
+      "change:spell-ranks",
+      "change:arcane-concentration",
+      "source:blizzard-dev-notes"
+    ],
+    "items": [
+      {
+        "ref": "change:spell-ranks",
+        "impact": "buff",
+        "text": {
+          "es": "Un rango bajo activa tus talentos con la misma probabilidad que el rango máximo. Descarga de Escarcha de rango 1 vuelve a activar Mordiescarcha y Dedos de Escarcha, y Deflagración Arcana de rango 1, Concentración Arcana.",
+          "en": "A low rank triggers your talents as often as the top rank. Rank 1 Frostbolt triggers Frostbite and Fingers of Frost again, and Rank 1 Arcane Explosion, Arcane Concentration."
+        }
+      },
+      {
+        "ref": "change:arcane-concentration",
+        "impact": "neutral",
+        "text": {
+          "es": "Ventisca es la excepción: un rango aprendido más de 12 niveles por debajo del tuyo sigue activando menos Concentración Arcana, Mordiescarcha y Dedos de Escarcha.",
+          "en": "Blizzard is the exception: a rank learned more than 12 levels below yours still triggers Arcane Concentration, Frostbite and Fingers of Frost less often."
+        }
+      }
+    ]
+  },
+  {
     "id": "2026-11-02-fire-16",
     "date": "2026-11-02",
     "type": "guide",

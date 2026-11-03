@@ -231,13 +231,17 @@
       "adjusted"
     ],
     "summary": {
-      "es": "Los rangos muy inferiores a tu nivel reciben menos bonificación de daño de hechizos y tienen menos probabilidad de activar habilidades y talentos de clase.",
-      "en": "Ranks far below your level get less benefit from spell damage and a lower chance to trigger class abilities and talents."
+      "es": "Los rangos muy inferiores a tu nivel reciben menos bonificación de daño de hechizos. Desde el 3 de noviembre activan tus talentos con la misma probabilidad que el rango máximo, salvo Ventisca.",
+      "en": "Ranks far below your level get less benefit from spell damage. Since 3 November they trigger your talents as often as the top rank, except Blizzard."
     },
     "details": [
       {
-        "es": "Ejemplo oficial: Descarga de Escarcha de rango 1 a nivel 60 tiene un 0 % de probabilidad de activar Mordiescarcha. Hay que elegir entre una ralentización rápida y barata o un hechizo que pueda activar el talento.",
-        "en": "Official example: Rank 1 Frostbolt at level 60 has a 0% chance to trigger Frostbite. You choose between a cheap, quick slow and a spell that can trigger the talent."
+        "es": "Ventisca es la excepción: un rango aprendido más de 12 niveles por debajo del tuyo sigue teniendo menos probabilidad de activar Concentración Arcana, Mordiescarcha y Dedos de Escarcha.",
+        "en": "Blizzard is the exception: a rank learned more than 12 levels below yours still has a lower chance to trigger Arcane Concentration, Frostbite and Fingers of Frost."
+      },
+      {
+        "es": "Hasta el 3 de noviembre la penalización alcanzaba a todos los hechizos. Ejemplo oficial de entonces: Descarga de Escarcha de rango 1 a nivel 60 tenía un 0 % de probabilidad de activar Mordiescarcha.",
+        "en": "Until 3 November the penalty applied to every spell. Official example at the time: Rank 1 Frostbolt at level 60 had a 0% chance to trigger Frostbite."
       },
       {
         "es": "El 8 de octubre se reajustaron los rangos bajos de Descarga de Escarcha y Bola de Fuego (1 a 5) y de Misiles Arcanos (1 a 3) para que cada rango nuevo sea siempre una mejora.",
@@ -252,8 +256,8 @@
       {
         "status": "analysis",
         "text": {
-          "es": "Bajar de rango para ahorrar maná sigue siendo posible, pero pierde gran parte de su atractivo, sobre todo para Fuego y Escarcha, que dependen de efectos que se activan.",
-          "en": "Downranking to save mana is still possible but loses much of its appeal, especially for Fire and Frost, which rely on procs."
+          "es": "Bajar de rango vuelve a compensar cuando buscas el efecto o un proc, no el daño. Descarga de Escarcha de rango 1 ralentiza barato y puede activar Mordiescarcha y Dedos de Escarcha, y Deflagración Arcana de rango 1 busca Concentración Arcana. Ventisca, en cambio, conviene lanzarla con uno de tus dos rangos más altos.",
+          "en": "Downranking pays again when you want the effect or a proc, not the damage. Rank 1 Frostbolt is a cheap slow that can trigger Frostbite and Fingers of Frost, and Rank 1 Arcane Explosion fishes for Arcane Concentration. Blizzard, though, is best cast at one of your two highest ranks."
         }
       }
     ],
@@ -262,7 +266,7 @@
       "blizzard-dev-notes",
       "blizzard-deep-dive-mage"
     ],
-    "updated": "2026-10-16"
+    "updated": "2026-11-03"
   },
   {
     "id": "wands",
@@ -448,8 +452,8 @@
       "adjusted"
     ],
     "summary": {
-      "es": "Se activa con menos frecuencia al lanzar hechizos de un rango muy inferior.",
-      "en": "Lower trigger chance when casting spells of a significantly lower rank."
+      "es": "Un hechizo de área tira una sola vez por lanzamiento. Con Ventisca de un rango muy inferior se activa con menos frecuencia.",
+      "en": "An area spell rolls only once per cast. Blizzard of a much lower rank triggers it less often."
     },
     "details": [
       {
@@ -465,8 +469,8 @@
       {
         "status": "analysis",
         "text": {
-          "es": "Penaliza el truco clásico de usar rangos bajos para provocar efectos gratis sin gastar maná.",
-          "en": "Penalises the classic trick of using low ranks to fish for free procs cheaply."
+          "es": "Desde el 3 de noviembre vuelve el truco clásico: Deflagración Arcana de rango 1 lo activa con la misma probabilidad que el rango máximo, y gastas el proc en un hechizo caro. Con Ventisca no funciona.",
+          "en": "Since 3 November the classic trick is back: Rank 1 Arcane Explosion triggers it as often as the top rank, and you spend the proc on an expensive spell. It does not work with Blizzard."
         }
       },
       {
@@ -482,7 +486,7 @@
       "blizzard-deep-dive-mage",
       "blizzard-dev-notes"
     ],
-    "updated": "2026-10-16"
+    "updated": "2026-11-03"
   },
   {
     "id": "arcane-resilience",
