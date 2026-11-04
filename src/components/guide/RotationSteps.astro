@@ -1,0 +1,181 @@
+---
+/**
+ * One rotation list of a build page (single target, Clearcasting, several
+ * enemies, cooldowns) as numbered steps with the icons of the spells each step
+ * names, joined by a line in the school's colour. The icons open the spell
+ * tooltip; the text stays the whole explanation.
+ */
+import GameIcon from '../learn/GameIcon.astro';
+import { getLocale } from '../../i18n/locale';
+import type { Localized } from '../../lib/schemas';
+import { spellIndexFor } from '../../lib/spell-index';
+import { mentionsWand, stepSpells, WAND_ICON } from '../../lib/step-spells';
+
+interface Props {
+  steps: readonly Localized[];
+  /** Colour for steps with no spell: the build's tree. */
+  school: string;
+}
+
+const { steps, school } = Astro.props;
+const locale = getLocale(Astro);
+const index = spellIndexFor(locale);
+const items = steps.map((step) => {
+  const text = step[locale];
+  const spells = stepSpells(index, text);
+  const first = spells[0];
+  const tone = first ? (first.school === 'frostfire' ? 'fire' : first.school) : school;
+  return { text, spells, wand: !first && mentionsWand(text), tone };
+});
+---
+
+<ol class="rotation" role="list">
+  {
+    items.map((item, i) => (
+      <li class:list={['rotation__step', `school-${item.tone}`]}>
+        <span class="rotation__icons">
+          <span class="rotation__num">{i + 1}</span>
+          {item.spells[0] ? (
+            <GameIcon spell={item.spells[0].name} size={48} class="rotation__main" />
+          ) : item.wand ? (
+            <GameIcon icon={WAND_ICON} size={48} class="rotation__main" />
+          ) : (
+            <span class="rotation__blank" aria-hidden="true" />
+          )}
+          {item.spells[1] && <GameIcon spell={item.spells[1].name} size={28} class="rotation__second" />}
+        </span>
+        <p class="rotation__text">{item.text}</p>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .rotation {
+    --icon: 48px;
+    list-style: none;
+    margin: var(--space-3) 0 var(--space-5);
+    padding: 0;
+    display: grid;
+    gap: var(--space-2);
+  }
+  .rotation__step {
+    position: relative;
+    display: grid;
+    grid-template-columns: calc(var(--icon) + 1.75rem) 1fr;
+    align-items: start;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3) var(--space-2) var(--space-2);
+    border-radius: var(--radius);
+    transition: background-color 160ms ease;
+  }
+  .rotation__step:hover {
+    background: color-mix(in srgb, var(--school) 9%, transparent);
+  }
+  /* The line that joins each icon with the next one. */
+  .rotation__step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: calc(var(--space-2) + var(--icon) / 2 + 0.375rem - 1px);
+    top: calc(var(--space-2) + var(--icon) + 6px);
+    bottom: calc(-1 * var(--space-2) - var(--space-2) + 6px);
+    border-left: 2px dashed color-mix(in srgb, var(--school) 70%, transparent);
+  }
+  .rotation__icons {
+    position: relative;
+    display: block;
+    width: calc(var(--icon) + 1.75rem);
+    height: var(--icon);
+    padding-left: 0.375rem;
+  }
+  .rotation__icons :global(.game-icon) {
+    display: block;
+    overflow: hidden;
+    line-height: 0;
+    border: 1px solid #000;
+    text-decoration: none;
+  }
+  .rotation__icons :global(.game-icon img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .rotation__icons :global(.rotation__main) {
+    width: var(--icon);
+    height: var(--icon);
+    border-radius: calc(var(--icon) * 0.14);
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--school) 70%, transparent),
+      0 6px 16px -6px color-mix(in srgb, var(--school) 60%, transparent);
+    transition:
+      transform 160ms ease,
+      box-shadow 160ms ease;
+  }
+  .rotation__step:hover :global(.rotation__main) {
+    transform: translateY(-2px);
+    box-shadow:
+      0 0 0 1px var(--school),
+      0 10px 22px -8px var(--school);
+  }
+  .rotation__icons :global(.rotation__second) {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    position: absolute;
+    left: calc(0.375rem + var(--icon) - 10px);
+    bottom: -6px;
+    box-shadow:
+      0 0 0 2px var(--bg),
+      0 0 0 3px var(--border-strong);
+  }
+  .rotation__blank {
+    display: block;
+    width: var(--icon);
+    height: var(--icon);
+    border-radius: calc(var(--icon) * 0.14);
+    border: 2px dashed color-mix(in srgb, var(--school) 45%, transparent);
+  }
+  .rotation__num {
+    position: absolute;
+    z-index: 1;
+    top: -7px;
+    left: -2px;
+    display: grid;
+    place-items: center;
+    min-width: 1.4rem;
+    height: 1.4rem;
+    padding: 0 0.3rem;
+    border-radius: 999px;
+    background: var(--school);
+    color: var(--bg);
+    font-size: 0.75rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    box-shadow: 0 0 0 2px var(--bg);
+  }
+  .rotation__text {
+    margin: 0;
+    padding-top: calc((var(--icon) - 1.55em) / 2);
+    line-height: 1.55;
+    max-width: 46rem;
+  }
+  @media (max-width: 520px) {
+    .rotation {
+      --icon: 40px;
+    }
+    .rotation__step {
+      gap: var(--space-2);
+      padding-right: var(--space-2);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rotation__step,
+    .rotation__icons :global(.rotation__main) {
+      transition: none;
+    }
+    .rotation__step:hover :global(.rotation__main) {
+      transform: none;
+    }
+  }
+</style>

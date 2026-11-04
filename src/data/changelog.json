@@ -1,5 +1,29 @@
 [
   {
+    "id": "2026-11-04-leveling-builds",
+    "date": "2026-11-04",
+    "type": "guide",
+    "title": {
+      "es": "Builds de leveo: Fuego, Escarcha a un objetivo y Arcano renovada",
+      "en": "Leveling builds: Fire, Frost single target and a new Arcane"
+    },
+    "body": {
+      "es": "Nuevas builds de leveo de Fuego y de Escarcha a un objetivo, esta con una variante flexible que gasta menos maná. La de Escarcha que ya había pasa a ser Escarcha AoE. Arcano ahora coge Arcano del 10 al 40 y Escarcha del 41 al 60. Ventisca, mejor con tu rango más alto: el penúltimo rango solo se libra de la penalización durante 4 niveles. Aún no las he probado en el juego.",
+      "en": "New Fire and Frost single-target leveling builds, the latter with a flexible variant that spends less mana. The existing Frost build becomes Frost AoE. Arcane now takes Arcane from 10 to 40 and Frost from 41 to 60. Blizzard is best cast at your highest rank: the second-highest only escapes the penalty for 4 levels. I have not tested them in the game yet."
+    },
+    "pages": [
+      "builds",
+      "changes"
+    ],
+    "refs": [
+      "build:frost-leveling",
+      "build:frost-leveling-single-target",
+      "build:arcane-leveling",
+      "build:fire-leveling",
+      "change:spell-ranks"
+    ]
+  },
+  {
     "id": "2026-11-03-arcane-leveling",
     "date": "2026-11-03",
     "type": "guide",
@@ -61,6 +85,7 @@
     "refs": [
       "change:spell-ranks",
       "change:arcane-concentration",
+      "change:impact",
       "source:blizzard-dev-notes"
     ],
     "items": [
@@ -78,6 +103,14 @@
         "text": {
           "es": "Ventisca es la excepción: un rango aprendido más de 12 niveles por debajo del tuyo sigue activando menos Concentración Arcana, Mordiescarcha y Dedos de Escarcha.",
           "en": "Blizzard is the exception: a rank learned more than 12 levels below yours still triggers Arcane Concentration, Frostbite and Fingers of Frost less often."
+        }
+      },
+      {
+        "ref": "change:impact",
+        "impact": "buff",
+        "text": {
+          "es": "Impacto también deja de activarse menos con rangos bajos.",
+          "en": "Impact no longer triggers less often from low ranks either."
         }
       }
     ]

@@ -13,7 +13,7 @@ status: published
 verification: analysis
 wide: true
 sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, wowhead-forever-talent-calc, mobalytics-mage-leveling, method-mage-leveling, icyveins-dungeon-xp, warcrafttavern-legacy, wowhead-dual-spec-podcast]
-tags: [leveo, nivelación, subir de nivel, guía de leveo, primeros pasos, consejos, cómo jugar, mazmorras, 1-30, bajar de rango, piedra de hogar, portales, agua, comida]
+tags: [leveo, nivelación, subir de nivel, guía de leveo, primeros pasos, consejos, cómo jugar, mazmorras, 1-30, downranking, bajar de rango, piedra de hogar, portales, agua, comida]
 ---
 
 ## De tu primer hechizo al nivel 60
@@ -101,9 +101,9 @@ Tu maná deja de regenerarse durante 5 s cada vez que lanzas un hechizo. Rematar
 Desde el nivel 20, cada 8 minutos. Devuelve maná muy rápido: para un combate que se alarga o para ahorrarte una parada. <Status status="reported" compact />
 
 </Tile>
-<Tile title="No bajes de rango para hacer daño" icon="inv_misc_book_08">
+<Tile title="No hagas downranking para hacer daño" icon="inv_misc_book_08">
 
-En Forever, los rangos muy inferiores a tu nivel aprovechan menos tu daño de hechizos. Usa el rango más alto que tengas, salvo cuando buscas el efecto o un talento y no el daño: <PageLink to="leveling" hash="cuándo-sí-bajar-de-rango">cuándo sí bajar de rango</PageLink>. <Status status="verified" compact />
+En Forever, los rangos muy inferiores a tu nivel aprovechan menos tu daño de hechizos. Usa el rango más alto que tengas, salvo cuando buscas el efecto o un talento y no el daño: <PageLink to="leveling" hash="cuándo-sí-hacer-downranking">cuándo sí hacer downranking</PageLink>. <Status status="verified" compact />
 
 </Tile>
 </Tiles>
@@ -222,13 +222,13 @@ Los puntos de Legado se ganan con desafíos de cuenta, como llevar una clase a n
 
 El farmeo en área no desaparece, pero es más arriesgado: lo explico en la guía de <PageLink to="aoe-farming">farmeo AoE</PageLink>.
 
-### Bajar de rango sale menos a cuenta
+### El downranking sale menos a cuenta
 
 Desde la build del 1 de octubre, los rangos muy inferiores a tu nivel aprovechan menos tu daño de hechizos. Desde el 3 de noviembre ya no activan menos tus talentos, salvo Ventisca: un rango aprendido más de 12 niveles por debajo del tuyo sigue activando menos Concentración Arcana, Mordiescarcha y Dedos de Escarcha. Además, el 8 de octubre se reajustaron los rangos bajos de Descarga de Escarcha, Bola de Fuego y Misiles Arcanos para que cada rango nuevo sea siempre una mejora. <Status status="verified" />
 
-### Cuándo sí bajar de rango
+### Cuándo sí hacer downranking
 
-El castigo recae en el daño, no en el efecto del propio hechizo ni, salvo con Ventisca, en los talentos que activa. Por eso el rango 1 sigue sirviendo cuando quieres ese efecto a poco coste. Los costes y efectos son los del cliente de Forever y los usos, de Mobalytics. Aún no los he probado. <Status status="reported" />
+El castigo recae en el daño, no en el efecto del propio hechizo ni, salvo con Ventisca, en los talentos que activa. Un rango bajo congela, ralentiza o controla igual y cuesta una fracción del maná. Por eso compensa cuando lanzas el hechizo por su efecto o por un proc, y el daño te da igual. Los costes y efectos son los del cliente de Forever y los usos, de Mobalytics. Aún no los he probado. <Status status="reported" />
 
 | Hechizo | Rango 1 | Rango máximo | Para qué |
 | --- | --- | --- | --- |
@@ -240,7 +240,9 @@ El castigo recae en el daño, no en el efecto del propio hechizo ni, salvo con V
 | **Bola de Fuego** | 30 de maná | 395 de maná | Atraer desde 35 m, 5 más que Descarga de Escarcha |
 | **Explosión de Fuego** | 40 de maná | 340 de maná | Reclamar un enemigo al instante |
 
-Descarga de Escarcha de rango 1 activa **Mordiescarcha** (Frostbite) y **Dedos de Escarcha** con la misma probabilidad que el rango máximo, así que la ralentización barata también puede congelar. <Status status="verified" /> Ventisca no: desde el nivel 33, su rango 1 los activa menos y solo te sirve para ralentizar. <Status status="verified" /> No sé si la penalización reduce también la ralentización de Ventisca mejorada. <Status status="pending" />
+**Para buscar procs.** Descarga de Escarcha de rango 1 activa **Mordiescarcha** (Frostbite) y **Dedos de Escarcha** con la misma probabilidad que el rango máximo, así que la ralentización barata también puede congelar. Deflagración Arcana de rango 1 (75 de maná) activa **Concentración Arcana** igual que su rango máximo: la lanzas para buscar Lanzamiento libre y lo gastas en un hechizo caro de rango alto. <Status status="verified" /> Lo explico en <PageLink to="aoe-farming">farmeo AoE</PageLink>.
+
+**Ventisca, nunca en rango bajo.** Es el único hechizo cuyos rangos bajos siguen activando menos tus talentos: un rango aprendido más de 12 niveles por debajo del tuyo activa menos Concentración Arcana, Mordiescarcha y Dedos de Escarcha. Su rango 1 lo sufre desde el nivel 33 y solo te sirve para ralentizar. <Status status="verified" /> Como sale un rango nuevo cada 8 niveles, el penúltimo solo se libra durante los 4 niveles siguientes a aprender el último. Lánzala con tu rango más alto. <Status status="analysis" /> No sé si la penalización reduce también la ralentización de Ventisca mejorada. <Status status="pending" />
 
 </details>
 

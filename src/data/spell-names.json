@@ -1,7 +1,9 @@
 [
   {
     "id": "accelerant",
-    "en": "Accelerant"
+    "en": "Accelerant",
+    "es": "Acelerante",
+    "source": "client"
   },
   {
     "id": "arcane-blast",
@@ -471,7 +473,9 @@
   },
   {
     "id": "precision",
-    "en": "Precision"
+    "en": "Precision",
+    "es": "Precisión",
+    "source": "client"
   },
   {
     "id": "presence-of-mind",
@@ -512,7 +516,7 @@
   {
     "id": "spell-ranks-downranking",
     "en": "Spell ranks (downranking)",
-    "es": "Rangos de hechizos (bajar de rango)",
+    "es": "Rangos de hechizos (downranking)",
     "source": "guide"
   },
   {

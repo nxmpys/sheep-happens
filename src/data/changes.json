@@ -67,7 +67,7 @@
     },
     "details": [
       {
-        "es": "Blizzard lo crea para recuperar lo que antes daba Descarga de Escarcha de rango 1 (una ralentización rápida y barata), ahora que bajar de rango se penaliza. Cuesta algo más de maná que ese rango 1 y hace un poco más de daño.",
+        "es": "Blizzard lo crea para recuperar lo que antes daba Descarga de Escarcha de rango 1 (una ralentización rápida y barata), ahora que el downranking se penaliza. Cuesta algo más de maná que ese rango 1 y hace un poco más de daño.",
         "en": "Blizzard added it to restore what Rank 1 Frostbolt used to offer (a quick, cheap slow), now that downranking is penalized. It costs a little more mana than that rank 1 and deals a little more damage."
       },
       {
@@ -256,8 +256,8 @@
       {
         "status": "analysis",
         "text": {
-          "es": "Bajar de rango vuelve a compensar cuando buscas el efecto o un proc, no el daño. Descarga de Escarcha de rango 1 ralentiza barato y puede activar Mordiescarcha y Dedos de Escarcha, y Deflagración Arcana de rango 1 busca Concentración Arcana. Ventisca, en cambio, conviene lanzarla con uno de tus dos rangos más altos.",
-          "en": "Downranking pays again when you want the effect or a proc, not the damage. Rank 1 Frostbolt is a cheap slow that can trigger Frostbite and Fingers of Frost, and Rank 1 Arcane Explosion fishes for Arcane Concentration. Blizzard, though, is best cast at one of your two highest ranks."
+          "es": "El downranking vuelve a compensar cuando buscas el efecto o un proc, no el daño. Descarga de Escarcha de rango 1 ralentiza barato y puede activar Mordiescarcha y Dedos de Escarcha, y Deflagración Arcana de rango 1 busca Concentración Arcana. Ventisca, en cambio, conviene lanzarla con tu rango más alto.",
+          "en": "Downranking pays again when you want the effect or a proc, not the damage. Rank 1 Frostbolt is a cheap slow that can trigger Frostbite and Fingers of Frost, and Rank 1 Arcane Explosion fishes for Arcane Concentration. Blizzard, though, is best cast at your highest rank."
         }
       }
     ],
@@ -266,7 +266,7 @@
       "blizzard-dev-notes",
       "blizzard-deep-dive-mage"
     ],
-    "updated": "2026-11-03"
+    "updated": "2026-11-04"
   },
   {
     "id": "wands",
@@ -1072,10 +1072,14 @@
       "adjusted"
     ],
     "summary": {
-      "es": "Lanzar hechizos de rango bajo reduce su probabilidad de activarse.",
-      "en": "Casting low-rank spells lowers its trigger chance."
+      "es": "Desde el 3 de noviembre, los rangos bajos lo activan con la misma probabilidad que el rango máximo.",
+      "en": "Since 3 November, low ranks trigger it as often as the top rank."
     },
     "details": [
+      {
+        "es": "Hasta el 3 de noviembre, lanzar hechizos de rango bajo reducía su probabilidad de activarse.",
+        "en": "Until 3 November, casting low-rank spells lowered its trigger chance."
+      },
       {
         "es": "El 8 de octubre se corrigió un error: Impacto podía activarse con el daño periódico de Fogonazo.",
         "en": "On 8 October a bug was fixed: Impact could trigger from Flamestrike's periodic damage."
@@ -1087,7 +1091,7 @@
       "blizzard-deep-dive-mage",
       "blizzard-dev-notes"
     ],
-    "updated": "2026-10-12"
+    "updated": "2026-11-03"
   },
   {
     "id": "burning-soul",

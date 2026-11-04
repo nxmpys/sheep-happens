@@ -13,6 +13,7 @@ import BuildTrees from './BuildTrees.astro';
 import BuildVariants from './BuildVariants.astro';
 import Callout from './Callout.astro';
 import StatusBadge from './StatusBadge.astro';
+import RotationSteps from './RotationSteps.astro';
 import TalentOrder from './TalentOrder.astro';
 import Icon from '../ui/Icon.astro';
 import { SPEC_LABELS, USE_LABELS, USE_TITLES, tb } from '../../i18n/builds';
@@ -162,9 +163,7 @@ const hasPros = pros.items.length > 0 || cons.items.length > 0 || pros.headline 
     rotations.map((rotation) => (
       <>
         {rotations.length > 1 && <h3>{tb(locale, rotation.title)}</h3>}
-        <ol>
-          {rotation.steps.map((step) => <li>{step[locale]}</li>)}
-        </ol>
+        <RotationSteps steps={rotation.steps} school={build.spec} />
       </>
     ))
   }

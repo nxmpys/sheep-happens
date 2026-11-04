@@ -65,10 +65,10 @@
   },
   {
     "id": "downrank",
-    "terms": { "es": ["bajar de rango"], "en": ["downranking", "downrank"] },
+    "terms": { "es": ["downranking", "bajar de rango"], "en": ["downranking", "downrank"] },
     "definition": {
-      "es": "Usar un rango antiguo y más barato de un hechizo (por ejemplo, Ventisca de rango 1) para gastar menos maná. Forever lo ha limitado en algunos hechizos.",
-      "en": "Casting an older, cheaper rank of a spell (for example, Blizzard rank 1) to spend less mana. Forever has limited it for some spells."
+      "es": "Lanzar un rango inferior de un hechizo en vez del más alto que tienes, por ejemplo Descarga de Escarcha de rango 1. Cuesta mucho menos maná y hace menos daño. En Forever, los rangos muy inferiores a tu nivel aprovechan además menos tu daño de hechizos, así que solo compensa cuando buscas el efecto (ralentizar, congelar, controlar) o un proc, no el daño. Ventisca es la excepción: un rango aprendido más de 12 niveles por debajo del tuyo activa menos tus procs.",
+      "en": "Casting a lower rank of a spell instead of the highest one you have, for example Rank 1 Frostbolt. It costs far less mana and deals less damage. In Forever, ranks far below your level also get less from your spell damage, so it only pays when you want the effect (slowing, freezing, crowd control) or a proc, not the damage. Blizzard is the exception: a rank learned more than 12 levels below yours triggers your procs less often."
     }
   },
   {

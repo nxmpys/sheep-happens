@@ -55,10 +55,6 @@
 /es/builds/leveo/arcano-hacia-mazmorras /es/builds/leveo/ 302
 /en/builds/leveling/arcane-into-dungeons/ /en/builds/leveling/ 302
 /en/builds/leveling/arcane-into-dungeons /en/builds/leveling/ 302
-/es/builds/leveo/fuego/ /es/builds/leveo/ 302
-/es/builds/leveo/fuego /es/builds/leveo/ 302
-/en/builds/leveling/fire/ /en/builds/leveling/ 302
-/en/builds/leveling/fire /en/builds/leveling/ 302
 /es/builds/mazmorras/arcano/ /es/builds/mazmorras/ 302
 /es/builds/mazmorras/arcano /es/builds/mazmorras/ 302
 /en/builds/dungeons/arcane/ /en/builds/dungeons/ 302
@@ -85,3 +81,9 @@
 /es/sobre-mi /es/ 301
 /en/about/ /en/ 301
 /en/about /en/ 301
+
+# On 4 Nov 2026 the Frost leveling build became «Frost AoE», next to a new single-target Frost build.
+/es/builds/leveo/escarcha/ /es/builds/leveo/escarcha-aoe/ 301
+/es/builds/leveo/escarcha /es/builds/leveo/escarcha-aoe/ 301
+/en/builds/leveling/frost/ /en/builds/leveling/frost-aoe/ 301
+/en/builds/leveling/frost /en/builds/leveling/frost-aoe/ 301

@@ -4,6 +4,14 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-11-04
+
+### [Guía] Builds de leveo: Fuego, Escarcha a un objetivo y Arcano renovada
+
+Nuevas builds de leveo de Fuego y de Escarcha a un objetivo, esta con una variante flexible que gasta menos maná. La de Escarcha que ya había pasa a ser Escarcha AoE. Arcano ahora coge Arcano del 10 al 40 y Escarcha del 41 al 60. Ventisca, mejor con tu rango más alto: el penúltimo rango solo se libra de la penalización durante 4 niveles. Aún no las he probado en el juego.
+
+- **Datos afectados:** build:frost-leveling, build:frost-leveling-single-target, build:arcane-leveling, build:fire-leveling, Rangos de hechizos (downranking)
+
 ## 2026-11-03
 
 ### [Guía] Nueva build de leveo de Arcano
@@ -22,10 +30,11 @@ Una build de Escarcha del 10 al 60, con el orden de puntos nivel a nivel, para s
 
 En sus notas para el lanzamiento, Blizzard quita la penalización de los rangos bajos en los talentos que se activan con tus hechizos, salvo con Ventisca. Los rangos bajos siguen aprovechando menos tu daño de hechizos.
 
-- ▲ Mejora: **Rangos de hechizos (bajar de rango)**: Un rango bajo activa tus talentos con la misma probabilidad que el rango máximo. Descarga de Escarcha de rango 1 vuelve a activar Mordiescarcha y Dedos de Escarcha, y Deflagración Arcana de rango 1, Concentración Arcana.
+- ▲ Mejora: **Rangos de hechizos (downranking)**: Un rango bajo activa tus talentos con la misma probabilidad que el rango máximo. Descarga de Escarcha de rango 1 vuelve a activar Mordiescarcha y Dedos de Escarcha, y Deflagración Arcana de rango 1, Concentración Arcana.
 - ◆ Igual: **Concentración Arcana**: Ventisca es la excepción: un rango aprendido más de 12 niveles por debajo del tuyo sigue activando menos Concentración Arcana, Mordiescarcha y Dedos de Escarcha.
+- ▲ Mejora: **Impacto**: Impacto también deja de activarse menos con rangos bajos.
 
-- **Datos afectados:** Rangos de hechizos (bajar de rango), Concentración Arcana, WoW Forever Beta Development Notes
+- **Datos afectados:** Rangos de hechizos (downranking), Concentración Arcana, Impacto, WoW Forever Beta Development Notes
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
 
 ## 2026-11-02
@@ -87,8 +96,8 @@ Arcano, Arcano y Fuego, Pirofrío, Fuego y Escarcha, cada una con sus pros y con
 
 La build de la beta del 28 de octubre cambia los talentos del Mago. Blizzard no ha publicado notas: los cambios salen de los datos de la build y los he contrastado con la calculadora de Wowhead Forever. Debajo, cada cambio con mi valoración: mejora, empeora o se queda igual.
 
-- ▲ Mejora: **Accelerant**: Antes Bola de Fuego mejorada. Ahora también acorta 0,1-0,5 s Cólera Arcana, además de Bola de Fuego y Descarga de Pirofrío.
-- ▲ Mejora: **Precision**: Antes Enfoque elemental. Su 2/4/6 % de golpe cubre todos los hechizos, no solo los de Fuego y Escarcha.
+- ▲ Mejora: **Acelerante**: Antes Bola de Fuego mejorada. Ahora también acorta 0,1-0,5 s Cólera Arcana, además de Bola de Fuego y Descarga de Pirofrío.
+- ▲ Mejora: **Precisión**: Antes Enfoque elemental. Su 2/4/6 % de golpe cubre todos los hechizos, no solo los de Fuego y Escarcha.
 - ▲ Mejora: **Incineración**: 5 puntos en vez de 3: hasta un 10 % de crítico para Explosión de Fuego, Lanza de hielo, Explosión Arcana y Chamuscar (antes 6 %).
 - ▲ Mejora: **Recuperación Arcana**: Sube de la fila 2 a la 1, en la tercera columna: se coge con los primeros puntos de Arcano.
 - ◆ Igual: **Enfoque Arcano**: Desaparece del árbol Arcano (daba un 1-5 % de golpe Arcano). Lo compensa Precision: 3 puntos en Escarcha dan un 6 % a todo.
@@ -100,7 +109,7 @@ La build de la beta del 28 de octubre cambia los talentos del Mago. Blizzard no 
 - ▼ Empeora: **Tromba de misiles**: Baja de la fila 1 a la 2: una build de Fuego o Escarcha necesita 5 puntos en Arcano para cogerla.
 - ▼ Empeora: **Mordiescarcha**: Su congelación comparte rendimientos decrecientes con las raíces de talentos de Cazador y Guerrero (Entrapment, Counterattack, Improved Wing Clip, Improved Hamstring). Solo se nota en JcJ.
 
-- **Datos afectados:** Accelerant, Precision, Incineración, Recuperación Arcana, Enfoque Arcano, Canalización mejorada, Masa crítica, Lanza de hielo, Frost Blast, Explosión de Fuego mejorada, Tromba de misiles, Mordiescarcha, WoW Forever patch notes: build 1.60.1.70685 of 28 October 2026
+- **Datos afectados:** Acelerante, Precisión, Incineración, Recuperación Arcana, Enfoque Arcano, Canalización mejorada, Masa crítica, Lanza de hielo, Frost Blast, Explosión de Fuego mejorada, Tromba de misiles, Mordiescarcha, WoW Forever patch notes: build 1.60.1.70685 of 28 October 2026
 - **Fuentes:** [WoW Forever patch notes: build 1.60.1.70685 of 28 October 2026](https://foreverchanges.pro/patch-notes) (Forever Changes (foreverchanges.pro)), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead)
 
 ## 2026-10-27
@@ -136,7 +145,7 @@ La build de leveo pasa a cubrir del 1 al 60: Escarcha hasta el 40 y, desde ahí,
 
 Un hotfix de la beta visto el 20 de octubre, que Blizzard no menciona en sus notas, cambia el árbol de Escarcha: desaparece Hielo penetrante, Enfoque elemental pasa a 3 rangos de +2 % de golpe (6 % en total, antes 5 de +1 %) y cambian de casilla Canalización de Escarcha, Ventisca mejorada, Mordiescarcha y Escarcha permanente. Además, Barrera de hielo da un 3-6 % más de daño de Escarcha y Custodia de Escarcha (Frost Warding) refuerza los escudos. He actualizado la calculadora de talentos y la de golpe, y las tres builds de Escarcha para subir de nivel: la de solitario pone esos 3 puntos en Enfoque elemental, la de mazmorras en Ventisca mejorada y la de área usa los puntos de Talented en Cono de frío mejorado.
 
-- **Datos afectados:** Hielo penetrante, Precision, Barrera de hielo, Custodia de Escarcha, Escalofrío del invierno, Tromba de misiles
+- **Datos afectados:** Hielo penetrante, Precisión, Barrera de hielo, Custodia de Escarcha, Escalofrío del invierno, Tromba de misiles
 - **Fuentes:** [WoW Forever patch notes: hotfix of 20 October 2026](https://foreverchanges.pro/patch-notes) (Forever Changes (foreverchanges.pro)), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead)
 
 ### [Guía] Revisión de fuentes: la beta cierra el 23 de octubre
@@ -223,7 +232,7 @@ La página de Addons describe MageProcs 1.2.0: los procs que avisa, el contador 
 
 Incorporo la build del 15 de octubre: fichas nuevas de Frost Blast, Cólera Arcana, Masa crítica, Poder de Fuego y varitas; Explosión Arcana, Tromba de misiles, Explosión de Fuego mejorada, Calentamiento, Lanza de hielo, Escalofrío del invierno y Cono de frío actualizados; el árbol de talentos y los talentos decisivos de Arcano, al día; y las raciales de las seis razas que pueden ser Mago. Las builds y las páginas de combate, leveo, farmeo AoE y talentos reflejan los cambios.
 
-- **Datos afectados:** Frost Blast, Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Masa crítica, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (bajar de rango), Varitas, Cólera Arcana, Cono de frío, Explosión de Fuego, race:human, race:orc, race:undead, race:gnome, race:troll, race:skyborne, Arcane Missiles does not proc Barrage
+- **Datos afectados:** Frost Blast, Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Masa crítica, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (downranking), Varitas, Cólera Arcana, Cono de frío, Explosión de Fuego, race:human, race:orc, race:undead, race:gnome, race:troll, race:skyborne, Arcane Missiles does not proc Barrage
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead), [Arcane Missiles does not proc Barrage](https://us.forums.blizzard.com/en/wow/t/arcane-missiles-does-not-proc-barrage/2384260) (WoW Forever Beta Discussion (Blizzard forums))
 
 ## 2026-10-15
@@ -232,7 +241,7 @@ Incorporo la build del 15 de octubre: fichas nuevas de Frost Blast, Cólera Arca
 
 Nuevo hechizo Frost Blast (nivel 24). Arcano: Explosión Arcana rediseñada (1,5 s, da daño de hechizos según tu Intelecto), Cólera Arcana es el nuevo talento decisivo de 16 puntos y Tromba de misiles baja a la fila 1 con 2 puntos. Fuego: Estela de Fuego vuelve a ser Explosión de Fuego mejorada (más alcance, sin bonificación al matar), Calentamiento gana cargas con cada Explosión de Fuego, Masa crítica pasa a 5 puntos y Poder de Fuego se rediseña con 3. Escarcha: Lanza de hielo baja al 200 % contra objetivos congelados, Escalofrío del invierno ahora potencia Cono de frío y Cono de frío ralentiza más a los 4 primeros objetivos. Además, Lanzamiento libre ya no tira por cada objetivo y las varitas exigen estar quieto 0,5 s.
 
-- **Datos afectados:** Frost Blast, Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Masa crítica, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (bajar de rango), Varitas, Cólera Arcana, Cono de frío, Explosión de Fuego
+- **Datos afectados:** Frost Blast, Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Masa crítica, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (downranking), Varitas, Cólera Arcana, Cono de frío, Explosión de Fuego
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
 
 ### [Juego] Build de la beta del 15 de octubre: raciales
@@ -311,7 +320,7 @@ La ficha de Impacto recoge ahora el arreglo del 8 de octubre: ya no se activa co
 
 Incorporados los cambios de Mago de las notas oficiales de las builds del 24 de septiembre, 1 de octubre y 8 de octubre; los nombres oficiales en español de hechizos y talentos; el posible adelanto de la doble especialización y la versión del cliente.
 
-- **Datos afectados:** Explosión de Fuego mejorada, Calentamiento, Ignición, Comprensión (Comprender pergamino), Chamuscar mejorado, Escalofrío del invierno, Descarga de Pirofrío, Cono de frío, Ventisca mejorada, Explosión Arcana, Misiles Arcanos, Rangos de hechizos (bajar de rango), Doble especialización, Combustión
+- **Datos afectados:** Explosión de Fuego mejorada, Calentamiento, Ignición, Comprensión (Comprender pergamino), Chamuscar mejorado, Escalofrío del invierno, Descarga de Pirofrío, Cono de frío, Ventisca mejorada, Explosión Arcana, Misiles Arcanos, Rangos de hechizos (downranking), Doble especialización, Combustión
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [World of Warcraft: Forever: Repaso a fondo de las clases mago y chamán](https://worldofwarcraft.blizzard.com/es-es/news/24302097) (Blizzard Entertainment), [Blizzard Teases Possible Change to Unlock Level of Dual Spec in WoW: Forever](https://www.wowhead.com/news=383320/blizzard-teases-possible-change-to-unlock-level-of-dual-spec-in-wow-forever) (Wowhead)
 
 ### [Web] Fuentes vigiladas cada semana y RSS de novedades
@@ -337,7 +346,7 @@ En el pódcast oficial (ep. 3), Josh Greenfield dijo que está «actualmente» a
 
 Se reajustan los rangos 1 a 5 de Descarga de Escarcha y Bola de Fuego y 1 a 3 de Misiles Arcanos para que cada rango nuevo sea una mejora. Corregido: Impacto podía activarse con el daño periódico de Fogonazo.
 
-- **Datos afectados:** Rangos de hechizos (bajar de rango), Misiles Arcanos, Impacto
+- **Datos afectados:** Rangos de hechizos (downranking), Misiles Arcanos, Impacto
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
 
 ## 2026-10-07
@@ -354,7 +363,7 @@ Descarga de Pirofrío, Lanza de hielo, Dedos de Escarcha, Calentamiento, la nuev
 
 Hot Streak pasa a llamarse Heating Up (Calentamiento). Combustión vuelve a 3 cargas, como en Classic (en la beta tenía 4). Chamuscar mejorado y Escalofrío del invierno ya no hacen una tirada de resistencia extra. Los pergaminos de Comprensión se reequilibran y no se pueden usar en movimiento. Los rangos muy bajos aprovechan menos el daño de hechizos y activan menos los talentos.
 
-- **Datos afectados:** Calentamiento, Chamuscar mejorado, Escalofrío del invierno, Comprensión (Comprender pergamino), Rangos de hechizos (bajar de rango), Combustión
+- **Datos afectados:** Calentamiento, Chamuscar mejorado, Escalofrío del invierno, Comprensión (Comprender pergamino), Rangos de hechizos (downranking), Combustión
 - **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
 
 ### [Juego] La beta sube al nivel 30

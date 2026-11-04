@@ -14,7 +14,8 @@ import TalentedToggle from './TalentedToggle.astro';
 import { tb } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
 import { buildPath } from '../../lib/build-routes';
-import { getBuild, talents } from '../../lib/data';
+import { getBuild, talentText, talents } from '../../lib/data';
+import { iconPath } from '../../lib/icons';
 import { localName } from '../../lib/names';
 import type { Build } from '../../lib/schemas';
 import { levelForPoint, orderSteps, pointsAtLevel } from '../../lib/talents';
@@ -58,6 +59,7 @@ const intro =
           steps.map((step) => {
             const extra = step.from > base;
             const label = localName(step.talent, locale);
+            const icon = talentText.talents[step.talent.id]?.icon;
             return (
               <>
                 {extra && step.from === base + 1 && (
@@ -81,6 +83,7 @@ const intro =
                   </th>
                   <td>
                     <span class="talent-order__talent">
+                      {icon && <img class="talent-order__icon" src={iconPath(icon)} alt="" width="56" height="56" loading="lazy" decoding="async" />}
                       <SpellRef name={step.talent.name} label={label} />{' '}
                       <span class="talent-order__rank">
                         {step.toRank}/{step.talent.maxRank}
@@ -151,6 +154,14 @@ const intro =
   }
   .talent-order__talent {
     font-weight: 600;
+  }
+  .talent-order__icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-right: var(--space-2);
+    vertical-align: middle;
+    border: 1px solid color-mix(in srgb, var(--school) 55%, transparent);
+    border-radius: 4px;
   }
   .talent-order__rank {
     margin-left: 0.15em;
