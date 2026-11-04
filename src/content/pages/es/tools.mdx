@@ -22,29 +22,70 @@ tags: [herramientas, calculadora, crítico, descarga de pirofrío, ignición, fr
 
 ## Multiplicador de crítico
 
-Mueve los rangos de **Fragmentos de hielo** (Ice Shards, Escarcha) e **Ignición** (Ignite, Fuego) para ver cuánto daño hace un crítico de cada hechizo en relación con un golpe normal.
+Mueve los rangos de **Fragmentos de hielo** (Ice Shards, Escarcha) e **Ignición** (Ignite, Fuego) para ver cuánto daño hace un crítico de cada hechizo en relación con un golpe normal, y cuánto pega **Lanza de hielo** contra un objetivo congelado.
 
 <CritCalculator />
 
 ## Cómo se calcula
 
-- Un crítico de hechizo hace un **150 %** de daño (+50 %). <Status status="classic" />
-- **Fragmentos de hielo** aumenta esa bonificación un 20 % por rango en los hechizos de **Escarcha**: con 5/5, el crítico pasa al **200 %**. Los cinco rangos coinciden con el texto del cliente de la beta de Forever. <Status status="reported" />
-- **Ignición** quema un 8 % por rango del daño del crítico durante 4 s en los hechizos de **Fuego**: con 5/5, el **40 %**. También coincide con la beta. <Status status="reported" />
-- **Descarga de Pirofrío** (Frostfire Bolt) cuenta como Fuego **y** Escarcha, así que recibe ambos efectos: 200 % + 40 % de 200 % = **280 %**. Es exactamente el ejemplo que da Blizzard. <Status status="verified" />
+<Tiles min={15}>
+<Tile title="Crítico base: 150 %" icon="ability_rogue_eviscerate">
+
+Un crítico de hechizo hace un 50 % más de daño que un golpe normal. <Status status="classic" compact />
+
+</Tile>
+<Tile title="Fragmentos de hielo" spell="Ice Shards" school="frost">
+
+Sube esa bonificación un 20 % por rango en los hechizos de **Escarcha**: a 5/5, el crítico pasa al **200 %**. Los cinco rangos coinciden con el cliente de la beta. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Ignición" spell="Ignite" school="fire">
+
+Quema un 8 % por rango del daño del crítico durante 4 s en los hechizos de **Fuego**: a 5/5, el **40 %**. También coincide con la beta. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Descarga de Pirofrío" spell="Frostfire Bolt" school="fire">
+
+Cuenta como Fuego **y** Escarcha, así que recibe las dos: 200 % + 40 % de 200 % = **280 %**. Es exactamente el ejemplo de Blizzard. <Status status="verified" compact />
+
+</Tile>
+<Tile title="Lanza de hielo" spell="Ice Lance" school="frost">
+
+Un 300 % más contra congelados o con **Dedos de Escarcha**: un **400 %**. <Status status="verified" compact /> Si además es crítico, se multiplica por el crítico de Escarcha: con Fragmentos de hielo 5/5, un **800 %**. <Status status="analysis" compact />
+
+</Tile>
+</Tiles>
 
 No incluye otros modificadores (por ejemplo, la probabilidad de crítico o la resistencia del objetivo): compara solo **cuánto pega un crítico**, no cuántos críticos harás.
 
 ## Golpe con hechizos
 
-Un hechizo que falla no hace nada y gasta el maná. Elige si atacas a una criatura o a un jugador, su nivel, tus rangos de **Precision** y el golpe de tu equipo para ver con qué probabilidad aciertas y cuánto te falta para el tope. No tiene en cuenta las resistencias.
+Un hechizo que falla no hace nada y gasta el maná. Elige si atacas a una criatura o a un jugador, su nivel, tus rangos de **Precisión** y el golpe de tu equipo para ver con qué probabilidad aciertas y cuánto te falta para el tope. No tiene en cuenta las resistencias.
 
 <HitCalculator />
 
-- Contra una criatura de tu nivel aciertas el **96 %** de las veces; a +1 y +2 niveles, el 95 y el 94 %. A partir de +3 cae 11 puntos por nivel: **83 %** contra un jefe de banda (nivel 63 para un nivel 60). <Status status="classic" />
-- **Cambio en Forever:** en Classic siempre quedaba un 1 % de fallo (tope del 99 %). En Forever los jugadores de la beta llegan al **100 %**: un **4 %** de golpe basta para no fallar nunca contra tu nivel y un **17 %** contra un jefe de banda. Blizzard aún no lo ha confirmado. <Status status="reported" />
-- **Contra jugadores**, la tabla es la misma hasta +2 niveles; a partir de +3 cae 7 puntos por nivel en vez de 11: **87 %** a +3. Es la tabla de Classic; no hay datos de Forever todavía. <Status status="classic" />
-- En Forever, **Precision** (Escarcha, fila 1) da un 2 % de golpe por rango, hasta el 6 %, con todos los hechizos desde la build del 28 de octubre, según el cliente de la beta. Enfoque Arcano ya no existe. <Status status="reported" />
+<Tiles min={15}>
+<Tile title="Contra criaturas" icon="ability_hunter_huntervswild">
+
+A tu nivel aciertas el **96 %** de las veces; a +1 y +2 niveles, el 95 y el 94 %. Desde +3 cae 11 puntos por nivel: **83 %** contra un jefe de banda (nivel 63 para un nivel 60). <Status status="classic" compact />
+
+</Tile>
+<Tile title="El tope llega al 100 %" icon="ability_marksmanship">
+
+**Cambio en Forever:** en Classic siempre quedaba un 1 % de fallo. En la beta se llega al **100 %**: un **4 %** de golpe basta contra tu nivel y un **17 %** contra un jefe de banda. Blizzard aún no lo ha confirmado. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Contra jugadores" icon="achievement_bg_winwsg">
+
+La misma tabla hasta +2 niveles; desde +3 cae 7 puntos por nivel en vez de 11: **87 %** a +3. Es la tabla de Classic; aún no hay datos de Forever. <Status status="classic" compact />
+
+</Tile>
+<Tile title="Precisión" spell="Precision" school="frost">
+
+Escarcha, fila 1: un 2 % de golpe por rango, hasta el 6 %, con todos los hechizos desde la build del 28 de octubre. Enfoque Arcano ya no existe. <Status status="reported" compact />
+
+</Tile>
+</Tiles>
 
 Algunas guías dan un 3 % a tu nivel y un 16 % contra jefes: son las cifras de Classic, que dejan ese 1 % de fallo. Lo comprobaré en el juego en el lanzamiento.
 

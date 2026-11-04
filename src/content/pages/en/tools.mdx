@@ -22,16 +22,39 @@ tags: [tools, calculator, crit, frostfire bolt, ignite, ice shards, spell hit, h
 
 ## Crit multiplier
 
-Move the **Ice Shards** (Frost) and **Ignite** (Fire) ranks to see how much damage a crit of each spell deals compared with a normal hit.
+Move the **Ice Shards** (Frost) and **Ignite** (Fire) ranks to see how much damage a crit of each spell deals compared with a normal hit, and how hard **Ice Lance** hits a Frozen target.
 
 <CritCalculator />
 
 ## How it is calculated
 
-- A spell crit deals **150%** damage (+50%). <Status status="classic" />
-- **Ice Shards** raises that bonus by 20% per rank for **Frost** spells: at 5/5 the crit becomes **200%**. All five ranks match the Forever beta client text. <Status status="reported" />
-- **Ignite** burns for 8% per rank of the crit's damage over 4 s for **Fire** spells: **40%** at 5/5. It matches the beta too. <Status status="reported" />
-- **Frostfire Bolt** counts as Fire **and** Frost, so it gets both: 200% + 40% of 200% = **280%**. That is exactly Blizzard's example. <Status status="verified" />
+<Tiles min={15}>
+<Tile title="Base crit: 150%" icon="ability_rogue_eviscerate">
+
+A spell crit deals 50% more damage than a normal hit. <Status status="classic" compact />
+
+</Tile>
+<Tile title="Ice Shards" spell="Ice Shards" school="frost">
+
+Raises that bonus by 20% per rank for **Frost** spells: at 5/5 the crit becomes **200%**. All five ranks match the beta client. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Ignite" spell="Ignite" school="fire">
+
+Burns for 8% per rank of the crit's damage over 4 s for **Fire** spells: **40%** at 5/5. It matches the beta too. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Frostfire Bolt" spell="Frostfire Bolt" school="fire">
+
+Counts as Fire **and** Frost, so it gets both: 200% + 40% of 200% = **280%**. Exactly Blizzard's example. <Status status="verified" compact />
+
+</Tile>
+<Tile title="Ice Lance" spell="Ice Lance" school="frost">
+
+300% more against Frozen targets or with **Fingers of Frost**: **400%**. <Status status="verified" compact /> If it also crits, it is multiplied by the Frost crit: with Ice Shards 5/5, **800%**. <Status status="analysis" compact />
+
+</Tile>
+</Tiles>
 
 Other modifiers (crit chance, target resistance) are not included: this compares **how hard a crit hits**, not how many crits you will land.
 
@@ -41,10 +64,28 @@ A spell that misses does nothing and still costs the mana. Pick whether you atta
 
 <HitCalculator />
 
-- Against a creature of your level you hit **96%** of the time; at +1 and +2 levels, 95 and 94%. From +3 it drops 11 points per level: **83%** against a raid boss (level 63 for a level 60). <Status status="classic" />
-- **Changed in Forever:** in Classic a 1% miss chance always remained (99% cap). In Forever beta players reach **100%**: **4%** hit is enough never to miss a target of your level and **17%** against a raid boss. Blizzard has not confirmed it yet. <Status status="reported" />
-- **Against players**, the table is the same up to +2 levels; from +3 it drops 7 points per level instead of 11: **87%** at +3. This is the Classic table; there is no Forever data yet. <Status status="classic" />
-- In Forever, **Precision** (Frost, row 1) gives 2% hit per rank, up to 6%, with every spell since the 28 October build, according to the beta client. Arcane Focus is gone. <Status status="reported" />
+<Tiles min={15}>
+<Tile title="Against creatures" icon="ability_hunter_huntervswild">
+
+At your level you hit **96%** of the time; at +1 and +2 levels, 95 and 94%. From +3 it drops 11 points per level: **83%** against a raid boss (level 63 for a level 60). <Status status="classic" compact />
+
+</Tile>
+<Tile title="The cap reaches 100%" icon="ability_marksmanship">
+
+**Changed in Forever:** in Classic a 1% miss chance always remained. In the beta players reach **100%**: **4%** hit is enough against your level and **17%** against a raid boss. Blizzard has not confirmed it yet. <Status status="reported" compact />
+
+</Tile>
+<Tile title="Against players" icon="achievement_bg_winwsg">
+
+The same table up to +2 levels; from +3 it drops 7 points per level instead of 11: **87%** at +3. This is the Classic table; there is no Forever data yet. <Status status="classic" compact />
+
+</Tile>
+<Tile title="Precision" spell="Precision" school="frost">
+
+Frost, row 1: 2% hit per rank, up to 6%, with every spell since the 28 October build. Arcane Focus is gone. <Status status="reported" compact />
+
+</Tile>
+</Tiles>
 
 Some guides give 3% at your level and 16% against bosses: those are Classic's numbers, which keep that 1% miss. I will check it in game at launch.
 

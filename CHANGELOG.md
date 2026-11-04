@@ -6,6 +6,12 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 
 ## 2026-11-04
 
+### [Guía] Desuello, igual de viable para farmear mientras subes
+
+En la pareja de farmeo y oro, Desuello pasa a ser una opción igual de viable que Herboristería y Minería: despellejas las bestias que ya matas, sin desviarte del camino. La alternativa es ahora Herboristería y Desuello.
+
+- **Datos afectados:** pick:gold
+
 ### [Guía] Builds de leveo: Fuego, Escarcha a un objetivo y Arcano renovada
 
 Nuevas builds de leveo de Fuego y de Escarcha a un objetivo, esta con una variante flexible que gasta menos maná. La de Escarcha que ya había pasa a ser Escarcha AoE. Arcano ahora coge Arcano del 10 al 40 y Escarcha del 41 al 60. Ventisca, mejor con tu rango más alto: el penúltimo rango solo se libra de la penalización durante 4 niveles. Aún no las he probado en el juego.

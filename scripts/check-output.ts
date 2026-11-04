@@ -67,8 +67,10 @@ for (const file of walk(dist)) {
     const count = body.split(sentence).length - 1;
     if (count > 1) problems.push(`${where}: label sentence repeated ${count}×: "${sentence.slice(0, 50)}…"`);
   }
-  for (const match of body.matchAll(iceLance200)) {
-    const around = body.slice(Math.max(0, match.index - 40), match.index + match[0].length + 60);
+  // The crit calculator prints Ice Lance's crit multiplier (200% with Ice Shards 5/5), not its frozen bonus.
+  const prose = text(html.replace(/<crit-calculator[\s\S]*?<\/crit-calculator>/g, ''));
+  for (const match of prose.matchAll(iceLance200)) {
+    const around = prose.slice(Math.max(0, match.index - 40), match.index + match[0].length + 60);
     if (!history.test(around)) problems.push(`${where}: Ice Lance with 200%: "…${match[0].slice(0, 120)}…"`);
   }
 }

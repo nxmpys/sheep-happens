@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { critMultiplier, formatPercent } from '../src/lib/crit';
+import { critMultiplier, formatPercent, iceLanceMultiplier } from '../src/lib/crit';
 
 describe('critMultiplier', () => {
   it('reproduces the official Frostfire Bolt example (200% + 40% = 280%)', () => {
@@ -42,5 +42,15 @@ describe('formatPercent', () => {
     expect(formatPercent(2.8, 'en')).toBe('280%');
     expect(formatPercent(2.8, 'es')).toBe('280 %');
     expect(formatPercent(1.62, 'es')).toBe('162 %');
+  });
+});
+
+describe('iceLanceMultiplier', () => {
+  it('quadruples against Frozen targets and doubles again on a crit with Ice Shards 5/5', () => {
+    expect(iceLanceMultiplier(5)).toEqual({ normal: 1, crit: 2, frozen: 4, frozenCrit: 8 });
+  });
+
+  it('uses the plain 150% crit without Ice Shards', () => {
+    expect(iceLanceMultiplier(0)).toEqual({ normal: 1, crit: 1.5, frozen: 4, frozenCrit: 6 });
   });
 });

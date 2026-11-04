@@ -1,5 +1,24 @@
 [
   {
+    "id": "2026-11-04-skinning-farming",
+    "date": "2026-11-04",
+    "type": "guide",
+    "title": {
+      "es": "Desuello, igual de viable para farmear mientras subes",
+      "en": "Skinning, just as viable for farming while leveling"
+    },
+    "body": {
+      "es": "En la pareja de farmeo y oro, Desuello pasa a ser una opción igual de viable que Herboristería y Minería: despellejas las bestias que ya matas, sin desviarte del camino. La alternativa es ahora Herboristería y Desuello.",
+      "en": "In the farming and gold pair, Skinning becomes just as viable as Herbalism and Mining: you skin the beasts you already kill, without leaving your path. The alternative is now Herbalism and Skinning."
+    },
+    "pages": [
+      "professions"
+    ],
+    "refs": [
+      "pick:gold"
+    ]
+  },
+  {
     "id": "2026-11-04-leveling-builds",
     "date": "2026-11-04",
     "type": "guide",

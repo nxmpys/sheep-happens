@@ -5,12 +5,12 @@
  * The table is rendered at build time with both talents at 5/5, so the
  * result is readable without JavaScript.
  */
-import Icon from '../ui/Icon.astro';
+import GameIcon from '../learn/GameIcon.astro';
 import StatusBadge from './StatusBadge.astro';
 import SourceRefs from './SourceRefs.astro';
 import SpellRef from './SpellRef.astro';
 import { getLocale } from '../../i18n/locale';
-import { critMultiplier, formatPercent, MAX_RANK, type CritSchool } from '../../lib/crit';
+import { critMultiplier, formatPercent, iceLanceMultiplier, MAX_RANK, type CritSchool } from '../../lib/crit';
 import { localSpellName } from '../../lib/names';
 
 const locale = getLocale(Astro);
@@ -22,6 +22,9 @@ const spells: { school: CritSchool; name: string; label: string; icon: 'fire' | 
 ];
 const initial = { iceShards: MAX_RANK, ignite: MAX_RANK };
 const scale = critMultiplier({ school: 'frostfire', iceShards: MAX_RANK, ignite: MAX_RANK }).total;
+const lance = iceLanceMultiplier(initial.iceShards);
+const lanceScale = iceLanceMultiplier(MAX_RANK).frozenCrit;
+const lanceRows = (['normal', 'crit', 'frozen', 'frozenCrit'] as const).map((key) => ({ key, value: lance[key] }));
 const rows = spells.map((spell) => ({ ...spell, result: critMultiplier({ school: spell.school, ...initial }) }));
 const text = {
   talents: es ? 'Rangos de talento' : 'Talent ranks',
@@ -36,6 +39,14 @@ const text = {
     ? 'Daño de un crítico como porcentaje de un golpe normal del mismo hechizo. Barra: golpe crítico (violeta) + Ignición (naranja).'
     : 'Damage of a critical strike as a percentage of a normal hit of the same spell. Bar: critical hit (violet) + Ignite (orange).',
   na: es ? 'no aplica' : 'n/a',
+  lanceTitle: es ? 'congelado y crítico' : 'frozen and critical',
+  lanceIntro: es
+    ? 'Contra un objetivo congelado, o con Dedos de Escarcha, hace un 300 % más de daño. Si además es crítico, Fragmentos de hielo lo multiplica otra vez. Trizar 3/3 suma un 50 % de probabilidad de crítico contra congelados, así que el último caso es frecuente.'
+    : 'Against a Frozen target, or with Fingers of Frost, it deals 300% more damage. If it also crits, Ice Shards multiplies it again. Shatter 3/3 adds 50% crit chance against Frozen targets, so the last case is common.',
+  lance: es
+    ? { normal: 'Golpe normal', crit: 'Crítico', frozen: 'Congelado o con Dedos de Escarcha', frozenCrit: 'Crítico contra congelado' }
+    : { normal: 'Normal hit', crit: 'Critical hit', frozen: 'Frozen or with Fingers of Frost', frozenCrit: 'Critical hit on a Frozen target' },
+  lanceCaption: es ? 'Daño como porcentaje de una Lanza de hielo normal.' : 'Damage as a percentage of a normal Ice Lance.',
 };
 ---
 
@@ -45,7 +56,7 @@ const text = {
       <legend>{text.talents}</legend>
       <label class="range school-frost">
         <span class="range__label">
-          <Icon name="frost" size={16} />
+          <GameIcon spell="Ice Shards" size={32} />
           {text.iceShards}
         </span>
         <input type="range" name="iceShards" min="0" max={MAX_RANK} step="1" value={initial.iceShards} />
@@ -53,7 +64,7 @@ const text = {
       </label>
       <label class="range school-fire">
         <span class="range__label">
-          <Icon name="fire" size={16} />
+          <GameIcon spell="Ignite" size={32} />
           {text.ignite}
         </span>
         <input type="range" name="ignite" min="0" max={MAX_RANK} step="1" value={initial.ignite} />
@@ -75,10 +86,10 @@ const text = {
         <tbody>
           {
             rows.map((row) => (
-              <tr data-school={row.school}>
+              <tr data-school={row.school} class={`school-${row.school === 'frostfire' ? 'fire' : row.school}`}>
                 <th scope="row">
                   <span class="spell">
-                    <Icon name={row.icon} size={18} />
+                    <GameIcon spell={row.name} size={36} />
                     <span>
                       <SpellRef name={row.name} label={localSpellName(row.name, locale)} />
                       <small>{row.label}</small>
@@ -100,6 +111,30 @@ const text = {
         </tbody>
       </table>
     </div>
+
+    <section class="lance school-frost" aria-labelledby="lance-title">
+      <p class="lance__title" id="lance-title">
+        <GameIcon spell="Ice Lance" size={40} />
+        <span><SpellRef name="Ice Lance" label={localSpellName('Ice Lance', locale)} />: {text.lanceTitle}</span>
+      </p>
+      <p class="lance__intro">{text.lanceIntro}</p>
+      <ul class="lance__rows" role="list">
+        {
+          lanceRows.map((row) => (
+            <li class={`lance__row lance__row--${row.key}`} data-lance={row.key}>
+              <span class="lance__label">{text.lance[row.key]}</span>
+              <span class="lance__bar" aria-hidden="true">
+                <span style={`width:${(row.value / lanceScale) * 100}%`} data-lance-bar />
+              </span>
+              <strong class="lance__value" data-lance-value>
+                {formatPercent(row.value, locale)}
+              </strong>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="lance__caption">{text.lanceCaption}</p>
+    </section>
   </form>
   <p class="calc__sources">
     <StatusBadge status="classic" />
@@ -108,13 +143,14 @@ const text = {
 </crit-calculator>
 
 <script>
-  import { critMultiplier, formatPercent, MAX_RANK, type CritSchool } from '../../lib/crit';
+  import { critMultiplier, formatPercent, iceLanceMultiplier, MAX_RANK, type CritSchool } from '../../lib/crit';
 
   class CritCalculator extends HTMLElement {
     connectedCallback() {
       const form = this.querySelector('form')!;
       const locale = this.dataset.locale === 'en' ? 'en' : 'es';
       const scale = Number(this.dataset.scale) || 2.8;
+      const lanceScale = iceLanceMultiplier(MAX_RANK).frozenCrit;
       const update = () => {
         const iceShards = Number((form.elements.namedItem('iceShards') as HTMLInputElement).value);
         const ignite = Number((form.elements.namedItem('ignite') as HTMLInputElement).value);
@@ -127,6 +163,12 @@ const text = {
           row.querySelector('[data-total] strong')!.textContent = formatPercent(result.total, locale);
           row.querySelector<HTMLElement>('[data-bar-hit]')!.style.width = `${(result.hit / scale) * 100}%`;
           row.querySelector<HTMLElement>('[data-bar-ignite]')!.style.width = `${(result.ignite / scale) * 100}%`;
+        }
+        const lance = iceLanceMultiplier(iceShards);
+        for (const row of this.querySelectorAll<HTMLElement>('[data-lance]')) {
+          const value = lance[row.dataset.lance as keyof typeof lance];
+          row.querySelector('[data-lance-value]')!.textContent = formatPercent(value, locale);
+          row.querySelector<HTMLElement>('[data-lance-bar]')!.style.width = `${(value / lanceScale) * 100}%`;
         }
       };
       form.addEventListener('input', update);
@@ -176,8 +218,21 @@ const text = {
     gap: var(--space-2);
     font-weight: 600;
   }
-  .range__label :global(svg) {
-    color: var(--school);
+  crit-calculator :global(.game-icon) {
+    display: block;
+    flex: none;
+    width: var(--game-icon, 32px);
+    height: var(--game-icon, 32px);
+    overflow: hidden;
+    line-height: 0;
+    border: 1px solid #000;
+    border-radius: calc(var(--game-icon, 32px) * 0.14);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--school, var(--border-strong)) 60%, transparent);
+  }
+  crit-calculator :global(.game-icon img) {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
   .range input {
     width: 100%;
@@ -229,15 +284,6 @@ const text = {
     font-weight: 400;
     color: var(--text-subtle);
   }
-  tr[data-school='fire'] .spell :global(svg) {
-    color: var(--fire);
-  }
-  tr[data-school='frost'] .spell :global(svg) {
-    color: var(--frost);
-  }
-  tr[data-school='frostfire'] .spell :global(svg) {
-    color: var(--arcane);
-  }
   td[data-total] strong {
     display: block;
     font-size: var(--step-1);
@@ -257,6 +303,94 @@ const text = {
   }
   .bar__ignite {
     background: var(--fire);
+  }
+  .lance {
+    display: grid;
+    gap: var(--space-3);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--border);
+  }
+  .lance__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+  }
+  .lance__intro,
+  .lance__caption {
+    margin: 0;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .lance__caption {
+    color: var(--text-subtle);
+  }
+  .lance__rows {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .lance__row {
+    display: grid;
+    grid-template-columns: minmax(9rem, 14rem) 1fr 4.5rem;
+    gap: var(--space-3);
+    align-items: center;
+  }
+  .lance__label {
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+  .lance__bar {
+    display: block;
+    height: 12px;
+    border-radius: 6px;
+    background: var(--surface-3);
+    overflow: hidden;
+  }
+  .lance__bar span {
+    display: block;
+    height: 100%;
+    border-radius: 6px;
+    transition: width 200ms ease;
+  }
+  .lance__row--normal .lance__bar span {
+    background: var(--text-subtle);
+  }
+  .lance__row--crit .lance__bar span {
+    background: var(--accent);
+  }
+  .lance__row--frozen .lance__bar span {
+    background: var(--frost);
+  }
+  .lance__row--frozenCrit .lance__bar span {
+    background: linear-gradient(90deg, var(--frost), var(--accent));
+  }
+  .lance__value {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .lance__row--frozenCrit .lance__value {
+    font-size: var(--step-1);
+    color: var(--frost);
+  }
+  @media (max-width: 520px) {
+    .lance__row {
+      grid-template-columns: 1fr auto;
+    }
+    .lance__label {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lance__bar span {
+      transition: none;
+    }
   }
   .calc__sources {
     display: flex;

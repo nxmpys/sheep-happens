@@ -184,8 +184,8 @@
       "mining"
     ],
     "why": {
-      "es": "Dos profesiones de recolección no cuestan nada, producen desde el nivel 1 y cubren los dos tipos de nodo en el mismo recorrido. En Forever el farmeo masivo de enemigos es más difícil, así que recolectar es un ingreso más estable.",
-      "en": "Two gathering professions cost nothing, pay from level 1 and cover both node types on the same route. In Forever mass farming of enemies is harder, so gathering is a steadier income."
+      "es": "Las profesiones de recolección no cuestan nada y producen desde el nivel 1. Herboristería y Minería cubren los dos tipos de nodo en el mismo recorrido, y Desuello es igual de viable: despellejas las bestias que ya matas, sin desviarte del camino. En Forever el farmeo masivo de enemigos es más difícil, así que recolectar es un ingreso más estable.",
+      "en": "Gathering professions cost nothing and pay from level 1. Herbalism and Mining cover both node types on the same route, and Skinning is just as viable: you skin the beasts you already kill, without leaving your path. In Forever mass farming of enemies is harder, so gathering is a steadier income."
     },
     "advantage": {
       "es": "Oro constante sin invertir.",
@@ -202,11 +202,11 @@
     "alternative": {
       "professions": [
         "herbalism",
-        "alchemy"
+        "skinning"
       ],
       "when": {
-        "es": "Más beneficio por hierba vendiendo consumibles y transmutaciones a nivel 60, si te compensa el tiempo de fabricar y vender.",
-        "en": "More profit per herb by selling consumables and transmutes at level 60, if crafting and selling is worth your time."
+        "es": "Igual de viable mientras subes, y te desvías menos: Desuello aprovecha las bestias que ya matas en tus misiones, y su Camp Chair da +2 % de crítico. Puedes cambiar Minería o Herboristería por él. A nivel 60, si los consumibles se venden bien, cambia una de recolección por Alquimia.",
+        "en": "Just as viable while leveling, with fewer detours: Skinning uses the beasts you already kill on your quests, and its Camp Chair gives +2% crit. You can swap Mining or Herbalism for it. At 60, if consumables sell well, swap a gathering profession for Alchemy."
       }
     },
     "status": "analysis",
@@ -215,7 +215,7 @@
       "warcrafttavern-legacy",
       "warcrafttavern-mage-guide"
     ],
-    "updated": "2026-10-14"
+    "updated": "2026-11-04"
   },
   {
     "id": "casual",

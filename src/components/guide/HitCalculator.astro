@@ -6,6 +6,7 @@
  * Logic: src/lib/hit.ts. Rendered at build time against a raid boss (+3)
  * with no talents or gear, so the result reads without JavaScript.
  */
+import GameIcon from '../learn/GameIcon.astro';
 import SourceRefs from './SourceRefs.astro';
 import SpellRef from './SpellRef.astro';
 import StatusBadge from './StatusBadge.astro';
@@ -65,7 +66,8 @@ const strings = { toCap: text.toCap, capped: text.capped, wasted: text.wasted };
       </fieldset>
 
       <label class="field range">
-        <span class="field__label">
+        <span class="field__label field__label--icon">
+          <GameIcon spell="Precision" size={28} />
           {text.talent}:{' '}
           <SpellRef name="Precision" label={localSpellName('Precision', locale)} />
         </span>
@@ -139,6 +141,27 @@ const strings = { toCap: text.toCap, capped: text.capped, wasted: text.wasted };
 </script>
 
 <style>
+  .field__label--icon {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+  .field__label--icon :global(.game-icon) {
+    display: block;
+    width: 28px;
+    height: 28px;
+    overflow: hidden;
+    line-height: 0;
+    border: 1px solid #000;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--frost) 60%, transparent);
+  }
+  .field__label--icon :global(.game-icon img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
   hit-calculator {
     display: block;
     border: 1px solid var(--border);

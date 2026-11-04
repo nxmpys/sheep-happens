@@ -61,6 +61,24 @@ export function critMultiplier(input: CritInput): CritResult {
   };
 }
 
+/** Ice Lance deals 300% more damage (×4) to Frozen targets, or to targets Fingers of Frost treats as Frozen (Forever, 30 October hotfix). */
+export const ICE_LANCE_FROZEN_BONUS = 3;
+
+export interface IceLanceResult {
+  /** Each case as a multiple of a normal Ice Lance hit. */
+  normal: number;
+  crit: number;
+  frozen: number;
+  frozenCrit: number;
+}
+
+/** Ice Lance against a normal and a Frozen target, with and without a crit. */
+export function iceLanceMultiplier(iceShards: number): IceLanceResult {
+  const crit = critMultiplier({ school: 'frost', iceShards, ignite: 0 }).hit;
+  const frozen = 1 + ICE_LANCE_FROZEN_BONUS;
+  return { normal: 1, crit, frozen, frozenCrit: tidy(frozen * crit) };
+}
+
 /** Formats 2.8 as "280 %" (es) or "280%" (en). */
 export function formatPercent(multiplier: number, locale: 'es' | 'en'): string {
   const value = Math.round(multiplier * 1000) / 10;
