@@ -1,5 +1,110 @@
 [
   {
+    "id": "2026-11-04-dev-notes",
+    "date": "2026-11-04",
+    "type": "game",
+    "title": {
+      "es": "Lanza de hielo comparte reutilización con Explosión de Fuego",
+      "en": "Ice Lance shares its cooldown with Fire Blast"
+    },
+    "body": {
+      "es": "Las notas oficiales de Blizzard del 3 de noviembre (actualizadas el 2) confirman los cambios de talentos de la build del 28 de octubre y añaden cuatro detalles nuevos para el Mago: Lanza de hielo comparte sus 8 s de reutilización con Explosión de Fuego; Tromba de misiles se consume al empezar la canalización; Lanzamiento libre no se gasta en Misiles Arcanos si Tromba de misiles está activa, y Misiles Arcanos activa Lanzamiento libre; e Ignición ya se aplica al daño de Lluvia de fuego más allá del primer impacto.",
+      "en": "Blizzard's official 3 November notes (updated on the 2nd) confirm the talent changes of the 28 October build and add four new details for the Mage: Ice Lance shares its 8 s cooldown with Fire Blast; Missile Barrage is consumed at the start of the channel; Clearcasting is not consumed on Arcane Missiles if Missile Barrage is active, and Arcane Missiles now procs Clearcasting; and Ignite now applies to Flamestrike damage past the first instance."
+    },
+    "pages": [
+      "changes",
+      "talents-frost",
+      "talents-arcane",
+      "talents-fire"
+    ],
+    "sources": [
+      "blizzard-dev-notes"
+    ],
+    "refs": [
+      "change:ice-lance",
+      "change:missile-barrage",
+      "change:arcane-concentration",
+      "change:ignite",
+      "source:blizzard-dev-notes"
+    ],
+    "items": [
+      {
+        "ref": "change:ice-lance",
+        "impact": "nerf",
+        "text": {
+          "es": "Su reutilización de 8 s es la misma que la de Explosión de Fuego: lanzar una pone la otra en reutilización. Afecta sobre todo a las builds que combinan Escarcha y Fuego.",
+          "en": "Its 8 s cooldown is shared with Fire Blast: casting one puts the other on cooldown. It mostly affects builds that combine Frost and Fire."
+        }
+      },
+      {
+        "ref": "change:missile-barrage",
+        "impact": "neutral",
+        "text": {
+          "es": "Se consume al empezar la canalización de Misiles Arcanos (antes, al final).",
+          "en": "It is consumed at the start of the Arcane Missiles channel (it used to be at the end)."
+        }
+      },
+      {
+        "ref": "change:arcane-concentration",
+        "impact": "buff",
+        "text": {
+          "es": "Lanzamiento libre no se gasta en Misiles Arcanos si Tromba de misiles está activa, y Misiles Arcanos vuelve a activarlo.",
+          "en": "Clearcasting is not consumed on Arcane Missiles if Missile Barrage is active, and Arcane Missiles procs it again."
+        }
+      },
+      {
+        "ref": "change:ignite",
+        "impact": "buff",
+        "text": {
+          "es": "Ignición se aplica ahora a todo el daño de Lluvia de fuego, no solo al primer impacto.",
+          "en": "Ignite now applies to all Flamestrike damage, not just the first instance."
+        }
+      }
+    ]
+  },
+  {
+    "id": "2026-11-04-dev-notes-confirmed",
+    "date": "2026-11-04",
+    "type": "guide",
+    "title": {
+      "es": "Notas oficiales: varios cambios pasan a «Oficial»",
+      "en": "Official notes: several changes now marked Official"
+    },
+    "body": {
+      "es": "Las notas de desarrollo de Blizzard del 3 de noviembre confirman la eliminación de Enfoque Arcano, Hielo penetrante y Explosión de Escarcha. Esos tres pasan a «Oficial». Barrera de hielo y Custodia de Escarcha siguen como «Comunidad» porque parte de su texto no figura en las notas, y añado la confirmación oficial a las fichas de Lanza de hielo, Escalofrío del invierno y Explosión Arcana.",
+      "en": "Blizzard's 3 November development notes confirm the removal of Arcane Focus, Piercing Ice and Frost Blast. Those three are now marked Official. Ice Barrier and Frost Warding stay as Community because part of their text is not in the notes, and I add the official confirmation to the Ice Lance, Winter's Chill and Arcane Blast cards."
+    },
+    "pages": [
+      "changes",
+      "talents-arcane",
+      "talents-frost",
+      "talents-fire"
+    ],
+    "sources": [
+      "blizzard-dev-notes"
+    ],
+    "refs": [
+      "change:arcane-blast",
+      "change:arcane-concentration",
+      "change:arcane-focus",
+      "change:arcane-resilience",
+      "change:critical-mass",
+      "change:elemental-precision",
+      "change:frost-blast",
+      "change:frost-warding",
+      "change:ice-barrier",
+      "change:ice-lance",
+      "change:ignite",
+      "change:improved-fireball",
+      "change:incineration",
+      "change:missile-barrage",
+      "change:piercing-ice",
+      "change:wake-of-fire",
+      "change:winters-chill",
+      "source:blizzard-dev-notes"
+    ]
+  },
+  {
     "id": "2026-11-03-arcane-leveling",
     "date": "2026-11-03",
     "type": "guide",
