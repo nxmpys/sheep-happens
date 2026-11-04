@@ -4,6 +4,27 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-11-04
+
+### [Juego] Lanza de hielo comparte reutilización con Explosión de Fuego
+
+Las notas oficiales de Blizzard del 3 de noviembre (actualizadas el 2) confirman los cambios de talentos de la build del 28 de octubre y añaden cuatro detalles nuevos para el Mago: Lanza de hielo comparte sus 8 s de reutilización con Explosión de Fuego; Tromba de misiles se consume al empezar la canalización; Lanzamiento libre no se gasta en Misiles Arcanos si Tromba de misiles está activa, y Misiles Arcanos activa Lanzamiento libre; e Ignición ya se aplica al daño de Lluvia de fuego más allá del primer impacto.
+
+- ▼ Empeora: **Lanza de hielo**: Su reutilización de 8 s es la misma que la de Explosión de Fuego: lanzar una pone la otra en reutilización. Afecta sobre todo a las builds que combinan Escarcha y Fuego.
+- ◆ Igual: **Tromba de misiles**: Se consume al empezar la canalización de Misiles Arcanos (antes, al final).
+- ▲ Mejora: **Concentración Arcana**: Lanzamiento libre no se gasta en Misiles Arcanos si Tromba de misiles está activa, y Misiles Arcanos vuelve a activarlo.
+- ▲ Mejora: **Ignición**: Ignición se aplica ahora a todo el daño de Lluvia de fuego, no solo al primer impacto.
+
+- **Datos afectados:** Lanza de hielo, Tromba de misiles, Concentración Arcana, Ignición, WoW Forever Beta Development Notes
+- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+
+### [Guía] Notas oficiales: varios cambios pasan a «Oficial»
+
+Las notas de desarrollo de Blizzard del 3 de noviembre confirman la eliminación de Enfoque Arcano, Hielo penetrante y Explosión de Escarcha. Esos tres pasan a «Oficial». Barrera de hielo y Custodia de Escarcha siguen como «Comunidad» porque parte de su texto no figura en las notas, y añado la confirmación oficial a las fichas de Lanza de hielo, Escalofrío del invierno y Explosión Arcana.
+
+- **Datos afectados:** Explosión Arcana, Concentración Arcana, Enfoque Arcano, Recuperación Arcana, Masa crítica, Precision, Frost Blast, Custodia de Escarcha, Barrera de hielo, Lanza de hielo, Ignición, Accelerant, Incineración, Tromba de misiles, Hielo penetrante, Explosión de Fuego mejorada, Escalofrío del invierno, WoW Forever Beta Development Notes
+- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+
 ## 2026-11-03
 
 ### [Guía] Nueva build de leveo de Arcano
