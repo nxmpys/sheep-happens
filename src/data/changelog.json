@@ -1,5 +1,89 @@
 [
   {
+    "id": "2026-11-06-launch-notes",
+    "date": "2026-11-06",
+    "type": "game",
+    "title": {
+      "es": "Blizzard confirma en sus notas de lanzamiento los cambios de talentos del Mago",
+      "en": "Blizzard confirms the Mage talent changes in its launch notes"
+    },
+    "body": {
+      "es": "Las notas de desarrollo del lanzamiento (3 nov, editadas el 4 nov) recogen por fin, con firma de Blizzard, los cambios de talentos que llevaban semanas llegando por los datos de las builds: Precision absorbe a Enfoque Arcano, desaparece Hielo penetrante, Frost Blast se elimina, Barrera de hielo da un 15 % más de daño de Escarcha y Escalofrío del invierno queda en un 20 % por carga. Lo nuevo: Lanza de hielo comparte su reutilización de 8 s con Explosión de Fuego, Tromba de misiles se consume al empezar la canalización, Lanzamiento libre no se gasta en Misiles Arcanos si Tromba de misiles está activa e Ignición ya se aplica al daño de Fogonazo después de la primera tanda.",
+      "en": "The launch development notes (3 Nov, edited 4 Nov) finally list, under Blizzard's name, the talent changes that had been arriving through build data for weeks: Precision absorbs Arcane Focus, Piercing Ice is removed, Frost Blast is removed, Ice Barrier gives 15% more Frost damage and Winter's Chill settles at 20% per stack. New: Ice Lance shares its 8 s cooldown with Fire Blast, Missile Barrage is consumed at the start of the channel, Clearcasting is no longer spent on Arcane Missiles while Missile Barrage is active, and Ignite now applies to Flamestrike damage after the first hit."
+    },
+    "pages": [
+      "changes",
+      "talents-arcane",
+      "talents-fire",
+      "talents-frost"
+    ],
+    "sources": [
+      "blizzard-dev-notes"
+    ],
+    "refs": [
+      "change:ice-lance",
+      "change:missile-barrage",
+      "change:arcane-concentration",
+      "change:ignite",
+      "change:winters-chill",
+      "change:arcane-focus",
+      "change:piercing-ice",
+      "change:frost-warding",
+      "change:frost-blast",
+      "change:ice-barrier",
+      "change:arcane-blast",
+      "change:incineration",
+      "change:improved-fireball",
+      "change:critical-mass",
+      "change:elemental-precision",
+      "change:arcane-resilience",
+      "change:wake-of-fire",
+      "source:blizzard-dev-notes"
+    ],
+    "items": [
+      {
+        "ref": "change:ice-lance",
+        "impact": "neutral",
+        "text": {
+          "es": "Sus 8 s de reutilización se comparten con Explosión de Fuego.",
+          "en": "Its 8 s cooldown is shared with Fire Blast."
+        }
+      },
+      {
+        "ref": "change:missile-barrage",
+        "impact": "buff",
+        "text": {
+          "es": "Se consume al empezar la canalización de Misiles Arcanos, no al terminar.",
+          "en": "It is consumed at the start of the Arcane Missiles channel, not at the end."
+        }
+      },
+      {
+        "ref": "change:arcane-concentration",
+        "impact": "buff",
+        "text": {
+          "es": "Lanzamiento libre no se consume en Misiles Arcanos si Tromba de misiles está activa, y Misiles Arcanos vuelve a activarlo.",
+          "en": "Clearcasting is no longer consumed on Arcane Missiles while Missile Barrage is active, and Arcane Missiles can trigger it again."
+        }
+      },
+      {
+        "ref": "change:ignite",
+        "impact": "buff",
+        "text": {
+          "es": "Se aplica al daño de Fogonazo pasada la primera tanda.",
+          "en": "It now applies to Flamestrike damage past the initial hit."
+        }
+      },
+      {
+        "ref": "change:winters-chill",
+        "impact": "neutral",
+        "text": {
+          "es": "Confirmado: un 20 % más de daño de Cono de frío por carga.",
+          "en": "Confirmed: 20% more Cone of Cold damage per stack."
+        }
+      }
+    ]
+  },
+  {
     "id": "2026-11-04-skinning-farming",
     "date": "2026-11-04",
     "type": "guide",

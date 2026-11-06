@@ -4,6 +4,21 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-11-06
+
+### [Juego] Blizzard confirma en sus notas de lanzamiento los cambios de talentos del Mago
+
+Las notas de desarrollo del lanzamiento (3 nov, editadas el 4 nov) recogen por fin, con firma de Blizzard, los cambios de talentos que llevaban semanas llegando por los datos de las builds: Precision absorbe a Enfoque Arcano, desaparece Hielo penetrante, Frost Blast se elimina, Barrera de hielo da un 15 % más de daño de Escarcha y Escalofrío del invierno queda en un 20 % por carga. Lo nuevo: Lanza de hielo comparte su reutilización de 8 s con Explosión de Fuego, Tromba de misiles se consume al empezar la canalización, Lanzamiento libre no se gasta en Misiles Arcanos si Tromba de misiles está activa e Ignición ya se aplica al daño de Fogonazo después de la primera tanda.
+
+- ◆ Igual: **Lanza de hielo**: Sus 8 s de reutilización se comparten con Explosión de Fuego.
+- ▲ Mejora: **Tromba de misiles**: Se consume al empezar la canalización de Misiles Arcanos, no al terminar.
+- ▲ Mejora: **Concentración Arcana**: Lanzamiento libre no se consume en Misiles Arcanos si Tromba de misiles está activa, y Misiles Arcanos vuelve a activarlo.
+- ▲ Mejora: **Ignición**: Se aplica al daño de Fogonazo pasada la primera tanda.
+- ◆ Igual: **Escalofrío del invierno**: Confirmado: un 20 % más de daño de Cono de frío por carga.
+
+- **Datos afectados:** Lanza de hielo, Tromba de misiles, Concentración Arcana, Ignición, Escalofrío del invierno, Enfoque Arcano, Hielo penetrante, Custodia de Escarcha, Frost Blast, Barrera de hielo, Explosión Arcana, Incineración, Acelerante, Masa crítica, Precisión, Recuperación Arcana, Explosión de Fuego mejorada, WoW Forever Beta Development Notes
+- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+
 ## 2026-11-04
 
 ### [Guía] Desuello, igual de viable para farmear mientras subes

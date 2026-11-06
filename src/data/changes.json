@@ -93,15 +93,22 @@
           "es": "En los datos de la beta, el rango 1 cuesta 40 de maná, hace 28-31 de daño y ralentiza 9 s; hay un rango 2 a nivel 36. Aún no tiene nombre en español en el cliente.",
           "en": "In the beta data, rank 1 costs 40 mana, deals 28-31 damage and slows for 9 s; rank 2 comes at level 36. It has no Spanish name in the client yet."
         }
+      },
+      {
+        "status": "verified",
+        "text": {
+          "es": "Blizzard lo confirma en las notas de desarrollo del lanzamiento (3 nov). El hechizo se elimina.",
+          "en": "Blizzard confirms it in the launch development notes (3 Nov). The spell is removed."
+        }
       }
     ],
-    "status": "reported",
+    "status": "verified",
     "sources": [
       "blizzard-dev-notes",
       "wowhead-forever-talent-calc",
       "foreverchanges-build-2026-10-28"
     ],
-    "updated": "2026-10-30"
+    "updated": "2026-11-06"
   },
   {
     "id": "comprehension",
@@ -361,17 +368,25 @@
           "es": "Llega con la build de la beta del 28 de octubre (1.60.1.70685). Blizzard no ha publicado notas de esa build: el cambio sale de sus datos.",
           "en": "Arrives with the 28 October beta build (1.60.1.70685). Blizzard has published no notes for that build: the change comes from its data."
         }
+      },
+      {
+        "status": "verified",
+        "text": {
+          "es": "Blizzard lo confirma en las notas de desarrollo del lanzamiento (3 nov). El talento desaparece y se integra en Precision, en Escarcha.",
+          "en": "Blizzard confirms it in the launch development notes (3 Nov). The talent is removed and merged into Precision, in Frost."
+        }
       }
     ],
-    "status": "reported",
+    "status": "verified",
     "sources": [
       "blizzard-deep-dive-mage",
       "foreverchanges-build-2026-10-28",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "blizzard-dev-notes"
     ],
     "row": 1,
     "spell": 11222,
-    "updated": "2026-10-29"
+    "updated": "2026-11-06"
   },
   {
     "id": "improved-channeling",
@@ -463,6 +478,10 @@
       {
         "es": "Tampoco se activa con Empapar magia y Amplificar magia, ni con habilidades lanzadas fuera de combate.",
         "en": "It also no longer triggers from Dampen Magic and Amplify Magic, or from abilities cast out of combat."
+      },
+      {
+        "es": "Desde el 3 de noviembre, Lanzamiento libre no se consume en Misiles Arcanos si Tromba de misiles está activa a la vez, y Misiles Arcanos vuelve a activarlo (un error lo impedía).",
+        "en": "Since 3 November, Clearcasting is not consumed on Arcane Missiles if Missile Barrage is active, and Arcane Missiles can trigger it again (a bug prevented it)."
       }
     ],
     "notes": [
@@ -486,7 +505,7 @@
       "blizzard-deep-dive-mage",
       "blizzard-dev-notes"
     ],
-    "updated": "2026-11-03"
+    "updated": "2026-11-06"
   },
   {
     "id": "arcane-resilience",
@@ -527,6 +546,13 @@
           "es": "Llega con la build de la beta del 28 de octubre (1.60.1.70685). Blizzard no ha publicado notas de esa build: el cambio sale de sus datos.",
           "en": "Arrives with the 28 October beta build (1.60.1.70685). Blizzard has published no notes for that build: the change comes from its data."
         }
+      },
+      {
+        "status": "verified",
+        "text": {
+          "es": "Blizzard lo confirma en las notas de desarrollo del lanzamiento (3 nov). Pasa a la fila 1 y admite hasta 3 puntos, con un máximo del 75 % de tu Intelecto como armadura.",
+          "en": "Blizzard confirms it in the launch development notes (3 Nov). Moves to row 1 and allows up to 3 points, for a maximum of 75% of your Intellect as armor."
+        }
       }
     ],
     "status": "verified",
@@ -534,9 +560,10 @@
       "foreverchanges-hotfix-2026-10-30",
       "blizzard-deep-dive-mage",
       "foreverchanges-build-2026-10-28",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "blizzard-dev-notes"
     ],
-    "updated": "2026-10-31"
+    "updated": "2026-11-06"
   },
   {
     "id": "arcane-geometry",
@@ -629,10 +656,10 @@
         }
       },
       {
-        "status": "reported",
+        "status": "verified",
         "text": {
-          "es": "En los datos de la build 1.60.1.70707, cada carga sube su coste de maná un 100 %.",
-          "en": "In the data of build 1.60.1.70707, each stack raises its mana cost by 100%."
+          "es": "Blizzard lo confirma en las notas de desarrollo del lanzamiento (3 nov). Cada carga sube su coste de maná un 100 % (antes, un 175 %), da un 12 % de tu Intelecto como daño de hechizos (antes, un 15 %) y dura 18 s.",
+          "en": "Blizzard confirms it in the launch development notes (3 Nov). Each stack raises its mana cost by 100% (was 175%), grants 12% of your Intellect as Spell Damage (was 15%) and lasts 18 s."
         }
       },
       {
@@ -651,7 +678,7 @@
       "blizzard-dev-notes",
       "wowhead-forever-talent-calc"
     ],
-    "updated": "2026-10-31"
+    "updated": "2026-11-06"
   },
   {
     "id": "arcane-shielding",
@@ -790,6 +817,10 @@
       {
         "es": "Estuvo en la fila 1 hasta el 28 de octubre: ahora pide 5 puntos en Arcano.",
         "en": "It was in row 1 until 28 October: it now needs 5 points in Arcane."
+      },
+      {
+        "es": "Desde el 3 de noviembre, Lanzamiento libre (Clearcasting) no se consume en Misiles Arcanos si Tromba de misiles está activa a la vez. Un error impedía que Misiles Arcanos activara Lanzamiento libre y está corregido.",
+        "en": "Since 3 November, Clearcasting is no longer consumed on Arcane Missiles if Missile Barrage is active at the same time. A bug stopped Arcane Missiles from triggering Clearcasting; it is fixed."
       }
     ],
     "notes": [
@@ -815,6 +846,13 @@
         }
       },
       {
+        "status": "verified",
+        "text": {
+          "es": "Blizzard lo confirma en las notas de desarrollo del lanzamiento (3 nov). Pasa a la fila 2, y ahora se consume al empezar la canalización de Misiles Arcanos (antes, al terminar).",
+          "en": "Blizzard confirms it in the launch development notes (3 Nov). It moves to row 2 and is now consumed at the start of the Arcane Missiles channel (was at the end)."
+        }
+      },
+      {
         "status": "analysis",
         "text": {
           "es": "Al estar en la fila 2, una build de Fuego o Escarcha necesita 5 puntos en Arcano para cogerlo.",
@@ -833,7 +871,7 @@
       "foreverchanges-build-2026-10-28"
     ],
     "previousRow": 4,
-    "updated": "2026-10-30"
+    "updated": "2026-11-06"
   },
   {
     "id": "arcane-mind",
@@ -934,6 +972,13 @@
         }
       },
       {
+        "status": "verified",
+        "text": {
+          "es": "Blizzard lo confirma en las notas de desarrollo del lanzamiento (3 nov). Explosión de Fuego mejorada pasa de la fila 1 a la 3.",
+          "en": "Blizzard confirms it in the launch development notes (3 Nov). Improved Fire Blast moves from row 1 to row 3."
+        }
+      },
+      {
         "status": "analysis",
         "text": {
           "es": "Con 35 m de alcance, Explosión de Fuego sirve para atraer enemigos y rematar a los que huyen desde lejos.",
@@ -948,7 +993,7 @@
       "wowhead-forever-talent-calc",
       "foreverchanges-build-2026-10-28"
     ],
-    "updated": "2026-10-29"
+    "updated": "2026-11-06"
   },
   {
     "id": "incineration",
@@ -982,6 +1027,13 @@
         }
       },
       {
+        "status": "verified",
+        "text": {
+          "es": "Blizzard lo confirma en las notas de desarrollo del lanzamiento (3 nov). Hasta 5 puntos para un 10 % de crítico (antes, 3 puntos para un 6 %).",
+          "en": "Blizzard confirms it in the launch development notes (3 Nov). Up to 5 points for 10% critical chance (was 3 points for 6%)."
+        }
+      },
+      {
         "status": "analysis",
         "text": {
           "es": "Es un talento barato y temprano que potencia hechizos de las otras dos ramas: un claro guiño a las builds mixtas.",
@@ -993,9 +1045,10 @@
     "sources": [
       "blizzard-deep-dive-mage",
       "foreverchanges-build-2026-10-28",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "blizzard-dev-notes"
     ],
-    "updated": "2026-10-29"
+    "updated": "2026-11-06"
   },
   {
     "id": "improved-fireball",
@@ -1018,16 +1071,24 @@
           "es": "Llega con la build de la beta del 28 de octubre (1.60.1.70685). Blizzard no ha publicado notas de esa build: el cambio sale de sus datos.",
           "en": "Arrives with the 28 October beta build (1.60.1.70685). Blizzard has published no notes for that build: the change comes from its data."
         }
+      },
+      {
+        "status": "verified",
+        "text": {
+          "es": "Blizzard lo confirma en las notas de desarrollo del lanzamiento (3 nov). Pasa a llamarse Accelerant y también reduce hasta 0,5 s el lanzamiento de Cólera Arcana.",
+          "en": "Blizzard confirms it in the launch development notes (3 Nov). Renamed Accelerant; it also reduces the cast time of Arcane Wrath by up to 0.5 s."
+        }
       }
     ],
     "status": "verified",
     "sources": [
       "blizzard-deep-dive-mage",
       "foreverchanges-build-2026-10-28",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "blizzard-dev-notes"
     ],
     "formerly": "Improved Fireball",
-    "updated": "2026-10-29"
+    "updated": "2026-11-06"
   },
   {
     "id": "ignite",
@@ -1049,6 +1110,13 @@
     ],
     "notes": [
       {
+        "status": "verified",
+        "text": {
+          "es": "Blizzard corrige en las notas de lanzamiento (3 nov) un error por el que Ignición no se aplicaba al daño de Fogonazo (Flamestrike) pasada la primera tanda.",
+          "en": "Blizzard fixes in the launch notes (3 Nov) a bug where Ignite did not apply to Flamestrike damage past the initial hit."
+        }
+      },
+      {
         "status": "analysis",
         "text": {
           "es": "Varios magos de Fuego en el mismo grupo ya no se estorban entre sí con Ignición.",
@@ -1061,7 +1129,7 @@
       "blizzard-deep-dive-mage",
       "blizzard-dev-notes"
     ],
-    "updated": "2026-10-11"
+    "updated": "2026-11-06"
   },
   {
     "id": "impact",
@@ -1224,6 +1292,13 @@
           "es": "Llega con la build de la beta del 28 de octubre (1.60.1.70685). Blizzard no ha publicado notas de esa build: el cambio sale de sus datos.",
           "en": "Arrives with the 28 October beta build (1.60.1.70685). Blizzard has published no notes for that build: the change comes from its data."
         }
+      },
+      {
+        "status": "verified",
+        "text": {
+          "es": "Blizzard lo confirma en las notas de desarrollo del lanzamiento (3 nov). Vuelve a un máximo de 3 puntos, 6 % de crítico en total (antes, 5 puntos y 10 %).",
+          "en": "Blizzard confirms it in the launch development notes (3 Nov). Back to a maximum of 3 points, 6% critical chance in total (was 5 points and 10%)."
+        }
       }
     ],
     "status": "verified",
@@ -1232,7 +1307,7 @@
       "wowhead-forever-talent-calc",
       "foreverchanges-build-2026-10-28"
     ],
-    "updated": "2026-10-29"
+    "updated": "2026-11-06"
   },
   {
     "id": "blast-wave",
@@ -1325,6 +1400,13 @@
           "es": "Hotfix visto el 20 de octubre, sin mención en las notas de Blizzard: pasa de 5 rangos de +1 % a 3 rangos de +2 % (6 % en total).",
           "en": "Hotfix first seen on 20 October, not in Blizzard's notes: it goes from 5 ranks of +1% to 3 ranks of +2% (6% in total)."
         }
+      },
+      {
+        "status": "verified",
+        "text": {
+          "es": "Blizzard lo confirma en las notas de desarrollo del lanzamiento (3 nov). Se llama Precision y vuelve a ser de 3 puntos: 2/4/6 % de probabilidad de golpe con todos los hechizos.",
+          "en": "Blizzard confirms it in the launch development notes (3 Nov). It is now called Precision and is back to 3 points: 2/4/6% chance to hit with all spells."
+        }
       }
     ],
     "status": "verified",
@@ -1332,9 +1414,10 @@
       "blizzard-deep-dive-mage",
       "foreverchanges-hotfix-2026-10-20",
       "wowhead-forever-talent-calc",
-      "foreverchanges-build-2026-10-28"
+      "foreverchanges-build-2026-10-28",
+      "blizzard-dev-notes"
     ],
-    "updated": "2026-10-29",
+    "updated": "2026-11-06",
     "formerly": "Elemental Precision"
   },
   {
@@ -1407,19 +1490,27 @@
     "details": [],
     "notes": [
       {
+        "status": "verified",
+        "text": {
+          "es": "Blizzard lo confirma en las notas de desarrollo del lanzamiento (3 nov). Aumenta lo que absorben Barrera de hielo y Custodia de Escarcha, y ya no refleja hechizos: tiene una probabilidad de anular por completo su daño sin gastar la Custodia.",
+          "en": "Blizzard confirms it in the launch development notes (3 Nov). It increases the damage Ice Barrier and Frost Ward absorb, and no longer reflects spells: it has a chance to negate their damage entirely without depleting the Frost Ward."
+        }
+      },
+      {
         "status": "reported",
         "text": {
-          "es": "Hotfix visto el 20 de octubre, sin mención en las notas de Blizzard.",
-          "en": "Hotfix first seen on 20 October, not in Blizzard's notes."
+          "es": "Las cifras de 10/20 % salen de los datos del cliente; Blizzard no las da.",
+          "en": "The 10/20% figures come from the client data; Blizzard does not give them."
         }
       }
     ],
-    "status": "reported",
+    "status": "verified",
     "sources": [
       "foreverchanges-hotfix-2026-10-20",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "blizzard-dev-notes"
     ],
-    "updated": "2026-10-21"
+    "updated": "2026-11-06"
   },
   {
     "id": "ice-barrier",
@@ -1454,15 +1545,23 @@
           "es": "Hotfix visto el 20 de octubre, sin mención en las notas de Blizzard.",
           "en": "Hotfix first seen on 20 October, not in Blizzard's notes."
         }
+      },
+      {
+        "status": "verified",
+        "text": {
+          "es": "Blizzard lo confirma en las notas de desarrollo del lanzamiento (3 nov). Aumenta un 15 % tu daño de Escarcha durante 1 min al lanzarla y otro 5 % mientras la barrera aguanta. Los desarrolladores dicen que así el Mago tiene un motivo para bajar hasta el final del árbol en PvE.",
+          "en": "Blizzard confirms it in the launch development notes (3 Nov). It increases your Frost damage by 15% for 1 min when cast and by another 5% while the barrier holds. The developers say this gives the Mage a reason to go all the way down the tree for PvE."
+        }
       }
     ],
-    "status": "reported",
+    "status": "verified",
     "sources": [
       "foreverchanges-hotfix-2026-10-30",
       "foreverchanges-hotfix-2026-10-20",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "blizzard-dev-notes"
     ],
-    "updated": "2026-10-31"
+    "updated": "2026-11-06"
   },
   {
     "id": "arctic-reach",
@@ -1515,19 +1614,20 @@
     ],
     "notes": [
       {
-        "status": "reported",
+        "status": "verified",
         "text": {
-          "es": "Hotfix de la build del 16 de octubre, visto el 20 de octubre. Blizzard no lo menciona en sus notas.",
-          "en": "Hotfix to the 16 October build, first seen on 20 October. Blizzard does not mention it in its notes."
+          "es": "Blizzard lo confirma en las notas de desarrollo del lanzamiento (3 nov). Según los desarrolladores, quitarlo deja más talentos con los que jugar al principio del árbol.",
+          "en": "Blizzard confirms it in the launch development notes (3 Nov). According to the developers, removing it frees a few more talents to play around with early in the tree."
         }
       }
     ],
-    "status": "reported",
+    "status": "verified",
     "sources": [
       "foreverchanges-hotfix-2026-10-20",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "blizzard-dev-notes"
     ],
-    "updated": "2026-10-21"
+    "updated": "2026-11-06"
   },
   {
     "id": "frost-channeling",
@@ -1569,8 +1669,8 @@
     "row": 3,
     "milestone": 11,
     "summary": {
-      "es": "Nuevo talento decisivo de 11 puntos. Instantáneo y de poco daño, pero hace un 300 % más contra objetivos congelados (o tratados como congelados gracias a Dedos de Escarcha). Tiene 8 s de reutilización en todos sus rangos.",
-      "en": "New 11-point milestone talent. Instant cast with low damage, increased by 300% against Frozen targets (or targets treated as Frozen by Fingers of Frost). It has an 8 s cooldown at every rank."
+      "es": "Nuevo talento decisivo de 11 puntos. Instantáneo y de poco daño, pero hace un 300 % más contra objetivos congelados (o tratados como congelados gracias a Dedos de Escarcha). Tiene 8 s de reutilización en todos sus rangos, compartida con Explosión de Fuego.",
+      "en": "New 11-point milestone talent. Instant cast with low damage, increased by 300% against Frozen targets (or targets treated as Frozen by Fingers of Frost). It has an 8 s cooldown at every rank, shared with Fire Blast."
     },
     "details": [
       {
@@ -1580,6 +1680,10 @@
       {
         "es": "Desde el 28 de octubre, el rango 1, el del talento, tiene 8 s de reutilización. Con el hotfix del 30 de octubre, los rangos 2 a 6 también.",
         "en": "Since 28 October, rank 1, the talent's, has an 8 s cooldown. With the 30 October hotfix, ranks 2 to 6 do too."
+      },
+      {
+        "es": "No he podido comprobar si la reutilización compartida afecta también al tiempo de reutilización de Explosión de Fuego fuera de Lanza de hielo.",
+        "en": "I have not been able to check whether the shared cooldown also affects Fire Blast outside of Ice Lance."
       }
     ],
     "notes": [
@@ -1595,6 +1699,13 @@
         "text": {
           "es": "Llega con la build de la beta del 28 de octubre (1.60.1.70685). Blizzard no ha publicado notas de esa build: el cambio sale de sus datos.",
           "en": "Arrives with the 28 October beta build (1.60.1.70685). Blizzard has published no notes for that build: the change comes from its data."
+        }
+      },
+      {
+        "status": "verified",
+        "text": {
+          "es": "Blizzard lo confirma en las notas de desarrollo del lanzamiento (3 nov). Su reutilización de 8 s se comparte con Explosión de Fuego, y la bonificación contra objetivos congelados vuelve al 300 %.",
+          "en": "Blizzard confirms it in the launch development notes (3 Nov). Its 8 s cooldown is shared with Fire Blast, and the bonus against Frozen targets goes back to 300%."
         }
       },
       {
@@ -1614,7 +1725,7 @@
       "foreverchanges-build-2026-10-28",
       "wowhead-forever-talent-calc"
     ],
-    "updated": "2026-10-31"
+    "updated": "2026-11-06"
   },
   {
     "id": "improved-blizzard",
@@ -1778,6 +1889,10 @@
       {
         "es": "Sigue beneficiando solo al Mago que lo aplica.",
         "en": "It still only benefits the Mage who applies it."
+      },
+      {
+        "es": "Las notas de lanzamiento (3 nov) confirman el 20 % por carga, así que queda resuelta la discrepancia entre el 40 % y el 5 % de las notas anteriores.",
+        "en": "The launch notes (3 Nov) confirm 20% per stack, which settles the earlier 40% vs 5% discrepancy."
       }
     ],
     "notes": [
@@ -1786,6 +1901,13 @@
         "text": {
           "es": "Hotfix visto el 30 de octubre en la build 1.60.1.70707. Blizzard no ha publicado notas: el cambio sale de sus datos.",
           "en": "Hotfix first seen on 30 October on build 1.60.1.70707. Blizzard has published no notes: the change comes from its data."
+        }
+      },
+      {
+        "status": "verified",
+        "text": {
+          "es": "Blizzard lo confirma en las notas de desarrollo del lanzamiento (3 nov). La bonificación al daño de Cono de frío sube al 20 % por carga.",
+          "en": "Blizzard confirms it in the launch development notes (3 Nov). The bonus to Cone of Cold damage rises to 20% per stack."
         }
       },
       {
@@ -1804,6 +1926,6 @@
       "wowhead-forever-talent-calc",
       "foreverchanges-hotfix-2026-10-20"
     ],
-    "updated": "2026-10-31"
+    "updated": "2026-11-06"
   }
 ]
