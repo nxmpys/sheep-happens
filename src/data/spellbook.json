@@ -1,0 +1,1610 @@
+[
+  {
+    "id": "arcane-intellect",
+    "name": {
+      "en": "Arcane Intellect",
+      "es": "Intelecto Arcano"
+    },
+    "icon": "spell_holy_magicalsentry",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 1,
+        "spell": 1459
+      },
+      {
+        "rank": 2,
+        "level": 14,
+        "spell": 1460
+      },
+      {
+        "rank": 3,
+        "level": 28,
+        "spell": 1461
+      },
+      {
+        "rank": 4,
+        "level": 42,
+        "spell": 10156
+      },
+      {
+        "rank": 5,
+        "level": 56,
+        "spell": 10157
+      }
+    ]
+  },
+  {
+    "id": "fireball",
+    "name": {
+      "en": "Fireball",
+      "es": "Bola de Fuego"
+    },
+    "icon": "spell_fire_flamebolt",
+    "school": "fire",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 1,
+        "spell": 133
+      },
+      {
+        "rank": 2,
+        "level": 6,
+        "spell": 143
+      },
+      {
+        "rank": 3,
+        "level": 12,
+        "spell": 145
+      },
+      {
+        "rank": 4,
+        "level": 18,
+        "spell": 3140
+      },
+      {
+        "rank": 5,
+        "level": 24,
+        "spell": 8400
+      },
+      {
+        "rank": 6,
+        "level": 30,
+        "spell": 8401
+      },
+      {
+        "rank": 7,
+        "level": 36,
+        "spell": 8402
+      },
+      {
+        "rank": 8,
+        "level": 42,
+        "spell": 10148
+      },
+      {
+        "rank": 9,
+        "level": 48,
+        "spell": 10149
+      },
+      {
+        "rank": 10,
+        "level": 54,
+        "spell": 10150
+      },
+      {
+        "rank": 11,
+        "level": 60,
+        "spell": 10151
+      }
+    ],
+    "other": [
+      {
+        "rank": 12,
+        "level": 60,
+        "spell": 25306,
+        "how": "drop"
+      }
+    ]
+  },
+  {
+    "id": "frost-armor",
+    "name": {
+      "en": "Frost Armor",
+      "es": "Armadura de Escarcha"
+    },
+    "icon": "spell_frost_frostarmor02",
+    "school": "frost",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 1,
+        "spell": 168
+      },
+      {
+        "rank": 2,
+        "level": 10,
+        "spell": 7300
+      },
+      {
+        "rank": 3,
+        "level": 20,
+        "spell": 7301
+      }
+    ]
+  },
+  {
+    "id": "conjure-water",
+    "name": {
+      "en": "Conjure Water",
+      "es": "Conjurar agua"
+    },
+    "icon": "inv_drink_18",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 4,
+        "spell": 5504
+      },
+      {
+        "rank": 2,
+        "level": 10,
+        "spell": 5505
+      },
+      {
+        "rank": 3,
+        "level": 20,
+        "spell": 5506
+      },
+      {
+        "rank": 4,
+        "level": 30,
+        "spell": 6127
+      },
+      {
+        "rank": 5,
+        "level": 40,
+        "spell": 10138
+      },
+      {
+        "rank": 6,
+        "level": 50,
+        "spell": 10139
+      }
+    ],
+    "other": [
+      {
+        "rank": 7,
+        "level": 60,
+        "spell": 10140,
+        "how": "quest"
+      }
+    ]
+  },
+  {
+    "id": "frostbolt",
+    "name": {
+      "en": "Frostbolt",
+      "es": "Descarga de Escarcha"
+    },
+    "icon": "spell_frost_frostbolt02",
+    "school": "frost",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 4,
+        "spell": 116
+      },
+      {
+        "rank": 2,
+        "level": 8,
+        "spell": 205
+      },
+      {
+        "rank": 3,
+        "level": 14,
+        "spell": 837
+      },
+      {
+        "rank": 4,
+        "level": 20,
+        "spell": 7322
+      },
+      {
+        "rank": 5,
+        "level": 26,
+        "spell": 8406
+      },
+      {
+        "rank": 6,
+        "level": 32,
+        "spell": 8407
+      },
+      {
+        "rank": 7,
+        "level": 38,
+        "spell": 8408
+      },
+      {
+        "rank": 8,
+        "level": 44,
+        "spell": 10179
+      },
+      {
+        "rank": 9,
+        "level": 50,
+        "spell": 10180
+      },
+      {
+        "rank": 10,
+        "level": 56,
+        "spell": 10181
+      }
+    ],
+    "other": [
+      {
+        "rank": 11,
+        "level": 60,
+        "spell": 25304,
+        "how": "drop"
+      }
+    ]
+  },
+  {
+    "id": "comprehend-scroll",
+    "name": {
+      "en": "Comprehend Scroll",
+      "es": "Entender pergamino"
+    },
+    "icon": "8188276",
+    "school": "arcane",
+    "new": true,
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 6,
+        "spell": 1296017
+      }
+    ]
+  },
+  {
+    "id": "conjure-food",
+    "name": {
+      "en": "Conjure Food",
+      "es": "Conjurar comida"
+    },
+    "icon": "inv_misc_food_73cinnamonroll",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 6,
+        "spell": 587
+      },
+      {
+        "rank": 2,
+        "level": 12,
+        "spell": 597
+      },
+      {
+        "rank": 3,
+        "level": 22,
+        "spell": 990
+      },
+      {
+        "rank": 4,
+        "level": 32,
+        "spell": 6129
+      },
+      {
+        "rank": 5,
+        "level": 42,
+        "spell": 10144
+      },
+      {
+        "rank": 6,
+        "level": 52,
+        "spell": 10145
+      }
+    ],
+    "other": [
+      {
+        "rank": 7,
+        "level": 60,
+        "spell": 28612,
+        "how": "drop"
+      }
+    ]
+  },
+  {
+    "id": "fire-blast",
+    "name": {
+      "en": "Fire Blast",
+      "es": "Explosión de Fuego"
+    },
+    "icon": "spell_fire_fireball",
+    "school": "fire",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 6,
+        "spell": 2136
+      },
+      {
+        "rank": 2,
+        "level": 14,
+        "spell": 2137
+      },
+      {
+        "rank": 3,
+        "level": 22,
+        "spell": 2138
+      },
+      {
+        "rank": 4,
+        "level": 30,
+        "spell": 8412
+      },
+      {
+        "rank": 5,
+        "level": 38,
+        "spell": 8413
+      },
+      {
+        "rank": 6,
+        "level": 46,
+        "spell": 10197
+      },
+      {
+        "rank": 7,
+        "level": 54,
+        "spell": 10199
+      }
+    ]
+  },
+  {
+    "id": "study",
+    "name": {
+      "en": "Study",
+      "es": "Estudiar"
+    },
+    "icon": "trade_archaeology_silverscrollcase",
+    "school": "arcane",
+    "new": true,
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 6,
+        "spell": 1302508
+      }
+    ]
+  },
+  {
+    "id": "arcane-missiles",
+    "name": {
+      "en": "Arcane Missiles",
+      "es": "Misiles Arcanos"
+    },
+    "icon": "spell_nature_starfall",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 8,
+        "spell": 5143
+      },
+      {
+        "rank": 2,
+        "level": 16,
+        "spell": 5144
+      },
+      {
+        "rank": 3,
+        "level": 24,
+        "spell": 5145
+      },
+      {
+        "rank": 4,
+        "level": 32,
+        "spell": 8416
+      },
+      {
+        "rank": 5,
+        "level": 40,
+        "spell": 8417
+      },
+      {
+        "rank": 6,
+        "level": 48,
+        "spell": 10211
+      },
+      {
+        "rank": 7,
+        "level": 56,
+        "spell": 10212
+      }
+    ],
+    "other": [
+      {
+        "rank": 8,
+        "level": 56,
+        "spell": 25345,
+        "how": "drop"
+      }
+    ]
+  },
+  {
+    "id": "polymorph",
+    "name": {
+      "en": "Polymorph",
+      "es": "Polimorfia"
+    },
+    "icon": "spell_nature_polymorph",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 8,
+        "spell": 118
+      },
+      {
+        "rank": 2,
+        "level": 20,
+        "spell": 12824
+      },
+      {
+        "rank": 3,
+        "level": 40,
+        "spell": 12825
+      },
+      {
+        "rank": 4,
+        "level": 60,
+        "spell": 12826
+      }
+    ],
+    "other": [
+      {
+        "rank": 0,
+        "level": 60,
+        "spell": 28272,
+        "variant": "Pig",
+        "how": "quest"
+      },
+      {
+        "rank": 0,
+        "level": 60,
+        "spell": 28271,
+        "variant": "Turtle",
+        "how": "drop"
+      }
+    ]
+  },
+  {
+    "id": "frost-nova",
+    "name": {
+      "en": "Frost Nova",
+      "es": "Nova de Escarcha"
+    },
+    "icon": "spell_frost_frostnova",
+    "school": "frost",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 10,
+        "spell": 122
+      },
+      {
+        "rank": 2,
+        "level": 26,
+        "spell": 865
+      },
+      {
+        "rank": 3,
+        "level": 40,
+        "spell": 6131
+      },
+      {
+        "rank": 4,
+        "level": 54,
+        "spell": 10230
+      }
+    ]
+  },
+  {
+    "id": "dampen-magic",
+    "name": {
+      "en": "Dampen Magic",
+      "es": "Empapar magia"
+    },
+    "icon": "spell_nature_abolishmagic",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 12,
+        "spell": 604
+      },
+      {
+        "rank": 2,
+        "level": 24,
+        "spell": 8450
+      },
+      {
+        "rank": 3,
+        "level": 36,
+        "spell": 8451
+      },
+      {
+        "rank": 4,
+        "level": 48,
+        "spell": 10173
+      },
+      {
+        "rank": 5,
+        "level": 60,
+        "spell": 10174
+      }
+    ]
+  },
+  {
+    "id": "slow-fall",
+    "name": {
+      "en": "Slow Fall",
+      "es": "Caída lenta"
+    },
+    "icon": "spell_magic_featherfall",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 12,
+        "spell": 130
+      }
+    ]
+  },
+  {
+    "id": "arcane-explosion",
+    "name": {
+      "en": "Arcane Explosion",
+      "es": "Deflagración Arcana"
+    },
+    "icon": "spell_nature_wispsplode",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 14,
+        "spell": 1449
+      },
+      {
+        "rank": 2,
+        "level": 22,
+        "spell": 8437
+      },
+      {
+        "rank": 3,
+        "level": 30,
+        "spell": 8438
+      },
+      {
+        "rank": 4,
+        "level": 38,
+        "spell": 8439
+      },
+      {
+        "rank": 5,
+        "level": 46,
+        "spell": 10201
+      },
+      {
+        "rank": 6,
+        "level": 54,
+        "spell": 10202
+      }
+    ]
+  },
+  {
+    "id": "flamestrike",
+    "name": {
+      "en": "Flamestrike",
+      "es": "Fogonazo"
+    },
+    "icon": "spell_fire_selfdestruct",
+    "school": "fire",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 16,
+        "spell": 2120
+      },
+      {
+        "rank": 2,
+        "level": 24,
+        "spell": 2121
+      },
+      {
+        "rank": 3,
+        "level": 32,
+        "spell": 8422
+      },
+      {
+        "rank": 4,
+        "level": 40,
+        "spell": 8423
+      },
+      {
+        "rank": 5,
+        "level": 48,
+        "spell": 10215
+      },
+      {
+        "rank": 6,
+        "level": 56,
+        "spell": 10216
+      }
+    ]
+  },
+  {
+    "id": "amplify-magic",
+    "name": {
+      "en": "Amplify Magic",
+      "es": "Amplificar magia"
+    },
+    "icon": "spell_holy_flashheal",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 18,
+        "spell": 1008
+      },
+      {
+        "rank": 2,
+        "level": 30,
+        "spell": 8455
+      },
+      {
+        "rank": 3,
+        "level": 42,
+        "spell": 10169
+      },
+      {
+        "rank": 4,
+        "level": 54,
+        "spell": 10170
+      }
+    ]
+  },
+  {
+    "id": "remove-lesser-curse",
+    "name": {
+      "en": "Remove Lesser Curse",
+      "es": "Deshacer maldición inferior"
+    },
+    "icon": "spell_nature_removecurse",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 18,
+        "spell": 475
+      }
+    ]
+  },
+  {
+    "id": "arcane-blast",
+    "name": {
+      "en": "Arcane Blast",
+      "es": "Explosión Arcana"
+    },
+    "icon": "spell_arcane_blast",
+    "school": "arcane",
+    "talent": true,
+    "new": true,
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 20,
+        "spell": 400574
+      },
+      {
+        "rank": 2,
+        "level": 30,
+        "spell": 1239696
+      },
+      {
+        "rank": 3,
+        "level": 40,
+        "spell": 1239697
+      },
+      {
+        "rank": 4,
+        "level": 50,
+        "spell": 1239699
+      },
+      {
+        "rank": 5,
+        "level": 60,
+        "spell": 1239700
+      }
+    ]
+  },
+  {
+    "id": "blink",
+    "name": {
+      "en": "Blink",
+      "es": "Traslación"
+    },
+    "icon": "spell_arcane_blink",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 20,
+        "spell": 1953
+      }
+    ]
+  },
+  {
+    "id": "blizzard",
+    "name": {
+      "en": "Blizzard",
+      "es": "Ventisca"
+    },
+    "icon": "spell_frost_icestorm",
+    "school": "frost",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 20,
+        "spell": 10
+      },
+      {
+        "rank": 2,
+        "level": 28,
+        "spell": 6141
+      },
+      {
+        "rank": 3,
+        "level": 36,
+        "spell": 8427
+      },
+      {
+        "rank": 4,
+        "level": 44,
+        "spell": 10185
+      },
+      {
+        "rank": 5,
+        "level": 52,
+        "spell": 10186
+      },
+      {
+        "rank": 6,
+        "level": 60,
+        "spell": 10187
+      }
+    ]
+  },
+  {
+    "id": "evocation",
+    "name": {
+      "en": "Evocation",
+      "es": "Evocación"
+    },
+    "icon": "spell_nature_purge",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 20,
+        "spell": 12051
+      }
+    ]
+  },
+  {
+    "id": "fire-ward",
+    "name": {
+      "en": "Fire Ward",
+      "es": "Custodia de Fuego"
+    },
+    "icon": "spell_fire_firearmor",
+    "school": "fire",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 20,
+        "spell": 543
+      },
+      {
+        "rank": 2,
+        "level": 30,
+        "spell": 8457
+      },
+      {
+        "rank": 3,
+        "level": 40,
+        "spell": 8458
+      },
+      {
+        "rank": 4,
+        "level": 50,
+        "spell": 10223
+      },
+      {
+        "rank": 5,
+        "level": 60,
+        "spell": 10225
+      }
+    ]
+  },
+  {
+    "id": "ice-lance",
+    "name": {
+      "en": "Ice Lance",
+      "es": "Lanza de hielo"
+    },
+    "icon": "spell_frost_frostblast",
+    "school": "frost",
+    "talent": true,
+    "new": true,
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 20,
+        "spell": 1312002
+      },
+      {
+        "rank": 2,
+        "level": 28,
+        "spell": 400640
+      },
+      {
+        "rank": 3,
+        "level": 34,
+        "spell": 1240044
+      },
+      {
+        "rank": 4,
+        "level": 42,
+        "spell": 1240045
+      },
+      {
+        "rank": 5,
+        "level": 48,
+        "spell": 1240046
+      },
+      {
+        "rank": 6,
+        "level": 56,
+        "spell": 1240047
+      }
+    ]
+  },
+  {
+    "id": "mana-shield",
+    "name": {
+      "en": "Mana Shield",
+      "es": "Escudo de maná"
+    },
+    "icon": "spell_shadow_detectlesserinvisibility",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 20,
+        "spell": 1463
+      },
+      {
+        "rank": 2,
+        "level": 28,
+        "spell": 8494
+      },
+      {
+        "rank": 3,
+        "level": 36,
+        "spell": 8495
+      },
+      {
+        "rank": 4,
+        "level": 44,
+        "spell": 10191
+      },
+      {
+        "rank": 5,
+        "level": 52,
+        "spell": 10192
+      },
+      {
+        "rank": 6,
+        "level": 60,
+        "spell": 10193
+      }
+    ]
+  },
+  {
+    "id": "pyroblast",
+    "name": {
+      "en": "Pyroblast",
+      "es": "Piroexplosión"
+    },
+    "icon": "spell_fire_fireball02",
+    "school": "fire",
+    "talent": true,
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 20,
+        "spell": 11366
+      },
+      {
+        "rank": 2,
+        "level": 24,
+        "spell": 12505
+      },
+      {
+        "rank": 3,
+        "level": 30,
+        "spell": 12522
+      },
+      {
+        "rank": 4,
+        "level": 36,
+        "spell": 12523
+      },
+      {
+        "rank": 5,
+        "level": 42,
+        "spell": 12524
+      },
+      {
+        "rank": 6,
+        "level": 48,
+        "spell": 12525
+      },
+      {
+        "rank": 7,
+        "level": 54,
+        "spell": 12526
+      },
+      {
+        "rank": 8,
+        "level": 60,
+        "spell": 18809
+      }
+    ]
+  },
+  {
+    "id": "teleport-ironforge",
+    "name": {
+      "en": "Teleport: Ironforge",
+      "es": "Teletransporte a: Forjaz"
+    },
+    "icon": "spell_arcane_teleportironforge",
+    "school": "arcane",
+    "faction": "alliance",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 20,
+        "spell": 3562
+      }
+    ]
+  },
+  {
+    "id": "teleport-orgrimmar",
+    "name": {
+      "en": "Teleport: Orgrimmar",
+      "es": "Teletransporte a: Orgrimmar"
+    },
+    "icon": "spell_arcane_teleportorgrimmar",
+    "school": "arcane",
+    "faction": "horde",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 20,
+        "spell": 3567
+      }
+    ]
+  },
+  {
+    "id": "teleport-stormwind",
+    "name": {
+      "en": "Teleport: Stormwind",
+      "es": "Teletransporte a: Ventormenta"
+    },
+    "icon": "spell_arcane_teleportstormwind",
+    "school": "arcane",
+    "faction": "alliance",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 20,
+        "spell": 3561
+      }
+    ]
+  },
+  {
+    "id": "teleport-undercity",
+    "name": {
+      "en": "Teleport: Undercity",
+      "es": "Teletransporte a: Entrañas"
+    },
+    "icon": "spell_arcane_teleportundercity",
+    "school": "arcane",
+    "faction": "horde",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 20,
+        "spell": 3563
+      }
+    ]
+  },
+  {
+    "id": "frost-ward",
+    "name": {
+      "en": "Frost Ward",
+      "es": "Custodia de Escarcha"
+    },
+    "icon": "spell_frost_frostward",
+    "school": "frost",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 22,
+        "spell": 6143
+      },
+      {
+        "rank": 2,
+        "level": 32,
+        "spell": 8461
+      },
+      {
+        "rank": 3,
+        "level": 42,
+        "spell": 8462
+      },
+      {
+        "rank": 4,
+        "level": 52,
+        "spell": 10177
+      }
+    ],
+    "other": [
+      {
+        "rank": 5,
+        "level": 60,
+        "spell": 28609,
+        "how": "drop"
+      }
+    ]
+  },
+  {
+    "id": "scorch",
+    "name": {
+      "en": "Scorch",
+      "es": "Chamuscar"
+    },
+    "icon": "spell_fire_soulburn",
+    "school": "fire",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 22,
+        "spell": 2948
+      },
+      {
+        "rank": 2,
+        "level": 28,
+        "spell": 8444
+      },
+      {
+        "rank": 3,
+        "level": 34,
+        "spell": 8445
+      },
+      {
+        "rank": 4,
+        "level": 40,
+        "spell": 8446
+      },
+      {
+        "rank": 5,
+        "level": 46,
+        "spell": 10205
+      },
+      {
+        "rank": 6,
+        "level": 52,
+        "spell": 10206
+      },
+      {
+        "rank": 7,
+        "level": 58,
+        "spell": 10207
+      }
+    ]
+  },
+  {
+    "id": "counterspell",
+    "name": {
+      "en": "Counterspell",
+      "es": "Contrahechizo"
+    },
+    "icon": "spell_frost_iceshock",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 24,
+        "spell": 2139
+      }
+    ]
+  },
+  {
+    "id": "arcane-wrath",
+    "name": {
+      "en": "Arcane Wrath",
+      "es": "Cólera Arcana"
+    },
+    "icon": "ability_mage_netherwindpresence",
+    "school": "arcane",
+    "talent": true,
+    "new": true,
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 25,
+        "spell": 1326079
+      },
+      {
+        "rank": 2,
+        "level": 36,
+        "spell": 1326080
+      },
+      {
+        "rank": 3,
+        "level": 48,
+        "spell": 1326081
+      },
+      {
+        "rank": 4,
+        "level": 60,
+        "spell": 1326082
+      }
+    ]
+  },
+  {
+    "id": "cone-of-cold",
+    "name": {
+      "en": "Cone of Cold",
+      "es": "Cono de frío"
+    },
+    "icon": "spell_frost_glacier",
+    "school": "frost",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 26,
+        "spell": 120
+      },
+      {
+        "rank": 2,
+        "level": 34,
+        "spell": 8492
+      },
+      {
+        "rank": 3,
+        "level": 42,
+        "spell": 10159
+      },
+      {
+        "rank": 4,
+        "level": 50,
+        "spell": 10160
+      },
+      {
+        "rank": 5,
+        "level": 58,
+        "spell": 10161
+      }
+    ]
+  },
+  {
+    "id": "conjure-mana-agate",
+    "name": {
+      "en": "Conjure Mana Agate",
+      "es": "Conjurar ágata de maná"
+    },
+    "icon": "inv_misc_gem_emerald_01",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 28,
+        "spell": 759
+      }
+    ]
+  },
+  {
+    "id": "blast-wave",
+    "name": {
+      "en": "Blast Wave",
+      "es": "Ola explosiva"
+    },
+    "icon": "spell_holy_excorcism_02",
+    "school": "fire",
+    "talent": true,
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 30,
+        "spell": 11113
+      },
+      {
+        "rank": 2,
+        "level": 36,
+        "spell": 13018
+      },
+      {
+        "rank": 3,
+        "level": 44,
+        "spell": 13019
+      },
+      {
+        "rank": 4,
+        "level": 52,
+        "spell": 13020
+      },
+      {
+        "rank": 5,
+        "level": 60,
+        "spell": 13021
+      }
+    ]
+  },
+  {
+    "id": "ice-armor",
+    "name": {
+      "en": "Ice Armor",
+      "es": "Armadura de hielo"
+    },
+    "icon": "spell_frost_frostarmor02",
+    "school": "frost",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 30,
+        "spell": 7302
+      },
+      {
+        "rank": 2,
+        "level": 40,
+        "spell": 7320
+      },
+      {
+        "rank": 3,
+        "level": 50,
+        "spell": 10219
+      },
+      {
+        "rank": 4,
+        "level": 60,
+        "spell": 10220
+      }
+    ]
+  },
+  {
+    "id": "teleport-darnassus",
+    "name": {
+      "en": "Teleport: Darnassus",
+      "es": "Teletransporte a Darnassus"
+    },
+    "icon": "spell_arcane_teleportdarnassus",
+    "school": "arcane",
+    "faction": "alliance",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 30,
+        "spell": 3565
+      }
+    ]
+  },
+  {
+    "id": "teleport-thunder-bluff",
+    "name": {
+      "en": "Teleport: Thunder Bluff",
+      "es": "Teletransporte a: Cima del Trueno"
+    },
+    "icon": "spell_arcane_teleportthunderbluff",
+    "school": "arcane",
+    "faction": "horde",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 30,
+        "spell": 3566
+      }
+    ]
+  },
+  {
+    "id": "mage-armor",
+    "name": {
+      "en": "Mage Armor",
+      "es": "Armadura de mago"
+    },
+    "icon": "spell_magearmor",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 34,
+        "spell": 6117
+      },
+      {
+        "rank": 2,
+        "level": 46,
+        "spell": 22782
+      },
+      {
+        "rank": 3,
+        "level": 58,
+        "spell": 22783
+      }
+    ]
+  },
+  {
+    "id": "conjure-mana-jade",
+    "name": {
+      "en": "Conjure Mana Jade",
+      "es": "Conjurar jade de maná"
+    },
+    "icon": "inv_misc_gem_emerald_02",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 38,
+        "spell": 3552
+      }
+    ]
+  },
+  {
+    "id": "frostfire-bolt",
+    "name": {
+      "en": "Frostfire Bolt",
+      "es": "Descarga de Pirofrío"
+    },
+    "icon": "ability_mage_frostfirebolt",
+    "school": "fire",
+    "new": true,
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 40,
+        "spell": 401502
+      },
+      {
+        "rank": 2,
+        "level": 50,
+        "spell": 1237312
+      },
+      {
+        "rank": 3,
+        "level": 60,
+        "spell": 1237313
+      }
+    ]
+  },
+  {
+    "id": "ice-barrier",
+    "name": {
+      "en": "Ice Barrier",
+      "es": "Barrera de hielo"
+    },
+    "icon": "spell_ice_lament",
+    "school": "frost",
+    "talent": true,
+    "ranks": [
+      {
+        "rank": 1,
+        "level": 40,
+        "spell": 11426
+      },
+      {
+        "rank": 2,
+        "level": 46,
+        "spell": 13031
+      },
+      {
+        "rank": 3,
+        "level": 52,
+        "spell": 13032
+      },
+      {
+        "rank": 4,
+        "level": 58,
+        "spell": 13033
+      }
+    ]
+  },
+  {
+    "id": "portal-ironforge",
+    "name": {
+      "en": "Portal: Ironforge",
+      "es": "Portal: Forjaz"
+    },
+    "icon": "spell_arcane_portalironforge",
+    "school": "arcane",
+    "faction": "alliance",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 40,
+        "spell": 11416
+      }
+    ]
+  },
+  {
+    "id": "portal-orgrimmar",
+    "name": {
+      "en": "Portal: Orgrimmar",
+      "es": "Portal: Orgrimmar"
+    },
+    "icon": "spell_arcane_portalorgrimmar",
+    "school": "arcane",
+    "faction": "horde",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 40,
+        "spell": 11417
+      }
+    ]
+  },
+  {
+    "id": "portal-stormwind",
+    "name": {
+      "en": "Portal: Stormwind",
+      "es": "Portal: Ventormenta"
+    },
+    "icon": "spell_arcane_portalstormwind",
+    "school": "arcane",
+    "faction": "alliance",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 40,
+        "spell": 10059
+      }
+    ]
+  },
+  {
+    "id": "portal-undercity",
+    "name": {
+      "en": "Portal: Undercity",
+      "es": "Portal: Entrañas"
+    },
+    "icon": "spell_arcane_portalundercity",
+    "school": "arcane",
+    "faction": "horde",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 40,
+        "spell": 11418
+      }
+    ]
+  },
+  {
+    "id": "conjure-mana-citrine",
+    "name": {
+      "en": "Conjure Mana Citrine",
+      "es": "Conjurar citrino de maná"
+    },
+    "icon": "inv_misc_gem_opal_01",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 48,
+        "spell": 10053
+      }
+    ]
+  },
+  {
+    "id": "portal-darnassus",
+    "name": {
+      "en": "Portal: Darnassus",
+      "es": "Portal: Darnassus"
+    },
+    "icon": "spell_arcane_portaldarnassus",
+    "school": "arcane",
+    "faction": "alliance",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 50,
+        "spell": 11419
+      }
+    ]
+  },
+  {
+    "id": "portal-thunder-bluff",
+    "name": {
+      "en": "Portal: Thunder Bluff",
+      "es": "Portal: Cima del Trueno"
+    },
+    "icon": "spell_arcane_portalthunderbluff",
+    "school": "arcane",
+    "faction": "horde",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 50,
+        "spell": 11420
+      }
+    ]
+  },
+  {
+    "id": "teleport-dalaran",
+    "name": {
+      "en": "Teleport: Dalaran",
+      "es": "Teletransporte a: Dalaran"
+    },
+    "icon": "spell_arcane_teleporthalloftheguardian",
+    "school": "arcane",
+    "faction": "alliance",
+    "new": true,
+    "ranks": [],
+    "other": [
+      {
+        "rank": 0,
+        "level": 50,
+        "spell": 1297659,
+        "how": "unknown"
+      }
+    ]
+  },
+  {
+    "id": "arcane-brilliance",
+    "name": {
+      "en": "Arcane Brilliance",
+      "es": "Resplandor Arcano"
+    },
+    "icon": "spell_holy_arcaneintellect",
+    "school": "arcane",
+    "ranks": [],
+    "other": [
+      {
+        "rank": 0,
+        "level": 56,
+        "spell": 23028,
+        "how": "drop"
+      }
+    ]
+  },
+  {
+    "id": "conjure-mana-ruby",
+    "name": {
+      "en": "Conjure Mana Ruby",
+      "es": "Conjurar rubí de maná"
+    },
+    "icon": "inv_misc_gem_ruby_01",
+    "school": "arcane",
+    "ranks": [
+      {
+        "rank": 0,
+        "level": 58,
+        "spell": 10054
+      }
+    ]
+  }
+]

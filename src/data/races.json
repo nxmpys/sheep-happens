@@ -275,8 +275,8 @@
         "spell": 1299026,
         "kind": "active",
         "effect": {
-          "es": "Disipa las maldiciones y los efectos de perdición (Banes) y reduce un 5 % el daño mágico recibido. 3 min de reutilización. Ya no da inmunidad a las maldiciones.",
-          "en": "Dispels Curses and Banes and reduces magic damage taken by 5%. 3 min cooldown. No longer grants immunity to curses."
+          "es": "Disipa las maldiciones y los efectos de perdición (Banes) y reduce un 5 % el daño mágico recibido. 3 min de reutilización.",
+          "en": "Dispels Curses and Banes and reduces magic damage taken by 5%. 3 min cooldown."
         },
         "value": "low",
         "why": {
@@ -304,8 +304,8 @@
         "name": "Command",
         "kind": "passive",
         "effect": {
-          "es": "Daño de las mascotas de brujos y cazadores aumentado un 5 %. Sustituye a Savage (Salvajismo), que daba un 1 % de crítico.",
-          "en": "Warlock and Hunter pet damage increased by 5%. Replaces Savage, which gave 1% crit."
+          "es": "Daño de las mascotas de brujos y cazadores aumentado un 5 %.",
+          "en": "Warlock and Hunter pet damage increased by 5%."
         },
         "value": "none",
         "why": {
@@ -323,7 +323,7 @@
       "wowhead-forever-database",
       "foreverchanges-build-2026-10-28"
     ],
-    "updated": "2026-10-30"
+    "updated": "2026-11-06"
   },
   {
     "id": "undead",
@@ -370,8 +370,8 @@
         "spell": 1260201,
         "kind": "passive",
         "effect": {
-          "es": "Toque de la tumba: tus hechizos tienen un 30 % de probabilidad de drenar salud del objetivo, hasta un 5 % de tu salud máxima, con 25 s de reutilización interna. Ya no escala con las bonificaciones de Sombra ni pierde fuerza con rangos bajos.",
-          "en": "Your spells have a 30% chance to drain health from the target, up to 5% of your maximum health, with a 25 sec internal cooldown. It no longer scales with Shadow bonuses or weakens with low-rank spells."
+          "es": "Toque de la tumba: tus hechizos tienen un 30 % de probabilidad de drenar salud del objetivo, hasta un 5 % de tu salud máxima, con 25 s de reutilización interna.",
+          "en": "Your spells have a 30% chance to drain health from the target, up to 5% of your maximum health, with a 25 sec internal cooldown."
         },
         "value": "medium",
         "why": {
@@ -401,7 +401,7 @@
       "wowhead-forever-talent-calc",
       "blizzard-dev-notes"
     ],
-    "updated": "2026-10-16"
+    "updated": "2026-11-06"
   },
   {
     "id": "troll",

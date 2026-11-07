@@ -65,7 +65,7 @@ pageId: ${pageId}
 locale: ${locale}
 title: A valid page title
 description: A description that is long enough to satisfy the schema rules for meta descriptions.
-gameVersion: forever-beta-2026-10
+gameVersion: forever-launch-2026-11
 published: 2026-10-11
 reviewed: 2026-10-11
 reviewedBy: Test

@@ -108,14 +108,14 @@
     "name": "Combustion",
     "status": "classic",
     "note": {
-      "es": "En Classic, fila 7. Las notas de la beta confirman que sigue teniendo 3 cargas, como en Classic.",
-      "en": "Tier 7 in Classic. The beta notes confirm it still has 3 charges, as in Classic."
+      "es": "En Classic, fila 7. Las notas de Blizzard confirman que sigue teniendo 3 cargas, como en Classic.",
+      "en": "Tier 7 in Classic. Blizzard’s notes confirm it still has 3 charges, as in Classic."
     },
     "sources": [
       "wiki-combustion",
       "blizzard-dev-notes"
     ],
-    "updated": "2026-10-11"
+    "updated": "2026-11-06"
   },
   {
     "id": "frost-11",

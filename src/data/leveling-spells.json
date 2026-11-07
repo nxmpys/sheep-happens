@@ -10,5 +10,11 @@
   { "level": 24, "spells": ["Counterspell"], "ranks": [], "use": { "es": "Cortar a los lanzadores", "en": "Stop casters" } },
   { "level": 26, "spells": ["Cone of Cold"], "ranks": [{ "spell": "Frostbolt", "rank": 5 }], "use": { "es": "Área y ralentización frente a ti", "en": "AoE and a slow in front of you" } },
   { "level": 28, "spells": ["Conjure Mana Agate"], "ranks": [{ "spell": "Blizzard", "rank": 2 }], "use": { "es": "Maná en combate; más daño en área", "en": "Mana in combat; more AoE damage" } },
-  { "level": 30, "spells": ["Ice Armor"], "ranks": [], "use": { "es": "Armadura mejorada", "en": "Better armor" } }
+  { "level": 30, "spells": ["Ice Armor"], "ranks": [], "use": { "es": "Armadura mejorada", "en": "Better armor" } },
+  { "level": 34, "spells": ["Mage Armor"], "ranks": [], "use": { "es": "Regenera maná en vez de ralentizar: para mazmorras", "en": "Regenerates mana instead of slowing: for dungeons" } },
+  { "level": 38, "spells": ["Conjure Mana Jade"], "ranks": [], "use": { "es": "Una gema de maná más fuerte", "en": "A stronger mana gem" } },
+  { "level": 40, "spells": ["Frostfire Bolt"], "ranks": [], "use": { "es": "Fuego y Escarcha a la vez; base de las builds híbridas", "en": "Fire and Frost at once; the core of hybrid builds" } },
+  { "level": 48, "spells": ["Conjure Mana Citrine"], "ranks": [], "use": { "es": "Otra gema de maná más fuerte", "en": "Another, stronger mana gem" } },
+  { "level": 56, "spells": ["Arcane Brilliance"], "ranks": [], "use": { "es": "Intelecto para todo el grupo; sale de un libro, no del instructor", "en": "Intellect for the whole group; it comes from a book, not the trainer" } },
+  { "level": 58, "spells": ["Conjure Mana Ruby"], "ranks": [], "use": { "es": "La gema de maná más fuerte", "en": "The strongest mana gem" } }
 ]

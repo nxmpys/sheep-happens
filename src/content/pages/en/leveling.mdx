@@ -2,23 +2,23 @@
 pageId: leveling
 locale: en
 title: First steps in Azeroth
-seoTitle: WoW Forever Mage leveling guide, how to level up
+seoTitle: WoW Forever Mage leveling guide from 1 to 60
 description: Your first steps as a Mage in WoW Forever. What you learn at each level, what to do between fights and what the class does outside combat, with any tree.
 lead: What you learn at each level and what to do between fights.
-gameVersion: forever-beta-2026-10
+gameVersion: forever-launch-2026-11
 published: 2026-10-11
-reviewed: 2026-10-26
+reviewed: 2026-11-06
 reviewedBy: Sheep Happens
 status: published
 verification: analysis
 wide: true
 sources: [blizzard-deep-dive-mage, blizzard-dev-notes, wowhead-forever-talent-calc, mobalytics-mage-leveling, method-mage-leveling, icyveins-dungeon-xp, warcrafttavern-legacy, wowhead-dual-spec-podcast]
-tags: [leveling, level up, leveling guide, first steps, tips, how to play, dungeons, 1-30, downranking, hearthstone, portals, water, food]
+tags: [leveling, level up, leveling guide, first steps, tips, how to play, dungeons, 1-60, downranking, hearthstone, portals, water, food]
 ---
 
 ## From your first spell to level 60
 
-Pick a stretch of the road. Spell levels come from Forever's trainer list. <Status status="reported" />
+Pick a stretch of the road. Spell levels come from the Forever client; the full list, rank by rank, is in <PageLink to="spells">Spells by level</PageLink>. <Status status="reported" />
 
 <Picker label="Stretches of the road" initial="start">
 <Pick id="start" title="Create your Mage" icon="classicon_mage" heading="Pick the race you like">
@@ -37,8 +37,9 @@ Every racial, and the ranking by content: <PageLink to="races">Races</PageLink>.
 <Pieces>
 
 - **How you fight.** Frostbolt, another Frostbolt, then finish with Fire Blast or your wand. Keep Frost Armor and Arcane Intellect up at all times.
-- **Get a wand.** The Lesser Magic Wand (level 5), from Enchanting or the Auction House: early on it deals almost as much as your spells and costs no mana. Since 15 October you must stand still for 0.5 s before shooting. <Status status="reported" compact />
+- **Get a wand.** The Lesser Magic Wand (level 5), from Enchanting or the Auction House: early on it deals almost as much as your spells and costs no mana. You must stand still for 0.5 s before shooting. <Status status="reported" compact />
 - **Water and food.** From levels 4 and 6 you conjure your own.
+- **Drag each new spell to your bar.** Learning a spell no longer places it there for you: open the spellbook (P) and drag it. <Status status="verified" compact />
 - **Your limit.** Little mana and no way to escape. Fight one enemy at a time and drink when you drop below half.
 
 </Pieces>
@@ -71,9 +72,19 @@ Every racial, and the ranking by content: <PageLink to="races">Races</PageLink>.
 </Pieces>
 
 </Pick>
-<Pick id="31-60" title="Levels 31 to 60" spell="Frostfire Bolt" heading="Still to write">
+<Pick id="31-60" title="Levels 31 to 60" spell="Frostfire Bolt" heading="On to 60">
 
-The level-by-level road reaches 30 for now; I will complete 31 to 60 on this same page. What is already known: at level 40 come **Frostfire Bolt** and dual specialization, which lets you carry two builds at once. <Status status="verified" compact />
+<SpellBar spells={[{ spell: 'Mage Armor', level: 34 }, { icon: 'inv_misc_gem_emerald_02', name: 'Conjure Mana Jade', level: 38 }, { spell: 'Frostfire Bolt', level: 40 }, { icon: 'spell_arcane_portalstormwind', name: 'Portals', level: 40 }, { icon: 'inv_misc_gem_opal_01', name: 'Conjure Mana Citrine', level: 48 }, { icon: 'spell_holy_arcaneintellect', name: 'Arcane Brilliance', level: 56 }, { icon: 'inv_misc_gem_ruby_01', name: 'Conjure Mana Ruby', level: 58 }]} />
+
+<Pieces>
+
+- **How you fight.** Your build decides the rotation: <BuildLink use="leveling">leveling builds</BuildLink>. At level 40 you get **Frostfire Bolt**, which counts as both Fire and Frost. <Status status="verified" compact />
+- **Two builds at once.** Dual specialization comes at level 40: one build to level and one for dungeons. <Status status="verified" compact />
+- **Portals.** At level 40 you learn two capitals' portals and at level 50 the third. Your group will ask for one when a dungeon ends: carry Runes of Portals. <Status status="reported" compact />
+- **The trainer does not teach Arcane Brilliance.** The group-wide Arcane Intellect, at level 56, comes from a book. <Status status="reported" compact />
+- **Your limit.** Since launch, higher level creatures have more health to make up for the classes' extra damage. Save gold: training everything from 1 to 60 costs 206 to 207 gold. <Status status="verified" compact />
+
+</Pieces>
 
 </Pick>
 </Picker>
@@ -168,7 +179,7 @@ Which two to learn, and how they help while leveling.
 Teleports take you to two capitals from level 20 and the third from 30 (120 mana, a 10 s cast and a Rune of Teleportation), so you do not need the Hearthstone to get back to town. Use it to return to your zone's inn. <Status status="reported" compact />
 
 </Tile>
-<Tile title="Portals" icon="spell_arcane_portalstormwind">
+<Tile title="Portals" icon="spell_arcane_portalstormwind" to="spells" hash="teleports-and-portals">
 
 You learn them at level 40 and 50, depending on the city: 850 mana, 1 min cooldown and a Rune of Portals. Your group will ask for one when a dungeon ends, and you can sell them in trade chat. <Status status="reported" compact />
 
@@ -199,9 +210,11 @@ Level 12. Only works on yourself, lasts 30 s and uses a Light Feather. <Status s
 ## All the key spells
 
 <details class="disclosure">
-<summary>Every key spell from 1 to 30, in one table</summary>
+<summary>Every key spell from 1 to 60, in one table</summary>
 
 <LevelingSpells />
+
+Every rank, trainer visit by trainer visit: <PageLink to="spells">Spells by level</PageLink>.
 
 </details>
 
@@ -216,7 +229,7 @@ Level 12. Only works on yourself, lasts 30 s and uses a Light Feather. <Status s
 
 The **Talented** Legacy perk (Adventure tree) gives you your first talent point earlier: at level 9 with 1 rank and at level 5 with 5. The maximum stays at 51 points. <Status status="reported" /> If you have it, turn on "I have Talented 5/5" above any point order table in the builds: the level column then says at which level each point arrives and the extra points, only for players who have it, appear at the end. The setting is remembered in every table.
 
-Legacy points come from account challenges, such as taking a class to level 25. Your first character at launch will not have Talented. <Status status="reported" />
+Legacy points come from account challenges, such as taking a class to level 25. Your first character will not have Talented. <Status status="reported" />
 
 ### Less mass farming
 
@@ -224,7 +237,7 @@ AoE farming does not disappear, but it is riskier: see the <PageLink to="aoe-far
 
 ### Downranking pays off less
 
-Since the 1 October build, ranks far below your level get less from your spell damage. Since 3 November they no longer trigger your talents less, except Blizzard: a rank learned more than 12 levels below yours still triggers Arcane Concentration, Frostbite and Fingers of Frost less often. On 8 October the low ranks of Frostbolt, Fireball and Arcane Missiles were also rebalanced so every new rank is always an upgrade. <Status status="verified" />
+In Forever, ranks far below your level get less from your spell damage, but they trigger your talents as often as the top rank, except Blizzard: a rank learned more than 12 levels below yours triggers Arcane Concentration, Frostbite and Fingers of Frost less often. The low ranks of Frostbolt, Fireball and Arcane Missiles are also rebalanced so every new rank is always an upgrade. <Status status="verified" />
 
 ### When downranking still pays
 
@@ -250,5 +263,5 @@ The penalty hits damage, not the spell's own effect nor, except with Blizzard, t
 
 <Pending
   why="I have not tested these tips on the server yet. Spell levels come from the game client, not from an official source, and dungeon experience may change."
-  next="I will test them in game and mark them as “Tested” or correct them. After the 4 November launch I will review the values and extend the guide to level 60."
+  next="I will test them in game and mark them as “Tested” or correct them."
 />

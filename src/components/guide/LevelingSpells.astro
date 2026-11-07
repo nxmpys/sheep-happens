@@ -1,6 +1,6 @@
 ---
 /**
- * «Key spells from 1 to 30» table of the leveling page, from
+ * «Key spells from 1 to 60» table of the leveling page, from
  * src/data/leveling-spells.json (the level view reads the same data).
  * Spanish names come from the name dictionary; each name has its tooltip.
  */
@@ -15,7 +15,7 @@ const rankLabel = (spell: string, rank: number) =>
   es ? `${localSpellName(spell, locale)} de rango ${rank}` : `rank ${rank} ${spell}`;
 ---
 
-<div class="table-wrap" tabindex="0" role="region" aria-label={es ? 'Hechizos importantes del 1 al 30' : 'Key spells from 1 to 30'}>
+<div class="table-wrap" tabindex="0" role="region" aria-label={es ? 'Hechizos importantes del 1 al 60' : 'Key spells from 1 to 60'}>
   <table>
     <thead>
       <tr>

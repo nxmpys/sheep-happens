@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-11-02 · Versión de juego: `forever-beta-2026-10` (lanzamiento el 4 de noviembre de 2026)
+> Creado: 2026-10-12 · Revisión: 2026-11-06 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -32,7 +32,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 
 - [ ] Árbol completo de Forever con valores **oficiales**. La posición de cada talento ya está en `src/data/talents.json` (sacada de la calculadora de Wowhead, datos del cliente de la beta); las cifras siguen sin confirmar.
 - [ ] Confirmar el talento decisivo de 16 puntos de Fuego (`fire-16` en `src/data/milestones.json`). Desde el 2 nov figura Calentamiento como `analysis`: en la calculadora de Wowhead es el único talento de 1 punto de la fila 4 de Fuego. Falta una fuente oficial o verlo en el juego; entonces, ajustar su `status` y quitar el aviso de `talents-fire`. (El de Arcano quedó resuelto el 15 de octubre: Cólera Arcana; Tromba de misiles bajó a la fila 1.)
-- [ ] Escalofrío del invierno (15 oct): las notas oficiales dan dos descripciones distintas (+40 % de daño de Cono de frío por carga, o +5 % y un 7 % de tu daño de hechizos por carga). Confirmar cuál queda y corregir `change:winters-chill`.
+- [x] Escalofrío del invierno (15 oct): las notas oficiales dan dos descripciones distintas (+40 % de daño de Cono de frío por carga, o +5 % y un 7 % de tu daño de hechizos por carga). Confirmar cuál queda y corregir `change:winters-chill`.
 - [x] ~~Nombre oficial en español de **Frost Blast**~~: el hechizo desaparece del libro de hechizos en la build del 28 oct (2026-10-29).
 - [ ] Nombres en español de **Accelerant** (antes Bola de Fuego mejorada) y **Precision** (antes Enfoque elemental): el cliente en español aún tiene los nombres y textos anteriores al 28 oct (`STALE_ES` en `scripts/spell-text.ts` y texto en inglés en `talent-text.json`). Cuando cambien, añadir `es` en `src/data/spell-names.json`, quitar esas excepciones y volver a ejecutar `npm run talents:text` y `npm run spells:text`.
 - [x] **Rehacer las builds de leveo** con el árbol del 28 oct (2026-10-30): Arcano y Escarcha, Arcano hacia mazmorras, Escarcha y Fuego, del 10 al 60, con `order` y `orderNotes`. Quitado el 302 de `/builds/leveo/`.
@@ -93,34 +93,36 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 
 ## 2. Lo que es de la beta: quitar o reescribir al lanzar
 
+**2026-11-06: hecho.** Versión `forever-launch-2026-11` en todas las páginas y builds, cuenta atrás del inicio retirada, fichas de cambios sin historia de la beta y contrastadas con las notas de Blizzard para el lanzamiento (entrada `2026-11-06-launch`), `facts.json`, fuentes, vigilancia, textos de todas las páginas, `BuildPicker`, `LevelingStatus` y `testedUpTo` retirados, y Primeros pasos ampliado al 60. Queda abierto lo que necesita el juego (abajo, sin marcar) y la decisión sobre el historial.
+
 ### Lo que cambia solo o casi solo
 
-- [ ] Crear la versión `forever-launch` (`stage: "launch"`) en `src/data/game-versions.json` y cambiar el `gameVersion` de las 26 páginas a medida que se revisen. Al cambiar de versión desaparece el aviso «Forever está en beta» de la cabecera (`src/components/layout/PageMeta.astro`).
-- [ ] Inicio: la cuenta atrás y la tarjeta de estado con lanzamiento, beta y nivel máximo (`src/layouts/HomeLayout.astro`) pasan a «Disponible», con el nivel máximo y el parche actual.
+- [x] Crear la versión `forever-launch` (`stage: "launch"`) en `src/data/game-versions.json` y cambiar el `gameVersion` de las 26 páginas a medida que se revisen. Al cambiar de versión desaparece el aviso «Forever está en beta» de la cabecera (`src/components/layout/PageMeta.astro`).
+- [x] Inicio: la cuenta atrás y la tarjeta de estado con lanzamiento, beta y nivel máximo (`src/layouts/HomeLayout.astro`) pasan a «Disponible», con el nivel máximo y el parche actual.
 
 ### Datos
 
-- [ ] `facts.json`: poner `launch` en pasado y revisar `dual-spec` («estudian adelantarla»). `beta` y `client-version` ya no existen (2026-10-30).
-- [ ] `changes.json`: quitar de las fichas la historia de la beta («en la beta pasó de 20 a 30 s», «se llamaba Hot Streak en la beta», «build del 1 de octubre») y dejar solo cómo funciona. Esa historia ya está en el historial.
-- [ ] `changes.json`: revisar las 43 fichas contra las notas del parche de lanzamiento.
-- [ ] `watchlist.json`: cambiar las notas de desarrollo, los errores conocidos y el foro de la beta por las notas de parche, los hotfixes y los errores conocidos del juego.
-- [ ] `sources.json`: revisar las fuentes `lfcarry-beta` e `icyveins-beta-cap`, y la categoría «Calculadoras con datos de la beta» (`src/components/guide/SourcesTable.astro`).
+- [x] `facts.json`: poner `launch` en pasado y revisar `dual-spec` («estudian adelantarla»). `beta` y `client-version` ya no existen (2026-10-30).
+- [x] `changes.json`: quitar de las fichas la historia de la beta («en la beta pasó de 20 a 30 s», «se llamaba Hot Streak en la beta», «build del 1 de octubre») y dejar solo cómo funciona. Esa historia ya está en el historial.
+- [x] `changes.json`: revisar las 43 fichas contra las notas del parche de lanzamiento.
+- [x] `watchlist.json`: cambiar las notas de desarrollo, los errores conocidos y el foro de la beta por las notas de parche, los hotfixes y los errores conocidos del juego.
+- [x] `sources.json`: revisar las fuentes `lfcarry-beta` e `icyveins-beta-cap`, y la categoría «Calculadoras con datos de la beta» (`src/components/guide/SourcesTable.astro`).
 
 ### Texto de las páginas
 
-- [ ] Inicio: preguntas frecuentes «¿Cuándo sale WoW Forever?» (fin de la beta y tope de 30) y «¿Cuál es la mejor rama para subir de nivel?».
-- [ ] Inicio: tarjeta de Equipo con «Pendiente hasta el lanzamiento» (`src/components/guide/QuestionCards.astro`).
-- [ ] Guía: «Forever sigue en beta» y «las notas de la beta añaden más cada semana».
-- [ ] Primeros pasos: el tramo «Niveles 31 a 60» sigue «aún por escribir». Al lanzar, escribirlo y revisar los valores sacados de la beta (Ventisca de rango 1 a 320 de maná, Cono de frío 40 % durante 6 s, probabilidades de Frostbite y Dedos de Escarcha) y las misiones de mazmorra. Las builds de leveo ya llegan al 60 (2026-10-30).
-- [ ] Talentos: «nadie ha podido probarlas por encima del nivel 30» y el aviso pendiente de builds.
-- [ ] Combate: aviso «Análisis sin probar… sin acceso a los niveles 31 a 60».
-- [ ] Cambios: aviso «Información de beta».
+- [x] Inicio: preguntas frecuentes «¿Cuándo sale WoW Forever?» (fin de la beta y tope de 30) y «¿Cuál es la mejor rama para subir de nivel?».
+- [x] Inicio: tarjeta de Equipo con «Pendiente hasta el lanzamiento» (`src/components/guide/QuestionCards.astro`).
+- [x] Guía: «Forever sigue en beta» y «las notas de la beta añaden más cada semana».
+- [x] Primeros pasos: el tramo «Niveles 31 a 60» sigue «aún por escribir». Al lanzar, escribirlo y revisar los valores sacados de la beta (Ventisca de rango 1 a 320 de maná, Cono de frío 40 % durante 6 s, probabilidades de Frostbite y Dedos de Escarcha) y las misiones de mazmorra. Las builds de leveo ya llegan al 60 (2026-10-30).
+- [x] Talentos: «nadie ha podido probarlas por encima del nivel 30» y el aviso pendiente de builds.
+- [x] Combate: aviso «Análisis sin probar… sin acceso a los niveles 31 a 60».
+- [x] Cambios: aviso «Información de beta».
 - [ ] Farmeo AoE: aviso «Información de beta», rotaciones y zonas sacadas de la beta (pasarlas a «Probado en juego» o corregirlas) y la tabla de zonas del 30 al 60 («Pendiente»).
-- [ ] Equipo: aviso pendiente que cita el nivel 60 de la beta.
+- [x] Equipo: aviso pendiente que cita el nivel 60 de la beta.
 - [ ] Arcano, Fuego y Escarcha: secciones «Lo que falta por saber».
 - [ ] Pergaminos: los bloques de «Análisis» salen de los datos del cliente de la beta (5 s de lanzamiento, habilidad que pide cada pergamino, Pergamino de Comprensión, apilamiento). Comprobarlos en el juego y pasarlos a «Probado en juego», y revisar el nombre del hechizo en el cliente en español («Entender pergamino» en la beta, «Comprender pergamino» en el artículo de Blizzard).
 - [ ] Fuentes y Cambios: resolver «Nivel de la doble especialización» y «Requisito de Dedos de Escarcha». (La discrepancia «Fin de la beta» se resolvió el 2026-10-21: Blizzard anuncia el cierre el 23 de octubre a las 10:00 PDT.)
-- [ ] `facts.json`: al lanzar, reescribir `beta` (ya cerrada), quitar `name-reservation` (reserva del 27 de octubre al 3 de noviembre) y revisar `raid-unlock` (bandas de nivel 60 desde el 9 de diciembre; tamaños y ubicaciones solo en el artículo completo de Blizzard, que no se ha leído).
+- [x] `facts.json`: al lanzar, reescribir `beta` (ya cerrada), quitar `name-reservation` (reserva del 27 de octubre al 3 de noviembre) y revisar `raid-unlock` (bandas de nivel 60 desde el 9 de diciembre; tamaños y ubicaciones solo en el artículo completo de Blizzard, que no se ha leído).
 - [ ] Error de la beta con Misiles Arcanos (recibir daño dispara un misil con el daño completo): comprobar si sigue.
 
 ### Página temporal de duelos a nivel 30
@@ -135,7 +137,7 @@ La página «Duelos a nivel 30» (`builds-duel-30`) y sus dos builds son de la b
 
 ### Documentos internos
 
-- [ ] `README.md` (estado del juego), `docs/game-version.md`, `docs/content-validation.md` y los borradores de `docs/difusion.md`.
+- [x] `README.md` (estado del juego), `docs/game-version.md`, `docs/content-validation.md` y los borradores de `docs/difusion.md`.
 
 ### Decisión pendiente: el historial
 

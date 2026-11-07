@@ -271,8 +271,7 @@
       "change:missile-barrage",
       "change:winters-chill",
       "change:fingers-of-frost",
-      "change:frostfire-bolt",
-      "change:frost-blast"
+      "change:frostfire-bolt"
     ]
   },
   {
@@ -385,9 +384,7 @@
       "change:arcane-resilience",
       "change:arcane-focus",
       "change:improved-channeling",
-      "change:critical-mass",
       "change:ice-lance",
-      "change:frost-blast",
       "change:wake-of-fire",
       "change:missile-barrage",
       "change:frostbite",
@@ -444,27 +441,11 @@
         }
       },
       {
-        "ref": "change:critical-mass",
-        "impact": "nerf",
-        "text": {
-          "es": "3 puntos en vez de 5: hasta un 6 % de crítico con Fuego (antes 10 %). Combustión sigue pidiendo 3.",
-          "en": "3 points instead of 5: up to 6% Fire crit (was 10%). Combustion still needs 3."
-        }
-      },
-      {
         "ref": "change:ice-lance",
         "impact": "nerf",
         "text": {
           "es": "Ahora tiene 8 s de reutilización.",
           "en": "It now has an 8 s cooldown."
-        }
-      },
-      {
-        "ref": "change:frost-blast",
-        "impact": "nerf",
-        "text": {
-          "es": "Desaparece del libro de hechizos: ya no se entrena ninguno de sus 3 rangos. Pierdes la ralentización barata para kitear.",
-          "en": "Removed from the spellbook: none of its 3 ranks is trained any more. You lose the cheap slow for kiting."
         }
       },
       {
@@ -639,13 +620,11 @@
       "changes"
     ],
     "sources": [
-      "blizzard-stress-test",
       "blizzard-name-reservation",
       "blizzard-raid-overview",
       "blizzard-dev-notes"
     ],
     "refs": [
-      "fact:name-reservation",
       "fact:raid-unlock",
       "change:frost-channeling"
     ]
@@ -911,18 +890,15 @@
     ],
     "sources": [
       "blizzard-dev-notes",
-      "wowhead-forever-talent-calc",
-      "forum-missile-barrage-proc"
+      "wowhead-forever-talent-calc"
     ],
     "refs": [
-      "change:frost-blast",
       "change:arcane-blast",
       "change:arcane-wrath",
       "change:missile-barrage",
       "change:arcane-concentration",
       "change:wake-of-fire",
       "change:heating-up",
-      "change:critical-mass",
       "change:fire-power",
       "change:ice-lance",
       "change:winters-chill",
@@ -938,8 +914,7 @@
       "race:undead",
       "race:gnome",
       "race:troll",
-      "race:skyborne",
-      "source:forum-missile-barrage-proc"
+      "race:skyborne"
     ]
   },
   {
@@ -968,14 +943,12 @@
       "blizzard-dev-notes"
     ],
     "refs": [
-      "change:frost-blast",
       "change:arcane-blast",
       "change:arcane-wrath",
       "change:missile-barrage",
       "change:arcane-concentration",
       "change:wake-of-fire",
       "change:heating-up",
-      "change:critical-mass",
       "change:fire-power",
       "change:ice-lance",
       "change:winters-chill",
@@ -1193,8 +1166,7 @@
       "source:forever-open-rules",
       "fact:legacy",
       "source:conquestcapped-legacy",
-      "source:method-legacy",
-      "source:wowhead-legacy-beta"
+      "source:method-legacy"
     ]
   },
   {
@@ -1438,9 +1410,7 @@
     "pages": [
       "leveling"
     ],
-    "sources": [
-      "lfcarry-beta"
-    ],
+    "sources": [],
     "refs": []
   },
   {
@@ -1564,5 +1534,110 @@
       "wowhead-legacy-guide"
     ],
     "refs": []
+  },
+  {
+    "id": "2026-11-06-launch",
+    "date": "2026-11-06",
+    "type": "game",
+    "title": {
+      "es": "Lanzamiento: lo que confirman las notas de Blizzard",
+      "en": "Launch: what Blizzard’s notes confirm"
+    },
+    "body": {
+      "es": "WoW Forever salió el 4 de noviembre con el cliente 1.60.1.70790. Las notas de Blizzard para el lanzamiento confirman los cambios de talentos del Mago que hasta ahora solo salían de los datos del cliente, y corrigen tres errores. Todas las clases hacen más daño y los enemigos de nivel alto tienen más vida; entrenar todo del 1 al 60 cuesta entre 206 y 207 de oro. Frost Blast no llegó al juego y Masa crítica queda como en Classic, así que sus fichas salen del explorador de cambios.",
+      "en": "WoW Forever launched on 4 November with client 1.60.1.70790. Blizzard’s launch notes confirm the Mage talent changes that until now only came from the client data, and fix three bugs. Every class deals more damage and higher level creatures have more health; training everything from 1 to 60 costs 206 to 207 gold. Frost Blast did not make it into the game and Critical Mass is the same as in Classic, so their cards leave the change explorer."
+    },
+    "pages": [
+      "changes",
+      "talents-arcane",
+      "talents-fire",
+      "talents-frost",
+      "leveling",
+      "spells",
+      "races"
+    ],
+    "sources": [
+      "blizzard-dev-notes"
+    ],
+    "refs": [
+      "change:impact",
+      "change:arcane-focus",
+      "change:wake-of-fire",
+      "change:incineration",
+      "change:improved-fireball",
+      "change:piercing-ice",
+      "change:frost-warding",
+      "change:elemental-precision",
+      "change:arctic-reach",
+      "change:ice-lance",
+      "change:ice-barrier",
+      "change:winters-chill",
+      "change:arcane-resilience",
+      "change:arcane-blast",
+      "change:missile-barrage",
+      "change:arcane-concentration",
+      "change:ignite",
+      "change:spell-ranks",
+      "change:comprehension",
+      "change:cone-of-cold",
+      "change:frostbite",
+      "change:arcane-missiles",
+      "change:improved-channeling",
+      "change:arcane-wrath",
+      "change:improved-scorch",
+      "change:heating-up",
+      "change:frost-channeling",
+      "change:fingers-of-frost",
+      "milestone:fire-31",
+      "fact:official-product",
+      "fact:launch",
+      "fact:level-cap",
+      "fact:talent-points",
+      "fact:training-cost",
+      "build:frost-leveling",
+      "build:frost-leveling-single-target",
+      "build:arcane-leveling",
+      "build:fire-leveling",
+      "profession:herbalism",
+      "profession:mining",
+      "race:orc",
+      "race:undead",
+      "source:blizzard-dev-notes"
+    ],
+    "build": "1.60.1.70790",
+    "items": [
+      {
+        "ref": "change:arcane-concentration",
+        "impact": "buff",
+        "text": {
+          "es": "Misiles Arcanos vuelve a activar Lanzamiento libre (un error lo impedía) y ya no lo gasta mientras Tromba de misiles está activa.",
+          "en": "Arcane Missiles triggers Clearcasting again (a bug stopped it) and no longer spends it while Missile Barrage is up."
+        }
+      },
+      {
+        "ref": "change:missile-barrage",
+        "impact": "neutral",
+        "text": {
+          "es": "Se gasta al empezar a canalizar Misiles Arcanos, no al terminar.",
+          "en": "It is spent when Arcane Missiles starts to channel, not when it ends."
+        }
+      },
+      {
+        "ref": "change:ignite",
+        "impact": "buff",
+        "text": {
+          "es": "Se aplica también al daño de Fogonazo después del primer impacto (un error lo impedía).",
+          "en": "It also applies to Flamestrike’s damage after the first hit (a bug stopped it)."
+        }
+      },
+      {
+        "ref": "change:ice-lance",
+        "impact": "nerf",
+        "text": {
+          "es": "Sus 8 s de reutilización son compartidos con Explosión de Fuego: en una build de Fuego y Escarcha, una espera a la otra.",
+          "en": "Its 8 s cooldown is shared with Fire Blast: in a Fire and Frost build, one waits for the other."
+        }
+      }
+    ]
   }
 ]

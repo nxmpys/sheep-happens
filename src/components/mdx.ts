@@ -6,7 +6,6 @@ import AddonDetail from './guide/AddonDetail.astro';
 import AddonLink from './guide/AddonLink.astro';
 import BuildCard from './guide/BuildCard.astro';
 import BuildExplorer from './guide/BuildExplorer.astro';
-import BuildPicker from './guide/BuildPicker.astro';
 import SpecBuilds from './guide/SpecBuilds.astro';
 import BuildLink from './guide/BuildLink.astro';
 import Callout from './guide/Callout.astro';
@@ -33,7 +32,6 @@ import ItemCards from './guide/ItemCards.astro';
 import LevelingSpells from './guide/LevelingSpells.astro';
 import LegacyBuildCard from './guide/LegacyBuildCard.astro';
 import LegacyPerks from './guide/LegacyPerks.astro';
-import LevelingStatus from './guide/LevelingStatus.astro';
 import LibraryBooks from './guide/LibraryBooks.astro';
 import MilestoneMap from './guide/MilestoneMap.astro';
 import Notices from './guide/Notices.astro';
@@ -78,6 +76,7 @@ import TreeIntro from './learn/TreeIntro.astro';
 import AoeArena from './learn/AoeArena.astro';
 import AoeKit from './learn/AoeKit.astro';
 import SpotFinder from './learn/SpotFinder.astro';
+import Spellbook from './guide/Spellbook.astro';
 import Table from './ui/Table.astro';
 import WeeklyChanges from './guide/WeeklyChanges.astro';
 
@@ -111,7 +110,6 @@ export const mdxComponents = {
   AddonLink,
   BuildCard,
   BuildExplorer,
-  BuildPicker,
   SpecBuilds,
   BuildLink,
   Callout,
@@ -138,7 +136,6 @@ export const mdxComponents = {
   LevelingSpells,
   LegacyBuildCard,
   LegacyPerks,
-  LevelingStatus,
   LibraryBooks,
   MilestoneMap,
   Notices,
@@ -156,6 +153,7 @@ export const mdxComponents = {
   SourceRefs,
   SourcesTable,
   SpecCards,
+  Spellbook,
   Status: StatusBadge,
   StatusLegend,
   TalentCalculator,

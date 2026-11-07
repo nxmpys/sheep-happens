@@ -1375,5 +1375,77 @@
       "en": "Level 28 · Darkspear Raiders, Honored"
     },
     "faction": "horde"
+  },
+  {
+    "id": "blade-of-silverlaine",
+    "wowhead": 273637,
+    "name": {
+      "es": "Hoja de Filargenta",
+      "en": "Blade of Silverlaine"
+    },
+    "icon": "inv_sword_05",
+    "quality": "rare",
+    "slot": {
+      "es": "Mano derecha · Espada",
+      "en": "Main hand · Sword"
+    },
+    "stats": [
+      {
+        "es": "17-33 de daño · velocidad 2,30",
+        "en": "17-33 damage · speed 2.30"
+      },
+      {
+        "es": "+6 resistencia a las Sombras",
+        "en": "+6 Shadow Resistance"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +28 al daño y la sanación con hechizos",
+        "en": "Equip: up to +28 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 21 · Barón Filargenta, Castillo de Colmillo Oscuro",
+      "en": "Level 21 · Baron Silverlaine, Shadowfang Keep"
+    }
+  },
+  {
+    "id": "coldflame-saber",
+    "wowhead": 276631,
+    "name": {
+      "es": "Sable de Llama fría",
+      "en": "Coldflame Saber"
+    },
+    "icon": "inv_sword_05",
+    "quality": "rare",
+    "slot": {
+      "es": "Mano derecha · Espada",
+      "en": "Main hand · Sword"
+    },
+    "stats": [
+      {
+        "es": "17-32 de daño · velocidad 2,00",
+        "en": "17-32 damage · speed 2.00"
+      },
+      {
+        "es": "+7 Intelecto",
+        "en": "+7 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +32 al daño y la sanación con hechizos",
+        "en": "Equip: up to +32 spell damage and healing"
+      },
+      {
+        "es": "Equipar: tus ataques cuerpo a cuerpo hacen 98 de daño de Fuego más contra objetivos congelados",
+        "en": "Equip: your melee attacks deal 98 extra Fire damage against Frozen targets"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 21 · Mago",
+      "en": "Level 21 · Mage"
+    }
   }
 ]

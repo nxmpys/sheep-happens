@@ -1,6 +1,6 @@
 # Validación del contenido
 
-> Revisión: 2026-10-11 (incluye la primera revisión semanal) · Versión de juego: `forever-beta-2026-10`
+> Revisión: 2026-10-11 (incluye la primera revisión semanal) · Versión de juego: `forever-launch-2026-11` (desde el 2026-11-06)
 
 ## Verificado (fuente oficial leída)
 

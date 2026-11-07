@@ -3,7 +3,7 @@
  * The pages a menu entry leads to (PRIMARY_NAV items in routes.ts), as cards
  * with their title and description. `numbered` turns them into steps, for the
  * «Aprende» path; the three talent trees share one step. Pages whose
- * information is still pending (gear before launch) are dimmed and marked.
+ * information is still pending are dimmed and marked.
  */
 import { getCollection } from 'astro:content';
 import Icon from '../ui/Icon.astro';
@@ -28,6 +28,7 @@ const ICONS: Partial<Record<PageId, IconName>> = {
   talents: 'layers',
   gear: 'shield',
   leveling: 'map',
+  spells: 'level',
   'aoe-farming': 'aoe',
   races: 'users',
   professions: 'hammer',
@@ -61,7 +62,7 @@ for (const id of items) {
             <a class="hub__link" href={href(card.id, locale)}>
               {NAV_LABELS[locale][card.id]}
             </a>
-            {entries.get(card.id)?.verification === 'pending' && <span class="hub__badge">{t(locale, 'nav.afterLaunch')}</span>}
+            {entries.get(card.id)?.verification === 'pending' && <span class="hub__badge">{t(locale, 'nav.pending')}</span>}
             <span class="hub__desc">{entries.get(card.id)?.description}</span>
           </span>
         </li>

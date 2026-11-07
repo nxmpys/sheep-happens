@@ -1,0 +1,418 @@
+---
+/**
+ * Every trainer visit from 1 to 60 (src/data/spellbook.json): the new spells
+ * with their icon, and the new ranks of the ones you already have. Talent
+ * spells and faction teleports are marked; the faction switch on the page
+ * (FactionFilter) hides the other faction's ones. With JavaScript, a level box
+ * dims the visits you have done and points at the next one (saved in the browser).
+ */
+import GameIcon from '../learn/GameIcon.astro';
+import SpellRef from './SpellRef.astro';
+import { FACTION_LABELS } from '../../i18n/builds';
+import { getLocale } from '../../i18n/locale';
+import { spellbook } from '../../lib/data';
+import type { SpellbookSpell } from '../../lib/schemas';
+
+const locale = getLocale(Astro);
+const es = locale === 'es';
+const factions = FACTION_LABELS[locale];
+
+interface Learned {
+  spell: SpellbookSpell;
+  rank: number;
+}
+const visits = new Map<number, { learn: Learned[]; ranks: Learned[] }>();
+for (const spell of spellbook) {
+  spell.ranks.forEach((rank, index) => {
+    const visit = visits.get(rank.level) ?? { learn: [], ranks: [] };
+    (index === 0 ? visit.learn : visit.ranks).push({ spell, rank: rank.rank });
+    visits.set(rank.level, visit);
+  });
+}
+const levels = [...visits.keys()].sort((a, b) => a - b);
+const name = (spell: SpellbookSpell) => spell.name[locale];
+const anchor = (level: number) => (es ? `nivel-${level}` : `level-${level}`);
+const text = {
+  level: es ? 'Nivel' : 'Level',
+  start: es ? 'Empiezas con ellos' : 'You start with these',
+  ranks: es ? 'Rangos nuevos' : 'New ranks',
+  talentRanks: es ? 'Si tienes el talento' : 'If you have the talent',
+  talent: es ? 'Talento' : 'Talent',
+  isNew: es ? 'Nuevo en Forever' : 'New in Forever',
+  yourLevel: es ? 'Tu nivel' : 'Your level',
+};
+const strings = {
+  next: es ? 'Tu próxima visita al instructor es a nivel {level}: {what}.' : 'Your next trainer visit is at level {level}: {what}.',
+  spells: es ? ['{n} hechizo nuevo', '{n} hechizos nuevos'] : ['{n} new spell', '{n} new spells'],
+  ranks: es ? ['{n} rango', '{n} rangos'] : ['{n} rank', '{n} ranks'],
+  and: es ? ' y ' : ' and ',
+  done: es ? 'Ya tienes todo lo que enseña el instructor.' : 'You already have everything the trainer teaches.',
+};
+---
+
+<spell-book class="sbk" data-strings={JSON.stringify(strings)}>
+  <div class="sbk__controls" data-controls hidden data-pagefind-ignore>
+    <label class="sbk__input">
+      <span>{text.yourLevel}</span>
+      <input type="number" min="1" max="60" inputmode="numeric" data-level-input />
+    </label>
+    <p class="sbk__next" data-next aria-live="polite"></p>
+  </div>
+  <ol class="sbk__visits" role="list">
+    {
+      levels.map((level) => {
+        const visit = visits.get(level)!;
+        const trained = visit.ranks.filter((r) => !r.spell.talent);
+        const talented = visit.ranks.filter((r) => r.spell.talent);
+        // Rank 1 of a talent spell alone (Arcane Wrath at 25) is not a trainer visit.
+        const talentOnly = visit.ranks.length === 0 && visit.learn.every((l) => l.spell.talent);
+        return (
+          <li
+            class="sbk__visit"
+            id={anchor(level)}
+            data-level={level}
+            data-talent-only={talentOnly ? '' : undefined}
+            data-learn={visit.learn.length}
+            data-ranks={visit.ranks.length}
+          >
+            <div class="sbk__level" aria-hidden="true">
+              <span>{text.level}</span>
+              <strong>{level}</strong>
+            </div>
+            <section class="sbk__body" aria-label={`${text.level} ${level}`}>
+              {level === 1 && <p class="sbk__note">{text.start}</p>}
+              {visit.learn.length > 0 && (
+                <ul class="sbk__learn" role="list">
+                  {visit.learn.map(({ spell }) => (
+                    <li class:list={['sbk__spell', `sbk__spell--${spell.school}`]} data-faction={spell.faction}>
+                      <GameIcon icon={spell.icon} size={36} />
+                      <span class="sbk__name">
+                        <SpellRef name={spell.name.en} label={name(spell)} />
+                        {es && spell.name.es !== spell.name.en && <span class="sbk__en" lang="en">{spell.name.en}</span>}
+                      </span>
+                      <span class="sbk__tags">
+                        {spell.talent && <span class="sbk__tag">{text.talent}</span>}
+                        {spell.new && <span class="sbk__tag sbk__tag--new">{text.isNew}</span>}
+                        {spell.faction && <span class="sbk__tag">{factions[spell.faction]}</span>}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {trained.length > 0 && (
+                <p class="sbk__ranks">
+                  <span class="sbk__label">{text.ranks}:</span>{' '}
+                  {trained.map(({ spell, rank }, i) => (
+                    <>
+                      {i > 0 && ' · '}
+                      <span class="sbk__rank">
+                        {name(spell)} {rank}
+                      </span>
+                    </>
+                  ))}
+                </p>
+              )}
+              {talented.length > 0 && (
+                <p class="sbk__ranks sbk__ranks--talent">
+                  <span class="sbk__label">{text.talentRanks}:</span>{' '}
+                  {talented.map(({ spell, rank }, i) => (
+                    <>
+                      {i > 0 && ' · '}
+                      <span class="sbk__rank">
+                        {name(spell)} {rank}
+                      </span>
+                    </>
+                  ))}
+                </p>
+              )}
+            </section>
+          </li>
+        );
+      })
+    }
+  </ol>
+</spell-book>
+
+<script>
+  const KEY = 'sh-mage-level';
+
+  class SpellBook extends HTMLElement {
+    connectedCallback() {
+      const strings = JSON.parse(this.dataset.strings ?? '{}') as Record<string, string | string[]>;
+      const input = this.querySelector<HTMLInputElement>('[data-level-input]')!;
+      const next = this.querySelector<HTMLElement>('[data-next]')!;
+      const visits = [...this.querySelectorAll<HTMLElement>('.sbk__visit')];
+      const count = (forms: string | string[] | undefined, n: number) => {
+        const [one, many] = forms as string[];
+        return (n === 1 ? one! : many!).replace('{n}', String(n));
+      };
+      const apply = (level: number) => {
+        let upcoming: HTMLElement | undefined;
+        for (const visit of visits) {
+          const at = Number(visit.dataset.level);
+          visit.classList.toggle('is-done', at <= level);
+          visit.classList.remove('is-next');
+          if (!upcoming && at > level && !('talentOnly' in visit.dataset)) upcoming = visit;
+        }
+        if (!upcoming) {
+          next.textContent = strings['done'] as string;
+          return;
+        }
+        upcoming.classList.add('is-next');
+        const learn = Number(upcoming.dataset.learn);
+        const ranks = Number(upcoming.dataset.ranks);
+        const what = [learn ? count(strings['spells'], learn) : '', ranks ? count(strings['ranks'], ranks) : ''].filter(Boolean).join(strings['and'] as string);
+        next.replaceChildren();
+        const link = document.createElement('a');
+        link.href = `#${upcoming.id}`;
+        link.textContent = (strings['next'] as string).replace('{level}', upcoming.dataset.level!).replace('{what}', what);
+        next.append(link);
+      };
+      let saved = 0;
+      try {
+        saved = Number(localStorage.getItem(KEY)) || 0;
+      } catch {}
+      if (saved >= 1 && saved <= 60) {
+        input.value = String(saved);
+        apply(saved);
+      }
+      input.addEventListener('input', () => {
+        const level = Math.round(Number(input.value));
+        if (!(level >= 1 && level <= 60)) return;
+        apply(level);
+        try {
+          localStorage.setItem(KEY, String(level));
+        } catch {}
+      });
+      this.querySelector<HTMLElement>('[data-controls]')!.hidden = false;
+    }
+  }
+  customElements.define('spell-book', SpellBook);
+</script>
+
+<style>
+  .sbk {
+    display: block;
+    margin: var(--space-5) 0;
+  }
+  .sbk__controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3) var(--space-4);
+    margin-bottom: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+  }
+  .sbk__controls[hidden] {
+    display: none;
+  }
+  .sbk__input {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 600;
+  }
+  .sbk__input input {
+    width: 4.5rem;
+    padding: 0.35rem 0.5rem;
+    border: 1px solid var(--border-strong, var(--border));
+    border-radius: var(--radius);
+    background: var(--bg);
+    color: inherit;
+    font: inherit;
+    font-variant-numeric: tabular-nums;
+  }
+  .sbk__next {
+    flex: 1 1 16rem;
+    margin: 0;
+    font-size: var(--step--1);
+  }
+  .sbk__visits {
+    position: relative;
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  /* The level rail. */
+  .sbk__visits::before {
+    content: '';
+    position: absolute;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    left: 1.5rem;
+    width: 2px;
+    background: linear-gradient(var(--arcane), var(--frost), var(--fire));
+    opacity: 0.5;
+  }
+  .sbk__visit {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr);
+    gap: var(--space-3);
+    margin: 0;
+    scroll-margin-top: calc(var(--header-h) + var(--space-4));
+    transition: opacity 0.2s;
+  }
+  .sbk__level {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    background: var(--surface-1);
+    line-height: 1;
+  }
+  .sbk__level span {
+    font-size: 0.55rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .sbk__level strong {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+  }
+  .sbk__body {
+    min-width: 0;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+  }
+  .sbk__note {
+    margin: 0 0 var(--space-2);
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .sbk__learn {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sbk__learn + .sbk__ranks {
+    margin-top: var(--space-3);
+  }
+  .sbk__spell {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0.35rem 0.5rem;
+    border-left: 3px solid var(--sbk-school, var(--accent));
+    border-radius: var(--radius);
+    background: var(--sbk-soft, transparent);
+  }
+  .sbk__spell[hidden] {
+    display: none;
+  }
+  .sbk__spell--arcane {
+    --sbk-school: var(--arcane);
+    --sbk-soft: var(--arcane-soft);
+  }
+  .sbk__spell--fire {
+    --sbk-school: var(--fire);
+    --sbk-soft: var(--fire-soft);
+  }
+  .sbk__spell--frost {
+    --sbk-school: var(--frost);
+    --sbk-soft: var(--frost-soft);
+  }
+  /* learn.css is not loaded here: the icon frame is styled by hand. */
+  .sbk__spell :global(.game-icon) {
+    flex: none;
+    display: inline-flex;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.45);
+  }
+  .sbk__spell :global(.game-icon img) {
+    display: block;
+    width: var(--game-icon);
+    height: var(--game-icon);
+  }
+  .sbk__name {
+    display: grid;
+    min-width: 0;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  .sbk__en {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+  .sbk__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-left: auto;
+  }
+  .sbk__tag {
+    padding: 0.05rem 0.4rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.68rem;
+    white-space: nowrap;
+    color: var(--text-muted);
+  }
+  .sbk__tag--new {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .sbk__ranks {
+    margin: var(--space-2) 0 0;
+    font-size: var(--step--1);
+  }
+  .sbk__label {
+    font-weight: 700;
+  }
+  .sbk__ranks--talent {
+    color: var(--text-muted);
+  }
+  .sbk__rank {
+    white-space: nowrap;
+  }
+  /* With a level typed in: what you have already trained fades, the next visit stands out. */
+  .sbk__visit.is-done {
+    opacity: 0.55;
+  }
+  .sbk__visit.is-next .sbk__body {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  .sbk__visit.is-next .sbk__level {
+    background: var(--accent);
+    color: var(--on-accent, #fff);
+  }
+  .sbk__visit.is-next .sbk__level span {
+    color: inherit;
+  }
+  @media (max-width: 520px) {
+    .sbk__visits::before {
+      left: 1.25rem;
+    }
+    .sbk__visit {
+      grid-template-columns: 2.5rem minmax(0, 1fr);
+      gap: var(--space-2);
+    }
+    .sbk__level {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    .sbk__body {
+      padding: var(--space-2) var(--space-3);
+    }
+  }
+</style>

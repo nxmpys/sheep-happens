@@ -4,6 +4,20 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-11-06
+
+### [Juego] Lanzamiento: lo que confirman las notas de Blizzard (build 1.60.1.70790)
+
+WoW Forever salió el 4 de noviembre con el cliente 1.60.1.70790. Las notas de Blizzard para el lanzamiento confirman los cambios de talentos del Mago que hasta ahora solo salían de los datos del cliente, y corrigen tres errores. Todas las clases hacen más daño y los enemigos de nivel alto tienen más vida; entrenar todo del 1 al 60 cuesta entre 206 y 207 de oro. Frost Blast no llegó al juego y Masa crítica queda como en Classic, así que sus fichas salen del explorador de cambios.
+
+- ▲ Mejora: **Concentración Arcana**: Misiles Arcanos vuelve a activar Lanzamiento libre (un error lo impedía) y ya no lo gasta mientras Tromba de misiles está activa.
+- ◆ Igual: **Tromba de misiles**: Se gasta al empezar a canalizar Misiles Arcanos, no al terminar.
+- ▲ Mejora: **Ignición**: Se aplica también al daño de Fogonazo después del primer impacto (un error lo impedía).
+- ▼ Empeora: **Lanza de hielo**: Sus 8 s de reutilización son compartidos con Explosión de Fuego: en una build de Fuego y Escarcha, una espera a la otra.
+
+- **Datos afectados:** Impacto, Enfoque Arcano, Explosión de Fuego mejorada, Incineración, Acelerante, Hielo penetrante, Custodia de Escarcha, Precisión, Alcance ártico, Lanza de hielo, Barrera de hielo, Escalofrío del invierno, Recuperación Arcana, Explosión Arcana, Tromba de misiles, Concentración Arcana, Ignición, Rangos de hechizos (downranking), Comprensión (Comprender pergamino), Cono de frío, Mordiescarcha, Misiles Arcanos, Canalización mejorada, Cólera Arcana, Chamuscar mejorado, Calentamiento, Canalización de Escarcha, Dedos de Escarcha, Combustión, Qué es, Lanzamiento, Nivel máximo, Puntos a nivel 60, Coste del instructor, build:frost-leveling, build:frost-leveling-single-target, build:arcane-leveling, build:fire-leveling, profession:herbalism, profession:mining, race:orc, race:undead, WoW Forever Development Notes
+- **Fuentes:** [WoW Forever Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+
 ## 2026-11-04
 
 ### [Guía] Desuello, igual de viable para farmear mientras subes
@@ -40,8 +54,8 @@ En sus notas para el lanzamiento, Blizzard quita la penalización de los rangos 
 - ◆ Igual: **Concentración Arcana**: Ventisca es la excepción: un rango aprendido más de 12 niveles por debajo del tuyo sigue activando menos Concentración Arcana, Mordiescarcha y Dedos de Escarcha.
 - ▲ Mejora: **Impacto**: Impacto también deja de activarse menos con rangos bajos.
 
-- **Datos afectados:** Rangos de hechizos (downranking), Concentración Arcana, Impacto, WoW Forever Beta Development Notes
-- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+- **Datos afectados:** Rangos de hechizos (downranking), Concentración Arcana, Impacto, WoW Forever Development Notes
+- **Fuentes:** [WoW Forever Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
 
 ## 2026-11-02
 
@@ -74,7 +88,7 @@ Un hotfix de la build 1.60.1.70707 cambia varios talentos del Mago. Blizzard no 
 
 Corrijo varias fichas que no reflejaban el árbol del 28 de octubre: Barrera de hielo requiere Mordedura helada, Tromba de misiles está en la fila 2 y Frost Blast ya no figura entre lo que activa Tromba de misiles ni entre lo que aplica Escalofrío del invierno. También doy por cerrado el requisito de Dedos de Escarcha, que requiere Lanza de hielo, y corrijo dos erratas de la versión inglesa.
 
-- **Datos afectados:** Barrera de hielo, Cólera Arcana, Tromba de misiles, Escalofrío del invierno, Dedos de Escarcha, Descarga de Pirofrío, Frost Blast
+- **Datos afectados:** Barrera de hielo, Cólera Arcana, Tromba de misiles, Escalofrío del invierno, Dedos de Escarcha, Descarga de Pirofrío
 
 ### [Guía] Menos puntos en Canalización mejorada
 
@@ -108,14 +122,12 @@ La build de la beta del 28 de octubre cambia los talentos del Mago. Blizzard no 
 - ▲ Mejora: **Recuperación Arcana**: Sube de la fila 2 a la 1, en la tercera columna: se coge con los primeros puntos de Arcano.
 - ◆ Igual: **Enfoque Arcano**: Desaparece del árbol Arcano (daba un 1-5 % de golpe Arcano). Lo compensa Precision: 3 puntos en Escarcha dan un 6 % a todo.
 - ◆ Igual: **Canalización mejorada**: Pasa de la tercera a la segunda columna de la fila 1. Hace lo mismo.
-- ▼ Empeora: **Masa crítica**: 3 puntos en vez de 5: hasta un 6 % de crítico con Fuego (antes 10 %). Combustión sigue pidiendo 3.
 - ▼ Empeora: **Lanza de hielo**: Ahora tiene 8 s de reutilización.
-- ▼ Empeora: **Frost Blast**: Desaparece del libro de hechizos: ya no se entrena ninguno de sus 3 rangos. Pierdes la ralentización barata para kitear.
 - ▼ Empeora: **Explosión de Fuego mejorada**: Baja de la fila 1 a la 3 (cuarta columna): ahora pide 10 puntos en Fuego.
 - ▼ Empeora: **Tromba de misiles**: Baja de la fila 1 a la 2: una build de Fuego o Escarcha necesita 5 puntos en Arcano para cogerla.
 - ▼ Empeora: **Mordiescarcha**: Su congelación comparte rendimientos decrecientes con las raíces de talentos de Cazador y Guerrero (Entrapment, Counterattack, Improved Wing Clip, Improved Hamstring). Solo se nota en JcJ.
 
-- **Datos afectados:** Acelerante, Precisión, Incineración, Recuperación Arcana, Enfoque Arcano, Canalización mejorada, Masa crítica, Lanza de hielo, Frost Blast, Explosión de Fuego mejorada, Tromba de misiles, Mordiescarcha, WoW Forever patch notes: build 1.60.1.70685 of 28 October 2026
+- **Datos afectados:** Acelerante, Precisión, Incineración, Recuperación Arcana, Enfoque Arcano, Canalización mejorada, Lanza de hielo, Explosión de Fuego mejorada, Tromba de misiles, Mordiescarcha, WoW Forever patch notes: build 1.60.1.70685 of 28 October 2026
 - **Fuentes:** [WoW Forever patch notes: build 1.60.1.70685 of 28 October 2026](https://foreverchanges.pro/patch-notes) (Forever Changes (foreverchanges.pro)), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead)
 
 ## 2026-10-27
@@ -158,8 +170,8 @@ Un hotfix de la beta visto el 20 de octubre, que Blizzard no menciona en sus not
 
 Blizzard confirma que la beta cierra el viernes 23 de octubre a las 10:00 PDT (17:00 UTC), con una prueba de estrés el 21 de octubre cuyos personajes se borran al terminar. Quedan resueltas las fechas dudosas del fin de la beta. Además, datos oficiales nuevos: la reserva de nombres (27 de octubre - 3 de noviembre, hasta tres personajes) y la apertura de las bandas de nivel 60 el 9 de diciembre. En Canalización de escarcha se anota que ya reduce bien la amenaza.
 
-- **Datos afectados:** Reserva de nombres, Bandas de nivel 60, Canalización de Escarcha
-- **Fuentes:** [Heads Up -- WoW Forever Stress Test on October 21](https://us.forums.blizzard.com/en/wow/t/heads-up-wow-forever-stress-test-on-october-21/2387920) (Blizzard Entertainment), [Claim Your World of Warcraft: Forever Character Names](https://us.forums.blizzard.com/en/wow/t/claim-your-world-of-warcraft-forever-character-names/2387945) (Blizzard Entertainment), [World of Warcraft: Forever Raid Overview—Locations, Raid Sizes, and Attunement](https://us.forums.blizzard.com/en/wow/t/2387821) (Blizzard Entertainment), [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+- **Datos afectados:** Bandas de nivel 60, Canalización de Escarcha
+- **Fuentes:** [Claim Your World of Warcraft: Forever Character Names](https://us.forums.blizzard.com/en/wow/t/claim-your-world-of-warcraft-forever-character-names/2387945) (Blizzard Entertainment), [World of Warcraft: Forever Raid Overview—Locations, Raid Sizes, and Attunement](https://us.forums.blizzard.com/en/wow/t/2387821) (Blizzard Entertainment), [WoW Forever Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
 
 ## 2026-10-20
 
@@ -171,7 +183,7 @@ La página de Equipo se muda a Guías. Reúne las piezas clave para subir de niv
 
 Nueva calculadora de golpe: elige criatura o jugador, su nivel, tus rangos de Enfoque Arcano o Enfoque elemental y el golpe del equipo, y te dice con qué probabilidad aciertas y cuánto te falta para el tope, que en Forever llega al 100 % según los jugadores de la beta. La calculadora de críticos ya coincide con el cliente de la beta en todos los rangos.
 
-- **Fuentes:** [Hit Rate (WoW)](https://wow.allakhazam.com/wiki/Hit_Rate_(WoW)) (Allakhazam), [How Does Hit Chance Work in WoW Forever?](https://www.method.gg/wow-forever/how-does-hit-chance-work-in-wow-forever) (Method), [Where to find Hit%? (WoW: Forever Beta Discussion)](https://us.forums.blizzard.com/en/wow/t/where-to-find-hit/2373854) (World of Warcraft Forums), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead)
+- **Fuentes:** [Hit Rate (WoW)](https://wow.allakhazam.com/wiki/Hit_Rate_(WoW)) (Allakhazam), [How Does Hit Chance Work in WoW Forever?](https://www.method.gg/wow-forever/how-does-hit-chance-work-in-wow-forever) (Method), [Where to find Hit%? (Blizzard forums)](https://us.forums.blizzard.com/en/wow/t/where-to-find-hit/2373854) (World of Warcraft Forums), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead)
 
 ### [Web] Addons: MageProcs 1.4.0
 
@@ -226,7 +238,7 @@ Menú por recorrido (Empezar, Builds, Referencia), cada build y cada ficha de ca
 La versión en español de la build de leveo en solitario aún daba la bonificación de Lanza de hielo contra objetivos congelados anterior a la build del 15 de octubre, en el orden de puntos y en «Cómo se juega». Ahora dice lo correcto: un 200 % más. El texto del juego que muestran los tooltips de Lanza de hielo y Explosión Arcana también está al día.
 
 - **Datos afectados:** Lanza de hielo
-- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+- **Fuentes:** [WoW Forever Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
 
 ## 2026-10-16
 
@@ -238,8 +250,8 @@ La página de Addons describe MageProcs 1.2.0: los procs que avisa, el contador 
 
 Incorporo la build del 15 de octubre: fichas nuevas de Frost Blast, Cólera Arcana, Masa crítica, Poder de Fuego y varitas; Explosión Arcana, Tromba de misiles, Explosión de Fuego mejorada, Calentamiento, Lanza de hielo, Escalofrío del invierno y Cono de frío actualizados; el árbol de talentos y los talentos decisivos de Arcano, al día; y las raciales de las seis razas que pueden ser Mago. Las builds y las páginas de combate, leveo, farmeo AoE y talentos reflejan los cambios.
 
-- **Datos afectados:** Frost Blast, Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Masa crítica, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (downranking), Varitas, Cólera Arcana, Cono de frío, Explosión de Fuego, race:human, race:orc, race:undead, race:gnome, race:troll, race:skyborne, Arcane Missiles does not proc Barrage
-- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead), [Arcane Missiles does not proc Barrage](https://us.forums.blizzard.com/en/wow/t/arcane-missiles-does-not-proc-barrage/2384260) (WoW Forever Beta Discussion (Blizzard forums))
+- **Datos afectados:** Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (downranking), Varitas, Cólera Arcana, Cono de frío, Explosión de Fuego, race:human, race:orc, race:undead, race:gnome, race:troll, race:skyborne
+- **Fuentes:** [WoW Forever Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead)
 
 ## 2026-10-15
 
@@ -247,15 +259,15 @@ Incorporo la build del 15 de octubre: fichas nuevas de Frost Blast, Cólera Arca
 
 Nuevo hechizo Frost Blast (nivel 24). Arcano: Explosión Arcana rediseñada (1,5 s, da daño de hechizos según tu Intelecto), Cólera Arcana es el nuevo talento decisivo de 16 puntos y Tromba de misiles baja a la fila 1 con 2 puntos. Fuego: Estela de Fuego vuelve a ser Explosión de Fuego mejorada (más alcance, sin bonificación al matar), Calentamiento gana cargas con cada Explosión de Fuego, Masa crítica pasa a 5 puntos y Poder de Fuego se rediseña con 3. Escarcha: Lanza de hielo baja al 200 % contra objetivos congelados, Escalofrío del invierno ahora potencia Cono de frío y Cono de frío ralentiza más a los 4 primeros objetivos. Además, Lanzamiento libre ya no tira por cada objetivo y las varitas exigen estar quieto 0,5 s.
 
-- **Datos afectados:** Frost Blast, Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Masa crítica, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (downranking), Varitas, Cólera Arcana, Cono de frío, Explosión de Fuego
-- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+- **Datos afectados:** Explosión Arcana, Cólera Arcana, Tromba de misiles, Concentración Arcana, Explosión de Fuego mejorada, Calentamiento, Poder de Fuego, Lanza de hielo, Escalofrío del invierno, Cono de frío, Dedos de Escarcha, Rangos de hechizos (downranking), Varitas, Cólera Arcana, Cono de frío, Explosión de Fuego
+- **Fuentes:** [WoW Forever Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
 
 ### [Juego] Build de la beta del 15 de octubre: raciales
 
 Las especializaciones de arma desaparecen: el Humano gana Crueldad (Ruthless, +2 % de crítico) y el Orco, Salvajismo (Savage, +1 % de crítico). ¡Eureka! del Gnomo dura 8 s en vez de 3 usos, Wind Blessed del Cielonato sube al 3 % de celeridad, Toque de la tumba del No-muerto se activa más a menudo, Regeneración del Trol sube al 20 % y Shatter Curse del Orco protege menos.
 
 - **Datos afectados:** race:human, race:orc, race:undead, race:gnome, race:troll, race:skyborne
-- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+- **Fuentes:** [WoW Forever Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
 
 ### [Guía] Nueva guía: farmeo en área (AoE) con el Mago
 
@@ -269,7 +281,7 @@ Nueva página de Farmeo AoE, dentro de la Guía de clase. Explica qué ha cambia
 Nueva página de Pergaminos, dentro de la Guía de clase. Explica en 90 segundos y casi sin texto cómo se leen los pergaminos con Comprender pergamino: los pasos, dónde está en el libro de hechizos, qué conviene y qué no, la habilidad que pide cada tipo de pergamino según los datos de la beta, tres consejos para el leveo y lo que aún no se sabe, como la lista completa de recompensas.
 
 - **Datos afectados:** Comprehension - Skill - Forever, Collecting Library Books: Locations and Rewards - WoW Forever
-- **Fuentes:** [World of Warcraft: Forever: Repaso a fondo de las clases mago y chamán](https://worldofwarcraft.blizzard.com/es-es/news/24302097) (Blizzard Entertainment), [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [WoW Forever Mage Guide: Talent Builds, Races, Research & Changes](https://www.warcrafttavern.com/forever/guides/mage/) (Warcraft Tavern), [Collecting Library Books: Locations and Rewards - WoW Forever](https://www.wowhead.com/forever/guide/library-book-locations-and-rewards) (Wowhead), [Comprehension - Skill - Forever](https://www.wowhead.com/forever/skill=3012/comprehension) (Wowhead)
+- **Fuentes:** [World of Warcraft: Forever: Repaso a fondo de las clases mago y chamán](https://worldofwarcraft.blizzard.com/es-es/news/24302097) (Blizzard Entertainment), [WoW Forever Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [WoW Forever Mage Guide: Talent Builds, Races, Research & Changes](https://www.warcrafttavern.com/forever/guides/mage/) (Warcraft Tavern), [Collecting Library Books: Locations and Rewards - WoW Forever](https://www.wowhead.com/forever/guide/library-book-locations-and-rewards) (Wowhead), [Comprehension - Skill - Forever](https://www.wowhead.com/forever/skill=3012/comprehension) (Wowhead)
 
 ## 2026-10-14
 
@@ -285,7 +297,7 @@ La versión del cliente pasa a la build 70374 del 13 de octubre. No hay cambios 
 La página de Nivelación pasa a ser la guía de leveo del Mago, en la misma dirección. Tres builds de Escarcha del 1 al 30, con su orden de puntos nivel a nivel y los puntos extra del perk de Legado Talented: en solitario (la recomendada), en mazmorras y en área (experimental, desde el nivel 22). Además: por qué cada build, cómo jugarlas, una comparativa, los hechizos por nivel, los errores frecuentes y las variantes descartadas. Es una versión BETA: cubre lo que permite la beta y las builds aún no se han probado en el servidor. También aparecen en Builds, con el orden de puntos.
 
 - **Datos afectados:** World of Warcraft: Forever Frost Mage Guide, Mage Leveling Guide (Level 1-60) - Talents, Rotations, Races & More - WoW Forever, Frost Mage Guide - Talents, Rotations, Races & More - WoW Forever, WoW Forever Mage Leveling 1–30: Frost Build & Talents, WoW Forever Cuts Dungeon Kill XP but Makes Dungeon Quests More Rewarding, WoW Classic Single-Target Frost Mage Leveling Talent Build from 1 to 60, WoW Classic AoE Grinding Frost Mage Leveling Talent Build from 1 to 60
-- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead), [World of Warcraft: Forever Frost Mage Guide](https://www.icy-veins.com/wow-forever/frost-mage-ranged-dps-pve-guide) (Icy Veins), [Mage Leveling Guide (Level 1-60) - Talents, Rotations, Races & More - WoW Forever](https://mobalytics.gg/wow-forever/classes/mage-leveling-guide) (Mobalytics), [Frost Mage Guide - Talents, Rotations, Races & More - WoW Forever](https://mobalytics.gg/wow-forever/classes/frost-mage-guide) (Mobalytics), [WoW Forever Mage Leveling Guide & Talents](https://www.method.gg/wow-forever/wow-forever-mage-leveling-guide-and-talents) (Method), [WoW Forever Mage Leveling 1–30: Frost Build & Talents](https://wowforeverbuilds.com/guide/beta-20-frost-mage-leveling) (WoW Forever Builds), [WoW Forever Cuts Dungeon Kill XP but Makes Dungeon Quests More Rewarding](https://www.icy-veins.com/wow/news/wow-forever-cuts-dungeon-kill-xp-but-makes-dungeon-quests-more-rewarding/) (Icy Veins), [WoW Classic Single-Target Frost Mage Leveling Talent Build from 1 to 60](https://www.icy-veins.com/wow-classic/single-target-frost-mage-leveling-talent-build-from-1-to-60) (Icy Veins), [WoW Classic AoE Grinding Frost Mage Leveling Talent Build from 1 to 60](https://icy-veins.com/wow-classic/aoe-grinding-frost-mage-leveling-talent-build-from-1-to-60) (Icy Veins)
+- **Fuentes:** [WoW Forever Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead), [World of Warcraft: Forever Frost Mage Guide](https://www.icy-veins.com/wow-forever/frost-mage-ranged-dps-pve-guide) (Icy Veins), [Mage Leveling Guide (Level 1-60) - Talents, Rotations, Races & More - WoW Forever](https://mobalytics.gg/wow-forever/classes/mage-leveling-guide) (Mobalytics), [Frost Mage Guide - Talents, Rotations, Races & More - WoW Forever](https://mobalytics.gg/wow-forever/classes/frost-mage-guide) (Mobalytics), [WoW Forever Mage Leveling Guide & Talents](https://www.method.gg/wow-forever/wow-forever-mage-leveling-guide-and-talents) (Method), [WoW Forever Mage Leveling 1–30: Frost Build & Talents](https://wowforeverbuilds.com/guide/beta-20-frost-mage-leveling) (WoW Forever Builds), [WoW Forever Cuts Dungeon Kill XP but Makes Dungeon Quests More Rewarding](https://www.icy-veins.com/wow/news/wow-forever-cuts-dungeon-kill-xp-but-makes-dungeon-quests-more-rewarding/) (Icy Veins), [WoW Classic Single-Target Frost Mage Leveling Talent Build from 1 to 60](https://www.icy-veins.com/wow-classic/single-target-frost-mage-leveling-talent-build-from-1-to-60) (Icy Veins), [WoW Classic AoE Grinding Frost Mage Leveling Talent Build from 1 to 60](https://icy-veins.com/wow-classic/aoe-grinding-frost-mage-leveling-talent-build-from-1-to-60) (Icy Veins)
 
 ### [Guía] Nueva guía: las mejores profesiones para el Mago
 
@@ -308,7 +320,7 @@ La guía se mueve a https://sheephappens.app. La dirección anterior (sheep-happ
 
 Nueva página de Builds con filtros por uso y rama, vista de calculadora y enlace a la calculadora de Wowhead. Primera build: Escarcha para duelos a nivel 30 con el perk de Legado Talented (26 puntos), con una guía en profundidad para el torneo Forever Open. Nueva página de Razas con las raciales de las seis razas de Mago y qué aporta cada una. Los nombres de hechizos en negrita muestran su ficha al pasar el ratón o al tocarlos. El dato del sistema de Legado se corrige: el perk Talented adelanta los puntos de talento de clase.
 
-- **Datos afectados:** race:human, race:gnome, race:skyborne, race:orc, race:undead, race:troll, Mage Forever Talent Calculator, WoW Forever Racials Guide: 2 Active and 2 Passive per Race, Changes to Racials Likely Coming Next Week in WoW: Forever, WoW Forever — Forever Open Duel Tournament Overview: Rules & Prizes, Sistema de Legado, WoW Forever Legacy Points Guide - Challenges, Perks & Rewards, The Best Way to Spend Your Legacy Points in WoW Forever, 16 Legacy Points Now Available for Testing on WoW: Forever Beta
+- **Datos afectados:** race:human, race:gnome, race:skyborne, race:orc, race:undead, race:troll, Mage Forever Talent Calculator, WoW Forever Racials Guide: 2 Active and 2 Passive per Race, Changes to Racials Likely Coming Next Week in WoW: Forever, WoW Forever — Forever Open Duel Tournament Overview: Rules & Prizes, Sistema de Legado, WoW Forever Legacy Points Guide - Challenges, Perks & Rewards, The Best Way to Spend Your Legacy Points in WoW Forever
 - **Fuentes:** [Mage Forever Talent Calculator](https://www.wowhead.com/forever/talent-calc/mage) (Wowhead), [WoW Forever Racials Guide: 2 Active and 2 Passive per Race](https://lfcarry.com/guides/wow-forever-racials) (LFCarry), [WoW Forever — Forever Open Duel Tournament Overview: Rules & Prizes](https://conquestcapped.com/guides/wow-forever/wow-forever-open-duel-tournament/) (Conquest Capped), [WoW Forever Legacy Points Guide - Challenges, Perks & Rewards](https://conquestcapped.com/guides/wow-forever/wow-forever-legacy-points/) (Conquest Capped), [The Best Way to Spend Your Legacy Points in WoW Forever](https://www.method.gg/wow-forever/the-best-way-to-spend-your-legacy-points-in-wow-forever-best-legacy-talent-builds) (Method)
 
 ## 2026-10-12
@@ -318,7 +330,7 @@ Nueva página de Builds con filtros por uso y rama, vista de calculadora y enlac
 La ficha de Impacto recoge ahora el arreglo del 8 de octubre: ya no se activa con el daño periódico de Fogonazo.
 
 - **Datos afectados:** Impacto
-- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+- **Fuentes:** [WoW Forever Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
 
 ## 2026-10-11
 
@@ -327,7 +339,7 @@ La ficha de Impacto recoge ahora el arreglo del 8 de octubre: ya no se activa co
 Incorporados los cambios de Mago de las notas oficiales de las builds del 24 de septiembre, 1 de octubre y 8 de octubre; los nombres oficiales en español de hechizos y talentos; el posible adelanto de la doble especialización y la versión del cliente.
 
 - **Datos afectados:** Explosión de Fuego mejorada, Calentamiento, Ignición, Comprensión (Comprender pergamino), Chamuscar mejorado, Escalofrío del invierno, Descarga de Pirofrío, Cono de frío, Ventisca mejorada, Explosión Arcana, Misiles Arcanos, Rangos de hechizos (downranking), Doble especialización, Combustión
-- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [World of Warcraft: Forever: Repaso a fondo de las clases mago y chamán](https://worldofwarcraft.blizzard.com/es-es/news/24302097) (Blizzard Entertainment), [Blizzard Teases Possible Change to Unlock Level of Dual Spec in WoW: Forever](https://www.wowhead.com/news=383320/blizzard-teases-possible-change-to-unlock-level-of-dual-spec-in-wow-forever) (Wowhead)
+- **Fuentes:** [WoW Forever Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment), [World of Warcraft: Forever: Repaso a fondo de las clases mago y chamán](https://worldofwarcraft.blizzard.com/es-es/news/24302097) (Blizzard Entertainment), [Blizzard Teases Possible Change to Unlock Level of Dual Spec in WoW: Forever](https://www.wowhead.com/news=383320/blizzard-teases-possible-change-to-unlock-level-of-dual-spec-in-wow-forever) (Wowhead)
 
 ### [Web] Fuentes vigiladas cada semana y RSS de novedades
 
@@ -353,7 +365,7 @@ En el pódcast oficial (ep. 3), Josh Greenfield dijo que está «actualmente» a
 Se reajustan los rangos 1 a 5 de Descarga de Escarcha y Bola de Fuego y 1 a 3 de Misiles Arcanos para que cada rango nuevo sea una mejora. Corregido: Impacto podía activarse con el daño periódico de Fogonazo.
 
 - **Datos afectados:** Rangos de hechizos (downranking), Misiles Arcanos, Impacto
-- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+- **Fuentes:** [WoW Forever Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
 
 ## 2026-10-07
 
@@ -370,13 +382,11 @@ Descarga de Pirofrío, Lanza de hielo, Dedos de Escarcha, Calentamiento, la nuev
 Hot Streak pasa a llamarse Heating Up (Calentamiento). Combustión vuelve a 3 cargas, como en Classic (en la beta tenía 4). Chamuscar mejorado y Escalofrío del invierno ya no hacen una tirada de resistencia extra. Los pergaminos de Comprensión se reequilibran y no se pueden usar en movimiento. Los rangos muy bajos aprovechan menos el daño de hechizos y activan menos los talentos.
 
 - **Datos afectados:** Calentamiento, Chamuscar mejorado, Escalofrío del invierno, Comprensión (Comprender pergamino), Rangos de hechizos (downranking), Combustión
-- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+- **Fuentes:** [WoW Forever Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
 
 ### [Juego] La beta sube al nivel 30
 
 El contenido de los niveles 31 a 60 no se puede probar hasta el lanzamiento.
-
-- **Fuentes:** [WoW Forever Beta: dates, level caps and access](https://lfcarry.com/guides/wow-forever-beta) (LFCarry)
 
 ## 2026-09-24
 
@@ -385,4 +395,4 @@ El contenido de los niveles 31 a 60 no se puede probar hasta el lanzamiento.
 Misiles Arcanos solo comprueba la línea de visión al empezar a canalizar. Estela de Fuego pasa de 20 a 30 s y el futuro Calentamiento de 15 a 20 s. Ignición ya no se beneficia dos veces de los modificadores de daño.
 
 - **Datos afectados:** Misiles Arcanos, Explosión de Fuego mejorada, Calentamiento, Ignición
-- **Fuentes:** [WoW Forever Beta Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+- **Fuentes:** [WoW Forever Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)

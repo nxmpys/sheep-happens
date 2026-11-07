@@ -1,7 +1,6 @@
 ﻿import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { dataset } from '../src/lib/data';
-import { datasetWithFixture } from './fixtures/builds';
 import { MDX_COMPONENTS, validatePages, type PageFile } from '../src/lib/page-rules';
 import { LOCALES, PAGE_IDS } from '../src/i18n/routes';
 
@@ -13,7 +12,7 @@ pageId: ${pageId}
 locale: ${locale}
 title: A valid page title
 description: A description that is long enough to satisfy the schema rules for meta descriptions.
-gameVersion: forever-beta-2026-10
+gameVersion: forever-launch-2026-11
 published: 2026-10-11
 reviewed: 2026-10-11
 reviewedBy: Test
@@ -54,17 +53,6 @@ describe('validatePages', () => {
     const withBody = (body: string) => [...complete.filter((f) => f.path !== 'es/leveling.mdx'), page('es', 'leveling', body)];
     expect(validatePages(withBody('<BuildLink use="pvp">x</BuildLink>'), dataset, today).errors).toEqual([]);
     expect(validatePages(withBody('<BuildLink id="frost-leveling-solo">x</BuildLink>'), dataset, today).errors.join('\n')).toMatch(/never to a concrete build/);
-  });
-
-  it('checks the builds offered by <BuildPicker>', () => {
-    const ok = "<BuildPicker ids={['frost-leveling-solo']} recommended=\"frost-leveling-solo\" />";
-    const bad = "<BuildPicker ids={['frost-leveling-solo', 'frost-leveling-nope']} recommended=\"frost-duels-30-legacy\" />";
-    const withBody = (body: string) => [...complete.filter((f) => f.path !== 'es/leveling.mdx'), page('es', 'leveling', body)];
-    const data = datasetWithFixture();
-    expect(validatePages(withBody(ok), data, today).errors).toEqual([]);
-    const errors = validatePages(withBody(bad), data, today).errors.join('\n');
-    expect(errors).toMatch(/unknown build "frost-leveling-nope"/);
-    expect(errors).toMatch(/recommends "frost-duels-30-legacy", which it does not list/);
   });
 
   it('checks page ids on <Highlight> and statuses on <FaqItem>', () => {

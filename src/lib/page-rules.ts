@@ -47,7 +47,6 @@ export const MDX_COMPONENTS = [
   'AddonLink',
   'BuildCard',
   'BuildExplorer',
-  'BuildPicker',
   'SpecBuilds',
   'BuildLink',
   'Callout',
@@ -74,7 +73,6 @@ export const MDX_COMPONENTS = [
   'LevelingSpells',
   'LegacyBuildCard',
   'LegacyPerks',
-  'LevelingStatus',
   'LibraryBooks',
   'MilestoneMap',
   'Notices',
@@ -92,6 +90,7 @@ export const MDX_COMPONENTS = [
   'SourceRefs',
   'SourcesTable',
   'SpecCards',
+  'Spellbook',
   'Status',
   'StatusLegend',
   'TalentCalculator',
@@ -173,11 +172,6 @@ export function validatePages(
     if (/<BuildLink[^>]*\bid=/.test(body)) errors.push(`${where}: <BuildLink> links to a content (use="leveling"), never to a concrete build`);
     for (const [, id] of body.matchAll(/<BuildCard[^>]*\bid="([^"]+)"/g)) {
       if (!data.builds.some((b) => b.id === id)) errors.push(`${where}: unknown build "${id}"`);
-    }
-    for (const [, list, recommended] of body.matchAll(/<BuildPicker[^>]*\bids=\{\[([^\]]*)\]\}(?:[^>]*\brecommended="([^"]+)")?/g)) {
-      const ids = [...list!.matchAll(/'([^']+)'/g)].map((m) => m[1]!);
-      for (const id of ids) if (!data.builds.some((b) => b.id === id)) errors.push(`${where}: unknown build "${id}"`);
-      if (recommended && !ids.includes(recommended)) errors.push(`${where}: <BuildPicker> recommends "${recommended}", which it does not list`);
     }
     // The picks and the comparison table link to each <ProfessionDetail>'s heading.
     const detailed = new Set<string>();

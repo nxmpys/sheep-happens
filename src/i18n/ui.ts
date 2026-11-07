@@ -18,6 +18,7 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
     'talents-fire': 'Fuego',
     'talents-frost': 'Escarcha',
     leveling: 'Primeros pasos en Azeroth',
+    spells: 'Hechizos por nivel',
     'aoe-farming': 'Farmeo AoE',
     gear: 'Equipo y misiones',
     tools: 'Herramientas',
@@ -43,6 +44,7 @@ export const NAV_LABELS: Record<Locale, Record<PageId, string>> = {
     'talents-fire': 'Fire',
     'talents-frost': 'Frost',
     leveling: 'First steps in Azeroth',
+    spells: 'Spells by level',
     'aoe-farming': 'AoE farming',
     gear: 'Gear and quests',
     tools: 'Tools',
@@ -69,7 +71,7 @@ const es = {
   'nav.closeMenu': 'Cerrar menú',
   'nav.submenu': 'Ver lo que hay en {name}',
   'nav.breadcrumbs': 'Ruta de navegación',
-  'nav.afterLaunch': 'tras el lanzamiento',
+  'nav.pending': 'pendiente',
   'nav.prev': 'Anterior',
   'nav.next': 'Siguiente',
   'nav.pager': 'Recorrido de la guía',
@@ -195,7 +197,7 @@ const en: Record<UiKey, string> = {
   'nav.closeMenu': 'Close menu',
   'nav.submenu': 'Show what is in {name}',
   'nav.breadcrumbs': 'Breadcrumb',
-  'nav.afterLaunch': 'after launch',
+  'nav.pending': 'pending',
   'nav.prev': 'Previous',
   'nav.next': 'Next',
   'nav.pager': 'Guide path',
@@ -339,22 +341,3 @@ export function formatUtcTime(locale: Locale, date: Date): string {
   return `${day}, ${time} UTC`;
 }
 
-/** Formats an instant in Spain's time zone (CET/CEST): "5 de noviembre de 2026, 00:00 CET". */
-export function formatSpainTime(locale: Locale, date: Date): string {
-  const day = new Intl.DateTimeFormat(DATE_LOCALES[locale], {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'Europe/Madrid',
-  }).format(date);
-  const time = new Intl.DateTimeFormat(DATE_LOCALES[locale], {
-    hour: '2-digit',
-    minute: '2-digit',
-    hourCycle: 'h23',
-    timeZone: 'Europe/Madrid',
-    timeZoneName: 'short',
-  })
-    .format(date)
-    .replace(' ', ' '); // keep "00:00 CET" on one line
-  return `${day}, ${time}`;
-}

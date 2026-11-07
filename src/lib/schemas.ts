@@ -193,13 +193,11 @@ export const gameVersionSchema = z
   .object({
     id,
     label: localized,
-    /** A few words for the compact page header ("Beta oct 2026"). */
+    /** A few words for the compact page header ("Parche 1.60.1"). */
     short: localized,
     stage: z.enum(['beta', 'launch', 'patch']),
     since: isoDate,
     notes: localized.optional(),
-    /** Planned launch instant in UTC ("2026-11-04T23:00:00Z"); the home page counts down to it. */
-    launchAt: z.iso.datetime().optional(),
   })
   .strict();
 export type GameVersion = z.infer<typeof gameVersionSchema>;
@@ -370,8 +368,6 @@ export const buildSchema = z
     /** Page with the in-depth explanation, if there is one. */
     page: z.enum(PAGE_IDS).optional(),
     status: z.enum(STATUSES),
-    /** A `tested` build played only up to this level (the beta's cap): the page says how far. */
-    testedUpTo: z.number().int().min(1).max(60).optional(),
     /** Game version the build was made for (game-versions.json). */
     gameVersion: id,
     sources: sourceIds,
@@ -705,6 +701,40 @@ export const levelingSpellSchema = z
   })
   .strict();
 export type LevelingSpells = z.infer<typeof levelingSpellSchema>;
+
+/** One rank of a spellbook spell: the level it is learned at and its Wowhead spell id. */
+const spellbookRank = z
+  .object({
+    rank: z.number().int().min(0),
+    level: z.number().int().min(1).max(60),
+    spell: z.number().int().positive(),
+    /** Named variant instead of a rank number (Polymorph: Pig). */
+    variant: z.string().min(1).optional(),
+  })
+  .strict();
+
+/**
+ * Every Mage spell by level (src/data/spellbook.json), read from the Forever
+ * client through the Wowhead database: `ranks` are taught by the trainer (rank 1
+ * of a `talent` spell comes with the talent), `other` ranks come from books,
+ * quests or an unknown source. Names are the client's.
+ */
+export const spellbookSpellSchema = z
+  .object({
+    id,
+    name: localized,
+    icon: z.string().regex(/^[a-z0-9_]+$/),
+    school: z.enum(['arcane', 'fire', 'frost']),
+    faction: z.enum(['alliance', 'horde']).optional(),
+    talent: z.literal(true).optional(),
+    /** New in Forever. */
+    new: z.literal(true).optional(),
+    ranks: z.array(spellbookRank),
+    other: z.array(spellbookRank.extend({ how: z.enum(['drop', 'quest', 'unknown']) }).strict()).optional(),
+  })
+  .strict()
+  .refine((s) => s.ranks.length > 0 || (s.other?.length ?? 0) > 0, { message: 'a spell needs at least one rank' });
+export type SpellbookSpell = z.infer<typeof spellbookSpellSchema>;
 
 /**
  * A temporary banner (src/data/notices.json), e.g. an event this week. It is

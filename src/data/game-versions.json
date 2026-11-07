@@ -1,20 +1,19 @@
 [
   {
-    "id": "forever-beta-2026-10",
+    "id": "forever-launch-2026-11",
     "label": {
-      "es": "Forever · beta (octubre de 2026)",
-      "en": "Forever · beta (October 2026)"
+      "es": "Forever · lanzamiento (parche 1.60.1)",
+      "en": "Forever · launch (patch 1.60.1)"
     },
     "short": {
-      "es": "Beta oct 2026",
-      "en": "Beta Oct 2026"
+      "es": "Parche 1.60.1",
+      "en": "Patch 1.60.1"
     },
-    "stage": "beta",
-    "since": "2026-09-17",
-    "launchAt": "2026-11-04T23:00:00Z",
+    "stage": "launch",
+    "since": "2026-11-04",
     "notes": {
-      "es": "Beta cerrada con nivel máximo 30 desde el 1 de octubre. Lanzamiento previsto el 4 de noviembre de 2026.",
-      "en": "Closed beta, level cap 30 since 1 October. Launch planned for 4 November 2026."
+      "es": "Lanzamiento del 4 de noviembre de 2026, cliente 1.60.1.70790. Nivel máximo 60; las bandas abren el 9 de diciembre.",
+      "en": "Launch of 4 November 2026, client 1.60.1.70790. Level cap 60; raids open on 9 December."
     }
   }
 ]

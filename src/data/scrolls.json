@@ -31,7 +31,7 @@
     "part": "flow",
     "icon": "reward",
     "title": { "es": "Te quedas un pergamino útil", "en": "You keep a useful scroll" },
-    "text": { "es": "Mejoras para el bastón, un familiar, maná y más.", "en": "Staff imbues, a familiar, mana and more." },
+    "text": { "es": "Familiares, mejoras para el arma, maná y más.", "en": "Familiars, weapon imbues, mana and more." },
     "status": "reported",
     "sources": ["warcrafttavern-mage-guide", "wowhead-forever-comprehension"]
   },
@@ -67,7 +67,7 @@
     "part": "no",
     "icon": "move",
     "title": { "es": "En movimiento", "en": "While moving" },
-    "text": { "es": "No se lanzan andando (build del 1 de octubre).", "en": "They cannot be cast while moving (1 October build)." },
+    "text": { "es": "No se lanzan andando.", "en": "They cannot be cast while moving." },
     "status": "verified",
     "sources": ["blizzard-dev-notes"]
   },
@@ -155,8 +155,8 @@
   {
     "id": "unknown-rewards",
     "part": "unknown",
-    "title": { "es": "Qué da cada pergamino", "en": "What each scroll gives" },
-    "text": { "es": "Blizzard las deja por descubrir; no hay lista completa.", "en": "Blizzard leaves them to be discovered; there is no full list." },
+    "title": { "es": "Qué da cada pergamino sin descifrar", "en": "What each untranslated scroll gives" },
+    "text": { "es": "Los datos agrupan los resultados por nivel; el reparto exacto lo decide el servidor.", "en": "The data groups the results by level; the exact split is up to the server." },
     "status": "pending",
     "sources": ["blizzard-deep-dive-mage"]
   },

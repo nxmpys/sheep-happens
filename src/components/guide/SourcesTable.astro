@@ -11,7 +11,7 @@ const kindLabels: Record<SourceKind, { es: string; en: string }> = {
   official: { es: 'Oficiales (Blizzard)', en: 'Official (Blizzard)' },
   press: { es: 'Prensa', en: 'Press' },
   community: { es: 'Comunidad', en: 'Community' },
-  tool: { es: 'Calculadoras con datos de la beta', en: 'Calculators built from beta data' },
+  tool: { es: 'Calculadoras y bases de datos del cliente', en: 'Calculators and client databases' },
   'classic-reference': { es: 'Referencia de Classic', en: 'Classic reference' },
 };
 const groups = SOURCE_KINDS.map((kind) => ({ kind, list: sources.filter((s) => s.kind === kind) })).filter(

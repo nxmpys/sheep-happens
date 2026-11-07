@@ -23,7 +23,7 @@ describe('menuBlocks', () => {
   });
 
   it('lists what the user asked for under Learn and Tools', () => {
-    expect(labels('learn', 'en')).toEqual(['The class', 'Combat', 'Specializations', 'Arcane', 'Fire', 'Frost', 'First steps in Azeroth', 'Glossary']);
+    expect(labels('learn', 'en')).toEqual(['The class', 'Combat', 'Specializations', 'Arcane', 'Fire', 'Frost', 'First steps in Azeroth', 'Spells by level', 'Glossary']);
     expect(labels('tools', 'en')).toEqual(['Crit multiplier', 'Spell hit', 'Talent calculator', 'Mage cheat sheet', 'Forever changes', 'MageProcs']);
   });
 

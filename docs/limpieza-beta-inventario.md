@@ -1,5 +1,7 @@
 # Inventario: referencias a la beta en builds y guías
 
+
+> **2026-11-06: completado con el lanzamiento.** Lo que quedaba de esta lista se resolvió al pasar a `forever-launch-2026-11`; ver la sección 2 de [content-roadmap.md](content-roadmap.md).
 > 2026-10-26 · **Aplicado** con las propuestas por defecto: regla 1 (a), `gameVersion` sin cambiar hasta el lanzamiento, solo los menús Builds y Guías, y quitado el dato del vídeo de 1600 de experiencia. El callout de `builds.mdx` desapareció al rehacer el índice. Pendiente: `professions.json:647,760` siguen diciendo «datos de la beta» porque cambiarlo obliga a subir su `updated` y añadir una entrada al historial; las páginas de Aprende y Herramientas no se han tocado.
 >
 > Líneas del archivo `es`; el `en` tiene la misma frase en la misma línea (salvo `races`, una línea antes).

@@ -12,6 +12,12 @@
     "source": "official"
   },
   {
+    "id": "arcane-brilliance",
+    "en": "Arcane Brilliance",
+    "es": "Resplandor Arcano",
+    "source": "client"
+  },
+  {
     "id": "arcane-concentration",
     "en": "Arcane Concentration",
     "es": "Concentración Arcana",
@@ -159,6 +165,24 @@
     "id": "conjure-mana-agate",
     "en": "Conjure Mana Agate",
     "es": "Conjurar ágata de maná",
+    "source": "client"
+  },
+  {
+    "id": "conjure-mana-citrine",
+    "en": "Conjure Mana Citrine",
+    "es": "Conjurar citrino de maná",
+    "source": "client"
+  },
+  {
+    "id": "conjure-mana-jade",
+    "en": "Conjure Mana Jade",
+    "es": "Conjurar jade de maná",
+    "source": "client"
+  },
+  {
+    "id": "conjure-mana-ruby",
+    "en": "Conjure Mana Ruby",
+    "es": "Conjurar rubí de maná",
     "source": "client"
   },
   {

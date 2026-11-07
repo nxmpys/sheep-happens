@@ -8,34 +8,21 @@
     "published": "2026-10-07",
     "accessed": "2026-10-15",
     "notes": {
-      "es": "Fuente principal de todos los cambios del Mago. Advierte que las habilidades y los talentos pueden cambiar durante la beta. Casi sin valores numéricos.",
-      "en": "Primary source for every Mage change. Warns that abilities and talents may keep changing during the beta. Almost no numeric values."
+      "es": "Fuente principal de los cambios del Mago respecto a Classic. Casi sin valores numéricos.",
+      "en": "Primary source for the Mage’s changes from Classic. Almost no numeric values."
     }
   },
   {
     "id": "blizzard-dev-notes",
-    "title": "WoW Forever Beta Development Notes",
+    "title": "WoW Forever Development Notes",
     "publisher": "Blizzard Entertainment",
     "url": "https://us.forums.blizzard.com/en/wow/t/2360696",
     "kind": "official",
     "published": "2026-09-24",
     "accessed": "2026-11-03",
     "notes": {
-      "es": "Notas oficiales de cada build de la beta (24 sep, 1, 8 y 15 oct de 2026) y las del lanzamiento (3 nov). Es la fuente principal para las actualizaciones semanales.",
-      "en": "Official notes for every beta build (24 Sep, 1, 8 and 15 Oct 2026) and for launch (3 Nov). The main source for weekly updates."
-    }
-  },
-  {
-    "id": "blizzard-stress-test",
-    "title": "Heads Up -- WoW Forever Stress Test on October 21",
-    "publisher": "Blizzard Entertainment",
-    "url": "https://us.forums.blizzard.com/en/wow/t/heads-up-wow-forever-stress-test-on-october-21/2387920",
-    "kind": "official",
-    "published": "2026-10-20",
-    "accessed": "2026-10-21",
-    "notes": {
-      "es": "Aviso oficial: el 21 de octubre se pausa la beta para una prueba de estrés abierta a cualquier cuenta, sus personajes se borran al terminar y la beta cierra el viernes 23 de octubre a las 10:00 PDT.",
-      "en": "Official notice: on 21 October the beta goes offline for a stress test open to any account, its characters are deleted when it ends, and the beta closes on Friday 23 October at 10:00 AM PDT."
+      "es": "Notas oficiales de cada build antes del lanzamiento y las del propio lanzamiento (2 de noviembre de 2026, ampliadas el 4): confirman los cambios de talentos del Mago y tres correcciones.",
+      "en": "Official notes for every build before launch and for launch itself (2 November 2026, extended on the 4th): they confirm the Mage’s talent changes and three fixes."
     }
   },
   {
@@ -73,8 +60,8 @@
     "published": "2026-10-28",
     "accessed": "2026-10-29",
     "notes": {
-      "es": "Cambios de la build de la beta del 28 de octubre leídos de sus datos, sin notas de Blizzard: Accelerant, Precision, Incineración a 5 puntos, Masa crítica a 3, reutilización de Lanza de hielo, adiós a Enfoque Arcano y Frost Blast, cuatro talentos cambian de casilla y Mordiescarcha comparte rendimientos decrecientes con las raíces de otros talentos. Lo he contrastado con la calculadora de Wowhead Forever.",
-      "en": "Changes in the 28 October beta build read from its data, with no Blizzard notes: Accelerant, Precision, Incineration at 5 points, Critical Mass at 3, an Ice Lance cooldown, Arcane Focus and Frost Blast removed, four talents change slots and Frostbite shares diminishing returns with other talents' roots. I checked it against the Wowhead Forever talent calculator."
+      "es": "Cambios de la build del 28 de octubre leídos de sus datos: Accelerant, Precision, Incineración a 5 puntos, reutilización de Lanza de hielo y adiós a Enfoque Arcano. Blizzard los confirmó en sus notas del lanzamiento.",
+      "en": "Changes in the 28 October build read from its data: Accelerant, Precision, Incineration at 5 points, an Ice Lance cooldown and Arcane Focus removed. Blizzard confirmed them in its launch notes."
     }
   },
   {
@@ -99,21 +86,8 @@
     "published": "2026-10-20",
     "accessed": "2026-10-21",
     "notes": {
-      "es": "Registro de cambios de la beta hecho por la comunidad: un hotfix de la build del 16 de octubre, visto el 20 y sin mención en las notas de Blizzard, quita Hielo penetrante, deja Enfoque elemental en +2 % por rango y refuerza Barrera de hielo, Custodia de Escarcha (Frost Ward) y el talento Custodia de Escarcha (Frost Warding).",
-      "en": "Community beta changelog: a hotfix to the 16 October build, first seen on the 20th and not in Blizzard's notes, removes Piercing Ice, makes Elemental Precision +2% per rank and strengthens Ice Barrier, Frost Ward and Frost Warding."
-    }
-  },
-  {
-    "id": "forum-missile-barrage-proc",
-    "title": "Arcane Missiles does not proc Barrage",
-    "publisher": "WoW Forever Beta Discussion (Blizzard forums)",
-    "url": "https://us.forums.blizzard.com/en/wow/t/arcane-missiles-does-not-proc-barrage/2384260",
-    "kind": "community",
-    "published": "2026-10-16",
-    "accessed": "2026-10-16",
-    "notes": {
-      "es": "Hilo de jugadores de la beta: tras la build del 15 de octubre, los impactos de Misiles Arcanos no activan Tromba de misiles.",
-      "en": "Beta players' thread: after the 15 October build, Arcane Missiles hits do not trigger Missile Barrage."
+      "es": "Hotfix del 20 de octubre leído de los datos: quita Hielo penetrante, deja Enfoque elemental en +2 % por rango y refuerza Barrera de hielo y Custodia de Escarcha. Blizzard lo confirmó en sus notas del lanzamiento.",
+      "en": "The 20 October hotfix read from the data: it removes Piercing Ice, makes Elemental Precision +2% per rank and strengthens Ice Barrier and Frost Warding. Blizzard confirmed it in its launch notes."
     }
   },
   {
@@ -177,27 +151,6 @@
     }
   },
   {
-    "id": "lfcarry-beta",
-    "title": "WoW Forever Beta: dates, level caps and access",
-    "publisher": "LFCarry",
-    "url": "https://lfcarry.com/guides/wow-forever-beta",
-    "kind": "press",
-    "published": "2026-10-10",
-    "accessed": "2026-10-11",
-    "notes": {
-      "es": "Web comercial. Cita la cuenta @Warcraft_Official y los foros de Blizzard para las fechas y el límite de nivel de la beta.",
-      "en": "Commercial site. Cites @Warcraft_Official and the Blizzard forums for beta dates and level caps."
-    }
-  },
-  {
-    "id": "icyveins-beta-cap",
-    "title": "The WoW Forever Beta Starts at Level 20, Level 30 After “Couple of Weeks”",
-    "publisher": "Icy Veins",
-    "url": "https://www.icy-veins.com/wow/news/the-wow-forever-beta-starts-at-level-20-level-30-after-couple-of-weeks/",
-    "kind": "community",
-    "accessed": "2026-10-11"
-  },
-  {
     "id": "wowforever-level-cap",
     "title": "WoW Forever Level Cap — 60 “for the Foreseeable Future”",
     "publisher": "wowforever.co",
@@ -213,8 +166,8 @@
     "kind": "community",
     "accessed": "2026-10-11",
     "notes": {
-      "es": "Detalles del sistema de Legado según la beta; pueden cambiar en el lanzamiento.",
-      "en": "Legacy system details as seen in the beta; may change at launch."
+      "es": "Detalles del sistema de Legado: árboles, ventajas y límite de puntos.",
+      "en": "Legacy system details: trees, perks and the point cap."
     }
   },
   {
@@ -280,15 +233,15 @@
   },
   {
     "id": "blizzard-forums-forever-hit",
-    "title": "Where to find Hit%? (WoW: Forever Beta Discussion)",
+    "title": "Where to find Hit%? (Blizzard forums)",
     "publisher": "World of Warcraft Forums",
     "url": "https://us.forums.blizzard.com/en/wow/t/where-to-find-hit/2373854",
     "kind": "community",
     "published": "2026-10-06",
     "accessed": "2026-10-20",
     "notes": {
-      "es": "Hilo de jugadores de la beta: el tope de golpe de los lanzadores es un 17 % contra enemigos 3 niveles por encima. No responde nadie de Blizzard.",
-      "en": "Beta players' thread: the caster hit cap is 17% against enemies 3 levels above you. No Blizzard reply."
+      "es": "Hilo de jugadores: el tope de golpe de los lanzadores es un 17 % contra enemigos 3 niveles por encima. No responde nadie de Blizzard.",
+      "en": "Players’ thread: the caster hit cap is 17% against enemies 3 levels above you. No Blizzard reply."
     }
   },
   {
@@ -363,8 +316,8 @@
     "kind": "tool",
     "accessed": "2026-10-11",
     "notes": {
-      "es": "Calculadora con datos extraídos de la beta. Solo se usa como indicio (51 puntos de talento).",
-      "en": "Calculator built from beta data. Used only as a hint (51 talent points)."
+      "es": "Calculadora con datos extraídos del cliente. Solo se usa como indicio.",
+      "en": "Calculator built from client data. Used only as a hint."
     }
   },
   {
@@ -388,8 +341,8 @@
     "kind": "tool",
     "accessed": "2026-10-14",
     "notes": {
-      "es": "Lista de builds del cliente (ForeverBeta 1.60.1.70374 el 13 oct de 2026).",
-      "en": "Client build list (ForeverBeta 1.60.1.70374 on 13 Oct 2026)."
+      "es": "Lista de builds del cliente de Forever (1.60.1.70790 en el lanzamiento).",
+      "en": "List of Forever client builds (1.60.1.70790 at launch)."
     }
   },
   {
@@ -412,8 +365,8 @@
     "kind": "tool",
     "accessed": "2026-10-29",
     "notes": {
-      "es": "Árbol de talentos y descripciones extraídos del cliente de la beta. Lo uso para la posición de cada talento y para los enlaces de las builds; sus cifras son una pista, no un dato confirmado.",
-      "en": "Talent trees and tooltips data-mined from the beta client. I use it for talent positions and build links; its numbers are a hint, not a confirmed fact."
+      "es": "Árbol de talentos y descripciones extraídos del cliente. Lo uso para la posición de cada talento y para los enlaces de las builds; sus cifras son una pista, no un dato confirmado.",
+      "en": "Talent trees and tooltips data-mined from the client. I use it for talent positions and build links; its numbers are a hint, not a confirmed fact."
     }
   },
   {
@@ -424,8 +377,8 @@
     "kind": "press",
     "accessed": "2026-10-13",
     "notes": {
-      "es": "Web comercial. Recoge las raciales de cada raza y cita las publicaciones y builds de la beta de Blizzard.",
-      "en": "Commercial site. Lists every race's racials and cites Blizzard's posts and beta builds."
+      "es": "Web comercial. Recoge las raciales de cada raza y cita las publicaciones de Blizzard.",
+      "en": "Commercial site. Lists every race’s racials and cites Blizzard’s posts."
     }
   },
   {
@@ -491,15 +444,6 @@
     }
   },
   {
-    "id": "wowhead-legacy-beta",
-    "title": "16 Legacy Points Now Available for Testing on WoW: Forever Beta",
-    "publisher": "Wowhead",
-    "url": "https://www.wowhead.com/news=383335/16-legacy-points-now-available-for-testing-on-wow-forever-beta",
-    "kind": "press",
-    "published": "2026-10-08",
-    "accessed": "2026-10-13"
-  },
-  {
     "id": "blizzard-forever-deep-dive-recap",
     "title": "World of Warcraft: Forever Deep Dive Panel Recap",
     "publisher": "Blizzard Entertainment",
@@ -520,8 +464,8 @@
     "kind": "tool",
     "accessed": "2026-10-14",
     "notes": {
-      "es": "Base de datos extraída del cliente de la beta (1.60.1): recetas de cada profesión, qué es nuevo en Forever y las fichas de los objetos (ligado, nivel, estadísticas, requisitos). Las cifras pueden cambiar antes del lanzamiento.",
-      "en": "Database mined from the beta client (1.60.1): each profession's recipes, what is new in Forever and item tooltips (binding, level, stats, requirements). Numbers may change before launch."
+      "es": "Base de datos extraída del cliente (1.60.1): recetas de cada profesión, qué es nuevo en Forever y las fichas de los objetos (ligado, nivel, estadísticas, requisitos).",
+      "en": "Database mined from the client (1.60.1): each profession’s recipes, what is new in Forever and item tooltips (binding, level, stats, requirements)."
     }
   },
   {
@@ -569,8 +513,8 @@
     "kind": "community",
     "accessed": "2026-10-14",
     "notes": {
-      "es": "Sin profesiones nuevas (la Investigación del Mago aparece en la ventana de profesiones) y un máximo de dos principales más las tres secundarias. Las bonificaciones pasivas tipo Mixology no aparecen en los datos de la beta.",
-      "en": "No new professions (Mage Research shows in the professions window) and at most two primary plus all three secondary professions. Passive bonuses such as Mixology are not in the beta data."
+      "es": "Sin profesiones nuevas (la Investigación del Mago aparece en la ventana de profesiones) y un máximo de dos principales más las tres secundarias. Las bonificaciones pasivas tipo Mixology no aparecen en los datos del cliente.",
+      "en": "No new professions (Mage Research shows in the professions window) and at most two primary plus all three secondary professions. Passive bonuses such as Mixology are not in the client data."
     }
   },
   {
@@ -631,8 +575,8 @@
     "published": "2026-10-01",
     "accessed": "2026-10-14",
     "notes": {
-      "es": "Build de Escarcha de nivel 30 (21 puntos y extras con Talented), prioridades con Frostbite y Dedos de Escarcha, y consejos de leveo (varitas, misiones de mazmorra, regla de los 5 segundos). Teoría para la beta.",
-      "en": "Level 30 Frost build (21 points plus Talented extras), priorities with Frostbite and Fingers of Frost, and leveling tips (wands, dungeon quests, five-second rule). Beta theorycraft."
+      "es": "Build de Escarcha de nivel 30 (21 puntos y extras con Talented), prioridades con Frostbite y Dedos de Escarcha, y consejos de leveo (varitas, misiones de mazmorra, regla de los 5 segundos).",
+      "en": "Level 30 Frost build (21 points plus Talented extras), priorities with Frostbite and Fingers of Frost, and leveling tips (wands, dungeon quests, five-second rule)."
     }
   },
   {
@@ -718,8 +662,8 @@
     "kind": "tool",
     "accessed": "2026-10-15",
     "notes": {
-      "es": "Datos del cliente de la beta (1.60.1): los hechizos de Comprender pergamino (5 s de lanzamiento, sin coste, nivel 6), la habilidad que pide cada pergamino sin descifrar, quién los suelta y lo que trae el Montón de pergaminos. No dice qué da cada pergamino al descifrarlo.",
-      "en": "Beta client data (1.60.1): the Comprehend Scroll spells (5 s cast, no cost, level 6), the skill each untranslated scroll asks for, what drops them and what the Bundle of Scrolls holds. It does not say what each scroll gives when deciphered."
+      "es": "Datos del cliente (1.60.1): los hechizos de Comprender pergamino (5 s de lanzamiento, sin coste, nivel 6), la habilidad que pide cada pergamino sin descifrar, quién los suelta y lo que trae el Montón de pergaminos. No dice qué da cada pergamino al descifrarlo.",
+      "en": "Client data (1.60.1): the Comprehend Scroll spells (5 s cast, no cost, level 6), the skill each untranslated scroll asks for, what drops them and what the Bundle of Scrolls holds. It does not say what each scroll gives when deciphered."
     }
   },
   {
@@ -744,8 +688,8 @@
     "published": "2026-10-13",
     "accessed": "2026-10-15",
     "notes": {
-      "es": "Guía de leveo de Forever con dos rotaciones de área (desde el nivel 14 sin Ventisca y desde el 20 con ella), zonas de farmeo por nivel y consejos. Dice que probó del 1 al 30 en la beta; las zonas del 30 al 60 son de Classic y están sin probar.",
-      "en": "Forever leveling guide with two AoE rotations (from level 14 without Blizzard and from 20 with it), farming spots by level and tips. It says levels 1-30 were tested in the beta; spots from 30 to 60 come from Classic and are untested."
+      "es": "Guía de leveo de Forever con dos rotaciones de área (desde el nivel 14 sin Ventisca y desde el 20 con ella), zonas de farmeo por nivel y consejos. Las zonas del 30 al 60 son de Classic.",
+      "en": "Forever leveling guide with two AoE rotations (from level 14 without Blizzard and from 20 with it), farming spots by level and tips. Its spots from 30 to 60 come from Classic."
     }
   },
   {
@@ -769,8 +713,8 @@
     "kind": "community",
     "accessed": "2026-10-15",
     "notes": {
-      "es": "Zona nueva de Forever al noroeste de Cima del Trueno (Mulgore): arañas Gloomrise de nivel 27 a 29, solo Horda, desde el nivel 23. Cita un vídeo de la beta del 4 de octubre (unos 1600 de experiencia por grupo). No da rotación ni cifras de maná.",
-      "en": "New Forever spot northwest of Thunder Bluff (Mulgore): level 27-29 Gloomrise spiders, Horde only, from level 23. It cites a beta video from 4 October (about 1,600 experience per pull). No rotation or mana numbers."
+      "es": "Zona nueva de Forever al noroeste de Cima del Trueno (Mulgore): arañas Gloomrise de nivel 27 a 29, solo Horda, desde el nivel 23. No da rotación ni cifras de maná.",
+      "en": "New Forever spot northwest of Thunder Bluff (Mulgore): level 27-29 Gloomrise spiders, Horde only, from level 23. No rotation or mana numbers."
     }
   },
   {
@@ -806,8 +750,8 @@
     "kind": "tool",
     "accessed": "2026-10-20",
     "notes": {
-      "es": "Fichas de objetos y misiones extraídas del cliente de la beta: nombres oficiales en inglés y español, estadísticas, requisitos y recompensas. Las uso para cada objeto citado; las cifras pueden cambiar en el lanzamiento.",
-      "en": "Item and quest data mined from the beta client: official English and Spanish names, stats, requirements and rewards. I use it for every item I quote; numbers may change at launch."
+      "es": "Fichas de objetos, hechizos y misiones extraídas del cliente: nombres oficiales en inglés y español, estadísticas, niveles, requisitos y recompensas. Las uso para cada objeto y hechizo citado.",
+      "en": "Item, spell and quest data mined from the client: official English and Spanish names, stats, levels, requirements and rewards. I use it for every item and spell I quote."
     }
   },
   {
@@ -856,8 +800,8 @@
     "kind": "tool",
     "accessed": "2026-10-20",
     "notes": {
-      "es": "Estructura del árbol de Legado de la beta: rangos, puntos necesarios en cada árbol (5 o 10), ventajas que piden un rango en otra y el máximo de 16 puntos por personaje.",
-      "en": "The beta Legacy tree structure: ranks, points needed in each tree (5 or 10), perks that need a rank in another one and the 16-point cap per character."
+      "es": "Estructura del árbol de Legado: rangos, puntos necesarios en cada árbol (5 o 10), ventajas que piden un rango en otra y el máximo de 16 puntos por personaje.",
+      "en": "The Legacy tree structure: ranks, points needed in each tree (5 or 10), perks that need a rank in another one and the 16-point cap per character."
     }
   },
   {
@@ -869,8 +813,8 @@
     "published": "2026-10-29",
     "accessed": "2026-10-30",
     "notes": {
-      "es": "Guía de Foolipe. Rotación de Arcano y de Arcano con Fuego a nivel 60. Nadie la ha probado a ese nivel porque la beta llega al 30.",
-      "en": "Guide by Foolipe. Rotations for Arcane and Arcane Fire at level 60. Nobody has tried them at that level because the beta stops at 30."
+      "es": "Guía de Foolipe. Rotación de Arcano y de Arcano con Fuego a nivel 60, escrita antes del lanzamiento.",
+      "en": "Guide by Foolipe. Rotations for Arcane and Arcane Fire at level 60, written before launch."
     }
   },
   {
@@ -882,8 +826,8 @@
     "published": "2026-10-29",
     "accessed": "2026-10-30",
     "notes": {
-      "es": "Guía de Foolipe. Rotación de Fuego y de Pirofrío a nivel 60, con el truco de poner un hechizo en cola con Dedos de Escarcha. Nadie la ha probado a ese nivel porque la beta llega al 30.",
-      "en": "Guide by Foolipe. Rotations for Fire and Frostfire at level 60, with the trick of queuing a spell with Fingers of Frost. Nobody has tried them at that level because the beta stops at 30."
+      "es": "Guía de Foolipe. Rotación de Fuego y de Pirofrío a nivel 60, con el truco de poner un hechizo en cola con Dedos de Escarcha. Escrita antes del lanzamiento.",
+      "en": "Guide by Foolipe. Rotations for Fire and Frostfire at level 60, with the trick of queuing a spell with Fingers of Frost. Written before launch."
     }
   },
   {

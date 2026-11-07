@@ -644,8 +644,8 @@
     ],
     "cons": [
       {
-        "es": "No tiene ninguna bonificación pasiva de combate en los datos de la beta.",
-        "en": "It has no passive combat bonus in the beta data."
+        "es": "No tiene ninguna bonificación pasiva de combate en los datos del cliente.",
+        "en": "It has no passive combat bonus in the client data."
       },
       {
         "es": "Su objeto de campamento, el Incense Candle, da Intelecto y no se acumula con Intelecto Arcano: a un Mago no le aporta nada.",
@@ -712,7 +712,7 @@
       "blizzard-forever-deep-dive-recap",
       "blizzard-deep-dive-mage"
     ],
-    "updated": "2026-10-14"
+    "updated": "2026-11-06"
   },
   {
     "id": "mining",
@@ -757,8 +757,8 @@
     ],
     "cons": [
       {
-        "es": "No tiene ninguna bonificación de combate en los datos de la beta.",
-        "en": "It has no combat bonus in the beta data."
+        "es": "No tiene ninguna bonificación de combate en los datos del cliente.",
+        "en": "It has no combat bonus in the client data."
       },
       {
         "es": "Su Lodestone da poder de ataque cuerpo a cuerpo (como Bendición de poderío), que a un Mago no le sirve.",
@@ -819,7 +819,7 @@
       "warcrafttavern-camping-objects",
       "warcrafttavern-legacy"
     ],
-    "updated": "2026-10-14"
+    "updated": "2026-11-06"
   },
   {
     "id": "skinning",

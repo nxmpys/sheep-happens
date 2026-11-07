@@ -3,7 +3,6 @@ import BaseLayout from './BaseLayout.astro';
 import LandingHero from '../components/home/LandingHero.astro';
 import SayHi from '../components/home/SayHi.astro';
 import type { Locale } from '../i18n/routes';
-import { currentVersion } from '../lib/data';
 import { lastModified, websiteJsonLd } from '../lib/seo';
 import type { PageFrontmatter } from '../lib/schemas';
 
@@ -16,7 +15,6 @@ interface Props {
 
 const { locale, data, body = '' } = Astro.props;
 const modified = lastModified('home', data.reviewed, body);
-const { launchAt } = currentVersion;
 const site = Astro.site ?? new URL('https://sheephappens.app');
 const siteUrl = new URL(import.meta.env.BASE_URL, site).href;
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
@@ -33,7 +31,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   modified={modified}
 >
   <div class="container home" data-pagefind-body>
-    <LandingHero locale={locale} pageTitle={data.title} launchAt={launchAt} />
+    <LandingHero locale={locale} pageTitle={data.title} />
 
     <!-- A sheet that rises over the hero: the arcs stay in the window for as long as it lasts. -->
     <div class="home__below" data-home-below>

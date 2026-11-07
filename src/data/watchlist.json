@@ -18,7 +18,7 @@
   },
   {
     "id": "forever-dev-notes",
-    "name": "WoW Forever Beta Development Notes",
+    "name": "WoW Forever Development Notes",
     "publisher": "Blizzard Entertainment",
     "url": "https://us.forums.blizzard.com/en/wow/t/2360696",
     "kind": "official",
@@ -28,13 +28,13 @@
     "match": "^Mage$",
     "priority": "high",
     "focus": {
-      "es": "Lista de cambios de cada build de la beta. El vigilante extrae la sección «Mage» de cada mensaje nuevo o editado.",
-      "en": "Change log for every beta build. The watcher extracts the “Mage” section of every new or edited post."
+      "es": "Notas de desarrollo de Forever, hasta las del lanzamiento. El vigilante extrae la sección «Mage» de cada mensaje nuevo o editado.",
+      "en": "Forever development notes, up to the launch notes. The watcher extracts the “Mage” section of every new or edited post."
     },
-    "verified": "2026-10-11",
+    "verified": "2026-11-06",
     "notes": {
-      "es": "Hilo de la beta. Tras el lanzamiento, las notas de parche se publicarán como noticias (aparecerán en el Blizzard Tracker).",
-      "en": "Beta thread. After launch, patch notes will be published as news (they will show up in the Blizzard Tracker)."
+      "es": "Tras el lanzamiento, las notas de parche y los hotfixes salen como noticias de Blizzard (aparecen en el Blizzard Tracker).",
+      "en": "After launch, patch notes and hotfixes come out as Blizzard news (they show up in the Blizzard Tracker)."
     }
   },
   {
@@ -59,7 +59,7 @@
   },
   {
     "id": "forever-known-issues",
-    "name": "WoW Forever Beta Known Issues",
+    "name": "WoW Forever Known Issues",
     "publisher": "Blizzard Entertainment",
     "url": "https://us.forums.blizzard.com/en/wow/t/2352687",
     "kind": "official",
@@ -138,28 +138,11 @@
     "lang": "en",
     "type": "rss",
     "endpoint": "https://www.warcrafttavern.com/forever/feed/",
-    "match": "Mage|Class|Talent|Patch|Beta|Development",
+    "match": "Mage|Class|Talent|Patch|Hotfix|Development",
     "priority": "normal",
     "focus": {
       "es": "Resúmenes de noticias y guías de la comunidad, útiles para contrastar.",
       "en": "News summaries and community guides, useful for cross-checking."
-    },
-    "verified": "2026-10-11"
-  },
-  {
-    "id": "forever-beta-forum",
-    "name": "WoW: Forever Beta Discussion",
-    "publisher": "Blizzard Entertainment forums",
-    "url": "https://us.forums.blizzard.com/en/wow/c/in-development/wow-forever-beta-discussion/349",
-    "kind": "community",
-    "lang": "en",
-    "type": "rss",
-    "endpoint": "https://us.forums.blizzard.com/en/wow/c/349.rss",
-    "match": "\\b(Mages?|Arcane|Frost|Fire|Frostfire|Polymorph)\\b",
-    "priority": "low",
-    "focus": {
-      "es": "Opiniones y errores que reportan los jugadores. Sirve para detectar temas, no como fuente de datos.",
-      "en": "Player feedback and bug reports. Useful to spot topics, not as a data source."
     },
     "verified": "2026-10-11"
   },

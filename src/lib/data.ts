@@ -22,6 +22,7 @@ import rawSpellText from '../data/spell-text.json';
 import rawTalents from '../data/talents.json';
 import rawWatchlist from '../data/watchlist.json';
 import rawLevelingSpells from '../data/leveling-spells.json';
+import rawSpellbook from '../data/spellbook.json';
 import rawNotices from '../data/notices.json';
 import rawRacePicks from '../data/race-picks.json';
 import rawGlossary from '../data/glossary.json';
@@ -45,6 +46,7 @@ import {
   itemSchema,
   legacyFileSchema,
   levelingSpellSchema,
+  spellbookSpellSchema,
   libraryBookSchema,
   milestoneSchema,
   noticeSchema,
@@ -297,7 +299,6 @@ export function checkIntegrity(data: Dataset, today: Date = new Date()): string[
     for (const linked of [...build.orderNotes, ...build.variants]) {
       if (linked.build && !data.builds.some((b) => b.id === linked.build)) problems.push(`builds.json: "${build.id}" links to unknown build "${linked.build}"`);
     }
-    if (build.testedUpTo !== undefined && build.status !== 'tested') problems.push(`builds.json: "${build.id}" has testedUpTo but its status is not "tested"`);
     // A variant swaps ranks on the final build: same total, a build you can really have.
     for (const variant of build.variants) {
       if (!variant.remove && !variant.add) continue;
@@ -431,6 +432,9 @@ export const legacy = (() => {
 ${z.prettifyError(result.error)}`);
   return result.data;
 })();
+
+/** Every Mage spell and rank by level (spells page). */
+export const spellbook = parseList('spellbook.json', spellbookSpellSchema, rawSpellbook);
 
 /** Spells learned while leveling, by level (leveling page table and level view). */
 export const levelingSpells = parseList('leveling-spells.json', levelingSpellSchema, rawLevelingSpells).sort((a, b) => a.level - b.level);

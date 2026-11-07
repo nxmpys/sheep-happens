@@ -11,9 +11,10 @@
     },
     "status": "reported",
     "sources": [
-      "lfcarry-beta",
-      "wowforever-level-cap"
-    ]
+      "wowforever-level-cap",
+      "blizzard-forever-deep-dive-recap"
+    ],
+    "updated": "2026-11-06"
   },
   {
     "id": "launch",
@@ -22,29 +23,14 @@
       "en": "Launch"
     },
     "value": {
-      "es": "4 de noviembre de 2026, 15:00 PST (23:00 UTC).",
-      "en": "4 November 2026, 3:00 PM PST (23:00 UTC)."
-    },
-    "status": "reported",
-    "sources": [
-      "lfcarry-beta"
-    ]
-  },
-  {
-    "id": "name-reservation",
-    "label": {
-      "es": "Reserva de nombres",
-      "en": "Name reservation"
-    },
-    "value": {
-      "es": "Del 27 de octubre al 3 de noviembre de 2026 se pueden reservar nombres para hasta tres personajes antes del lanzamiento.",
-      "en": "From 27 October to 3 November 2026 you can reserve names for up to three characters before launch."
+      "es": "Salió el 4 de noviembre de 2026 a las 15:00 PST (23:00 UTC), con el parche 1.60.1.",
+      "en": "Released on 4 November 2026 at 3:00 PM PST (23:00 UTC), with patch 1.60.1."
     },
     "status": "verified",
     "sources": [
-      "blizzard-name-reservation"
+      "blizzard-dev-notes"
     ],
-    "updated": "2026-10-21"
+    "updated": "2026-11-06"
   },
   {
     "id": "raid-unlock",
@@ -74,9 +60,9 @@
     },
     "status": "reported",
     "sources": [
-      "wowforever-level-cap",
-      "lfcarry-beta"
-    ]
+      "wowforever-level-cap"
+    ],
+    "updated": "2026-11-06"
   },
   {
     "id": "specs",
@@ -116,13 +102,15 @@
       "en": "Points at level 60"
     },
     "value": {
-      "es": "51, si se mantiene 1 punto por nivel desde el 10 como en Classic.",
-      "en": "51, if it keeps one point per level from 10 as in Classic."
+      "es": "51: un punto por nivel del 10 al 60.",
+      "en": "51: one point per level from 10 to 60."
     },
     "status": "analysis",
     "sources": [
-      "seemeta-talents"
-    ]
+      "blizzard-deep-dive-mage",
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-11-06"
   },
   {
     "id": "respec",
@@ -189,5 +177,21 @@
       "method-legacy"
     ],
     "updated": "2026-10-13"
+  },
+  {
+    "id": "training-cost",
+    "label": {
+      "es": "Coste del instructor",
+      "en": "Training cost"
+    },
+    "value": {
+      "es": "Aprender todas las habilidades de clase del 1 al 60 cuesta entre 206 y 207 de oro, y las que se aprenden al mismo nivel cuestan lo mismo.",
+      "en": "Training every class ability from 1 to 60 costs 206 to 207 gold, and abilities learned at the same level cost the same."
+    },
+    "status": "verified",
+    "sources": [
+      "blizzard-dev-notes"
+    ],
+    "updated": "2026-11-06"
   }
 ]

@@ -2,23 +2,23 @@
 pageId: leveling
 locale: es
 title: Primeros pasos en Azeroth
-seoTitle: Guía de leveo de Mago en WoW Forever, cómo subir de nivel
+seoTitle: Guía de leveo de Mago en WoW Forever del 1 al 60
 description: Tus primeros pasos como Mago en WoW Forever. Qué aprendes en cada nivel, qué hacer entre combates y qué hace la clase fuera del combate, con cualquier rama.
 lead: Qué aprendes en cada nivel y qué hacer entre combates.
-gameVersion: forever-beta-2026-10
+gameVersion: forever-launch-2026-11
 published: 2026-10-11
-reviewed: 2026-10-26
+reviewed: 2026-11-06
 reviewedBy: Sheep Happens
 status: published
 verification: analysis
 wide: true
 sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, wowhead-forever-talent-calc, mobalytics-mage-leveling, method-mage-leveling, icyveins-dungeon-xp, warcrafttavern-legacy, wowhead-dual-spec-podcast]
-tags: [leveo, nivelación, subir de nivel, guía de leveo, primeros pasos, consejos, cómo jugar, mazmorras, 1-30, downranking, bajar de rango, piedra de hogar, portales, agua, comida]
+tags: [leveo, nivelación, subir de nivel, guía de leveo, primeros pasos, consejos, cómo jugar, mazmorras, 1-60, downranking, bajar de rango, piedra de hogar, portales, agua, comida]
 ---
 
 ## De tu primer hechizo al nivel 60
 
-Elige un tramo del camino. Los niveles de los hechizos son los de la lista del instructor de Forever. <Status status="reported" />
+Elige un tramo del camino. Los niveles de los hechizos son los del cliente de Forever; la lista completa, rango a rango, está en <PageLink to="spells">Hechizos por nivel</PageLink>. <Status status="reported" />
 
 <Picker label="Tramos del camino" initial="start">
 <Pick id="start" title="Crea tu Mago" icon="classicon_mage" heading="Elige la raza que te guste">
@@ -37,8 +37,9 @@ Todas las raciales y la clasificación por contenido: <PageLink to="races">Razas
 <Pieces>
 
 - **Cómo combates.** Descarga de Escarcha, otra Descarga de Escarcha y remate con Explosión de Fuego o con la varita. Lleva siempre puestos Armadura de Escarcha e Intelecto Arcano.
-- **Consigue una varita.** La Lesser Magic Wand (nivel 5), de Encantamiento o de la casa de subastas: al principio hace casi tanto daño como tus hechizos y no gasta maná. Desde el 15 de octubre tienes que estar quieto 0,5 s antes de disparar. <Status status="reported" compact />
+- **Consigue una varita.** La Lesser Magic Wand (nivel 5), de Encantamiento o de la casa de subastas: al principio hace casi tanto daño como tus hechizos y no gasta maná. Tienes que estar quieto 0,5 s antes de disparar. <Status status="reported" compact />
 - **Agua y comida.** Desde los niveles 4 y 6 las conjuras tú.
+- **Arrastra cada hechizo nuevo a tu barra.** Al aprenderlo ya no se coloca solo: ábrelo en el libro de hechizos (P) y arrástralo. <Status status="verified" compact />
 - **Tu límite.** Poco maná y nada para escapar. Lucha contra un enemigo cada vez y bebe cuando bajes de la mitad.
 
 </Pieces>
@@ -71,9 +72,19 @@ Todas las raciales y la clasificación por contenido: <PageLink to="races">Razas
 </Pieces>
 
 </Pick>
-<Pick id="31-60" title="Niveles 31 a 60" spell="Frostfire Bolt" heading="Aún por escribir">
+<Pick id="31-60" title="Niveles 31 a 60" spell="Frostfire Bolt" heading="Hacia el 60">
 
-El camino nivel a nivel llega por ahora al 30; completaré el tramo del 31 al 60 en esta misma página. Lo que ya se sabe: a nivel 40 llegan **Descarga de Pirofrío** y la doble especialización, que permite llevar dos builds a la vez. <Status status="verified" compact />
+<SpellBar spells={[{ spell: 'Mage Armor', level: 34 }, { icon: 'inv_misc_gem_emerald_02', name: 'Conjurar jade de maná', level: 38 }, { spell: 'Frostfire Bolt', level: 40 }, { icon: 'spell_arcane_portalstormwind', name: 'Portales', level: 40 }, { icon: 'inv_misc_gem_opal_01', name: 'Conjurar citrino de maná', level: 48 }, { icon: 'spell_holy_arcaneintellect', name: 'Resplandor Arcano', level: 56 }, { icon: 'inv_misc_gem_ruby_01', name: 'Conjurar rubí de maná', level: 58 }]} />
+
+<Pieces>
+
+- **Cómo combates.** Tu build decide la rotación: <BuildLink use="leveling">builds de leveo</BuildLink>. A nivel 40 llega **Descarga de Pirofrío**, que cuenta como Fuego y como Escarcha a la vez. <Status status="verified" compact />
+- **Dos builds a la vez.** La doble especialización llega a nivel 40: una para subir y otra para mazmorras. <Status status="verified" compact />
+- **Portales.** A nivel 40 aprendes los de dos capitales y a nivel 50 el de la tercera. Tu grupo te los pedirá al acabar una mazmorra: lleva Runas de Portales. <Status status="reported" compact />
+- **Resplandor Arcano no lo enseña el instructor.** El Intelecto Arcano para todo el grupo, a nivel 56, sale de un libro. <Status status="reported" compact />
+- **Tu límite.** Desde el lanzamiento, los enemigos de nivel alto tienen más vida para compensar el daño extra de las clases. Guarda oro: entrenar todo del 1 al 60 cuesta entre 206 y 207 de oro. <Status status="verified" compact />
+
+</Pieces>
 
 </Pick>
 </Picker>
@@ -168,7 +179,7 @@ Qué dos aprender y cómo ayudan mientras subes.
 Los teletransportes te llevan a dos capitales desde el nivel 20 y a la tercera desde el 30 (120 de maná, 10 s de lanzamiento y una Runa de Teletransporte), así que no necesitas la Piedra de hogar (Hearthstone) para volver a la ciudad. Úsala para volver a la posada de tu zona. <Status status="reported" compact />
 
 </Tile>
-<Tile title="Portales" icon="spell_arcane_portalstormwind">
+<Tile title="Portales" icon="spell_arcane_portalstormwind" to="spells" hash="teletransportes-y-portales">
 
 Los aprendes a nivel 40 y 50, según la ciudad: 850 de maná, 1 min de reutilización y una Runa de Portales. Tu grupo te los pedirá al acabar una mazmorra, y puedes venderlos por el canal de comercio. <Status status="reported" compact />
 
@@ -199,9 +210,11 @@ Slow Fall, nivel 12. Solo se lanza sobre ti, dura 30 s y gasta una Pluma ligera.
 ## Todos los hechizos clave
 
 <details class="disclosure">
-<summary>Cada hechizo importante del 1 al 30, en una tabla</summary>
+<summary>Cada hechizo importante del 1 al 60, en una tabla</summary>
 
 <LevelingSpells />
+
+Todos los rangos, visita a visita al instructor: <PageLink to="spells">Hechizos por nivel</PageLink>.
 
 </details>
 
@@ -216,7 +229,7 @@ Slow Fall, nivel 12. Solo se lanza sobre ti, dura 30 s y gasta una Pluma ligera.
 
 La ventaja de Legado **Talentoso** (Talented, árbol Aventura) adelanta el primer punto de talento: a nivel 9 con 1 rango y a nivel 5 con 5. El máximo sigue en 51 puntos. <Status status="reported" /> Si lo tienes, activa «Tengo Talentoso 5/5» encima de cualquier tabla de orden de puntos de las builds: la columna de nivel pasa a decir a qué nivel llega cada punto y aparecen al final los puntos extra, solo para quien lo tenga. La preferencia se recuerda en todas las tablas.
 
-Los puntos de Legado se ganan con desafíos de cuenta, como llevar una clase a nivel 25. Tu primer personaje en el lanzamiento no tendrá Talentoso. <Status status="reported" />
+Los puntos de Legado se ganan con desafíos de cuenta, como llevar una clase a nivel 25. Tu primer personaje no tendrá Talentoso. <Status status="reported" />
 
 ### Menos farmeo masivo
 
@@ -224,7 +237,7 @@ El farmeo en área no desaparece, pero es más arriesgado: lo explico en la guí
 
 ### El downranking sale menos a cuenta
 
-Desde la build del 1 de octubre, los rangos muy inferiores a tu nivel aprovechan menos tu daño de hechizos. Desde el 3 de noviembre ya no activan menos tus talentos, salvo Ventisca: un rango aprendido más de 12 niveles por debajo del tuyo sigue activando menos Concentración Arcana, Mordiescarcha y Dedos de Escarcha. Además, el 8 de octubre se reajustaron los rangos bajos de Descarga de Escarcha, Bola de Fuego y Misiles Arcanos para que cada rango nuevo sea siempre una mejora. <Status status="verified" />
+En Forever, los rangos muy inferiores a tu nivel aprovechan menos tu daño de hechizos, pero activan tus talentos con la misma probabilidad que el rango máximo, salvo Ventisca: un rango aprendido más de 12 niveles por debajo del tuyo activa menos Concentración Arcana, Mordiescarcha y Dedos de Escarcha. Además, los rangos bajos de Descarga de Escarcha, Bola de Fuego y Misiles Arcanos están reajustados para que cada rango nuevo sea siempre una mejora. <Status status="verified" />
 
 ### Cuándo sí hacer downranking
 
@@ -250,5 +263,5 @@ El castigo recae en el daño, no en el efecto del propio hechizo ni, salvo con V
 
 <Pending
   why="Aún no he probado estos consejos en el servidor. Los niveles de los hechizos vienen del cliente del juego, no de una fuente oficial, y la experiencia de las mazmorras puede cambiar."
-  next="Los probaré en el juego y los marcaré como «Probado» o los corregiré. Tras el lanzamiento del 4 de noviembre revisaré los valores y ampliaré la guía al nivel 60."
+  next="Los probaré en el juego y los marcaré como «Probado» o los corregiré."
 />

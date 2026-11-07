@@ -26,6 +26,7 @@ export const PAGE_IDS = [
   'talents-fire',
   'talents-frost',
   'leveling',
+  'spells',
   'aoe-farming',
   'gear',
   'tools',
@@ -88,6 +89,8 @@ export const ROUTES: Record<PageId, RouteDef> = {
   },
   // Leveling became «First steps in Azeroth» under Learn (30 Oct 2026) keeping its slug, so old links still work.
   leveling: { id: 'leveling', slug: { es: 'nivelacion', en: 'leveling' }, parent: 'learn' },
+  // Every trainer spell and rank by level, with the teleports and portals (6 Nov 2026).
+  spells: { id: 'spells', slug: { es: 'hechizos', en: 'spells' }, parent: 'learn' },
   // AoE farming moved from Builds to Guides (26 Oct 2026) keeping its slug.
   'aoe-farming': { id: 'aoe-farming', slug: { es: 'farmeo-aoe', en: 'aoe-farming' }, parent: 'guides' },
   // Gear moved from Learn to Guides (20 Oct 2026) keeping its slug: leveling and PvE gear plus the class quests; PvP gear lives in the PvP guide.
@@ -132,7 +135,7 @@ export const PRIMARY_NAV: readonly NavGroup[] = [
   {
     key: 'learn',
     page: 'learn',
-    items: ['talents', 'talents-arcane', 'talents-fire', 'talents-frost', 'leveling'],
+    items: ['talents', 'talents-arcane', 'talents-fire', 'talents-frost', 'leveling', 'spells'],
     sections: [
       { hash: { es: 'qué-lo-diferencia', en: 'what-sets-it-apart' }, label: { es: 'La clase', en: 'The class' } },
       { hash: { es: 'el-kit-de-todo-mago', en: 'the-toolkit-every-mage-has' }, label: { es: 'Combate', en: 'Combat' } },

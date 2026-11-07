@@ -34,9 +34,6 @@ export function shownDataDates(body: string, data: DateSource): string[] {
         add(data.builds.filter((b) => b.id === id));
         break;
       }
-      case 'BuildPicker':
-        add(data.builds.filter((b) => arrayProp(tag, 'ids').includes(b.id)));
-        break;
       case 'BuildExplorer':
         add(data.builds);
         break;
@@ -45,9 +42,6 @@ export function shownDataDates(body: string, data: DateSource): string[] {
         add(data.builds.filter((b) => b.spec === spec));
         break;
       }
-      case 'LevelingStatus':
-        add(data.builds.filter((b) => b.order));
-        break;
       case 'ChangeExplorer':
         add(data.changes);
         break;
