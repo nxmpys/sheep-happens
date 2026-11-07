@@ -7,13 +7,13 @@ description: 'Cómo farmear en área con el Mago en WoW Forever: qué haces, qu�
 lead: Qué necesitas, las rotaciones y dónde hacerlo.
 gameVersion: forever-launch-2026-11
 published: 2026-10-15
-reviewed: 2026-11-03
+reviewed: 2026-11-07
 reviewedBy: Sheep Happens
 status: published
 verification: analysis
 wide: true
-sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, conquestcapped-mage-leveling, maxroll-mage-leveling, forg-mage-aoe-spiders, wiki-arcane-concentration, icyveins-classic-aoe-leveling, wowhead-forever-talent-calc]
-tags: [farmeo aoe, farmeo en área, aoe mago, aoe farming, mage aoe, leveo en área, zonas de farmeo, grinding, deflagración arcana, ventisca, flamestrike, concentración arcana]
+sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, blizzard-hotfixes-2026-11, icyveins-world-first-60, conquestcapped-mage-leveling, maxroll-mage-leveling, mobalytics-kargoz-aoe, restedxp-forever-mage-aoe, forg-mage-aoe-spiders, wiki-arcane-concentration, icyveins-classic-aoe-leveling, wowhead-forever-talent-calc]
+tags: [farmeo aoe, farmeo en área, aoe mago, aoe farming, mage aoe, leveo en área, zonas de farmeo, grinding, deflagración arcana, ventisca, flamestrike, concentración arcana, primer 60 del mundo, playa tenebruma, cala del aparejo perdido, llanto de dalson]
 ---
 
 <Tiles min={13}>
@@ -39,8 +39,8 @@ Zonas por nivel y facción.
 </Tile>
 </Tiles>
 
-<Callout variant="warning" title="Sin medir todavía">
-  Las rotaciones y las zonas salen de guías de la comunidad y de mi propio análisis. Nadie ha medido todavía si es más rápido que hacer misiones. Las probaré yo mismo.
+<Callout variant="warning" title="Medido en grupo, no en solitario">
+  Los primeros nivel 60 del mundo fueron tres Magos, un Paladín y un Chamán que farmearon en área desde el nivel 35. Nadie ha medido todavía si un Mago solo sube así más rápido que con misiones. Las rotaciones salen de guías de la comunidad y de mi propio análisis, y las probaré yo mismo.
 </Callout>
 
 ## Cómo funciona
@@ -77,6 +77,11 @@ Mueve el control hasta tu nivel para ver lo que ya puedes hacer.
 Necesaria para la rotación de Ventisca, no para la corta.
 
 </Tile>
+<Tile title="Precisión 3/3" spell="Precision" school="frost">
+
+Hasta un 6 % de golpe con todos los hechizos: menos Novas de Escarcha resistidas, que es como se pierden los tirones. <Status status="reported" compact />
+
+</Tile>
 <Tile title="Trizar" spell="Shatter" school="frost">
 
 Más crítico contra enemigos congelados: tu **Fogonazo** sobre el grupo congelado.
@@ -84,7 +89,7 @@ Más crítico contra enemigos congelados: tu **Fogonazo** sobre el grupo congela
 </Tile>
 <Tile title="Barrera de hielo" spell="Ice Barrier" school="frost">
 
-Sustituye a **Escudo de maná** al empezar el tirón, si la tienes. Además, sube un 15 % tu daño de Escarcha durante 1 min. <Status status="verified" compact />
+Sustituye a **Escudo de maná** al empezar el tirón, si la tienes. Además, sube un 15 % tu daño de Escarcha durante 1 min, y un 5 % más mientras aguanta. <Status status="verified" compact />
 
 </Tile>
 <Tile title="Concentración Arcana" spell="Arcane Concentration" school="arcane">
@@ -101,6 +106,8 @@ No la lleves en una build de área: sus congelaciones al azar separan al grupo. 
 
 Las builds de leveo están en <BuildLink use="leveling">Builds</BuildLink>. Ten también a mano la gema de maná (nivel 28), pociones de maná y, si tienes Ingeniería, bombas o granadas para los tirones grandes. <Status status="reported" compact />
 
+Desde el nivel 34, si los enemigos apenas te alcanzan, lleva **Armadura de mago**: en Forever, la mitad de tu regeneración de maná sigue mientras lanzas. <Status status="verified" compact />
+
 ## Las rotaciones
 
 La corta es la más fiable, según las guías de la comunidad, y sirve con cualquier rama. La de Ventisca solo si tienes espacio para canalizarla entera: si te alcanzan antes, cambia a Deflagración Arcana. Elige un paso o pulsa Reproducir. <Status status="reported" />
@@ -115,18 +122,33 @@ La corta es la más fiable, según las guías de la comunidad, y sirve con cualq
 
 Elige la zona por **tus rangos de hechizo**, no por el color de los enemigos: lo que importa es si tus hechizos de área los matan rápido. Cuando la zona se vuelva verde, cambia de sitio. <Status status="reported" />
 
+Hasta el nivel 22, haz el área sobre los enemigos de las misiones de «mata X»: es lo que hacen las rutas de Mago en área de RestedXP para Forever, en Costa Oscura, Páramos de Poniente, Montañas Crestagrana, Los Baldíos y Sierra Espolón. <Status status="reported" compact />
+
 <SpotFinder />
 
-Del 30 al 60, las zonas vienen de Classic y nadie las ha probado en Forever. <Status status="pending" compact />
+Las zonas pendientes vienen de Classic y nadie las ha probado en Forever. <Status status="pending" compact />
 
 ### Las arañas de Cima del Trueno
 
 Es la zona de área más citada por las guías de la comunidad. Baja por el ascensor norte de Cima del Trueno y sube la ladera hacia el noroeste: el campamento está hacia (33, 22) de Mulgore y las arañas, al norte de la meseta, hacia (33, 11). Hay cinco misiones a partir del nivel 23. Junta tres grupos de crías cercanas, mátalos, bebe y repite. No atraigas a Broodmother Valraxx: es élite de nivel 30. <Status status="reported" />
 
+### La ruta del primer 60 del mundo
+
+A las 52 horas del lanzamiento, tres Magos, un Paladín y un Chamán llegaron juntos al nivel 60 en un reino Normal europeo. Desde el nivel 35 solo farmearon en área, en estas zonas: <Status status="reported" />
+
+1. **Playa Tenebruma**, en el Marjal Revolcafango: múrlocs Ancalodo.
+2. **Ruinas de Zul'Mamwe**, en la Vega de Tuercespina: trols Machacacráneos.
+3. **Cala del Aparejo Perdido**, en Tanaris: piratas del Mar del Sur.
+4. **Llanto de Dalson** y **Gangrena de Gahrron**, en las Tierras de la Peste del Oeste: no-muertos.
+
+Iban en grupo y cambiaban de capa para encontrar enemigos recién aparecidos: un Mago solo no llevará ese ritmo. <Status status="analysis" compact />
+
 ## Antes de atraer
 
 <Pieces>
 
+- **Busca un campamento libre.** Con la gente del lanzamiento, un campamento de segunda sin nadie rinde más que uno famoso con otros Magos. <Status status="reported" compact />
+- **Cuenta con la reaparición.** Blizzard la ha acelerado para el lanzamiento, más cuanto más bajo es el nivel de la zona, y la devolverá a lo habitual en las zonas bajas cuando pase la avalancha de personajes nuevos. El 5 de noviembre corrigió que algunos múrlocs del Marjal Revolcafango reaparecieran demasiado rápido. <Status status="verified" compact />
 - **Elige el terreno.** Nada de miedos, derribos ni ataques a distancia, y zonas abiertas, sin obstáculos que separen al grupo. <Status status="analysis" compact />
 - **Mira el reino.** En reinos JcJ, las zonas disputadas atraen a pícaros que esperan a que estés sin maná. <Status status="analysis" compact />
 - **No-muertos.** Toque de la tumba (Touch of the Grave) puede romper la Nova de Escarcha, según una guía. <Status status="reported" compact /> Ver <PageLink to="races">Razas</PageLink>.
@@ -157,7 +179,7 @@ Blizzard ha recortado a propósito el farmeo masivo de los magos, porque se usab
 ## Lo que aún no se sabe
 
 <Pending
-  why="No hay datos de experiencia por hora en Forever, ni del daño de los hechizos de área, ni de las zonas del 31 al 60."
+  why="No hay datos de experiencia por hora de un Mago solo en Forever, ni del daño de los hechizos de área. Blizzard no ha dicho cuándo bajará la reaparición en las zonas de nivel bajo, y prevé un gran ajuste de clases cuando haya datos de jugadores por encima del nivel 30."
   next="Compararé el farmeo con las misiones y probaré las zonas de cada tramo."
 />
 
@@ -167,6 +189,9 @@ Blizzard ha recortado a propósito el farmeo masivo de los magos, porque se usab
   <FaqItem q="¿Se puede farmear en área con el Mago en WoW Forever?" status="reported">
     Sí, pero con grupos más pequeños que en Classic: de 3 a 7 enemigos cuerpo a cuerpo, con Nova de Escarcha, Fogonazo, Cono de frío y Deflagración Arcana. Los tirones enormes con Ventisca ya no funcionan.
   </FaqItem>
+  <FaqItem q="¿Sigue siendo lo más rápido para subir?" status="reported">
+    En grupo, sí: los primeros nivel 60 del mundo fueron tres Magos, un Paladín y un Chamán que farmearon en área desde el nivel 35 y llegaron en 52 horas. Para un Mago solo, nadie lo ha medido todavía.
+  </FaqItem>
   <FaqItem q="¿Desde qué nivel puedo farmear en área?" status="reported">
     Desde el nivel 14, con Deflagración Arcana, y grupos pequeños. La rotación con Ventisca necesita Ventisca (nivel 20) y Ventisca mejorada 3/3 en tus talentos.
   </FaqItem>
@@ -174,7 +199,7 @@ Blizzard ha recortado a propósito el farmeo masivo de los magos, porque se usab
     Blizzard redujo la ralentización de Ventisca mejorada del 65 % al 40 %, acortó Cono de frío y cambió Escarcha permanente, para frenar el farmeo masivo de oro y experiencia.
   </FaqItem>
   <FaqItem q="¿Cuál es la mejor zona para farmear en área?" status="reported">
-    La más popular es la de las arañas de la meseta al noroeste de Cima del Trueno (Horda, niveles 23 a 30). Para la Alianza, los gnolls de Los Humedales y el Bosque del Ocaso.
+    Del 23 al 30, la más popular es la de las arañas de la meseta al noroeste de Cima del Trueno (Horda); para la Alianza, los gnolls de Los Humedales y el Bosque del Ocaso. Del 35 al 60, las de la ruta del primer 60 del mundo: Playa Tenebruma, Ruinas de Zul'Mamwe, Cala del Aparejo Perdido y el Llanto de Dalson.
   </FaqItem>
 </Faq>
 

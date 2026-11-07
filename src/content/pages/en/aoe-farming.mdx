@@ -7,13 +7,13 @@ description: 'How to AoE farm as a Mage in WoW Forever: what you do, which spell
 lead: What you need, the rotations and where to do it.
 gameVersion: forever-launch-2026-11
 published: 2026-10-15
-reviewed: 2026-11-03
+reviewed: 2026-11-07
 reviewedBy: Sheep Happens
 status: published
 verification: analysis
 wide: true
-sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, conquestcapped-mage-leveling, maxroll-mage-leveling, forg-mage-aoe-spiders, wiki-arcane-concentration, icyveins-classic-aoe-leveling, wowhead-forever-talent-calc]
-tags: [aoe farming, mage aoe, aoe grinding, aoe leveling, grinding spots, farming spots, arcane explosion, blizzard, flamestrike, arcane concentration]
+sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, blizzard-hotfixes-2026-11, icyveins-world-first-60, conquestcapped-mage-leveling, maxroll-mage-leveling, mobalytics-kargoz-aoe, restedxp-forever-mage-aoe, forg-mage-aoe-spiders, wiki-arcane-concentration, icyveins-classic-aoe-leveling, wowhead-forever-talent-calc]
+tags: [aoe farming, mage aoe, aoe grinding, aoe leveling, grinding spots, farming spots, arcane explosion, blizzard, flamestrike, arcane concentration, world first 60, dreadmurk shore, lost rigger cove, dalson's tears]
 ---
 
 <Tiles min={13}>
@@ -39,8 +39,8 @@ Spots by level and faction.
 </Tile>
 </Tiles>
 
-<Callout variant="warning" title="Not measured yet">
-  The rotations and spots come from community guides and from my own analysis. Nobody has measured yet whether it beats questing. I will test them myself.
+<Callout variant="warning" title="Measured in a group, not solo">
+  The world's first level 60s were three Mages, a Paladin and a Shaman who AoE farmed from level 35. Nobody has measured yet whether a solo Mage levels faster this way than questing. The rotations come from community guides and from my own analysis, and I will test them myself.
 </Callout>
 
 ## How it works
@@ -77,6 +77,11 @@ Move the slider to your level to see what you can already do.
 Required for the Blizzard rotation, not for the short one.
 
 </Tile>
+<Tile title="Precision 3/3" spell="Precision" school="frost">
+
+Up to 6% hit with all spells: fewer resisted Frost Novas, which is how pulls are lost. <Status status="reported" compact />
+
+</Tile>
 <Tile title="Shatter" spell="Shatter" school="frost">
 
 More crit chance against frozen enemies: your **Flamestrike** on the frozen pack.
@@ -84,7 +89,7 @@ More crit chance against frozen enemies: your **Flamestrike** on the frozen pack
 </Tile>
 <Tile title="Ice Barrier" spell="Ice Barrier" school="frost">
 
-Replaces **Mana Shield** at the start of the pull, if you have it. It also raises your Frost damage by 15% for 1 min. <Status status="verified" compact />
+Replaces **Mana Shield** at the start of the pull, if you have it. It also raises your Frost damage by 15% for 1 min, and by 5% more while it holds. <Status status="verified" compact />
 
 </Tile>
 <Tile title="Arcane Concentration" spell="Arcane Concentration" school="arcane">
@@ -101,6 +106,8 @@ Skip it in an AoE build: its random freezes split the pack. <Status status="repo
 
 The leveling builds are in <BuildLink use="leveling">Builds</BuildLink>. Also keep at hand your mana gem (level 28), mana potions and, with Engineering, bombs or grenades for big pulls. <Status status="reported" compact />
 
+From level 34, if enemies barely reach you, wear **Mage Armor**: in Forever, half of your mana regeneration keeps going while you cast. <Status status="verified" compact />
+
 ## The rotations
 
 The short one is the most reliable, according to community guides, and it works with any tree. Use the Blizzard one only when you have room to channel it fully: if they reach you first, switch to Arcane Explosion. Pick a step, or press Play. <Status status="reported" />
@@ -115,18 +122,33 @@ The short one is the most reliable, according to community guides, and it works 
 
 Pick the spot by **your spell ranks**, not by enemy color: what matters is whether your area spells kill them fast. Once the spot turns green, move on. <Status status="reported" />
 
+Up to level 22, AoE the enemies of kill quests: that is what RestedXP's Mage AoE routes for Forever do, in Darkshore, Westfall, Redridge, the Barrens and Stonetalon. <Status status="reported" compact />
+
 <SpotFinder />
 
-From 30 to 60, the spots come from Classic and nobody has tested them in Forever. <Status status="pending" compact />
+The pending spots come from Classic and nobody has tested them in Forever. <Status status="pending" compact />
 
 ### The Thunder Bluff spiders
 
 The AoE spot community guides cite most. Take the north elevator down from Thunder Bluff and climb the slope to the northwest: the camp is around (33, 22) in Mulgore and the spiders, at the north end of the plateau, around (33, 11). There are five quests from level 23. Gather three nearby hatchling packs, kill them, drink and repeat. Do not pull Broodmother Valraxx: she is a level 30 elite. <Status status="reported" />
 
+### The world first 60 route
+
+52 hours after launch, three Mages, a Paladin and a Shaman reached level 60 together on a European Normal realm. From level 35 they only AoE farmed, at these spots: <Status status="reported" />
+
+1. **Dreadmurk Shore**, in Dustwallow Marsh: Mirefin murlocs.
+2. **Ruins of Zul'Mamwe**, in Stranglethorn Vale: Skullsplitter trolls.
+3. **Lost Rigger Cove**, in Tanaris: Southsea pirates.
+4. **Dalson's Tears** and **Gahrron's Withering**, in the Western Plaguelands: undead.
+
+They played as a group and switched layers to find fresh spawns: a solo Mage will not keep that pace. <Status status="analysis" compact />
+
 ## Before you pull
 
 <Pieces>
 
+- **Find a free camp.** With the launch crowds, an empty second-rate camp beats a famous one shared with other Mages. <Status status="reported" compact />
+- **Count on respawns.** Blizzard sped them up for launch, more the lower the zone's level, and will bring the low zones back to usual rates once the rush of new characters settles. On 5 November it fixed some Dustwallow Marsh murlocs respawning too quickly. <Status status="verified" compact />
 - **Choose the ground.** No fears, knockbacks or ranged attacks, and open ground with no obstacles that split the pack. <Status status="analysis" compact />
 - **Watch the realm.** On PvP realms, contested spots attract Rogues waiting for you to run out of mana. <Status status="analysis" compact />
 - **Undead.** Touch of the Grave can break Frost Nova, according to one guide. <Status status="reported" compact /> See <PageLink to="races">Races</PageLink>.
@@ -157,7 +179,7 @@ Blizzard deliberately cut Mage mass farming, because it was used for fast gold a
 ## What is not known yet
 
 <Pending
-  why="There is no experience-per-hour data for Forever, no damage values for the area spells and no spots for levels 31 to 60."
+  why="There is no experience-per-hour data for a solo Mage in Forever, and no damage values for the area spells. Blizzard has not said when it will slow respawns in low-level zones, and it plans a large class tuning pass once it has data from players past level 30."
   next="I will compare farming with questing and test the spots for each level range."
 />
 
@@ -167,6 +189,9 @@ Blizzard deliberately cut Mage mass farming, because it was used for fast gold a
   <FaqItem q="Can Mages AoE farm in WoW Forever?" status="reported">
     Yes, but with smaller packs than in Classic: 3 to 7 melee enemies, with Frost Nova, Flamestrike, Cone of Cold and Arcane Explosion. Huge Blizzard pulls no longer work.
   </FaqItem>
+  <FaqItem q="Is it still the fastest way to level?" status="reported">
+    In a group, yes: the world's first level 60s were three Mages, a Paladin and a Shaman who AoE farmed from level 35 and got there in 52 hours. For a solo Mage, nobody has measured it yet.
+  </FaqItem>
   <FaqItem q="From what level can I AoE farm?" status="reported">
     From level 14, with Arcane Explosion and small packs. The Blizzard rotation needs Blizzard (level 20) and Improved Blizzard 3/3 in your talents.
   </FaqItem>
@@ -174,7 +199,7 @@ Blizzard deliberately cut Mage mass farming, because it was used for fast gold a
     Blizzard cut Improved Blizzard's slow from 65% to 40%, shortened Cone of Cold and changed Permafrost, to rein in mass farming for gold and experience.
   </FaqItem>
   <FaqItem q="What is the best AoE farming spot?" status="reported">
-    The most popular is the spiders on the plateau northwest of Thunder Bluff (Horde, levels 23 to 30). For the Alliance, the Wetlands gnolls and Duskwood.
+    From 23 to 30, the most popular is the spiders on the plateau northwest of Thunder Bluff (Horde); for the Alliance, the Wetlands gnolls and Duskwood. From 35 to 60, the spots of the world first 60 route: Dreadmurk Shore, Ruins of Zul'Mamwe, Lost Rigger Cove and Dalson's Tears.
   </FaqItem>
 </Faq>
 

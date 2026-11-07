@@ -718,6 +718,57 @@
     }
   },
   {
+    "id": "icyveins-world-first-60",
+    "title": "Three Mages, a Paladin and a Shaman Hit Level 60 First in WoW Forever",
+    "publisher": "Icy Veins",
+    "url": "https://www.icy-veins.com/wow-forever/news/three-mages-a-paladin-and-a-shaman-hit-level-60-first-in-wow-forever/",
+    "kind": "press",
+    "published": "2026-11-07",
+    "accessed": "2026-11-07",
+    "notes": {
+      "es": "Primer 60 del mundo en 52 horas (reino EU Normal): tres Magos, un Paladín y un Chamán que farmearon en área desde el nivel 35 en Playa Tenebruma, Ruinas de Zul'Mamwe, Cala del Aparejo Perdido, Llanto de Dalson y Gangrena de Gahrron, cambiando de capa para encontrar enemigos recién aparecidos.",
+      "en": "World first 60 in 52 hours (EU Normal realm): three Mages, a Paladin and a Shaman who AoE farmed from level 35 at Dreadmurk Shore, Ruins of Zul'Mamwe, Lost Rigger Cove, Dalson's Tears and Gahrron's Withering, switching layers to find fresh spawns."
+    }
+  },
+  {
+    "id": "blizzard-hotfixes-2026-11",
+    "title": "WoW: Forever Hotfixes - November 6, 2026",
+    "publisher": "Blizzard Entertainment",
+    "url": "https://us.forums.blizzard.com/en/wow/t/2403040",
+    "kind": "official",
+    "published": "2026-11-06",
+    "accessed": "2026-11-07",
+    "notes": {
+      "es": "Hotfixes del 5 y 6 de noviembre. El 5 corrige que algunos múrlocs del Marjal Revolcafango reaparecieran demasiado rápido. Para el Mago, solo dos errores corregidos, uno de ellos la duración de Explosión Arcana.",
+      "en": "Hotfixes of 5 and 6 November. On the 5th, some Dustwallow Marsh murlocs no longer respawn too quickly. For the Mage, only two bug fixes, one of them Arcane Blast's duration."
+    }
+  },
+  {
+    "id": "mobalytics-kargoz-aoe",
+    "title": "1-60 Frost Mage AoE Leveling Guide - Talents, Routing & Strategy",
+    "publisher": "Mobalytics (Kargoz)",
+    "url": "https://mobalytics.gg/wow-forever/profile/kargoz/classes/1-60-frost-mage-aoe-leveling-guide-talents-strategy-best-grinding-spots",
+    "kind": "community",
+    "published": "2026-10-11",
+    "accessed": "2026-11-07",
+    "notes": {
+      "es": "Zonas de área del 14 al 60 con coordenadas, ordenadas por lo que rendían en Classic, sin medir en Forever. Su build es anterior al lanzamiento (lleva Hielo perforante, ya eliminado).",
+      "en": "AoE spots from 14 to 60 with coordinates, ranked by how they did in Classic, not measured in Forever. Its build predates launch (it takes Piercing Ice, since removed)."
+    }
+  },
+  {
+    "id": "restedxp-forever-mage-aoe",
+    "title": "RXPGuides: Forever Mage AoE routes",
+    "publisher": "RestedXP (GitHub)",
+    "url": "https://github.com/RestedXP/RXPGuides/tree/main/Guides/forever",
+    "kind": "community",
+    "accessed": "2026-11-07",
+    "notes": {
+      "es": "Rutas AoE de Mago para Forever hasta el nivel 21-22 (Alianza y Horda): área sobre los enemigos de las misiones de «mata X» en Costa Oscura, Páramos de Poniente, Montañas Crestagrana, Los Baldíos y Sierra Espolón.",
+      "en": "Forever Mage AoE routes up to level 21-22 (Alliance and Horde): AoE on the enemies of kill quests in Darkshore, Westfall, Redridge, the Barrens and Stonetalon."
+    }
+  },
+  {
     "id": "wiki-arcane-concentration",
     "title": "Arcane Concentration",
     "publisher": "Warcraft Wiki",
