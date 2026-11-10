@@ -795,6 +795,7 @@
       }
     ],
     "status": "analysis",
+    "playing": true,
     "gameVersion": "forever-launch-2026-11",
     "sources": [
       "wowhead-forever-talent-calc"
@@ -821,6 +822,427 @@
       }
     ],
     "updated": "2026-11-06"
+  },
+  {
+    "id": "frost-leveling-deep",
+    "name": {
+      "es": "Escarcha profunda",
+      "en": "Deep Frost"
+    },
+    "slug": {
+      "es": "escarcha-profunda",
+      "en": "deep-frost"
+    },
+    "uses": [
+      "leveling"
+    ],
+    "recommendedFor": [],
+    "discouragedFor": [],
+    "spec": "frost",
+    "icon": "spell_ice_lament",
+    "tagline": {
+      "es": "Tromba de misiles a los 17 para ahorrar maná desde pronto, y después Escarcha hasta el final: al 60 tienes Canalización de Escarcha, Escalofrío del invierno y Barrera de hielo a la vez.",
+      "en": "Missile Barrage at 17 to save mana early, and then Frost to the bottom: at 60 you have Frost Channeling, Winter's Chill and Ice Barrier together."
+    },
+    "intro": [
+      {
+        "es": "Empieza por Arcano: Especialización en varitas y Tromba de misiles a los 17. Son los talentos que más maná ahorran en los primeros niveles, y merece la pena retrasar Escarcha por ellos: rematas con la varita y cada Descarga de Escarcha puede dejarte unos Misiles Arcanos gratis.",
+        "en": "It starts with Arcane: Wand Specialization and Missile Barrage at 17. They are the talents that save the most mana in the early levels, and they are worth delaying Frost for: you finish with your wand, and every Frostbolt can leave you free Arcane Missiles."
+      },
+      {
+        "es": "Del 19 al 60 es todo Escarcha, salvo los 2 puntos de Sutileza Arcana. Llega más tarde que las otras builds de Escarcha a Lanza de hielo (27) y a Dedos de Escarcha (37), pero al 60 junta lo que ellas se reparten: Canalización de Escarcha y Alcance ártico para el área, y Cono de frío mejorado con Escalofrío del invierno para rematar.",
+        "en": "From 19 to 60 it is all Frost, except the 2 points in Arcane Subtlety. It reaches Ice Lance (27) and Fingers of Frost (37) later than the other Frost builds, but at 60 it combines what they split: Frost Channeling and Arctic Reach for AoE, and Improved Cone of Cold with Winter's Chill to finish."
+      },
+      {
+        "es": "Cuál elegir: si te quedas sin maná en los primeros niveles o quieres llegar al 60 con una Escarcha que sirva en mazmorras sin cambiar talentos, esta. Si quieres Lanza de hielo y Trizar cuanto antes, Escarcha a un objetivo.",
+        "en": "Which one to pick: if you run out of mana in the early levels or want to reach 60 with a Frost build that works in dungeons without a respec, this one. If you want Ice Lance and Shatter as soon as possible, Frost single target."
+      }
+    ],
+    "level": 60,
+    "legacyTalented": 0,
+    "points": {
+      "elemental-precision": 3,
+      "wand-specialization": 2,
+      "arcane-resilience": 3,
+      "missile-barrage": 2,
+      "improved-frostbolt": 5,
+      "frostbite": 3,
+      "ice-lance": 1,
+      "ice-shards": 5,
+      "shatter": 3,
+      "improved-blizzard": 1,
+      "fingers-of-frost": 2,
+      "arctic-reach": 2,
+      "frost-channeling": 3,
+      "ice-block": 1,
+      "permafrost": 1,
+      "cold-snap": 1,
+      "ice-barrier": 1,
+      "arcane-subtlety": 2,
+      "improved-cone-of-cold": 3,
+      "winters-chill": 5,
+      "improved-frost-nova": 2
+    },
+    "order": [
+      "elemental-precision",
+      "elemental-precision",
+      "wand-specialization",
+      "wand-specialization",
+      "arcane-resilience",
+      "arcane-resilience",
+      "arcane-resilience",
+      "missile-barrage",
+      "missile-barrage",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "frostbite",
+      "frostbite",
+      "frostbite",
+      "improved-frostbolt",
+      "improved-frostbolt",
+      "ice-lance",
+      "ice-shards",
+      "ice-shards",
+      "ice-shards",
+      "ice-shards",
+      "shatter",
+      "shatter",
+      "shatter",
+      "ice-shards",
+      "improved-blizzard",
+      "fingers-of-frost",
+      "fingers-of-frost",
+      "arctic-reach",
+      "arctic-reach",
+      "frost-channeling",
+      "frost-channeling",
+      "frost-channeling",
+      "ice-block",
+      "permafrost",
+      "cold-snap",
+      "ice-barrier",
+      "arcane-subtlety",
+      "arcane-subtlety",
+      "elemental-precision",
+      "improved-cone-of-cold",
+      "improved-cone-of-cold",
+      "improved-cone-of-cold",
+      "winters-chill",
+      "winters-chill",
+      "winters-chill",
+      "winters-chill",
+      "winters-chill",
+      "improved-frost-nova",
+      "improved-frost-nova"
+    ],
+    "orderNotes": [
+      {
+        "point": 1,
+        "text": {
+          "es": "Un 2 % de golpe con todos los hechizos por punto. A 2/3 ya no fallas contra enemigos de tu nivel; el tercero llega en el nivel 50.",
+          "en": "2% hit with every spell per point. At 2/3 you no longer miss enemies of your level; the third comes at level 50."
+        }
+      },
+      {
+        "point": 3,
+        "text": {
+          "es": "Un 25 % más de daño con varita a 2/2. En estos niveles la varita hace casi tanto daño como tus hechizos, y no gasta maná.",
+          "en": "25% more wand damage at 2/2. At these levels your wand deals almost as much damage as your spells, and it costs no mana."
+        }
+      },
+      {
+        "point": 5,
+        "text": {
+          "es": "Armadura igual al 75 % de tu Intelecto a 3/3. Con Especialización en varitas, abre la fila de Tromba de misiles sin pasar por Canalización mejorada.",
+          "en": "Armor equal to 75% of your Intellect at 3/3. With Wand Specialization, it opens the Missile Barrage row without going through Improved Channeling."
+        }
+      },
+      {
+        "point": 8,
+        "text": {
+          "es": "Un 20 % de las veces que lanzas Descarga de Escarcha, tus siguientes Misiles Arcanos son gratis y duran la mitad. Es lo que más maná te ahorra hasta que llega Canalización de Escarcha.",
+          "en": "20% of the times you cast Frostbolt, your next Arcane Missiles are free and take half as long. It is what saves you the most mana until Frost Channeling arrives."
+        }
+      },
+      {
+        "point": 10,
+        "text": {
+          "es": "Aquí empieza Escarcha. Descarga de Escarcha, tu relleno, se lanza 0,1 s más rápido por punto: 0,5 s a 5/5, en el nivel 26.",
+          "en": "This is where Frost starts. Frostbolt, your filler, casts 0.1 s faster per point: 0.5 s at 5/5, at level 26."
+        }
+      },
+      {
+        "point": 13,
+        "text": {
+          "es": "Antes de acabar Descarga de Escarcha mejorada. Tus efectos de enfriamiento tienen hasta un 15 % de probabilidad de congelar al objetivo 5 s: mientras tanto lanzas o usas la varita sin que te alcance.",
+          "en": "Before finishing Improved Frostbolt. Your Chill effects get up to a 15% chance to freeze the target for 5 s: meanwhile you cast or wand without it reaching you."
+        }
+      },
+      {
+        "point": 18,
+        "text": {
+          "es": "Hace un 300 % más de daño contra objetivos congelados. Llega 7 niveles más tarde que en las otras builds de Escarcha por empezar en Arcano.",
+          "en": "It deals 300% more damage against frozen targets. It comes 7 levels later than in the other Frost builds because of the Arcane start."
+        }
+      },
+      {
+        "point": 19,
+        "text": {
+          "es": "Hasta un 100 % más de bonificación a los críticos de Escarcha. El quinto punto llega en el nivel 35.",
+          "en": "Up to 100% more bonus on Frost crits. The fifth point comes at level 35."
+        }
+      },
+      {
+        "point": 23,
+        "text": {
+          "es": "Hasta un 50 % de crítico contra objetivos congelados.",
+          "en": "Up to 50% crit against frozen targets."
+        }
+      },
+      {
+        "point": 27,
+        "text": {
+          "es": "Un solo punto, y no por la ralentización: convierte Ventisca en un efecto de enfriamiento, así que también activa Mordiescarcha y Dedos de Escarcha en todo el grupo. Además es el punto 20 de Escarcha, el que abre Dedos de Escarcha.",
+          "en": "A single point, and not for the slow: it makes Blizzard a Chill effect, so it also triggers Frostbite and Fingers of Frost on the whole pack. It is also the 20th Frost point, the one that opens Fingers of Frost."
+        }
+      },
+      {
+        "point": 28,
+        "text": {
+          "es": "Tus efectos de enfriamiento tienen un 15 % de probabilidad de hacer que tus 2 siguientes hechizos traten al objetivo como congelado.",
+          "en": "Your Chill effects have a 15% chance to make your next 2 spells treat the target as frozen."
+        }
+      },
+      {
+        "point": 30,
+        "text": {
+          "es": "Un 20 % más de alcance para Descarga de Escarcha, Lanza de hielo y Ventisca, y más radio para Nova de Escarcha y Cono de frío: el enemigo tarda más en llegar y aciertas antes con el Cono.",
+          "en": "20% more range for Frostbolt, Ice Lance and Blizzard, and a wider Frost Nova and Cone of Cold: the enemy takes longer to reach you and Cone of Cold is easier to land."
+        }
+      },
+      {
+        "point": 32,
+        "text": {
+          "es": "Tus hechizos de Escarcha cuestan un 15 % menos de maná a 3/3 y generan un 30 % menos de amenaza.",
+          "en": "Your Frost spells cost 15% less mana at 3/3 and cause 30% less threat."
+        }
+      },
+      {
+        "point": 35,
+        "text": {
+          "es": "Te protege de todos los ataques durante 10 s, aunque no puedes moverte ni lanzar.",
+          "en": "Protects you from every attack for 10 s, though you cannot move or cast."
+        }
+      },
+      {
+        "point": 36,
+        "text": {
+          "es": "Un solo punto: con un 11 % más de duración, Cono de frío mantiene lentos a los 4 primeros enemigos que alcanza durante sus 10 s de reutilización, sin huecos.",
+          "en": "A single point: with 11% more duration, Cone of Cold keeps the first 4 enemies it hits slowed for its whole 10 s cooldown, with no gaps."
+        }
+      },
+      {
+        "point": 37,
+        "text": {
+          "es": "Reinicia Nova de Escarcha, Bloqueo de hielo y, desde el nivel 47, Barrera de hielo.",
+          "en": "Resets Frost Nova, Ice Block and, from level 47, Ice Barrier."
+        }
+      },
+      {
+        "point": 38,
+        "text": {
+          "es": "Un escudo que además da un 15 % más de daño de Escarcha durante 1 min, otro 5 % mientras aguanta, y evita que los golpes retrasen tus hechizos.",
+          "en": "A shield that also gives 15% more Frost damage for 1 min, another 5% while it holds, and stops hits from delaying your spells."
+        }
+      },
+      {
+        "point": 39,
+        "text": {
+          "es": "15 de resistencia menos contra todos tus hechizos, y un 30 % menos de amenaza Arcana.",
+          "en": "15 less resistance against all your spells, and 30% less Arcane threat."
+        }
+      },
+      {
+        "point": 41,
+        "text": {
+          "es": "El tercer punto de Precisión: un 6 % de golpe, para no fallar contra enemigos uno o dos niveles por encima del tuyo.",
+          "en": "The third point of Precision: 6% hit, so you do not miss enemies one or two levels above yours."
+        }
+      },
+      {
+        "point": 42,
+        "text": {
+          "es": "Cono de frío hace un 35 % más de daño a 3/3.",
+          "en": "Cone of Cold deals 35% more damage at 3/3."
+        }
+      },
+      {
+        "point": 45,
+        "text": {
+          "es": "Descarga de Escarcha y Lanza de hielo con Dedos de Escarcha aplican cargas, hasta 5, que tu siguiente Cono de frío consume: un 20 % más de daño y un 7 % de tu daño de hechizos por carga. A 3/5 se aplican el 60 % de las veces; a 5/5, siempre.",
+          "en": "Frostbolt and Fingers of Frost Ice Lance apply stacks, up to 5, that your next Cone of Cold consumes: 20% more damage and 7% of your spell damage per stack. At 3/5 they apply 60% of the time; at 5/5, always."
+        }
+      },
+      {
+        "point": 50,
+        "text": {
+          "es": "Nova de Escarcha se recarga 4 s antes.",
+          "en": "Frost Nova comes back 4 s sooner."
+        }
+      }
+    ],
+    "goal": {
+      "es": "Ahorrar maná desde pronto y acabar con Escarcha completa",
+      "en": "Saving mana early and ending with full Frost"
+    },
+    "upside": {
+      "es": "Tromba de misiles a los 17 y, al 60, Escarcha completa",
+      "en": "Missile Barrage at 17 and, at 60, full Frost"
+    },
+    "downside": {
+      "es": "Lanza de hielo llega tarde, al nivel 27",
+      "en": "Ice Lance comes late, at level 27"
+    },
+    "keyTalents": [
+      "missile-barrage",
+      "shatter",
+      "fingers-of-frost",
+      "frost-channeling",
+      "winters-chill"
+    ],
+    "summary": {
+      "es": "Build de leveo de Escarcha con 9 puntos en Arcano, en orden del 10 al 60. Tromba de misiles a los 17 para ahorrar maná y después Escarcha hasta Barrera de hielo, Cono de frío mejorado y Escalofrío del invierno.",
+      "en": "Frost leveling build with 9 points in Arcane, in order from 10 to 60. Missile Barrage at 17 to save mana and then Frost down to Ice Barrier, Improved Cone of Cold and Winter's Chill."
+    },
+    "playstyle": [
+      {
+        "es": "Barrera de hielo activa siempre que puedas, desde el nivel 47.",
+        "en": "Keep Ice Barrier up whenever you can, from level 47."
+      },
+      {
+        "es": "Si salta Dedos de Escarcha, Lanza de hielo al momento, aunque tengas que cancelar lo que estás lanzando: Descarga de Escarcha también gastaría la carga. Lanza de hielo tiene 8 s de reutilización, así que la segunda carga es para tu siguiente Descarga de Escarcha.",
+        "en": "If Fingers of Frost triggers, Ice Lance at once, even if you have to cancel what you are casting: Frostbolt would also spend the charge. Ice Lance has an 8 s cooldown, so the second charge is for your next Frostbolt."
+      },
+      {
+        "es": "Si Mordiescarcha congela al objetivo, Descarga de Escarcha y justo después Lanza de hielo: llegan a la vez y las dos aprovechan Trizar.",
+        "en": "If Frostbite freezes the target, Frostbolt and right after it Ice Lance: they land together and both get Shatter."
+      },
+      {
+        "es": "Cono de frío con 5 cargas de Escalofrío del invierno, desde el nivel 58. Solo alcanza a enemigos cercanos: lánzalo cuando el enemigo llegue hasta ti, mejor si está congelado, porque también aprovecha Trizar.",
+        "en": "Cone of Cold with 5 stacks of Winter's Chill, from level 58. It only reaches nearby enemies: cast it when the enemy reaches you, ideally while frozen, because it also gets Shatter."
+      },
+      {
+        "es": "Misiles Arcanos si Tromba de misiles está activa y es seguro canalizar.",
+        "en": "Arcane Missiles if Missile Barrage is active and it is safe to channel."
+      },
+      {
+        "es": "Si un enemigo llega hasta ti, Nova de Escarcha: congelado y a tu lado, es el momento de Cono de frío o Lanza de hielo.",
+        "en": "If an enemy reaches you, Frost Nova: frozen and next to you, it is the moment for Cone of Cold or Ice Lance."
+      },
+      {
+        "es": "Descarga de Escarcha en cualquier otro caso.",
+        "en": "Frostbolt in any other case."
+      },
+      {
+        "es": "Remata con la varita: ahorras maná y tu regeneración vuelve antes.",
+        "en": "Finish enemies with your wand: you save mana and your regeneration comes back sooner."
+      }
+    ],
+    "clearcasting": [],
+    "aoe": [
+      {
+        "es": "Con 3 enemigos o más, deja Fogonazo preparado si es seguro. En mazmorras, con cuidado de no quitarle los enemigos al tanque.",
+        "en": "With 3 or more enemies, have Flamestrike ready if it is safe. In dungeons, taking care not to pull the enemies off the tank."
+      },
+      {
+        "es": "Ventisca mientras puedas canalizarla entera: desde el nivel 36, cada tick puede congelar con Mordiescarcha o darte Dedos de Escarcha.",
+        "en": "Blizzard while you can channel it fully: from level 36, each tick can freeze with Frostbite or give you Fingers of Frost."
+      },
+      {
+        "es": "Cono de frío cada vez que esté listo, mejor con Dedos de Escarcha activo para que aproveche Trizar. A los 4 primeros enemigos los mantiene lentos hasta el siguiente.",
+        "en": "Cone of Cold every time it is ready, ideally with Fingers of Frost active so it gets Shatter. It keeps the first 4 enemies slowed until the next one."
+      },
+      {
+        "es": "Si te alcanzan y no puedes canalizar, Nova de Escarcha y Deflagración Arcana.",
+        "en": "If they reach you and you cannot channel, Frost Nova and Arcane Explosion."
+      }
+    ],
+    "cooldowns": [
+      {
+        "es": "Bloqueo de hielo si te van a matar: te protege 10 s, pero no puedes hacer nada mientras dura.",
+        "en": "Ice Block if you are about to die: it protects you for 10 s, but you cannot do anything while it lasts."
+      },
+      {
+        "es": "Mordedura helada para tener otra Nova de Escarcha, Barrera de hielo o Bloqueo de hielo cuando un pull se complica.",
+        "en": "Cold Snap to get another Frost Nova, Ice Barrier or Ice Block when a pull gets complicated."
+      },
+      {
+        "es": "Evocación cuando te falte poco para quedarte sin maná y no tengas gema ni poción.",
+        "en": "Evocation when you are close to running out of mana and have no gem or potion."
+      }
+    ],
+    "strengths": [
+      {
+        "es": "Especialización en varitas desde el nivel 13 y Tromba de misiles desde el 17: gastas poco maná justo en los niveles en que más falta.",
+        "en": "Wand Specialization from level 13 and Missile Barrage from 17: you spend little mana right in the levels where it is scarcest."
+      },
+      {
+        "es": "Al 60 tiene lo de las otras dos builds de Escarcha: Canalización de Escarcha y Alcance ártico para el área, y Escalofrío del invierno para rematar con Cono de frío.",
+        "en": "At 60 it has what the other two Frost builds split: Frost Channeling and Arctic Reach for AoE, and Winter's Chill to finish with Cone of Cold."
+      },
+      {
+        "es": "Bloqueo de hielo, Barrera de hielo y Mordedura helada te sacan de los pulls que se complican.",
+        "en": "Ice Block, Ice Barrier and Cold Snap get you out of pulls that go wrong."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Lanza de hielo llega en el nivel 27 y Dedos de Escarcha en el 37, más tarde que en las otras builds de Escarcha.",
+        "en": "Ice Lance comes at level 27 and Fingers of Frost at 37, later than in the other Frost builds."
+      },
+      {
+        "es": "Sin Concentración Arcana ni Meditación Arcana: todo tu ahorro de maná es Tromba de misiles y, desde el nivel 43, Canalización de Escarcha.",
+        "en": "No Arcane Concentration or Arcane Meditation: all your mana saving is Missile Barrage and, from level 43, Frost Channeling."
+      },
+      {
+        "es": "Escalofrío del invierno no está completo hasta el nivel 58.",
+        "en": "Winter's Chill is not complete until level 58."
+      }
+    ],
+    "stats": [
+      {
+        "es": "Daño de hechizos: es lo que más encontrarás subiendo y lo que más se nota. Cada carga de Escalofrío del invierno suma un 7 % a Cono de frío.",
+        "en": "Spell damage: it is what you will find most while leveling and what you will notice most. Each Winter's Chill stack adds 7% of it to Cone of Cold."
+      },
+      {
+        "es": "Intelecto: más maná y más crítico, y sale en casi todas las piezas.",
+        "en": "Intellect: more mana and more crit, and it is on almost every piece."
+      },
+      {
+        "es": "Crítico: Fragmentos de hielo duplica la bonificación de tus críticos de Escarcha, y Trizar los hace mucho más probables contra objetivos congelados. Subiendo verás poco; cógelo cuando salga.",
+        "en": "Crit: Ice Shards doubles the bonus of your Frost crits, and Shatter makes them far more likely against frozen targets. You will see little of it while leveling; take it when it shows up."
+      },
+      {
+        "es": "Golpe: Precisión da un 4 % desde el nivel 11 y un 6 % desde el 50, y subiendo apenas hay equipo con golpe: no lo persigas.",
+        "en": "Hit: Precision gives 4% from level 11 and 6% from 50, and there is hardly any hit gear while leveling: do not chase it."
+      },
+      {
+        "es": "Espíritu: te hace beber menos.",
+        "en": "Spirit: you drink less with it."
+      },
+      {
+        "es": "Aguante: súbelo antes que lo anterior si juegas en un reino JcJ.",
+        "en": "Stamina: raise it ahead of the above if you play on a PvP realm."
+      }
+    ],
+    "status": "analysis",
+    "gameVersion": "forever-launch-2026-11",
+    "sources": [
+      "wowhead-forever-talent-calc",
+      "icyveins-forever-frost-leveling"
+    ],
+    "updated": "2026-11-10"
   },
   {
     "id": "arcane-leveling",
@@ -1239,6 +1661,428 @@
     ],
     "updated": "2026-11-06",
     "hybridWith": "frost"
+  },
+  {
+    "id": "arcane-fire-leveling",
+    "name": {
+      "es": "Arcano y Fuego",
+      "en": "Arcane and Fire"
+    },
+    "slug": {
+      "es": "arcano-fuego",
+      "en": "arcane-fire"
+    },
+    "uses": [
+      "leveling"
+    ],
+    "recommendedFor": [],
+    "discouragedFor": [],
+    "spec": "arcane",
+    "icon": "ability_mage_netherwindpresence",
+    "tagline": {
+      "es": "Arcano hasta Poder Arcano y Fuego al final: Incineración y Acelerante refuerzan Explosión Arcana y Cólera Arcana, tus dos hechizos principales.",
+      "en": "Arcane up to Arcane Power and Fire at the end: Incineration and Accelerant boost Arcane Blast and Arcane Wrath, your two main spells."
+    },
+    "intro": [
+      {
+        "es": "Es el Arcano que proponen casi todas las guías de leveo: Arcano hasta Poder Arcano y después los primeros talentos de Fuego, porque refuerzan hechizos Arcanos. Incineración da un 10 % más de crítico a Explosión Arcana y Acelerante quita 0,5 s a Cólera Arcana.",
+        "en": "This is the Arcane almost every leveling guide proposes: Arcane up to Arcane Power and then the first Fire talents, because they boost Arcane spells. Incineration gives Arcane Blast 10% more crit and Accelerant takes 0.5 s off Arcane Wrath."
+      },
+      {
+        "es": "Hasta el nivel 40 es igual que la build de Arcano. En el 41 eliges: Arcano sigue con Escarcha para congelar y rematar con Lanza de hielo, y esta sigue con Fuego para hacer más daño con lo que ya lanzas. A cambio, no tiene Mordiescarcha ni Bloqueo de hielo: si un pull se complica, solo te quedan Nova de Escarcha, Traslación y Presencia mental.",
+        "en": "Up to level 40 it is the same as the Arcane build. At 41 you choose: Arcane goes on with Frost to freeze and finish with Ice Lance, and this one goes on with Fire to deal more damage with what you already cast. In exchange, it has no Frostbite or Ice Block: if a pull goes wrong, you only have Frost Nova, Blink and Presence of Mind."
+      },
+      {
+        "es": "Cuál elegir: si subes sobre todo con mazmorras o quieres el máximo daño a un objetivo, esta. Si subes solo en el mundo y prefieres control y defensas al final, Arcano.",
+        "en": "Which one to pick: if you level mostly through dungeons or want the most single-target damage, this one. If you level solo in the world and prefer control and defenses at the end, Arcane."
+      }
+    ],
+    "level": 60,
+    "legacyTalented": 0,
+    "points": {
+      "wand-specialization": 2,
+      "arcane-resilience": 3,
+      "missile-barrage": 2,
+      "arcane-concentration": 5,
+      "arcane-blast": 1,
+      "arcane-subtlety": 2,
+      "arcane-wrath": 1,
+      "arcane-impact": 3,
+      "arcane-meditation": 3,
+      "presence-of-mind": 1,
+      "arcane-mind": 5,
+      "arcane-instability": 3,
+      "arcane-power": 1,
+      "elemental-precision": 3,
+      "incineration": 5,
+      "improved-fireball": 5,
+      "wake-of-fire": 2,
+      "arcane-geometry": 2,
+      "magic-absorption": 2
+    },
+    "order": [
+      "wand-specialization",
+      "wand-specialization",
+      "arcane-resilience",
+      "arcane-resilience",
+      "arcane-resilience",
+      "missile-barrage",
+      "missile-barrage",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-blast",
+      "arcane-concentration",
+      "arcane-concentration",
+      "arcane-subtlety",
+      "arcane-subtlety",
+      "arcane-wrath",
+      "arcane-impact",
+      "arcane-impact",
+      "arcane-impact",
+      "arcane-meditation",
+      "presence-of-mind",
+      "arcane-mind",
+      "arcane-mind",
+      "arcane-mind",
+      "arcane-mind",
+      "arcane-mind",
+      "arcane-instability",
+      "arcane-instability",
+      "arcane-instability",
+      "arcane-meditation",
+      "arcane-power",
+      "arcane-meditation",
+      "elemental-precision",
+      "elemental-precision",
+      "elemental-precision",
+      "incineration",
+      "incineration",
+      "incineration",
+      "incineration",
+      "incineration",
+      "improved-fireball",
+      "improved-fireball",
+      "improved-fireball",
+      "improved-fireball",
+      "improved-fireball",
+      "wake-of-fire",
+      "wake-of-fire",
+      "arcane-geometry",
+      "arcane-geometry",
+      "magic-absorption",
+      "magic-absorption"
+    ],
+    "orderNotes": [
+      {
+        "point": 1,
+        "text": {
+          "es": "Un 25 % más de daño con varita a 2/2.",
+          "en": "25% more wand damage at 2/2."
+        }
+      },
+      {
+        "point": 3,
+        "text": {
+          "es": "Armadura igual al 75 % de tu Intelecto a 3/3. Va antes que Canalización mejorada.",
+          "en": "Armor equal to 75% of your Intellect at 3/3. It goes ahead of Improved Channeling."
+        }
+      },
+      {
+        "point": 6,
+        "text": {
+          "es": "Misiles Arcanos gratis y en la mitad de tiempo. Salta un 20 % de las veces con Descarga de Escarcha y un 40 % con Explosión Arcana.",
+          "en": "Free Arcane Missiles in half the time. It triggers 20% of the time with Frostbolt and 40% with Arcane Blast."
+        }
+      },
+      {
+        "point": 8,
+        "text": {
+          "es": "Un 6 % de probabilidad de Lanzamiento libre tras cualquier hechizo de daño a 3/5. Paro en 3 para llegar antes a Explosión Arcana.",
+          "en": "A 6% chance of Clearcasting after any damage spell at 3/5. I stop at 3 to reach Arcane Blast sooner."
+        }
+      },
+      {
+        "point": 11,
+        "text": {
+          "es": "Cada lanzamiento te da un 12 % de tu Intelecto como daño de hechizos y encarece la siguiente un 100 %, hasta 4 veces. Lánzala con Lanzamiento libre.",
+          "en": "Each cast gives you 12% of your Intellect as spell damage and makes the next one cost 100% more, up to 4 times. Cast it with Clearcasting."
+        }
+      },
+      {
+        "point": 12,
+        "text": {
+          "es": "Con 5/5, un 10 %. Desde aquí el maná mejora mucho.",
+          "en": "At 5/5, 10%. From here your mana gets much better."
+        }
+      },
+      {
+        "point": 14,
+        "text": {
+          "es": "15 de resistencia menos contra todos tus hechizos y un 30 % menos de amenaza Arcana.",
+          "en": "15 less resistance against all your spells and 30% less Arcane threat."
+        }
+      },
+      {
+        "point": 16,
+        "text": {
+          "es": "Un golpe fuerte que gana daño de hechizos igual al 5 % de tu maná máximo.",
+          "en": "A big hit that gains spell damage equal to 5% of your maximum mana."
+        }
+      },
+      {
+        "point": 17,
+        "text": {
+          "es": "Un 6 % de crítico Arcano a 3/3.",
+          "en": "6% Arcane crit at 3/3."
+        }
+      },
+      {
+        "point": 20,
+        "text": {
+          "es": "Parte de tu regeneración de maná sigue activa mientras lanzas: descansas menos y subes más rápido. El segundo punto llega en el nivel 39 y el tercero, al 50 %, en el 41.",
+          "en": "Part of your mana regeneration keeps running while you cast: you rest less and level faster. The second point comes at level 39 and the third, reaching 50%, at 41."
+        }
+      },
+      {
+        "point": 21,
+        "text": {
+          "es": "Tu siguiente hechizo con menos de 10 s de lanzamiento es instantáneo. Abre el camino a Poder Arcano.",
+          "en": "Your next spell with a cast time under 10 s is instant. It opens the way to Arcane Power."
+        }
+      },
+      {
+        "point": 22,
+        "text": {
+          "es": "Un 10 % más de Intelecto y un 100 % más de bonificación a los críticos Arcanos a 5/5.",
+          "en": "10% more Intellect and 100% more bonus on Arcane crits at 5/5."
+        }
+      },
+      {
+        "point": 27,
+        "text": {
+          "es": "Un 3 % más de daño y de crítico con todos tus hechizos a 3/3.",
+          "en": "3% more damage and crit with all your spells at 3/3."
+        }
+      },
+      {
+        "point": 31,
+        "text": {
+          "es": "Durante 15 s, tus hechizos hacen un 30 % más de daño y cuestan un 30 % más de maná.",
+          "en": "For 15 s, your spells deal 30% more damage and cost 30% more mana."
+        }
+      },
+      {
+        "point": 32,
+        "text": {
+          "es": "Aquí se separa de la build de Arcano, que sigue con Escarcha. Primero, el tercer punto de Meditación Arcana: la mitad de tu regeneración de maná sigue activa mientras lanzas.",
+          "en": "This is where it parts from the Arcane build, which goes on with Frost. First, the third point of Arcane Meditation: half your mana regeneration keeps running while you cast."
+        }
+      },
+      {
+        "point": 33,
+        "text": {
+          "es": "Un 2 % de golpe con todos los hechizos por punto. A 2/3 ya no fallas contra enemigos de tu nivel; el tercero cubre a los que te sacan uno o dos niveles.",
+          "en": "2% hit with every spell per point. At 2/3 you no longer miss enemies of your level; the third covers those one or two levels above you."
+        }
+      },
+      {
+        "point": 36,
+        "text": {
+          "es": "Un 10 % más de crítico para Explosión Arcana y Explosión de Fuego a 5/5. Con Mente Arcana, un crítico Arcano hace el doble de daño extra.",
+          "en": "10% more crit for Arcane Blast and Fire Blast at 5/5. With Arcane Mind, an Arcane crit deals twice the extra damage."
+        }
+      },
+      {
+        "point": 41,
+        "text": {
+          "es": "Cólera Arcana se lanza 0,5 s más rápido a 5/5: 3 s en vez de 3,5.",
+          "en": "Arcane Wrath casts 0.5 s faster at 5/5: 3 s instead of 3.5."
+        }
+      },
+      {
+        "point": 46,
+        "text": {
+          "es": "Explosión de Fuego se recarga 2 s antes y llega 15 m más lejos: rematas a distancia sin dejar que el enemigo se acerque.",
+          "en": "Fire Blast comes back 2 s sooner and reaches 15 yards further: you finish enemies at range without letting them close in."
+        }
+      },
+      {
+        "point": 48,
+        "text": {
+          "es": "6 m más de alcance para tus hechizos Arcanos: empiezas el combate más lejos y el enemigo tarda más en llegar.",
+          "en": "6 more yards of range for your Arcane spells: you start the fight further away and the enemy takes longer to reach you."
+        }
+      },
+      {
+        "point": 50,
+        "text": {
+          "es": "10 de resistencia a todo, y cada hechizo que resistes por completo te devuelve un 2 % de tu maná.",
+          "en": "10 resistance to everything, and every spell you fully resist gives you back 2% of your mana."
+        }
+      }
+    ],
+    "goal": {
+      "es": "Subir con poco maná y mucho daño a un objetivo",
+      "en": "Leveling on little mana with high single-target damage"
+    },
+    "upside": {
+      "es": "Incineración y Acelerante refuerzan tus dos hechizos Arcanos principales",
+      "en": "Incineration and Accelerant boost your two main Arcane spells"
+    },
+    "downside": {
+      "es": "Sin congelaciones de talento ni Bloqueo de hielo",
+      "en": "No talent freezes and no Ice Block"
+    },
+    "keyTalents": [
+      "missile-barrage",
+      "arcane-concentration",
+      "arcane-power",
+      "incineration",
+      "improved-fireball"
+    ],
+    "summary": {
+      "es": "Build de leveo de Arcano con 12 puntos en Fuego y 3 en Escarcha, en orden del 10 al 60. Explosión Arcana para buscar Tromba de misiles, Cólera Arcana en cuanto está lista, e Incineración y Acelerante para reforzarlas.",
+      "en": "Arcane leveling build with 12 points in Fire and 3 in Frost, in order from 10 to 60. Arcane Blast to fish for Missile Barrage, Arcane Wrath as soon as it is ready, and Incineration and Accelerant to boost them."
+    },
+    "playstyle": [
+      {
+        "es": "Misiles Arcanos si Tromba de misiles está activa.",
+        "en": "Arcane Missiles if Missile Barrage is active."
+      },
+      {
+        "es": "Cólera Arcana, desde el nivel 25, si está lista y nada te va a interrumpir. Desde el 54 tarda 3 s en lanzarse.",
+        "en": "Arcane Wrath, from level 25, if it is ready and nothing will interrupt you. From 54 it takes 3 s to cast."
+      },
+      {
+        "es": "Desde el nivel 45, Explosión Arcana una vez para buscar Tromba de misiles: la activa un 40 % de las veces, el doble que Descarga de Escarcha, y tarda la mitad en lanzarse. No la cargues más: cada carga encarece la siguiente un 100 % durante 18 s.",
+        "en": "From level 45, Arcane Blast once to fish for Missile Barrage: it triggers it 40% of the time, twice as often as Frostbolt, and takes half as long to cast. Do not stack it further: each stack makes the next cost 100% more for 18 s."
+      },
+      {
+        "es": "Descarga de Escarcha en cualquier otro caso, y siempre que un enemigo te vaya a alcanzar: ralentiza un 40 %.",
+        "en": "Frostbolt in any other case, and whenever an enemy is about to reach you: it slows by 40%."
+      },
+      {
+        "es": "Explosión de Fuego para rematar o mientras te mueves. Desde el nivel 56 llega 15 m más lejos.",
+        "en": "Fire Blast to finish enemies or while you move. From level 56 it reaches 15 yards further."
+      },
+      {
+        "es": "Remata con la varita: ahorras maná y tu regeneración vuelve antes.",
+        "en": "Finish enemies with your wand: you save mana and your regeneration comes back sooner."
+      },
+      {
+        "es": "Sin maná en pleno combate: gema de maná, poción o Evocación, y la varita si no te queda nada.",
+        "en": "Out of mana mid-fight: mana gem, potion or Evocation, and your wand if you have nothing left."
+      }
+    ],
+    "clearcasting": [
+      {
+        "es": "Explosión Arcana si ya tienes una carga: la siguiente cuesta el doble, y así la cargas gratis. Si no, Cólera Arcana si está lista.",
+        "en": "Arcane Blast if you already have a stack: the next one costs double, so you stack it for free. Otherwise, Arcane Wrath if it is ready."
+      },
+      {
+        "es": "En mazmorras, con varios enemigos, Fogonazo: bastante daño en área sin gastar maná.",
+        "en": "In dungeons, with several enemies, Flamestrike: plenty of AoE damage without spending mana."
+      },
+      {
+        "es": "Si también tienes Tromba de misiles, lanza primero el otro hechizo y después los Misiles: ya son gratis.",
+        "en": "If you also have Missile Barrage, cast the other spell first and the Missiles afterwards: they are already free."
+      }
+    ],
+    "aoe": [
+      {
+        "es": "En mazmorras, si es seguro, deja Fogonazo preparado antes del pull, con cuidado de no quitarle los enemigos al tanque. Farmeando solo, lánzalo sobre el grupo cuando lo congeles con Nova de Escarcha.",
+        "en": "In dungeons, if it is safe, have Flamestrike ready before the pull, taking care not to pull the enemies off the tank. Farming solo, cast it on the pack once Frost Nova freezes it."
+      },
+      {
+        "es": "Deflagración Arcana sin parar mientras te dure el maná. Impacto Arcano le da un 6 % más de crítico, Mente Arcana duplica la bonificación de sus críticos y Sutileza Arcana le quita un 30 % de amenaza.",
+        "en": "Arcane Explosion nonstop while your mana lasts. Arcane Impact gives it 6% more crit, Arcane Mind doubles its crit bonus and Arcane Subtlety takes 30% off its threat."
+      }
+    ],
+    "cooldowns": [
+      {
+        "es": "Presencia mental para lanzar Cólera Arcana al instante, o una Polimorfia si se te une otro enemigo.",
+        "en": "Presence of Mind to cast Arcane Wrath instantly, or a Polymorph if another enemy joins in."
+      },
+      {
+        "es": "Poder Arcano, desde el nivel 40, para enemigos fuertes: un 30 % más de daño durante 15 s, pero también un 30 % más de maná. Con Tromba de misiles, los Misiles siguen siendo gratis.",
+        "en": "Arcane Power, from level 40, for tough enemies: 30% more damage for 15 s, but also 30% more mana. With Missile Barrage, your Missiles are still free."
+      },
+      {
+        "es": "Nova de Escarcha y Traslación si un pull se complica: esta build no tiene Bloqueo de hielo.",
+        "en": "Frost Nova and Blink if a pull goes wrong: this build has no Ice Block."
+      },
+      {
+        "es": "Evocación cuando te falte poco para quedarte sin maná y no tengas gema ni poción.",
+        "en": "Evocation when you are close to running out of mana and have no gem or potion."
+      }
+    ],
+    "strengths": [
+      {
+        "es": "Incineración da un 10 % más de crítico a Explosión Arcana y Acelerante quita 0,5 s a Cólera Arcana, los hechizos Arcanos que más lanzas.",
+        "en": "Incineration gives Arcane Blast 10% more crit and Accelerant takes 0.5 s off Arcane Wrath, the Arcane spells you cast most."
+      },
+      {
+        "es": "Procs de maná desde muy pronto, Tromba de misiles desde el nivel 15 y Lanzamiento libre desde el 17, y Meditación Arcana a 3/3 desde el 41.",
+        "en": "Mana procs from very early, Missile Barrage from level 15 and Clearcasting from 17, and Arcane Meditation at 3/3 from 41."
+      },
+      {
+        "es": "En mazmorras el grupo no te espera en cada pull, y Deflagración Arcana hace mucho daño en área con poca amenaza.",
+        "en": "In dungeons the group does not wait for you on every pull, and Arcane Explosion deals plenty of AoE damage with little threat."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Sin congelaciones de talento ni Bloqueo de hielo, Barrera de hielo o Mordedura helada: dependes de Nova de Escarcha y de mantener la distancia.",
+        "en": "No talent freezes and no Ice Block, Ice Barrier or Cold Snap: you depend on Frost Nova and keeping your distance."
+      },
+      {
+        "es": "Descarga de Escarcha, tu hechizo para frenar, no se acelera en toda la build.",
+        "en": "Frostbolt, your spell to slow enemies, never speeds up in this build."
+      },
+      {
+        "es": "Explosión Arcana se encarece muy rápido: si la cargas sin Lanzamiento libre, te quedas sin maná.",
+        "en": "Arcane Blast gets expensive very fast: stack it without Clearcasting and you run out of mana."
+      }
+    ],
+    "stats": [
+      {
+        "es": "Daño de hechizos: es lo que más encontrarás subiendo y lo que más se nota.",
+        "en": "Spell damage: it is what you will find most while leveling and what you will notice most."
+      },
+      {
+        "es": "Intelecto: más maná y más crítico, y sale en casi todas las piezas. Mente Arcana lo sube un 10 %, Cólera Arcana crece con tu maná máximo y cada carga de Explosión Arcana te da un 12 % de él como daño de hechizos.",
+        "en": "Intellect: more mana and more crit, and it is on almost every piece. Arcane Mind raises it by 10%, Arcane Wrath grows with your maximum mana and each Arcane Blast stack gives you 12% of it as spell damage."
+      },
+      {
+        "es": "Crítico: Mente Arcana duplica la bonificación de tus críticos Arcanos, e Impacto Arcano e Incineración los hacen más probables. Subiendo verás poco; cógelo cuando salga.",
+        "en": "Crit: Arcane Mind doubles the bonus of your Arcane crits, and Arcane Impact and Incineration make them more likely. You will see little of it while leveling; take it when it shows up."
+      },
+      {
+        "es": "Espíritu: te hace beber menos, y Meditación Arcana lo aprovecha también mientras lanzas.",
+        "en": "Spirit: you drink less with it, and Arcane Meditation also uses it while you cast."
+      },
+      {
+        "es": "Golpe: Precisión te da un 6 % desde el nivel 44, y subiendo apenas hay equipo con golpe: no lo persigas.",
+        "en": "Hit: Precision gives you 6% from level 44, and there is hardly any hit gear while leveling: do not chase it."
+      },
+      {
+        "es": "Aguante: súbelo antes que lo anterior si juegas en un reino JcJ.",
+        "en": "Stamina: raise it ahead of the above if you play on a PvP realm."
+      }
+    ],
+    "status": "analysis",
+    "gameVersion": "forever-launch-2026-11",
+    "sources": [
+      "wowhead-forever-talent-calc",
+      "icyveins-forever-arcane-leveling",
+      "wowhead-forever-arcane-leveling",
+      "mobalytics-mage-leveling",
+      "mobalytics-wrdlbrmpft-arcane",
+      "warcrafttavern-mage-leveling"
+    ],
+    "updated": "2026-11-10",
+    "hybridWith": "fire"
   },
   {
     "id": "fire-leveling",

@@ -11,7 +11,6 @@ import BuildActions from './BuildActions.astro';
 import BuildReasons from './BuildReasons.astro';
 import BuildTrees from './BuildTrees.astro';
 import BuildVariants from './BuildVariants.astro';
-import Callout from './Callout.astro';
 import StatusBadge from './StatusBadge.astro';
 import RotationSteps from './RotationSteps.astro';
 import TalentOrder from './TalentOrder.astro';
@@ -73,16 +72,14 @@ const hasPros = pros.items.length > 0 || cons.items.length > 0 || pros.headline 
       })
     }
     <li><StatusBadge status={build.status} /></li>
+    {
+      build.playing && (
+        <li>
+          <span class="chip build-page__playing">{tb(locale, 'build.playing')}</span>
+        </li>
+      )
+    }
   </ul>
-
-  {
-    // Until I play it (status «tested»), every build says it is untested.
-    build.status !== 'tested' && (
-      <Callout variant="warning" title={tb(locale, 'build.untested')}>
-        <p>{tb(locale, 'build.untestedText')}</p>
-      </Callout>
-    )
-  }
 
   <h2 id={sections.pros.id}>{sections.pros.text}</h2>
   {
@@ -223,6 +220,21 @@ const hasPros = pros.items.length > 0 || cons.items.length > 0 || pros.headline 
   }
   .build-page__use--not-recommended {
     color: var(--text-muted);
+  }
+  /* The build I am playing right now (`playing` in builds.json). */
+  .build-page__playing {
+    gap: 0.4em;
+    border-color: color-mix(in srgb, var(--status-tested) 55%, transparent);
+    background: color-mix(in srgb, var(--status-tested) 12%, transparent);
+    color: var(--status-tested);
+    font-weight: 700;
+  }
+  .build-page__playing::before {
+    content: '';
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 50%;
+    background: currentColor;
   }
   .build-page__empty {
     padding: var(--space-3) var(--space-4);

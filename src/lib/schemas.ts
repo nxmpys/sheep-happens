@@ -368,6 +368,8 @@ export const buildSchema = z
     /** Page with the in-depth explanation, if there is one. */
     page: z.enum(PAGE_IDS).optional(),
     status: z.enum(STATUSES),
+    /** I am playing it right now: shows «Jugando actualmente» next to its name. */
+    playing: z.boolean().optional(),
     /** Game version the build was made for (game-versions.json). */
     gameVersion: id,
     sources: sourceIds,

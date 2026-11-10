@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-11-06 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
+> Creado: 2026-10-12 · Revisión: 2026-11-10 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -37,6 +37,8 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [ ] Nombres en español de **Accelerant** (antes Bola de Fuego mejorada) y **Precision** (antes Enfoque elemental): el cliente en español aún tiene los nombres y textos anteriores al 28 oct (`STALE_ES` en `scripts/spell-text.ts` y texto en inglés en `talent-text.json`). Cuando cambien, añadir `es` en `src/data/spell-names.json`, quitar esas excepciones y volver a ejecutar `npm run talents:text` y `npm run spells:text`.
 - [x] **Rehacer las builds de leveo** con el árbol del 28 oct (2026-10-30): Arcano y Escarcha, Arcano hacia mazmorras, Escarcha y Fuego, del 10 al 60, con `order` y `orderNotes`. Quitado el 302 de `/builds/leveo/`.
 - [ ] Probar las builds de leveo en el juego al subir del 30: las dos de Arcano están probadas solo en la beta (`testedUpTo: 30`; quítalo al llegar al 60) y las de Escarcha y Fuego siguen en `analysis`. Decidir entonces cuál lleva `recommendedFor`.
+- [x] Repaso de las builds de leveo publicadas tras el lanzamiento (2026-11-10): Icy Veins, Wowhead, Mobalytics, Warcraft Tavern, talentsforever, classicwowforever, wowforeverbuilds, Conquest Capped, WoWVendor y Sportskeeda. Añadidas «Arcano y Fuego» (`arcane-fire-leveling`, el final de Arcano de casi todas las guías) y «Escarcha profunda» (`frost-leveling-deep`, la de Icy Veins), las dos con Especialización en varitas y Recuperación Arcana en vez de Canalización mejorada, que todas las guías cogen a 5/5. Sin probar en el juego.
+- [x] Build de Escarcha para farmeo AoE en solitario (Mobalytics 18/0/33: Escarcha permanente, Nova de Escarcha mejorada, Alcance ártico, sin Mordiescarcha): propuesta el 2026-11-10 y no elegida. «Escarcha AoE» sigue pensada para mazmorras y coge Mordiescarcha, aunque la página de farmeo AoE dice que no.
 - [ ] Comprobar en el juego si Cólera Arcana requiere Explosión Arcana: la calculadora de Wowhead lo marca así desde el 28 oct, sin mención en ninguna nota.
 - [ ] Filas de Piroexplosión, Ola explosiva, Combustión, Presencia mental y Poder Arcano (ahora son «Referencia Classic» en `milestones.json`).
 - [x] Requisito entre Dedos de Escarcha y Lanza de hielo (2026-10-30): Dedos de Escarcha requiere Lanza de hielo. Discrepancia cerrada en Fuentes, Cambios y `content-validation.md`.

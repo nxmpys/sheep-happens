@@ -43,7 +43,7 @@ const list = builds
               <p class="content-build__meta">
                 {SPEC_LABELS[locale][build.spec]} · {distributionLabel(build.points, talents)}
                 {role !== 'viable' && <span class:list={['content-build__role', `content-build__role--${role}`]}>{tb(locale, `build.${role}`)}</span>}
-                {build.status !== 'tested' && <span class="content-build__role content-build__role--untested">{tb(locale, 'build.untested')}</span>}
+                {build.playing && <span class="content-build__role content-build__role--playing">{tb(locale, 'build.playing')}</span>}
               </p>
               <p class="content-build__tagline">{build.tagline[locale]}</p>
             </div>
@@ -130,10 +130,11 @@ const list = builds
   .content-build__role--not-recommended {
     border: 1px dashed var(--border-strong);
   }
-  /* Not played yet: shown until the build's status is «tested». */
-  .content-build__role--untested {
-    border: 1px solid color-mix(in srgb, var(--warning) 60%, transparent);
-    color: var(--warning);
+  /* The build I am playing right now (`playing` in builds.json). */
+  .content-build__role--playing {
+    border: 1px solid color-mix(in srgb, var(--status-tested) 55%, transparent);
+    background: color-mix(in srgb, var(--status-tested) 12%, transparent);
+    color: var(--status-tested);
   }
   .content-build__tagline {
     margin: 0;

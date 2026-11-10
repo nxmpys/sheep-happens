@@ -4,6 +4,14 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-11-10
+
+### [Guía] Builds de leveo: Arcano y Fuego, y Escarcha profunda
+
+Dos builds de leveo nuevas. Arcano y Fuego sigue el mismo camino que Arcano hasta el nivel 40 y después coge Incineración, Acelerante y Precisión en vez de Escarcha. Escarcha profunda empieza con Tromba de misiles a los 17 y después baja hasta el final del árbol de Escarcha, con Canalización de Escarcha y Escalofrío del invierno a la vez.
+
+- **Datos afectados:** build:arcane-fire-leveling, build:frost-leveling-deep
+
 ## 2026-11-06
 
 ### [Juego] Lanzamiento: lo que confirman las notas de Blizzard (build 1.60.1.70790)

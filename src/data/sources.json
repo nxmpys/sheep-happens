@@ -893,5 +893,67 @@
       "es": "Guía de Porom. Rotación de Escarcha con y sin Arcano a nivel 60. Lanza dos Lanzas de hielo por proc, algo que no cabe con la reutilización de 8 s del 28 de octubre, así que la ajusto.",
       "en": "Guide by Porom. Frost rotation with and without Arcane at level 60. It casts two Ice Lances per proc, which does not fit the 8 s cooldown of 28 October, so I adjust it."
     }
+  },
+  {
+    "id": "icyveins-forever-frost-leveling",
+    "title": "World of Warcraft: Forever Frost Mage Leveling Guide",
+    "publisher": "Icy Veins",
+    "url": "https://www.icy-veins.com/wow-forever/frost-mage-leveling",
+    "kind": "community",
+    "published": "2026-10-16",
+    "accessed": "2026-11-10",
+    "notes": {
+      "es": "Guía de leveo de Teloril, actualizada el 4 de noviembre con los talentos del lanzamiento: Escarcha del 10 al 60 con Tromba de misiles a los 17, por qué va cada talento, rotación con los procs y la opción de subir con Arcano hasta el 30.",
+      "en": "Leveling guide by Teloril, updated on 4 November with the launch talents: Frost from 10 to 60 with Missile Barrage at 17, why each talent is there, a rotation around the procs and the option of leveling as Arcane up to 30."
+    }
+  },
+  {
+    "id": "icyveins-forever-arcane-leveling",
+    "title": "World of Warcraft: Forever Arcane Mage Leveling Guide",
+    "publisher": "Icy Veins",
+    "url": "https://www.icy-veins.com/wow-forever/arcane-mage-leveling",
+    "kind": "community",
+    "accessed": "2026-11-10",
+    "notes": {
+      "es": "Guía de leveo de Farmerfarms, actualizada el 4 de noviembre: Arcano hasta Poder Arcano con Incineración, Acelerante y Precisión, y la rotación con Explosión Arcana, Cólera Arcana y Tromba de misiles.",
+      "en": "Leveling guide by Farmerfarms, updated on 4 November: Arcane up to Arcane Power with Incineration, Accelerant and Precision, and the rotation with Arcane Blast, Arcane Wrath and Missile Barrage."
+    }
+  },
+  {
+    "id": "wowhead-forever-arcane-leveling",
+    "title": "Arcane Mage Leveling Guide - WoW: Forever",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/guide/classes/mage/arcane/dps-leveling-tips",
+    "kind": "community",
+    "accessed": "2026-11-10",
+    "notes": {
+      "es": "Guía de leveo de Arcano actualizada el 6 de noviembre: build 36/12/3 con Incineración y Acelerante, por qué va cada talento y la rotación por tramos de nivel.",
+      "en": "Arcane leveling guide updated on 6 November: a 36/12/3 build with Incineration and Accelerant, why each talent is there and the rotation by level range."
+    }
+  },
+  {
+    "id": "mobalytics-wrdlbrmpft-arcane",
+    "title": "Wrdlbrmpft Arcane Mage Leveling Guide",
+    "publisher": "Mobalytics",
+    "url": "https://mobalytics.gg/wow-forever/classes/wrdlbrmpft-arcane-mage-leveling-guide",
+    "kind": "community",
+    "published": "2026-10-31",
+    "accessed": "2026-11-10",
+    "notes": {
+      "es": "Guía de Arcano por tramos de 10 niveles: Especialización en varitas y Tromba de misiles al principio, Precisión tarde porque contra enemigos de menor nivel apenas fallas, y Acelerante e Incineración al final.",
+      "en": "Arcane guide in 10-level brackets: Wand Specialization and Missile Barrage early, Precision late because you barely miss lower-level enemies, and Accelerant and Incineration at the end."
+    }
+  },
+  {
+    "id": "warcrafttavern-mage-leveling",
+    "title": "WoW Forever Mage Leveling Guide",
+    "publisher": "Warcraft Tavern",
+    "url": "https://www.warcrafttavern.com/forever/guides/mage-leveling/",
+    "kind": "community",
+    "accessed": "2026-11-10",
+    "notes": {
+      "es": "Builds de leveo de Arcano (32/16/3), Fuego (13/35/3) y Escarcha (13/5/33) en su calculadora, con el orden por niveles y una rotación para cada una.",
+      "en": "Arcane (32/16/3), Fire (13/35/3) and Frost (13/5/33) leveling builds in its calculator, with the order by level and a rotation for each."
+    }
   }
 ]

@@ -1,5 +1,25 @@
 [
   {
+    "id": "2026-11-10-leveling-builds",
+    "date": "2026-11-10",
+    "type": "guide",
+    "title": {
+      "es": "Builds de leveo: Arcano y Fuego, y Escarcha profunda",
+      "en": "Leveling builds: Arcane and Fire, and Deep Frost"
+    },
+    "body": {
+      "es": "Dos builds de leveo nuevas. Arcano y Fuego sigue el mismo camino que Arcano hasta el nivel 40 y después coge Incineración, Acelerante y Precisión en vez de Escarcha. Escarcha profunda empieza con Tromba de misiles a los 17 y después baja hasta el final del árbol de Escarcha, con Canalización de Escarcha y Escalofrío del invierno a la vez.",
+      "en": "Two new leveling builds. Arcane and Fire follows the same path as Arcane up to level 40 and then takes Incineration, Accelerant and Precision instead of Frost. Deep Frost starts with Missile Barrage at 17 and then goes down to the bottom of the Frost tree, with Frost Channeling and Winter's Chill together."
+    },
+    "pages": [
+      "builds"
+    ],
+    "refs": [
+      "build:arcane-fire-leveling",
+      "build:frost-leveling-deep"
+    ]
+  },
+  {
     "id": "2026-11-04-skinning-farming",
     "date": "2026-11-04",
     "type": "guide",

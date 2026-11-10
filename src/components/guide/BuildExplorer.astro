@@ -93,7 +93,7 @@ const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon)
                 <span class="bx__meta">
                   {SPEC_LABELS[locale][build.spec]}
                   {build.hybridWith && <> + {SPEC_LABELS[locale][build.hybridWith]}</>}
-                  {build.status !== 'tested' && <span class="bx__untested">{tb(locale, 'build.untested')}</span>}
+                  {build.playing && <span class="bx__playing">{tb(locale, 'build.playing')}</span>}
                 </span>
                 <span class="bx__tagline">{build.tagline[locale]}</span>
 
@@ -544,13 +544,14 @@ const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon)
     font-weight: 600;
     color: var(--school);
   }
-  .bx__untested {
+  .bx__playing {
     padding: 0 0.55em;
-    border: 1px solid color-mix(in srgb, var(--warning) 60%, transparent);
+    border: 1px solid color-mix(in srgb, var(--status-tested) 55%, transparent);
     border-radius: 999px;
+    background: color-mix(in srgb, var(--status-tested) 12%, transparent);
     font-size: 0.75rem;
     font-weight: 700;
-    color: var(--warning);
+    color: var(--status-tested);
   }
   .bx__tagline {
     font-size: var(--step--1);
