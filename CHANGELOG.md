@@ -4,6 +4,24 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-11-11
+
+### [Guía] Revisión de fuentes del 11 de noviembre
+
+Revisadas las novedades del 4 al 11 de noviembre. Concentración Arcana recoge el hotfix del 9. En Pergaminos corrijo que el Mago aprende Estudiar, no Investigar: Blizzard dice que ese hechizo no debe existir.
+
+- **Datos afectados:** Concentración Arcana, WoW: Forever Hotfixes (thread updated to 10 November 2026)
+- **Fuentes:** [WoW: Forever Hotfixes (thread updated to 10 November 2026)](https://us.forums.blizzard.com/en/wow/t/2403040) (Blizzard Entertainment)
+
+### [Juego] Hotfix del 9 de noviembre: Concentración Arcana y Fogonazo
+
+Blizzard corrige dos errores del Mago: la probabilidad de Concentración Arcana se reparte entre el lanzamiento y cada proyectil, en vez de dar un 10 % al lanzar y otro por cada proyectil, y los latidos de Fogonazo en el suelo dejan de gastar Lanzamiento libre. Los hotfixes del 6 de noviembre ya estaban recogidos: la duración de 18 s de Explosión Arcana y que el Mago no debe tener Investigar, solo Estudiar.
+
+- ◆ Igual: **Concentración Arcana**: La probabilidad de activación se reparte entre el lanzamiento y cada proyectil, y los latidos de Fogonazo ya no gastan Lanzamiento libre.
+
+- **Datos afectados:** Concentración Arcana, WoW: Forever Hotfixes (thread updated to 10 November 2026)
+- **Fuentes:** [WoW: Forever Hotfixes (thread updated to 10 November 2026)](https://us.forums.blizzard.com/en/wow/t/2403040) (Blizzard Entertainment)
+
 ## 2026-11-10
 
 ### [Guía] Builds de leveo: Arcano y Fuego, y Escarcha profunda

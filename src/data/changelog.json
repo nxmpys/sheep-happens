@@ -1,5 +1,65 @@
 [
   {
+    "id": "2026-11-11-guide-review",
+    "date": "2026-11-11",
+    "type": "guide",
+    "title": {
+      "es": "Revisión de fuentes del 11 de noviembre",
+      "en": "Source review of 11 November"
+    },
+    "body": {
+      "es": "Revisadas las novedades del 4 al 11 de noviembre. Concentración Arcana recoge el hotfix del 9. En Pergaminos corrijo que el Mago aprende Estudiar, no Investigar: Blizzard dice que ese hechizo no debe existir.",
+      "en": "Reviewed the news from 4 to 11 November. Arcane Concentration now covers the 9 November hotfix. In Scrolls I fix that Mages learn Study, not Research: Blizzard says that spell should not exist."
+    },
+    "pages": [
+      "changes",
+      "library"
+    ],
+    "sources": [
+      "blizzard-hotfixes-2026-11"
+    ],
+    "refs": [
+      "change:arcane-concentration",
+      "source:blizzard-hotfixes-2026-11"
+    ]
+  },
+  {
+    "id": "2026-11-11-hotfix-mage",
+    "date": "2026-11-11",
+    "type": "game",
+    "title": {
+      "es": "Hotfix del 9 de noviembre: Concentración Arcana y Fogonazo",
+      "en": "Hotfix of 9 November: Arcane Concentration and Flamestrike"
+    },
+    "body": {
+      "es": "Blizzard corrige dos errores del Mago: la probabilidad de Concentración Arcana se reparte entre el lanzamiento y cada proyectil, en vez de dar un 10 % al lanzar y otro por cada proyectil, y los latidos de Fogonazo en el suelo dejan de gastar Lanzamiento libre. Los hotfixes del 6 de noviembre ya estaban recogidos: la duración de 18 s de Explosión Arcana y que el Mago no debe tener Investigar, solo Estudiar.",
+      "en": "Blizzard fixes two Mage bugs: Arcane Concentration's chance now splits across the cast and every bolt, instead of granting 10% on the cast and again per bolt, and Flamestrike's ticks on the ground stop consuming Clearcasting. The 6 November hotfixes were already covered: Arcane Blast's 18 s duration and that Mages should not have Research, only Study."
+    },
+    "pages": [
+      "changes",
+      "talents-arcane",
+      "aoe-farming",
+      "library"
+    ],
+    "sources": [
+      "blizzard-hotfixes-2026-11"
+    ],
+    "refs": [
+      "change:arcane-concentration",
+      "source:blizzard-hotfixes-2026-11"
+    ],
+    "items": [
+      {
+        "ref": "change:arcane-concentration",
+        "impact": "neutral",
+        "text": {
+          "es": "La probabilidad de activación se reparte entre el lanzamiento y cada proyectil, y los latidos de Fogonazo ya no gastan Lanzamiento libre.",
+          "en": "The activation chance splits across the cast and every bolt, and Flamestrike's ticks no longer consume Clearcasting."
+        }
+      }
+    ]
+  },
+  {
     "id": "2026-11-10-leveling-builds",
     "date": "2026-11-10",
     "type": "guide",
