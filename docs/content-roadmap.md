@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-11-10 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
+> Creado: 2026-10-12 · Revisión: 2026-11-11 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -293,6 +293,7 @@ Al hacer una idea, márcala y anota dónde está.
 - [ ] **Comparador de ramas para leveo**: tiempo por enemigo, descansos y riesgo (con datos).
 - [ ] **Equipo por tramo de nivel**, con filtros por espacio y por cómo se consigue (con datos).
 - [ ] **Planificador de portales y teletransportes**: destinos por nivel y componentes (casi ya).
+- [ ] Warcraft Tavern publicó el 11 nov guías de «Portales y teletransportes» y de «Pergaminos, Comprensión e Investigación» (comunidad). Contrastarlas con la página de pergaminos y con el planificador antes de usarlas; la de pergaminos habla de una habilidad Investigar, mientras que Blizzard dice (hotfix del 6 nov) que el hechizo Investigar no debe existir y que solo queda Estudiar. Comprobar en el juego qué aparece en la ventana de profesiones (2026-11-11).
 - [ ] **Calculadora de crítico ampliada** con la probabilidad de crítico, para estimar el daño medio (con datos).
 
 ### Mantenerse informado

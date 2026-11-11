@@ -732,15 +732,15 @@
   },
   {
     "id": "blizzard-hotfixes-2026-11",
-    "title": "WoW: Forever Hotfixes - November 6, 2026",
+    "title": "WoW: Forever Hotfixes (thread updated to 10 November 2026)",
     "publisher": "Blizzard Entertainment",
     "url": "https://us.forums.blizzard.com/en/wow/t/2403040",
     "kind": "official",
     "published": "2026-11-06",
-    "accessed": "2026-11-07",
+    "accessed": "2026-11-11",
     "notes": {
-      "es": "Hotfixes del 5 y 6 de noviembre. El 5 corrige que algunos múrlocs del Marjal Revolcafango reaparecieran demasiado rápido. Para el Mago, solo dos errores corregidos, uno de ellos la duración de Explosión Arcana.",
-      "en": "Hotfixes of 5 and 6 November. On the 5th, some Dustwallow Marsh murlocs no longer respawn too quickly. For the Mage, only two bug fixes, one of them Arcane Blast's duration."
+      "es": "Hotfixes del 5 y 6 de noviembre. El 5 corrige que algunos múrlocs del Marjal Revolcafango reaparecieran demasiado rápido. Para el Mago, dos errores corregidos el 6 (uno, la duración de Explosión Arcana; el otro, que el Mago aprendiera un hechizo Investigar que no debe existir: solo Estudiar) y dos el 9 (los latidos de Fogonazo ya no gastan Lanzamiento libre y la probabilidad de Concentración Arcana se reparte entre el lanzamiento y cada proyectil).",
+      "en": "Hotfixes of 5 and 6 November. On the 5th, some Dustwallow Marsh murlocs no longer respawn too quickly. For the Mage, two bug fixes on the 6th (Arcane Blast's duration, and Mages learning a Research spell that should not exist: only Study) and two on the 9th (Flamestrike's ticks no longer consume Clearcasting, and Arcane Concentration's chance splits across the cast and every bolt)."
     }
   },
   {
