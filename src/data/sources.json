@@ -732,15 +732,15 @@
   },
   {
     "id": "blizzard-hotfixes-2026-11",
-    "title": "WoW: Forever Hotfixes - November 6, 2026",
+    "title": "WoW: Forever Hotfixes - November 10, 2026",
     "publisher": "Blizzard Entertainment",
     "url": "https://us.forums.blizzard.com/en/wow/t/2403040",
     "kind": "official",
     "published": "2026-11-06",
-    "accessed": "2026-11-07",
+    "accessed": "2026-11-13",
     "notes": {
-      "es": "Hotfixes del 5 y 6 de noviembre. El 5 corrige que algunos múrlocs del Marjal Revolcafango reaparecieran demasiado rápido. Para el Mago, solo dos errores corregidos, uno de ellos la duración de Explosión Arcana.",
-      "en": "Hotfixes of 5 and 6 November. On the 5th, some Dustwallow Marsh murlocs no longer respawn too quickly. For the Mage, only two bug fixes, one of them Arcane Blast's duration."
+      "es": "Hotfixes del 5, 6 y 10 de noviembre. El 5 corrige que algunos múrlocs del Marjal Revolcafango reaparecieran demasiado rápido. Para el Mago: la duración de Explosión Arcana, que Investigar no debe existir (solo Estudiar) y, el 10, que Llamarada no gaste Lanzamiento libre y el reparto de la probabilidad de Concentración Arcana.",
+      "en": "Hotfixes of 5, 6 and 10 November. On the 5th, some Dustwallow Marsh murlocs no longer respawn too quickly. For the Mage: Arcane Blast's duration, that Research should not exist (only Study) and, on the 10th, Flamestrike no longer spending Clearcasting and the split of Arcane Concentration's chance."
     }
   },
   {

@@ -4,7 +4,23 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-11-13
+
+### [Guía] Revisión de los hotfixes del 6 y el 10 de noviembre
+
+Concentración Arcana recoge los dos hotfixes del 10 de noviembre. En Pergaminos (dentro de Biblioteca) corrijo que el Mago no aprende Investigar: Blizzard dice que ese hechizo no debe existir y que solo se aprende Estudiar.
+
+- **Datos afectados:** Concentración Arcana, WoW: Forever Hotfixes - November 10, 2026
+- **Fuentes:** [WoW: Forever Hotfixes - November 10, 2026](https://us.forums.blizzard.com/en/wow/t/2403040) (Blizzard Entertainment)
+
 ## 2026-11-10
+
+### [Juego] Hotfix del 10 de noviembre: Llamarada y Concentración Arcana
+
+Blizzard corrige dos errores del Mago. Los efectos de Llamarada en el suelo ya no gastan Lanzamiento libre, y la probabilidad de Concentración Arcana se reparte entre el lanzamiento y cada proyectil, en vez de darse completa en ambos.
+
+- **Datos afectados:** Concentración Arcana, WoW: Forever Hotfixes - November 10, 2026
+- **Fuentes:** [WoW: Forever Hotfixes - November 10, 2026](https://us.forums.blizzard.com/en/wow/t/2403040) (Blizzard Entertainment)
 
 ### [Guía] Builds de leveo: Arcano y Fuego, y Escarcha profunda
 

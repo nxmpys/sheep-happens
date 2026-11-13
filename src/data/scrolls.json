@@ -148,9 +148,9 @@
     "part": "tip",
     "icon": "library",
     "title": { "es": "Entrega libros al bibliotecario", "en": "Hand books in to the librarian" },
-    "text": { "es": "Aprendes Investigar: Estudiar en una biblioteca da un Montón de pergaminos cada hora (gasta una Pluma ligera).", "en": "You learn Research: Study in a library gives a Bundle of Scrolls every hour (uses a Light Feather)." },
+    "text": { "es": "Al completar la misión aprendes Estudiar (Investigar no debe existir): en una biblioteca da un Montón de pergaminos cada hora (gasta una Pluma ligera).", "en": "After the quest you learn Study (Research should not exist): in a library it gives a Bundle of Scrolls every hour (uses a Light Feather)." },
     "status": "reported",
-    "sources": ["warcrafttavern-mage-guide", "wowhead-library-books", "wowhead-forever-comprehension"]
+    "sources": ["warcrafttavern-mage-guide", "wowhead-library-books", "wowhead-forever-comprehension", "blizzard-hotfixes-2026-11"]
   },
   {
     "id": "unknown-rewards",

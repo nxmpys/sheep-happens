@@ -394,6 +394,14 @@
       {
         "es": "Misiles Arcanos puede activarlo, pero no gasta tu Lanzamiento libre mientras Tromba de misiles está activa: lo guardas para el siguiente hechizo.",
         "en": "Arcane Missiles can trigger it, but does not spend your Clearcasting while Missile Barrage is up: you keep it for the next spell."
+      },
+      {
+        "es": "Desde el hotfix del 10 de noviembre, la probabilidad de activarlo se reparte entre el lanzamiento y cada proyectil (antes daba un 10 % al lanzar y otro 10 % en cada proyectil). Blizzard no ha publicado el reparto exacto.",
+        "en": "Since the 10 November hotfix, the chance to trigger it is split between the cast and every bolt (it used to give 10% on the cast and another 10% on each bolt). Blizzard has not published the exact split."
+      },
+      {
+        "es": "Los efectos de Llamarada que quedan en el suelo ya no gastan por error tu Lanzamiento libre (hotfix del 10 de noviembre).",
+        "en": "Flamestrike's ticks on the ground no longer wrongly spend your Clearcasting (10 November hotfix)."
       }
     ],
     "notes": [
@@ -415,9 +423,10 @@
     "status": "verified",
     "sources": [
       "blizzard-deep-dive-mage",
-      "blizzard-dev-notes"
+      "blizzard-dev-notes",
+      "blizzard-hotfixes-2026-11"
     ],
-    "updated": "2026-11-06"
+    "updated": "2026-11-13"
   },
   {
     "id": "arcane-resilience",
