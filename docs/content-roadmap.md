@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-11-10 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
+> Creado: 2026-10-12 · Revisión: 2026-11-13 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -126,6 +126,8 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [ ] Fuentes y Cambios: resolver «Nivel de la doble especialización» y «Requisito de Dedos de Escarcha». (La discrepancia «Fin de la beta» se resolvió el 2026-10-21: Blizzard anuncia el cierre el 23 de octubre a las 10:00 PDT.)
 - [x] `facts.json`: al lanzar, reescribir `beta` (ya cerrada), quitar `name-reservation` (reserva del 27 de octubre al 3 de noviembre) y revisar `raid-unlock` (bandas de nivel 60 desde el 9 de diciembre; tamaños y ubicaciones solo en el artículo completo de Blizzard, que no se ha leído).
 - [ ] Error de la beta con Misiles Arcanos (recibir daño dispara un misil con el daño completo): comprobar si sigue.
+- [ ] Hotfix del 10 de noviembre (Concentración Arcana): comprobar en el juego cómo se reparte la probabilidad entre el lanzamiento y cada proyectil de Misiles Arcanos; Blizzard no da el reparto (2026-11-13).
+- [x] Hotfix del 6 de noviembre: Investigar no debe existir, solo se aprende Estudiar. Corregido en Pergaminos el 2026-11-13; queda comprobar en el juego qué misión da Estudiar.
 
 ### Página temporal de duelos a nivel 30
 

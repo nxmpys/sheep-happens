@@ -1,5 +1,52 @@
 [
   {
+    "id": "2026-11-13-hotfix-review",
+    "date": "2026-11-13",
+    "type": "guide",
+    "title": {
+      "es": "Revisión de los hotfixes del 6 y el 10 de noviembre",
+      "en": "Review of the 6 and 10 November hotfixes"
+    },
+    "body": {
+      "es": "Concentración Arcana recoge los dos hotfixes del 10 de noviembre. En Pergaminos (dentro de Biblioteca) corrijo que el Mago no aprende Investigar: Blizzard dice que ese hechizo no debe existir y que solo se aprende Estudiar.",
+      "en": "Arcane Concentration now includes the two 10 November hotfixes. In Scrolls (inside Library) I correct that Mages do not learn Research: Blizzard says that spell should not exist and only Study is learned."
+    },
+    "pages": [
+      "changes",
+      "library"
+    ],
+    "sources": [
+      "blizzard-hotfixes-2026-11"
+    ],
+    "refs": [
+      "change:arcane-concentration",
+      "source:blizzard-hotfixes-2026-11"
+    ]
+  },
+  {
+    "id": "2026-11-10-hotfixes",
+    "date": "2026-11-10",
+    "type": "game",
+    "title": {
+      "es": "Hotfix del 10 de noviembre: Llamarada y Concentración Arcana",
+      "en": "10 November hotfix: Flamestrike and Arcane Concentration"
+    },
+    "body": {
+      "es": "Blizzard corrige dos errores del Mago. Los efectos de Llamarada en el suelo ya no gastan Lanzamiento libre, y la probabilidad de Concentración Arcana se reparte entre el lanzamiento y cada proyectil, en vez de darse completa en ambos.",
+      "en": "Blizzard fixes two Mage bugs. Flamestrike's ticks on the ground no longer spend Clearcasting, and Arcane Concentration's chance is split between the cast and every bolt instead of being granted in full on both."
+    },
+    "pages": [
+      "changes"
+    ],
+    "sources": [
+      "blizzard-hotfixes-2026-11"
+    ],
+    "refs": [
+      "change:arcane-concentration",
+      "source:blizzard-hotfixes-2026-11"
+    ]
+  },
+  {
     "id": "2026-11-10-leveling-builds",
     "date": "2026-11-10",
     "type": "guide",
