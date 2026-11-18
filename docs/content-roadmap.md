@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-11-10 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
+> Creado: 2026-10-12 · Revisión: 2026-11-18 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -167,6 +167,9 @@ Forma parte de cada revisión de fuentes ([maintenance.md](maintenance.md)):
 - Las fichas de cambios, los mapas de talentos decisivos y la tabla de builds híbridas de Talentos.
 - Las raciales y la recomendación de razas (sección 5), cuando existan.
 - La versión del cliente (`game-versions.json`).
+- [x] **Revisión del 18 de noviembre (informes del 4 al 13):** de todo lo publicado, para el Mago solo era nuevo el hotfix del 10 de noviembre de Concentración Arcana (incorporado) y la corrección de Investigar/Estudiar (pergaminos). Lo demás ya estaba (notas del 3 nov, Explosión Arcana 18 s) o no afecta al Mago.
+- [ ] **Hotfix del 14 de noviembre (Nova de Escarcha):** Nova de Escarcha ya se rompe con el daño de procs y de Ventisca. Es posterior al informe del 13; incorporarlo en la próxima revisión, con atención al farmeo AoE.
+- [ ] **Arma de Mago de nivel alto** descubierta (Wowhead, 12 nov) y **error de doble especialización** que vacía las barras de acción (Wowhead, 12 nov): sin fuente abierta ni oficial; leer el original antes de documentar nada.
 - **Farmeo AoE y bajar de rango:** es lo más inestable, porque Blizzard ya los ha frenado a propósito y puede seguir haciéndolo.
 - Builds, prioridades de estadísticas y equipo, cuando existan: cada una indica «válida para el parche X».
 

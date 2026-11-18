@@ -4,6 +4,15 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-11-18
+
+### [Guía] Revisión de fuentes: hotfixes del 6 al 13 de noviembre
+
+Revisados los informes del 4 al 13 de noviembre. Para el Mago solo hay una novedad nueva: el reparto de la probabilidad de Concentración Arcana. En la guía de pergaminos, Estudiar se aprende al terminar la misión de la biblioteca: no existe un hechizo Investigar.
+
+- **Datos afectados:** Concentración Arcana
+- **Fuentes:** [WoW: Forever Hotfixes - November 6 to 11, 2026](https://us.forums.blizzard.com/en/wow/t/2403040) (Blizzard Entertainment)
+
 ## 2026-11-10
 
 ### [Guía] Builds de leveo: Arcano y Fuego, y Escarcha profunda
@@ -11,6 +20,15 @@ Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de
 Dos builds de leveo nuevas. Arcano y Fuego sigue el mismo camino que Arcano hasta el nivel 40 y después coge Incineración, Acelerante y Precisión en vez de Escarcha. Escarcha profunda empieza con Tromba de misiles a los 17 y después baja hasta el final del árbol de Escarcha, con Canalización de Escarcha y Escalofrío del invierno a la vez.
 
 - **Datos afectados:** build:arcane-fire-leveling, build:frost-leveling-deep
+
+### [Juego] Hotfix: Concentración Arcana reparte su probabilidad
+
+El hotfix del 10 de noviembre corrige Concentración Arcana: la probabilidad de activación se reparte entre el lanzamiento y cada misil de Misiles Arcanos (antes daba un 10 % al lanzar y otro 10 % por misil). El del 6 de noviembre ya había corregido la duración de Explosión Arcana y que el Mago aprendiera un hechizo Investigar que no debe existir.
+
+- ◆ Igual: **Concentración Arcana**: Con Misiles Arcanos, la probabilidad se reparte entre el lanzamiento y cada misil, en vez de un 10 % en cada uno.
+
+- **Datos afectados:** Concentración Arcana, WoW: Forever Hotfixes - November 6 to 11, 2026
+- **Fuentes:** [WoW: Forever Hotfixes - November 6 to 11, 2026](https://us.forums.blizzard.com/en/wow/t/2403040) (Blizzard Entertainment)
 
 ## 2026-11-06
 
