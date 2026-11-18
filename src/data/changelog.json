@@ -1659,5 +1659,62 @@
         }
       }
     ]
+  },
+  {
+    "id": "2026-11-10-hotfix-concentration",
+    "date": "2026-11-10",
+    "type": "game",
+    "title": {
+      "es": "Hotfix: Concentración Arcana reparte su probabilidad",
+      "en": "Hotfix: Arcane Concentration splits its chance"
+    },
+    "body": {
+      "es": "El hotfix del 10 de noviembre corrige Concentración Arcana: la probabilidad de activación se reparte entre el lanzamiento y cada misil de Misiles Arcanos (antes daba un 10 % al lanzar y otro 10 % por misil). El del 6 de noviembre ya había corregido la duración de Explosión Arcana y que el Mago aprendiera un hechizo Investigar que no debe existir.",
+      "en": "The 10 November hotfix fixes Arcane Concentration: the activation chance is now split across the cast and every Arcane Missiles bolt (it used to grant 10% on the cast and 10% per bolt). The 6 November hotfix had already fixed Arcane Blast's duration and Mages learning a Research spell that should not exist."
+    },
+    "pages": [
+      "changes",
+      "talents-arcane"
+    ],
+    "sources": [
+      "blizzard-hotfixes-2026-11"
+    ],
+    "refs": [
+      "change:arcane-concentration",
+      "source:blizzard-hotfixes-2026-11"
+    ],
+    "items": [
+      {
+        "ref": "change:arcane-concentration",
+        "impact": "neutral",
+        "text": {
+          "es": "Con Misiles Arcanos, la probabilidad se reparte entre el lanzamiento y cada misil, en vez de un 10 % en cada uno.",
+          "en": "With Arcane Missiles, the chance is split across the cast and each bolt instead of 10% on each."
+        }
+      }
+    ]
+  },
+  {
+    "id": "2026-11-18-sources-review",
+    "date": "2026-11-18",
+    "type": "guide",
+    "title": {
+      "es": "Revisión de fuentes: hotfixes del 6 al 13 de noviembre",
+      "en": "Source review: hotfixes of 6 to 13 November"
+    },
+    "body": {
+      "es": "Revisados los informes del 4 al 13 de noviembre. Para el Mago solo hay una novedad nueva: el reparto de la probabilidad de Concentración Arcana. En la guía de pergaminos, Estudiar se aprende al terminar la misión de la biblioteca: no existe un hechizo Investigar.",
+      "en": "Reviewed the reports from 4 to 13 November. For the Mage there is only one new item: how Arcane Concentration's chance is split. In the scrolls guide, Study is learned after the library quest: there is no Research spell."
+    },
+    "pages": [
+      "changes",
+      "library"
+    ],
+    "sources": [
+      "blizzard-hotfixes-2026-11"
+    ],
+    "refs": [
+      "change:arcane-concentration"
+    ]
   }
 ]

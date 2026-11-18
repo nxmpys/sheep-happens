@@ -394,6 +394,10 @@
       {
         "es": "Misiles Arcanos puede activarlo, pero no gasta tu Lanzamiento libre mientras Tromba de misiles está activa: lo guardas para el siguiente hechizo.",
         "en": "Arcane Missiles can trigger it, but does not spend your Clearcasting while Missile Barrage is up: you keep it for the next spell."
+      },
+      {
+        "es": "Con Misiles Arcanos, la probabilidad de activación se reparte entre el lanzamiento y cada misil. Antes daba un 10 % al lanzar y otro 10 % por misil (hotfix del 10 de noviembre).",
+        "en": "With Arcane Missiles, the activation chance now splits across the cast and every bolt. It used to grant 10% on the cast and 10% per bolt (hotfix of 10 November)."
       }
     ],
     "notes": [
@@ -415,9 +419,10 @@
     "status": "verified",
     "sources": [
       "blizzard-deep-dive-mage",
-      "blizzard-dev-notes"
+      "blizzard-dev-notes",
+      "blizzard-hotfixes-2026-11"
     ],
-    "updated": "2026-11-06"
+    "updated": "2026-11-18"
   },
   {
     "id": "arcane-resilience",
