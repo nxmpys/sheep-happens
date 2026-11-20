@@ -3,17 +3,17 @@ pageId: aoe-farming
 locale: en
 title: Mage AoE farming
 seoTitle: Mage AoE Farming in WoW Forever, rotation and spots
-description: 'How to AoE farm as a Mage in WoW Forever: what you do, which spells and talents you need, two rotations step by step and where to farm at each level.'
+description: 'How to AoE farm as a Mage in WoW Forever: how to pull, which spells and talents you need, two rotations step by step, mana, macros and where to farm at each level.'
 lead: What you need, the rotations and where to do it.
 gameVersion: forever-launch-2026-11
 published: 2026-10-15
-reviewed: 2026-11-07
+reviewed: 2026-11-20
 reviewedBy: Sheep Happens
 status: published
 verification: analysis
 wide: true
 sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, blizzard-hotfixes-2026-11, icyveins-world-first-60, conquestcapped-mage-leveling, maxroll-mage-leveling, mobalytics-kargoz-aoe, restedxp-forever-mage-aoe, forg-mage-aoe-spiders, wiki-arcane-concentration, icyveins-classic-aoe-leveling, wowhead-forever-talent-calc]
-tags: [aoe farming, mage aoe, aoe grinding, aoe leveling, grinding spots, farming spots, arcane explosion, blizzard, flamestrike, arcane concentration, world first 60, dreadmurk shore, lost rigger cove, dalson's tears]
+tags: [aoe farming, mage aoe, aoe grinding, aoe leveling, grinding spots, farming spots, arcane explosion, blizzard, flamestrike, arcane concentration, world first 60, dreadmurk shore, lost rigger cove, dalson's tears, mage macros, rank 1 frostbolt, cannibalize, thrill of adventure]
 ---
 
 <Tiles min={13}>
@@ -63,6 +63,18 @@ Area spells on the whole pack until they drop. <Status status="analysis" compact
 </Tile>
 </Tiles>
 
+### How to pull so they arrive together
+
+<Pieces>
+
+- **Start with the farthest one, using rank 1 Fireball.** It reaches 35 yd, 5 more than Frostbolt: that enemy takes longest to arrive. <Status status="verified" compact />
+- **Slow the ones in front with rank 1 Frostbolt.** It slows them for little mana and lets the ones behind catch up. It is the macro further down. <Status status="reported" compact />
+- **To tag without slowing, Ice Lance, Fire Blast or your wand.** The first two are instant and share an 8 s cooldown. <Status status="verified" compact />
+- **Make casters come to you.** With **Counterspell** they cannot cast and run at you; they also come if you hide behind a tree or a house, because they lose line of sight. <Status status="reported" compact />
+- **Kill whatever would ruin the pull first.** A caster or a ranged enemy on its own, before you pull the rest. <Status status="reported" compact />
+
+</Pieces>
+
 ## What you need
 
 Move the slider to your level to see what you can already do.
@@ -77,14 +89,34 @@ Move the slider to your level to see what you can already do.
 Required for the Blizzard rotation, not for the short one.
 
 </Tile>
+<Tile title="Permafrost 3/3" spell="Permafrost" school="frost">
+
+Blizzard slows by 50% instead of 40%, and your Chill effects last 33% longer. <Status status="verified" compact />
+
+</Tile>
 <Tile title="Precision 3/3" spell="Precision" school="frost">
 
 Up to 6% hit with all spells: fewer resisted Frost Novas, which is how pulls are lost. <Status status="reported" compact />
 
 </Tile>
-<Tile title="Shatter" spell="Shatter" school="frost">
+<Tile title="Improved Frost Nova 2/2" spell="Improved Frost Nova" school="frost">
 
-More crit chance against frozen enemies: your **Flamestrike** on the frozen pack.
+4 s less cooldown: you freeze the pack more times per pull. <Status status="verified" compact />
+
+</Tile>
+<Tile title="Arctic Reach 2/2" spell="Arctic Reach" school="frost">
+
+20% more radius for Frost Nova and Cone of Cold, 44% more area: you catch the whole pack. <Status status="verified" compact />
+
+</Tile>
+<Tile title="Shatter 3/3" spell="Shatter" school="frost">
+
+50% more crit chance with all your spells against frozen enemies: your **Flamestrike** on the frozen pack. <Status status="verified" compact />
+
+</Tile>
+<Tile title="Improved Flamestrike 3/3" spell="Improved Flamestrike" school="fire">
+
+15% more crit chance with Flamestrike. With Shatter, 65 points more on the frozen pack. <Status status="verified" compact />
 
 </Tile>
 <Tile title="Ice Barrier" spell="Ice Barrier" school="frost">
@@ -104,9 +136,7 @@ Skip it in an AoE build: its random freezes split the pack. <Status status="repo
 </Tile>
 </Tiles>
 
-The leveling builds are in <BuildLink use="leveling">Builds</BuildLink>. Also keep at hand your mana gem (level 28), mana potions and, with Engineering, bombs or grenades for big pulls. <Status status="reported" compact />
-
-From level 34, if enemies barely reach you, wear **Mage Armor**: in Forever, half of your mana regeneration keeps going while you cast. <Status status="verified" compact />
+The leveling builds are in <BuildLink use="leveling">Builds</BuildLink>.
 
 ## The rotations
 
@@ -116,7 +146,26 @@ The short one is the most reliable, according to community guides, and it works 
 
 **If one is left standing and you have Ice Lance,** finish it while it is still frozen or with a **Fingers of Frost** charge: it deals much more damage to frozen enemies. <Status status="reported" compact />
 
-**If Frost Nova is resisted, reset the pull:** do not try to save it. **Blink** away, and **Ice Block** if everything goes wrong. <Status status="reported" compact />
+**Blizzard pays per tick, not per enemy.** Four enemies taking all 8 ticks give you twice the damage per mana of four taking only 4. Cast it where they are going, not where they stand, and do not spend another one on a nearly dead pack: finish it with Cone of Cold or Arcane Explosion. <Status status="reported" compact />
+
+**If Frost Nova is resisted, reset the pull:** do not try to save it. **Blink** away, **Ice Block** if everything goes wrong, and **Cold Snap** if you need another Nova. <Status status="reported" compact />
+
+## Mana and downtime
+
+Mana is what stops you most. Count the whole cycle, from pulling to finishing your drink: 4 enemies in 60 s give more experience per hour than 6 in 100 s. <Status status="analysis" />
+
+<Pieces>
+
+- **The five-second rule.** Your Spirit does not regenerate mana until 5 s after you spend it. Blizzard lasts 8 s, so during its last ticks you already regenerate if you cast nothing else. <Status status="reported" compact />
+- **Mage Armor, from level 34**, if enemies barely reach you: in Forever, half of your regeneration keeps going while you cast. **Arcane Meditation** 3/3 adds another half. <Status status="verified" compact /> Whether they add up, nobody has checked. <Status status="pending" compact />
+- **Thrill of Adventure 5/5.** Every killing blow returns 5% of your health and mana over 10 s. <Status status="verified" compact /> Whether it stacks when you kill several at once is not known. <Status status="pending" compact /> It is in <PageLink to="legacy">Legacy</PageLink>.
+- **Undead: Cannibalize.** Next to a Humanoid or Undead corpse you recover 35% of your health and mana over 10 s, every 2 min. Nearly every spot on the list is Humanoids or Undead. <Status status="verified" compact />
+- **Drink while they respawn**, not after every pack. **Evocation** and your **mana gem** (level 28) chain one more. <Status status="reported" compact />
+- **Potions.** Mana and healing potions share a cooldown. With Engineering, bombs and grenades save pulls that go wrong. <Status status="reported" compact />
+- **If you always farm the same place, set up camp:** Alchemy's Mana Well restores mana and Tailoring's banner gives Spirit. See <PageLink to="professions">Professions</PageLink>. <Status status="reported" compact />
+- **Gear.** Intellect and Stamina first («of the Eagle» pieces). Spirit («of the Owl») if drinking is what stops you, and spell damage once you finish packs with mana to spare. See <PageLink to="gear">Gear</PageLink>. <Status status="reported" compact />
+
+</Pieces>
 
 ## Where to farm
 
@@ -155,6 +204,40 @@ They played as a group and switched layers to find fresh spawns: a solo Mage wil
 
 </Pieces>
 
+## Macros
+
+For the English client. Create them with `/macro` and drag them to your bar. <Status status="reported" />
+
+**Rank 1 Frostbolt on the enemy under your mouse**, to slow one without switching targets:
+
+```
+#showtooltip Frostbolt
+/cast [@mouseover,harm,nodead][] Frostbolt(Rank 1)
+```
+
+**Frost Nova that cuts whatever you are casting**, for when they reach you mid-Blizzard:
+
+```
+#showtooltip Frost Nova
+/stopcasting
+/cast Frost Nova
+```
+
+**Counterspell on the enemy under your mouse**, to make casters come:
+
+```
+#showtooltip Counterspell
+/stopcasting
+/cast [@mouseover,harm,nodead][] Counterspell
+```
+
+**A wand that does not switch off** when you press the key twice:
+
+```
+#showtooltip Shoot
+/cast !Shoot
+```
+
 ## If you come from Classic
 
 <details class="disclosure">
@@ -162,7 +245,7 @@ They played as a group and switched layers to find fresh spawns: a solo Mage wil
 
 Blizzard deliberately cut Mage mass farming, because it was used for fast gold and experience at little risk: <Status status="verified" />
 
-- **Improved Blizzard** slows by **40%** at most (65% in Classic).
+- **Improved Blizzard** slows by **40%** at most (65% in Classic), and by 50% with Permafrost 3/3.
 - **Permafrost** extends Chill effects by a percentage, not by flat seconds.
 - **Cone of Cold** lasts less. It slows by 40% for 6 s. <Status status="reported" /> The first 4 targets it hits are slowed by an extra 10% for 3 extra seconds: Blizzard wants it to keep its power against 4 enemies or fewer. <Status status="verified" />
 - **Low spell ranks** (downranking) get less from your spell damage. Since 3 November they trigger your talents as often as the top rank, except Blizzard.
@@ -179,8 +262,8 @@ Blizzard deliberately cut Mage mass farming, because it was used for fast gold a
 ## What is not known yet
 
 <Pending
-  why="There is no experience-per-hour data for a solo Mage in Forever, and no damage values for the area spells. Blizzard has not said when it will slow respawns in low-level zones, and it plans a large class tuning pass once it has data from players past level 30."
-  next="I will compare farming with questing and test the spots for each level range."
+  why="There is no experience-per-hour data for a solo Mage in Forever, and no damage values for the area spells. Nor is it known whether Thrill of Adventure stacks when you kill several at once, or whether Mage Armor and Arcane Meditation add up. Blizzard has not said when it will slow respawns in low-level zones, and it plans a large class tuning pass once it has data from players past level 30."
+  next="I will compare farming with questing, and test the spots for each level range and the macros."
 />
 
 ## Frequently asked questions
@@ -194,6 +277,9 @@ Blizzard deliberately cut Mage mass farming, because it was used for fast gold a
   </FaqItem>
   <FaqItem q="From what level can I AoE farm?" status="reported">
     From level 14, with Arcane Explosion and small packs. The Blizzard rotation needs Blizzard (level 20) and Improved Blizzard 3/3 in your talents.
+  </FaqItem>
+  <FaqItem q="How do I get enemies to arrive together?" status="reported">
+    Pull the farthest one first with rank 1 Fireball, which has 35 yd range, and slow the ones running ahead with rank 1 Frostbolt. For casters, Counterspell them or break line of sight so they come to you.
   </FaqItem>
   <FaqItem q="Why does it not work like in Classic?" status="verified">
     Blizzard cut Improved Blizzard's slow from 65% to 40%, shortened Cone of Cold and changed Permafrost, to rein in mass farming for gold and experience.

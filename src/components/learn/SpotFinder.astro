@@ -19,42 +19,58 @@ interface Spot {
   max: number;
   faction: Faction;
   zone: string;
+  /** Map coordinates; several camps separated by « · ». */
+  coords?: string;
   enemies: string;
   status: Status;
   featured?: boolean;
 }
 const spots: Spot[] = es
   ? [
-      { min: 10, max: 20, faction: 'horde', zone: 'Los Baldíos', enemies: 'Leones y zancudos', status: 'reported' },
-      { min: 10, max: 20, faction: 'alliance', zone: 'Costa Oscura', enemies: 'Fúrbolgs', status: 'reported' },
+      { min: 10, max: 20, faction: 'horde', zone: 'Los Baldíos', coords: '53, 30', enemies: 'Leones y zancudos', status: 'reported' },
+      { min: 10, max: 20, faction: 'alliance', zone: 'Costa Oscura', coords: '40, 55', enemies: 'Fúrbolgs', status: 'reported' },
       { min: 14, max: 20, faction: 'alliance', zone: 'Páramos de Poniente', enemies: 'Campamentos Defias', status: 'reported' },
-      { min: 20, max: 30, faction: 'horde', zone: 'Laderas de Trabalomas', enemies: 'Granjeros de los campos de Trabalomas', status: 'reported' },
-      { min: 20, max: 30, faction: 'alliance', zone: 'Los Humedales', enemies: 'Gnolls (Mosshide)', status: 'reported' },
-      { min: 20, max: 30, faction: 'alliance', zone: 'Bosque del Ocaso', enemies: 'Cementerio (Raven Hill) y huargos (Nightbane)', status: 'reported' },
-      { min: 23, max: 30, faction: 'horde', zone: 'Mulgore, noroeste de Cima del Trueno', enemies: 'Arañas Gloomrise (27-29). Nueva en Forever', status: 'reported', featured: true },
-      { min: 30, max: 37, faction: 'both', zone: 'Tierras Altas de Arathi', enemies: "Granja de Dabyrie (Horda) y Granja Go'shek (Alianza)", status: 'pending' },
-      { min: 35, max: 40, faction: 'both', zone: 'Marjal Revolcafango, Playa Tenebruma', enemies: 'Múrlocs Ancalodo (35-38). Ruta del primer 60 del mundo', status: 'reported' },
+      { min: 16, max: 19, faction: 'horde', zone: 'Los Baldíos, Mina Pedrusco', coords: '66, 14', enemies: 'Obreros de Ventura y Cía., fuera de la mina', status: 'pending' },
+      { min: 16, max: 20, faction: 'alliance', zone: 'Páramos de Poniente, sur', coords: '60, 72', enemies: 'Gnolls Riverpaw, sin sus lanzadores', status: 'pending' },
+      { min: 20, max: 30, faction: 'horde', zone: 'Laderas de Trabalomas', coords: '33, 43', enemies: 'Granjeros de los campos de Trabalomas', status: 'reported' },
+      { min: 20, max: 30, faction: 'alliance', zone: 'Los Humedales', coords: '62, 60', enemies: 'Gnolls (Mosshide)', status: 'reported' },
+      { min: 20, max: 30, faction: 'alliance', zone: 'Bosque del Ocaso', coords: '22, 36 · 63, 72', enemies: 'Cementerio del Cerro del Cuervo y huargos del Vergel Pútrido', status: 'reported' },
+      { min: 23, max: 30, faction: 'horde', zone: 'Mulgore, noroeste de Cima del Trueno', coords: '33, 11', enemies: 'Arañas Gloomrise (27-29). Nueva en Forever', status: 'reported', featured: true },
+      { min: 26, max: 30, faction: 'horde', zone: 'Laderas de Trabalomas, Mina Azur', coords: '27, 56', enemies: 'Humanoides. Dentro de la mina hay poco sitio para fallar', status: 'pending' },
+      { min: 30, max: 34, faction: 'both', zone: 'Laderas de Trabalomas, Playa del Oeste', coords: '45, 66', enemies: 'Múrlocs Torn Fin, mejor los cuerpo a cuerpo', status: 'pending' },
+      { min: 30, max: 37, faction: 'both', zone: 'Tierras Altas de Arathi', coords: '55, 39 · 60, 55', enemies: "Granja de Dabyrie (Horda) y Granja Go'shek (Alianza)", status: 'pending' },
+      { min: 35, max: 40, faction: 'both', zone: 'Marjal Revolcafango, Playa Tenebruma', coords: '54, 16', enemies: 'Múrlocs Ancalodo (35-38). Ruta del primer 60 del mundo', status: 'reported' },
       { min: 39, max: 44, faction: 'both', zone: "Vega de Tuercespina, Ruinas de Zul'Mamwe", enemies: 'Trols Machacacráneos (39-42). Ruta del primer 60 del mundo', status: 'reported' },
-      { min: 40, max: 45, faction: 'both', zone: 'Tanaris, Campo del Manantial', enemies: 'Humanos Deambuladores (40-45)', status: 'pending' },
-      { min: 44, max: 49, faction: 'both', zone: 'Tanaris, Cala del Aparejo Perdido', enemies: 'Piratas del Mar del Sur (44-45). Ruta del primer 60 del mundo', status: 'reported' },
-      { min: 50, max: 54, faction: 'both', zone: 'Tierras de la Peste del Oeste, Colina de las Penas', enemies: 'No-muertos', status: 'pending' },
-      { min: 53, max: 60, faction: 'both', zone: 'Tierras de la Peste del Oeste', enemies: 'No-muertos del Llanto de Dalson y de la Gangrena de Gahrron. Ruta del primer 60 del mundo', status: 'reported' },
+      { min: 40, max: 45, faction: 'both', zone: 'Tanaris, Campo del Manantial', coords: '63, 31', enemies: 'Humanos Deambuladores (40-45)', status: 'pending' },
+      { min: 41, max: 46, faction: 'both', zone: 'Pantano de las Penas, Playa Juncobruma', coords: '84, 91', enemies: 'Múrlocs de la marisma', status: 'pending' },
+      { min: 44, max: 49, faction: 'both', zone: 'Tanaris, Cala del Aparejo Perdido', coords: '73, 45', enemies: 'Piratas del Mar del Sur (44-45). Ruta del primer 60 del mundo', status: 'reported' },
+      { min: 50, max: 54, faction: 'both', zone: 'Tierras de la Peste del Oeste, Colina de las Penas', coords: '51, 77', enemies: 'No-muertos', status: 'pending' },
+      { min: 53, max: 60, faction: 'both', zone: 'Tierras de la Peste del Oeste', coords: '45, 53', enemies: 'No-muertos del Llanto de Dalson y de la Gangrena de Gahrron. Ruta del primer 60 del mundo', status: 'reported' },
+      { min: 55, max: 58, faction: 'both', zone: 'Tierras de la Peste del Oeste, Aserradero Crestanorte', enemies: 'Leñadores Escarlata', status: 'pending' },
+      { min: 57, max: 60, faction: 'both', zone: 'Tierras de la Peste del Oeste, Vega del Amparo', coords: '46, 15', enemies: 'Trabajadores Escarlata. Cuidado con los élites y las patrullas', status: 'pending' },
     ]
   : [
-      { min: 10, max: 20, faction: 'horde', zone: 'The Barrens', enemies: 'Lions and plainstriders', status: 'reported' },
-      { min: 10, max: 20, faction: 'alliance', zone: 'Darkshore', enemies: 'Furbolgs', status: 'reported' },
+      { min: 10, max: 20, faction: 'horde', zone: 'The Barrens', coords: '53, 30', enemies: 'Lions and plainstriders', status: 'reported' },
+      { min: 10, max: 20, faction: 'alliance', zone: 'Darkshore', coords: '40, 55', enemies: 'Furbolgs', status: 'reported' },
       { min: 14, max: 20, faction: 'alliance', zone: 'Westfall', enemies: 'Defias camps', status: 'reported' },
-      { min: 20, max: 30, faction: 'horde', zone: 'Hillsbrad Foothills', enemies: 'Farmers in Hillsbrad Fields', status: 'reported' },
-      { min: 20, max: 30, faction: 'alliance', zone: 'Wetlands', enemies: 'Mosshide gnolls', status: 'reported' },
-      { min: 20, max: 30, faction: 'alliance', zone: 'Duskwood', enemies: 'Raven Hill cemetery and Nightbane worgen', status: 'reported' },
-      { min: 23, max: 30, faction: 'horde', zone: 'Mulgore, northwest of Thunder Bluff', enemies: 'Gloomrise spiders (27-29). New in Forever', status: 'reported', featured: true },
-      { min: 30, max: 37, faction: 'both', zone: 'Arathi Highlands', enemies: "Dabyrie's Farmstead (Horde) and Go'Shek Farm (Alliance)", status: 'pending' },
-      { min: 35, max: 40, faction: 'both', zone: 'Dustwallow Marsh, Dreadmurk Shore', enemies: 'Mirefin murlocs (35-38). World first 60 route', status: 'reported' },
+      { min: 16, max: 19, faction: 'horde', zone: 'The Barrens, Boulder Lode Mine', coords: '66, 14', enemies: 'Venture Co. workers, outside the mine', status: 'pending' },
+      { min: 16, max: 20, faction: 'alliance', zone: 'Southern Westfall', coords: '60, 72', enemies: 'Riverpaw gnolls, without their casters', status: 'pending' },
+      { min: 20, max: 30, faction: 'horde', zone: 'Hillsbrad Foothills', coords: '33, 43', enemies: 'Farmers in Hillsbrad Fields', status: 'reported' },
+      { min: 20, max: 30, faction: 'alliance', zone: 'Wetlands', coords: '62, 60', enemies: 'Mosshide gnolls', status: 'reported' },
+      { min: 20, max: 30, faction: 'alliance', zone: 'Duskwood', coords: '22, 36 · 63, 72', enemies: 'Raven Hill Cemetery and the Rotting Orchard worgen', status: 'reported' },
+      { min: 23, max: 30, faction: 'horde', zone: 'Mulgore, northwest of Thunder Bluff', coords: '33, 11', enemies: 'Gloomrise spiders (27-29). New in Forever', status: 'reported', featured: true },
+      { min: 26, max: 30, faction: 'horde', zone: 'Hillsbrad Foothills, Azurelode Mine', coords: '27, 56', enemies: 'Humanoids. Inside the mine there is little room for mistakes', status: 'pending' },
+      { min: 30, max: 34, faction: 'both', zone: 'Hillsbrad Foothills, Western Strand', coords: '45, 66', enemies: 'Torn Fin murlocs, melee ones first', status: 'pending' },
+      { min: 30, max: 37, faction: 'both', zone: 'Arathi Highlands', coords: '55, 39 · 60, 55', enemies: "Dabyrie's Farmstead (Horde) and Go'Shek Farm (Alliance)", status: 'pending' },
+      { min: 35, max: 40, faction: 'both', zone: 'Dustwallow Marsh, Dreadmurk Shore', coords: '54, 16', enemies: 'Mirefin murlocs (35-38). World first 60 route', status: 'reported' },
       { min: 39, max: 44, faction: 'both', zone: "Stranglethorn Vale, Ruins of Zul'Mamwe", enemies: 'Skullsplitter trolls (39-42). World first 60 route', status: 'reported' },
-      { min: 40, max: 45, faction: 'both', zone: 'Tanaris, Waterspring Field', enemies: 'Wastewander humans (40-45)', status: 'pending' },
-      { min: 44, max: 49, faction: 'both', zone: 'Tanaris, Lost Rigger Cove', enemies: 'Southsea pirates (44-45). World first 60 route', status: 'reported' },
-      { min: 50, max: 54, faction: 'both', zone: 'Western Plaguelands, Sorrow Hill', enemies: 'Undead', status: 'pending' },
-      { min: 53, max: 60, faction: 'both', zone: 'Western Plaguelands', enemies: "Undead at Dalson's Tears and Gahrron's Withering. World first 60 route", status: 'reported' },
+      { min: 40, max: 45, faction: 'both', zone: 'Tanaris, Waterspring Field', coords: '63, 31', enemies: 'Wastewander humans (40-45)', status: 'pending' },
+      { min: 41, max: 46, faction: 'both', zone: 'Swamp of Sorrows, Misty Reed Strand', coords: '84, 91', enemies: 'Marsh murlocs', status: 'pending' },
+      { min: 44, max: 49, faction: 'both', zone: 'Tanaris, Lost Rigger Cove', coords: '73, 45', enemies: 'Southsea pirates (44-45). World first 60 route', status: 'reported' },
+      { min: 50, max: 54, faction: 'both', zone: 'Western Plaguelands, Sorrow Hill', coords: '51, 77', enemies: 'Undead', status: 'pending' },
+      { min: 53, max: 60, faction: 'both', zone: 'Western Plaguelands', coords: '45, 53', enemies: "Undead at Dalson's Tears and Gahrron's Withering. World first 60 route", status: 'reported' },
+      { min: 55, max: 58, faction: 'both', zone: 'Western Plaguelands, Northridge Lumber Camp', enemies: 'Scarlet lumberjacks', status: 'pending' },
+      { min: 57, max: 60, faction: 'both', zone: 'Western Plaguelands, Hearthglen', coords: '46, 15', enemies: 'Scarlet workers. Watch for the elites and patrols', status: 'pending' },
     ];
 const faction = FACTION_LABELS[locale];
 const copy = es
@@ -86,7 +102,7 @@ const left = (level: number) => ((level - 10) / 50) * 100;
             {spot.faction !== 'alliance' && <GameIcon icon={CREST.horde} size={32} alt={faction.horde} />}
           </span>
           <span class="spot__text">
-            <span class="spot__zone">{spot.zone}</span>
+            <span class="spot__zone">{spot.zone}{spot.coords && <span class="spot__coords"> ({spot.coords})</span>}</span>
             <span class="spot__enemies">{spot.enemies}</span>
           </span>
           <span class="spot__range">
@@ -251,6 +267,12 @@ const left = (level: number) => ((level - 10) / 50) * 100;
   .spot__zone {
     font-weight: 700;
     line-height: 1.25;
+  }
+  .spot__coords {
+    font-weight: 500;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
   }
   .spot__enemies {
     font-size: var(--step--1);

@@ -3,17 +3,17 @@ pageId: aoe-farming
 locale: es
 title: Farmeo en área
 seoTitle: Farmeo AoE de Mago en WoW Forever, rotación y zonas
-description: 'Cómo farmear en área con el Mago en WoW Forever: qué haces, qué hechizos y talentos necesitas, dos rotaciones paso a paso y dónde farmear en cada nivel.'
+description: 'Farmeo en área con el Mago en WoW Forever: cómo atraer, hechizos y talentos, dos rotaciones paso a paso, maná, macros y dónde farmear en cada nivel.'
 lead: Qué necesitas, las rotaciones y dónde hacerlo.
 gameVersion: forever-launch-2026-11
 published: 2026-10-15
-reviewed: 2026-11-07
+reviewed: 2026-11-20
 reviewedBy: Sheep Happens
 status: published
 verification: analysis
 wide: true
 sources: [blizzard-deep-dive-mage, blizzard-deep-dive-mage-es, blizzard-dev-notes, blizzard-hotfixes-2026-11, icyveins-world-first-60, conquestcapped-mage-leveling, maxroll-mage-leveling, mobalytics-kargoz-aoe, restedxp-forever-mage-aoe, forg-mage-aoe-spiders, wiki-arcane-concentration, icyveins-classic-aoe-leveling, wowhead-forever-talent-calc]
-tags: [farmeo aoe, farmeo en área, aoe mago, aoe farming, mage aoe, leveo en área, zonas de farmeo, grinding, deflagración arcana, ventisca, flamestrike, concentración arcana, primer 60 del mundo, playa tenebruma, cala del aparejo perdido, llanto de dalson]
+tags: [farmeo aoe, farmeo en área, aoe mago, aoe farming, mage aoe, leveo en área, zonas de farmeo, grinding, deflagración arcana, ventisca, flamestrike, concentración arcana, primer 60 del mundo, playa tenebruma, cala del aparejo perdido, llanto de dalson, macros de mago, descarga de escarcha rango 1, canibalizar, emoción de la aventura]
 ---
 
 <Tiles min={13}>
@@ -63,6 +63,18 @@ Hechizos de área sobre todo el grupo hasta que caigan. <Status status="analysis
 </Tile>
 </Tiles>
 
+### Cómo atraer para que lleguen juntos
+
+<Pieces>
+
+- **Empieza por el más lejano, con Bola de Fuego de rango 1.** Alcanza 35 m, 5 más que Descarga de Escarcha: es el enemigo que más tarda en llegar. <Status status="verified" compact />
+- **Frena a los que van delante con Descarga de Escarcha de rango 1.** Los ralentiza por poco maná y deja que los de atrás los alcancen. Es la macro que pongo más abajo. <Status status="reported" compact />
+- **Para marcar sin frenar, Lanza de hielo, Explosión de Fuego o la varita.** Las dos primeras son instantáneas y comparten 8 s de reutilización. <Status status="verified" compact />
+- **Haz venir a los lanzadores.** Con **Contrahechizo** no pueden lanzar y corren hacia ti; también vienen si te escondes detrás de un árbol o una casa, porque pierden la línea de visión. <Status status="reported" compact />
+- **Mata antes al que estropea el tirón.** Un lanzador o un enemigo a distancia solo, antes de atraer al resto. <Status status="reported" compact />
+
+</Pieces>
+
 ## Qué necesitas
 
 Mueve el control hasta tu nivel para ver lo que ya puedes hacer.
@@ -77,14 +89,34 @@ Mueve el control hasta tu nivel para ver lo que ya puedes hacer.
 Necesaria para la rotación de Ventisca, no para la corta.
 
 </Tile>
+<Tile title="Escarcha permanente 3/3" spell="Permafrost" school="frost">
+
+Ventisca ralentiza un 50 % en vez de un 40 %, y tus enfriamientos duran un 33 % más. <Status status="verified" compact />
+
+</Tile>
 <Tile title="Precisión 3/3" spell="Precision" school="frost">
 
 Hasta un 6 % de golpe con todos los hechizos: menos Novas de Escarcha resistidas, que es como se pierden los tirones. <Status status="reported" compact />
 
 </Tile>
-<Tile title="Trizar" spell="Shatter" school="frost">
+<Tile title="Nova de Escarcha mejorada 2/2" spell="Improved Frost Nova" school="frost">
 
-Más crítico contra enemigos congelados: tu **Fogonazo** sobre el grupo congelado.
+4 s menos de reutilización: congelas al grupo más veces por tirón. <Status status="verified" compact />
+
+</Tile>
+<Tile title="Alcance ártico 2/2" spell="Arctic Reach" school="frost">
+
+Un 20 % más de radio para Nova de Escarcha y Cono de frío, un 44 % más de superficie: atrapas al grupo entero. <Status status="verified" compact />
+
+</Tile>
+<Tile title="Trizar 3/3" spell="Shatter" school="frost">
+
+Un 50 % más de crítico con todos tus hechizos contra enemigos congelados: tu **Fogonazo** sobre el grupo congelado. <Status status="verified" compact />
+
+</Tile>
+<Tile title="Fogonazo mejorado 3/3" spell="Improved Flamestrike" school="fire">
+
+Un 15 % más de crítico con Fogonazo. Con Trizar, 65 puntos más sobre el grupo congelado. <Status status="verified" compact />
 
 </Tile>
 <Tile title="Barrera de hielo" spell="Ice Barrier" school="frost">
@@ -104,9 +136,7 @@ No la lleves en una build de área: sus congelaciones al azar separan al grupo. 
 </Tile>
 </Tiles>
 
-Las builds de leveo están en <BuildLink use="leveling">Builds</BuildLink>. Ten también a mano la gema de maná (nivel 28), pociones de maná y, si tienes Ingeniería, bombas o granadas para los tirones grandes. <Status status="reported" compact />
-
-Desde el nivel 34, si los enemigos apenas te alcanzan, lleva **Armadura de mago**: en Forever, la mitad de tu regeneración de maná sigue mientras lanzas. <Status status="verified" compact />
+Las builds de leveo están en <BuildLink use="leveling">Builds</BuildLink>.
 
 ## Las rotaciones
 
@@ -116,7 +146,26 @@ La corta es la más fiable, según las guías de la comunidad, y sirve con cualq
 
 **Si queda alguno suelto y tienes Lanza de hielo,** remátalo con ella mientras sigue congelado o con una carga de **Dedos de Escarcha**: contra enemigos congelados hace mucho más daño. <Status status="reported" compact />
 
-**Si resisten la Nova de Escarcha, reinicia el tirón:** no intentes salvarlo. **Traslación** y aléjate; **Bloqueo de hielo** si todo se tuerce. <Status status="reported" compact />
+**Ventisca rinde por pulsos, no por enemigos.** Cuatro enemigos que reciben los 8 pulsos te dan el doble de daño por maná que cuatro que solo reciben 4. Lánzala donde van a estar, no donde están, y no gastes otra en un grupo casi muerto: remátalo con Cono de frío o Deflagración Arcana. <Status status="reported" compact />
+
+**Si resisten la Nova de Escarcha, reinicia el tirón:** no intentes salvarlo. **Traslación** y aléjate; **Bloqueo de hielo** si todo se tuerce, y **Mordedura helada** si te hace falta otra Nova. <Status status="reported" compact />
+
+## Maná y descanso
+
+El maná es lo que más te para. Cuenta el ciclo entero, de atraer a terminar de beber: 4 enemigos en 60 s dan más experiencia por hora que 6 en 100 s. <Status status="analysis" />
+
+<Pieces>
+
+- **Regla de los 5 segundos.** Tu Espíritu no regenera maná hasta 5 s después de gastarlo. Ventisca dura 8 s, así que en sus últimos pulsos ya regeneras si no lanzas nada más. <Status status="reported" compact />
+- **Armadura de mago, desde el nivel 34**, si los enemigos apenas te alcanzan: en Forever, la mitad de tu regeneración sigue mientras lanzas. **Meditación Arcana** 3/3 da otra mitad. <Status status="verified" compact /> Si se suman, nadie lo ha comprobado. <Status status="pending" compact />
+- **Emoción de la aventura 5/5.** Cada golpe de gracia te devuelve un 5 % de salud y maná en 10 s. <Status status="verified" compact /> No se sabe si se acumula al matar a varios a la vez. <Status status="pending" compact /> Está en <PageLink to="legacy">Legado</PageLink>.
+- **No-muertos: Canibalizar.** Junto al cadáver de un humanoide o un no-muerto recuperas un 35 % de salud y maná en 10 s, cada 2 min. Casi todas las zonas de la lista son de humanoides o no-muertos. <Status status="verified" compact />
+- **Bebe mientras reaparecen**, no al terminar cada grupo. **Evocación** y la **gema de maná** (nivel 28), para encadenar uno más. <Status status="reported" compact />
+- **Pociones.** Las de maná y las de curación comparten reutilización. Con Ingeniería, las bombas y granadas salvan tirones que se tuercen. <Status status="reported" compact />
+- **Si farmeas siempre en el mismo sitio, monta el campamento:** el Mana Well de Alquimia regenera maná y el estandarte de Sastrería da Espíritu. Ver <PageLink to="professions">Profesiones</PageLink>. <Status status="reported" compact />
+- **Equipo.** Intelecto y Aguante primero (piezas «del águila»). Espíritu («del búho») si lo que te para es beber, y daño de hechizos cuando ya acabas los grupos con maná de sobra. Ver <PageLink to="gear">Equipo</PageLink>. <Status status="reported" compact />
+
+</Pieces>
 
 ## Dónde farmear
 
@@ -155,6 +204,40 @@ Iban en grupo y cambiaban de capa para encontrar enemigos recién aparecidos: un
 
 </Pieces>
 
+## Macros
+
+Para el cliente en español. Créalas con `/macro` y arrástralas a tu barra. <Status status="reported" />
+
+**Descarga de Escarcha de rango 1 sobre el enemigo bajo el ratón**, para frenar a uno sin cambiar de objetivo:
+
+```
+#showtooltip Descarga de Escarcha
+/cast [@mouseover,harm,nodead][] Descarga de Escarcha(Rango 1)
+```
+
+**Nova de Escarcha cortando lo que estés lanzando**, para cuando te alcanzan a mitad de Ventisca:
+
+```
+#showtooltip Nova de Escarcha
+/stopcasting
+/cast Nova de Escarcha
+```
+
+**Contrahechizo sobre el enemigo bajo el ratón**, para que los lanzadores vengan:
+
+```
+#showtooltip Contrahechizo
+/stopcasting
+/cast [@mouseover,harm,nodead][] Contrahechizo
+```
+
+**Varita que no se apaga** si pulsas la tecla dos veces:
+
+```
+#showtooltip Disparar
+/cast !Disparar
+```
+
 ## Si vienes de Classic
 
 <details class="disclosure">
@@ -162,7 +245,7 @@ Iban en grupo y cambiaban de capa para encontrar enemigos recién aparecidos: un
 
 Blizzard ha recortado a propósito el farmeo masivo de los magos, porque se usaba para conseguir oro y experiencia rápidos con poco riesgo: <Status status="verified" />
 
-- **Ventisca mejorada** (Improved Blizzard) ralentiza como máximo un **40 %** (en Classic, un 65 %).
+- **Ventisca mejorada** (Improved Blizzard) ralentiza como máximo un **40 %** (en Classic, un 65 %), y un 50 % con Escarcha permanente 3/3.
 - **Escarcha permanente** (Permafrost) alarga los efectos de enfriamiento en porcentaje, no en segundos fijos.
 - **Cono de frío** (Cone of Cold) dura menos. Ralentiza un 40 % durante 6 s. <Status status="reported" /> Los 4 primeros objetivos que alcanza se ralentizan un 10 % más y durante 3 s más: Blizzard quiere que conserve su fuerza contra 4 enemigos o menos. <Status status="verified" />
 - Los **rangos bajos** de los hechizos (downranking) aprovechan menos tu daño de hechizos. Desde el 3 de noviembre activan tus talentos igual que el rango máximo, salvo Ventisca.
@@ -179,8 +262,8 @@ Blizzard ha recortado a propósito el farmeo masivo de los magos, porque se usab
 ## Lo que aún no se sabe
 
 <Pending
-  why="No hay datos de experiencia por hora de un Mago solo en Forever, ni del daño de los hechizos de área. Blizzard no ha dicho cuándo bajará la reaparición en las zonas de nivel bajo, y prevé un gran ajuste de clases cuando haya datos de jugadores por encima del nivel 30."
-  next="Compararé el farmeo con las misiones y probaré las zonas de cada tramo."
+  why="No hay datos de experiencia por hora de un Mago solo en Forever, ni del daño de los hechizos de área. Tampoco se sabe si Emoción de la aventura se acumula al matar a varios a la vez, ni si Armadura de mago y Meditación Arcana se suman. Blizzard no ha dicho cuándo bajará la reaparición en las zonas de nivel bajo, y prevé un gran ajuste de clases cuando haya datos de jugadores por encima del nivel 30."
+  next="Compararé el farmeo con las misiones, probaré las zonas de cada tramo y las macros."
 />
 
 ## Preguntas frecuentes
@@ -194,6 +277,9 @@ Blizzard ha recortado a propósito el farmeo masivo de los magos, porque se usab
   </FaqItem>
   <FaqItem q="¿Desde qué nivel puedo farmear en área?" status="reported">
     Desde el nivel 14, con Deflagración Arcana, y grupos pequeños. La rotación con Ventisca necesita Ventisca (nivel 20) y Ventisca mejorada 3/3 en tus talentos.
+  </FaqItem>
+  <FaqItem q="¿Cómo consigo que los enemigos lleguen juntos?" status="reported">
+    Atrae primero al más lejano con Bola de Fuego de rango 1, que tiene 35 m de alcance, y frena a los que se adelantan con Descarga de Escarcha de rango 1. A los lanzadores, Contrahechizo o rómpeles la línea de visión para que vengan hacia ti.
   </FaqItem>
   <FaqItem q="¿Por qué ya no funciona como en Classic?" status="verified">
     Blizzard redujo la ralentización de Ventisca mejorada del 65 % al 40 %, acortó Cono de frío y cambió Escarcha permanente, para frenar el farmeo masivo de oro y experiencia.
