@@ -1,5 +1,60 @@
 [
   {
+    "id": "2026-11-20-source-review",
+    "date": "2026-11-20",
+    "type": "guide",
+    "title": {
+      "es": "Revisión de fuentes: hotfixes del Mago",
+      "en": "Source review: Mage hotfixes"
+    },
+    "body": {
+      "es": "Revisadas las novedades del 3 al 18 de noviembre. Lo del Mago ya estaba en la guía salvo los hotfixes del 9 de noviembre, que se añaden a Concentración arcana.",
+      "en": "Reviewed the news from 3 to 18 November. The Mage items were already in the guide except the 9 November hotfixes, now added to Arcane Concentration."
+    },
+    "pages": [
+      "changes",
+      "talents-arcane"
+    ],
+    "refs": [
+      "change:arcane-concentration",
+      "source:blizzard-hotfixes-2026-11"
+    ]
+  },
+  {
+    "id": "2026-11-13-mage-hotfixes",
+    "date": "2026-11-13",
+    "type": "game",
+    "title": {
+      "es": "Hotfixes del Mago: Concentración arcana, Tormenta de fuego y Nova de escarcha",
+      "en": "Mage hotfixes: Arcane Concentration, Flamestrike and Frost Nova"
+    },
+    "body": {
+      "es": "Blizzard corrige tres cosas del Mago en sus hotfixes. El 9 de noviembre, los pulsos de Tormenta de fuego en el suelo ya no gastan Lanzamiento libre y la probabilidad de Concentración arcana se reparte entre el lanzamiento y cada misil de Misiles Arcanos. El 13, Nova de escarcha se rompe con el daño de procs y de Ventisca. El 6 ya habían arreglado que el Mago aprendiera por error el hechizo Investigar (solo debes tener Estudiar tras la misión).",
+      "en": "Blizzard fixes three Mage issues in its hotfixes. On 9 November, Flamestrike's ground ticks no longer consume Clearcasting and Arcane Concentration's chance is split across the cast and every Arcane Missiles bolt. On the 13th, Frost Nova is broken by proc damage and by Blizzard. On the 6th they had already fixed Mages learning the Research spell by mistake (you should only have Study after the quest)."
+    },
+    "pages": [
+      "changes",
+      "talents-arcane"
+    ],
+    "sources": [
+      "blizzard-hotfixes-2026-11"
+    ],
+    "refs": [
+      "change:arcane-concentration",
+      "source:blizzard-hotfixes-2026-11"
+    ],
+    "items": [
+      {
+        "ref": "change:arcane-concentration",
+        "impact": "neutral",
+        "text": {
+          "es": "La probabilidad se reparte entre el lanzamiento y cada misil, y Tormenta de fuego ya no gasta Lanzamiento libre.",
+          "en": "The chance is split across the cast and every bolt, and Flamestrike no longer consumes Clearcasting."
+        }
+      }
+    ]
+  },
+  {
     "id": "2026-11-10-leveling-builds",
     "date": "2026-11-10",
     "type": "guide",
