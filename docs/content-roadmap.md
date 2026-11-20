@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-11-10 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
+> Creado: 2026-10-12 · Revisión: 2026-11-20 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -45,6 +45,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [x] Builds de mazmorras a nivel 60 (`*-dungeons` en `builds.json`, 2026-10-30): Arcano, Arcano y Fuego, Pirofrío, Fuego y Escarcha, sin probar en el juego.
 - [ ] Decidir si las builds de mazmorras sirven también para banda (añadir `raid` a sus `uses`).
 - [ ] Al llegar a 60: comprobar con esas builds si el 6 % de golpe de Precision basta en mazmorras, si Meditación Arcana y Armadura de mago se suman, si la cola de un hechizo sobre Dedos de Escarcha da el tercer golpe, si Poder de Fuego cuenta Chamuscar mejorado, cuánto maná base tiene el Mago (el coste de Explosión Arcana depende de él), si Misiles Arcanos gratis consumen Lanzamiento libre y si los costes de los rangos máximos siguen siendo los de la beta. Revisar también las guías de Wowhead de cada rama cuando las actualicen a 60.
+- [ ] Revisión del 2026-11-20: revisar a mano el hilo de hotfixes del 19 de noviembre y cualquier cambio de Mago posterior; vigilar si Blizzard confirma que el hechizo Investigar no existe (la web sigue llamando «Investigación» a la habilidad que da Estudiar, como la guía de Warcraft Tavern) y la nueva arma de Mago de nivel alto que cita Wowhead (sin leer: la web no respondió).
 - [ ] Builds probadas: leveo primero; después farmeo AoE, mazmorras, banda y PvP, solo en las ramas con sentido (ver la sección 4).
 - [x] Calculadora de talentos de Forever: la de Wowhead, con enlaces generados desde `src/lib/talents.ts` (`wowheadBuildUrl`) (hecho el 2026-10-13).
 

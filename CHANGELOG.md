@@ -4,6 +4,25 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-11-20
+
+### [Guía] Revisión de fuentes: hotfixes del Mago
+
+Revisadas las novedades del 3 al 18 de noviembre. Lo del Mago ya estaba en la guía salvo los hotfixes del 9 de noviembre, que se añaden a Concentración arcana.
+
+- **Datos afectados:** Concentración Arcana, WoW: Forever Hotfixes - November 2026 (thread)
+
+## 2026-11-13
+
+### [Juego] Hotfixes del Mago: Concentración arcana, Tormenta de fuego y Nova de escarcha
+
+Blizzard corrige tres cosas del Mago en sus hotfixes. El 9 de noviembre, los pulsos de Tormenta de fuego en el suelo ya no gastan Lanzamiento libre y la probabilidad de Concentración arcana se reparte entre el lanzamiento y cada misil de Misiles Arcanos. El 13, Nova de escarcha se rompe con el daño de procs y de Ventisca. El 6 ya habían arreglado que el Mago aprendiera por error el hechizo Investigar (solo debes tener Estudiar tras la misión).
+
+- ◆ Igual: **Concentración Arcana**: La probabilidad se reparte entre el lanzamiento y cada misil, y Tormenta de fuego ya no gasta Lanzamiento libre.
+
+- **Datos afectados:** Concentración Arcana, WoW: Forever Hotfixes - November 2026 (thread)
+- **Fuentes:** [WoW: Forever Hotfixes - November 2026 (thread)](https://us.forums.blizzard.com/en/wow/t/2403040) (Blizzard Entertainment)
+
 ## 2026-11-10
 
 ### [Guía] Builds de leveo: Arcano y Fuego, y Escarcha profunda
