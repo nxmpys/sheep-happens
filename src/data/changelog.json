@@ -1,5 +1,24 @@
 [
   {
+    "id": "2026-11-19-dungeon-aoe-build",
+    "date": "2026-11-19",
+    "type": "guide",
+    "title": {
+      "es": "Build de mazmorras: Escarcha AoE",
+      "en": "Dungeon build: Frost AoE"
+    },
+    "body": {
+      "es": "Primera build de mazmorras de nivel 60: Escarcha con Ventisca mejorada, Alcance ártico, Canalización de Escarcha y Cono de frío mejorado para el área, Barrera de hielo para canalizar sin retrasos y 18 puntos en Arcano para el maná.",
+      "en": "First level 60 dungeon build: Frost with Improved Blizzard, Arctic Reach, Frost Channeling and Improved Cone of Cold for AoE, Ice Barrier to channel without delays and 18 points in Arcane for mana."
+    },
+    "pages": [
+      "builds"
+    ],
+    "refs": [
+      "build:frost-dungeons-aoe"
+    ]
+  },
+  {
     "id": "2026-11-10-leveling-builds",
     "date": "2026-11-10",
     "type": "guide",

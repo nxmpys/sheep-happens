@@ -4,6 +4,14 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-11-19
+
+### [Guía] Build de mazmorras: Escarcha AoE
+
+Primera build de mazmorras de nivel 60: Escarcha con Ventisca mejorada, Alcance ártico, Canalización de Escarcha y Cono de frío mejorado para el área, Barrera de hielo para canalizar sin retrasos y 18 puntos en Arcano para el maná.
+
+- **Datos afectados:** build:frost-dungeons-aoe
+
 ## 2026-11-10
 
 ### [Guía] Builds de leveo: Arcano y Fuego, y Escarcha profunda

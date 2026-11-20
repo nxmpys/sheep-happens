@@ -2490,5 +2490,256 @@
       "wowhead-forever-talent-calc"
     ],
     "updated": "2026-11-06"
+  },
+  {
+    "id": "frost-dungeons-aoe",
+    "name": {
+      "es": "Escarcha AoE de mazmorras",
+      "en": "Frost dungeon AoE"
+    },
+    "slug": {
+      "es": "escarcha-aoe",
+      "en": "frost-aoe"
+    },
+    "uses": [
+      "dungeons"
+    ],
+    "recommendedFor": [],
+    "discouragedFor": [],
+    "spec": "frost",
+    "icon": "spell_frost_icestorm",
+    "tagline": {
+      "es": "Ventisca mejorada, Alcance ártico y Canalización de Escarcha para limpiar grupos sin quitarle los enemigos al tanque, con Barrera de hielo para canalizar sin retrasos.",
+      "en": "Improved Blizzard, Arctic Reach and Frost Channeling to clear packs without pulling enemies off the tank, with Ice Barrier to channel without delays."
+    },
+    "intro": [
+      {
+        "es": "Una build de nivel 60 para mazmorras con muchos grupos de enemigos. Todo gira en torno a Ventisca y Cono de frío: más alcance, menos amenaza, menos maná, y cada enemigo ralentizado puede darte Dedos de Escarcha.",
+        "en": "A level 60 build for dungeons with many packs. Everything revolves around Blizzard and Cone of Cold: more range, less threat, less mana, and every slowed enemy can give you Fingers of Frost."
+      },
+      {
+        "es": "No lleva Mordiescarcha, Descarga de Escarcha mejorada ni Escalofrío del invierno: los jefes y el combate en solitario no son su terreno.",
+        "en": "It takes no Frostbite, Improved Frostbolt or Winter's Chill: bosses and solo fights are not its strength."
+      }
+    ],
+    "level": 60,
+    "legacyTalented": 0,
+    "points": {
+      "wand-specialization": 2,
+      "arcane-resilience": 3,
+      "arcane-concentration": 5,
+      "missile-barrage": 2,
+      "arcane-geometry": 2,
+      "arcane-blast": 1,
+      "arcane-meditation": 3,
+      "frost-warding": 2,
+      "elemental-precision": 3,
+      "ice-shards": 5,
+      "improved-frost-nova": 2,
+      "permafrost": 1,
+      "frost-channeling": 3,
+      "improved-blizzard": 3,
+      "ice-lance": 1,
+      "arctic-reach": 2,
+      "ice-block": 1,
+      "shatter": 3,
+      "improved-cone-of-cold": 3,
+      "cold-snap": 1,
+      "fingers-of-frost": 2,
+      "ice-barrier": 1
+    },
+    "goal": {
+      "es": "Área en mazmorras a nivel 60",
+      "en": "AoE in level 60 dungeons"
+    },
+    "upside": {
+      "es": "Ventisca con más alcance, menos amenaza y sin retrasos",
+      "en": "Blizzard with more range, less threat and no delays"
+    },
+    "downside": {
+      "es": "Floja contra jefes y en solitario",
+      "en": "Weak against bosses and solo"
+    },
+    "keyTalents": [
+      "improved-blizzard",
+      "frost-channeling",
+      "arctic-reach",
+      "fingers-of-frost",
+      "ice-barrier"
+    ],
+    "summary": {
+      "es": "Build de Escarcha para mazmorras de nivel 60 con 33 puntos en Escarcha y 18 en Arcano, pensada para el área: Ventisca mejorada, Alcance ártico, Canalización de Escarcha y Cono de frío mejorado, con Arcano para el maná.",
+      "en": "Frost build for level 60 dungeons with 33 points in Frost and 18 in Arcane, made for AoE: Improved Blizzard, Arctic Reach, Frost Channeling and Improved Cone of Cold, with Arcane for mana."
+    },
+    "playstyle": [
+      {
+        "es": "Barrera de hielo activa antes de cada grupo: más daño de Escarcha y los golpes no retrasan tus hechizos.",
+        "en": "Ice Barrier up before every pack: more Frost damage and hits do not delay your spells."
+      },
+      {
+        "es": "Contra un solo enemigo, Descarga de Escarcha. Si salta Dedos de Escarcha, Lanza de hielo.",
+        "en": "Against a single enemy, Frostbolt. If Fingers of Frost triggers, Ice Lance."
+      },
+      {
+        "es": "Misiles Arcanos si Tromba de misiles está activa.",
+        "en": "Arcane Missiles if Missile Barrage is active."
+      }
+    ],
+    "clearcasting": [
+      {
+        "es": "Ventisca: es tu hechizo más caro.",
+        "en": "Blizzard: it is your most expensive spell."
+      },
+      {
+        "es": "Cono de frío si el grupo está a tu alcance.",
+        "en": "Cone of Cold if the pack is within reach."
+      }
+    ],
+    "aoe": [
+      {
+        "es": "Deja que el tanque reúna a los enemigos y empieza después de sus primeros golpes.",
+        "en": "Let the tank gather the enemies and start after their first hits."
+      },
+      {
+        "es": "Ventisca con tu rango más alto: ralentiza a todo el grupo y cada enemigo ralentizado puede darte Dedos de Escarcha. Los rangos aprendidos más de 12 niveles por debajo del tuyo lo activan menos.",
+        "en": "Blizzard at your highest rank: it slows the whole pack and every slowed enemy can give you Fingers of Frost. Ranks learned more than 12 levels below yours trigger it less."
+      },
+      {
+        "es": "Cono de frío cada vez que esté listo y el grupo esté a tu alcance, mejor con Dedos de Escarcha activo para que aproveche Trizar.",
+        "en": "Cone of Cold whenever it is ready and the pack is within reach, ideally with Fingers of Frost active so it gets Shatter."
+      },
+      {
+        "es": "Si un enemigo va a por ti, Nova de Escarcha y apártate para que el tanque lo recupere. Desde el 13 de noviembre el daño de Ventisca rompe la Nova, así que no la uses para retener al grupo dentro de la Ventisca.",
+        "en": "If an enemy comes for you, Frost Nova and step away so the tank can take it back. Since 13 November Blizzard damage breaks Frost Nova, so do not use it to hold the pack inside Blizzard."
+      }
+    ],
+    "cooldowns": [
+      {
+        "es": "Mordedura helada para tener otra Barrera de hielo, Nova de Escarcha o Cono de frío en un grupo grande, o Bloqueo de hielo si se complica.",
+        "en": "Cold Snap to get another Ice Barrier, Frost Nova or Cone of Cold on a big pack, or Ice Block if things go wrong."
+      },
+      {
+        "es": "Bloqueo de hielo si te van a matar: te protege 10 s, pero no puedes hacer nada mientras dura.",
+        "en": "Ice Block if you are about to die: it protects you for 10 s, but you cannot do anything while it lasts."
+      },
+      {
+        "es": "Gema de maná entre grupos y Evocación cuando no te quede otra cosa.",
+        "en": "Mana gem between packs and Evocation when you have nothing else left."
+      }
+    ],
+    "reasons": [
+      {
+        "talents": [
+          "improved-blizzard",
+          "arctic-reach",
+          "improved-cone-of-cold"
+        ],
+        "text": {
+          "es": "El área: Ventisca mejorada hace que Ventisca ralentice un 40 %, y ese enfriamiento activa Dedos de Escarcha en todo el grupo. Alcance ártico da un 20 % más de alcance a Ventisca y de radio a Nova de Escarcha y Cono de frío, y Cono de frío mejorado le suma un 35 % de daño.",
+          "en": "AoE: Improved Blizzard makes Blizzard slow by 40%, and that Chill triggers Fingers of Frost on the whole pack. Arctic Reach gives Blizzard 20% more range and Frost Nova and Cone of Cold 20% more radius, and Improved Cone of Cold adds 35% damage."
+        }
+      },
+      {
+        "talents": [
+          "frost-channeling"
+        ],
+        "text": {
+          "es": "Tus hechizos de Escarcha cuestan un 15 % menos de maná y generan un 30 % menos de amenaza: es lo que te deja lanzar Ventisca sin quitarle los enemigos al tanque.",
+          "en": "Your Frost spells cost 15% less mana and cause 30% less threat: it is what lets you Blizzard without pulling enemies off the tank."
+        }
+      },
+      {
+        "talents": [
+          "fingers-of-frost",
+          "shatter",
+          "ice-shards",
+          "ice-lance"
+        ],
+        "text": {
+          "es": "El daño fuerte: tus efectos de enfriamiento tienen un 15 % de probabilidad de hacer que tus 2 siguientes hechizos traten al objetivo como congelado, Trizar les da un 50 % de crítico y Fragmentos de hielo un 100 % más de bonificación al crítico. Lanza de hielo hace un 300 % más de daño contra congelados.",
+          "en": "The big hits: your Chill effects have a 15% chance to make your next 2 spells treat the target as frozen, Shatter gives them 50% crit and Ice Shards 100% more crit bonus. Ice Lance deals 300% more damage to frozen targets."
+        }
+      },
+      {
+        "talents": [
+          "ice-barrier",
+          "frost-warding",
+          "cold-snap",
+          "ice-block"
+        ],
+        "text": {
+          "es": "Barrera de hielo da un 15 % más de daño de Escarcha durante 1 min, otro 5 % mientras aguanta el escudo, y evita que los golpes retrasen tus hechizos. Custodia de Escarcha hace que absorba un 20 % más. Bloqueo de hielo es el paso obligado hasta Mordedura helada, que lleva a Barrera de hielo.",
+          "en": "Ice Barrier gives 15% more Frost damage for 1 min, another 5% while the shield holds, and stops hits from delaying your spells. Frost Warding makes it absorb 20% more. Ice Block is the required step to Cold Snap, which leads to Ice Barrier."
+        }
+      },
+      {
+        "talents": [
+          "elemental-precision",
+          "improved-frost-nova",
+          "permafrost"
+        ],
+        "text": {
+          "es": "Precisión da un 6 % de golpe con todos los hechizos. Nova de Escarcha mejorada te deja quitarte enemigos de encima cada 21 s, y un punto en Escarcha permanente alarga un 11 % tus ralentizaciones.",
+          "en": "Precision gives 6% hit with every spell. Improved Frost Nova lets you get enemies off you every 21 s, and one point in Permafrost makes your slows last 11% longer."
+        }
+      },
+      {
+        "talents": [
+          "arcane-concentration",
+          "arcane-meditation",
+          "missile-barrage"
+        ],
+        "text": {
+          "es": "Por qué Arcano: Concentración Arcana te da un 10 % de probabilidad de lanzar gratis el siguiente hechizo de daño, Meditación Arcana mantiene un 50 % de tu regeneración de maná mientras lanzas, y Tromba de misiles hace gratis tus Misiles Arcanos un 20 % de las veces que lanzas Descarga de Escarcha.",
+          "en": "Why Arcane: Arcane Concentration gives a 10% chance to cast your next damage spell for free, Arcane Meditation keeps 50% of your mana regeneration while you cast, and Missile Barrage makes your Arcane Missiles free 20% of the times you cast Frostbolt."
+        }
+      },
+      {
+        "talents": [
+          "wand-specialization",
+          "arcane-resilience",
+          "arcane-geometry",
+          "arcane-blast"
+        ],
+        "text": {
+          "es": "El peaje para llegar a Meditación Arcana, que pide 15 puntos en Arcano: un 25 % más de daño con varita, armadura igual al 75 % de tu Intelecto, y 6 m más de alcance para tus hechizos Arcanos, como Polimorfia y Contrahechizo.",
+          "en": "The toll to reach Arcane Meditation, which needs 15 points in Arcane: 25% more wand damage, armor equal to 75% of your Intellect, and 6 more yards of range for your Arcane spells, such as Polymorph and Counterspell."
+        }
+      }
+    ],
+    "strengths": [
+      {
+        "es": "Ventisca y Cono de frío llegan más lejos y cuestan menos, y Canalización de Escarcha mantiene baja tu amenaza.",
+        "en": "Blizzard and Cone of Cold reach further and cost less, and Frost Channeling keeps your threat low."
+      },
+      {
+        "es": "Ventisca mejorada ralentiza a todo el grupo, así que los enemigos tardan más en llegar a ti si se sueltan del tanque.",
+        "en": "Improved Blizzard slows the whole pack, so enemies take longer to reach you if they get loose from the tank."
+      },
+      {
+        "es": "Barrera de hielo te deja canalizar Ventisca entera aunque te peguen.",
+        "en": "Ice Barrier lets you channel the full Blizzard even while you are hit."
+      }
+    ],
+    "weaknesses": [
+      {
+        "es": "Sin Descarga de Escarcha mejorada ni Escalofrío del invierno, contra un solo enemigo hace menos daño que otras builds de Escarcha.",
+        "en": "With no Improved Frostbolt or Winter's Chill, it deals less damage to a single enemy than other Frost builds."
+      },
+      {
+        "es": "Sin Mordiescarcha, tus enfriamientos no congelan: fuera de grupo tienes menos control.",
+        "en": "With no Frostbite, your Chills do not freeze: outside a group you have less control."
+      },
+      {
+        "es": "Contra enemigos que resisten o son inmunes a la Escarcha casi todo tu daño se pierde.",
+        "en": "Against enemies that resist or are immune to Frost almost all your damage is lost."
+      }
+    ],
+    "status": "analysis",
+    "gameVersion": "forever-launch-2026-11",
+    "sources": [
+      "wowhead-forever-talent-calc"
+    ],
+    "updated": "2026-11-19"
   }
 ]
