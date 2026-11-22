@@ -257,14 +257,24 @@ export const talentSchema = z
 export type Talent = z.infer<typeof talentSchema>;
 
 /**
- * The content a build is for, in the order of the builds index: leveling 1–60,
- * then level 60 PvP, dungeons and raid. Language-neutral ids; the localized URL
- * slugs live in src/lib/build-routes.ts.
+ * The content a build is for, in the order of the builds index and the menu:
+ * leveling 1–60, then PvE at 60 (dungeons and raid) and PvP. Language-neutral
+ * ids; the localized URL slugs live in src/lib/build-routes.ts.
  */
-export const BUILD_USES = ['leveling', 'pvp', 'dungeons', 'raid'] as const;
+export const BUILD_USES = ['leveling', 'dungeons', 'raid', 'pvp'] as const;
 export type BuildUse = (typeof BUILD_USES)[number];
 export const BUILD_SPECS = ['arcane', 'fire', 'frost'] as const;
 export type BuildSpec = (typeof BUILD_SPECS)[number];
+/** What a build is made for inside its content: content pages group their builds by it. */
+export const BUILD_FOCUSES = ['aoe', 'single-target', 'battlegrounds', 'world-pvp'] as const;
+export type BuildFocus = (typeof BUILD_FOCUSES)[number];
+/** Focuses that make sense in each content, in the order its page shows them. */
+export const USE_FOCUSES: Record<BuildUse, readonly BuildFocus[]> = {
+  leveling: ['aoe', 'single-target'],
+  dungeons: ['aoe', 'single-target'],
+  raid: ['single-target'],
+  pvp: ['battlegrounds', 'world-pvp'],
+};
 
 export const buildSchema = z
   .object({
@@ -281,14 +291,16 @@ export const buildSchema = z
     recommendedFor: z.array(z.enum(BUILD_USES)).default([]),
     /** Uses (from `uses`) where it works but I advise against it. Any other use shows it as «viable». */
     discouragedFor: z.array(z.enum(BUILD_USES)).default([]),
+    /** What it is made for inside its contents (AoE, single target, battlegrounds, world PvP). Valid for every use. */
+    focus: z.enum(BUILD_FOCUSES),
     /** Tree with the most points: the build's spec in the index and its colour. */
     spec: z.enum(BUILD_SPECS),
     /** Second tree for hybrid builds (e.g. Frost with Fire for Frostfire Bolt). */
     hybridWith: z.enum(BUILD_SPECS).optional(),
     /** One line for the builds index. */
     tagline: localized,
-    /** Why pick it, as short paragraphs under its card on the content page. */
-    intro: z.array(localized).default([]),
+    /** Why pick it, one short paragraph under its card on the content page. */
+    intro: z.array(localized).max(1).default([]),
     /** Client icon file name (public/icons/<icon>.jpg) for the builds index card. Defaults to the first key talent's icon. */
     icon: z.string().optional(),
     /** Character level the build is made for; points available = level − 9 (+ Talented). */
@@ -315,33 +327,28 @@ export const buildSchema = z
       .default([]),
     /** First level the build is meant for (e.g. 22 for an AoE build). Defaults to 1. */
     fromLevel: z.number().int().min(1).max(60).optional(),
-    /** Main goal in a few words, shown on the build picker. */
-    goal: localized.optional(),
-    /** Who should pick it, shown on the build picker. */
-    profile: localized.optional(),
-    /** Its main upside and downside in a few words, for the build picker. */
+    /** Its main upside and downside in one line each, under the chips of its page and on its index card. */
     upside: localized.optional(),
     downside: localized.optional(),
     /** Talents to highlight on the card (must have points). */
     keyTalents: z.array(id).max(5).default([]),
     /** One or two sentences: what the build does and when to pick it. */
     summary: localized,
-    /** How to play it, as short steps (single target when `aoe` or `cooldowns` are set). */
-    playstyle: z.array(localized).min(1),
-    /** Which spell to cast with Clearcasting (Arcane Concentration), most valuable first. */
-    clearcasting: z.array(localized).default([]),
-    /** Same as `playstyle`, for several enemies. */
-    aoe: z.array(localized).default([]),
-    /** When to use cooldowns and mana recovery. */
-    cooldowns: z.array(localized).default([]),
+    /** How to play it in its content: three or four one-line steps. */
+    playstyle: z.array(localized).min(1).max(4),
+    /** When to use cooldowns and mana recovery, apart from the steps. */
+    cooldowns: z.array(localized).max(3).default([]),
     /**
-     * Builds without a point `order` (level 60): why each group of talents is
-     * there. `talents` must have points; they show as icons next to the text.
+     * Why each group of talents is there: four to six rows, two sentences at most,
+     * with the talent's real value and what it does in this content. `talents`
+     * must have points; they show as icons next to the text.
      */
-    reasons: z.array(z.object({ talents: z.array(id).min(1), text: localized }).strict()).default([]),
-    strengths: z.array(localized).default([]),
-    weaknesses: z.array(localized).default([]),
-    /** Items, enchantments or consumables that matter for this build, if any. */
+    reasons: z.array(z.object({ talents: z.array(id).min(1), text: localized }).strict()).max(6).default([]),
+    /** Two to four short tips that are not steps of the rotation. */
+    tips: z.array(localized).max(4).default([]),
+    /** Item cards from items.json (checked in data.ts). */
+    itemIds: z.array(id).default([]),
+    /** Items, enchantments or consumables that matter for this build, if any, as text. */
     items: z.array(localized).default([]),
     /**
      * Talent variants: a few points moved for another situation. `remove` and
@@ -363,8 +370,8 @@ export const buildSchema = z
           .strict(),
       )
       .default([]),
-    /** Stat priority and gear advice, most important first. Empty until there is real data. */
-    stats: z.array(localized).default([]),
+    /** Stat priority, most important first, three at most. Empty until there is real data. */
+    stats: z.array(localized).max(3).default([]),
     /** Page with the in-depth explanation, if there is one. */
     page: z.enum(PAGE_IDS).optional(),
     status: z.enum(STATUSES),
@@ -381,7 +388,8 @@ export const buildSchema = z
   .refine((b) => b.discouragedFor.every((use) => b.uses.includes(use) && !b.recommendedFor.includes(use)), {
     message: 'discouragedFor must list uses from `uses` that are not in recommendedFor',
   })
-  .refine((b) => b.hybridWith !== b.spec, { message: 'hybridWith must be another tree' });
+  .refine((b) => b.hybridWith !== b.spec, { message: 'hybridWith must be another tree' })
+  .refine((b) => b.uses.every((use) => USE_FOCUSES[use].includes(b.focus)), { message: 'focus must make sense for every use (USE_FOCUSES)' });
 export type Build = z.infer<typeof buildSchema>;
 
 /**

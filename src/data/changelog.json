@@ -1,5 +1,34 @@
 [
   {
+    "id": "2026-11-22-builds-by-content",
+    "date": "2026-11-22",
+    "type": "guide",
+    "title": {
+      "es": "Builds por contenido y enfoque: leveo, PvE y JcJ",
+      "en": "Builds by content and focus: leveling, PvE and PvP"
+    },
+    "body": {
+      "es": "Las builds se agrupan en leveo, PvE (mazmorras y banda) y JcJ, y dentro de cada contenido por enfoque: AoE, un objetivo, campos de batalla y JcJ de mundo. Escarcha AoE pasa a ser la build de área en solitario desde el nivel 22, sin Mordiescarcha. Builds nuevas: Arcano y Fuego de mazmorras, Fuego profundo para banda (teórica hasta el 9 de diciembre), Escarcha con Contrahechizo para campos de batalla y Escarcha profunda de mundo. Cada página es más corta: por qué cada talento, consejos, cómo se juega y equipo.",
+      "en": "Builds are grouped into leveling, PvE (dungeons and raid) and PvP, and inside each content by focus: AoE, single target, battlegrounds and world PvP. Frost AoE becomes the solo AoE build from level 22, without Frostbite. New builds: Arcane and Fire dungeon, Deep Fire for raids (theory until 9 December), Frost with Counterspell for battlegrounds and Deep Frost world PvP. Every page is shorter: why each talent, tips, how to play and gear."
+    },
+    "pages": [
+      "builds"
+    ],
+    "refs": [
+      "build:frost-leveling",
+      "build:frost-leveling-single-target",
+      "build:frost-leveling-deep",
+      "build:arcane-leveling",
+      "build:arcane-fire-leveling",
+      "build:fire-leveling",
+      "build:frost-dungeons-aoe",
+      "build:dungeons-arcane-fire",
+      "build:raid-fire",
+      "build:pvp-frost-counterspell",
+      "build:pvp-deep-frost"
+    ]
+  },
+  {
     "id": "2026-11-19-dungeon-aoe-build",
     "date": "2026-11-19",
     "type": "guide",

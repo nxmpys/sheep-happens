@@ -6,8 +6,8 @@
  */
 import { pathFor, ROUTES, type Locale, type NavGroup, type PageId } from '../i18n/routes';
 import { NAV_LABELS } from '../i18n/ui';
-import { USE_TITLES } from '../i18n/builds';
-import { contentPath } from './build-routes';
+import { GROUP_LABELS, USE_TITLES } from '../i18n/builds';
+import { USE_GROUP, contentPath } from './build-routes';
 import type { BuildUse, SpecTree } from './schemas';
 
 export interface MenuLink {
@@ -51,8 +51,17 @@ export function menuBlocks(group: NavGroup, locale: Locale, opts: { base?: strin
         { links: [...items.slice(firstTree).filter((link) => !link.tree), ...sections.slice(-1)] },
       ];
     }
-    case 'builds':
-      return [{ links: (opts.contents ?? []).map((use) => ({ label: USE_TITLES[locale][use], url: contentPath(use, locale, { base }) })) }];
+    case 'builds': {
+      // Leveling, then PvE with dungeons and raid under its own heading, then PvP.
+      const link = (use: BuildUse): MenuLink => ({ label: USE_TITLES[locale][use], url: contentPath(use, locale, { base }) });
+      const contents = opts.contents ?? [];
+      const pve = contents.filter((use) => USE_GROUP[use] === 'pve');
+      return [
+        { links: contents.filter((use) => USE_GROUP[use] === 'leveling').map(link) },
+        { heading: GROUP_LABELS[locale].pve, links: pve.map(link) },
+        { links: contents.filter((use) => USE_GROUP[use] === 'pvp').map(link) },
+      ].filter((block) => block.links.length > 0);
+    }
     case 'tools':
       // In the order its hub page shows them; the addon apart, under its own heading.
       return [{ links: [...sections, ...items.filter((link) => link.page !== 'addons')] }, { heading: 'Addons', links: items.filter((link) => link.page === 'addons') }];

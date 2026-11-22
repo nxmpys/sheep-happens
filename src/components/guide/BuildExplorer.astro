@@ -3,21 +3,21 @@
  * The builds index, generated from builds.json, so a new build needs no edit
  * here. Every build is a card that links straight to its own page: its icon
  * over a glow in its trees' colours, the contents it is for, the points per
- * tree, its key talents and one upside and one downside. A row of content
- * filters (all, leveling 1-60, PvP, dungeons, raid) narrows the cards; a
- * content without builds says so. Under the cards, each content with builds
- * links to its page (/builds/<use>/), where the builds are compared tree by tree.
+ * tree, its key talents and one upside and one downside. A row of filters
+ * (all, leveling, PvE, PvP) narrows the cards; a group without builds says so.
+ * Under the cards, each content links to its page (/builds/<use>/), where its
+ * builds are grouped by focus.
  * Without JavaScript the filters stay hidden and every card is shown.
  */
 import Icon from '../ui/Icon.astro';
-import { SPEC_LABELS, USE_TITLES, tb } from '../../i18n/builds';
+import { FOCUS_LABELS, GROUP_LABELS, SPEC_LABELS, USE_TITLES, tb } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
 import { buildRole, type BuildRole } from '../../lib/build-roles';
-import { buildPath, contentPages, contentPath } from '../../lib/build-routes';
+import { BUILD_GROUPS, USE_GROUP, buildPath, contentPages, contentPath, type BuildGroup } from '../../lib/build-routes';
 import { builds, getTalent, talentText, talents } from '../../lib/data';
 import { iconPath } from '../../lib/icons';
 import { localName } from '../../lib/names';
-import { BUILD_USES, type Build, type BuildUse } from '../../lib/schemas';
+import type { Build } from '../../lib/schemas';
 import { pointsByTree, totalPoints } from '../../lib/talents';
 
 const locale = getLocale(Astro);
@@ -27,10 +27,9 @@ const TREES = ['arcane', 'fire', 'frost'] as const;
 
 const bestRole = (build: Build) => Math.min(...build.uses.map((use) => ROLE_ORDER[buildRole(build, use)]));
 const list = [...builds].sort((a, b) => bestRole(a) - bestRole(b));
-const counts = Object.fromEntries(BUILD_USES.map((use) => [use, builds.filter((b) => b.uses.includes(use)).length])) as Record<BuildUse, number>;
-const empty = BUILD_USES.filter((use) => counts[use] === 0);
+const groupsOf = (build: Build) => [...new Set(build.uses.map((use) => USE_GROUP[use]))];
+const counts = Object.fromEntries(BUILD_GROUPS.map((group) => [group, builds.filter((b) => groupsOf(b).includes(group)).length])) as Record<BuildGroup, number>;
 const pages = contentPages(builds);
-const soon = empty.filter((use) => !pages.includes(use));
 
 const talentIcon = (id: string) => talentText.talents[id]?.icon;
 // The content titles already say 1-60 or 60; only another range needs its own tag.
@@ -51,10 +50,10 @@ const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon)
       <span class="bx__count">{builds.length}</span>
     </button>
     {
-      BUILD_USES.map((use) => (
-        <button type="button" class:list={['bx__filter', { 'bx__filter--empty': counts[use] === 0 }]} data-filter={use} aria-pressed="false">
-          {USE_TITLES[locale][use]}
-          <span class="bx__count">{counts[use]}</span>
+      BUILD_GROUPS.map((group) => (
+        <button type="button" class:list={['bx__filter', { 'bx__filter--empty': counts[group] === 0 }]} data-filter={group} aria-pressed="false">
+          {GROUP_LABELS[locale][group]}
+          <span class="bx__count">{counts[group]}</span>
         </button>
       ))
     }
@@ -68,7 +67,7 @@ const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon)
         const total = totalPoints(build.points);
         const second = build.hybridWith ?? build.spec;
         return (
-          <li class={`bx__item school-${build.spec}`} data-uses={build.uses.join(' ')} style={`--i: ${i}; view-transition-name: bx-${build.id}`}>
+          <li class={`bx__item school-${build.spec}`} data-uses={groupsOf(build).join(' ')} style={`--i: ${i}; view-transition-name: bx-${build.id}`}>
             <a class="bx__card has-glow" href={buildPath(build, locale, { base })} data-no-spell-links>
               <span class="arcane-glow" aria-hidden="true" />
               <span class={`bx__banner bx__banner--${build.spec} bx__banner--with-${second}`} aria-hidden="true">
@@ -86,6 +85,7 @@ const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon)
                     </span>
                   );
                 })}
+                <span class="bx__tag">{FOCUS_LABELS[locale][build.focus]}</span>
                 {levelsTag(build) && <span class="bx__tag">{levelsTag(build)}</span>}
               </span>
               <span class="bx__body">
@@ -164,40 +164,23 @@ const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon)
   </ul>
 
   {
-    BUILD_USES.filter((use) => counts[use] === 0).map((use) => (
-      <p class="bx__none" data-none={use} hidden>
+    BUILD_GROUPS.filter((group) => counts[group] === 0).map((group) => (
+      <p class="bx__none" data-none={group} hidden>
         <Icon name="pending" size={18} />
         {tb(locale, 'index.none')}
       </p>
     ))
   }
 
-  {
-    soon.length > 0 && (
-      <p class="bx__soon" data-soon>
-        <span class="bx__soon-uses">
-          {soon.map((use) => (
-            <span class="bx__soon-use">{USE_TITLES[locale][use]}</span>
-          ))}
-        </span>
-        <span>{tb(locale, 'index.soon')}</span>
-      </p>
-    )
-  }
-
-  {
-    pages.length > 0 && (
-      <ul class="bx__compare">
-        {pages.map((use) => (
-          <li data-compare={use}>
-            <a href={contentPath(use, locale, { base })}>
-              {counts[use] > 0 ? tb(locale, 'index.compare', { use: USE_TITLES[locale][use] }) : USE_TITLES[locale][use]}
-            </a>
-          </li>
-        ))}
-      </ul>
-    )
-  }
+  <ul class="bx__compare">
+    {
+      pages.map((use) => (
+        <li data-compare={USE_GROUP[use]}>
+          <a href={contentPath(use, locale, { base })}>{USE_TITLES[locale][use]}</a>
+        </li>
+      ))
+    }
+  </ul>
 </div>
 
 <script>
@@ -207,7 +190,6 @@ const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon)
     const buttons = [...bar.querySelectorAll<HTMLButtonElement>('[data-filter]')];
     const items = [...root.querySelectorAll<HTMLElement>('[data-uses]')];
     const nones = [...root.querySelectorAll<HTMLElement>('[data-none]')];
-    const soons = [...root.querySelectorAll<HTMLElement>('[data-soon]')];
     const compares = [...root.querySelectorAll<HTMLElement>('[data-compare]')];
     bar.hidden = items.length === 0;
 
@@ -228,7 +210,6 @@ const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon)
         if (match) item.style.setProperty('--i', String(shown++));
       }
       for (const none of nones) none.hidden = none.dataset.none !== filter;
-      for (const soon of soons) soon.hidden = filter !== 'all';
       for (const link of compares) link.hidden = filter !== 'all' && link.dataset.compare !== filter;
       root.dataset.filter = filter;
       movePill();
@@ -678,8 +659,7 @@ const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon)
   }
 
   /* ---- Contents without builds ---- */
-  .bx__none,
-  .bx__soon {
+  .bx__none {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -692,23 +672,9 @@ const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon)
     color: var(--text-muted);
   }
   .bx__none[hidden],
-  .bx__soon[hidden],
   .bx__compare li[hidden] {
     display: none;
   }
-  .bx__soon-uses {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-1);
-  }
-  .bx__soon-use {
-    padding: 0.1em 0.65em;
-    border-radius: 999px;
-    background: var(--surface-2);
-    font-weight: 600;
-    color: var(--text);
-  }
-
   .bx__compare {
     display: flex;
     flex-wrap: wrap;

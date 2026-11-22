@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { buildRole } from '../src/lib/build-roles';
-import { buildIcon, buildPath, canonicalUse, contentPages, contentPath, routeConflicts, usedContents } from '../src/lib/build-routes';
-import { buildSections } from '../src/lib/build-page';
+import { USE_GROUP, buildIcon, buildPath, canonicalUse, contentPages, contentPath, routeConflicts, usedContents } from '../src/lib/build-routes';
+import { buildAnchor, buildSections, focusSections } from '../src/lib/build-page';
 import { checkIntegrity } from '../src/lib/data';
 import { buildSchema, type Build } from '../src/lib/schemas';
 import { applySwap } from '../src/lib/talents';
@@ -27,8 +27,12 @@ describe('build pages', () => {
   it('give a page to the contents the guide links to, with or without builds', () => {
     expect(contentPath('leveling', 'es')).toBe('/es/builds/leveo/');
     expect(usedContents([base, build('dual', { uses: ['dungeons', 'leveling'] })])).toEqual(['leveling', 'dungeons']);
-    expect(contentPages([])).toEqual(['leveling', 'dungeons', 'pvp']);
-    expect(contentPages([build('raid', { uses: ['raid'] })])).toEqual(['leveling', 'dungeons', 'pvp', 'raid']);
+    expect(contentPages([])).toEqual(['leveling', 'dungeons', 'raid', 'pvp']);
+    expect(contentPath('raid', 'es')).toBe('/es/builds/banda/');
+  });
+
+  it('group the contents into leveling, PvE and PvP', () => {
+    expect(USE_GROUP).toEqual({ leveling: 'leveling', dungeons: 'pve', raid: 'pve', pvp: 'pvp' });
   });
 
   it('never share a URL', () => {
@@ -47,16 +51,41 @@ describe('build pages', () => {
     expect(buildIcon({ spec: 'fire', hybridWith: undefined })).toBe('fire');
   });
 
-  it('share one template with stable section anchors', () => {
-    expect(buildSections('es').map((s) => s.id)).toEqual([
-      'pros-y-contras',
+  it('share one template with stable section anchors, in the page order', () => {
+    const full = build('full', {
+      reasons: [{ talents: ['ice-lance'], text: { es: 'x', en: 'x' } }],
+      tips: [{ es: 'x', en: 'x' }],
+      itemIds: ['icefury-wand'],
+    });
+    expect(buildSections('es', full).map((s) => s.id)).toEqual([
       'talentos',
-      'por-que-estos-puntos',
+      'por-que-estos-talentos',
+      'consejos',
+      'como-se-juega',
+      'equipo',
+      'orden-de-puntos',
       'variantes',
-      'rotacion',
-      'estadisticas-y-equipo',
     ]);
-    expect(buildSections('en')).toHaveLength(buildSections('es').length);
+    expect(buildSections('en', full)).toHaveLength(buildSections('es', full).length);
+  });
+
+  it('leave out the sections a build has no data for', () => {
+    const bare = build('bare', { reasons: [], tips: [], itemIds: [], items: [], stats: [], order: undefined, orderNotes: [], variants: [] });
+    expect(buildSections('en', bare).map((s) => s.key)).toEqual(['talents', 'rotation']);
+  });
+
+  it('group a content page by focus, recommended first', () => {
+    const aoe = build('aoe', { focus: 'aoe', slug: { es: 'area', en: 'aoe' } });
+    const viable = build('viable', { focus: 'single-target', slug: { es: 'viable', en: 'viable' } });
+    const recommended = build('rec', { focus: 'single-target', slug: { es: 'rec', en: 'rec' }, recommendedFor: ['leveling'] });
+    const sections = focusSections('leveling', 'es', [viable, aoe, recommended]);
+    expect(sections.map((s) => [s.id, s.text])).toEqual([
+      ['aoe', 'AoE'],
+      ['un-objetivo', 'Un objetivo'],
+    ]);
+    expect(sections[1]!.builds.map((b) => b.id)).toEqual(['rec', 'viable']);
+    expect(focusSections('raid', 'es', [aoe])).toEqual([]);
+    expect(buildAnchor(aoe, 'en')).toBe('aoe');
   });
 });
 

@@ -51,7 +51,7 @@ const data: PageFrontmatter = {
   tags: [],
   wide: true,
 };
-const headings = buildSections(locale).map((s) => ({ depth: 2, slug: s.id, text: s.text }));
+const headings = buildSections(locale, build).map((s) => ({ depth: 2, slug: s.id, text: s.text }));
 ---
 
 <GuideLayout

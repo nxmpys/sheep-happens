@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-11-10 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
+> Creado: 2026-10-12 · Revisión: 2026-11-22 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -38,7 +38,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [x] **Rehacer las builds de leveo** con el árbol del 28 oct (2026-10-30): Arcano y Escarcha, Arcano hacia mazmorras, Escarcha y Fuego, del 10 al 60, con `order` y `orderNotes`. Quitado el 302 de `/builds/leveo/`.
 - [ ] Probar las builds de leveo en el juego al subir del 30: las dos de Arcano están probadas solo en la beta (`testedUpTo: 30`; quítalo al llegar al 60) y las de Escarcha y Fuego siguen en `analysis`. Decidir entonces cuál lleva `recommendedFor`.
 - [x] Repaso de las builds de leveo publicadas tras el lanzamiento (2026-11-10): Icy Veins, Wowhead, Mobalytics, Warcraft Tavern, talentsforever, classicwowforever, wowforeverbuilds, Conquest Capped, WoWVendor y Sportskeeda. Añadidas «Arcano y Fuego» (`arcane-fire-leveling`, el final de Arcano de casi todas las guías) y «Escarcha profunda» (`frost-leveling-deep`, la de Icy Veins), las dos con Especialización en varitas y Recuperación Arcana en vez de Canalización mejorada, que todas las guías cogen a 5/5. Sin probar en el juego.
-- [x] Build de Escarcha para farmeo AoE en solitario (Mobalytics 18/0/33: Escarcha permanente, Nova de Escarcha mejorada, Alcance ártico, sin Mordiescarcha): propuesta el 2026-11-10 y no elegida. «Escarcha AoE» sigue pensada para mazmorras y coge Mordiescarcha, aunque la página de farmeo AoE dice que no.
+- [x] Build de Escarcha para farmeo AoE en solitario: propuesta el 2026-11-10 y no elegida entonces; hecha el 2026-11-22. «Escarcha AoE» (`frost-leveling`, mismo slug) es ahora la de área en solitario desde el 22, sin Mordiescarcha, con Ventisca mejorada, Escarcha permanente, Nova de Escarcha mejorada, Alcance ártico, Canalización de Escarcha, Trizar, Barrera de hielo y Meditación Arcana. Ver la sección 4.
 - [ ] Comprobar en el juego si Cólera Arcana requiere Explosión Arcana: la calculadora de Wowhead lo marca así desde el 28 oct, sin mención en ninguna nota.
 - [ ] Filas de Piroexplosión, Ola explosiva, Combustión, Presencia mental y Poder Arcano (ahora son «Referencia Classic» en `milestones.json`).
 - [x] Requisito entre Dedos de Escarcha y Lanza de hielo (2026-10-30): Dedos de Escarcha requiere Lanza de hielo. Discrepancia cerrada en Fuentes, Cambios y `content-validation.md`.
@@ -184,7 +184,7 @@ Forever añade contenido en todos los rangos de nivel:
 
 Muchos lectores no querrán leer la teoría: buscarán una build que funcione y cómo jugarla. Al principio, **builds de leveo y de farmeo AoE**; cuando la gente llegue a 60, de mazmorras, banda, PvP y duelos. El contenido en profundidad se queda para quien quiera entender el Mago.
 
-El 2026-10-31 retiré todas las builds (`builds.json` está vacío). La guía enlaza solo a las páginas de contenido (`<BuildLink use="leveling">`, `dungeons`, `pvp`), que existen aunque no tengan builds, y nunca a una build concreta, porque las builds cambian. Las URL de las builds retiradas redirigen con un 302 en `public/_redirects`: si una build nueva reutiliza su slug, quita esas líneas.
+El 2026-10-31 retiré todas las builds; desde el lanzamiento vuelven a estar en `builds.json` (11 el 2026-11-22). La guía enlaza solo a las páginas de contenido (`<BuildLink use="leveling">`, `dungeons`, `raid`, `pvp`), que existen aunque no tengan builds, y nunca a una build concreta, porque las builds cambian. Las URL de las builds retiradas redirigen con un 302 en `public/_redirects`: si una build nueva reutiliza su slug, quita esas líneas (hecho el 2026-11-22 con `/mazmorras/arcano-fuego/`).
 
 ### Objetivo: builds viables que encajen con el contenido (fijado el 2026-10-18)
 
@@ -204,6 +204,25 @@ No hace falta tocar el diseño ni las páginas: la tarjeta y los filtros salen d
 4. Para una build de leveo que ya existe a nivel 30, no crees otra: sube su `level` a 60 y amplía `order` (punto 7 de CONTRIBUTING.md).
 5. Si tiene guía en profundidad, enlázala con `page`; si no, la ficha completa queda en Builds.
 6. `npm run check` y entrada en el historial con `refs: ["build:<id>"]`.
+
+### Estructura por contenido y enfoque (2026-11-22)
+
+- [x] Tres grupos: **Leveo**, **PvE** (Mazmorras y Banda) y **JcJ**. Filtros del índice y menú con el encabezado PvE. `/builds/banda/` existe aunque no tenga builds.
+- [x] Campo `focus`: AoE y un objetivo (leveo y mazmorras), un objetivo (banda), campos de batalla y JcJ de mundo. La página de cada contenido tiene un `<h2>` por enfoque y el nombre de cada build en `<h3>`.
+- [x] Una recomendada por uso, enfoque y nivel (`recommendedConflicts`).
+- [x] Página de build corta: chips y una línea a favor y otra en contra; Talentos; Por qué estos talentos (`reasons`); Consejos (`tips`); Cómo se juega con los cooldowns aparte; Equipo (`itemIds`, `items`, `stats`); Orden de puntos plegado (solo leveo); Variantes. Las secciones vacías no salen.
+- [x] Builds de ese día: Escarcha AoE pasa a ser la de área en solitario (desde el 22, sin Mordiescarcha); las 5 de un objetivo, recortadas; Escarcha AoE de mazmorras, centrada en la amenaza; nuevas Arcano y Fuego de mazmorras, Fuego profundo de banda, Escarcha con Contrahechizo (campos de batalla) y Escarcha profunda de mundo. Recomendadas: Escarcha AoE y Escarcha a un objetivo (leveo), Escarcha AoE de mazmorras y Arcano y Fuego (mazmorras), Fuego profundo (banda), y las dos de JcJ.
+- [x] Fuego profundo queda en 18/30/3: Combustión, Meditación Arcana y Precisión 3/3 no caben a la vez en 51 puntos (Combustión pide 30 puntos de Fuego encima y Meditación Arcana, 15 de Arcano). Combustión es su variante, para cuando el equipo cubra el golpe.
+
+#### Pendiente de probar en el juego
+
+- [ ] **Armadura de hielo y procs**: solo BlazingBoost dice que su enfriamiento sobre quien te golpea activa Mordiescarcha y Dedos de Escarcha. Las builds lo citan como suyo; confirmarlo o quitarlo.
+- [ ] **Escarcha AoE de leveo**: ritmo real del 22 al 40 sin Mordiescarcha ni Barrera de hielo (llega al 41), y si Precisión primero compensa frente a Descarga de Escarcha mejorada.
+- [ ] **Arcano y Fuego de mazmorras**: maná en jefes largos con Explosión Arcana cargada y si Ignición 2/5 merece más que Alma ardiente.
+- [ ] **Fuego profundo (banda)**: teórica hasta el 9 de diciembre. Tope de golpe contra jefes, valor de Combustión frente al tercer punto de Precisión y si Chamuscar mejorado de cada Mago se apila por separado como dice su texto.
+- [ ] **Escarcha con Contrahechizo**: si compensa la variante con Precisión contra jugadores de nivel 60 (prueba 8 de `docs/pvp-research.md`).
+- [ ] **Escarcha profunda de mundo**: maná al pelear mientras farmeas y si Incineración 5/5 en Lanza de hielo rinde más que Contrahechizo mejorado.
+- [ ] **Equipo de nivel 60 de mazmorra y banda**: aún sin datos fiables; las builds lo dicen en «Equipo».
 
 ### Cómo debería ser
 
@@ -241,6 +260,25 @@ Hecho en parte el 2026-10-14: las builds del 1 al 30 están razonadas con los va
 «¿Qué raza hago?» es de las primeras preguntas al crear un personaje. La respuesta depende de para qué juegues, así que no basta con una «mejor raza»: hay que explicar el porqué y en qué situación.
 
 Publicada el 2026-10-13 con las raciales de la beta. Hay que revisarla con cada cambio de raciales y tras el lanzamiento.
+
+### Estructura por contenido y enfoque (2026-11-22)
+
+- [x] Tres grupos: **Leveo**, **PvE** (Mazmorras y Banda) y **JcJ**. Filtros del índice y menú con el encabezado PvE. `/builds/banda/` existe aunque no tenga builds.
+- [x] Campo `focus`: AoE y un objetivo (leveo y mazmorras), un objetivo (banda), campos de batalla y JcJ de mundo. La página de cada contenido tiene un `<h2>` por enfoque y el nombre de cada build en `<h3>`.
+- [x] Una recomendada por uso, enfoque y nivel (`recommendedConflicts`).
+- [x] Página de build corta: chips y una línea a favor y otra en contra; Talentos; Por qué estos talentos (`reasons`); Consejos (`tips`); Cómo se juega con los cooldowns aparte; Equipo (`itemIds`, `items`, `stats`); Orden de puntos plegado (solo leveo); Variantes. Las secciones vacías no salen.
+- [x] Builds de ese día: Escarcha AoE pasa a ser la de área en solitario (desde el 22, sin Mordiescarcha); las 5 de un objetivo, recortadas; Escarcha AoE de mazmorras, centrada en la amenaza; nuevas Arcano y Fuego de mazmorras, Fuego profundo de banda, Escarcha con Contrahechizo (campos de batalla) y Escarcha profunda de mundo. Recomendadas: Escarcha AoE y Escarcha a un objetivo (leveo), Escarcha AoE de mazmorras y Arcano y Fuego (mazmorras), Fuego profundo (banda), y las dos de JcJ.
+- [x] Fuego profundo queda en 18/30/3: Combustión, Meditación Arcana y Precisión 3/3 no caben a la vez en 51 puntos (Combustión pide 30 puntos de Fuego encima y Meditación Arcana, 15 de Arcano). Combustión es su variante, para cuando el equipo cubra el golpe.
+
+#### Pendiente de probar en el juego
+
+- [ ] **Armadura de hielo y procs**: solo BlazingBoost dice que su enfriamiento sobre quien te golpea activa Mordiescarcha y Dedos de Escarcha. Las builds lo citan como suyo; confirmarlo o quitarlo.
+- [ ] **Escarcha AoE de leveo**: ritmo real del 22 al 40 sin Mordiescarcha ni Barrera de hielo (llega al 41), y si Precisión primero compensa frente a Descarga de Escarcha mejorada.
+- [ ] **Arcano y Fuego de mazmorras**: maná en jefes largos con Explosión Arcana cargada y si Ignición 2/5 merece más que Alma ardiente.
+- [ ] **Fuego profundo (banda)**: teórica hasta el 9 de diciembre. Tope de golpe contra jefes, valor de Combustión frente al tercer punto de Precisión y si Chamuscar mejorado de cada Mago se apila por separado como dice su texto.
+- [ ] **Escarcha con Contrahechizo**: si compensa la variante con Precisión contra jugadores de nivel 60 (prueba 8 de `docs/pvp-research.md`).
+- [ ] **Escarcha profunda de mundo**: maná al pelear mientras farmeas y si Incineración 5/5 en Lanza de hielo rinde más que Contrahechizo mejorado.
+- [ ] **Equipo de nivel 60 de mazmorra y banda**: aún sin datos fiables; las builds lo dicen en «Equipo».
 
 ### Cómo debería ser
 

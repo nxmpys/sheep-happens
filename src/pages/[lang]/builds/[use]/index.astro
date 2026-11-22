@@ -2,7 +2,8 @@
 /**
  * One page per content, generated from builds.json, with or without builds yet:
  * /es/builds/leveo/, /en/builds/leveling/. It lists every build of that
- * content with its three trees; the leveling page also links the leveling guides.
+ * content by focus, with its three trees; the leveling page also links the
+ * leveling guides. The page index shows each focus and the builds under it.
  */
 import BuildContent from '../../../../components/guide/BuildContent.astro';
 import HubCards from '../../../../components/guide/HubCards.astro';
@@ -11,6 +12,7 @@ import { LOCALES, type Locale } from '../../../../i18n/routes';
 import { CONTENT_PAGES, USE_TITLES, tb } from '../../../../i18n/builds';
 import { metaDescription } from '../../../../lib/seo';
 import { USE_SLUGS, contentPages, contentPath } from '../../../../lib/build-routes';
+import { buildAnchor, focusSections } from '../../../../lib/build-page';
 import { builds, currentVersion } from '../../../../lib/data';
 import type { BuildUse, PageFrontmatter } from '../../../../lib/schemas';
 
@@ -43,7 +45,13 @@ const data: PageFrontmatter = {
   wide: true,
 };
 const guidesId = locale === 'es' ? 'guias-de-leveo' : 'leveling-guides';
-const headings = use === 'leveling' ? [{ depth: 2, slug: guidesId, text: tb(locale, 'content.guides') }] : [];
+const headings = [
+  ...focusSections(use, locale, builds).flatMap((section) => [
+    { depth: 2, slug: section.id, text: section.text },
+    ...section.builds.map((b) => ({ depth: 3, slug: buildAnchor(b, locale), text: b.name[locale] })),
+  ]),
+  ...(use === 'leveling' ? [{ depth: 2, slug: guidesId, text: tb(locale, 'content.guides') }] : []),
+];
 ---
 
 <GuideLayout

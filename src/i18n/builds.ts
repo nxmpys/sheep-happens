@@ -3,32 +3,66 @@
  * and races pages use them.
  */
 import type { Locale } from './routes';
-import type { BuildSpec, BuildUse, Racial } from '../lib/schemas';
+import type { BuildFocus, BuildSpec, BuildUse, Racial } from '../lib/schemas';
+import type { BuildGroup } from '../lib/build-routes';
 
 export const USE_LABELS: Record<Locale, Record<BuildUse, string>> = {
-  es: { leveling: 'Leveo', pvp: 'JcJ', dungeons: 'Mazmorras', raid: 'Banda' },
-  en: { leveling: 'Leveling', pvp: 'PvP', dungeons: 'Dungeons', raid: 'Raid' },
+  es: { leveling: 'Leveo', dungeons: 'Mazmorras', raid: 'Banda', pvp: 'JcJ' },
+  en: { leveling: 'Leveling', dungeons: 'Dungeons', raid: 'Raid', pvp: 'PvP' },
 };
 
 /** Content blocks of the builds index, with their level range. */
 export const USE_TITLES: Record<Locale, Record<BuildUse, string>> = {
-  es: { leveling: 'Leveo 1-60', pvp: 'JcJ 60', dungeons: 'Mazmorras 60', raid: 'Banda 60' },
-  en: { leveling: 'Leveling 1-60', pvp: 'PvP 60', dungeons: 'Dungeons 60', raid: 'Raid 60' },
+  es: { leveling: 'Leveo 1-60', dungeons: 'Mazmorras 60', raid: 'Banda 60', pvp: 'JcJ 60' },
+  en: { leveling: 'Leveling 1-60', dungeons: 'Dungeons 60', raid: 'Raid 60', pvp: 'PvP 60' },
+};
+
+/** The three groups of the builds index filters and the menu. */
+export const GROUP_LABELS: Record<Locale, Record<BuildGroup, string>> = {
+  es: { leveling: 'Leveo', pve: 'PvE', pvp: 'JcJ' },
+  en: { leveling: 'Leveling', pve: 'PvE', pvp: 'PvP' },
+};
+
+export const FOCUS_LABELS: Record<Locale, Record<BuildFocus, string>> = {
+  es: { aoe: 'AoE', 'single-target': 'Un objetivo', battlegrounds: 'Campos de batalla', 'world-pvp': 'JcJ de mundo' },
+  en: { aoe: 'AoE', 'single-target': 'Single target', battlegrounds: 'Battlegrounds', 'world-pvp': 'World PvP' },
+};
+
+/** One line under each focus heading of a content page: what that focus is for there. */
+export const FOCUS_LINES: Record<Locale, Partial<Record<`${BuildUse}/${BuildFocus}`, string>>> = {
+  es: {
+    'leveling/aoe': 'Subir en solitario reuniendo grupos de enemigos y matándolos con área.',
+    'leveling/single-target': 'Subir con misiones, de uno en uno.',
+    'dungeons/aoe': 'Limpiar grupos sin quitarle los enemigos al tanque.',
+    'dungeons/single-target': 'Mucho daño a un objetivo, para jefes y enemigos peligrosos.',
+    'raid/single-target': 'Mucho daño a un objetivo y maná para peleas largas.',
+    'pvp/battlegrounds': 'Control y silencio para pelear en grupo.',
+    'pvp/world-pvp': 'Pelear y farmear a la vez en el mundo.',
+  },
+  en: {
+    'leveling/aoe': 'Level solo by gathering packs of enemies and killing them with AoE.',
+    'leveling/single-target': 'Level with quests, one enemy at a time.',
+    'dungeons/aoe': 'Clear packs without pulling enemies off the tank.',
+    'dungeons/single-target': 'High single-target damage, for bosses and dangerous enemies.',
+    'raid/single-target': 'High single-target damage and mana for long fights.',
+    'pvp/battlegrounds': 'Control and silence for group fights.',
+    'pvp/world-pvp': 'Fight and farm at the same time in the world.',
+  },
 };
 
 /** Title of each content page (/builds/<use>/), and the longer one for search results. */
 export const CONTENT_PAGES: Record<Locale, Record<BuildUse, { title: string; seoTitle: string }>> = {
   es: {
     leveling: { title: 'Builds de leveo', seoTitle: 'Builds de leveo del Mago, del 1 al 60' },
-    pvp: { title: 'Builds de JcJ', seoTitle: 'Builds de JcJ del Mago a nivel 60' },
     dungeons: { title: 'Builds de mazmorras', seoTitle: 'Builds de mazmorras del Mago a nivel 60' },
     raid: { title: 'Builds de banda', seoTitle: 'Builds de banda del Mago a nivel 60' },
+    pvp: { title: 'Builds de JcJ', seoTitle: 'Builds de JcJ del Mago a nivel 60' },
   },
   en: {
     leveling: { title: 'Leveling builds', seoTitle: 'Mage leveling builds, from 1 to 60' },
-    pvp: { title: 'PvP builds', seoTitle: 'Mage PvP builds at level 60' },
     dungeons: { title: 'Dungeon builds', seoTitle: 'Mage dungeon builds at level 60' },
     raid: { title: 'Raid builds', seoTitle: 'Mage raid builds at level 60' },
+    pvp: { title: 'PvP builds', seoTitle: 'Mage PvP builds at level 60' },
   },
 };
 
@@ -64,8 +98,6 @@ const es = {
   'build.detailsOrder': 'Talentos, orden de puntos, cómo se juega y objetos',
   'build.talents': 'Talentos',
   'build.playstyle': 'Cómo se juega',
-  'build.strengths': 'Puntos fuertes',
-  'build.weaknesses': 'Puntos débiles',
   'build.items': 'Objetos y consumibles',
   'build.version': 'Hecha para',
   'build.checked': 'Revisada',
@@ -83,13 +115,6 @@ const es = {
   'build.orderTalent': 'Talento',
   'build.orderExtra': 'Solo con Talentoso',
   'build.orderExtraHeading': 'Puntos extra con Talentoso',
-  'picker.label': 'Builds de leveo',
-  'picker.goal': 'Objetivo',
-  'picker.profile': 'Para quién',
-  'picker.pro': 'A favor',
-  'picker.con': 'En contra',
-  'picker.recommended': 'Recomendada',
-  'picker.hint': 'Elige una build para ver sus talentos y su orden de puntos.',
   'build.recommended': 'Recomendada',
   'build.viable': 'Viable',
   'build.roleHint.recommended': '{use}, nivel {level}: la build recomendada',
@@ -98,31 +123,27 @@ const es = {
   'build.roleHint.not-recommended': '{use}, nivel {level}: funciona, pero no la recomiendo',
   'build.hybrid': '{spec} con {other}',
   'build.page.talents': 'Talentos',
-  'build.page.why': 'Por qué estos puntos',
-  'build.page.variants': 'Variantes de talentos',
-  'build.page.rotation': 'Rotación y prioridad de hechizos',
-  'build.page.rotation.single': 'Un objetivo',
-  'build.page.rotation.clearcasting': 'Con Lanzamiento libre',
-  'build.page.rotation.aoe': 'Varios enemigos',
+  'build.page.why': 'Por qué estos talentos',
+  'build.page.tips': 'Consejos',
+  'build.page.variants': 'Variantes',
+  'build.page.rotation': 'Cómo se juega',
   'build.page.rotation.cooldowns': 'Cooldowns y maná',
-  'build.page.stats': 'Estadísticas y prioridad de equipo',
-  'build.page.pros': 'Pros y contras',
-  'build.page.empty': 'Pendiente: todavía no hay datos fiables.',
-  'build.page.noVariants': 'Esta build no tiene variantes publicadas.',
+  'build.page.gear': 'Equipo',
+  'build.page.stats': 'Estadísticas, de más a menos importante',
+  'build.page.order': 'Orden de puntos',
+  'build.page.orderOpen': 'Ver el orden nivel a nivel',
+  'build.page.pro': 'A favor',
+  'build.page.con': 'En contra',
   'variant.out': 'Quitas',
   'variant.in': 'Pones',
   'index.none': 'Todavía no hay builds de este contenido.',
   'index.filter': 'Filtrar las builds por contenido',
   'index.all': 'Todas',
-  'index.soon': 'Sin build todavía: llegarán cuando pueda probar el nivel 60.',
-  'index.compare': 'Comparar las builds de {use} con sus ramas',
   'index.pros': 'A favor',
   'index.cons': 'En contra',
   'build.playing': 'Jugando actualmente',
   'variant.final': 'Build final:',
   'build.open': 'Ver la build',
-  'build.page.prosTab': 'A favor',
-  'build.page.consTab': 'En contra',
   'content.guides': 'Aprende a jugarlo',
   'spec.strengths': 'Fortalezas',
   'spec.weaknesses': 'Debilidades',
@@ -152,8 +173,6 @@ const en: Record<BuildUiKey, string> = {
   'build.detailsOrder': 'Talents, point order, how to play and items',
   'build.talents': 'Talents',
   'build.playstyle': 'How to play',
-  'build.strengths': 'Strengths',
-  'build.weaknesses': 'Weaknesses',
   'build.items': 'Items and consumables',
   'build.version': 'Made for',
   'build.checked': 'Checked',
@@ -171,13 +190,6 @@ const en: Record<BuildUiKey, string> = {
   'build.orderTalent': 'Talent',
   'build.orderExtra': 'Talented only',
   'build.orderExtraHeading': 'Extra points with Talented',
-  'picker.label': 'Leveling builds',
-  'picker.goal': 'Goal',
-  'picker.profile': 'For',
-  'picker.pro': 'Pro',
-  'picker.con': 'Con',
-  'picker.recommended': 'Recommended',
-  'picker.hint': 'Pick a build to see its talents and point order.',
   'build.recommended': 'Recommended',
   'build.viable': 'Viable',
   'build.roleHint.recommended': '{use}, level {level}: the recommended build',
@@ -186,31 +198,27 @@ const en: Record<BuildUiKey, string> = {
   'build.roleHint.not-recommended': '{use}, level {level}: it works, but I do not recommend it',
   'build.hybrid': '{spec} with {other}',
   'build.page.talents': 'Talents',
-  'build.page.why': 'Why these points',
-  'build.page.variants': 'Talent variants',
-  'build.page.rotation': 'Rotation and spell priority',
-  'build.page.rotation.single': 'Single target',
-  'build.page.rotation.clearcasting': 'With Clearcasting',
-  'build.page.rotation.aoe': 'Several enemies',
+  'build.page.why': 'Why these talents',
+  'build.page.tips': 'Tips',
+  'build.page.variants': 'Variants',
+  'build.page.rotation': 'How to play',
   'build.page.rotation.cooldowns': 'Cooldowns and mana',
-  'build.page.stats': 'Stats and gear priority',
-  'build.page.pros': 'Pros and cons',
-  'build.page.empty': 'Pending: no reliable data yet.',
-  'build.page.noVariants': 'This build has no published variants.',
+  'build.page.gear': 'Gear',
+  'build.page.stats': 'Stats, most important first',
+  'build.page.order': 'Point order',
+  'build.page.orderOpen': 'Show the order level by level',
+  'build.page.pro': 'Upside',
+  'build.page.con': 'Downside',
   'variant.out': 'Take out',
   'variant.in': 'Put in',
   'index.none': 'No builds for this content yet.',
   'index.filter': 'Filter the builds by content',
   'index.all': 'All',
-  'index.soon': 'No build yet: they come once I can test level 60.',
-  'index.compare': 'Compare the {use} builds with their trees',
   'index.pros': 'Upside',
   'index.cons': 'Downside',
   'build.playing': 'Currently playing',
   'variant.final': 'Final build:',
   'build.open': 'Open the build',
-  'build.page.prosTab': 'Pros',
-  'build.page.consTab': 'Cons',
   'content.guides': 'Learn to play it',
   'spec.strengths': 'Strengths',
   'spec.weaknesses': 'Weaknesses',

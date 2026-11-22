@@ -193,28 +193,6 @@ const copyStrings = JSON.stringify({ copied: locale === 'es' ? 'Enlace copiado' 
         </ol>
       </section>
       {
-        (build.strengths.length > 0 || build.weaknesses.length > 0) && (
-          <div class="build__pros">
-            {build.strengths.length > 0 && (
-              <section>
-                <Sub>{tb(locale, 'build.strengths')}</Sub>
-                <ul>
-                  {build.strengths.map((item) => <li>{item[locale]}</li>)}
-                </ul>
-              </section>
-            )}
-            {build.weaknesses.length > 0 && (
-              <section>
-                <Sub>{tb(locale, 'build.weaknesses')}</Sub>
-                <ul>
-                  {build.weaknesses.map((item) => <li>{item[locale]}</li>)}
-                </ul>
-              </section>
-            )}
-          </div>
-        )
-      }
-      {
         build.items.length > 0 && (
           <section>
             <Sub>{tb(locale, 'build.items')}</Sub>

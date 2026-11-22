@@ -11,6 +11,7 @@
   "uses": [
     "leveling"
   ],
+  "focus": "single-target",
   "recommendedFor": [],
   "spec": "frost",
   "hybridWith": "fire",
@@ -223,14 +224,6 @@
       }
     }
   ],
-  "goal": {
-    "es": "Subir en solitario, a distancia y sin riesgos",
-    "en": "Level solo, at range and safely"
-  },
-  "profile": {
-    "es": "La mayoría: subes con misiones, casi siempre solo.",
-    "en": "Most players: you level through quests, mostly alone."
-  },
   "upside": {
     "es": "Mucho control de masas y ralentizaciones: pocos enemigos te alcanzan.",
     "en": "Plenty of crowd control and slows: few enemies reach you."
@@ -266,26 +259,6 @@
     {
       "es": "Si llega a tu lado: Nova de Escarcha, aléjate unos pasos y sigue con Lanza de hielo. Bloqueo de hielo y Barrera de hielo son tu red de seguridad.",
       "en": "If it reaches you: Frost Nova, step away and continue with Ice Lance. Ice Block and Ice Barrier are your safety net."
-    }
-  ],
-  "strengths": [
-    {
-      "es": "Muy segura: ralentizas siempre y congelas a menudo, así que pocos enemigos llegan a golpearte.",
-      "en": "Very safe: you always slow and often freeze, so few enemies get to hit you."
-    },
-    {
-      "es": "Fácil de jugar: cada punto mejora algo que ya usas, y el combo congelar y Lanza de hielo es siempre el mismo.",
-      "en": "Easy to play: each point improves something you already use, and the freeze and Ice Lance combo is always the same."
-    }
-  ],
-  "weaknesses": [
-    {
-      "es": "Pensada para un enemigo cada vez: con tres o más a la vez dependes de Nova de Escarcha y de alejarte.",
-      "en": "Made for one enemy at a time: against three or more you rely on Frost Nova and on walking away."
-    },
-    {
-      "es": "El tramo de Fuego (del 41 al 60) está pendiente de verificar con el lanzamiento: sus puntos se han planteado sin poder probarlos.",
-      "en": "The Fire part (41 to 60) is pending verification at launch: its points were planned without being able to test them."
     }
   ],
   "items": [

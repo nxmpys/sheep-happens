@@ -4,6 +4,14 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-11-22
+
+### [Guía] Builds por contenido y enfoque: leveo, PvE y JcJ
+
+Las builds se agrupan en leveo, PvE (mazmorras y banda) y JcJ, y dentro de cada contenido por enfoque: AoE, un objetivo, campos de batalla y JcJ de mundo. Escarcha AoE pasa a ser la build de área en solitario desde el nivel 22, sin Mordiescarcha. Builds nuevas: Arcano y Fuego de mazmorras, Fuego profundo para banda (teórica hasta el 9 de diciembre), Escarcha con Contrahechizo para campos de batalla y Escarcha profunda de mundo. Cada página es más corta: por qué cada talento, consejos, cómo se juega y equipo.
+
+- **Datos afectados:** build:frost-leveling, build:frost-leveling-single-target, build:frost-leveling-deep, build:arcane-leveling, build:arcane-fire-leveling, build:fire-leveling, build:frost-dungeons-aoe, build:dungeons-arcane-fire, build:raid-fire, build:pvp-frost-counterspell, build:pvp-deep-frost
+
 ## 2026-11-19
 
 ### [Guía] Build de mazmorras: Escarcha AoE

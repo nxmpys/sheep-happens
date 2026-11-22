@@ -39,9 +39,19 @@ describe('menuBlocks', () => {
     expect(links[0]!.page).toBeUndefined();
   });
 
-  it('shows the contents with builds', () => {
-    const blocks = menuBlocks(group('builds'), 'es', { contents: ['leveling', 'dungeons'] });
-    expect(blocks[0]!.links.map((link) => link.url)).toEqual(['/es/builds/leveo/', '/es/builds/mazmorras/']);
+  it('shows leveling, then PvE with dungeons and raid under its heading, then PvP', () => {
+    const blocks = menuBlocks(group('builds'), 'es', { contents: ['leveling', 'dungeons', 'raid', 'pvp'] });
+    expect(blocks.map((block) => block.heading)).toEqual([undefined, 'PvE', undefined]);
+    expect(blocks.map((block) => block.links.map((link) => link.url))).toEqual([
+      ['/es/builds/leveo/'],
+      ['/es/builds/mazmorras/', '/es/builds/banda/'],
+      ['/es/builds/jcj/'],
+    ]);
+  });
+
+  it('leaves out a group with no content page', () => {
+    const blocks = menuBlocks(group('builds'), 'en', { contents: ['leveling', 'dungeons'] });
+    expect(blocks.map((block) => block.heading)).toEqual([undefined, 'PvE']);
   });
 
   it('shows the addon once, under its own heading in Tools', () => {

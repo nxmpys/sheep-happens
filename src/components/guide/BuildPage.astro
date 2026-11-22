@@ -1,25 +1,27 @@
 ---
 /**
- * Body of a build page (/builds/<use>/<slug>/). Same template for every build:
- * tree, content and status as chips; pros and cons first; the three trees in
- * one row with the actions below; then why these points, variants, rotation
- * and stats. A section without real data says so instead of being filled with
- * Classic or Retail numbers. Consumables and races are class-wide, so they
- * live in their own guides, not here.
+ * Body of a build page (/builds/<use>/<slug>/). Same template for every build,
+ * short on purpose: tree, content, focus and status as chips with one line for
+ * and one against; the three trees with the actions below; why these talents;
+ * tips; how to play with the cooldowns apart; gear; the leveling point order
+ * folded away; and variants. A section without data is left out, here and in
+ * the page index (buildSections). Consumables and races are class-wide, so
+ * they live in their own guides, not here.
  */
 import BuildActions from './BuildActions.astro';
 import BuildReasons from './BuildReasons.astro';
 import BuildTrees from './BuildTrees.astro';
 import BuildVariants from './BuildVariants.astro';
+import ItemCards from './ItemCards.astro';
 import StatusBadge from './StatusBadge.astro';
 import RotationSteps from './RotationSteps.astro';
 import TalentOrder from './TalentOrder.astro';
 import Icon from '../ui/Icon.astro';
-import { SPEC_LABELS, USE_LABELS, USE_TITLES, tb } from '../../i18n/builds';
+import { FOCUS_LABELS, SPEC_LABELS, USE_LABELS, USE_TITLES, tb } from '../../i18n/builds';
 import { getLocale, href } from '../../i18n/locale';
 import { buildRole } from '../../lib/build-roles';
 import { buildIcon, contentPath } from '../../lib/build-routes';
-import { buildSections, type BuildSectionKey } from '../../lib/build-page';
+import { buildSections } from '../../lib/build-page';
 import type { Build } from '../../lib/schemas';
 
 interface Props {
@@ -28,23 +30,11 @@ interface Props {
 
 const { build } = Astro.props;
 const locale = getLocale(Astro);
-const sections = {} as Record<BuildSectionKey, { id: string; text: string }>;
-for (const section of buildSections(locale)) sections[section.key] = section;
+const sections = buildSections(locale, build);
 const specLabel = build.hybridWith
   ? tb(locale, 'build.hybrid', { spec: SPEC_LABELS[locale][build.spec], other: SPEC_LABELS[locale][build.hybridWith] })
   : SPEC_LABELS[locale][build.spec];
 const base = import.meta.env.BASE_URL;
-const pros = { headline: build.upside?.[locale], items: build.strengths.map((s) => s[locale]) };
-const cons = { headline: build.downside?.[locale], items: build.weaknesses.map((s) => s[locale]) };
-const rotations = (
-  [
-    { title: 'build.page.rotation.single', steps: build.playstyle },
-    { title: 'build.page.rotation.clearcasting', steps: build.clearcasting },
-    { title: 'build.page.rotation.aoe', steps: build.aoe },
-    { title: 'build.page.rotation.cooldowns', steps: build.cooldowns },
-  ] as const
-).filter((r) => r.steps.length > 0);
-const hasPros = pros.items.length > 0 || cons.items.length > 0 || pros.headline || cons.headline;
 ---
 
 <div class={`build-page school-${build.spec}`}>
@@ -71,6 +61,7 @@ const hasPros = pros.items.length > 0 || cons.items.length > 0 || pros.headline 
         );
       })
     }
+    <li><span class="chip">{FOCUS_LABELS[locale][build.focus]}</span></li>
     <li><StatusBadge status={build.status} /></li>
     {
       build.playing && (
@@ -81,113 +72,136 @@ const hasPros = pros.items.length > 0 || cons.items.length > 0 || pros.headline 
     }
   </ul>
 
-  <h2 id={sections.pros.id}>{sections.pros.text}</h2>
   {
-    hasPros ? (
-      <build-verdict class="verdict">
-        <div class="verdict__tabs" role="tablist" hidden data-tabs>
-          <button type="button" role="tab" class="verdict__tab verdict__tab--pro" aria-selected="true" data-tab="pro">
-            {tb(locale, 'build.page.prosTab')}
-          </button>
-          <button type="button" role="tab" class="verdict__tab verdict__tab--con" aria-selected="false" data-tab="con">
-            {tb(locale, 'build.page.consTab')}
-          </button>
-        </div>
-        <div class="verdict__panels">
-          {[
-            { kind: 'pro', label: tb(locale, 'build.page.prosTab'), data: pros, sign: '+' },
-            { kind: 'con', label: tb(locale, 'build.page.consTab'), data: cons, sign: '−' },
-          ].map(({ kind, label, data, sign }) => (
-            <section class={`verdict__panel verdict__panel--${kind}`} data-panel={kind} aria-label={label}>
-              <p class="verdict__label">
-                <span class="verdict__sign" aria-hidden="true">{sign}</span>
-                {label}
-              </p>
-              {data.headline && <p class="verdict__headline">{data.headline}</p>}
-              {data.items.length > 0 ? (
-                <ul class="verdict__items">
-                  {data.items.map((item) => (
-                    <li class="verdict__item" tabindex="0">
-                      {item}
-                    </li>
+    (build.upside || build.downside) && (
+      <ul class="build-page__trade">
+        {build.upside && (
+          <li>
+            <span class="build-page__sign build-page__sign--pro" aria-hidden="true">
+              +
+            </span>
+            <span>
+              <span class="visually-hidden">{tb(locale, 'build.page.pro')}: </span>
+              {build.upside[locale]}
+            </span>
+          </li>
+        )}
+        {build.downside && (
+          <li>
+            <span class="build-page__sign build-page__sign--con" aria-hidden="true">
+              −
+            </span>
+            <span>
+              <span class="visually-hidden">{tb(locale, 'build.page.con')}: </span>
+              {build.downside[locale]}
+            </span>
+          </li>
+        )}
+      </ul>
+    )
+  }
+
+  {
+    sections.map((section) => {
+      switch (section.key) {
+        case 'talents':
+          return (
+            <>
+              <h2 id={section.id}>{section.text}</h2>
+              <BuildTrees build={build} />
+              <BuildActions build={build} />
+            </>
+          );
+        case 'why':
+          return (
+            <>
+              <h2 id={section.id}>{section.text}</h2>
+              <BuildReasons build={build} />
+            </>
+          );
+        case 'tips':
+          return (
+            <>
+              <h2 id={section.id}>{section.text}</h2>
+              <ul class="build-page__tips">
+                {build.tips.map((tip) => (
+                  <li>{tip[locale]}</li>
+                ))}
+              </ul>
+            </>
+          );
+        case 'rotation':
+          return (
+            <>
+              <h2 id={section.id}>{section.text}</h2>
+              {build.playstyle.length > 0 && <RotationSteps steps={build.playstyle} school={build.spec} />}
+              {build.cooldowns.length > 0 && (
+                <>
+                  <h3>{tb(locale, 'build.page.rotation.cooldowns')}</h3>
+                  <RotationSteps steps={build.cooldowns} school={build.spec} />
+                </>
+              )}
+            </>
+          );
+        case 'gear':
+          return (
+            <>
+              <h2 id={section.id}>{section.text}</h2>
+              {build.itemIds.length > 0 && <ItemCards ids={build.itemIds} />}
+              {build.items.length > 0 && (
+                <ul>
+                  {build.items.map((item) => (
+                    <li>{item[locale]}</li>
                   ))}
                 </ul>
-              ) : (
-                !data.headline && <p class="build-page__empty">{tb(locale, 'build.page.empty')}</p>
               )}
-            </section>
-          ))}
-        </div>
-      </build-verdict>
-    ) : (
-      <p class="build-page__empty">{tb(locale, 'build.page.empty')}</p>
-    )
-  }
-
-  <h2 id={sections.talents.id}>{sections.talents.text}</h2>
-  <BuildTrees build={build} />
-  <BuildActions build={build} />
-
-  <h2 id={sections.why.id}>{sections.why.text}</h2>
-  {
-    build.order ? (
-      <TalentOrder build={build} />
-    ) : build.reasons.length > 0 ? (
-      <BuildReasons build={build} />
-    ) : (
-      <p class="build-page__empty">{tb(locale, 'build.page.empty')}</p>
-    )
-  }
-
-  <h2 id={sections.variants.id}>{sections.variants.text}</h2>
-  {
-    build.variants.length > 0 ? (
-      <BuildVariants build={build} />
-    ) : (
-      <p class="build-page__empty">{tb(locale, 'build.page.noVariants')}</p>
-    )
-  }
-
-  <h2 id={sections.rotation.id}>{sections.rotation.text}</h2>
-  {
-    rotations.map((rotation) => (
-      <>
-        {rotations.length > 1 && <h3>{tb(locale, rotation.title)}</h3>}
-        <RotationSteps steps={rotation.steps} school={build.spec} />
-      </>
-    ))
-  }
-
-  <h2 id={sections.stats.id}>{sections.stats.text}</h2>
-  {
-    build.stats.length > 0 ? (
-      <ol>{build.stats.map((item) => <li>{item[locale]}</li>)}</ol>
-    ) : (
-      <p class="build-page__empty">{tb(locale, 'build.page.empty')}</p>
-    )
+              {build.stats.length > 0 && (
+                <>
+                  <h3>{tb(locale, 'build.page.stats')}</h3>
+                  <ol>
+                    {build.stats.map((item) => (
+                      <li>{item[locale]}</li>
+                    ))}
+                  </ol>
+                </>
+              )}
+            </>
+          );
+        case 'order':
+          return (
+            <details class="build-page__order">
+              <summary>
+                <h2 id={section.id}>{section.text}</h2>
+                <span class="build-page__order-hint">{tb(locale, 'build.page.orderOpen')}</span>
+              </summary>
+              <TalentOrder build={build} />
+            </details>
+          );
+        case 'variants':
+          return (
+            <>
+              <h2 id={section.id}>{section.text}</h2>
+              <BuildVariants build={build} />
+            </>
+          );
+      }
+    })
   }
 </div>
 
 <script>
-  /** On narrow screens pros and cons become two tabs; on wide ones both show side by side. */
-  class BuildVerdict extends HTMLElement {
-    connectedCallback() {
-      const tabs = this.querySelector<HTMLElement>('[data-tabs]');
-      if (!tabs) return;
-      tabs.hidden = false;
-      this.dataset.ready = '';
-      const select = (kind: string) => {
-        for (const tab of tabs.querySelectorAll<HTMLButtonElement>('[data-tab]')) tab.setAttribute('aria-selected', String(tab.dataset.tab === kind));
-        this.dataset.show = kind;
-      };
-      tabs.addEventListener('click', (event) => {
-        const tab = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-tab]');
-        if (tab) select(tab.dataset.tab!);
-      });
-      select('pro');
+  /** Opening the page at the point order's anchor (or following it from the index) unfolds it. */
+  const openTarget = () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const target = id ? document.getElementById(id) : null;
+    const details = target?.closest('details');
+    if (target && details && !details.open) {
+      details.open = true;
+      target.scrollIntoView();
     }
-  }
-  customElements.define('build-verdict', BuildVerdict);
+  };
+  openTarget();
+  addEventListener('hashchange', openTarget);
 </script>
 
 <style>
@@ -196,7 +210,7 @@ const hasPros = pros.items.length > 0 || cons.items.length > 0 || pros.headline 
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-2);
-    margin: 0 0 var(--space-4);
+    margin: 0 0 var(--space-3);
     padding: 0;
     list-style: none;
   }
@@ -236,146 +250,79 @@ const hasPros = pros.items.length > 0 || cons.items.length > 0 || pros.headline 
     border-radius: 50%;
     background: currentColor;
   }
-  .build-page__empty {
-    padding: var(--space-3) var(--space-4);
-    border: 1px dashed var(--border-strong);
-    border-radius: var(--radius-lg);
-    color: var(--text-muted);
-  }
 
-  build-verdict {
-    display: block;
-  }
-  .verdict {
-    --pro: #3fbf6a;
-    --con: #e0605a;
-  }
-  .verdict__tabs {
-    display: flex;
-    gap: var(--space-2);
-    margin-bottom: var(--space-3);
-  }
-  .verdict__tabs[hidden] {
-    display: none;
-  }
-  .verdict__tab {
-    flex: 1;
-    min-height: 44px;
-    border: 1px solid var(--border-strong);
-    border-radius: 999px;
-    background: var(--surface-1);
-    color: var(--text-muted);
-    font: inherit;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  .verdict__tab[aria-selected='true'].verdict__tab--pro {
-    border-color: var(--pro);
-    background: color-mix(in srgb, var(--pro) 18%, var(--surface-1));
-    color: var(--text);
-  }
-  .verdict__tab[aria-selected='true'].verdict__tab--con {
-    border-color: var(--con);
-    background: color-mix(in srgb, var(--con) 18%, var(--surface-1));
-    color: var(--text);
-  }
-  .verdict__panels {
-    display: grid;
-    gap: var(--space-3);
-  }
-  .verdict__panel {
-    --tone: var(--pro);
-    display: grid;
-    align-content: start;
-    gap: var(--space-3);
-    padding: var(--space-4);
-    border: 1px solid color-mix(in srgb, var(--tone) 40%, var(--border));
-    border-radius: var(--radius-lg);
-    background:
-      radial-gradient(120% 80% at 0% 0%, color-mix(in srgb, var(--tone) 14%, transparent), transparent 65%),
-      var(--surface-1);
-  }
-  .verdict__panel--con {
-    --tone: var(--con);
-  }
-  .verdict__label {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    margin: 0;
-    font-size: var(--step--1);
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--tone);
-  }
-  .verdict__sign {
-    display: grid;
-    place-items: center;
-    width: 1.6rem;
-    height: 1.6rem;
-    border-radius: 50%;
-    background: var(--tone);
-    color: #0e0d16;
-    font-size: 1.1rem;
-    line-height: 1;
-  }
-  .verdict__headline {
-    margin: 0;
-    font-family: var(--font-display);
-    font-size: var(--step-1);
-    font-weight: 600;
-    line-height: 1.3;
-  }
-  .verdict__items {
+  /* One line for and one against, under the chips. */
+  .build-page__trade {
     display: grid;
     gap: var(--space-2);
-    margin: 0;
+    margin: 0 0 var(--space-5);
     padding: 0;
     list-style: none;
   }
-  .verdict__item {
+  .build-page__trade li {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    margin: 0;
+  }
+  .build-page__sign {
+    flex-shrink: 0;
+    display: inline-grid;
+    place-items: center;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    font-weight: 700;
+    line-height: 1;
+    color: #0e0d16;
+  }
+  .build-page__sign--pro {
+    background: #3fbf6a;
+  }
+  .build-page__sign--con {
+    background: #e0605a;
+  }
+
+  .build-page__tips {
+    display: grid;
+    gap: var(--space-2);
+    padding: 0;
+    list-style: none;
+  }
+  .build-page__tips li {
     margin: 0;
     padding: var(--space-2) var(--space-3);
-    border-left: 3px solid color-mix(in srgb, var(--tone) 55%, transparent);
+    border-left: 3px solid var(--school);
     border-radius: var(--radius-sm, 6px);
-    background: color-mix(in srgb, var(--tone) 6%, transparent);
+    background: color-mix(in srgb, var(--school) 7%, transparent);
+  }
+
+  /* The leveling point order, folded: its heading is the summary, so the index can link it. */
+  .build-page__order {
+    margin-top: var(--space-6);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+  }
+  .build-page__order > summary {
+    padding: var(--space-3) var(--space-4);
+    cursor: pointer;
+  }
+  .build-page__order > summary h2 {
+    display: inline;
+    margin: 0;
+    scroll-margin-top: calc(var(--header-h) + var(--space-4));
+  }
+  .build-page__order-hint {
+    display: block;
+    margin-top: var(--space-1);
     font-size: var(--step--1);
-    line-height: 1.5;
-    transition:
-      background 0.15s ease,
-      border-color 0.15s ease,
-      transform 0.15s ease;
+    color: var(--text-muted);
   }
-  .verdict__item:hover,
-  .verdict__item:focus-visible {
-    border-left-color: var(--tone);
-    background: color-mix(in srgb, var(--tone) 14%, transparent);
-    transform: translateX(3px);
-    outline: none;
+  .build-page__order[open] > summary {
+    border-bottom: 1px solid var(--border);
   }
-  @media (prefers-reduced-motion: reduce) {
-    .verdict__item {
-      transition: none;
-    }
-    .verdict__item:hover,
-    .verdict__item:focus-visible {
-      transform: none;
-    }
-  }
-  /* Narrow screens with JavaScript: one panel at a time, picked with the tabs. */
-  @media (max-width: 39.99rem) {
-    build-verdict[data-ready][data-show='pro'] [data-panel='con'],
-    build-verdict[data-ready][data-show='con'] [data-panel='pro'] {
-      display: none;
-    }
-  }
-  @media (min-width: 40rem) {
-    .verdict__tabs {
-      display: none !important;
-    }
-    .verdict__panels {
-      grid-template-columns: 1fr 1fr;
-    }
+  .build-page__order > :not(summary) {
+    margin: var(--space-4);
   }
 </style>

@@ -11,10 +11,16 @@
 import type { Locale } from '../i18n/routes';
 import type { Build, BuildSpec, BuildUse } from './schemas';
 
+/** Slugs per content, in the order of BUILD_USES (menu and index order). */
 export const USE_SLUGS: Record<Locale, Record<BuildUse, string>> = {
-  es: { leveling: 'leveo', pvp: 'jcj', dungeons: 'mazmorras', raid: 'banda' },
-  en: { leveling: 'leveling', pvp: 'pvp', dungeons: 'dungeons', raid: 'raid' },
+  es: { leveling: 'leveo', dungeons: 'mazmorras', raid: 'banda', pvp: 'jcj' },
+  en: { leveling: 'leveling', dungeons: 'dungeons', raid: 'raid', pvp: 'pvp' },
 };
+
+/** The three groups of the builds index and menu: leveling, PvE (dungeons and raid) and PvP. */
+export const BUILD_GROUPS = ['leveling', 'pve', 'pvp'] as const;
+export type BuildGroup = (typeof BUILD_GROUPS)[number];
+export const USE_GROUP: Record<BuildUse, BuildGroup> = { leveling: 'leveling', dungeons: 'pve', raid: 'pve', pvp: 'pvp' };
 
 type Routable = Pick<Build, 'uses' | 'slug'>;
 
@@ -39,16 +45,17 @@ export function buildPath(build: Routable, locale: Locale, opts: { base?: string
 }
 
 /** Contents the guide links to: their pages exist even with no builds, so those links never change. */
-export const LINKED_CONTENTS: readonly BuildUse[] = ['leveling', 'dungeons', 'pvp'];
+export const LINKED_CONTENTS: readonly BuildUse[] = ['leveling', 'dungeons', 'raid', 'pvp'];
 
 /** Contents with at least one build. */
 export function usedContents(builds: readonly Pick<Build, 'uses'>[]): BuildUse[] {
   return [...new Set(builds.flatMap((b) => b.uses))];
 }
 
-/** Contents with their own page: the linked ones, plus any other that has builds. */
+/** Contents with their own page, in menu order: the linked ones, plus any other that has builds. */
 export function contentPages(builds: readonly Pick<Build, 'uses'>[]): BuildUse[] {
-  return [...new Set([...LINKED_CONTENTS, ...usedContents(builds)])];
+  const pages = new Set([...LINKED_CONTENTS, ...usedContents(builds)]);
+  return (Object.keys(USE_SLUGS.en) as BuildUse[]).filter((use) => pages.has(use));
 }
 
 /** Builds that would share a URL (same first use and slug, in either locale). */

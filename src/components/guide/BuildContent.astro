@@ -1,15 +1,18 @@
 ---
 /**
- * Builds of one content (/builds/<use>/): one card per build with its three
- * trees in a row, recommended first, each linking to its build page. A build
- * that covers several contents appears on each of their pages.
+ * Builds of one content (/builds/<use>/), grouped by focus: an h2 per focus
+ * (AoE, single target, battlegrounds, world PvP) with one line on what it is
+ * for, then one card per build under an h3, recommended first, each with its
+ * three trees and a link to its build page. A build that covers several
+ * contents appears on each of their pages.
  */
 import BuildTrees from './BuildTrees.astro';
 import Icon from '../ui/Icon.astro';
 import { SPEC_LABELS, tb } from '../../i18n/builds';
 import { getLocale } from '../../i18n/locale';
-import { buildRole, type BuildRole } from '../../lib/build-roles';
+import { buildRole } from '../../lib/build-roles';
 import { buildIcon, buildPath } from '../../lib/build-routes';
+import { buildAnchor, focusSections } from '../../lib/build-page';
 import { builds, talents } from '../../lib/data';
 import type { BuildUse } from '../../lib/schemas';
 import { distributionLabel } from '../../lib/talents';
@@ -20,56 +23,71 @@ interface Props {
 
 const { use } = Astro.props;
 const locale = getLocale(Astro);
-const ROLE_ORDER: Record<BuildRole, number> = { recommended: 0, viable: 1, 'not-recommended': 2 };
-const list = builds
-  .filter((b) => b.uses.includes(use))
-  .sort((a, b) => ROLE_ORDER[buildRole(a, use)] - ROLE_ORDER[buildRole(b, use)]);
+const sections = focusSections(use, locale, builds);
 ---
 
 <div class="content-builds">
-  {list.length === 0 && <p>{tb(locale, 'index.none')}</p>}
+  {sections.length === 0 && <p>{tb(locale, 'index.none')}</p>}
   {
-    list.map((build) => {
-      const role = buildRole(build, use);
-      const url = buildPath(build, locale, { base: import.meta.env.BASE_URL });
-      return (
-        <article class={`content-build school-${build.spec}`} aria-labelledby={`${build.id}-title`}>
-          <header class="content-build__head">
-            <Icon name={buildIcon(build)} size={26} class="content-build__icon" />
-            <div class="content-build__text">
-              <h2 class="content-build__name" id={`${build.id}-title`}>
-                <a href={url}>{build.name[locale]}</a>
-              </h2>
-              <p class="content-build__meta">
-                {SPEC_LABELS[locale][build.spec]} · {distributionLabel(build.points, talents)}
-                {role !== 'viable' && <span class:list={['content-build__role', `content-build__role--${role}`]}>{tb(locale, `build.${role}`)}</span>}
-                {build.playing && <span class="content-build__role content-build__role--playing">{tb(locale, 'build.playing')}</span>}
-              </p>
-              <p class="content-build__tagline">{build.tagline[locale]}</p>
-            </div>
-            <a class="button button--primary content-build__open" href={url}>
-              {tb(locale, 'build.open')}
-              <Icon name="arrowRight" size={16} />
-            </a>
-          </header>
-          {build.intro.length > 0 && (
-            <div class="content-build__intro">
-              {build.intro.map((p) => (
-                <p>{p[locale]}</p>
-              ))}
-            </div>
-          )}
-          <BuildTrees build={build} compact />
-        </article>
-      );
-    })
+    sections.map((section) => (
+      <section class="content-focus" aria-labelledby={section.id}>
+        <h2 id={section.id}>{section.text}</h2>
+        {section.line && <p class="content-focus__line">{section.line}</p>}
+        {section.builds.map((build) => {
+          const role = buildRole(build, use);
+          const url = buildPath(build, locale, { base: import.meta.env.BASE_URL });
+          const anchor = buildAnchor(build, locale);
+          return (
+            <article class={`content-build school-${build.spec}`} aria-labelledby={anchor}>
+              <header class="content-build__head">
+                <Icon name={buildIcon(build)} size={26} class="content-build__icon" />
+                <div class="content-build__text">
+                  <h3 class="content-build__name" id={anchor}>
+                    <a href={url}>{build.name[locale]}</a>
+                  </h3>
+                  <p class="content-build__meta">
+                    {SPEC_LABELS[locale][build.spec]} · {distributionLabel(build.points, talents)}
+                    {role !== 'viable' && <span class:list={['content-build__role', `content-build__role--${role}`]}>{tb(locale, `build.${role}`)}</span>}
+                    {build.playing && <span class="content-build__role content-build__role--playing">{tb(locale, 'build.playing')}</span>}
+                  </p>
+                  <p class="content-build__tagline">{build.tagline[locale]}</p>
+                </div>
+                <a class="button button--primary content-build__open" href={url}>
+                  {tb(locale, 'build.open')}
+                  <Icon name="arrowRight" size={16} />
+                </a>
+              </header>
+              {build.intro.length > 0 && (
+                <div class="content-build__intro">
+                  {build.intro.map((p) => (
+                    <p>{p[locale]}</p>
+                  ))}
+                </div>
+              )}
+              <BuildTrees build={build} compact />
+            </article>
+          );
+        })}
+      </section>
+    ))
   }
 </div>
 
 <style>
   .content-builds {
     display: grid;
-    gap: var(--space-5);
+    gap: var(--space-6, var(--space-5));
+  }
+  .content-focus {
+    display: grid;
+    gap: var(--space-4);
+  }
+  .content-focus > h2 {
+    margin: 0;
+  }
+  .content-focus__line {
+    margin: calc(-1 * var(--space-2)) 0 0;
+    color: var(--text-muted);
   }
   .content-build {
     display: grid;

@@ -15,11 +15,12 @@ describe('recommended or viable', () => {
     expect(buildRole(dual, 'leveling')).toBe('viable');
   });
 
-  it('allows one recommended build per use and level', () => {
-    const a = build('a', { level: 60, recommendedFor: ['leveling'] });
-    expect(recommendedConflicts([a, build('b', { level: 30, recommendedFor: ['leveling'] })])).toEqual([]);
-    expect(recommendedConflicts([a, build('c', { level: 60, recommendedFor: ['leveling'] })])).toEqual([
-      '"c" and "a" are both recommended for leveling at level 60',
+  it('allows one recommended build per use, focus and level', () => {
+    const a = build('a', { level: 60, focus: 'single-target', recommendedFor: ['leveling'] });
+    expect(recommendedConflicts([a, build('b', { level: 30, focus: 'single-target', recommendedFor: ['leveling'] })])).toEqual([]);
+    expect(recommendedConflicts([a, build('aoe', { level: 60, focus: 'aoe', recommendedFor: ['leveling'] })])).toEqual([]);
+    expect(recommendedConflicts([a, build('c', { level: 60, focus: 'single-target', recommendedFor: ['leveling'] })])).toEqual([
+      '"c" and "a" are both recommended for leveling (single-target) at level 60',
     ]);
   });
 
@@ -27,7 +28,13 @@ describe('recommended or viable', () => {
     const data = datasetWithFixture();
     data.builds.push({ ...structuredClone(base), id: 'one', slug: { es: 'una', en: 'one' }, recommendedFor: ['leveling'] });
     data.builds.push({ ...structuredClone(base), id: 'other', slug: { es: 'otra', en: 'other' }, recommendedFor: ['leveling'] });
-    expect(checkIntegrity(data).join('\n')).toMatch(/both recommended for leveling at level 60/);
+    expect(checkIntegrity(data).join('\n')).toMatch(/both recommended for leveling \(single-target\) at level 60/);
+  });
+
+  it('needs a focus that makes sense for every use', () => {
+    expect(buildSchema.safeParse({ ...structuredClone(base), focus: 'battlegrounds' }).success).toBe(false);
+    expect(buildSchema.safeParse({ ...structuredClone(base), uses: ['leveling', 'raid'], focus: 'aoe' }).success).toBe(false);
+    expect(buildSchema.safeParse({ ...structuredClone(base), uses: ['leveling', 'raid'], focus: 'single-target' }).success).toBe(true);
   });
 
   it('must name one of the build’s own uses', () => {

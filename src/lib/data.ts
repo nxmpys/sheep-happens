@@ -485,6 +485,11 @@ const integrity = [
       continue;
     }
   }
+  for (const build of dataset.builds) {
+    for (const item of build.itemIds) {
+      if (!itemIds.has(item)) integrity.push(`builds.json: "${build.id}" shows item "${item}", which is not in items.json`);
+    }
+  }
   for (const quest of classQuests) {
     for (const reward of quest.rewards) {
       if (!itemIds.has(reward)) integrity.push(`class-quests.json: "${quest.id}" rewards "${reward}", which is not in items.json`);

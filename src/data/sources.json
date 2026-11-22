@@ -955,5 +955,78 @@
       "es": "Builds de leveo de Arcano (32/16/3), Fuego (13/35/3) y Escarcha (13/5/33) en su calculadora, con el orden por niveles y una rotación para cada una.",
       "en": "Arcane (32/16/3), Fire (13/35/3) and Frost (13/5/33) leveling builds in its calculator, with the order by level and a rotation for each."
     }
+  },
+  {
+    "id": "skillcapped-forever-frost-pvp",
+    "title": "Frost Mage PvP Talents in WoW Forever",
+    "publisher": "Skill Capped",
+    "url": "https://www.skill-capped.com/wowarticles/forever/guides/frost-mage-pvp-guide/talents/",
+    "kind": "community",
+    "published": "2026-11-19",
+    "accessed": "2026-11-22",
+    "notes": {
+      "es": "Build de JcJ «Frost Arcane» (17/0/34) para campos de batalla, duelos y JcJ de mundo, con Contrahechizo mejorado. Actualizada el 19 de noviembre.",
+      "en": "«Frost Arcane» PvP build (17/0/34) for battlegrounds, duels and world PvP, with Improved Counterspell. Updated on 19 November."
+    }
+  },
+  {
+    "id": "wowforeverbuilds-mage-pvp",
+    "title": "WoW Forever Mage PvP Build & Talents by Spec",
+    "publisher": "WoW Forever Builds",
+    "url": "https://wowforeverbuilds.com/pvp/mage",
+    "kind": "community",
+    "accessed": "2026-11-22",
+    "notes": {
+      "es": "Tres builds de JcJ de 51 puntos (Arcano 32/0/19, Fuego 0/31/20 y Escarcha 20/0/31 con Contrahechizo mejorado), marcadas como teóricas. Revisada por última vez el 1 de noviembre.",
+      "en": "Three 51-point PvP builds (Arcane 32/0/19, Fire 0/31/20 and Frost 20/0/31 with Improved Counterspell), marked as theorycraft. Last reviewed on 1 November."
+    }
+  },
+  {
+    "id": "warcrafttavern-arcane-mage",
+    "title": "Arcane Mage Guide - WoW Forever",
+    "publisher": "Warcraft Tavern",
+    "url": "https://www.warcrafttavern.com/forever/guides/arcane-mage/",
+    "kind": "community",
+    "accessed": "2026-11-22",
+    "notes": {
+      "es": "Build de Arcano de nivel 60 con Fuego (Incineración, Acelerante, Explosión de Fuego mejorada, Ignición, Piroexplosión y Calentamiento) y su rotación con las cargas de Explosión Arcana.",
+      "en": "Level 60 Arcane build with Fire (Incineration, Accelerant, Improved Fire Blast, Ignite, Pyroblast and Heating Up) and its rotation around Arcane Blast stacks."
+    }
+  },
+  {
+    "id": "forever-hub-tier-list",
+    "title": "WoW Forever Tier List (November 2026): DPS, Healers & Tanks",
+    "publisher": "Forever Hub",
+    "url": "https://forever-hub.com/en/rankings?c=pve-dps",
+    "kind": "community",
+    "accessed": "2026-11-22",
+    "notes": {
+      "es": "Tiers de daño en banda a nivel 60 a partir de simulaciones a un objetivo y lecturas de los árboles: Mago de Fuego y Arcano en A, Escarcha en B. No hay registros hasta que abran las bandas el 9 de diciembre.",
+      "en": "Level 60 raid damage tiers from single-target simulations and talent tree reads: Fire and Arcane Mage in A, Frost in B. No logs until raids open on 9 December."
+    }
+  },
+  {
+    "id": "icyveins-forever-frost-rotation",
+    "title": "World of Warcraft: Forever Frost Mage - Rotation, Cooldowns, and Abilities",
+    "publisher": "Icy Veins",
+    "url": "https://www.icy-veins.com/wow-forever/frost-mage-ranged-dps-pve-rotation-cooldowns-abilities",
+    "kind": "community",
+    "accessed": "2026-11-22",
+    "notes": {
+      "es": "Rotación de Escarcha a nivel 60: Lanza de hielo a la vez que la Descarga de Escarcha con la última carga de Dedos de Escarcha o con el objetivo congelado, y Armadura de mago en grupo por el maná.",
+      "en": "Level 60 Frost rotation: Ice Lance together with Frostbolt on the last Fingers of Frost charge or a frozen target, and Mage Armor in groups for mana."
+    }
+  },
+  {
+    "id": "blazingboost-forever-frost",
+    "title": "WoW Forever Frost Mage Guide: Talents, Levelling and Gear",
+    "publisher": "BlazingBoost",
+    "url": "https://blazingboost.com/wow-forever-classic/wow-forever-frost-mage-guide",
+    "kind": "community",
+    "accessed": "2026-11-22",
+    "notes": {
+      "es": "Guía de una tienda de servicios. Es la única fuente que dice que Mordiescarcha y Dedos de Escarcha se activan con Armadura de Escarcha y Armadura de hielo; sin confirmar.",
+      "en": "Guide by a service shop. It is the only source saying Frostbite and Fingers of Frost trigger from Frost Armor and Ice Armor; unconfirmed."
+    }
   }
 ]
