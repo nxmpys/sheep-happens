@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-11-22 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
+> Creado: 2026-10-12 · Revisión: 2026-11-23 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -219,7 +219,7 @@ No hace falta tocar el diseño ni las páginas: la tarjeta y los filtros salen d
 - [ ] **Armadura de hielo y procs**: solo BlazingBoost dice que su enfriamiento sobre quien te golpea activa Mordiescarcha y Dedos de Escarcha. Las builds lo citan como suyo; confirmarlo o quitarlo.
 - [ ] **Escarcha AoE de leveo**: ritmo real del 22 al 40 sin Mordiescarcha ni Barrera de hielo (llega al 41), y si Precisión primero compensa frente a Descarga de Escarcha mejorada.
 - [ ] **Arcano y Fuego de mazmorras**: maná en jefes largos con Explosión Arcana cargada y si Ignición 2/5 merece más que Alma ardiente.
-- [ ] **Fuego profundo (banda)**: teórica hasta el 9 de diciembre. Tope de golpe contra jefes, valor de Combustión frente al tercer punto de Precisión y si Chamuscar mejorado de cada Mago se apila por separado como dice su texto.
+- [ ] **Fuego profundo (banda)**: teórica hasta el 9 de diciembre. Tope de golpe contra jefes, valor de Combustión frente al tercer punto de Precisión y si Chamuscar mejorado de cada Mago se apila por separado como dice su texto. Si el daño de hechizos de Explosión Arcana (12 % del Intelecto durante 18 s) cuenta también para tus hechizos de Fuego, como sugiere su texto; si no, ese punto vuelve a Absorción mágica.
 - [ ] **Escarcha con Contrahechizo**: si compensa la variante con Precisión contra jugadores de nivel 60 (prueba 8 de `docs/pvp-research.md`).
 - [ ] **Escarcha profunda de mundo**: maná al pelear mientras farmeas y si Incineración 5/5 en Lanza de hielo rinde más que Contrahechizo mejorado.
 - [ ] **Equipo de nivel 60 de mazmorra y banda**: aún sin datos fiables; las builds lo dicen en «Equipo».
@@ -275,7 +275,7 @@ Publicada el 2026-10-13 con las raciales de la beta. Hay que revisarla con cada 
 - [ ] **Armadura de hielo y procs**: solo BlazingBoost dice que su enfriamiento sobre quien te golpea activa Mordiescarcha y Dedos de Escarcha. Las builds lo citan como suyo; confirmarlo o quitarlo.
 - [ ] **Escarcha AoE de leveo**: ritmo real del 22 al 40 sin Mordiescarcha ni Barrera de hielo (llega al 41), y si Precisión primero compensa frente a Descarga de Escarcha mejorada.
 - [ ] **Arcano y Fuego de mazmorras**: maná en jefes largos con Explosión Arcana cargada y si Ignición 2/5 merece más que Alma ardiente.
-- [ ] **Fuego profundo (banda)**: teórica hasta el 9 de diciembre. Tope de golpe contra jefes, valor de Combustión frente al tercer punto de Precisión y si Chamuscar mejorado de cada Mago se apila por separado como dice su texto.
+- [ ] **Fuego profundo (banda)**: teórica hasta el 9 de diciembre. Tope de golpe contra jefes, valor de Combustión frente al tercer punto de Precisión y si Chamuscar mejorado de cada Mago se apila por separado como dice su texto. Si el daño de hechizos de Explosión Arcana (12 % del Intelecto durante 18 s) cuenta también para tus hechizos de Fuego, como sugiere su texto; si no, ese punto vuelve a Absorción mágica.
 - [ ] **Escarcha con Contrahechizo**: si compensa la variante con Precisión contra jugadores de nivel 60 (prueba 8 de `docs/pvp-research.md`).
 - [ ] **Escarcha profunda de mundo**: maná al pelear mientras farmeas y si Incineración 5/5 en Lanza de hielo rinde más que Contrahechizo mejorado.
 - [ ] **Equipo de nivel 60 de mazmorra y banda**: aún sin datos fiables; las builds lo dicen en «Equipo».

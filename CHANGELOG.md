@@ -4,7 +4,7 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
-## 2026-11-22
+## 2026-11-23
 
 ### [Guía] Builds por contenido y enfoque: leveo, PvE y JcJ
 

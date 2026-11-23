@@ -70,11 +70,11 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
                     {blocks.map((block) => (
                       <div class="nav-block">
                         {block.heading && <p class="nav-block__heading">{block.heading}</p>}
-                        <ul class:list={['nav-sublist', { 'nav-sublist--trees': block.links[0]?.tree }]}>
+                        <ul class:list={['nav-sublist', { 'nav-sublist--trees': block.links[0]?.tree || block.links[0]?.child }]}>
                           {block.links.map((link) => (
                             <li>
                               <a
-                                class:list={['nav-sublink', { 'nav-sublink--tree': link.tree }]}
+                                class:list={['nav-sublink', { 'nav-sublink--tree': link.tree || link.child }]}
                                 href={link.url}
                                 aria-current={link.page && link.page === pageId ? 'page' : undefined}
                               >
@@ -342,7 +342,7 @@ const inGroup = (group: NavGroup) => group === currentGroup && pageId !== group.
     padding: 0;
     list-style: none;
   }
-  /* The three trees hang from Specializations: a smaller list, indented under it with a thin line. */
+  /* The three trees hang from Specializations (and Dungeons and Raid from PvE): a smaller list, indented under it with a thin line. */
   .nav-block:has(.nav-sublist--trees) {
     margin-top: calc(-1 * var(--space-2));
   }

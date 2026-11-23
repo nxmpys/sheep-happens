@@ -6,7 +6,7 @@
  */
 import { pathFor, ROUTES, type Locale, type NavGroup, type PageId } from '../i18n/routes';
 import { NAV_LABELS } from '../i18n/ui';
-import { GROUP_LABELS, USE_TITLES } from '../i18n/builds';
+import { GROUP_LABELS, USE_LABELS } from '../i18n/builds';
 import { USE_GROUP, contentPath } from './build-routes';
 import type { BuildUse, SpecTree } from './schemas';
 
@@ -17,6 +17,8 @@ export interface MenuLink {
   page?: PageId;
   /** Talent tree the page belongs to: these links show as a list hanging from Specializations. */
   tree?: SpecTree;
+  /** Hangs from the link above it, like the trees under Specializations (Dungeons and Raid under PvE). */
+  child?: boolean;
 }
 
 export interface MenuBlock {
@@ -52,13 +54,15 @@ export function menuBlocks(group: NavGroup, locale: Locale, opts: { base?: strin
       ];
     }
     case 'builds': {
-      // Leveling, then PvE with dungeons and raid under its own heading, then PvP.
-      const link = (use: BuildUse): MenuLink => ({ label: USE_TITLES[locale][use], url: contentPath(use, locale, { base }) });
+      // Leveling, PvE (the index filtered to PvE) with dungeons and raid hanging
+      // from it, as the trees hang from Specializations under Learn, then PvP.
+      const link = (use: BuildUse): MenuLink => ({ label: USE_LABELS[locale][use], url: contentPath(use, locale, { base }) });
       const contents = opts.contents ?? [];
       const pve = contents.filter((use) => USE_GROUP[use] === 'pve');
+      const pveLink: MenuLink = { label: GROUP_LABELS[locale].pve, url: `${pathFor('builds', locale, { base })}?f=pve` };
       return [
-        { links: contents.filter((use) => USE_GROUP[use] === 'leveling').map(link) },
-        { heading: GROUP_LABELS[locale].pve, links: pve.map(link) },
+        { links: [...contents.filter((use) => USE_GROUP[use] === 'leveling').map(link), ...(pve.length > 0 ? [pveLink] : [])] },
+        { links: pve.map((use) => ({ ...link(use), child: true })) },
         { links: contents.filter((use) => USE_GROUP[use] === 'pvp').map(link) },
       ].filter((block) => block.links.length > 0);
     }

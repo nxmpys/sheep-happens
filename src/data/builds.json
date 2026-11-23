@@ -301,7 +301,7 @@
       "mobalytics-kargoz-aoe",
       "blizzard-hotfixes-2026-11"
     ],
-    "updated": "2026-11-22"
+    "updated": "2026-11-23"
   },
   {
     "id": "frost-leveling-single-target",
@@ -612,7 +612,7 @@
       "icyveins-forever-frost-rotation",
       "blazingboost-forever-frost"
     ],
-    "updated": "2026-11-22"
+    "updated": "2026-11-23"
   },
   {
     "id": "frost-leveling-deep",
@@ -912,7 +912,7 @@
       "wowhead-forever-talent-calc",
       "icyveins-forever-frost-leveling"
     ],
-    "updated": "2026-11-22"
+    "updated": "2026-11-23"
   },
   {
     "id": "arcane-leveling",
@@ -1204,7 +1204,7 @@
     "sources": [
       "wowhead-forever-talent-calc"
     ],
-    "updated": "2026-11-22"
+    "updated": "2026-11-23"
   },
   {
     "id": "arcane-fire-leveling",
@@ -1492,7 +1492,7 @@
       "mobalytics-wrdlbrmpft-arcane",
       "warcrafttavern-mage-leveling"
     ],
-    "updated": "2026-11-22"
+    "updated": "2026-11-23"
   },
   {
     "id": "fire-leveling",
@@ -1775,7 +1775,7 @@
     "sources": [
       "wowhead-forever-talent-calc"
     ],
-    "updated": "2026-11-22"
+    "updated": "2026-11-23"
   },
   {
     "id": "frost-dungeons-aoe",
@@ -1975,7 +1975,7 @@
       "icyveins-forever-frost-rotation",
       "blizzard-hotfixes-2026-11"
     ],
-    "updated": "2026-11-22"
+    "updated": "2026-11-23"
   },
   {
     "id": "dungeons-arcane-fire",
@@ -2191,7 +2191,7 @@
       "warcrafttavern-arcane-mage",
       "wowhead-forever-talent-calc"
     ],
-    "updated": "2026-11-22"
+    "updated": "2026-11-23"
   },
   {
     "id": "raid-fire",
@@ -2229,7 +2229,7 @@
       "wand-specialization": 2,
       "arcane-resilience": 3,
       "arcane-subtlety": 2,
-      "magic-absorption": 1,
+      "arcane-blast": 1,
       "arcane-concentration": 5,
       "missile-barrage": 2,
       "arcane-meditation": 3,
@@ -2322,11 +2322,11 @@
         "talents": [
           "elemental-precision",
           "arcane-subtlety",
-          "magic-absorption"
+          "arcane-blast"
         ],
         "text": {
-          "es": "Precisión 3/3: un 6 % de golpe, lo primero en banda. Sutileza Arcana quita 15 de resistencia contra todos tus hechizos, y Absorción mágica completa los 15 de Arcano que pide Meditación Arcana.",
-          "en": "Precision 3/3: 6% hit, the first thing in a raid. Arcane Subtlety removes 15 resistance against all your spells, and Magic Absorption completes the 15 Arcane points Arcane Meditation needs."
+          "es": "Precisión 3/3: un 6 % de golpe, lo primero en banda. Sutileza Arcana quita 15 de resistencia contra todos tus hechizos, y Explosión Arcana completa los 15 de Arcano que pide Meditación Arcana.",
+          "en": "Precision 3/3: 6% hit, the first thing in a raid. Arcane Subtlety removes 15 resistance against all your spells, and Arcane Blast completes the 15 Arcane points Arcane Meditation needs."
         }
       }
     ],
@@ -2342,6 +2342,10 @@
       {
         "es": "No cuentes con las cargas de Chamuscar de otro Mago: su vulnerabilidad solo sube su daño.",
         "en": "Do not rely on another Mage’s Scorch stacks: their vulnerability only raises their damage."
+      },
+      {
+        "es": "Abre con una Explosión Arcana: te da un 12 % de tu Intelecto como daño de hechizos durante 18 s y tiene un 10 % más de crítico con Incineración. No la repitas: la siguiente cuesta el doble.",
+        "en": "Open with one Arcane Blast: it gives you 12% of your Intellect as spell damage for 18 s and has 10% more crit with Incineration. Do not repeat it: the next one costs twice as much."
       }
     ],
     "playstyle": [
@@ -2413,7 +2417,7 @@
       "forever-hub-tier-list",
       "wowhead-forever-talent-calc"
     ],
-    "updated": "2026-11-22"
+    "updated": "2026-11-23"
   },
   {
     "id": "pvp-frost-counterspell",
@@ -2658,7 +2662,7 @@
       "blizzard-hotfixes-2026-11",
       "blazingboost-forever-frost"
     ],
-    "updated": "2026-11-22"
+    "updated": "2026-11-23"
   },
   {
     "id": "pvp-deep-frost",
@@ -2873,6 +2877,6 @@
       "blizzard-dev-notes",
       "blazingboost-forever-frost"
     ],
-    "updated": "2026-11-22"
+    "updated": "2026-11-23"
   }
 ]

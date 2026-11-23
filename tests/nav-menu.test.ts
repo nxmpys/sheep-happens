@@ -39,19 +39,21 @@ describe('menuBlocks', () => {
     expect(links[0]!.page).toBeUndefined();
   });
 
-  it('shows leveling, then PvE with dungeons and raid under its heading, then PvP', () => {
+  it('shows leveling, then PvE with dungeons and raid hanging from it, then PvP', () => {
     const blocks = menuBlocks(group('builds'), 'es', { contents: ['leveling', 'dungeons', 'raid', 'pvp'] });
-    expect(blocks.map((block) => block.heading)).toEqual([undefined, 'PvE', undefined]);
+    expect(blocks.map((block) => block.heading)).toEqual([undefined, undefined, undefined]);
+    expect(blocks.map((block) => block.links.map((link) => link.label))).toEqual([['Leveo', 'PvE'], ['Mazmorras', 'Banda'], ['JcJ']]);
     expect(blocks.map((block) => block.links.map((link) => link.url))).toEqual([
-      ['/es/builds/leveo/'],
+      ['/es/builds/leveo/', '/es/builds/?f=pve'],
       ['/es/builds/mazmorras/', '/es/builds/banda/'],
       ['/es/builds/jcj/'],
     ]);
+    expect(blocks[1]!.links.every((link) => link.child)).toBe(true);
   });
 
-  it('leaves out a group with no content page', () => {
-    const blocks = menuBlocks(group('builds'), 'en', { contents: ['leveling', 'dungeons'] });
-    expect(blocks.map((block) => block.heading)).toEqual([undefined, 'PvE']);
+  it('leaves out PvE when it has no content page', () => {
+    const blocks = menuBlocks(group('builds'), 'en', { contents: ['leveling', 'pvp'] });
+    expect(blocks.map((block) => block.links.map((link) => link.label))).toEqual([['Leveling'], ['PvP']]);
   });
 
   it('shows the addon once, under its own heading in Tools', () => {

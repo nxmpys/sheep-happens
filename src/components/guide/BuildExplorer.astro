@@ -221,12 +221,18 @@ const cardIcon =(build: Build) => build.icon ?? build.keyTalents.map(talentIcon)
         const filter = button.dataset.filter!;
         button.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: reduce.matches ? 'auto' : 'smooth' });
         if (root.dataset.filter === filter) return;
+        const url = new URL(location.href);
+        if (filter === 'all') url.searchParams.delete('f');
+        else url.searchParams.set('f', filter);
+        history.replaceState(history.state, '', url);
         // Cards glide to their new places where the browser can animate the change.
         if (document.startViewTransition && !reduce.matches) document.startViewTransition(() => apply(filter));
         else apply(filter);
       });
     }
-    apply('all');
+    // ?f=pve (the menu's PvE link) opens the index on that group; the chosen filter stays in the URL.
+    const start = new URLSearchParams(location.search).get('f');
+    apply(buttons.some((b) => b.dataset.filter === start) ? start! : 'all');
     new ResizeObserver(movePill).observe(bar);
     requestAnimationFrame(() => requestAnimationFrame(() => (root.dataset.ready = '')));
   }
