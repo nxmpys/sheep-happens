@@ -4,6 +4,15 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-11-25
+
+### [Guía] Revisión de hotfixes: Concentración Arcana, Nova de Escarcha y pergaminos
+
+Se recogen los hotfixes de noviembre que afectan al Mago: Concentración Arcana (y Fogonazo) en su ficha, la Nova de Escarcha en Farmeo AoE y el consejo de la biblioteca de pergaminos, que ya no habla de Investigar.
+
+- **Datos afectados:** Concentración Arcana
+- **Fuentes:** [WoW: Forever Hotfixes - November 2026](https://us.forums.blizzard.com/en/wow/t/2403040) (Blizzard Entertainment)
+
 ## 2026-11-23
 
 ### [Guía] Builds por contenido y enfoque: leveo, PvE y JcJ
@@ -20,6 +29,14 @@ Primera build de mazmorras de nivel 60: Escarcha con Ventisca mejorada, Alcance 
 
 - **Datos afectados:** build:frost-dungeons-aoe
 
+## 2026-11-13
+
+### [Juego] Hotfix: el daño de procs y de Ventisca rompe la Nova de Escarcha
+
+Blizzard corrige que la Nova de Escarcha no se rompiera con el daño de procs ni con el de Ventisca. En el farmeo de área, lanza Ventisca cuando la Nova esté a punto de acabar.
+
+- **Fuentes:** [WoW: Forever Hotfixes - November 2026](https://us.forums.blizzard.com/en/wow/t/2403040) (Blizzard Entertainment)
+
 ## 2026-11-10
 
 ### [Guía] Builds de leveo: Arcano y Fuego, y Escarcha profunda
@@ -27,6 +44,15 @@ Primera build de mazmorras de nivel 60: Escarcha con Ventisca mejorada, Alcance 
 Dos builds de leveo nuevas. Arcano y Fuego sigue el mismo camino que Arcano hasta el nivel 40 y después coge Incineración, Acelerante y Precisión en vez de Escarcha. Escarcha profunda empieza con Tromba de misiles a los 17 y después baja hasta el final del árbol de Escarcha, con Canalización de Escarcha y Escalofrío del invierno a la vez.
 
 - **Datos afectados:** build:arcane-fire-leveling, build:frost-leveling-deep
+
+## 2026-11-09
+
+### [Juego] Hotfix: Concentración Arcana reparte su probabilidad y Fogonazo ya no gasta Lanzamiento libre
+
+La probabilidad de Concentración Arcana se reparte entre el lanzamiento y cada proyectil (antes era un 10 % en cada uno), y los daños de Fogonazo en el suelo ya no gastan Lanzamiento libre.
+
+- **Datos afectados:** Concentración Arcana
+- **Fuentes:** [WoW: Forever Hotfixes - November 2026](https://us.forums.blizzard.com/en/wow/t/2403040) (Blizzard Entertainment)
 
 ## 2026-11-06
 

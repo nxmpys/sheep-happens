@@ -1,6 +1,6 @@
 # Hoja de ruta del contenido
 
-> Creado: 2026-10-12 · Revisión: 2026-11-23 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
+> Creado: 2026-10-12 · Revisión: 2026-11-25 · Versión de juego: `forever-launch-2026-11` (lanzamiento el 4 de noviembre de 2026, cliente 1.60.1.70790)
 
 Lista viva de lo que falta, de lo que hay que quitar al lanzar y de lo que hay que vigilar con el tiempo, para que la guía esté siempre al día y dé a cada lector lo que busca:
 
@@ -122,7 +122,7 @@ Las reglas de siempre siguen vigentes: cada dato lleva su estado de verificació
 - [ ] Farmeo AoE: aviso «Información de beta», rotaciones y zonas sacadas de la beta (pasarlas a «Probado en juego» o corregirlas) y la tabla de zonas del 30 al 60 («Pendiente»).
 - [x] Equipo: aviso pendiente que cita el nivel 60 de la beta.
 - [ ] Arcano, Fuego y Escarcha: secciones «Lo que falta por saber».
-- [ ] Pergaminos: los bloques de «Análisis» salen de los datos del cliente de la beta (5 s de lanzamiento, habilidad que pide cada pergamino, Pergamino de Comprensión, apilamiento). Comprobarlos en el juego y pasarlos a «Probado en juego», y revisar el nombre del hechizo en el cliente en español («Entender pergamino» en la beta, «Comprender pergamino» en el artículo de Blizzard).
+- [ ] Pergaminos: los bloques de «Análisis» salen de los datos del cliente de la beta (5 s de lanzamiento, habilidad que pide cada pergamino, Pergamino de Comprensión, apilamiento). Comprobarlos en el juego y pasarlos a «Probado en juego», y revisar el nombre del hechizo en el cliente en español («Entender pergamino» en la beta, «Comprender pergamino» en el artículo de Blizzard). El hotfix del 6 de nov confirma que Investigar no debería existir y que solo se aprende Estudiar (corregido en el consejo de la biblioteca el 2026-11-25); falta decidir qué hacer con la habilidad «Investigación del Mago» en la página de pergaminos y en Profesiones.
 - [ ] Fuentes y Cambios: resolver «Nivel de la doble especialización» y «Requisito de Dedos de Escarcha». (La discrepancia «Fin de la beta» se resolvió el 2026-10-21: Blizzard anuncia el cierre el 23 de octubre a las 10:00 PDT.)
 - [x] `facts.json`: al lanzar, reescribir `beta` (ya cerrada), quitar `name-reservation` (reserva del 27 de octubre al 3 de noviembre) y revisar `raid-unlock` (bandas de nivel 60 desde el 9 de diciembre; tamaños y ubicaciones solo en el artículo completo de Blizzard, que no se ha leído).
 - [ ] Error de la beta con Misiles Arcanos (recibir daño dispara un misil con el daño completo): comprobar si sigue.
