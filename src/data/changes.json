@@ -394,6 +394,14 @@
       {
         "es": "Misiles Arcanos puede activarlo, pero no gasta tu Lanzamiento libre mientras Tromba de misiles está activa: lo guardas para el siguiente hechizo.",
         "en": "Arcane Missiles can trigger it, but does not spend your Clearcasting while Missile Barrage is up: you keep it for the next spell."
+      },
+      {
+        "es": "Hotfix del 9 de noviembre: la probabilidad de activación se reparte entre el lanzamiento y cada proyectil de un hechizo canalizado (antes daba un 10 % en el lanzamiento y otro 10 % en cada proyectil).",
+        "en": "9 November hotfix: the activation chance is now split across the cast and every bolt of a channeled spell (it used to grant 10% on the cast and 10% on each bolt)."
+      },
+      {
+        "es": "Hotfix del 9 de noviembre: los daños que Fogonazo deja en el suelo ya no gastan Lanzamiento libre por error.",
+        "en": "9 November hotfix: Flamestrike's ground ticks no longer consume Clearcasting by mistake."
       }
     ],
     "notes": [
@@ -414,10 +422,11 @@
     ],
     "status": "verified",
     "sources": [
+      "blizzard-hotfixes-2026-11",
       "blizzard-deep-dive-mage",
       "blizzard-dev-notes"
     ],
-    "updated": "2026-11-06"
+    "updated": "2026-11-25"
   },
   {
     "id": "arcane-resilience",

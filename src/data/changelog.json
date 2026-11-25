@@ -1,5 +1,71 @@
 [
   {
+    "id": "2026-11-25-hotfix-concentration",
+    "date": "2026-11-25",
+    "type": "guide",
+    "title": {
+      "es": "Revisión de hotfixes: Concentración Arcana, Nova de Escarcha y pergaminos",
+      "en": "Hotfix review: Arcane Concentration, Frost Nova and scrolls"
+    },
+    "body": {
+      "es": "Se recogen los hotfixes de noviembre que afectan al Mago: Concentración Arcana (y Fogonazo) en su ficha, la Nova de Escarcha en Farmeo AoE y el consejo de la biblioteca de pergaminos, que ya no habla de Investigar.",
+      "en": "Collects the November hotfixes that affect the Mage: Arcane Concentration (and Flamestrike) on its card, Frost Nova in AoE Farming, and the scroll library tip, which no longer mentions Research."
+    },
+    "pages": [
+      "changes",
+      "aoe-farming",
+      "library"
+    ],
+    "sources": [
+      "blizzard-hotfixes-2026-11"
+    ],
+    "refs": [
+      "change:arcane-concentration"
+    ]
+  },
+  {
+    "id": "2026-11-13-frost-nova-hotfix",
+    "date": "2026-11-13",
+    "type": "game",
+    "title": {
+      "es": "Hotfix: el daño de procs y de Ventisca rompe la Nova de Escarcha",
+      "en": "Hotfix: damage from procs and Blizzard breaks Frost Nova"
+    },
+    "body": {
+      "es": "Blizzard corrige que la Nova de Escarcha no se rompiera con el daño de procs ni con el de Ventisca. En el farmeo de área, lanza Ventisca cuando la Nova esté a punto de acabar.",
+      "en": "Blizzard fixes Frost Nova not breaking from proc damage or Blizzard damage. When AoE farming, cast Blizzard when the Nova is about to end."
+    },
+    "pages": [
+      "aoe-farming"
+    ],
+    "sources": [
+      "blizzard-hotfixes-2026-11"
+    ]
+  },
+  {
+    "id": "2026-11-09-concentration-hotfix",
+    "date": "2026-11-09",
+    "type": "game",
+    "title": {
+      "es": "Hotfix: Concentración Arcana reparte su probabilidad y Fogonazo ya no gasta Lanzamiento libre",
+      "en": "Hotfix: Arcane Concentration splits its chance and Flamestrike no longer consumes Clearcasting"
+    },
+    "body": {
+      "es": "La probabilidad de Concentración Arcana se reparte entre el lanzamiento y cada proyectil (antes era un 10 % en cada uno), y los daños de Fogonazo en el suelo ya no gastan Lanzamiento libre.",
+      "en": "Arcane Concentration's chance is split across the cast and every bolt (it was 10% on each), and Flamestrike's ground ticks no longer consume Clearcasting."
+    },
+    "pages": [
+      "changes",
+      "talents-arcane"
+    ],
+    "sources": [
+      "blizzard-hotfixes-2026-11"
+    ],
+    "refs": [
+      "change:arcane-concentration"
+    ]
+  },
+  {
     "id": "2026-11-23-builds-by-content",
     "date": "2026-11-23",
     "type": "guide",
