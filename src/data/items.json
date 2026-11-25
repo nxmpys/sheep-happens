@@ -1447,5 +1447,144 @@
       "es": "Nivel 21 · Mago",
       "en": "Level 21 · Mage"
     }
+  },
+  {
+    "id": "magicians-cord",
+    "wowhead": 272393,
+    "name": {
+      "es": "Cordón de mago",
+      "en": "Magician's Cord"
+    },
+    "icon": "inv_belt_43a",
+    "quality": "epic",
+    "slot": {
+      "es": "Cintura · Tela",
+      "en": "Waist · Cloth"
+    },
+    "stats": [
+      {
+        "es": "52 de armadura",
+        "en": "52 Armor"
+      },
+      {
+        "es": "+12 Aguante",
+        "en": "+12 Stamina"
+      },
+      {
+        "es": "+24 Intelecto",
+        "en": "+24 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: hasta +19 al daño y la sanación con hechizos",
+        "en": "Equip: up to +19 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Mago · nivel 60 · 100 reales",
+      "en": "Mage · level 60 · 100 Reals"
+    }
+  },
+  {
+    "id": "arcanoweave-cloak",
+    "wowhead": 272411,
+    "name": {
+      "es": "Capa de tejido Arcano",
+      "en": "Arcanoweave Cloak"
+    },
+    "icon": "inv_misc_cape_05",
+    "quality": "rare",
+    "slot": {
+      "es": "Espalda",
+      "en": "Back"
+    },
+    "stats": [
+      {
+        "es": "46 de armadura",
+        "en": "46 Armor"
+      },
+      {
+        "es": "+8 Intelecto",
+        "en": "+8 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: +1 % de probabilidad de golpe",
+        "en": "Equip: +1% chance to hit"
+      },
+      {
+        "es": "Equipar: hasta +16 al daño y la sanación con hechizos",
+        "en": "Equip: up to +16 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 60 · 75 reales",
+      "en": "Level 60 · 75 Reals"
+    }
+  },
+  {
+    "id": "channelers-ring",
+    "wowhead": 272406,
+    "name": {
+      "es": "Anillo de canalizador",
+      "en": "Channeler's Ring"
+    },
+    "icon": "inv_jewelry_ring_24",
+    "quality": "rare",
+    "slot": {
+      "es": "Dedo · Único",
+      "en": "Finger · Unique"
+    },
+    "stats": [
+      {
+        "es": "+14 Intelecto",
+        "en": "+14 Intellect"
+      }
+    ],
+    "effects": [
+      {
+        "es": "Equipar: +1 % de probabilidad de golpe",
+        "en": "Equip: +1% chance to hit"
+      },
+      {
+        "es": "Equipar: hasta +9 al daño y la sanación con hechizos",
+        "en": "Equip: up to +9 spell damage and healing"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 60 · 75 reales",
+      "en": "Level 60 · 75 Reals"
+    }
+  },
+  {
+    "id": "weakness-analyzer",
+    "wowhead": 272438,
+    "name": {
+      "es": "Analizador de debilidades",
+      "en": "Weakness Analyzer"
+    },
+    "icon": "inv_misc_blizzcon09_graphicscard",
+    "quality": "rare",
+    "slot": {
+      "es": "Abalorio",
+      "en": "Trinket"
+    },
+    "stats": [],
+    "effects": [
+      {
+        "es": "Equipar: hasta +18 al daño y la sanación con hechizos",
+        "en": "Equip: up to +18 spell damage and healing"
+      },
+      {
+        "es": "Uso: +5 % de crítico durante 20 s o hasta tu siguiente crítico (6 min de reutilización)",
+        "en": "Use: +5% crit for 20 s or until your next critical hit (6 min cooldown)"
+      }
+    ],
+    "requires": {
+      "es": "Nivel 60 · 125 reales",
+      "en": "Level 60 · 125 Reals"
+    }
   }
 ]

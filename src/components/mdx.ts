@@ -14,6 +14,9 @@ import CheatSheet from './guide/CheatSheet.astro';
 import ChangeExplorer from './guide/ChangeExplorer.astro';
 import ChangeSummaryList from './guide/ChangeSummaryList.astro';
 import ChangelogList from './guide/ChangelogList.astro';
+import CheckGroup from './guide/CheckGroup.astro';
+import CheckItem from './guide/CheckItem.astro';
+import Checklist from './guide/Checklist.astro';
 import ClassQuestList from './guide/ClassQuestList.astro';
 import CommunityBuilds from './guide/CommunityBuilds.astro';
 import CritCalculator from './guide/CritCalculator.astro';
@@ -118,6 +121,9 @@ export const mdxComponents = {
   ChangeExplorer,
   ChangeSummaryList,
   ChangelogList,
+  CheckGroup,
+  CheckItem,
+  Checklist,
   ClassQuestList,
   CommunityBuilds,
   CritCalculator,

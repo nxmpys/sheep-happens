@@ -1,0 +1,69 @@
+---
+/**
+ * One task of a <Checklist>: a box, a game icon, the task and a line on how.
+ * `id` is what the list saves, so keep it stable once published.
+ */
+import GameIcon from '../learn/GameIcon.astro';
+
+interface Props {
+  id: string;
+  title: string;
+  spell?: string;
+  icon?: string;
+}
+
+const { id, title, spell, icon } = Astro.props;
+const inputId = `check-${id}`;
+---
+
+<li class="check">
+  <input class="check__box" type="checkbox" id={inputId} data-check={id} />
+  <div class="check__main">
+    <label class="check__title" for={inputId}>
+      {(spell || icon) && <GameIcon spell={spell} icon={icon} size={28} plain />}
+      <span>{title}</span>
+    </label>
+    <div class="check__body"><slot /></div>
+  </div>
+</li>
+
+<style>
+  .check {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-3);
+    align-items: start;
+  }
+  .check__box {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0.2rem 0 0;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+  .check__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 600;
+    line-height: 1.3;
+    cursor: pointer;
+  }
+  .check__body {
+    margin-top: var(--space-1);
+    font-size: var(--step--1);
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+  .check__body :global(p) {
+    margin: 0;
+  }
+  .check:has(.check__box:checked) .check__title span {
+    text-decoration: line-through;
+    text-decoration-color: var(--text-subtle);
+    color: var(--text-subtle);
+  }
+  .check:has(.check__box:checked) .check__body {
+    opacity: 0.6;
+  }
+</style>

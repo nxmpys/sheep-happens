@@ -28,6 +28,7 @@ export const PAGE_IDS = [
   'leveling',
   'spells',
   'aoe-farming',
+  'level-60',
   'gear',
   'tools',
   'talent-calc',
@@ -93,6 +94,8 @@ export const ROUTES: Record<PageId, RouteDef> = {
   spells: { id: 'spells', slug: { es: 'hechizos', en: 'spells' }, parent: 'learn' },
   // AoE farming moved from Builds to Guides (26 Oct 2026) keeping its slug.
   'aoe-farming': { id: 'aoe-farming', slug: { es: 'farmeo-aoe', en: 'aoe-farming' }, parent: 'guides' },
+  // What to do once you reach the level cap (25 Nov 2026): gear before raids, gold, attunement, Legacy.
+  'level-60': { id: 'level-60', slug: { es: 'nivel-maximo', en: 'max-level' }, parent: 'guides' },
   // Gear moved from Learn to Guides (20 Oct 2026) keeping its slug: leveling and PvE gear plus the class quests; PvP gear lives in the PvP guide.
   gear: { id: 'gear', slug: { es: 'equipo', en: 'gear' }, parent: 'guides' },
   tools: { id: 'tools', slug: { es: 'herramientas', en: 'tools' }, parent: 'home' },
@@ -145,7 +148,7 @@ export const PRIMARY_NAV: readonly NavGroup[] = [
   {
     key: 'guides',
     page: 'guides',
-    items: ['aoe-farming', 'races', 'professions', 'legacy', 'gear', 'library', 'pvp'],
+    items: ['level-60', 'aoe-farming', 'races', 'professions', 'legacy', 'gear', 'library', 'pvp'],
   },
   { key: 'builds', page: 'builds' },
   {

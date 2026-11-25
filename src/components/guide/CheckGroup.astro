@@ -1,0 +1,39 @@
+---
+/** One block of a <Checklist>: a heading (when to do it) and its <CheckItem>s. */
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<section class="check-group">
+  <p class="check-group__title">{title}</p>
+  <ul class="check-group__list" role="list">
+    <slot />
+  </ul>
+</section>
+
+<style>
+  .check-group {
+    min-width: 0;
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface-1);
+  }
+  .check-group__title {
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  .check-group__list {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+</style>

@@ -42,13 +42,13 @@
     "id": "blizzard-raid-overview",
     "title": "World of Warcraft: Forever Raid Overview—Locations, Raid Sizes, and Attunement",
     "publisher": "Blizzard Entertainment",
-    "url": "https://us.forums.blizzard.com/en/wow/t/2387821",
+    "url": "https://worldofwarcraft.blizzard.com/en-us/news/24303009",
     "kind": "official",
     "published": "2026-10-20",
-    "accessed": "2026-10-21",
+    "accessed": "2026-11-25",
     "notes": {
-      "es": "Resumen oficial de las bandas de nivel 60: fecha de apertura (9 de diciembre) y Amuleto de Dracofuego para Onyxia. Solo se ha leído el resumen del hilo; tamaños y ubicaciones están en el artículo completo.",
-      "en": "Official overview of the level 60 raids: unlock date (9 December) and the Drakefire Amulet for Onyxia. Only the forum thread summary was read; sizes and locations are in the full article."
+      "es": "Artículo oficial de las bandas de nivel 60: abren el 9 de diciembre; Barrow Deeps (10 jugadores, 8 jefes), Hyjal Summit (20, 13 jefes) y Guarida de Onyxia (40); el Amuleto Pirodraco paso a paso para cada facción y la recomendación de resistencia al fuego.",
+      "en": "Official article on the level 60 raids: they open on 9 December; Barrow Deeps (10 players, 8 bosses), Hyjal Summit (20, 13 bosses) and Onyxia’s Lair (40); the Drakefire Amulet step by step for each faction, and the advice to build fire resistance."
     }
   },
   {
@@ -732,15 +732,15 @@
   },
   {
     "id": "blizzard-hotfixes-2026-11",
-    "title": "WoW: Forever Hotfixes - November 6, 2026",
+    "title": "WoW: Forever Hotfixes (November 2026)",
     "publisher": "Blizzard Entertainment",
     "url": "https://us.forums.blizzard.com/en/wow/t/2403040",
     "kind": "official",
     "published": "2026-11-06",
-    "accessed": "2026-11-07",
+    "accessed": "2026-11-25",
     "notes": {
-      "es": "Hotfixes del 5 y 6 de noviembre. El 5 corrige que algunos múrlocs del Marjal Revolcafango reaparecieran demasiado rápido. Para el Mago, solo dos errores corregidos, uno de ellos la duración de Explosión Arcana.",
-      "en": "Hotfixes of 5 and 6 November. On the 5th, some Dustwallow Marsh murlocs no longer respawn too quickly. For the Mage, only two bug fixes, one of them Arcane Blast's duration."
+      "es": "Hotfixes del 5 al 24 de noviembre. Para el nivel 60: más oro en las misiones desde el nivel 48 (sin oro por experiencia al 60), 5 entradas por hora en cada mazmorra, el cambio de Sortija de la Luz bendita por Anillo de canalizador en Pix Xizzix y el descuento de Honorable en la Equitación de oficial. El 5 corrige que algunos múrlocs del Marjal Revolcafango reaparecieran demasiado rápido.",
+      "en": "Hotfixes from 5 to 24 November. For level 60: more quest gold from level 48 (no gold for experience at 60), 5 entries per hour into each dungeon, the Blessed Band of Light to Channeler’s Ring exchange at Pix Xizzix, and the Honored discount on Journeyman Riding. On the 5th, some Dustwallow Marsh murlocs no longer respawn too quickly."
     }
   },
   {
@@ -1027,6 +1027,91 @@
     "notes": {
       "es": "Guía de una tienda de servicios. Es la única fuente que dice que Mordiescarcha y Dedos de Escarcha se activan con Armadura de Escarcha y Armadura de hielo; sin confirmar.",
       "en": "Guide by a service shop. It is the only source saying Frostbite and Fingers of Frost trigger from Frost Armor and Ice Armor; unconfirmed."
+    }
+  },
+  {
+    "id": "blizzard-blackmaw-farm",
+    "title": "Blackmaw Hold farm: gold removed and account suspensions",
+    "publisher": "Blizzard Entertainment",
+    "url": "https://eu.forums.blizzard.com/en/wow/t/643759",
+    "kind": "official",
+    "accessed": "2026-11-25",
+    "notes": {
+      "es": "Blizzard retira el oro del farmeo de un grupo de enemigos de Blackmaw Hold que soltaba botín de élite por error y suspende a quien abusó a sabiendas.",
+      "en": "Blizzard removes the gold from a group of Blackmaw Hold enemies that wrongly dropped elite loot, and suspends those who knowingly abused it."
+    }
+  },
+  {
+    "id": "wowhead-pix-xizzix",
+    "title": "Pix Xizzix (NPC), WoW Forever database",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/npc=227853/pix-xizzix",
+    "kind": "tool",
+    "accessed": "2026-11-25",
+    "notes": {
+      "es": "Lo que vende por Reales deslustrados de Minahonda y sus dos misiones semanales de nivel 60.",
+      "en": "What she sells for Tarnished Undermine Reals and her two level 60 weekly quests."
+    }
+  },
+  {
+    "id": "wowhead-wizzik-dustfizz",
+    "title": "Wizzik Dustfizz (NPC) and the Field of Honor quests, WoW Forever database",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/npc=267525/wizzik-dustfizz",
+    "kind": "tool",
+    "accessed": "2026-11-25",
+    "notes": {
+      "es": "El PNJ de Gadgetzan (51.8, 27.2) que da la cadena semanal JcJ «Campo de honor» de nivel 60: objetivo y recompensa de las semanas 1 a 4.",
+      "en": "The Gadgetzan NPC (51.8, 27.2) who gives the level 60 «Field of Honor» weekly PvP chain: goal and reward of weeks 1 to 4."
+    }
+  },
+  {
+    "id": "blizzard-pvp-progression",
+    "title": "How PvP Progression in World of Warcraft: Forever Works",
+    "publisher": "Blizzard Entertainment",
+    "url": "https://news.blizzard.com/en-gb/article/24303316/how-pvp-progression-in-world-of-warcraft-forever-works",
+    "kind": "official",
+    "published": "2026-10-07",
+    "accessed": "2026-11-25",
+    "notes": {
+      "es": "Honor y puntos de rango, los 14 rangos y sus recompensas, y las temporadas con un recorrido de tareas semanales: tres por temporada dan un punto de Legado.",
+      "en": "Honor and Rank Points, the 14 ranks and their rewards, and seasons with a journey of weekly tasks: three per season give a Legacy point."
+    }
+  },
+  {
+    "id": "wowhead-undermine-reals",
+    "title": "Tarnished Undermine Real Currency Guide: Earning and Spending",
+    "publisher": "Wowhead",
+    "url": "https://www.wowhead.com/forever/guide/currency/tarnished-undermine-real-overview",
+    "kind": "community",
+    "accessed": "2026-11-25",
+    "notes": {
+      "es": "Cómo se ganan los reales (jefes de mazmorra de nivel 55 o más, una vez al día). El tope de 165 sale de la ficha de la moneda en Wowhead.",
+      "en": "How Reals are earned (dungeon bosses of level 55 and up, once a day). The cap of 165 comes from the currency's Wowhead page."
+    }
+  },
+  {
+    "id": "blizzard-forums-level-60",
+    "title": "WoW: Forever forum threads on level 60 (Reals, weekly quest, Legacy dungeon credit)",
+    "publisher": "Blizzard forums (players)",
+    "url": "https://us.forums.blizzard.com/en/wow/t/2424713",
+    "kind": "community",
+    "accessed": "2026-11-25",
+    "notes": {
+      "es": "Lo que cuentan jugadores de nivel 60: qué jefes dan reales, cuánto oro da la semanal y que los desafíos de mazmorra no cuentan si las haces muy por encima de su nivel.",
+      "en": "What level 60 players report: which bosses give Reals, how much gold the weekly pays, and that dungeon challenges do not count when you run them far above their level."
+    }
+  },
+  {
+    "id": "warcraftmaps-level-60",
+    "title": "WoW Forever Level 60: What to Do at Max Level",
+    "publisher": "WarcraftMaps",
+    "url": "https://warcraftmaps.com/guides/what-to-do-at-60",
+    "kind": "community",
+    "accessed": "2026-11-25",
+    "notes": {
+      "es": "Lista de tareas de nivel 60 con enlaces a Blizzard y Wowhead; de aquí sale el precio de la Equitación de oficial.",
+      "en": "Level 60 to-do list with links to Blizzard and Wowhead; the Journeyman Riding price comes from here."
     }
   }
 ]

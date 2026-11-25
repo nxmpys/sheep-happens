@@ -14,6 +14,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const pages = PRIMARY_NAV.find((group) => group.key === 'guides')?.items ?? [];
 
 const cards: Partial<Record<PageId, { image: string; text: Record<'es' | 'en', string> }>> = {
+  'level-60': { image: 'd-1', text: { es: 'Equipo, oro y bandas tras el último nivel.', en: 'Gear, gold and raids after the last level.' } },
   'aoe-farming': { image: 'hl-aoe', text: { es: 'Lugares, rotaciones y rutas.', en: 'Spots, rotations and routes.' } },
   races: { image: 'q-races', text: { es: 'La mejor raza para lo que juegues.', en: 'The best race for how you play.' } },
   professions: { image: 'q-professions', text: { es: 'Las dos que te convienen.', en: 'The two that suit you.' } },
@@ -67,6 +68,12 @@ const cards: Partial<Record<PageId, { image: string; text: Record<'es' | 'en', s
   }
   .mosaic__card:first-child {
     grid-column: 1 / -1;
+  }
+  /* An odd one out at the end takes the whole row too. */
+  @media (max-width: 759.98px) {
+    .mosaic__card:nth-child(even):last-child {
+      grid-column: 1 / -1;
+    }
   }
   .mosaic__picture {
     position: absolute;
@@ -150,7 +157,7 @@ const cards: Partial<Record<PageId, { image: string; text: Record<'es' | 'en', s
     color: #14101f;
     translate: 3px 0;
   }
-  /* Wide screens: one large picture and two rows of smaller ones, then two across, filling what is left of the window. */
+  /* Wide screens: one large picture and two rows of smaller ones, then three across, filling what is left of the window. */
   @media (min-width: 760px) {
     .mosaic {
       grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -167,7 +174,7 @@ const cards: Partial<Record<PageId, { image: string; text: Record<'es' | 'en', s
       grid-row: span 2;
     }
     .mosaic__card:nth-child(n + 6) {
-      grid-column: span 6;
+      grid-column: span 4;
     }
     .mosaic__card:first-child .mosaic__link {
       font-size: var(--step-4);

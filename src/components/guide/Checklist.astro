@@ -1,0 +1,148 @@
+---
+/**
+ * A to-do list the reader ticks off, saved in this browser under `id`. Holds
+ * <CheckGroup> blocks of <CheckItem>. Without JavaScript the boxes still tick
+ * but nothing is saved, and the counter and reset button stay hidden.
+ */
+import { getLocale } from '../../i18n/locale';
+
+interface Props {
+  /** Storage key, unique per list. */
+  id: string;
+}
+
+const { id } = Astro.props;
+const es = getLocale(Astro) === 'es';
+const labels = {
+  done: es ? 'hechas' : 'done',
+  of: es ? 'de' : 'of',
+  saved: es ? 'Se guarda en este navegador.' : 'Saved in this browser.',
+  reset: es ? 'Desmarcar todo' : 'Untick all',
+};
+---
+
+<check-list data-key={`sh-check-${id}`} data-pagefind-ignore="all">
+  <div class="checklist__bar" hidden>
+    <p class="checklist__count" aria-live="polite">
+      <strong data-count>0</strong> {labels.of} <span data-total>0</span> {labels.done}
+      <span class="checklist__saved">{' · '}{labels.saved}</span>
+    </p>
+    <div class="checklist__meter" aria-hidden="true"><span data-meter></span></div>
+    <button type="button" class="checklist__reset" data-reset>{labels.reset}</button>
+  </div>
+  <div class="checklist__groups">
+    <slot />
+  </div>
+</check-list>
+
+<script>
+  class CheckList extends HTMLElement {
+    connectedCallback() {
+      const key = this.dataset.key ?? 'sh-check';
+      const boxes = [...this.querySelectorAll<HTMLInputElement>('input[data-check]')];
+      let saved: string[] = [];
+      try {
+        saved = JSON.parse(localStorage.getItem(key) ?? '[]');
+      } catch {}
+      for (const box of boxes) box.checked = saved.includes(box.dataset.check ?? '');
+
+      const bar = this.querySelector<HTMLElement>('.checklist__bar');
+      const count = this.querySelector('[data-count]');
+      const total = this.querySelector('[data-total]');
+      const meter = this.querySelector<HTMLElement>('[data-meter]');
+      const update = (store: boolean) => {
+        const ticked = boxes.filter((box) => box.checked);
+        if (count) count.textContent = String(ticked.length);
+        if (total) total.textContent = String(boxes.length);
+        if (meter) meter.style.width = `${(ticked.length / Math.max(boxes.length, 1)) * 100}%`;
+        if (!store) return;
+        try {
+          localStorage.setItem(key, JSON.stringify(ticked.map((box) => box.dataset.check)));
+        } catch {}
+      };
+      if (bar) bar.hidden = false;
+      update(false);
+      this.addEventListener('change', (event) => {
+        if ((event.target as HTMLElement).matches('input[data-check]')) update(true);
+      });
+      this.querySelector('[data-reset]')?.addEventListener('click', () => {
+        for (const box of boxes) box.checked = false;
+        update(true);
+      });
+    }
+  }
+  if (!customElements.get('check-list')) customElements.define('check-list', CheckList);
+</script>
+
+<style>
+  check-list {
+    display: block;
+    margin: var(--space-5) 0;
+  }
+  .checklist__bar {
+    position: sticky;
+    top: calc(var(--header-h) + var(--space-2));
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-2) var(--space-4);
+    margin-bottom: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--surface-1) 92%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  .checklist__bar[hidden] {
+    display: none;
+  }
+  .checklist__count {
+    margin: 0;
+    font-size: var(--step--1);
+    color: var(--text-muted);
+  }
+  .checklist__count strong {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    color: var(--text);
+  }
+  .checklist__saved {
+    color: var(--text-subtle);
+  }
+  .checklist__meter {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    height: 6px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--surface-3);
+  }
+  .checklist__meter span {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+  .checklist__reset {
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    font: inherit;
+    font-size: var(--step--1);
+    cursor: pointer;
+  }
+  .checklist__reset:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+  .checklist__groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+    gap: var(--space-4);
+  }
+</style>

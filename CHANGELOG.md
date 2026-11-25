@@ -195,7 +195,7 @@ Un hotfix de la beta visto el 20 de octubre, que Blizzard no menciona en sus not
 Blizzard confirma que la beta cierra el viernes 23 de octubre a las 10:00 PDT (17:00 UTC), con una prueba de estrés el 21 de octubre cuyos personajes se borran al terminar. Quedan resueltas las fechas dudosas del fin de la beta. Además, datos oficiales nuevos: la reserva de nombres (27 de octubre - 3 de noviembre, hasta tres personajes) y la apertura de las bandas de nivel 60 el 9 de diciembre. En Canalización de escarcha se anota que ya reduce bien la amenaza.
 
 - **Datos afectados:** Bandas de nivel 60, Canalización de Escarcha
-- **Fuentes:** [Claim Your World of Warcraft: Forever Character Names](https://us.forums.blizzard.com/en/wow/t/claim-your-world-of-warcraft-forever-character-names/2387945) (Blizzard Entertainment), [World of Warcraft: Forever Raid Overview—Locations, Raid Sizes, and Attunement](https://us.forums.blizzard.com/en/wow/t/2387821) (Blizzard Entertainment), [WoW Forever Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
+- **Fuentes:** [Claim Your World of Warcraft: Forever Character Names](https://us.forums.blizzard.com/en/wow/t/claim-your-world-of-warcraft-forever-character-names/2387945) (Blizzard Entertainment), [World of Warcraft: Forever Raid Overview—Locations, Raid Sizes, and Attunement](https://worldofwarcraft.blizzard.com/en-us/news/24303009) (Blizzard Entertainment), [WoW Forever Development Notes](https://us.forums.blizzard.com/en/wow/t/2360696) (Blizzard Entertainment)
 
 ## 2026-10-20
 
