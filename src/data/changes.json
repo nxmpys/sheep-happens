@@ -126,6 +126,39 @@
     "updated": "2026-11-06"
   },
   {
+    "id": "frost-nova",
+    "name": "Frost Nova",
+    "tree": "baseline",
+    "category": "ability",
+    "kinds": [
+      "adjusted"
+    ],
+    "summary": {
+      "es": "Hotfix del 13 de noviembre: el daño de los procs y el de Ventisca ya rompen la inmovilización de Nova de Escarcha, como cualquier otro daño.",
+      "en": "13 November hotfix: damage from procs and damage from Blizzard now break Frost Nova's root, like any other damage."
+    },
+    "details": [
+      {
+        "es": "Blizzard lo presenta como una corrección («ahora se rompe correctamente»), no como un cambio de diseño.",
+        "en": "Blizzard words it as a correction (“is now correctly broken”), not as a design change."
+      }
+    ],
+    "notes": [
+      {
+        "status": "analysis",
+        "text": {
+          "es": "Afecta sobre todo al farmeo de área: Ventisca lanzada sobre enemigos inmovilizados por Nova de Escarcha ya no los mantiene quietos todo el tiempo.",
+          "en": "This mostly matters for AoE farming: Blizzard cast on enemies rooted by Frost Nova no longer keeps them rooted the whole time."
+        }
+      }
+    ],
+    "status": "verified",
+    "sources": [
+      "blizzard-hotfixes-2026-11"
+    ],
+    "updated": "2026-11-27"
+  },
+  {
     "id": "mage-armor",
     "name": "Mage Armor",
     "tree": "baseline",
@@ -394,6 +427,14 @@
       {
         "es": "Misiles Arcanos puede activarlo, pero no gasta tu Lanzamiento libre mientras Tromba de misiles está activa: lo guardas para el siguiente hechizo.",
         "en": "Arcane Missiles can trigger it, but does not spend your Clearcasting while Missile Barrage is up: you keep it for the next spell."
+      },
+      {
+        "es": "Hotfix del 9 de noviembre: la probabilidad de activarlo se reparte entre el lanzamiento y cada misil de un hechizo de varios proyectiles (antes daba un 10 % al lanzar y otro 10 % por misil).",
+        "en": "9 November hotfix: its chance to trigger is now split across the cast and every bolt of a multi-bolt spell (it used to grant 10% on the cast and 10% per bolt)."
+      },
+      {
+        "es": "Hotfix del 9 de noviembre: los impactos de Llamarada que quedan en el suelo ya no gastan tu Lanzamiento libre.",
+        "en": "9 November hotfix: Flamestrike's ticks on the ground no longer consume Clearcasting."
       }
     ],
     "notes": [
@@ -415,9 +456,10 @@
     "status": "verified",
     "sources": [
       "blizzard-deep-dive-mage",
-      "blizzard-dev-notes"
+      "blizzard-dev-notes",
+      "blizzard-hotfixes-2026-11"
     ],
-    "updated": "2026-11-06"
+    "updated": "2026-11-27"
   },
   {
     "id": "arcane-resilience",
@@ -507,6 +549,10 @@
       {
         "es": "El efecto se acumula hasta 4 veces y dura 18 s desde que se aplica por primera vez, aunque lances otros hechizos.",
         "en": "The effect stacks up to 4 times and lasts 18 s from its first application, even while you cast other spells."
+      },
+      {
+        "es": "Hotfix del 6 de noviembre: la duración de 18 s no se aplicaba bien y queda corregida.",
+        "en": "6 November hotfix: the 18 s duration was not being applied properly and is now fixed."
       }
     ],
     "notes": [
@@ -531,9 +577,10 @@
       "blizzard-deep-dive-mage",
       "warcrafttavern-mage-deep-dive",
       "blizzard-dev-notes",
-      "wowhead-forever-talent-calc"
+      "wowhead-forever-talent-calc",
+      "blizzard-hotfixes-2026-11"
     ],
-    "updated": "2026-11-06"
+    "updated": "2026-11-27"
   },
   {
     "id": "arcane-shielding",
