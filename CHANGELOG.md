@@ -4,6 +4,15 @@
 
 Cambios de la web (**Web**), del contenido de la guía (**Guía**) y anuncios de Blizzard que afectan al Mago (**Juego**).
 
+## 2026-11-27
+
+### [Guía] Hotfixes de noviembre al día
+
+Recojo los hotfixes oficiales del Mago del 6, 9 y 13 de noviembre en las fichas de Explosión Arcana, Concentración Arcana y Nova de Escarcha, y corrijo la guía de pergaminos: ya no se aprende Investigar, solo Estudiar.
+
+- **Datos afectados:** Explosión Arcana, Concentración Arcana, Nova de Escarcha, Nova de Escarcha, WoW: Forever Hotfixes (November 2026)
+- **Fuentes:** [WoW: Forever Hotfixes (November 2026)](https://us.forums.blizzard.com/en/wow/t/2403040) (Blizzard Entertainment)
+
 ## 2026-11-23
 
 ### [Guía] Builds por contenido y enfoque: leveo, PvE y JcJ
@@ -20,6 +29,17 @@ Primera build de mazmorras de nivel 60: Escarcha con Ventisca mejorada, Alcance 
 
 - **Datos afectados:** build:frost-dungeons-aoe
 
+## 2026-11-13
+
+### [Juego] Nova de Escarcha se rompe con el daño de procs y de Ventisca
+
+Un hotfix de Blizzard corrige que el daño de los procs y el de Ventisca no rompieran la inmovilización de Nova de Escarcha.
+
+- ▼ Empeora: **Nova de Escarcha**: Ventisca sobre enemigos inmovilizados por Nova de Escarcha los libera: pierdes parte del control al farmear en área.
+
+- **Datos afectados:** Nova de Escarcha, WoW: Forever Hotfixes (November 2026)
+- **Fuentes:** [WoW: Forever Hotfixes (November 2026)](https://us.forums.blizzard.com/en/wow/t/2403040) (Blizzard Entertainment)
+
 ## 2026-11-10
 
 ### [Guía] Builds de leveo: Arcano y Fuego, y Escarcha profunda
@@ -28,7 +48,27 @@ Dos builds de leveo nuevas. Arcano y Fuego sigue el mismo camino que Arcano hast
 
 - **Datos afectados:** build:arcane-fire-leveling, build:frost-leveling-deep
 
+## 2026-11-09
+
+### [Juego] Concentración Arcana y Llamarada: dos correcciones
+
+Un hotfix de Blizzard reparte la probabilidad de Concentración Arcana entre el lanzamiento y cada misil, y evita que los impactos de Llamarada en el suelo gasten Lanzamiento libre.
+
+- ◆ Igual: **Concentración Arcana**: Con Misiles Arcanos ya no se activa más de lo previsto, y Llamarada deja de gastar tu Lanzamiento libre.
+
+- **Datos afectados:** Concentración Arcana, WoW: Forever Hotfixes (November 2026)
+- **Fuentes:** [WoW: Forever Hotfixes (November 2026)](https://us.forums.blizzard.com/en/wow/t/2403040) (Blizzard Entertainment)
+
 ## 2026-11-06
+
+### [Juego] Explosión Arcana: duración de 18 s corregida; Investigar fuera
+
+Un hotfix de Blizzard corrige la duración de 18 s del efecto de Explosión Arcana y quita Investigar: tras la misión solo debes tener Estudiar.
+
+- ◆ Igual: **Explosión Arcana**: La duración de 18 s ya se aplica como dice la ficha.
+
+- **Datos afectados:** Explosión Arcana, WoW: Forever Hotfixes (November 2026)
+- **Fuentes:** [WoW: Forever Hotfixes (November 2026)](https://us.forums.blizzard.com/en/wow/t/2403040) (Blizzard Entertainment)
 
 ### [Juego] Lanzamiento: lo que confirman las notas de Blizzard (build 1.60.1.70790)
 

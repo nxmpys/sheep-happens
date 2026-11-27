@@ -1,5 +1,135 @@
 [
   {
+    "id": "2026-11-13-hotfix-frost-nova",
+    "date": "2026-11-13",
+    "type": "game",
+    "title": {
+      "es": "Nova de Escarcha se rompe con el daño de procs y de Ventisca",
+      "en": "Frost Nova breaks from proc and Blizzard damage"
+    },
+    "body": {
+      "es": "Un hotfix de Blizzard corrige que el daño de los procs y el de Ventisca no rompieran la inmovilización de Nova de Escarcha.",
+      "en": "A Blizzard hotfix fixes proc damage and Blizzard damage not breaking Frost Nova's root."
+    },
+    "pages": [
+      "changes",
+      "aoe-farming"
+    ],
+    "sources": [
+      "blizzard-hotfixes-2026-11"
+    ],
+    "refs": [
+      "change:frost-nova",
+      "source:blizzard-hotfixes-2026-11"
+    ],
+    "items": [
+      {
+        "ref": "change:frost-nova",
+        "impact": "nerf",
+        "text": {
+          "es": "Ventisca sobre enemigos inmovilizados por Nova de Escarcha los libera: pierdes parte del control al farmear en área.",
+          "en": "Blizzard on enemies rooted by Frost Nova frees them: you lose some control while AoE farming."
+        }
+      }
+    ]
+  },
+  {
+    "id": "2026-11-09-hotfix-concentration",
+    "date": "2026-11-09",
+    "type": "game",
+    "title": {
+      "es": "Concentración Arcana y Llamarada: dos correcciones",
+      "en": "Arcane Concentration and Flamestrike: two fixes"
+    },
+    "body": {
+      "es": "Un hotfix de Blizzard reparte la probabilidad de Concentración Arcana entre el lanzamiento y cada misil, y evita que los impactos de Llamarada en el suelo gasten Lanzamiento libre.",
+      "en": "A Blizzard hotfix splits Arcane Concentration's chance across the cast and every bolt, and stops Flamestrike's ground ticks from consuming Clearcasting."
+    },
+    "pages": [
+      "changes",
+      "talents-arcane"
+    ],
+    "sources": [
+      "blizzard-hotfixes-2026-11"
+    ],
+    "refs": [
+      "change:arcane-concentration",
+      "source:blizzard-hotfixes-2026-11"
+    ],
+    "items": [
+      {
+        "ref": "change:arcane-concentration",
+        "impact": "neutral",
+        "text": {
+          "es": "Con Misiles Arcanos ya no se activa más de lo previsto, y Llamarada deja de gastar tu Lanzamiento libre.",
+          "en": "Arcane Missiles no longer triggers it more often than intended, and Flamestrike stops spending your Clearcasting."
+        }
+      }
+    ]
+  },
+  {
+    "id": "2026-11-06-hotfix-arcane-blast",
+    "date": "2026-11-06",
+    "type": "game",
+    "title": {
+      "es": "Explosión Arcana: duración de 18 s corregida; Investigar fuera",
+      "en": "Arcane Blast: 18 s duration fixed; Research removed"
+    },
+    "body": {
+      "es": "Un hotfix de Blizzard corrige la duración de 18 s del efecto de Explosión Arcana y quita Investigar: tras la misión solo debes tener Estudiar.",
+      "en": "A Blizzard hotfix fixes the 18 s duration of the Arcane Blast effect and removes Research: after the quest you should only have Study."
+    },
+    "pages": [
+      "changes",
+      "library"
+    ],
+    "sources": [
+      "blizzard-hotfixes-2026-11"
+    ],
+    "refs": [
+      "change:arcane-blast",
+      "source:blizzard-hotfixes-2026-11"
+    ],
+    "items": [
+      {
+        "ref": "change:arcane-blast",
+        "impact": "neutral",
+        "text": {
+          "es": "La duración de 18 s ya se aplica como dice la ficha.",
+          "en": "The 18 s duration now works as the card says."
+        }
+      }
+    ]
+  },
+  {
+    "id": "2026-11-27-hotfixes-review",
+    "date": "2026-11-27",
+    "type": "guide",
+    "title": {
+      "es": "Hotfixes de noviembre al día",
+      "en": "November hotfixes brought up to date"
+    },
+    "body": {
+      "es": "Recojo los hotfixes oficiales del Mago del 6, 9 y 13 de noviembre en las fichas de Explosión Arcana, Concentración Arcana y Nova de Escarcha, y corrijo la guía de pergaminos: ya no se aprende Investigar, solo Estudiar.",
+      "en": "I add the official Mage hotfixes of 6, 9 and 13 November to the Arcane Blast, Arcane Concentration and Frost Nova cards, and fix the scrolls guide: you no longer learn Research, only Study."
+    },
+    "pages": [
+      "changes",
+      "library"
+    ],
+    "sources": [
+      "blizzard-hotfixes-2026-11"
+    ],
+    "refs": [
+      "change:arcane-blast",
+      "change:arcane-concentration",
+      "change:frost-nova",
+      "ability:frost-nova",
+      "source:blizzard-hotfixes-2026-11"
+    ],
+    "items": []
+  },
+  {
     "id": "2026-11-23-builds-by-content",
     "date": "2026-11-23",
     "type": "guide",

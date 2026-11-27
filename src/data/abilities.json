@@ -203,19 +203,22 @@
     "role": "control",
     "level": 10,
     "changeIds": [
+      "frost-nova",
       "ice-lance",
       "shatter"
     ],
     "spell": 122,
     "summary": {
-      "es": "Congela en el sitio a los enemigos cercanos. En Forever, además, prepara Lanza de hielo.",
-      "en": "Roots nearby enemies in place. In Forever it also sets up Ice Lance."
+      "es": "Congela en el sitio a los enemigos cercanos. En Forever, además, prepara Lanza de hielo. Desde el 13 de noviembre, el daño de procs y de Ventisca rompe la inmovilización.",
+      "en": "Roots nearby enemies in place. In Forever it also sets up Ice Lance. Since 13 November, damage from procs and Blizzard breaks the root."
     },
     "status": "classic",
     "sources": [
       "wiki-mage-abilities-classic",
-      "blizzard-deep-dive-mage-es"
-    ]
+      "blizzard-deep-dive-mage-es",
+      "blizzard-hotfixes-2026-11"
+    ],
+    "updated": "2026-11-27"
   },
   {
     "id": "counterspell",
